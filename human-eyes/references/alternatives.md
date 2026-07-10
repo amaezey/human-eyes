@@ -25,6 +25,7 @@ Each alternative has been reviewed for AI flavour. The right replacement is rare
 - [Generic positive conclusions](#generic-positive-conclusions)
 - [Soft scaffold phrases](#soft-scaffold-phrases)
 - [Manufactured-insight phrasings](#manufactured-insight-phrasings)
+- [Performed candour](#performed-candour)
 - [Sycophantic / collaborative artifacts](#sycophantic--collaborative-artifacts)
 - [Knowledge-cutoff disclaimers](#knowledge-cutoff-disclaimers)
 - [Contrived contrast / negative parallelism](#contrived-contrast--negative-parallelism)
@@ -254,6 +255,24 @@ Phrases that promise revelation without doing the evidentiary work. They include
 | When no one was watching | (cut; the writer probably was not there) | Privileged-perception cliché. |
 | Without anyone noticing | (cut) | Same. |
 | The shift nobody noticed | (cut, or name the shift and source the silence) | Same. |
+
+---
+
+## Performed candour
+
+Sincerity announcements usually disappear without changing the claim. Delete the frame, then check whether the remaining sentence needs evidence or a named basis.
+
+| AI tell | What it usually means | Notes |
+|---|---|---|
+| Honestly, X | X | State X directly. |
+| To be honest, X | X | Delete the preamble. |
+| The honest answer is X | X | The claim needs evidence, not an authenticity label. |
+| Frankly, X | X | Keep only when a quoted speaker used the word. |
+| Candidly, X | X | Delete the self-description. |
+| Truthfully, X | X | Delete the self-description. |
+| The real or actual truth is X | X | State the supported claim. |
+
+Literal meaning remains valid. An honest account, a genuine signature, an actual measurement, and a real object are not candour frames.
 
 ---
 

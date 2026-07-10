@@ -3943,16 +3943,13 @@ def _format_surface_only(results, depth):
     programmatic = contract["programmatic_checks"]
     visible = [item for item in programmatic if item["id"] != SIGNAL_STACKING_META_CHECK]
     summary = _format_summary_block(
-        "**Surface scan**",
+        registries.string_for("templates.surface_scan_heading"),
         contract["aggregates"]["signal_stacking"],
         visible,
         [],
     )
     findings = _format_auto_detected_block(visible, depth, "default")
-    limitation = (
-        "Semantic reading was not run. This output is incomplete and cannot be used "
-        "for Suggestions, Rewrite, or Write."
-    )
+    limitation = registries.string_for("templates.surface_scan_limitation")
     return "\n\n".join([summary, findings, limitation])
 
 

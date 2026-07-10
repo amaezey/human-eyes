@@ -100,5 +100,11 @@
     "signal_stacking_triggered": "Signal stacking triggered: {score} of {threshold} threshold ({components})",
     "next_step_prompt_with_full_report": "Want the full coverage report, suggestions for edits, a full rewrite, or to save this audit as a file?",
     "next_step_prompt_full_report_mode": "Want suggestions for edits, a full rewrite, or to save this audit as a file?"
+    ,"surface_scan_heading": "**Surface scan**"
+    ,"surface_scan_limitation": "Semantic reading was not run. This output is incomplete and cannot be used for Suggestions, Rewrite, or Write."
+    ,"change_report_changes": "Changes made:"
+    ,"change_report_preserved": "Preserved:"
+    ,"change_report_remaining": "Remaining findings:"
+    ,"change_report_none": "none"
   }
 }
