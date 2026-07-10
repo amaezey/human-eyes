@@ -5,7 +5,7 @@
       "id": "structural_monotony",
       "pattern_ref": null,
       "severity": "context_warning",
-      "prompt": "Do all sections of the text follow the same arc (problem → evidence → anecdote → advice, or hook → claim → evidence → close)? Human writers vary section structure; AI defaults to a uniform shape across every section.",
+      "prompt": "Do sections repeat the same rhetorical arc, such as problem → evidence → anecdote → advice or hook → claim → evidence → close? Name repeated arcs even when the headings and subject matter differ.",
       "answer_schema": {
         "type": "trichotomy",
         "values": [
@@ -103,13 +103,90 @@
       "id": "generic_metaphors",
       "pattern_ref": 30,
       "severity": "strong_warning",
-      "prompt": "Are the metaphors plausible-but-anyone's (\"learning the ukulele is like teaching your fingers to dance again\"), or do they come from the writer's specific experience (\"the first week my fingers couldn't stretch far enough for a G chord\")? List specific metaphors that draw from the statistical middle rather than personal grounding.",
+      "prompt": "Are the metaphors plausible-but-anyone's, or detached from a concrete referent, property, or experience? List the exact metaphor and explain what concrete meaning it fails to supply.",
       "answer_schema": {
         "type": "list",
         "items": [
           "phrase",
           "why_generic"
         ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "referential_clarity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "List vague this, that, it, these, those, and vague nouns such as moves when the antecedent is not identifiable. Also list unsupported first-use definite descriptions such as the gap, and separately identify passages whose repeated the + noun cadence is excessive even though each referent can be recovered. Quote the phrase and name the missing or over-repeated referent.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unclear"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "pattern_ref": 10,
+      "severity": "context_warning",
+      "prompt": "List counted slogans, balanced bicolons, repeated syntactic skeletons, or cross-sentence correction scripts whose symmetry substitutes for information. Quote the complete construction and explain what the parallel form fails to say.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_formulaic"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "semantic_redundancy",
+      "pattern_ref": 34,
+      "severity": "strong_warning",
+      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "what_it_repeats"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "underspecified_language",
+      "pattern_ref": 43,
+      "severity": "strong_warning",
+      "prompt": "List evaluative adjectives, comparisons, superlatives, modifier stacks, nominalisations, and metaphors that do not name the relevant property or comparison basis. Common examples include steady, rougher, cold, sharp, and load-bearing. Quote the phrase and state the missing criterion, property, actor, or action.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_criterion"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "context_leakage",
+      "pattern_ref": 19,
+      "severity": "strong_warning",
+      "prompt": "List prose that answers, concedes to, corrects, or defends against a chat comment or critique absent from the document. Quote the answer-shaped language and name the missing conversational context required to understand it.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_context"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "performed_candour",
+      "pattern_ref": 42,
+      "severity": "strong_warning",
+      "prompt": "List sincerity announcements and authenticity boosters such as honest, real, actual, genuine, frankly, candidly, and truthfully when they perform candour instead of adding literal meaning. Quote the complete frame and explain why the claim can be stated directly. Preserve literal uses and quotations.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unnecessary"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "vacuous_connection",
+      "pattern_ref": 22,
+      "severity": "context_warning",
+      "prompt": "List connectors and coordinated clauses that imply a logical relationship without stating one. Quote the connection and name the missing causal, temporal, contrastive, or evidential relationship.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_relationship"]
       },
       "flagged_when": "non_empty"
     },

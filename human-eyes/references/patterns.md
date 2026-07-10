@@ -522,6 +522,21 @@ ChatGPT and similar systems use the em dash (`—`) as default mid-sentence punc
 
 **Detection:** Programmatic check `no-em-dashes`. Counts U+2014 occurrences and fails on any. Distinct from #17 curly quotes (a typographic substitution at the quotation-mark level); this check targets the long-dash glyph as default mid-sentence punctuation.
 
+
+### 57. Parenthetical headings
+
+Parentheses do not belong in human-eyes headings. They usually carry a vague qualifier, private aside, or simulated doubt that should either be stated directly in the section or deleted.
+
+**Before:**
+> ## Document skills (the steady ones)
+
+**After:**
+> ## Document skills
+
+**Severity:** hard_fail · `no-parenthetical-headings`
+
+**Detection:** Programmatic check `no-parenthetical-headings` covers ATX and setext Markdown headings. Body parentheses are outside this rule.
+
 ---
 
 ## Communication
@@ -1141,6 +1156,23 @@ Three or more consecutive sentences whose first word matches — "The X… The Y
 **Severity:** context_warning · `no-anaphora`
 
 **Detection:** Programmatic check `no-anaphora`. Flags three or more consecutive sentences whose first word matches case-insensitively, ignoring trivial starts ("I", "A", "The", "It", "It's"). Distinct from #25 staccato rhythm (which fires on short standalone sentences regardless of opener) and from #35a orphaned demonstratives (vague-subject `this` in a single sentence) and #35b `This …` chains (paragraph-level repetition of `This` as subject).
+
+
+### 56. Performed candour
+
+**Frames to watch:** Honestly,; To be honest; The honest answer; Frankly,; Candidly,; Truthfully,; In all honesty.
+
+These phrases announce sincerity before a claim. The announcement rarely changes the meaning, and repeated use gives prose a rehearsed authenticity beat. Literal uses remain valid: an honest account is not performed candour. Quoted source text also remains unchanged.
+
+**Before:**
+> To be honest, the review process is too slow.
+
+**After:**
+> The review process is too slow.
+
+**Severity:** strong_warning · `no-performed-candour`
+
+**Detection:** Programmatic check `no-performed-candour` catches fixed discourse frames outside quoted text. The `performed_candour` semantic record reviews contextual uses of honest, real, actual, and genuine.
 
 ---
 

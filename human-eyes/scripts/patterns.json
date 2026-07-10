@@ -512,6 +512,23 @@
     "patterns_md_body": "**Words to watch:** \"what's really\", \"the real answer\", \"here's what's really\", \"the real story is\", \"what's actually happening\", \"contrary to popular belief\", \"the uncomfortable truth\", \"what nobody is talking about\", \"what no one seems to realise\", \"what most people miss\", \"what (no one|nobody) noticed\", \"before anyone noticed\", \"without anyone noticing\", \"let that sink in\", \"read that again\", \"if you know, you know\", \"and that changes everything\", \"the real insight/challenge/takeaway/kicker/question\", \"a quiet/powerful/important/profound lesson\", \"sometimes the bravest/hardest/most important\", \"this isn't X. it's Y.\", \"that's not X. that's Y.\", \"the honest answer is\", \"here's the honest (answer|framing|truth)\", \"here's the (real) truth\", \"the real truth is\", \"if I'm being honest\", \"in all honesty\", \"to be (perfectly) honest,\"\n\nPerforms revelation through phrasing — claims hidden depth or secret significance without doing the evidentiary work. Includes \"the real X?\" rhetorical questions, performed knowingness (\"read that again\", \"let that sink in\"), pseudo-profundity (\"quietly revolutionary\", \"the quiet part\"), formulaic depth framing (\"here's the thing\", \"the reason is straightforward\"), and contrived contrast that reveals an inflated abstract payload. Also includes **performed candour** — honesty/truth framing (\"the honest answer is\", \"here's the real truth\", \"if I'm being honest\", \"in all honesty\") that dresses an ordinary statement as a hard-won admission.\n\n**Before:**\n> Most people think project management is about tracking tasks. Here's the real insight: it's about managing attention. What nobody is talking about is that most projects fail because no one was watching the right thing. Let that sink in.\n\n**After:**\n> Most projects fail because the project manager loses track of which decisions are still open. The Q3 launch slipped because three blocking decisions sat on someone's desk for two weeks before anyone surfaced them.\n\n**Severity:** strong_warning · `no-manufactured-insight`\n\n**Detection:** Programmatic check `no-manufactured-insight`. Closely related to #9 contrived contrast — manufactured insight framing is the *content* of the false reveal; #9 is the *syntactic shape*. A piece can carry one without the other but they often co-occur.\n\n**Hypothesis (performed candour):** The honesty/truth-framing phrases (\"the honest answer is\", \"here's the real truth\", \"if I'm being honest\") are folded into `no-manufactured-insight` rather than promoted to their own numbered entry. They share the same generative move as the rest of #42 (claiming significance through phrasing rather than earning it), so a single check captures the family. Promote to a sibling entry if either signal lands: the candour regex set grows materially beyond the current handful of phrases, or audit failures cluster on candour without co-occurring with the rest of #42's mechanisms. Until then, keep folded.",
     "patterns_md_leading_blanks": 2
   },
+  "no-performed-candour": {
+    "category": "Voice and register",
+    "short_name": "Performed candour",
+    "description": "Checks for sincerity announcements such as honestly, frankly, and the honest answer.",
+    "why_it_matters": "Announcing sincerity adds a rehearsed authenticity beat instead of strengthening the claim.",
+    "severity": "strong_warning",
+    "failure_modes": [
+      "voice_erasure",
+      "generic_abstraction"
+    ],
+    "evidence_role": "candour_frame",
+    "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+    "pattern_number": "56",
+    "patterns_md_heading": "Performed candour",
+    "patterns_md_body": "**Frames to watch:** Honestly,; To be honest; The honest answer; Frankly,; Candidly,; Truthfully,; In all honesty.\n\nThese phrases announce sincerity before a claim. The announcement rarely changes the meaning, and repeated use gives prose a rehearsed authenticity beat. Literal uses remain valid: an honest account is not performed candour. Quoted source text also remains unchanged.\n\n**Before:**\n> To be honest, the review process is too slow.\n\n**After:**\n> The review process is too slow.\n\n**Severity:** strong_warning · `no-performed-candour`\n\n**Detection:** Programmatic check `no-performed-candour` catches fixed discourse frames outside quoted text. The `performed_candour` semantic record reviews contextual uses of honest, real, actual, and genuine.",
+    "patterns_md_leading_blanks": 2
+  },
   "no-markdown-headings": {
     "category": "Style",
     "short_name": "Headings in prose",
@@ -540,6 +557,23 @@
     "pattern_number": "48",
     "patterns_md_heading": "Dense negation",
     "patterns_md_body": "**Words to watch:** clusters of \"is not\", \"are not\", \"was not\", \"were not\", \"does not\", \"do not\", \"isn't\", \"aren't\", \"wasn't\", \"weren't\", \"doesn't\", \"don't\", \"not merely\", \"not simply\", \"not just\" — across longer prose, not in a single sentence.\n\nDistinct from #9 (contrived contrast in a single sentence) and #33 (countdown negation across two or three consecutive sentences). This is sustained negation density across a piece: a draft that defines itself by what it isn't, paragraph after paragraph. The check activates only on prose of 300+ words to avoid penalising short polemics where dense negation is the deliberate rhetorical move.\n\n**Before:**\n> The model isn't trying to imitate writing. It isn't merely fitting a template. It isn't just generating tokens. It's not really thinking, but it's also not just predicting next word. The output isn't original, but it isn't copied either. The system isn't conscious, but it isn't a simple lookup either. None of this is what most people assume.\n\n**After:**\n> The model is doing pattern completion at very large scale, with no internal model of meaning. The output looks like writing because the training data is writing, not because the system understands anything. Treat the result as a draft, not a thought.\n\n**Severity:** context_warning · `no-negation-density`\n\n**Detection:** Programmatic check `no-negation-density`. Triggers only on prose of 300+ words.",
+    "patterns_md_leading_blanks": 2
+  },
+  "no-parenthetical-headings": {
+    "category": "Style",
+    "short_name": "Parenthetical headings",
+    "description": "Checks for explanatory or doubtful parentheses inside headings.",
+    "why_it_matters": "Parentheses in headings create an aside before the section has established its subject.",
+    "severity": "hard_fail",
+    "failure_modes": [
+      "frictionless_structure",
+      "generic_abstraction"
+    ],
+    "evidence_role": "heading_structure",
+    "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body.",
+    "pattern_number": "57",
+    "patterns_md_heading": "Parenthetical headings",
+    "patterns_md_body": "Parentheses do not belong in human-eyes headings. They usually carry a vague qualifier, private aside, or simulated doubt that should either be stated directly in the section or deleted.\n\n**Before:**\n> ## Document skills (the steady ones)\n\n**After:**\n> ## Document skills\n\n**Severity:** hard_fail · `no-parenthetical-headings`\n\n**Detection:** Programmatic check `no-parenthetical-headings` covers ATX and setext Markdown headings. Body parentheses are outside this rule.",
     "patterns_md_leading_blanks": 2
   },
   "no-negative-parallelisms": {

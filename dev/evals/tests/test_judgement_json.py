@@ -74,13 +74,20 @@ EXPECTED_IDS = [
     "even_jargon_distribution",
     "forced_synesthesia",
     "generic_metaphors",
+    "referential_clarity",
+    "formulaic_parallelism",
+    "semantic_redundancy",
+    "underspecified_language",
+    "context_leakage",
+    "performed_candour",
+    "vacuous_connection",
     "genre_specific",
 ]
 actual_ids = [r.get("id") for r in records]
 if actual_ids != EXPECTED_IDS:
     fail(f"records order/ids mismatch.\n  expected: {EXPECTED_IDS}\n  got:      {actual_ids}")
 else:
-    ok(f"all 8 records present in canonical order")
+    ok(f"all {len(EXPECTED_IDS)} records present in canonical order")
 
 
 # --- each record has required fields ---
@@ -114,6 +121,13 @@ EXPECTED_PATTERN_REFS = {
     "even_jargon_distribution": None,
     "forced_synesthesia": 28,
     "generic_metaphors": 30,
+    "referential_clarity": 35,
+    "formulaic_parallelism": 10,
+    "semantic_redundancy": 34,
+    "underspecified_language": 43,
+    "context_leakage": 19,
+    "performed_candour": 42,
+    "vacuous_connection": 22,
     "genre_specific": 41,
 }
 for record in records:

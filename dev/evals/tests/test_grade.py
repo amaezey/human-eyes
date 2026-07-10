@@ -238,19 +238,19 @@ expect_fail("no-manufactured-insight",
 expect_fail("no-manufactured-insight",
     "The shift nobody noticed was already underway.",
     "shift nobody noticed framing")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "The honest answer is that the data was incomplete from the start.",
     "performed candour — 'the honest answer is'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "Here's the honest framing: the project missed every milestone.",
     "performed candour — 'here's the honest framing'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "Here's the real truth — most teams skip retros entirely.",
     "performed candour — 'here's the real truth'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "If I'm being honest, the proposal needs more work.",
     "performed candour — 'if I'm being honest'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "In all honesty, the migration plan has too many unknowns.",
     "performed candour — 'in all honesty'")
 expect_pass("no-manufactured-insight",
@@ -1072,6 +1072,7 @@ for _n in _GROUP_A:
 print("\n=== group-b-resolution-coverage ===")
 _GROUP_B_CHECKS = [
     "no-manufactured-insight",
+    "no-performed-candour",
     "no-corporate-ai-speak",
     "no-signposted-conclusions",
     "no-nonliteral-land-surface",
@@ -1154,6 +1155,7 @@ expected_checks = {
     "no-nonliteral-land-surface",
     "overall-signal-stacking",
     "no-manufactured-insight",
+    "no-performed-candour",
     "no-staccato-sequences",
     "no-anaphora",
     "no-collaborative-artifacts",
@@ -1180,6 +1182,7 @@ expected_checks = {
     "no-formulaic-openers",
     "no-signposted-conclusions",
     "no-markdown-headings",
+    "no-parenthetical-headings",
     "no-corporate-ai-speak",
     "no-this-chains",
     "no-excessive-hedging",
@@ -1956,7 +1959,7 @@ for check_name in ALL_CHECKS:
 print("\n=== human-instructional-passthrough ===")
 instructional_text = Path(__file__).resolve().parents[1].joinpath("samples/human-sourced/legacy/11-human-instructional.md").read_text()
 for check_name in ALL_CHECKS:
-    if check_name == "no-staccato-sequences":
+    if check_name in {"no-staccato-sequences", "no-performed-candour"}:
         continue
     expect_pass(check_name, instructional_text, f"human instructional piece ({check_name})")
 

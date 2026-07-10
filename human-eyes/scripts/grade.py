@@ -266,7 +266,7 @@ MANUFACTURED_INSIGHT = [
     # Performed knowingness
     r"let that sink in", r"read that again", r"if you know,? you know",
     r"and that changes everything", r"which tells you everything",
-    r"and that's the point", r"and honestly\??",
+    r"and that's the point",
     # Pseudo-profundity
     r"quietly revolutionary", r"quietly becoming", r"the quiet part",
     # Formulaic depth framing
@@ -282,16 +282,18 @@ MANUFACTURED_INSIGHT = [
     # Contrived contrast as insight
     r"this isn't [\w\s]+\. it's ",
     r"that's not [\w\s]+\. that's ",
-    # Performed candour / honesty framing
-    # (Folded into manufactured insight for now — see #42 Hypothesis note in patterns.md
-    # for the promotion criteria if this cluster grows.)
-    r"the honest answer is",
-    r"here's the honest (?:answer|framing|truth|version|take|story)",
-    r"here's the (?:real )?truth\b",
-    r"the real truth is",
-    r"if i'm being honest",
-    r"in all honesty",
-    r"to be (?:perfectly )?honest,",
+]
+
+PERFORMED_CANDOUR = [
+    r"\b(?:honestly|frankly|candidly|truthfully)\s*[,;:]",
+    r"\bto be (?:perfectly |completely |entirely )?honest\b",
+    r"\bif (?:i am|i'm|we are|we're) (?:being )?honest\b",
+    r"\bin all honesty\b",
+    r"\b(?:the|my) honest (?:answer|truth|version|take|view|assessment)(?:\s+is|\s*:)?",
+    r"\bhere's the honest (?:answer|framing|truth|version|take|story)\b",
+    r"\bhere's the (?:real|actual) truth\b",
+    r"\bthe (?:real|actual) truth is\b",
+    r"\blet me be honest\b",
 ]
 
 COLLABORATIVE_ARTIFACTS = [
@@ -331,7 +333,7 @@ COPULA_AVOIDANCE = [
 FILLER_PHRASES = [
     r"in order to\b", r"due to the fact that",
     r"at this point in time", r"it is important to note",
-    r"it is worth noting", r"it is worth (?:recognising|mentioning|emphasising|highlighting|acknowledging)",
+    r"(?:it is\s+)?worth (?:noting|knowing(?: about)?|recognising|mentioning|emphasising|highlighting|acknowledging)\b",
     r"it should be noted",
     r"has the ability to", r"in the event that",
     r"on the whole", r"at the end of the day",
@@ -764,6 +766,30 @@ def check_manufactured_insight(text):
         "text": "no-manufactured-insight",
         "passed": count == 0,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No manufactured insight phrases",
+    }
+
+
+def _mask_double_quoted_text(text):
+    """Blank quoted source text while preserving character positions."""
+    chars = list(text)
+    for match in re.finditer(r'["“][^"”\n]*["”]', text):
+        for index in range(match.start(), match.end()):
+            if chars[index] not in "\r\n":
+                chars[index] = " "
+    return "".join(chars)
+
+
+def check_performed_candour(text):
+    masked = _mask_double_quoted_text(text)
+    matches = []
+    for pattern in PERFORMED_CANDOUR:
+        for match in re.finditer(pattern, masked, flags=re.IGNORECASE):
+            matches.append(text[match.start():match.end()])
+    return {
+        "text": "no-performed-candour",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": f"Found {len(matches)} performed-candour frame(s): {matches}" if matches else "No performed-candour frames",
     }
 
 
@@ -1346,6 +1372,27 @@ def check_markdown_headings(text):
     }
 
 
+def check_parenthetical_headings(text):
+    """Fail parentheses in ATX and setext headings, without scanning body prose."""
+    source = strip_front_matter(text)
+    matches = []
+    for match in re.finditer(r"^ {0,3}#{1,6}\s+[^\n]*\([^\n()]+\)[^\n]*$", source, re.MULTILINE):
+        matches.append(match.group(0))
+    lines = source.splitlines()
+    for index in range(len(lines) - 1):
+        if re.match(r"^ {0,3}(?:=+|-+)\s*$", lines[index + 1]) and re.search(
+            r"\([^\n()]+\)", lines[index]
+        ):
+            matches.append(lines[index])
+    matches = list(dict.fromkeys(matches))
+    return {
+        "text": "no-parenthetical-headings",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": f"Found {len(matches)} parenthetical heading(s): {matches}" if matches else "No parenthetical headings",
+    }
+
+
 def check_corporate_ai_speak(text):
     """Detect corporate/LinkedIn AI register."""
     patterns = [
@@ -1886,6 +1933,7 @@ ALL_CHECKS = {
     "no-nonliteral-land-surface": check_nonliteral_land_surface,
     "overall-signal-stacking": check_overall_signal_stacking,
     "no-manufactured-insight": check_manufactured_insight,
+    "no-performed-candour": check_performed_candour,
     "no-staccato-sequences": check_staccato,
     "no-anaphora": check_anaphora,
     "no-collaborative-artifacts": check_collaborative_artifacts,
@@ -1912,6 +1960,7 @@ ALL_CHECKS = {
     "no-formulaic-openers": check_formulaic_openers,
     "no-signposted-conclusions": check_signposted_conclusions,
     "no-markdown-headings": check_markdown_headings,
+    "no-parenthetical-headings": check_parenthetical_headings,
     "no-corporate-ai-speak": check_corporate_ai_speak,
     "no-this-chains": check_this_chains,
     "no-excessive-hedging": check_hedging_density,
@@ -2226,6 +2275,85 @@ def _bundle_bindings(text, segments):
     }
 
 
+def _byte_offset(text, char_offset):
+    return len(text[:char_offset].encode("utf-8"))
+
+
+def _candidate_segment_id(segments, start_byte, end_byte):
+    for segment in segments:
+        if segment["start_byte"] <= start_byte and end_byte <= segment["end_byte"]:
+            return segment["id"]
+    return None
+
+
+def harvest_semantic_candidates(text, segments):
+    """Collect non-failing spans that focus, but never replace, semantic reading."""
+    candidates = []
+    seen = set()
+
+    def add(match, kind, owner):
+        start_byte = _byte_offset(text, match.start())
+        end_byte = _byte_offset(text, match.end())
+        value = match.group(0)
+        key = (start_byte, end_byte, owner, kind)
+        if key in seen:
+            return
+        seen.add(key)
+        candidates.append({
+            "kind": kind,
+            "text": value,
+            "start_byte": start_byte,
+            "end_byte": end_byte,
+            "line": text.count("\n", 0, match.start()) + 1,
+            "segment_id": _candidate_segment_id(segments, start_byte, end_byte),
+            "semantic_owner": owner,
+        })
+
+    slogan = re.compile(
+        r"(?im)^(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
+        r"[a-z][\w'-]*(?:\s+[a-z][\w'-]*)?,\s+"
+        r"(?:one|two|three|four|five|six|seven|eight|nine|ten|many|few|\d+)\s+"
+        r"[a-z][\w'-]*(?:\s+[a-z][\w'-]*)?[.!]?$"
+    )
+    for match in slogan.finditer(text):
+        add(match, "counted_slogan", "formulaic_parallelism")
+
+    correction = re.compile(
+        r"(?is)\b[^.!?\n]{1,70}\b(?:does not|doesn't|is not|isn't)\b[^.!?\n]{1,70}[.!?]\s+"
+        r"[^.!?\n]{1,35}\b(?:does|is)\b[^.!?\n]{0,70}[.!?]"
+    )
+    for match in correction.finditer(text):
+        add(match, "cross_sentence_correction", "formulaic_parallelism")
+
+    two_beat = re.compile(
+        r"(?m)(?:^|(?<=[.!?])\s+)[A-Z][^.!?\n]{0,38}[.!?]\s+"
+        r"[A-Z][^.!?\n]{0,38}[.!?]"
+    )
+    for match in two_beat.finditer(text):
+        if all(len(part.split()) <= 6 for part in re.split(r"[.!?]", match.group(0)) if part.strip()):
+            add(match, "two_beat_short_run", "formulaic_parallelism")
+
+    for match in re.finditer(r"\b(?:this|that|it|these|those)\b", text, re.IGNORECASE):
+        add(match, "possible_vague_reference", "referential_clarity")
+    for match in re.finditer(r"\bthe\s+[A-Za-z][\w'-]*", text, re.IGNORECASE):
+        add(match, "definite_description", "referential_clarity")
+
+    recap = re.compile(
+        r"(?im)^[^\n.!?]{0,35}\bwhere\b[^\n.!?]{0,70},\s*\bwhy\b[^\n.!?]{0,70},\s*"
+        r"(?:and\s+)?\bhow\b[^\n.!?]{0,90}[.!?]?$"
+    )
+    for match in recap.finditer(text):
+        add(match, "summarising_tricolon", "semantic_redundancy")
+
+    triad = re.compile(
+        r"(?im)^[^\n]{0,80}\b[^,\n]{1,30},\s+[^,\n]{1,30},\s+(?:and|or)\s+[^,\n.!?]{1,35}[.!?]?$"
+    )
+    for match in triad.finditer(text):
+        add(match, "short_form_triad", "semantic_redundancy")
+
+    return candidates
+
+
 def build_audit_work_bundle(text, results, candidates=None, segments=None):
     """Create the private artifact passed from deterministic to semantic review."""
     segments = list(segments) if segments is not None else markdown_segments(text)
@@ -2235,7 +2363,11 @@ def build_audit_work_bundle(text, results, candidates=None, segments=None):
         "bindings": _bundle_bindings(text, segments),
         "segments": segments,
         "programmatic_checks": programmatic,
-        "semantic_candidates": list(candidates or []),
+        "semantic_candidates": (
+            list(candidates)
+            if candidates is not None
+            else harvest_semantic_candidates(text, segments)
+        ),
         "semantic_answers": [],
         "limitations": [
             "slide_title structure unavailable without a structure manifest",
