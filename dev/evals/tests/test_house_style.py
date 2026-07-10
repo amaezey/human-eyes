@@ -26,6 +26,7 @@ def instructional_prose(text):
 
 
 files = [
+    HUMAN_EYES / "SKILL.md",
     HUMAN_EYES / "references" / "voice.md",
     HUMAN_EYES / "references" / "process.md",
     HUMAN_EYES / "references" / "alternatives.md",
@@ -62,8 +63,9 @@ for forbidden in (
     "manufacture uncertainty",
     "invent personal",
 ):
-    if forbidden in combined:
-        failures.append(f"instructional prose contains forbidden directive: {forbidden}")
+    for line in combined.splitlines():
+        if forbidden in line and "do not" not in line and "never" not in line:
+            failures.append(f"instructional prose contains forbidden directive: {forbidden}")
 
 if failures:
     print("\n".join(f"FAIL: {failure}" for failure in failures))

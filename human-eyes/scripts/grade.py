@@ -2266,6 +2266,74 @@ def markdown_segments(text):
     return segments
 
 
+STRUCTURE_SEGMENT_TYPES = {"heading", "paragraph", "list_block", "slide_title", "caption"}
+
+
+def _utf8_boundaries(text):
+    boundaries = {0}
+    cursor = 0
+    for char in text:
+        cursor += len(char.encode("utf-8"))
+        boundaries.add(cursor)
+    return boundaries
+
+
+def load_structure_manifest(path, text):
+    """Load caller-supplied structure spans and generate trusted segment IDs."""
+    manifest_path = Path(path)
+    if not manifest_path.exists():
+        raise AuditWorkBundleError(f"structure-manifest path does not exist: {path}")
+    try:
+        data = json.loads(manifest_path.read_text())
+    except json.JSONDecodeError as exc:
+        raise AuditWorkBundleError(f"invalid JSON in structure manifest {path}: {exc}") from exc
+    if not isinstance(data, dict) or set(data) != {"segments"}:
+        raise AuditWorkBundleError("structure manifest must contain only a segments array")
+    if not isinstance(data["segments"], list):
+        raise AuditWorkBundleError("structure manifest segments must be a list")
+    boundaries = _utf8_boundaries(text)
+    total_bytes = len(text.encode("utf-8"))
+    segments = []
+    for index, item in enumerate(data["segments"]):
+        required = {"type", "start_byte", "end_byte"}
+        if not isinstance(item, dict) or set(item) != required:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} must contain exactly {sorted(required)}"
+            )
+        segment_type = item["type"]
+        start = item["start_byte"]
+        end = item["end_byte"]
+        if segment_type not in STRUCTURE_SEGMENT_TYPES:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} has invalid type {segment_type!r}"
+            )
+        if not isinstance(start, int) or isinstance(start, bool) or not isinstance(end, int) or isinstance(end, bool):
+            raise AuditWorkBundleError(f"structure manifest segment {index} offsets must be integers")
+        if start < 0 or end <= start or end > total_bytes:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} offsets {start}:{end} are out of range"
+            )
+        if start not in boundaries or end not in boundaries:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} offset is not on a UTF-8 boundary"
+            )
+        segments.append({
+            "id": f"{segment_type}:{start}:{end}",
+            "type": segment_type,
+            "start_byte": start,
+            "end_byte": end,
+        })
+    segments.sort(key=lambda item: (item["start_byte"], item["end_byte"], item["type"]))
+    for previous, current in zip(segments, segments[1:]):
+        if current["start_byte"] < previous["end_byte"]:
+            raise AuditWorkBundleError(
+                f"structure manifest segments overlap at {current['start_byte']}"
+            )
+    if len({segment["id"] for segment in segments}) != len(segments):
+        raise AuditWorkBundleError("structure manifest contains duplicate segments")
+    return segments
+
+
 def _bundle_bindings(text, segments):
     registry = registries.load_judgement()
     return {
@@ -2358,6 +2426,12 @@ def build_audit_work_bundle(text, results, candidates=None, segments=None):
     """Create the private artifact passed from deterministic to semantic review."""
     segments = list(segments) if segments is not None else markdown_segments(text)
     programmatic = human_report(results)["programmatic_checks"]
+    available_types = {segment["type"] for segment in segments}
+    limitations = []
+    if "slide_title" not in available_types:
+        limitations.append("slide_title structure unavailable without a structure manifest")
+    if "caption" not in available_types:
+        limitations.append("caption structure unavailable without a structure manifest")
     return {
         "schema_version": "1",
         "bindings": _bundle_bindings(text, segments),
@@ -2369,10 +2443,7 @@ def build_audit_work_bundle(text, results, candidates=None, segments=None):
             else harvest_semantic_candidates(text, segments)
         ),
         "semantic_answers": [],
-        "limitations": [
-            "slide_title structure unavailable without a structure manifest",
-            "caption structure unavailable without a structure manifest",
-        ],
+        "limitations": limitations,
     }
 
 
@@ -2467,6 +2538,31 @@ def validate_audit_work_bundle(text, bundle):
         raise AuditWorkBundleError(
             f"audit-work bundle fields must be exactly {sorted(required)}"
         )
+    if not isinstance(bundle["segments"], list):
+        raise AuditWorkBundleError("segments must be a list")
+    boundaries = _utf8_boundaries(text)
+    segment_ids = []
+    for index, segment in enumerate(bundle["segments"]):
+        required_segment = {"id", "type", "start_byte", "end_byte"}
+        if not isinstance(segment, dict) or set(segment) != required_segment:
+            raise AuditWorkBundleError(
+                f"segment {index} must contain exactly {sorted(required_segment)}"
+            )
+        start = segment["start_byte"]
+        end = segment["end_byte"]
+        segment_type = segment["type"]
+        expected_id = f"{segment_type}:{start}:{end}"
+        if segment_type not in STRUCTURE_SEGMENT_TYPES:
+            raise AuditWorkBundleError(f"segment {index} has invalid type {segment_type!r}")
+        if start not in boundaries or end not in boundaries or end <= start:
+            raise AuditWorkBundleError(f"segment {index} has invalid UTF-8 offsets {start}:{end}")
+        if segment["id"] != expected_id:
+            raise AuditWorkBundleError(
+                f"segment {index} id {segment['id']!r} should be {expected_id!r}"
+            )
+        segment_ids.append(segment["id"])
+    if len(set(segment_ids)) != len(segment_ids):
+        raise AuditWorkBundleError("segments contain duplicate ids")
     expected_bindings = _bundle_bindings(text, bundle["segments"])
     for key, expected in expected_bindings.items():
         if bundle["bindings"].get(key) != expected:
@@ -3919,7 +4015,7 @@ def regrade(text, depth="balanced"):
 
 USAGE = (
     "Usage:\n"
-    "  grade.py preflight <file> --work-bundle <path>\n"
+    "  grade.py preflight <file> --work-bundle <path> [--structure-manifest <path>]\n"
     "  grade.py audit <file> --work-bundle <path> [--format json|markdown] "
     "[--depth balanced|all] [--full-report]\n"
     "  grade.py audit <file> --surface-only [--format json|markdown] "
@@ -3971,6 +4067,7 @@ def main(argv=None):
     command = args.pop(0)
     try:
         work_path = _pop_option(args, "--work-bundle")
+        structure_path = _pop_option(args, "--structure-manifest")
         output_format = _pop_option(args, "--format", "json")
         depth = _pop_option(args, "--depth", "all").lower()
     except ValueError as exc:
@@ -4001,10 +4098,19 @@ def main(argv=None):
         if surface_only or not work_path:
             print("preflight requires --work-bundle and does not accept --surface-only", file=sys.stderr)
             return 2
-        bundle = build_audit_work_bundle(text, results)
+        inferred_segments = markdown_segments(text)
+        if structure_path:
+            external_segments = load_structure_manifest(structure_path, text)
+            segments = external_segments + inferred_segments
+        else:
+            segments = inferred_segments
+        bundle = build_audit_work_bundle(text, results, segments=segments)
         Path(work_path).write_text(json.dumps(bundle, indent=2) + "\n")
         return 0
 
+    if structure_path:
+        print("--structure-manifest is accepted by preflight only", file=sys.stderr)
+        return 2
     if surface_only and work_path:
         print("audit accepts either --surface-only or --work-bundle, not both", file=sys.stderr)
         return 2

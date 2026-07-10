@@ -86,9 +86,33 @@ assert surface["semantic_findings"] == []
 with tempfile.TemporaryDirectory() as tmp:
     source = Path(tmp) / "input.md"
     work = Path(tmp) / "work.json"
+    structure = Path(tmp) / "structure.json"
     source.write_text(text)
-    assert grade.main(["preflight", str(source), "--work-bundle", str(work)]) == 0
+    title_end = len("# Heading\n".encode("utf-8"))
+    structure.write_text(json.dumps({
+        "segments": [
+            {"type": "slide_title", "start_byte": 0, "end_byte": title_end},
+        ]
+    }))
+    assert grade.main([
+        "preflight", str(source), "--work-bundle", str(work),
+        "--structure-manifest", str(structure),
+    ]) == 0
     assert work.exists()
+    structured = json.loads(work.read_text())
+    assert structured["segments"][0]["type"] == "slide_title"
+    assert not any("slide_title structure unavailable" in item for item in structured["limitations"])
     assert grade.main(["audit", str(source), "--surface-only", "--format", "json"]) == 0
+
+    structure.write_text(json.dumps({"segments": [
+        {"type": "slide_title", "start_byte": 0, "end_byte": title_end},
+        {"type": "caption", "start_byte": 2, "end_byte": title_end},
+    ]}))
+    try:
+        grade.load_structure_manifest(structure, text)
+    except grade.AuditWorkBundleError as exc:
+        assert "overlap" in str(exc)
+    else:
+        raise AssertionError("overlapping structure-manifest offsets should fail")
 
 print("ALL PASSED")
