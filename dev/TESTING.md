@@ -1,6 +1,12 @@
 # Testing methodology
 
-Human-eyes tests whether unwanted writing patterns are removed and acceptable prose is preserved. Tests do not classify authorship.
+Human-eyes tests both its pattern coverage and the quality of its edits. The comparative corpus measures how often matched human and AI samples trigger the grader. The release gates measure whether requested patterns are removed without damaging acceptable prose.
+
+## Comparative baseline
+
+Five matched topics have three samples each: a human original, an AI fresh-write from the same kind of brief, and an AI rewrite of the human original. The comparison tests whether human prose triggers fewer flags than AI prose in the same register. It lives in `dev/evals/corpus.json`, and the iteration harness reports total, strong, and context-warning gaps.
+
+The frozen skill in `dev/skill-workspace/skill-snapshot/` supplies the before/after comparison for each iteration. Do not modify it.
 
 ## Release gates
 
@@ -69,8 +75,10 @@ python3 dev/evals/harness/diff_renders.py --verify
 
 Use `--capture` only after inspecting and accepting every intentional report change.
 
-## Historical stress corpus
+## Results
 
-`dev/evals/corpus.json` retains older provenance-labelled samples for regression diagnosis. Reports show their raw group summaries without treating separation between groups as success. Held-out writing-cleanup gates control release.
+Current performance lives in the generated block in `README.md` and in full at `dev/skill-workspace/latest-performance-report.md`. Each iteration also writes a dated report under `dev/skill-workspace/reports/`.
 
-The frozen comparison skill at `dev/skill-workspace/skill-snapshot/` must remain unchanged.
+The comparison baseline and the writing-cleanup gates answer different questions. A release must retain comparative coverage and pass the removal, preservation, audit-completeness, and convergence gates.
+
+Open hypotheses remain in [`hypotheses.md`](hypotheses.md).

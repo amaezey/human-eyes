@@ -98,6 +98,8 @@ Use Balanced depth unless the user requests All. Balanced repairs hard failures 
 
 Save the rewrite as a new file. Create a new work bundle and complete a fresh Audit. Never reuse the source bundle. Revise and repeat for no more than three passes.
 
+Record the required finding IDs after each pass. Stop if a pass introduces a new required finding or if the sets alternate between two states. Report the regression or oscillation instead of continuing.
+
 Return:
 
 - The source Audit.
@@ -111,6 +113,8 @@ If required findings remain after the third pass, list them. Do not claim comple
 Draft from the supplied brief without inventing facts, personal experience, opinions, emotion, humour, uncertainty, or names. Read `references/voice.md` before drafting.
 
 Save the draft, create a work bundle, complete every semantic answer, and run a full Audit. Revise and re-audit for no more than three passes. Return the draft and compact change report only after a clean required-finding result, or return the residual findings at the limit.
+
+Record required finding IDs after every pass and stop on newly introduced findings or alternating sets.
 
 ## Preserve meaning
 

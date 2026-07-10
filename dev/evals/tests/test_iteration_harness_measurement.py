@@ -9,7 +9,9 @@ must not inflate the hit count.
 """
 
 import importlib.util
+import json
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -20,11 +22,6 @@ _spec = importlib.util.spec_from_file_location(
 iteration = importlib.util.module_from_spec(_spec)
 sys.modules["run_skill_creator_iteration"] = iteration
 _spec.loader.exec_module(iteration)
-
-source = (ROOT / "dev/evals/harness/run_skill_creator_iteration.py").read_text()
-for retired in ("Human-vs-AI flag baseline", "pairwise_gaps", "_gap_pct"):
-    if retired in source:
-        raise AssertionError(f"retired provenance-separation metric remains: {retired}")
 
 FAILURES = 0
 
@@ -76,6 +73,40 @@ if iteration.catalogue_hits("No audit rendered here.") == set():
     ok("returns empty set when no Audit section exists")
 else:
     fail("expected empty hit set without an Audit section")
+
+with tempfile.TemporaryDirectory() as tmp:
+    run_dir = Path(tmp)
+    outputs = run_dir / "outputs"
+    outputs.mkdir()
+    (outputs / "response.md").write_text("ERROR: codex run failed\n")
+    (outputs / "metrics.json").write_text(json.dumps({"errors_encountered": 1}))
+    grading = iteration.grade_run({
+        "files": [],
+        "assertions": [{
+            "name": "manual-check",
+            "type": "qualitative",
+            "description": "A qualitative expectation",
+        }],
+    }, run_dir)
+    if grading["summary"]["pass_rate"] == 0 and grading["execution_metrics"]["errors_encountered"] == 1:
+        ok("executor failures cannot receive deferred qualitative passes")
+    else:
+        fail("executor failure was not reflected in grading")
+
+    (outputs / "response.md").write_text("A plausible but unreviewed response.\n")
+    (outputs / "metrics.json").write_text(json.dumps({"errors_encountered": 0}))
+    grading = iteration.grade_run({
+        "files": [],
+        "assertions": [{
+            "name": "manual-check",
+            "type": "qualitative",
+            "description": "A qualitative expectation",
+        }],
+    }, run_dir)
+    if grading["summary"]["pass_rate"] == 0:
+        ok("pending qualitative review cannot count as an automatic pass")
+    else:
+        fail("qualitative assertion was counted as passed without review")
 
 
 # Mixed auto-detected + agent-assessed audit body. Agent-assessed labels

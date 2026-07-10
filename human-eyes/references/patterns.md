@@ -8,12 +8,12 @@
 
 - [Content patterns (1-6)](#content-patterns)
 - [Language and grammar (7-12, 53)](#language-and-grammar)
-- [Style (13-18, 49)](#style)
+- [Style (13-18, 49, 57)](#style)
 - [Communication (19-21)](#communication)
 - [Filler and hedging (22-25, 47-48, 50)](#filler-and-hedging)
 - [Sensory and atmospheric (26-28)](#sensory-and-atmospheric)
 - [Structural tells (29-32, 38, 42, 44, 52)](#structural-tells)
-- [Voice and register (33-37, 39-41, 43, 45-46, 51)](#voice-and-register)
+- [Voice and register (33-37, 39-41, 43, 45-46, 51, 56)](#voice-and-register)
 - [Signal stacking (meta-check)](#signal-stacking-meta-check)
 
 ---

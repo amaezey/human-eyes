@@ -48,6 +48,8 @@ Run a fresh preflight and complete Audit on every suggestion context, rewrite, a
 
 When required findings remain, revise and run another fresh Audit. Stop after three revision passes. If findings remain at the limit, return the draft with those findings named. Do not claim completion.
 
+After each pass, record the set of required finding IDs. Stop and report a regression if a later pass introduces a new required ID. Stop and report oscillation when the finding sets alternate between two states. Stable residual findings may be returned at the limit, but they must be named.
+
 ## Report the result
 
 Use a compact change report:

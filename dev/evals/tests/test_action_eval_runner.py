@@ -2,6 +2,7 @@
 """Tests the repository-owned action lifecycle runner."""
 
 import importlib.util
+import json
 import os
 import tempfile
 from pathlib import Path
@@ -27,8 +28,8 @@ expected = {
 assert set(runner.SUITES["action-lifecycle"]) == expected
 assert runner.evaluate_convergence([{"a", "b"}, {"b"}, set()])["passed"]
 assert runner.evaluate_convergence([{"a"}, {"b"}, {"a"}])["reason"] == "finding sets oscillate"
-assert runner.evaluate_convergence([{"a"}, {"a", "b"}])["reason"] == "required-finding count increased"
-assert not runner.evaluate_convergence([{"a"}, {"a"}])["passed"]
+assert runner.evaluate_convergence([{"a"}, {"a", "b"}])["reason"] == "new required findings were introduced"
+assert runner.evaluate_convergence([{"a"}, {"a"}])["passed"]
 
 old = os.environ.get("HUMAN_EYES_SKILL_CREATOR_PATH")
 with tempfile.TemporaryDirectory() as tmp:
@@ -38,6 +39,19 @@ with tempfile.TemporaryDirectory() as tmp:
     os.environ["HUMAN_EYES_SKILL_CREATOR_PATH"] = str(skill)
     assert runner.resolve_skill_creator() == skill.resolve()
     assert runner.main(["--print-command", "--workers", "2"]) == 0
+
+    iteration = Path(tmp) / "iteration-1"
+    run_dir = iteration / "eval-18-example/with_skill/run-1"
+    outputs = run_dir / "outputs"
+    outputs.mkdir(parents=True)
+    (outputs / "response.md").write_text("ERROR: executor failed\n")
+    (outputs / "metrics.json").write_text(json.dumps({"errors_encountered": 1}))
+    (run_dir / "grading.json").write_text(json.dumps({"summary": {"failed": 1}}))
+    failures = runner.failed_lifecycle_runs(iteration, ["example", "missing"])
+    assert failures == [
+        "example: empty or failed executor response",
+        "missing: expected one run directory, found 0",
+    ]
 if old is None:
     os.environ.pop("HUMAN_EYES_SKILL_CREATOR_PATH", None)
 else:

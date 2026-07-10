@@ -1550,7 +1550,7 @@
       "id": 23,
       "name": "revision-limit-reports-residuals",
       "prompt": "Rewrite the supplied text, but preserve every direct quotation exactly. Stop after three revision passes and name any required findings that remain.",
-      "expected_output": "A bounded rewrite that reports quotation-bound residual findings without claiming completion.",
+      "expected_output": "A bounded rewrite that reports any residual findings without claiming completion.",
       "files": ["evals/samples/generated-ai/10-opinion-slow-creativity.md"],
       "assertions": [
         {"name": "revision-limit-obeyed", "type": "qualitative", "description": "The response uses no more than three revision passes."},
@@ -1560,6 +1560,7 @@
     {
       "id": 24,
       "name": "installed-path-resolution",
+      "external_cwd": true,
       "prompt": "Run human-eyes on the supplied draft while assuming the current working directory is outside the repository. Resolve every script and reference relative to the installed skill.",
       "expected_output": "A complete Audit that does not rely on repository-relative paths.",
       "files": ["evals/samples/generated-ai/04-science-mycorrhizal.md"],

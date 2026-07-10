@@ -35,11 +35,12 @@ def evaluate_convergence(passes):
     for index in range(2, len(finding_sets)):
         if finding_sets[index] == finding_sets[index - 2] != finding_sets[index - 1]:
             return {"passed": False, "reason": "finding sets oscillate"}
-    if len(finding_sets[-1]) > len(finding_sets[0]):
-        return {"passed": False, "reason": "required-finding count increased"}
+    for previous, current in zip(finding_sets, finding_sets[1:]):
+        if current - previous:
+            return {"passed": False, "reason": "new required findings were introduced"}
     return {
-        "passed": not finding_sets[-1],
-        "reason": "clean" if not finding_sets[-1] else "required findings remain",
+        "passed": True,
+        "reason": "clean" if not finding_sets[-1] else "stable residual findings remain",
     }
 
 
@@ -71,6 +72,35 @@ def resolve_skill_creator():
     raise SystemExit(
         "Skill Creator resolution is ambiguous. Set HUMAN_EYES_SKILL_CREATOR_PATH explicitly."
     )
+
+
+def failed_lifecycle_runs(iteration_path, names):
+    failures = []
+    for name in names:
+        matches = list(iteration_path.glob(f"eval-*-{name}/with_skill/run-1"))
+        if len(matches) != 1:
+            failures.append(f"{name}: expected one run directory, found {len(matches)}")
+            continue
+        run_dir = matches[0]
+        response_path = run_dir / "outputs/response.md"
+        metrics_path = run_dir / "outputs/metrics.json"
+        grading_path = run_dir / "grading.json"
+        missing = [
+            path.name for path in (response_path, metrics_path, grading_path) if not path.is_file()
+        ]
+        if missing:
+            failures.append(f"{name}: missing {', '.join(missing)}")
+            continue
+        response = response_path.read_text()
+        metrics = json.loads(metrics_path.read_text())
+        grading = json.loads(grading_path.read_text())
+        if not response.strip() or response.startswith("ERROR:"):
+            failures.append(f"{name}: empty or failed executor response")
+        elif metrics.get("errors_encountered", 0) > 0:
+            failures.append(f"{name}: executor reported an error")
+        elif grading.get("summary", {}).get("failed", 0) > 0:
+            failures.append(f"{name}: one or more assertions did not pass")
+    return failures
 
 
 def main(argv=None):
@@ -105,7 +135,19 @@ def main(argv=None):
     if args.print_command:
         print(" ".join(command))
         return 0
-    return subprocess.run(command, cwd=ROOT, check=False).returncode
+    returncode = subprocess.run(command, cwd=ROOT, check=False).returncode
+    if returncode:
+        return returncode
+    failures = failed_lifecycle_runs(
+        ROOT / "dev/skill-workspace" / f"iteration-{args.iteration}",
+        names,
+    )
+    if failures:
+        print("action lifecycle did not pass:", file=sys.stderr)
+        for failure in failures:
+            print(f"- {failure}", file=sys.stderr)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
