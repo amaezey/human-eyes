@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "human-eyes/scripts/contracts/audit-format-v2.json",
+  "title": "Human-eyes public audit report v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "coverage_mode",
+    "audit_status",
+    "programmatic_checks",
+    "semantic_findings",
+    "aggregates",
+    "limitations",
+    "metadata"
+  ],
+  "properties": {
+    "schema_version": {"const": "2"},
+    "coverage_mode": {"enum": ["full", "surface_only"]},
+    "audit_status": {"enum": ["complete", "incomplete"]},
+    "programmatic_checks": {"type": "array"},
+    "semantic_findings": {"type": "array"},
+    "aggregates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["programmatic", "semantic", "combined"],
+      "properties": {
+        "programmatic": {"type": "object"},
+        "semantic": {"type": "object"},
+        "combined": {"type": "object"}
+      }
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "metadata": {"type": "object"}
+  }
+}
