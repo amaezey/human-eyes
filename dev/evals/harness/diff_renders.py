@@ -44,12 +44,12 @@ def canonicalise(payload, input_path):
 
     The `file` field is path-dependent; normalise it to the canonical relative
     path from CORPUS so baselines are independent of how grade.py was invoked.
-    audit-format-v1 metadata carries volatile timestamp/run_id fields; strip
-    those nested fields before comparing baselines.
+    audit-format-v2 metadata carries volatile timestamp/run_id fields; strip
+    those fields before comparing baselines.
     """
     payload["file"] = input_path
     payload.pop("metadata", None)  # defensive — none today, future-proof
-    report_metadata = payload.get("human_report", {}).get("metadata")
+    report_metadata = payload.get("metadata")
     if isinstance(report_metadata, dict):
         report_metadata.pop("timestamp", None)
         report_metadata.pop("run_id", None)
@@ -59,7 +59,7 @@ def canonicalise(payload, input_path):
 def run_grade(input_path):
     full_path = REPO_ROOT / input_path
     result = subprocess.run(
-        ["python3", str(GRADE), "--format", "json", str(full_path)],
+        ["python3", str(GRADE), "audit", str(full_path), "--surface-only", "--format", "json"],
         capture_output=True,
         text=True,
         check=True,

@@ -754,11 +754,6 @@ def build_performance_report(evals: list[dict], iteration_dir: Path) -> tuple[st
 
     group_summary = {name: _group_means(rows) for name, rows in group_rows.items()}
 
-    def _gap_pct(a: float, b: float) -> str:
-        if b == 0:
-            return "n/a"
-        return f"{(a - b) / b * 100:+.0f}%"
-
     # Audit fidelity: audit-reported count vs grader count. Driven by evals.json audit cases
     # (per-eval signal, not corpus-baseline signal).
     fidelity_rows = []
@@ -834,13 +829,13 @@ def build_performance_report(evals: list[dict], iteration_dir: Path) -> tuple[st
     for row in per_eval:
         lines.append(f"| {row['id']} | {row['name']} | {row['pass_rate'] * 100:.1f}% | {row['runs']} |")
     lines.append("")
-    lines.append("## Human-vs-AI flag baseline")
+    lines.append("## Historical stress corpus")
     lines.append("")
     if corpus_data is not None:
         lines.append(
             "Grader output on the genre-paired corpus (see `dev/evals/corpus.json`). "
-            "Three groups: human originals, AI fresh-writes from matched-topic prompts, "
-            "and AI-rewrites of the human originals. Deterministic — independent of how the skill renders its audit."
+            "Historical provenance groups remain visible for regression diagnosis. "
+            "Group separation is not a product metric and cannot override the held-out writing-cleanup gates."
         )
     else:
         lines.append(
@@ -866,22 +861,11 @@ def build_performance_report(evals: list[dict], iteration_dir: Path) -> tuple[st
         lines.append("|---|---|---|---|---|")
         for name, s in group_summary.items():
             lines.append(f"| {name} | {s['n']} | {s['total']:.1f} | {s['strong']:.1f} | {s['context']:.1f} |")
-        # Pairwise gaps if 'human' is present
-        if 'human' in group_summary:
-            human = group_summary['human']
-            for other in [n for n in group_summary if n != 'human']:
-                o = group_summary[other]
-                lines.append(
-                    f"| Gap ({other} vs human) | | {_gap_pct(o['total'], human['total'])} "
-                    f"| {_gap_pct(o['strong'], human['strong'])} | {_gap_pct(o['context'], human['context'])} |"
-                )
     lines.append("")
     lines.append("## Body-level statistics")
     lines.append("")
     lines.append(
-        "Sentence/paragraph length variance is the strongest non-pattern signal separating humans from AI in long-form essay register "
-        "(humans cluster around longer, more variable sentences; AI clusters around shorter, more uniform ones). "
-        "Tracked across iterations to surface drift even when pattern flags don't move."
+        "Sentence and paragraph statistics remain diagnostic stress signals. They do not classify provenance or determine release success."
     )
     lines.append("")
     if group_summary:
@@ -930,20 +914,9 @@ def build_performance_report(evals: list[dict], iteration_dir: Path) -> tuple[st
         "timestamp": benchmark.get("metadata", {}).get("timestamp"),
         "overall_mean_pass_rate": overall_mean,
         "per_eval": per_eval,
-        "corpus_baseline": {
+        "historical_stress_corpus": {
             "groups": {name: rows for name, rows in group_rows.items()},
             "group_means": group_summary,
-            "pairwise_gaps": (
-                {
-                    other: {
-                        "total_pct": _gap_pct(group_summary[other]["total"], group_summary["human"]["total"]),
-                        "strong_pct": _gap_pct(group_summary[other]["strong"], group_summary["human"]["strong"]),
-                        "context_pct": _gap_pct(group_summary[other]["context"], group_summary["human"]["context"]),
-                    }
-                    for other in group_summary if other != "human"
-                }
-                if "human" in group_summary else {}
-            ),
         },
         "audit_fidelity": fidelity_rows,
         "regression": regression_rows,
@@ -965,23 +938,15 @@ def update_readme_performance_block(structured: dict, readme_path: Path) -> None
     iteration = structured.get("iteration", "iteration-?")
     timestamp = structured.get("timestamp", "")
     overall = structured.get("overall_mean_pass_rate", 0.0)
-    pairwise = structured.get("corpus_baseline", {}).get("pairwise_gaps", {})
+    stress_groups = structured.get("historical_stress_corpus", {}).get("groups", {})
     regressions = sum(1 for r in structured.get("regression", []) if r.get("regressed"))
-
-    if pairwise:
-        gap_lines = [
-            f"- Human-vs-{other} flag gap: total {gaps['total_pct']} / strong {gaps['strong_pct']}"
-            for other, gaps in pairwise.items()
-        ]
-    else:
-        gap_lines = ["- Comparative corpus not configured."]
 
     block_lines = [
         README_PERFORMANCE_START,
         f"**{iteration}** ({timestamp})",
         "",
         f"- Mean pass rate: {overall * 100:.1f}% across {len(structured.get('per_eval', []))} evals",
-        *gap_lines,
+        f"- Historical stress groups: {len(stress_groups)} diagnostic groups",
         f"- Regressions vs prev iteration: {regressions}",
         "",
         f"[Full report]({_relative_report_path(readme_path, structured)})",

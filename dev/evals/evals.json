@@ -1490,6 +1490,95 @@
           "check": "no `Action` column header on coverage tables"
         }
       ]
+    },
+    {
+      "id": 18,
+      "name": "audit-requires-complete-judgement",
+      "prompt": "Run a full coverage human-eyes Audit of the supplied draft. Do not use surface-only mode.",
+      "expected_output": "A complete Audit backed by every current semantic registry record, with no authorship claim.",
+      "files": ["evals/samples/generated-ai/03-tech-productivity-apps.md"],
+      "assertions": [
+        {"name": "complete-semantic-coverage", "type": "qualitative", "description": "The response completes the full current semantic registry rather than presenting a deterministic-only scan as an Audit."},
+        {"name": "no-authorship-claim", "type": "qualitative", "description": "The response discusses writing constructions and never infers authorship."}
+      ]
+    },
+    {
+      "id": 19,
+      "name": "surface-only-blocks-actions",
+      "prompt": "Run only a surface-only scan of the supplied draft, then give me Suggestions from that result.",
+      "expected_output": "An incomplete surface scan followed by a refusal to generate Suggestions until a complete Audit runs.",
+      "files": ["evals/samples/generated-ai/06-wellbeing-sleep-grief.md"],
+      "assertions": [
+        {"name": "surface-labelled-incomplete", "type": "qualitative", "description": "The response labels surface-only output incomplete."},
+        {"name": "action-blocked", "type": "qualitative", "description": "Suggestions are not produced from incomplete coverage."}
+      ]
+    },
+    {
+      "id": 20,
+      "name": "suggestion-rejects-new-slop",
+      "prompt": "Audit the supplied draft and suggest a replacement for each finding. Reject any replacement that introduces performed candour, vague pronouns, unsupported definite descriptions, or parenthetical headings.",
+      "expected_output": "Context-validated suggestions that clear their target without adding another requested writing tell.",
+      "files": ["evals/samples/generated-ai/03-tech-productivity-apps.md"],
+      "assertions": [
+        {"name": "suggestions-context-validated", "type": "qualitative", "description": "Each returned replacement was checked in its surrounding sentence or paragraph."},
+        {"name": "suggestions-clean", "type": "qualitative", "description": "No suggestion introduces performed candour, vague reference, unsupported the plus noun phrasing, or heading parentheses."}
+      ]
+    },
+    {
+      "id": 21,
+      "name": "rewrite-rebinds-audit",
+      "prompt": "Rewrite the supplied draft at Balanced depth. Include the source Audit and a fresh complete Audit of the rewrite.",
+      "expected_output": "A rewrite whose output Audit uses a new content-bound work bundle and reports remaining findings accurately.",
+      "files": ["evals/samples/generated-ai/03-tech-productivity-apps.md"],
+      "assertions": [
+        {"name": "fresh-output-audit", "type": "qualitative", "description": "The rewritten text receives a new complete Audit rather than reusing source semantic answers."},
+        {"name": "meaning-preserved", "type": "qualitative", "description": "The rewrite retains source facts, stance, and qualifications."}
+      ]
+    },
+    {
+      "id": 22,
+      "name": "write-fresh-audit",
+      "prompt": "Write 180 words explaining why a project review was delayed because two source datasets arrived late. Run a complete human-eyes Audit before returning the draft.",
+      "expected_output": "A brief-grounded draft with fresh complete coverage and no invented experience or unsupported facts.",
+      "files": [],
+      "assertions": [
+        {"name": "fresh-write-audited", "type": "qualitative", "description": "The new draft receives deterministic and complete semantic coverage."},
+        {"name": "brief-preserved", "type": "qualitative", "description": "The draft keeps the stated cause and does not invent people, dates, emotions, or extra facts."}
+      ]
+    },
+    {
+      "id": 23,
+      "name": "revision-limit-reports-residuals",
+      "prompt": "Rewrite the supplied text, but preserve every direct quotation exactly. Stop after three revision passes and name any required findings that remain.",
+      "expected_output": "A bounded rewrite that reports quotation-bound residual findings without claiming completion.",
+      "files": ["evals/samples/generated-ai/10-opinion-slow-creativity.md"],
+      "assertions": [
+        {"name": "revision-limit-obeyed", "type": "qualitative", "description": "The response uses no more than three revision passes."},
+        {"name": "residuals-honest", "type": "qualitative", "description": "Any remaining required findings are named and the response does not claim a clean completion."}
+      ]
+    },
+    {
+      "id": 24,
+      "name": "installed-path-resolution",
+      "prompt": "Run human-eyes on the supplied draft while assuming the current working directory is outside the repository. Resolve every script and reference relative to the installed skill.",
+      "expected_output": "A complete Audit that does not rely on repository-relative paths.",
+      "files": ["evals/samples/generated-ai/04-science-mycorrhizal.md"],
+      "assertions": [
+        {"name": "installed-path-used", "type": "qualitative", "description": "Commands and references resolve through the installed skill directory rather than the caller working directory."},
+        {"name": "audit-completes", "type": "qualitative", "description": "The Audit completes outside the repository checkout."}
+      ]
+    },
+    {
+      "id": 25,
+      "name": "revision-convergence",
+      "prompt": "Rewrite the supplied draft at All depth. Record required findings after each Audit pass, stop after at most three revisions, and report any oscillation or net regression.",
+      "expected_output": "Finding sets decrease or converge within three passes without meaning loss or a false completion claim.",
+      "files": ["evals/samples/generated-ai/06-wellbeing-sleep-grief.md"],
+      "assertions": [
+        {"name": "finding-count-converges", "type": "qualitative", "description": "Required findings do not oscillate between two sets or increase at the revision limit."},
+        {"name": "three-pass-cap", "type": "qualitative", "description": "The response stops after at most three revision passes."},
+        {"name": "protected-meaning", "type": "qualitative", "description": "Facts, qualifications, quotations, and source stance survive the revisions."}
+      ]
     }
   ]
 }

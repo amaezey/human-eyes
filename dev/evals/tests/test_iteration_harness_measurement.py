@@ -21,6 +21,11 @@ iteration = importlib.util.module_from_spec(_spec)
 sys.modules["run_skill_creator_iteration"] = iteration
 _spec.loader.exec_module(iteration)
 
+source = (ROOT / "dev/evals/harness/run_skill_creator_iteration.py").read_text()
+for retired in ("Human-vs-AI flag baseline", "pairwise_gaps", "_gap_pct"):
+    if retired in source:
+        raise AssertionError(f"retired provenance-separation metric remains: {retired}")
+
 FAILURES = 0
 
 

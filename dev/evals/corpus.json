@@ -1,5 +1,5 @@
 {
-  "description": "Genre-paired corpus for the comparative human-vs-AI baseline. Long-form first-person essay register. Each topic has a human original, an AI fresh-write from a matched prompt, and an AI-rewrite of the human original.",
+  "description": "Historical genre-paired stress corpus. Provenance labels are retained for dataset traceability, but group separation is diagnostic and is not a product or release metric.",
   "register": "long-form first-person essay (literary review, practitioner blog, business memo, personal philosophy, confessional memoir)",
   "groups": {
     "human": [
