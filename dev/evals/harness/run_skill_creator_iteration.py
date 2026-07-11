@@ -111,7 +111,8 @@ Use the skill at:
 {skill_path / "SKILL.md"}
 
 Read that skill and any referenced files you need from the same skill directory.
-Do not edit repository files. Do not save files. Return only the final user-facing output for the task.
+Do not edit repository files. Temporary input and work-bundle files required by the skill are allowed.
+Do not save a user-facing report. Return only the final user-facing output for the task.
 Do not mention this evaluation harness.
 
 Task prompt:
@@ -122,7 +123,7 @@ Inputs:
 """
 
 
-def run_claude(prompt: str, model: str | None) -> tuple[str, str, int]:
+def run_claude(prompt: str, model: str | None, working_dir: Path = ROOT) -> tuple[str, str, int]:
     cmd = [
         "claude",
         "-p",
@@ -144,7 +145,7 @@ def run_claude(prompt: str, model: str | None) -> tuple[str, str, int]:
     }
     proc = subprocess.run(
         cmd,
-        cwd=ROOT,
+        cwd=working_dir,
         env=env,
         text=True,
         capture_output=True,
@@ -190,14 +191,14 @@ def run_claude(prompt: str, model: str | None) -> tuple[str, str, int]:
     return response, proc.stderr, total_tokens
 
 
-def run_codex(prompt: str, model: str | None) -> tuple[str, str, int]:
+def run_codex(prompt: str, model: str | None, working_dir: Path = ROOT) -> tuple[str, str, int]:
     with tempfile.NamedTemporaryFile(prefix="human-eyes-codex-output-", suffix=".md", delete=False) as f:
         output_path = Path(f.name)
     cmd = [
         "codex",
         "exec",
         "-C",
-        str(ROOT),
+        str(working_dir),
         "-s",
         "read-only",
         "--ephemeral",
@@ -210,7 +211,7 @@ def run_codex(prompt: str, model: str | None) -> tuple[str, str, int]:
 
     proc = subprocess.run(
         cmd,
-        cwd=ROOT,
+        cwd=working_dir,
         text=True,
         capture_output=True,
         timeout=1800,
@@ -231,6 +232,8 @@ def run_codex(prompt: str, model: str | None) -> tuple[str, str, int]:
             f"Return code: {proc.returncode}\n\n"
             f"STDERR:\n{proc.stderr}\n\nSTDOUT:\n{proc.stdout}"
         )
+    elif not response.strip():
+        response = "ERROR: codex returned an empty response\n"
     return response, proc.stderr, 0
 
 
@@ -242,12 +245,18 @@ def run_model(item: dict, config: str, skill_path: Path, run_dir: Path, model: s
 
     start = time.time()
     error_count = 0
-    if executor_name == "claude":
-        response, stderr, total_tokens = run_claude(prompt, model)
-    elif executor_name == "codex":
-        response, stderr, total_tokens = run_codex(prompt, model)
-    else:
+    def execute(working_dir):
+        if executor_name == "claude":
+            return run_claude(prompt, model, working_dir)
+        if executor_name == "codex":
+            return run_codex(prompt, model, working_dir)
         raise ValueError(f"Unknown executor: {executor_name}")
+
+    if item.get("external_cwd"):
+        with tempfile.TemporaryDirectory(prefix="human-eyes-eval-cwd-") as tmp:
+            response, stderr, total_tokens = execute(Path(tmp))
+    else:
+        response, stderr, total_tokens = execute(ROOT)
     duration = time.time() - start
     if response.startswith("ERROR:"):
         error_count = 1
@@ -434,6 +443,9 @@ def grade_one_assertion(name: str, output: str, input_text: str, generated: str)
 
 def grade_run(item: dict, run_dir: Path) -> dict:
     output = (run_dir / "outputs" / "response.md").read_text(encoding="utf-8")
+    metrics_path = run_dir / "outputs" / "metrics.json"
+    run_metrics = read_json(metrics_path) if metrics_path.exists() else {}
+    executor_failed = output.startswith("ERROR:") or run_metrics.get("errors_encountered", 0) > 0
     input_parts = []
     for raw_path in item.get("files", []):
         input_parts.append(resolve_eval_file(raw_path).read_text(encoding="utf-8"))
@@ -443,11 +455,18 @@ def grade_run(item: dict, run_dir: Path) -> dict:
     expectations = []
     for assertion in item.get("assertions", []):
         text = assertion["description"]
+        if executor_failed:
+            expectations.append({
+                "text": text,
+                "passed": False,
+                "evidence": "Executor failed before the response could be evaluated.",
+            })
+            continue
         if assertion.get("type") != "programmatic":
             expectations.append({
                 "text": text,
-                "passed": True,
-                "evidence": "Qualitative assertion deferred to Mae in the review viewer.",
+                "passed": False,
+                "evidence": "Pending qualitative review; not counted as an automatic pass.",
             })
             continue
         try:
@@ -468,15 +487,19 @@ def grade_run(item: dict, run_dir: Path) -> dict:
             "pass_rate": round(passed_count / total, 4) if total else 0.0,
         },
         "execution_metrics": {
-            "total_tool_calls": 0,
-            "errors_encountered": 0,
+            "total_tool_calls": run_metrics.get("total_tool_calls", 0),
+            "errors_encountered": run_metrics.get("errors_encountered", int(executor_failed)),
             "output_chars": len(output),
         },
         "timing": timing,
         "claims": [],
         "user_notes_summary": {
             "uncertainties": [],
-            "needs_review": ["Qualitative assertions are intentionally left for human review."],
+            "needs_review": (
+                ["Executor failure must be resolved before review."]
+                if executor_failed
+                else ["Qualitative assertions are intentionally left for human review."]
+            ),
             "workarounds": [],
         },
         "eval_feedback": {
@@ -840,7 +863,7 @@ def build_performance_report(evals: list[dict], iteration_dir: Path) -> tuple[st
         lines.append(
             "Grader output on the genre-paired corpus (see `dev/evals/corpus.json`). "
             "Three groups: human originals, AI fresh-writes from matched-topic prompts, "
-            "and AI-rewrites of the human originals. Deterministic — independent of how the skill renders its audit."
+            "and AI-rewrites of the human originals. Deterministic and independent of how the skill renders its audit."
         )
     else:
         lines.append(
@@ -866,22 +889,22 @@ def build_performance_report(evals: list[dict], iteration_dir: Path) -> tuple[st
         lines.append("|---|---|---|---|---|")
         for name, s in group_summary.items():
             lines.append(f"| {name} | {s['n']} | {s['total']:.1f} | {s['strong']:.1f} | {s['context']:.1f} |")
-        # Pairwise gaps if 'human' is present
-        if 'human' in group_summary:
-            human = group_summary['human']
-            for other in [n for n in group_summary if n != 'human']:
-                o = group_summary[other]
+        if "human" in group_summary:
+            human = group_summary["human"]
+            for other in [name for name in group_summary if name != "human"]:
+                comparison = group_summary[other]
                 lines.append(
-                    f"| Gap ({other} vs human) | | {_gap_pct(o['total'], human['total'])} "
-                    f"| {_gap_pct(o['strong'], human['strong'])} | {_gap_pct(o['context'], human['context'])} |"
+                    f"| Gap ({other} vs human) | | {_gap_pct(comparison['total'], human['total'])} "
+                    f"| {_gap_pct(comparison['strong'], human['strong'])} "
+                    f"| {_gap_pct(comparison['context'], human['context'])} |"
                 )
     lines.append("")
     lines.append("## Body-level statistics")
     lines.append("")
     lines.append(
-        "Sentence/paragraph length variance is the strongest non-pattern signal separating humans from AI in long-form essay register "
+        "Sentence and paragraph length variance is the strongest non-pattern signal separating humans from AI in long-form essay register "
         "(humans cluster around longer, more variable sentences; AI clusters around shorter, more uniform ones). "
-        "Tracked across iterations to surface drift even when pattern flags don't move."
+        "Tracked across iterations to surface drift even when pattern flags do not move."
     )
     lines.append("")
     if group_summary:
@@ -1058,6 +1081,7 @@ def run_iteration(
         if include_old_skill or item["name"].startswith("audit-human-"):
             jobs.append((item, "old_skill", OLD_SKILL, base / "old_skill" / "run-1"))
 
+    executor_failures = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
         future_map = {
             executor.submit(run_model, item, config, skill_path, run_dir, model, executor_name): (item, config, run_dir)
@@ -1068,7 +1092,8 @@ def run_iteration(
             try:
                 timing = future.result()
                 print(f"completed {item['name']} / {config} in {timing.get('total_duration_seconds')}s", flush=True)
-                grade_run(item, run_dir)
+                grading = grade_run(item, run_dir)
+                executor_failures += grading["execution_metrics"]["errors_encountered"]
             except Exception as exc:
                 outputs = run_dir / "outputs"
                 outputs.mkdir(parents=True, exist_ok=True)
@@ -1078,7 +1103,8 @@ def run_iteration(
                     "duration_ms": 0,
                     "total_duration_seconds": 0,
                 })
-                grade_run(item, run_dir)
+                grading = grade_run(item, run_dir)
+                executor_failures += grading["execution_metrics"]["errors_encountered"]
                 print(f"failed {item['name']} / {config}: {exc}", flush=True)
 
     aggregate = skill_creator_path / "scripts" / "aggregate_benchmark.py"
@@ -1097,9 +1123,15 @@ def run_iteration(
     report_md, report_data = build_performance_report(evals, ITERATION)
     (ITERATION / "performance-report.md").write_text(report_md, encoding="utf-8")
     write_json(ITERATION / "performance-report.json", report_data)
-    write_workspace_report_archive(report_md, report_data)
-    if only is None:
-        update_readme_performance_block(report_data, ROOT / "README.md")
+    if executor_failures:
+        print(
+            f"stable performance report not updated: {executor_failures} executor failure(s)",
+            file=sys.stderr,
+        )
+    else:
+        write_workspace_report_archive(report_md, report_data)
+        if only is None:
+            update_readme_performance_block(report_data, ROOT / "README.md")
     print(f"performance report written to {ITERATION / 'performance-report.md'}", flush=True)
 
     viewer = skill_creator_path / "eval-viewer" / "generate_review.py"
@@ -1135,6 +1167,8 @@ def run_iteration(
         cwd=ROOT,
         check=True,
     )
+    if executor_failures:
+        raise SystemExit(1)
 
 
 def main() -> int:

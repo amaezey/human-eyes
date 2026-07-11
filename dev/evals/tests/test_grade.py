@@ -238,19 +238,19 @@ expect_fail("no-manufactured-insight",
 expect_fail("no-manufactured-insight",
     "The shift nobody noticed was already underway.",
     "shift nobody noticed framing")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "The honest answer is that the data was incomplete from the start.",
     "performed candour — 'the honest answer is'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "Here's the honest framing: the project missed every milestone.",
     "performed candour — 'here's the honest framing'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "Here's the real truth — most teams skip retros entirely.",
     "performed candour — 'here's the real truth'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "If I'm being honest, the proposal needs more work.",
     "performed candour — 'if I'm being honest'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "In all honesty, the migration plan has too many unknowns.",
     "performed candour — 'in all honesty'")
 expect_pass("no-manufactured-insight",
@@ -1072,6 +1072,7 @@ for _n in _GROUP_A:
 print("\n=== group-b-resolution-coverage ===")
 _GROUP_B_CHECKS = [
     "no-manufactured-insight",
+    "no-performed-candour",
     "no-corporate-ai-speak",
     "no-signposted-conclusions",
     "no-nonliteral-land-surface",
@@ -1154,6 +1155,7 @@ expected_checks = {
     "no-nonliteral-land-surface",
     "overall-signal-stacking",
     "no-manufactured-insight",
+    "no-performed-candour",
     "no-staccato-sequences",
     "no-anaphora",
     "no-collaborative-artifacts",
@@ -1180,6 +1182,7 @@ expected_checks = {
     "no-formulaic-openers",
     "no-signposted-conclusions",
     "no-markdown-headings",
+    "no-parenthetical-headings",
     "no-corporate-ai-speak",
     "no-this-chains",
     "no-excessive-hedging",
@@ -1956,7 +1959,7 @@ for check_name in ALL_CHECKS:
 print("\n=== human-instructional-passthrough ===")
 instructional_text = Path(__file__).resolve().parents[1].joinpath("samples/human-sourced/legacy/11-human-instructional.md").read_text()
 for check_name in ALL_CHECKS:
-    if check_name == "no-staccato-sequences":
+    if check_name in {"no-staccato-sequences", "no-performed-candour"}:
         continue
     expect_pass(check_name, instructional_text, f"human instructional piece ({check_name})")
 
@@ -2225,38 +2228,27 @@ print("\n=== U7 --judgement-file CLI subprocess smoke tests ===")
 _u7_grade_path = ROOT / "human-eyes" / "scripts" / "grade.py"
 _u7_sample_path = ROOT / "dev" / "evals" / "samples" / "synthetic" / "synthetic-hard-fail-only.md"
 
-# Markdown mode with valid overlay: the agent-judgement item appears in stdout.
+# Legacy overlay invocations fail with the migration command.
 _u7_overlay_path = _u7_write_overlay(_u7_valid)
 _u7_md = _u7_subprocess.run(
     ["python3", str(_u7_grade_path), "--format", "markdown", "--depth", "balanced",
      "--judgement-file", _u7_overlay_path, str(_u7_sample_path)],
     capture_output=True, text=True,
 )
-if _u7_md.returncode == 0 and "Tonal uniformity" in _u7_md.stdout:
-    print("  ok: CLI --judgement-file in markdown mode renders the overlay item")
+if _u7_md.returncode == 2 and "Legacy grader invocation" in _u7_md.stderr:
+    print("  ok: legacy markdown --judgement-file invocation returns migration guidance")
 else:
     FAILURES += 1
     print(f"FAIL: CLI markdown mode: rc={_u7_md.returncode}; stderr={_u7_md.stderr[:300]}")
 
-# JSON mode with valid overlay: contract.agent_judgement[] carries the overlay.
+# JSON uses the same fail-closed migration behavior.
 _u7_js = _u7_subprocess.run(
     ["python3", str(_u7_grade_path), "--format", "json",
      "--judgement-file", _u7_overlay_path, str(_u7_sample_path)],
     capture_output=True, text=True,
 )
-if _u7_js.returncode == 0:
-    try:
-        _u7_js_payload = _u7_json.loads(_u7_js.stdout)
-    except _u7_json.JSONDecodeError as exc:
-        FAILURES += 1
-        print(f"FAIL: CLI json mode: stdout not valid JSON: {exc}")
-    else:
-        _u7_aj = _u7_js_payload.get("human_report", {}).get("agent_judgement", [])
-        if len(_u7_aj) == 1 and _u7_aj[0]["id"] == "tonal_uniformity":
-            print("  ok: CLI --judgement-file in json mode injects overlay into contract.agent_judgement[]")
-        else:
-            FAILURES += 1
-            print(f"FAIL: CLI json mode: agent_judgement does not carry overlay; got {_u7_aj}")
+if _u7_js.returncode == 2 and "Legacy grader invocation" in _u7_js.stderr:
+    print("  ok: legacy JSON --judgement-file invocation returns migration guidance")
 else:
     FAILURES += 1
     print(f"FAIL: CLI json mode: rc={_u7_js.returncode}; stderr={_u7_js.stderr[:300]}")
@@ -2267,29 +2259,19 @@ _u7_missing = _u7_subprocess.run(
      "--judgement-file", "/nonexistent/u7-test.json", str(_u7_sample_path)],
     capture_output=True, text=True,
 )
-if _u7_missing.returncode != 0 and "/nonexistent/u7-test.json" in _u7_missing.stderr:
-    print("  ok: CLI missing --judgement-file path exits non-zero with the path in stderr")
+if _u7_missing.returncode == 2 and "Legacy grader invocation" in _u7_missing.stderr:
+    print("  ok: legacy missing --judgement-file invocation returns migration guidance")
 else:
     FAILURES += 1
     print(f"FAIL: CLI missing path: rc={_u7_missing.returncode}; stderr={_u7_missing.stderr[:300]}")
 
-# Backward compat: omitting --judgement-file behaves exactly as before (empty agent_judgement).
+# Legacy no-subcommand invocation is never reinterpreted as a surface scan.
 _u7_no_overlay = _u7_subprocess.run(
     ["python3", str(_u7_grade_path), "--format", "json", str(_u7_sample_path)],
     capture_output=True, text=True,
 )
-if _u7_no_overlay.returncode == 0:
-    try:
-        _u7_no_overlay_payload = _u7_json.loads(_u7_no_overlay.stdout)
-        _u7_aj_default = _u7_no_overlay_payload.get("human_report", {}).get("agent_judgement", "missing")
-        if _u7_aj_default == []:
-            print("  ok: CLI without --judgement-file still emits empty agent_judgement (backward compat)")
-        else:
-            FAILURES += 1
-            print(f"FAIL: CLI no overlay: agent_judgement should be []; got {_u7_aj_default}")
-    except _u7_json.JSONDecodeError as exc:
-        FAILURES += 1
-        print(f"FAIL: CLI no overlay: stdout not valid JSON: {exc}")
+if _u7_no_overlay.returncode == 2 and "Legacy grader invocation" in _u7_no_overlay.stderr:
+    print("  ok: legacy no-subcommand invocation returns migration guidance")
 else:
     FAILURES += 1
     print(f"FAIL: CLI no overlay: rc={_u7_no_overlay.returncode}; stderr={_u7_no_overlay.stderr[:300]}")

@@ -4,6 +4,7 @@
 import csv
 import ast
 from datetime import datetime, timezone
+import hashlib
 import json
 import re
 import sys
@@ -265,7 +266,7 @@ MANUFACTURED_INSIGHT = [
     # Performed knowingness
     r"let that sink in", r"read that again", r"if you know,? you know",
     r"and that changes everything", r"which tells you everything",
-    r"and that's the point", r"and honestly\??",
+    r"and that's the point",
     # Pseudo-profundity
     r"quietly revolutionary", r"quietly becoming", r"the quiet part",
     # Formulaic depth framing
@@ -281,16 +282,18 @@ MANUFACTURED_INSIGHT = [
     # Contrived contrast as insight
     r"this isn't [\w\s]+\. it's ",
     r"that's not [\w\s]+\. that's ",
-    # Performed candour / honesty framing
-    # (Folded into manufactured insight for now — see #42 Hypothesis note in patterns.md
-    # for the promotion criteria if this cluster grows.)
-    r"the honest answer is",
-    r"here's the honest (?:answer|framing|truth|version|take|story)",
-    r"here's the (?:real )?truth\b",
-    r"the real truth is",
-    r"if i'm being honest",
-    r"in all honesty",
-    r"to be (?:perfectly )?honest,",
+]
+
+PERFORMED_CANDOUR = [
+    r"\b(?:honestly|frankly|candidly|truthfully)\s*[,;:]",
+    r"\bto be (?:perfectly |completely |entirely )?honest\b",
+    r"\bif (?:i am|i'm|we are|we're) (?:being )?honest\b",
+    r"\bin all honesty\b",
+    r"\b(?:the|my) honest (?:answer|truth|version|take|view|assessment)(?:\s+is|\s*:)?",
+    r"\bhere's the honest (?:answer|framing|truth|version|take|story)\b",
+    r"\bhere's the (?:real|actual) truth\b",
+    r"\bthe (?:real|actual) truth is\b",
+    r"\blet me be honest\b",
 ]
 
 COLLABORATIVE_ARTIFACTS = [
@@ -330,7 +333,7 @@ COPULA_AVOIDANCE = [
 FILLER_PHRASES = [
     r"in order to\b", r"due to the fact that",
     r"at this point in time", r"it is important to note",
-    r"it is worth noting", r"it is worth (?:recognising|mentioning|emphasising|highlighting|acknowledging)",
+    r"(?:it is\s+)?worth (?:noting|knowing(?: about)?|recognising|mentioning|emphasising|highlighting|acknowledging)\b",
     r"it should be noted",
     r"has the ability to", r"in the event that",
     r"on the whole", r"at the end of the day",
@@ -763,6 +766,30 @@ def check_manufactured_insight(text):
         "text": "no-manufactured-insight",
         "passed": count == 0,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No manufactured insight phrases",
+    }
+
+
+def _mask_double_quoted_text(text):
+    """Blank quoted source text while preserving character positions."""
+    chars = list(text)
+    for match in re.finditer(r'["“][^"”\n]*["”]', text):
+        for index in range(match.start(), match.end()):
+            if chars[index] not in "\r\n":
+                chars[index] = " "
+    return "".join(chars)
+
+
+def check_performed_candour(text):
+    masked = _mask_double_quoted_text(text)
+    matches = []
+    for pattern in PERFORMED_CANDOUR:
+        for match in re.finditer(pattern, masked, flags=re.IGNORECASE):
+            matches.append(text[match.start():match.end()])
+    return {
+        "text": "no-performed-candour",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": f"Found {len(matches)} performed-candour frame(s): {matches}" if matches else "No performed-candour frames",
     }
 
 
@@ -1345,6 +1372,27 @@ def check_markdown_headings(text):
     }
 
 
+def check_parenthetical_headings(text):
+    """Fail parentheses in ATX and setext headings, without scanning body prose."""
+    source = strip_front_matter(text)
+    matches = []
+    for match in re.finditer(r"^ {0,3}#{1,6}\s+[^\n]*\([^\n()]+\)[^\n]*$", source, re.MULTILINE):
+        matches.append(match.group(0))
+    lines = source.splitlines()
+    for index in range(len(lines) - 1):
+        if re.match(r"^ {0,3}(?:=+|-+)\s*$", lines[index + 1]) and re.search(
+            r"\([^\n()]+\)", lines[index]
+        ):
+            matches.append(lines[index])
+    matches = list(dict.fromkeys(matches))
+    return {
+        "text": "no-parenthetical-headings",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": f"Found {len(matches)} parenthetical heading(s): {matches}" if matches else "No parenthetical headings",
+    }
+
+
 def check_corporate_ai_speak(text):
     """Detect corporate/LinkedIn AI register."""
     patterns = [
@@ -1885,6 +1933,7 @@ ALL_CHECKS = {
     "no-nonliteral-land-surface": check_nonliteral_land_surface,
     "overall-signal-stacking": check_overall_signal_stacking,
     "no-manufactured-insight": check_manufactured_insight,
+    "no-performed-candour": check_performed_candour,
     "no-staccato-sequences": check_staccato,
     "no-anaphora": check_anaphora,
     "no-collaborative-artifacts": check_collaborative_artifacts,
@@ -1911,6 +1960,7 @@ ALL_CHECKS = {
     "no-formulaic-openers": check_formulaic_openers,
     "no-signposted-conclusions": check_signposted_conclusions,
     "no-markdown-headings": check_markdown_headings,
+    "no-parenthetical-headings": check_parenthetical_headings,
     "no-corporate-ai-speak": check_corporate_ai_speak,
     "no-this-chains": check_this_chains,
     "no-excessive-hedging": check_hedging_density,
@@ -2131,6 +2181,472 @@ class JudgementOverlayError(ValueError):
     malformed JSON, or fails contract validation. main() catches this and
     prints the message + exit(1); tests catch it to assert error messages.
     """
+
+
+class AuditWorkBundleError(ValueError):
+    """Raised when a private audit-work bundle is missing, stale, or malformed."""
+
+
+def _canonical_json(value):
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+
+def _sha256_bytes(value):
+    return hashlib.sha256(value).hexdigest()
+
+
+def _sha256_json(value):
+    return _sha256_bytes(_canonical_json(value).encode("utf-8"))
+
+
+def markdown_segments(text):
+    """Return stable Markdown blocks using UTF-8 byte offsets."""
+    lines = text.splitlines(keepends=True)
+    segments = []
+    offsets = []
+    cursor = 0
+    for line in lines:
+        raw = line.encode("utf-8")
+        offsets.append((cursor, cursor + len(raw)))
+        cursor += len(raw)
+
+    def add_segment(segment_type, start_index, end_index):
+        start = offsets[start_index][0]
+        end = offsets[end_index][1]
+        segments.append({
+            "id": f"{segment_type}:{start}:{end}",
+            "type": segment_type,
+            "start_byte": start,
+            "end_byte": end,
+        })
+
+    index = 0
+    while index < len(lines):
+        stripped = lines[index].strip()
+        if not stripped:
+            index += 1
+            continue
+        if re.match(r"^ {0,3}#{1,6}(?:\s|$)", lines[index]):
+            add_segment("heading", index, index)
+            index += 1
+            continue
+        if (
+            index + 1 < len(lines)
+            and re.match(r"^ {0,3}(?:=+|-+)\s*$", lines[index + 1])
+            and stripped
+        ):
+            add_segment("heading", index, index + 1)
+            index += 2
+            continue
+        if re.match(r"^\s*(?:[-+*]|\d+[.)])\s+", lines[index]):
+            end = index
+            while end + 1 < len(lines) and re.match(
+                r"^\s*(?:[-+*]|\d+[.)])\s+", lines[end + 1]
+            ):
+                end += 1
+            add_segment("list_block", index, end)
+            index = end + 1
+            continue
+        end = index
+        while end + 1 < len(lines):
+            next_line = lines[end + 1]
+            if not next_line.strip():
+                break
+            if re.match(r"^ {0,3}#{1,6}(?:\s|$)", next_line):
+                break
+            if re.match(r"^\s*(?:[-+*]|\d+[.)])\s+", next_line):
+                break
+            if end + 2 < len(lines) and re.match(
+                r"^ {0,3}(?:=+|-+)\s*$", lines[end + 2]
+            ):
+                break
+            end += 1
+        add_segment("paragraph", index, end)
+        index = end + 1
+    return segments
+
+
+STRUCTURE_SEGMENT_TYPES = {"heading", "paragraph", "list_block", "slide_title", "caption"}
+
+
+def _utf8_boundaries(text):
+    boundaries = {0}
+    cursor = 0
+    for char in text:
+        cursor += len(char.encode("utf-8"))
+        boundaries.add(cursor)
+    return boundaries
+
+
+def load_structure_manifest(path, text):
+    """Load caller-supplied structure spans and generate trusted segment IDs."""
+    manifest_path = Path(path)
+    if not manifest_path.exists():
+        raise AuditWorkBundleError(f"structure-manifest path does not exist: {path}")
+    try:
+        data = json.loads(manifest_path.read_text())
+    except json.JSONDecodeError as exc:
+        raise AuditWorkBundleError(f"invalid JSON in structure manifest {path}: {exc}") from exc
+    if not isinstance(data, dict) or set(data) != {"segments"}:
+        raise AuditWorkBundleError("structure manifest must contain only a segments array")
+    if not isinstance(data["segments"], list):
+        raise AuditWorkBundleError("structure manifest segments must be a list")
+    boundaries = _utf8_boundaries(text)
+    total_bytes = len(text.encode("utf-8"))
+    segments = []
+    for index, item in enumerate(data["segments"]):
+        required = {"type", "start_byte", "end_byte"}
+        if not isinstance(item, dict) or set(item) != required:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} must contain exactly {sorted(required)}"
+            )
+        segment_type = item["type"]
+        start = item["start_byte"]
+        end = item["end_byte"]
+        if segment_type not in STRUCTURE_SEGMENT_TYPES:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} has invalid type {segment_type!r}"
+            )
+        if not isinstance(start, int) or isinstance(start, bool) or not isinstance(end, int) or isinstance(end, bool):
+            raise AuditWorkBundleError(f"structure manifest segment {index} offsets must be integers")
+        if start < 0 or end <= start or end > total_bytes:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} offsets {start}:{end} are out of range"
+            )
+        if start not in boundaries or end not in boundaries:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} offset is not on a UTF-8 boundary"
+            )
+        segments.append({
+            "id": f"{segment_type}:{start}:{end}",
+            "type": segment_type,
+            "start_byte": start,
+            "end_byte": end,
+        })
+    segments.sort(key=lambda item: (item["start_byte"], item["end_byte"], item["type"]))
+    for previous, current in zip(segments, segments[1:]):
+        if current["start_byte"] < previous["end_byte"]:
+            raise AuditWorkBundleError(
+                f"structure manifest segments overlap at {current['start_byte']}"
+            )
+    if len({segment["id"] for segment in segments}) != len(segments):
+        raise AuditWorkBundleError("structure manifest contains duplicate segments")
+    return segments
+
+
+def _bundle_bindings(text, segments):
+    registry = registries.load_judgement()
+    return {
+        "content_sha256": _sha256_bytes(text.encode("utf-8")),
+        "registry_sha256": _sha256_json(registry),
+        "structure_sha256": _sha256_json(segments),
+    }
+
+
+def _byte_offset(text, char_offset):
+    return len(text[:char_offset].encode("utf-8"))
+
+
+def _candidate_segment_id(segments, start_byte, end_byte):
+    for segment in segments:
+        if segment["start_byte"] <= start_byte and end_byte <= segment["end_byte"]:
+            return segment["id"]
+    return None
+
+
+def harvest_semantic_candidates(text, segments):
+    """Collect non-failing spans that focus, but never replace, semantic reading."""
+    candidates = []
+    seen = set()
+
+    def add(match, kind, owner):
+        start_byte = _byte_offset(text, match.start())
+        end_byte = _byte_offset(text, match.end())
+        value = match.group(0)
+        key = (start_byte, end_byte, owner, kind)
+        if key in seen:
+            return
+        seen.add(key)
+        candidates.append({
+            "kind": kind,
+            "text": value,
+            "start_byte": start_byte,
+            "end_byte": end_byte,
+            "line": text.count("\n", 0, match.start()) + 1,
+            "segment_id": _candidate_segment_id(segments, start_byte, end_byte),
+            "semantic_owner": owner,
+        })
+
+    slogan = re.compile(
+        r"(?im)^(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
+        r"[a-z][\w'-]*(?:\s+[a-z][\w'-]*)?,\s+"
+        r"(?:one|two|three|four|five|six|seven|eight|nine|ten|many|few|\d+)\s+"
+        r"[a-z][\w'-]*(?:\s+[a-z][\w'-]*)?[.!]?$"
+    )
+    for match in slogan.finditer(text):
+        add(match, "counted_slogan", "formulaic_parallelism")
+
+    correction = re.compile(
+        r"(?is)\b[^.!?\n]{1,70}\b(?:does not|doesn't|is not|isn't)\b[^.!?\n]{1,70}[.!?]\s+"
+        r"[^.!?\n]{1,35}\b(?:does|is)\b[^.!?\n]{0,70}[.!?]"
+    )
+    for match in correction.finditer(text):
+        add(match, "cross_sentence_correction", "formulaic_parallelism")
+
+    two_beat = re.compile(
+        r"(?m)(?:^|(?<=[.!?])\s+)[A-Z][^.!?\n]{0,38}[.!?]\s+"
+        r"[A-Z][^.!?\n]{0,38}[.!?]"
+    )
+    for match in two_beat.finditer(text):
+        if all(len(part.split()) <= 6 for part in re.split(r"[.!?]", match.group(0)) if part.strip()):
+            add(match, "two_beat_short_run", "formulaic_parallelism")
+
+    for match in re.finditer(r"\b(?:this|that|it|these|those)\b", text, re.IGNORECASE):
+        add(match, "possible_vague_reference", "referential_clarity")
+    for match in re.finditer(r"\bthe\s+[A-Za-z][\w'-]*", text, re.IGNORECASE):
+        add(match, "definite_description", "referential_clarity")
+
+    recap = re.compile(
+        r"(?im)^[^\n.!?]{0,35}\bwhere\b[^\n.!?]{0,70},\s*\bwhy\b[^\n.!?]{0,70},\s*"
+        r"(?:and\s+)?\bhow\b[^\n.!?]{0,90}[.!?]?$"
+    )
+    for match in recap.finditer(text):
+        add(match, "summarising_tricolon", "semantic_redundancy")
+
+    triad = re.compile(
+        r"(?im)^[^\n]{0,80}\b[^,\n]{1,30},\s+[^,\n]{1,30},\s+(?:and|or)\s+[^,\n.!?]{1,35}[.!?]?$"
+    )
+    for match in triad.finditer(text):
+        add(match, "short_form_triad", "semantic_redundancy")
+
+    return candidates
+
+
+def build_audit_work_bundle(text, results, candidates=None, segments=None):
+    """Create the private artifact passed from deterministic to semantic review."""
+    segments = list(segments) if segments is not None else markdown_segments(text)
+    programmatic = human_report(results)["programmatic_checks"]
+    available_types = {segment["type"] for segment in segments}
+    limitations = []
+    if "slide_title" not in available_types:
+        limitations.append("slide_title structure unavailable without a structure manifest")
+    if "caption" not in available_types:
+        limitations.append("caption structure unavailable without a structure manifest")
+    return {
+        "schema_version": "1",
+        "bindings": _bundle_bindings(text, segments),
+        "segments": segments,
+        "programmatic_checks": programmatic,
+        "semantic_candidates": (
+            list(candidates)
+            if candidates is not None
+            else harvest_semantic_candidates(text, segments)
+        ),
+        "semantic_answers": [],
+        "limitations": limitations,
+    }
+
+
+def _semantic_status(record, answer):
+    schema_type = record["answer_schema"]["type"]
+    if schema_type in {"state", "trichotomy"}:
+        return "flagged" if answer in record["flagged_when"] else "clear"
+    if schema_type == "list":
+        return "flagged" if answer else "clear"
+    if schema_type == "composite":
+        return "flagged" if answer.get("watchlist_findings") else "clear"
+    raise AuditWorkBundleError(f"semantic id {record['id']!r}: unsupported answer schema")
+
+
+def _validate_list_answer(item_id, answer, field_names, text):
+    if not isinstance(answer, list):
+        raise AuditWorkBundleError(f"semantic id {item_id!r}: answer must be a list")
+    for index, item in enumerate(answer):
+        if not isinstance(item, dict) or set(item) != set(field_names):
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: list item {index} must contain {field_names}"
+            )
+        phrase = item[field_names[0]]
+        if not isinstance(phrase, str) or phrase not in text:
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: evidence phrase {phrase!r} is not in the input"
+            )
+
+
+def _validate_semantic_answer(record, item, text):
+    item_id = record["id"]
+    allowed = {"id", "status", "answer", "evidence"}
+    if set(item) != allowed:
+        raise AuditWorkBundleError(
+            f"semantic id {item_id!r}: fields must be exactly {sorted(allowed)}"
+        )
+    if item["status"] not in {"clear", "flagged"}:
+        raise AuditWorkBundleError(
+            f"semantic id {item_id!r}: invalid status {item['status']!r}"
+        )
+    if not isinstance(item["evidence"], list):
+        raise AuditWorkBundleError(f"semantic id {item_id!r}: evidence must be a list")
+    for phrase in item["evidence"]:
+        if not isinstance(phrase, str) or phrase not in text:
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: evidence phrase {phrase!r} is not in the input"
+            )
+
+    schema = record["answer_schema"]
+    schema_type = schema["type"]
+    answer = item["answer"]
+    if schema_type in {"state", "trichotomy"}:
+        if answer not in schema["values"]:
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: invalid answer {answer!r}"
+            )
+    elif schema_type == "list":
+        _validate_list_answer(item_id, answer, schema["items"], text)
+    elif schema_type == "composite":
+        fields = schema["fields"]
+        if not isinstance(answer, dict) or set(answer) != set(fields):
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: composite answer must contain {sorted(fields)}"
+            )
+        genre = answer["genre_detected"]
+        if genre not in fields["genre_detected"]["values"]:
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: invalid genre {genre!r}"
+            )
+        _validate_list_answer(
+            item_id,
+            answer["watchlist_findings"],
+            fields["watchlist_findings"]["items"],
+            text,
+        )
+    expected = _semantic_status(record, answer)
+    if item["status"] != expected:
+        raise AuditWorkBundleError(
+            f"semantic id {item_id!r}: status {item['status']!r} contradicts answer; expected {expected!r}"
+        )
+
+
+def validate_audit_work_bundle(text, bundle):
+    """Validate exact semantic coverage and reject stale work."""
+    if not isinstance(bundle, dict) or bundle.get("schema_version") != "1":
+        raise AuditWorkBundleError("audit-work bundle schema_version must be '1'")
+    required = {
+        "schema_version", "bindings", "segments", "programmatic_checks",
+        "semantic_candidates", "semantic_answers", "limitations",
+    }
+    if set(bundle) != required:
+        raise AuditWorkBundleError(
+            f"audit-work bundle fields must be exactly {sorted(required)}"
+        )
+    if not isinstance(bundle["segments"], list):
+        raise AuditWorkBundleError("segments must be a list")
+    boundaries = _utf8_boundaries(text)
+    segment_ids = []
+    for index, segment in enumerate(bundle["segments"]):
+        required_segment = {"id", "type", "start_byte", "end_byte"}
+        if not isinstance(segment, dict) or set(segment) != required_segment:
+            raise AuditWorkBundleError(
+                f"segment {index} must contain exactly {sorted(required_segment)}"
+            )
+        start = segment["start_byte"]
+        end = segment["end_byte"]
+        segment_type = segment["type"]
+        expected_id = f"{segment_type}:{start}:{end}"
+        if segment_type not in STRUCTURE_SEGMENT_TYPES:
+            raise AuditWorkBundleError(f"segment {index} has invalid type {segment_type!r}")
+        if start not in boundaries or end not in boundaries or end <= start:
+            raise AuditWorkBundleError(f"segment {index} has invalid UTF-8 offsets {start}:{end}")
+        if segment["id"] != expected_id:
+            raise AuditWorkBundleError(
+                f"segment {index} id {segment['id']!r} should be {expected_id!r}"
+            )
+        segment_ids.append(segment["id"])
+    if len(set(segment_ids)) != len(segment_ids):
+        raise AuditWorkBundleError("segments contain duplicate ids")
+    expected_bindings = _bundle_bindings(text, bundle["segments"])
+    for key, expected in expected_bindings.items():
+        if bundle["bindings"].get(key) != expected:
+            label = key.replace("_sha256", "").replace("_", " ")
+            raise AuditWorkBundleError(f"{label} binding does not match the reviewed input")
+
+    current_results = [annotate_result(check(text)) for check in ALL_CHECKS.values()]
+    current_programmatic = human_report(current_results)["programmatic_checks"]
+    if bundle["programmatic_checks"] != current_programmatic:
+        raise AuditWorkBundleError("programmatic checks do not match the reviewed input")
+
+    records = registries.load_judgement()["records"]
+    expected_ids = [record["id"] for record in records]
+    answers = bundle["semantic_answers"]
+    if not isinstance(answers, list):
+        raise AuditWorkBundleError("semantic_answers must be a list")
+    supplied_ids = [item.get("id") if isinstance(item, dict) else None for item in answers]
+    duplicates = sorted({item_id for item_id in supplied_ids if supplied_ids.count(item_id) > 1})
+    if duplicates:
+        raise AuditWorkBundleError(f"duplicate semantic id(s): {duplicates}")
+    unknown = sorted(set(supplied_ids) - set(expected_ids), key=str)
+    if unknown:
+        raise AuditWorkBundleError(f"unknown semantic id(s): {unknown}")
+    missing = sorted(set(expected_ids) - set(supplied_ids))
+    if missing:
+        raise AuditWorkBundleError(f"missing semantic id(s): {missing}")
+    by_id = {item["id"]: item for item in answers}
+    cleaned = []
+    for record in records:
+        item = by_id[record["id"]]
+        _validate_semantic_answer(record, item, text)
+        cleaned.append({
+            **item,
+            "severity": record["severity"],
+        })
+    validated = dict(bundle)
+    validated["semantic_answers"] = cleaned
+    return validated
+
+
+def audit_report_v2(results, validated_bundle=None, coverage_mode="full"):
+    """Build the authoritative public audit-format v2 report."""
+    if coverage_mode not in {"full", "surface_only"}:
+        raise ValueError("coverage_mode must be 'full' or 'surface_only'")
+    if coverage_mode == "full" and validated_bundle is None:
+        raise AuditWorkBundleError("complete Audit requires a validated audit-work bundle")
+    semantic = [] if validated_bundle is None else validated_bundle["semantic_answers"]
+    programmatic = human_report(results)["programmatic_checks"]
+    programmatic_aggregates = _aggregates(results)
+    semantic_flagged = [item for item in semantic if item["status"] == "flagged"]
+    return {
+        "schema_version": "2",
+        "coverage_mode": coverage_mode,
+        "audit_status": "complete" if coverage_mode == "full" else "incomplete",
+        "programmatic_checks": programmatic,
+        "semantic_findings": semantic,
+        "aggregates": {
+            "programmatic": programmatic_aggregates,
+            "semantic": {
+                "total": len(semantic),
+                "flagged": len(semantic_flagged),
+                "clear": len(semantic) - len(semantic_flagged),
+            },
+            "combined": {
+                "flagged": sum(1 for item in programmatic if item["status"] == "flagged")
+                + len(semantic_flagged),
+            },
+        },
+        "limitations": (
+            [
+                "semantic reading was not run",
+                "slide_title structure unavailable without a structure manifest",
+                "caption structure unavailable without a structure manifest",
+            ]
+            if validated_bundle is None
+            else list(validated_bundle["limitations"])
+        ),
+        "metadata": {
+            "schema_version": "2",
+            "grader_version": GRADER_VERSION,
+            "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "run_id": str(uuid.uuid4()),
+        },
+    }
 
 
 _JUDGEMENT_OVERLAY_REQUIRED_ITEM_FIELDS = {"id", "status", "answer", "evidence"}
@@ -3498,89 +4014,140 @@ def regrade(text, depth="balanced"):
 
 
 USAGE = (
-    "Usage: grade.py [--format json|markdown] [--depth balanced|all] "
-    "[--full-report] [--judgement-file <path>] <file> [assertion1,assertion2,...]"
+    "Usage:\n"
+    "  grade.py preflight <file> --work-bundle <path> [--structure-manifest <path>]\n"
+    "  grade.py audit <file> --work-bundle <path> [--format json|markdown] "
+    "[--depth balanced|all] [--full-report]\n"
+    "  grade.py audit <file> --surface-only [--format json|markdown] "
+    "[--depth balanced|all]"
 )
 
 
-def main():
-    args = sys.argv[1:]
-    output_format = "json"
-    depth = "all"
-    mode = "default"
-    judgement_file = None
+def _pop_option(args, name, default=None):
+    if name not in args:
+        return default
+    index = args.index(name)
+    if index + 1 >= len(args):
+        raise ValueError(f"{name} requires a value")
+    value = args[index + 1]
+    del args[index:index + 2]
+    return value
 
-    if "--format" in args:
-        index = args.index("--format")
-        try:
-            output_format = args[index + 1]
-        except IndexError:
-            print(USAGE)
-            sys.exit(1)
-        del args[index:index + 2]
 
-    if "--depth" in args:
-        index = args.index("--depth")
-        try:
-            depth = args[index + 1].lower()
-        except IndexError:
-            print(USAGE)
-            sys.exit(1)
-        del args[index:index + 2]
+def _format_surface_only(results, depth):
+    contract = human_report(results)
+    programmatic = contract["programmatic_checks"]
+    visible = [item for item in programmatic if item["id"] != SIGNAL_STACKING_META_CHECK]
+    summary = _format_summary_block(
+        registries.string_for("templates.surface_scan_heading"),
+        contract["aggregates"]["signal_stacking"],
+        visible,
+        [],
+    )
+    findings = _format_auto_detected_block(visible, depth, "default")
+    limitation = registries.string_for("templates.surface_scan_limitation")
+    return "\n\n".join([summary, findings, limitation])
 
+
+def main(argv=None):
+    args = list(sys.argv[1:] if argv is None else argv)
+    if not args:
+        print(USAGE, file=sys.stderr)
+        return 2
+    if "--judgement-file" in args or args[0] not in {"preflight", "audit"}:
+        print(
+            "Legacy grader invocation is no longer accepted. Run `grade.py preflight "
+            "<file> --work-bundle <path>`, complete semantic_answers, then run "
+            "`grade.py audit <file> --work-bundle <path>`. For deterministic development "
+            "output, run `grade.py audit <file> --surface-only`.",
+            file=sys.stderr,
+        )
+        return 2
+
+    command = args.pop(0)
+    try:
+        work_path = _pop_option(args, "--work-bundle")
+        structure_path = _pop_option(args, "--structure-manifest")
+        output_format = _pop_option(args, "--format", "json")
+        depth = _pop_option(args, "--depth", "all").lower()
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    surface_only = "--surface-only" in args
+    if surface_only:
+        args.remove("--surface-only")
+    mode = "full_report" if "--full-report" in args else "default"
     if "--full-report" in args:
-        mode = "full_report"
         args.remove("--full-report")
-
-    if "--judgement-file" in args:
-        index = args.index("--judgement-file")
-        try:
-            judgement_file = args[index + 1]
-        except IndexError:
-            print(USAGE)
-            sys.exit(1)
-        del args[index:index + 2]
-
-    if output_format not in {"json", "markdown"} or depth not in DEPTHS or not args:
-        print(USAGE)
-        sys.exit(1)
-
-    agent_judgement_items = None
-    if judgement_file is not None:
-        try:
-            agent_judgement_items = load_agent_judgement_overlay(judgement_file)
-        except JudgementOverlayError as exc:
-            print(f"--judgement-file: {exc}", file=sys.stderr)
-            sys.exit(1)
+    if output_format not in {"json", "markdown"} or depth not in DEPTHS:
+        print(USAGE, file=sys.stderr)
+        return 2
+    if len(args) != 1:
+        print(USAGE, file=sys.stderr)
+        return 2
 
     filepath = args[0]
-    assertions = args[1].split(",") if len(args) > 1 else None
+    source_path = Path(filepath)
+    if not source_path.exists():
+        print(f"input path does not exist: {filepath}", file=sys.stderr)
+        return 1
+    text = source_path.read_text()
+    results = grade_file(filepath)
 
-    results = grade_file(filepath, assertions)
+    if command == "preflight":
+        if surface_only or not work_path:
+            print("preflight requires --work-bundle and does not accept --surface-only", file=sys.stderr)
+            return 2
+        inferred_segments = markdown_segments(text)
+        if structure_path:
+            external_segments = load_structure_manifest(structure_path, text)
+            segments = external_segments + inferred_segments
+        else:
+            segments = inferred_segments
+        bundle = build_audit_work_bundle(text, results, segments=segments)
+        Path(work_path).write_text(json.dumps(bundle, indent=2) + "\n")
+        return 0
 
-    summary = score_summary(results)
+    if structure_path:
+        print("--structure-manifest is accepted by preflight only", file=sys.stderr)
+        return 2
+    if surface_only and work_path:
+        print("audit accepts either --surface-only or --work-bundle, not both", file=sys.stderr)
+        return 2
+    if not surface_only and not work_path:
+        print("complete Audit requires --work-bundle; use --surface-only explicitly for a surface scan", file=sys.stderr)
+        return 1
 
-    if output_format == "markdown":
+    try:
+        if surface_only:
+            bundle = None
+            report = audit_report_v2(results, None, coverage_mode="surface_only")
+        else:
+            try:
+                raw_bundle = json.loads(Path(work_path).read_text())
+            except FileNotFoundError:
+                raise AuditWorkBundleError(f"work-bundle path does not exist: {work_path}")
+            except json.JSONDecodeError as exc:
+                raise AuditWorkBundleError(f"invalid JSON in work bundle {work_path}: {exc}") from exc
+            bundle = validate_audit_work_bundle(text, raw_bundle)
+            report = audit_report_v2(results, bundle, coverage_mode="full")
+    except AuditWorkBundleError as exc:
+        print(f"audit-work bundle: {exc}", file=sys.stderr)
+        return 1
+
+    if output_format == "json":
+        print(json.dumps(report, indent=2))
+    elif surface_only:
+        print(_format_surface_only(results, depth))
+    else:
         print(format_two_layer(
-            results, depth=depth, mode=mode,
-            agent_judgement_items=agent_judgement_items,
+            results,
+            depth=depth,
+            mode=mode,
+            agent_judgement_items=bundle["semantic_answers"],
         ))
-        return
-
-    output = {
-        "file": filepath,
-        "pass_rate": summary["pass_rate"],
-        "failures_by_severity": summary["failures_by_severity"],
-        "score_summary": summary,
-        "human_report": human_report(results, agent_judgement_items=agent_judgement_items),
-        "triggered_checks": triggered_checks(results),
-        "failure_mode_results": failure_mode_results(results),
-        "depth_results": depth_results(results),
-        "expectations": results,
-    }
-
-    print(json.dumps(output, indent=2))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

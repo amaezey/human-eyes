@@ -1,0 +1,68 @@
+{
+  "purpose": "Held-out paraphrases for release measurement. Do not copy these sentences into prompts, catalogue examples, or implementation guidance.",
+  "cases": [
+    {
+      "id": "candour-frankly",
+      "mode": "deterministic",
+      "check_id": "no-performed-candour",
+      "rejected": "Frankly, the schedule cannot absorb another review.",
+      "acceptable": "The schedule cannot absorb another review.",
+      "near_match": "The witness gave a frank account of the meeting.",
+      "protected_terms": ["schedule", "another review"]
+    },
+    {
+      "id": "heading-setext",
+      "mode": "deterministic",
+      "check_id": "no-parenthetical-headings",
+      "rejected": "Delivery model (current version)\n===\n",
+      "acceptable": "Current delivery model\n===\n",
+      "near_match": "The delivery model (current version) remains supported.",
+      "protected_terms": ["delivery model", "current"]
+    },
+    {
+      "id": "relevance-knowing",
+      "mode": "deterministic",
+      "check_id": "no-filler-phrases",
+      "rejected": "Worth knowing about, the export omits archived rows.",
+      "acceptable": "The export omits archived rows.",
+      "near_match": "Knowing the archive format reduces conversion errors.",
+      "protected_terms": ["export", "archived rows"]
+    },
+    {
+      "id": "counted-slogan",
+      "mode": "semantic_candidate",
+      "semantic_owner": "formulaic_parallelism",
+      "rejected": "Six teams, one roadmap.",
+      "acceptable": "Six teams share the roadmap.",
+      "near_match": "The roadmap covers six teams.",
+      "protected_terms": ["six teams", "roadmap"]
+    },
+    {
+      "id": "unsupported-definite",
+      "mode": "semantic_candidate",
+      "semantic_owner": "referential_clarity",
+      "rejected": "The distinction changes the review.",
+      "acceptable": "The distinction between legal and editorial review changes the schedule.",
+      "near_match": "A legal distinction changes this review.",
+      "protected_terms": ["distinction", "review"]
+    },
+    {
+      "id": "slide-recap",
+      "mode": "semantic_candidate",
+      "semantic_owner": "semantic_redundancy",
+      "rejected": "Where it applies, why teams use it, and how large it becomes.",
+      "acceptable": "Teams use the method for reviews involving more than three departments.",
+      "near_match": "The guide asks where the rule applies.",
+      "protected_terms": ["teams", "use"]
+    },
+    {
+      "id": "two-beat-staccato",
+      "mode": "semantic_candidate",
+      "semantic_owner": "formulaic_parallelism",
+      "rejected": "The deadline moved. The team froze.",
+      "acceptable": "The team stopped work when the deadline moved.",
+      "near_match": "The deadline moved after the team stopped work.",
+      "protected_terms": ["deadline", "team"]
+    }
+  ]
+}

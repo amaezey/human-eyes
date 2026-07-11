@@ -1,145 +1,65 @@
 # Human-eyes Rewrite and Write Process
 
-This file is required for Rewrite and Write actions. Use it as the operating
-procedure after the audit has identified patterns and before returning prose.
+Use this procedure after the source Audit and before returning generated prose.
 
-> **Note on Audit vs Rewrite checks.** Step C below is the structural
-> self-check the agent runs *on its own rewritten or drafted output* before
-> returning, to verify the rewrite actually changed the structural shape.
-> This is distinct from the **agent-judgement reading** in `SKILL.md`
-> Action 1 (Audit), which runs on the *input* via the eight-item registry
-> in `human-eyes/scripts/judgement.json` (structural monotony, tonal uniformity,
-> faux specificity, neutrality collapse, even jargon distribution, forced
-> synesthesia, generic metaphors, and the polymorphic genre slot). Step C
-> is post-rewrite verification; the Audit-time agent-judgement reading is
-> input analysis. They share some thematic territory (both touch register
-> and structural shape) but answer different questions and run at
-> different points in the pipeline.
+## Read the complete Audit
 
-## Step A: Structural Pass
+Suggestions and Rewrite require a complete source Audit. A surface-only scan cannot unlock either action. Read every deterministic finding, semantic answer, candidate span, and stated structure limitation before editing.
 
-Do this before changing surface wording.
+Write begins from the brief and still requires a complete Audit of the generated draft before return.
 
-1. Identify the current paragraph rhythm.
-   - Count paragraphs.
-   - Notice whether most paragraphs are similar length.
-   - Notice whether paragraphs end with tidy summaries.
-   - Notice whether sections follow the same arc: setup, explanation, moral.
+## Plan the edit
 
-2. Break repeated arcs.
-   - Turn one explanatory paragraph into a short direct paragraph.
-   - Merge two thin paragraphs when they repeat the same movement.
-   - Split a long paragraph when it contains a turn, example, or qualification.
-   - Let some paragraphs end on concrete detail rather than a summary sentence.
+Identify the source argument, facts, examples, stance, uncertainty, point of view, genre, and deliberate devices. Mark each element that must survive.
 
-3. Vary sentence rhythm.
-   - Keep some short sentences if they carry stance or timing.
-   - Add longer sentences only when they carry specific detail, not padding.
-   - Avoid several paragraphs with the same medium-length explanatory cadence.
+Decide which findings need deletion, connection, reordering, a concrete noun, a named criterion, or a sentence-level rewrite. Lexical substitution is appropriate only when a plain replacement preserves the intended meaning.
 
-4. Reduce list cadence.
-   - Cut decorative triads.
-   - Break long inventories into prose when the list is only rhythm.
-   - Preserve lists when accumulation is the point, but say so in the self-check.
+## Repair structure
 
-5. Remove reframe laundering.
-   - Replace "not X but Y", "less X than Y", "beyond X", and similar reveal
-     structures with direct claims.
-   - Keep ordinary factual contrast when it is needed for meaning.
+Merge disconnected short sentences when one sentence can express the relationship. Keep a short sentence when its timing or emphasis is necessary.
 
-## Step B: Surface Pass
+Remove repeated section arcs, decorative triads, counted slogans, paragraph recaps, and slide summaries that add no information. Preserve lists and parallel forms when their structure helps the reader compare real content.
 
-After structure is fixed, remove required surface tells for the chosen depth.
+Remove correction scripts and contrast frames when a direct claim says the same thing. State the causal, temporal, contrastive, or evidential relationship between coordinated clauses.
 
-Balanced must fix hard failures and strong warnings:
-- assistant residue
-- generic conclusions
-- placeholder residue
-- manufactured insight
-- false concession hedges
-- formulaic openers
-- signposted conclusions
-- contrived contrast
-- AI vocabulary clusters
-- soft scaffolding
-- excessive hedging
-- em dashes unless preserving them is explicitly justified by voice
+## Repair reference and meaning
 
-All must also fix context warnings unless meaning would materially change.
+Give every pronoun and demonstrative an identifiable antecedent. Introduce a concept before referring to it with `the`, then reduce repeated definite descriptions when they create a mechanical cadence.
 
-Use `references/alternatives.md` for lexical substitutions when the issue is a
-word or stock phrase. Do not use substitutions for structural problems; rewrite
-the sentence or paragraph instead.
+Replace vague evaluation with the property or comparison basis. Delete metaphors that do not identify a concrete referent.
 
-## Step C: Structural Self-Check
+Remove performed candour, relevance announcements, empty hedging, and prose aimed at absent chat comments. Preserve source qualifications whose factual basis remains relevant.
 
-Before returning, answer the eight self-check fields in the output template.
-Be concrete. Do not claim a pattern was fixed unless the draft changed in a way
-the reader can see.
+Headings must state their subject directly and contain no parentheses.
 
-1. Section arcs: count how many paragraphs or sections still follow the same arc.
-2. Resolution density: count tidy summary endings that remain.
-3. Register breaks: name at least one place where rhythm, register, or sentence
-   shape breaks the default smoothness.
-4. Triads: count obvious three-part lists and state what was cut or preserved.
-5. Reframe laundering: state whether contrived contrast remains.
-6. Purposeful devices preserved: list devices kept because they serve meaning.
-7. Stance: state whether the rewrite preserved, weakened, or strengthened stance.
-8. Remaining tells: list remaining failed checks, or say none.
+## Validate each suggestion
 
-## Step D: Semantic Preservation
+Apply each proposed replacement to a copy of its surrounding sentence or paragraph. Run the complete deterministic and semantic registry on the resulting context. Reject a suggestion that clears one finding while introducing another.
 
-Compare the rewrite or draft against the brief or source before returning.
+## Preserve meaning
 
-For Rewrite:
-- Preserve the source argument, examples, stance, and genre.
-- Preserve factual claims unless the original claim is unclear or unsupported.
-- Do not make a writer more neutral just to sound clean.
-- Do not remove a distinctive device if removing it would flatten the voice;
-  disclose the preservation instead.
-- Preserve deliberate punctuation, including em dashes, when it is clearly part
-  of the writer's voice or source formatting. Do not add typos, awkwardness, or
-  anti-AI camouflage to make prose look human.
-- If the source text makes factual, academic, journalistic, or product claims,
-  check whether named sources, citations, dates, links, bylines, and quoted
-  evidence support the claim before rewriting the sentence for style.
+For Rewrite, compare the output with the source. Protect the argument, facts, examples, stance, genre, factual uncertainty, quotations, citations, names, dates, links, and deliberate formal choices.
 
-For Write:
-- Answer the brief directly.
-- Include concrete sensory, practical, or argumentative detail.
-- Avoid generic essay structure unless the user asked for it.
-- Match audience, intent, and genre. A student essay, academic abstract,
-  marketing email, poem, fiction scene, and news item need different evidence
-  habits and different kinds of specificity.
+For Write, compare the draft with the brief. Do not add facts, experience, opinions, emotion, humour, doubt, or personal details the brief does not supply.
 
-## Step E: Re-Grade and Revise
+## Audit generated prose
 
-Run the grader or equivalent check after the final draft.
+Run a fresh preflight and complete Audit on every suggestion context, rewrite, and new draft. Never reuse the source audit-work bundle for changed text.
 
-If the chosen depth has required failures:
-1. Revise the draft before returning.
-2. Re-grade after the revision.
-3. Repeat up to two revision passes.
+When required findings remain, revise and run another fresh Audit. Stop after three revision passes. If findings remain at the limit, return the draft with those findings named. Do not claim completion.
 
-Stop with residual issues only when:
-- the issue is deliberately preserved for voice or meaning, or
-- removing it would materially change the source, or
-- two revision passes have failed to clear it.
+After each pass, record the set of required finding IDs. Stop and report a regression if a later pass introduces a new required ID. Stop and report oscillation when the finding sets alternate between two states. Stable residual findings may be returned at the limit, but they must be named.
 
-When residual issues remain, name them plainly in the post-check. Do not say
-"none identified" if the grader still reports required failures.
+## Report the result
 
-## Report and Detector Caveats
+Use a compact change report:
 
-When explaining audit results:
+- `Changes made:` name the material edits.
+- `Preserved:` name source features whose retention affected the edit.
+- `Remaining findings:` list concrete unresolved findings or `none`.
 
-- Say "review cue", "flag", or "finding"; do not say a pattern proves AI
-  authorship.
-- Treat detector pages, vendor scores, and opaque product thresholds as context
-  for uncertainty language, not as evidence for human-eyes rule severity.
-- For short texts, mixed-authorship texts, non-native English, highly polished
-  student writing, and traditional clean business prose, surface the false
-  positive risk plainly.
-- For source-grounded writing, prioritise claim verification: named sources,
-  links, dates, citations, DOIs, figure references, bylines, and disclosure
-  history matter more than whether the paragraph sounds smooth.
+Do not add a score, confidence claim, fixed-count checklist, rhetorical recap, or statement about authorship.
+
+## Product boundary
+
+Human-eyes edits writing that uses unwanted patterns. Reports describe the quoted construction, the reading problem, and the edit. They do not infer who or what wrote the text.

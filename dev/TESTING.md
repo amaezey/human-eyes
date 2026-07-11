@@ -1,50 +1,84 @@
 # Testing methodology
 
-## Approach
+Human-eyes tests both its pattern coverage and the quality of its edits. The comparative corpus measures how often matched human and AI samples trigger the grader. The release gates measure whether requested patterns are removed without damaging acceptable prose.
 
-The current testing regime has six layers. Each one catches a different class of problem.
+## Comparative baseline
 
-**1. Genre-paired comparative corpus.** Five matched topics, three groups per topic: human originals, AI fresh-writes from matched briefs, AI rewrites of the same human originals. Same topics across all three lets the grader's flag densities be compared in matched register — the load-bearing claim is that humans should trip fewer flags than AI on the same topic. Lives in `dev/evals/corpus.json`.
+Five matched topics have three samples each: a human original, an AI fresh-write from the same kind of brief, and an AI rewrite of the human original. The comparison tests whether human prose triggers fewer flags than AI prose in the same register. It lives in `dev/evals/corpus.json`, and the iteration harness reports total, strong, and context-warning gaps.
 
-**2. 18-eval harness.** Runs each eval against the current skill *and* a frozen `dev/skill-workspace/skill-snapshot/` (the pre-rewrite version) so every iteration is a controlled before/after. Driven by `dev/evals/harness/run_skill_creator_iteration.py`. Outputs per-assertion grading, an aggregate benchmark, and an audit-fidelity report.
+The frozen skill in `dev/skill-workspace/skill-snapshot/` supplies the before/after comparison for each iteration. Do not modify it.
 
-**3. Audit-fidelity contract check.** Confirms the audit's structured JSON output matches the schema in `human-eyes/scripts/contracts/audit-format-v1.json`. Catches drift in the contract that the human-readable preview can hide.
+## Release gates
 
-**4. Diff-renders regression gate.** `dev/evals/harness/diff_renders.py` re-runs `grade.py` over a fixed corpus and pins every field of the output against a captured baseline. Any change to grader behaviour shows up as an explicit JSON diff. Used to lock down no-op refactors.
+The release suite measures:
+
+- Rejected-pattern recall.
+- Acceptable counterpart cleanliness.
+- Legitimate near-match preservation.
+- Protected fact, qualification, quotation, and stance preservation.
+- Complete-audit coverage.
+- Suggestion and generation cleanliness.
+- Revision convergence within three passes.
+
+Run the held-out style gates:
 
 ```bash
-python3 dev/evals/harness/diff_renders.py --verify
-python3 dev/evals/harness/diff_renders.py --capture   # only when grader output legitimately changes
+python3 dev/evals/tests/test_style_release_gates.py
 ```
 
-**5. Programmatic grading.** 43-check `human-eyes/scripts/grade.py` covering 38 patterns plus structural tells. Severity metadata so failures interpret by mode (hard fail / strong / context warning), not as one flat category. Generated-AI fixtures should fail multiple checks. Human-sourced fixtures often trip context warnings (curly quotes, staccato, anaphora, rhetorical questions, triad density) — they're style references, not "must pass" fixtures.
+Held-out cases live in `dev/evals/samples/style-held-out/`. Do not copy their wording into skill prompts, catalogue examples, or implementation guidance. Development examples live separately in `dev/evals/samples/style-pairs/`.
 
-```bash
-python3 human-eyes/scripts/grade.py path/to/text.md
-python3 human-eyes/scripts/grade.py path/to/text.md no-em-dashes,no-manufactured-insight
-python3 dev/evals/harness/run_grade_sweep.py
-```
-
-Outputs JSON with pass/fail, evidence, severity, depth guidance per check, and `depth_results` showing whether the text passes Balanced and All criteria.
-
-**6. Self-tests for the grader.** `dev/evals/tests/test_grade.py` asserts each check catches known-bad and passes known-clean text — the regression gate for the grader's regex layer. Run after any change to `grade.py` to prevent silent regex breakage.
+## Grader and registry tests
 
 ```bash
 python3 dev/evals/tests/test_grade.py
+python3 dev/evals/tests/test_requested_style_patterns.py
+python3 dev/evals/tests/test_audit_work_bundle.py
+python3 dev/evals/tests/test_judgement_json.py
+python3 dev/evals/tests/test_registries.py
+python3 dev/evals/tests/test_agent_judgement_render.py
+python3 dev/evals/tests/test_house_style.py
 ```
+
+These tests cover deterministic rules, semantic schemas, exact evidence spans, bundle bindings, complete coverage, generated guidance, and report rendering.
+
+## Direct grader use
+
+Create a work bundle, complete its semantic answers, and run a full Audit:
+
+```bash
+python3 human-eyes/scripts/grade.py preflight path/to/text.md --work-bundle /tmp/human-eyes-work.json
+python3 human-eyes/scripts/grade.py audit path/to/text.md --work-bundle /tmp/human-eyes-work.json --format json
+```
+
+For deterministic development output:
+
+```bash
+python3 human-eyes/scripts/grade.py audit path/to/text.md --surface-only --format json
+```
+
+Surface-only output is incomplete and cannot unlock generative actions.
+
+## Model-backed lifecycle suite
+
+```bash
+python3 dev/evals/harness/run_action_evals.py --executor codex --workers 8 --suite action-lifecycle
+```
+
+The wrapper resolves Skill Creator from `HUMAN_EYES_SKILL_CREATOR_PATH` or the installed Codex plugin cache. The fixed suite checks full Audit coverage, surface-only gating, suggestion contamination, fresh rewrite bindings, Write coverage, residual reporting, installed-path resolution, and convergence.
+
+## Render regression
+
+```bash
+python3 dev/evals/harness/diff_renders.py --verify
+```
+
+Use `--capture` only after inspecting and accepting every intentional report change.
 
 ## Results
 
-Current performance lives in the auto-rewritten block in `README.md` and in full at `dev/skill-workspace/latest-performance-report.md`. The harness writes a dated archive entry to `dev/skill-workspace/reports/` on every run.
+Current performance lives in the generated block in `README.md` and in full at `dev/skill-workspace/latest-performance-report.md`. Each iteration also writes a dated report under `dev/skill-workspace/reports/`.
 
-## Key findings
+The comparison baseline and the writing-cleanup gates answer different questions. A release must retain comparative coverage and pass the removal, preservation, audit-completeness, and convergence gates.
 
-- **Pre-check/post-check loop is the breakthrough.** Without the script loop, models miss patterns they've been told to catch. With the loop in the workflow, they don't.
-- **Experiential vacancy was the most useful conceptual addition.** Every agent used it as their primary diagnostic: "this essay contains no named people, no real places, no specific memories." That framing pushes toward replacement with something specific, not just removal of bad patterns.
-- **Vague prohibition doesn't work on smart models.** Saying "no manufactured insight" wasn't enough. The model rationalised exceptions for humorous tone. Explicit examples and "non-negotiable even in casual writing" closed the loophole.
-- **Claude doesn't produce the same slop as ChatGPT.** The sensory/atmospheric patterns (ghost language, quietness, synesthesia) rarely appeared in Claude output even with lazy prompts. The skill's new patterns are more relevant to ChatGPT-generated text.
-- **Programmatic grading catches many surface and structural tells, but not all of them.** 43 script checks cover 38 patterns. Forced synesthesia, generic metaphors, tonal uniformity, faux specificity, neutrality collapse, citation validity, and fiction pacing still need human judgment in the self-audit step.
-
-## Open questions
-
-Hypotheses still on the table — register-distance scoring with calibrated densities, the comparison-engine product reframe, and others — are tracked in [`hypotheses.md`](hypotheses.md). Each entry stays open until tested or replaced by something cheaper or stronger.
+Open hypotheses remain in [`hypotheses.md`](hypotheses.md).

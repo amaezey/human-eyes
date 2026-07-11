@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "human-eyes/scripts/contracts/audit-work-bundle-v1.json",
+  "title": "Human-eyes private audit-work bundle v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bindings",
+    "segments",
+    "programmatic_checks",
+    "semantic_candidates",
+    "semantic_answers",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {"const": "1"},
+    "bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content_sha256", "registry_sha256", "structure_sha256"],
+      "properties": {
+        "content_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "registry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "structure_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "start_byte", "end_byte"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"enum": ["heading", "paragraph", "list_block", "slide_title", "caption"]},
+          "start_byte": {"type": "integer", "minimum": 0},
+          "end_byte": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "programmatic_checks": {"type": "array"},
+    "semantic_candidates": {"type": "array"},
+    "semantic_answers": {"type": "array"},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  }
+}
