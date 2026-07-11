@@ -13,8 +13,12 @@ dev/evals/grade-sweep-report.json
 # Local ce-work skill config
 .compound-engineering/
 
-# Agent / Claude project memory — local only, not shared via the repo
-AGENTS.md
+# Local agent/runtime artefacts and exploratory eval drafts. Fresh benchmark
+# material stays untracked until provenance and licensing are reviewed.
+.codex-pet-runs/
+dev/evals/tmp-*/
+
+# Claude project memory — local only, not shared via the repo
 CLAUDE.md
 
 # Local-only artefacts at repo root
