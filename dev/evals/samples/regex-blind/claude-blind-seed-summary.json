@@ -1,0 +1,29 @@
+{
+  "total": 60,
+  "label_counts": {
+    "negative": 32,
+    "positive": 28
+  },
+  "subagent_domains": {
+    "lexical_rhetoric": {
+      "count": 15,
+      "agent": "lexical rhetoric subagent"
+    },
+    "syntax_rhythm": {
+      "count": 15,
+      "agent": "syntax rhythm subagent"
+    },
+    "formatting_structure": {
+      "count": 15,
+      "agent": "formatting structure subagent"
+    },
+    "legitimate_false_positive_controls": {
+      "count": 15,
+      "agent": "legitimate false-positive controls subagent"
+    }
+  },
+  "label_normalization": {
+    "source_negative": "violation",
+    "source_positive": "legitimate_control"
+  }
+}
