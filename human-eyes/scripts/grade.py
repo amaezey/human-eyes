@@ -4,6 +4,7 @@
 import csv
 import ast
 from datetime import datetime, timezone
+from functools import lru_cache
 import hashlib
 import json
 import re
@@ -294,6 +295,8 @@ PERFORMED_CANDOUR = [
     r"\bhere's the (?:real|actual) truth\b",
     r"\bthe (?:real|actual) truth is\b",
     r"\blet me be honest\b",
+    r"\bi(?:'ll| will) be honest\b",
+    r"\blet(?:'s| us) be real\b",
 ]
 
 COLLABORATIVE_ARTIFACTS = [
@@ -333,7 +336,7 @@ COPULA_AVOIDANCE = [
 FILLER_PHRASES = [
     r"in order to\b", r"due to the fact that",
     r"at this point in time", r"it is important to note",
-    r"(?:it is\s+)?worth (?:noting|knowing(?: about)?|recognising|mentioning|emphasising|highlighting|acknowledging)\b",
+    r"(?:it is\s+)?worth\s+(?:noting|knowing(?:\s+about)?|recognising|recognizing|mentioning|emphasising|emphasizing|highlighting|acknowledging)\b",
     r"it should be noted",
     r"has the ability to", r"in the event that",
     r"on the whole", r"at the end of the day",
@@ -400,6 +403,8 @@ FALSE_CONCESSION_PATTERNS = [
     r"\bthe truth,?\s+as is often the case,?\s+lies somewhere in between\b",
     r"\bthe truth (?:lies|is) somewhere in (?:the )?middle\b",
     r"\bwhile this may vary\b.{0,120}\b(?:generally speaking|in most cases|it is worth noting)\b",
+    r"\bon (?:the )?one hand\b.{0,180}\bon the other(?: hand)?\b",
+    r"\bon the other(?: hand)?\b.{0,180}\bon (?:the )?one hand\b",
 ]
 
 ORPHANED_DEMONSTRATIVE_VERBS = [
@@ -460,6 +465,74 @@ def normalize_for_regex(text):
         .replace("\u2014", " - ")
         .replace("\u2013", " - ")
     )
+
+
+NON_PROSE_PATTERNS = tuple(re.compile(pattern, re.IGNORECASE | re.DOTALL) for pattern in (
+    r"```[^`]*```",
+    r"~~~[^~]*~~~",
+    r"`[^`\n]+`",
+    r"https?://[^\s)>\]]+",
+    r'["“][^"”\n]*["”]',
+))
+
+
+@lru_cache(maxsize=8)
+def mask_non_prose(text):
+    """Mask quoted and machine-readable spans while preserving offsets.
+
+    Lexical checks should inspect the author's connective prose, not examples,
+    source quotations, code, URLs, or front matter. Replacing characters with
+    spaces preserves line breaks and character offsets, so candidate spans can
+    still be sliced from the original input.
+    """
+    chars = list(text)
+
+    def blank(start, end):
+        for index in range(start, end):
+            if chars[index] not in "\r\n":
+                chars[index] = " "
+
+    if text.startswith("---\n"):
+        closing = text.find("\n---", 4)
+        if closing >= 0:
+            blank(0, closing + 4)
+
+    for pattern in NON_PROSE_PATTERNS:
+        for match in pattern.finditer(text):
+            blank(match.start(), match.end())
+    return "".join(chars)
+
+
+def _candidate_records(result, original_text):
+    """Return a stable candidate schema from a check's verbatim matches."""
+    candidates = []
+    cursor = 0
+    folded_text = original_text.casefold()
+    for value in result.get("matches", []) or []:
+        if not isinstance(value, str) or not value:
+            continue
+        start = folded_text.find(value.casefold(), cursor)
+        if start < 0:
+            start = folded_text.find(value.casefold())
+        end = start + len(value) if start >= 0 else None
+        candidates.append({"text": value, "start": start if start >= 0 else None, "end": end})
+        if end is not None:
+            cursor = end
+    return candidates
+
+
+def enrich_check_result(result, original_text):
+    """Add recognition metadata without changing legacy pass/fail fields."""
+    enriched = dict(result)
+    candidates = _candidate_records(enriched, original_text)
+    enriched["candidates"] = candidates
+    enriched["candidate_count"] = enriched.get("candidate_count", len(candidates))
+    enriched["aggregate_finding"] = not enriched["passed"] and not candidates
+    enriched["threshold_met"] = not enriched["passed"]
+    enriched.setdefault("threshold", None)
+    enriched.setdefault("context_suppressed", False)
+    enriched.setdefault("context_reason", None)
+    return enriched
 
 
 def word_counts(text):
@@ -872,6 +945,7 @@ def check_collaborative_artifacts(text):
     return {
         "text": "no-collaborative-artifacts",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found: {matches}" if count > 0 else "No collaborative artifacts",
     }
 
@@ -938,6 +1012,7 @@ def check_significance_inflation(text):
     return {
         "text": "no-significance-inflation",
         "passed": len(found) == 0,
+        "matches": found,
         "evidence": f"Found: {found}" if found else "No significance inflation",
     }
 
@@ -1007,6 +1082,7 @@ def check_copula_avoidance(text):
     return {
         "text": "no-copula-avoidance",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No copula avoidance",
     }
 
@@ -1016,6 +1092,7 @@ def check_filler_phrases(text):
     return {
         "text": "no-filler-phrases",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No filler phrases",
     }
 
@@ -1035,6 +1112,7 @@ def check_false_concession(text):
     return {
         "text": "no-false-concession-hedges",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} false concession pattern(s): {matches[:3]}"
             if count > 0
@@ -1049,6 +1127,7 @@ def check_placeholder_residue(text):
     return {
         "text": "no-placeholder-residue",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} placeholder(s): {matches[:5]}"
             if count > 0
@@ -1063,6 +1142,7 @@ def check_soft_scaffolding(text):
     return {
         "text": "no-soft-scaffolding",
         "passed": count < 2,
+        "matches": matches,
         "evidence": (
             f"Found {count} soft scaffold phrase(s): {matches[:6]}"
             if count >= 2
@@ -1082,6 +1162,7 @@ def check_orphaned_demonstratives(text):
     return {
         "text": "no-orphaned-demonstratives",
         "passed": count < 3,
+        "matches": matches,
         "evidence": (
             f"Found {count} vague demonstrative subject(s): {matches[:6]}"
             if count >= 3
@@ -1103,6 +1184,7 @@ def check_rule_of_three(text):
     return {
         "text": "no-forced-triads",
         "passed": count == 0,
+        "matches": [m.group(0) for m in matches],
         "evidence": (
             f"Found {count} abstract triad(s): {[m.group(0) for m in matches]}"
             if count > 0
@@ -1188,12 +1270,13 @@ def check_quietness(text):
 def check_rhetorical_questions(text):
     """Detect mid-sentence rhetorical questions (pattern 29)."""
     # Pattern: short question (under 8 words) followed by a declarative answer
-    pattern = r'[.!]\s+([^.?!]{3,50}\?)\s+(?:It\'?s?|They\'re|You|We|The|This|That|And)\b'
-    matches = re.findall(pattern, text)
+    pattern = r'(?:^|[.!]\s+)([^.?!]{3,50}\?)\s+(?:Because|It\'?s?|They\'re|You|We|The|This|That|And)\b'
+    matches = re.findall(pattern, text, flags=re.IGNORECASE | re.MULTILINE)
     count = len(matches)
     return {
         "text": "no-rhetorical-questions",
         "passed": count < 2,
+        "matches": matches,
         "evidence": (
             f"Found {count} mid-sentence rhetorical question(s): {matches[:3]}"
             if count >= 2
@@ -1239,6 +1322,7 @@ def check_unicode_flair(text):
     return {
         "text": "no-unicode-flair",
         "passed": len(findings) < 2,
+        "matches": findings,
         "evidence": (
             f"Found {len(findings)} decorative symbol(s)/shortcode(s): {findings[:8]}"
             if len(findings) >= 2
@@ -1280,6 +1364,7 @@ def check_formulaic_openers(text):
         r"^in (?:a|the) (?:broader|wider|larger|similar) (?:context|sense|vein)[,:]",
         r"^perhaps (?:most )?(?:importantly|significantly|notably|crucially)[,:]",
         r"^what (?:is|makes) (?:this|it) (?:particularly|especially|uniquely) \w+",
+        r"^in today(?:'s|’s) (?:fast[- ]paced|rapidly changing) world\b",
     ]
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     found = []
@@ -1294,6 +1379,7 @@ def check_formulaic_openers(text):
     return {
         "text": "no-formulaic-openers",
         "passed": len(found) == 0,
+        "matches": found,
         "evidence": (
             f"Found {len(found)} formulaic opener(s): {found}"
             if found
@@ -1323,6 +1409,7 @@ def check_signposted_conclusions(text):
     return {
         "text": "no-signposted-conclusions",
         "passed": len(found) == 0,
+        "matches": found,
         "evidence": (
             f"Found {len(found)}: {found}"
             if found
@@ -1343,7 +1430,13 @@ def check_markdown_headings(text):
             continue
         headings.append(heading)
 
-    lines = strip_front_matter(text).splitlines()
+    source = strip_front_matter(text)
+    source_lines = source.splitlines()
+    for index in range(len(source_lines) - 1):
+        if source_lines[index].strip() and re.match(r"^ {0,3}(?:=+|-+)\s*$", source_lines[index + 1]):
+            headings.append(source_lines[index].strip())
+
+    lines = source_lines
     first_nonblank = next((idx for idx, line in enumerate(lines) if line.strip()), None)
     if first_nonblank is not None and first_nonblank + 1 < len(lines):
         title = lines[first_nonblank].strip()
@@ -1364,6 +1457,7 @@ def check_markdown_headings(text):
     return {
         "text": "no-markdown-headings",
         "passed": len(headings) == 0,
+        "matches": headings,
         "evidence": (
             f"Found {len(headings)} heading(s): {[h[:50] for h in headings[:5]]}"
             if headings
@@ -1408,11 +1502,16 @@ def check_corporate_ai_speak(text):
         r"stakeholder (?:alignment|engagement|management)\b",
         r"actionable insights?\b",
         r"leverage[sd]? (?:my |our |the )?\w+ (?:experience|expertise)\b",
+        r"\bcircle back\b",
+        r"\bleverage(?:s|d|ing)? (?:a |the )?(?:cross[- ]team )?synerg(?:y|ies)\b",
+        r"\bmove the needle\b",
+        r"\b(?:align|alignment) on (?:next steps|deliverables|priorities|outcomes)\b",
     ]
     count, matches = count_pattern_matches(text, patterns)
     return {
         "text": "no-corporate-ai-speak",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count}: {matches}"
             if count > 0
@@ -1597,6 +1696,7 @@ def check_tidy_paragraph_endings(text):
     return {
         "text": "no-tidy-paragraph-endings",
         "passed": len(endings) < 3,
+        "matches": endings,
         "evidence": (
             f"Found {len(endings)} tidy paragraph ending(s): {endings[:5]}"
             if len(endings) >= 3
@@ -1653,6 +1753,7 @@ def check_triad_density(text):
     return {
         "text": "no-triad-density",
         "passed": count < 4,
+        "matches": match_strs,
         "evidence": (
             f"Found {count} triad(s): {match_strs}"
             if count >= 4
@@ -1695,6 +1796,10 @@ HEDGING_PATTERNS = [
     r"\bis (?:overstated|understated|underestimated|overestimated)\b",
     r"\bis less about\b.*\bmore about\b",
     r"\ba common (?:assumption|misconception|objection|criticism) is\b",
+    r"\bcould potentially\b",
+    r"\bmay possibly\b",
+    r"\bmight conceivably\b",
+    r"\b(?:some|certain) (?:people|residents|users|cases|areas|contexts)\b",
 ]
 
 
@@ -1752,13 +1857,14 @@ def check_hedging_density(text):
             if found:
                 total_matches += len(found)
                 all_found.extend(found)
-    # Flag at 4+ hedging constructions across the whole text
+    # Three distinct hedges in one short passage already form a stacked signal.
     return {
         "text": "no-excessive-hedging",
-        "passed": total_matches < 4,
+        "passed": total_matches < 3,
+        "matches": all_found,
         "evidence": (
             f"Found {total_matches} hedging constructions: {all_found[:5]}"
-            if total_matches >= 4
+            if total_matches >= 3
             else f"Hedging constructions: {total_matches}"
         ),
     }
@@ -1807,6 +1913,7 @@ def check_vague_attributions(text):
     return {
         "text": "no-vague-attributions",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} vague attribution(s): {matches[:3]}"
             if count > 0
@@ -1830,6 +1937,7 @@ def check_boldface_overuse(text):
     return {
         "text": "no-boldface-overuse",
         "passed": total < 4,
+        "matches": matches,
         "evidence": (
             f"Found {total} bold span(s) in prose: {matches[:5]}"
             if total >= 4
@@ -1848,6 +1956,7 @@ def check_inline_header_lists(text):
     return {
         "text": "no-inline-header-lists",
         "passed": len(matches) < 2,
+        "matches": matches,
         "evidence": (
             f"Found {len(matches)} list item(s) with bolded headers"
             if len(matches) >= 2
@@ -1917,6 +2026,7 @@ def check_knowledge_cutoff_disclaimers(text):
     return {
         "text": "no-knowledge-cutoff-disclaimers",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} knowledge-cutoff disclaimer(s): {matches[:3]}"
             if count > 0
@@ -1980,6 +2090,101 @@ ALL_CHECKS = {
     "no-compound-modifier-density": check_compound_modifier_density,
     "no-knowledge-cutoff-disclaimers": check_knowledge_cutoff_disclaimers,
 }
+
+
+LEXICAL_CHECKS = {
+    "no-ai-vocabulary-clustering", "no-nonliteral-land-surface",
+    "no-manufactured-insight", "no-performed-candour",
+    "no-collaborative-artifacts", "no-promotional-language",
+    "no-significance-inflation", "no-negative-parallelisms",
+    "no-copula-avoidance", "no-filler-phrases", "no-generic-conclusions",
+    "no-false-concession-hedges", "no-soft-scaffolding",
+    "no-orphaned-demonstratives", "no-superficial-ing",
+    "no-ghost-spectral-density", "no-quietness-obsession",
+    "no-dramatic-transitions", "no-formulaic-openers",
+    "no-corporate-ai-speak", "no-excessive-hedging",
+    "no-tidy-paragraph-endings", "no-bland-critical-template",
+    "no-rubric-echoing", "no-notability-claims", "no-vague-attributions",
+    "no-compound-modifier-density", "no-knowledge-cutoff-disclaimers",
+}
+
+CHECK_THRESHOLDS = {
+    "overall-signal-stacking": 4,
+    "no-staccato-sequences": {"minimum_run": 3},
+    "no-soft-scaffolding": {"minimum_candidates": 2},
+    "no-orphaned-demonstratives": {"minimum_candidates": 3},
+    "no-rhetorical-questions": {"minimum_candidates": 2},
+    "no-unicode-flair": {"minimum_candidates": 2},
+    "no-excessive-hedging": {"minimum_candidates": 3},
+    "paragraph-length-uniformity": {"minimum_paragraphs": 7, "maximum_cv": 0.18},
+    "no-tidy-paragraph-endings": {"minimum_candidates": 3},
+    "no-bland-critical-template": {"minimum_candidates": 3},
+    "no-rubric-echoing": {"minimum_candidates": 3},
+    "no-triad-density": {"minimum_words": 300, "minimum_candidates": 4},
+    "no-boldface-overuse": {"minimum_candidates": 4},
+    "no-inline-header-lists": {"minimum_candidates": 2},
+    "no-compound-modifier-density": {"minimum_per_sentence": 3},
+}
+
+
+CONTEXT_GATED_CHECKS = {
+    "recipe": {"no-markdown-headings", "no-excessive-lists", "no-signposted-conclusions"},
+    "technical_documentation": {"no-markdown-headings", "no-excessive-lists", "no-signposted-conclusions"},
+    "academic": {"no-excessive-hedging"},
+    "formal_report": {"no-em-dashes", "no-signposted-conclusions"},
+    "dialogue_or_fiction": {"no-em-dashes", "no-anaphora"},
+}
+
+
+@lru_cache(maxsize=8)
+def infer_prose_context(text):
+    """Infer only high-confidence genre contexts used for false-positive gates."""
+    lower = text.casefold()
+    contexts = set()
+    if re.search(r"(?m)^#{1,6}\s+ingredients\s*$", lower) and re.search(
+        r"(?m)^#{1,6}\s+(?:method|directions|instructions)\s*$", lower
+    ):
+        contexts.add("recipe")
+    if ("`" in text or "http" in lower or "api" in lower) and re.search(
+        r"(?m)^#{1,6}\s+", text
+    ):
+        contexts.add("technical_documentation")
+    if re.search(r"\b(?:sample size|statistical power|confidence interval|limitations?)\b", lower):
+        contexts.add("academic")
+    if re.search(r"\b(?:year over year|quarter|revenue|operating margin)\b", lower):
+        contexts.add("formal_report")
+    if re.search(r"(?m)^[A-Z][A-Z ]+:\s", text):
+        contexts.add("dialogue_or_fiction")
+    return frozenset(contexts)
+
+
+def apply_context_gate(check_id, result, original_text):
+    """Suppress narrow, genre-licensed look-alikes after recognition."""
+    contexts = infer_prose_context(original_text)
+    reasons = sorted(context for context in contexts if check_id in CONTEXT_GATED_CHECKS.get(context, set()))
+    if not reasons or result["passed"]:
+        return result
+    result = dict(result)
+    result["passed"] = True
+    result["threshold_met"] = False
+    result["context_suppressed"] = True
+    result["context_reason"] = ", ".join(reasons)
+    return result
+
+
+def _wrap_check(check_id, check):
+    def wrapped(text):
+        check_text = mask_non_prose(text) if check_id in LEXICAL_CHECKS else text
+        result = enrich_check_result(check(check_text), text)
+        result["threshold"] = CHECK_THRESHOLDS.get(check_id)
+        return apply_context_gate(check_id, result, text)
+
+    wrapped.__name__ = check.__name__
+    wrapped.__doc__ = check.__doc__
+    return wrapped
+
+
+ALL_CHECKS = {check_id: _wrap_check(check_id, check) for check_id, check in ALL_CHECKS.items()}
 
 
 # CHECK_REPORT_TEXT, CHECK_WHY_IT_MATTERS, CHECK_METADATA were migrated

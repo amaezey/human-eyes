@@ -211,6 +211,8 @@ Rewrite workflows include the rewritten draft, a structural self-check, and the 
 
 Each iteration runs the skill against an eval suite. The block below is auto-generated.
 
+See [`dev/TESTING.md`](dev/TESTING.md) for the distinction between the committed calibration corpus, genuinely fresh matched-pair benchmarks, and release gates. Human-versus-AI comparisons require complete surface and semantic Audits; surface-only scans are development diagnostics, not benchmark results.
+
 <!-- performance:start -->
 **iteration-7** (2026-05-03T12:27:19Z)
 
