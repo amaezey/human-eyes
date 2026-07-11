@@ -2,7 +2,9 @@
 
 A [Claude Code skill](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/skills) for auditing and rewriting prose that carries common AI-writing tells.
 
-Forked from [blader/humanizer](https://github.com/blader/humanizer), restructured around a deterministic grader, an iteration harness, and a corpus of matched human and AI essays for testing the grader. human-eyes is a pattern detector, not an AI detector. It flags specific patterns in text that statistically give readers the AI ick when used without intent.
+human-eyes is a pattern detector, not an AI detector. It flags specific patterns in text that statistically give readers the 'AI ick' when used without intent.
+
+Inspired by [blader/humanizer](https://github.com/blader/humanizer), built around a deterministic grader, an iteration harness, and a corpus of matched human and AI essays for testing.
 
 ## Install
 
