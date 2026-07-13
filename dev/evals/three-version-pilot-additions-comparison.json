@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "manifest": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/manifest.json",
-  "manifest_sha256": "38485c2eb40f80b307b9ef9e31356db4344b93693a021892950891881c3bf2ca",
+  "manifest_sha256": "ce50f44b4667a9a3584860bc9e41e1005c129c3c001854c357ceea1978a66b37",
   "document_count": 20,
   "versions": {
     "current": {
-      "commit": "27d4bcf468b6667af86b890e90aaf28d872fb6dc",
+      "commit": "95a2ac1fab8dbc6938afb522262bcf34f1e30dcd",
       "grader_path": "/Users/mae/Documents/human-eyes/human-eyes/scripts/grade.py",
       "grader_sha256": "bc8595e41eb7fc634c50e43f894d1d8d22952011389471b95859a23fb6cb24ce",
       "native_interface": "audit-surface-only",

@@ -53,9 +53,10 @@ def resolve_path(value: str, manifest_path: Path) -> Path:
     raise FileNotFoundError(f"cannot resolve manifest path: {value}")
 
 
-def current_commit() -> str:
+def current_grader_commit() -> str:
     result = subprocess.run(
-        ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
+        ["git", "log", "-1", "--format=%H", "--", "human-eyes/scripts/grade.py"],
+        cwd=ROOT, text=True,
         stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True,
     )
     return result.stdout.strip()
@@ -256,7 +257,7 @@ def run(manifest_path: Path = DEFAULT_MANIFEST,
     semantic_inputs = semantic_inputs or {}
     for version_id, base in VERSIONS.items():
         version = dict(base)
-        commit = current_commit() if version["commit"] is None else version["commit"]
+        commit = current_grader_commit() if version["commit"] is None else version["commit"]
         grader = version["root"] / "human-eyes/scripts/grade.py"
         documents = []
         for source in corpus:

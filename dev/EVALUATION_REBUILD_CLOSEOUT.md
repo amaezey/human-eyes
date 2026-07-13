@@ -99,7 +99,7 @@ There is consequently no valid agent-assessed comparison between the established
 
 ## Validation actually run
 
-All 20 `dev/evals/tests/test_*.py` files pass when run directly. This includes grader behavior, registries, work-bundle binding, audit contracts, rendering, requested patterns, phrase capture, regex robustness, release gates, comparison harnesses and action-runner contracts.
+All 19 current `dev/evals/tests/test_*.py` files pass when run directly. This includes grader behavior, registries, work-bundle binding, audit contracts, rendering, requested patterns, phrase capture, regex robustness, release gates, comparison harnesses and action-runner contracts. The obsolete `run_fresh_pilot.py` harness and its synthetic contract test were removed during consolidation because they still enforced the abandoned contamination methodology and pointed at deleted experiment files.
 
 The regex seed reports 0.750 directional recall, 0.857 specificity and 0.143 false-positive rate. Its cells are sparse, so these are diagnostic figures rather than stable performance estimates.
 

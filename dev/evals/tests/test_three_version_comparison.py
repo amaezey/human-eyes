@@ -15,12 +15,31 @@ assert spec.loader is not None
 spec.loader.exec_module(module)
 
 
+assert len(module.current_grader_commit()) == 40
 assert module.extract_native_checks({"programmatic_checks": []}, "audit-surface-only") == []
 assert module.extract_native_checks(
     {"human_report": {"programmatic_checks": []}}, "legacy-direct-file"
 ) == []
 assert module.normalize_check({"id": "x", "status": "flagged", "severity": "warning"})["flagged"]
 assert not module.normalize_check({"id": "x", "status": "clear"})["flagged"]
+
+pilot_manifest_path = ROOT / "dev/evals/samples/pilot-additions-01/manifest.json"
+pilot_manifest = json.loads(pilot_manifest_path.read_text(encoding="utf-8"))
+
+
+def assert_bound_paths_exist(value):
+    if isinstance(value, dict):
+        if isinstance(value.get("path"), str) and isinstance(value.get("sha256"), str):
+            path = module.resolve_path(value["path"], pilot_manifest_path)
+            assert module.sha256(path) == value["sha256"]
+        for child in value.values():
+            assert_bound_paths_exist(child)
+    elif isinstance(value, list):
+        for child in value:
+            assert_bound_paths_exist(child)
+
+
+assert_bound_paths_exist(pilot_manifest)
 
 documents = [
     {"pair_id": "a", "cohort": "human", "surface_findings": 2},
