@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_CORPUS = ROOT / "dev" / "evals" / "samples" / "regex-blind" / "claude-blind-seed.jsonl"
 DEFAULT_REPORT = ROOT / "dev" / "evals" / "regex-catalogue-report.json"
+MANUAL_ONLY_TENDENCIES = {"markdown headings"}
 
 TENDENCY_CHECKS = {
     "inflated significance": ("no-significance-inflation",),
@@ -42,8 +43,10 @@ TENDENCY_CHECKS = {
     "decorative Unicode": ("no-unicode-flair",),
     "bold emphasis": ("no-boldface-overuse",),
     "bold-label lists": ("no-inline-header-lists",),
-    "markdown headings": ("no-markdown-headings",),
-    "heading in short text": ("no-markdown-headings",),
+    # Headings remain reviewable style context, but are intentionally not a
+    # deterministic indicator. An empty mapping keeps the blind seed explicit
+    # without pretending a regex should fire.
+    "markdown headings": (),
     "parenthetical headings": ("no-parenthetical-headings",),
     "repeated labels": ("no-section-scaffolding",),
     "excessive lists": ("no-excessive-lists",),
@@ -72,7 +75,7 @@ def ratio(numerator: int, denominator: int) -> float | None:
 def audit(corpus: Path) -> dict:
     grade = load_grade()
     rows = [json.loads(line) for line in corpus.read_text(encoding="utf-8").splitlines() if line]
-    per_check = defaultdict(lambda: {"violation_total": 0, "violation_detected": 0, "control_total": 0, "control_clear": 0})
+    per_check = defaultdict(lambda: {"violation_total": 0, "candidate_recognized": 0, "violation_detected": 0, "control_total": 0, "control_clear": 0})
     overall = {"violation_total": 0, "violation_detected": 0, "control_total": 0, "control_clear": 0}
     samples = []
 
@@ -80,26 +83,33 @@ def audit(corpus: Path) -> dict:
         results = {check_id: check(row["text"]) for check_id, check in grade.ALL_CHECKS.items()}
         failed = sorted(check_id for check_id, result in results.items() if not result["passed"])
         expected = TENDENCY_CHECKS.get(row["primary_tendency"], ())
+        target_recognized = any(results[check_id]["candidate_count"] > 0 for check_id in expected)
         target_hit = any(not results[check_id]["passed"] for check_id in expected)
+        allowed = set(expected) | set(row.get("allowed_checks", []))
+        unexpected_failed = [check_id for check_id in failed if check_id not in allowed]
         any_hit = any(check_id != "overall-signal-stacking" for check_id in failed)
         if row["label"] == "violation":
             overall["violation_total"] += 1
             overall["violation_detected"] += int(any_hit)
             for check_id in expected:
                 per_check[check_id]["violation_total"] += 1
+                per_check[check_id]["candidate_recognized"] += int(results[check_id]["candidate_count"] > 0)
                 per_check[check_id]["violation_detected"] += int(not results[check_id]["passed"])
         else:
             overall["control_total"] += 1
-            overall["control_clear"] += int(not any_hit)
+            overall["control_clear"] += int(not unexpected_failed)
             for check_id in expected:
                 per_check[check_id]["control_total"] += 1
                 per_check[check_id]["control_clear"] += int(results[check_id]["passed"])
         samples.append({
             "id": row["id"], "label": row["label"], "primary_tendency": row["primary_tendency"],
-            "expected_checks": list(expected), "target_detected": target_hit, "failed_checks": failed,
+            "expected_checks": list(expected), "target_recognized": target_recognized,
+            "target_detected": target_hit, "failed_checks": failed,
+            "allowed_checks": sorted(allowed), "unexpected_failed_checks": unexpected_failed,
         })
 
     for metrics in per_check.values():
+        metrics["candidate_recall"] = ratio(metrics["candidate_recognized"], metrics["violation_total"])
         metrics["recall"] = ratio(metrics["violation_detected"], metrics["violation_total"])
         metrics["specificity"] = ratio(metrics["control_clear"], metrics["control_total"])
         metrics["false_positive_rate"] = (
@@ -118,6 +128,7 @@ def audit(corpus: Path) -> dict:
             for row in rows
             if row["label"] == "violation" and row["primary_tendency"] not in TENDENCY_CHECKS
         }),
+        "manual_only_tendencies": sorted(MANUAL_ONLY_TENDENCIES),
         "samples": samples,
     }
 

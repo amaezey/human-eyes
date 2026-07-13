@@ -248,6 +248,14 @@ NONLITERAL_LAND_SURFACE = [
     r"\bsurfaced in (?:the|a|our|their) (?:conversation|discussion|debate|work|writing|text|story|essay|analysis|response|draft|argument)\b",
     r"\bwhat surfaces?\b",
     r"\bwhat surfaced\b",
+    (
+        r"\b(?:manual|guide|framework|plan|document|strategy|process|method|model|"
+        r"idea|argument|story|book|essay|tool|system)\b[^.!?\n]{0,80}\b"
+        r"(?:as if (?:it|they) (?:were|was)|as|became|becomes|served as|serves as|"
+        r"provides?|offers?)\s+(?:a\s+)?(?:map|compass|roadmap)\s+"
+        r"(?:through|out of|across)\s+(?:the\s+)?(?:[a-z-]+\s+){0,2}"
+        r"(?:wilderness|maze|terrain|landscape|uncertainty|complexity|confusion)\b"
+    ),
 ]
 
 # Broad set: catches both the obvious ("let that sink in") and the subtler
@@ -283,6 +291,11 @@ MANUFACTURED_INSIGHT = [
     # Contrived contrast as insight
     r"this isn't [\w\s]+\. it's ",
     r"that's not [\w\s]+\. that's ",
+    # Explicit lesson/revelation frames. Concrete instruction such as
+    # "the manual taught me how to..." stays outside this family.
+    r"\b(?:it|this|that|(?:this|that|the) (?:experience|moment|process|project|failure|mistake|work)) taught me that\b",
+    r"\bwhat (?:this|that|(?:this|that|the) (?:experience|moment|process|project|failure|mistake|work)) taught me was\b",
+    r"\bthe lesson (?:i|we) learned was\b",
 ]
 
 PERFORMED_CANDOUR = [
@@ -320,11 +333,25 @@ PROMOTIONAL = [
     "renowned",
 ]
 
+PRODUCT_PERFORMANCE_PROMOTIONAL = [
+    r"\bfaster and more responsive\b",
+    r"\bquicker (?:page )?load(?:ing|s?)\b",
+    r"\buses? (?:memory|resources?) more efficiently\b",
+    r"\b(?:produce[sd]?|deliver(?:s|ed)?) smoother (?:scrolling|performance|playback)\b",
+    r"\bbecomes? usable sooner\b",
+]
+
 SIGNIFICANCE_INFLATION = [
     "pivotal", "crucial", "vital role", "testament",
     "evolving landscape", "indelible mark", "key turning point",
     "deeply rooted", "setting the stage", "remarkably",
     "strikingly", "staggering",
+]
+
+SIGNIFICANCE_EMPHASIS_FRAMES = [
+    r"\b(?:underline|underlines|underlined|underscore|underscores|underscored|"
+    r"highlight|highlights|highlighted|emphasise|emphasises|emphasised|"
+    r"emphasize|emphasizes|emphasized) the (?:importance|value|significance) of\b",
 ]
 
 COPULA_AVOIDANCE = [
@@ -368,6 +395,14 @@ SOFT_SCAFFOLD_PHRASES = [
     r"\bwith (?:that|this) distinction in mind\b",
 ]
 
+REPORT_SCAFFOLD_OPENERS = [
+    r"^(?:a|another) (?:major |key |important )?(?:priority|area|theme|focus)(?: of work)? (?:was|is)\b",
+    r"^the (?:body|organisation|organization|team|committee|agency) also (?:considered|examined|reviewed|focused on)\b",
+    r"^(?:regional|international|community|industry) participation remained\b",
+    r"^throughout the (?:year|reporting period|period),",
+    r"^in \d{4}(?:[-–]\d{2,4})?,\s+(?:the (?:body|organisation|organization|team|committee|agency)|we) will\b",
+]
+
 BLAND_CRITICAL_TEMPLATE = [
     r"\bthe kind of (?:contemporary )?(?:novel|film|book|album|show|essay) that\b",
     r"\bdoing several familiar things at once\b",
@@ -396,6 +431,32 @@ TIDY_PARAGRAPH_ENDINGS = [
     r"\bwith (?:that|this) distinction in mind\b",
     r"\bwithout becoming\b",
 ]
+
+# Structural paragraph closures that do not need a stock summary label.  Keep
+# this deliberately narrower than a general copular-sentence detector: the
+# complement must name an abstract interpretation, or both sides of a compact
+# semicolon construction must be independent clauses with their own linking
+# verb.  Individual candidates remain below the document-level threshold.
+TIDY_ABSTRACT_COMPLEMENT = (
+    r"(?:[a-z-]+(?:tion|sion|ment|ness|ity|ance|ence|ship|ism)|"
+    r"argument|choice|reading|claim|lesson|thesis|verdict|metaphor|symbol|"
+    r"myth|fiction|proof|warning|refinement)"
+)
+TIDY_ABSTRACT_CLOSURE = re.compile(
+    rf"^(?:the|this|that|it|these|those)(?:\s+[a-z’'-]+){{0,4}}\s+"
+    rf"(?:is|are|was|were|became|becomes|remained|remains)\s+"
+    rf"(?:already\s+|itself\s+|themselves\s+|in itself\s+|in themselves\s+)"
+    rf"(?:an?\s+|the\s+)?(?:[a-z-]+\s+){{0,2}}{TIDY_ABSTRACT_COMPLEMENT}\b",
+    re.IGNORECASE,
+)
+TIDY_BALANCED_LINKING_VERB = re.compile(
+    r"\b(?:is|are|was|were|becomes?|became|remains?|remained|seems?|seemed|"
+    r"means?|meant|marks?|marked|(?:could|can|may|might)?\s*(?:sounds?|feels?|looks?))\b",
+    re.IGNORECASE,
+)
+TIDY_SUBORDINATORS = {
+    "if", "when", "because", "while", "although", "unless", "where", "after", "before",
+}
 
 FALSE_CONCESSION_PATTERNS = [
     r"\bwhile (?:critics|skeptics|some) (?:argue|say|claim|contend)\b.{0,160}\b(?:supporters|proponents|others) (?:argue|say|claim|maintain|counter)\b",
@@ -467,24 +528,17 @@ def normalize_for_regex(text):
     )
 
 
-NON_PROSE_PATTERNS = tuple(re.compile(pattern, re.IGNORECASE | re.DOTALL) for pattern in (
+MACHINE_READABLE_PATTERNS = tuple(re.compile(pattern, re.IGNORECASE | re.DOTALL) for pattern in (
     r"```[^`]*```",
     r"~~~[^~]*~~~",
     r"`[^`\n]+`",
     r"https?://[^\s)>\]]+",
-    r'["“][^"”\n]*["”]',
 ))
+QUOTED_PROSE_PATTERNS = (re.compile(r'["“][^"”\n]*["”]', re.IGNORECASE | re.DOTALL),)
+NON_PROSE_PATTERNS = MACHINE_READABLE_PATTERNS + QUOTED_PROSE_PATTERNS
 
 
-@lru_cache(maxsize=8)
-def mask_non_prose(text):
-    """Mask quoted and machine-readable spans while preserving offsets.
-
-    Lexical checks should inspect the author's connective prose, not examples,
-    source quotations, code, URLs, or front matter. Replacing characters with
-    spaces preserves line breaks and character offsets, so candidate spans can
-    still be sliced from the original input.
-    """
+def _mask_non_prose_patterns(text, patterns):
     chars = list(text)
 
     def blank(start, end):
@@ -497,10 +551,22 @@ def mask_non_prose(text):
         if closing >= 0:
             blank(0, closing + 4)
 
-    for pattern in NON_PROSE_PATTERNS:
+    for pattern in patterns:
         for match in pattern.finditer(text):
             blank(match.start(), match.end())
     return "".join(chars)
+
+
+@lru_cache(maxsize=8)
+def mask_non_prose(text):
+    """Mask quoted and machine-readable spans while preserving offsets."""
+    return _mask_non_prose_patterns(text, NON_PROSE_PATTERNS)
+
+
+@lru_cache(maxsize=8)
+def mask_non_prose_preserving_quotes(text):
+    """Mask machine-readable spans while retaining attributable quoted prose."""
+    return _mask_non_prose_patterns(text, MACHINE_READABLE_PATTERNS)
 
 
 def _candidate_records(result, original_text):
@@ -508,6 +574,12 @@ def _candidate_records(result, original_text):
     candidates = []
     cursor = 0
     folded_text = original_text.casefold()
+    quoted_spans = [
+        (match.start(), match.end())
+        for pattern in NON_PROSE_PATTERNS
+        for match in pattern.finditer(original_text)
+        if original_text[match.start():match.end()].startswith(('"', '“'))
+    ]
     for value in result.get("matches", []) or []:
         if not isinstance(value, str) or not value:
             continue
@@ -515,7 +587,16 @@ def _candidate_records(result, original_text):
         if start < 0:
             start = folded_text.find(value.casefold())
         end = start + len(value) if start >= 0 else None
-        candidates.append({"text": value, "start": start if start >= 0 else None, "end": end})
+        quoted = bool(
+            start >= 0 and end is not None
+            and any(quote_start <= start and end <= quote_end for quote_start, quote_end in quoted_spans)
+        )
+        candidates.append({
+            "text": value,
+            "start": start if start >= 0 else None,
+            "end": end,
+            "quoted": quoted,
+        })
         if end is not None:
             cursor = end
     return candidates
@@ -685,6 +766,7 @@ def check_nonliteral_land_surface(text):
     return {
         "text": "no-nonliteral-land-surface",
         "passed": len(matches) == 0,
+        "matches": matches,
         "evidence": (
             f"Found {len(matches)} nonliteral land/surface construction(s): {matches[:5]}"
             if matches
@@ -747,7 +829,6 @@ def check_overall_signal_stacking(text):
         "section_scaffolding": check_section_scaffolding(text),
         "tidy_endings": check_tidy_paragraph_endings(text),
         "paragraph_uniformity": check_paragraph_uniformity(text),
-        "markdown_headings": check_markdown_headings(text),
         "excessive_lists": check_list_density(text),
         "collaborative_artifacts": check_collaborative_artifacts(text),
         "generic_conclusions": check_generic_conclusions(text),
@@ -762,7 +843,6 @@ def check_overall_signal_stacking(text):
         "section_scaffolding": 1,
         "tidy_endings": 1,
         "paragraph_uniformity": 2,
-        "markdown_headings": 2,
         "excessive_lists": 1,
         "collaborative_artifacts": 2,
         "generic_conclusions": 2,
@@ -777,7 +857,6 @@ def check_overall_signal_stacking(text):
         "section_scaffolding": "section scaffolding",
         "tidy_endings": "tidy paragraph endings",
         "paragraph_uniformity": "paragraph length uniformity",
-        "markdown_headings": "headings in prose",
         "excessive_lists": "excessive lists",
         "collaborative_artifacts": "assistant residue",
         "generic_conclusions": "generic conclusion endings",
@@ -838,6 +917,7 @@ def check_manufactured_insight(text):
     return {
         "text": "no-manufactured-insight",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No manufactured insight phrases",
     }
 
@@ -999,9 +1079,12 @@ def check_sentence_variance(text):
 def check_promotional(text):
     text_lower = text.lower()
     found = [w for w in PROMOTIONAL if w in text_lower]
+    for pattern in PRODUCT_PERFORMANCE_PROMOTIONAL:
+        found.extend(match.group(0) for match in re.finditer(pattern, text, re.IGNORECASE))
     return {
         "text": "no-promotional-language",
         "passed": len(found) == 0,
+        "matches": found,
         "evidence": f"Found: {found}" if found else "No promotional language",
     }
 
@@ -1009,6 +1092,8 @@ def check_promotional(text):
 def check_significance_inflation(text):
     text_lower = text.lower()
     found = [w for w in SIGNIFICANCE_INFLATION if w in text_lower]
+    for pattern in SIGNIFICANCE_EMPHASIS_FRAMES:
+        found.extend(match.group(0) for match in re.finditer(pattern, text, re.IGNORECASE))
     return {
         "text": "no-significance-inflation",
         "passed": len(found) == 0,
@@ -1139,9 +1224,16 @@ def check_placeholder_residue(text):
 def check_soft_scaffolding(text):
     """Detect bland transition scaffolding from generated explainers."""
     count, matches = count_pattern_matches(text, SOFT_SCAFFOLD_PHRASES)
+    for paragraph in prose_paragraphs(text):
+        for pattern in REPORT_SCAFFOLD_OPENERS:
+            match = re.match(pattern, paragraph, flags=re.IGNORECASE)
+            if match:
+                matches.append(match.group(0))
+                count += 1
+                break
     return {
         "text": "no-soft-scaffolding",
-        "passed": count < 2,
+        "passed": count < threshold_value("no-soft-scaffolding", "minimum_candidates", 2),
         "matches": matches,
         "evidence": (
             f"Found {count} soft scaffold phrase(s): {matches[:6]}"
@@ -1161,7 +1253,7 @@ def check_orphaned_demonstratives(text):
     count, matches = count_pattern_matches(text, [pattern])
     return {
         "text": "no-orphaned-demonstratives",
-        "passed": count < 3,
+        "passed": count < threshold_value("no-orphaned-demonstratives", "minimum_candidates", 3),
         "matches": matches,
         "evidence": (
             f"Found {count} vague demonstrative subject(s): {matches[:6]}"
@@ -1171,22 +1263,97 @@ def check_orphaned_demonstratives(text):
     }
 
 
+TRIAD_STOPWORD = r"(?:and|or|but|for|to|of|in|on|at|by|as|with|without|from|through|throughout|depending)"
+TRIAD_ITEM = rf"[A-Za-z][\w'-]*(?:\s+(?!{TRIAD_STOPWORD}\b)[A-Za-z][\w'-]*){{0,2}}"
+TRIAD_THIRD_ITEM = rf"[A-Za-z][\w'-]*(?:\s+(?!{TRIAD_STOPWORD}\b)[A-Za-z][\w'-]*){{0,2}}?"
+TRIAD_RE = re.compile(
+    rf"\b({TRIAD_ITEM}),\s+({TRIAD_ITEM}),?\s+(?:and|or)\s+({TRIAD_THIRD_ITEM})\b"
+    rf"(?=\s+{TRIAD_STOPWORD}\b|[.!?;:\n\"”]|$)",
+    re.IGNORECASE,
+)
+
+# Additional grammatical forms that the compact item matcher cannot express.
+# These stay narrow so incidental parentheticals are not counted as triads.
+TRIAD_EXTENDED_RES = (
+    re.compile(
+        r"\bnot\s+[^,;.!?\n]{1,40},\s+but\s+[^,;.!?\n]{1,40},?\s+"
+        r"and\s+[^,;.!?\n]{1,60}(?=[.!?;:\n\"”'’—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(?:when|how|what|where|who|why|whether)\b[^,;.!?\n]{1,60},\s+"
+        r"(?:when|how|what|where|who|why|whether)\b[^,;.!?\n]{1,60},?\s+"
+        r"(?:and|or)\s+(?:when|how|what|where|who|why|whether)\b[^,;.!?\n]{1,60}"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b[A-Za-z][\w'-]*ing(?:\s+[^,;.!?\n]{0,45})?,\s+"
+        r"[A-Za-z][\w'-]*ing(?:\s+[^,;.!?\n]{0,45})?,?\s+"
+        r"(?:and|or)\s+[A-Za-z][\w'-]*ing(?:\s+[^,;.!?\n]{0,45})?"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b[^,;.!?\n]{1,80},\s+which\s+[^,;.!?\n]{1,60}\s+"
+        r"(?:and|or)\s+(?:less\s+|more\s+)?[A-Za-z][\w'-]*"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(?:will|can|could|should|would|may|might|must)\s+"
+        r"[A-Za-z][\w'-]*(?:\s+[^,;.!?\n]{0,50})?,\s+"
+        r"(?!(?:and|or|but|which|who|that|where|when|what|how|why)\b)"
+        r"[A-Za-z][\w'-]*(?:\s+[^,;.!?\n]{0,50})?,?\s+"
+        r"(?:and|or)\s+[A-Za-z][\w'-]*(?:\s+[^,;.!?\n]{0,70})?"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(for|to|with|by|from|through|without)\s+[^,;.!?\n]{1,60},\s+"
+        r"\1\s+[^,;.!?\n]{1,60},?\s+(?:and|or)\s+\1\s+[^,;.!?\n]{1,80}"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+)
+
+
+def extract_triad_candidates(text):
+    """Return verbatim three-part item, phrase, and clause coordinations."""
+    spans = []
+    for match in TRIAD_RE.finditer(text):
+        items = [item.split() for item in match.groups()]
+        # The regex can enter the sentence up to two words before the first
+        # list item. Balance that capture against the later items so evidence
+        # starts at the coordination itself, not its lead-in.
+        original_starts = [words[0].casefold() for words in items]
+        parallel_to = len(set(original_starts)) == 1 and original_starts[0] == "to"
+        if not parallel_to:
+            first_limit = max(len(items[1]), len(items[2]))
+            items[0] = items[0][-first_limit:]
+        first_item = " ".join(items[0])
+        first_offset = match.group(1).rfind(first_item)
+        start = match.start(1) + first_offset
+        spans.append((start, match.end(), text[start:match.end()]))
+    for pattern in TRIAD_EXTENDED_RES:
+        for match in pattern.finditer(text):
+            start, end = match.span()
+            if any(not (end <= old_start or start >= old_end) for old_start, old_end, _ in spans):
+                continue
+            spans.append((start, end, match.group(0).strip()))
+    return [value for _, _, value in sorted(spans)]
+
+
+def threshold_value(check_id, key, default):
+    """Read a named threshold from the authoritative threshold catalogue."""
+    value = CHECK_THRESHOLDS.get(check_id, {})
+    return value.get(key, default) if isinstance(value, dict) else default
+
+
 def check_rule_of_three(text):
-    """Detect forced triads: 'X, Y, and Z' patterns that cluster heavily."""
-    # Find all "A, B, and C" patterns where all three are abstract nouns
-    # Suffixes: -ing, -tion, -sion, -ment, -ness, -ity, -ity, -nce, -ncy, -cy, -ism, -ity
-    _abs = r'\b\w+(?:ing|tion|sion|ment|ness|ity|ence|ance|ency|ancy|cy|ism)\b'
-    pattern = rf'({_abs}), ({_abs}),? and ({_abs})'
-    # Match against original text (with IGNORECASE) so emitted phrases are the verbatim
-    # input span — needed for grader's every-flag-block-contains-input-substring check.
-    matches = list(re.finditer(pattern, text, flags=re.IGNORECASE))
+    """Surface every recognized triad; density is reported separately."""
+    matches = extract_triad_candidates(text)
     count = len(matches)
     return {
         "text": "no-forced-triads",
         "passed": count == 0,
-        "matches": [m.group(0) for m in matches],
+        "matches": matches,
         "evidence": (
-            f"Found {count} abstract triad(s): {[m.group(0) for m in matches]}"
+            f"Found {count} triad(s): {matches}"
             if count > 0
             else "No forced triads"
         ),
@@ -1275,7 +1442,7 @@ def check_rhetorical_questions(text):
     count = len(matches)
     return {
         "text": "no-rhetorical-questions",
-        "passed": count < 2,
+        "passed": count < threshold_value("no-rhetorical-questions", "minimum_candidates", 2),
         "matches": matches,
         "evidence": (
             f"Found {count} mid-sentence rhetorical question(s): {matches[:3]}"
@@ -1288,16 +1455,32 @@ def check_rhetorical_questions(text):
 def check_list_density(text):
     """Detect excessive list-making (pattern 31)."""
     lines = text.strip().split('\n')
-    bullet_lines = sum(1 for line in lines if re.match(r'\s*[-*]\s', line) or re.match(r'\s*\d+\.\s', line))
+    item_pattern = re.compile(r'\s*(?:[-*]|\d+\.)\s')
+    item_lines = [line.strip() for line in lines if item_pattern.match(line)]
+    bullet_lines = len(item_lines)
+    list_blocks = 0
+    inside_block = False
+    for line in lines:
+        is_item = bool(item_pattern.match(line))
+        if is_item and not inside_block:
+            list_blocks += 1
+        if is_item:
+            inside_block = True
+        elif line.strip():
+            inside_block = False
     total_lines = max(len(lines), 1)
     ratio = bullet_lines / total_lines
+    threshold = CHECK_THRESHOLDS.get("no-excessive-lists", {})
+    minimum_items = threshold.get("minimum_items", 8)
+    minimum_blocks = threshold.get("minimum_blocks", 2)
+    flagged = ratio >= 0.3 or (bullet_lines >= minimum_items and list_blocks >= minimum_blocks)
     return {
         "text": "no-excessive-lists",
-        "passed": ratio < 0.3,
+        "passed": not flagged,
+        "matches": item_lines,
         "evidence": (
-            f"List ratio: {ratio:.0%} ({bullet_lines}/{total_lines} lines are bullets)"
-            if ratio >= 0.3
-            else f"List ratio: {ratio:.0%}"
+            f"List items: {bullet_lines} across {list_blocks} block(s); "
+            f"line ratio: {ratio:.0%} ({bullet_lines}/{total_lines})"
         ),
     }
 
@@ -1321,7 +1504,7 @@ def check_unicode_flair(text):
     findings = symbols + shortcodes
     return {
         "text": "no-unicode-flair",
-        "passed": len(findings) < 2,
+        "passed": len(findings) < threshold_value("no-unicode-flair", "minimum_candidates", 2),
         "matches": findings,
         "evidence": (
             f"Found {len(findings)} decorative symbol(s)/shortcode(s): {findings[:8]}"
@@ -1414,54 +1597,6 @@ def check_signposted_conclusions(text):
             f"Found {len(found)}: {found}"
             if found
             else "No signposted conclusions"
-        ),
-    }
-
-
-def check_markdown_headings(text):
-    """Detect markdown heading structure in prose (AI essays use ## sections)."""
-    headings = []
-    for match in re.finditer(r'^#{1,3}\s+.+', strip_front_matter(text), re.MULTILINE):
-        heading = match.group()
-        # Extracted source metadata often arrives as linked publication labels.
-        # Keep detecting article/essay section scaffolding, but do not punish
-        # archive chrome such as "### [Issue 194, Fall 2010](...)".
-        if re.match(r'^#{1,3}\s+\[[^\]]+\]\([^)]+\)\s*$', heading):
-            continue
-        headings.append(heading)
-
-    source = strip_front_matter(text)
-    source_lines = source.splitlines()
-    for index in range(len(source_lines) - 1):
-        if source_lines[index].strip() and re.match(r"^ {0,3}(?:=+|-+)\s*$", source_lines[index + 1]):
-            headings.append(source_lines[index].strip())
-
-    lines = source_lines
-    first_nonblank = next((idx for idx, line in enumerate(lines) if line.strip()), None)
-    if first_nonblank is not None and first_nonblank + 1 < len(lines):
-        title = lines[first_nonblank].strip()
-        followed_by_blank = not lines[first_nonblank + 1].strip()
-        words = re.findall(r"[A-Za-z][A-Za-z'-]*", title)
-        significant = [w for w in words if w.lower() not in {"a", "an", "and", "as", "at", "by", "for", "in", "of", "on", "or", "the", "to", "with"}]
-        title_case_words = sum(1 for w in significant if w[0].isupper())
-        looks_like_plain_title = (
-            followed_by_blank
-            and 3 <= len(words) <= 12
-            and len(title) <= 90
-            and not re.search(r"[.!?]$", title)
-            and not title.startswith(("[", "{", "("))
-            and title_case_words >= max(2, len(significant) - 1)
-        )
-        if looks_like_plain_title:
-            headings.append(title)
-    return {
-        "text": "no-markdown-headings",
-        "passed": len(headings) == 0,
-        "matches": headings,
-        "evidence": (
-            f"Found {len(headings)} heading(s): {[h[:50] for h in headings[:5]]}"
-            if headings
-            else "No headings"
         ),
     }
 
@@ -1680,6 +1815,48 @@ def check_paragraph_uniformity(text):
     }
 
 
+def _is_tidy_structural_core(sentence):
+    words = re.findall(r"\b[\w’'-]+\b", sentence)
+    if 4 <= len(words) <= 14 and TIDY_ABSTRACT_CLOSURE.search(sentence):
+        return True
+
+    if ";" not in sentence or not 4 <= len(words) <= 18:
+        return False
+    halves = sentence.rstrip(".!?").split(";")
+    if len(halves) != 2:
+        return False
+    for half in halves:
+        half_words = re.findall(r"\b[\w’'-]+\b", half)
+        if not 2 <= len(half_words) <= 8:
+            return False
+        linking_verb = TIDY_BALANCED_LINKING_VERB.search(half)
+        if linking_verb is None:
+            return False
+        subject_words = re.findall(r"\b[\w’'-]+\b", half[:linking_verb.start()])
+        if not 1 <= len(subject_words) <= 5:
+            return False
+        if {word.casefold() for word in subject_words} & TIDY_SUBORDINATORS:
+            return False
+    return True
+
+
+def tidy_structural_ending_matches(sentence):
+    """Return exact compact closures, including closures inside quotations."""
+    matches = []
+    if _is_tidy_structural_core(sentence):
+        matches.append(sentence.strip())
+    for quoted in re.findall(r'[“"]([^”"]+)[”"]', sentence):
+        candidate = quoted.strip()
+        if _is_tidy_structural_core(candidate) and candidate not in matches:
+            matches.append(candidate)
+    return matches
+
+
+def is_tidy_structural_ending(sentence):
+    """Recognise compact interpretive closures without judging their authorship."""
+    return bool(tidy_structural_ending_matches(sentence))
+
+
 def check_tidy_paragraph_endings(text):
     """Detect paragraphs that land with generic miniature conclusions."""
     endings = []
@@ -1688,14 +1865,21 @@ def check_tidy_paragraph_endings(text):
         sentences = split_sentences(para)
         if not sentences:
             continue
-        last = sentences[-1].lower()
+        last_sentence = sentences[-1]
+        last = last_sentence.lower()
+        structural_matches = tidy_structural_ending_matches(last_sentence)
+        matched_stock_pattern = False
         for pat in TIDY_PARAGRAPH_ENDINGS:
             if re.search(pat, last):
-                endings.append(sentences[-1][:90])
+                matched_stock_pattern = True
                 break
+        if structural_matches:
+            endings.extend(structural_matches)
+        elif matched_stock_pattern:
+            endings.append(last_sentence[:90])
     return {
         "text": "no-tidy-paragraph-endings",
-        "passed": len(endings) < 3,
+        "passed": len(endings) < threshold_value("no-tidy-paragraph-endings", "minimum_candidates", 3),
         "matches": endings,
         "evidence": (
             f"Found {len(endings)} tidy paragraph ending(s): {endings[:5]}"
@@ -1710,7 +1894,7 @@ def check_bland_critical_template(text):
     count, matches = count_pattern_matches(text, BLAND_CRITICAL_TEMPLATE)
     return {
         "text": "no-bland-critical-template",
-        "passed": count < 3,
+        "passed": count < threshold_value("no-bland-critical-template", "minimum_candidates", 3),
         "evidence": (
             f"Found {count} bland critical template phrase(s): {matches[:6]}"
             if count >= 3
@@ -1724,7 +1908,7 @@ def check_rubric_echoing(text):
     count, matches = count_pattern_matches(text, RUBRIC_ECHO_PATTERNS)
     return {
         "text": "no-rubric-echoing",
-        "passed": count < 3,
+        "passed": count < threshold_value("no-rubric-echoing", "minimum_candidates", 3),
         "evidence": (
             f"Found {count} rubric echo phrase(s): {matches[:5]}"
             if count >= 3
@@ -1736,28 +1920,23 @@ def check_rubric_echoing(text):
 def check_triad_density(text):
     """Detect high density of three-item lists ('X, Y, and/or Z') regardless of word type."""
     words = text.split()
-    if len(words) < 300:
-        return {
-            "text": "no-triad-density",
-            "passed": True,
-            "evidence": f"Skipped: short text ({len(words)} words, need 300+)",
-        }
-    # Each item: 1-4 words (handles "peer learning", "decision-making structures")
-    _item = r'\w+(?:[- ]\w+){0,3}'
-    pattern = rf'({_item}),\s+({_item}),?\s+(?:and|or)\s+({_item})'
-    # Match against original text (with IGNORECASE) so emitted phrases are the verbatim
-    # input span — needed for grader's every-flag-block-contains-input-substring check.
-    matches = list(re.finditer(pattern, text, flags=re.IGNORECASE))
-    count = len(matches)
-    match_strs = [m.group(0) for m in matches]
+    match_strs = extract_triad_candidates(text)
+    count = len(match_strs)
+    minimum_words = threshold_value("no-triad-density", "minimum_words", 300)
+    minimum_candidates = threshold_value("no-triad-density", "minimum_candidates", 4)
+    eligible = len(words) >= minimum_words
     return {
         "text": "no-triad-density",
-        "passed": count < 4,
+        "passed": not eligible or count < minimum_candidates,
+        "candidate_count": count,
         "matches": match_strs,
         "evidence": (
             f"Found {count} triad(s): {match_strs}"
-            if count >= 4
-            else f"Triads: {count}"
+            if eligible and count >= minimum_candidates
+            else (
+                f"Triads: {count}; below minimum length ({len(words)}/{minimum_words} words)"
+                if not eligible else f"Triads: {count}"
+            )
         ),
     }
 
@@ -1860,7 +2039,7 @@ def check_hedging_density(text):
     # Three distinct hedges in one short passage already form a stacked signal.
     return {
         "text": "no-excessive-hedging",
-        "passed": total_matches < 3,
+        "passed": total_matches < threshold_value("no-excessive-hedging", "minimum_candidates", 3),
         "matches": all_found,
         "evidence": (
             f"Found {total_matches} hedging constructions: {all_found[:5]}"
@@ -1936,7 +2115,7 @@ def check_boldface_overuse(text):
             matches.append(m)
     return {
         "text": "no-boldface-overuse",
-        "passed": total < 4,
+        "passed": total < threshold_value("no-boldface-overuse", "minimum_candidates", 4),
         "matches": matches,
         "evidence": (
             f"Found {total} bold span(s) in prose: {matches[:5]}"
@@ -1955,7 +2134,7 @@ def check_inline_header_lists(text):
     matches = header_in_list.findall(text)
     return {
         "text": "no-inline-header-lists",
-        "passed": len(matches) < 2,
+        "passed": len(matches) < threshold_value("no-inline-header-lists", "minimum_candidates", 2),
         "matches": matches,
         "evidence": (
             f"Found {len(matches)} list item(s) with bolded headers"
@@ -2069,7 +2248,6 @@ ALL_CHECKS = {
     "no-dramatic-transitions": check_dramatic_transitions,
     "no-formulaic-openers": check_formulaic_openers,
     "no-signposted-conclusions": check_signposted_conclusions,
-    "no-markdown-headings": check_markdown_headings,
     "no-parenthetical-headings": check_parenthetical_headings,
     "no-corporate-ai-speak": check_corporate_ai_speak,
     "no-this-chains": check_this_chains,
@@ -2108,12 +2286,27 @@ LEXICAL_CHECKS = {
     "no-compound-modifier-density", "no-knowledge-cutoff-disclaimers",
 }
 
+# These lexical checks intentionally recognise constructions inside attributed
+# or inline quotations.  Candidate records retain `quoted: true` so the report
+# can distinguish occurrence from authorship.
+QUOTE_AWARE_LEXICAL_CHECKS = {"no-tidy-paragraph-endings"}
+
+STATISTICAL_CHECKS = {
+    "sentence-length-variance", "no-excessive-lists", "no-this-chains",
+    "no-countdown-negation", "no-negation-density",
+    "paragraph-length-uniformity", "vocabulary-diversity",
+    "no-section-scaffolding", "no-compound-modifier-density",
+}
+
+AGGREGATE_CHECKS = {"overall-signal-stacking"}
+
 CHECK_THRESHOLDS = {
     "overall-signal-stacking": 4,
     "no-staccato-sequences": {"minimum_run": 3},
     "no-soft-scaffolding": {"minimum_candidates": 2},
     "no-orphaned-demonstratives": {"minimum_candidates": 3},
     "no-rhetorical-questions": {"minimum_candidates": 2},
+    "no-excessive-lists": {"minimum_items": 8, "minimum_blocks": 2, "minimum_line_ratio": 0.3},
     "no-unicode-flair": {"minimum_candidates": 2},
     "no-excessive-hedging": {"minimum_candidates": 3},
     "paragraph-length-uniformity": {"minimum_paragraphs": 7, "maximum_cv": 0.18},
@@ -2128,8 +2321,8 @@ CHECK_THRESHOLDS = {
 
 
 CONTEXT_GATED_CHECKS = {
-    "recipe": {"no-markdown-headings", "no-excessive-lists", "no-signposted-conclusions"},
-    "technical_documentation": {"no-markdown-headings", "no-excessive-lists", "no-signposted-conclusions"},
+    "recipe": {"no-excessive-lists", "no-signposted-conclusions"},
+    "technical_documentation": {"no-excessive-lists", "no-signposted-conclusions"},
     "academic": {"no-excessive-hedging"},
     "formal_report": {"no-em-dashes", "no-signposted-conclusions"},
     "dialogue_or_fiction": {"no-em-dashes", "no-anaphora"},
@@ -2174,10 +2367,38 @@ def apply_context_gate(check_id, result, original_text):
 
 def _wrap_check(check_id, check):
     def wrapped(text):
-        check_text = mask_non_prose(text) if check_id in LEXICAL_CHECKS else text
+        if check_id in QUOTE_AWARE_LEXICAL_CHECKS:
+            check_text = mask_non_prose_preserving_quotes(text)
+        elif check_id in LEXICAL_CHECKS:
+            check_text = mask_non_prose(text)
+        else:
+            check_text = text
         result = enrich_check_result(check(check_text), text)
         result["threshold"] = CHECK_THRESHOLDS.get(check_id)
-        return apply_context_gate(check_id, result, text)
+        if check_id in AGGREGATE_CHECKS:
+            result["evidence_type"] = "aggregate"
+            result["component_signals"] = result.get("components", [])
+            result["component_count"] = len(result["component_signals"])
+        elif check_id in STATISTICAL_CHECKS:
+            result["evidence_type"] = "statistical"
+            result["metric_value"] = (
+                result.get("metric")
+                if result.get("metric") is not None
+                else result.get("candidate_count")
+            )
+            result["sample_size"] = len(re.findall(r"\b\w+\b", check_text))
+        else:
+            result["evidence_type"] = "lexical"
+            result["spans"] = result["candidates"]
+            result["match_count"] = result["candidate_count"]
+        gated = apply_context_gate(check_id, result, text)
+        gated["context_gate"] = {
+            "applied": bool(gated.get("context_suppressed")),
+            "raw_evidence": result.get("evidence"),
+            "suppression_reason": gated.get("context_reason"),
+            "effective_threshold": gated.get("threshold"),
+        }
+        return gated
 
     wrapped.__name__ = check.__name__
     wrapped.__doc__ = check.__doc__

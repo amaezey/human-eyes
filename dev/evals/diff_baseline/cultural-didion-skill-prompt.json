@@ -1,29 +1,27 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 10
+      "flagged": 6
     },
     "programmatic": {
       "by_category": {
-        "Filler and hedging": 3,
+        "Filler and hedging": 2,
         "Language and grammar": 2,
-        "Signal stacking": 1,
-        "Style": 2,
-        "Voice and register": 2
+        "Style": 1,
+        "Voice and register": 1
       },
       "by_severity": {
-        "context_warning": 7,
+        "context_warning": 6,
         "hard_fail": 0,
-        "strong_warning": 3
+        "strong_warning": 0
       },
       "signal_stacking": {
         "components": [
-          "contrived contrast framing",
-          "headings in prose"
+          "contrived contrast framing"
         ],
-        "score": 4,
+        "score": 2,
         "threshold": 4,
-        "triggered": true,
+        "triggered": false,
         "vocabulary_points": 0
       }
     },
@@ -50,14 +48,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No em dashes found",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No em dashes found",
           "evidence_role": "punctuation_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit"
           ],
           "guidance": "Treat as a strong 2026 AI-style signal. May be preserved only at Balanced depth with explicit disclosure; All requires removal.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -75,13 +89,29 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "evidence": "Max AI words per paragraph: 1 (3 total in text)",
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max AI words per paragraph: 1 (1 total in text)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Max AI words per paragraph: 1 (1 total in text)",
           "evidence_role": "vocabulary_cluster",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix clustered generic AI vocabulary; individual words may be fine in context.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -97,18 +127,33 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [
-          "scene lands"
-        ],
+        "quoted_phrases": [],
         "raw": {
-          "evidence": "Found 1 nonliteral land/surface construction(s): ['scene lands']",
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No nonliteral land/surface constructions found",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No nonliteral land/surface constructions found",
           "evidence_role": "metaphor_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "synthetic_significance"
           ],
           "guidance": "Fix nonliteral land/surface phrasing; replace with the concrete action or claim.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -117,33 +162,49 @@
       ],
       "id": "no-nonliteral-land-surface",
       "severity": "strong_warning",
-      "status": "flagged"
+      "status": "clear"
     },
     {
       "category": "Signal stacking",
       "evidence": {
         "counts": {
-          "score": 4,
+          "score": 2,
           "threshold": 4
         },
         "locations": [],
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "components": [
-            "contrived contrast framing",
-            "headings in prose"
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "component_count": 1,
+          "component_signals": [
+            "contrived contrast framing"
           ],
-          "evidence": "Overall signal stacking 4/4 from [contrived contrast framing, headings in prose]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.0/1000, sample=['lies', 'need', 'offers', 'deeper', 'harness', 'insights', 'precise', 'research', 'seeks', 'valuable']",
+          "components": [
+            "contrived contrast framing"
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": 4,
+            "raw_evidence": "Overall signal stacking 2/4 from [contrived contrast framing]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.0/1000",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Overall signal stacking 2/4 from [contrived contrast framing]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.0/1000",
           "evidence_role": "signal_stacking",
+          "evidence_type": "aggregate",
           "failure_modes": [
             "generic_abstraction",
             "frictionless_structure"
           ],
           "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict.",
-          "score": 4,
+          "score": 2,
           "severity": "context_warning",
           "threshold": 4,
+          "threshold_met": false,
           "vocabulary_signal_stacking": {
             "gptzero_matches": [],
             "kobak_style_density": 8.009858287122611,
@@ -172,7 +233,7 @@
       ],
       "id": "overall-signal-stacking",
       "severity": "context_warning",
-      "status": "flagged"
+      "status": "clear"
     },
     {
       "category": "Structural tells",
@@ -182,13 +243,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No manufactured insight phrases",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No manufactured insight phrases",
           "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -206,15 +284,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No performed-candour frames",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No performed-candour frames",
           "evidence_role": "candour_frame",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure",
             "generic_abstraction"
           ],
           "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -238,20 +332,90 @@
           "Then he is dead."
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 4,
+          "candidates": [
+            {
+              "end": 1791,
+              "quoted": false,
+              "start": 1767,
+              "text": "They sit down to dinner."
+            },
+            {
+              "end": 1807,
+              "quoted": false,
+              "start": 1792,
+              "text": "He has a drink."
+            },
+            {
+              "end": 1835,
+              "quoted": false,
+              "start": 1808,
+              "text": "He says something ordinary."
+            },
+            {
+              "end": 1852,
+              "quoted": false,
+              "start": 1836,
+              "text": "Then he is dead."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_run": 3
+            },
+            "raw_evidence": "Found sequence of 4 consecutive short sentences",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found sequence of 4 consecutive short sentences",
           "evidence_role": "rhythm_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit",
             "frictionless_structure"
           ],
           "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
+          "match_count": 4,
           "matches": [
             "They sit down to dinner.",
             "He has a drink.",
             "He says something ordinary.",
             "Then he is dead."
           ],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 1791,
+              "quoted": false,
+              "start": 1767,
+              "text": "They sit down to dinner."
+            },
+            {
+              "end": 1807,
+              "quoted": false,
+              "start": 1792,
+              "text": "He has a drink."
+            },
+            {
+              "end": 1835,
+              "quoted": false,
+              "start": 1808,
+              "text": "He says something ordinary."
+            },
+            {
+              "end": 1852,
+              "quoted": false,
+              "start": 1836,
+              "text": "Then he is dead."
+            }
+          ],
+          "threshold": {
+            "minimum_run": 3
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -277,13 +441,63 @@
           "She returns to the details because details imply sequence, and sequence implies cause."
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 6,
+          "candidates": [
+            {
+              "end": 2168,
+              "quoted": false,
+              "start": 2079,
+              "text": "She remembers the fire, the table, the salad, the ambulance, the hospital, the paperwork."
+            },
+            {
+              "end": 2243,
+              "quoted": false,
+              "start": 2169,
+              "text": "She reconstructs the event not only as a grieving widow but as a reporter."
+            },
+            {
+              "end": 2267,
+              "quoted": false,
+              "start": 2244,
+              "text": "She seeks the timeline."
+            },
+            {
+              "end": 2302,
+              "quoted": false,
+              "start": 2268,
+              "text": "She wants the medical explanation."
+            },
+            {
+              "end": 2325,
+              "quoted": false,
+              "start": 2303,
+              "text": "She reads the records."
+            },
+            {
+              "end": 2412,
+              "quoted": false,
+              "start": 2326,
+              "text": "She returns to the details because details imply sequence, and sequence implies cause."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 6 consecutive sentences starting with 'she'",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found 6 consecutive sentences starting with 'she'",
           "evidence_role": "rhythm_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit",
             "frictionless_structure"
           ],
           "guidance": "Fix mechanical repetition; recommend preserving deliberate rhetoric or literary patterning.",
+          "match_count": 6,
           "matches": [
             "She remembers the fire, the table, the salad, the ambulance, the hospital, the paperwork.",
             "She reconstructs the event not only as a grieving widow but as a reporter.",
@@ -292,7 +506,47 @@
             "She reads the records.",
             "She returns to the details because details imply sequence, and sequence implies cause."
           ],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 2168,
+              "quoted": false,
+              "start": 2079,
+              "text": "She remembers the fire, the table, the salad, the ambulance, the hospital, the paperwork."
+            },
+            {
+              "end": 2243,
+              "quoted": false,
+              "start": 2169,
+              "text": "She reconstructs the event not only as a grieving widow but as a reporter."
+            },
+            {
+              "end": 2267,
+              "quoted": false,
+              "start": 2244,
+              "text": "She seeks the timeline."
+            },
+            {
+              "end": 2302,
+              "quoted": false,
+              "start": 2268,
+              "text": "She wants the medical explanation."
+            },
+            {
+              "end": 2325,
+              "quoted": false,
+              "start": 2303,
+              "text": "She reads the records."
+            },
+            {
+              "end": 2412,
+              "quoted": false,
+              "start": 2326,
+              "text": "She returns to the details because details imply sequence, and sequence implies cause."
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -311,13 +565,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No collaborative artifacts",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No collaborative artifacts",
           "evidence_role": "assistant_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue"
           ],
           "guidance": "Fix at every depth; this is assistant residue, not authorial style.",
-          "severity": "hard_fail"
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -354,12 +625,134 @@
           "Didion\u2019s achievement is not that she makes grief intelligible."
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 18,
+          "candidates": [
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "Inputs: Input file: /Users/mae/Documents/human-eyes/dev/evals/samples/generated-ai/02-cultural-didion.md ```markdown # Why The year of magical thinking should be reread every decade Joan Didion\u2019s The year of magical thinking is often described as a grief memoir, which is accurate but insufficient."
+            },
+            {
+              "end": 970,
+              "quoted": false,
+              "start": 834,
+              "text": "Its subject is the year after the sudden death of Didion\u2019s husband, John Gregory Dunne, while their daughter, Quintana, was gravely ill."
+            },
+            {
+              "end": 1465,
+              "quoted": false,
+              "start": 1386,
+              "text": "Not because its meaning changes, exactly, but because the reader\u2019s defences do."
+            },
+            {
+              "end": 2053,
+              "quoted": false,
+              "start": 1967,
+              "text": "Didion\u2019s account is precise because precision is the only instrument she still trusts."
+            },
+            {
+              "end": 2604,
+              "quoted": false,
+              "start": 2533,
+              "text": "In early adulthood, Didion\u2019s forensic attention can look like strength."
+            },
+            {
+              "end": 2970,
+              "quoted": false,
+              "start": 2921,
+              "text": "The title\u2019s \u201cmagical thinking\u201d is not ornamental."
+            },
+            {
+              "end": 3296,
+              "quoted": false,
+              "start": 3215,
+              "text": "This is the book\u2019s most famous example because it is so small and so devastating."
+            },
+            {
+              "end": 4032,
+              "quoted": false,
+              "start": 3947,
+              "text": "Didion\u2019s great cultural importance lies partly in her refusal to sentimentalise this."
+            },
+            {
+              "end": 4996,
+              "quoted": false,
+              "start": 4957,
+              "text": "The \u201cvortex effect\u201d is central to this."
+            },
+            {
+              "end": 5699,
+              "quoted": false,
+              "start": 5578,
+              "text": "Later, the book\u2019s real subject may appear to be marriage: not romance as an event, but intimacy as accumulated reference."
+            },
+            {
+              "end": 5807,
+              "quoted": false,
+              "start": 5700,
+              "text": "Didion and Dunne\u2019s marriage was also a working partnership, an editorial relationship, a long conversation."
+            },
+            {
+              "end": 5965,
+              "quoted": false,
+              "start": 5921,
+              "text": "That is one of the book\u2019s sharpest insights."
+            },
+            {
+              "end": 6088,
+              "quoted": false,
+              "start": 6025,
+              "text": "John had been present for the formation of Didion\u2019s adult life."
+            },
+            {
+              "end": 6688,
+              "quoted": false,
+              "start": 6498,
+              "text": "Quintana\u2019s illness means Didion is navigating intensive care, diagnoses, specialist language, medical uncertainty and bureaucratic routines at the same time as she is absorbing John\u2019s death."
+            },
+            {
+              "end": 7514,
+              "quoted": false,
+              "start": 7465,
+              "text": "Didion\u2019s style is inseparable from this argument."
+            },
+            {
+              "end": 8086,
+              "quoted": false,
+              "start": 8029,
+              "text": "Each decade brings the reader closer to the book\u2019s facts."
+            },
+            {
+              "end": 8444,
+              "quoted": false,
+              "start": 8391,
+              "text": "Didion\u2019s book waits for the reader at each threshold."
+            },
+            {
+              "end": 9405,
+              "quoted": false,
+              "start": 9343,
+              "text": "Didion\u2019s achievement is not that she makes grief intelligible."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 22 curly quote(s)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found 22 curly quote(s)",
           "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit"
           ],
           "guidance": "Normalise in All/plain output; recommend preserving in sourced literary or typographic text.",
+          "match_count": 18,
           "matches": [
             "Inputs: Input file: /Users/mae/Documents/human-eyes/dev/evals/samples/generated-ai/02-cultural-didion.md ```markdown # Why The year of magical thinking should be reread every decade Joan Didion\u2019s The year of magical thinking is often described as a grief memoir, which is accurate but insufficient.",
             "Its subject is the year after the sudden death of Didion\u2019s husband, John Gregory Dunne, while their daughter, Quintana, was gravely ill.",
@@ -380,7 +773,119 @@
             "Didion\u2019s book waits for the reader at each threshold.",
             "Didion\u2019s achievement is not that she makes grief intelligible."
           ],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "Inputs: Input file: /Users/mae/Documents/human-eyes/dev/evals/samples/generated-ai/02-cultural-didion.md ```markdown # Why The year of magical thinking should be reread every decade Joan Didion\u2019s The year of magical thinking is often described as a grief memoir, which is accurate but insufficient."
+            },
+            {
+              "end": 970,
+              "quoted": false,
+              "start": 834,
+              "text": "Its subject is the year after the sudden death of Didion\u2019s husband, John Gregory Dunne, while their daughter, Quintana, was gravely ill."
+            },
+            {
+              "end": 1465,
+              "quoted": false,
+              "start": 1386,
+              "text": "Not because its meaning changes, exactly, but because the reader\u2019s defences do."
+            },
+            {
+              "end": 2053,
+              "quoted": false,
+              "start": 1967,
+              "text": "Didion\u2019s account is precise because precision is the only instrument she still trusts."
+            },
+            {
+              "end": 2604,
+              "quoted": false,
+              "start": 2533,
+              "text": "In early adulthood, Didion\u2019s forensic attention can look like strength."
+            },
+            {
+              "end": 2970,
+              "quoted": false,
+              "start": 2921,
+              "text": "The title\u2019s \u201cmagical thinking\u201d is not ornamental."
+            },
+            {
+              "end": 3296,
+              "quoted": false,
+              "start": 3215,
+              "text": "This is the book\u2019s most famous example because it is so small and so devastating."
+            },
+            {
+              "end": 4032,
+              "quoted": false,
+              "start": 3947,
+              "text": "Didion\u2019s great cultural importance lies partly in her refusal to sentimentalise this."
+            },
+            {
+              "end": 4996,
+              "quoted": false,
+              "start": 4957,
+              "text": "The \u201cvortex effect\u201d is central to this."
+            },
+            {
+              "end": 5699,
+              "quoted": false,
+              "start": 5578,
+              "text": "Later, the book\u2019s real subject may appear to be marriage: not romance as an event, but intimacy as accumulated reference."
+            },
+            {
+              "end": 5807,
+              "quoted": false,
+              "start": 5700,
+              "text": "Didion and Dunne\u2019s marriage was also a working partnership, an editorial relationship, a long conversation."
+            },
+            {
+              "end": 5965,
+              "quoted": false,
+              "start": 5921,
+              "text": "That is one of the book\u2019s sharpest insights."
+            },
+            {
+              "end": 6088,
+              "quoted": false,
+              "start": 6025,
+              "text": "John had been present for the formation of Didion\u2019s adult life."
+            },
+            {
+              "end": 6688,
+              "quoted": false,
+              "start": 6498,
+              "text": "Quintana\u2019s illness means Didion is navigating intensive care, diagnoses, specialist language, medical uncertainty and bureaucratic routines at the same time as she is absorbing John\u2019s death."
+            },
+            {
+              "end": 7514,
+              "quoted": false,
+              "start": 7465,
+              "text": "Didion\u2019s style is inseparable from this argument."
+            },
+            {
+              "end": 8086,
+              "quoted": false,
+              "start": 8029,
+              "text": "Each decade brings the reader closer to the book\u2019s facts."
+            },
+            {
+              "end": 8444,
+              "quoted": false,
+              "start": 8391,
+              "text": "Didion\u2019s book waits for the reader at each threshold."
+            },
+            {
+              "end": 9405,
+              "quoted": false,
+              "start": 9343,
+              "text": "Didion\u2019s achievement is not that she makes grief intelligible."
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -398,14 +903,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Sentence length stdev: 7.0 (target: >4)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Sentence length stdev: 7.0 (target: >4)",
           "evidence_role": "rhythm_signal",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -424,14 +945,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No promotional language",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No promotional language",
           "evidence_role": "hype_language",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "synthetic_significance"
           ],
           "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -450,13 +988,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No significance inflation",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No significance inflation",
           "evidence_role": "importance_inflation",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix inflated importance unless the source genuinely argues significance.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -472,24 +1027,32 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [
-          "not only as a grieving widow but",
-          "not merely background. They expose the limits of expertise. Doctors know things Didion does not know, but",
-          "are not merely background. They expose the limits of expertise. Doctors know things Didion does not know, but"
-        ],
+        "quoted_phrases": [],
         "raw": {
-          "evidence": "Found 3 contrived contrast/reframe pattern(s)",
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No negative parallelisms or contrived reframes",
           "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced.",
-          "matches": [
-            "not only as a grieving widow but",
-            "not merely background. They expose the limits of expertise. Doctors know things Didion does not know, but",
-            "are not merely background. They expose the limits of expertise. Doctors know things Didion does not know, but"
-          ],
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -497,7 +1060,7 @@
       ],
       "id": "no-negative-parallelisms",
       "severity": "strong_warning",
-      "status": "flagged"
+      "status": "clear"
     },
     {
       "category": "Language and grammar",
@@ -507,14 +1070,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No copula avoidance",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No copula avoidance",
           "evidence_role": "grammar_substitution",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "generic_abstraction"
           ],
           "guidance": "Usually simplify at Balanced and All; recommend preserving if the construction is idiomatic or technical.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -531,17 +1111,32 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [
-          "is often described as"
-        ],
+        "quoted_phrases": [],
         "raw": {
-          "evidence": "Found 1: ['is often described as']",
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No filler phrases",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No filler phrases",
           "evidence_role": "filler_phrase",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix stock filler at Balanced and All; at Balanced, disclose and remove unless it belongs to quoted or intentionally casual voice.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -549,7 +1144,7 @@
       ],
       "id": "no-filler-phrases",
       "severity": "strong_warning",
-      "status": "flagged"
+      "status": "clear"
     },
     {
       "category": "Filler and hedging",
@@ -559,14 +1154,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No generic conclusions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No generic conclusions",
           "evidence_role": "generic_closure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue",
             "synthetic_significance"
           ],
           "guidance": "Fix at every depth unless quoted from source text.",
-          "severity": "hard_fail"
+          "match_count": 0,
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -585,13 +1196,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No false concession hedges",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No false concession hedges",
           "evidence_role": "stance_erasure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure"
           ],
           "guidance": "Fix fake both-sides framing at Balanced and All; preserve only if the piece actually argues both positions with evidence.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -609,13 +1237,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No placeholder residue",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No placeholder residue",
           "evidence_role": "template_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue"
           ],
           "guidance": "Fix at every depth; unfilled placeholders are generated/template residue.",
-          "severity": "hard_fail"
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -633,13 +1278,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "Soft scaffold phrases: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Soft scaffold phrases: 0",
           "evidence_role": "explainer_scaffold",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Fix at Balanced and All; these phrases usually mark generated explainer structure rather than content.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -657,14 +1323,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Vague demonstrative subjects: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Vague demonstrative subjects: 0",
           "evidence_role": "sentence_subject",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure",
             "generic_abstraction"
           ],
           "guidance": "Review repeated 'This/That highlights...' starts; replace vague subjects with concrete nouns when the antecedent is unclear.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -681,16 +1368,135 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "medical language, social performance, and the collapse",
+          "in hospital, Didion and Dunne return",
+          "her wiser, kinder, or more authentic",
+          "specialist language, medical uncertainty and bureaucratic routines",
+          "particular class world, in the medical and literary culture",
+          "manners, memory and routine",
+          "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
+        ],
         "raw": {
-          "evidence": "No forced triads",
+          "aggregate_finding": false,
+          "candidate_count": 7,
+          "candidates": [
+            {
+              "end": 815,
+              "quoted": false,
+              "start": 761,
+              "text": "medical language, social performance, and the collapse"
+            },
+            {
+              "end": 1737,
+              "quoted": false,
+              "start": 1701,
+              "text": "in hospital, Didion and Dunne return"
+            },
+            {
+              "end": 4146,
+              "quoted": false,
+              "start": 4110,
+              "text": "her wiser, kinder, or more authentic"
+            },
+            {
+              "end": 6637,
+              "quoted": false,
+              "start": 6571,
+              "text": "specialist language, medical uncertainty and bureaucratic routines"
+            },
+            {
+              "end": 8673,
+              "quoted": false,
+              "start": 8614,
+              "text": "particular class world, in the medical and literary culture"
+            },
+            {
+              "end": 9552,
+              "quoted": false,
+              "start": 9525,
+              "text": "manners, memory and routine"
+            },
+            {
+              "end": 9948,
+              "quoted": false,
+              "start": 9847,
+              "text": "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 7 triad(s): ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 7 triad(s): ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
           "evidence_role": "list_rhythm",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Fix decorative triads; recommend preserving meaningful lists and deliberate rhetoric.",
-          "severity": "context_warning"
+          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+          "match_count": 7,
+          "matches": [
+            "medical language, social performance, and the collapse",
+            "in hospital, Didion and Dunne return",
+            "her wiser, kinder, or more authentic",
+            "specialist language, medical uncertainty and bureaucratic routines",
+            "particular class world, in the medical and literary culture",
+            "manners, memory and routine",
+            "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 815,
+              "quoted": false,
+              "start": 761,
+              "text": "medical language, social performance, and the collapse"
+            },
+            {
+              "end": 1737,
+              "quoted": false,
+              "start": 1701,
+              "text": "in hospital, Didion and Dunne return"
+            },
+            {
+              "end": 4146,
+              "quoted": false,
+              "start": 4110,
+              "text": "her wiser, kinder, or more authentic"
+            },
+            {
+              "end": 6637,
+              "quoted": false,
+              "start": 6571,
+              "text": "specialist language, medical uncertainty and bureaucratic routines"
+            },
+            {
+              "end": 8673,
+              "quoted": false,
+              "start": 8614,
+              "text": "particular class world, in the medical and literary culture"
+            },
+            {
+              "end": 9552,
+              "quoted": false,
+              "start": 9525,
+              "text": "manners, memory and routine"
+            },
+            {
+              "end": 9948,
+              "quoted": false,
+              "start": 9847,
+              "text": "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -699,7 +1505,7 @@
       ],
       "id": "no-forced-triads",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Content patterns",
@@ -709,14 +1515,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No superficial -ing phrases",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No superficial -ing phrases",
           "evidence_role": "analysis_substitution",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -734,14 +1556,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Ghost/spectral words: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Ghost/spectral words: 0",
           "evidence_role": "atmospheric_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "genre_misfit"
           ],
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -760,15 +1598,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Quietness words: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Quietness words: 0",
           "evidence_role": "atmospheric_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "genre_misfit"
           ],
           "guidance": "Fix generic quietness mood; recommend preserving if quietness is the actual subject or voice.",
+          "match_count": 0,
           "matches": [],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -787,14 +1641,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "Rhetorical questions: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Rhetorical questions: 0",
           "evidence_role": "rhetorical_template",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -813,14 +1688,39 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "evidence": "List ratio: 0%",
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_blocks": 2,
+              "minimum_items": 8,
+              "minimum_line_ratio": 0.3
+            },
+            "raw_evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/59)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/59)",
           "evidence_role": "listification",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix unnecessary listification; recommend preserving reference, instructional, or interview structure.",
-          "severity": "context_warning"
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_blocks": 2,
+            "minimum_items": 8,
+            "minimum_line_ratio": 0.3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -839,14 +1739,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "Decorative symbols/shortcodes: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Decorative symbols/shortcodes: 0",
           "evidence_role": "formatting_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue",
             "genre_misfit"
           ],
           "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -865,14 +1786,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No dramatic transitions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No dramatic transitions",
           "evidence_role": "narrative_template",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "genre_misfit"
           ],
           "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -891,14 +1828,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No formulaic openers",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No formulaic openers",
           "evidence_role": "formulaic_structure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it matches the source genre.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -917,14 +1871,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No signposted conclusions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No signposted conclusions",
           "evidence_role": "structural_signpost",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix generic signposts in prose; recommend preserving academic/instructional structure when useful.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -941,45 +1912,33 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [
-          "# Why The year of magical thinking should be rerea"
-        ],
-        "raw": {
-          "evidence": "Found 1 heading(s): ['# Why The year of magical thinking should be rerea']",
-          "evidence_role": "formatting_signal",
-          "failure_modes": [
-            "frictionless_structure",
-            "genre_misfit"
-          ],
-          "guidance": "Fix markdown headings and plain title headings when prose should flow; recommend preserving web articles, guides, and reference docs.",
-          "severity": "context_warning"
-        }
-      },
-      "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
-      ],
-      "id": "no-markdown-headings",
-      "severity": "context_warning",
-      "status": "flagged"
-    },
-    {
-      "category": "Style",
-      "evidence": {
-        "counts": {},
-        "locations": [],
-        "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No parenthetical headings",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No parenthetical headings",
           "evidence_role": "heading_structure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body.",
+          "match_count": 0,
           "matches": [],
-          "severity": "hard_fail"
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -998,13 +1957,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No corporate AI speak",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No corporate AI speak",
           "evidence_role": "domain_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix at every depth; recommend preserving only when quoting corporate source language.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1022,14 +1998,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max 'This [verb]' run: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Max 'This [verb]' run: 0",
           "evidence_role": "sentence_subject",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1048,13 +2040,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "evidence": "Hedging constructions: 1",
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Hedging constructions: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Hedging constructions: 0",
           "evidence_role": "stance_erasure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure"
           ],
           "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1072,14 +2085,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No countdown negation",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No countdown negation",
           "evidence_role": "rhetorical_pattern",
+          "evidence_type": "statistical",
           "failure_modes": [
             "synthetic_significance",
             "frictionless_structure"
           ],
           "guidance": "Fix generic reveal structures; recommend preserving deliberate rhetoric only with strong reason.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1119,8 +2148,141 @@
           "Didion\u2019s achievement is not that she makes grief intelligible."
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 20,
+          "candidates": [
+            {
+              "end": 238,
+              "quoted": false,
+              "start": 209,
+              "text": "Do not edit repository files."
+            },
+            {
+              "end": 257,
+              "quoted": false,
+              "start": 239,
+              "text": "Do not save files."
+            },
+            {
+              "end": 352,
+              "quoted": false,
+              "start": 313,
+              "text": "Do not mention this evaluation harness."
+            },
+            {
+              "end": 1607,
+              "quoted": false,
+              "start": 1552,
+              "text": "Didion does not stage grief as an emotional revelation."
+            },
+            {
+              "end": 2970,
+              "quoted": false,
+              "start": 2921,
+              "text": "The title\u2019s \u201cmagical thinking\u201d is not ornamental."
+            },
+            {
+              "end": 3331,
+              "quoted": false,
+              "start": 3297,
+              "text": "It is not an extravagant delusion."
+            },
+            {
+              "end": 3757,
+              "quoted": false,
+              "start": 3708,
+              "text": "Grief does not always announce itself as despair."
+            },
+            {
+              "end": 3884,
+              "quoted": false,
+              "start": 3758,
+              "text": "It can appear as a logistical hesitation: keep the shoes, preserve the room, do not cancel the account, do not move the glass."
+            },
+            {
+              "end": 4080,
+              "quoted": false,
+              "start": 4033,
+              "text": "She does not turn grief into moral improvement."
+            },
+            {
+              "end": 4147,
+              "quoted": false,
+              "start": 4081,
+              "text": "She does not claim loss made her wiser, kinder, or more authentic."
+            },
+            {
+              "end": 4257,
+              "quoted": false,
+              "start": 4225,
+              "text": "She is not interested in uplift."
+            },
+            {
+              "end": 5215,
+              "quoted": false,
+              "start": 5179,
+              "text": "These are not decorative flashbacks."
+            },
+            {
+              "end": 5342,
+              "quoted": false,
+              "start": 5314,
+              "text": "A place is not just a place."
+            },
+            {
+              "end": 6000,
+              "quoted": false,
+              "start": 5966,
+              "text": "Grief is not only missing someone."
+            },
+            {
+              "end": 6343,
+              "quoted": false,
+              "start": 6281,
+              "text": "Didion does not trust it, but she cannot stop depending on it."
+            },
+            {
+              "end": 6912,
+              "quoted": false,
+              "start": 6867,
+              "text": "The medical scenes are not merely background."
+            },
+            {
+              "end": 7042,
+              "quoted": false,
+              "start": 6950,
+              "text": "Doctors know things Didion does not know, but they do not know everything she needs to know."
+            },
+            {
+              "end": 8881,
+              "quoted": false,
+              "start": 8849,
+              "text": "She does not speak for everyone."
+            },
+            {
+              "end": 9341,
+              "quoted": false,
+              "start": 9160,
+              "text": "Later, it may be the hospital corridor, the medical record, the sudden unreliability of memory, or the terrible fact that ordinary life continues to look ordinary until it does not."
+            },
+            {
+              "end": 9405,
+              "quoted": false,
+              "start": 9343,
+              "text": "Didion\u2019s achievement is not that she makes grief intelligible."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 24 negation markers (14.7 per 1000 words)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found 24 negation markers (14.7 per 1000 words)",
           "evidence_role": "rhetorical_density",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
@@ -1148,7 +2310,11 @@
             "Later, it may be the hospital corridor, the medical record, the sudden unreliability of memory, or the terrible fact that ordinary life continues to look ordinary until it does not.",
             "Didion\u2019s achievement is not that she makes grief intelligible."
           ],
-          "severity": "context_warning"
+          "metric_value": 20,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1167,14 +2333,36 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_cv": 0.18,
+              "minimum_paragraphs": 7
+            },
+            "raw_evidence": "Paragraph length CV: 0.26 across 20 paragraphs",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Paragraph length CV: 0.26 across 20 paragraphs",
           "evidence_role": "layout_rhythm",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template.",
           "metric": null,
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": {
+            "maximum_cv": 0.18,
+            "minimum_paragraphs": 7
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1192,14 +2380,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Tidy paragraph endings: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Tidy paragraph endings: 0",
           "evidence_role": "paragraph_closure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "voice_erasure"
           ],
           "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1218,14 +2427,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Bland critical template phrases: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Bland critical template phrases: 0",
           "evidence_role": "genre_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "voice_erasure"
           ],
           "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1244,14 +2473,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Rubric echo phrases: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Rubric echo phrases: 0",
           "evidence_role": "assignment_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue",
             "voice_erasure"
           ],
           "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1270,15 +2519,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Type-token ratio: 0.419 (666 unique / 1591 total, target: >0.40)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Type-token ratio: 0.419 (666 unique / 1591 total, target: >0.40)",
           "evidence_role": "lexical_distribution",
+          "evidence_type": "statistical",
           "failure_modes": [
             "generic_abstraction",
             "genre_misfit"
           ],
           "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately.",
           "metric": null,
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1296,26 +2561,140 @@
         "locations": [],
         "metric": null,
         "quoted_phrases": [
-          "medical language, social performance, and the collapse of ordinary",
-          "an anatomy of denial, a critique of competence, and a warning about the",
-          "visiting Quintana in hospital, Didion and Dunne return to their",
-          "loss made her wiser, kinder, or more authentic",
-          "curated vulnerability, the language of healing and closure",
-          "specialist language, medical uncertainty and bureaucratic routines at the",
-          "chronic illness, disability systems or end-of-life care",
-          "The repetitions, returns and abrupt transitions enact the",
-          "a particular class world, in the medical and literary culture of the",
-          "manners, memory and routine"
+          "medical language, social performance, and the collapse",
+          "in hospital, Didion and Dunne return",
+          "her wiser, kinder, or more authentic",
+          "specialist language, medical uncertainty and bureaucratic routines",
+          "particular class world, in the medical and literary culture",
+          "manners, memory and routine",
+          "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
         ],
         "raw": {
-          "evidence": "Found 10 triad(s): ['medical language, social performance, and the collapse of ordinary', 'an anatomy of denial, a critique of competence, and a warning about the', 'visiting Quintana in hospital, Didion and Dunne return to their', 'loss made her wiser, kinder, or more authentic', 'curated vulnerability, the language of healing and closure', 'specialist language, medical uncertainty and bureaucratic routines at the', 'chronic illness, disability systems or end-of-life care', 'The repetitions, returns and abrupt transitions enact the', 'a particular class world, in the medical and literary culture of the', 'manners, memory and routine']",
+          "aggregate_finding": false,
+          "candidate_count": 7,
+          "candidates": [
+            {
+              "end": 815,
+              "quoted": false,
+              "start": 761,
+              "text": "medical language, social performance, and the collapse"
+            },
+            {
+              "end": 1737,
+              "quoted": false,
+              "start": 1701,
+              "text": "in hospital, Didion and Dunne return"
+            },
+            {
+              "end": 4146,
+              "quoted": false,
+              "start": 4110,
+              "text": "her wiser, kinder, or more authentic"
+            },
+            {
+              "end": 6637,
+              "quoted": false,
+              "start": 6571,
+              "text": "specialist language, medical uncertainty and bureaucratic routines"
+            },
+            {
+              "end": 8673,
+              "quoted": false,
+              "start": 8614,
+              "text": "particular class world, in the medical and literary culture"
+            },
+            {
+              "end": 9552,
+              "quoted": false,
+              "start": 9525,
+              "text": "manners, memory and routine"
+            },
+            {
+              "end": 9948,
+              "quoted": false,
+              "start": 9847,
+              "text": "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 4,
+              "minimum_words": 300
+            },
+            "raw_evidence": "Found 7 triad(s): ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 7 triad(s): ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
           "evidence_role": "list_rhythm",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-          "severity": "context_warning"
+          "match_count": 7,
+          "matches": [
+            "medical language, social performance, and the collapse",
+            "in hospital, Didion and Dunne return",
+            "her wiser, kinder, or more authentic",
+            "specialist language, medical uncertainty and bureaucratic routines",
+            "particular class world, in the medical and literary culture",
+            "manners, memory and routine",
+            "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 815,
+              "quoted": false,
+              "start": 761,
+              "text": "medical language, social performance, and the collapse"
+            },
+            {
+              "end": 1737,
+              "quoted": false,
+              "start": 1701,
+              "text": "in hospital, Didion and Dunne return"
+            },
+            {
+              "end": 4146,
+              "quoted": false,
+              "start": 4110,
+              "text": "her wiser, kinder, or more authentic"
+            },
+            {
+              "end": 6637,
+              "quoted": false,
+              "start": 6571,
+              "text": "specialist language, medical uncertainty and bureaucratic routines"
+            },
+            {
+              "end": 8673,
+              "quoted": false,
+              "start": 8614,
+              "text": "particular class world, in the medical and literary culture"
+            },
+            {
+              "end": 9552,
+              "quoted": false,
+              "start": 9525,
+              "text": "manners, memory and routine"
+            },
+            {
+              "end": 9948,
+              "quoted": false,
+              "start": 9847,
+              "text": "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
+            }
+          ],
+          "threshold": {
+            "minimum_candidates": 4,
+            "minimum_words": 300
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1334,13 +2713,29 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No repeated section labels",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No repeated section labels",
           "evidence_role": "repeated_template",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material.",
-          "severity": "strong_warning"
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "strong_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1358,14 +2753,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No notability claims",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No notability claims",
           "evidence_role": "notability_inflation",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1384,14 +2795,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No vague attributions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No vague attributions",
           "evidence_role": "attribution_vagueness",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1410,13 +2838,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 4
+            },
+            "raw_evidence": "Bold spans in prose: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Bold spans in prose: 0",
           "evidence_role": "emphasis_pattern",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 4
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1434,14 +2883,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "List items with bolded headers: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "List items with bolded headers: 0",
           "evidence_role": "list_template",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1460,14 +2930,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_per_sentence": 3
+            },
+            "raw_evidence": "No dense compound-modifier sentences",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No dense compound-modifier sentences",
           "evidence_role": "modifier_density",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Restructure sentences with three or more stock hyphenated compounds; preserve only when the compounds are domain-specific terms of art.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 87,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_per_sentence": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1486,13 +2976,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No knowledge-cutoff disclaimers",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No knowledge-cutoff disclaimers",
           "evidence_role": "model_meta_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue"
           ],
           "guidance": "Fix at every depth; training-update and limited-information hedges are model meta-residue, not authorial uncertainty.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [

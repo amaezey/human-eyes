@@ -52,9 +52,9 @@ Use source strength when deciding severity. The ruleset should surface clusters 
 
 ### 1. Significance inflation
 
-**Words to watch:** stands/serves as, is a testament/reminder, a vital/significant/crucial/pivotal/key role/moment, underscores/highlights its importance, reflects broader, symbolizing its ongoing/enduring/lasting, setting the stage for, marking/shaping the, represents/marks a shift, key turning point, evolving landscape, indelible mark, deeply rooted, remarkably, strikingly, staggering/staggeringly
+**Words to watch:** stands/serves as, is a testament/reminder, a vital/significant/crucial/pivotal/key role/moment, underscores/highlights its importance, underline/underscore/highlight/emphasise the importance/value/significance of, reflects broader, symbolizing its ongoing/enduring/lasting, setting the stage for, marking/shaping the, represents/marks a shift, key turning point, evolving landscape, indelible mark, deeply rooted, remarkably, strikingly, staggering/staggeringly
 
-Inflates importance by claiming things "represent" or "contribute to" broader trends without explaining why anyone should care.
+Inflates importance by claiming things "represent" or "contribute to" broader trends without explaining why anyone should care. Importance/value emphasis frames are surfaced for contextual review even when the underlying claim may be justified. Literal formatting instructions such as "Underline the heading" remain clear.
 
 **Before:**
 > The Statistical Institute of Catalonia was officially established in 1989, marking a pivotal moment in the evolution of regional statistics in Spain. This initiative was part of a broader movement across Spain to decentralize administrative functions and enhance regional governance.
@@ -332,9 +332,9 @@ Do not preserve the structure by swapping words, reversing the order, replacing 
 
 ### 10. Rule of three
 
-Ideas forced into groups of three to appear comprehensive, even when the items do not naturally form a triad.
+Three-part structures are surfaced wherever they occur, including item lists, verb phrases, clauses, and quoted material. Detection records the construction; it does not decide that the writing is artificial or that the triad should be removed.
 
-**Tolerance note:** Three-part structures are common in human rhetoric, comedy, fiction, speeches, and criticism. Treat this as an AI tell when triads cluster densely, feel interchangeable, or use abstract nouns to simulate breadth. Preserve when the three items are concrete, necessary, funny, rhythmic, or part of a voiced argument.
+**Tolerance note:** Three-part structures are common in human rhetoric, comedy, fiction, speeches, and criticism. Treat them as an AI-associated misuse when they cluster densely, feel interchangeable, or use abstractions to simulate breadth. Preserve concrete, necessary, funny, rhythmic, quoted, or deliberately voiced triads.
 
 **Before:**
 > The event features keynote sessions, panel discussions, and networking opportunities. Attendees can expect innovation, inspiration, and industry insights.
@@ -342,12 +342,14 @@ Ideas forced into groups of three to appear comprehensive, even when the items d
 **After:**
 > The event includes talks and panels, with time for informal networking between sessions.
 
-**Severity:** context_warning · `no-forced-triads` (the density variant lives at #10a)
+**Severity:** context_warning · `no-forced-triads` (the density escalation lives at #10a)
+
+**Detection:** Programmatic recognition surfaces every grammatical three-part coordination. Candidate evidence records whether the matched span is inside quotation marks; quotation context does not suppress detection.
 
 
 ### 10a. Triad density
 
-The density variant of #10 rule of three. While #10 catches a single forced triad as a content pattern, #10a fires when triads cluster across longer prose: four or more "X, Y, and Z" / "X, Y, or Z" structures in a piece of 300+ words. This is the rate-of-triads metric — even when each individual triad reads naturally, the aggregate cadence becomes mechanical.
+The density variant of #10 rule of three. While #10 surfaces each individual triad, #10a escalates when triads cluster across longer prose: four or more three-part item, phrase, or clause coordinations in a piece of 300+ words. This is the rate-of-triads metric — even when each individual triad reads naturally, the aggregate cadence can become mechanical.
 
 **Before:**
 > The team values clarity, directness, and rigour. Their meetings are short, focused, and outcome-driven. The retros surface what worked, what didn't, and what to try next. The roadmap balances delivery, learning, and team health.
@@ -357,7 +359,7 @@ The density variant of #10 rule of three. While #10 catches a single forced tria
 
 **Severity:** context_warning · `no-triad-density`
 
-**Detection:** Programmatic check `no-triad-density`. Counts "X, Y, and/or Z" patterns where each item is 1-4 words; fails at 4+ triads in prose of 300+ words. Distinct from #10 forced triads (single-instance, semantic check); #10a is the cumulative-density check across a piece.
+**Detection:** Programmatic check `no-triad-density` uses the same candidate set as #10 and fails at 4+ triads in prose of 300+ words. Quoted candidates remain counted and are separately marked as quoted evidence.
 
 
 ### 11. Synonym cycling
@@ -452,9 +454,9 @@ Capitalising all main words in headings reads as formal to the point of stiffnes
 **After:**
 > ## Strategic negotiations and global partnerships
 
-**Severity:** inherits context_warning from `no-markdown-headings` (see Detection)
+**Severity:** N/A · manual self-audit only (see Detection)
 
-**Detection:** Folded into `no-markdown-headings`. Once the heading itself is removed or normalised in prose, the title-case sub-rule resolves automatically; no separate check.
+**Detection:** Manual self-audit only. Markdown headings themselves are not treated as an indicator; title-case treatment can be reviewed only when the requested house style calls for sentence case.
 
 
 ### 16. Emojis
@@ -667,9 +669,9 @@ This supplements the hard constraint on staccato fragments. Beyond the obvious s
 
 ### 47. Soft scaffolding
 
-**Words to watch:** "One useful area...", "Another useful area...", "The main strength...", "The main risk...", "Good use usually comes down to...", "Comes down to giving/using/making...", "This can be helpful when...", "Especially useful when...", "In those cases,...", "With that distinction in mind,..."
+**Words to watch:** "One useful area...", "Another useful area...", "The main strength...", "The main risk...", "Good use usually comes down to...", "Comes down to giving/using/making...", "This can be helpful when...", "Especially useful when...", "In those cases,...", "With that distinction in mind,...", plus repeated report paragraph openers such as "A major priority was...", "Another area of work was...", "The committee also examined...", and "Throughout the reporting period..."
 
-Bland transition phrases from generated explainers. They are not flashy, which is why they survive rewrites — they mark a generated explainer that is arranging information into bland labelled blocks instead of writing from a real line of thought. Distinct from #22 filler phrases (which are stock padding) and #34 tidy paragraph endings (which close paragraphs); soft scaffolding sits between sentences as a connective tissue tic.
+Bland transition phrases from generated explainers and reports. They are not flashy, which is why they survive rewrites — they mark prose arranging information into balanced labelled blocks instead of writing from a real line of thought. Report openers are recognised only at paragraph starts, and the document remains clear until at least two scaffold candidates occur. A single necessary transition therefore remains below threshold. Distinct from #22 filler phrases (which are stock padding) and #34 tidy paragraph endings (which close paragraphs); soft scaffolding sits between sentences and paragraphs as connective tissue.
 
 **Before:**
 > One useful area is structuring feedback. Another useful area is timing it well. The main strength of these approaches is consistency. Good use usually comes down to giving the receiver enough context.
@@ -868,9 +870,9 @@ AI-generated articles with numbered sections often repeat the same structural la
 
 ### 42. Manufactured insight framing
 
-**Words to watch:** "what's really", "the real answer", "here's what's really", "the real story is", "what's actually happening", "contrary to popular belief", "the uncomfortable truth", "what nobody is talking about", "what no one seems to realise", "what most people miss", "what (no one|nobody) noticed", "before anyone noticed", "without anyone noticing", "let that sink in", "read that again", "if you know, you know", "and that changes everything", "the real insight/challenge/takeaway/kicker/question", "a quiet/powerful/important/profound lesson", "sometimes the bravest/hardest/most important", "this isn't X. it's Y.", "that's not X. that's Y.", "the honest answer is", "here's the honest (answer|framing|truth)", "here's the (real) truth", "the real truth is", "if I'm being honest", "in all honesty", "to be (perfectly) honest,"
+**Words to watch:** "what's really", "the real answer", "here's what's really", "the real story is", "what's actually happening", "contrary to popular belief", "the uncomfortable truth", "what nobody is talking about", "what no one seems to realise", "what most people miss", "what (no one|nobody) noticed", "before anyone noticed", "without anyone noticing", "let that sink in", "read that again", "if you know, you know", "and that changes everything", "the real insight/challenge/takeaway/kicker/question", "a quiet/powerful/important/profound lesson", "sometimes the bravest/hardest/most important", "it/this/the experience taught me that", "what this/the failure taught me was", "the lesson I/we learned was", "this isn't X. it's Y.", "that's not X. that's Y.", "the honest answer is", "here's the honest (answer|framing|truth)", "here's the (real) truth", "the real truth is", "if I'm being honest", "in all honesty", "to be (perfectly) honest,"
 
-Performs revelation through phrasing — claims hidden depth or secret significance without doing the evidentiary work. Includes "the real X?" rhetorical questions, performed knowingness ("read that again", "let that sink in"), pseudo-profundity ("quietly revolutionary", "the quiet part"), formulaic depth framing ("here's the thing", "the reason is straightforward"), and contrived contrast that reveals an inflated abstract payload. Also includes **performed candour** — honesty/truth framing ("the honest answer is", "here's the real truth", "if I'm being honest", "in all honesty") that dresses an ordinary statement as a hard-won admission.
+Performs revelation through phrasing — claims hidden depth or secret significance without doing the evidentiary work. Includes explicit lesson announcements ("It taught me that...", "What the failure taught me was..."), while concrete instruction such as "The manual taught me how to replace the battery" remains outside the match. Detection surfaces the lesson frame for contextual review; it does not decide that every genuine lesson is artificial. Also includes "the real X?" rhetorical questions, performed knowingness ("read that again", "let that sink in"), pseudo-profundity ("quietly revolutionary", "the quiet part"), formulaic depth framing ("here's the thing", "the reason is straightforward"), and contrived contrast that reveals an inflated abstract payload. Also includes **performed candour** — honesty/truth framing ("the honest answer is", "here's the real truth", "if I'm being honest", "in all honesty") that dresses an ordinary statement as a hard-won admission.
 
 **Before:**
 > Most people think project management is about tracking tasks. Here's the real insight: it's about managing attention. What nobody is talking about is that most projects fail because no one was watching the right thing. Let that sink in.
@@ -963,7 +965,7 @@ Every paragraph wraps up with a tidy summary sentence that transitions perfectly
 
 When you spot a paragraph where the final sentence restates the paragraph's point or transitions smoothly to the next topic, consider cutting it or replacing it with something that leaves a thread open.
 
-Watch for endings such as "That is why...", "The takeaway is...", "The result is...", "In the end,...", "Ultimately,...", and "With that distinction in mind...". One can be legitimate. Three or more usually means the piece is landing every paragraph the same way.
+Watch for endings such as "That is why...", "The takeaway is...", "The result is...", "In the end,...", "Ultimately,...", and "With that distinction in mind...". The deterministic candidate surface also recognises compact interpretive closures such as "The selection was already an interpretation" and balanced semicolon closures whose two halves each contain their own subject and linking verb. Literal states and subordinate fragments are controls. Quoted occurrences remain candidates and are marked as quoted. One can be legitimate. Three or more usually means the piece is landing every paragraph the same way.
 
 Also check paragraph size. AI-generated longform often settles into near-identical blocks: ten paragraphs of 65-85 words, each making one balanced point. Human paragraphs usually show uneven pressure; some are short, some wander, some carry a scene or example longer than expected.
 
@@ -1109,9 +1111,9 @@ Generic LinkedIn-AI corporate register. Hides specific work behind operational a
 
 ### 45. Nonliteral land/surface phrasing
 
-**Words to watch:** "the argument lands", "the idea lands", "your point lands", "where my draft landed", "lands with the reader/audience/team/stakeholders", "lands in the rubric/scale/category", "surfaces in the conversation/discussion/debate/work/writing", "what surfaces", "what surfaced".
+**Words to watch:** "the argument lands", "the idea lands", "your point lands", "where my draft landed", "lands with the reader/audience/team/stakeholders", "lands in the rubric/scale/category", "surfaces in the conversation/discussion/debate/work/writing", "what surfaces", "what surfaced", and nonliteral navigation constructions such as a manual becoming "a map out of the wilderness", a framework providing "a roadmap through uncertainty", or a guide becoming "a compass through the maze".
 
-Treats abstract ideas as physical objects that land or surface. Often used to make ordinary feedback or analysis sound managed or packaged. Distinct from #30 generic metaphors (which is about reaching for plausible-but-unanchored figurative language) — this is a specific stock cliché shape: noun + lands / surfaces.
+Treats abstract ideas as physical objects that land or surface, or turns informational objects into maps and compasses through figurative terrain. Detection surfaces the construction for contextual review; it does not decide that a grounded metaphor is artificial or must be removed. Literal maps, compasses, wildernesses, and product roadmaps remain outside the match. Distinct from #30 generic metaphors, which requires agent assessment of whether figurative language is plausible-but-unanchored.
 
 **Before:**
 > The argument lands somewhere between cautious optimism and quiet despair. What surfaces in the discussion is a recognition that no clean answer exists.

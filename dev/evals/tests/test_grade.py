@@ -173,12 +173,30 @@ expect_fail("no-nonliteral-land-surface",
 expect_fail("no-nonliteral-land-surface",
     "The joke lands with the audience because the setup is familiar.",
     "nonliteral lands with audience")
+expect_fail("no-nonliteral-land-surface",
+    "I kept the manual open beside me as if it were a map out of the wilderness.",
+    "nonliteral manual as map out of wilderness")
+expect_fail("no-nonliteral-land-surface",
+    "The framework provides a roadmap through regulatory uncertainty.",
+    "nonliteral framework as roadmap through uncertainty")
+expect_fail("no-nonliteral-land-surface",
+    "The guide became a compass through the administrative maze.",
+    "nonliteral guide as compass through maze")
 expect_pass("no-nonliteral-land-surface",
     "The plane landed safely on the island, and the table surface was scratched.",
     "literal landed and physical surface")
 expect_pass("no-nonliteral-land-surface",
     "The paper landed on the desk and slid under the notebook.",
     "literal paper landed on desk")
+expect_pass("no-nonliteral-land-surface",
+    "The map showed a route through the wilderness, and the compass pointed north.",
+    "literal navigation through wilderness")
+expect_pass("no-nonliteral-land-surface",
+    "The manual included a map of the national park.",
+    "manual containing a literal map")
+expect_pass("no-nonliteral-land-surface",
+    "The product roadmap lists three scheduled releases.",
+    "literal planning roadmap")
 
 
 # --- overall-signal-stacking ---
@@ -238,6 +256,18 @@ expect_fail("no-manufactured-insight",
 expect_fail("no-manufactured-insight",
     "The shift nobody noticed was already underway.",
     "shift nobody noticed framing")
+expect_fail("no-manufactured-insight",
+    "It taught me that not knowing was not a verdict.",
+    "explicit it-taught-me lesson frame")
+expect_fail("no-manufactured-insight",
+    "This experience taught me that preparation matters.",
+    "explicit experience-taught-me lesson frame")
+expect_fail("no-manufactured-insight",
+    "What the failure taught me was that the review came too late.",
+    "explicit what-this-taught-me lesson frame")
+expect_fail("no-manufactured-insight",
+    "The lesson I learned was to ask before changing the corpus.",
+    "explicit lesson-learned frame")
 expect_fail("no-performed-candour",
     "The honest answer is that the data was incomplete from the start.",
     "performed candour — 'the honest answer is'")
@@ -259,6 +289,15 @@ expect_pass("no-manufactured-insight",
 expect_pass("no-manufactured-insight",
     "We strive to be honest about our limitations and update the docs as we learn.",
     "'to be honest' without leading comma — not the AI tell")
+expect_pass("no-manufactured-insight",
+    "The teacher taught me algebra.",
+    "literal instruction")
+expect_pass("no-manufactured-insight",
+    "The manual taught me how to replace the battery.",
+    "concrete procedural learning")
+expect_pass("no-manufactured-insight",
+    "The course taught me three statistical methods.",
+    "concrete course content")
 
 
 # --- no-staccato-sequences ---
@@ -357,9 +396,27 @@ print("\n=== no-significance-inflation ===")
 expect_fail("no-significance-inflation",
     "This marked a pivotal moment in the evolving landscape of regional policy.",
     "pivotal + evolving landscape")
+expect_fail("no-significance-inflation",
+    "The findings underline the value of regular primary-care relationships.",
+    "underline the value of")
+expect_fail("no-significance-inflation",
+    "The report underscores the importance of local knowledge.",
+    "underscores the importance of")
+expect_fail("no-significance-inflation",
+    "The results highlight the significance of the timing.",
+    "highlight the significance of")
+expect_fail("no-significance-inflation",
+    "The review emphasises the importance of clear ownership.",
+    "British emphasises the importance of")
 expect_pass("no-significance-inflation",
     "The policy was introduced in 2019 and applied to three regions.",
     "plain factual")
+expect_pass("no-significance-inflation",
+    "Underline the heading and highlight the affected row.",
+    "literal document-formatting instructions")
+expect_pass("no-significance-inflation",
+    "The report uses underlining for new terms.",
+    "literal typographic description")
 
 
 # --- no-negative-parallelisms ---
@@ -494,9 +551,18 @@ print("\n=== no-soft-scaffolding ===")
 expect_fail("no-soft-scaffolding",
     "One useful area is explanation. Another useful area is test writing. The main risk is over-trusting the output.",
     "generated explainer scaffolding")
+expect_fail("no-soft-scaffolding",
+    "A major priority was research translation.\n\nAnother area of work was patient capital.\n\nThe committee also examined regional access.",
+    "repeated report paragraph scaffolding")
 expect_pass("no-soft-scaffolding",
     "The tool explains unfamiliar modules and can draft tests when the project already has clear examples.",
     "direct explanation without scaffold labels")
+expect_pass("no-soft-scaffolding",
+    "A major priority was research translation. The report then gives the three funding decisions made in June.",
+    "single necessary report transition stays below threshold")
+expect_pass("no-soft-scaffolding",
+    "The minutes record that another area of work was patient capital.",
+    "report phrase inside a sentence is not a paragraph opener")
 
 
 # --- no-orphaned-demonstratives ---
@@ -519,9 +585,21 @@ expect_fail("no-forced-triads",
 expect_fail("no-forced-triads",
     "The program builds curation, classification, and neutrality.",
     "all three match -tion/-ity")
-expect_pass("no-forced-triads",
+expect_fail("no-forced-triads",
     "The store sells apples, bread, and milk.",
-    "concrete nouns, not abstract")
+    "concrete triad is still a triad")
+expect_fail("no-forced-triads",
+    "They know when to engage, how to respond, and when a decision closes.",
+    "parallel clause triad")
+expect_fail("no-forced-triads",
+    "They have to risk receiving, admitting limits, or letting someone else do it.",
+    "parallel verb-phrase triad")
+expect_fail("no-forced-triads",
+    "Pleasure softens my edges, which makes service kinder and less controlling.",
+    "three-part rhetorical coordination")
+expect_pass("no-forced-triads",
+    "She answers quickly, smooths things over, and then wonders why life feels tight.",
+    "narrative sequence rather than a parallel triad")
 
 
 # --- no-superficial-ing ---
@@ -639,23 +717,6 @@ expect_fail("no-signposted-conclusions",
 expect_pass("no-signposted-conclusions",
     "The evidence points in one direction. I doubt this will change.",
     "natural ending without signpost")
-
-
-# --- no-markdown-headings ---
-
-print("\n=== no-markdown-headings ===")
-expect_fail("no-markdown-headings",
-    "# The Importance of Libraries\n\n## Access to Information\n\nLibraries provide free access.",
-    "H1 + H2 headings")
-expect_fail("no-markdown-headings",
-    "Why Feedback Matters in Learning\n\nFeedback is easy to mistake for marking.",
-    "plain title heading")
-expect_pass("no-markdown-headings",
-    "Libraries provide free access to information. They also host community events.",
-    "plain prose, no headings")
-expect_pass("no-markdown-headings",
-    "### [Issue 194, Fall 2010](https://example.com/back-issues/194)\n\nThe essay begins here.",
-    "linked archive metadata heading is ignored")
 
 
 # --- no-corporate-ai-speak ---
@@ -782,6 +843,31 @@ expect_fail("no-tidy-paragraph-endings",
 expect_pass("no-tidy-paragraph-endings",
     "The team missed the deadline after the API changed.\n\nThe data was incomplete, so the analyst reran the survey.\n\nThe user flow confused people on the payment screen.",
     "specific endings without tidy summary labels")
+expect_fail("no-tidy-paragraph-endings",
+    "The translators selected only the short lyrics. The selection was already an interpretation.\n\n"
+    "The syntax was regularised and the irony softened. Difficulty became refinement; irony could sound sincere.\n\n"
+    "The practices did not erase inequality. These practices were not romantic solutions; they were ways of living within it.",
+    "three compact structural paragraph closures")
+
+_two_structural_endings = ALL_CHECKS["no-tidy-paragraph-endings"](
+    "The translators selected only the short lyrics. The selection was already an interpretation.\n\n"
+    "The syntax was regularised and the irony softened. Difficulty became refinement; irony could sound sincere."
+)
+assert _two_structural_endings["passed"]
+assert _two_structural_endings["candidate_count"] == 2
+
+_literal_and_subordinate_controls = ALL_CHECKS["no-tidy-paragraph-endings"](
+    "The archivist arrived before lunch. The manuscript was already on the desk.\n\n"
+    "I chose a loaf tin if I felt cautious; a tray if I felt brave."
+)
+assert _literal_and_subordinate_controls["passed"]
+assert _literal_and_subordinate_controls["candidate_count"] == 0
+
+_quoted_structural_ending = ALL_CHECKS["no-tidy-paragraph-endings"](
+    'The critic called the ending reductive: “The selection was already an interpretation.”'
+)
+assert _quoted_structural_ending["candidate_count"] == 1
+assert _quoted_structural_ending["candidates"][0]["quoted"] is True
 
 
 # --- no-bland-critical-template ---
@@ -1181,7 +1267,6 @@ expected_checks = {
     "no-dramatic-transitions",
     "no-formulaic-openers",
     "no-signposted-conclusions",
-    "no-markdown-headings",
     "no-parenthetical-headings",
     "no-corporate-ai-speak",
     "no-this-chains",
@@ -1951,17 +2036,19 @@ else:
 print("\n=== human-opinion-passthrough ===")
 opinion_text = Path(__file__).resolve().parents[1].joinpath("samples/human-sourced/legacy/10-human-opinion.md").read_text()
 for check_name in ALL_CHECKS:
-    if check_name == "no-staccato-sequences":
-        continue  # existing human sample also fails this, known limitation
+    if check_name in {"no-staccato-sequences", "no-forced-triads"}:
+        continue
     expect_pass(check_name, opinion_text, f"human opinion piece ({check_name})")
+expect_fail("no-forced-triads", opinion_text, "human opinion contains recognizable triads")
 
 # --- Human passthrough: instructional piece ---
 print("\n=== human-instructional-passthrough ===")
 instructional_text = Path(__file__).resolve().parents[1].joinpath("samples/human-sourced/legacy/11-human-instructional.md").read_text()
 for check_name in ALL_CHECKS:
-    if check_name in {"no-staccato-sequences", "no-performed-candour"}:
+    if check_name in {"no-staccato-sequences", "no-performed-candour", "no-forced-triads"}:
         continue
     expect_pass(check_name, instructional_text, f"human instructional piece ({check_name})")
+expect_fail("no-forced-triads", instructional_text, "human instructional prose contains a matched three-part coordination")
 
 
 # --- U7: --judgement-file CLI flag + agent_judgement overlay validation ---

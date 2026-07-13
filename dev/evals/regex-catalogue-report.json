@@ -5,347 +5,413 @@
     "violation_total": 32,
     "violation_detected": 24,
     "control_total": 28,
-    "control_clear": 23,
+    "control_clear": 24,
     "recall": 0.75,
-    "specificity": 0.821,
-    "false_positive_rate": 0.179
+    "specificity": 0.857,
+    "false_positive_rate": 0.143
   },
   "per_check": {
     "no-anaphora": {
       "violation_total": 2,
+      "candidate_recognized": 2,
       "violation_detected": 2,
       "control_total": 1,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": 0.0,
       "false_positive_rate": 1.0
     },
     "no-boldface-overuse": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-collaborative-artifacts": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-corporate-ai-speak": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-countdown-negation": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-dramatic-transitions": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-em-dashes": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 2,
       "control_clear": 1,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": 0.5,
       "false_positive_rate": 0.5
     },
     "no-excessive-hedging": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 2,
       "control_clear": 2,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": 1.0,
       "false_positive_rate": 0.0
     },
     "no-excessive-lists": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 1,
       "control_clear": 1,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": 1.0,
       "false_positive_rate": 0.0
     },
     "no-false-concession-hedges": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-filler-phrases": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-forced-triads": {
       "violation_total": 1,
-      "violation_detected": 0,
+      "candidate_recognized": 1,
+      "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
-      "recall": 0.0,
+      "candidate_recall": 1.0,
+      "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-formulaic-openers": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-inline-header-lists": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-knowledge-cutoff-disclaimers": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-manufactured-insight": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
-    "no-markdown-headings": {
-      "violation_total": 1,
-      "violation_detected": 1,
-      "control_total": 1,
-      "control_clear": 1,
-      "recall": 1.0,
-      "specificity": 1.0,
-      "false_positive_rate": 0.0
-    },
     "no-negative-parallelisms": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-orphaned-demonstratives": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-parenthetical-headings": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-performed-candour": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-placeholder-residue": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-promotional-language": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-rhetorical-questions": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-section-scaffolding": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-significance-inflation": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-signposted-conclusions": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 1,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": 0.0,
       "false_positive_rate": 1.0
     },
     "no-staccato-sequences": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-superficial-ing": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-this-chains": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-tidy-paragraph-endings": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 1,
       "control_clear": 1,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": 1.0,
       "false_positive_rate": 0.0
     },
     "no-triad-density": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-unicode-flair": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "no-vague-attributions": {
       "violation_total": 1,
+      "candidate_recognized": 1,
       "violation_detected": 1,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 1.0,
       "recall": 1.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "paragraph-length-uniformity": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "sentence-length-variance": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     },
     "vocabulary-diversity": {
       "violation_total": 1,
+      "candidate_recognized": 0,
       "violation_detected": 0,
       "control_total": 0,
       "control_clear": 0,
+      "candidate_recall": 0.0,
       "recall": 0.0,
       "specificity": null,
       "false_positive_rate": null
     }
   },
   "unmapped_tendencies": [],
+  "manual_only_tendencies": [
+    "markdown headings"
+  ],
   "samples": [
     {
       "id": "lex-01",
@@ -354,10 +420,17 @@
       "expected_checks": [
         "no-significance-inflation"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-copula-avoidance",
         "no-significance-inflation"
+      ],
+      "allowed_checks": [
+        "no-significance-inflation"
+      ],
+      "unexpected_failed_checks": [
+        "no-copula-avoidance"
       ]
     },
     {
@@ -367,8 +440,15 @@
       "expected_checks": [
         "no-promotional-language"
       ],
+      "target_recognized": false,
       "target_detected": false,
       "failed_checks": [
+        "no-negative-parallelisms"
+      ],
+      "allowed_checks": [
+        "no-promotional-language"
+      ],
+      "unexpected_failed_checks": [
         "no-negative-parallelisms"
       ]
     },
@@ -379,10 +459,15 @@
       "expected_checks": [
         "no-corporate-ai-speak"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-corporate-ai-speak"
-      ]
+      ],
+      "allowed_checks": [
+        "no-corporate-ai-speak"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-04",
@@ -391,10 +476,15 @@
       "expected_checks": [
         "no-vague-attributions"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-vague-attributions"
-      ]
+      ],
+      "allowed_checks": [
+        "no-vague-attributions"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-05",
@@ -403,10 +493,15 @@
       "expected_checks": [
         "no-knowledge-cutoff-disclaimers"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-knowledge-cutoff-disclaimers"
-      ]
+      ],
+      "allowed_checks": [
+        "no-knowledge-cutoff-disclaimers"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-06",
@@ -415,9 +510,16 @@
       "expected_checks": [
         "no-filler-phrases"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-filler-phrases",
+        "no-formulaic-openers"
+      ],
+      "allowed_checks": [
+        "no-filler-phrases"
+      ],
+      "unexpected_failed_checks": [
         "no-formulaic-openers"
       ]
     },
@@ -428,10 +530,15 @@
       "expected_checks": [
         "no-excessive-hedging"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-excessive-hedging"
-      ]
+      ],
+      "allowed_checks": [
+        "no-excessive-hedging"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-08",
@@ -440,10 +547,15 @@
       "expected_checks": [
         "no-false-concession-hedges"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-false-concession-hedges"
-      ]
+      ],
+      "allowed_checks": [
+        "no-false-concession-hedges"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-09",
@@ -452,8 +564,13 @@
       "expected_checks": [
         "no-manufactured-insight"
       ],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "no-manufactured-insight"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-10",
@@ -462,10 +579,15 @@
       "expected_checks": [
         "no-performed-candour"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-performed-candour"
-      ]
+      ],
+      "allowed_checks": [
+        "no-performed-candour"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-11",
@@ -476,42 +598,61 @@
         "no-formulaic-openers",
         "no-signposted-conclusions"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-formulaic-openers"
-      ]
+      ],
+      "allowed_checks": [
+        "no-dramatic-transitions",
+        "no-formulaic-openers",
+        "no-signposted-conclusions"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-12",
       "label": "legitimate_control",
       "primary_tendency": "paraphrase",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-13",
       "label": "legitimate_control",
       "primary_tendency": "contraction",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-14",
       "label": "legitimate_control",
       "primary_tendency": "spelling",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "lex-15",
       "label": "legitimate_control",
       "primary_tendency": "subtle non-stock variant",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-01",
@@ -521,10 +662,16 @@
         "no-negative-parallelisms",
         "no-countdown-negation"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-negative-parallelisms"
-      ]
+      ],
+      "allowed_checks": [
+        "no-countdown-negation",
+        "no-negative-parallelisms"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-02",
@@ -534,11 +681,17 @@
         "no-this-chains",
         "no-anaphora"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-anaphora",
         "no-this-chains"
-      ]
+      ],
+      "allowed_checks": [
+        "no-anaphora",
+        "no-this-chains"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-03",
@@ -547,8 +700,13 @@
       "expected_checks": [
         "no-superficial-ing"
       ],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "no-superficial-ing"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-04",
@@ -557,8 +715,13 @@
       "expected_checks": [
         "no-orphaned-demonstratives"
       ],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "no-orphaned-demonstratives"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-05",
@@ -567,10 +730,15 @@
       "expected_checks": [
         "no-staccato-sequences"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-staccato-sequences"
-      ]
+      ],
+      "allowed_checks": [
+        "no-staccato-sequences"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-06",
@@ -579,10 +747,15 @@
       "expected_checks": [
         "no-anaphora"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-anaphora"
-      ]
+      ],
+      "allowed_checks": [
+        "no-anaphora"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-07",
@@ -591,8 +764,13 @@
       "expected_checks": [
         "no-rhetorical-questions"
       ],
+      "target_recognized": true,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "no-rhetorical-questions"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-08",
@@ -602,8 +780,16 @@
         "no-forced-triads",
         "no-triad-density"
       ],
-      "target_detected": false,
-      "failed_checks": []
+      "target_recognized": true,
+      "target_detected": true,
+      "failed_checks": [
+        "no-forced-triads"
+      ],
+      "allowed_checks": [
+        "no-forced-triads",
+        "no-triad-density"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-09",
@@ -613,8 +799,16 @@
         "sentence-length-variance",
         "vocabulary-diversity"
       ],
+      "target_recognized": false,
       "target_detected": false,
       "failed_checks": [
+        "no-staccato-sequences"
+      ],
+      "allowed_checks": [
+        "sentence-length-variance",
+        "vocabulary-diversity"
+      ],
+      "unexpected_failed_checks": [
         "no-staccato-sequences"
       ]
     },
@@ -623,48 +817,70 @@
       "label": "legitimate_control",
       "primary_tendency": "sentence boundary variant",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-11",
       "label": "legitimate_control",
       "primary_tendency": "intervening-clause",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-12",
       "label": "legitimate_control",
       "primary_tendency": "grammatical-subject variant",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-13",
       "label": "legitimate_control",
       "primary_tendency": "punctuation variant",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-14",
       "label": "legitimate_control",
       "primary_tendency": "paraphrase",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "syn-15",
       "label": "legitimate_control",
       "primary_tendency": "subtle non-stock variant",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [
+        "no-forced-triads"
+      ],
+      "allowed_checks": [],
+      "unexpected_failed_checks": [
+        "no-forced-triads"
+      ]
     },
     {
       "id": "fmt-01",
@@ -673,10 +889,15 @@
       "expected_checks": [
         "no-em-dashes"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-em-dashes"
-      ]
+      ],
+      "allowed_checks": [
+        "no-em-dashes"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-02",
@@ -685,10 +906,15 @@
       "expected_checks": [
         "no-unicode-flair"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-unicode-flair"
-      ]
+      ],
+      "allowed_checks": [
+        "no-unicode-flair"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-03",
@@ -697,10 +923,15 @@
       "expected_checks": [
         "no-boldface-overuse"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-boldface-overuse"
-      ]
+      ],
+      "allowed_checks": [
+        "no-boldface-overuse"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-04",
@@ -709,23 +940,29 @@
       "expected_checks": [
         "no-inline-header-lists"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-excessive-lists",
         "no-inline-header-lists"
+      ],
+      "allowed_checks": [
+        "no-inline-header-lists"
+      ],
+      "unexpected_failed_checks": [
+        "no-excessive-lists"
       ]
     },
     {
       "id": "fmt-05",
       "label": "violation",
       "primary_tendency": "markdown headings",
-      "expected_checks": [
-        "no-markdown-headings"
-      ],
-      "target_detected": true,
-      "failed_checks": [
-        "no-markdown-headings"
-      ]
+      "expected_checks": [],
+      "target_recognized": false,
+      "target_detected": false,
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-06",
@@ -734,8 +971,13 @@
       "expected_checks": [
         "no-parenthetical-headings"
       ],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "no-parenthetical-headings"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-07",
@@ -744,8 +986,15 @@
       "expected_checks": [
         "no-section-scaffolding"
       ],
+      "target_recognized": false,
       "target_detected": false,
       "failed_checks": [
+        "no-anaphora"
+      ],
+      "allowed_checks": [
+        "no-section-scaffolding"
+      ],
+      "unexpected_failed_checks": [
         "no-anaphora"
       ]
     },
@@ -756,10 +1005,15 @@
       "expected_checks": [
         "no-excessive-lists"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-excessive-lists"
-      ]
+      ],
+      "allowed_checks": [
+        "no-excessive-lists"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-09",
@@ -768,8 +1022,13 @@
       "expected_checks": [
         "paragraph-length-uniformity"
       ],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "paragraph-length-uniformity"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-10",
@@ -778,8 +1037,13 @@
       "expected_checks": [
         "no-tidy-paragraph-endings"
       ],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "no-tidy-paragraph-endings"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-11",
@@ -788,10 +1052,17 @@
       "expected_checks": [
         "no-placeholder-residue"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-collaborative-artifacts",
         "no-placeholder-residue"
+      ],
+      "allowed_checks": [
+        "no-placeholder-residue"
+      ],
+      "unexpected_failed_checks": [
+        "no-collaborative-artifacts"
       ]
     },
     {
@@ -801,26 +1072,41 @@
       "expected_checks": [
         "no-collaborative-artifacts"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-collaborative-artifacts"
-      ]
+      ],
+      "allowed_checks": [
+        "no-collaborative-artifacts"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-13",
       "label": "legitimate_control",
       "primary_tendency": "markdown",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "fmt-14",
       "label": "legitimate_control",
       "primary_tendency": "number",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
       "failed_checks": [
+        "no-excessive-lists",
+        "no-staccato-sequences",
+        "sentence-length-variance"
+      ],
+      "allowed_checks": [],
+      "unexpected_failed_checks": [
         "no-excessive-lists",
         "no-staccato-sequences",
         "sentence-length-variance"
@@ -831,40 +1117,63 @@
       "label": "legitimate_control",
       "primary_tendency": "subtle non-stock variant",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-01",
       "label": "legitimate_control",
       "primary_tendency": "triad",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [
+        "no-forced-triads"
+      ],
+      "allowed_checks": [],
+      "unexpected_failed_checks": [
+        "no-forced-triads"
+      ]
     },
     {
       "id": "ctrl-02",
       "label": "legitimate_control",
       "primary_tendency": "rhetorical question",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-03",
       "label": "legitimate_control",
       "primary_tendency": "bold-label list",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-04",
       "label": "legitimate_control",
       "primary_tendency": "repeated This opening",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [
+        "no-forced-triads"
+      ],
+      "allowed_checks": [
+        "no-forced-triads"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-05",
@@ -873,10 +1182,15 @@
       "expected_checks": [
         "no-em-dashes"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-em-dashes"
-      ]
+      ],
+      "allowed_checks": [
+        "no-em-dashes"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-06",
@@ -885,8 +1199,13 @@
       "expected_checks": [
         "no-excessive-hedging"
       ],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "no-excessive-hedging"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-07",
@@ -895,8 +1214,15 @@
       "expected_checks": [
         "no-excessive-lists"
       ],
+      "target_recognized": false,
       "target_detected": false,
       "failed_checks": [
+        "no-staccato-sequences"
+      ],
+      "allowed_checks": [
+        "no-excessive-lists"
+      ],
+      "unexpected_failed_checks": [
         "no-staccato-sequences"
       ]
     },
@@ -905,16 +1231,26 @@
       "label": "legitimate_control",
       "primary_tendency": "formulaic transition",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-09",
       "label": "legitimate_control",
       "primary_tendency": "vague authority",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [
+        "no-forced-triads"
+      ],
+      "allowed_checks": [
+        "no-forced-triads"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-10",
@@ -923,18 +1259,24 @@
       "expected_checks": [
         "no-excessive-hedging"
       ],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "no-excessive-hedging"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-11",
       "label": "legitimate_control",
       "primary_tendency": "heading in short text",
-      "expected_checks": [
-        "no-markdown-headings"
-      ],
+      "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-12",
@@ -943,18 +1285,26 @@
       "expected_checks": [
         "no-anaphora"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-anaphora"
-      ]
+      ],
+      "allowed_checks": [
+        "no-anaphora"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-13",
       "label": "legitimate_control",
       "primary_tendency": "triad",
       "expected_checks": [],
+      "target_recognized": false,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-14",
@@ -964,10 +1314,17 @@
         "no-tidy-paragraph-endings",
         "no-signposted-conclusions"
       ],
+      "target_recognized": true,
       "target_detected": true,
       "failed_checks": [
         "no-signposted-conclusions"
-      ]
+      ],
+      "allowed_checks": [
+        "no-forced-triads",
+        "no-signposted-conclusions",
+        "no-tidy-paragraph-endings"
+      ],
+      "unexpected_failed_checks": []
     },
     {
       "id": "ctrl-15",
@@ -976,8 +1333,13 @@
       "expected_checks": [
         "no-em-dashes"
       ],
+      "target_recognized": true,
       "target_detected": false,
-      "failed_checks": []
+      "failed_checks": [],
+      "allowed_checks": [
+        "no-em-dashes"
+      ],
+      "unexpected_failed_checks": []
     }
   ]
 }

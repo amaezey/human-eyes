@@ -1,17 +1,17 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 6
+      "flagged": 7
     },
     "programmatic": {
       "by_category": {
         "Content patterns": 2,
-        "Language and grammar": 2,
+        "Language and grammar": 3,
         "Style": 1,
         "Voice and register": 1
       },
       "by_severity": {
-        "context_warning": 5,
+        "context_warning": 6,
         "hard_fail": 0,
         "strong_warning": 1
       },
@@ -46,14 +46,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No em dashes found",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No em dashes found",
           "evidence_role": "punctuation_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit"
           ],
           "guidance": "Treat as a strong 2026 AI-style signal. May be preserved only at Balanced depth with explicit disclosure; All requires removal.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -71,13 +87,29 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max AI words per paragraph: 0 (0 total in text)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Max AI words per paragraph: 0 (0 total in text)",
           "evidence_role": "vocabulary_cluster",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix clustered generic AI vocabulary; individual words may be fine in context.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -95,14 +127,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No nonliteral land/surface constructions found",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No nonliteral land/surface constructions found",
           "evidence_role": "metaphor_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "synthetic_significance"
           ],
           "guidance": "Fix nonliteral land/surface phrasing; replace with the concrete action or claim.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -124,9 +173,23 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "component_count": 0,
+          "component_signals": [],
           "components": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": 4,
+            "raw_evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=0, gptzero=[], kobak=14 distinct/12.7/1000",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=0, gptzero=[], kobak=14 distinct/12.7/1000",
           "evidence_role": "signal_stacking",
+          "evidence_type": "aggregate",
           "failure_modes": [
             "generic_abstraction",
             "frictionless_structure"
@@ -135,6 +198,7 @@
           "score": 0,
           "severity": "context_warning",
           "threshold": 4,
+          "threshold_met": false,
           "vocabulary_signal_stacking": {
             "gptzero_matches": [],
             "kobak_style_density": 12.694748990190421,
@@ -173,13 +237,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No manufactured insight phrases",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No manufactured insight phrases",
           "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -197,15 +278,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No performed-candour frames",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No performed-candour frames",
           "evidence_role": "candour_frame",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure",
             "generic_abstraction"
           ],
           "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -224,15 +321,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_run": 3
+            },
+            "raw_evidence": "Max consecutive short sentences: 2",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Max consecutive short sentences: 2",
           "evidence_role": "rhythm_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit",
             "frictionless_structure"
           ],
           "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
+          "match_count": 0,
           "matches": [],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_run": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -256,20 +373,86 @@
           "In the last chapter I shall give a brief recapitulation of the whole work, and a few concluding remarks."
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 4,
+          "candidates": [
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "In the next chapter I shall discuss the complex and little known laws of variation and of correlation of growth."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "In the four succeeding chapters, the most apparent and gravest difficulties on the theory will be given: namely, first, the difficulties of transitions, or in understanding how a simple being or a simple organ can be changed and perfected into a highly developed being or elaborately constructed organ; secondly the subject of Instinct, or the mental powers of animals, thirdly, Hybridism, or the infertility of species and the fertility of varieties when intercrossed; and fourthly, the imperfection of the Geological Record."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "In the next chapter I shall consider the geological succession of organic beings throughout time; in the eleventh and twelfth, their geographical distribution throughout space; in the thirteenth, their classification or mutual affinities, both when mature and in an embryonic condition."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "In the last chapter I shall give a brief recapitulation of the whole work, and a few concluding remarks."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 4 consecutive sentences starting with 'in'",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found 4 consecutive sentences starting with 'in'",
           "evidence_role": "rhythm_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit",
             "frictionless_structure"
           ],
           "guidance": "Fix mechanical repetition; recommend preserving deliberate rhetoric or literary patterning.",
+          "match_count": 4,
           "matches": [
             "In the next chapter I shall discuss the complex and little known laws of variation and of correlation of growth.",
             "In the four succeeding chapters, the most apparent and gravest difficulties on the theory will be given: namely, first, the difficulties of transitions, or in understanding how a simple being or a simple organ can be changed and perfected into a highly developed being or elaborately constructed organ; secondly the subject of Instinct, or the mental powers of animals, thirdly, Hybridism, or the infertility of species and the fertility of varieties when intercrossed; and fourthly, the imperfection of the Geological Record.",
             "In the next chapter I shall consider the geological succession of organic beings throughout time; in the eleventh and twelfth, their geographical distribution throughout space; in the thirteenth, their classification or mutual affinities, both when mature and in an embryonic condition.",
             "In the last chapter I shall give a brief recapitulation of the whole work, and a few concluding remarks."
           ],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "In the next chapter I shall discuss the complex and little known laws of variation and of correlation of growth."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "In the four succeeding chapters, the most apparent and gravest difficulties on the theory will be given: namely, first, the difficulties of transitions, or in understanding how a simple being or a simple organ can be changed and perfected into a highly developed being or elaborately constructed organ; secondly the subject of Instinct, or the mental powers of animals, thirdly, Hybridism, or the infertility of species and the fertility of varieties when intercrossed; and fourthly, the imperfection of the Geological Record."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "In the next chapter I shall consider the geological succession of organic beings throughout time; in the eleventh and twelfth, their geographical distribution throughout space; in the thirteenth, their classification or mutual affinities, both when mature and in an embryonic condition."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "In the last chapter I shall give a brief recapitulation of the whole work, and a few concluding remarks."
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -288,13 +471,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No collaborative artifacts",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No collaborative artifacts",
           "evidence_role": "assistant_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue"
           ],
           "guidance": "Fix at every depth; this is assistant residue, not authorial style.",
-          "severity": "hard_fail"
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -317,19 +517,85 @@
           "The author of the \u2018Vestiges of Creation\u2019 would, I presume, say that, after a certain unknown number of generations, some bird had given birth to a woodpecker, and some plant to the misseltoe, and that these had been produced perfect as we now see them; but this assumption seems to me to be no explanation, for it leaves the case of the coadaptations of organic beings to each other and to their physical conditions of life, untouched and unexplained."
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 4,
+          "candidates": [
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "\u2018Beagle,\u2019 as naturalist, I was much struck with certain facts in the distribution of the inhabitants of South America, and in the geological relations of the present to the past inhabitants of that continent."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "After five years\u2019 work I allowed myself to speculate on the subject, and drew up some short notes; these I enlarged in 1844 into a sketch of the conclusions, which then seemed to me probable: from that period to the present day I have steadily pursued the same object."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "Wallace\u2019s excellent memoir, some brief extracts from my manuscripts."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "The author of the \u2018Vestiges of Creation\u2019 would, I presume, say that, after a certain unknown number of generations, some bird had given birth to a woodpecker, and some plant to the misseltoe, and that these had been produced perfect as we now see them; but this assumption seems to me to be no explanation, for it leaves the case of the coadaptations of organic beings to each other and to their physical conditions of life, untouched and unexplained."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 6 curly quote(s)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found 6 curly quote(s)",
           "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit"
           ],
           "guidance": "Normalise in All/plain output; recommend preserving in sourced literary or typographic text.",
+          "match_count": 4,
           "matches": [
             "\u2018Beagle,\u2019 as naturalist, I was much struck with certain facts in the distribution of the inhabitants of South America, and in the geological relations of the present to the past inhabitants of that continent.",
             "After five years\u2019 work I allowed myself to speculate on the subject, and drew up some short notes; these I enlarged in 1844 into a sketch of the conclusions, which then seemed to me probable: from that period to the present day I have steadily pursued the same object.",
             "Wallace\u2019s excellent memoir, some brief extracts from my manuscripts.",
             "The author of the \u2018Vestiges of Creation\u2019 would, I presume, say that, after a certain unknown number of generations, some bird had given birth to a woodpecker, and some plant to the misseltoe, and that these had been produced perfect as we now see them; but this assumption seems to me to be no explanation, for it leaves the case of the coadaptations of organic beings to each other and to their physical conditions of life, untouched and unexplained."
           ],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "\u2018Beagle,\u2019 as naturalist, I was much struck with certain facts in the distribution of the inhabitants of South America, and in the geological relations of the present to the past inhabitants of that continent."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "After five years\u2019 work I allowed myself to speculate on the subject, and drew up some short notes; these I enlarged in 1844 into a sketch of the conclusions, which then seemed to me probable: from that period to the present day I have steadily pursued the same object."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "Wallace\u2019s excellent memoir, some brief extracts from my manuscripts."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "The author of the \u2018Vestiges of Creation\u2019 would, I presume, say that, after a certain unknown number of generations, some bird had given birth to a woodpecker, and some plant to the misseltoe, and that these had been produced perfect as we now see them; but this assumption seems to me to be no explanation, for it leaves the case of the coadaptations of organic beings to each other and to their physical conditions of life, untouched and unexplained."
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -347,14 +613,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Sentence length stdev: 17.8 (target: >4)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Sentence length stdev: 17.8 (target: >4)",
           "evidence_role": "rhythm_signal",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1755,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -375,14 +657,47 @@
           "profound"
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 9374,
+              "quoted": false,
+              "start": 9366,
+              "text": "profound"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found: ['profound']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found: ['profound']",
           "evidence_role": "hype_language",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "synthetic_significance"
           ],
           "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm.",
-          "severity": "context_warning"
+          "match_count": 1,
+          "matches": [
+            "profound"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 9374,
+              "quoted": false,
+              "start": 9366,
+              "text": "profound"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -401,13 +716,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No significance inflation",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No significance inflation",
           "evidence_role": "importance_inflation",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix inflated importance unless the source genuinely argues significance.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -425,14 +757,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No negative parallelisms or contrived reframes",
           "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -450,14 +798,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No copula avoidance",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No copula avoidance",
           "evidence_role": "grammar_substitution",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "generic_abstraction"
           ],
           "guidance": "Usually simplify at Balanced and All; recommend preserving if the construction is idiomatic or technical.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -476,13 +841,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No filler phrases",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No filler phrases",
           "evidence_role": "filler_phrase",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix stock filler at Balanced and All; at Balanced, disclose and remove unless it belongs to quoted or intentionally casual voice.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -500,14 +882,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No generic conclusions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No generic conclusions",
           "evidence_role": "generic_closure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue",
             "synthetic_significance"
           ],
           "guidance": "Fix at every depth unless quoted from source text.",
-          "severity": "hard_fail"
+          "match_count": 0,
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -526,13 +924,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No false concession hedges",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No false concession hedges",
           "evidence_role": "stance_erasure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure"
           ],
           "guidance": "Fix fake both-sides framing at Balanced and All; preserve only if the piece actually argues both positions with evidence.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -550,13 +965,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No placeholder residue",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No placeholder residue",
           "evidence_role": "template_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue"
           ],
           "guidance": "Fix at every depth; unfilled placeholders are generated/template residue.",
-          "severity": "hard_fail"
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -574,13 +1006,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "Soft scaffold phrases: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Soft scaffold phrases: 0",
           "evidence_role": "explainer_scaffold",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Fix at Balanced and All; these phrases usually mark generated explainer structure rather than content.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -598,14 +1051,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Vague demonstrative subjects: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Vague demonstrative subjects: 0",
           "evidence_role": "sentence_subject",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure",
             "generic_abstraction"
           ],
           "guidance": "Review repeated 'This/That highlights...' starts; replace vague subjects with concrete nouns when the antecedent is unclear.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -622,16 +1096,121 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "life, untouched and unexplained",
+          "variation under domestication, afforded the best and safest clue",
+          " to\nitself, under the complex and sometimes varying conditions",
+          " four succeeding\nchapters, the most apparent and gravest difficulties",
+          "thirdly, Hybridism, or the infertility",
+          "as I believe,\nthe future success and modification"
+        ],
         "raw": {
-          "evidence": "No forced triads",
+          "aggregate_finding": false,
+          "candidate_count": 6,
+          "candidates": [
+            {
+              "end": 5811,
+              "quoted": false,
+              "start": 5780,
+              "text": "life, untouched and unexplained"
+            },
+            {
+              "end": 6336,
+              "quoted": false,
+              "start": 6272,
+              "text": "variation under domestication, afforded the best and safest clue"
+            },
+            {
+              "end": 7708,
+              "quoted": false,
+              "start": 7646,
+              "text": " to\nitself, under the complex and sometimes varying conditions"
+            },
+            {
+              "end": 8370,
+              "quoted": false,
+              "start": 8301,
+              "text": " four succeeding\nchapters, the most apparent and gravest difficulties"
+            },
+            {
+              "end": 8703,
+              "quoted": false,
+              "start": 8665,
+              "text": "thirdly, Hybridism, or the infertility"
+            },
+            {
+              "end": 9735,
+              "quoted": false,
+              "start": 9686,
+              "text": "as I believe,\nthe future success and modification"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 6 triad(s): ['life, untouched and unexplained', 'variation under domestication, afforded the best and safest clue', ' to\\nitself, under the complex and sometimes varying conditions', ' four succeeding\\nchapters, the most apparent and gravest difficulties', 'thirdly, Hybridism, or the infertility', 'as I believe,\\nthe future success and modification']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 6 triad(s): ['life, untouched and unexplained', 'variation under domestication, afforded the best and safest clue', ' to\\nitself, under the complex and sometimes varying conditions', ' four succeeding\\nchapters, the most apparent and gravest difficulties', 'thirdly, Hybridism, or the infertility', 'as I believe,\\nthe future success and modification']",
           "evidence_role": "list_rhythm",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Fix decorative triads; recommend preserving meaningful lists and deliberate rhetoric.",
-          "severity": "context_warning"
+          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+          "match_count": 6,
+          "matches": [
+            "life, untouched and unexplained",
+            "variation under domestication, afforded the best and safest clue",
+            " to\nitself, under the complex and sometimes varying conditions",
+            " four succeeding\nchapters, the most apparent and gravest difficulties",
+            "thirdly, Hybridism, or the infertility",
+            "as I believe,\nthe future success and modification"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 5811,
+              "quoted": false,
+              "start": 5780,
+              "text": "life, untouched and unexplained"
+            },
+            {
+              "end": 6336,
+              "quoted": false,
+              "start": 6272,
+              "text": "variation under domestication, afforded the best and safest clue"
+            },
+            {
+              "end": 7708,
+              "quoted": false,
+              "start": 7646,
+              "text": " to\nitself, under the complex and sometimes varying conditions"
+            },
+            {
+              "end": 8370,
+              "quoted": false,
+              "start": 8301,
+              "text": " four succeeding\nchapters, the most apparent and gravest difficulties"
+            },
+            {
+              "end": 8703,
+              "quoted": false,
+              "start": 8665,
+              "text": "thirdly, Hybridism, or the infertility"
+            },
+            {
+              "end": 9735,
+              "quoted": false,
+              "start": 9686,
+              "text": "as I believe,\nthe future success and modification"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -640,7 +1219,7 @@
       ],
       "id": "no-forced-triads",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Content patterns",
@@ -652,16 +1231,46 @@
           ", reflecting on the mutual affinities of organic beings, on their embryological relations, their geographical distribution, geological succession, and other such facts, might come to the conclusion that each species had not been independently created, but had descended, like varieties, from other species."
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": ", reflecting on the mutual affinities of organic beings, on their embryological relations, their geographical distribution, geological succession, and other such facts, might come to the conclusion that each species had not been independently created, but had descended, like varieties, from other species."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 1 tacked-on -ing phrase(s)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found 1 tacked-on -ing phrase(s)",
           "evidence_role": "analysis_substitution",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
+          "match_count": 1,
           "matches": [
             ", reflecting on the mutual affinities of organic beings, on their embryological relations, their geographical distribution, geological succession, and other such facts, might come to the conclusion that each species had not been independently created, but had descended, like varieties, from other species."
           ],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": ", reflecting on the mutual affinities of organic beings, on their embryological relations, their geographical distribution, geological succession, and other such facts, might come to the conclusion that each species had not been independently created, but had descended, like varieties, from other species."
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -679,14 +1288,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Ghost/spectral words: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Ghost/spectral words: 0",
           "evidence_role": "atmospheric_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "genre_misfit"
           ],
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -705,15 +1330,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Quietness words: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Quietness words: 0",
           "evidence_role": "atmospheric_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "genre_misfit"
           ],
           "guidance": "Fix generic quietness mood; recommend preserving if quietness is the actual subject or voice.",
+          "match_count": 0,
           "matches": [],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -732,14 +1373,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "Rhetorical questions: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Rhetorical questions: 0",
           "evidence_role": "rhetorical_template",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -758,14 +1420,39 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "evidence": "List ratio: 0%",
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_blocks": 2,
+              "minimum_items": 8,
+              "minimum_line_ratio": 0.3
+            },
+            "raw_evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/183)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/183)",
           "evidence_role": "listification",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix unnecessary listification; recommend preserving reference, instructional, or interview structure.",
-          "severity": "context_warning"
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1755,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_blocks": 2,
+            "minimum_items": 8,
+            "minimum_line_ratio": 0.3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -784,14 +1471,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "Decorative symbols/shortcodes: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Decorative symbols/shortcodes: 0",
           "evidence_role": "formatting_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue",
             "genre_misfit"
           ],
           "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -810,14 +1518,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No dramatic transitions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No dramatic transitions",
           "evidence_role": "narrative_template",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "genre_misfit"
           ],
           "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -836,14 +1560,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No formulaic openers",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No formulaic openers",
           "evidence_role": "formulaic_structure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it matches the source genre.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -862,14 +1603,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No signposted conclusions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No signposted conclusions",
           "evidence_role": "structural_signpost",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix generic signposts in prose; recommend preserving academic/instructional structure when useful.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -888,41 +1646,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "evidence": "No headings",
-          "evidence_role": "formatting_signal",
-          "failure_modes": [
-            "frictionless_structure",
-            "genre_misfit"
-          ],
-          "guidance": "Fix markdown headings and plain title headings when prose should flow; recommend preserving web articles, guides, and reference docs.",
-          "severity": "context_warning"
-        }
-      },
-      "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
-      ],
-      "id": "no-markdown-headings",
-      "severity": "context_warning",
-      "status": "clear"
-    },
-    {
-      "category": "Style",
-      "evidence": {
-        "counts": {},
-        "locations": [],
-        "metric": null,
-        "quoted_phrases": [],
-        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No parenthetical headings",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No parenthetical headings",
           "evidence_role": "heading_structure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body.",
+          "match_count": 0,
           "matches": [],
-          "severity": "hard_fail"
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -941,13 +1689,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No corporate AI speak",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No corporate AI speak",
           "evidence_role": "domain_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix at every depth; recommend preserving only when quoting corporate source language.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -965,14 +1730,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max 'This [verb]' run: 1",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Max 'This [verb]' run: 1",
           "evidence_role": "sentence_subject",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1755,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -991,13 +1772,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Hedging constructions: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Hedging constructions: 0",
           "evidence_role": "stance_erasure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure"
           ],
           "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1015,14 +1817,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No countdown negation",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No countdown negation",
           "evidence_role": "rhetorical_pattern",
+          "evidence_type": "statistical",
           "failure_modes": [
             "synthetic_significance",
             "frictionless_structure"
           ],
           "guidance": "Fix generic reveal structures; recommend preserving deliberate rhetoric only with strong reason.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1755,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1041,15 +1859,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Negation markers: 1 (0.6 per 1000 words)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Negation markers: 1 (0.6 per 1000 words)",
           "evidence_role": "rhetorical_density",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Review dense negation as a style signal; preserve polemic or technical qualification when purposeful.",
           "matches": [],
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1755,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1068,14 +1902,36 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_cv": 0.18,
+              "minimum_paragraphs": 7
+            },
+            "raw_evidence": "Paragraph length CV: 0.38 across 10 paragraphs",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Paragraph length CV: 0.38 across 10 paragraphs",
           "evidence_role": "layout_rhythm",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template.",
           "metric": null,
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1755,
+          "severity": "context_warning",
+          "threshold": {
+            "maximum_cv": 0.18,
+            "minimum_paragraphs": 7
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1093,14 +1949,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Tidy paragraph endings: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Tidy paragraph endings: 0",
           "evidence_role": "paragraph_closure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "voice_erasure"
           ],
           "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1119,14 +1996,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Bland critical template phrases: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Bland critical template phrases: 0",
           "evidence_role": "genre_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "voice_erasure"
           ],
           "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1145,14 +2042,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Rubric echo phrases: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Rubric echo phrases: 0",
           "evidence_role": "assignment_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue",
             "voice_erasure"
           ],
           "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1171,15 +2088,31 @@
         "metric": "type-token ratio 0.37 (647 unique of 1733 words, target above 0.40)",
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Type-token ratio: 0.373 (647 unique / 1733 total, target: >0.40)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Type-token ratio: 0.373 (647 unique / 1733 total, target: >0.40)",
           "evidence_role": "lexical_distribution",
+          "evidence_type": "statistical",
           "failure_modes": [
             "generic_abstraction",
             "genre_misfit"
           ],
           "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately.",
           "metric": "type-token ratio 0.37 (647 unique of 1733 words, target above 0.40)",
-          "severity": "context_warning"
+          "metric_value": "type-token ratio 0.37 (647 unique of 1733 words, target above 0.40)",
+          "sample_size": 1755,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1197,27 +2130,126 @@
         "locations": [],
         "metric": null,
         "quoted_phrases": [
-          "their geographical distribution,\ngeological succession, and other such facts",
-          "tail, beak, and tongue",
-          "external conditions, or of habit, or of the volition of",
-          "physical conditions of life, untouched and unexplained",
+          "life, untouched and unexplained",
           "variation under domestication, afforded the best and safest clue",
-          "itself, under the complex and sometimes varying conditions of",
-          "chapters, the most apparent and gravest difficulties on the",
-          "first, the difficulties of transitions, or in",
-          "thirdly, Hybridism, or the infertility of species",
-          "in the thirteenth, their classification or mutual affinities",
-          "as I believe,\nthe future success and modification of every inhabitant"
+          " to\nitself, under the complex and sometimes varying conditions",
+          " four succeeding\nchapters, the most apparent and gravest difficulties",
+          "thirdly, Hybridism, or the infertility",
+          "as I believe,\nthe future success and modification"
         ],
         "raw": {
-          "evidence": "Found 11 triad(s): ['their geographical distribution,\\ngeological succession, and other such facts', 'tail, beak, and tongue', 'external conditions, or of habit, or of the volition of', 'physical conditions of life, untouched and unexplained', 'variation under domestication, afforded the best and safest clue', 'itself, under the complex and sometimes varying conditions of', 'chapters, the most apparent and gravest difficulties on the', 'first, the difficulties of transitions, or in', 'thirdly, Hybridism, or the infertility of species', 'in the thirteenth, their classification or mutual affinities', 'as I believe,\\nthe future success and modification of every inhabitant']",
+          "aggregate_finding": false,
+          "candidate_count": 6,
+          "candidates": [
+            {
+              "end": 5811,
+              "quoted": false,
+              "start": 5780,
+              "text": "life, untouched and unexplained"
+            },
+            {
+              "end": 6336,
+              "quoted": false,
+              "start": 6272,
+              "text": "variation under domestication, afforded the best and safest clue"
+            },
+            {
+              "end": 7708,
+              "quoted": false,
+              "start": 7646,
+              "text": " to\nitself, under the complex and sometimes varying conditions"
+            },
+            {
+              "end": 8370,
+              "quoted": false,
+              "start": 8301,
+              "text": " four succeeding\nchapters, the most apparent and gravest difficulties"
+            },
+            {
+              "end": 8703,
+              "quoted": false,
+              "start": 8665,
+              "text": "thirdly, Hybridism, or the infertility"
+            },
+            {
+              "end": 9735,
+              "quoted": false,
+              "start": 9686,
+              "text": "as I believe,\nthe future success and modification"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 4,
+              "minimum_words": 300
+            },
+            "raw_evidence": "Found 6 triad(s): ['life, untouched and unexplained', 'variation under domestication, afforded the best and safest clue', ' to\\nitself, under the complex and sometimes varying conditions', ' four succeeding\\nchapters, the most apparent and gravest difficulties', 'thirdly, Hybridism, or the infertility', 'as I believe,\\nthe future success and modification']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 6 triad(s): ['life, untouched and unexplained', 'variation under domestication, afforded the best and safest clue', ' to\\nitself, under the complex and sometimes varying conditions', ' four succeeding\\nchapters, the most apparent and gravest difficulties', 'thirdly, Hybridism, or the infertility', 'as I believe,\\nthe future success and modification']",
           "evidence_role": "list_rhythm",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-          "severity": "context_warning"
+          "match_count": 6,
+          "matches": [
+            "life, untouched and unexplained",
+            "variation under domestication, afforded the best and safest clue",
+            " to\nitself, under the complex and sometimes varying conditions",
+            " four succeeding\nchapters, the most apparent and gravest difficulties",
+            "thirdly, Hybridism, or the infertility",
+            "as I believe,\nthe future success and modification"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 5811,
+              "quoted": false,
+              "start": 5780,
+              "text": "life, untouched and unexplained"
+            },
+            {
+              "end": 6336,
+              "quoted": false,
+              "start": 6272,
+              "text": "variation under domestication, afforded the best and safest clue"
+            },
+            {
+              "end": 7708,
+              "quoted": false,
+              "start": 7646,
+              "text": " to\nitself, under the complex and sometimes varying conditions"
+            },
+            {
+              "end": 8370,
+              "quoted": false,
+              "start": 8301,
+              "text": " four succeeding\nchapters, the most apparent and gravest difficulties"
+            },
+            {
+              "end": 8703,
+              "quoted": false,
+              "start": 8665,
+              "text": "thirdly, Hybridism, or the infertility"
+            },
+            {
+              "end": 9735,
+              "quoted": false,
+              "start": 9686,
+              "text": "as I believe,\nthe future success and modification"
+            }
+          ],
+          "threshold": {
+            "minimum_candidates": 4,
+            "minimum_words": 300
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1236,13 +2268,29 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No repeated section labels",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No repeated section labels",
           "evidence_role": "repeated_template",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material.",
-          "severity": "strong_warning"
+          "metric_value": 0,
+          "sample_size": 1755,
+          "severity": "strong_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1260,14 +2308,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No notability claims",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No notability claims",
           "evidence_role": "notability_inflation",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1286,14 +2350,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No vague attributions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No vague attributions",
           "evidence_role": "attribution_vagueness",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1312,13 +2393,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 4
+            },
+            "raw_evidence": "Bold spans in prose: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Bold spans in prose: 0",
           "evidence_role": "emphasis_pattern",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 4
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1336,14 +2438,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "List items with bolded headers: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "List items with bolded headers: 0",
           "evidence_role": "list_template",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1362,14 +2485,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_per_sentence": 3
+            },
+            "raw_evidence": "No dense compound-modifier sentences",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No dense compound-modifier sentences",
           "evidence_role": "modifier_density",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Restructure sentences with three or more stock hyphenated compounds; preserve only when the compounds are domain-specific terms of art.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1712,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_per_sentence": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1388,13 +2531,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No knowledge-cutoff disclaimers",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No knowledge-cutoff disclaimers",
           "evidence_role": "model_meta_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue"
           ],
           "guidance": "Fix at every depth; training-update and limited-information hedges are model meta-residue, not authorial uncertainty.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [

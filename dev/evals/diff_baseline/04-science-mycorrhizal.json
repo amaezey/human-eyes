@@ -6,8 +6,8 @@
     "programmatic": {
       "by_category": {
         "Filler and hedging": 1,
-        "Language and grammar": 2,
-        "Style": 2
+        "Language and grammar": 3,
+        "Style": 1
       },
       "by_severity": {
         "context_warning": 4,
@@ -15,10 +15,8 @@
         "strong_warning": 1
       },
       "signal_stacking": {
-        "components": [
-          "headings in prose"
-        ],
-        "score": 2,
+        "components": [],
+        "score": 0,
         "threshold": 4,
         "triggered": false,
         "vocabulary_points": 0
@@ -47,14 +45,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No em dashes found",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No em dashes found",
           "evidence_role": "punctuation_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit"
           ],
           "guidance": "Treat as a strong 2026 AI-style signal. May be preserved only at Balanced depth with explicit disclosure; All requires removal.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -72,13 +86,29 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max AI words per paragraph: 1 (3 total in text)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Max AI words per paragraph: 1 (3 total in text)",
           "evidence_role": "vocabulary_cluster",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix clustered generic AI vocabulary; individual words may be fine in context.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -96,14 +126,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No nonliteral land/surface constructions found",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No nonliteral land/surface constructions found",
           "evidence_role": "metaphor_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "synthetic_significance"
           ],
           "guidance": "Fix nonliteral land/surface phrasing; replace with the concrete action or claim.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -118,26 +165,39 @@
       "category": "Signal stacking",
       "evidence": {
         "counts": {
-          "score": 2,
+          "score": 0,
           "threshold": 4
         },
         "locations": [],
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "components": [
-            "headings in prose"
-          ],
-          "evidence": "Overall signal stacking 2/4 from [headings in prose]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.9/1000",
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "component_count": 0,
+          "component_signals": [],
+          "components": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": 4,
+            "raw_evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.9/1000",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.9/1000",
           "evidence_role": "signal_stacking",
+          "evidence_type": "aggregate",
           "failure_modes": [
             "generic_abstraction",
             "frictionless_structure"
           ],
           "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict.",
-          "score": 2,
+          "score": 0,
           "severity": "context_warning",
           "threshold": 4,
+          "threshold_met": false,
           "vocabulary_signal_stacking": {
             "gptzero_matches": [],
             "kobak_style_density": 8.922880815806247,
@@ -176,13 +236,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No manufactured insight phrases",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No manufactured insight phrases",
           "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -200,15 +277,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No performed-candour frames",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No performed-candour frames",
           "evidence_role": "candour_frame",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure",
             "generic_abstraction"
           ],
           "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -227,15 +320,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_run": 3
+            },
+            "raw_evidence": "Max consecutive short sentences: 1",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Max consecutive short sentences: 1",
           "evidence_role": "rhythm_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit",
             "frictionless_structure"
           ],
           "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
+          "match_count": 0,
           "matches": [],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_run": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -254,15 +367,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max anaphora run: 2",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Max anaphora run: 2",
           "evidence_role": "rhythm_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit",
             "frictionless_structure"
           ],
           "guidance": "Fix mechanical repetition; recommend preserving deliberate rhetoric or literary patterning.",
+          "match_count": 0,
           "matches": [],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -281,13 +410,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No collaborative artifacts",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No collaborative artifacts",
           "evidence_role": "assistant_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue"
           ],
           "guidance": "Fix at every depth; this is assistant residue, not authorial style.",
-          "severity": "hard_fail"
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -314,12 +460,74 @@
           "That makes them less tidy than the \u201cwood-wide web\u201d metaphor, but more impressive."
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 8,
+          "candidates": [
+            {
+              "end": 267,
+              "quoted": false,
+              "start": 213,
+              "text": "But much of the forest\u2019s metabolism is below the path."
+            },
+            {
+              "end": 597,
+              "quoted": false,
+              "start": 525,
+              "text": "The relationship is called mycorrhiza, from the Greek for \u201cfungus-root\u201d."
+            },
+            {
+              "end": 742,
+              "quoted": false,
+              "start": 598,
+              "text": "In a mycorrhizal association, a fungus colonises a plant\u2019s root system and extends outward into the soil as microscopic filaments called hyphae."
+            },
+            {
+              "end": 2868,
+              "quoted": false,
+              "start": 2774,
+              "text": "This is where the popular phrase \u201cwood-wide web\u201d enters the story, and where accuracy matters."
+            },
+            {
+              "end": 2930,
+              "quoted": false,
+              "start": 2869,
+              "text": "A common mycorrhizal network is not just \u201cfungi in the soil\u201d."
+            },
+            {
+              "end": 5254,
+              "quoted": false,
+              "start": 5202,
+              "text": "The \u201ccommunication\u201d claim needs the same discipline."
+            },
+            {
+              "end": 6994,
+              "quoted": false,
+              "start": 6918,
+              "text": "But mycorrhizal fungi do not simply \u201cstore carbon\u201d in a straightforward way."
+            },
+            {
+              "end": 10150,
+              "quoted": false,
+              "start": 10069,
+              "text": "That makes them less tidy than the \u201cwood-wide web\u201d metaphor, but more impressive."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 14 curly quote(s)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found 14 curly quote(s)",
           "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
           "failure_modes": [
             "genre_misfit"
           ],
           "guidance": "Normalise in All/plain output; recommend preserving in sourced literary or typographic text.",
+          "match_count": 8,
           "matches": [
             "But much of the forest\u2019s metabolism is below the path.",
             "The relationship is called mycorrhiza, from the Greek for \u201cfungus-root\u201d.",
@@ -330,7 +538,59 @@
             "But mycorrhizal fungi do not simply \u201cstore carbon\u201d in a straightforward way.",
             "That makes them less tidy than the \u201cwood-wide web\u201d metaphor, but more impressive."
           ],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 267,
+              "quoted": false,
+              "start": 213,
+              "text": "But much of the forest\u2019s metabolism is below the path."
+            },
+            {
+              "end": 597,
+              "quoted": false,
+              "start": 525,
+              "text": "The relationship is called mycorrhiza, from the Greek for \u201cfungus-root\u201d."
+            },
+            {
+              "end": 742,
+              "quoted": false,
+              "start": 598,
+              "text": "In a mycorrhizal association, a fungus colonises a plant\u2019s root system and extends outward into the soil as microscopic filaments called hyphae."
+            },
+            {
+              "end": 2868,
+              "quoted": false,
+              "start": 2774,
+              "text": "This is where the popular phrase \u201cwood-wide web\u201d enters the story, and where accuracy matters."
+            },
+            {
+              "end": 2930,
+              "quoted": false,
+              "start": 2869,
+              "text": "A common mycorrhizal network is not just \u201cfungi in the soil\u201d."
+            },
+            {
+              "end": 5254,
+              "quoted": false,
+              "start": 5202,
+              "text": "The \u201ccommunication\u201d claim needs the same discipline."
+            },
+            {
+              "end": 6994,
+              "quoted": false,
+              "start": 6918,
+              "text": "But mycorrhizal fungi do not simply \u201cstore carbon\u201d in a straightforward way."
+            },
+            {
+              "end": 10150,
+              "quoted": false,
+              "start": 10069,
+              "text": "That makes them less tidy than the \u201cwood-wide web\u201d metaphor, but more impressive."
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -348,14 +608,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Sentence length stdev: 8.2 (target: >4)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Sentence length stdev: 8.2 (target: >4)",
           "evidence_role": "rhythm_signal",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -374,14 +650,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No promotional language",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No promotional language",
           "evidence_role": "hype_language",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "synthetic_significance"
           ],
           "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -400,13 +693,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No significance inflation",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No significance inflation",
           "evidence_role": "importance_inflation",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix inflated importance unless the source genuinely argues significance.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -424,14 +734,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No negative parallelisms or contrived reframes",
           "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -451,14 +777,47 @@
           "represent a"
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 1117,
+              "quoted": false,
+              "start": 1106,
+              "text": "represent a"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 1: ['represent a']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found 1: ['represent a']",
           "evidence_role": "grammar_substitution",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "generic_abstraction"
           ],
           "guidance": "Usually simplify at Balanced and All; recommend preserving if the construction is idiomatic or technical.",
-          "severity": "strong_warning"
+          "match_count": 1,
+          "matches": [
+            "represent a"
+          ],
+          "severity": "strong_warning",
+          "spans": [
+            {
+              "end": 1117,
+              "quoted": false,
+              "start": 1106,
+              "text": "represent a"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -477,13 +836,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No filler phrases",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No filler phrases",
           "evidence_role": "filler_phrase",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix stock filler at Balanced and All; at Balanced, disclose and remove unless it belongs to quoted or intentionally casual voice.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -501,14 +877,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No generic conclusions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No generic conclusions",
           "evidence_role": "generic_closure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue",
             "synthetic_significance"
           ],
           "guidance": "Fix at every depth unless quoted from source text.",
-          "severity": "hard_fail"
+          "match_count": 0,
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -527,13 +919,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No false concession hedges",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No false concession hedges",
           "evidence_role": "stance_erasure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure"
           ],
           "guidance": "Fix fake both-sides framing at Balanced and All; preserve only if the piece actually argues both positions with evidence.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -551,13 +960,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No placeholder residue",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No placeholder residue",
           "evidence_role": "template_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue"
           ],
           "guidance": "Fix at every depth; unfilled placeholders are generated/template residue.",
-          "severity": "hard_fail"
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -575,13 +1001,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "Soft scaffold phrases: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Soft scaffold phrases: 0",
           "evidence_role": "explainer_scaffold",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Fix at Balanced and All; these phrases usually mark generated explainer structure rather than content.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -599,14 +1046,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Vague demonstrative subjects: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Vague demonstrative subjects: 0",
           "evidence_role": "sentence_subject",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure",
             "generic_abstraction"
           ],
           "guidance": "Review repeated 'This/That highlights...' starts; replace vague subjects with concrete nouns when the antecedent is unclear.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -623,16 +1091,261 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "recover, compete and store carbon",
+          "and nitrogen, and often water and trace elements",
+          "into smaller pores, cross tiny gaps, and spread",
+          "what they can provide, where they forage, and how much carbon they demand",
+          "fungal identity, soil conditions and the form",
+          "mycorrhizal networks improves, harms or has no effect",
+          "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage",
+          "of intention, language or conscious warning",
+          "is alive, metabolically active and under selection",
+          "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change",
+          "into the soil, and use enzymes and organic acids",
+          "roots, bacteria and decaying organic matter",
+          "in plant productivity, nutrient cycling and soil carbon dynamics",
+          "are real, ancient and ecologically consequential",
+          "marketplace, digestive system and battleground",
+          "patchy, changing and difficult"
+        ],
         "raw": {
-          "evidence": "No forced triads",
+          "aggregate_finding": false,
+          "candidate_count": 16,
+          "candidates": [
+            {
+              "end": 522,
+              "quoted": false,
+              "start": 489,
+              "text": "recover, compete and store carbon"
+            },
+            {
+              "end": 941,
+              "quoted": false,
+              "start": 893,
+              "text": "and nitrogen, and often water and trace elements"
+            },
+            {
+              "end": 1413,
+              "quoted": false,
+              "start": 1366,
+              "text": "into smaller pores, cross tiny gaps, and spread"
+            },
+            {
+              "end": 2211,
+              "quoted": false,
+              "start": 2138,
+              "text": "what they can provide, where they forage, and how much carbon they demand"
+            },
+            {
+              "end": 2473,
+              "quoted": false,
+              "start": 2428,
+              "text": "fungal identity, soil conditions and the form"
+            },
+            {
+              "end": 4882,
+              "quoted": false,
+              "start": 4829,
+              "text": "mycorrhizal networks improves, harms or has no effect"
+            },
+            {
+              "end": 5099,
+              "quoted": false,
+              "start": 5002,
+              "text": "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage"
+            },
+            {
+              "end": 5791,
+              "quoted": false,
+              "start": 5748,
+              "text": "of intention, language or conscious warning"
+            },
+            {
+              "end": 6102,
+              "quoted": false,
+              "start": 6052,
+              "text": "is alive, metabolically active and under selection"
+            },
+            {
+              "end": 6280,
+              "quoted": false,
+              "start": 6139,
+              "text": "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change"
+            },
+            {
+              "end": 7729,
+              "quoted": false,
+              "start": 7681,
+              "text": "into the soil, and use enzymes and organic acids"
+            },
+            {
+              "end": 8339,
+              "quoted": false,
+              "start": 8296,
+              "text": "roots, bacteria and decaying organic matter"
+            },
+            {
+              "end": 8896,
+              "quoted": false,
+              "start": 8832,
+              "text": "in plant productivity, nutrient cycling and soil carbon dynamics"
+            },
+            {
+              "end": 9599,
+              "quoted": false,
+              "start": 9551,
+              "text": "are real, ancient and ecologically consequential"
+            },
+            {
+              "end": 9947,
+              "quoted": false,
+              "start": 9901,
+              "text": "marketplace, digestive system and battleground"
+            },
+            {
+              "end": 10056,
+              "quoted": false,
+              "start": 10026,
+              "text": "patchy, changing and difficult"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 16 triad(s): ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 16 triad(s): ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
           "evidence_role": "list_rhythm",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Fix decorative triads; recommend preserving meaningful lists and deliberate rhetoric.",
-          "severity": "context_warning"
+          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+          "match_count": 16,
+          "matches": [
+            "recover, compete and store carbon",
+            "and nitrogen, and often water and trace elements",
+            "into smaller pores, cross tiny gaps, and spread",
+            "what they can provide, where they forage, and how much carbon they demand",
+            "fungal identity, soil conditions and the form",
+            "mycorrhizal networks improves, harms or has no effect",
+            "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage",
+            "of intention, language or conscious warning",
+            "is alive, metabolically active and under selection",
+            "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change",
+            "into the soil, and use enzymes and organic acids",
+            "roots, bacteria and decaying organic matter",
+            "in plant productivity, nutrient cycling and soil carbon dynamics",
+            "are real, ancient and ecologically consequential",
+            "marketplace, digestive system and battleground",
+            "patchy, changing and difficult"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 522,
+              "quoted": false,
+              "start": 489,
+              "text": "recover, compete and store carbon"
+            },
+            {
+              "end": 941,
+              "quoted": false,
+              "start": 893,
+              "text": "and nitrogen, and often water and trace elements"
+            },
+            {
+              "end": 1413,
+              "quoted": false,
+              "start": 1366,
+              "text": "into smaller pores, cross tiny gaps, and spread"
+            },
+            {
+              "end": 2211,
+              "quoted": false,
+              "start": 2138,
+              "text": "what they can provide, where they forage, and how much carbon they demand"
+            },
+            {
+              "end": 2473,
+              "quoted": false,
+              "start": 2428,
+              "text": "fungal identity, soil conditions and the form"
+            },
+            {
+              "end": 4882,
+              "quoted": false,
+              "start": 4829,
+              "text": "mycorrhizal networks improves, harms or has no effect"
+            },
+            {
+              "end": 5099,
+              "quoted": false,
+              "start": 5002,
+              "text": "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage"
+            },
+            {
+              "end": 5791,
+              "quoted": false,
+              "start": 5748,
+              "text": "of intention, language or conscious warning"
+            },
+            {
+              "end": 6102,
+              "quoted": false,
+              "start": 6052,
+              "text": "is alive, metabolically active and under selection"
+            },
+            {
+              "end": 6280,
+              "quoted": false,
+              "start": 6139,
+              "text": "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change"
+            },
+            {
+              "end": 7729,
+              "quoted": false,
+              "start": 7681,
+              "text": "into the soil, and use enzymes and organic acids"
+            },
+            {
+              "end": 8339,
+              "quoted": false,
+              "start": 8296,
+              "text": "roots, bacteria and decaying organic matter"
+            },
+            {
+              "end": 8896,
+              "quoted": false,
+              "start": 8832,
+              "text": "in plant productivity, nutrient cycling and soil carbon dynamics"
+            },
+            {
+              "end": 9599,
+              "quoted": false,
+              "start": 9551,
+              "text": "are real, ancient and ecologically consequential"
+            },
+            {
+              "end": 9947,
+              "quoted": false,
+              "start": 9901,
+              "text": "marketplace, digestive system and battleground"
+            },
+            {
+              "end": 10056,
+              "quoted": false,
+              "start": 10026,
+              "text": "patchy, changing and difficult"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -641,7 +1354,7 @@
       ],
       "id": "no-forced-triads",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Content patterns",
@@ -651,14 +1364,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No superficial -ing phrases",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No superficial -ing phrases",
           "evidence_role": "analysis_substitution",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
+          "match_count": 0,
           "matches": [],
-          "severity": "strong_warning"
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -676,14 +1405,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Ghost/spectral words: 1",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Ghost/spectral words: 1",
           "evidence_role": "atmospheric_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "genre_misfit"
           ],
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -702,15 +1447,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Quietness words: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Quietness words: 0",
           "evidence_role": "atmospheric_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "genre_misfit"
           ],
           "guidance": "Fix generic quietness mood; recommend preserving if quietness is the actual subject or voice.",
+          "match_count": 0,
           "matches": [],
-          "severity": "context_warning"
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -729,14 +1490,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "Rhetorical questions: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Rhetorical questions: 0",
           "evidence_role": "rhetorical_template",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -755,14 +1537,39 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "evidence": "List ratio: 0%",
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_blocks": 2,
+              "minimum_items": 8,
+              "minimum_line_ratio": 0.3
+            },
+            "raw_evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/31)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/31)",
           "evidence_role": "listification",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix unnecessary listification; recommend preserving reference, instructional, or interview structure.",
-          "severity": "context_warning"
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_blocks": 2,
+            "minimum_items": 8,
+            "minimum_line_ratio": 0.3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -781,14 +1588,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "Decorative symbols/shortcodes: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Decorative symbols/shortcodes: 0",
           "evidence_role": "formatting_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue",
             "genre_misfit"
           ],
           "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -807,14 +1635,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No dramatic transitions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No dramatic transitions",
           "evidence_role": "narrative_template",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "genre_misfit"
           ],
           "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -833,14 +1677,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No formulaic openers",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No formulaic openers",
           "evidence_role": "formulaic_structure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it matches the source genre.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -859,14 +1720,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No signposted conclusions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No signposted conclusions",
           "evidence_role": "structural_signpost",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix generic signposts in prose; recommend preserving academic/instructional structure when useful.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -883,45 +1761,33 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [
-          "# The forest beneath the forest"
-        ],
-        "raw": {
-          "evidence": "Found 1 heading(s): ['# The forest beneath the forest']",
-          "evidence_role": "formatting_signal",
-          "failure_modes": [
-            "frictionless_structure",
-            "genre_misfit"
-          ],
-          "guidance": "Fix markdown headings and plain title headings when prose should flow; recommend preserving web articles, guides, and reference docs.",
-          "severity": "context_warning"
-        }
-      },
-      "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
-      ],
-      "id": "no-markdown-headings",
-      "severity": "context_warning",
-      "status": "flagged"
-    },
-    {
-      "category": "Style",
-      "evidence": {
-        "counts": {},
-        "locations": [],
-        "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No parenthetical headings",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No parenthetical headings",
           "evidence_role": "heading_structure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body.",
+          "match_count": 0,
           "matches": [],
-          "severity": "hard_fail"
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -940,13 +1806,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No corporate AI speak",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No corporate AI speak",
           "evidence_role": "domain_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
           "guidance": "Fix at every depth; recommend preserving only when quoting corporate source language.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -964,14 +1847,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max 'This [verb]' run: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Max 'This [verb]' run: 0",
           "evidence_role": "sentence_subject",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -988,15 +1887,68 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "some cases",
+          "some cases"
+        ],
         "raw": {
-          "evidence": "Hedging constructions: 0",
+          "aggregate_finding": false,
+          "candidate_count": 2,
+          "candidates": [
+            {
+              "end": 4910,
+              "quoted": false,
+              "start": 4900,
+              "text": "some cases"
+            },
+            {
+              "end": 7112,
+              "quoted": false,
+              "start": 7102,
+              "text": "some cases"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Hedging constructions: 2",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Hedging constructions: 2",
           "evidence_role": "stance_erasure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure"
           ],
           "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty.",
-          "severity": "context_warning"
+          "match_count": 2,
+          "matches": [
+            "some cases",
+            "some cases"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 4910,
+              "quoted": false,
+              "start": 4900,
+              "text": "some cases"
+            },
+            {
+              "end": 7112,
+              "quoted": false,
+              "start": 7102,
+              "text": "some cases"
+            }
+          ],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1014,14 +1966,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No countdown negation",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No countdown negation",
           "evidence_role": "rhetorical_pattern",
+          "evidence_type": "statistical",
           "failure_modes": [
             "synthetic_significance",
             "frictionless_structure"
           ],
           "guidance": "Fix generic reveal structures; recommend preserving deliberate rhetoric only with strong reason.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1057,8 +2025,117 @@
           "A forest is not just a collection of trees."
         ],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 16,
+          "candidates": [
+            {
+              "end": 453,
+              "quoted": false,
+              "start": 408,
+              "text": "These fungi are not decoration on tree roots."
+            },
+            {
+              "end": 1215,
+              "quoted": false,
+              "start": 1175,
+              "text": "For a tree, this is not a minor upgrade."
+            },
+            {
+              "end": 2123,
+              "quoted": false,
+              "start": 2052,
+              "text": "Trees do not simply hand over sugar to any fungus in the neighbourhood."
+            },
+            {
+              "end": 2930,
+              "quoted": false,
+              "start": 2869,
+              "text": "A common mycorrhizal network is not just \u201cfungi in the soil\u201d."
+            },
+            {
+              "end": 3735,
+              "quoted": false,
+              "start": 3406,
+              "text": "A 2023 review in Nature Ecology & Evolution argued that several strong public claims about common mycorrhizal networks in forests, including that they are widespread, that they reliably improve seedling performance, and that mature trees preferentially send resources to offspring, are not yet supported by enough field evidence."
+            },
+            {
+              "end": 3779,
+              "quoted": false,
+              "start": 3737,
+              "text": "That does not make the networks imaginary."
+            },
+            {
+              "end": 4363,
+              "quoted": false,
+              "start": 4244,
+              "text": "The experiment became famous because it suggested that forest plants were not merely competing as isolated individuals."
+            },
+            {
+              "end": 4760,
+              "quoted": false,
+              "start": 4590,
+              "text": "But a detected transfer is not the same as proof that a mature tree is deliberately feeding a seedling, or that the transfer meaningfully changes survival in all forests."
+            },
+            {
+              "end": 5153,
+              "quoted": false,
+              "start": 5101,
+              "text": "Forest life is not a morality play about generosity."
+            },
+            {
+              "end": 5726,
+              "quoted": false,
+              "start": 5678,
+              "text": "But this is not conversation in the human sense."
+            },
+            {
+              "end": 6994,
+              "quoted": false,
+              "start": 6918,
+              "text": "But mycorrhizal fungi do not simply \u201cstore carbon\u201d in a straightforward way."
+            },
+            {
+              "end": 8243,
+              "quoted": false,
+              "start": 8192,
+              "text": "Seedlings do not enter a neutral underground world."
+            },
+            {
+              "end": 8656,
+              "quoted": false,
+              "start": 8568,
+              "text": "This is one reason forest recovery is not just a matter of planting stems in the ground."
+            },
+            {
+              "end": 9194,
+              "quoted": false,
+              "start": 9129,
+              "text": "That does not mean protecting fungi is a simple climate solution."
+            },
+            {
+              "end": 9499,
+              "quoted": false,
+              "start": 9389,
+              "text": "They are not magical forest internet cables through which wise old trees send care packages to their children."
+            },
+            {
+              "end": 10194,
+              "quoted": false,
+              "start": 10151,
+              "text": "A forest is not just a collection of trees."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 22 negation markers (13.8 per 1000 words)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Found 22 negation markers (13.8 per 1000 words)",
           "evidence_role": "rhetorical_density",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
@@ -1082,7 +2159,11 @@
             "They are not magical forest internet cables through which wise old trees send care packages to their children.",
             "A forest is not just a collection of trees."
           ],
-          "severity": "context_warning"
+          "metric_value": 16,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1101,14 +2182,36 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_cv": 0.18,
+              "minimum_paragraphs": 7
+            },
+            "raw_evidence": "Paragraph length CV: 0.19 across 15 paragraphs",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Paragraph length CV: 0.19 across 15 paragraphs",
           "evidence_role": "layout_rhythm",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template.",
           "metric": null,
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": {
+            "maximum_cv": 0.18,
+            "minimum_paragraphs": 7
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1126,14 +2229,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Tidy paragraph endings: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Tidy paragraph endings: 0",
           "evidence_role": "paragraph_closure",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "voice_erasure"
           ],
           "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1152,14 +2276,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Bland critical template phrases: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Bland critical template phrases: 0",
           "evidence_role": "genre_cliche",
+          "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction",
             "voice_erasure"
           ],
           "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1178,14 +2322,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            },
+            "raw_evidence": "Rubric echo phrases: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Rubric echo phrases: 0",
           "evidence_role": "assignment_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue",
             "voice_erasure"
           ],
           "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1204,15 +2368,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Type-token ratio: 0.410 (643 unique / 1567 total, target: >0.40)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Type-token ratio: 0.410 (643 unique / 1567 total, target: >0.40)",
           "evidence_role": "lexical_distribution",
+          "evidence_type": "statistical",
           "failure_modes": [
             "generic_abstraction",
             "genre_misfit"
           ],
           "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately.",
           "metric": null,
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1231,36 +2411,265 @@
         "metric": null,
         "quoted_phrases": [
           "recover, compete and store carbon",
-          "the plant acquire nutrients, especially phosphorus and nitrogen, and often water and trace",
-          "slip into smaller pores, cross tiny gaps, and spread through patches of",
-          "the tree a larger, finer and more chemically versatile absorbing",
-          "oaks, beeches and eucalypts",
-          "large range of plants, enter root cells and form tiny branched structures",
-          "what they can provide, where they forage, and how much carbon they",
-          "depending on fungal identity, soil conditions and the form in which",
-          "nutrients, water or chemical signals between plants",
-          "leaking compounds into soil, microbes consuming and re-releasing them",
-          "common mycorrhizal networks improves, harms or has no effect on",
-          "no evidence of intention, language or conscious warning",
-          "The fungus is alive, metabolically active and under selection to acquire",
-          "hyphae into the soil, and use enzymes and organic acids to access",
-          "forestry machinery compacts soil, when topsoil is removed, or when a clear-fell",
+          "and nitrogen, and often water and trace elements",
+          "into smaller pores, cross tiny gaps, and spread",
+          "what they can provide, where they forage, and how much carbon they demand",
+          "fungal identity, soil conditions and the form",
+          "mycorrhizal networks improves, harms or has no effect",
+          "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage",
+          "of intention, language or conscious warning",
+          "is alive, metabolically active and under selection",
+          "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change",
+          "into the soil, and use enzymes and organic acids",
           "roots, bacteria and decaying organic matter",
-          "involved in plant productivity, nutrient cycling and soil carbon dynamics at",
-          "Mycorrhizal fungi are real, ancient and ecologically consequential",
-          "influence seedling establishment, build and break down soil carbon",
-          "marketplace, digestive system and battleground at once",
-          "its networks are patchy, changing and difficult to measure"
+          "in plant productivity, nutrient cycling and soil carbon dynamics",
+          "are real, ancient and ecologically consequential",
+          "marketplace, digestive system and battleground",
+          "patchy, changing and difficult"
         ],
         "raw": {
-          "evidence": "Found 21 triad(s): ['recover, compete and store carbon', 'the plant acquire nutrients, especially phosphorus and nitrogen, and often water and trace', 'slip into smaller pores, cross tiny gaps, and spread through patches of', 'the tree a larger, finer and more chemically versatile absorbing', 'oaks, beeches and eucalypts', 'large range of plants, enter root cells and form tiny branched structures', 'what they can provide, where they forage, and how much carbon they', 'depending on fungal identity, soil conditions and the form in which', 'nutrients, water or chemical signals between plants', 'leaking compounds into soil, microbes consuming and re-releasing them', 'common mycorrhizal networks improves, harms or has no effect on', 'no evidence of intention, language or conscious warning', 'The fungus is alive, metabolically active and under selection to acquire', 'hyphae into the soil, and use enzymes and organic acids to access', 'forestry machinery compacts soil, when topsoil is removed, or when a clear-fell', 'roots, bacteria and decaying organic matter', 'involved in plant productivity, nutrient cycling and soil carbon dynamics at', 'Mycorrhizal fungi are real, ancient and ecologically consequential', 'influence seedling establishment, build and break down soil carbon', 'marketplace, digestive system and battleground at once', 'its networks are patchy, changing and difficult to measure']",
+          "aggregate_finding": false,
+          "candidate_count": 16,
+          "candidates": [
+            {
+              "end": 522,
+              "quoted": false,
+              "start": 489,
+              "text": "recover, compete and store carbon"
+            },
+            {
+              "end": 941,
+              "quoted": false,
+              "start": 893,
+              "text": "and nitrogen, and often water and trace elements"
+            },
+            {
+              "end": 1413,
+              "quoted": false,
+              "start": 1366,
+              "text": "into smaller pores, cross tiny gaps, and spread"
+            },
+            {
+              "end": 2211,
+              "quoted": false,
+              "start": 2138,
+              "text": "what they can provide, where they forage, and how much carbon they demand"
+            },
+            {
+              "end": 2473,
+              "quoted": false,
+              "start": 2428,
+              "text": "fungal identity, soil conditions and the form"
+            },
+            {
+              "end": 4882,
+              "quoted": false,
+              "start": 4829,
+              "text": "mycorrhizal networks improves, harms or has no effect"
+            },
+            {
+              "end": 5099,
+              "quoted": false,
+              "start": 5002,
+              "text": "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage"
+            },
+            {
+              "end": 5791,
+              "quoted": false,
+              "start": 5748,
+              "text": "of intention, language or conscious warning"
+            },
+            {
+              "end": 6102,
+              "quoted": false,
+              "start": 6052,
+              "text": "is alive, metabolically active and under selection"
+            },
+            {
+              "end": 6280,
+              "quoted": false,
+              "start": 6139,
+              "text": "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change"
+            },
+            {
+              "end": 7729,
+              "quoted": false,
+              "start": 7681,
+              "text": "into the soil, and use enzymes and organic acids"
+            },
+            {
+              "end": 8339,
+              "quoted": false,
+              "start": 8296,
+              "text": "roots, bacteria and decaying organic matter"
+            },
+            {
+              "end": 8896,
+              "quoted": false,
+              "start": 8832,
+              "text": "in plant productivity, nutrient cycling and soil carbon dynamics"
+            },
+            {
+              "end": 9599,
+              "quoted": false,
+              "start": 9551,
+              "text": "are real, ancient and ecologically consequential"
+            },
+            {
+              "end": 9947,
+              "quoted": false,
+              "start": 9901,
+              "text": "marketplace, digestive system and battleground"
+            },
+            {
+              "end": 10056,
+              "quoted": false,
+              "start": 10026,
+              "text": "patchy, changing and difficult"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 4,
+              "minimum_words": 300
+            },
+            "raw_evidence": "Found 16 triad(s): ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 16 triad(s): ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
           "evidence_role": "list_rhythm",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-          "severity": "context_warning"
+          "match_count": 16,
+          "matches": [
+            "recover, compete and store carbon",
+            "and nitrogen, and often water and trace elements",
+            "into smaller pores, cross tiny gaps, and spread",
+            "what they can provide, where they forage, and how much carbon they demand",
+            "fungal identity, soil conditions and the form",
+            "mycorrhizal networks improves, harms or has no effect",
+            "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage",
+            "of intention, language or conscious warning",
+            "is alive, metabolically active and under selection",
+            "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change",
+            "into the soil, and use enzymes and organic acids",
+            "roots, bacteria and decaying organic matter",
+            "in plant productivity, nutrient cycling and soil carbon dynamics",
+            "are real, ancient and ecologically consequential",
+            "marketplace, digestive system and battleground",
+            "patchy, changing and difficult"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 522,
+              "quoted": false,
+              "start": 489,
+              "text": "recover, compete and store carbon"
+            },
+            {
+              "end": 941,
+              "quoted": false,
+              "start": 893,
+              "text": "and nitrogen, and often water and trace elements"
+            },
+            {
+              "end": 1413,
+              "quoted": false,
+              "start": 1366,
+              "text": "into smaller pores, cross tiny gaps, and spread"
+            },
+            {
+              "end": 2211,
+              "quoted": false,
+              "start": 2138,
+              "text": "what they can provide, where they forage, and how much carbon they demand"
+            },
+            {
+              "end": 2473,
+              "quoted": false,
+              "start": 2428,
+              "text": "fungal identity, soil conditions and the form"
+            },
+            {
+              "end": 4882,
+              "quoted": false,
+              "start": 4829,
+              "text": "mycorrhizal networks improves, harms or has no effect"
+            },
+            {
+              "end": 5099,
+              "quoted": false,
+              "start": 5002,
+              "text": "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage"
+            },
+            {
+              "end": 5791,
+              "quoted": false,
+              "start": 5748,
+              "text": "of intention, language or conscious warning"
+            },
+            {
+              "end": 6102,
+              "quoted": false,
+              "start": 6052,
+              "text": "is alive, metabolically active and under selection"
+            },
+            {
+              "end": 6280,
+              "quoted": false,
+              "start": 6139,
+              "text": "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change"
+            },
+            {
+              "end": 7729,
+              "quoted": false,
+              "start": 7681,
+              "text": "into the soil, and use enzymes and organic acids"
+            },
+            {
+              "end": 8339,
+              "quoted": false,
+              "start": 8296,
+              "text": "roots, bacteria and decaying organic matter"
+            },
+            {
+              "end": 8896,
+              "quoted": false,
+              "start": 8832,
+              "text": "in plant productivity, nutrient cycling and soil carbon dynamics"
+            },
+            {
+              "end": 9599,
+              "quoted": false,
+              "start": 9551,
+              "text": "are real, ancient and ecologically consequential"
+            },
+            {
+              "end": 9947,
+              "quoted": false,
+              "start": 9901,
+              "text": "marketplace, digestive system and battleground"
+            },
+            {
+              "end": 10056,
+              "quoted": false,
+              "start": 10026,
+              "text": "patchy, changing and difficult"
+            }
+          ],
+          "threshold": {
+            "minimum_candidates": 4,
+            "minimum_words": 300
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1279,13 +2688,29 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No repeated section labels",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No repeated section labels",
           "evidence_role": "repeated_template",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material.",
-          "severity": "strong_warning"
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "strong_warning",
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1303,14 +2728,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No notability claims",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No notability claims",
           "evidence_role": "notability_inflation",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1329,14 +2770,31 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No vague attributions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No vague attributions",
           "evidence_role": "attribution_vagueness",
+          "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1355,13 +2813,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 4
+            },
+            "raw_evidence": "Bold spans in prose: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "Bold spans in prose: 0",
           "evidence_role": "emphasis_pattern",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers.",
-          "severity": "context_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 4
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1379,14 +2858,35 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "List items with bolded headers: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "List items with bolded headers: 0",
           "evidence_role": "list_template",
+          "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1405,14 +2905,34 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_per_sentence": 3
+            },
+            "raw_evidence": "No dense compound-modifier sentences",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No dense compound-modifier sentences",
           "evidence_role": "modifier_density",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Restructure sentences with three or more stock hyphenated compounds; preserve only when the compounds are domain-specific terms of art.",
-          "severity": "context_warning"
+          "metric_value": 0,
+          "sample_size": 1578,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_per_sentence": 3
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1431,13 +2951,30 @@
         "metric": null,
         "quoted_phrases": [],
         "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No knowledge-cutoff disclaimers",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
           "evidence": "No knowledge-cutoff disclaimers",
           "evidence_role": "model_meta_residue",
+          "evidence_type": "lexical",
           "failure_modes": [
             "provenance_residue"
           ],
           "guidance": "Fix at every depth; training-update and limited-information hedges are model meta-residue, not authorial uncertainty.",
-          "severity": "strong_warning"
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
         }
       },
       "failure_modes": [

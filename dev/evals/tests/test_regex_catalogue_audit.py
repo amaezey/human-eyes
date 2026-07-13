@@ -23,9 +23,13 @@ assert not report["unmapped_tendencies"]
 
 for check_id, metrics in report["per_check"].items():
     if metrics["violation_total"]:
+        assert metrics["candidate_recall"] is not None, check_id
         assert metrics["recall"] is not None, check_id
     if metrics["control_total"]:
         assert metrics["specificity"] is not None, check_id
 
-assert all(sample["expected_checks"] for sample in report["samples"] if sample["label"] == "violation")
+assert all(
+    sample["expected_checks"] or sample["primary_tendency"] in report["manual_only_tendencies"]
+    for sample in report["samples"] if sample["label"] == "violation"
+)
 print("ALL PASSED: regex catalogue report contract and seed floor")
