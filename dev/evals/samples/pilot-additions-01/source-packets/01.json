@@ -1,0 +1,51 @@
+{
+  "slot": "01",
+  "status": "pass",
+  "title": "Violence tiptoes in on jokes, stereotypes, and lies — and catches us by surprise",
+  "url": "https://globalvoices.org/2019/03/22/violence-tiptoes-in-on-jokes-stereotypes-and-lies-and-catches-us-by-surprise/",
+  "author": "Tori Egherman",
+  "published": "2019-03-22",
+  "genre": "personal reflective essay",
+  "subtype": "personal reflective open letter",
+  "retrieved_at": "2026-07-12",
+  "selection": {
+    "start": "Author's note: This has been resting as a draft post for months now.",
+    "end": "Tori",
+    "coherent_consecutive_passage": true,
+    "intrinsic_structure_preserved": [
+      "author's note",
+      "salutation",
+      "open-letter paragraphs",
+      "signoff"
+    ]
+  },
+  "removals": [
+    "lead photograph and caption before the author's note",
+    "embedded Naomi Pieter image quotation/caption between body paragraphs",
+    "embedded Zwarte Piet is Racisme graphic and caption",
+    "Read more cross-promotion box",
+    "article metadata, author card, related stories, comment form, donation prompts, menus, and site footer",
+    "non-breaking-space and duplicate-space artefacts introduced by webpage markup"
+  ],
+  "word_count": 834,
+  "sha256": "081c94fa9da1ec3e74f9e0fbf807d4a5ba66cf5db670e570358728bf40bad2a6",
+  "contamination": {
+    "checked": true,
+    "known_overlap": false,
+    "scope": "working tree plus every object reachable from every git ref/history, excluding prohibited AI-output directories from content inspection",
+    "commands": [
+      "git grep -F -n 'something lit a fire under the feet of my great-grandparents' -- . ':(exclude)dev/evals/samples/fresh-pilot-01/generated-ai' ':(exclude)dev/evals/samples/fresh-pilot-01/raw-ai'",
+      "git log --all --oneline -S'something lit a fire under the feet of my great-grandparents' -- .",
+      "git grep -F -n 'that childhood promise becomes more demanding' -- . ':(exclude)dev/evals/samples/fresh-pilot-01/generated-ai' ':(exclude)dev/evals/samples/fresh-pilot-01/raw-ai'",
+      "git log --all --oneline -S'that childhood promise becomes more demanding' -- .",
+      "sha256 comparison against all existing non-AI-output working-tree files before insertion",
+      "sha256 comparison against all blobs returned by git rev-list --objects --all"
+    ],
+    "results": [
+      "both distinctive-phrase working-tree searches returned no match before insertion",
+      "both distinctive-phrase all-history searches returned no commit",
+      "exact sha256 working-tree comparison returned zero matches before insertion",
+      "exact sha256 comparison across all reachable history blobs returned zero matches"
+    ]
+  }
+}

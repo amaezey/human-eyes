@@ -36,15 +36,27 @@ Headings must state their subject directly and contain no parentheses.
 
 Apply each proposed replacement to a copy of its surrounding sentence or paragraph. Run the complete deterministic and semantic registry on the resulting context. Reject a suggestion that clears one finding while introducing another.
 
+Validation must execute. A proposed replacement is not validated because it appears clean on inspection. Keep three private artefacts for every returned suggestion: the changed-context file, its fresh completed work bundle, and its successful Audit output. No artefacts means no returned suggestion.
+
+Each changed-context file must be the complete original surrounding paragraph with one replacement applied. Do not audit a fragment or concatenate replacements from different locations. The text returned to the user must be byte-for-byte the replacement used in that context. Complete the semantic answers by reading each changed paragraph; never generate a blanket all-clear answer set.
+
 ## Preserve meaning
 
 For Rewrite, compare the output with the source. Protect the argument, facts, examples, stance, genre, factual uncertainty, quotations, citations, names, dates, links, and deliberate formal choices.
 
+Before rewriting, record every direct quotation, citation, name, date, link, stated quantity, and explicitly qualified claim as an exact protected literal. For factual sentences containing `may`, `might`, `can`, `could`, `often`, `sometimes`, `especially`, `particularly`, a stated limitation, or uncertainty, protect the complete sentence. Compare that list after every pass. Reject the pass if any protected literal is missing or changed. Finding-count improvement cannot compensate for preservation failure.
+
+The source is also a closed factual record. Do not add recommendations, thresholds, safety criteria, research descriptions, process facts, or consequences absent from it. Keep Audit commentary out of the rewrite; report missing sources and other constraints in `Remaining findings`.
+
 For Write, compare the draft with the brief. Do not add facts, experience, opinions, emotion, humour, doubt, or personal details the brief does not supply.
+
+Treat the brief as a closed factual source. Record its explicit claims before drafting, then trace every concrete claim in the draft back to that record. Do not infer routine workflow, roles, deadlines, dataset contents, checks, notifications, dependencies, sign-off, or consequences merely because they sound plausible. If the brief cannot support the requested length, do not invent material to reach it.
 
 ## Audit generated prose
 
 Run a fresh preflight and complete Audit on every suggestion context, rewrite, and new draft. Never reuse the source audit-work bundle for changed text.
+
+The Audit checks writing patterns; it does not prove factual fidelity. Complete the protected-literal or brief-fact comparison separately before accepting an Audit result.
 
 When required findings remain, revise and run another fresh Audit. Stop after three revision passes. If findings remain at the limit, return the draft with those findings named. Do not claim completion.
 

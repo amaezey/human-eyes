@@ -88,6 +88,10 @@ For each proposed replacement:
 4. Run a complete Audit of the changed context.
 5. Return the suggestion only when it clears the target finding without introducing another required finding.
 
+These are completion requirements, not advice. Do not return a replacement based only on reading it. For every returned replacement, retain the changed-context path, its new work-bundle path, and the successful Audit result in the working transcript. If any of those three artefacts is absent, omit the replacement and state that it was not validated. Never claim or imply context validation when only the source was audited.
+
+The changed-context file contains the complete original surrounding paragraph with exactly one proposed replacement applied. Do not validate a bare replacement, combine unrelated replacements into a collage, or audit wording different from the wording returned. Read each changed paragraph and answer all 15 semantic records for that paragraph. Never bulk-fill semantic answers as clear. A schema-valid bundle with fabricated clear answers is not a complete Audit.
+
 Keep quotations, facts, stance, and factual qualifications unchanged. A suggestion count matches the finding count unless a finding cannot be repaired without changing meaning; name the constraint instead of inventing a replacement.
 
 ## Produce a Rewrite
@@ -97,6 +101,10 @@ Run a complete source Audit, then read `references/process.md` and `references/v
 Use Balanced depth unless the user requests All. Balanced repairs hard failures and strong warnings and reviews contextual findings against meaning. All attempts to repair every finding while preserving the source.
 
 Save the rewrite as a new file. Create a new work bundle and complete a fresh Audit. Never reuse the source bundle. Revise and repeat for no more than three passes.
+
+Before editing, extract every direct quotation, citation, name, date, link, stated quantity, and explicitly qualified claim into a protected-literals list. Protect the complete sentence for claims containing modality or limits such as `may`, `might`, `can`, `could`, `often`, `sometimes`, `especially`, `particularly`, `limited`, or `uncertain`. After each pass, compare the rewrite against that list. Reject a pass that removes or changes a protected literal unless the user explicitly authorised that change. An improved finding set does not override failed preservation.
+
+Treat the source as a closed factual record just as Write treats the brief. Do not add a new recommendation, threshold, safety criterion, source description, research claim, process, or consequence. Do not insert Audit commentary into the rewritten document: phrases such as `the draft`, `unnamed here`, `needs a source`, and `before publication` belong in Remaining findings, not the prose.
 
 Record the required finding IDs after each pass. Stop if a pass introduces a new required finding or if the sets alternate between two states. Report the regression or oscillation instead of continuing.
 
@@ -111,6 +119,8 @@ If required findings remain after the third pass, list them. Do not claim comple
 ## Produce new writing
 
 Draft from the supplied brief without inventing facts, personal experience, opinions, emotion, humour, uncertainty, or names. Read `references/voice.md` before drafting.
+
+Before drafting, create a private brief-facts list containing only claims explicitly supplied by the user. After drafting, inspect every concrete person, organisation, date, deadline, process step, dataset role, cause, consequence, notification, status, measurement, and commitment. Delete anything that cannot be traced to the brief-facts list. Plausible standard procedure is still invented detail. When the requested length cannot be reached without new facts, return a shorter factual draft or ask for the missing information; do not pad with fabricated process.
 
 Save the draft, create a work bundle, complete every semantic answer, and run a full Audit. Revise and re-audit for no more than three passes. Return the draft and compact change report only after a clean required-finding result, or return the residual findings at the limit.
 

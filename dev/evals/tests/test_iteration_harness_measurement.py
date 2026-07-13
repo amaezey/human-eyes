@@ -95,18 +95,41 @@ with tempfile.TemporaryDirectory() as tmp:
 
     (outputs / "response.md").write_text("A plausible but unreviewed response.\n")
     (outputs / "metrics.json").write_text(json.dumps({"errors_encountered": 0}))
-    grading = iteration.grade_run({
+    qualitative_item = {
         "files": [],
         "assertions": [{
             "name": "manual-check",
             "type": "qualitative",
             "description": "A qualitative expectation",
         }],
-    }, run_dir)
-    if grading["summary"]["pass_rate"] == 0:
-        ok("pending qualitative review cannot count as an automatic pass")
+    }
+    try:
+        iteration.grade_run(qualitative_item, run_dir)
+    except RuntimeError as exc:
+        if "was not graded" in str(exc):
+            ok("missing qualitative grading is a grader error, not a product failure")
+        else:
+            fail(f"unexpected qualitative grader error: {exc}")
     else:
-        fail("qualitative assertion was counted as passed without review")
+        fail("ungraded qualitative assertion was silently converted into a result")
+
+    grading = iteration.grade_run(qualitative_item, run_dir, {
+        "A qualitative expectation": {
+            "text": "A qualitative expectation",
+            "passed": True,
+            "evidence": "Independent grader found direct evidence.",
+        }
+    })
+    if grading["summary"]["pass_rate"] == 1:
+        ok("independent qualitative grade is included in the benchmark result")
+    else:
+        fail("independent qualitative grade was not included")
+
+    parsed = iteration._json_object_from_text('```json\n{"expectations": []}\n```')
+    if parsed == {"expectations": []}:
+        ok("fenced grader JSON is parsed")
+    else:
+        fail("fenced grader JSON was not parsed")
 
 
 # Mixed auto-detected + agent-assessed audit body. Agent-assessed labels

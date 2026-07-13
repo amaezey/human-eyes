@@ -1,0 +1,49 @@
+{
+  "slot": "04",
+  "status": "pass",
+  "title": "Soft Launch of a W3C Invited Expert identity program",
+  "url": "https://lists.w3.org/Archives/Public/public-invited-experts/2019Jan/0000.html",
+  "author": "Coralie Mercier",
+  "published": "2019-01-10",
+  "genre": "professional email",
+  "retrieved_at": "2026-07-12",
+  "selection": {
+    "start": "Dear W3C Invited Expert,",
+    "end": "https://www.w3.org/People/Coralie/",
+    "coherent_consecutive_passage": true,
+    "intrinsic_structure_preserved": [
+      "salutation",
+      "email body",
+      "section headings",
+      "lists and references",
+      "closing and signature block"
+    ]
+  },
+  "removals": [
+    "archive title and navigation",
+    "From, Date, To, and Message-Id archive metadata",
+    "reply, thread, related-message, and mail-action controls",
+    "archive receipt timestamp, generator notice, help links, and archive footer"
+  ],
+  "word_count": 470,
+  "sha256": "abdebdf252877c74710b685437a502cb8b7e995bbffebb58ddc914d6824b6227",
+  "contamination": {
+    "checked": true,
+    "known_overlap": false,
+    "scope": "working tree plus every object reachable from every git ref/history, excluding prohibited AI-output directories from content inspection",
+    "commands": [
+      "git grep -F -n 'W3C Invited Expert identity program' -- . ':(exclude)dev/evals/samples/fresh-pilot-01/generated-ai' ':(exclude)dev/evals/samples/fresh-pilot-01/raw-ai'",
+      "git log --all --oneline -S'W3C Invited Expert identity program' -- .",
+      "git grep -F -n 'successfully rely on local mail filters' -- . ':(exclude)dev/evals/samples/fresh-pilot-01/generated-ai' ':(exclude)dev/evals/samples/fresh-pilot-01/raw-ai'",
+      "git log --all --oneline -S'successfully rely on local mail filters' -- .",
+      "sha256 comparison against all existing non-AI-output working-tree files before insertion",
+      "sha256 comparison against all blobs returned by git rev-list --objects --all"
+    ],
+    "results": [
+      "both distinctive-phrase working-tree searches returned no match before insertion",
+      "both distinctive-phrase all-history searches returned no commit",
+      "exact sha256 working-tree comparison returned zero matches before insertion",
+      "exact sha256 comparison across all reachable history blobs returned zero matches"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "slot_id": "09-cultural-criticism",
+  "source": "Walt Whitman in Russia: Three Love Affairs",
+  "author": "Nina Murray",
+  "published": "2019-05-29",
+  "url": "https://publicdomainreview.org/essay/walt-whitman-in-russia-three-love-affairs/",
+  "license": "CC BY-SA",
+  "acquired_at": "2026-07-12",
+  "exact_boundary": {
+    "start": "For Whitman to sound like a prophet, however, his had to be the language of revelation",
+    "end": "To the young and the romantic, that sure beat marble-hall theorzations under some wise academician’s ironic scrutiny."
+  },
+  "packaging_removed": [
+    "site header and article metadata",
+    "inline Vesy image and caption",
+    "superscript endnote marker",
+    "share, support, newsletter and footer"
+  ],
+  "word_count": 321,
+  "sha256": "f82449ceb38d9017d28962e9eae106f85cc9f20e8c0429a47fe1bbffa2c3efe2",
+  "contamination_check": {
+    "current_tree_command": "grep -R -n -F --exclude-dir=.git --exclude=fresh-pilot-sampling-frame.json QUERY .",
+    "full_history_command": "for c in $(git rev-list --all); do git grep -n -F QUERY $c -- .; done",
+    "queries": [
+      "Walt Whitman in Russia: Three Love Affairs",
+      "For Whitman to sound like a prophet, however, his had to be the language of revelation"
+    ],
+    "result": "No matches outside frozen sampling-frame metadata in current tree; no matches in all 60 commits."
+  },
+  "notes": "Consecutive authored prose retained around a removed inline figure; source spelling retained."
+}

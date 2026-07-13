@@ -1,0 +1,32 @@
+{
+  "slot_id": "07-marketing-customer-communication",
+  "source": "Latest Firefox Release is Faster than Ever",
+  "author": "Mozilla",
+  "published": "2019-05-21",
+  "url": "https://blog.mozilla.org/press/2019/05/latest-firefox-release-is-faster-than-ever/",
+  "license": "Mozilla page Creative Commons licence",
+  "acquired_at": "2026-07-12",
+  "exact_boundary": {
+    "start": "How did we make Firefox faster?",
+    "end": "Faster startup after customization: For users who have customized their browser with an add-on like a favorite theme … during subsequent start-ups."
+  },
+  "packaging_removed": [
+    "global navigation",
+    "title/date/byline packaging",
+    "preceding video and lead-in",
+    "images and captions",
+    "recent articles, newsletter CTA and footer"
+  ],
+  "word_count": 328,
+  "sha256": "266c9883c7277305eb77934b8906f2a71308dcfcf42614f4b4f9f8b7657640c4",
+  "contamination_check": {
+    "current_tree_command": "grep -R -n -F --exclude-dir=.git --exclude=fresh-pilot-sampling-frame.json QUERY .",
+    "full_history_command": "for c in $(git rev-list --all); do git grep -n -F QUERY $c -- .; done",
+    "queries": [
+      "Latest Firefox Release is Faster than Ever",
+      "How did we make Firefox faster?"
+    ],
+    "result": "No matches outside frozen sampling-frame metadata in current tree; no matches in all 60 commits."
+  },
+  "notes": "Substantive headings and feature-list structure retained."
+}

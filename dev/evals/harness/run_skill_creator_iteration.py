@@ -129,7 +129,7 @@ def run_claude(prompt: str, model: str | None, working_dir: Path = ROOT) -> tupl
         "-p",
         prompt,
         "--output-format",
-        "json",
+        "stream-json",
         "--verbose",
         "--allowedTools",
         "Read,Bash",
@@ -157,8 +157,11 @@ def run_claude(prompt: str, model: str | None, working_dir: Path = ROOT) -> tupl
     total_tokens = 0
     if raw:
         try:
-            parsed = json.loads(raw)
-            result_event = parsed[-1] if isinstance(parsed, list) and parsed else parsed
+            parsed = [json.loads(line) for line in raw.splitlines() if line.strip()]
+            result_event = next(
+                (event for event in reversed(parsed) if isinstance(event, dict) and event.get("type") == "result"),
+                parsed[-1] if parsed else {},
+            )
             if not isinstance(result_event, dict):
                 result_event = {}
             response = result_event.get("result") or result_event.get("message") or raw
@@ -188,7 +191,10 @@ def run_claude(prompt: str, model: str | None, working_dir: Path = ROOT) -> tupl
             f"Return code: {proc.returncode}\n\n"
             f"STDERR:\n{proc.stderr}\n\nSTDOUT:\n{proc.stdout}"
         )
-    return response, proc.stderr, total_tokens
+    transcript = proc.stderr
+    if raw:
+        transcript += ("\n\n" if transcript else "") + "CLAUDE STREAM TRANSCRIPT:\n" + raw
+    return response, transcript, total_tokens
 
 
 def run_codex(prompt: str, model: str | None, working_dir: Path = ROOT) -> tuple[str, str, int]:
@@ -197,10 +203,11 @@ def run_codex(prompt: str, model: str | None, working_dir: Path = ROOT) -> tuple
     cmd = [
         "codex",
         "exec",
+        "--skip-git-repo-check",
         "-C",
         str(working_dir),
         "-s",
-        "read-only",
+        "workspace-write",
         "--ephemeral",
         "--output-last-message",
         str(output_path),
@@ -441,7 +448,78 @@ def grade_one_assertion(name: str, output: str, input_text: str, generated: str)
     raise KeyError(name)
 
 
-def grade_run(item: dict, run_dir: Path) -> dict:
+def _json_object_from_text(raw: str) -> dict:
+    """Parse a grader's JSON response, allowing one fenced JSON block."""
+    text = raw.strip()
+    fenced = re.search(r"```(?:json)?\s*(\{.*\})\s*```", text, re.DOTALL)
+    if fenced:
+        text = fenced.group(1)
+    value = json.loads(text)
+    if not isinstance(value, dict):
+        raise ValueError("grader response must be a JSON object")
+    return value
+
+
+def grade_qualitative_assertions(
+    item: dict,
+    run_dir: Path,
+    skill_creator_path: Path,
+    model: str | None,
+    executor_name: str,
+) -> dict[str, dict]:
+    """Run the Skill Creator grader for assertions that require judgment."""
+    qualitative = [
+        assertion for assertion in item.get("assertions", [])
+        if assertion.get("type") != "programmatic"
+    ]
+    if not qualitative:
+        return {}
+    grader_guide = skill_creator_path / "agents" / "grader.md"
+    transcript_path = run_dir / "outputs" / "stderr.txt"
+    outputs_dir = run_dir / "outputs"
+    prompt = f"""You are grading one evaluation run. Follow the grader instructions at:
+{grader_guide}
+
+Evaluate only these expectations:
+{json.dumps([a['description'] for a in qualitative], indent=2)}
+
+Execution transcript: {transcript_path}
+Outputs directory: {outputs_dir}
+
+Read the complete transcript and relevant outputs. Return the grading JSON object only.
+Do not modify repository files or the run outputs.
+"""
+    if executor_name == "codex":
+        response, stderr, _ = run_codex(prompt, model)
+    else:
+        response, stderr, _ = run_claude(prompt, model)
+    if response.startswith("ERROR:"):
+        raise RuntimeError(response)
+    grading = _json_object_from_text(response)
+    rows = grading.get("expectations")
+    if not isinstance(rows, list):
+        raise ValueError("grader response is missing expectations[]")
+    by_text = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        text = row.get("text")
+        passed = row.get("passed")
+        evidence = row.get("evidence")
+        if isinstance(text, str) and isinstance(passed, bool) and isinstance(evidence, str):
+            by_text[text] = {"text": text, "passed": passed, "evidence": evidence}
+    expected = {a["description"] for a in qualitative}
+    missing = expected - set(by_text)
+    if missing:
+        raise ValueError(f"grader omitted expectations: {sorted(missing)}; stderr={stderr[-500:]}")
+    return by_text
+
+
+def grade_run(
+    item: dict,
+    run_dir: Path,
+    qualitative_grades: dict[str, dict] | None = None,
+) -> dict:
     output = (run_dir / "outputs" / "response.md").read_text(encoding="utf-8")
     metrics_path = run_dir / "outputs" / "metrics.json"
     run_metrics = read_json(metrics_path) if metrics_path.exists() else {}
@@ -463,11 +541,9 @@ def grade_run(item: dict, run_dir: Path) -> dict:
             })
             continue
         if assertion.get("type") != "programmatic":
-            expectations.append({
-                "text": text,
-                "passed": False,
-                "evidence": "Pending qualitative review; not counted as an automatic pass.",
-            })
+            if qualitative_grades is None or text not in qualitative_grades:
+                raise RuntimeError(f"qualitative assertion was not graded: {text}")
+            expectations.append(qualitative_grades[text])
             continue
         try:
             passed, evidence = grade_one_assertion(assertion["name"], output, input_text, generated)
@@ -498,12 +574,12 @@ def grade_run(item: dict, run_dir: Path) -> dict:
             "needs_review": (
                 ["Executor failure must be resolved before review."]
                 if executor_failed
-                else ["Qualitative assertions are intentionally left for human review."]
+                else []
             ),
             "workarounds": [],
         },
         "eval_feedback": {
-            "overall": "Programmatic checks were graded by adapter code; qualitative assertions should be reviewed in the viewer.",
+            "overall": "Programmatic assertions were graded by code and qualitative assertions by the Skill Creator grader.",
             "suggestions": [],
         },
     }
@@ -516,7 +592,8 @@ def grade_completed_runs(evals: list[dict]) -> None:
         for config in ("with_skill", "old_skill"):
             run_dir = ITERATION / eval_dir_name(item) / config / "run-1"
             if (run_dir / "outputs" / "response.md").exists():
-                grade_run(item, run_dir)
+                if all(a.get("type") == "programmatic" for a in item.get("assertions", [])):
+                    grade_run(item, run_dir)
 
 
 def normalize_benchmark_config_order(path: Path) -> None:
@@ -1082,6 +1159,7 @@ def run_iteration(
             jobs.append((item, "old_skill", OLD_SKILL, base / "old_skill" / "run-1"))
 
     executor_failures = 0
+    completed_jobs = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
         future_map = {
             executor.submit(run_model, item, config, skill_path, run_dir, model, executor_name): (item, config, run_dir)
@@ -1092,8 +1170,9 @@ def run_iteration(
             try:
                 timing = future.result()
                 print(f"completed {item['name']} / {config} in {timing.get('total_duration_seconds')}s", flush=True)
-                grading = grade_run(item, run_dir)
-                executor_failures += grading["execution_metrics"]["errors_encountered"]
+                metrics = read_json(run_dir / "outputs" / "metrics.json")
+                executor_failures += int(metrics.get("errors_encountered", 0))
+                completed_jobs.append((item, config, run_dir))
             except Exception as exc:
                 outputs = run_dir / "outputs"
                 outputs.mkdir(parents=True, exist_ok=True)
@@ -1106,6 +1185,39 @@ def run_iteration(
                 grading = grade_run(item, run_dir)
                 executor_failures += grading["execution_metrics"]["errors_encountered"]
                 print(f"failed {item['name']} / {config}: {exc}", flush=True)
+
+    grader_failures = 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+        grader_futures = {
+            executor.submit(
+                grade_qualitative_assertions,
+                item,
+                run_dir,
+                skill_creator_path,
+                model,
+                executor_name,
+            ): (item, config, run_dir)
+            for item, config, run_dir in completed_jobs
+        }
+        for future in concurrent.futures.as_completed(grader_futures):
+            item, config, run_dir = grader_futures[future]
+            try:
+                qualitative = future.result()
+                grading = grade_run(item, run_dir, qualitative)
+                print(
+                    f"graded {item['name']} / {config}: "
+                    f"{grading['summary']['passed']}/{grading['summary']['total']}",
+                    flush=True,
+                )
+            except Exception as exc:
+                grader_failures += 1
+                write_json(run_dir / "grading.json", {
+                    "expectations": [],
+                    "summary": {"passed": 0, "failed": 0, "total": 0, "pass_rate": 0.0},
+                    "execution_metrics": read_json(run_dir / "outputs" / "metrics.json"),
+                    "grader_error": str(exc),
+                })
+                print(f"grader failed {item['name']} / {config}: {exc}", flush=True)
 
     aggregate = skill_creator_path / "scripts" / "aggregate_benchmark.py"
     py = python_for_skill_creator()
@@ -1123,9 +1235,10 @@ def run_iteration(
     report_md, report_data = build_performance_report(evals, ITERATION)
     (ITERATION / "performance-report.md").write_text(report_md, encoding="utf-8")
     write_json(ITERATION / "performance-report.json", report_data)
-    if executor_failures:
+    if executor_failures or grader_failures:
         print(
-            f"stable performance report not updated: {executor_failures} executor failure(s)",
+            "stable performance report not updated: "
+            f"{executor_failures} executor failure(s), {grader_failures} grader failure(s)",
             file=sys.stderr,
         )
     else:
@@ -1167,7 +1280,7 @@ def run_iteration(
         cwd=ROOT,
         check=True,
     )
-    if executor_failures:
+    if executor_failures or grader_failures:
         raise SystemExit(1)
 
 

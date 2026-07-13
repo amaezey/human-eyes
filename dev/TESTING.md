@@ -1,6 +1,18 @@
 # Testing methodology
 
-Human-eyes tests both its pattern coverage and the quality of its edits. The committed comparative corpus measures how often matched human and AI samples trigger the grader. Fresh matched-pair benchmarks test generalisation on sources that were not used to develop the catalogue. The release gates measure whether requested patterns are removed without damaging acceptable prose.
+Human-eyes tests both its pattern coverage and the quality of its edits. The committed comparative corpus measures how often matched human and AI samples trigger the grader. Additional corpora vary the sampled authors, genres, registers, and prompts so development does not optimise around the same few texts. The release gates measure whether requested patterns are removed without damaging acceptable prose.
+
+## Complete repository test suite
+
+Run every evaluation test as its own script:
+
+```bash
+for test_file in $(find dev/evals/tests -maxdepth 1 -type f -name 'test_*.py' | sort); do
+  python3 "$test_file" || exit 1
+done
+```
+
+Do not use `python3 -m unittest discover` as the full-suite command. Several established tests are executable contract scripts that intentionally exit after reporting their assertions, so importing them through discovery produces loader errors even when their tests pass.
 
 ## Comparative baseline
 
@@ -8,26 +20,38 @@ Five matched topics have three samples each: a human original, an AI fresh-write
 
 The frozen skill in `dev/skill-workspace/skill-snapshot/` supplies the before/after comparison for each iteration. Do not modify it.
 
+Run the evidence-aware paired benchmark with:
+
+```bash
+python3 dev/evals/harness/run_evidence_benchmark.py
+```
+
+The command deliberately exits with status 2 while required provenance or agent-assessed audits are missing. Its report separates candidate density from final threshold decisions, excludes house-style checks from separation claims, exposes pair reversals, and records runtime. An incomplete report is diagnostic evidence, not a benchmark result.
+
+Candidate recognition and threshold firing answer different questions. A candidate can be correctly recognised while remaining below a document-level density threshold; tests and reports must not count that as a regex miss. Statistical checks may instead expose aggregate findings without lexical spans.
+
 This is a calibration and regression corpus, not a held-out claim. Its sources and generated counterparts are already present in the repository and may have informed pattern development. Use it to detect changes between iterations, not to describe a new-sample result.
 
-## Fresh matched-pair benchmarks
+## Additional comparison corpora
 
-Use a fresh benchmark when testing whether the current catalogue generalises beyond the committed corpus. A benchmark is fresh only when:
+Add a new corpus when the current samples have become too narrow for useful development feedback. "New" means newly selected for that evaluation round; it is not a claim that prior exposure contaminates a text or invalidates the established corpus.
 
-- None of the human titles, authors, URLs, excerpts, or distinctive phrases appears in the repository, its history, prior benchmark notes, or source catalogue.
-- The AI samples are generated for this run from genre-and-length briefs. The generator must not inspect the human source, imitate its author, rewrite its text, or reuse an existing generated sample.
-- Human sources predate the cutoff under test. Record exact publication years and source URLs; "pre-2020" means earlier than 2020, not merely public-domain or historical.
-- The set spans the requested period and genres. Five nineteenth-century literary works are five sources, but they are not a useful date or register range for a modern pre-2020 benchmark.
-- Each pair has comparable body-prose length. Record both word counts and keep the difference small enough that length-sensitive checks receive equivalent opportunity to fire.
+Choose samples to increase useful variation:
+
+- Broaden human authors, genres, registers, eras, and source types.
+- Generate literal-first AI responses from ordinary task prompts, without coaching the model to add or remove human-eyes tendencies.
+- Keep coached, rerolled, or human-rewrite AI samples out of the main new-corpus comparison. They answer different experimental questions and must be labelled separately if retained at all.
+- Record source and generation provenance so a result can be reproduced and interpreted.
+- Keep compared documents close enough in body-prose length that length-sensitive checks receive similar opportunity to fire, or report length-normalised results alongside raw findings.
 
 Before grading, normalise packaging rather than prose:
 
 - Remove titles, standfirsts, author biographies, subscription prompts, captions, related-story modules, and front matter from both sides.
 - Preserve body punctuation, paragraph boundaries, spelling, and wording.
-- Give both sides the same structural treatment. A Markdown title on only the AI sample, for example, creates a heading flag and can alter signal stacking.
+- Give both sides the same structural treatment so packaging does not dominate the comparison.
 - Stop excerpts at paragraph or sentence boundaries. Do not truncate a human sample mid-sentence merely to reach an exact word count.
 
-Keep exploratory samples and reports out of `dev/evals/samples/style-held-out/`. That directory is reserved for release gates. Temporary benchmark material should remain untracked until its provenance, licence, contamination checks, and intended long-term role have been reviewed.
+Keep exploratory samples and reports out of `dev/evals/samples/style-held-out/`. That directory is reserved for release gates. Review provenance, licence, construction method, and intended role before promoting exploratory material into a committed comparison corpus.
 
 ### Complete-audit requirement
 
@@ -37,19 +61,19 @@ For every sample:
 
 1. Read the version's `SKILL.md` and `judgement.json`; do not assume current CLI or schema behavior applies to an older revision.
 2. Run `preflight` when that version supports bound work bundles. For a legacy version, create the complete judgement overlay its CLI expects.
-3. Read the complete body prose and supply exactly one schema-valid answer for every semantic registry record, with exact evidence substrings for flagged answers.
+3. Read the complete body prose and supply exactly one schema-valid answer for every agent-assessment registry record, with exact evidence substrings for flagged answers.
 4. Run the version's complete audit command and require `coverage_mode: full` and `audit_status: complete` where its audit schema exposes those fields.
-5. Verify the semantic total matches the registry size. For legacy output, verify every registry item appears in `human_report.agent_judgement`.
+5. Verify the agent-assessed total matches the registry size. For legacy output, verify every registry item appears in `human_report.agent_judgement`.
 
-Semantic readings are model-assisted measurements. Apply the same rubric and decision standard to every sample, preserve the answer bundles with the run artefacts, and report semantic and deterministic results separately so readers can see where the gap came from.
+Agent-assessed readings are model-assisted measurements. Apply the same rubric and decision standard to every sample, preserve the answer bundles with the run artefacts, and report agent-assessed and deterministic results separately so readers can see where the gap came from. Internal schemas may retain `semantic_*` field names for compatibility; that does not make the judgments deterministic semantic analysis.
 
 ### Cross-version comparisons
 
 Run the same normalised input files against explicit immutable revisions. Record the ref, commit SHA, and date for each version. Do not use branch names or a moving tag without also resolving them to a commit.
 
-Each version owns its own pattern and semantic registries. Build fresh work bundles or legacy judgement overlays from that version's files; never reuse a current bundle with an older grader. Because registry sizes can differ, report:
+Each version owns its own deterministic pattern and agent-assessment registries. Build fresh work bundles or legacy judgement overlays from that version's files; never reuse a current bundle with an older grader. Because registry sizes can differ, report:
 
-- Surface findings, semantic findings, and combined findings per document.
+- Deterministic findings, agent-assessed findings, and combined findings per document.
 - Hard/strong findings separately from context warnings.
 - Pairwise AI-minus-human gaps.
 - Aggregate findings and findings per available check for each version.
@@ -63,10 +87,10 @@ A report is complete when it includes:
 
 - Human source title, author, publication year, genre, and URL.
 - AI generation provenance, model or agent where known, prompt constraints, and word count.
-- Contamination search scope and result.
+- Any known corpus overlap that materially affects the stated experiment; do not invent a universal contamination or freshness requirement.
 - Packaging removed during normalisation.
 - Exact version refs and registry sizes.
-- Per-pair surface, semantic, total, and hard/strong counts.
+- Per-pair deterministic, agent-assessed, total, and hard/strong counts.
 - Aggregate and normalised gaps.
 - Reversed or weak pairs, not only successful separations.
 - False positives and likely genre or formatting confounds.
@@ -89,7 +113,7 @@ python3 dev/evals/tests/test_regex_robustness.py
 python3 dev/evals/harness/run_regex_catalogue_audit.py
 ```
 
-The property suite requires all 51 checks to produce case-invariant decisions across the complete seed. It also covers contractions, British/American spelling, punctuation, line breaks, inflection, singular/plural forms, intervening clauses, reordered clauses, grammatical-subject changes, and Markdown variants for representative regex families.
+The property suite requires all 50 checks to produce case-invariant decisions across the complete seed. It also covers contractions, British/American spelling, punctuation, line breaks, inflection, singular/plural forms, intervening clauses, reordered clauses, grammatical-subject changes, and Markdown variants for representative regex families.
 
 `dev/evals/regex-catalogue-report.json` reports overall and per-check recall, specificity, false-positive rate, expected checks, actual failures, and unmapped tendencies. The 60-sample seed is directional rather than a release gate: most tendency cells contain only one sample. Expand each cell to 5–10 independently generated variants and matched controls before treating the rates as stable.
 
@@ -121,18 +145,18 @@ python3 dev/evals/tests/test_agent_judgement_render.py
 python3 dev/evals/tests/test_house_style.py
 ```
 
-These tests cover deterministic rules, semantic schemas, exact evidence spans, bundle bindings, complete coverage, generated guidance, and report rendering.
+These tests cover deterministic rules, agent-assessment schemas, exact evidence spans, bundle bindings, complete coverage, generated guidance, and report rendering.
 
 ## Direct grader use
 
-Create a work bundle, complete its semantic answers, and run a full Audit:
+Create a work bundle, complete its agent-assessed answers, and run a full Audit:
 
 ```bash
 python3 human-eyes/scripts/grade.py preflight path/to/text.md --work-bundle /tmp/human-eyes-work.json
 python3 human-eyes/scripts/grade.py audit path/to/text.md --work-bundle /tmp/human-eyes-work.json --format json
 ```
 
-Do not run the second command until `semantic_answers` contains one valid answer for every current `judgement.json` record. A completed-looking report without full, source-bound semantic coverage is invalid.
+Do not run the second command until `semantic_answers` contains one valid answer for every current `judgement.json` record. A completed-looking report without full, source-bound agent-assessment coverage is invalid.
 
 For deterministic development output:
 

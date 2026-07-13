@@ -1,0 +1,31 @@
+{
+  "slot_id": "06-business-strategy-report",
+  "source": "Innovation and Science Australia Annual Report 2018–19",
+  "author": "Innovation and Science Australia",
+  "published": "2019",
+  "url": "https://www.industry.gov.au/sites/default/files/2019-11/innovation-and-science-australia-annual-report-2018-19.pdf",
+  "license": "Australian Government publication; see source metadata",
+  "acquired_at": "2026-07-12",
+  "exact_boundary": {
+    "start": "Overview of Innovation and Science Australia: Innovation and Science Australia (ISA) is an independent Board",
+    "end": "This work will be supported by the inclusion of a scorecard of the performance of Australia’s innovation, science and research system—based on the recommendations of the Innovation Metrics Review."
+  },
+  "packaging_removed": [
+    "section divider page",
+    "running report titles",
+    "page numbers",
+    "adjacent full-page photograph and photo credit"
+  ],
+  "word_count": 436,
+  "sha256": "dd5d9ed82d400f70c818983d0c3f80641440ed2d0e6aaf268a88681bcd94dc15",
+  "contamination_check": {
+    "current_tree_command": "grep -R -n -F --exclude-dir=.git --exclude=fresh-pilot-sampling-frame.json QUERY .",
+    "full_history_command": "for c in $(git rev-list --all); do git grep -n -F QUERY $c -- .; done",
+    "queries": [
+      "Innovation and Science Australia Annual Report 2018–19",
+      "Innovation and Science Australia (ISA) is an independent Board"
+    ],
+    "result": "No matches outside frozen sampling-frame metadata in current tree; no matches in all 60 commits."
+  },
+  "notes": "Text-layer PDF. Passage follows the page’s left-column Overview section and right-column Strategic Advice section in intended reading order; headings and substantive program structure retained."
+}

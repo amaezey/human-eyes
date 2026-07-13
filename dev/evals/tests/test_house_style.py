@@ -57,6 +57,34 @@ for check_id in check_ids:
         failures.append(f"vocabulary.json: {check_id}: {result['evidence']}")
 
 combined = "\n".join(instructional_prose(path.read_text()).lower() for path in files)
+skill_text = (HUMAN_EYES / "SKILL.md").read_text().lower()
+process_text = (HUMAN_EYES / "references" / "process.md").read_text().lower()
+voice_text = (HUMAN_EYES / "references" / "voice.md").read_text().lower()
+for required in (
+    "no artefacts means no returned suggestion",
+    "finding-count improvement cannot compensate for preservation failure",
+    "treat the brief as a closed factual source",
+    "never generate a blanket all-clear answer set",
+    "the source is also a closed factual record",
+):
+    if required not in process_text:
+        failures.append(f"process.md missing action completion guard: {required}")
+for required in (
+    "never claim or imply context validation when only the source was audited",
+    "plausible standard procedure is still invented detail",
+    "an improved finding set does not override failed preservation",
+    "never bulk-fill semantic answers as clear",
+    "do not insert audit commentary into the rewritten document",
+):
+    if required not in skill_text:
+        failures.append(f"SKILL.md missing action completion guard: {required}")
+for required in (
+    "generic plausibility is not source support",
+    "direct quotations are protected literals",
+    "factual modality is protected meaning",
+):
+    if required not in voice_text:
+        failures.append(f"voice.md missing preservation guard: {required}")
 for forbidden in (
     "introduce at least one register shift",
     "parenthetical doubt",

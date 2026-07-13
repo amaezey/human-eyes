@@ -1,0 +1,46 @@
+{
+  "slot": "05",
+  "status": "pass",
+  "title": "WCAG 2.2 status update",
+  "url": "https://lists.w3.org/Archives/Public/w3c-wai-gl/2019OctDec/0118.html",
+  "author": "Alastair Campbell",
+  "published": "2019-11-29",
+  "genre": "workplace memo or project update",
+  "subtype": "standards-working-group status email",
+  "retrieved_at": "2026-07-12",
+  "selection": {
+    "start": "Hi everyone,",
+    "end": "-Alastair",
+    "coherent_consecutive_passage": true,
+    "intrinsic_structure_preserved": [
+      "greeting",
+      "introductory status line",
+      "complete work-item bullet list",
+      "working links",
+      "closing and sender name"
+    ]
+  },
+  "removals": [
+    "archive title, breadcrumb, navigation, and thread controls",
+    "From, Date, To, and Message-ID archive metadata",
+    "post-signoff employer URL and social-handle signature",
+    "archive receipt timestamp, generator notice, reply controls, help links, and archive footer"
+  ],
+  "word_count": 269,
+  "sha256": "67118531cca905a077e1eecd23a59145f2fba69145455374a838a8d22fa8536d",
+  "contamination": {
+    "checked": true,
+    "known_overlap": false,
+    "scope": "working tree plus every commit reachable from every git ref/history, excluding prohibited AI-output directories from content inspection",
+    "commands": [
+      "git grep -F -n opening and ending distinctive phrases with this acquired file and AI-output directories excluded",
+      "git log --all --oneline -S for the same opening and ending distinctive phrases",
+      "git grep and git-history searches for title, URL fragment, and author before acquisition"
+    ],
+    "results": [
+      "distinctive-phrase working-tree searches returned no other match",
+      "distinctive-phrase all-history searches returned no commit",
+      "title, URL-fragment, and author searches returned no prior corpus occurrence"
+    ]
+  }
+}
