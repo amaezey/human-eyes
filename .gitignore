@@ -32,5 +32,6 @@ requirements.txt
 # tools, TESTING.md) and stays tracked.
 docs/
 
-# Claude Code project config — local-only
-.claude/
+# Claude Code project config: local-only, except shared skills
+.claude/*
+!.claude/skills/
