@@ -140,6 +140,49 @@ for record in records:
         ok(f"record `{rid}` pattern_ref={expected!r}")
 
 
+# --- targeted semantic contracts ---
+
+print("\n=== judgement.json targeted semantic contracts ===")
+records_by_id = {record.get("id"): record for record in records}
+
+jargon_record = records_by_id.get("even_jargon_distribution", {})
+jargon_values = jargon_record.get("answer_schema", {}).get("values")
+expected_jargon_values = [
+    "jargon is not suspiciously uniform",
+    "jargon spreads suspiciously uniformly across the text",
+]
+if jargon_record.get("answer_schema", {}).get("type") != "state":
+    fail("even_jargon_distribution should use a two-state answer schema")
+elif jargon_values != expected_jargon_values:
+    fail(
+        "even_jargon_distribution should expose one non-flagged state and one "
+        f"flagged state; got {jargon_values!r}"
+    )
+else:
+    ok("even_jargon_distribution does not classify harmless non-flagged distributions")
+if jargon_record.get("flagged_when") != [expected_jargon_values[1]]:
+    fail("even_jargon_distribution should flag only suspiciously uniform distribution")
+else:
+    ok("even_jargon_distribution keeps harmless distributions non-flagged")
+
+metaphor_prompt = records_by_id.get("generic_metaphors", {}).get("prompt", "")
+required_metaphor_guidance = (
+    "journey",
+    "portal",
+    "operating-system",
+    "superpower",
+    "under-the-hood",
+    "each listed metaphor must independently meet this threshold",
+)
+missing_metaphor_guidance = [
+    phrase for phrase in required_metaphor_guidance if phrase not in metaphor_prompt.lower()
+]
+if missing_metaphor_guidance:
+    fail(f"generic_metaphors prompt missing approved guidance: {missing_metaphor_guidance}")
+else:
+    ok("generic_metaphors prompt covers common low-information families and list precision")
+
+
 # --- polymorphic genre slot ---
 
 print("\n=== judgement.json genre_specific sub_records ===")

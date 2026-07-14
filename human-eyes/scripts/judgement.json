@@ -72,17 +72,16 @@
       "id": "even_jargon_distribution",
       "pattern_ref": null,
       "severity": "context_warning",
-      "prompt": "Is technical vocabulary clumped (the writer is in the weeds where they actually know things, plain prose elsewhere) or spread evenly across the piece (suspicious — humans don't distribute jargon uniformly)?",
+      "prompt": "Is technical vocabulary spread at a suspiciously similar density across sections with different topics or functions? Answer `jargon is not suspiciously uniform` when terminology is sparse, topic-driven, required by the genre, naturally distributed, or concentrated in knowledge-dense passages. Answer `jargon spreads suspiciously uniformly across the text` only when technical terms recur at a comparable and unnecessary density across otherwise different sections.",
       "answer_schema": {
-        "type": "trichotomy",
+        "type": "state",
         "values": [
-          "jargon clumps where the writer knows things",
-          "jargon spreads naturally",
-          "jargon spreads uniformly across the text"
+          "jargon is not suspiciously uniform",
+          "jargon spreads suspiciously uniformly across the text"
         ]
       },
       "flagged_when": [
-        "jargon spreads uniformly across the text"
+        "jargon spreads suspiciously uniformly across the text"
       ]
     },
     {
@@ -103,7 +102,7 @@
       "id": "generic_metaphors",
       "pattern_ref": 30,
       "severity": "strong_warning",
-      "prompt": "Are the metaphors plausible-but-anyone's, or detached from a concrete referent, property, or experience? List the exact metaphor and explain what concrete meaning it fails to supply.",
+      "prompt": "Are the metaphors plausible-but-anyone's, interchangeable with unrelated topics, or detached from a concrete referent, property, or experience? Actively check stock low-information families such as journey or adventure, portal or gateway, anchor, operating-system or interface, superpower, under-the-hood or machinery, and taste. Flag a metaphor when the image supplies atmosphere or emphasis but no document-specific property; do not clear it merely because the reader can infer its general intent. Preserve a metaphor grounded in a concrete scene or one that maps a specific property the prose actually develops. Each listed metaphor must independently meet this threshold; do not pad a real finding with borderline examples. List the exact metaphor and explain what concrete meaning it fails to supply.",
       "answer_schema": {
         "type": "list",
         "items": [

@@ -63,7 +63,7 @@ def all_clear_judgement():
         {"id": "tonal_uniformity", "status": "clear", "answer": "register breaks at least once", "evidence": {}},
         {"id": "faux_specificity", "status": "clear", "answer": [], "evidence": {}},
         {"id": "neutrality_collapse", "status": "clear", "answer": "takes a position", "evidence": {}},
-        {"id": "even_jargon_distribution", "status": "clear", "answer": "jargon clumps where the writer knows things", "evidence": {}},
+        {"id": "even_jargon_distribution", "status": "clear", "answer": "jargon is not suspiciously uniform", "evidence": {}},
         {"id": "forced_synesthesia", "status": "clear", "answer": [], "evidence": {}},
         {"id": "generic_metaphors", "status": "clear", "answer": [], "evidence": {}},
         {"id": "referential_clarity", "status": "clear", "answer": [], "evidence": {}},
