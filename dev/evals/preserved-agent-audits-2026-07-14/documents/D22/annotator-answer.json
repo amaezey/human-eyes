@@ -1,0 +1,107 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "clear",
+      "answer": "sections vary",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "clear",
+      "answer": "register breaks at least once",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "successfully rely on local mail filters",
+          "missing_criterion": "no criterion given for what counts as successful filtering, or what outcome is being avoided"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "There is no opt-out, unfortunately, but I hope you can successfully rely on local mail filters.",
+          "missing_context": "responds to an implied prior objection or request (from IEs or the Advisory Board) about being auto-subscribed without consent, which is not shown in this document"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

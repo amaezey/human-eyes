@@ -1,0 +1,460 @@
+You are an independent prose-audit reviewer. Re-read the document and verify every judgment yourself.
+
+Independently review a preserved agent-assessed Audit.
+
+Rules:
+1. Re-read the whole document and apply every registry record yourself before deciding whether the annotator was right.
+2. Do not guess who wrote the document and do not classify authorship.
+3. Review all 15 judgments, including clear judgments that may hide false negatives.
+4. A whole-document or distribution judgment needs evidence from multiple parts of the document when enough material exists.
+5. Treat genre-appropriate consistency, repetition, terminology, formatting, and rhetoric in context.
+6. Use verdict `supported` only when the annotator's answer and evidence are adequate; `overcall` when it flags a defect that is not present; `undercall` when it clears a defect that is present; `misclassified` when the status may be right but the selected category, genre, scope, or answer is materially wrong; and `insufficient_evidence` when the conclusion may be plausible but the supplied evidence does not establish it.
+7. Evidence strings in your review must be literal exact substrings from the document. Return exactly one review per registry record in registry order. Do not add commentary outside the JSON object.
+
+REGISTRY:
+{
+  "schema_version": "1",
+  "records": [
+    {
+      "id": "structural_monotony",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Do sections repeat the same rhetorical arc, such as problem → evidence → anecdote → advice or hook → claim → evidence → close? Name repeated arcs even when the headings and subject matter differ.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "sections vary",
+          "some sections share a shape",
+          "every section follows the same arc"
+        ]
+      },
+      "flagged_when": [
+        "some sections share a shape",
+        "every section follows the same arc"
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "Does the whole text sit in one register (formal, academic-accessible, warm-but-authoritative), or does the writer drift between registers — formal to colloquial, careful to loose, sincere to wry? Tonal uniformity is the consistency itself, not any particular register.",
+      "answer_schema": {
+        "type": "state",
+        "values": [
+          "register holds without breaks",
+          "register breaks at least once",
+          "register shifts deliberately"
+        ]
+      },
+      "flagged_when": [
+        "register holds without breaks"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "pattern_ref": 36,
+      "severity": "strong_warning",
+      "prompt": "Are the \"specific\" examples actually specific (someone's lived detail with names, dates, places, sensory grounding), or genre-convention filler that anyone could have written (\"the smell of coffee on a Sunday morning\", \"the way light hits the kitchen table\")? List specific phrases that perform specificity without achieving it.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_unspecific"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "neutrality_collapse",
+      "pattern_ref": 37,
+      "severity": "strong_warning",
+      "prompt": "Does the text commit to a position, or default to \"balanced\" treatment of everything? Look for \"there are compelling arguments on both sides\" framing where the original had a clear stance. Surface false-balance phrasing is partly covered by `no-false-concession-hedges` (#23a); this item flags the broader stance erasure.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "takes a position",
+          "hedges its position",
+          "flattens to balanced framing"
+        ]
+      },
+      "flagged_when": [
+        "hedges its position",
+        "flattens to balanced framing"
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Is technical vocabulary clumped (the writer is in the weeds where they actually know things, plain prose elsewhere) or spread evenly across the piece (suspicious — humans don't distribute jargon uniformly)?",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "jargon clumps where the writer knows things",
+          "jargon spreads naturally",
+          "jargon spreads uniformly across the text"
+        ]
+      },
+      "flagged_when": [
+        "jargon spreads uniformly across the text"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "pattern_ref": 28,
+      "severity": "context_warning",
+      "prompt": "Are there forced cross-modal metaphors — emotions get tastes, sounds get colours, abstract concepts get textures — that don't earn their grounding? Real synesthetic writing is specific and grounded (\"a great plateful of blue water\" — Woolf had stood before a view and sat down to a meal). AI synesthesia is unanchored. List specific phrases that map senses unjustifiably.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_forced"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "generic_metaphors",
+      "pattern_ref": 30,
+      "severity": "strong_warning",
+      "prompt": "Are the metaphors plausible-but-anyone's, or detached from a concrete referent, property, or experience? List the exact metaphor and explain what concrete meaning it fails to supply.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_generic"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "referential_clarity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "List vague this, that, it, these, those, and vague nouns such as moves when the antecedent is not identifiable. Also list unsupported first-use definite descriptions such as the gap, and separately identify passages whose repeated the + noun cadence is excessive even though each referent can be recovered. Quote the phrase and name the missing or over-repeated referent.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unclear"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "pattern_ref": 10,
+      "severity": "context_warning",
+      "prompt": "List counted slogans, balanced bicolons, repeated syntactic skeletons, or cross-sentence correction scripts whose symmetry substitutes for information. Quote the complete construction and explain what the parallel form fails to say.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_formulaic"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "semantic_redundancy",
+      "pattern_ref": 34,
+      "severity": "strong_warning",
+      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "what_it_repeats"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "underspecified_language",
+      "pattern_ref": 43,
+      "severity": "strong_warning",
+      "prompt": "List evaluative adjectives, comparisons, superlatives, modifier stacks, nominalisations, and metaphors that do not name the relevant property or comparison basis. Common examples include steady, rougher, cold, sharp, and load-bearing. Quote the phrase and state the missing criterion, property, actor, or action.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_criterion"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "context_leakage",
+      "pattern_ref": 19,
+      "severity": "strong_warning",
+      "prompt": "List prose that answers, concedes to, corrects, or defends against a chat comment or critique absent from the document. Quote the answer-shaped language and name the missing conversational context required to understand it.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_context"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "performed_candour",
+      "pattern_ref": 42,
+      "severity": "strong_warning",
+      "prompt": "List sincerity announcements and authenticity boosters such as honest, real, actual, genuine, frankly, candidly, and truthfully when they perform candour instead of adding literal meaning. Quote the complete frame and explain why the claim can be stated directly. Preserve literal uses and quotations.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unnecessary"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "vacuous_connection",
+      "pattern_ref": 22,
+      "severity": "context_warning",
+      "prompt": "List connectors and coordinated clauses that imply a logical relationship without stating one. Quote the connection and name the missing causal, temporal, contrastive, or evidential relationship.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_relationship"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "genre_specific",
+      "pattern_ref": 41,
+      "severity": "context_warning",
+      "prompt": "First detect the genre of the text (academic, student_essay, poetry, fiction, journalism, marketing_email, or default if none of these fit). Then run the genre's watchlist below. Report `Genre detected: <genre>.` plus either watchlist findings or \"No genre-specific findings.\"",
+      "answer_schema": {
+        "type": "composite",
+        "fields": {
+          "genre_detected": {
+            "type": "state",
+            "values": [
+              "academic",
+              "student_essay",
+              "poetry",
+              "fiction",
+              "journalism",
+              "marketing_email",
+              "default"
+            ]
+          },
+          "watchlist_findings": {
+            "type": "list",
+            "items": [
+              "phrase",
+              "why_flagged"
+            ]
+          }
+        }
+      },
+      "flagged_when": "non_empty_findings",
+      "sub_records": {
+        "academic": {
+          "description": "Verify citations, DOIs, dates, journals, reference order, figure/data consistency, and whether cited works actually support the claim. Plausible citation format is not evidence. In argumentative academic prose, also watch for depleted engagement markers such as missing questions, reader address, personal asides, or stance-bearing commentary.",
+          "watchlist": [
+            "fake, broken, or irrelevant citations",
+            "wrong DOI, journal, date, figure, or data reference",
+            "citation exists but does not support the claim",
+            "argumentative essay with depleted questions, reader engagement, or stance markers",
+            "polished academic surface masking weak evidence or generic argument"
+          ]
+        },
+        "student_essay": {
+          "description": "Watch for rubric language echoing back, banal thesis claims, weak or missing evidence, student-level mismatch, abrupt tone or complexity shifts, surface polish masking weak argument, draft-history gaps, and loss of the student's own interpretive agency.",
+          "watchlist": [
+            "rubric language echoed as analysis",
+            "banal thesis or derivative argument",
+            "claim unsupported by quoted evidence or draft history",
+            "abrupt tone, complexity, or vocabulary shift from known student baseline",
+            "surface polish masking weak reasoning"
+          ]
+        },
+        "poetry": {
+          "description": "Watch for default quatrains, unrequested rhyme, first-person plural overuse, mood-word accumulation, form compliance without pressure, process traces that look too neat, and revisions that do not deepen the poem.",
+          "watchlist": [
+            "default quatrains or regular stanzas without a reason",
+            "unrequested rhyme or high rhyme density",
+            "first-person plural clustering",
+            "mood-word accumulation without concrete perception",
+            "form compliance without surprise, breakage, or revision depth"
+          ]
+        },
+        "fiction": {
+          "description": "Watch for flattened dialogue, \"as-you-know\" exposition, weak voice differentiation, parenthetical stage directions, locked POV with no pressure, scene pacing that never surprises, over-resolved endings, and generic fidelity to a target style without the source author's stranger choices.",
+          "watchlist": [
+            "dialogue voices not differentiated by rhythm, diction, or speech act",
+            "\"as-you-know\" exposition or role-explaining dialogue",
+            "scene pacing with no pressure, interruption, or surprise",
+            "over-resolved ending",
+            "style imitation that preserves surface but misses the source's oddities"
+          ]
+        },
+        "journalism": {
+          "description": "Watch for unsupported claims, vague sourcing, fake or disappearing bylines, synthetic headshots, broken links, wrong dates, unverifiable quotes, undisclosed vendor or affiliate provenance, and article facts that cannot be traced to named sources.",
+          "watchlist": [
+            "claim lacks a named source or verifiable link",
+            "byline, author bio, or headshot cannot be verified",
+            "broken link, wrong date, wrong organisation, or unverifiable quote",
+            "affiliate/product-review claim with unclear provenance",
+            "generated or third-party content not disclosed"
+          ]
+        },
+        "marketing_email": {
+          "description": "Watch for placeholders, generic subject lines, fake personalisation, weak domain understanding, exaggerated transformation claims, empty hype verbs, over-warm openings, unsupported business jargon, and action lists dressed up with symbols.",
+          "watchlist": [
+            "generic subject line or fake personalisation",
+            "placeholder residue or undeleted template slot",
+            "weak domain understanding hidden behind jargon",
+            "exaggerated transformation claim or empty hype verb",
+            "action list dressed up with symbols instead of useful specifics"
+          ]
+        },
+        "default": {
+          "description": "No genre-specific watchlist applies. The agent reports \"Genre detected: default. No genre-specific findings.\" and moves on.",
+          "watchlist": []
+        }
+      }
+    }
+  ]
+}
+
+
+DOCUMENT:
+<document>
+# 2 What do patients say about their health-care needs, preferences, and history?
+
+## Key findings
+
+Nationally, of relevant populations:
+
+- nearly all (98%) patients reported that their usual GP or others in their usual place of care seemed aware of their health-care history
+- a high proportion (92%) of patients felt that they had a health professional with a good understanding of their health-care needs and preferences
+- patients were more like to report that they did not receive enough information about their care or treatment if they had poor self-assessed health status, had no usual GP or place of care, or did not speak English as their main language.
+
+This chapter reviews patients’ perceived experiences of information continuity—such as whether patients felt they received enough information about their treatment and whether their test results were always available.
+
+The 2016 Survey of Health Care asked patients about their general experiences of information transfer, including measures on whether patients felt:
+
+- there was a health professional with a good understanding of their health, health-care needs and preferences
+- they received enough information about their care or treatment overall
+- their usual GP or place of care was aware of their health-care history
+
+Patients were also asked about the availability of their test results, such as X-rays and scans, at the time of their health-care appointment.
+
+## National results
+
+Of patients who had visited either a usual GP or place of care, almost all (98%) patients reported that their usual GP or others in their usual place of care seemed aware of their health-care history.
+
+Of patients who had health-care needs or preferences, a very high proportion (92%) felt that they had a health professional who understood those well.
+
+Similarly, of those who said they needed information about their care or treatment, 92% said they received enough information overall about their care or treatment.
+
+Although most patients felt like they had a positive experience overall, this still leaves some whose health-care needs and preferences were not understood (8%), or who did not receive enough information about their care or treatment (8%). This varied by sociodemographic characteristics such as age, self-assessed health status, geographic area, and primary care setting.
+
+The following sections explore some of these results in more detail.
+
+</document>
+
+ANNOTATOR ANSWERS:
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "clear",
+      "answer": "sections vary",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "This varied by sociodemographic characteristics such as age, self-assessed health status, geographic area, and primary care setting.",
+          "why_unclear": "The antecedent of 'This' is ambiguous — it could refer to the 8% gap figures just mentioned, to the overall positive-experience finding, or to both stats combined, and the sentence does not specify which."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "almost all (98%) patients reported that their usual GP or others in their usual place of care seemed aware of their health-care history.",
+          "what_it_repeats": "Restates, almost verbatim, the Key findings bullet: 'nearly all (98%) patients reported that their usual GP or others in their usual place of care seemed aware of their health-care history'"
+        },
+        {
+          "phrase": "a very high proportion (92%) felt that they had a health professional who understood those well.",
+          "what_it_repeats": "Restates the Key findings bullet: 'a high proportion (92%) of patients felt that they had a health professional with a good understanding of their health-care needs and preferences'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "positive experience overall",
+          "missing_criterion": "Does not specify what dimensions or thresholds define a 'positive experience' beyond the two percentages already cited, leaving the evaluative label unanchored to a stated criterion."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

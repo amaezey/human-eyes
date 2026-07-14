@@ -1,0 +1,146 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The annotator’s answer is plausible, but it gives no cross-document evidence for the claimed variation in section shape.",
+      "evidence": [
+        "The computer arrived in three cardboard boxes when I was fifteen.",
+        "The internet came through the telephone line.",
+        "What I remember most is not the slowness of the technology but the slowness of learning it."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "A stable reflective memoir register is plausible, but the annotator supplied no evidence from multiple parts of the piece to establish whole-document tonal consistency.",
+      "evidence": [
+        "I did not know what to do.",
+        "Connecting meant listening to a sequence of beeps, static, and electronic shrieks while the modem negotiated with some distant machine.",
+        "It was simply the first stage of finding out."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clear judgment is plausible because the details are concrete and situational, but the annotator did not cite any passages to show that the specificity is genuine rather than generic filler.",
+      "evidence": [
+        "a beige block as deep as a kitchen cupboard",
+        "tightened two tiny screws on the monitor cable",
+        "bright yellow text, and a row of animated stars"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The piece does take a personal position, especially in its closing reflection, but the annotator gave no textual support for that conclusion.",
+      "evidence": [
+        "I thought it looked magnificent.",
+        "It taught me that not knowing was not a verdict."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The answer is plausible because the few technical terms appear in the computer-specific passages, but the annotator provided no evidence for that distribution judgment.",
+      "evidence": [
+        "the modem negotiated with some distant machine",
+        "I learned basic HTML by viewing the source of simple websites."
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "insufficient_evidence",
+      "rationale": "The absence of forced cross-modal metaphors is plausible, but the annotator gave no supporting textual basis for clearing the category.",
+      "evidence": [
+        "listening to a sequence of beeps, static, and electronic shrieks",
+        "A warning box could stop my breath."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "overcall",
+      "rationale": "The flagged phrases are grounded in the narrator’s immediate situation and closing reflection; they are not empty, detachable metaphors of the kind this record targets.",
+      "evidence": [
+        "as if it were a map out of the wilderness",
+        "It taught me that not knowing was not a verdict. It was simply the first stage of finding out."
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The text largely keeps its referents recoverable, but the annotator offered no pronoun-level or noun-phrase evidence to support a clean bill of clarity.",
+      "evidence": [
+        "I kept those pages in a folder",
+        "It taught me that not knowing was not a verdict."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "overcall",
+      "rationale": "These parallel constructions carry concrete narrative information about setup, trial-and-error, resources, and tinkering; their symmetry does not substitute for content.",
+      "evidence": [
+        "I matched plugs by shape, tightened two tiny screws on the monitor cable, and kept the manual open beside me",
+        "I learned by clicking, retreating, and clicking again.",
+        "I changed colours, broke layouts, and rebuilt them.",
+        "I relied on library books, magazine columns, and a patient classmate who wrote instructions on loose paper."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "overcall",
+      "rationale": "The closing sentences develop the earlier reflection rather than merely repeating it; they move from confusion becoming curiosity to a broader claim about learning.",
+      "evidence": [
+        "I had to tolerate confusion long enough for it to become curiosity.",
+        "It taught me that not knowing was not a verdict.",
+        "It was simply the first stage of finding out."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "overcall",
+      "rationale": "The cited phrases are contextually anchored by the narrator’s anxiety and inexperience, especially where the text explains fear of irreversible mistakes; the annotator overstates the lack of specification.",
+      "evidence": [
+        "it made a confident chime that felt undeserved.",
+        "Mistakes seemed catastrophic because I did not yet understand which actions could be undone.",
+        "A warning box could stop my breath."
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document reads as self-contained, but the annotator did not support the clear judgment with any analysis of potentially answer-shaped or defensive passages.",
+      "evidence": [
+        "My mother would lift the receiver, hear the noise, and shout down the hallway for me to disconnect.",
+        "Years later, when new devices became easier to use, I sometimes missed that awkward machine."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "insufficient_evidence",
+      "rationale": "The text appears free of sincerity boosters, but the annotator provided no textual support for clearing the category.",
+      "evidence": [
+        "I did not know what to do.",
+        "I thought it looked magnificent."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "insufficient_evidence",
+      "rationale": "The prose appears to state its causal and temporal links directly, but the annotator did not cite any connectors or clause relations to justify clearing the record.",
+      "evidence": [
+        "Mistakes seemed catastrophic because I did not yet understand which actions could be undone.",
+        "Years later, when new devices became easier to use, I sometimes missed that awkward machine."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "insufficient_evidence",
+      "rationale": "Detecting this as outside the listed genres and defaulting to no watchlist findings is plausible, but the annotator supplied no evidence for the genre choice or the absence of genre-specific issues.",
+      "evidence": [
+        "The computer arrived in three cardboard boxes when I was fifteen.",
+        "What I remember most is not the slowness of the technology but the slowness of learning it."
+      ]
+    }
+  ]
+}

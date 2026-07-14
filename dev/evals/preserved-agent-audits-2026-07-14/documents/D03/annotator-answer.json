@@ -1,0 +1,158 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "while reading on the couch",
+          "why_unspecific": "A generic scene-setting detail (Sunday, couch, reading) that performs the appearance of a personal anecdote without any name, date, place, or sensory detail that couldn't apply to any reader."
+        },
+        {
+          "phrase": "seeing their eyes light up at the sight of a new possibility for their life",
+          "why_unspecific": "A stock inspirational image with no particular person, moment, or context attached; it reads as genre convention rather than a lived memory."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "like two sides of the same coin",
+          "why_generic": "A worn stock comparison that asserts unity between service and pleasure without specifying the concrete mechanism by which they are actually linked."
+        },
+        {
+          "phrase": "Pleasure is the gravity well of the human condition",
+          "why_generic": "Borrows the language of physics for rhetorical weight but never grounds it in a concrete referent; it asserts inevitability without explaining what actually pulls people or how."
+        },
+        {
+          "phrase": "There is a viral quality to Servant Hedonism.",
+          "why_generic": "Uses the biological/internet 'viral' metaphor to imply spontaneous spread without specifying any actual mechanism of transmission beyond restating that people 'find within themselves their own desire to serve.'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It leads to positive sum interactions. It gives you a great reputation. It unites the people around you in common causes as you seek to be of service together.",
+          "why_formulaic": "A counted tricolon of benefit-claims, each stated in the same 'It [verb]s...' skeleton, that substitutes rhythmic symmetry for any elaboration of how each benefit actually arises."
+        },
+        {
+          "phrase": "You love yourself enough to include yourself in the sphere of your love. You love your life too much to allow pain to be the defining experience of your days.",
+          "why_formulaic": "Repeats the 'You love ___ enough/too much to ___' skeleton back to back, producing balanced cadence rather than distinct, separately-supported claims."
+        },
+        {
+          "phrase": "You cannot create freedom for others through your own bondage. You cannot empower others through your own demoralization. You cannot create a fulfilling life for others by draining your own of its color.",
+          "why_formulaic": "A counted 'You cannot X for others through your own Y' tricolon whose symmetry carries the persuasive weight rather than distinct supporting reasoning for each clause."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "There’s no need to recruit them, or incentivize them, or convince them to join you.",
+          "what_it_repeats": "Restates the immediately preceding claim that 'Servant Hedonism creates a magnetic attraction that draws others in' without adding new information."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "the most fulfilling and satisfying places",
+          "missing_criterion": "Does not specify what makes a place or decision 'fulfilling' or 'satisfying' — no criterion or comparison basis is given."
+        },
+        {
+          "phrase": "a transcendent, out-of-body experience",
+          "missing_criterion": "Evaluative superlative with no named property, sensation, or observable effect that would let a reader judge what 'transcendent' means here."
+        },
+        {
+          "phrase": "a great reputation",
+          "missing_criterion": "'Great' is unsupported by any criterion — no comparison group, metric, or example of what the reputation consists of."
+        },
+        {
+          "phrase": "The cold mandate to “be of value”",
+          "missing_criterion": "'Cold' is an evaluative label with no named actor, source, or mechanism that makes the mandate cold rather than, say, neutral or demanding."
+        },
+        {
+          "phrase": "The ultimate privilege in a relentlessly self-centered world",
+          "missing_criterion": "Both 'ultimate' and 'relentlessly self-centered' are superlative/intensified claims without a stated comparison basis or evidence for the world's self-centeredness."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

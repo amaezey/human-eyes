@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-07-13T15:49:57.907037+00:00",
+  "annotator": {
+    "model_requested": "claude-sonnet-5",
+    "system_prompt": "You are a careful whole-document prose auditor. Follow the user contract exactly.",
+    "wrapper": "Perform a complete agent-assessed Audit of the document below.\n\nRules:\n1. Read the whole document before answering. Do not guess who wrote it and do not classify authorship.\n2. Apply every registry record exactly as written and return exactly one answer per record in registry order.\n3. Use only literal, exact substrings from the document for every evidence phrase and every quoted list-item phrase.\n4. For whole-document state or distribution judgments, cite at least two passages from different parts of the document when the document has enough material. One sentence alone cannot prove a whole-document state.\n5. For list judgments, report every material instance you can support, not just the first. An empty list means you inspected the whole document and found none.\n6. Treat genre-appropriate consistency, repetition, terminology, formatting, and rhetoric in context. A construction is not defective merely because it is detectable.\n7. Status must be mechanically consistent with flagged_when. Do not add commentary outside the JSON object.\n\nREGISTRY:\n{registry}\n\nDOCUMENT:\n<document>\n{document}\n</document>\n",
+    "wrapper_sha256": "e33277b0b9ae0d772f888e2fe37cbab9799c8d11164863e6a258c865a07f7300",
+    "tools": []
+  },
+  "reviewer": {
+    "model_requested": "gpt-5.4",
+    "instruction_prefix": "You are an independent prose-audit reviewer. Re-read the document and verify every judgment yourself.",
+    "wrapper": "Independently review a preserved agent-assessed Audit.\n\nRules:\n1. Re-read the whole document and apply every registry record yourself before deciding whether the annotator was right.\n2. Do not guess who wrote the document and do not classify authorship.\n3. Review all 15 judgments, including clear judgments that may hide false negatives.\n4. A whole-document or distribution judgment needs evidence from multiple parts of the document when enough material exists.\n5. Treat genre-appropriate consistency, repetition, terminology, formatting, and rhetoric in context.\n6. Use verdict `supported` only when the annotator's answer and evidence are adequate; `overcall` when it flags a defect that is not present; `undercall` when it clears a defect that is present; `misclassified` when the status may be right but the selected category, genre, scope, or answer is materially wrong; and `insufficient_evidence` when the conclusion may be plausible but the supplied evidence does not establish it.\n7. Evidence strings in your review must be literal exact substrings from the document. Return exactly one review per registry record in registry order. Do not add commentary outside the JSON object.\n\nREGISTRY:\n{registry}\n\nDOCUMENT:\n<document>\n{document}\n</document>\n\nANNOTATOR ANSWERS:\n{answers}\n",
+    "wrapper_sha256": "2a8160b487c695c8fbe68b9fb5dce70305170377956cf11838edcabaab7f5cb5",
+    "sandbox": "read-only",
+    "path_excludes_homebrew": true
+  },
+  "registry_path": "human-eyes/scripts/judgement.json",
+  "registry_sha256": "57d352e50b98929d8f751a732f2f746d80e363a629d16fecc59bb680fc9e8d24",
+  "established_manifest": "dev/evals/corpus.json",
+  "pilot_manifest": "dev/evals/samples/pilot-additions-01/manifest.json",
+  "source_labels_withheld_from_prompts": true,
+  "retry_policy": "repeat the identical instantiated prompt; never repair answers by hand"
+}

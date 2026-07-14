@@ -1,0 +1,156 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clearance is plausible, but a whole-document structural judgment needs evidence from multiple sections, and the annotator supplied none.",
+      "evidence": [
+        "## Disclaimer",
+        "## 4\\. The First Session",
+        "## Two days after Session 1",
+        "## 9\\. MDMA Reading & Resources"
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "undercall",
+      "rationale": "The register is largely consistent: a confessional, colloquial, self-explanatory voice runs through the piece rather than clearly breaking. Clearing this item as a register break misses the flagged uniformity.",
+      "evidence": [
+        "I did MDMA therapy. It was a deeply profound and life-changing experience.",
+        "Sorry Meditation, it was me, not you.",
+        "Well…fuck me.",
+        "Fuck man, this takes it out of you."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The no-finding judgment may be right, but the annotator gave no evidence showing that the document's details are genuinely grounded rather than generic filler.",
+      "evidence": [
+        "her office in the West Village",
+        "she insisted I use orange juice to wash it down",
+        "I had a C22 boarding ticket."
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document plainly takes a position, but the annotator did not supply the needed textual support.",
+      "evidence": [
+        "I do have a viewpoint:",
+        "MDMA therapy fundamentally changed my life, I think it could be impactful for many people, and I believe it will become a major part of the future of therapy.",
+        "MDMA is the future of trauma treatment, and honestly, I am really excited about it."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The answer is plausible, but the annotator gave no evidence showing jargon clustering rather than uniform spread.",
+      "evidence": [
+        "Stage Three clinical trials",
+        "treatment resistant PTSD",
+        "You can’t take SSRI’s and do MDMA therapy.",
+        "somatic (meaning, physical)"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "insufficient_evidence",
+      "rationale": "A no-finding call is plausible, but the annotator supplied no evidence from across the document to substantiate it.",
+      "evidence": [
+        "It hit me like a Cat 5 hurricane, and everything in my life changed.",
+        "It’s more of a good intensity, like a really hard workout",
+        "I think a big part of the “hollow” feeling is the fear of letting go of my anger."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The cited simile is a generic intensity marker rather than a concrete description of the experience, so the flag is justified.",
+      "evidence": [
+        "It hit me like a Cat 5 hurricane, and everything in my life changed."
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clearance may be correct, but the annotator offered no supporting evidence despite the document's length and density.",
+      "evidence": [
+        "What matters is the experience.",
+        "This was different.",
+        "That to me was astounding."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The later sentence deliberately reuses the earlier three-part mantra, and the symmetrical form does some of the reporting work for it.",
+      "evidence": [
+        "Trust the medicine.",
+        "Surrender to the medicine.",
+        "Receive what comes up.",
+        "I trusted the medicine, surrendered to it, and received what came up."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "The flagged summary repeats the immediately preceding point that MDMA is not sufficient by itself and that the person still must do the painful work.",
+      "evidence": [
+        "MDMA is not a treatment for trauma *by itself*.",
+        "You still have to do work before it and after MDMA to really get the impact.",
+        "if you want to treat your trauma, you still have to face the pain. MDMA just makes it much easier to do that."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "Each flagged phrase relies on evaluative wording without yet naming the criterion or observable basis, so the under-specification call is warranted.",
+      "evidence": [
+        "It was a deeply profound and life-changing experience.",
+        "Honestly, I felt super sharp mentally.",
+        "It’s more of a good intensity, like a really hard workout — but you can rest during if you need to."
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "insufficient_evidence",
+      "rationale": "The no-finding judgment is plausible, but the annotator gave no evidence showing that the document remains self-contained rather than replying to absent chat context.",
+      "evidence": [
+        "I know, I want to vomit that I wrote that,",
+        "Don’t worry, I’m not going to dance around with fucking glow sticks, but now I get why people did it.",
+        "Please know: these notes were written stream of consciousness"
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "These frames announce sincerity without adding propositional content; the underlying claims could stand directly.",
+      "evidence": [
+        "If I’m being honest, I think I failed at meditation.",
+        "I have to be honest: I was afraid going into the second session.",
+        "Quite honestly — I got lucky."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clearance may be right, but the annotator supplied no evidence to show that the document's connections are adequately specified.",
+      "evidence": [
+        "Given the data, and the first hand accounts I heard from several friends, and the fact that nothing else was working anymore, I decided to try it.",
+        "And this is where I missed an opportunity.",
+        "In short: if you want to treat your trauma, you still have to face the pain."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "This piece does not fit the listed special genres; the metadata and body identify it as a personal essay, so `default` with no watchlist findings is materially correct.",
+      "evidence": [
+        "\"format\": \"long-form personal essay\"",
+        "# What MDMA Therapy Did For Me",
+        "I’m writing about it because I think this therapy could help a lot of people, and more people need to know its an option."
+      ]
+    }
+  ]
+}

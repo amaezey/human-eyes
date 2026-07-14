@@ -1,0 +1,4022 @@
+{
+  "schema_version": "2",
+  "coverage_mode": "full",
+  "audit_status": "complete",
+  "programmatic_checks": [
+    {
+      "id": "no-em-dashes",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "outside—or,",
+          "(*pro*)—the",
+          "wonder—a",
+          "dollars—something",
+          "flight—rendered",
+          "spaciousness—and",
+          "bargain—that’s",
+          "Sturmführer—that",
+          "lieutenant—and",
+          "framing—few",
+          "astronauts—manages",
+          "artistically—which",
+          "strangulated—because",
+          "becomes—magically",
+          "—achievable.",
+          "China—always",
+          "adoration—to",
+          "landscape—like",
+          "white—Chazelle",
+          "round—which"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "outside—or,",
+            "(*pro*)—the",
+            "wonder—a",
+            "dollars—something",
+            "flight—rendered",
+            "spaciousness—and",
+            "bargain—that’s",
+            "Sturmführer—that",
+            "lieutenant—and",
+            "framing—few",
+            "astronauts—manages",
+            "artistically—which",
+            "strangulated—because",
+            "becomes—magically",
+            "—achievable.",
+            "China—always",
+            "adoration—to",
+            "landscape—like",
+            "white—Chazelle",
+            "round—which"
+          ],
+          "evidence": "Found 20 em dash(es)",
+          "candidates": [
+            {
+              "text": "outside—or,",
+              "start": 1062,
+              "end": 1073,
+              "quoted": false
+            },
+            {
+              "text": "(*pro*)—the",
+              "start": 1096,
+              "end": 1107,
+              "quoted": false
+            },
+            {
+              "text": "wonder—a",
+              "start": 5901,
+              "end": 5909,
+              "quoted": false
+            },
+            {
+              "text": "dollars—something",
+              "start": 7320,
+              "end": 7337,
+              "quoted": false
+            },
+            {
+              "text": "flight—rendered",
+              "start": 9696,
+              "end": 9711,
+              "quoted": false
+            },
+            {
+              "text": "spaciousness—and",
+              "start": 9744,
+              "end": 9760,
+              "quoted": false
+            },
+            {
+              "text": "bargain—that’s",
+              "start": 11822,
+              "end": 11836,
+              "quoted": false
+            },
+            {
+              "text": "Sturmführer—that",
+              "start": 12465,
+              "end": 12481,
+              "quoted": false
+            },
+            {
+              "text": "lieutenant—and",
+              "start": 12488,
+              "end": 12502,
+              "quoted": false
+            },
+            {
+              "text": "framing—few",
+              "start": 17430,
+              "end": 17441,
+              "quoted": false
+            },
+            {
+              "text": "astronauts—manages",
+              "start": 17476,
+              "end": 17494,
+              "quoted": false
+            },
+            {
+              "text": "artistically—which",
+              "start": 20521,
+              "end": 20539,
+              "quoted": false
+            },
+            {
+              "text": "strangulated—because",
+              "start": 20580,
+              "end": 20600,
+              "quoted": false
+            },
+            {
+              "text": "becomes—magically",
+              "start": 20718,
+              "end": 20735,
+              "quoted": false
+            },
+            {
+              "text": "—achievable.",
+              "start": 20735,
+              "end": 20747,
+              "quoted": false
+            },
+            {
+              "text": "China—always",
+              "start": 21392,
+              "end": 21404,
+              "quoted": false
+            },
+            {
+              "text": "adoration—to",
+              "start": 21715,
+              "end": 21727,
+              "quoted": false
+            },
+            {
+              "text": "landscape—like",
+              "start": 22011,
+              "end": 22025,
+              "quoted": false
+            },
+            {
+              "text": "white—Chazelle",
+              "start": 22097,
+              "end": 22111,
+              "quoted": false
+            },
+            {
+              "text": "round—which",
+              "start": 22991,
+              "end": 23002,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 20,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "outside—or,",
+              "start": 1062,
+              "end": 1073,
+              "quoted": false
+            },
+            {
+              "text": "(*pro*)—the",
+              "start": 1096,
+              "end": 1107,
+              "quoted": false
+            },
+            {
+              "text": "wonder—a",
+              "start": 5901,
+              "end": 5909,
+              "quoted": false
+            },
+            {
+              "text": "dollars—something",
+              "start": 7320,
+              "end": 7337,
+              "quoted": false
+            },
+            {
+              "text": "flight—rendered",
+              "start": 9696,
+              "end": 9711,
+              "quoted": false
+            },
+            {
+              "text": "spaciousness—and",
+              "start": 9744,
+              "end": 9760,
+              "quoted": false
+            },
+            {
+              "text": "bargain—that’s",
+              "start": 11822,
+              "end": 11836,
+              "quoted": false
+            },
+            {
+              "text": "Sturmführer—that",
+              "start": 12465,
+              "end": 12481,
+              "quoted": false
+            },
+            {
+              "text": "lieutenant—and",
+              "start": 12488,
+              "end": 12502,
+              "quoted": false
+            },
+            {
+              "text": "framing—few",
+              "start": 17430,
+              "end": 17441,
+              "quoted": false
+            },
+            {
+              "text": "astronauts—manages",
+              "start": 17476,
+              "end": 17494,
+              "quoted": false
+            },
+            {
+              "text": "artistically—which",
+              "start": 20521,
+              "end": 20539,
+              "quoted": false
+            },
+            {
+              "text": "strangulated—because",
+              "start": 20580,
+              "end": 20600,
+              "quoted": false
+            },
+            {
+              "text": "becomes—magically",
+              "start": 20718,
+              "end": 20735,
+              "quoted": false
+            },
+            {
+              "text": "—achievable.",
+              "start": 20735,
+              "end": 20747,
+              "quoted": false
+            },
+            {
+              "text": "China—always",
+              "start": 21392,
+              "end": 21404,
+              "quoted": false
+            },
+            {
+              "text": "adoration—to",
+              "start": 21715,
+              "end": 21727,
+              "quoted": false
+            },
+            {
+              "text": "landscape—like",
+              "start": 22011,
+              "end": 22025,
+              "quoted": false
+            },
+            {
+              "text": "white—Chazelle",
+              "start": 22097,
+              "end": 22111,
+              "quoted": false
+            },
+            {
+              "text": "round—which",
+              "start": 22991,
+              "end": 23002,
+              "quoted": false
+            }
+          ],
+          "match_count": 20,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 20 em dash(es)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "punctuation_signal",
+          "guidance": "Treat as a strong 2026 AI-style signal. May be preserved only at Balanced depth with explicit disclosure; All requires removal."
+        }
+      }
+    },
+    {
+      "id": "no-ai-vocabulary-clustering",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max AI words per paragraph: 2 (5 total in text)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max AI words per paragraph: 2 (5 total in text)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "vocabulary_cluster",
+          "guidance": "Fix clustered generic AI vocabulary; individual words may be fine in context."
+        }
+      }
+    },
+    {
+      "id": "no-nonliteral-land-surface",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No nonliteral land/surface constructions found",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No nonliteral land/surface constructions found",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "metaphor_residue",
+          "guidance": "Fix nonliteral land/surface phrasing; replace with the concrete action or claim."
+        }
+      }
+    },
+    {
+      "id": "overall-signal-stacking",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Signal stacking",
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {
+          "score": 1,
+          "threshold": 4
+        },
+        "raw": {
+          "score": 1,
+          "threshold": 4,
+          "components": [],
+          "vocabulary_signal_stacking": {
+            "points": 1,
+            "reasons": [
+              "generic_cluster=2"
+            ],
+            "worst_generic": 2,
+            "gptzero_matches": [],
+            "kobak_style_distinct": 18,
+            "kobak_style_density": 6.801007556675064,
+            "kobak_style_sample": [
+              "exploration",
+              "landscape",
+              "adept",
+              "approach",
+              "commendable",
+              "discernible",
+              "impact",
+              "individuals",
+              "limitations",
+              "need"
+            ]
+          },
+          "evidence": "Overall signal stacking 1/4 from []; vocab=1 point(s), worst_generic=2, gptzero=[], kobak=18 distinct/6.8/1000",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "aggregate",
+          "component_signals": [],
+          "component_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Overall signal stacking 1/4 from []; vocab=1 point(s), worst_generic=2, gptzero=[], kobak=18 distinct/6.8/1000",
+            "suppression_reason": null,
+            "effective_threshold": 4
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "evidence_role": "signal_stacking",
+          "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict."
+        }
+      }
+    },
+    {
+      "id": "no-manufactured-insight",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No manufactured insight phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No manufactured insight phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice."
+        }
+      }
+    },
+    {
+      "id": "no-performed-candour",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No performed-candour frames",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No performed-candour frames",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "candour_frame",
+          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text."
+        }
+      }
+    },
+    {
+      "id": "no-staccato-sequences",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Max consecutive short sentences: 2",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_run": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max consecutive short sentences: 2",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_run": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm."
+        }
+      }
+    },
+    {
+      "id": "no-anaphora",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Max anaphora run: 2",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max anaphora run: 2",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix mechanical repetition; recommend preserving deliberate rhetoric or literary patterning."
+        }
+      }
+    },
+    {
+      "id": "no-collaborative-artifacts",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No collaborative artifacts",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No collaborative artifacts",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "assistant_residue",
+          "guidance": "Fix at every depth; this is assistant residue, not authorial style."
+        }
+      }
+    },
+    {
+      "id": "no-curly-quotes",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "Newell.*****Destined for the Stars: Faith, Future, and America’s Final Frontier*.** Pittsburgh, 2019.",
+          "Or could it be that the heavens are the temple, and it’s we who are stuck down here in a mundane, profane antechamber?",
+          "This matter is addressed by *To Touch the Face of God*, Kendrick Oliver’s absorbing social history of the space program.",
+          "He’s especially good on the way the program channeled national concerns about the separation of church and state, a debate that had been galvanized by the 1963 Supreme Court judgment ruling mandatory school prayer unconstitutional.",
+          "As Apollo 8 orbited the moon in December of 1968, astronaut Bill Anders informed “all the people back on earth” that “the crew of Apollo 8 has a message we would like to send you.” They then read the creation account of Genesis 1 aloud.",
+          "*The Christian Century* ran an editorial declaring themselves “struck dumb by this event,” and Apollo flight director Gene Kranz wept openly in the control room: “for those moments,” he later recalled, “I felt the presence of creation and the Creator.” Not everyone was so happy.",
+          "Madalyn Murray O’Hair, one of the plaintiffs in the 1963 school prayer case and an advocate for the separation of church and state, objected, posing for photos before a filing cabinet containing letters and cards from twenty-eight thousand “sympathizers.” O’Hair’s specific petitions had little effect (they were, says Oliver, “received politely” by NASA “and then hastened quickly into warehouses”), but they represented an important aspect of the public animus against Apollo.",
+          "Political opposition pressed the “waste of national resources” case, arguing that the money would be better spent on America’s crumbling inner cities and ending the Vietnam War.",
+          "The collective global buzz of Armstrong’s small step dissipated quickly, and in the 1970s NASA increasingly struggled to articulate its raison d’être in the face of increasing public indifference.",
+          "We’d gone to the moon.",
+          "Recruiting this national religious constituency and reconfiguring space exploration as “going for God” could have reenergized the program.",
+          "This touches on a curious absence in Oliver’s account: science fiction.",
+          "*Star Wars* gave outer space back to the general population as excitement and wonder—a mere simulacrum of space, of course, but it turned out people didn’t mind that.",
+          "*Star Wars* killed the space race by feeding a more palatable, empty-calorie version of “space exploration and adventure” to an audience eager for those things and content with the pleasing copy rather than the arduous and tedious reality.",
+          "It is, after all, powered by the “fans,” a word which derives (like “profane”) from the Latin for temple.",
+          "The total cost of the Apollo program was 25.4 billion 1960s dollars—something like 100 billion in today’s money.",
+          "Don’t misunderstand me.",
+          "But there’s something rather depressing about that fact.",
+          "That is to say, he’s a sky-god in the sense that, for Christians, he’s an everything-God (a God of, or behind, or in everything) and the sky is part of everything.",
+          "If anything, he’s a shepherd god, appropriately enough for the herdsman cultures of the Middle East out of which Judaism and, therefore, Christianity developed.",
+          "Perhaps it’s filling a gap.",
+          "\\*\\*\\* The cultural dimension of the space race also interests Catherine Newell, whose *Destined for the Stars: Faith, Future, and America’s Final Frontier* is a study of American artist Chesley Bonestell.",
+          "Newell describes “the popularization of the science of space exploration in America between the years 1944 and 1955,” a popularization she thinks owed much to “a culture that had long valued faith above other religious feeling and believed they were called by God to settle new frontiers and prepare for the end of time.” Newell finds continuity between Bonestell’s realist planetscapes with futuristic, technologically plausible spacecraft in flight—rendered with a clear-lined, uncluttered spaciousness—and the older Hudson School traditions of wild-west landscape painting.",
+          "Her book covers Bonestell’s early terrestrial architectural paintings and the commercial breakthrough of his 1940s paintings of Saturn, Bonestell’s collaboration with scientist and writer Willy Ley, and his work on the 1950 movie *Destination Moon* (he painted the matte images of the lunar landscape).",
+          "Dozens of illustrations and seventeen full-color plates amply demonstrate the grandeur and clarity of Bonestell’s art.",
+          "Ostensibly this is because Bonestell collaborated with von Braun on the latter’s popular books, *The Mars Project* (1953) and *First Men to the Moon* (1958), but the rocket man soon crowds out the painter.",
+          "Newell’s account of this figure is long on detail and short on moral judgment.",
+          "Von Braun’s only ambition, she says, was “to find a way for humankind to explore space”; but he remains “a contested figure” because “while his achievements were great, the cost of those achievements was morally questionable actions.” *Morally questionable* might strike some readers as weasel-wordage, but Newell doesn’t linger on that.",
+          "Instead we get accounts of von Braun’s “deep and abiding faith in God,” his talents as a pianist, his “relentlessly precocious” youth, his “happy home life” with his wife and children, and of course his far-reaching technical and engineering know-how.",
+          "I grew up in London in the 1960s and ’70s, and the roads along which I walked to school alternated buildings with vacant lots overgrown with vegetation, craters often still clearly discernible.",
+          "(It’s all been redeveloped now, of course, but it took many decades for the UK to marshal the resources to repair all the bomb damage from the war.) It’s hard not to feel a little narked at the man behind the weapons that caused such damage to my hometown, killing nine thousand people, mostly civilians, into the bargain—that’s three 9/11s, right there.",
+          "Newell doesn’t omit the fact that von Braun was a member of the SS, but she downplays it, calling his a token affiliation and claiming he rarely wore his uniform (she imagines him “frantically searching through several closets” for it on the rare occasions Heinrich Himmler visited).",
+          "That’s certainly what von Braun told the Americans after the war.",
+          "But then again, he would, wouldn’t he?",
+          "Newell doesn’t record that von Braun first joined the SS in 1933, that by 1940 he was a Sturmführer—that is, a lieutenant—and was promoted three more times during the war.",
+          "According to Bob Ward’s biography, von Braun was a conventional Nazi and regularly wore his SS uniform to meetings.",
+          "What’s not in dispute (though Newell doesn’t dwell on this either) is that up to twenty thousand people died at Mittelbau-Dora, the concentration camp that supplied most of the workers for the world’s first long-range guided ballistic missile program.",
+          "He was, she thinks, focused solely on taking mankind into space and “in von Braun’s case, with focus comes myopia.” She and I are not going to agree on this matter.",
+          "Newell suggests that von Braun’s motivations were fundamentally humanitarian: “divine ordinance \\[was\\] his motivation for building rockets”; space exploration was a means “to save humanity from destruction”; religion was “a necessary check upon science.” Colonizing space was something “he hoped for with his whole heart.” Perhaps it was.",
+          "We can’t know, because the human heart is famously opaque.",
+          "Not only would this more closely reflect human nature, it would be a more *theologically* interesting way of gauging von Braun’s relationship to the space race.",
+          "Let’s agree he was the father of Apollo, and concede that Apollo is one of the great achievements of humanity.",
+          "I try to imagine an account of Adam that stressed his loving attachment to his family, his skill at playing the psaltery, his work ethic and his closeness to God, mentioning only in passing some controversy concerning “morally questionable” frugivorous consumption.",
+          "Mightn’t it be more interesting to contemplate the Apollo program as a stellar humanitarian ambition that *also* contained morbid Nazi DNA in its every cell?",
+          "Might that interpretative labor be worth undertaking, not because it is easy but *because it is hard?* After three chapters on von Braun, Newell returns, in an epilogue, to her main thesis: that Chesley Bonestell’s art “followed the spiritual path of Thomas Moran’s paintings of the American west” and “represented a possible future but also acknowledged a historical sense of moral conviction and religious faith.” Newell thinks this quality could unify the “resurgent interest in space” that she sees “bubbling up through culture” in film, TV, and social media, and make a new space age: > History moves in circles, and space exploration, with its emotional freight of faith and hope might be something that can return that sense of purpose to humanity.",
+          "Newell’s enthusiasm can’t help but be infectious, here and throughout the book, and she finds in the clarity and precision of Bonestell’s images a fitting correlative to her optimism.",
+          "For her, the clean lines and sharp sunlight of Bonestell’s images correlate to a spiritual cleanness and renovation.",
+          "(By comparison, Chazelle’s previous movie, *La La Land,* cost 30 million and earned 500 million worldwide.) I greatly admire *First Man,* but it’s not hard to see why it failed to persuade a larger audience.",
+          "Audiences expecting the accessible thrills and wonder of Ron Howard’s *Apollo 13* (1995) or the slower-burn enjoyments of Philip Kaufman’s *The Right Stuff* (1983) were liable to come away bored, baffled, or both.",
+          "It’s based on James Hansen’s 2005 biography, *First Man: The Life of Neil A.",
+          "Armstrong,* and manages commendable fidelity both to the facts of Armstrong’s life and to all the kit and tech of the Apollo program, lovingly reproduced by the filmmakers.",
+          "But where the book is a lengthy account of the external details of Armstrong’s life, the film is a portrait of an outwardly functioning, inwardly collapsing marriage, a story whose unusual framing—few people, after all, are married to astronauts—manages not to compromise the sensitivity with which Chazelle traces that bitterly common state of affairs.",
+          "Gosling’s Armstrong in particular is a masterclass in a kind of anti-acting, creating a compellingly plausible blankness where another actor might have emoted and projected.",
+          "By way of unlocking the enigma of the film’s subject, Chazelle and his screenwriter John Singer isolate one incident from Armstrong’s life: the death of his two-year-old daughter Karen of a brain tumor in 1962.",
+          "The only time we see Gosling’s Armstrong express emotion is following this death, and the movie is bookended by early scenes of Armstrong hugging his dying child and grieving at her funeral and a brief but powerful scene at the end: Armstrong dropping his daughter’s hospital bracelet into the Little West crater a small distance from the lunar lander.",
+          "He was an intensely private man, especially where this grief was concerned; it is plausible he wouldn’t have told anybody about such an act.",
+          "Between these scenes are interspersed longer, lower-key, precisely observed domestic and bureaucratic interludes: dialed-down observations of home or professional life that often embed what we English call “stiff upper lip” responses to grief.",
+          "None of the actors grandstand; there’s no villain and little traditional dramatic tension; but that’s fitting, because so much of the experience of being an Apollo astronaut was passive: sitting in meetings; sitting before job-interview panels; answering questions at press conferences; waiting around.",
+          "The claustrophobia of the astronauts in their tiny, precarious capsules becomes the movie’s objective correlative of an emotional claustrophobia, the sense of life lived under crushing constraints of conventionality, of Protestant understatement and restraint.",
+          "We’ve all stared at the moon and been struck by her beauty.",
+          "For millennia human beings worshipped her as a goddess, Selene in Greece, Luna in Rome, Coyolxauhqui among the Aztec, Chang’e in China—always revered from afar.",
+          "The moon’s hypnotic barrenness, astonishingly recreated, figures both literally and metaphorically.",
+          "We might answer by talking about the grandeur of the undertaking, the sublime immensity of the realm we enter when we leave earth’s familiar round—which is to say, by talking about the overwhelming, infinite immensity of God.",
+          "In *To Touch the Face of God,* Kendrick Oliver argues that “to the extent that spaceflight was a charismatic enterprise…it owed much to religious archetypes and sensibilities.” He thinks the celebrity enjoyed by the early American space pioneers made them “like Catholic saints or the Puritan elect.",
+          "\\[T\\]hese were men who seemed to be fully possessed of grace.” Grace seems to me a good way of approaching *First Man*; not the grace reserved for saints and the elect, but, on the contrary, grace as something available to all, and especially (according to the Sermon on the Mount) to the poor in spirit and to those who mourn, who shall be comforted.",
+          "Indeed *First Man* is, I think, saying something quite radical about the blankness of grace, its opacity and incomprehensibility, what Graham Greene, in a rather different context, called “the appalling *strangeness* of the mercy of God.” It is indeed about (fittingly for the moon) the lunacy of grace."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "Newell.*****Destined for the Stars: Faith, Future, and America’s Final Frontier*.** Pittsburgh, 2019.",
+            "Or could it be that the heavens are the temple, and it’s we who are stuck down here in a mundane, profane antechamber?",
+            "This matter is addressed by *To Touch the Face of God*, Kendrick Oliver’s absorbing social history of the space program.",
+            "He’s especially good on the way the program channeled national concerns about the separation of church and state, a debate that had been galvanized by the 1963 Supreme Court judgment ruling mandatory school prayer unconstitutional.",
+            "As Apollo 8 orbited the moon in December of 1968, astronaut Bill Anders informed “all the people back on earth” that “the crew of Apollo 8 has a message we would like to send you.” They then read the creation account of Genesis 1 aloud.",
+            "*The Christian Century* ran an editorial declaring themselves “struck dumb by this event,” and Apollo flight director Gene Kranz wept openly in the control room: “for those moments,” he later recalled, “I felt the presence of creation and the Creator.” Not everyone was so happy.",
+            "Madalyn Murray O’Hair, one of the plaintiffs in the 1963 school prayer case and an advocate for the separation of church and state, objected, posing for photos before a filing cabinet containing letters and cards from twenty-eight thousand “sympathizers.” O’Hair’s specific petitions had little effect (they were, says Oliver, “received politely” by NASA “and then hastened quickly into warehouses”), but they represented an important aspect of the public animus against Apollo.",
+            "Political opposition pressed the “waste of national resources” case, arguing that the money would be better spent on America’s crumbling inner cities and ending the Vietnam War.",
+            "The collective global buzz of Armstrong’s small step dissipated quickly, and in the 1970s NASA increasingly struggled to articulate its raison d’être in the face of increasing public indifference.",
+            "We’d gone to the moon.",
+            "Recruiting this national religious constituency and reconfiguring space exploration as “going for God” could have reenergized the program.",
+            "This touches on a curious absence in Oliver’s account: science fiction.",
+            "*Star Wars* gave outer space back to the general population as excitement and wonder—a mere simulacrum of space, of course, but it turned out people didn’t mind that.",
+            "*Star Wars* killed the space race by feeding a more palatable, empty-calorie version of “space exploration and adventure” to an audience eager for those things and content with the pleasing copy rather than the arduous and tedious reality.",
+            "It is, after all, powered by the “fans,” a word which derives (like “profane”) from the Latin for temple.",
+            "The total cost of the Apollo program was 25.4 billion 1960s dollars—something like 100 billion in today’s money.",
+            "Don’t misunderstand me.",
+            "But there’s something rather depressing about that fact.",
+            "That is to say, he’s a sky-god in the sense that, for Christians, he’s an everything-God (a God of, or behind, or in everything) and the sky is part of everything.",
+            "If anything, he’s a shepherd god, appropriately enough for the herdsman cultures of the Middle East out of which Judaism and, therefore, Christianity developed.",
+            "Perhaps it’s filling a gap.",
+            "\\*\\*\\* The cultural dimension of the space race also interests Catherine Newell, whose *Destined for the Stars: Faith, Future, and America’s Final Frontier* is a study of American artist Chesley Bonestell.",
+            "Newell describes “the popularization of the science of space exploration in America between the years 1944 and 1955,” a popularization she thinks owed much to “a culture that had long valued faith above other religious feeling and believed they were called by God to settle new frontiers and prepare for the end of time.” Newell finds continuity between Bonestell’s realist planetscapes with futuristic, technologically plausible spacecraft in flight—rendered with a clear-lined, uncluttered spaciousness—and the older Hudson School traditions of wild-west landscape painting.",
+            "Her book covers Bonestell’s early terrestrial architectural paintings and the commercial breakthrough of his 1940s paintings of Saturn, Bonestell’s collaboration with scientist and writer Willy Ley, and his work on the 1950 movie *Destination Moon* (he painted the matte images of the lunar landscape).",
+            "Dozens of illustrations and seventeen full-color plates amply demonstrate the grandeur and clarity of Bonestell’s art.",
+            "Ostensibly this is because Bonestell collaborated with von Braun on the latter’s popular books, *The Mars Project* (1953) and *First Men to the Moon* (1958), but the rocket man soon crowds out the painter.",
+            "Newell’s account of this figure is long on detail and short on moral judgment.",
+            "Von Braun’s only ambition, she says, was “to find a way for humankind to explore space”; but he remains “a contested figure” because “while his achievements were great, the cost of those achievements was morally questionable actions.” *Morally questionable* might strike some readers as weasel-wordage, but Newell doesn’t linger on that.",
+            "Instead we get accounts of von Braun’s “deep and abiding faith in God,” his talents as a pianist, his “relentlessly precocious” youth, his “happy home life” with his wife and children, and of course his far-reaching technical and engineering know-how.",
+            "I grew up in London in the 1960s and ’70s, and the roads along which I walked to school alternated buildings with vacant lots overgrown with vegetation, craters often still clearly discernible.",
+            "(It’s all been redeveloped now, of course, but it took many decades for the UK to marshal the resources to repair all the bomb damage from the war.) It’s hard not to feel a little narked at the man behind the weapons that caused such damage to my hometown, killing nine thousand people, mostly civilians, into the bargain—that’s three 9/11s, right there.",
+            "Newell doesn’t omit the fact that von Braun was a member of the SS, but she downplays it, calling his a token affiliation and claiming he rarely wore his uniform (she imagines him “frantically searching through several closets” for it on the rare occasions Heinrich Himmler visited).",
+            "That’s certainly what von Braun told the Americans after the war.",
+            "But then again, he would, wouldn’t he?",
+            "Newell doesn’t record that von Braun first joined the SS in 1933, that by 1940 he was a Sturmführer—that is, a lieutenant—and was promoted three more times during the war.",
+            "According to Bob Ward’s biography, von Braun was a conventional Nazi and regularly wore his SS uniform to meetings.",
+            "What’s not in dispute (though Newell doesn’t dwell on this either) is that up to twenty thousand people died at Mittelbau-Dora, the concentration camp that supplied most of the workers for the world’s first long-range guided ballistic missile program.",
+            "He was, she thinks, focused solely on taking mankind into space and “in von Braun’s case, with focus comes myopia.” She and I are not going to agree on this matter.",
+            "Newell suggests that von Braun’s motivations were fundamentally humanitarian: “divine ordinance \\[was\\] his motivation for building rockets”; space exploration was a means “to save humanity from destruction”; religion was “a necessary check upon science.” Colonizing space was something “he hoped for with his whole heart.” Perhaps it was.",
+            "We can’t know, because the human heart is famously opaque.",
+            "Not only would this more closely reflect human nature, it would be a more *theologically* interesting way of gauging von Braun’s relationship to the space race.",
+            "Let’s agree he was the father of Apollo, and concede that Apollo is one of the great achievements of humanity.",
+            "I try to imagine an account of Adam that stressed his loving attachment to his family, his skill at playing the psaltery, his work ethic and his closeness to God, mentioning only in passing some controversy concerning “morally questionable” frugivorous consumption.",
+            "Mightn’t it be more interesting to contemplate the Apollo program as a stellar humanitarian ambition that *also* contained morbid Nazi DNA in its every cell?",
+            "Might that interpretative labor be worth undertaking, not because it is easy but *because it is hard?* After three chapters on von Braun, Newell returns, in an epilogue, to her main thesis: that Chesley Bonestell’s art “followed the spiritual path of Thomas Moran’s paintings of the American west” and “represented a possible future but also acknowledged a historical sense of moral conviction and religious faith.” Newell thinks this quality could unify the “resurgent interest in space” that she sees “bubbling up through culture” in film, TV, and social media, and make a new space age: > History moves in circles, and space exploration, with its emotional freight of faith and hope might be something that can return that sense of purpose to humanity.",
+            "Newell’s enthusiasm can’t help but be infectious, here and throughout the book, and she finds in the clarity and precision of Bonestell’s images a fitting correlative to her optimism.",
+            "For her, the clean lines and sharp sunlight of Bonestell’s images correlate to a spiritual cleanness and renovation.",
+            "(By comparison, Chazelle’s previous movie, *La La Land,* cost 30 million and earned 500 million worldwide.) I greatly admire *First Man,* but it’s not hard to see why it failed to persuade a larger audience.",
+            "Audiences expecting the accessible thrills and wonder of Ron Howard’s *Apollo 13* (1995) or the slower-burn enjoyments of Philip Kaufman’s *The Right Stuff* (1983) were liable to come away bored, baffled, or both.",
+            "It’s based on James Hansen’s 2005 biography, *First Man: The Life of Neil A.",
+            "Armstrong,* and manages commendable fidelity both to the facts of Armstrong’s life and to all the kit and tech of the Apollo program, lovingly reproduced by the filmmakers.",
+            "But where the book is a lengthy account of the external details of Armstrong’s life, the film is a portrait of an outwardly functioning, inwardly collapsing marriage, a story whose unusual framing—few people, after all, are married to astronauts—manages not to compromise the sensitivity with which Chazelle traces that bitterly common state of affairs.",
+            "Gosling’s Armstrong in particular is a masterclass in a kind of anti-acting, creating a compellingly plausible blankness where another actor might have emoted and projected.",
+            "By way of unlocking the enigma of the film’s subject, Chazelle and his screenwriter John Singer isolate one incident from Armstrong’s life: the death of his two-year-old daughter Karen of a brain tumor in 1962.",
+            "The only time we see Gosling’s Armstrong express emotion is following this death, and the movie is bookended by early scenes of Armstrong hugging his dying child and grieving at her funeral and a brief but powerful scene at the end: Armstrong dropping his daughter’s hospital bracelet into the Little West crater a small distance from the lunar lander.",
+            "He was an intensely private man, especially where this grief was concerned; it is plausible he wouldn’t have told anybody about such an act.",
+            "Between these scenes are interspersed longer, lower-key, precisely observed domestic and bureaucratic interludes: dialed-down observations of home or professional life that often embed what we English call “stiff upper lip” responses to grief.",
+            "None of the actors grandstand; there’s no villain and little traditional dramatic tension; but that’s fitting, because so much of the experience of being an Apollo astronaut was passive: sitting in meetings; sitting before job-interview panels; answering questions at press conferences; waiting around.",
+            "The claustrophobia of the astronauts in their tiny, precarious capsules becomes the movie’s objective correlative of an emotional claustrophobia, the sense of life lived under crushing constraints of conventionality, of Protestant understatement and restraint.",
+            "We’ve all stared at the moon and been struck by her beauty.",
+            "For millennia human beings worshipped her as a goddess, Selene in Greece, Luna in Rome, Coyolxauhqui among the Aztec, Chang’e in China—always revered from afar.",
+            "The moon’s hypnotic barrenness, astonishingly recreated, figures both literally and metaphorically.",
+            "We might answer by talking about the grandeur of the undertaking, the sublime immensity of the realm we enter when we leave earth’s familiar round—which is to say, by talking about the overwhelming, infinite immensity of God.",
+            "In *To Touch the Face of God,* Kendrick Oliver argues that “to the extent that spaceflight was a charismatic enterprise…it owed much to religious archetypes and sensibilities.” He thinks the celebrity enjoyed by the early American space pioneers made them “like Catholic saints or the Puritan elect.",
+            "\\[T\\]hese were men who seemed to be fully possessed of grace.” Grace seems to me a good way of approaching *First Man*; not the grace reserved for saints and the elect, but, on the contrary, grace as something available to all, and especially (according to the Sermon on the Mount) to the poor in spirit and to those who mourn, who shall be comforted.",
+            "Indeed *First Man* is, I think, saying something quite radical about the blankness of grace, its opacity and incomprehensibility, what Graham Greene, in a rather different context, called “the appalling *strangeness* of the mercy of God.” It is indeed about (fittingly for the moon) the lunacy of grace."
+          ],
+          "evidence": "Found 147 curly quote(s)",
+          "candidates": [
+            {
+              "text": "Newell.*****Destined for the Stars: Faith, Future, and America’s Final Frontier*.** Pittsburgh, 2019.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Or could it be that the heavens are the temple, and it’s we who are stuck down here in a mundane, profane antechamber?",
+              "start": 1256,
+              "end": 1374,
+              "quoted": false
+            },
+            {
+              "text": "This matter is addressed by *To Touch the Face of God*, Kendrick Oliver’s absorbing social history of the space program.",
+              "start": 1585,
+              "end": 1705,
+              "quoted": false
+            },
+            {
+              "text": "He’s especially good on the way the program channeled national concerns about the separation of church and state, a debate that had been galvanized by the 1963 Supreme Court judgment ruling mandatory school prayer unconstitutional.",
+              "start": 2096,
+              "end": 2327,
+              "quoted": false
+            },
+            {
+              "text": "As Apollo 8 orbited the moon in December of 1968, astronaut Bill Anders informed “all the people back on earth” that “the crew of Apollo 8 has a message we would like to send you.” They then read the creation account of Genesis 1 aloud.",
+              "start": 2329,
+              "end": 2565,
+              "quoted": false
+            },
+            {
+              "text": "*The Christian Century* ran an editorial declaring themselves “struck dumb by this event,” and Apollo flight director Gene Kranz wept openly in the control room: “for those moments,” he later recalled, “I felt the presence of creation and the Creator.” Not everyone was so happy.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Madalyn Murray O’Hair, one of the plaintiffs in the 1963 school prayer case and an advocate for the separation of church and state, objected, posing for photos before a filing cabinet containing letters and cards from twenty-eight thousand “sympathizers.” O’Hair’s specific petitions had little effect (they were, says Oliver, “received politely” by NASA “and then hastened quickly into warehouses”), but they represented an important aspect of the public animus against Apollo.",
+              "start": 2898,
+              "end": 3376,
+              "quoted": false
+            },
+            {
+              "text": "Political opposition pressed the “waste of national resources” case, arguing that the money would be better spent on America’s crumbling inner cities and ending the Vietnam War.",
+              "start": 3378,
+              "end": 3555,
+              "quoted": false
+            },
+            {
+              "text": "The collective global buzz of Armstrong’s small step dissipated quickly, and in the 1970s NASA increasingly struggled to articulate its raison d’être in the face of increasing public indifference.",
+              "start": 3583,
+              "end": 3779,
+              "quoted": false
+            },
+            {
+              "text": "We’d gone to the moon.",
+              "start": 3780,
+              "end": 3802,
+              "quoted": false
+            },
+            {
+              "text": "Recruiting this national religious constituency and reconfiguring space exploration as “going for God” could have reenergized the program.",
+              "start": 4487,
+              "end": 4625,
+              "quoted": false
+            },
+            {
+              "text": "This touches on a curious absence in Oliver’s account: science fiction.",
+              "start": 5103,
+              "end": 5174,
+              "quoted": false
+            },
+            {
+              "text": "*Star Wars* gave outer space back to the general population as excitement and wonder—a mere simulacrum of space, of course, but it turned out people didn’t mind that.",
+              "start": 5823,
+              "end": 5989,
+              "quoted": false
+            },
+            {
+              "text": "*Star Wars* killed the space race by feeding a more palatable, empty-calorie version of “space exploration and adventure” to an audience eager for those things and content with the pleasing copy rather than the arduous and tedious reality.",
+              "start": 5990,
+              "end": 6229,
+              "quoted": false
+            },
+            {
+              "text": "It is, after all, powered by the “fans,” a word which derives (like “profane”) from the Latin for temple.",
+              "start": 7017,
+              "end": 7122,
+              "quoted": false
+            },
+            {
+              "text": "The total cost of the Apollo program was 25.4 billion 1960s dollars—something like 100 billion in today’s money.",
+              "start": 7260,
+              "end": 7372,
+              "quoted": false
+            },
+            {
+              "text": "Don’t misunderstand me.",
+              "start": 7890,
+              "end": 7913,
+              "quoted": false
+            },
+            {
+              "text": "But there’s something rather depressing about that fact.",
+              "start": 7938,
+              "end": 7994,
+              "quoted": false
+            },
+            {
+              "text": "That is to say, he’s a sky-god in the sense that, for Christians, he’s an everything-God (a God of, or behind, or in everything) and the sky is part of everything.",
+              "start": 8204,
+              "end": 8367,
+              "quoted": false
+            },
+            {
+              "text": "If anything, he’s a shepherd god, appropriately enough for the herdsman cultures of the Middle East out of which Judaism and, therefore, Christianity developed.",
+              "start": 8489,
+              "end": 8649,
+              "quoted": false
+            },
+            {
+              "text": "Perhaps it’s filling a gap.",
+              "start": 9016,
+              "end": 9043,
+              "quoted": false
+            },
+            {
+              "text": "\\*\\*\\* The cultural dimension of the space race also interests Catherine Newell, whose *Destined for the Stars: Faith, Future, and America’s Final Frontier* is a study of American artist Chesley Bonestell.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Newell describes “the popularization of the science of space exploration in America between the years 1944 and 1955,” a popularization she thinks owed much to “a culture that had long valued faith above other religious feeling and believed they were called by God to settle new frontiers and prepare for the end of time.” Newell finds continuity between Bonestell’s realist planetscapes with futuristic, technologically plausible spacecraft in flight—rendered with a clear-lined, uncluttered spaciousness—and the older Hudson School traditions of wild-west landscape painting.",
+              "start": 9252,
+              "end": 9828,
+              "quoted": false
+            },
+            {
+              "text": "Her book covers Bonestell’s early terrestrial architectural paintings and the commercial breakthrough of his 1940s paintings of Saturn, Bonestell’s collaboration with scientist and writer Willy Ley, and his work on the 1950 movie *Destination Moon* (he painted the matte images of the lunar landscape).",
+              "start": 9830,
+              "end": 10132,
+              "quoted": false
+            },
+            {
+              "text": "Dozens of illustrations and seventeen full-color plates amply demonstrate the grandeur and clarity of Bonestell’s art.",
+              "start": 10133,
+              "end": 10251,
+              "quoted": false
+            },
+            {
+              "text": "Ostensibly this is because Bonestell collaborated with von Braun on the latter’s popular books, *The Mars Project* (1953) and *First Men to the Moon* (1958), but the rocket man soon crowds out the painter.",
+              "start": 10354,
+              "end": 10559,
+              "quoted": false
+            },
+            {
+              "text": "Newell’s account of this figure is long on detail and short on moral judgment.",
+              "start": 10561,
+              "end": 10639,
+              "quoted": false
+            },
+            {
+              "text": "Von Braun’s only ambition, she says, was “to find a way for humankind to explore space”; but he remains “a contested figure” because “while his achievements were great, the cost of those achievements was morally questionable actions.” *Morally questionable* might strike some readers as weasel-wordage, but Newell doesn’t linger on that.",
+              "start": 10640,
+              "end": 10977,
+              "quoted": false
+            },
+            {
+              "text": "Instead we get accounts of von Braun’s “deep and abiding faith in God,” his talents as a pianist, his “relentlessly precocious” youth, his “happy home life” with his wife and children, and of course his far-reaching technical and engineering know-how.",
+              "start": 10978,
+              "end": 11229,
+              "quoted": false
+            },
+            {
+              "text": "I grew up in London in the 1960s and ’70s, and the roads along which I walked to school alternated buildings with vacant lots overgrown with vegetation, craters often still clearly discernible.",
+              "start": 11314,
+              "end": 11507,
+              "quoted": false
+            },
+            {
+              "text": "(It’s all been redeveloped now, of course, but it took many decades for the UK to marshal the resources to repair all the bomb damage from the war.) It’s hard not to feel a little narked at the man behind the weapons that caused such damage to my hometown, killing nine thousand people, mostly civilians, into the bargain—that’s three 9/11s, right there.",
+              "start": 11508,
+              "end": 11862,
+              "quoted": false
+            },
+            {
+              "text": "Newell doesn’t omit the fact that von Braun was a member of the SS, but she downplays it, calling his a token affiliation and claiming he rarely wore his uniform (she imagines him “frantically searching through several closets” for it on the rare occasions Heinrich Himmler visited).",
+              "start": 11988,
+              "end": 12271,
+              "quoted": false
+            },
+            {
+              "text": "That’s certainly what von Braun told the Americans after the war.",
+              "start": 12272,
+              "end": 12337,
+              "quoted": false
+            },
+            {
+              "text": "But then again, he would, wouldn’t he?",
+              "start": 12338,
+              "end": 12376,
+              "quoted": false
+            },
+            {
+              "text": "Newell doesn’t record that von Braun first joined the SS in 1933, that by 1940 he was a Sturmführer—that is, a lieutenant—and was promoted three more times during the war.",
+              "start": 12377,
+              "end": 12548,
+              "quoted": false
+            },
+            {
+              "text": "According to Bob Ward’s biography, von Braun was a conventional Nazi and regularly wore his SS uniform to meetings.",
+              "start": 12549,
+              "end": 12664,
+              "quoted": false
+            },
+            {
+              "text": "What’s not in dispute (though Newell doesn’t dwell on this either) is that up to twenty thousand people died at Mittelbau-Dora, the concentration camp that supplied most of the workers for the world’s first long-range guided ballistic missile program.",
+              "start": 12665,
+              "end": 12916,
+              "quoted": false
+            },
+            {
+              "text": "He was, she thinks, focused solely on taking mankind into space and “in von Braun’s case, with focus comes myopia.” She and I are not going to agree on this matter.",
+              "start": 13041,
+              "end": 13205,
+              "quoted": false
+            },
+            {
+              "text": "Newell suggests that von Braun’s motivations were fundamentally humanitarian: “divine ordinance \\[was\\] his motivation for building rockets”; space exploration was a means “to save humanity from destruction”; religion was “a necessary check upon science.” Colonizing space was something “he hoped for with his whole heart.” Perhaps it was.",
+              "start": 13454,
+              "end": 13793,
+              "quoted": false
+            },
+            {
+              "text": "We can’t know, because the human heart is famously opaque.",
+              "start": 13909,
+              "end": 13967,
+              "quoted": false
+            },
+            {
+              "text": "Not only would this more closely reflect human nature, it would be a more *theologically* interesting way of gauging von Braun’s relationship to the space race.",
+              "start": 14126,
+              "end": 14286,
+              "quoted": false
+            },
+            {
+              "text": "Let’s agree he was the father of Apollo, and concede that Apollo is one of the great achievements of humanity.",
+              "start": 14287,
+              "end": 14397,
+              "quoted": false
+            },
+            {
+              "text": "I try to imagine an account of Adam that stressed his loving attachment to his family, his skill at playing the psaltery, his work ethic and his closeness to God, mentioning only in passing some controversy concerning “morally questionable” frugivorous consumption.",
+              "start": 14523,
+              "end": 14788,
+              "quoted": false
+            },
+            {
+              "text": "Mightn’t it be more interesting to contemplate the Apollo program as a stellar humanitarian ambition that *also* contained morbid Nazi DNA in its every cell?",
+              "start": 14803,
+              "end": 14960,
+              "quoted": false
+            },
+            {
+              "text": "Might that interpretative labor be worth undertaking, not because it is easy but *because it is hard?* After three chapters on von Braun, Newell returns, in an epilogue, to her main thesis: that Chesley Bonestell’s art “followed the spiritual path of Thomas Moran’s paintings of the American west” and “represented a possible future but also acknowledged a historical sense of moral conviction and religious faith.” Newell thinks this quality could unify the “resurgent interest in space” that she sees “bubbling up through culture” in film, TV, and social media, and make a new space age: > History moves in circles, and space exploration, with its emotional freight of faith and hope might be something that can return that sense of purpose to humanity.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Newell’s enthusiasm can’t help but be infectious, here and throughout the book, and she finds in the clarity and precision of Bonestell’s images a fitting correlative to her optimism.",
+              "start": 15720,
+              "end": 15903,
+              "quoted": false
+            },
+            {
+              "text": "For her, the clean lines and sharp sunlight of Bonestell’s images correlate to a spiritual cleanness and renovation.",
+              "start": 15904,
+              "end": 16020,
+              "quoted": false
+            },
+            {
+              "text": "(By comparison, Chazelle’s previous movie, *La La Land,* cost 30 million and earned 500 million worldwide.) I greatly admire *First Man,* but it’s not hard to see why it failed to persuade a larger audience.",
+              "start": 16460,
+              "end": 16667,
+              "quoted": false
+            },
+            {
+              "text": "Audiences expecting the accessible thrills and wonder of Ron Howard’s *Apollo 13* (1995) or the slower-burn enjoyments of Philip Kaufman’s *The Right Stuff* (1983) were liable to come away bored, baffled, or both.",
+              "start": 16776,
+              "end": 16989,
+              "quoted": false
+            },
+            {
+              "text": "It’s based on James Hansen’s 2005 biography, *First Man: The Life of Neil A.",
+              "start": 16991,
+              "end": 17067,
+              "quoted": false
+            },
+            {
+              "text": "Armstrong,* and manages commendable fidelity both to the facts of Armstrong’s life and to all the kit and tech of the Apollo program, lovingly reproduced by the filmmakers.",
+              "start": 17068,
+              "end": 17240,
+              "quoted": false
+            },
+            {
+              "text": "But where the book is a lengthy account of the external details of Armstrong’s life, the film is a portrait of an outwardly functioning, inwardly collapsing marriage, a story whose unusual framing—few people, after all, are married to astronauts—manages not to compromise the sensitivity with which Chazelle traces that bitterly common state of affairs.",
+              "start": 17241,
+              "end": 17594,
+              "quoted": false
+            },
+            {
+              "text": "Gosling’s Armstrong in particular is a masterclass in a kind of anti-acting, creating a compellingly plausible blankness where another actor might have emoted and projected.",
+              "start": 17595,
+              "end": 17768,
+              "quoted": false
+            },
+            {
+              "text": "By way of unlocking the enigma of the film’s subject, Chazelle and his screenwriter John Singer isolate one incident from Armstrong’s life: the death of his two-year-old daughter Karen of a brain tumor in 1962.",
+              "start": 17907,
+              "end": 18117,
+              "quoted": false
+            },
+            {
+              "text": "The only time we see Gosling’s Armstrong express emotion is following this death, and the movie is bookended by early scenes of Armstrong hugging his dying child and grieving at her funeral and a brief but powerful scene at the end: Armstrong dropping his daughter’s hospital bracelet into the Little West crater a small distance from the lunar lander.",
+              "start": 18118,
+              "end": 18470,
+              "quoted": false
+            },
+            {
+              "text": "He was an intensely private man, especially where this grief was concerned; it is plausible he wouldn’t have told anybody about such an act.",
+              "start": 18837,
+              "end": 18977,
+              "quoted": false
+            },
+            {
+              "text": "Between these scenes are interspersed longer, lower-key, precisely observed domestic and bureaucratic interludes: dialed-down observations of home or professional life that often embed what we English call “stiff upper lip” responses to grief.",
+              "start": 19556,
+              "end": 19799,
+              "quoted": false
+            },
+            {
+              "text": "None of the actors grandstand; there’s no villain and little traditional dramatic tension; but that’s fitting, because so much of the experience of being an Apollo astronaut was passive: sitting in meetings; sitting before job-interview panels; answering questions at press conferences; waiting around.",
+              "start": 19800,
+              "end": 20102,
+              "quoted": false
+            },
+            {
+              "text": "The claustrophobia of the astronauts in their tiny, precarious capsules becomes the movie’s objective correlative of an emotional claustrophobia, the sense of life lived under crushing constraints of conventionality, of Protestant understatement and restraint.",
+              "start": 20104,
+              "end": 20364,
+              "quoted": false
+            },
+            {
+              "text": "We’ve all stared at the moon and been struck by her beauty.",
+              "start": 21203,
+              "end": 21262,
+              "quoted": false
+            },
+            {
+              "text": "For millennia human beings worshipped her as a goddess, Selene in Greece, Luna in Rome, Coyolxauhqui among the Aztec, Chang’e in China—always revered from afar.",
+              "start": 21263,
+              "end": 21423,
+              "quoted": false
+            },
+            {
+              "text": "The moon’s hypnotic barrenness, astonishingly recreated, figures both literally and metaphorically.",
+              "start": 22240,
+              "end": 22339,
+              "quoted": false
+            },
+            {
+              "text": "We might answer by talking about the grandeur of the undertaking, the sublime immensity of the realm we enter when we leave earth’s familiar round—which is to say, by talking about the overwhelming, infinite immensity of God.",
+              "start": 22850,
+              "end": 23075,
+              "quoted": false
+            },
+            {
+              "text": "In *To Touch the Face of God,* Kendrick Oliver argues that “to the extent that spaceflight was a charismatic enterprise…it owed much to religious archetypes and sensibilities.” He thinks the celebrity enjoyed by the early American space pioneers made them “like Catholic saints or the Puritan elect.",
+              "start": 23137,
+              "end": 23436,
+              "quoted": false
+            },
+            {
+              "text": "\\[T\\]hese were men who seemed to be fully possessed of grace.” Grace seems to me a good way of approaching *First Man*; not the grace reserved for saints and the elect, but, on the contrary, grace as something available to all, and especially (according to the Sermon on the Mount) to the poor in spirit and to those who mourn, who shall be comforted.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Indeed *First Man* is, I think, saying something quite radical about the blankness of grace, its opacity and incomprehensibility, what Graham Greene, in a rather different context, called “the appalling *strangeness* of the mercy of God.” It is indeed about (fittingly for the moon) the lunacy of grace.",
+              "start": 23947,
+              "end": 24250,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 66,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "Newell.*****Destined for the Stars: Faith, Future, and America’s Final Frontier*.** Pittsburgh, 2019.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Or could it be that the heavens are the temple, and it’s we who are stuck down here in a mundane, profane antechamber?",
+              "start": 1256,
+              "end": 1374,
+              "quoted": false
+            },
+            {
+              "text": "This matter is addressed by *To Touch the Face of God*, Kendrick Oliver’s absorbing social history of the space program.",
+              "start": 1585,
+              "end": 1705,
+              "quoted": false
+            },
+            {
+              "text": "He’s especially good on the way the program channeled national concerns about the separation of church and state, a debate that had been galvanized by the 1963 Supreme Court judgment ruling mandatory school prayer unconstitutional.",
+              "start": 2096,
+              "end": 2327,
+              "quoted": false
+            },
+            {
+              "text": "As Apollo 8 orbited the moon in December of 1968, astronaut Bill Anders informed “all the people back on earth” that “the crew of Apollo 8 has a message we would like to send you.” They then read the creation account of Genesis 1 aloud.",
+              "start": 2329,
+              "end": 2565,
+              "quoted": false
+            },
+            {
+              "text": "*The Christian Century* ran an editorial declaring themselves “struck dumb by this event,” and Apollo flight director Gene Kranz wept openly in the control room: “for those moments,” he later recalled, “I felt the presence of creation and the Creator.” Not everyone was so happy.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Madalyn Murray O’Hair, one of the plaintiffs in the 1963 school prayer case and an advocate for the separation of church and state, objected, posing for photos before a filing cabinet containing letters and cards from twenty-eight thousand “sympathizers.” O’Hair’s specific petitions had little effect (they were, says Oliver, “received politely” by NASA “and then hastened quickly into warehouses”), but they represented an important aspect of the public animus against Apollo.",
+              "start": 2898,
+              "end": 3376,
+              "quoted": false
+            },
+            {
+              "text": "Political opposition pressed the “waste of national resources” case, arguing that the money would be better spent on America’s crumbling inner cities and ending the Vietnam War.",
+              "start": 3378,
+              "end": 3555,
+              "quoted": false
+            },
+            {
+              "text": "The collective global buzz of Armstrong’s small step dissipated quickly, and in the 1970s NASA increasingly struggled to articulate its raison d’être in the face of increasing public indifference.",
+              "start": 3583,
+              "end": 3779,
+              "quoted": false
+            },
+            {
+              "text": "We’d gone to the moon.",
+              "start": 3780,
+              "end": 3802,
+              "quoted": false
+            },
+            {
+              "text": "Recruiting this national religious constituency and reconfiguring space exploration as “going for God” could have reenergized the program.",
+              "start": 4487,
+              "end": 4625,
+              "quoted": false
+            },
+            {
+              "text": "This touches on a curious absence in Oliver’s account: science fiction.",
+              "start": 5103,
+              "end": 5174,
+              "quoted": false
+            },
+            {
+              "text": "*Star Wars* gave outer space back to the general population as excitement and wonder—a mere simulacrum of space, of course, but it turned out people didn’t mind that.",
+              "start": 5823,
+              "end": 5989,
+              "quoted": false
+            },
+            {
+              "text": "*Star Wars* killed the space race by feeding a more palatable, empty-calorie version of “space exploration and adventure” to an audience eager for those things and content with the pleasing copy rather than the arduous and tedious reality.",
+              "start": 5990,
+              "end": 6229,
+              "quoted": false
+            },
+            {
+              "text": "It is, after all, powered by the “fans,” a word which derives (like “profane”) from the Latin for temple.",
+              "start": 7017,
+              "end": 7122,
+              "quoted": false
+            },
+            {
+              "text": "The total cost of the Apollo program was 25.4 billion 1960s dollars—something like 100 billion in today’s money.",
+              "start": 7260,
+              "end": 7372,
+              "quoted": false
+            },
+            {
+              "text": "Don’t misunderstand me.",
+              "start": 7890,
+              "end": 7913,
+              "quoted": false
+            },
+            {
+              "text": "But there’s something rather depressing about that fact.",
+              "start": 7938,
+              "end": 7994,
+              "quoted": false
+            },
+            {
+              "text": "That is to say, he’s a sky-god in the sense that, for Christians, he’s an everything-God (a God of, or behind, or in everything) and the sky is part of everything.",
+              "start": 8204,
+              "end": 8367,
+              "quoted": false
+            },
+            {
+              "text": "If anything, he’s a shepherd god, appropriately enough for the herdsman cultures of the Middle East out of which Judaism and, therefore, Christianity developed.",
+              "start": 8489,
+              "end": 8649,
+              "quoted": false
+            },
+            {
+              "text": "Perhaps it’s filling a gap.",
+              "start": 9016,
+              "end": 9043,
+              "quoted": false
+            },
+            {
+              "text": "\\*\\*\\* The cultural dimension of the space race also interests Catherine Newell, whose *Destined for the Stars: Faith, Future, and America’s Final Frontier* is a study of American artist Chesley Bonestell.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Newell describes “the popularization of the science of space exploration in America between the years 1944 and 1955,” a popularization she thinks owed much to “a culture that had long valued faith above other religious feeling and believed they were called by God to settle new frontiers and prepare for the end of time.” Newell finds continuity between Bonestell’s realist planetscapes with futuristic, technologically plausible spacecraft in flight—rendered with a clear-lined, uncluttered spaciousness—and the older Hudson School traditions of wild-west landscape painting.",
+              "start": 9252,
+              "end": 9828,
+              "quoted": false
+            },
+            {
+              "text": "Her book covers Bonestell’s early terrestrial architectural paintings and the commercial breakthrough of his 1940s paintings of Saturn, Bonestell’s collaboration with scientist and writer Willy Ley, and his work on the 1950 movie *Destination Moon* (he painted the matte images of the lunar landscape).",
+              "start": 9830,
+              "end": 10132,
+              "quoted": false
+            },
+            {
+              "text": "Dozens of illustrations and seventeen full-color plates amply demonstrate the grandeur and clarity of Bonestell’s art.",
+              "start": 10133,
+              "end": 10251,
+              "quoted": false
+            },
+            {
+              "text": "Ostensibly this is because Bonestell collaborated with von Braun on the latter’s popular books, *The Mars Project* (1953) and *First Men to the Moon* (1958), but the rocket man soon crowds out the painter.",
+              "start": 10354,
+              "end": 10559,
+              "quoted": false
+            },
+            {
+              "text": "Newell’s account of this figure is long on detail and short on moral judgment.",
+              "start": 10561,
+              "end": 10639,
+              "quoted": false
+            },
+            {
+              "text": "Von Braun’s only ambition, she says, was “to find a way for humankind to explore space”; but he remains “a contested figure” because “while his achievements were great, the cost of those achievements was morally questionable actions.” *Morally questionable* might strike some readers as weasel-wordage, but Newell doesn’t linger on that.",
+              "start": 10640,
+              "end": 10977,
+              "quoted": false
+            },
+            {
+              "text": "Instead we get accounts of von Braun’s “deep and abiding faith in God,” his talents as a pianist, his “relentlessly precocious” youth, his “happy home life” with his wife and children, and of course his far-reaching technical and engineering know-how.",
+              "start": 10978,
+              "end": 11229,
+              "quoted": false
+            },
+            {
+              "text": "I grew up in London in the 1960s and ’70s, and the roads along which I walked to school alternated buildings with vacant lots overgrown with vegetation, craters often still clearly discernible.",
+              "start": 11314,
+              "end": 11507,
+              "quoted": false
+            },
+            {
+              "text": "(It’s all been redeveloped now, of course, but it took many decades for the UK to marshal the resources to repair all the bomb damage from the war.) It’s hard not to feel a little narked at the man behind the weapons that caused such damage to my hometown, killing nine thousand people, mostly civilians, into the bargain—that’s three 9/11s, right there.",
+              "start": 11508,
+              "end": 11862,
+              "quoted": false
+            },
+            {
+              "text": "Newell doesn’t omit the fact that von Braun was a member of the SS, but she downplays it, calling his a token affiliation and claiming he rarely wore his uniform (she imagines him “frantically searching through several closets” for it on the rare occasions Heinrich Himmler visited).",
+              "start": 11988,
+              "end": 12271,
+              "quoted": false
+            },
+            {
+              "text": "That’s certainly what von Braun told the Americans after the war.",
+              "start": 12272,
+              "end": 12337,
+              "quoted": false
+            },
+            {
+              "text": "But then again, he would, wouldn’t he?",
+              "start": 12338,
+              "end": 12376,
+              "quoted": false
+            },
+            {
+              "text": "Newell doesn’t record that von Braun first joined the SS in 1933, that by 1940 he was a Sturmführer—that is, a lieutenant—and was promoted three more times during the war.",
+              "start": 12377,
+              "end": 12548,
+              "quoted": false
+            },
+            {
+              "text": "According to Bob Ward’s biography, von Braun was a conventional Nazi and regularly wore his SS uniform to meetings.",
+              "start": 12549,
+              "end": 12664,
+              "quoted": false
+            },
+            {
+              "text": "What’s not in dispute (though Newell doesn’t dwell on this either) is that up to twenty thousand people died at Mittelbau-Dora, the concentration camp that supplied most of the workers for the world’s first long-range guided ballistic missile program.",
+              "start": 12665,
+              "end": 12916,
+              "quoted": false
+            },
+            {
+              "text": "He was, she thinks, focused solely on taking mankind into space and “in von Braun’s case, with focus comes myopia.” She and I are not going to agree on this matter.",
+              "start": 13041,
+              "end": 13205,
+              "quoted": false
+            },
+            {
+              "text": "Newell suggests that von Braun’s motivations were fundamentally humanitarian: “divine ordinance \\[was\\] his motivation for building rockets”; space exploration was a means “to save humanity from destruction”; religion was “a necessary check upon science.” Colonizing space was something “he hoped for with his whole heart.” Perhaps it was.",
+              "start": 13454,
+              "end": 13793,
+              "quoted": false
+            },
+            {
+              "text": "We can’t know, because the human heart is famously opaque.",
+              "start": 13909,
+              "end": 13967,
+              "quoted": false
+            },
+            {
+              "text": "Not only would this more closely reflect human nature, it would be a more *theologically* interesting way of gauging von Braun’s relationship to the space race.",
+              "start": 14126,
+              "end": 14286,
+              "quoted": false
+            },
+            {
+              "text": "Let’s agree he was the father of Apollo, and concede that Apollo is one of the great achievements of humanity.",
+              "start": 14287,
+              "end": 14397,
+              "quoted": false
+            },
+            {
+              "text": "I try to imagine an account of Adam that stressed his loving attachment to his family, his skill at playing the psaltery, his work ethic and his closeness to God, mentioning only in passing some controversy concerning “morally questionable” frugivorous consumption.",
+              "start": 14523,
+              "end": 14788,
+              "quoted": false
+            },
+            {
+              "text": "Mightn’t it be more interesting to contemplate the Apollo program as a stellar humanitarian ambition that *also* contained morbid Nazi DNA in its every cell?",
+              "start": 14803,
+              "end": 14960,
+              "quoted": false
+            },
+            {
+              "text": "Might that interpretative labor be worth undertaking, not because it is easy but *because it is hard?* After three chapters on von Braun, Newell returns, in an epilogue, to her main thesis: that Chesley Bonestell’s art “followed the spiritual path of Thomas Moran’s paintings of the American west” and “represented a possible future but also acknowledged a historical sense of moral conviction and religious faith.” Newell thinks this quality could unify the “resurgent interest in space” that she sees “bubbling up through culture” in film, TV, and social media, and make a new space age: > History moves in circles, and space exploration, with its emotional freight of faith and hope might be something that can return that sense of purpose to humanity.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Newell’s enthusiasm can’t help but be infectious, here and throughout the book, and she finds in the clarity and precision of Bonestell’s images a fitting correlative to her optimism.",
+              "start": 15720,
+              "end": 15903,
+              "quoted": false
+            },
+            {
+              "text": "For her, the clean lines and sharp sunlight of Bonestell’s images correlate to a spiritual cleanness and renovation.",
+              "start": 15904,
+              "end": 16020,
+              "quoted": false
+            },
+            {
+              "text": "(By comparison, Chazelle’s previous movie, *La La Land,* cost 30 million and earned 500 million worldwide.) I greatly admire *First Man,* but it’s not hard to see why it failed to persuade a larger audience.",
+              "start": 16460,
+              "end": 16667,
+              "quoted": false
+            },
+            {
+              "text": "Audiences expecting the accessible thrills and wonder of Ron Howard’s *Apollo 13* (1995) or the slower-burn enjoyments of Philip Kaufman’s *The Right Stuff* (1983) were liable to come away bored, baffled, or both.",
+              "start": 16776,
+              "end": 16989,
+              "quoted": false
+            },
+            {
+              "text": "It’s based on James Hansen’s 2005 biography, *First Man: The Life of Neil A.",
+              "start": 16991,
+              "end": 17067,
+              "quoted": false
+            },
+            {
+              "text": "Armstrong,* and manages commendable fidelity both to the facts of Armstrong’s life and to all the kit and tech of the Apollo program, lovingly reproduced by the filmmakers.",
+              "start": 17068,
+              "end": 17240,
+              "quoted": false
+            },
+            {
+              "text": "But where the book is a lengthy account of the external details of Armstrong’s life, the film is a portrait of an outwardly functioning, inwardly collapsing marriage, a story whose unusual framing—few people, after all, are married to astronauts—manages not to compromise the sensitivity with which Chazelle traces that bitterly common state of affairs.",
+              "start": 17241,
+              "end": 17594,
+              "quoted": false
+            },
+            {
+              "text": "Gosling’s Armstrong in particular is a masterclass in a kind of anti-acting, creating a compellingly plausible blankness where another actor might have emoted and projected.",
+              "start": 17595,
+              "end": 17768,
+              "quoted": false
+            },
+            {
+              "text": "By way of unlocking the enigma of the film’s subject, Chazelle and his screenwriter John Singer isolate one incident from Armstrong’s life: the death of his two-year-old daughter Karen of a brain tumor in 1962.",
+              "start": 17907,
+              "end": 18117,
+              "quoted": false
+            },
+            {
+              "text": "The only time we see Gosling’s Armstrong express emotion is following this death, and the movie is bookended by early scenes of Armstrong hugging his dying child and grieving at her funeral and a brief but powerful scene at the end: Armstrong dropping his daughter’s hospital bracelet into the Little West crater a small distance from the lunar lander.",
+              "start": 18118,
+              "end": 18470,
+              "quoted": false
+            },
+            {
+              "text": "He was an intensely private man, especially where this grief was concerned; it is plausible he wouldn’t have told anybody about such an act.",
+              "start": 18837,
+              "end": 18977,
+              "quoted": false
+            },
+            {
+              "text": "Between these scenes are interspersed longer, lower-key, precisely observed domestic and bureaucratic interludes: dialed-down observations of home or professional life that often embed what we English call “stiff upper lip” responses to grief.",
+              "start": 19556,
+              "end": 19799,
+              "quoted": false
+            },
+            {
+              "text": "None of the actors grandstand; there’s no villain and little traditional dramatic tension; but that’s fitting, because so much of the experience of being an Apollo astronaut was passive: sitting in meetings; sitting before job-interview panels; answering questions at press conferences; waiting around.",
+              "start": 19800,
+              "end": 20102,
+              "quoted": false
+            },
+            {
+              "text": "The claustrophobia of the astronauts in their tiny, precarious capsules becomes the movie’s objective correlative of an emotional claustrophobia, the sense of life lived under crushing constraints of conventionality, of Protestant understatement and restraint.",
+              "start": 20104,
+              "end": 20364,
+              "quoted": false
+            },
+            {
+              "text": "We’ve all stared at the moon and been struck by her beauty.",
+              "start": 21203,
+              "end": 21262,
+              "quoted": false
+            },
+            {
+              "text": "For millennia human beings worshipped her as a goddess, Selene in Greece, Luna in Rome, Coyolxauhqui among the Aztec, Chang’e in China—always revered from afar.",
+              "start": 21263,
+              "end": 21423,
+              "quoted": false
+            },
+            {
+              "text": "The moon’s hypnotic barrenness, astonishingly recreated, figures both literally and metaphorically.",
+              "start": 22240,
+              "end": 22339,
+              "quoted": false
+            },
+            {
+              "text": "We might answer by talking about the grandeur of the undertaking, the sublime immensity of the realm we enter when we leave earth’s familiar round—which is to say, by talking about the overwhelming, infinite immensity of God.",
+              "start": 22850,
+              "end": 23075,
+              "quoted": false
+            },
+            {
+              "text": "In *To Touch the Face of God,* Kendrick Oliver argues that “to the extent that spaceflight was a charismatic enterprise…it owed much to religious archetypes and sensibilities.” He thinks the celebrity enjoyed by the early American space pioneers made them “like Catholic saints or the Puritan elect.",
+              "start": 23137,
+              "end": 23436,
+              "quoted": false
+            },
+            {
+              "text": "\\[T\\]hese were men who seemed to be fully possessed of grace.” Grace seems to me a good way of approaching *First Man*; not the grace reserved for saints and the elect, but, on the contrary, grace as something available to all, and especially (according to the Sermon on the Mount) to the poor in spirit and to those who mourn, who shall be comforted.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Indeed *First Man* is, I think, saying something quite radical about the blankness of grace, its opacity and incomprehensibility, what Graham Greene, in a rather different context, called “the appalling *strangeness* of the mercy of God.” It is indeed about (fittingly for the moon) the lunacy of grace.",
+              "start": 23947,
+              "end": 24250,
+              "quoted": false
+            }
+          ],
+          "match_count": 66,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 147 curly quote(s)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "typographic_signal",
+          "guidance": "Normalise in All/plain output; recommend preserving in sourced literary or typographic text."
+        }
+      }
+    },
+    {
+      "id": "sentence-length-variance",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Sentence length stdev: 18.3 (target: >4)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 4100,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Sentence length stdev: 18.3 (target: >4)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms."
+        }
+      }
+    },
+    {
+      "id": "no-promotional-language",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "breathtaking"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "breathtaking"
+          ],
+          "evidence": "Found: ['breathtaking']",
+          "candidates": [
+            {
+              "text": "breathtaking",
+              "start": 22226,
+              "end": 22238,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "breathtaking",
+              "start": 22226,
+              "end": 22238,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found: ['breathtaking']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "hype_language",
+          "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm."
+        }
+      }
+    },
+    {
+      "id": "no-significance-inflation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No significance inflation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No significance inflation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "importance_inflation",
+          "guidance": "Fix inflated importance unless the source genuinely argues significance."
+        }
+      }
+    },
+    {
+      "id": "no-negative-parallelisms",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No negative parallelisms or contrived reframes",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced."
+        }
+      }
+    },
+    {
+      "id": "no-copula-avoidance",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "features"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "features"
+          ],
+          "evidence": "Found 1: ['features']",
+          "candidates": [
+            {
+              "text": "features",
+              "start": 6389,
+              "end": 6397,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "features",
+              "start": 6389,
+              "end": 6397,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 1: ['features']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "grammar_substitution",
+          "guidance": "Usually simplify at Balanced and All; recommend preserving if the construction is idiomatic or technical."
+        }
+      }
+    },
+    {
+      "id": "no-filler-phrases",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No filler phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No filler phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "filler_phrase",
+          "guidance": "Fix stock filler at Balanced and All; at Balanced, disclose and remove unless it belongs to quoted or intentionally casual voice."
+        }
+      }
+    },
+    {
+      "id": "no-generic-conclusions",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "provenance_residue",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No generic conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No generic conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue",
+            "synthetic_significance"
+          ],
+          "evidence_role": "generic_closure",
+          "guidance": "Fix at every depth unless quoted from source text."
+        }
+      }
+    },
+    {
+      "id": "no-false-concession-hedges",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No false concession hedges",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No false concession hedges",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix fake both-sides framing at Balanced and All; preserve only if the piece actually argues both positions with evidence."
+        }
+      }
+    },
+    {
+      "id": "no-placeholder-residue",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No placeholder residue",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No placeholder residue",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "template_residue",
+          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue."
+        }
+      }
+    },
+    {
+      "id": "no-soft-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Soft scaffold phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Soft scaffold phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "explainer_scaffold",
+          "guidance": "Fix at Balanced and All; these phrases usually mark generated explainer structure rather than content."
+        }
+      }
+    },
+    {
+      "id": "no-orphaned-demonstratives",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Vague demonstrative subjects: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Vague demonstrative subjects: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Review repeated 'This/That highlights...' starts; replace vague subjects with concrete nouns when the antecedent is unclear."
+        }
+      }
+    },
+    {
+      "id": "no-forced-triads",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "engineering, technology, and materialism",
+          "Protestant ethos, exploring the pros and cons",
+          "functional, predictable, and dull",
+          "disproportionately features big-budget, special-effects-heavy science fiction and fantasy",
+          "Sikhs, Buddhists, or Jews",
+          "playing the psaltery, his work ethic and his closeness",
+          "For her, the clean lines and sharp sunlight",
+          "bored, baffled, or both",
+          "lower-key, precisely observed domestic and bureaucratic interludes",
+          "of conventionality, of Protestant understatement and restraint",
+          "astonishingly recreated, figures both literally and metaphorically"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "engineering, technology, and materialism",
+            "Protestant ethos, exploring the pros and cons",
+            "functional, predictable, and dull",
+            "disproportionately features big-budget, special-effects-heavy science fiction and fantasy",
+            "Sikhs, Buddhists, or Jews",
+            "playing the psaltery, his work ethic and his closeness",
+            "For her, the clean lines and sharp sunlight",
+            "bored, baffled, or both",
+            "lower-key, precisely observed domestic and bureaucratic interludes",
+            "of conventionality, of Protestant understatement and restraint",
+            "astonishingly recreated, figures both literally and metaphorically"
+          ],
+          "evidence": "Found 11 triad(s): ['engineering, technology, and materialism', 'Protestant ethos, exploring the pros and cons', 'functional, predictable, and dull', 'disproportionately features big-budget, special-effects-heavy science fiction and fantasy', 'Sikhs, Buddhists, or Jews', 'playing the psaltery, his work ethic and his closeness', 'For her, the clean lines and sharp sunlight', 'bored, baffled, or both', 'lower-key, precisely observed domestic and bureaucratic interludes', 'of conventionality, of Protestant understatement and restraint', 'astonishingly recreated, figures both literally and metaphorically']",
+          "candidates": [
+            {
+              "text": "engineering, technology, and materialism",
+              "start": 1542,
+              "end": 1582,
+              "quoted": false
+            },
+            {
+              "text": "Protestant ethos, exploring the pros and cons",
+              "start": 1996,
+              "end": 2041,
+              "quoted": false
+            },
+            {
+              "text": "functional, predictable, and dull",
+              "start": 5344,
+              "end": 5377,
+              "quoted": false
+            },
+            {
+              "text": "disproportionately features big-budget, special-effects-heavy science fiction and fantasy",
+              "start": 6370,
+              "end": 6459,
+              "quoted": false
+            },
+            {
+              "text": "Sikhs, Buddhists, or Jews",
+              "start": 6808,
+              "end": 6833,
+              "quoted": false
+            },
+            {
+              "text": "playing the psaltery, his work ethic and his closeness",
+              "start": 14623,
+              "end": 14677,
+              "quoted": false
+            },
+            {
+              "text": "For her, the clean lines and sharp sunlight",
+              "start": 15904,
+              "end": 15947,
+              "quoted": false
+            },
+            {
+              "text": "bored, baffled, or both",
+              "start": 16965,
+              "end": 16988,
+              "quoted": false
+            },
+            {
+              "text": "lower-key, precisely observed domestic and bureaucratic interludes",
+              "start": 19602,
+              "end": 19668,
+              "quoted": false
+            },
+            {
+              "text": "of conventionality, of Protestant understatement and restraint",
+              "start": 20301,
+              "end": 20363,
+              "quoted": false
+            },
+            {
+              "text": "astonishingly recreated, figures both literally and metaphorically",
+              "start": 22272,
+              "end": 22338,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 11,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "engineering, technology, and materialism",
+              "start": 1542,
+              "end": 1582,
+              "quoted": false
+            },
+            {
+              "text": "Protestant ethos, exploring the pros and cons",
+              "start": 1996,
+              "end": 2041,
+              "quoted": false
+            },
+            {
+              "text": "functional, predictable, and dull",
+              "start": 5344,
+              "end": 5377,
+              "quoted": false
+            },
+            {
+              "text": "disproportionately features big-budget, special-effects-heavy science fiction and fantasy",
+              "start": 6370,
+              "end": 6459,
+              "quoted": false
+            },
+            {
+              "text": "Sikhs, Buddhists, or Jews",
+              "start": 6808,
+              "end": 6833,
+              "quoted": false
+            },
+            {
+              "text": "playing the psaltery, his work ethic and his closeness",
+              "start": 14623,
+              "end": 14677,
+              "quoted": false
+            },
+            {
+              "text": "For her, the clean lines and sharp sunlight",
+              "start": 15904,
+              "end": 15947,
+              "quoted": false
+            },
+            {
+              "text": "bored, baffled, or both",
+              "start": 16965,
+              "end": 16988,
+              "quoted": false
+            },
+            {
+              "text": "lower-key, precisely observed domestic and bureaucratic interludes",
+              "start": 19602,
+              "end": 19668,
+              "quoted": false
+            },
+            {
+              "text": "of conventionality, of Protestant understatement and restraint",
+              "start": 20301,
+              "end": 20363,
+              "quoted": false
+            },
+            {
+              "text": "astonishingly recreated, figures both literally and metaphorically",
+              "start": 22272,
+              "end": 22338,
+              "quoted": false
+            }
+          ],
+          "match_count": 11,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 11 triad(s): ['engineering, technology, and materialism', 'Protestant ethos, exploring the pros and cons', 'functional, predictable, and dull', 'disproportionately features big-budget, special-effects-heavy science fiction and fantasy', 'Sikhs, Buddhists, or Jews', 'playing the psaltery, his work ethic and his closeness', 'For her, the clean lines and sharp sunlight', 'bored, baffled, or both', 'lower-key, precisely observed domestic and bureaucratic interludes', 'of conventionality, of Protestant understatement and restraint', 'astonishingly recreated, figures both literally and metaphorically']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads."
+        }
+      }
+    },
+    {
+      "id": "no-superficial-ing",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No superficial -ing phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No superficial -ing phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "analysis_substitution",
+          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning."
+        }
+      }
+    },
+    {
+      "id": "no-ghost-spectral-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Ghost/spectral words: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Ghost/spectral words: 0",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose."
+        }
+      }
+    },
+    {
+      "id": "no-quietness-obsession",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Quietness words: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Quietness words: 0",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix generic quietness mood; recommend preserving if quietness is the actual subject or voice."
+        }
+      }
+    },
+    {
+      "id": "no-rhetorical-questions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "Why carry on?"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "Why carry on?"
+          ],
+          "evidence": "Rhetorical questions: 1",
+          "candidates": [
+            {
+              "text": "Why carry on?",
+              "start": 3803,
+              "end": 3816,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "Why carry on?",
+              "start": 3803,
+              "end": 3816,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rhetorical questions: 1",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_template",
+          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-lists",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/119)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_items": 8,
+            "minimum_blocks": 2,
+            "minimum_line_ratio": 0.3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 4100,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/119)",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_items": 8,
+              "minimum_blocks": 2,
+              "minimum_line_ratio": 0.3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "listification",
+          "guidance": "Fix unnecessary listification; recommend preserving reference, instructional, or interview structure."
+        }
+      }
+    },
+    {
+      "id": "no-unicode-flair",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "provenance_residue",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Decorative symbols/shortcodes: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Decorative symbols/shortcodes: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "genre_misfit"
+          ],
+          "evidence_role": "formatting_residue",
+          "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source."
+        }
+      }
+    },
+    {
+      "id": "no-dramatic-transitions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dramatic transitions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dramatic transitions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "narrative_template",
+          "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned."
+        }
+      }
+    },
+    {
+      "id": "no-formulaic-openers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No formulaic openers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No formulaic openers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "formulaic_structure",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it matches the source genre."
+        }
+      }
+    },
+    {
+      "id": "no-signposted-conclusions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No signposted conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No signposted conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "structural_signpost",
+          "guidance": "Fix generic signposts in prose; recommend preserving academic/instructional structure when useful."
+        }
+      }
+    },
+    {
+      "id": "no-parenthetical-headings",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No parenthetical headings",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No parenthetical headings",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "heading_structure",
+          "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body."
+        }
+      }
+    },
+    {
+      "id": "no-corporate-ai-speak",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No corporate AI speak",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No corporate AI speak",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "domain_cliche",
+          "guidance": "Fix at every depth; recommend preserving only when quoting corporate source language."
+        }
+      }
+    },
+    {
+      "id": "no-this-chains",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max 'This [verb]' run: 1",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 4100,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max 'This [verb]' run: 1",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-hedging",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Hedging constructions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Hedging constructions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty."
+        }
+      }
+    },
+    {
+      "id": "no-countdown-negation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "synthetic_significance",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No countdown negation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 4100,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No countdown negation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix generic reveal structures; recommend preserving deliberate rhetoric only with strong reason."
+        }
+      }
+    },
+    {
+      "id": "no-negation-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Negation markers: 9 (2.2 per 1000 words)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 4100,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Negation markers: 9 (2.2 per 1000 words)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_density",
+          "guidance": "Review dense negation as a style signal; preserve polemic or technical qualification when purposeful."
+        }
+      }
+    },
+    {
+      "id": "paragraph-length-uniformity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Paragraph length CV: 0.40 across 33 paragraphs",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_paragraphs": 7,
+            "maximum_cv": 0.18
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 4100,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Paragraph length CV: 0.40 across 33 paragraphs",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_paragraphs": 7,
+              "maximum_cv": 0.18
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "layout_rhythm",
+          "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template."
+        }
+      }
+    },
+    {
+      "id": "no-tidy-paragraph-endings",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Tidy paragraph endings: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Tidy paragraph endings: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "paragraph_closure",
+          "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn."
+        }
+      }
+    },
+    {
+      "id": "no-bland-critical-template",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Bland critical template phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bland critical template phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "evidence_role": "genre_cliche",
+          "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work."
+        }
+      }
+    },
+    {
+      "id": "no-rubric-echoing",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Rubric echo phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rubric echo phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "voice_erasure"
+          ],
+          "evidence_role": "assignment_residue",
+          "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric."
+        }
+      }
+    },
+    {
+      "id": "vocabulary-diversity",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": "type-token ratio 0.38 (1469 unique of 3876 words, target above 0.40)",
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": "type-token ratio 0.38 (1469 unique of 3876 words, target above 0.40)",
+          "evidence": "Type-token ratio: 0.379 (1469 unique / 3876 total, target: >0.40)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": true,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": "type-token ratio 0.38 (1469 unique of 3876 words, target above 0.40)",
+          "sample_size": 4100,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Type-token ratio: 0.379 (1469 unique / 3876 total, target: >0.40)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "lexical_distribution",
+          "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately."
+        }
+      }
+    },
+    {
+      "id": "no-triad-density",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "engineering, technology, and materialism",
+          "Protestant ethos, exploring the pros and cons",
+          "functional, predictable, and dull",
+          "disproportionately features big-budget, special-effects-heavy science fiction and fantasy",
+          "Sikhs, Buddhists, or Jews",
+          "playing the psaltery, his work ethic and his closeness",
+          "For her, the clean lines and sharp sunlight",
+          "bored, baffled, or both",
+          "lower-key, precisely observed domestic and bureaucratic interludes",
+          "of conventionality, of Protestant understatement and restraint",
+          "astonishingly recreated, figures both literally and metaphorically"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "candidate_count": 11,
+          "matches": [
+            "engineering, technology, and materialism",
+            "Protestant ethos, exploring the pros and cons",
+            "functional, predictable, and dull",
+            "disproportionately features big-budget, special-effects-heavy science fiction and fantasy",
+            "Sikhs, Buddhists, or Jews",
+            "playing the psaltery, his work ethic and his closeness",
+            "For her, the clean lines and sharp sunlight",
+            "bored, baffled, or both",
+            "lower-key, precisely observed domestic and bureaucratic interludes",
+            "of conventionality, of Protestant understatement and restraint",
+            "astonishingly recreated, figures both literally and metaphorically"
+          ],
+          "evidence": "Found 11 triad(s): ['engineering, technology, and materialism', 'Protestant ethos, exploring the pros and cons', 'functional, predictable, and dull', 'disproportionately features big-budget, special-effects-heavy science fiction and fantasy', 'Sikhs, Buddhists, or Jews', 'playing the psaltery, his work ethic and his closeness', 'For her, the clean lines and sharp sunlight', 'bored, baffled, or both', 'lower-key, precisely observed domestic and bureaucratic interludes', 'of conventionality, of Protestant understatement and restraint', 'astonishingly recreated, figures both literally and metaphorically']",
+          "candidates": [
+            {
+              "text": "engineering, technology, and materialism",
+              "start": 1542,
+              "end": 1582,
+              "quoted": false
+            },
+            {
+              "text": "Protestant ethos, exploring the pros and cons",
+              "start": 1996,
+              "end": 2041,
+              "quoted": false
+            },
+            {
+              "text": "functional, predictable, and dull",
+              "start": 5344,
+              "end": 5377,
+              "quoted": false
+            },
+            {
+              "text": "disproportionately features big-budget, special-effects-heavy science fiction and fantasy",
+              "start": 6370,
+              "end": 6459,
+              "quoted": false
+            },
+            {
+              "text": "Sikhs, Buddhists, or Jews",
+              "start": 6808,
+              "end": 6833,
+              "quoted": false
+            },
+            {
+              "text": "playing the psaltery, his work ethic and his closeness",
+              "start": 14623,
+              "end": 14677,
+              "quoted": false
+            },
+            {
+              "text": "For her, the clean lines and sharp sunlight",
+              "start": 15904,
+              "end": 15947,
+              "quoted": false
+            },
+            {
+              "text": "bored, baffled, or both",
+              "start": 16965,
+              "end": 16988,
+              "quoted": false
+            },
+            {
+              "text": "lower-key, precisely observed domestic and bureaucratic interludes",
+              "start": 19602,
+              "end": 19668,
+              "quoted": false
+            },
+            {
+              "text": "of conventionality, of Protestant understatement and restraint",
+              "start": 20301,
+              "end": 20363,
+              "quoted": false
+            },
+            {
+              "text": "astonishingly recreated, figures both literally and metaphorically",
+              "start": 22272,
+              "end": 22338,
+              "quoted": false
+            }
+          ],
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_words": 300,
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "engineering, technology, and materialism",
+              "start": 1542,
+              "end": 1582,
+              "quoted": false
+            },
+            {
+              "text": "Protestant ethos, exploring the pros and cons",
+              "start": 1996,
+              "end": 2041,
+              "quoted": false
+            },
+            {
+              "text": "functional, predictable, and dull",
+              "start": 5344,
+              "end": 5377,
+              "quoted": false
+            },
+            {
+              "text": "disproportionately features big-budget, special-effects-heavy science fiction and fantasy",
+              "start": 6370,
+              "end": 6459,
+              "quoted": false
+            },
+            {
+              "text": "Sikhs, Buddhists, or Jews",
+              "start": 6808,
+              "end": 6833,
+              "quoted": false
+            },
+            {
+              "text": "playing the psaltery, his work ethic and his closeness",
+              "start": 14623,
+              "end": 14677,
+              "quoted": false
+            },
+            {
+              "text": "For her, the clean lines and sharp sunlight",
+              "start": 15904,
+              "end": 15947,
+              "quoted": false
+            },
+            {
+              "text": "bored, baffled, or both",
+              "start": 16965,
+              "end": 16988,
+              "quoted": false
+            },
+            {
+              "text": "lower-key, precisely observed domestic and bureaucratic interludes",
+              "start": 19602,
+              "end": 19668,
+              "quoted": false
+            },
+            {
+              "text": "of conventionality, of Protestant understatement and restraint",
+              "start": 20301,
+              "end": 20363,
+              "quoted": false
+            },
+            {
+              "text": "astonishingly recreated, figures both literally and metaphorically",
+              "start": 22272,
+              "end": 22338,
+              "quoted": false
+            }
+          ],
+          "match_count": 11,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 11 triad(s): ['engineering, technology, and materialism', 'Protestant ethos, exploring the pros and cons', 'functional, predictable, and dull', 'disproportionately features big-budget, special-effects-heavy science fiction and fantasy', 'Sikhs, Buddhists, or Jews', 'playing the psaltery, his work ethic and his closeness', 'For her, the clean lines and sharp sunlight', 'bored, baffled, or both', 'lower-key, precisely observed domestic and bureaucratic interludes', 'of conventionality, of Protestant understatement and restraint', 'astonishingly recreated, figures both literally and metaphorically']",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_words": 300,
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical."
+        }
+      }
+    },
+    {
+      "id": "no-section-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No repeated section labels",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 4100,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No repeated section labels",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "repeated_template",
+          "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material."
+        }
+      }
+    },
+    {
+      "id": "no-notability-claims",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No notability claims",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No notability claims",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "notability_inflation",
+          "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing."
+        }
+      }
+    },
+    {
+      "id": "no-vague-attributions",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No vague attributions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No vague attributions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "attribution_vagueness",
+          "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote."
+        }
+      }
+    },
+    {
+      "id": "no-boldface-overuse",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "**Kendrick Oliver.**",
+          "**.**",
+          "**Catherine L. Newell.**",
+          "**First Man**",
+          "**.**",
+          "**Directed by Damien Chazelle.**"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "**Kendrick Oliver.**",
+            "**.**",
+            "**Catherine L. Newell.**",
+            "**First Man**",
+            "**.**",
+            "**Directed by Damien Chazelle.**"
+          ],
+          "evidence": "Found 6 bold span(s) in prose: ['**Kendrick Oliver.**', '**.**', '**Catherine L. Newell.**', '**First Man**', '**.**']",
+          "candidates": [
+            {
+              "text": "**Kendrick Oliver.**",
+              "start": 626,
+              "end": 646,
+              "quoted": false
+            },
+            {
+              "text": "**.**",
+              "start": 744,
+              "end": 749,
+              "quoted": false
+            },
+            {
+              "text": "**Catherine L. Newell.**",
+              "start": 772,
+              "end": 796,
+              "quoted": false
+            },
+            {
+              "text": "**First Man**",
+              "start": 891,
+              "end": 904,
+              "quoted": false
+            },
+            {
+              "text": "**.**",
+              "start": 905,
+              "end": 910,
+              "quoted": false
+            },
+            {
+              "text": "**Directed by Damien Chazelle.**",
+              "start": 910,
+              "end": 942,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 6,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "**Kendrick Oliver.**",
+              "start": 626,
+              "end": 646,
+              "quoted": false
+            },
+            {
+              "text": "**.**",
+              "start": 744,
+              "end": 749,
+              "quoted": false
+            },
+            {
+              "text": "**Catherine L. Newell.**",
+              "start": 772,
+              "end": 796,
+              "quoted": false
+            },
+            {
+              "text": "**First Man**",
+              "start": 891,
+              "end": 904,
+              "quoted": false
+            },
+            {
+              "text": "**.**",
+              "start": 905,
+              "end": 910,
+              "quoted": false
+            },
+            {
+              "text": "**Directed by Damien Chazelle.**",
+              "start": 910,
+              "end": 942,
+              "quoted": false
+            }
+          ],
+          "match_count": 6,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 6 bold span(s) in prose: ['**Kendrick Oliver.**', '**.**', '**Catherine L. Newell.**', '**First Man**', '**.**']",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "emphasis_pattern",
+          "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers."
+        }
+      }
+    },
+    {
+      "id": "no-inline-header-lists",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items with bolded headers: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items with bolded headers: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "list_template",
+          "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list."
+        }
+      }
+    },
+    {
+      "id": "no-compound-modifier-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dense compound-modifier sentences",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_per_sentence": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 3781,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dense compound-modifier sentences",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_per_sentence": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "modifier_density",
+          "guidance": "Restructure sentences with three or more stock hyphenated compounds; preserve only when the compounds are domain-specific terms of art."
+        }
+      }
+    },
+    {
+      "id": "no-knowledge-cutoff-disclaimers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No knowledge-cutoff disclaimers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No knowledge-cutoff disclaimers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "model_meta_residue",
+          "guidance": "Fix at every depth; training-update and limited-information hedges are model meta-residue, not authorial uncertainty."
+        }
+      }
+    }
+  ],
+  "semantic_findings": [
+    {
+      "id": "structural_monotony",
+      "status": "clear",
+      "answer": "sections vary",
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "clear",
+      "answer": "register shifts deliberately",
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "underspecified_language",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": [],
+      "severity": "context_warning"
+    }
+  ],
+  "aggregates": {
+    "programmatic": {
+      "by_severity": {
+        "hard_fail": 0,
+        "strong_warning": 2,
+        "context_warning": 6
+      },
+      "by_category": {
+        "Style": 3,
+        "Content patterns": 1,
+        "Language and grammar": 4
+      },
+      "signal_stacking": {
+        "score": 1,
+        "threshold": 4,
+        "triggered": false,
+        "components": [],
+        "vocabulary_points": 1
+      }
+    },
+    "semantic": {
+      "total": 15,
+      "flagged": 0,
+      "clear": 15
+    },
+    "combined": {
+      "flagged": 8
+    }
+  },
+  "limitations": [
+    "slide_title structure unavailable without a structure manifest",
+    "caption structure unavailable without a structure manifest"
+  ],
+  "metadata": {
+    "schema_version": "2",
+    "grader_version": "phase-2-u8",
+    "timestamp": "2026-07-13T15:59:44.953386Z",
+    "run_id": "3aa5e9f3-3a79-4b11-872b-bf2d204a7675"
+  }
+}

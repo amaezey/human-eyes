@@ -1,0 +1,146 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The conclusion is plausible, but this is a whole-document structural judgment and the annotator supplied no document evidence showing repeated sectional arcs across multiple parts of the essay.",
+      "evidence": [
+        "Begin with “servant.”",
+        "This brings us to “hedonism,” which matters even more.",
+        "At its core, Servant Hedonism is an ethic of self-regard."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay does appear to keep a steady reflective register, but a whole-text register judgment needed evidence from multiple parts and none was supplied.",
+      "evidence": [
+        "It isn’t elaborate. It doesn’t rest on an all-encompassing theory of history.",
+        "When I’ve faced difficult choices, this orientation has repeatedly pointed toward the most meaningful outcomes.",
+        "What steadies me is a simple reminder: you are allowed to inhabit the future you are trying to build."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "The cited opener uses a seemingly concrete scene, but it remains generic and interchangeable rather than grounded in distinctive lived detail.",
+      "evidence": [
+        "One Sunday afternoon, stretched out on the couch with a book"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay clearly advances a position, but the annotator gave no supporting quotations for this whole-document stance judgment.",
+      "evidence": [
+        "I call it Servant Hedonism — serving yourself by serving others.",
+        "I reject that framing.",
+        "Your freedom and satisfaction are not obstacles to collective flourishing; they are part of it."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "misclassified",
+      "rationale": "Clearing the text against uniformly distributed jargon is reasonable, but the selected answer is wrong: the essay does not show jargon clumping in zones of demonstrated technical expertise; it mostly uses light abstract vocabulary spread through otherwise plain prose.",
+      "evidence": [
+        "Servant Leadership",
+        "Service generates positive-sum exchanges.",
+        "Pleasure can function as an organising principle for a life that generates more than it consumes. It can shape activism, institutions and economies."
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "supported",
+      "rationale": "I do not find unjustified cross-modal metaphors in the essay.",
+      "evidence": [
+        "draining your own of its color.",
+        "visible vitality."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "Both cited lines rely on broad, plausible metaphorical language without supplying a concrete referent or mechanism.",
+      "evidence": [
+        "People gravitate toward what appears alive.",
+        "It sustains motion without constant force."
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "The essay's pronouns and definite descriptions are generally recoverable in context, and I do not find a clear referential-clarity defect.",
+      "evidence": [
+        "Put differently, you are not a self-contained unit.",
+        "Once you collapse the boundary between serving and enjoying, it becomes difficult to distinguish whose needs are being met.",
+        "And when that hierarchy shifts, it becomes easy to justify using others as means."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The annotator correctly identifies repeated symmetrical constructions whose cadence does some of the rhetorical work.",
+      "evidence": [
+        "It isn’t elaborate. It doesn’t rest on an all-encompassing theory of history. It offers no checklist of rules or algorithm for decision-making.",
+        "It means counting yourself among those who deserve care. It means refusing to accept chronic depletion as a moral badge. It means asking, as brown does, “What is happening and why did I decide to endure it?”",
+        "Service generates positive-sum exchanges. It builds trust. It aligns people around shared efforts."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "The cited sentence pair explicitly restates the prior point in slightly different terms.",
+      "evidence": [
+        "You arise from a web of relationships and conditions, and you will return to it.",
+        "Put differently, you are not a self-contained unit. You are part of a lineage and a community that precedes you and will outlast you."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The cited phrases depend on evaluative modifiers without naming the governing criteria.",
+      "evidence": [
+        "the most meaningful outcomes",
+        "steady, unglamorous generosity",
+        "visible vitality"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "supported",
+      "rationale": "I do not find answer-shaped prose that requires an absent chat context to make sense.",
+      "evidence": [
+        "The word “hedonism” unsettles some. It suggests indulgence without restraint, excess at others’ expense. I retain it deliberately.",
+        "There is a fear of losing discipline, of sliding into unrestrained self-indulgence."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "The essay does not rely on obvious sincerity-announcement frames such as 'honestly' or 'frankly' to perform authenticity.",
+      "evidence": [
+        "Even so, the most compelling reason to serve is simpler: it feels good.",
+        "What steadies me is a simple reminder: you are allowed to inhabit the future you are trying to build."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "supported",
+      "rationale": "The essay's connective moves are mostly explicit enough; I do not find a clear connector that implies an unstated relationship.",
+      "evidence": [
+        "Put differently, you are not a self-contained unit.",
+        "Even so, the most compelling reason to serve is simpler: it feels good.",
+        "This brings us to “hedonism,” which matters even more."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "This is best treated as default rather than one of the watchlist genres, so 'Genre detected: default. No genre-specific findings.' is appropriate.",
+      "evidence": [
+        "\"format\": \"Personal-philosophy essay on serving and pleasure; matched-pair AI version of Tiago Forte's 2019 essay\"",
+        "1. Servant Hedonism: My Life Philosophy"
+      ]
+    }
+  ]
+}

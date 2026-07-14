@@ -1,0 +1,138 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "clear",
+      "answer": "sections vary",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "clear",
+      "answer": "register breaks at least once",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It hit me like a Cat 5 hurricane, and everything in my life changed.",
+          "why_generic": "Compares a subjective emotional peak to a hurricane's raw destructive force without specifying what actually happened in that moment; the same simile could describe any sudden overwhelming event and supplies intensity but no concrete content."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I trusted the medicine, surrendered to it, and received what came up.",
+          "why_formulaic": "Repeats the three-part instructional mantra given earlier (trust/surrender/receive) as a tricolon report of compliance, substituting the memorized formula for a description of what actually happened during the session."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "if you want to treat your trauma, you still have to face the pain. MDMA just makes it much easier to do that.",
+          "what_it_repeats": "Restates the claim made a few lines earlier that 'MDMA is not a treatment for trauma by itself... You still have to do work before it and after MDMA to really get the impact,' adding no new information."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It was a deeply profound and life-changing experience.",
+          "missing_criterion": "Does not specify what made it profound or in what way life was changed; 'profound' and 'life-changing' are asserted rather than demonstrated at this point in the text."
+        },
+        {
+          "phrase": "Honestly, I felt super sharp mentally.",
+          "missing_criterion": "No comparison basis or observable behavior given for 'sharp'; unclear what mental sharpness consisted of."
+        },
+        {
+          "phrase": "It’s more of a good intensity, like a really hard workout — but you can rest during if you need to.",
+          "missing_criterion": "'Good intensity' names no specific quality (physical, emotional, sensory) that distinguishes it from the 'negative, punishing intensity' it's contrasted with."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "If I’m being honest, I think I failed at meditation.",
+          "why_unnecessary": "The claim 'I failed at meditation' could be stated directly; the honesty-framing performs vulnerability rather than adding information."
+        },
+        {
+          "phrase": "I have to be honest: I was afraid going into the second session.",
+          "why_unnecessary": "The fear is already substantiated by the following sentences about being short with his wife and kids; the candour frame is not needed to convey the fact."
+        },
+        {
+          "phrase": "Quite honestly — I got lucky.",
+          "why_unnecessary": "The sincerity marker adds no content beyond the plain statement 'I got lucky,' which the following paragraph already supports with detail."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

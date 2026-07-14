@@ -1,0 +1,15 @@
+{
+  "valid_registry_coverage": true,
+  "citation_issues": [
+    {
+      "id": "even_jargon_distribution",
+      "issue": "evidence_not_exact_source_substring",
+      "phrase": "providencealist, Protestant ethos"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "issue": "evidence_not_exact_source_substring",
+      "phrase": "There’s no villain and little traditional dramatic tension"
+    }
+  ]
+}

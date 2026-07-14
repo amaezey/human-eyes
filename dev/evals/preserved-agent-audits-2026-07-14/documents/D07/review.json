@@ -1,0 +1,146 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document does show repeated section-level turns, but the annotator gave no cross-section evidence for a whole-document judgment.",
+      "evidence": [
+        "A good workshop is not a miniature version of the solution. It is a charged, time-boxed way to create clarity.",
+        "The point of a one-day workshop is not to solve the problem. It is to create a shared understanding of the problem, the decision context, the constraints, the stakeholders, and the next sensible move.",
+        "A workshop is not a trick"
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The warm-but-authoritative practitioner register appears to hold, but the annotator did not support that whole-text claim with evidence from multiple parts of the essay.",
+      "evidence": [
+        "This is why I like workshops.",
+        "This is a harsh truth, but it saves a lot of trouble.",
+        "This does not need to be cynical. It is responsible."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "The flagged anecdotes present themselves as case examples but stay generic, with no names, dates, places, or concrete identifiers.",
+      "evidence": [
+        "In one project, I was asked to run a session that was initially described as a content planning workshop.",
+        "In another piece of work, a client came in wanting help designing a program for a new audience."
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay clearly argues for selling workshops as paid clarity work rather than flattening into balance, but the annotator did not substantiate that whole-document stance judgment.",
+      "evidence": [
+        "This is why I like workshops.",
+        "A better model is to make clarity the first paid outcome.",
+        "That is why clarity deserves to be sold."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The consulting vocabulary is not evenly smeared; it clusters in sections about scoping, governance, and delivery. The annotator's answer is plausible but unsupported.",
+      "evidence": [
+        "research program, operating model, content strategy or service redesign",
+        "decision rights, publishing standards, and a clearer model for who owned the digital front door.",
+        "preparation, facilitation, synthesis, judgement and a usable artefact"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "supported",
+      "rationale": "The essay uses metaphor, but it does not rely on ungrounded cross-modal sense-mapping of the kind this record targets.",
+      "evidence": [
+        "the sound of a group recalibrating",
+        "the room drowns in detail"
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The flagged metaphor is a familiar overload image and does not add concrete meaning beyond 'too much detail.'",
+      "evidence": [
+        "the room drowns in detail"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "Potentially compressed demonstratives and pronouns remain recoverable from the immediately surrounding context; no unclear antecedent problem stands out.",
+      "evidence": [
+        "That question is not soft. It is commercial.",
+        "That changes the relationship."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The annotator identified multiple exact cases where repeated syntactic symmetry supplies cadence and emphasis more than new information.",
+      "evidence": [
+        "Not because they are fun. Not because they produce sticky notes. Not because everyone gets to feel included, though that can matter.",
+        "That is chargeable. That is useful. That is a legitimate consulting outcome.",
+        "Not a transcript. Not photographs of sticky notes dumped into a slide deck. Not a decorative summary that says everyone had a productive discussion.",
+        "Not as a warm-up. Not as a free diagnostic. Not as a cheerful day of sticky notes.",
+        "Who speaks first? Who keeps returning to risk? Who reframes everything as a technology issue? Who has authority but stays silent? Who is treated as difficult, but is actually naming the constraint? Who asks practical questions? Who performs certainty? Who is absent, and what does their absence tell you?"
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "undercall",
+      "rationale": "The annotator cleared this record, but the essay contains nearby summary sentences that simply restate the preceding list or valuation.",
+      "evidence": [
+        "Those are outcomes.",
+        "That is chargeable. That is useful. That is a legitimate consulting outcome.",
+        "That is valuable."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "These phrases rely on evaluation or comparison without naming the operative standard, threshold, or basis.",
+      "evidence": [
+        "a consultant with meaningful expertise",
+        "A well-run workshop",
+        "The more honest position is stronger"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "supported",
+      "rationale": "The prose is self-contained and does not read like it is replying to an absent chat comment or defending itself against missing criticism.",
+      "evidence": [
+        "The client is testing you. That is fair.",
+        "You are also testing the client. That is equally fair."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "These frames add an authenticity signal rather than literal content that the sentence could not state directly.",
+      "evidence": [
+        "This is a harsh truth, but it saves a lot of trouble.",
+        "The more honest position is stronger"
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "overcall",
+      "rationale": "The link is inferable and not materially empty: the text is saying mutual evaluation is responsible professional judgment rather than cynicism.",
+      "evidence": [
+        "This does not need to be cynical. It is responsible."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "This is a practitioner essay, which does not match the listed special genres, so `default` with no watchlist findings is the right classification.",
+      "evidence": [
+        "\"format\": \"Practitioner essay on workshops in consulting; matched-pair AI version of Tom Critchlow's 2019 essay\"",
+        "Workshops as portals"
+      ]
+    }
+  ]
+}

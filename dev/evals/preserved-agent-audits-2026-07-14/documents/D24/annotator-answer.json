@@ -1,0 +1,110 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "clear",
+      "answer": "sections vary",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Some concerns about how to define the visual aspects",
+          "missing_criterion": "does not specify what the actual concerns are or what makes the visual aspects hard to define"
+        },
+        {
+          "phrase": "in some (key) scenarios",
+          "missing_criterion": "does not name which scenarios are key or why they are considered key"
+        },
+        {
+          "phrase": "a somewhat separate option to add techniques for personalisation",
+          "missing_criterion": "does not specify in what way the option is separate or what the techniques would involve"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

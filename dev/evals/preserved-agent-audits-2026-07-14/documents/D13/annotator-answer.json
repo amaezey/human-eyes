@@ -1,0 +1,160 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "involuntary shaking and deep breaths",
+          "why_unspecific": "A generic description of a bodily reaction during an emotional release; it could describe almost any person's somatic experience and carries no unique sensory or situational detail."
+        },
+        {
+          "phrase": "full-body movements",
+          "why_unspecific": "Vague catch-all descriptor for a somatic release with no concrete detail (what movement, how it felt, what it looked like) that would ground it as this particular person's experience."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "transitioning from a defensive warrior mentality toward becoming a constructive leader",
+          "why_generic": "A familiar warrior/leader binary that supplies no concrete referent for what the 'warrior' behaviour or 'leader' behaviour actually consisted of in this person's life."
+        },
+        {
+          "phrase": "an emerging wave in mental health care",
+          "why_generic": "Stock 'wave' metaphor for a trend that names no concrete mechanism, institution, or data point behind the claimed expansion."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "within influential circles",
+          "why_unclear": "The 'influential circles' are never identified — no names, institutions, or professions are given, so the reader cannot recover who is meant."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "providing power, motivation, and control, even with its negative aspects",
+          "why_formulaic": "A tricolon that substitutes a neat three-item list for an actual account of how anger specifically functioned for the writer."
+        },
+        {
+          "phrase": "capacity for joy, playfulness, and openness",
+          "why_formulaic": "Balanced three-noun list that names abstract qualities without specifying what regaining joy, playfulness, or openness looked like in practice."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I underwent MDMA-assisted therapy, and it profoundly transformed my life.",
+          "what_it_repeats": "Restates the heading 'How MDMA therapy changed my life' with no added information."
+        },
+        {
+          "phrase": "MDMA and similar treatments represent an emerging wave in mental health care, likely expanding significantly in coming years.",
+          "what_it_repeats": "Repeats the earlier claim that MDMA therapy 'will likely become central to mental health treatment in the future' without adding new support."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "profoundly transformed my life",
+          "missing_criterion": "No criterion given for what changed, by what measure, or compared to what prior state."
+        },
+        {
+          "phrase": "notable improvements in relationships",
+          "missing_criterion": "No specification of which relationships, what changed in them, or how the improvement was assessed beyond others 'noticing.'"
+        },
+        {
+          "phrase": "significantly reduced aggression",
+          "missing_criterion": "No baseline level of aggression or measurable comparison is provided to support 'significantly.'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I genuinely believe it has the potential to help many people",
+          "why_unnecessary": "The sincerity marker 'genuinely' performs conviction rather than adding to the literal claim, which could be stated as 'I believe it has the potential to help many people.'"
+        },
+        {
+          "phrase": "I genuinely think MDMA therapy has profound therapeutic potential",
+          "why_unnecessary": "'Genuinely' functions as an authenticity booster rather than literal content; the stance is already clear from 'I'm not neutral.'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

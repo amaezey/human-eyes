@@ -1,0 +1,143 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clearance is plausible because the two paragraphs do different work, but the annotator gave no evidence, and this whole-document judgment needs cross-document support.",
+      "evidence": [
+        "Thus, Balmont felt compelled to infuse the language of his translations with coded significance",
+        "Balmont’s position as an important Symbolist poet and translator had long been secure."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "misclassified",
+      "rationale": "The piece mostly holds an academic-critical register, but it breaks into a markedly more colloquial, wry idiom at the end; that is a break in register more than a clearly prepared deliberate shift.",
+      "evidence": [
+        "biblically self-referential, intentionally vague yet containing enough clues to suggest a hidden grand scheme",
+        "To the young and the romantic, that sure beat marble-hall theorzations under some wise academician’s ironic scrutiny."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "The passage relies on concrete historical and textual particulars rather than stock pseudo-specific sensory filler.",
+      "evidence": [
+        "the influential literary almanac Vesy, which in 1909 proclaimed itself a magazine",
+        "With his translations of “The Song of the Broad-Axe”, “Salut au monde”, “O Star of France”, and “Beginners”"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "supported",
+      "rationale": "The prose takes a clear interpretive position on Balmont’s Whitman and its appeal; it does not flatten into balanced framing.",
+      "evidence": [
+        "Balmont felt compelled to infuse the language of his translations with coded significance, over-using repetition",
+        "Balmont enabled his readers to conceive"
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "undercall",
+      "rationale": "Specialized literary-historical vocabulary is dense across both paragraphs rather than noticeably clumped in one knowledgeable patch.",
+      "evidence": [
+        "the language of revelation: biblically self-referential, intentionally vague",
+        "This Symbolist treatment was supported by Balmont’s main venue at the time — the influential literary almanac Vesy",
+        "His apologia for Whitman as a cosmic, universal prophet of a new order",
+        "Whitman’s vaguely embodied sense of phallic privilege"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "supported",
+      "rationale": "The passage does not lean on ungrounded cross-sensory mappings.",
+      "evidence": [
+        "marble-hall theorzations",
+        "to be summoned by rites and incantations"
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The figurative language is tied to the argument about mysticism, politics, and embodiment rather than floating as empty metaphor.",
+      "evidence": [
+        "meaning peeled away and only the ritual remained",
+        "with hand-held tools"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "The pronouns and definite descriptions are generally recoverable from nearby context; no major antecedent failure stands out.",
+      "evidence": [
+        "his had to be the language of revelation",
+        "such revolution"
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The passage uses lists, but not empty slogan-like symmetry that substitutes for content.",
+      "evidence": [
+        "work, celebrate, grieve, and lust",
+        "mysticism, metaphysics, and religion"
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "The sentences develop the argument rather than merely restating adjacent material.",
+      "evidence": [
+        "Not only would such revolution do away with Russia’s backward economic systems, but it would also create a new social mentality, a new way of being a Russian.",
+        "With his translations of “The Song of the Broad-Axe”, “Salut au monde”, “O Star of France”, and “Beginners”, Balmont enabled his readers to conceive"
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "These phrases rely on evaluative or comparative wording without supplying the basis of judgment, so the flags are justified.",
+      "evidence": [
+        "an important Symbolist poet and translator",
+        "a more grateful audience",
+        "some wise academician’s ironic scrutiny"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "supported",
+      "rationale": "The passage reads as self-contained argument, not as a reply to an absent interlocutor.",
+      "evidence": [
+        "For Whitman to sound like a prophet, however, his had to be the language of revelation",
+        "In Balmont’s vision of Whitman’s world"
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "There are no obvious sincerity boosters like 'honestly' or 'frankly' performing candour.",
+      "evidence": [
+        "could not have reached a more grateful audience",
+        "vaguely embodied sense of phallic privilege"
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "supported",
+      "rationale": "Its connectors mostly express real contrast, consequence, or addition rather than implying an unstated relation.",
+      "evidence": [
+        "Thus, Balmont felt compelled",
+        "Not only would such revolution do away with Russia’s backward economic systems, but it would also create a new social mentality"
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "undercall",
+      "rationale": "The academic classification is plausible, but clearing the watchlist misses that the excerpt makes broad historical and interpretive claims without visible citation or evidentiary support.",
+      "evidence": [
+        "which in 1909 proclaimed itself a magazine to support art’s “unbreakable connection to the spheres of mysticism, metaphysics, and religion.”",
+        "could not have reached a more grateful audience than that of Russian students and intellectuals who were being wooed by the ideas of a universal, sweeping revolution",
+        "Balmont enabled his readers to conceive"
+      ]
+    }
+  ]
+}

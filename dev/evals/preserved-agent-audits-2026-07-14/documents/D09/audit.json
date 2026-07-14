@@ -1,0 +1,3543 @@
+{
+  "schema_version": "2",
+  "coverage_mode": "full",
+  "audit_status": "complete",
+  "programmatic_checks": [
+    {
+      "id": "no-em-dashes",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "list—who",
+          "organise—and",
+          "constraints—time,",
+          "craving—more",
+          "consumption—while",
+          "modes—self-sacrifice",
+          "useful—and",
+          "good—at"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "list—who",
+            "organise—and",
+            "constraints—time,",
+            "craving—more",
+            "consumption—while",
+            "modes—self-sacrifice",
+            "useful—and",
+            "good—at"
+          ],
+          "evidence": "Found 8 em dash(es)",
+          "candidates": [
+            {
+              "text": "list—who",
+              "start": 926,
+              "end": 934,
+              "quoted": false
+            },
+            {
+              "text": "organise—and",
+              "start": 975,
+              "end": 987,
+              "quoted": false
+            },
+            {
+              "text": "constraints—time,",
+              "start": 2528,
+              "end": 2545,
+              "quoted": false
+            },
+            {
+              "text": "craving—more",
+              "start": 6011,
+              "end": 6023,
+              "quoted": false
+            },
+            {
+              "text": "consumption—while",
+              "start": 6056,
+              "end": 6073,
+              "quoted": false
+            },
+            {
+              "text": "modes—self-sacrifice",
+              "start": 7121,
+              "end": 7141,
+              "quoted": false
+            },
+            {
+              "text": "useful—and",
+              "start": 8731,
+              "end": 8741,
+              "quoted": false
+            },
+            {
+              "text": "good—at",
+              "start": 8761,
+              "end": 8768,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 8,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "list—who",
+              "start": 926,
+              "end": 934,
+              "quoted": false
+            },
+            {
+              "text": "organise—and",
+              "start": 975,
+              "end": 987,
+              "quoted": false
+            },
+            {
+              "text": "constraints—time,",
+              "start": 2528,
+              "end": 2545,
+              "quoted": false
+            },
+            {
+              "text": "craving—more",
+              "start": 6011,
+              "end": 6023,
+              "quoted": false
+            },
+            {
+              "text": "consumption—while",
+              "start": 6056,
+              "end": 6073,
+              "quoted": false
+            },
+            {
+              "text": "modes—self-sacrifice",
+              "start": 7121,
+              "end": 7141,
+              "quoted": false
+            },
+            {
+              "text": "useful—and",
+              "start": 8731,
+              "end": 8741,
+              "quoted": false
+            },
+            {
+              "text": "good—at",
+              "start": 8761,
+              "end": 8768,
+              "quoted": false
+            }
+          ],
+          "match_count": 8,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 8 em dash(es)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "punctuation_signal",
+          "guidance": "Treat as a strong 2026 AI-style signal. May be preserved only at Balanced depth with explicit disclosure; All requires removal."
+        }
+      }
+    },
+    {
+      "id": "no-ai-vocabulary-clustering",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max AI words per paragraph: 1 (1 total in text)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max AI words per paragraph: 1 (1 total in text)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "vocabulary_cluster",
+          "guidance": "Fix clustered generic AI vocabulary; individual words may be fine in context."
+        }
+      }
+    },
+    {
+      "id": "no-nonliteral-land-surface",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No nonliteral land/surface constructions found",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No nonliteral land/surface constructions found",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "metaphor_residue",
+          "guidance": "Fix nonliteral land/surface phrasing; replace with the concrete action or claim."
+        }
+      }
+    },
+    {
+      "id": "overall-signal-stacking",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Signal stacking",
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {
+          "score": 0,
+          "threshold": 4
+        },
+        "raw": {
+          "score": 0,
+          "threshold": 4,
+          "components": [],
+          "vocabulary_signal_stacking": {
+            "points": 0,
+            "reasons": [],
+            "worst_generic": 1,
+            "gptzero_matches": [],
+            "kobak_style_distinct": 9,
+            "kobak_style_density": 7.78485491861288,
+            "kobak_style_sample": [
+              "serving",
+              "approach",
+              "contributing",
+              "hold",
+              "impressive",
+              "need",
+              "offer",
+              "primary",
+              "shaping"
+            ]
+          },
+          "evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=9 distinct/7.8/1000",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "aggregate",
+          "component_signals": [],
+          "component_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=9 distinct/7.8/1000",
+            "suppression_reason": null,
+            "effective_threshold": 4
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "evidence_role": "signal_stacking",
+          "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict."
+        }
+      }
+    },
+    {
+      "id": "no-manufactured-insight",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No manufactured insight phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No manufactured insight phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice."
+        }
+      }
+    },
+    {
+      "id": "no-performed-candour",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No performed-candour frames",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No performed-candour frames",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "candour_frame",
+          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text."
+        }
+      }
+    },
+    {
+      "id": "no-staccato-sequences",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "They reinforce each other.",
+          "Service without pleasure becomes martyrdom.",
+          "Pleasure without service becomes self-centredness."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "They reinforce each other.",
+            "Service without pleasure becomes martyrdom.",
+            "Pleasure without service becomes self-centredness."
+          ],
+          "evidence": "Found sequence of 3 consecutive short sentences",
+          "candidates": [
+            {
+              "text": "They reinforce each other.",
+              "start": 1604,
+              "end": 1630,
+              "quoted": false
+            },
+            {
+              "text": "Service without pleasure becomes martyrdom.",
+              "start": 1631,
+              "end": 1674,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure without service becomes self-centredness.",
+              "start": 1675,
+              "end": 1725,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 3,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_run": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "They reinforce each other.",
+              "start": 1604,
+              "end": 1630,
+              "quoted": false
+            },
+            {
+              "text": "Service without pleasure becomes martyrdom.",
+              "start": 1631,
+              "end": 1674,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure without service becomes self-centredness.",
+              "start": 1675,
+              "end": 1725,
+              "quoted": false
+            }
+          ],
+          "match_count": 3,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found sequence of 3 consecutive short sentences",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_run": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm."
+        }
+      }
+    },
+    {
+      "id": "no-anaphora",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "•\tPleasure gives me the capacity to keep serving, because it restores energy and goodwill.",
+          "•\tService expands meaning, which makes pleasure richer.",
+          "•\tPleasure softens my edges, which makes service kinder and less controlling."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "•\tPleasure gives me the capacity to keep serving, because it restores energy and goodwill.",
+            "•\tService expands meaning, which makes pleasure richer.",
+            "•\tPleasure softens my edges, which makes service kinder and less controlling."
+          ],
+          "evidence": "Found 3 consecutive sentences starting with '•'",
+          "candidates": [
+            {
+              "text": "•\tPleasure gives me the capacity to keep serving, because it restores energy and goodwill.",
+              "start": 6596,
+              "end": 6686,
+              "quoted": false
+            },
+            {
+              "text": "•\tService expands meaning, which makes pleasure richer.",
+              "start": 6688,
+              "end": 6743,
+              "quoted": false
+            },
+            {
+              "text": "•\tPleasure softens my edges, which makes service kinder and less controlling.",
+              "start": 6745,
+              "end": 6822,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 3,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "•\tPleasure gives me the capacity to keep serving, because it restores energy and goodwill.",
+              "start": 6596,
+              "end": 6686,
+              "quoted": false
+            },
+            {
+              "text": "•\tService expands meaning, which makes pleasure richer.",
+              "start": 6688,
+              "end": 6743,
+              "quoted": false
+            },
+            {
+              "text": "•\tPleasure softens my edges, which makes service kinder and less controlling.",
+              "start": 6745,
+              "end": 6822,
+              "quoted": false
+            }
+          ],
+          "match_count": 3,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 3 consecutive sentences starting with '•'",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix mechanical repetition; recommend preserving deliberate rhetoric or literary patterning."
+        }
+      }
+    },
+    {
+      "id": "no-collaborative-artifacts",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No collaborative artifacts",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No collaborative artifacts",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "assistant_residue",
+          "guidance": "Fix at every depth; this is assistant residue, not authorial style."
+        }
+      }
+    },
+    {
+      "id": "no-curly-quotes",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "The week’s calendar was open.",
+          "I was doing that familiar thing where “rest” quietly turns into “planning” and the mind starts tallying what it owes.",
+          "I began a list—who to check in on, what to finish, what to organise—and noticed the list wasn’t really about tasks.",
+          "That’s when it clicked: there is a life philosophy running under my habits.",
+          "It’s been there for years, shaping my choices even when I haven’t named it.",
+          "If it needs a name, it’s Servant Hedonism.",
+          "Here’s the thesis.",
+          "But in lived reality they’re not enemies.",
+          "This isn’t a pitch for hustle in disguise, and it isn’t a defence of constant indulgence.",
+          "It’s a practical philosophy for building a life where contribution and enjoyment support the same system: your energy, attention, and capacity to show up.",
+          "When I feel scattered, the fastest way back is to ask: Who needs something real from me, and what does “help” actually mean right now?",
+          "There’s a steadiness that comes from being useful.",
+          "If I’m paying attention, service trains humility: not self-neglect, but accurate self-assessment.",
+          "But service has a shadow, and it’s not subtle once you know the signs.",
+          "Saying yes because I’m afraid of disappointing people.",
+          "Martyrdom doesn’t always look dramatic.",
+          "“Fine.” It’s the slow leak of always being the one who absorbs the mess, stays late, answers quickly, smooths things over, and then wonders why life feels tight and grey.",
+          "You’re giving beyond what you can sustainably offer.",
+          "If I’m always the capable one, I don’t have to risk receiving, admitting limits, or letting someone else do it differently.",
+          "This is where adrienne maree brown’s work has been a useful corrective.",
+          "She writes about liberation and care in a way that refuses the idea that other people’s freedom should be built on someone else’s ongoing bondage.",
+          "If yes, it’s not noble.",
+          "It’s a design flaw.",
+          "Pleasure felt like something to permit only if it didn’t interfere with output.",
+          "It’s also brittle.",
+          "A life that treats enjoyment as optional eventually pays for it in the currency of low motivation, thin creativity, and a constant sense of “getting through” rather than living.",
+          "It’s information.",
+          "It points to what I care about when I’m not performing usefulness.",
+          "It reminds me I’m a person in a body, not a productivity unit.",
+          "It’s also something I can practise.",
+          "In my best weeks, pleasure isn’t a reward at the end of deprivation; it’s built into the design.",
+          "A walk that isn’t for steps.",
+          "A book that isn’t “relevant”.",
+          "A proper laugh with someone who doesn’t require me to be impressive.",
+          "It makes it more likely I’ll keep my promises without turning hard.",
+          "Pleasure isn’t the opposite of discipline; it’s one of the things that makes discipline sustainable.",
+          "There’s also the problem of escalation.",
+          "When I’m deciding how to spend an evening, or what to say yes to, I try to ask a paired question: What would be genuinely helpful here?",
+          "If I can’t answer both, I’m usually drifting towards one of the failure modes—self-sacrifice dressed up as virtue, or self-soothing dressed up as freedom.",
+          "This philosophy also changes how I measure “goodness”.",
+          "Contributing because I care, not because I’m buying worthiness with depletion.",
+          "Not because service is always easy, but because persistent resentment means I’m overdrawn.",
+          "2\tNumbing isn’t pleasure.",
+          "If a “treat” leaves me less present afterwards, it’s a coping strategy, not replenishment.",
+          "3\tHelpful doesn’t mean indispensable.",
+          "If my help makes me the only person who can hold something together, I’m probably propping up a broken system.",
+          "That Sunday afternoon wasn’t about discovering a new idea.",
+          "The aim isn’t to eliminate it.",
+          "The aim is to stop letting it split me into two incompatible selves: the “responsible” one who never rests, and the “free” one who doesn’t care."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "The week’s calendar was open.",
+            "I was doing that familiar thing where “rest” quietly turns into “planning” and the mind starts tallying what it owes.",
+            "I began a list—who to check in on, what to finish, what to organise—and noticed the list wasn’t really about tasks.",
+            "That’s when it clicked: there is a life philosophy running under my habits.",
+            "It’s been there for years, shaping my choices even when I haven’t named it.",
+            "If it needs a name, it’s Servant Hedonism.",
+            "Here’s the thesis.",
+            "But in lived reality they’re not enemies.",
+            "This isn’t a pitch for hustle in disguise, and it isn’t a defence of constant indulgence.",
+            "It’s a practical philosophy for building a life where contribution and enjoyment support the same system: your energy, attention, and capacity to show up.",
+            "When I feel scattered, the fastest way back is to ask: Who needs something real from me, and what does “help” actually mean right now?",
+            "There’s a steadiness that comes from being useful.",
+            "If I’m paying attention, service trains humility: not self-neglect, but accurate self-assessment.",
+            "But service has a shadow, and it’s not subtle once you know the signs.",
+            "Saying yes because I’m afraid of disappointing people.",
+            "Martyrdom doesn’t always look dramatic.",
+            "“Fine.” It’s the slow leak of always being the one who absorbs the mess, stays late, answers quickly, smooths things over, and then wonders why life feels tight and grey.",
+            "You’re giving beyond what you can sustainably offer.",
+            "If I’m always the capable one, I don’t have to risk receiving, admitting limits, or letting someone else do it differently.",
+            "This is where adrienne maree brown’s work has been a useful corrective.",
+            "She writes about liberation and care in a way that refuses the idea that other people’s freedom should be built on someone else’s ongoing bondage.",
+            "If yes, it’s not noble.",
+            "It’s a design flaw.",
+            "Pleasure felt like something to permit only if it didn’t interfere with output.",
+            "It’s also brittle.",
+            "A life that treats enjoyment as optional eventually pays for it in the currency of low motivation, thin creativity, and a constant sense of “getting through” rather than living.",
+            "It’s information.",
+            "It points to what I care about when I’m not performing usefulness.",
+            "It reminds me I’m a person in a body, not a productivity unit.",
+            "It’s also something I can practise.",
+            "In my best weeks, pleasure isn’t a reward at the end of deprivation; it’s built into the design.",
+            "A walk that isn’t for steps.",
+            "A book that isn’t “relevant”.",
+            "A proper laugh with someone who doesn’t require me to be impressive.",
+            "It makes it more likely I’ll keep my promises without turning hard.",
+            "Pleasure isn’t the opposite of discipline; it’s one of the things that makes discipline sustainable.",
+            "There’s also the problem of escalation.",
+            "When I’m deciding how to spend an evening, or what to say yes to, I try to ask a paired question: What would be genuinely helpful here?",
+            "If I can’t answer both, I’m usually drifting towards one of the failure modes—self-sacrifice dressed up as virtue, or self-soothing dressed up as freedom.",
+            "This philosophy also changes how I measure “goodness”.",
+            "Contributing because I care, not because I’m buying worthiness with depletion.",
+            "Not because service is always easy, but because persistent resentment means I’m overdrawn.",
+            "2\tNumbing isn’t pleasure.",
+            "If a “treat” leaves me less present afterwards, it’s a coping strategy, not replenishment.",
+            "3\tHelpful doesn’t mean indispensable.",
+            "If my help makes me the only person who can hold something together, I’m probably propping up a broken system.",
+            "That Sunday afternoon wasn’t about discovering a new idea.",
+            "The aim isn’t to eliminate it.",
+            "The aim is to stop letting it split me into two incompatible selves: the “responsible” one who never rests, and the “free” one who doesn’t care."
+          ],
+          "evidence": "Found 72 curly quote(s)",
+          "candidates": [
+            {
+              "text": "The week’s calendar was open.",
+              "start": 767,
+              "end": 796,
+              "quoted": false
+            },
+            {
+              "text": "I was doing that familiar thing where “rest” quietly turns into “planning” and the mind starts tallying what it owes.",
+              "start": 797,
+              "end": 914,
+              "quoted": false
+            },
+            {
+              "text": "I began a list—who to check in on, what to finish, what to organise—and noticed the list wasn’t really about tasks.",
+              "start": 916,
+              "end": 1031,
+              "quoted": false
+            },
+            {
+              "text": "That’s when it clicked: there is a life philosophy running under my habits.",
+              "start": 1172,
+              "end": 1247,
+              "quoted": false
+            },
+            {
+              "text": "It’s been there for years, shaping my choices even when I haven’t named it.",
+              "start": 1248,
+              "end": 1323,
+              "quoted": false
+            },
+            {
+              "text": "If it needs a name, it’s Servant Hedonism.",
+              "start": 1325,
+              "end": 1367,
+              "quoted": false
+            },
+            {
+              "text": "Here’s the thesis.",
+              "start": 1369,
+              "end": 1387,
+              "quoted": false
+            },
+            {
+              "text": "But in lived reality they’re not enemies.",
+              "start": 1562,
+              "end": 1603,
+              "quoted": false
+            },
+            {
+              "text": "This isn’t a pitch for hustle in disguise, and it isn’t a defence of constant indulgence.",
+              "start": 1826,
+              "end": 1915,
+              "quoted": false
+            },
+            {
+              "text": "It’s a practical philosophy for building a life where contribution and enjoyment support the same system: your energy, attention, and capacity to show up.",
+              "start": 1916,
+              "end": 2070,
+              "quoted": false
+            },
+            {
+              "text": "When I feel scattered, the fastest way back is to ask: Who needs something real from me, and what does “help” actually mean right now?",
+              "start": 2135,
+              "end": 2269,
+              "quoted": false
+            },
+            {
+              "text": "There’s a steadiness that comes from being useful.",
+              "start": 2271,
+              "end": 2321,
+              "quoted": false
+            },
+            {
+              "text": "If I’m paying attention, service trains humility: not self-neglect, but accurate self-assessment.",
+              "start": 2570,
+              "end": 2667,
+              "quoted": false
+            },
+            {
+              "text": "But service has a shadow, and it’s not subtle once you know the signs.",
+              "start": 2892,
+              "end": 2962,
+              "quoted": false
+            },
+            {
+              "text": "Saying yes because I’m afraid of disappointing people.",
+              "start": 3047,
+              "end": 3101,
+              "quoted": false
+            },
+            {
+              "text": "Martyrdom doesn’t always look dramatic.",
+              "start": 3206,
+              "end": 3245,
+              "quoted": false
+            },
+            {
+              "text": "“Fine.” It’s the slow leak of always being the one who absorbs the mess, stays late, answers quickly, smooths things over, and then wonders why life feels tight and grey.",
+              "start": 3282,
+              "end": 3452,
+              "quoted": false
+            },
+            {
+              "text": "You’re giving beyond what you can sustainably offer.",
+              "start": 3559,
+              "end": 3611,
+              "quoted": false
+            },
+            {
+              "text": "If I’m always the capable one, I don’t have to risk receiving, admitting limits, or letting someone else do it differently.",
+              "start": 3691,
+              "end": 3814,
+              "quoted": false
+            },
+            {
+              "text": "This is where adrienne maree brown’s work has been a useful corrective.",
+              "start": 3816,
+              "end": 3887,
+              "quoted": false
+            },
+            {
+              "text": "She writes about liberation and care in a way that refuses the idea that other people’s freedom should be built on someone else’s ongoing bondage.",
+              "start": 3888,
+              "end": 4034,
+              "quoted": false
+            },
+            {
+              "text": "If yes, it’s not noble.",
+              "start": 4125,
+              "end": 4148,
+              "quoted": false
+            },
+            {
+              "text": "It’s a design flaw.",
+              "start": 4149,
+              "end": 4168,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure felt like something to permit only if it didn’t interfere with output.",
+              "start": 4441,
+              "end": 4520,
+              "quoted": false
+            },
+            {
+              "text": "It’s also brittle.",
+              "start": 4568,
+              "end": 4586,
+              "quoted": false
+            },
+            {
+              "text": "A life that treats enjoyment as optional eventually pays for it in the currency of low motivation, thin creativity, and a constant sense of “getting through” rather than living.",
+              "start": 4587,
+              "end": 4764,
+              "quoted": false
+            },
+            {
+              "text": "It’s information.",
+              "start": 4810,
+              "end": 4827,
+              "quoted": false
+            },
+            {
+              "text": "It points to what I care about when I’m not performing usefulness.",
+              "start": 4866,
+              "end": 4932,
+              "quoted": false
+            },
+            {
+              "text": "It reminds me I’m a person in a body, not a productivity unit.",
+              "start": 4933,
+              "end": 4995,
+              "quoted": false
+            },
+            {
+              "text": "It’s also something I can practise.",
+              "start": 4997,
+              "end": 5032,
+              "quoted": false
+            },
+            {
+              "text": "In my best weeks, pleasure isn’t a reward at the end of deprivation; it’s built into the design.",
+              "start": 5033,
+              "end": 5129,
+              "quoted": false
+            },
+            {
+              "text": "A walk that isn’t for steps.",
+              "start": 5168,
+              "end": 5196,
+              "quoted": false
+            },
+            {
+              "text": "A book that isn’t “relevant”.",
+              "start": 5238,
+              "end": 5267,
+              "quoted": false
+            },
+            {
+              "text": "A proper laugh with someone who doesn’t require me to be impressive.",
+              "start": 5268,
+              "end": 5336,
+              "quoted": false
+            },
+            {
+              "text": "It makes it more likely I’ll keep my promises without turning hard.",
+              "start": 5444,
+              "end": 5511,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure isn’t the opposite of discipline; it’s one of the things that makes discipline sustainable.",
+              "start": 5512,
+              "end": 5612,
+              "quoted": false
+            },
+            {
+              "text": "There’s also the problem of escalation.",
+              "start": 5887,
+              "end": 5926,
+              "quoted": false
+            },
+            {
+              "text": "When I’m deciding how to spend an evening, or what to say yes to, I try to ask a paired question: What would be genuinely helpful here?",
+              "start": 6873,
+              "end": 7008,
+              "quoted": false
+            },
+            {
+              "text": "If I can’t answer both, I’m usually drifting towards one of the failure modes—self-sacrifice dressed up as virtue, or self-soothing dressed up as freedom.",
+              "start": 7049,
+              "end": 7203,
+              "quoted": false
+            },
+            {
+              "text": "This philosophy also changes how I measure “goodness”.",
+              "start": 7205,
+              "end": 7259,
+              "quoted": false
+            },
+            {
+              "text": "Contributing because I care, not because I’m buying worthiness with depletion.",
+              "start": 7553,
+              "end": 7631,
+              "quoted": false
+            },
+            {
+              "text": "Not because service is always easy, but because persistent resentment means I’m overdrawn.",
+              "start": 7730,
+              "end": 7820,
+              "quoted": false
+            },
+            {
+              "text": "2\tNumbing isn’t pleasure.",
+              "start": 7822,
+              "end": 7847,
+              "quoted": false
+            },
+            {
+              "text": "If a “treat” leaves me less present afterwards, it’s a coping strategy, not replenishment.",
+              "start": 7848,
+              "end": 7938,
+              "quoted": false
+            },
+            {
+              "text": "3\tHelpful doesn’t mean indispensable.",
+              "start": 7940,
+              "end": 7977,
+              "quoted": false
+            },
+            {
+              "text": "If my help makes me the only person who can hold something together, I’m probably propping up a broken system.",
+              "start": 7978,
+              "end": 8088,
+              "quoted": false
+            },
+            {
+              "text": "That Sunday afternoon wasn’t about discovering a new idea.",
+              "start": 8200,
+              "end": 8258,
+              "quoted": false
+            },
+            {
+              "text": "The aim isn’t to eliminate it.",
+              "start": 8399,
+              "end": 8429,
+              "quoted": false
+            },
+            {
+              "text": "The aim is to stop letting it split me into two incompatible selves: the “responsible” one who never rests, and the “free” one who doesn’t care.",
+              "start": 8430,
+              "end": 8574,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 49,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "The week’s calendar was open.",
+              "start": 767,
+              "end": 796,
+              "quoted": false
+            },
+            {
+              "text": "I was doing that familiar thing where “rest” quietly turns into “planning” and the mind starts tallying what it owes.",
+              "start": 797,
+              "end": 914,
+              "quoted": false
+            },
+            {
+              "text": "I began a list—who to check in on, what to finish, what to organise—and noticed the list wasn’t really about tasks.",
+              "start": 916,
+              "end": 1031,
+              "quoted": false
+            },
+            {
+              "text": "That’s when it clicked: there is a life philosophy running under my habits.",
+              "start": 1172,
+              "end": 1247,
+              "quoted": false
+            },
+            {
+              "text": "It’s been there for years, shaping my choices even when I haven’t named it.",
+              "start": 1248,
+              "end": 1323,
+              "quoted": false
+            },
+            {
+              "text": "If it needs a name, it’s Servant Hedonism.",
+              "start": 1325,
+              "end": 1367,
+              "quoted": false
+            },
+            {
+              "text": "Here’s the thesis.",
+              "start": 1369,
+              "end": 1387,
+              "quoted": false
+            },
+            {
+              "text": "But in lived reality they’re not enemies.",
+              "start": 1562,
+              "end": 1603,
+              "quoted": false
+            },
+            {
+              "text": "This isn’t a pitch for hustle in disguise, and it isn’t a defence of constant indulgence.",
+              "start": 1826,
+              "end": 1915,
+              "quoted": false
+            },
+            {
+              "text": "It’s a practical philosophy for building a life where contribution and enjoyment support the same system: your energy, attention, and capacity to show up.",
+              "start": 1916,
+              "end": 2070,
+              "quoted": false
+            },
+            {
+              "text": "When I feel scattered, the fastest way back is to ask: Who needs something real from me, and what does “help” actually mean right now?",
+              "start": 2135,
+              "end": 2269,
+              "quoted": false
+            },
+            {
+              "text": "There’s a steadiness that comes from being useful.",
+              "start": 2271,
+              "end": 2321,
+              "quoted": false
+            },
+            {
+              "text": "If I’m paying attention, service trains humility: not self-neglect, but accurate self-assessment.",
+              "start": 2570,
+              "end": 2667,
+              "quoted": false
+            },
+            {
+              "text": "But service has a shadow, and it’s not subtle once you know the signs.",
+              "start": 2892,
+              "end": 2962,
+              "quoted": false
+            },
+            {
+              "text": "Saying yes because I’m afraid of disappointing people.",
+              "start": 3047,
+              "end": 3101,
+              "quoted": false
+            },
+            {
+              "text": "Martyrdom doesn’t always look dramatic.",
+              "start": 3206,
+              "end": 3245,
+              "quoted": false
+            },
+            {
+              "text": "“Fine.” It’s the slow leak of always being the one who absorbs the mess, stays late, answers quickly, smooths things over, and then wonders why life feels tight and grey.",
+              "start": 3282,
+              "end": 3452,
+              "quoted": false
+            },
+            {
+              "text": "You’re giving beyond what you can sustainably offer.",
+              "start": 3559,
+              "end": 3611,
+              "quoted": false
+            },
+            {
+              "text": "If I’m always the capable one, I don’t have to risk receiving, admitting limits, or letting someone else do it differently.",
+              "start": 3691,
+              "end": 3814,
+              "quoted": false
+            },
+            {
+              "text": "This is where adrienne maree brown’s work has been a useful corrective.",
+              "start": 3816,
+              "end": 3887,
+              "quoted": false
+            },
+            {
+              "text": "She writes about liberation and care in a way that refuses the idea that other people’s freedom should be built on someone else’s ongoing bondage.",
+              "start": 3888,
+              "end": 4034,
+              "quoted": false
+            },
+            {
+              "text": "If yes, it’s not noble.",
+              "start": 4125,
+              "end": 4148,
+              "quoted": false
+            },
+            {
+              "text": "It’s a design flaw.",
+              "start": 4149,
+              "end": 4168,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure felt like something to permit only if it didn’t interfere with output.",
+              "start": 4441,
+              "end": 4520,
+              "quoted": false
+            },
+            {
+              "text": "It’s also brittle.",
+              "start": 4568,
+              "end": 4586,
+              "quoted": false
+            },
+            {
+              "text": "A life that treats enjoyment as optional eventually pays for it in the currency of low motivation, thin creativity, and a constant sense of “getting through” rather than living.",
+              "start": 4587,
+              "end": 4764,
+              "quoted": false
+            },
+            {
+              "text": "It’s information.",
+              "start": 4810,
+              "end": 4827,
+              "quoted": false
+            },
+            {
+              "text": "It points to what I care about when I’m not performing usefulness.",
+              "start": 4866,
+              "end": 4932,
+              "quoted": false
+            },
+            {
+              "text": "It reminds me I’m a person in a body, not a productivity unit.",
+              "start": 4933,
+              "end": 4995,
+              "quoted": false
+            },
+            {
+              "text": "It’s also something I can practise.",
+              "start": 4997,
+              "end": 5032,
+              "quoted": false
+            },
+            {
+              "text": "In my best weeks, pleasure isn’t a reward at the end of deprivation; it’s built into the design.",
+              "start": 5033,
+              "end": 5129,
+              "quoted": false
+            },
+            {
+              "text": "A walk that isn’t for steps.",
+              "start": 5168,
+              "end": 5196,
+              "quoted": false
+            },
+            {
+              "text": "A book that isn’t “relevant”.",
+              "start": 5238,
+              "end": 5267,
+              "quoted": false
+            },
+            {
+              "text": "A proper laugh with someone who doesn’t require me to be impressive.",
+              "start": 5268,
+              "end": 5336,
+              "quoted": false
+            },
+            {
+              "text": "It makes it more likely I’ll keep my promises without turning hard.",
+              "start": 5444,
+              "end": 5511,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure isn’t the opposite of discipline; it’s one of the things that makes discipline sustainable.",
+              "start": 5512,
+              "end": 5612,
+              "quoted": false
+            },
+            {
+              "text": "There’s also the problem of escalation.",
+              "start": 5887,
+              "end": 5926,
+              "quoted": false
+            },
+            {
+              "text": "When I’m deciding how to spend an evening, or what to say yes to, I try to ask a paired question: What would be genuinely helpful here?",
+              "start": 6873,
+              "end": 7008,
+              "quoted": false
+            },
+            {
+              "text": "If I can’t answer both, I’m usually drifting towards one of the failure modes—self-sacrifice dressed up as virtue, or self-soothing dressed up as freedom.",
+              "start": 7049,
+              "end": 7203,
+              "quoted": false
+            },
+            {
+              "text": "This philosophy also changes how I measure “goodness”.",
+              "start": 7205,
+              "end": 7259,
+              "quoted": false
+            },
+            {
+              "text": "Contributing because I care, not because I’m buying worthiness with depletion.",
+              "start": 7553,
+              "end": 7631,
+              "quoted": false
+            },
+            {
+              "text": "Not because service is always easy, but because persistent resentment means I’m overdrawn.",
+              "start": 7730,
+              "end": 7820,
+              "quoted": false
+            },
+            {
+              "text": "2\tNumbing isn’t pleasure.",
+              "start": 7822,
+              "end": 7847,
+              "quoted": false
+            },
+            {
+              "text": "If a “treat” leaves me less present afterwards, it’s a coping strategy, not replenishment.",
+              "start": 7848,
+              "end": 7938,
+              "quoted": false
+            },
+            {
+              "text": "3\tHelpful doesn’t mean indispensable.",
+              "start": 7940,
+              "end": 7977,
+              "quoted": false
+            },
+            {
+              "text": "If my help makes me the only person who can hold something together, I’m probably propping up a broken system.",
+              "start": 7978,
+              "end": 8088,
+              "quoted": false
+            },
+            {
+              "text": "That Sunday afternoon wasn’t about discovering a new idea.",
+              "start": 8200,
+              "end": 8258,
+              "quoted": false
+            },
+            {
+              "text": "The aim isn’t to eliminate it.",
+              "start": 8399,
+              "end": 8429,
+              "quoted": false
+            },
+            {
+              "text": "The aim is to stop letting it split me into two incompatible selves: the “responsible” one who never rests, and the “free” one who doesn’t care.",
+              "start": 8430,
+              "end": 8574,
+              "quoted": false
+            }
+          ],
+          "match_count": 49,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 72 curly quote(s)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "typographic_signal",
+          "guidance": "Normalise in All/plain output; recommend preserving in sourced literary or typographic text."
+        }
+      }
+    },
+    {
+      "id": "sentence-length-variance",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Sentence length stdev: 9.4 (target: >4)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1454,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Sentence length stdev: 9.4 (target: >4)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms."
+        }
+      }
+    },
+    {
+      "id": "no-promotional-language",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No promotional language",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No promotional language",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "hype_language",
+          "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm."
+        }
+      }
+    },
+    {
+      "id": "no-significance-inflation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No significance inflation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No significance inflation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "importance_inflation",
+          "guidance": "Fix inflated importance unless the source genuinely argues significance."
+        }
+      }
+    },
+    {
+      "id": "no-negative-parallelisms",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No negative parallelisms or contrived reframes",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced."
+        }
+      }
+    },
+    {
+      "id": "no-copula-avoidance",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No copula avoidance",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No copula avoidance",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "grammar_substitution",
+          "guidance": "Usually simplify at Balanced and All; recommend preserving if the construction is idiomatic or technical."
+        }
+      }
+    },
+    {
+      "id": "no-filler-phrases",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No filler phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No filler phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "filler_phrase",
+          "guidance": "Fix stock filler at Balanced and All; at Balanced, disclose and remove unless it belongs to quoted or intentionally casual voice."
+        }
+      }
+    },
+    {
+      "id": "no-generic-conclusions",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "provenance_residue",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No generic conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No generic conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue",
+            "synthetic_significance"
+          ],
+          "evidence_role": "generic_closure",
+          "guidance": "Fix at every depth unless quoted from source text."
+        }
+      }
+    },
+    {
+      "id": "no-false-concession-hedges",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No false concession hedges",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No false concession hedges",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix fake both-sides framing at Balanced and All; preserve only if the piece actually argues both positions with evidence."
+        }
+      }
+    },
+    {
+      "id": "no-placeholder-residue",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No placeholder residue",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No placeholder residue",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "template_residue",
+          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue."
+        }
+      }
+    },
+    {
+      "id": "no-soft-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Soft scaffold phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Soft scaffold phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "explainer_scaffold",
+          "guidance": "Fix at Balanced and All; these phrases usually mark generated explainer structure rather than content."
+        }
+      }
+    },
+    {
+      "id": "no-orphaned-demonstratives",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Vague demonstrative subjects: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Vague demonstrative subjects: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Review repeated 'This/That highlights...' starts; replace vague subjects with concrete nouns when the antecedent is unclear."
+        }
+      }
+    },
+    {
+      "id": "no-forced-triads",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "promises, momentum, and whatever version",
+          "energy, attention, and capacity",
+          "receiving, admitting limits, or letting someone else do it differently",
+          "of low motivation, thin creativity, and a constant sense",
+          "Pleasure softens my edges, which makes service kinder and less controlling"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "promises, momentum, and whatever version",
+            "energy, attention, and capacity",
+            "receiving, admitting limits, or letting someone else do it differently",
+            "of low motivation, thin creativity, and a constant sense",
+            "Pleasure softens my edges, which makes service kinder and less controlling"
+          ],
+          "evidence": "Found 5 triad(s): ['promises, momentum, and whatever version', 'energy, attention, and capacity', 'receiving, admitting limits, or letting someone else do it differently', 'of low motivation, thin creativity, and a constant sense', 'Pleasure softens my edges, which makes service kinder and less controlling']",
+          "candidates": [
+            {
+              "text": "promises, momentum, and whatever version",
+              "start": 1084,
+              "end": 1124,
+              "quoted": false
+            },
+            {
+              "text": "energy, attention, and capacity",
+              "start": 2027,
+              "end": 2058,
+              "quoted": false
+            },
+            {
+              "text": "receiving, admitting limits, or letting someone else do it differently",
+              "start": 3743,
+              "end": 3813,
+              "quoted": false
+            },
+            {
+              "text": "of low motivation, thin creativity, and a constant sense",
+              "start": 4667,
+              "end": 4723,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure softens my edges, which makes service kinder and less controlling",
+              "start": 6747,
+              "end": 6821,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 5,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "promises, momentum, and whatever version",
+              "start": 1084,
+              "end": 1124,
+              "quoted": false
+            },
+            {
+              "text": "energy, attention, and capacity",
+              "start": 2027,
+              "end": 2058,
+              "quoted": false
+            },
+            {
+              "text": "receiving, admitting limits, or letting someone else do it differently",
+              "start": 3743,
+              "end": 3813,
+              "quoted": false
+            },
+            {
+              "text": "of low motivation, thin creativity, and a constant sense",
+              "start": 4667,
+              "end": 4723,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure softens my edges, which makes service kinder and less controlling",
+              "start": 6747,
+              "end": 6821,
+              "quoted": false
+            }
+          ],
+          "match_count": 5,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 5 triad(s): ['promises, momentum, and whatever version', 'energy, attention, and capacity', 'receiving, admitting limits, or letting someone else do it differently', 'of low motivation, thin creativity, and a constant sense', 'Pleasure softens my edges, which makes service kinder and less controlling']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads."
+        }
+      }
+    },
+    {
+      "id": "no-superficial-ing",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No superficial -ing phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No superficial -ing phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "analysis_substitution",
+          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning."
+        }
+      }
+    },
+    {
+      "id": "no-ghost-spectral-density",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "shadow",
+          "lingering"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Found 4 ghost/spectral words: ['shadow', 'lingering']",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": true,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 4 ghost/spectral words: ['shadow', 'lingering']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose."
+        }
+      }
+    },
+    {
+      "id": "no-quietness-obsession",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Quietness words: 2",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Quietness words: 2",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix generic quietness mood; recommend preserving if quietness is the actual subject or voice."
+        }
+      }
+    },
+    {
+      "id": "no-rhetorical-questions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Rhetorical questions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rhetorical questions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_template",
+          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-lists",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/116)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_items": 8,
+            "minimum_blocks": 2,
+            "minimum_line_ratio": 0.3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1454,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/116)",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_items": 8,
+              "minimum_blocks": 2,
+              "minimum_line_ratio": 0.3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "listification",
+          "guidance": "Fix unnecessary listification; recommend preserving reference, instructional, or interview structure."
+        }
+      }
+    },
+    {
+      "id": "no-unicode-flair",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "provenance_residue",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "•",
+          "•",
+          "•",
+          "•"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "•",
+            "•",
+            "•",
+            "•"
+          ],
+          "evidence": "Found 4 decorative symbol(s)/shortcode(s): ['•', '•', '•', '•']",
+          "candidates": [
+            {
+              "text": "•",
+              "start": 6486,
+              "end": 6487,
+              "quoted": false
+            },
+            {
+              "text": "•",
+              "start": 6596,
+              "end": 6597,
+              "quoted": false
+            },
+            {
+              "text": "•",
+              "start": 6688,
+              "end": 6689,
+              "quoted": false
+            },
+            {
+              "text": "•",
+              "start": 6745,
+              "end": 6746,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 4,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "•",
+              "start": 6486,
+              "end": 6487,
+              "quoted": false
+            },
+            {
+              "text": "•",
+              "start": 6596,
+              "end": 6597,
+              "quoted": false
+            },
+            {
+              "text": "•",
+              "start": 6688,
+              "end": 6689,
+              "quoted": false
+            },
+            {
+              "text": "•",
+              "start": 6745,
+              "end": 6746,
+              "quoted": false
+            }
+          ],
+          "match_count": 4,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 4 decorative symbol(s)/shortcode(s): ['•', '•', '•', '•']",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "genre_misfit"
+          ],
+          "evidence_role": "formatting_residue",
+          "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source."
+        }
+      }
+    },
+    {
+      "id": "no-dramatic-transitions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dramatic transitions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dramatic transitions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "narrative_template",
+          "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned."
+        }
+      }
+    },
+    {
+      "id": "no-formulaic-openers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No formulaic openers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No formulaic openers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "formulaic_structure",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it matches the source genre."
+        }
+      }
+    },
+    {
+      "id": "no-signposted-conclusions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No signposted conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No signposted conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "structural_signpost",
+          "guidance": "Fix generic signposts in prose; recommend preserving academic/instructional structure when useful."
+        }
+      }
+    },
+    {
+      "id": "no-parenthetical-headings",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No parenthetical headings",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No parenthetical headings",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "heading_structure",
+          "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body."
+        }
+      }
+    },
+    {
+      "id": "no-corporate-ai-speak",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No corporate AI speak",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No corporate AI speak",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "domain_cliche",
+          "guidance": "Fix at every depth; recommend preserving only when quoting corporate source language."
+        }
+      }
+    },
+    {
+      "id": "no-this-chains",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max 'This [verb]' run: 1",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1454,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max 'This [verb]' run: 1",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-hedging",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Hedging constructions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Hedging constructions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty."
+        }
+      }
+    },
+    {
+      "id": "no-countdown-negation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "synthetic_significance",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No countdown negation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1454,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No countdown negation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix generic reveal structures; recommend preserving deliberate rhetoric only with strong reason."
+        }
+      }
+    },
+    {
+      "id": "no-negation-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Negation markers: 17 (11.7 per 1000 words)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1454,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Negation markers: 17 (11.7 per 1000 words)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_density",
+          "guidance": "Review dense negation as a style signal; preserve polemic or technical qualification when purposeful."
+        }
+      }
+    },
+    {
+      "id": "paragraph-length-uniformity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Paragraph length CV: 0.35 across 29 paragraphs",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_paragraphs": 7,
+            "maximum_cv": 0.18
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1454,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Paragraph length CV: 0.35 across 29 paragraphs",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_paragraphs": 7,
+              "maximum_cv": 0.18
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "layout_rhythm",
+          "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template."
+        }
+      }
+    },
+    {
+      "id": "no-tidy-paragraph-endings",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Tidy paragraph endings: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Tidy paragraph endings: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "paragraph_closure",
+          "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn."
+        }
+      }
+    },
+    {
+      "id": "no-bland-critical-template",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Bland critical template phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bland critical template phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "evidence_role": "genre_cliche",
+          "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work."
+        }
+      }
+    },
+    {
+      "id": "no-rubric-echoing",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Rubric echo phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rubric echo phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "voice_erasure"
+          ],
+          "evidence_role": "assignment_residue",
+          "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric."
+        }
+      }
+    },
+    {
+      "id": "vocabulary-diversity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Type-token ratio: 0.436 (594 unique / 1361 total, target: >0.40)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1454,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Type-token ratio: 0.436 (594 unique / 1361 total, target: >0.40)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "lexical_distribution",
+          "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately."
+        }
+      }
+    },
+    {
+      "id": "no-triad-density",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "promises, momentum, and whatever version",
+          "energy, attention, and capacity",
+          "receiving, admitting limits, or letting someone else do it differently",
+          "of low motivation, thin creativity, and a constant sense",
+          "Pleasure softens my edges, which makes service kinder and less controlling"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "candidate_count": 5,
+          "matches": [
+            "promises, momentum, and whatever version",
+            "energy, attention, and capacity",
+            "receiving, admitting limits, or letting someone else do it differently",
+            "of low motivation, thin creativity, and a constant sense",
+            "Pleasure softens my edges, which makes service kinder and less controlling"
+          ],
+          "evidence": "Found 5 triad(s): ['promises, momentum, and whatever version', 'energy, attention, and capacity', 'receiving, admitting limits, or letting someone else do it differently', 'of low motivation, thin creativity, and a constant sense', 'Pleasure softens my edges, which makes service kinder and less controlling']",
+          "candidates": [
+            {
+              "text": "promises, momentum, and whatever version",
+              "start": 1084,
+              "end": 1124,
+              "quoted": false
+            },
+            {
+              "text": "energy, attention, and capacity",
+              "start": 2027,
+              "end": 2058,
+              "quoted": false
+            },
+            {
+              "text": "receiving, admitting limits, or letting someone else do it differently",
+              "start": 3743,
+              "end": 3813,
+              "quoted": false
+            },
+            {
+              "text": "of low motivation, thin creativity, and a constant sense",
+              "start": 4667,
+              "end": 4723,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure softens my edges, which makes service kinder and less controlling",
+              "start": 6747,
+              "end": 6821,
+              "quoted": false
+            }
+          ],
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_words": 300,
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "promises, momentum, and whatever version",
+              "start": 1084,
+              "end": 1124,
+              "quoted": false
+            },
+            {
+              "text": "energy, attention, and capacity",
+              "start": 2027,
+              "end": 2058,
+              "quoted": false
+            },
+            {
+              "text": "receiving, admitting limits, or letting someone else do it differently",
+              "start": 3743,
+              "end": 3813,
+              "quoted": false
+            },
+            {
+              "text": "of low motivation, thin creativity, and a constant sense",
+              "start": 4667,
+              "end": 4723,
+              "quoted": false
+            },
+            {
+              "text": "Pleasure softens my edges, which makes service kinder and less controlling",
+              "start": 6747,
+              "end": 6821,
+              "quoted": false
+            }
+          ],
+          "match_count": 5,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 5 triad(s): ['promises, momentum, and whatever version', 'energy, attention, and capacity', 'receiving, admitting limits, or letting someone else do it differently', 'of low motivation, thin creativity, and a constant sense', 'Pleasure softens my edges, which makes service kinder and less controlling']",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_words": 300,
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical."
+        }
+      }
+    },
+    {
+      "id": "no-section-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No repeated section labels",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1454,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No repeated section labels",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "repeated_template",
+          "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material."
+        }
+      }
+    },
+    {
+      "id": "no-notability-claims",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No notability claims",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No notability claims",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "notability_inflation",
+          "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing."
+        }
+      }
+    },
+    {
+      "id": "no-vague-attributions",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No vague attributions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No vague attributions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "attribution_vagueness",
+          "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote."
+        }
+      }
+    },
+    {
+      "id": "no-boldface-overuse",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Bold spans in prose: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bold spans in prose: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "emphasis_pattern",
+          "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers."
+        }
+      }
+    },
+    {
+      "id": "no-inline-header-lists",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items with bolded headers: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items with bolded headers: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "list_template",
+          "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list."
+        }
+      }
+    },
+    {
+      "id": "no-compound-modifier-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dense compound-modifier sentences",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_per_sentence": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1374,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dense compound-modifier sentences",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_per_sentence": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "modifier_density",
+          "guidance": "Restructure sentences with three or more stock hyphenated compounds; preserve only when the compounds are domain-specific terms of art."
+        }
+      }
+    },
+    {
+      "id": "no-knowledge-cutoff-disclaimers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No knowledge-cutoff disclaimers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No knowledge-cutoff disclaimers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "model_meta_residue",
+          "guidance": "Fix at every depth; training-update and limited-information hedges are model meta-residue, not authorial uncertainty."
+        }
+      }
+    }
+  ],
+  "semantic_findings": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "The laundry was half-done. The week’s calendar was open.",
+          "why_unspecific": "Generic domestic scene-setting with no name, date, place, or sensory grounding beyond the mundane; anyone's Sunday could fit this description."
+        },
+        {
+          "phrase": "Coffee outside. Music while cleaning.",
+          "why_unspecific": "Presented as a list of lived pleasures but consists of interchangeable, genre-convention images with no distinguishing detail (which coffee, which music, where)."
+        },
+        {
+          "phrase": "A proper laugh with someone who doesn’t require me to be impressive.",
+          "why_unspecific": "Performs intimacy and specificity but names no person, occasion, or concrete moment — it could describe anyone's friendship."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "life feels tight and grey",
+          "why_forced": "Maps an emotional/existential state onto tactile (tight) and visual (grey) properties without any grounding scene or object that would earn the cross-modal leap."
+        },
+        {
+          "phrase": "a life that tastes good",
+          "why_forced": "Applies a gustatory sensation to an abstract evaluation of a whole life, used as a closing flourish rather than tied to any actual eating or tasting referent."
+        },
+        {
+          "phrase": "thin creativity",
+          "why_forced": "Gives an abstract cognitive quality (creativity) a textural property (thinness) with no concrete image or referent to justify the mapping."
+        }
+      ],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Service is the most reliable compass I have.",
+          "why_generic": "Compass-as-guidance is a stock metaphor that doesn't specify what the 'directions' actually are or how service concretely orients decisions beyond the abstract claim."
+        },
+        {
+          "phrase": "service alone becomes a moral treadmill",
+          "why_generic": "Treadmill-as-fruitless-effort is a common cliché; it asserts repetitive futility without specifying which actions repeat or what the effort actually consists of."
+        },
+        {
+          "phrase": "the slow leak of always being the one who absorbs the mess",
+          "why_generic": "The 'slow leak' image conveys gradual depletion generically but doesn't identify what specifically is leaking (time? goodwill? health?) or at what rate."
+        },
+        {
+          "phrase": "the horizon shrinking to preference",
+          "why_generic": "A visually evocative but unanchored image for narrowed worldview; it doesn't specify what the person actually stops noticing or doing."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Service keeps pleasure from becoming narcissism. Pleasure keeps service from becoming martyrdom.",
+          "why_formulaic": "A mirrored bicolon (X keeps Y from becoming Z / Y keeps X from becoming W) that asserts a mutual-correction relationship without explaining the mechanism by which either actually prevents the other."
+        },
+        {
+          "phrase": "Giving without disappearing. Receiving without taking.",
+          "why_formulaic": "A counted, symmetrical pair of fragments that sounds definitional but doesn't specify what distinguishes 'giving' from 'disappearing' or 'receiving' from 'taking' in practice."
+        },
+        {
+          "phrase": "To serve with consent and boundaries. To pursue pleasure without shame or isolation. To build a life that is useful—and a life that tastes good—at the same time.",
+          "why_formulaic": "A closing tricolon of parallel infinitive clauses that restates the essay's thesis in balanced form rather than adding new information."
+        }
+      ],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Service is essential. But service alone becomes a moral treadmill: always more to do, always someone else first, always a lingering sense that rest must be earned.",
+          "what_it_repeats": "Restates the shadow/martyrdom material already laid out in detail earlier in 'The servant half' (resentment, control, performed service)."
+        },
+        {
+          "phrase": "Pleasure is essential. But pleasure alone is unstable. It needs a tether to something beyond the self.",
+          "what_it_repeats": "Restates the shadow/escalation material already laid out in detail earlier in 'The hedonist half' (self-referential loop, craving, escalation)."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a way of living that is both useful and vivid",
+          "missing_criterion": "Doesn't specify what makes the life 'vivid' — no perceptual or experiential criterion is given for the term."
+        },
+        {
+          "phrase": "It’s also brittle.",
+          "missing_criterion": "Doesn't state in what way the efficient approach is brittle — what breaks, under what pressure, or how the failure would be observed."
+        },
+        {
+          "phrase": "There’s a steadiness that comes from being useful.",
+          "missing_criterion": "Doesn't specify what is being measured as 'steady' or by what standard — steady compared to what prior state?"
+        },
+        {
+          "phrase": "sustainability with joy",
+          "missing_criterion": "A nominalized pairing that doesn't define what counts as 'sustainable' or by what measure joy is present or absent."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": [],
+      "severity": "context_warning"
+    }
+  ],
+  "aggregates": {
+    "programmatic": {
+      "by_severity": {
+        "hard_fail": 0,
+        "strong_warning": 1,
+        "context_warning": 7
+      },
+      "by_category": {
+        "Style": 2,
+        "Filler and hedging": 1,
+        "Voice and register": 1,
+        "Language and grammar": 2,
+        "Sensory and atmospheric": 1,
+        "Structural tells": 1
+      },
+      "signal_stacking": {
+        "score": 0,
+        "threshold": 4,
+        "triggered": false,
+        "components": [],
+        "vocabulary_points": 0
+      }
+    },
+    "semantic": {
+      "total": 15,
+      "flagged": 8,
+      "clear": 7
+    },
+    "combined": {
+      "flagged": 16
+    }
+  },
+  "limitations": [
+    "slide_title structure unavailable without a structure manifest",
+    "caption structure unavailable without a structure manifest"
+  ],
+  "metadata": {
+    "schema_version": "2",
+    "grader_version": "phase-2-u8",
+    "timestamp": "2026-07-13T16:02:35.591256Z",
+    "run_id": "e08f99e1-6664-45f2-b014-b94444f96f5e"
+  }
+}

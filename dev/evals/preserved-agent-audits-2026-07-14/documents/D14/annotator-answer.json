@@ -1,0 +1,142 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "One Sunday afternoon, stretched out on the couch with a book",
+          "why_unspecific": "A generic scene-setting device with no distinguishing detail (no title, location detail, or sensory grounding) — the kind of anecdote-opener anyone could write about any Sunday."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "People gravitate toward what appears alive.",
+          "why_generic": "Offers a plausible-sounding claim about attraction with no concrete referent for what 'alive' means in this context or what specific behavior demonstrates gravitation."
+        },
+        {
+          "phrase": "It sustains motion without constant force.",
+          "why_generic": "A physics-flavored abstraction standing in for an actual mechanism; it never specifies what the 'motion' consists of or how pleasure supplies it."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It isn’t elaborate. It doesn’t rest on an all-encompassing theory of history. It offers no checklist of rules or algorithm for decision-making.",
+          "why_formulaic": "A tricolon of negations that defines the philosophy only by what it isn't, substituting rhythmic symmetry for a positive description of its content."
+        },
+        {
+          "phrase": "It means counting yourself among those who deserve care. It means refusing to accept chronic depletion as a moral badge. It means asking, as brown does, “What is happening and why did I decide to endure it?”",
+          "why_formulaic": "Repeated 'It means' skeleton creates a checklist cadence that asserts significance without adding new distinguishing content between the three clauses."
+        },
+        {
+          "phrase": "Service generates positive-sum exchanges. It builds trust. It aligns people around shared efforts.",
+          "why_formulaic": "Three short parallel clauses list benefits in identical subject-verb-object form without elaborating on mechanism or evidence for any one of them."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Put differently, you are not a self-contained unit. You are part of a lineage and a community that precedes you and will outlast you.",
+          "what_it_repeats": "You arise from a web of relationships and conditions, and you will return to it."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "the most meaningful outcomes",
+          "missing_criterion": "No criterion given for what makes an outcome 'meaningful' or how it was judged as such."
+        },
+        {
+          "phrase": "steady, unglamorous generosity",
+          "missing_criterion": "Both modifiers are evaluative without specifying the behavior, pace, or comparison basis that makes generosity 'steady' or 'unglamorous.'"
+        },
+        {
+          "phrase": "visible vitality",
+          "missing_criterion": "No description of what observable action or trait constitutes 'vitality' or how it becomes 'visible' to others."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

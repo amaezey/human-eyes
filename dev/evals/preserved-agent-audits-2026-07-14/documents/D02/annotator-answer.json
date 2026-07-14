@@ -1,0 +1,152 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I could almost feel his hard-earned acumen making its way from his brain into my own",
+          "why_forced": "Maps an abstract, non-physical quality (acumen, i.e. accumulated skill/judgment) onto a tactile sensation of feeling and physical transit from one brain to another, with no concrete sensory anchor grounding the claim."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "like a beam of brilliance from above",
+          "why_generic": "A stock inspirational image (light from above) that could describe any admired speaker; it names no concrete quality of Rich and Nati's actual delivery."
+        },
+        {
+          "phrase": "the elephant which lurks in every room",
+          "why_generic": "A well-worn cliché for an avoided issue; it substitutes a familiar idiom for any concrete description of what makes tech-tool disagreements awkward in this context."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "which can be more inclusive and less invasive; timely but not hurried",
+          "why_formulaic": "A stacked pair of balanced antitheses that sounds conclusive but never specifies what makes async decisions inclusive versus invasive, or timely versus hurried, in this particular group's practice."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "The more effective we can make decentralised teams the more positive change we will be able to deliver.",
+          "what_it_repeats": "Restates the effectiveness claims already made piecemeal after several patterns (e.g. the steward system being 'bound to reduce conflicts' and tech-tool agreement making a team 'bound to be more effective') without adding new information."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "well planned and designed workshop",
+          "missing_criterion": "No stated basis for what made the planning or design good (structure, materials, timing) beyond general praise."
+        },
+        {
+          "phrase": "timely content",
+          "missing_criterion": "Timely relative to what event, need, or audience is left unspecified."
+        },
+        {
+          "phrase": "enormous strength in continuous participatory change",
+          "missing_criterion": "No measure or mechanism given for how 'strength' is assessed or observed in this iterative process."
+        },
+        {
+          "phrase": "Brilliant advice which might be hard for some egos to hear.",
+          "missing_criterion": "No criterion given for why the advice qualifies as 'brilliant' beyond the writer's approval."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Make no mistake",
+          "missing_context": "Reads as a rebuttal to an unstated doubt about whether Rich and Nati genuinely have the experience being credited to them, but no such doubt or prior comment appears in the document."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Simple, effective relationship building which is bound to reduce conflicts.",
+          "missing_relationship": "Asserts a causal link between the steward/stewardee pairing and reduced conflict without explaining the mechanism or offering evidence."
+        },
+        {
+          "phrase": "If you can clearly define and agree which tool/s you will be using for each of these three essential areas of group work, your team is bound to be more effective.",
+          "missing_relationship": "Asserts a causal link between tool agreement and team effectiveness without specifying how or by what measure effectiveness follows."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

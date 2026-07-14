@@ -1,0 +1,137 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "clear",
+      "answer": "sections vary",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "as if it were a map out of the wilderness",
+          "why_generic": "The manual-as-map-through-wilderness comparison is a conventional learning-journey figure that could describe anyone's confusion with any new object; it adds atmosphere but no concrete property of this manual or this wilderness."
+        },
+        {
+          "phrase": "It taught me that not knowing was not a verdict. It was simply the first stage of finding out.",
+          "why_generic": "The 'verdict' / 'first stage of finding out' framing is an abstract, portable aphorism about learning that isn't tied to any specific detail of the computer, the modem, or the HTML tinkering described earlier."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I matched plugs by shape, tightened two tiny screws on the monitor cable, and kept the manual open beside me",
+          "why_formulaic": "A three-verb action tricolon that patterns the setup process into a neat rhythmic list rather than conveying which step was actually hard or uncertain."
+        },
+        {
+          "phrase": "I learned by clicking, retreating, and clicking again.",
+          "why_formulaic": "Repeats a clicking/retreating skeleton for rhythmic effect without specifying what was clicked or what was learned from any particular attempt."
+        },
+        {
+          "phrase": "I changed colours, broke layouts, and rebuilt them.",
+          "why_formulaic": "Another three-part parallel action list describing the HTML tinkering in the same rhythmic shape as the earlier tricolons, standing in for specific detail about what broke or how it was rebuilt."
+        },
+        {
+          "phrase": "I relied on library books, magazine columns, and a patient classmate who wrote instructions on loose paper.",
+          "why_formulaic": "A tricolon of resources that mirrors the syntactic shape of the other three-item lists in the piece, substituting enumeration for detail about how each resource was actually used."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It was simply the first stage of finding out.",
+          "what_it_repeats": "Restates the point already made by 'I had to tolerate confusion long enough for it to become curiosity' — both sentences assert that not-knowing is productive rather than a failure."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a confident chime that felt undeserved",
+          "missing_criterion": "No property is given for what makes a chime sound 'confident' or what would make one 'deserved' versus 'undeserved.'"
+        },
+        {
+          "phrase": "Mistakes seemed catastrophic",
+          "missing_criterion": "No specific consequence or scale is named that would justify 'catastrophic' beyond the narrator's undefined anxiety."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

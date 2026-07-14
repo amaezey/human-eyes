@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-13T19:18:02.379364+00:00",
+  "documents": 35,
+  "judgments": 525,
+  "reviewed_judgments": 525,
+  "review_citation_issues": 5,
+  "cohorts": {
+    "established::human": {
+      "documents": 5,
+      "judgments": 75,
+      "flagged": 27,
+      "review_determinate_flagged": 24,
+      "review_unresolved": 46,
+      "review_verdicts": {
+        "undercall": 5,
+        "insufficient_evidence": 44,
+        "misclassified": 2,
+        "supported": 21,
+        "overcall": 3
+      }
+    },
+    "established::ai_fresh": {
+      "documents": 5,
+      "judgments": 75,
+      "flagged": 43,
+      "review_determinate_flagged": 28,
+      "review_unresolved": 24,
+      "review_verdicts": {
+        "misclassified": 6,
+        "supported": 43,
+        "overcall": 6,
+        "insufficient_evidence": 18,
+        "undercall": 2
+      }
+    },
+    "established::ai_rewrite": {
+      "documents": 5,
+      "judgments": 75,
+      "flagged": 34,
+      "review_determinate_flagged": 20,
+      "review_unresolved": 23,
+      "review_verdicts": {
+        "insufficient_evidence": 16,
+        "undercall": 2,
+        "supported": 44,
+        "misclassified": 7,
+        "overcall": 6
+      }
+    },
+    "pilot_additions::human": {
+      "documents": 10,
+      "judgments": 150,
+      "flagged": 30,
+      "review_determinate_flagged": 26,
+      "review_unresolved": 81,
+      "review_verdicts": {
+        "insufficient_evidence": 74,
+        "undercall": 9,
+        "supported": 56,
+        "overcall": 4,
+        "misclassified": 7
+      }
+    },
+    "pilot_additions::ai": {
+      "documents": 10,
+      "judgments": 150,
+      "flagged": 49,
+      "review_determinate_flagged": 16,
+      "review_unresolved": 60,
+      "review_verdicts": {
+        "overcall": 21,
+        "insufficient_evidence": 53,
+        "misclassified": 7,
+        "supported": 68,
+        "undercall": 1
+      }
+    }
+  },
+  "review_verdicts": {
+    "undercall": 19,
+    "insufficient_evidence": 205,
+    "misclassified": 29,
+    "supported": 232,
+    "overcall": 40
+  },
+  "records": {
+    "structural_monotony": {
+      "established::human::flagged": 3,
+      "review::undercall": 3,
+      "review::insufficient_evidence": 26,
+      "established::ai_fresh::flagged": 5,
+      "review::misclassified": 3,
+      "established::ai_rewrite::flagged": 5,
+      "pilot_additions::human::flagged": 2,
+      "pilot_additions::ai::flagged": 5,
+      "review::overcall": 1,
+      "review::supported": 2
+    },
+    "tonal_uniformity": {
+      "established::human::flagged": 2,
+      "review::insufficient_evidence": 24,
+      "review::overcall": 1,
+      "review::undercall": 7,
+      "established::ai_fresh::flagged": 4,
+      "review::supported": 2,
+      "established::ai_rewrite::flagged": 4,
+      "pilot_additions::human::flagged": 5,
+      "pilot_additions::ai::flagged": 10,
+      "review::misclassified": 1
+    },
+    "faux_specificity": {
+      "established::human::flagged": 1,
+      "review::insufficient_evidence": 12,
+      "review::supported": 19,
+      "established::ai_fresh::flagged": 4,
+      "established::ai_rewrite::flagged": 2,
+      "review::overcall": 4,
+      "pilot_additions::human::flagged": 1,
+      "pilot_additions::ai::flagged": 5
+    },
+    "neutrality_collapse": {
+      "established::human::flagged": 0,
+      "review::insufficient_evidence": 26,
+      "established::ai_fresh::flagged": 0,
+      "review::supported": 9,
+      "established::ai_rewrite::flagged": 0,
+      "pilot_additions::human::flagged": 0,
+      "pilot_additions::ai::flagged": 0
+    },
+    "even_jargon_distribution": {
+      "established::human::flagged": 0,
+      "review::insufficient_evidence": 15,
+      "established::ai_fresh::flagged": 0,
+      "review::misclassified": 17,
+      "review::supported": 1,
+      "established::ai_rewrite::flagged": 0,
+      "pilot_additions::human::flagged": 0,
+      "pilot_additions::ai::flagged": 1,
+      "review::undercall": 1,
+      "review::overcall": 1
+    },
+    "forced_synesthesia": {
+      "established::human::flagged": 1,
+      "review::insufficient_evidence": 15,
+      "review::misclassified": 2,
+      "established::ai_fresh::flagged": 2,
+      "review::supported": 18,
+      "established::ai_rewrite::flagged": 0,
+      "pilot_additions::human::flagged": 0,
+      "pilot_additions::ai::flagged": 0
+    },
+    "generic_metaphors": {
+      "established::human::flagged": 4,
+      "review::insufficient_evidence": 3,
+      "review::supported": 26,
+      "established::ai_fresh::flagged": 5,
+      "established::ai_rewrite::flagged": 3,
+      "review::undercall": 3,
+      "pilot_additions::human::flagged": 3,
+      "pilot_additions::ai::flagged": 6,
+      "review::overcall": 3
+    },
+    "referential_clarity": {
+      "established::human::flagged": 0,
+      "review::insufficient_evidence": 14,
+      "established::ai_fresh::flagged": 2,
+      "review::supported": 18,
+      "review::misclassified": 1,
+      "review::undercall": 1,
+      "established::ai_rewrite::flagged": 1,
+      "pilot_additions::human::flagged": 1,
+      "pilot_additions::ai::flagged": 1,
+      "review::overcall": 1
+    },
+    "formulaic_parallelism": {
+      "established::human::flagged": 4,
+      "review::insufficient_evidence": 7,
+      "review::supported": 23,
+      "established::ai_fresh::flagged": 5,
+      "established::ai_rewrite::flagged": 4,
+      "pilot_additions::human::flagged": 2,
+      "pilot_additions::ai::flagged": 5,
+      "review::overcall": 5
+    },
+    "semantic_redundancy": {
+      "established::human::flagged": 4,
+      "review::insufficient_evidence": 6,
+      "review::overcall": 11,
+      "review::supported": 17,
+      "established::ai_fresh::flagged": 4,
+      "review::undercall": 1,
+      "established::ai_rewrite::flagged": 5,
+      "pilot_additions::human::flagged": 2,
+      "pilot_additions::ai::flagged": 6
+    },
+    "underspecified_language": {
+      "established::human::flagged": 4,
+      "review::undercall": 1,
+      "review::supported": 29,
+      "established::ai_fresh::flagged": 5,
+      "established::ai_rewrite::flagged": 5,
+      "pilot_additions::human::flagged": 10,
+      "pilot_additions::ai::flagged": 9,
+      "review::overcall": 4,
+      "review::insufficient_evidence": 1
+    },
+    "context_leakage": {
+      "established::human::flagged": 2,
+      "review::undercall": 1,
+      "review::overcall": 4,
+      "review::insufficient_evidence": 13,
+      "review::supported": 17,
+      "established::ai_fresh::flagged": 2,
+      "established::ai_rewrite::flagged": 1,
+      "pilot_additions::human::flagged": 2,
+      "pilot_additions::ai::flagged": 0
+    },
+    "performed_candour": {
+      "established::human::flagged": 1,
+      "review::insufficient_evidence": 14,
+      "review::supported": 20,
+      "established::ai_fresh::flagged": 2,
+      "established::ai_rewrite::flagged": 2,
+      "review::overcall": 1,
+      "pilot_additions::human::flagged": 1,
+      "pilot_additions::ai::flagged": 0
+    },
+    "vacuous_connection": {
+      "established::human::flagged": 1,
+      "review::insufficient_evidence": 16,
+      "review::supported": 15,
+      "established::ai_fresh::flagged": 3,
+      "review::overcall": 4,
+      "established::ai_rewrite::flagged": 1,
+      "pilot_additions::human::flagged": 1,
+      "pilot_additions::ai::flagged": 0
+    },
+    "genre_specific": {
+      "established::human::flagged": 0,
+      "review::insufficient_evidence": 13,
+      "review::misclassified": 5,
+      "review::supported": 16,
+      "established::ai_fresh::flagged": 0,
+      "established::ai_rewrite::flagged": 1,
+      "pilot_additions::human::flagged": 0,
+      "pilot_additions::ai::flagged": 1,
+      "review::undercall": 1
+    }
+  }
+}

@@ -1,0 +1,3142 @@
+{
+  "schema_version": "2",
+  "coverage_mode": "full",
+  "audit_status": "complete",
+  "programmatic_checks": [
+    {
+      "id": "no-em-dashes",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "outside—or",
+          "(pro)—the",
+          "impact—NASA",
+          "on—but",
+          "space—far",
+          "terms—“going",
+          "God”—might",
+          "valued—predictability",
+          "reliability—translated",
+          "exploration—particularly",
+          "ascent—resembles",
+          "program—linked",
+          "casualties—is",
+          "grief—specifically,",
+          "Karen—and",
+          "gesture—Armstrong",
+          "crater—is",
+          "relief—something"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "outside—or",
+            "(pro)—the",
+            "impact—NASA",
+            "on—but",
+            "space—far",
+            "terms—“going",
+            "God”—might",
+            "valued—predictability",
+            "reliability—translated",
+            "exploration—particularly",
+            "ascent—resembles",
+            "program—linked",
+            "casualties—is",
+            "grief—specifically,",
+            "Karen—and",
+            "gesture—Armstrong",
+            "crater—is",
+            "relief—something"
+          ],
+          "evidence": "Found 18 em dash(es)",
+          "candidates": [
+            {
+              "text": "outside—or",
+              "start": 1142,
+              "end": 1152,
+              "quoted": false
+            },
+            {
+              "text": "(pro)—the",
+              "start": 1181,
+              "end": 1190,
+              "quoted": false
+            },
+            {
+              "text": "impact—NASA",
+              "start": 2948,
+              "end": 2959,
+              "quoted": false
+            },
+            {
+              "text": "on—but",
+              "start": 2988,
+              "end": 2994,
+              "quoted": false
+            },
+            {
+              "text": "space—far",
+              "start": 3693,
+              "end": 3702,
+              "quoted": false
+            },
+            {
+              "text": "terms—“going",
+              "start": 3852,
+              "end": 3864,
+              "quoted": false
+            },
+            {
+              "text": "God”—might",
+              "start": 3869,
+              "end": 3879,
+              "quoted": false
+            },
+            {
+              "text": "valued—predictability",
+              "start": 4167,
+              "end": 4188,
+              "quoted": false
+            },
+            {
+              "text": "reliability—translated",
+              "start": 4193,
+              "end": 4215,
+              "quoted": false
+            },
+            {
+              "text": "exploration—particularly",
+              "start": 5822,
+              "end": 5846,
+              "quoted": false
+            },
+            {
+              "text": "ascent—resembles",
+              "start": 5853,
+              "end": 5869,
+              "quoted": false
+            },
+            {
+              "text": "program—linked",
+              "start": 7096,
+              "end": 7110,
+              "quoted": false
+            },
+            {
+              "text": "casualties—is",
+              "start": 7137,
+              "end": 7150,
+              "quoted": false
+            },
+            {
+              "text": "grief—specifically,",
+              "start": 8384,
+              "end": 8403,
+              "quoted": false
+            },
+            {
+              "text": "Karen—and",
+              "start": 8430,
+              "end": 8439,
+              "quoted": false
+            },
+            {
+              "text": "gesture—Armstrong",
+              "start": 8897,
+              "end": 8914,
+              "quoted": false
+            },
+            {
+              "text": "crater—is",
+              "start": 8944,
+              "end": 8953,
+              "quoted": false
+            },
+            {
+              "text": "relief—something",
+              "start": 9366,
+              "end": 9382,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 18,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": true,
+          "context_reason": "formal_report",
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "outside—or",
+              "start": 1142,
+              "end": 1152,
+              "quoted": false
+            },
+            {
+              "text": "(pro)—the",
+              "start": 1181,
+              "end": 1190,
+              "quoted": false
+            },
+            {
+              "text": "impact—NASA",
+              "start": 2948,
+              "end": 2959,
+              "quoted": false
+            },
+            {
+              "text": "on—but",
+              "start": 2988,
+              "end": 2994,
+              "quoted": false
+            },
+            {
+              "text": "space—far",
+              "start": 3693,
+              "end": 3702,
+              "quoted": false
+            },
+            {
+              "text": "terms—“going",
+              "start": 3852,
+              "end": 3864,
+              "quoted": false
+            },
+            {
+              "text": "God”—might",
+              "start": 3869,
+              "end": 3879,
+              "quoted": false
+            },
+            {
+              "text": "valued—predictability",
+              "start": 4167,
+              "end": 4188,
+              "quoted": false
+            },
+            {
+              "text": "reliability—translated",
+              "start": 4193,
+              "end": 4215,
+              "quoted": false
+            },
+            {
+              "text": "exploration—particularly",
+              "start": 5822,
+              "end": 5846,
+              "quoted": false
+            },
+            {
+              "text": "ascent—resembles",
+              "start": 5853,
+              "end": 5869,
+              "quoted": false
+            },
+            {
+              "text": "program—linked",
+              "start": 7096,
+              "end": 7110,
+              "quoted": false
+            },
+            {
+              "text": "casualties—is",
+              "start": 7137,
+              "end": 7150,
+              "quoted": false
+            },
+            {
+              "text": "grief—specifically,",
+              "start": 8384,
+              "end": 8403,
+              "quoted": false
+            },
+            {
+              "text": "Karen—and",
+              "start": 8430,
+              "end": 8439,
+              "quoted": false
+            },
+            {
+              "text": "gesture—Armstrong",
+              "start": 8897,
+              "end": 8914,
+              "quoted": false
+            },
+            {
+              "text": "crater—is",
+              "start": 8944,
+              "end": 8953,
+              "quoted": false
+            },
+            {
+              "text": "relief—something",
+              "start": 9366,
+              "end": 9382,
+              "quoted": false
+            }
+          ],
+          "match_count": 18,
+          "context_gate": {
+            "applied": true,
+            "raw_evidence": "Found 18 em dash(es)",
+            "suppression_reason": "formal_report",
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "punctuation_signal",
+          "guidance": "Treat as a strong 2026 AI-style signal. May be preserved only at Balanced depth with explicit disclosure; All requires removal."
+        }
+      }
+    },
+    {
+      "id": "no-ai-vocabulary-clustering",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max AI words per paragraph: 0 (0 total in text)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max AI words per paragraph: 0 (0 total in text)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "vocabulary_cluster",
+          "guidance": "Fix clustered generic AI vocabulary; individual words may be fine in context."
+        }
+      }
+    },
+    {
+      "id": "no-nonliteral-land-surface",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No nonliteral land/surface constructions found",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No nonliteral land/surface constructions found",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "metaphor_residue",
+          "guidance": "Fix nonliteral land/surface phrasing; replace with the concrete action or claim."
+        }
+      }
+    },
+    {
+      "id": "overall-signal-stacking",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Signal stacking",
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {
+          "score": 4,
+          "threshold": 4
+        },
+        "raw": {
+          "score": 4,
+          "threshold": 4,
+          "components": [
+            "contrived contrast framing",
+            "section scaffolding"
+          ],
+          "vocabulary_signal_stacking": {
+            "points": 1,
+            "reasons": [
+              "kobak_style=27 distinct/29.1"
+            ],
+            "worst_generic": 0,
+            "gptzero_matches": [],
+            "kobak_style_distinct": 27,
+            "kobak_style_density": 29.078014184397162,
+            "kobak_style_sample": [
+              "exploration",
+              "emphasises",
+              "hold",
+              "impact",
+              "lies",
+              "particularly",
+              "acknowledging",
+              "address",
+              "addresses",
+              "analysis"
+            ]
+          },
+          "evidence": "Overall signal stacking 4/4 from [contrived contrast framing, section scaffolding]; vocab=1 point(s), worst_generic=0, gptzero=[], kobak=27 distinct/29.1/1000, sample=['exploration', 'emphasises', 'hold', 'impact', 'lies', 'particularly', 'acknowledging', 'address', 'addresses', 'analysis']",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": true,
+          "threshold_met": true,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "aggregate",
+          "component_signals": [
+            "contrived contrast framing",
+            "section scaffolding"
+          ],
+          "component_count": 2,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Overall signal stacking 4/4 from [contrived contrast framing, section scaffolding]; vocab=1 point(s), worst_generic=0, gptzero=[], kobak=27 distinct/29.1/1000, sample=['exploration', 'emphasises', 'hold', 'impact', 'lies', 'particularly', 'acknowledging', 'address', 'addresses', 'analysis']",
+            "suppression_reason": null,
+            "effective_threshold": 4
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "evidence_role": "signal_stacking",
+          "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict."
+        }
+      }
+    },
+    {
+      "id": "no-manufactured-insight",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No manufactured insight phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No manufactured insight phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice."
+        }
+      }
+    },
+    {
+      "id": "no-performed-candour",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No performed-candour frames",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No performed-candour frames",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "candour_frame",
+          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text."
+        }
+      }
+    },
+    {
+      "id": "no-staccato-sequences",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "Pittsburgh, 2019.",
+          "First Man.",
+          "Directed by Damien Chazelle.",
+          "Universal/Amblin/DreamWorks, 2018."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "Pittsburgh, 2019.",
+            "First Man.",
+            "Directed by Damien Chazelle.",
+            "Universal/Amblin/DreamWorks, 2018."
+          ],
+          "evidence": "Found sequence of 4 consecutive short sentences",
+          "candidates": [
+            {
+              "text": "Pittsburgh, 2019.",
+              "start": 984,
+              "end": 1001,
+              "quoted": false
+            },
+            {
+              "text": "First Man.",
+              "start": 1003,
+              "end": 1013,
+              "quoted": false
+            },
+            {
+              "text": "Directed by Damien Chazelle.",
+              "start": 1014,
+              "end": 1042,
+              "quoted": false
+            },
+            {
+              "text": "Universal/Amblin/DreamWorks, 2018.",
+              "start": 1043,
+              "end": 1077,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 4,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_run": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "Pittsburgh, 2019.",
+              "start": 984,
+              "end": 1001,
+              "quoted": false
+            },
+            {
+              "text": "First Man.",
+              "start": 1003,
+              "end": 1013,
+              "quoted": false
+            },
+            {
+              "text": "Directed by Damien Chazelle.",
+              "start": 1014,
+              "end": 1042,
+              "quoted": false
+            },
+            {
+              "text": "Universal/Amblin/DreamWorks, 2018.",
+              "start": 1043,
+              "end": 1077,
+              "quoted": false
+            }
+          ],
+          "match_count": 4,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found sequence of 4 consecutive short sentences",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_run": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm."
+        }
+      }
+    },
+    {
+      "id": "no-anaphora",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Max anaphora run: 1",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max anaphora run: 1",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix mechanical repetition; recommend preserving deliberate rhetoric or literary patterning."
+        }
+      }
+    },
+    {
+      "id": "no-collaborative-artifacts",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No collaborative artifacts",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No collaborative artifacts",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "assistant_residue",
+          "guidance": "Fix at every depth; this is assistant residue, not authorial style."
+        }
+      }
+    },
+    {
+      "id": "no-curly-quotes",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "Destined for the Stars: Faith, Future, and America’s Final Frontier.",
+          "⸻ “Profane” is a revealing word.",
+          "A striking example came in December 1968, when the crew of Apollo 8, orbiting the moon, broadcast a message to “all the people back on earth” before reading aloud from Genesis 1.",
+          "The Christian Century described itself as “struck dumb,” while flight director Gene Kranz later recalled feeling “the presence of creation and the Creator” as he listened.",
+          "Madalyn Murray O’Hair, a central figure in the earlier school prayer case, protested the broadcast and gathered tens of thousands of supporters.",
+          "After the symbolic impact of Armstrong’s first step, public interest declined sharply through the 1970s.",
+          "He notes that between 1968 and 1975 NASA received more than eight million letters and signatures defending astronauts’ right to religious expression in space—far exceeding correspondence on any other topic.",
+          "Framing space exploration in explicitly religious terms—“going for God”—might have renewed public engagement.",
+          "This raises a gap in Oliver’s account: the role of science fiction.",
+          "The term “fan” itself shares linguistic roots with temple imagery.",
+          "Newell details Bonestell’s career, including his collaborations with Willy Ley and his contributions to the film Destination Moon.",
+          "Von Braun’s involvement with the SS and the V-2 rocket program—linked to forced labour and mass casualties—is documented, though not foregrounded in her account.",
+          "Newell returns, in conclusion, to Bonestell’s imagery as a source of renewed purpose.",
+          "Based on James Hansen’s biography, the film reconstructs the technical environment of Apollo while concentrating on Neil Armstrong’s internal life.",
+          "Chazelle’s direction emphasises confinement and tension.",
+          "The film’s closing gesture—Armstrong leaving a memento in a lunar crater—is speculative but thematically consistent."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "Destined for the Stars: Faith, Future, and America’s Final Frontier.",
+            "⸻ “Profane” is a revealing word.",
+            "A striking example came in December 1968, when the crew of Apollo 8, orbiting the moon, broadcast a message to “all the people back on earth” before reading aloud from Genesis 1.",
+            "The Christian Century described itself as “struck dumb,” while flight director Gene Kranz later recalled feeling “the presence of creation and the Creator” as he listened.",
+            "Madalyn Murray O’Hair, a central figure in the earlier school prayer case, protested the broadcast and gathered tens of thousands of supporters.",
+            "After the symbolic impact of Armstrong’s first step, public interest declined sharply through the 1970s.",
+            "He notes that between 1968 and 1975 NASA received more than eight million letters and signatures defending astronauts’ right to religious expression in space—far exceeding correspondence on any other topic.",
+            "Framing space exploration in explicitly religious terms—“going for God”—might have renewed public engagement.",
+            "This raises a gap in Oliver’s account: the role of science fiction.",
+            "The term “fan” itself shares linguistic roots with temple imagery.",
+            "Newell details Bonestell’s career, including his collaborations with Willy Ley and his contributions to the film Destination Moon.",
+            "Von Braun’s involvement with the SS and the V-2 rocket program—linked to forced labour and mass casualties—is documented, though not foregrounded in her account.",
+            "Newell returns, in conclusion, to Bonestell’s imagery as a source of renewed purpose.",
+            "Based on James Hansen’s biography, the film reconstructs the technical environment of Apollo while concentrating on Neil Armstrong’s internal life.",
+            "Chazelle’s direction emphasises confinement and tension.",
+            "The film’s closing gesture—Armstrong leaving a memento in a lunar crater—is speculative but thematically consistent."
+          ],
+          "evidence": "Found 24 curly quote(s)",
+          "candidates": [
+            {
+              "text": "Destined for the Stars: Faith, Future, and America’s Final Frontier.",
+              "start": 915,
+              "end": 983,
+              "quoted": false
+            },
+            {
+              "text": "⸻ “Profane” is a revealing word.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "A striking example came in December 1968, when the crew of Apollo 8, orbiting the moon, broadcast a message to “all the people back on earth” before reading aloud from Genesis 1.",
+              "start": 2318,
+              "end": 2496,
+              "quoted": false
+            },
+            {
+              "text": "The Christian Century described itself as “struck dumb,” while flight director Gene Kranz later recalled feeling “the presence of creation and the Creator” as he listened.",
+              "start": 2541,
+              "end": 2712,
+              "quoted": false
+            },
+            {
+              "text": "Madalyn Murray O’Hair, a central figure in the earlier school prayer case, protested the broadcast and gathered tens of thousands of supporters.",
+              "start": 2755,
+              "end": 2899,
+              "quoted": false
+            },
+            {
+              "text": "After the symbolic impact of Armstrong’s first step, public interest declined sharply through the 1970s.",
+              "start": 3226,
+              "end": 3330,
+              "quoted": false
+            },
+            {
+              "text": "He notes that between 1968 and 1975 NASA received more than eight million letters and signatures defending astronauts’ right to religious expression in space—far exceeding correspondence on any other topic.",
+              "start": 3541,
+              "end": 3747,
+              "quoted": false
+            },
+            {
+              "text": "Framing space exploration in explicitly religious terms—“going for God”—might have renewed public engagement.",
+              "start": 3802,
+              "end": 3911,
+              "quoted": false
+            },
+            {
+              "text": "This raises a gap in Oliver’s account: the role of science fiction.",
+              "start": 3974,
+              "end": 4041,
+              "quoted": false
+            },
+            {
+              "text": "The term “fan” itself shares linguistic roots with temple imagery.",
+              "start": 5272,
+              "end": 5338,
+              "quoted": false
+            },
+            {
+              "text": "Newell details Bonestell’s career, including his collaborations with Willy Ley and his contributions to the film Destination Moon.",
+              "start": 6568,
+              "end": 6698,
+              "quoted": false
+            },
+            {
+              "text": "Von Braun’s involvement with the SS and the V-2 rocket program—linked to forced labour and mass casualties—is documented, though not foregrounded in her account.",
+              "start": 7041,
+              "end": 7202,
+              "quoted": false
+            },
+            {
+              "text": "Newell returns, in conclusion, to Bonestell’s imagery as a source of renewed purpose.",
+              "start": 7613,
+              "end": 7698,
+              "quoted": false
+            },
+            {
+              "text": "Based on James Hansen’s biography, the film reconstructs the technical environment of Apollo while concentrating on Neil Armstrong’s internal life.",
+              "start": 8211,
+              "end": 8358,
+              "quoted": false
+            },
+            {
+              "text": "Chazelle’s direction emphasises confinement and tension.",
+              "start": 8540,
+              "end": 8596,
+              "quoted": false
+            },
+            {
+              "text": "The film’s closing gesture—Armstrong leaving a memento in a lunar crater—is speculative but thematically consistent.",
+              "start": 8878,
+              "end": 8994,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 16,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "Destined for the Stars: Faith, Future, and America’s Final Frontier.",
+              "start": 915,
+              "end": 983,
+              "quoted": false
+            },
+            {
+              "text": "⸻ “Profane” is a revealing word.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "A striking example came in December 1968, when the crew of Apollo 8, orbiting the moon, broadcast a message to “all the people back on earth” before reading aloud from Genesis 1.",
+              "start": 2318,
+              "end": 2496,
+              "quoted": false
+            },
+            {
+              "text": "The Christian Century described itself as “struck dumb,” while flight director Gene Kranz later recalled feeling “the presence of creation and the Creator” as he listened.",
+              "start": 2541,
+              "end": 2712,
+              "quoted": false
+            },
+            {
+              "text": "Madalyn Murray O’Hair, a central figure in the earlier school prayer case, protested the broadcast and gathered tens of thousands of supporters.",
+              "start": 2755,
+              "end": 2899,
+              "quoted": false
+            },
+            {
+              "text": "After the symbolic impact of Armstrong’s first step, public interest declined sharply through the 1970s.",
+              "start": 3226,
+              "end": 3330,
+              "quoted": false
+            },
+            {
+              "text": "He notes that between 1968 and 1975 NASA received more than eight million letters and signatures defending astronauts’ right to religious expression in space—far exceeding correspondence on any other topic.",
+              "start": 3541,
+              "end": 3747,
+              "quoted": false
+            },
+            {
+              "text": "Framing space exploration in explicitly religious terms—“going for God”—might have renewed public engagement.",
+              "start": 3802,
+              "end": 3911,
+              "quoted": false
+            },
+            {
+              "text": "This raises a gap in Oliver’s account: the role of science fiction.",
+              "start": 3974,
+              "end": 4041,
+              "quoted": false
+            },
+            {
+              "text": "The term “fan” itself shares linguistic roots with temple imagery.",
+              "start": 5272,
+              "end": 5338,
+              "quoted": false
+            },
+            {
+              "text": "Newell details Bonestell’s career, including his collaborations with Willy Ley and his contributions to the film Destination Moon.",
+              "start": 6568,
+              "end": 6698,
+              "quoted": false
+            },
+            {
+              "text": "Von Braun’s involvement with the SS and the V-2 rocket program—linked to forced labour and mass casualties—is documented, though not foregrounded in her account.",
+              "start": 7041,
+              "end": 7202,
+              "quoted": false
+            },
+            {
+              "text": "Newell returns, in conclusion, to Bonestell’s imagery as a source of renewed purpose.",
+              "start": 7613,
+              "end": 7698,
+              "quoted": false
+            },
+            {
+              "text": "Based on James Hansen’s biography, the film reconstructs the technical environment of Apollo while concentrating on Neil Armstrong’s internal life.",
+              "start": 8211,
+              "end": 8358,
+              "quoted": false
+            },
+            {
+              "text": "Chazelle’s direction emphasises confinement and tension.",
+              "start": 8540,
+              "end": 8596,
+              "quoted": false
+            },
+            {
+              "text": "The film’s closing gesture—Armstrong leaving a memento in a lunar crater—is speculative but thematically consistent.",
+              "start": 8878,
+              "end": 8994,
+              "quoted": false
+            }
+          ],
+          "match_count": 16,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 24 curly quote(s)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "typographic_signal",
+          "guidance": "Normalise in All/plain output; recommend preserving in sourced literary or typographic text."
+        }
+      }
+    },
+    {
+      "id": "sentence-length-variance",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Sentence length stdev: 9.7 (target: >4)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1467,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Sentence length stdev: 9.7 (target: >4)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms."
+        }
+      }
+    },
+    {
+      "id": "no-promotional-language",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No promotional language",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No promotional language",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "hype_language",
+          "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm."
+        }
+      }
+    },
+    {
+      "id": "no-significance-inflation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No significance inflation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No significance inflation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "importance_inflation",
+          "guidance": "Fix inflated importance unless the source genuinely argues significance."
+        }
+      }
+    },
+    {
+      "id": "no-negative-parallelisms",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "not only in technological achievement but",
+          "becomes less a national triumph than a"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "not only in technological achievement but",
+            "becomes less a national triumph than a"
+          ],
+          "evidence": "Found 2 contrived contrast/reframe pattern(s)",
+          "candidates": [
+            {
+              "text": "not only in technological achievement but",
+              "start": 9493,
+              "end": 9534,
+              "quoted": false
+            },
+            {
+              "text": "becomes less a national triumph than a",
+              "start": 8481,
+              "end": 8519,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 2,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "not only in technological achievement but",
+              "start": 9493,
+              "end": 9534,
+              "quoted": false
+            },
+            {
+              "text": "becomes less a national triumph than a",
+              "start": 8481,
+              "end": 8519,
+              "quoted": false
+            }
+          ],
+          "match_count": 2,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 2 contrived contrast/reframe pattern(s)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced."
+        }
+      }
+    },
+    {
+      "id": "no-copula-avoidance",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "functions as"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "functions as"
+          ],
+          "evidence": "Found 1: ['functions as']",
+          "candidates": [
+            {
+              "text": "functions as",
+              "start": 5196,
+              "end": 5208,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "functions as",
+              "start": 5196,
+              "end": 5208,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 1: ['functions as']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "grammar_substitution",
+          "guidance": "Usually simplify at Balanced and All; recommend preserving if the construction is idiomatic or technical."
+        }
+      }
+    },
+    {
+      "id": "no-filler-phrases",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No filler phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No filler phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "filler_phrase",
+          "guidance": "Fix stock filler at Balanced and All; at Balanced, disclose and remove unless it belongs to quoted or intentionally casual voice."
+        }
+      }
+    },
+    {
+      "id": "no-generic-conclusions",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "provenance_residue",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No generic conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No generic conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue",
+            "synthetic_significance"
+          ],
+          "evidence_role": "generic_closure",
+          "guidance": "Fix at every depth unless quoted from source text."
+        }
+      }
+    },
+    {
+      "id": "no-false-concession-hedges",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No false concession hedges",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No false concession hedges",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix fake both-sides framing at Balanced and All; preserve only if the piece actually argues both positions with evidence."
+        }
+      }
+    },
+    {
+      "id": "no-placeholder-residue",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No placeholder residue",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No placeholder residue",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "template_residue",
+          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue."
+        }
+      }
+    },
+    {
+      "id": "no-soft-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Soft scaffold phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Soft scaffold phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "explainer_scaffold",
+          "guidance": "Fix at Balanced and All; these phrases usually mark generated explainer structure rather than content."
+        }
+      }
+    },
+    {
+      "id": "no-orphaned-demonstratives",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Vague demonstrative subjects: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Vague demonstrative subjects: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Review repeated 'This/That highlights...' starts; replace vague subjects with concrete nouns when the antecedent is unclear."
+        }
+      }
+    },
+    {
+      "id": "no-forced-triads",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "secular science, engineering, and material capability",
+          "school prayer case, protested the broadcast and gathered tens",
+          "By contrast, the acquisition and expansion",
+          "ambition, grief, and unresolved moral inheritance"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "secular science, engineering, and material capability",
+            "school prayer case, protested the broadcast and gathered tens",
+            "By contrast, the acquisition and expansion",
+            "ambition, grief, and unresolved moral inheritance"
+          ],
+          "evidence": "Found 4 triad(s): ['secular science, engineering, and material capability', 'school prayer case, protested the broadcast and gathered tens', 'By contrast, the acquisition and expansion', 'ambition, grief, and unresolved moral inheritance']",
+          "candidates": [
+            {
+              "text": "secular science, engineering, and material capability",
+              "start": 1598,
+              "end": 1651,
+              "quoted": false
+            },
+            {
+              "text": "school prayer case, protested the broadcast and gathered tens",
+              "start": 2810,
+              "end": 2871,
+              "quoted": false
+            },
+            {
+              "text": "By contrast, the acquisition and expansion",
+              "start": 4721,
+              "end": 4763,
+              "quoted": false
+            },
+            {
+              "text": "ambition, grief, and unresolved moral inheritance",
+              "start": 9740,
+              "end": 9789,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 4,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "secular science, engineering, and material capability",
+              "start": 1598,
+              "end": 1651,
+              "quoted": false
+            },
+            {
+              "text": "school prayer case, protested the broadcast and gathered tens",
+              "start": 2810,
+              "end": 2871,
+              "quoted": false
+            },
+            {
+              "text": "By contrast, the acquisition and expansion",
+              "start": 4721,
+              "end": 4763,
+              "quoted": false
+            },
+            {
+              "text": "ambition, grief, and unresolved moral inheritance",
+              "start": 9740,
+              "end": 9789,
+              "quoted": false
+            }
+          ],
+          "match_count": 4,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 4 triad(s): ['secular science, engineering, and material capability', 'school prayer case, protested the broadcast and gathered tens', 'By contrast, the acquisition and expansion', 'ambition, grief, and unresolved moral inheritance']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads."
+        }
+      }
+    },
+    {
+      "id": "no-superficial-ing",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No superficial -ing phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No superficial -ing phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "analysis_substitution",
+          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning."
+        }
+      }
+    },
+    {
+      "id": "no-ghost-spectral-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Ghost/spectral words: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Ghost/spectral words: 0",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose."
+        }
+      }
+    },
+    {
+      "id": "no-quietness-obsession",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Quietness words: 2",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Quietness words: 2",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix generic quietness mood; recommend preserving if quietness is the actual subject or voice."
+        }
+      }
+    },
+    {
+      "id": "no-rhetorical-questions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Rhetorical questions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rhetorical questions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_template",
+          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-lists",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/80)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_items": 8,
+            "minimum_blocks": 2,
+            "minimum_line_ratio": 0.3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1467,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/80)",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_items": 8,
+              "minimum_blocks": 2,
+              "minimum_line_ratio": 0.3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "listification",
+          "guidance": "Fix unnecessary listification; recommend preserving reference, instructional, or interview structure."
+        }
+      }
+    },
+    {
+      "id": "no-unicode-flair",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "provenance_residue",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Decorative symbols/shortcodes: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Decorative symbols/shortcodes: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "genre_misfit"
+          ],
+          "evidence_role": "formatting_residue",
+          "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source."
+        }
+      }
+    },
+    {
+      "id": "no-dramatic-transitions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dramatic transitions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dramatic transitions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "narrative_template",
+          "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned."
+        }
+      }
+    },
+    {
+      "id": "no-formulaic-openers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No formulaic openers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No formulaic openers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "formulaic_structure",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it matches the source genre."
+        }
+      }
+    },
+    {
+      "id": "no-signposted-conclusions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No signposted conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No signposted conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "structural_signpost",
+          "guidance": "Fix generic signposts in prose; recommend preserving academic/instructional structure when useful."
+        }
+      }
+    },
+    {
+      "id": "no-parenthetical-headings",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No parenthetical headings",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No parenthetical headings",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "heading_structure",
+          "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body."
+        }
+      }
+    },
+    {
+      "id": "no-corporate-ai-speak",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No corporate AI speak",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No corporate AI speak",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "domain_cliche",
+          "guidance": "Fix at every depth; recommend preserving only when quoting corporate source language."
+        }
+      }
+    },
+    {
+      "id": "no-this-chains",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max 'This [verb]' run: 1",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1467,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max 'This [verb]' run: 1",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-hedging",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Hedging constructions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Hedging constructions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty."
+        }
+      }
+    },
+    {
+      "id": "no-countdown-negation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "synthetic_significance",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No countdown negation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1467,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No countdown negation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix generic reveal structures; recommend preserving deliberate rhetoric only with strong reason."
+        }
+      }
+    },
+    {
+      "id": "no-negation-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Negation markers: 7 (4.8 per 1000 words)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1467,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Negation markers: 7 (4.8 per 1000 words)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_density",
+          "guidance": "Review dense negation as a style signal; preserve polemic or technical qualification when purposeful."
+        }
+      }
+    },
+    {
+      "id": "paragraph-length-uniformity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Paragraph length CV: 0.27 across 21 paragraphs",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_paragraphs": 7,
+            "maximum_cv": 0.18
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1467,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Paragraph length CV: 0.27 across 21 paragraphs",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_paragraphs": 7,
+              "maximum_cv": 0.18
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "layout_rhythm",
+          "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template."
+        }
+      }
+    },
+    {
+      "id": "no-tidy-paragraph-endings",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "The result is a study of isolation rather than heroism."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "The result is a study of isolation rather than heroism."
+          ],
+          "evidence": "Tidy paragraph endings: 1",
+          "candidates": [
+            {
+              "text": "The result is a study of isolation rather than heroism.",
+              "start": 8821,
+              "end": 8876,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "The result is a study of isolation rather than heroism.",
+              "start": 8821,
+              "end": 8876,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Tidy paragraph endings: 1",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "paragraph_closure",
+          "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn."
+        }
+      }
+    },
+    {
+      "id": "no-bland-critical-template",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Bland critical template phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bland critical template phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "evidence_role": "genre_cliche",
+          "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work."
+        }
+      }
+    },
+    {
+      "id": "no-rubric-echoing",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Rubric echo phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rubric echo phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "voice_erasure"
+          ],
+          "evidence_role": "assignment_residue",
+          "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric."
+        }
+      }
+    },
+    {
+      "id": "vocabulary-diversity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Type-token ratio: 0.510 (707 unique / 1387 total, target: >0.40)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1467,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Type-token ratio: 0.510 (707 unique / 1387 total, target: >0.40)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "lexical_distribution",
+          "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately."
+        }
+      }
+    },
+    {
+      "id": "no-triad-density",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "secular science, engineering, and material capability",
+          "school prayer case, protested the broadcast and gathered tens",
+          "By contrast, the acquisition and expansion",
+          "ambition, grief, and unresolved moral inheritance"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "candidate_count": 4,
+          "matches": [
+            "secular science, engineering, and material capability",
+            "school prayer case, protested the broadcast and gathered tens",
+            "By contrast, the acquisition and expansion",
+            "ambition, grief, and unresolved moral inheritance"
+          ],
+          "evidence": "Found 4 triad(s): ['secular science, engineering, and material capability', 'school prayer case, protested the broadcast and gathered tens', 'By contrast, the acquisition and expansion', 'ambition, grief, and unresolved moral inheritance']",
+          "candidates": [
+            {
+              "text": "secular science, engineering, and material capability",
+              "start": 1598,
+              "end": 1651,
+              "quoted": false
+            },
+            {
+              "text": "school prayer case, protested the broadcast and gathered tens",
+              "start": 2810,
+              "end": 2871,
+              "quoted": false
+            },
+            {
+              "text": "By contrast, the acquisition and expansion",
+              "start": 4721,
+              "end": 4763,
+              "quoted": false
+            },
+            {
+              "text": "ambition, grief, and unresolved moral inheritance",
+              "start": 9740,
+              "end": 9789,
+              "quoted": false
+            }
+          ],
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_words": 300,
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "secular science, engineering, and material capability",
+              "start": 1598,
+              "end": 1651,
+              "quoted": false
+            },
+            {
+              "text": "school prayer case, protested the broadcast and gathered tens",
+              "start": 2810,
+              "end": 2871,
+              "quoted": false
+            },
+            {
+              "text": "By contrast, the acquisition and expansion",
+              "start": 4721,
+              "end": 4763,
+              "quoted": false
+            },
+            {
+              "text": "ambition, grief, and unresolved moral inheritance",
+              "start": 9740,
+              "end": 9789,
+              "quoted": false
+            }
+          ],
+          "match_count": 4,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 4 triad(s): ['secular science, engineering, and material capability', 'school prayer case, protested the broadcast and gathered tens', 'By contrast, the acquisition and expansion', 'ambition, grief, and unresolved moral inheritance']",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_words": 300,
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical."
+        }
+      }
+    },
+    {
+      "id": "no-section-scaffolding",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "⸻"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "⸻"
+          ],
+          "evidence": "'⸻' repeated 3 times",
+          "candidates": [
+            {
+              "text": "⸻",
+              "start": 1079,
+              "end": 1080,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 1,
+          "sample_size": 1467,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "'⸻' repeated 3 times",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "repeated_template",
+          "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material."
+        }
+      }
+    },
+    {
+      "id": "no-notability-claims",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No notability claims",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No notability claims",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "notability_inflation",
+          "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing."
+        }
+      }
+    },
+    {
+      "id": "no-vague-attributions",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No vague attributions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No vague attributions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "attribution_vagueness",
+          "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote."
+        }
+      }
+    },
+    {
+      "id": "no-boldface-overuse",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Bold spans in prose: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bold spans in prose: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "emphasis_pattern",
+          "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers."
+        }
+      }
+    },
+    {
+      "id": "no-inline-header-lists",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items with bolded headers: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items with bolded headers: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "list_template",
+          "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list."
+        }
+      }
+    },
+    {
+      "id": "no-compound-modifier-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dense compound-modifier sentences",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_per_sentence": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1365,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dense compound-modifier sentences",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_per_sentence": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "modifier_density",
+          "guidance": "Restructure sentences with three or more stock hyphenated compounds; preserve only when the compounds are domain-specific terms of art."
+        }
+      }
+    },
+    {
+      "id": "no-knowledge-cutoff-disclaimers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No knowledge-cutoff disclaimers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No knowledge-cutoff disclaimers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "model_meta_residue",
+          "guidance": "Fix at every depth; training-update and limited-information hedges are model meta-residue, not authorial uncertainty."
+        }
+      }
+    }
+  ],
+  "semantic_findings": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "every section follows the same arc",
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It frames the moon not as an object of conquest but as a site of release.",
+          "why_formulaic": "This 'not X but Y' correction script substitutes rhetorical symmetry for a concrete account of what 'release' means in the film's imagery."
+        },
+        {
+          "phrase": "the significance of the space race lies not only in technological achievement but in its capacity to hold human vulnerability",
+          "why_formulaic": "A second 'not only... but' bicolon in the same closing stretch, echoing the prior construction rather than adding new evidence about what 'holding vulnerability' entails."
+        },
+        {
+          "phrase": "Space exploration, in this reading, is neither purely sacred nor purely profane, but a convergence of both.",
+          "why_formulaic": "The closing 'neither...nor...but' triad repeats the same balancing pattern as the two preceding sentences, closing the essay on a symmetrical formula rather than a specific claim."
+        }
+      ],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Space exploration, in this reading, is neither purely sacred nor purely profane, but a convergence of both.",
+          "what_it_repeats": "Restates the sacred/profane framing question posed in the opening paragraph and the von Braun 'duality' argument made in the Newell section, without adding new content."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a detailed social history",
+          "missing_criterion": "What specifically makes the history 'detailed' (scope, sources, depth of archival work) is not stated."
+        },
+        {
+          "phrase": "significant ethical issues",
+          "missing_criterion": "The scale or nature of the ethical issues (beyond the later-mentioned SS/V-2 facts) is not specified at the point the phrase is used."
+        },
+        {
+          "phrase": "aesthetic clarity",
+          "missing_criterion": "No property of Bonestell's imagery is named that would define 'clarity' as opposed to any other aesthetic quality."
+        },
+        {
+          "phrase": "A more balanced interpretation",
+          "missing_criterion": "The baseline or standard for 'balance' is not given beyond a vague contrast with Newell's account."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "academic",
+        "watchlist_findings": []
+      },
+      "evidence": [],
+      "severity": "context_warning"
+    }
+  ],
+  "aggregates": {
+    "programmatic": {
+      "by_severity": {
+        "hard_fail": 0,
+        "strong_warning": 3,
+        "context_warning": 5
+      },
+      "by_category": {
+        "Signal stacking": 1,
+        "Filler and hedging": 1,
+        "Style": 1,
+        "Language and grammar": 4,
+        "Structural tells": 1
+      },
+      "signal_stacking": {
+        "score": 4,
+        "threshold": 4,
+        "triggered": true,
+        "components": [
+          "contrived contrast framing",
+          "section scaffolding"
+        ],
+        "vocabulary_points": 1
+      }
+    },
+    "semantic": {
+      "total": 15,
+      "flagged": 5,
+      "clear": 10
+    },
+    "combined": {
+      "flagged": 13
+    }
+  },
+  "limitations": [
+    "slide_title structure unavailable without a structure manifest",
+    "caption structure unavailable without a structure manifest"
+  ],
+  "metadata": {
+    "schema_version": "2",
+    "grader_version": "phase-2-u8",
+    "timestamp": "2026-07-13T16:22:28.246943Z",
+    "run_id": "0a5eeadb-94f2-414e-8b1f-50590a83d668"
+  }
+}

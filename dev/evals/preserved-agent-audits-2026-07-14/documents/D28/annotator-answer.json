@@ -1,0 +1,129 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "clear",
+      "answer": "register breaks at least once",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "before you go on a road trip, you check for a full tank of gas, make sure you have enough oil, or have the right air pressure in your tires.",
+          "why_unspecific": "This is a generic, anyone-could-write-it analogy about car maintenance with no lived detail (no named trip, place, or person) — it performs relatable specificity without grounding it in an actual event."
+        },
+        {
+          "phrase": "changing it to the seasons of the year",
+          "why_unspecific": "A vague, interchangeable example of theme customization with no concrete detail (no named theme, image, or user experience) standing in for a real example."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "our performance management “to-do” list",
+          "why_generic": "The to-do-list framing is a plausible-but-generic productivity metaphor that doesn't itself specify what engineering criteria (metrics, benchmarks, profiling data) determined prioritization — it borrows a familiar personal-organization image rather than naming the concrete technical process."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "before you go on a road trip, you check for a full tank of gas, make sure you have enough oil, or have the right air pressure in your tires.",
+          "why_formulaic": "A three-item balanced list (gas, oil, tire pressure) that supplies rhythmic completeness rather than any information about how Firefox's actual prioritization works."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "least commonly used features",
+          "missing_criterion": "No metric or data source is given for how 'least commonly used' was determined (usage telemetry, sample size, threshold)."
+        },
+        {
+          "phrase": "browse quicker",
+          "missing_criterion": "No baseline or measurement is given for what 'quicker' means (compared to which prior version, on what benchmark)."
+        },
+        {
+          "phrase": "unnecessary work",
+          "missing_criterion": "Does not specify what the 'unnecessary work' actually consists of (which routines, processes, or checks are skipped)."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

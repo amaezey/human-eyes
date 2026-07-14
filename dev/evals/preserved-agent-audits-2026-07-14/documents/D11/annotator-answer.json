@@ -1,0 +1,152 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "clear",
+      "answer": "register breaks at least once",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "reset the room’s energy",
+          "why_generic": "\"Energy\" is left undefined — the sentence doesn't specify what actually changed (attention, mood, physical posture), so the metaphor supplies atmosphere rather than concrete meaning."
+        },
+        {
+          "phrase": "It’s basic relationship infrastructure",
+          "why_generic": "The infrastructure metaphor gestures at structural support without naming which mechanisms (schedules, check-ins, roles) constitute it beyond what's already stated."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Better decentralised practice means more capable teams, and more capable teams can deliver more positive change.",
+          "what_it_repeats": "Restates the same claim twice within a single sentence — 'capable teams' appears as both the effect of the first clause and the cause of the second, without adding new information between the two."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a well‑structured, thoughtfully designed workshop with timely content",
+          "missing_criterion": "No criteria given for what made the structure, design, or timing effective — the adjectives assert quality without naming the property judged."
+        },
+        {
+          "phrase": "sharper language for things many groups only sense vaguely",
+          "missing_criterion": "\"Sharper\" lacks a comparison basis — sharper than what prior phrasing, and by what measure."
+        },
+        {
+          "phrase": "the always‑stimulating Newspeak House",
+          "missing_criterion": "\"Stimulating\" is asserted without specifying what about the venue produces that effect."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "None of the patterns are magical on their own — the value is in how clearly they’re expressed and how deliberately they’re practised.",
+          "missing_context": "Reads as a rebuttal to an unstated claim or expectation that the patterns would be presented as magic solutions; that framing isn't otherwise present in the document."
+        },
+        {
+          "phrase": "The point isn’t to pretend this doesn’t happen, but to surface it and share it",
+          "missing_context": "Defends against an implied objection (that the group ignores or denies power imbalances) that is never actually raised in the text."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "genuinely horizontal ways of working",
+          "why_unnecessary": "\"Genuinely\" performs sincerity/authenticity without specifying what distinguishes genuine from nominal horizontality; the claim could be made directly by naming the practice."
+        },
+        {
+          "phrase": "real belonging",
+          "why_unnecessary": "\"Real\" is used as an authenticity booster rather than specifying what marks belonging as real versus performative."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Continuous, participatory change can feel slower, but it’s often what keeps a decentralised group coherent over time.",
+          "missing_relationship": "The 'but' implies a tradeoff mechanism between slowness and coherence, but never states how or why slower participatory change produces coherence."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "flagged",
+      "answer": {
+        "genre_detected": "journalism",
+        "watchlist_findings": [
+          {
+            "phrase": "Click for a bigger version",
+            "why_flagged": "This is an image-caption/link cue with no accompanying image or verifiable link present in the document — a broken or missing reference typical of incomplete extraction."
+          }
+        ]
+      },
+      "evidence": []
+    }
+  ]
+}

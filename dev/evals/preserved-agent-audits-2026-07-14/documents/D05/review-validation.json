@@ -1,0 +1,10 @@
+{
+  "valid_registry_coverage": true,
+  "citation_issues": [
+    {
+      "id": "vacuous_connection",
+      "issue": "evidence_not_exact_source_substring",
+      "phrase": "In short: if you want to treat your trauma, you still have to face the pain."
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "clear",
+      "answer": "register breaks at least once",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a quiet room bathed in warm lamplight",
+          "why_unspecific": "Generic wellness-aesthetic description with no concrete identifying detail (no location, no distinguishing object) that any therapy-setting account could use."
+        },
+        {
+          "phrase": "Soft blankets, ambient music, and fresh flowers created a cocoon-like atmosphere",
+          "why_unspecific": "Stock spa/wellness imagery performing sensory specificity without any personally grounded detail (no particular flower, song, or texture named)."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "warm waves of chemically induced empathy peeled away decades of self-defence",
+          "why_forced": "Maps tactile warmth and a peeling/unwrapping sensation onto the abstract psychological concept of 'self-defence' without any concrete grounding for why that particular sensory combination applies."
+        },
+        {
+          "phrase": "warmth blossomed through my chest",
+          "why_forced": "Maps a visual/botanical growth process (blossoming) onto an internal bodily temperature sensation to signify emotional change, an unanchored cross-modal substitution rather than an observed physical event."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a heavy curtain had lifted, revealing a room in my heart I’d always avoided",
+          "why_generic": "Stock 'curtain lifting' revelation image paired with a vague spatial metaphor for emotion; fails to specify what was concretely realized or seen."
+        },
+        {
+          "phrase": "carrying shame like a fucking birthmark",
+          "why_generic": "Permanent-mark-of-shame comparison is a familiar rhetorical move that doesn't identify what about the writer's specific shame make the birthmark comparison apt."
+        },
+        {
+          "phrase": "the groundwork had changed",
+          "why_generic": "Construction metaphor for internal change that doesn't specify which underlying belief, habit, or structure actually shifted."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "the groundwork had changed",
+          "why_unclear": "‘The groundwork’ has no prior antecedent naming what foundation or structure is meant, leaving the claim of change unspecified."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "not because the past changed, but because my relationship to it had shifted profoundly",
+          "why_formulaic": "Correction-script bicolon that asserts a distinction (past vs. relationship-to-past) without specifying what the shifted relationship actually consists of."
+        },
+        {
+          "phrase": "It was therapy—not recreational experimentation.",
+          "why_formulaic": "Balanced contrast that labels the experience against its negation without detailing what concretely made it clinical (beyond assertion)."
+        },
+        {
+          "phrase": "The treatment wasn’t about eradicating problems but equipping me to address them from a place of emotional clarity rather than defensive panic.",
+          "why_formulaic": "Double 'not X but Y' parallel structure characteristic of therapy-language templates; the symmetry substitutes for describing what the equipping actually involved."
+        },
+        {
+          "phrase": "trauma isn’t something you erase, it’s something you understand, accept, and learn to carry differently",
+          "why_formulaic": "Formulaic contrast-plus-tricolon ('understand, accept, and learn to carry') that reads as a generalized therapeutic maxim rather than a claim specific to this writer's experience."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "it showed me how to carry my pain without collapsing under it",
+          "what_it_repeats": "Restates the claim made one sentence earlier that trauma is 'something you understand, accept, and learn to carry differently.'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "reached critical levels",
+          "missing_criterion": "No criterion given for what counts as 'critical' (no symptom, frequency, or measurable threshold specified)."
+        },
+        {
+          "phrase": "deeply trained in trauma-informed care",
+          "missing_criterion": "No comparison basis for 'deeply' — no credentials, years, or training specifics given."
+        },
+        {
+          "phrase": "transformed subtly but significantly",
+          "missing_criterion": "Provides an evaluative pairing of degree ('subtly' vs. 'significantly') without stating what specifically changed or by what measure."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I won’t sugarcoat it: this isn’t something everyone should rush into.",
+          "missing_context": "Reads as a rebuttal to an unstated objection or question about recklessness/endorsement of drug use, but no such critique appears earlier in the document."
+        },
+        {
+          "phrase": "MDMA is illegal in most contexts, and self-medicating carries significant risks.",
+          "missing_context": "Functions as a defensive clarification against an implied accusation of promoting illegal or unsupervised drug use, though no such accusation is present in the text."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I won’t sugarcoat it",
+          "why_unnecessary": "Announces honesty before a claim ('this isn't something everyone should rush into') that could be stated directly without the sincerity preface."
+        },
+        {
+          "phrase": "true, visceral compassion",
+          "why_unnecessary": "Uses 'true' as an authenticity booster in front of 'visceral compassion,' which already conveys intensity without the added qualifier."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

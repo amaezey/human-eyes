@@ -1,0 +1,145 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document does show recurring short-section architecture, but the annotator gave no concrete cross-section evidence for the claimed repeated arc.",
+      "evidence": [
+        "Simply put, I chose MDMA therapy because traditional methods had failed to adequately address lingering trauma.",
+        "I was fortunate.",
+        "Given my experiences, I anticipate regular future sessions, possibly annually, and considering exploration with other psychedelics."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "A mostly steady explanatory-confessional register is plausible, but the annotator did not support the whole-document judgment with examples from different parts of the piece.",
+      "evidence": [
+        "I underwent MDMA-assisted therapy, and it profoundly transformed my life.",
+        "It’s crucial to acknowledge:",
+        "For further exploration into MDMA’s therapeutic use:"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "overcall",
+      "rationale": "The cited phrases are vague, but they do not perform false vividness in the way this check targets; they are plain summaries of bodily experience rather than filler pseudo-specificity.",
+      "evidence": [
+        "involuntary shaking and deep breaths",
+        "full-body movements"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document clearly takes a position, but the annotator supplied no supporting passage for the whole-document judgment.",
+      "evidence": [
+        "This isn’t intended to persuade you to try MDMA therapy. However, I’m not neutral—I genuinely think MDMA therapy has profound therapeutic potential and will likely become central to mental health treatment in the future.",
+        "I’m sharing this because I genuinely believe it has the potential to help many people, yet awareness remains limited."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The claim that jargon clumps rather than distributing uniformly is plausible, but the annotator gave no comparative evidence from technical versus nontechnical parts of the text.",
+      "evidence": [
+        "MDMA therapy is nearing completion of Stage Three clinical trials",
+        "no SSRIs allowed",
+        "I was fortunate."
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "insufficient_evidence",
+      "rationale": "No obvious forced cross-modal metaphor appears, but the annotator offered no evidence-based basis for the clean bill.",
+      "evidence": [
+        "it felt like experiencing pure, unconditional love",
+        "This release created unexpected feelings of emptiness"
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "Both cited metaphors are stock abstractions that stand in for more concrete description.",
+      "evidence": [
+        "transitioning from a defensive warrior mentality toward becoming a constructive leader",
+        "an emerging wave in mental health care"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "The flagged phrase uses an unrecoverable social referent; the reader is not told which people or institutions are meant.",
+      "evidence": [
+        "within influential circles"
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "Both cited tricolons package abstractions in a neat parallel form without supplying much concrete information.",
+      "evidence": [
+        "providing power, motivation, and control, even with its negative aspects",
+        "joy, playfulness, and openness"
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "The opening sentence restates the title, and the later forecast repeats an earlier future-facing claim about MDMA's expanding importance.",
+      "evidence": [
+        "How MDMA therapy changed my life",
+        "I underwent MDMA-assisted therapy, and it profoundly transformed my life.",
+        "will likely become central to mental health treatment in the future",
+        "likely expanding significantly in coming years"
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The flagged phrases rely on evaluative intensifiers and improvement language without naming criteria, baselines, or concrete measures.",
+      "evidence": [
+        "profoundly transformed my life",
+        "notable improvements in relationships",
+        "significantly reduced aggression"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "insufficient_evidence",
+      "rationale": "I do not see clear reply-shaped leakage from an absent conversation, but the annotator provided no basis for clearing the item after a whole-document check.",
+      "evidence": [
+        "This isn’t intended to persuade you to try MDMA therapy.",
+        "Yes, there’s a risk in openly writing about this under my real identity, but I’ve accepted this risk for two primary reasons:"
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "In both cases, \"genuinely\" boosts sincerity without changing the propositional content of the sentence.",
+      "evidence": [
+        "I genuinely believe it has the potential to help many people",
+        "I genuinely think MDMA therapy has profound therapeutic potential"
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "insufficient_evidence",
+      "rationale": "No strong example of an empty connector stands out, but the annotator did not substantiate the clean judgment.",
+      "evidence": [
+        "However, I’m not neutral",
+        "But after four years, its effectiveness waned.",
+        "More importantly, I’ve always openly shared my experiences"
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "The piece is a confessional essay, which does not match the named genre buckets, so `default` is the correct classification and no watchlist applies.",
+      "evidence": [
+        "\"format\": \"Confessional essay on MDMA-assisted therapy; matched-pair AI version of Tucker Max's 2018 essay\"",
+        "How MDMA therapy changed my life"
+      ]
+    }
+  ]
+}

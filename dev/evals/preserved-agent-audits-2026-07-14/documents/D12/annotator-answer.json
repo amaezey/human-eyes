@@ -1,0 +1,136 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "The aim is not a positive experience. It is a productive one.",
+          "why_formulaic": "The 'not X, it is Y' correction script substitutes a tidy contrast for an actual account of what makes a session demanding versus merely pleasant; the same skeleton recurs later in the piece."
+        },
+        {
+          "phrase": "the session is not solving the problem.\n\nIt is producing clarity.",
+          "why_formulaic": "This repeats the identical 'is not X. It is Y.' correction-script pattern used earlier for 'positive experience'/'productive one', substituting rhetorical symmetry for a fuller explanation of what 'producing clarity' concretely requires."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Clarity is not incidental; it is the basis of all subsequent work.",
+          "what_it_repeats": "Restates the claim made two sentences earlier in the same conclusion: 'The underlying principle is consistent: clarity enables effective work,' and echoes the earlier assertion that 'clarity has economic value.'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "stronger engagements and longer retention",
+          "missing_criterion": "No metric or comparison basis given for 'stronger' (revenue? duration? scope?) or how much 'longer' retention lasted."
+        },
+        {
+          "phrase": "significant misalignment",
+          "missing_criterion": "Does not specify what was misaligned or by what measure the misalignment counted as significant."
+        },
+        {
+          "phrase": "The reduction in specification overhead is significant.",
+          "missing_criterion": "No quantity, time saved, or comparison point establishing what makes the reduction 'significant.'"
+        },
+        {
+          "phrase": "the outcome was still correct",
+          "missing_criterion": "'Correct' has no stated standard—correct relative to what goal, client expectation, or consulting principle."
+        },
+        {
+          "phrase": "Effective sessions often feel demanding.",
+          "missing_criterion": "'Effective' and 'demanding' are asserted without specifying the criterion of effectiveness (retained client? better clarity?) or what makes a session feel demanding."
+        },
+        {
+          "phrase": "The trade-off was acceptable.",
+          "missing_criterion": "No stated basis for 'acceptable'—acceptable to whom, and weighed against what cost."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

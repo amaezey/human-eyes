@@ -1,0 +1,146 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "overcall",
+      "rationale": "The document does not run one repeated section arc. It moves from personal belonging, to a concrete neighbourhood pattern, to self-revision, to a civic call to action.",
+      "evidence": [
+        "I have lived here long enough to know the back roads, complain about the weather with conviction, and recognise half the faces at the Saturday market.",
+        "Over the past year, I have watched a family nearby become the target of complaints that others on our street never seem to attract.",
+        "Recently, I began attending council sessions.",
+        "So I am asking my fellow residents to look closely at what is happening around us."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "A consistent warm-civic register is plausible, but the annotator supplied no cross-document evidence for a whole-text judgment.",
+      "evidence": [
+        "Dear neighbours,",
+        "That is why I cannot stay quiet about the way some of our neighbours are being treated.",
+        "With hope and determination,"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "overcall",
+      "rationale": "These details are concrete enough for an open letter. They establish local embeddedness rather than merely performing specificity.",
+      "evidence": [
+        "I know which bus is usually late and which bakery sells out before noon.",
+        "My children learned to ride their bikes on this street.",
+        "planted trees beside the oval"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The text clearly takes a position, but the annotator did not support that whole-document conclusion with evidence.",
+      "evidence": [
+        "That is why I cannot stay quiet about the way some of our neighbours are being treated.",
+        "Yet those who live inside the pattern feel its weight every day.",
+        "So I am asking my fellow residents to look closely at what is happening around us."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "misclassified",
+      "rationale": "The piece contains very little technical vocabulary at all, so describing jargon as \"clump[ing] where the writer knows things\" is the wrong characterization even if the non-flagged status is reasonable.",
+      "evidence": [
+        "The procedures were unfamiliar, the language formal, and the confident regulars seemed to know one another.",
+        "Fair treatment requires transparent processes, consistent enforcement, accessible information, and serious attention to patterns in complaints."
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "insufficient_evidence",
+      "rationale": "No forced cross-sensory metaphor is apparent, but the annotator provided no evidence-based basis for clearing the item.",
+      "evidence": [
+        "It arrives as a raised eyebrow, an anonymous report, a rule enforced for one person and overlooked for another.",
+        "Yet those who live inside the pattern feel its weight every day."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The flagged phrases are stock metaphoric shorthand rather than grounded, text-specific figurative language.",
+      "evidence": [
+        "It arrives as a raised eyebrow, an anonymous report, a rule enforced for one person and overlooked for another.",
+        "Yet those who live inside the pattern feel its weight every day."
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The prose appears referentially clear, but the annotator did not substantiate the clear judgment, especially for a whole-document check.",
+      "evidence": [
+        "None of these incidents looks enormous on its own. That is partly how unfairness survives. It arrives as a raised eyebrow, an anonymous report, a rule enforced for one person and overlooked for another.",
+        "What changed was that the record now included a perspective that would otherwise have been absent."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "overcall",
+      "rationale": "The imperative sequence and the institutional list both add substantive content appropriate to an open letter; they are parallel, but not empty symmetry substituting for meaning.",
+      "evidence": [
+        "Learn how local decisions are made. Write to a representative. Attend one council session. Support someone who is nervous about speaking.",
+        "Fair treatment requires transparent processes, consistent enforcement, accessible information, and serious attention to patterns in complaints."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "overcall",
+      "rationale": "The closing sentence revisits earlier themes, but as a rhetorical summation rather than redundant repetition of nearby content.",
+      "evidence": [
+        "I found work, friendship, and safety.",
+        "I have voted in council elections, planted trees beside the oval, and stood in the school hall selling raffle tickets beside people whose grandparents were born here.",
+        "This country became mine through ordinary acts: work, friendship, mourning, celebration, voting, helping, and being helped."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "These phrases rely on abstract evaluative language without naming operational criteria or concrete indicators.",
+      "evidence": [
+        "help make the invitation clearer, the time more accessible, or the atmosphere less hostile.",
+        "Fair treatment requires transparent processes, consistent enforcement, accessible information, and serious attention to patterns in complaints."
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document reads as self-contained, but the annotator offered no evidence for clearing the category.",
+      "evidence": [
+        "I know the hesitation that comes with speaking about this.",
+        "Another disagreed with me but wanted to understand."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "insufficient_evidence",
+      "rationale": "There do not appear to be obvious candour-booster frames, but the annotator did not support the clear judgment.",
+      "evidence": [
+        "I write because my faith has matured.",
+        "I no longer think belonging is a gift that can be withdrawn whenever I become inconvenient."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "insufficient_evidence",
+      "rationale": "The logical links mostly read as explicit enough, but the annotator provided no evidence for the clear call.",
+      "evidence": [
+        "But gratitude and criticism are not opposites. If I care for this country, I must care when its promises are applied unevenly.",
+        "None of these incidents looks enormous on its own. That is partly how unfairness survives."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "insufficient_evidence",
+      "rationale": "Classifying this as `default` is plausible, but the annotator did not justify the genre decision or the absence of watchlist findings.",
+      "evidence": [
+        "An Open Letter to the Country I Chose",
+        "Dear neighbours,",
+        "With hope and determination,"
+      ]
+    }
+  ]
+}

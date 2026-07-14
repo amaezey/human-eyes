@@ -1,0 +1,4662 @@
+{
+  "schema_version": "1",
+  "bindings": {
+    "content_sha256": "755278399359da25d04401b570b046f6fd616ae171622ec14a8b955927b429cf",
+    "registry_sha256": "80daf05124dcd204d161cf8415c519ae0c67b34e3ba8b5ac7f2a5ff777b8f654",
+    "structure_sha256": "7eece842e3be60d2dcd4119f9166e5a45583bc0eb822613d6c8dd2af020ca238"
+  },
+  "segments": [
+    {
+      "id": "paragraph:0:637",
+      "type": "paragraph",
+      "start_byte": 0,
+      "end_byte": 637
+    },
+    {
+      "id": "heading:637:643",
+      "type": "heading",
+      "start_byte": 637,
+      "end_byte": 643
+    },
+    {
+      "id": "paragraph:644:665",
+      "type": "paragraph",
+      "start_byte": 644,
+      "end_byte": 665
+    },
+    {
+      "id": "paragraph:666:711",
+      "type": "paragraph",
+      "start_byte": 666,
+      "end_byte": 711
+    },
+    {
+      "id": "paragraph:712:894",
+      "type": "paragraph",
+      "start_byte": 712,
+      "end_byte": 894
+    },
+    {
+      "id": "paragraph:895:1056",
+      "type": "paragraph",
+      "start_byte": 895,
+      "end_byte": 1056
+    },
+    {
+      "id": "paragraph:1057:1079",
+      "type": "paragraph",
+      "start_byte": 1057,
+      "end_byte": 1079
+    },
+    {
+      "id": "paragraph:1080:1251",
+      "type": "paragraph",
+      "start_byte": 1080,
+      "end_byte": 1251
+    },
+    {
+      "id": "paragraph:1252:1439",
+      "type": "paragraph",
+      "start_byte": 1252,
+      "end_byte": 1439
+    },
+    {
+      "id": "paragraph:1440:1590",
+      "type": "paragraph",
+      "start_byte": 1440,
+      "end_byte": 1590
+    },
+    {
+      "id": "paragraph:1591:1710",
+      "type": "paragraph",
+      "start_byte": 1591,
+      "end_byte": 1710
+    },
+    {
+      "id": "paragraph:1711:1807",
+      "type": "paragraph",
+      "start_byte": 1711,
+      "end_byte": 1807
+    },
+    {
+      "id": "paragraph:1808:1827",
+      "type": "paragraph",
+      "start_byte": 1808,
+      "end_byte": 1827
+    },
+    {
+      "id": "list_block:1828:2073",
+      "type": "list_block",
+      "start_byte": 1828,
+      "end_byte": 2073
+    },
+    {
+      "id": "paragraph:2074:2099",
+      "type": "paragraph",
+      "start_byte": 2074,
+      "end_byte": 2099
+    },
+    {
+      "id": "paragraph:2100:2113",
+      "type": "paragraph",
+      "start_byte": 2100,
+      "end_byte": 2113
+    },
+    {
+      "id": "paragraph:2114:2258",
+      "type": "paragraph",
+      "start_byte": 2114,
+      "end_byte": 2258
+    },
+    {
+      "id": "paragraph:2259:2339",
+      "type": "paragraph",
+      "start_byte": 2259,
+      "end_byte": 2339
+    },
+    {
+      "id": "paragraph:2340:2457",
+      "type": "paragraph",
+      "start_byte": 2340,
+      "end_byte": 2457
+    },
+    {
+      "id": "paragraph:2458:2491",
+      "type": "paragraph",
+      "start_byte": 2458,
+      "end_byte": 2491
+    },
+    {
+      "id": "list_block:2492:2664",
+      "type": "list_block",
+      "start_byte": 2492,
+      "end_byte": 2664
+    },
+    {
+      "id": "paragraph:2665:2702",
+      "type": "paragraph",
+      "start_byte": 2665,
+      "end_byte": 2702
+    },
+    {
+      "id": "list_block:2703:2834",
+      "type": "list_block",
+      "start_byte": 2703,
+      "end_byte": 2834
+    },
+    {
+      "id": "paragraph:2835:2984",
+      "type": "paragraph",
+      "start_byte": 2835,
+      "end_byte": 2984
+    },
+    {
+      "id": "paragraph:2985:3113",
+      "type": "paragraph",
+      "start_byte": 2985,
+      "end_byte": 3113
+    },
+    {
+      "id": "paragraph:3114:3216",
+      "type": "paragraph",
+      "start_byte": 3114,
+      "end_byte": 3216
+    },
+    {
+      "id": "paragraph:3217:3242",
+      "type": "paragraph",
+      "start_byte": 3217,
+      "end_byte": 3242
+    },
+    {
+      "id": "paragraph:3243:3369",
+      "type": "paragraph",
+      "start_byte": 3243,
+      "end_byte": 3369
+    },
+    {
+      "id": "paragraph:3370:3540",
+      "type": "paragraph",
+      "start_byte": 3370,
+      "end_byte": 3540
+    },
+    {
+      "id": "paragraph:3541:3712",
+      "type": "paragraph",
+      "start_byte": 3541,
+      "end_byte": 3712
+    },
+    {
+      "id": "paragraph:3713:3726",
+      "type": "paragraph",
+      "start_byte": 3713,
+      "end_byte": 3726
+    },
+    {
+      "id": "paragraph:3727:3827",
+      "type": "paragraph",
+      "start_byte": 3727,
+      "end_byte": 3827
+    },
+    {
+      "id": "paragraph:3828:4046",
+      "type": "paragraph",
+      "start_byte": 3828,
+      "end_byte": 4046
+    },
+    {
+      "id": "paragraph:4047:4147",
+      "type": "paragraph",
+      "start_byte": 4047,
+      "end_byte": 4147
+    },
+    {
+      "id": "paragraph:4148:4215",
+      "type": "paragraph",
+      "start_byte": 4148,
+      "end_byte": 4215
+    },
+    {
+      "id": "list_block:4216:4467",
+      "type": "list_block",
+      "start_byte": 4216,
+      "end_byte": 4467
+    },
+    {
+      "id": "paragraph:4468:4552",
+      "type": "paragraph",
+      "start_byte": 4468,
+      "end_byte": 4552
+    },
+    {
+      "id": "paragraph:4553:4758",
+      "type": "paragraph",
+      "start_byte": 4553,
+      "end_byte": 4758
+    },
+    {
+      "id": "paragraph:4759:4817",
+      "type": "paragraph",
+      "start_byte": 4759,
+      "end_byte": 4817
+    },
+    {
+      "id": "paragraph:4818:4904",
+      "type": "paragraph",
+      "start_byte": 4818,
+      "end_byte": 4904
+    },
+    {
+      "id": "paragraph:4905:4944",
+      "type": "paragraph",
+      "start_byte": 4905,
+      "end_byte": 4944
+    },
+    {
+      "id": "list_block:4945:6028",
+      "type": "list_block",
+      "start_byte": 4945,
+      "end_byte": 6028
+    },
+    {
+      "id": "paragraph:6029:6064",
+      "type": "paragraph",
+      "start_byte": 6029,
+      "end_byte": 6064
+    },
+    {
+      "id": "paragraph:6065:6127",
+      "type": "paragraph",
+      "start_byte": 6065,
+      "end_byte": 6127
+    },
+    {
+      "id": "paragraph:6128:6239",
+      "type": "paragraph",
+      "start_byte": 6128,
+      "end_byte": 6239
+    },
+    {
+      "id": "paragraph:6240:6370",
+      "type": "paragraph",
+      "start_byte": 6240,
+      "end_byte": 6370
+    },
+    {
+      "id": "paragraph:6371:6435",
+      "type": "paragraph",
+      "start_byte": 6371,
+      "end_byte": 6435
+    },
+    {
+      "id": "paragraph:6436:6479",
+      "type": "paragraph",
+      "start_byte": 6436,
+      "end_byte": 6479
+    },
+    {
+      "id": "paragraph:6480:6530",
+      "type": "paragraph",
+      "start_byte": 6480,
+      "end_byte": 6530
+    },
+    {
+      "id": "list_block:6531:6694",
+      "type": "list_block",
+      "start_byte": 6531,
+      "end_byte": 6694
+    },
+    {
+      "id": "paragraph:6695:6734",
+      "type": "paragraph",
+      "start_byte": 6695,
+      "end_byte": 6734
+    },
+    {
+      "id": "paragraph:6735:6787",
+      "type": "paragraph",
+      "start_byte": 6735,
+      "end_byte": 6787
+    },
+    {
+      "id": "paragraph:6788:6943",
+      "type": "paragraph",
+      "start_byte": 6788,
+      "end_byte": 6943
+    },
+    {
+      "id": "paragraph:6944:6988",
+      "type": "paragraph",
+      "start_byte": 6944,
+      "end_byte": 6988
+    },
+    {
+      "id": "list_block:6989:7051",
+      "type": "list_block",
+      "start_byte": 6989,
+      "end_byte": 7051
+    },
+    {
+      "id": "paragraph:7052:7108",
+      "type": "paragraph",
+      "start_byte": 7052,
+      "end_byte": 7108
+    },
+    {
+      "id": "paragraph:7109:7143",
+      "type": "paragraph",
+      "start_byte": 7109,
+      "end_byte": 7143
+    },
+    {
+      "id": "paragraph:7144:7241",
+      "type": "paragraph",
+      "start_byte": 7144,
+      "end_byte": 7241
+    },
+    {
+      "id": "paragraph:7242:7269",
+      "type": "paragraph",
+      "start_byte": 7242,
+      "end_byte": 7269
+    },
+    {
+      "id": "paragraph:7270:7372",
+      "type": "paragraph",
+      "start_byte": 7270,
+      "end_byte": 7372
+    },
+    {
+      "id": "paragraph:7373:7508",
+      "type": "paragraph",
+      "start_byte": 7373,
+      "end_byte": 7508
+    },
+    {
+      "id": "paragraph:7509:7658",
+      "type": "paragraph",
+      "start_byte": 7509,
+      "end_byte": 7658
+    },
+    {
+      "id": "paragraph:7659:7772",
+      "type": "paragraph",
+      "start_byte": 7659,
+      "end_byte": 7772
+    },
+    {
+      "id": "paragraph:7773:7828",
+      "type": "paragraph",
+      "start_byte": 7773,
+      "end_byte": 7828
+    },
+    {
+      "id": "paragraph:7829:7854",
+      "type": "paragraph",
+      "start_byte": 7829,
+      "end_byte": 7854
+    },
+    {
+      "id": "paragraph:7855:7883",
+      "type": "paragraph",
+      "start_byte": 7855,
+      "end_byte": 7883
+    },
+    {
+      "id": "paragraph:7884:7910",
+      "type": "paragraph",
+      "start_byte": 7884,
+      "end_byte": 7910
+    },
+    {
+      "id": "paragraph:7911:8013",
+      "type": "paragraph",
+      "start_byte": 7911,
+      "end_byte": 8013
+    },
+    {
+      "id": "paragraph:8014:8058",
+      "type": "paragraph",
+      "start_byte": 8014,
+      "end_byte": 8058
+    },
+    {
+      "id": "paragraph:8059:8079",
+      "type": "paragraph",
+      "start_byte": 8059,
+      "end_byte": 8079
+    },
+    {
+      "id": "paragraph:8080:8189",
+      "type": "paragraph",
+      "start_byte": 8080,
+      "end_byte": 8189
+    },
+    {
+      "id": "paragraph:8190:8295",
+      "type": "paragraph",
+      "start_byte": 8190,
+      "end_byte": 8295
+    },
+    {
+      "id": "paragraph:8296:8444",
+      "type": "paragraph",
+      "start_byte": 8296,
+      "end_byte": 8444
+    },
+    {
+      "id": "paragraph:8445:8464",
+      "type": "paragraph",
+      "start_byte": 8445,
+      "end_byte": 8464
+    },
+    {
+      "id": "paragraph:8465:8537",
+      "type": "paragraph",
+      "start_byte": 8465,
+      "end_byte": 8537
+    },
+    {
+      "id": "paragraph:8538:8665",
+      "type": "paragraph",
+      "start_byte": 8538,
+      "end_byte": 8665
+    },
+    {
+      "id": "paragraph:8666:8685",
+      "type": "paragraph",
+      "start_byte": 8666,
+      "end_byte": 8685
+    },
+    {
+      "id": "paragraph:8686:8773",
+      "type": "paragraph",
+      "start_byte": 8686,
+      "end_byte": 8773
+    },
+    {
+      "id": "paragraph:8774:8877",
+      "type": "paragraph",
+      "start_byte": 8774,
+      "end_byte": 8877
+    },
+    {
+      "id": "paragraph:8878:8889",
+      "type": "paragraph",
+      "start_byte": 8878,
+      "end_byte": 8889
+    },
+    {
+      "id": "paragraph:8890:9002",
+      "type": "paragraph",
+      "start_byte": 8890,
+      "end_byte": 9002
+    },
+    {
+      "id": "paragraph:9003:9075",
+      "type": "paragraph",
+      "start_byte": 9003,
+      "end_byte": 9075
+    },
+    {
+      "id": "paragraph:9076:9276",
+      "type": "paragraph",
+      "start_byte": 9076,
+      "end_byte": 9276
+    },
+    {
+      "id": "paragraph:9277:9367",
+      "type": "paragraph",
+      "start_byte": 9277,
+      "end_byte": 9367
+    },
+    {
+      "id": "paragraph:9368:9400",
+      "type": "paragraph",
+      "start_byte": 9368,
+      "end_byte": 9400
+    }
+  ],
+  "programmatic_checks": [
+    {
+      "id": "no-em-dashes",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "properly—without",
+          "clarity—a",
+          "technique—begin",
+          "discussion—before",
+          "workshop—a",
+          "assumptions—facilitation",
+          "problems—and",
+          "issues—this",
+          "movement—even",
+          "uncomfortable—over",
+          "—",
+          "quickly—whether"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "properly—without",
+            "clarity—a",
+            "technique—begin",
+            "discussion—before",
+            "workshop—a",
+            "assumptions—facilitation",
+            "problems—and",
+            "issues—this",
+            "movement—even",
+            "uncomfortable—over",
+            "—",
+            "quickly—whether"
+          ],
+          "evidence": "Found 12 em dash(es)",
+          "candidates": [
+            {
+              "text": "properly—without",
+              "start": 1009,
+              "end": 1025,
+              "quoted": false
+            },
+            {
+              "text": "clarity—a",
+              "start": 1335,
+              "end": 1344,
+              "quoted": false
+            },
+            {
+              "text": "technique—begin",
+              "start": 2183,
+              "end": 2198,
+              "quoted": false
+            },
+            {
+              "text": "discussion—before",
+              "start": 3035,
+              "end": 3052,
+              "quoted": false
+            },
+            {
+              "text": "workshop—a",
+              "start": 3292,
+              "end": 3302,
+              "quoted": false
+            },
+            {
+              "text": "assumptions—facilitation",
+              "start": 3712,
+              "end": 3736,
+              "quoted": false
+            },
+            {
+              "text": "problems—and",
+              "start": 4261,
+              "end": 4273,
+              "quoted": false
+            },
+            {
+              "text": "issues—this",
+              "start": 5814,
+              "end": 5825,
+              "quoted": false
+            },
+            {
+              "text": "movement—even",
+              "start": 6214,
+              "end": 6227,
+              "quoted": false
+            },
+            {
+              "text": "uncomfortable—over",
+              "start": 6231,
+              "end": 6249,
+              "quoted": false
+            },
+            {
+              "text": "—",
+              "start": 7047,
+              "end": 7048,
+              "quoted": false
+            },
+            {
+              "text": "quickly—whether",
+              "start": 9038,
+              "end": 9053,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 12,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "properly—without",
+              "start": 1009,
+              "end": 1025,
+              "quoted": false
+            },
+            {
+              "text": "clarity—a",
+              "start": 1335,
+              "end": 1344,
+              "quoted": false
+            },
+            {
+              "text": "technique—begin",
+              "start": 2183,
+              "end": 2198,
+              "quoted": false
+            },
+            {
+              "text": "discussion—before",
+              "start": 3035,
+              "end": 3052,
+              "quoted": false
+            },
+            {
+              "text": "workshop—a",
+              "start": 3292,
+              "end": 3302,
+              "quoted": false
+            },
+            {
+              "text": "assumptions—facilitation",
+              "start": 3712,
+              "end": 3736,
+              "quoted": false
+            },
+            {
+              "text": "problems—and",
+              "start": 4261,
+              "end": 4273,
+              "quoted": false
+            },
+            {
+              "text": "issues—this",
+              "start": 5814,
+              "end": 5825,
+              "quoted": false
+            },
+            {
+              "text": "movement—even",
+              "start": 6214,
+              "end": 6227,
+              "quoted": false
+            },
+            {
+              "text": "uncomfortable—over",
+              "start": 6231,
+              "end": 6249,
+              "quoted": false
+            },
+            {
+              "text": "—",
+              "start": 7047,
+              "end": 7048,
+              "quoted": false
+            },
+            {
+              "text": "quickly—whether",
+              "start": 9038,
+              "end": 9053,
+              "quoted": false
+            }
+          ],
+          "match_count": 12,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 12 em dash(es)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "punctuation_signal",
+          "guidance": "Treat as a strong 2026 AI-style signal. May be preserved only at Balanced depth with explicit disclosure; All requires removal."
+        }
+      }
+    },
+    {
+      "id": "no-ai-vocabulary-clustering",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max AI words per paragraph: 1 (3 total in text)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max AI words per paragraph: 1 (3 total in text)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "vocabulary_cluster",
+          "guidance": "Fix clustered generic AI vocabulary; individual words may be fine in context."
+        }
+      }
+    },
+    {
+      "id": "no-nonliteral-land-surface",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No nonliteral land/surface constructions found",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No nonliteral land/surface constructions found",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "metaphor_residue",
+          "guidance": "Fix nonliteral land/surface phrasing; replace with the concrete action or claim."
+        }
+      }
+    },
+    {
+      "id": "overall-signal-stacking",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Signal stacking",
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {
+          "score": 2,
+          "threshold": 4
+        },
+        "raw": {
+          "score": 2,
+          "threshold": 4,
+          "components": [
+            "excessive lists"
+          ],
+          "vocabulary_signal_stacking": {
+            "points": 1,
+            "reasons": [
+              "kobak_style=19 distinct/25.4"
+            ],
+            "worst_generic": 1,
+            "gptzero_matches": [],
+            "kobak_style_distinct": 19,
+            "kobak_style_density": 25.36510376633359,
+            "kobak_style_sample": [
+              "understanding",
+              "outcomes",
+              "approach",
+              "address",
+              "revealed",
+              "role",
+              "significant",
+              "typically",
+              "align",
+              "challenge"
+            ]
+          },
+          "evidence": "Overall signal stacking 2/4 from [excessive lists]; vocab=1 point(s), worst_generic=1, gptzero=[], kobak=19 distinct/25.4/1000",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "aggregate",
+          "component_signals": [
+            "excessive lists"
+          ],
+          "component_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Overall signal stacking 2/4 from [excessive lists]; vocab=1 point(s), worst_generic=1, gptzero=[], kobak=19 distinct/25.4/1000",
+            "suppression_reason": null,
+            "effective_threshold": 4
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "evidence_role": "signal_stacking",
+          "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict."
+        }
+      }
+    },
+    {
+      "id": "no-manufactured-insight",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No manufactured insight phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No manufactured insight phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice."
+        }
+      }
+    },
+    {
+      "id": "no-performed-candour",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No performed-candour frames",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No performed-candour frames",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "candour_frame",
+          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text."
+        }
+      }
+    },
+    {
+      "id": "no-staccato-sequences",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "It is a productive one.",
+          "This distinction matters.",
+          "Effective sessions often feel demanding."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "It is a productive one.",
+            "This distinction matters.",
+            "Effective sessions often feel demanding."
+          ],
+          "evidence": "Found sequence of 3 consecutive short sentences",
+          "candidates": [
+            {
+              "text": "It is a productive one.",
+              "start": 6033,
+              "end": 6056,
+              "quoted": false
+            },
+            {
+              "text": "This distinction matters.",
+              "start": 6058,
+              "end": 6083,
+              "quoted": false
+            },
+            {
+              "text": "Effective sessions often feel demanding.",
+              "start": 6084,
+              "end": 6124,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 3,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_run": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "It is a productive one.",
+              "start": 6033,
+              "end": 6056,
+              "quoted": false
+            },
+            {
+              "text": "This distinction matters.",
+              "start": 6058,
+              "end": 6083,
+              "quoted": false
+            },
+            {
+              "text": "Effective sessions often feel demanding.",
+              "start": 6084,
+              "end": 6124,
+              "quoted": false
+            }
+          ],
+          "match_count": 3,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found sequence of 3 consecutive short sentences",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_run": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm."
+        }
+      }
+    },
+    {
+      "id": "no-anaphora",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "* Do they demonstrate competence?",
+          "* Will our ways of working align?",
+          "* Are they reliable?",
+          "* How do I justify this internally?"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "* Do they demonstrate competence?",
+            "* Will our ways of working align?",
+            "* Are they reliable?",
+            "* How do I justify this internally?"
+          ],
+          "evidence": "Found 4 consecutive sentences starting with '*'",
+          "candidates": [
+            {
+              "text": "* Do they demonstrate competence?",
+              "start": 2515,
+              "end": 2548,
+              "quoted": false
+            },
+            {
+              "text": "* Will our ways of working align?",
+              "start": 2549,
+              "end": 2582,
+              "quoted": false
+            },
+            {
+              "text": "* Are they reliable?",
+              "start": 2583,
+              "end": 2603,
+              "quoted": false
+            },
+            {
+              "text": "* How do I justify this internally?",
+              "start": 2604,
+              "end": 2639,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 4,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "* Do they demonstrate competence?",
+              "start": 2515,
+              "end": 2548,
+              "quoted": false
+            },
+            {
+              "text": "* Will our ways of working align?",
+              "start": 2549,
+              "end": 2582,
+              "quoted": false
+            },
+            {
+              "text": "* Are they reliable?",
+              "start": 2583,
+              "end": 2603,
+              "quoted": false
+            },
+            {
+              "text": "* How do I justify this internally?",
+              "start": 2604,
+              "end": 2639,
+              "quoted": false
+            }
+          ],
+          "match_count": 4,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 4 consecutive sentences starting with '*'",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix mechanical repetition; recommend preserving deliberate rhetoric or literary patterning."
+        }
+      }
+    },
+    {
+      "id": "no-collaborative-artifacts",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No collaborative artifacts",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No collaborative artifacts",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "assistant_residue",
+          "guidance": "Fix at every depth; this is assistant residue, not authorial style."
+        }
+      }
+    },
+    {
+      "id": "no-curly-quotes",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "There’s an inherent inside–outside tension: how much can be known about a client and their problem before a proposal is written?",
+          "“Workshop” is a broad term.",
+          "Here, it refers specifically to sessions designed to produce clarity—a way to step inside the client’s context and establish a basis for ongoing work.",
+          "In media res “In media res” means starting in the middle of the action.",
+          "It’s a common narrative technique—begin with movement, then fill in context.",
+          "From the client’s perspective: * Can this person address our specific issues?",
+          "From the consultant’s perspective: * Is there sufficient scope here?",
+          "Selling portal workshops One practical approach is to respond to initial conversations with a defined workshop—a “portal” into the organisation.",
+          "Jam sessions “Workshop” carries assumptions—facilitation plans, structured activities, predefined outputs.",
+          "For example: “Why wouldn’t we approach this the same way as the previous project?” or “If the problem and solution are clear, what role is needed here?” * Use hypotheticals to expose assumptions.",
+          "“If a senior hire were already in place, what would they prioritise?” * Be direct.",
+          "“Do you have the capability to execute this?” or “What is preventing approval?” * Resolve small, contained issues where appropriate to build credibility.",
+          "Early “solutions” are often contextually incomplete or already rejected internally."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "There’s an inherent inside–outside tension: how much can be known about a client and their problem before a proposal is written?",
+            "“Workshop” is a broad term.",
+            "Here, it refers specifically to sessions designed to produce clarity—a way to step inside the client’s context and establish a basis for ongoing work.",
+            "In media res “In media res” means starting in the middle of the action.",
+            "It’s a common narrative technique—begin with movement, then fill in context.",
+            "From the client’s perspective: * Can this person address our specific issues?",
+            "From the consultant’s perspective: * Is there sufficient scope here?",
+            "Selling portal workshops One practical approach is to respond to initial conversations with a defined workshop—a “portal” into the organisation.",
+            "Jam sessions “Workshop” carries assumptions—facilitation plans, structured activities, predefined outputs.",
+            "For example: “Why wouldn’t we approach this the same way as the previous project?” or “If the problem and solution are clear, what role is needed here?” * Use hypotheticals to expose assumptions.",
+            "“If a senior hire were already in place, what would they prioritise?” * Be direct.",
+            "“Do you have the capability to execute this?” or “What is preventing approval?” * Resolve small, contained issues where appropriate to build credibility.",
+            "Early “solutions” are often contextually incomplete or already rejected internally."
+          ],
+          "evidence": "Found 26 curly quote(s)",
+          "candidates": [
+            {
+              "text": "There’s an inherent inside–outside tension: how much can be known about a client and their problem before a proposal is written?",
+              "start": 761,
+              "end": 889,
+              "quoted": false
+            },
+            {
+              "text": "“Workshop” is a broad term.",
+              "start": 1246,
+              "end": 1273,
+              "quoted": false
+            },
+            {
+              "text": "Here, it refers specifically to sessions designed to produce clarity—a way to step inside the client’s context and establish a basis for ongoing work.",
+              "start": 1274,
+              "end": 1424,
+              "quoted": false
+            },
+            {
+              "text": "In media res “In media res” means starting in the middle of the action.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "It’s a common narrative technique—begin with movement, then fill in context.",
+              "start": 2159,
+              "end": 2235,
+              "quoted": false
+            },
+            {
+              "text": "From the client’s perspective: * Can this person address our specific issues?",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "From the consultant’s perspective: * Is there sufficient scope here?",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Selling portal workshops One practical approach is to respond to initial conversations with a defined workshop—a “portal” into the organisation.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Jam sessions “Workshop” carries assumptions—facilitation plans, structured activities, predefined outputs.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "For example: “Why wouldn’t we approach this the same way as the previous project?” or “If the problem and solution are clear, what role is needed here?” * Use hypotheticals to expose assumptions.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "“If a senior hire were already in place, what would they prioritise?” * Be direct.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "“Do you have the capability to execute this?” or “What is preventing approval?” * Resolve small, contained issues where appropriate to build credibility.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Early “solutions” are often contextually incomplete or already rejected internally.",
+              "start": 5639,
+              "end": 5722,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 13,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "There’s an inherent inside–outside tension: how much can be known about a client and their problem before a proposal is written?",
+              "start": 761,
+              "end": 889,
+              "quoted": false
+            },
+            {
+              "text": "“Workshop” is a broad term.",
+              "start": 1246,
+              "end": 1273,
+              "quoted": false
+            },
+            {
+              "text": "Here, it refers specifically to sessions designed to produce clarity—a way to step inside the client’s context and establish a basis for ongoing work.",
+              "start": 1274,
+              "end": 1424,
+              "quoted": false
+            },
+            {
+              "text": "In media res “In media res” means starting in the middle of the action.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "It’s a common narrative technique—begin with movement, then fill in context.",
+              "start": 2159,
+              "end": 2235,
+              "quoted": false
+            },
+            {
+              "text": "From the client’s perspective: * Can this person address our specific issues?",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "From the consultant’s perspective: * Is there sufficient scope here?",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Selling portal workshops One practical approach is to respond to initial conversations with a defined workshop—a “portal” into the organisation.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Jam sessions “Workshop” carries assumptions—facilitation plans, structured activities, predefined outputs.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "For example: “Why wouldn’t we approach this the same way as the previous project?” or “If the problem and solution are clear, what role is needed here?” * Use hypotheticals to expose assumptions.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "“If a senior hire were already in place, what would they prioritise?” * Be direct.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "“Do you have the capability to execute this?” or “What is preventing approval?” * Resolve small, contained issues where appropriate to build credibility.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Early “solutions” are often contextually incomplete or already rejected internally.",
+              "start": 5639,
+              "end": 5722,
+              "quoted": false
+            }
+          ],
+          "match_count": 13,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 26 curly quote(s)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "typographic_signal",
+          "guidance": "Normalise in All/plain output; recommend preserving in sourced literary or typographic text."
+        }
+      }
+    },
+    {
+      "id": "sentence-length-variance",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Sentence length stdev: 10.3 (target: >4)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1345,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Sentence length stdev: 10.3 (target: >4)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms."
+        }
+      }
+    },
+    {
+      "id": "no-promotional-language",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No promotional language",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No promotional language",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "hype_language",
+          "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm."
+        }
+      }
+    },
+    {
+      "id": "no-significance-inflation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No significance inflation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No significance inflation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "importance_inflation",
+          "guidance": "Fix inflated importance unless the source genuinely argues significance."
+        }
+      }
+    },
+    {
+      "id": "no-negative-parallelisms",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No negative parallelisms or contrived reframes",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced."
+        }
+      }
+    },
+    {
+      "id": "no-copula-avoidance",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No copula avoidance",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No copula avoidance",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "grammar_substitution",
+          "guidance": "Usually simplify at Balanced and All; recommend preserving if the construction is idiomatic or technical."
+        }
+      }
+    },
+    {
+      "id": "no-filler-phrases",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No filler phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No filler phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "filler_phrase",
+          "guidance": "Fix stock filler at Balanced and All; at Balanced, disclose and remove unless it belongs to quoted or intentionally casual voice."
+        }
+      }
+    },
+    {
+      "id": "no-generic-conclusions",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "provenance_residue",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No generic conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No generic conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue",
+            "synthetic_significance"
+          ],
+          "evidence_role": "generic_closure",
+          "guidance": "Fix at every depth unless quoted from source text."
+        }
+      }
+    },
+    {
+      "id": "no-false-concession-hedges",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No false concession hedges",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No false concession hedges",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix fake both-sides framing at Balanced and All; preserve only if the piece actually argues both positions with evidence."
+        }
+      }
+    },
+    {
+      "id": "no-placeholder-residue",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No placeholder residue",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No placeholder residue",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "template_residue",
+          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue."
+        }
+      }
+    },
+    {
+      "id": "no-soft-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Soft scaffold phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Soft scaffold phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "explainer_scaffold",
+          "guidance": "Fix at Balanced and All; these phrases usually mark generated explainer structure rather than content."
+        }
+      }
+    },
+    {
+      "id": "no-orphaned-demonstratives",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Vague demonstrative subjects: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Vague demonstrative subjects: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Review repeated 'This/That highlights...' starts; replace vague subjects with concrete nouns when the antecedent is unclear."
+        }
+      }
+    },
+    {
+      "id": "no-forced-triads",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "adaptive, conversational, and responsive",
+          "preparation, synthesis, and follow-up"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "adaptive, conversational, and responsive",
+            "preparation, synthesis, and follow-up"
+          ],
+          "evidence": "Found 2 triad(s): ['adaptive, conversational, and responsive', 'preparation, synthesis, and follow-up']",
+          "candidates": [
+            {
+              "text": "adaptive, conversational, and responsive",
+              "start": 4065,
+              "end": 4105,
+              "quoted": false
+            },
+            {
+              "text": "preparation, synthesis, and follow-up",
+              "start": 7543,
+              "end": 7580,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 2,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "adaptive, conversational, and responsive",
+              "start": 4065,
+              "end": 4105,
+              "quoted": false
+            },
+            {
+              "text": "preparation, synthesis, and follow-up",
+              "start": 7543,
+              "end": 7580,
+              "quoted": false
+            }
+          ],
+          "match_count": 2,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 2 triad(s): ['adaptive, conversational, and responsive', 'preparation, synthesis, and follow-up']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads."
+        }
+      }
+    },
+    {
+      "id": "no-superficial-ing",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No superficial -ing phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No superficial -ing phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "analysis_substitution",
+          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning."
+        }
+      }
+    },
+    {
+      "id": "no-ghost-spectral-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Ghost/spectral words: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Ghost/spectral words: 0",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose."
+        }
+      }
+    },
+    {
+      "id": "no-quietness-obsession",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Quietness words: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Quietness words: 0",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix generic quietness mood; recommend preserving if quietness is the actual subject or voice."
+        }
+      }
+    },
+    {
+      "id": "no-rhetorical-questions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "* Will this relationship work?"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "* Will this relationship work?"
+          ],
+          "evidence": "Rhetorical questions: 1",
+          "candidates": [
+            {
+              "text": "* Will this relationship work?",
+              "start": 2777,
+              "end": 2807,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "* Will this relationship work?",
+              "start": 2777,
+              "end": 2807,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rhetorical questions: 1",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_template",
+          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-lists",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "* Why clarity matters to both sides",
+          "* How to structure workshops for outcomes rather than experience",
+          "* Conversation prompts that support productive sessions",
+          "* Why pricing should not be discounted (e.g. $4,000/day)",
+          "* Examples drawn from practice",
+          "* Can this person address our specific issues?",
+          "* Do they demonstrate competence?",
+          "* Will our ways of working align?",
+          "* Are they reliable?",
+          "* How do I justify this internally?",
+          "* Is there sufficient scope here?",
+          "* What are the underlying problems?",
+          "* What are the team dynamics?",
+          "* Will this relationship work?",
+          "* Establish working rapport",
+          "* Signal attentiveness and listening",
+          "* Identify the real problems—and whether budget exists to address them",
+          "* Demonstrate capability",
+          "* Observe team dynamics",
+          "* Understand context (what, who, why now)",
+          "* Surface blind spots",
+          "* Start by restating the situation and objectives. Test for inconsistencies and push for specificity.",
+          "* Operate iteratively rather than linearly. Follow threads rather than progressing through a fixed sequence.",
+          "* Prioritise simple questions over clever ones. For example: “Why wouldn’t we approach this the same way as the previous project?” or “If the problem and solution are clear, what role is needed here?”",
+          "* Use hypotheticals to expose assumptions. “If a senior hire were already in place, what would they prioritise?”",
+          "* Be direct. “Do you have the capability to execute this?” or “What is preventing approval?”",
+          "* Resolve small, contained issues where appropriate to build credibility.",
+          "* Avoid resolving large issues prematurely. Early “solutions” are often contextually incomplete or already rejected internally.",
+          "* Reframe problems explicitly to test understanding.",
+          "* Maintain a visible list of discrete issues—this becomes input for subsequent scoping.",
+          "* Allow silence. Delays in response often indicate real complexity rather than disengagement.",
+          "* Established working relationship",
+          "* Shared experience of collaboration",
+          "* Improved understanding of context and constraints",
+          "* Initial framing of the problem space",
+          "* On-site support for audience development, two days per week"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "* Why clarity matters to both sides",
+            "* How to structure workshops for outcomes rather than experience",
+            "* Conversation prompts that support productive sessions",
+            "* Why pricing should not be discounted (e.g. $4,000/day)",
+            "* Examples drawn from practice",
+            "* Can this person address our specific issues?",
+            "* Do they demonstrate competence?",
+            "* Will our ways of working align?",
+            "* Are they reliable?",
+            "* How do I justify this internally?",
+            "* Is there sufficient scope here?",
+            "* What are the underlying problems?",
+            "* What are the team dynamics?",
+            "* Will this relationship work?",
+            "* Establish working rapport",
+            "* Signal attentiveness and listening",
+            "* Identify the real problems—and whether budget exists to address them",
+            "* Demonstrate capability",
+            "* Observe team dynamics",
+            "* Understand context (what, who, why now)",
+            "* Surface blind spots",
+            "* Start by restating the situation and objectives. Test for inconsistencies and push for specificity.",
+            "* Operate iteratively rather than linearly. Follow threads rather than progressing through a fixed sequence.",
+            "* Prioritise simple questions over clever ones. For example: “Why wouldn’t we approach this the same way as the previous project?” or “If the problem and solution are clear, what role is needed here?”",
+            "* Use hypotheticals to expose assumptions. “If a senior hire were already in place, what would they prioritise?”",
+            "* Be direct. “Do you have the capability to execute this?” or “What is preventing approval?”",
+            "* Resolve small, contained issues where appropriate to build credibility.",
+            "* Avoid resolving large issues prematurely. Early “solutions” are often contextually incomplete or already rejected internally.",
+            "* Reframe problems explicitly to test understanding.",
+            "* Maintain a visible list of discrete issues—this becomes input for subsequent scoping.",
+            "* Allow silence. Delays in response often indicate real complexity rather than disengagement.",
+            "* Established working relationship",
+            "* Shared experience of collaboration",
+            "* Improved understanding of context and constraints",
+            "* Initial framing of the problem space",
+            "* On-site support for audience development, two days per week"
+          ],
+          "evidence": "List items: 36 across 7 block(s); line ratio: 17% (36/217)",
+          "candidates": [
+            {
+              "text": "* Why clarity matters to both sides",
+              "start": 1814,
+              "end": 1849,
+              "quoted": false
+            },
+            {
+              "text": "* How to structure workshops for outcomes rather than experience",
+              "start": 1850,
+              "end": 1914,
+              "quoted": false
+            },
+            {
+              "text": "* Conversation prompts that support productive sessions",
+              "start": 1915,
+              "end": 1970,
+              "quoted": false
+            },
+            {
+              "text": "* Why pricing should not be discounted (e.g. $4,000/day)",
+              "start": 1971,
+              "end": 2027,
+              "quoted": false
+            },
+            {
+              "text": "* Examples drawn from practice",
+              "start": 2028,
+              "end": 2058,
+              "quoted": false
+            },
+            {
+              "text": "* Can this person address our specific issues?",
+              "start": 2468,
+              "end": 2514,
+              "quoted": false
+            },
+            {
+              "text": "* Do they demonstrate competence?",
+              "start": 2515,
+              "end": 2548,
+              "quoted": false
+            },
+            {
+              "text": "* Will our ways of working align?",
+              "start": 2549,
+              "end": 2582,
+              "quoted": false
+            },
+            {
+              "text": "* Are they reliable?",
+              "start": 2583,
+              "end": 2603,
+              "quoted": false
+            },
+            {
+              "text": "* How do I justify this internally?",
+              "start": 2604,
+              "end": 2639,
+              "quoted": false
+            },
+            {
+              "text": "* Is there sufficient scope here?",
+              "start": 2677,
+              "end": 2710,
+              "quoted": false
+            },
+            {
+              "text": "* What are the underlying problems?",
+              "start": 2711,
+              "end": 2746,
+              "quoted": false
+            },
+            {
+              "text": "* What are the team dynamics?",
+              "start": 2747,
+              "end": 2776,
+              "quoted": false
+            },
+            {
+              "text": "* Will this relationship work?",
+              "start": 2777,
+              "end": 2807,
+              "quoted": false
+            },
+            {
+              "text": "* Establish working rapport",
+              "start": 4176,
+              "end": 4203,
+              "quoted": false
+            },
+            {
+              "text": "* Signal attentiveness and listening",
+              "start": 4204,
+              "end": 4240,
+              "quoted": false
+            },
+            {
+              "text": "* Identify the real problems—and whether budget exists to address them",
+              "start": 4241,
+              "end": 4311,
+              "quoted": false
+            },
+            {
+              "text": "* Demonstrate capability",
+              "start": 4312,
+              "end": 4336,
+              "quoted": false
+            },
+            {
+              "text": "* Observe team dynamics",
+              "start": 4337,
+              "end": 4360,
+              "quoted": false
+            },
+            {
+              "text": "* Understand context (what, who, why now)",
+              "start": 4361,
+              "end": 4402,
+              "quoted": false
+            },
+            {
+              "text": "* Surface blind spots",
+              "start": 4403,
+              "end": 4424,
+              "quoted": false
+            },
+            {
+              "text": "* Start by restating the situation and objectives. Test for inconsistencies and push for specificity.",
+              "start": 4903,
+              "end": 5004,
+              "quoted": false
+            },
+            {
+              "text": "* Operate iteratively rather than linearly. Follow threads rather than progressing through a fixed sequence.",
+              "start": 5005,
+              "end": 5113,
+              "quoted": false
+            },
+            {
+              "text": "* Prioritise simple questions over clever ones. For example: “Why wouldn’t we approach this the same way as the previous project?” or “If the problem and solution are clear, what role is needed here?”",
+              "start": 5114,
+              "end": 5314,
+              "quoted": false
+            },
+            {
+              "text": "* Use hypotheticals to expose assumptions. “If a senior hire were already in place, what would they prioritise?”",
+              "start": 5315,
+              "end": 5427,
+              "quoted": false
+            },
+            {
+              "text": "* Be direct. “Do you have the capability to execute this?” or “What is preventing approval?”",
+              "start": 5428,
+              "end": 5520,
+              "quoted": false
+            },
+            {
+              "text": "* Resolve small, contained issues where appropriate to build credibility.",
+              "start": 5521,
+              "end": 5594,
+              "quoted": false
+            },
+            {
+              "text": "* Avoid resolving large issues prematurely. Early “solutions” are often contextually incomplete or already rejected internally.",
+              "start": 5595,
+              "end": 5722,
+              "quoted": false
+            },
+            {
+              "text": "* Reframe problems explicitly to test understanding.",
+              "start": 5723,
+              "end": 5775,
+              "quoted": false
+            },
+            {
+              "text": "* Maintain a visible list of discrete issues—this becomes input for subsequent scoping.",
+              "start": 5776,
+              "end": 5863,
+              "quoted": false
+            },
+            {
+              "text": "* Allow silence. Delays in response often indicate real complexity rather than disengagement.",
+              "start": 5864,
+              "end": 5957,
+              "quoted": false
+            },
+            {
+              "text": "* Established working relationship",
+              "start": 6457,
+              "end": 6491,
+              "quoted": false
+            },
+            {
+              "text": "* Shared experience of collaboration",
+              "start": 6492,
+              "end": 6528,
+              "quoted": false
+            },
+            {
+              "text": "* Improved understanding of context and constraints",
+              "start": 6529,
+              "end": 6580,
+              "quoted": false
+            },
+            {
+              "text": "* Initial framing of the problem space",
+              "start": 6581,
+              "end": 6619,
+              "quoted": false
+            },
+            {
+              "text": "* On-site support for audience development, two days per week",
+              "start": 6915,
+              "end": 6976,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 36,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_items": 8,
+            "minimum_blocks": 2,
+            "minimum_line_ratio": 0.3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 36,
+          "sample_size": 1345,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items: 36 across 7 block(s); line ratio: 17% (36/217)",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_items": 8,
+              "minimum_blocks": 2,
+              "minimum_line_ratio": 0.3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "listification",
+          "guidance": "Fix unnecessary listification; recommend preserving reference, instructional, or interview structure."
+        }
+      }
+    },
+    {
+      "id": "no-unicode-flair",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "provenance_residue",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Decorative symbols/shortcodes: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Decorative symbols/shortcodes: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "genre_misfit"
+          ],
+          "evidence_role": "formatting_residue",
+          "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source."
+        }
+      }
+    },
+    {
+      "id": "no-dramatic-transitions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dramatic transitions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dramatic transitions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "narrative_template",
+          "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned."
+        }
+      }
+    },
+    {
+      "id": "no-formulaic-openers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No formulaic openers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No formulaic openers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "formulaic_structure",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it matches the source genre."
+        }
+      }
+    },
+    {
+      "id": "no-signposted-conclusions",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "Conclusion"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "Conclusion"
+          ],
+          "evidence": "Found 1: ['Conclusion']",
+          "candidates": [
+            {
+              "text": "Conclusion",
+              "start": 8802,
+              "end": 8812,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "Conclusion",
+              "start": 8802,
+              "end": 8812,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 1: ['Conclusion']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "structural_signpost",
+          "guidance": "Fix generic signposts in prose; recommend preserving academic/instructional structure when useful."
+        }
+      }
+    },
+    {
+      "id": "no-parenthetical-headings",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No parenthetical headings",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No parenthetical headings",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "heading_structure",
+          "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body."
+        }
+      }
+    },
+    {
+      "id": "no-corporate-ai-speak",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No corporate AI speak",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No corporate AI speak",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "domain_cliche",
+          "guidance": "Fix at every depth; recommend preserving only when quoting corporate source language."
+        }
+      }
+    },
+    {
+      "id": "no-this-chains",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max 'This [verb]' run: 1",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1345,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max 'This [verb]' run: 1",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-hedging",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Hedging constructions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Hedging constructions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty."
+        }
+      }
+    },
+    {
+      "id": "no-countdown-negation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "synthetic_significance",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No countdown negation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1345,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No countdown negation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix generic reveal structures; recommend preserving deliberate rhetoric only with strong reason."
+        }
+      }
+    },
+    {
+      "id": "no-negation-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Negation markers: 8 (5.9 per 1000 words)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1345,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Negation markers: 8 (5.9 per 1000 words)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_density",
+          "guidance": "Review dense negation as a style signal; preserve polemic or technical qualification when purposeful."
+        }
+      }
+    },
+    {
+      "id": "paragraph-length-uniformity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Paragraph length CV: 0.85 across 15 paragraphs",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_paragraphs": 7,
+            "maximum_cv": 0.18
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1345,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Paragraph length CV: 0.85 across 15 paragraphs",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_paragraphs": 7,
+              "maximum_cv": 0.18
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "layout_rhythm",
+          "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template."
+        }
+      }
+    },
+    {
+      "id": "no-tidy-paragraph-endings",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "Clarity is not incidental; it is the basis of all subsequent work."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "Clarity is not incidental; it is the basis of all subsequent work."
+          ],
+          "evidence": "Tidy paragraph endings: 1",
+          "candidates": [
+            {
+              "text": "Clarity is not incidental; it is the basis of all subsequent work.",
+              "start": 9220,
+              "end": 9286,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "Clarity is not incidental; it is the basis of all subsequent work.",
+              "start": 9220,
+              "end": 9286,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Tidy paragraph endings: 1",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "paragraph_closure",
+          "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn."
+        }
+      }
+    },
+    {
+      "id": "no-bland-critical-template",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Bland critical template phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bland critical template phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "evidence_role": "genre_cliche",
+          "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work."
+        }
+      }
+    },
+    {
+      "id": "no-rubric-echoing",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Rubric echo phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rubric echo phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "voice_erasure"
+          ],
+          "evidence_role": "assignment_residue",
+          "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric."
+        }
+      }
+    },
+    {
+      "id": "vocabulary-diversity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Type-token ratio: 0.479 (618 unique / 1289 total, target: >0.40)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1345,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Type-token ratio: 0.479 (618 unique / 1289 total, target: >0.40)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "lexical_distribution",
+          "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately."
+        }
+      }
+    },
+    {
+      "id": "no-triad-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "adaptive, conversational, and responsive",
+          "preparation, synthesis, and follow-up"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "candidate_count": 2,
+          "matches": [
+            "adaptive, conversational, and responsive",
+            "preparation, synthesis, and follow-up"
+          ],
+          "evidence": "Triads: 2",
+          "candidates": [
+            {
+              "text": "adaptive, conversational, and responsive",
+              "start": 4065,
+              "end": 4105,
+              "quoted": false
+            },
+            {
+              "text": "preparation, synthesis, and follow-up",
+              "start": 7543,
+              "end": 7580,
+              "quoted": false
+            }
+          ],
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_words": 300,
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "adaptive, conversational, and responsive",
+              "start": 4065,
+              "end": 4105,
+              "quoted": false
+            },
+            {
+              "text": "preparation, synthesis, and follow-up",
+              "start": 7543,
+              "end": 7580,
+              "quoted": false
+            }
+          ],
+          "match_count": 2,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Triads: 2",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_words": 300,
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical."
+        }
+      }
+    },
+    {
+      "id": "no-section-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No repeated section labels",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1345,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No repeated section labels",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "repeated_template",
+          "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material."
+        }
+      }
+    },
+    {
+      "id": "no-notability-claims",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No notability claims",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No notability claims",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "notability_inflation",
+          "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing."
+        }
+      }
+    },
+    {
+      "id": "no-vague-attributions",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No vague attributions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No vague attributions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "attribution_vagueness",
+          "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote."
+        }
+      }
+    },
+    {
+      "id": "no-boldface-overuse",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Bold spans in prose: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bold spans in prose: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "emphasis_pattern",
+          "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers."
+        }
+      }
+    },
+    {
+      "id": "no-inline-header-lists",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items with bolded headers: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items with bolded headers: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "list_template",
+          "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list."
+        }
+      }
+    },
+    {
+      "id": "no-compound-modifier-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dense compound-modifier sentences",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_per_sentence": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 1221,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dense compound-modifier sentences",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_per_sentence": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "modifier_density",
+          "guidance": "Restructure sentences with three or more stock hyphenated compounds; preserve only when the compounds are domain-specific terms of art."
+        }
+      }
+    },
+    {
+      "id": "no-knowledge-cutoff-disclaimers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No knowledge-cutoff disclaimers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No knowledge-cutoff disclaimers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "model_meta_residue",
+          "guidance": "Fix at every depth; training-update and limited-information hedges are model meta-residue, not authorial uncertainty."
+        }
+      }
+    }
+  ],
+  "semantic_candidates": [
+    {
+      "kind": "cross_sentence_correction",
+      "text": "The aim is not a positive experience. It is a productive one.",
+      "start_byte": 6065,
+      "end_byte": 6126,
+      "line": 132,
+      "segment_id": "paragraph:6065:6127",
+      "semantic_owner": "formulaic_parallelism"
+    },
+    {
+      "kind": "cross_sentence_correction",
+      "text": "The key point: the session is not solving the problem.\n\nIt is producing clarity.",
+      "start_byte": 7773,
+      "end_byte": 7853,
+      "line": 175,
+      "segment_id": null,
+      "semantic_owner": "formulaic_parallelism"
+    },
+    {
+      "kind": "two_beat_short_run",
+      "text": " Establishing clarity around it is not.\n\nAnd clarity has economic value.",
+      "start_byte": 1670,
+      "end_byte": 1742,
+      "line": 40,
+      "segment_id": null,
+      "semantic_owner": "formulaic_parallelism"
+    },
+    {
+      "kind": "two_beat_short_run",
+      "text": "\n\nThis distinction matters. Effective sessions often feel demanding.",
+      "start_byte": 6126,
+      "end_byte": 6194,
+      "line": 132,
+      "segment_id": null,
+      "semantic_owner": "formulaic_parallelism"
+    },
+    {
+      "kind": "two_beat_short_run",
+      "text": "\n\nThis is counterproductive.\n\nThe workshop sets the pricing anchor.",
+      "start_byte": 7240,
+      "end_byte": 7307,
+      "line": 163,
+      "segment_id": null,
+      "semantic_owner": "formulaic_parallelism"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 1010,
+      "end_byte": 1012,
+      "line": 30,
+      "segment_id": "paragraph:895:1056",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 1073,
+      "end_byte": 1077,
+      "line": 32,
+      "segment_id": "paragraph:1057:1079",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 1181,
+      "end_byte": 1183,
+      "line": 34,
+      "segment_id": "paragraph:1080:1251",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 1290,
+      "end_byte": 1292,
+      "line": 36,
+      "segment_id": "paragraph:1252:1439",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 1537,
+      "end_byte": 1539,
+      "line": 38,
+      "segment_id": "paragraph:1440:1590",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 1561,
+      "end_byte": 1565,
+      "line": 38,
+      "segment_id": "paragraph:1440:1590",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 1699,
+      "end_byte": 1701,
+      "line": 40,
+      "segment_id": "paragraph:1591:1710",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "these",
+      "start_byte": 1765,
+      "end_byte": 1770,
+      "line": 42,
+      "segment_id": "paragraph:1711:1807",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 1808,
+      "end_byte": 1812,
+      "line": 44,
+      "segment_id": "paragraph:1808:1827",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 1952,
+      "end_byte": 1956,
+      "line": 48,
+      "segment_id": "list_block:1828:2073",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 2177,
+      "end_byte": 2179,
+      "line": 56,
+      "segment_id": "paragraph:2114:2258",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 2259,
+      "end_byte": 2261,
+      "line": 58,
+      "segment_id": "paragraph:2259:2339",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 2498,
+      "end_byte": 2502,
+      "line": 64,
+      "segment_id": "list_block:2492:2664",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 2647,
+      "end_byte": 2651,
+      "line": 68,
+      "segment_id": "list_block:2492:2664",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 2810,
+      "end_byte": 2814,
+      "line": 75,
+      "segment_id": "list_block:2703:2834",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 2835,
+      "end_byte": 2839,
+      "line": 77,
+      "segment_id": "paragraph:2835:2984",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 3470,
+      "end_byte": 3472,
+      "line": 87,
+      "segment_id": "paragraph:3370:3540",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "These",
+      "start_byte": 3583,
+      "end_byte": 3588,
+      "line": 89,
+      "segment_id": "paragraph:3541:3712",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 3831,
+      "end_byte": 3835,
+      "line": 95,
+      "segment_id": "paragraph:3828:4046",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "These",
+      "start_byte": 4468,
+      "end_byte": 4473,
+      "line": 109,
+      "segment_id": "paragraph:4468:4552",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 5247,
+      "end_byte": 5251,
+      "line": 121,
+      "segment_id": "list_block:4945:6028",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 5538,
+      "end_byte": 5542,
+      "line": 123,
+      "segment_id": "list_block:4945:6028",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 5891,
+      "end_byte": 5895,
+      "line": 127,
+      "segment_id": "list_block:4945:6028",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 6103,
+      "end_byte": 6105,
+      "line": 132,
+      "segment_id": "paragraph:6065:6127",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 6128,
+      "end_byte": 6132,
+      "line": 134,
+      "segment_id": "paragraph:6128:6239",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 6271,
+      "end_byte": 6275,
+      "line": 136,
+      "segment_id": "paragraph:6240:6370",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 6333,
+      "end_byte": 6337,
+      "line": 136,
+      "segment_id": "paragraph:6240:6370",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 6932,
+      "end_byte": 6936,
+      "line": 153,
+      "segment_id": "paragraph:6788:6943",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "these",
+      "start_byte": 7178,
+      "end_byte": 7183,
+      "line": 163,
+      "segment_id": "paragraph:7144:7241",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 7242,
+      "end_byte": 7246,
+      "line": 165,
+      "segment_id": "paragraph:7242:7269",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 7337,
+      "end_byte": 7339,
+      "line": 167,
+      "segment_id": "paragraph:7270:7372",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 7362,
+      "end_byte": 7364,
+      "line": 167,
+      "segment_id": "paragraph:7270:7372",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 7509,
+      "end_byte": 7513,
+      "line": 171,
+      "segment_id": "paragraph:7509:7658",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 7591,
+      "end_byte": 7593,
+      "line": 171,
+      "segment_id": "paragraph:7509:7658",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 7744,
+      "end_byte": 7748,
+      "line": 173,
+      "segment_id": "paragraph:7659:7772",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 7829,
+      "end_byte": 7831,
+      "line": 177,
+      "segment_id": "paragraph:7829:7854",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 8014,
+      "end_byte": 8018,
+      "line": 185,
+      "segment_id": "paragraph:8014:8058",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 8612,
+      "end_byte": 8616,
+      "line": 199,
+      "segment_id": "paragraph:8538:8665",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 8774,
+      "end_byte": 8778,
+      "line": 205,
+      "segment_id": "paragraph:8774:8877",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 9096,
+      "end_byte": 9100,
+      "line": 213,
+      "segment_id": "paragraph:9076:9276",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 9327,
+      "end_byte": 9329,
+      "line": 215,
+      "segment_id": "paragraph:9277:9367",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 9396,
+      "end_byte": 9398,
+      "line": 217,
+      "segment_id": "paragraph:9368:9400",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The task",
+      "start_byte": 895,
+      "end_byte": 903,
+      "line": 30,
+      "segment_id": "paragraph:895:1056",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the outside",
+      "start_byte": 948,
+      "end_byte": 959,
+      "line": 30,
+      "segment_id": "paragraph:895:1056",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the work",
+      "start_byte": 987,
+      "end_byte": 995,
+      "line": 30,
+      "segment_id": "paragraph:895:1056",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the past",
+      "start_byte": 1085,
+      "end_byte": 1093,
+      "line": 34,
+      "segment_id": "paragraph:1080:1251",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the default",
+      "start_byte": 1105,
+      "end_byte": 1116,
+      "line": 34,
+      "segment_id": "paragraph:1080:1251",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the client",
+      "start_byte": 1376,
+      "end_byte": 1386,
+      "line": 36,
+      "segment_id": "paragraph:1252:1439",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The key",
+      "start_byte": 1440,
+      "end_byte": 1447,
+      "line": 38,
+      "segment_id": "paragraph:1440:1590",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the workshop",
+      "start_byte": 1474,
+      "end_byte": 1486,
+      "line": 38,
+      "segment_id": "paragraph:1440:1590",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the middle",
+      "start_byte": 2151,
+      "end_byte": 2161,
+      "line": 56,
+      "segment_id": "paragraph:2114:2258",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the action",
+      "start_byte": 2165,
+      "end_byte": 2175,
+      "line": 56,
+      "segment_id": "paragraph:2114:2258",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the client",
+      "start_byte": 2463,
+      "end_byte": 2473,
+      "line": 62,
+      "segment_id": "paragraph:2458:2491",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the consultant",
+      "start_byte": 2670,
+      "end_byte": 2684,
+      "line": 70,
+      "segment_id": "paragraph:2665:2702",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the underlying",
+      "start_byte": 2748,
+      "end_byte": 2762,
+      "line": 73,
+      "segment_id": "list_block:2703:2834",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the team",
+      "start_byte": 2784,
+      "end_byte": 2792,
+      "line": 74,
+      "segment_id": "list_block:2703:2834",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the core",
+      "start_byte": 2843,
+      "end_byte": 2851,
+      "line": 77,
+      "segment_id": "paragraph:2835:2984",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the same",
+      "start_byte": 2988,
+      "end_byte": 2996,
+      "line": 79,
+      "segment_id": "paragraph:2985:3113",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the process",
+      "start_byte": 3003,
+      "end_byte": 3014,
+      "line": 79,
+      "segment_id": "paragraph:2985:3113",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The question",
+      "start_byte": 3114,
+      "end_byte": 3126,
+      "line": 81,
+      "segment_id": "paragraph:3114:3216",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the organisation",
+      "start_byte": 3351,
+      "end_byte": 3367,
+      "line": 85,
+      "segment_id": "paragraph:3243:3369",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the scope",
+      "start_byte": 3550,
+      "end_byte": 3559,
+      "line": 89,
+      "segment_id": "paragraph:3541:3712",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the format",
+      "start_byte": 3843,
+      "end_byte": 3853,
+      "line": 95,
+      "segment_id": "paragraph:3828:4046",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the session",
+      "start_byte": 4060,
+      "end_byte": 4071,
+      "line": 97,
+      "segment_id": "paragraph:4047:4147",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The objective",
+      "start_byte": 4148,
+      "end_byte": 4161,
+      "line": 99,
+      "segment_id": "paragraph:4148:4215",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the real",
+      "start_byte": 4292,
+      "end_byte": 4300,
+      "line": 103,
+      "segment_id": "list_block:4216:4467",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The session",
+      "start_byte": 4857,
+      "end_byte": 4868,
+      "line": 115,
+      "segment_id": "paragraph:4818:4904",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the situation",
+      "start_byte": 4966,
+      "end_byte": 4979,
+      "line": 119,
+      "segment_id": "list_block:4945:6028",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the same",
+      "start_byte": 5252,
+      "end_byte": 5260,
+      "line": 121,
+      "segment_id": "list_block:4945:6028",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the previous",
+      "start_byte": 5268,
+      "end_byte": 5280,
+      "line": 121,
+      "segment_id": "list_block:4945:6028",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the problem",
+      "start_byte": 5302,
+      "end_byte": 5313,
+      "line": 121,
+      "segment_id": "list_block:4945:6028",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the capability",
+      "start_byte": 5512,
+      "end_byte": 5526,
+      "line": 123,
+      "segment_id": "list_block:4945:6028",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The aim",
+      "start_byte": 6065,
+      "end_byte": 6072,
+      "line": 132,
+      "segment_id": "paragraph:6065:6127",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the outcomes",
+      "start_byte": 6378,
+      "end_byte": 6390,
+      "line": 138,
+      "segment_id": "paragraph:6371:6435",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the problem",
+      "start_byte": 6676,
+      "end_byte": 6687,
+      "line": 147,
+      "segment_id": "list_block:6531:6694",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The reduction",
+      "start_byte": 7052,
+      "end_byte": 7065,
+      "line": 159,
+      "segment_id": "paragraph:7052:7108",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The workshop",
+      "start_byte": 7270,
+      "end_byte": 7282,
+      "line": 167,
+      "segment_id": "paragraph:7270:7372",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the pricing",
+      "start_byte": 7288,
+      "end_byte": 7299,
+      "line": 167,
+      "segment_id": "paragraph:7270:7372",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the rate",
+      "start_byte": 7317,
+      "end_byte": 7325,
+      "line": 167,
+      "segment_id": "paragraph:7270:7372",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the standard",
+      "start_byte": 7427,
+      "end_byte": 7439,
+      "line": 169,
+      "segment_id": "paragraph:7373:7508",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the client",
+      "start_byte": 7556,
+      "end_byte": 7566,
+      "line": 171,
+      "segment_id": "paragraph:7509:7658",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the session",
+      "start_byte": 7731,
+      "end_byte": 7742,
+      "line": 173,
+      "segment_id": "paragraph:7659:7772",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The key",
+      "start_byte": 7773,
+      "end_byte": 7780,
+      "line": 175,
+      "segment_id": "paragraph:7773:7828",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the session",
+      "start_byte": 7788,
+      "end_byte": 7799,
+      "line": 175,
+      "segment_id": "paragraph:7773:7828",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the problem",
+      "start_byte": 7815,
+      "end_byte": 7826,
+      "line": 175,
+      "segment_id": "paragraph:7773:7828",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The agenda",
+      "start_byte": 7989,
+      "end_byte": 7999,
+      "line": 183,
+      "segment_id": "paragraph:7911:8013",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the project",
+      "start_byte": 8128,
+      "end_byte": 8139,
+      "line": 189,
+      "segment_id": "paragraph:8080:8189",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The planned",
+      "start_byte": 8190,
+      "end_byte": 8201,
+      "line": 191,
+      "segment_id": "paragraph:8190:8295",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The session",
+      "start_byte": 8224,
+      "end_byte": 8235,
+      "line": 191,
+      "segment_id": "paragraph:8190:8295",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The result",
+      "start_byte": 8296,
+      "end_byte": 8306,
+      "line": 193,
+      "segment_id": "paragraph:8296:8444",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the nominal",
+      "start_byte": 8363,
+      "end_byte": 8374,
+      "line": 193,
+      "segment_id": "paragraph:8296:8444",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the outcome",
+      "start_byte": 8413,
+      "end_byte": 8424,
+      "line": 193,
+      "segment_id": "paragraph:8296:8444",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the entire",
+      "start_byte": 8626,
+      "end_byte": 8636,
+      "line": 199,
+      "segment_id": "paragraph:8538:8665",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The trade-off",
+      "start_byte": 8847,
+      "end_byte": 8860,
+      "line": 205,
+      "segment_id": "paragraph:8774:8877",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the inside",
+      "start_byte": 8924,
+      "end_byte": 8934,
+      "line": 209,
+      "segment_id": "paragraph:8890:9002",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The underlying",
+      "start_byte": 9003,
+      "end_byte": 9017,
+      "line": 211,
+      "segment_id": "paragraph:9003:9075",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the basis",
+      "start_byte": 9333,
+      "end_byte": 9342,
+      "line": 215,
+      "segment_id": "paragraph:9277:9367",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "short_form_triad",
+      "text": "In practice, the session behaves more like a jam session: adaptive, conversational, and responsive.",
+      "start_byte": 4047,
+      "end_byte": 4146,
+      "line": 97,
+      "segment_id": "paragraph:4047:4147",
+      "semantic_owner": "semantic_redundancy"
+    }
+  ],
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "The aim is not a positive experience. It is a productive one.",
+          "why_formulaic": "The 'not X, it is Y' correction script substitutes a tidy contrast for an actual account of what makes a session demanding versus merely pleasant; the same skeleton recurs later in the piece."
+        },
+        {
+          "phrase": "the session is not solving the problem.\n\nIt is producing clarity.",
+          "why_formulaic": "This repeats the identical 'is not X. It is Y.' correction-script pattern used earlier for 'positive experience'/'productive one', substituting rhetorical symmetry for a fuller explanation of what 'producing clarity' concretely requires."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Clarity is not incidental; it is the basis of all subsequent work.",
+          "what_it_repeats": "Restates the claim made two sentences earlier in the same conclusion: 'The underlying principle is consistent: clarity enables effective work,' and echoes the earlier assertion that 'clarity has economic value.'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "stronger engagements and longer retention",
+          "missing_criterion": "No metric or comparison basis given for 'stronger' (revenue? duration? scope?) or how much 'longer' retention lasted."
+        },
+        {
+          "phrase": "significant misalignment",
+          "missing_criterion": "Does not specify what was misaligned or by what measure the misalignment counted as significant."
+        },
+        {
+          "phrase": "The reduction in specification overhead is significant.",
+          "missing_criterion": "No quantity, time saved, or comparison point establishing what makes the reduction 'significant.'"
+        },
+        {
+          "phrase": "the outcome was still correct",
+          "missing_criterion": "'Correct' has no stated standard—correct relative to what goal, client expectation, or consulting principle."
+        },
+        {
+          "phrase": "Effective sessions often feel demanding.",
+          "missing_criterion": "'Effective' and 'demanding' are asserted without specifying the criterion of effectiveness (retained client? better clarity?) or what makes a session feel demanding."
+        },
+        {
+          "phrase": "The trade-off was acceptable.",
+          "missing_criterion": "No stated basis for 'acceptable'—acceptable to whom, and weighed against what cost."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ],
+  "limitations": [
+    "slide_title structure unavailable without a structure manifest",
+    "caption structure unavailable without a structure manifest"
+  ]
+}

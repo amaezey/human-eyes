@@ -1,0 +1,10 @@
+{
+  "anonymous_id": "D16",
+  "content_sha256": "081c94fa9da1ec3e74f9e0fbf807d4a5ba66cf5db670e570358728bf40bad2a6",
+  "prompt_sha256": "f99fa9586b7d36ce8a526e610c033127f12eb598bb544129ba7c4f7008868a18",
+  "registry_sha256": "57d352e50b98929d8f751a732f2f746d80e363a629d16fecc59bb680fc9e8d24",
+  "attempt": 1,
+  "model_requested": "claude-sonnet-5",
+  "effort": "medium",
+  "tools": []
+}

@@ -1,0 +1,163 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon spreads naturally",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "close the gap between myth and machine",
+          "why_generic": "Presents a conventional myth/technology binary as if it were a precise interpretive claim, without specifying what 'myth' and 'machine' concretely denote or how they are 'closed'."
+        },
+        {
+          "phrase": "the shadow of transgression",
+          "why_generic": "A stock figurative pairing of light/shadow with moral risk that supplies mood rather than naming what the transgression consists of or against what standard."
+        },
+        {
+          "phrase": "offers a narrative structure that both illuminates and obscures",
+          "why_generic": "The illuminate/obscure pairing is a common critical-essay cliché that asserts a dual effect without specifying what is illuminated or what is obscured."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "close the gap between myth and machine",
+          "why_unclear": "\"the gap\" is introduced as a first-use definite description with no prior text establishing what specific gap between myth and machine is meant."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "not the anonymous bureaucrat of nuclear deterrence, but the visible, almost liturgical figure of the explorer who risked death in the pursuit of knowledge",
+          "why_formulaic": "One instance of a repeated 'not X but Y' correction script used across the essay; the symmetry asserts contrast without grounding either side in a specific historical detail."
+        },
+        {
+          "phrase": "it was not a declaration of doctrine but an invocation of shared cultural language",
+          "why_formulaic": "Another repetition of the same 'not X but Y' correction pattern, substituting balanced phrasing for an account of what the doctrine/invocation distinction actually changes."
+        },
+        {
+          "phrase": "The lunar surface is not presented as a site of conquest but as an environment of radical distance—silent, indifferent, and resistant to projection.",
+          "why_formulaic": "A third recurrence of the same corrective bicolon skeleton, reinforcing a rhetorical tic rather than adding new information beyond the prior two instances."
+        },
+        {
+          "phrase": "space as sacred frontier, as profane extension of earthly ambition, and as a site where the moral limits of human aspiration are tested",
+          "why_formulaic": "A counted tricolon whose three balanced clauses restate the essay's thesis in list form without adding distinct evidence for each term."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Oliver’s attention to the coexistence of sacred and profane language highlights this tension. Newell’s analysis of destiny narratives shows how it is projected into the future. First Man renders it at the level of individual experience.",
+          "what_it_repeats": "Restates, in compressed form, the individual arguments already developed at length in the 'sacred and the profane', 'Destiny and its discontents', and 'Silence, grief, and the limits of transcendence' sections."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "is deceptively simple",
+          "missing_criterion": "Does not specify what makes the claim deceptive or simple, or relative to what more complex alternative."
+        },
+        {
+          "phrase": "The effect was nonetheless profound.",
+          "missing_criterion": "Does not state the measurable or observable nature of the effect, or profound compared to what baseline."
+        },
+        {
+          "phrase": "a more restrained, but also more precise, account",
+          "missing_criterion": "Does not identify the prior account(s) being compared against, or the specific dimension along which restraint and precision are measured."
+        },
+        {
+          "phrase": "this assumption becomes harder to sustain",
+          "missing_criterion": "Does not specify the standard or evidence by which difficulty of sustaining the assumption is judged."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "In this sense, spaceflight becomes a site where competing theologies of progress collide.",
+          "missing_relationship": "Does not specify which preceding 'sense' (destiny narrative vs. idolatry critique) licenses the inference that they 'collide', nor the mechanism of collision."
+        },
+        {
+          "phrase": "In this sense, the early space program can be understood as a bounded episode",
+          "missing_relationship": "Does not identify which specific prior claim establishes the boundedness, leaving the causal/evidential link to the preceding paragraph unstated."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "academic",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

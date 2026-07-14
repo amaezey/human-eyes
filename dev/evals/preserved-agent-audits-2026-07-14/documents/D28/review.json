@@ -1,0 +1,146 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The judgment is plausible because the feature sections share a heading-plus-explanation-benefit pattern, but the annotator supplied no multi-part evidence for a whole-document structural claim.",
+      "evidence": [
+        "- Deprioritize least commonly used features: We reviewed areas that we felt could be delayed and delivered on “painting” the page faster so you can browse quicker.",
+        "- Suspend Idle Tabs: You shouldn’t feel guilty about opening a zillion tabs, but keeping all those tabs open uses your computer’s memory and slows down its performance.",
+        "- Faster startup after customization: For users who have customized their browser with an add-on like a favorite theme, for example changing it to the seasons of the year, or utilizing one of the popular ad-blockers, we’ve made it so that the browser skips a bunch of unnecessary work during subsequent start-ups."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "undercall",
+      "rationale": "The register largely holds as a single friendly corporate-explanatory voice. A colloquial phrase like \"a zillion tabs\" does not amount to a genuine register break.",
+      "evidence": [
+        "To make Firefox faster, we simply prioritized our performance management “to-do” list.",
+        "For this latest Firefox release, we adopted the well-known time management strategy of “procrastinate on purpose.”",
+        "You shouldn’t feel guilty about opening a zillion tabs, but keeping all those tabs open uses your computer’s memory and slows down its performance."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "Both flagged phrases simulate concreteness through familiar lifestyle detail without supplying lived, document-specific grounding.",
+      "evidence": [
+        "before you go on a road trip, you check for a full tank of gas, make sure you have enough oil, or have the right air pressure in your tires.",
+        "changing it to the seasons of the year"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document clearly argues that the release made Firefox faster rather than flattening into balance, but the annotator gave no textual support for this whole-document stance judgment.",
+      "evidence": [
+        "To make Firefox faster, we simply prioritized our performance management “to-do” list.",
+        "The result is that Firefox is better at performing tasks at the optimal time.",
+        "Here’s how we reorganized our to-do list to make Firefox faster:"
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The conclusion is plausible because technical vocabulary clusters in the feature bullets, but the annotator did not supply the cross-document evidence needed for a distribution judgment.",
+      "evidence": [
+        "We applied many of the same principles of time management just like you might prioritize your own urgent needs.",
+        "This includes delaying setTimeout in order to prioritize scripts",
+        "scanning for alternative style sheets after page load; and not loading the auto-fill module unless there is an actual form to complete."
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "supported",
+      "rationale": "The document uses analogy and marketing prose, but it does not use cross-modal sensory mappings of the kind this record targets.",
+      "evidence": [
+        "performance management “to-do” list",
+        "procrastinate on purpose",
+        "opening a zillion tabs"
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The flagged metaphor is a familiar productivity frame that substitutes for a more concrete account of engineering prioritization.",
+      "evidence": [
+        "our performance management “to-do” list"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "The document has some vague wording, but it does not materially rely on unclear pronoun reference or unsupported first-use definites.",
+      "evidence": [
+        "The result is that Firefox is better at performing tasks at the optimal time.",
+        "This includes delaying setTimeout in order to prioritize scripts",
+        "simply click on the tab, and it will reload where you left off."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The road-trip sentence uses a balanced three-part checklist whose symmetry does more rhetorical than informational work for the Firefox explanation.",
+      "evidence": [
+        "before you go on a road trip, you check for a full tank of gas, make sure you have enough oil, or have the right air pressure in your tires."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "No nearby sentence merely restates an earlier claim or list item; the short piece stays additive rather than repetitious at the sentence level.",
+      "evidence": [
+        "The result is that Firefox is better at performing tasks at the optimal time.",
+        "Here’s how we reorganized our to-do list to make Firefox faster:",
+        "Rest assured if you decide you want to review that webpage, simply click on the tab, and it will reload where you left off."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "Each flagged phrase leaves out the relevant metric or criterion needed to make the claim precise.",
+      "evidence": [
+        "least commonly used features",
+        "browse quicker",
+        "unnecessary work"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "supported",
+      "rationale": "The prose does not answer an absent critic or depend on missing chat context; it reads as a self-contained product explainer.",
+      "evidence": [
+        "To make Firefox faster, we simply prioritized our performance management “to-do” list.",
+        "Here’s how we reorganized our to-do list to make Firefox faster:"
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "The document does not use sincerity-marking adverbs or authenticity boosters such as \"honestly\" or \"frankly.\"",
+      "evidence": [
+        "To make Firefox faster, we simply prioritized our performance management “to-do” list.",
+        "For this latest Firefox release, we adopted the well-known time management strategy of “procrastinate on purpose.”"
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "supported",
+      "rationale": "The connectors in the piece state recognizable relationships rather than implying an unstated one.",
+      "evidence": [
+        "The result is that Firefox is better at performing tasks at the optimal time.",
+        "but keeping all those tabs open uses your computer’s memory and slows down its performance."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "misclassified",
+      "rationale": "This reads as journalism-style product reporting rather than `default`, and under the journalism watchlist it has unsupported performance claims with no named source or link.",
+      "evidence": [
+        "# How did we make Firefox faster?",
+        "the main scripts for Instagram, Amazon and Google searches execute 40-80% faster;",
+        "Firefox will now detect if your computer’s memory is running low, which we define as lower than 400MB,"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "misclassified",
+      "rationale": "Several body paragraphs share a similar claim-to-explanation-to-benefit shape, but the whole document does not make every section follow the same arc; the opening announcement and closing thanks section work differently.",
+      "evidence": [
+        "Today we are releasing the May 2019 update to our browser, with improvements that make everyday browsing faster and more responsive.",
+        "The most noticeable change is quicker page loading.",
+        "This release also uses memory more efficiently.",
+        "Starting the browser is faster, especially for people who restore tabs from a previous session.",
+        "Thank you to everyone who shared diagnostic data and reported performance problems."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document does appear to maintain one steady product-release register, but the annotator supplied no evidence for a whole-document judgment.",
+      "evidence": [
+        "Today we are releasing the May 2019 update to our browser, with improvements that make everyday browsing faster and more responsive.",
+        "Under the hood, the update includes improvements to JavaScript execution, graphics rendering and network request scheduling.",
+        "The May 2019 release will roll out automatically over the coming days."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "The cited phrase gestures toward specificity by naming broad site categories, but it does not provide identifiable examples, test cases, or measured results.",
+      "evidence": [
+        "across a range of news, shopping and productivity sites"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document clearly advocates for the release and recommends installing it, but the annotator did not supply evidence for that stance judgment.",
+      "evidence": [
+        "with improvements that make everyday browsing faster and more responsive.",
+        "we recommend installing it when it becomes available."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The technical terms are concentrated in the more implementation-focused paragraph rather than evenly spread, but the annotator gave no evidence for this distribution judgment.",
+      "evidence": [
+        "Under the hood, the update includes improvements to JavaScript execution, graphics rendering and network request scheduling.",
+        "You can check for it now by opening the browser menu, selecting Help, and choosing About."
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "supported",
+      "rationale": "The document uses straightforward technical and promotional prose without cross-modal sensory mappings.",
+      "evidence": [
+        "The most noticeable change is quicker page loading.",
+        "Together, these changes reduce delays in interactive web applications and produce smoother scrolling on complex pages."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The prose is largely literal and technical; it does not rely on metaphorical comparison to carry meaning.",
+      "evidence": [
+        "Tabs that have been left in the background now place less pressure on the system, while the active tab receives the resources it needs sooner.",
+        "We fixed several performance regressions reported after earlier updates, including unnecessary processor use during video playback and lag when typing into some online editors."
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "Pronoun references and definite descriptions remain recoverable from local context, and there is no excessive vague this/that/it pattern.",
+      "evidence": [
+        "Tabs that have been left in the background now place less pressure on the system, while the active tab receives the resources it needs sooner.",
+        "You can check for it now by opening the browser menu, selecting Help, and choosing About."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The document contains lists and coordinated clauses, but not slogan-like symmetry or repeated correction scripts substituting for content.",
+      "evidence": [
+        "The May 2019 release will roll out automatically over the coming days. You can check for it now by opening the browser menu, selecting Help, and choosing About.",
+        "Under the hood, the update includes improvements to JavaScript execution, graphics rendering and network request scheduling."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "overcall",
+      "rationale": "The flagged clause does not merely repeat the opening claim; it shifts to feedback as an ongoing input into future work.",
+      "evidence": [
+        "with improvements that make everyday browsing faster and more responsive.",
+        "and it continues to guide our work on a faster browser."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The flagged phrases are evaluative and comparative but do not state a metric, baseline, or comparison basis.",
+      "evidence": [
+        "faster and more responsive.",
+        "uses memory more efficiently.",
+        "produce smoother scrolling on complex pages."
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "supported",
+      "rationale": "The document does not read as a reply to an unseen comment or critique; its concessions and qualifications are self-contained release-note prose.",
+      "evidence": [
+        "Actual results will vary by device, network and website, but the benefit should be apparent in normal use.",
+        "Thank you to everyone who shared diagnostic data and reported performance problems."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "There are no sincerity boosters such as 'honestly' or 'frankly' performing authenticity rather than adding content.",
+      "evidence": [
+        "The update also includes security and stability fixes, so we recommend installing it when it becomes available.",
+        "Your feedback helped us identify the areas where small delays added up, and it continues to guide our work on a faster browser."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "supported",
+      "rationale": "The connectors used in the document express intelligible causal, additive, or contrastive relations rather than empty logical linkage.",
+      "evidence": [
+        "Actual results will vary by device, network and website, but the benefit should be apparent in normal use.",
+        "Together, these changes reduce delays in interactive web applications and produce smoother scrolling on complex pages."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "This is best treated as default rather than one of the listed genres, and no genre-specific watchlist applies.",
+      "evidence": [
+        "Today we are releasing the May 2019 update to our browser, with improvements that make everyday browsing faster and more responsive.",
+        "The May 2019 release will roll out automatically over the coming days."
+      ]
+    }
+  ]
+}

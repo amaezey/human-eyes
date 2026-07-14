@@ -1,0 +1,365 @@
+Perform a complete agent-assessed Audit of the document below.
+
+Rules:
+1. Read the whole document before answering. Do not guess who wrote it and do not classify authorship.
+2. Apply every registry record exactly as written and return exactly one answer per record in registry order.
+3. The document is raw Markdown. Every quoted list-item phrase must be a byte-for-byte substring of that raw Markdown, including capitalization, punctuation, and any Markdown delimiters. Prefer spans without links or emphasis markup; if markup is unavoidable, copy it exactly. Never quote the rendered form of a Markdown link.
+4. Base whole-document state or distribution judgments on multiple parts of the document when enough material exists. One sentence alone cannot prove a whole-document state.
+5. For list judgments, report every material instance you can support, not just the first. An empty list means you inspected the whole document and found none.
+6. Treat genre-appropriate consistency, repetition, terminology, formatting, and rhetoric in context. A construction is not defective merely because it is detectable.
+7. The `evidence` array must always be empty; the current native contract uses exact phrase fields inside list answers for source evidence. Status must be mechanically consistent with flagged_when. Do not add commentary outside the JSON object.
+
+REGISTRY:
+{
+  "schema_version": "1",
+  "records": [
+    {
+      "id": "structural_monotony",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Do sections repeat the same rhetorical arc, such as problem → evidence → anecdote → advice or hook → claim → evidence → close? Name repeated arcs even when the headings and subject matter differ.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "sections vary",
+          "some sections share a shape",
+          "every section follows the same arc"
+        ]
+      },
+      "flagged_when": [
+        "some sections share a shape",
+        "every section follows the same arc"
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "Does the whole text sit in one register (formal, academic-accessible, warm-but-authoritative), or does the writer drift between registers — formal to colloquial, careful to loose, sincere to wry? Tonal uniformity is the consistency itself, not any particular register.",
+      "answer_schema": {
+        "type": "state",
+        "values": [
+          "register holds without breaks",
+          "register breaks at least once",
+          "register shifts deliberately"
+        ]
+      },
+      "flagged_when": [
+        "register holds without breaks"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "pattern_ref": 36,
+      "severity": "strong_warning",
+      "prompt": "Are the \"specific\" examples actually specific (someone's lived detail with names, dates, places, sensory grounding), or genre-convention filler that anyone could have written (\"the smell of coffee on a Sunday morning\", \"the way light hits the kitchen table\")? List specific phrases that perform specificity without achieving it.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_unspecific"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "neutrality_collapse",
+      "pattern_ref": 37,
+      "severity": "strong_warning",
+      "prompt": "Does the text commit to a position, or default to \"balanced\" treatment of everything? Look for \"there are compelling arguments on both sides\" framing where the original had a clear stance. Surface false-balance phrasing is partly covered by `no-false-concession-hedges` (#23a); this item flags the broader stance erasure.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "takes a position",
+          "hedges its position",
+          "flattens to balanced framing"
+        ]
+      },
+      "flagged_when": [
+        "hedges its position",
+        "flattens to balanced framing"
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Is technical vocabulary clumped (the writer is in the weeds where they actually know things, plain prose elsewhere) or spread evenly across the piece (suspicious — humans don't distribute jargon uniformly)?",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "jargon clumps where the writer knows things",
+          "jargon spreads naturally",
+          "jargon spreads uniformly across the text"
+        ]
+      },
+      "flagged_when": [
+        "jargon spreads uniformly across the text"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "pattern_ref": 28,
+      "severity": "context_warning",
+      "prompt": "Are there forced cross-modal metaphors — emotions get tastes, sounds get colours, abstract concepts get textures — that don't earn their grounding? Real synesthetic writing is specific and grounded (\"a great plateful of blue water\" — Woolf had stood before a view and sat down to a meal). AI synesthesia is unanchored. List specific phrases that map senses unjustifiably.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_forced"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "generic_metaphors",
+      "pattern_ref": 30,
+      "severity": "strong_warning",
+      "prompt": "Are the metaphors plausible-but-anyone's, or detached from a concrete referent, property, or experience? List the exact metaphor and explain what concrete meaning it fails to supply.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_generic"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "referential_clarity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "List vague this, that, it, these, those, and vague nouns such as moves when the antecedent is not identifiable. Also list unsupported first-use definite descriptions such as the gap, and separately identify passages whose repeated the + noun cadence is excessive even though each referent can be recovered. Quote the phrase and name the missing or over-repeated referent.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unclear"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "pattern_ref": 10,
+      "severity": "context_warning",
+      "prompt": "List counted slogans, balanced bicolons, repeated syntactic skeletons, or cross-sentence correction scripts whose symmetry substitutes for information. Quote the complete construction and explain what the parallel form fails to say.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_formulaic"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "semantic_redundancy",
+      "pattern_ref": 34,
+      "severity": "strong_warning",
+      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "what_it_repeats"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "underspecified_language",
+      "pattern_ref": 43,
+      "severity": "strong_warning",
+      "prompt": "List evaluative adjectives, comparisons, superlatives, modifier stacks, nominalisations, and metaphors that do not name the relevant property or comparison basis. Common examples include steady, rougher, cold, sharp, and load-bearing. Quote the phrase and state the missing criterion, property, actor, or action.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_criterion"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "context_leakage",
+      "pattern_ref": 19,
+      "severity": "strong_warning",
+      "prompt": "List prose that answers, concedes to, corrects, or defends against a chat comment or critique absent from the document. Quote the answer-shaped language and name the missing conversational context required to understand it.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_context"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "performed_candour",
+      "pattern_ref": 42,
+      "severity": "strong_warning",
+      "prompt": "List sincerity announcements and authenticity boosters such as honest, real, actual, genuine, frankly, candidly, and truthfully when they perform candour instead of adding literal meaning. Quote the complete frame and explain why the claim can be stated directly. Preserve literal uses and quotations.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unnecessary"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "vacuous_connection",
+      "pattern_ref": 22,
+      "severity": "context_warning",
+      "prompt": "List connectors and coordinated clauses that imply a logical relationship without stating one. Quote the connection and name the missing causal, temporal, contrastive, or evidential relationship.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_relationship"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "genre_specific",
+      "pattern_ref": 41,
+      "severity": "context_warning",
+      "prompt": "First detect the genre of the text (academic, student_essay, poetry, fiction, journalism, marketing_email, or default if none of these fit). Then run the genre's watchlist below. Report `Genre detected: <genre>.` plus either watchlist findings or \"No genre-specific findings.\"",
+      "answer_schema": {
+        "type": "composite",
+        "fields": {
+          "genre_detected": {
+            "type": "state",
+            "values": [
+              "academic",
+              "student_essay",
+              "poetry",
+              "fiction",
+              "journalism",
+              "marketing_email",
+              "default"
+            ]
+          },
+          "watchlist_findings": {
+            "type": "list",
+            "items": [
+              "phrase",
+              "why_flagged"
+            ]
+          }
+        }
+      },
+      "flagged_when": "non_empty_findings",
+      "sub_records": {
+        "academic": {
+          "description": "Verify citations, DOIs, dates, journals, reference order, figure/data consistency, and whether cited works actually support the claim. Plausible citation format is not evidence. In argumentative academic prose, also watch for depleted engagement markers such as missing questions, reader address, personal asides, or stance-bearing commentary.",
+          "watchlist": [
+            "fake, broken, or irrelevant citations",
+            "wrong DOI, journal, date, figure, or data reference",
+            "citation exists but does not support the claim",
+            "argumentative essay with depleted questions, reader engagement, or stance markers",
+            "polished academic surface masking weak evidence or generic argument"
+          ]
+        },
+        "student_essay": {
+          "description": "Watch for rubric language echoing back, banal thesis claims, weak or missing evidence, student-level mismatch, abrupt tone or complexity shifts, surface polish masking weak argument, draft-history gaps, and loss of the student's own interpretive agency.",
+          "watchlist": [
+            "rubric language echoed as analysis",
+            "banal thesis or derivative argument",
+            "claim unsupported by quoted evidence or draft history",
+            "abrupt tone, complexity, or vocabulary shift from known student baseline",
+            "surface polish masking weak reasoning"
+          ]
+        },
+        "poetry": {
+          "description": "Watch for default quatrains, unrequested rhyme, first-person plural overuse, mood-word accumulation, form compliance without pressure, process traces that look too neat, and revisions that do not deepen the poem.",
+          "watchlist": [
+            "default quatrains or regular stanzas without a reason",
+            "unrequested rhyme or high rhyme density",
+            "first-person plural clustering",
+            "mood-word accumulation without concrete perception",
+            "form compliance without surprise, breakage, or revision depth"
+          ]
+        },
+        "fiction": {
+          "description": "Watch for flattened dialogue, \"as-you-know\" exposition, weak voice differentiation, parenthetical stage directions, locked POV with no pressure, scene pacing that never surprises, over-resolved endings, and generic fidelity to a target style without the source author's stranger choices.",
+          "watchlist": [
+            "dialogue voices not differentiated by rhythm, diction, or speech act",
+            "\"as-you-know\" exposition or role-explaining dialogue",
+            "scene pacing with no pressure, interruption, or surprise",
+            "over-resolved ending",
+            "style imitation that preserves surface but misses the source's oddities"
+          ]
+        },
+        "journalism": {
+          "description": "Watch for unsupported claims, vague sourcing, fake or disappearing bylines, synthetic headshots, broken links, wrong dates, unverifiable quotes, undisclosed vendor or affiliate provenance, and article facts that cannot be traced to named sources.",
+          "watchlist": [
+            "claim lacks a named source or verifiable link",
+            "byline, author bio, or headshot cannot be verified",
+            "broken link, wrong date, wrong organisation, or unverifiable quote",
+            "affiliate/product-review claim with unclear provenance",
+            "generated or third-party content not disclosed"
+          ]
+        },
+        "marketing_email": {
+          "description": "Watch for placeholders, generic subject lines, fake personalisation, weak domain understanding, exaggerated transformation claims, empty hype verbs, over-warm openings, unsupported business jargon, and action lists dressed up with symbols.",
+          "watchlist": [
+            "generic subject line or fake personalisation",
+            "placeholder residue or undeleted template slot",
+            "weak domain understanding hidden behind jargon",
+            "exaggerated transformation claim or empty hype verb",
+            "action list dressed up with symbols instead of useful specifics"
+          ]
+        },
+        "default": {
+          "description": "No genre-specific watchlist applies. The agent reports \"Genre detected: default. No genre-specific findings.\" and moves on.",
+          "watchlist": []
+        }
+      }
+    }
+  ]
+}
+
+
+DOCUMENT:
+<document>
+---
+{
+  "id": "21c-ai-rewrite-belonging-superpower",
+  "title": "Belonging Is a Superpower (AI version)",
+  "author": "AI (model unspecified)",
+  "year": 2026,
+  "period": "21st",
+  "format": "Patterns for decentralised organising; matched-pair AI version of Oliver Sylvester-Bradley's 2017 essay",
+  "source_url": "rewrite",
+  "fetch_status": 200,
+  "extract_method": "manual_paste",
+  "human_pair": "21c-opencoop-belonging-superpower",
+  "expected_use": [
+    "genre_paired_corpus",
+    "human_vs_ai_baseline"
+  ],
+  "voice_targets": [
+    "Patterns for decentralised organising",
+    "matched-pair AI version of Oliver Sylvester-Bradley's 2017 essay"
+  ]
+}
+---
+
+Belonging is a superpower – patterns for decentralised organising
+
+If you’re in a co‑op, collective, or any non‑hierarchical team with open and inclusive values — and you’re aiming for genuinely horizontal ways of working — this is for you. It’s a write‑up of a session run by the founders of Loomio, where they shared distilled, repeatable patterns for collaborating well. The focus was on what makes decentralised organising reliable in practice, not just in principle.
+
+You’ve probably heard of Loomio — a simple, effective decision‑making tool that grew out of Enspiral. What tends to get less attention is the set of principles the Loomio founders use in their own organisation: small design choices that make decentralised work less fragile. The workshop was essentially “the operating system” behind the software.
+
+Rich and Nati delivered the workshop as part of their grand tour, and it’s obvious they’ve been living this for years. The tone was pragmatic and grounded, with the kind of clarity that comes from iterating in real teams, not just theorising.
+
+The session was hosted at the always‑stimulating Newspeak House, with about 30 of us split into small groups. Rich opened by warning it would be dense. Four slides and around 20 minutes later, I was trying to keep pace with the number of usable ideas. None of the patterns are magical on their own — the value is in how clearly they’re expressed and how deliberately they’re practised. I went in expecting familiar advice and came out with sharper language for things many groups only sense vaguely.
+
+Take pattern 1: “Intentionally produce counter-culture”. Many groups already sense this matters, but the phrase that landed was: “belonging is a superpower”. It’s something teams often claim but don’t design for. When everyone experiences real belonging, people step up, share responsibility, and stretch what the group can do. When newcomers can’t find a way in — or long‑timers hoard context, status or access — belonging shrinks. Unwritten rules start to dominate: who gets invited to the important conversations, whose questions get answered, and who is treated as “credible”. Once belonging slips, coordination gets harder and effectiveness goes with it. This theme came back later (see below), but the other patterns deserve attention too.
+
+Pattern 2, “Systematically distribute care labour”, was about making support visible and shared rather than leaving it to the same few people. Rich described a model where each person is someone’s steward (offering care and attention) and also a stewardee (receiving it). It’s basic relationship infrastructure, but formalising it makes neglect harder. It also stops care work becoming an invisible job for the same conscientious people, and builds trust through consistent, low‑stakes contact.
+
+Pattern 3 was “Make explicit norms and boundaries”. Remove guesswork: be clear about purpose, how decisions happen, what behaviours are acceptable, and what is out of bounds. Vagueness invites competing interpretations, and those differences surface later as friction. In groups that prize openness, boundaries can feel unfriendly — but clear boundaries often make participation safer because people know what to expect.
+
+Pattern 4 tackled the thing “flat” groups often avoid naming: “Keep talking about power”. Rich was direct that imbalances are inevitable. Some people accumulate influence — for example, those who speak confidently in public settings often earn more attention and therefore more authority. The point isn’t to pretend this doesn’t happen, but to surface it and share it: say who has power in which contexts, rotate roles, step back on purpose, and invite others to step forward.
+
+By then my attention was wobbling — it was past 11am and I’d only had a small cup of tea. The tag‑team dynamic helped: Nati took over, got everyone stretching, and reset the room’s energy.
+
+Pattern 5, “Make decisions asynchronously”, is so straightforward it’s surprising how often it’s ignored. The distinction was useful: meetings are great for connection, trust and sense‑making; computers are great for supporting better decisions. Asynchronous processes can be more inclusive and less intrusive — timely without forcing urgency. It’s also what Loomio was built for.
+
+Pattern 6 named a common headache and turned it into a clear prompt: “Agree how you use tech”. Rich suggested most team toolsets can be organised into a “holy trinity” for group work: one tool for real‑time communication (chat), one space for asynchronous discussion (email or a forum), and one place for stable reference content (a wiki or document store). The trick is agreeing what each tool is for, and what it is not for. If a group sticks to that agreement, coordination improves and the “where should this go?” noise drops. Without it, decisions scatter across channels and the team ends up re‑litigating issues because nobody can find the current position.
+
+Pattern 7 was “Using rhythm to cut information overload”. Create predictable cycles for sharing updates, asking for help, and staying aligned. The key is matching cadence to purpose: longer rhythms for deeper reflection (for example, quarterly reviews that get people out of routine and reconnect them — creating “peak oxytocin” moments), and shorter cycles for week‑to‑week planning, review and celebration. Well‑chosen rhythms give people permission to focus, because updates and requests for help have an agreed place to land each cycle.
+
+Pattern 8 pulled the whole approach together: “Generate new patterns together”. Loomio’s culture clearly draws on iterative development — build a way of working, test it, learn, adjust, repeat. Regular review and collective reflection aren’t “nice to have”; they’re a core capability. Continuous, participatory change can feel slower, but it’s often what keeps a decentralised group coherent over time.
+
+Click for a bigger version
+
+For the remainder of the workshop we worked in groups: choose a real challenge, describe a “desired future”, and identify practical next steps. Our group chose onboarding — specifically, how to help everyone (especially newcomers) gain the “superpower of belonging”. We mapped where people typically get stuck and then generated actions that could make entry smoother and status less concentrated. The “Next steps” section of our worksheet captures what we generated; hopefully some of it is useful in your own context.
+
+A final note of thanks to Rich and Nati for making the event happen and for delivering a well‑structured, thoughtfully designed workshop with timely content. Better decentralised practice means more capable teams, and more capable teams can deliver more positive change. Their upcoming workshops are worth recommending to anyone working in a cooperative or horizontal model.
+
+</document>

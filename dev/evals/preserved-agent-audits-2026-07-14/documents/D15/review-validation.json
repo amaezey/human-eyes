@@ -1,0 +1,10 @@
+{
+  "valid_registry_coverage": true,
+  "citation_issues": [
+    {
+      "id": "even_jargon_distribution",
+      "issue": "evidence_not_exact_source_substring",
+      "phrase": "omniscient, not confined to a particular domain"
+    }
+  ]
+}

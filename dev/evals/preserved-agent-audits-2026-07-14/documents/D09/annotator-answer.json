@@ -1,0 +1,179 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "The laundry was half-done. The week’s calendar was open.",
+          "why_unspecific": "Generic domestic scene-setting with no name, date, place, or sensory grounding beyond the mundane; anyone's Sunday could fit this description."
+        },
+        {
+          "phrase": "Coffee outside. Music while cleaning.",
+          "why_unspecific": "Presented as a list of lived pleasures but consists of interchangeable, genre-convention images with no distinguishing detail (which coffee, which music, where)."
+        },
+        {
+          "phrase": "A proper laugh with someone who doesn’t require me to be impressive.",
+          "why_unspecific": "Performs intimacy and specificity but names no person, occasion, or concrete moment — it could describe anyone's friendship."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "life feels tight and grey",
+          "why_forced": "Maps an emotional/existential state onto tactile (tight) and visual (grey) properties without any grounding scene or object that would earn the cross-modal leap."
+        },
+        {
+          "phrase": "a life that tastes good",
+          "why_forced": "Applies a gustatory sensation to an abstract evaluation of a whole life, used as a closing flourish rather than tied to any actual eating or tasting referent."
+        },
+        {
+          "phrase": "thin creativity",
+          "why_forced": "Gives an abstract cognitive quality (creativity) a textural property (thinness) with no concrete image or referent to justify the mapping."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Service is the most reliable compass I have.",
+          "why_generic": "Compass-as-guidance is a stock metaphor that doesn't specify what the 'directions' actually are or how service concretely orients decisions beyond the abstract claim."
+        },
+        {
+          "phrase": "service alone becomes a moral treadmill",
+          "why_generic": "Treadmill-as-fruitless-effort is a common cliché; it asserts repetitive futility without specifying which actions repeat or what the effort actually consists of."
+        },
+        {
+          "phrase": "the slow leak of always being the one who absorbs the mess",
+          "why_generic": "The 'slow leak' image conveys gradual depletion generically but doesn't identify what specifically is leaking (time? goodwill? health?) or at what rate."
+        },
+        {
+          "phrase": "the horizon shrinking to preference",
+          "why_generic": "A visually evocative but unanchored image for narrowed worldview; it doesn't specify what the person actually stops noticing or doing."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Service keeps pleasure from becoming narcissism. Pleasure keeps service from becoming martyrdom.",
+          "why_formulaic": "A mirrored bicolon (X keeps Y from becoming Z / Y keeps X from becoming W) that asserts a mutual-correction relationship without explaining the mechanism by which either actually prevents the other."
+        },
+        {
+          "phrase": "Giving without disappearing. Receiving without taking.",
+          "why_formulaic": "A counted, symmetrical pair of fragments that sounds definitional but doesn't specify what distinguishes 'giving' from 'disappearing' or 'receiving' from 'taking' in practice."
+        },
+        {
+          "phrase": "To serve with consent and boundaries. To pursue pleasure without shame or isolation. To build a life that is useful—and a life that tastes good—at the same time.",
+          "why_formulaic": "A closing tricolon of parallel infinitive clauses that restates the essay's thesis in balanced form rather than adding new information."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Service is essential. But service alone becomes a moral treadmill: always more to do, always someone else first, always a lingering sense that rest must be earned.",
+          "what_it_repeats": "Restates the shadow/martyrdom material already laid out in detail earlier in 'The servant half' (resentment, control, performed service)."
+        },
+        {
+          "phrase": "Pleasure is essential. But pleasure alone is unstable. It needs a tether to something beyond the self.",
+          "what_it_repeats": "Restates the shadow/escalation material already laid out in detail earlier in 'The hedonist half' (self-referential loop, craving, escalation)."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a way of living that is both useful and vivid",
+          "missing_criterion": "Doesn't specify what makes the life 'vivid' — no perceptual or experiential criterion is given for the term."
+        },
+        {
+          "phrase": "It’s also brittle.",
+          "missing_criterion": "Doesn't state in what way the efficient approach is brittle — what breaks, under what pressure, or how the failure would be observed."
+        },
+        {
+          "phrase": "There’s a steadiness that comes from being useful.",
+          "missing_criterion": "Doesn't specify what is being measured as 'steady' or by what standard — steady compared to what prior state?"
+        },
+        {
+          "phrase": "sustainability with joy",
+          "missing_criterion": "A nominalized pairing that doesn't define what counts as 'sustainable' or by what measure joy is present or absent."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document does appear to vary across family history, eyewitness protest narrative, and direct civic exhortation, but the annotator supplied no evidence to establish that whole-document judgment.",
+      "evidence": [
+        "Over one hundred years ago, something lit a fire under the feet of my great-grandparents, and they fled Eastern Europe for the United States with their children.",
+        "Recently I attended a demonstration to protest blackface.",
+        "There is no time like today for keeping that promise."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "undercall",
+      "rationale": "The piece largely holds one earnest, admonitory public-letter register rather than shifting registers. The annotator cleared a flagged defect by calling the register shifts deliberate.",
+      "evidence": [
+        "Dear Nederlanders,",
+        "I often wonder what would have changed had Europe heeded the warning of the Jews fleeing for other lands.",
+        "Thank you for reading,"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clear judgment is plausible because the piece uses real dates, places, people, and organizations rather than filler detail, but the annotator provided no evidence for that clearance.",
+      "evidence": [
+        "today, March 19, 2019",
+        "We headed for Den Helder.",
+        "Mitchell Esajas from the Black Archives went over the protest guidelines with us."
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document plainly takes a position against racist politics and in favor of anti-racist protest, but the annotator gave no evidence for that judgment.",
+      "evidence": [
+        "But I am listening to racist, xenophobic, and Islamophobic speech from Dutch politicians in the wake of recent events.",
+        "Our right to peaceful assembly was being denied.",
+        "How can struggling for a more inclusive society ever be deemed extreme?"
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The answer may be defensible because the more technical civic language clusters around the protest and state-response passages, but the annotator supplied no evidence.",
+      "evidence": [
+        "Our right to peaceful assembly was being denied.",
+        "When I heard Prime Minister Rutte dismiss anti-racist activists as “extremist,”",
+        "How their rights and opportunities in society are curtailed?"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "insufficient_evidence",
+      "rationale": "The non-finding is plausible because the prose does not rely on cross-modal sensory mappings, but the annotator offered no evidence for clearing the item.",
+      "evidence": [
+        "Burnt to the ground. Erased from the maps.",
+        "Violence tiptoes in on jokes, stereotypes, and lies.",
+        "I’m sure my grandparents are spinning in their graves."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The annotator correctly identifies stock metaphorical phrasing that supplies rhetorical force without concrete referents.",
+      "evidence": [
+        "something lit a fire under the feet of my great-grandparents",
+        "Violence tiptoes in on jokes, stereotypes, and lies."
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clearance is plausible because most pronouns and definite descriptions are recoverable from context, but the annotator gave no evidence for the whole-document judgment.",
+      "evidence": [
+        "This is true even though I agree with both sentiments.",
+        "It was disappointing, but not shocking.",
+        "I felt the old fears coming up."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The annotator correctly flags repeated syntactic symmetry used for rhetorical lift rather than added information.",
+      "evidence": [
+        "you would be part of the resistance, you would stand for the rights of others, you would do what you could even if it was a small act.",
+        "How their physical safety is threatened? How their rights and opportunities in society are curtailed?"
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "overcall",
+      "rationale": "The flagged sentence does not merely repeat the previous one. It broadens the scope from Dutch Jews to people in the Netherlands more generally and adds starvation.",
+      "evidence": [
+        "Dutch Jews were abducted, tortured, and murdered.",
+        "People here were killed and starved and tortured."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The annotator correctly identifies evaluative language whose comparison basis or mechanism is left unstated.",
+      "evidence": [
+        "There was anger towards us, but nothing unexpected or extreme.",
+        "the solutions to our crises will be more attainable."
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "supported",
+      "rationale": "The flagged sentence answers an unstated objection that discussion media should have sufficed, and that objection does not otherwise appear in the document.",
+      "evidence": [
+        "If the concerns about racism in society could have been solved on talk shows alone, then there would be no protests."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "The sincerity marker is dispensable; the sentence's factual claim stands without the candour cue.",
+      "evidence": [
+        "Honestly, I am much more afraid to wear a t-shirt with #BlackLivesMatter or Zwarte Piet is Racisme written on it."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "insufficient_evidence",
+      "rationale": "The no-finding judgment may be right because the major transitions are intelligible, but the annotator supplied no evidence for clearing the item.",
+      "evidence": [
+        "Yet, every day, black and brown people go out in their skins.",
+        "Instead of continuing to Den Helder, we headed to Amstelveen and joined an ongoing protest.",
+        "Yet if elected officials are unwilling to protect the rights of vulnerable minorities what will become of the rest of us?"
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "insufficient_evidence",
+      "rationale": "Classifying this as default is plausible because it reads as an open letter/opinion post rather than one of the listed genres, but the annotator provided no evidence for the genre call or the no-findings conclusion.",
+      "evidence": [
+        "Author's note: This has been resting as a draft post for months now.",
+        "Dear Nederlanders,",
+        "Thank you for reading,"
+      ]
+    }
+  ]
+}
