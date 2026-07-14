@@ -1,12 +1,175 @@
 # Source references
 These files track the sources cited by human-eyes and how each one currently relates to the skill catalogue.
 
-Each source file uses the same shape: metadata, summary, main insights, evidence and claims to extract, skill-use audit, matched patterns/rules, associated hypotheses, and follow-up questions. Use [TEMPLATE.md](TEMPLATE.md) for new source files.
+Each source card starts with the headings in [TEMPLATE.md](TEMPLATE.md). A reviewed card appends project coverage, recommendations, decisions, and implementation status.
 
 Use [pattern-opportunities.md](pattern-opportunities.md) to track source claims promoted into pattern additions, hypotheses, process guidance, metadata conventions, or explicit non-promotions.
 
 First-pass extracted: 2026-05-05.
 Second-pass reviewed: 2026-05-05. All 72 source cards now include source notes, evidence-tier metadata, a skill-use audit, pattern/rule mappings, associated hypotheses, and follow-up questions. New source cards should include extraction date and, when relevant, model family, model version, corpus date range, or source-page update date so time-sensitive AI tells do not become stale blacklists.
+
+## Source review procedure
+
+Use this procedure for a new source, an updated source, or new evidence cited by an existing source.
+
+### 1. Read and preserve the source
+
+1. Read the source itself rather than relying on another source's summary.
+2. Save the accessible full text under `snapshots/` so the reviewed material remains available.
+3. Record the original URL, title, author, publication date, retrieval date, and a stable identifier such as a revision ID or DOI when one exists.
+4. Record the extraction method, snapshot path, and SHA-256 hash of the saved snapshot.
+5. For a changing web page, preserve the reviewed revision and record the revisions compared.
+6. Record any material that could not be accessed or preserved.
+7. Open relevant cited sources directly. Give each source its own card and snapshot when its findings will be used by the project.
+8. Add the source card, original URL, snapshot path, and extraction method to [snapshots/MANIFEST.md](snapshots/MANIFEST.md).
+
+### 2. Create or update the source card
+
+Start with [TEMPLATE.md](TEMPLATE.md). In this step, complete the source and evidence sections using these criteria. Complete the project-dependent sections in Step 3.
+
+#### Metadata
+
+- Title, author or owner, publication date, URL, retrieval date, source type, stable identifier, snapshot path, extraction method, and SHA-256 hash of the saved snapshot.
+- Model, model version, corpus date, genre, platform, and language when relevant.
+
+#### Summary
+
+- What the source is, what it examines, and what it contributes to human-eyes.
+- The source's method, sample, comparison, and stated scope in plain language.
+
+#### Main insights
+
+- Every relevant phrase, construction, structural habit, formatting habit, vocabulary item, tonal tendency, workflow residue, evaluation finding, rewriting finding, process finding, provenance finding, qualification, and counterexample.
+- Which claims come directly from the source and which come from material it cites.
+- Exact examples where the source supplies them.
+
+#### Evidence and claims to extract
+
+For every relevant claim, record:
+
+- **Claim:** the phrase, construction, writing habit, model behaviour, evaluation result, process, or provenance issue identified by the source.
+- **Source type:** peer-reviewed empirical research, academic preprint, corpus analysis, controlled experiment, qualitative study, first-party documentation, data journalism, practitioner observation, vendor analysis, or catalogue source.
+- **Evidence basis:** the material supporting the claim, such as measured text, generated examples, interviews, editorial experience, repeated observations, isolated examples, or another cited source.
+- **AI-use finding:** what the evidence shows about how AI uses, overuses, misuses, introduces, or changes the identified pattern or behaviour.
+- **Scope:** the sample size, models and versions, dates, genre, platform, language, text length, comparison group, and method relevant to the finding.
+- **Evidence directness:** whether the source supplies the underlying evidence itself or reports a claim from another source.
+- **Support and uncertainty:** corroborating evidence, conflicting findings, qualifications, exceptions, and unanswered questions.
+- **Human comparison, when available:** what human examples show about frequency, context, deliberate use, and appropriate handling.
+- **Project relevance:** whether the claim adds evidence for an existing pattern, identifies a missing variation, introduces a new pattern, challenges current behaviour, informs evaluation or rewriting, or requires no project change.
+
+### 3. Compare the source with the project
+
+1. Work through every relevant claim and example in the source card.
+2. Locate the exact existing implementation or documentation that might cover it.
+3. Inspect and, when necessary, run the current check rather than treating similar documentation as proof of coverage.
+4. Identify what is already covered, partly covered, not covered, or challenged.
+5. Assess how the evidence adds to, strengthens, qualifies, or challenges the project.
+6. Use deterministic surface-only output for deterministic coverage inspection. A complete Audit requires the full work-bundle process described in [dev/TESTING.md](../../../dev/TESTING.md).
+7. Keep the source's claims, the evidence assessment, and the project comparison distinguishable in the card and final report.
+
+Complete these existing template sections during the project comparison:
+
+#### Skill-use audit
+
+- Good uses of the source in human-eyes.
+- Claims the source cannot support on its own.
+- Evidence the project currently underuses.
+- Patterns, examples, qualifications, and challenges not yet represented in the project.
+
+#### Matched patterns / rules
+
+- Every existing check or agent assessment the source supports, extends, qualifies, or challenges.
+
+#### Associated hypotheses
+
+- Every existing hypothesis the source informs and any new hypothesis it suggests.
+
+#### Questions / follow-up
+
+- Missing access, unresolved source questions, evidence still to retrieve, and project decisions still required.
+
+Append this section for the project comparison:
+
+#### Project coverage
+
+For every relevant claim or example, record:
+
+- The exact existing check, agent assessment, guidance, test, source card, or hypothesis that might cover it.
+- Whether the claim is fully covered, partly covered, not covered, or challenges current project behaviour.
+- What the current implementation actually finds when tested.
+- What is missing from the implementation, evidence mapping, explanation, or tests.
+- How the difference could be incorporated into human-eyes.
+- Whether frequency, clustering, genre, quotation, formatting, or deliberate use should affect the proposed implementation.
+
+### 4. Make recommendations
+
+Propose how each difference identified in the project comparison could be incorporated. Add these sections to the source card:
+
+#### Recommendations
+
+Give one recommendation for every reviewed claim:
+
+- Extend an existing check.
+- Add examples or tests to an existing check.
+- Add a new check.
+- Add or change an agent assessment.
+- Add editing or rewriting guidance.
+- Add genre-specific handling.
+- Reconsider an existing check.
+- Run evaluation work before choosing an implementation.
+- Record the evidence without changing the product.
+- Take no further action.
+
+For each recommendation, record:
+
+- The proposed change.
+- Why it follows from the source and coverage review.
+- The checks, assessments, guidance, tests, or documentation affected.
+- The testing required.
+- The user's decision: pending, approved, or rejected.
+- The implementation status: not started, in progress, implemented, or not applicable.
+
+Keep recommendations separate from completed changes.
+
+#### Evaluation of approved changes
+
+Use the applicable product metrics from `STRATEGY.md`:
+
+- **Catalogue coverage:** known examples and meaningful variations of the catalogued AI-writing tell are found by the relevant checks or assessments.
+- **Check accuracy:** the check identifies the construction it names without matching unrelated or superficially similar text.
+- **Treatment in context:** the audit explains whether frequency, genre, quotation, formatting, or deliberate use changes how the finding should be understood or revised.
+- **Pattern accumulation in matched samples:** where relevant, matched human and AI samples show whether AI writing accumulates the pattern more heavily. This evaluates the catalogue and does not determine who wrote an individual document.
+
+### 5. Report the review
+
+Start with a direct explanation of:
+
+- What the source added.
+- What was already known.
+- How much the project currently covers.
+- What is genuinely new.
+- What challenges existing checks or assumptions.
+- Whether the source produced a large, moderate, or small change in understanding.
+- Which decisions the user needs to make.
+
+Then provide one complete table:
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+
+Use this as the authoritative review table rather than splitting the result across inconsistent summaries.
+
+### 6. Stop for decisions
+
+Unless the user requested implementation, stop after the source card, evaluation, recommendations, and decision list.
+
+After the user approves recommendations:
+
+1. Implement only the approved changes.
+2. Add or update the required tests.
+3. Run the relevant evaluation and regression checks in [dev/TESTING.md](../../../dev/TESTING.md).
+4. Update the source card and review table with the actual implementation status.
+5. Report what changed, what remains, and what was not adopted.
 
 ## Evidence tiers
 - **Peer-reviewed / academic empirical:** strongest for pattern evidence, usually still aggregate, register-scoped, or corpus-scoped rather than proof for a single document.
