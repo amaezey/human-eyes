@@ -332,6 +332,7 @@ Per-source reference notes live in [`human-eyes/references/sources/`](human-eyes
 - [Dhillon et al.: MFA students vs LLMs fiction](https://arxiv.org/abs/2510.13939) ([source card](human-eyes/references/sources/dhillon-mfa-students-llms-fiction.md))
 - [Geng and Trotta: Is ChatGPT Transforming Academics' Writing Style?](https://arxiv.org/abs/2404.08627) ([source card](human-eyes/references/sources/geng-trotta-transforming-academic-style.md))
 - [Juzek and Ward: Word Overuse and Alignment in Large Language Models](https://arxiv.org/abs/2508.01930) ([source card](human-eyes/references/sources/juzek-ward-word-overuse-alignment.md))
+- [Russell et al.: StoryScope narrative idiosyncrasies in AI fiction](https://arxiv.org/abs/2604.03136) ([source card](human-eyes/references/sources/russell-storyscope-ai-fiction.md))
 
 **First-party model docs:**
 - [Anthropic: Claude Sonnet system prompts](https://platform.claude.com/docs/en/release-notes/system-prompts) ([source card](human-eyes/references/sources/anthropic-sonnet-prompts.md))
@@ -345,6 +346,7 @@ Per-source reference notes live in [`human-eyes/references/sources/`](human-eyes
 - [Futurism: Sports Illustrated published AI-generated writers](https://futurism.com/sports-illustrated-ai-generated-writers) ([source card](human-eyes/references/sources/futurism-sports-illustrated-ai-writers.md))
 - [Hua Hsu: What college students lose when ChatGPT writes their essays](https://www.wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/) ([source card](human-eyes/references/sources/hsu-students-lose-chatgpt.md))
 - [Karolina Rudnicka: Each AI chatbot has its own distinctive writing style](https://www.scientificamerican.com/article/chatgpt-and-gemini-ai-have-uniquely-different-writing-styles/) ([source card](human-eyes/references/sources/rudnicka-chatbot-writing-style.md))
+- [Matthew Gault / 404 Media: AI fiction is easy to detect](https://www.404media.co/ai-fiction-is-easy-to-detect-because-its-stupid-and-bad-research-finds/) ([source card](human-eyes/references/sources/gault-404media-ai-fiction.md))
 - [Merrill, Chen, and Kumer: What are the clues that ChatGPT wrote something?](https://www.washingtonpost.com/technology/interactive/2025/how-detect-chatgpt-em-dash/) ([source card](human-eyes/references/sources/merrill-wapo-chatgpt-clues.md))
 - [Nature: Signs of AI-generated text found in biomedical abstracts](https://www.nature.com/articles/d41586-025-02097-6) ([source card](human-eyes/references/sources/nature-biomedical-abstracts.md))
 - [Gizmodo: CNET AI-generated finance articles](https://gizmodo.com/cnet-ai-chatgpt-news-robot-1849996151) ([source card](human-eyes/references/sources/pbs-cnet-ai-finance-articles.md))

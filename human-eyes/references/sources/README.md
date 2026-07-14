@@ -212,6 +212,7 @@ Deep extraction exists for:
 - [Bisztray et al.: I Know Which LLM Wrote Your Code Last Summer](bisztray-code-stylometry.md)
 - [Walsh et al.: AI poetry computational analysis](walsh-ai-poetry.md)
 - [Neil Clarke: A Concerning Trend](clarke-clarkesworld-concerning-trend.md)
+- [Russell et al.: StoryScope narrative idiosyncrasies in AI fiction](russell-storyscope-ai-fiction.md)
 - [Waltzer et al.: Can teachers detect AI-generated student essays?](waltzer-teachers-detect-ai-essays.md)
 - [Murray and Tersigni: Can instructors detect AI-generated papers?](murray-tersigni-ai-generated-papers.md)
 - [Jiang and Hyland: Engagement markers in ChatGPT-generated argumentative essays](jiang-hyland-engagement-markers.md)
@@ -221,6 +222,7 @@ Deep extraction exists for:
 
 ## Journalism and trade press
 - [Eve Fairbanks: The Biggest Tell That Something Was Written by AI](fairbanks-atlantic-ai-writing.md)
+- [Matthew Gault / 404 Media: AI fiction is easy to detect](gault-404media-ai-fiction.md)
 - [Sam Kriss: Why Does A.I. Write Like ... That?](kriss-nyt-ai-write-like-that.md)
 - [Merrill, Chen, and Kumer: What are the clues that ChatGPT wrote something?](merrill-wapo-chatgpt-clues.md)
 - [Benj Edwards: OpenAI suppressing em dashes](edwards-ars-em-dash.md)

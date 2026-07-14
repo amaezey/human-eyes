@@ -1,0 +1,134 @@
+# Russell et al.: StoryScope narrative idiosyncrasies in AI fiction
+## Metadata
+- **URL:** https://arxiv.org/abs/2604.03136
+- **Author / owner:** Jenna Russell, Rishanth Rajendhran, Chau Minh Pham, Mohit Iyyer, and John Wieting
+- **Published:** arXiv v1 submitted 2026-04-03; this card reviews v4 dated 2026-04-13
+- **Retrieved:** 2026-07-14
+- **Extracted:** 2026-07-14
+- **Source type:** Academic empirical preprint / computational narratology and authorship classification
+- **Evidence tier:** Academic empirical preprint; not yet peer reviewed
+- **Review mode:** new
+- **Stable identifier:** arXiv:2604.03136v4
+- **Version / revision:** v4
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/russell-storyscope-ai-fiction.md`
+- **Extraction method:** arXiv v4 PDF downloaded and converted with `pdftotext -layout`
+- **Snapshot SHA-256:** `154322f8a4499d89dbeb79d4430c1eda84e77e081dd5023c940950c0f25f8875`
+- **Model / corpus scope:** Gemini 2.5 Flash for prompt extraction; GPT-5.1 for templates, comparisons, and feature discovery; Gemini 3 Flash for production feature assignment; Qwen3.5-9B for topic coding; story sources Claude Sonnet 4.6, DeepSeek V3.2, Gemini 3 Flash, GPT-5.4, and Kimi K2.5; 10,272 English Books3 human stories and five attempted model mirrors per prompt. Twenty-four model requests were refusals, leaving 51,336 AI stories and 61,608 total valid stories, mean 4,753 words. Prompt construction began in June 2025; one complete generation date range is not reported.
+- **Access limitations:** figure pixels and visual styling are not embedded in the text snapshot, but all 30 pages, captions, tables, footnotes, references, and appendices were extracted. Human Books3 stories are not released.
+- **Code/data:** https://github.com/jenna-russell/storyscope and https://huggingface.co/datasets/jjrussell10/storyscope. Human-written Books3 stories are not released.
+
+## Summary
+StoryScope is a large parallel-corpus study of whether long-form human and model-generated fiction differs in discourse-level narrative decisions after surface wording is abstracted away. The authors infer a prompt from each of 10,272 Books3 stories, attempt five model mirrors per prompt, and retain 51,336 AI stories after 24 generation refusals. They use LLMs to induce and assign 304 interpretable narrative features and train XGBoost classifiers on prompt-grouped splits. Strict narrative features reach 93.2% macro-F1 for binary human-versus-AI classification and 68.4% for six-way source attribution; 30 core features retain 84.8% macro-F1. The strongest differences concern thematic over-determination, embodied sensory expression, causal and temporal streamlining, intertextual strategy, reader engagement, and narrative diversity. For human-eyes, the paper is substantial fiction-specific evidence, but its features should enter as contextual agent review and evaluation hypotheses before any per-document detector or rewrite rule.
+
+## Main insights
+- Narrative structure carries strong signal in this corpus independently of the paper's 39 style features. The strict 257-feature narrative model reaches 93.2% macro-F1, versus 96.0% for narrative plus style and 85.8% for style alone.
+- A compact 30-feature set retains 84.8% macro-F1. That makes the work useful as an interpretable review taxonomy rather than only an opaque classifier result.
+- AI stories are more thematically explicit and moralizing, use dialogue for philosophical debate more often, and favour vague allusions over named references.
+- They streamline plots: more continuous causal chains, more protagonist-driven and internally resolved endings, fewer subplots, less chronological discontinuity, and less delayed recontextualisation.
+- They overuse embodied emotion and sensory mediation: bodily metaphors, smell, sensory density, setting as psychological mirror, and interior access are elevated; explicit emotion labels are less common.
+- Human stories more often use named references, a balance of explicit and implicit intertextuality, reader address, fourth-wall breaks, time jumps, thematically parallel subplots, more locations and dialogue, morally mixed protagonists, and structurally rare combinations.
+- Model-specific fingerprints coexist with the shared AI region: Claude has flatter escalation and more uniform voice, GPT over-indexes on dream sequences and socially oriented plots, Gemini favours external description and tidy endings, DeepSeek front-loads context, and Kimi has comparatively few distinctive features. These are April 2026 versioned observations, not generic-AI rules.
+- In the 278-story Gemini/LAMP test, surface-artifact removal left most narrative-classifier signal intact: macro-F1 fell 1.6 points, from 95.5% to 93.9%. This does not establish that surface editing can never change narrative structure.
+
+## Evidence and claims to extract
+- **Direct source reviewed:** complete 30-page v4 preprint.
+- **Method and sample:** 10,272 human Books3 stories were converted into prompts with Gemini 2.5 Flash. Five models attempted one mirror per prompt; 24 requests were refusals, leaving 51,336 AI stories and 61,608 valid stories overall. GPT-5.1 produced ten-dimension structured templates, cross-source comparisons over a 600-story discovery pool, and 408 candidate features; embedding deduplication reduced them to 304. Gemini 3 Flash assigned feature values to all stories. XGBoost models used prompt-level train/validation/test grouping.
+- **Direct versus cited evidence:** C01-C12 are StoryScope's own results, audits, or disclosures. LAMP is a cited editing framework, but StoryScope measured the 278-story robustness result reported in C09. NarraBench supplies the starting taxonomy; no result inherited only from a cited work is used here as project evidence.
+- **Evaluation split:** 7,383 train prompts, 1,405 validation prompts, and 1,384 test prompts; final models retrained on 8,788 train-plus-validation prompts and evaluated on 8,301 held-out stories.
+- **Binary results:** Narrative 93.2 macro-F1 / .959 AUPRC; 30 core features 84.8 / .828; core plus fingerprints 91.1 / .934; narrative plus style 96.0 / .982; style only 85.8 / .867. Raw-text baselines reached 99.7-99.9 macro-F1, while zero-shot Binoculars reached 55.9.
+- **Six-way attribution:** Narrative 68.4 macro-F1; narrative plus style 77.3; style only 60.4; raw-text baselines at least 99.5. Human was the most separable source, then Claude and GPT; Gemini, DeepSeek, and Kimi were the most confusable cluster.
+- **Thematic over-determination:** mean thematic explicitness/moralizing 3.94 AI versus 3.28 human on a 1-5 scale; explicit narratorial theme commentary 77% versus 52%; philosophical dialogue 59% versus 34%; implicit reference echoes 72% versus 50%.
+- **Structural streamlining:** protagonist-choice resolution 69% AI versus 46% human; no subplots 79% versus 57%; internal-understanding resolution 47% versus 27%; causal-chain continuity 4.20 versus 3.92. Human stories scored higher on chronological discontinuity, anachrony, delayed nonlinear disclosure, and recontextualisation after surprise.
+- **Embodied and sensory expression:** embodied emotional expression 81% AI versus 38% human; olfactory imagery 82% versus 57%; explicit emotion labels 8% AI versus 29% human; setting-as-psychological-mirror 4.07 versus 3.58.
+- **Intertextuality and reader relation:** explicit named references 24% AI versus 47% human; balanced reference strategy 16% versus 37%; direct reader address .07 versus .28 ordinal mean; fourth-wall permeability .39 versus .67.
+- **Narrative diversity:** human stories were more dispersed in feature space. Mean rarity percentile was .71 human versus .49 AI, Cohen's d=.83; the human version was the rarest of six for 57.8% of prompts. The top rarity tail remained mixed, so rarity is not a deterministic authorship rule.
+- **Style-edit robustness:** on 278 Gemini stories edited with LAMP to remove seven surface artifact categories, narrative macro-F1 dropped from 95.5 to 93.9. This is one model, one editing framework, and a limited subset.
+- **Reliability:** five repeated production-extractor runs yielded Krippendorff's alpha .90 and mean pairwise Cohen's kappa .89 in Appendix C. A main-text footnote reports alpha .88, an internal revision discrepancy retained here rather than silently reconciled. A small validation on 12 stories and 240 feature items per annotator produced mean human-model kappa .84 and human-human kappa .74; only two annotators completed the full set.
+- **Confound checks:** length-matching did not change narrative macro-F1; topic-specific binary macro-F1 ranged 90.0-96.2 across six sufficiently populated topics with no significant omnibus difference; a memorization-risk audit removed 1.67% of prompts and did not materially change results.
+- **Important limits:** preprint status; English Books3 short stories; copyright and representativeness concerns; reverse-engineered rather than naturally issued prompts; feature discovery and assignment are themselves LLM-mediated; small human validation; no wholly external human corpus; long stories averaging 4,753 words; model and prompt versions are time-sensitive; rarity is an operational proxy, not a complete theory of originality; classifier performance is not proof about one story.
+
+## Skill-use audit
+- **Good use:** Strengthen #41 fiction with interpretable narrative-review dimensions; design a held-out fiction evaluation; distinguish structural revision from lexical cleanup; add model/version and corpus metadata; explain why story-level review needs genre and length context.
+- **Misuse / overclaim:** Do not copy 93.2% macro-F1 into human-eyes as its expected accuracy. Do not claim human-eyes can classify authorship because it lists some of the same features. Do not force human prose to add flashbacks, subplots, moral ambiguity, named references, or direct reader address.
+- **Unsupported use:** Per-document thresholds derived from aggregate prevalence; transfer to short fiction, novels, fanfiction, screenplays, poetry, narrative nonfiction, other languages, or post-2026 model versions; a universal creativity score; a claim that surface editing can never alter narrative structure.
+- **Underused evidence:** The current project has fiction craft prompts but no story-architecture assessment. The paper's complete core-feature inventory supplies a bounded, interpretable starting point and useful negative guidance about what not to reduce to regex.
+- **Patterns left on the table:** narratorial theme commentary, dialogue function, subplot integration, causal-chain continuity, resolution agency and mode, temporal discontinuity, delayed revelation, intertextual strategy, fourth-wall permeability, location variety, embodied emotion, smell density, setting-as-psychological-mirror, and narrative-space diversity.
+
+## Matched patterns / rules
+- **#41 genre-specific manual checks: fiction:** primary home. Existing coverage is meaningful but narrow: dialogue voice, as-you-know exposition, pacing pressure, over-resolved endings, and target-style fidelity.
+- **#42 manufactured insight framing:** supports exact lesson-announcement candidates, but only as a surface correlate of the broader thematic-explicitness feature.
+- **#34 per-paragraph miniature conclusions:** related to local closure; not a substitute for plot-level causal continuity or resolution mode.
+- **#28 forced synesthesia, #30 generic metaphors, #36 faux specificity:** cover some low-quality manifestations of the sensory/embodied and reference findings. StoryScope measures frequency and narrative function rather than deciding that sensory writing is inherently bad.
+- **#35 tonal uniformity and structural-monotony agent record:** adjacent to reduced diversity, but current records operate on prose register and repeated rhetorical arcs, not narrative-feature space.
+- **#26 and #27:** literary lexical families may co-occur with setting/sensory defaults, but StoryScope does not validate those word lists.
+- **No current coverage:** most plot, time, agency, intertextuality, reader-relation, and narrative-rarity features.
+
+## Associated hypotheses
+- **H12 genre-aware threshold calibration:** the source motivates testing a long-context fiction branch, but supplies neither human-eyes threshold calibration nor a cross-genre comparison and therefore does not directly validate H12.
+- **H25 model-family versus generic-AI residue:** directly supported by version-specific fingerprints and AI-to-AI confusion patterns.
+- **H28 originality, clarity, and formality as comparison dimensions:** the rarity analysis suggests a measurable narrative-diversity dimension, but its legal/creative interpretation remains a hypothesis for this project.
+- **Potential new hypothesis:** discourse-level fiction review adds useful catalogue coverage beyond current #41 without increasing false positives on deliberate linear, moral, sensory, or intertextually sparse human fiction.
+
+## Questions / follow-up
+- Does the released StoryScope feature table and AI dataset permit a local, reproducible comparison without redistributing Books3 text?
+- Can the feature directions reproduce on licensed human fiction and on short passages below the paper's roughly 5,000-word scale?
+- Which core features are actionable craft prompts and which are only useful inside a multivariate classifier?
+- Does a single composite #41 item remain readable if expanded, or should fiction narrative construction become its own agent-assessed record?
+- How much of the signal comes from the reverse-engineered-prompt design, model adherence, or Books3 period/genre distribution?
+- Will peer review change the feature inventory, validation, or claims? Refresh from the final publication before treating this as settled evidence.
+
+## Update provenance
+
+Not applicable: initial ingestion.
+
+## Decision history
+
+- None: initial review.
+
+## Project coverage
+
+This is the authoritative review table. Each row keeps the source claim, evidence strength, current implementation, recommendation, decision, and implementation state separate.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+| --- | --- | --- | --- | --- | --- | --- |
+| C01: A strict narrative-only classifier reaches 93.2 macro-F1; 30 core features retain 84.8. | Direct held-out, prompt-grouped result from the preprint, but specific to its corpus, LLM-mediated feature pipeline, and XGBoost model. | No comparable classifier; **not covered** as product behaviour. #41 supplies only a small fiction craft watchlist. | human-eyes does not compute the 257-feature representation or support this accuracy claim. | Record as upstream evidence only; do not present it as human-eyes accuracy. | approved | implemented |
+| C02: Themes and morals are more explicit in the sampled AI stories. | Direct aggregate result: theme commentary 77% AI versus 52% human; scope is English Books3-derived long fiction and five named model versions. | #42 and #41; **partly covered** because exact lesson phrases and some explanatory prose can surface, but whole-story theme handling cannot. | No document-level thematic-overdetermination assessment. | Evaluate a contextual fiction-review prompt with quoted evidence and deliberate moral fiction as a control. | pending | not started |
+| C03: Dialogue more often serves philosophical debate. | Direct aggregate result, 59% AI versus 34% human; narrative function, not the mere presence of dialogue, is the finding. | #41 dialogue watchlist; **partly covered** because it reviews flat, role-explaining, and undifferentiated dialogue. | Philosophical-exposition function is not assessed. | Evaluate an extension to #41 that distinguishes purposeful debate from expository moralizing. | pending | not started |
+| C04: AI plots are more causal, single-track, and internally resolved. | Direct aggregate evidence: no subplots 79% versus 57%, protagonist-choice resolution 69% versus 46%, plus higher causal continuity. | #41 over-resolved ending and #34 local closure; **partly covered** because ending neatness can surface. | No whole-story causal-chain, subplot-integration, or resolution-agency assessment. | Evaluate a contextual narrative-structure assessment and compare an expanded #41 branch with a separate agent record before choosing its home; do not implement as regex. | pending | not started |
+| C05: Human stories use more nonlinear time and delayed revelation. | Direct distributional result over long stories; it does not imply that linear narration is defective or machine-authored. | Weak adjacency to #41 pacing; **not covered** because chronology, anachrony, and recontextualisation are not inspected. | Treating absence as a violation would create genre and form false positives. | Evaluate as descriptive context in a multivariate fiction review, with deliberate linear human stories as controls. | pending | not started |
+| C06: AI stories use embodied emotion, smell, and setting mirrors more often. | Direct aggregate evidence: embodied emotion 81% versus 38%, olfactory imagery 82% versus 57%, and higher setting-mirror scores. | #28/#30/#36; **partly covered** because bad metaphors and faux specificity can surface, not sensory density or narrative function. | A word blacklist would invert the distributional evidence and penalise deliberate sensory craft. | Evaluate density, clustering, function, and context before considering an agent-assessed fiction prompt. | pending | not started |
+| C07: Human stories use more named references, reader address, and fourth-wall permeability. | Direct aggregate result with mixed devices; absence is not established as a defect. | #36 partially touches specificity; reader relation is **not covered** in fiction. | Current guidance cannot represent intertextual strategy, and requiring these devices would be prescriptive camouflage. | Keep descriptive; evaluate only as part of a multivariate review and never require the devices. | pending | not started |
+| C08: Human narrative-feature combinations are rarer on average. | Direct held-out distribution result, d=.83, but the rare tail remains mixed and rarity is an operational proxy rather than creativity or authorship proof. | H28 and structural-monotony concepts; **partly covered** only as a research hypothesis. | No narrative-space representation or validated originality measure. | Retain as an evaluation dimension under H28; take no detector action. | pending | not started |
+| C09: Surface editing barely reduces narrative classification in one experiment. | Direct limited result: 278 Gemini stories edited with LAMP, macro-F1 95.5 to 93.9; one model and one editing framework. | Rewrite process separates surface from meaning; **partly covered** conceptually, not empirically. | No human-eyes story-architecture preservation evaluation; transfer beyond this setup is unknown. | Use it to motivate structural-review research, not the absolute claim that surface editing never changes structure. | pending | not started |
+| C10: Model versions have different narrative fingerprints. | Direct version-specific results with high drift risk; the paper also finds an AI-to-AI confusion cluster. | H25 model-family residue; **partly covered** as a metadata hypothesis only. | No model-attribution surface, and later versions may differ. | Preserve model, version, and date; do not promote fingerprints to generic AI checks. | pending | not started |
+| C11: Feature extraction is repeatable, with smaller human validation. | Appendix C reports five-run alpha .90 and mean kappa .89, while a main-text footnote says alpha .88; human-model mean kappa is .84 on only 12 stories, with two annotators completing the full set. | No analogous StoryScope extractor; **not covered**. | The internal alpha discrepancy, small human validation, and LLM-mediated labels are insufficient for direct adoption. | Require independent local validation on licensed held-out fiction before adopting any derived assessment. | pending | not started |
+| C12: Books3 provenance and LLM-mediated prompt/feature construction constrain interpretation. | Explicit method and ethics disclosure; 1.67% memorisation-risk prompts were removed without material change, but corpus representativeness and copyright remain. | Source-ingestion provenance practice; **fully covered** for documentation and exclusion from fixtures. | Transfer to a wholly external human corpus remains untested; human source stories cannot be redistributed. | Keep the corpus out of fixtures unless licensing is resolved and refresh on publication or material dataset revision. | approved | implemented |
+
+## Recommendations
+
+- **C01:** Record the classifier metrics as upstream, corpus-specific evidence only; do not claim human-eyes achieves them. **Decision:** approved. **Status:** implemented.
+- **C02:** Evaluate a quoted, context-aware thematic-overdetermination prompt before extending #41. **Decision:** pending. **Status:** not started.
+- **C03:** Evaluate dialogue function, distinguishing purposeful philosophical debate from expository moralizing. **Decision:** pending. **Status:** not started.
+- **C04:** Evaluate causal-chain, subplot, and resolution-agency review on held-out fiction, comparing an expanded #41 branch with a separate agent record before choosing its home; do not use regex. **Decision:** pending. **Status:** not started.
+- **C05:** Keep temporal structure descriptive until a multivariate review passes controls for deliberate linear narration. **Decision:** pending. **Status:** not started.
+- **C06:** Evaluate sensory density, clustering, and function; do not create smell or body-metaphor blacklists. **Decision:** pending. **Status:** not started.
+- **C07:** Keep intertextuality and reader relation descriptive; do not prescribe named references or fourth-wall breaks. **Decision:** pending. **Status:** not started.
+- **C08:** Track narrative rarity only as an H28 evaluation dimension. **Decision:** pending. **Status:** not started.
+- **C09:** Use the LAMP result to motivate structural-review research, not an absolute claim about surface editing. **Decision:** pending. **Status:** not started.
+- **C10:** Track model fingerprints under H25 with version and date metadata; do not promote generic rules. **Decision:** pending. **Status:** not started.
+- **C11:** Require independent validation on licensed held-out fiction before adopting StoryScope-derived extraction. **Decision:** pending. **Status:** not started.
+- **C12:** Keep Books3 text out of fixtures unless licensing is resolved and refresh the card on publication or material revision. **Decision:** approved. **Status:** implemented.
+
+## Evaluation of approved changes
+No behaviour change was approved in this ingestion. The source and full-text snapshot are indexed, but the current checks, agent-assessment registry, hypotheses, and tests remain unchanged. Any approved #41 extension should be evaluated against catalogue coverage, check accuracy, treatment in context, and accumulation in matched fiction samples.
+
+- C01: passed - Classifier metrics are scoped to the upstream StoryScope pipeline and are not presented as human-eyes accuracy; source validation passed.
+- C12: passed - Books3 provenance, corpus limits, and the fixture-licensing boundary are recorded; source validation passed.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** ce-doc-review coherence and requirements-scoped feasibility review, plus independent evidence, provenance, live-project, decision, and completeness checks against the v4 snapshot and source-ingestion quality gates
+- **Findings resolved:** consolidated duplicate coverage tables; assigned stable claim IDs; separated aggregate findings from single-document use; aligned each recommendation, decision, and implementation state; scoped the LAMP result to its 278-story Gemini experiment; recorded 24 model refusals; distinguished direct StoryScope results from cited frameworks; narrowed H12 support; preserved representative model fingerprints; disambiguated arXiv review from peer review; left the #41-versus-separate-record placement pending
+- **Unresolved findings:** none

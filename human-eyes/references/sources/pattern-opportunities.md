@@ -89,6 +89,21 @@ These are promoted to `human-eyes/SKILL.md`, `human-eyes/references/process.md`,
 | Pure framing essays as pattern evidence | [Chiang art essay](chiang-why-ai-isnt-art.md), [Preston hyperabundance](preston-hyperabundance.md), [Sloan](sloan-human-ai-writing.md) | Useful for rationale/process; not direct pattern support. |
 | General colon rules or severity changes from editorial assertions | [Fairbanks](fairbanks-atlantic-ai-writing.md) | The article reports public tells and one editor's experience but supplies no rates, thresholds, verified submission provenance, or controlled comparison. |
 
+## Pending StoryScope decisions (2026-07-14)
+
+The 404 Media article and its upstream StoryScope preprint add fiction-specific discourse evidence. These rows are recommendations from ingestion, not approved product changes.
+
+| Candidate | Proposed home | Source cards | Current disposition | Why |
+|---|---|---|---|---|
+| Thematic over-explanation and philosophical dialogue | Extend #41 fiction branch; #42 remains a surface correlate | [404 Media](gault-404media-ai-fiction.md), [StoryScope](russell-storyscope-ai-fiction.md) | Pending user decision and held-out evaluation | StoryScope measures whole-story theme handling and dialogue function; the current catalogue only surfaces some lesson phrases and generic dialogue problems. |
+| Single-track causality, missing subplots, and internally resolved endings | Extend #41 fiction branch | [StoryScope](russell-storyscope-ai-fiction.md) | Pending user decision and held-out evaluation | Over-resolved endings are already covered, but causal continuity and subplot integration are not. |
+| Temporal linearity and limited delayed revelation | Fiction-specific agent assessment | [StoryScope](russell-storyscope-ai-fiction.md) | Hypothesis; do not promote yet | The paper finds aggregate separation in long stories. Transfer to shorter or differently sourced fiction is unknown. |
+| Embodied emotion, smell, and setting-as-psychological-mirror density | Fiction-specific contextual review near #28/#30/#36 | [StoryScope](russell-storyscope-ai-fiction.md) | Pending evaluation; no word blacklist | The evidence is distributional and functional. Deliberate sensory writing must remain valid. |
+| Vague intertextuality, named references, reader address, and fourth-wall use | Comparative fiction context | [StoryScope](russell-storyscope-ai-fiction.md) | Record without making absence a violation | These are human-elevated aggregate features, not devices every human story should contain. |
+| Narrative-feature rarity | H28 research dimension | [StoryScope](russell-storyscope-ai-fiction.md) | Hypothesis only | Rarity separates groups in the paper but the rare tail is mixed; it is not equivalent to creativity or authorship proof. |
+| Version-specific narrative fingerprints | H25 model-family evidence | [404 Media](gault-404media-ai-fiction.md), [StoryScope](russell-storyscope-ai-fiction.md) | Record with model/version/date; do not promote to generic checks | Claude, GPT, and Gemini fingerprints are useful dated observations with high drift risk. |
+| Disclosed AI assistance with human review | Process/disclosure guidance | [404 Media](gault-404media-ai-fiction.md) | Pending policy decision | The interview distinguishes coding, editing, and graphics assistance from outsourcing the underlying ideas; human-eyes currently lacks a graduated disclosure model. |
+
 ## Suggested Next Patches
 
 1. Keep `human-eyes/scripts/judgement.json`, `human-eyes/scripts/patterns.json`, `human-eyes/SKILL.md`, `human-eyes/references/process.md`, `human-eyes/references/voice.md`, `dev/hypotheses.md`, and `README.md` in sync when source evidence changes.
