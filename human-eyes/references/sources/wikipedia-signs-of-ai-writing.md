@@ -1,63 +1,67 @@
 # Wikipedia: Signs of AI writing
+
 ## Metadata
-- **URL:** https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
+
+- **Main article:** https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
+- **Companion comment article:** https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI-generated_comments
 - **Author / owner:** Wikipedia editors / WikiProject AI Cleanup
-- **Published:** Living wiki page; repo snapshot fetched 2026-04-30
-- **Extracted:** 2026-05-05
-- **Source type:** Wiki essay and literature synthesis
-- **Evidence tier:** Conduit / catalogue sources
-- **Extraction status:** second-pass reviewed from `dev/research/wikipedia-signs-of-ai-writing.md`
+- **Source type:** Living field guide, editor observation catalogue, and literature conduit
+- **Evidence use:** Human-eyes records noticed misuse from editors, practitioners, products, and research. Evidence tier describes the observation; it is not an admission rule.
+- **Baseline revision:** `1352608561`, 2026-05-05 06:04 UTC
+- **Reviewed revision:** `1364014261`, 2026-07-13 23:54 UTC
+- **History reviewed:** 239 revisions after the baseline
+- **Refresh reviewed:** 2026-07-14
+- **Detailed history and extracts:** `dev/research/wikipedia-signs-of-ai-writing.md`
+- **Historical snapshot:** `snapshots/wikipedia-signs-of-ai-writing.md`
 
-## Summary
-A maintained catalogue of AI-writing signs. It mixes upstream academic and journalistic citations with cleanup-guide items that have no upstream citation extracted in this repo, so human-eyes should cite upstream sources when available and label uncited items as guide-only support.
+## Scope boundary
 
-## Main insights
-- Useful as a broad pattern inventory.
-- Not every listed sign has an upstream citation.
-- It is a moving target and needs periodic refresh.
+Three separate sources were previously mixed together:
 
-## Evidence and claims to extract
-- Direct-source review already exists in `dev/research/wikipedia-signs-of-ai-writing.md`.
-- The source is a mixed-evidence catalogue: some entries cite upstream research, while others are cleanup-guide items with no upstream citation extracted in this repo.
-- Stronger upstream support exists for vocabulary overuse, copula avoidance, negative parallelism, triads, title case, em dashes, superficial -ing analysis, and significance inflation.
-- Wikipedia-guide-only support currently covers several human-eyes rules: vague attributions, formulaic challenges sections, promotional language trigger lists, notability/media-coverage emphasis, assistant residue, knowledge-cutoff disclaimers, curly quotes, boldface, inline-header lists, and emoji/decorative formatting.
-- Broken or weak citation state matters: the local extraction notes a broken `laurence` reference and an unextractable reference [15] for negative parallelisms.
+1. The **current main article** contains the general prose/style catalogue, a short comment-indicator summary, `Canned user pages`, and citations to outside sources.
+2. The **companion comment article** contains the full moved comment catalogue. Most of it was developed on the main page during May and June 2026 and moved on 1 July.
+3. The **sources cited by Wikipedia** are separate papers and articles. Their direct text, not Wikipedia's paraphrase, supplies the research findings below.
 
-## Skill-use audit
-- **Good use:** Yes as a catalogue source, but not always as a primary source. It backs the existence of a Wikipedia cleanup taxonomy and, where upstream citations are present, points to better evidence.
-- **Misuse / overclaim:** Any pattern currently citing "Wikipedia" without distinguishing upstream-cited claims from guide-only claims is overflattened. For stronger claims, cite the upstream paper or article directly and keep Wikipedia as a catalogue/conduit source.
-- **Unsupported use:** #2 notability claims, #4 promotional language trigger lists, #5 vague attributions, #6 formulaic challenges, #13 boldface, #14 inline headers, #16 emojis, #17 curly quotation marks, #19 assistant residue, and #20 knowledge-cutoff disclaimers are listed as cleanup-guide items rather than externally sourced evidence in the extraction.
-- **Underused evidence:** Wikipedia's upstream references also point to #11 synonym cycling and #15 title case in headings; if these stay in the catalogue, their source cards should be connected to Belcher/Guardian and Russell respectively rather than leaving them as loose Wikipedia claims.
-- **Patterns left on the table:** Wikipedia lists reference markup bugs, broken external links, invalid DOIs/ISBNs, non-existent categories/templates, and age-of-text shifts. These are not current human-eyes prose rules, but they could matter for a future journalism/Wikipedia/provenance branch of #41 rather than the general writer-facing audit.
+`Canned user pages` and the full moved comment catalogue are not the same. The first is a current main-page observation about a repeated profile template. The second concerns discussion and review replies.
 
-## Matched patterns / rules
-- #1 significance inflation
-- #2 notability claims
-- #3 superficial -ing analyses
-- #4 promotional language
-- #5 vague attributions
-- #6 formulaic challenges sections
-- #7 AI vocabulary
-- #8 copula avoidance
-- #9 contrived contrast
-- #10 rule of three
-- #11 synonym cycling
-- #13 boldface overuse
-- #14 inline-header lists
-- #15 title case in headings
-- #16 emojis
-- #17 curly quotation marks
-- #19 assistant residue
-- #20 knowledge-cutoff disclaimers
-- #31a decorative Unicode
-- #38 section scaffolding
+## Master finding and recommendation matrix
 
-## Associated hypotheses
-- H3 drop detection framing
-- H7 five-check gating plus advisory catalogue
-- H9 similar-species disambiguation
-- H12 genre-aware threshold calibration
+This is the single authoritative table for the refresh. It records what changed, how it relates to the current project, and what should be considered next. Except for updating this evidence card and adding the three expressly requested source cards and snapshots, **none of these recommendations has been implemented**.
 
-## Questions / follow-up
-- Which Wikipedia-guide-only claims are strong enough to keep?
-- How often should the snapshot be refreshed?
+| ID | Changed or new evidence | Effect on the current project | Recommendation / status |
+|---|---|---|---|
+| W01 | The main article now lists one-off `X rather than Y`, particularly in Grok output. | Extends #9 beyond repeated negative parallelisms and the existing named reframes. | **Recommend extending #9** to surface a single reversal, with ordinary contrast controls. Not implemented. |
+| W02 | It specifically observes that AI-generated em dashes are often surrounded by spaces. | Supports the user's existing position that spaced U+2014 dashes are a valid misuse tell; the current check treats all em dashes alike. | **Recommend preserving the existing em-dash rule** and adding spaced/closed/mixed evidence detail. Not implemented. |
+| W03 | The article expands plain `is`/`has` versus `serves as`, `stands as`, `boasts`, `features`, `offers`, and related inflation. | Extends #8's vocabulary and examples. | **Recommend extending #8's examples and candidate vocabulary.** Not implemented. |
+| W04 | Plain `wrote`, `moved`, `used`, `tried`, and `died` may become `authored`, `relocated`, `utilized`, `attempted`, and `passed away`. | Adds a contextual lexical-substitution assessment; these are not universally wrong. | **Recommend a manual assessment**, with technical, legal, tactful, and genre controls. Not implemented. |
+| W05 | The new positive syntax section treats direct statements such as `is the only` and `was the first` as human-writing evidence where models soften stance. | Supports definitive statements as positive comparative evidence in #37, not as guaranteed proof of authorship or truth. | **Recommend adding this to the #37 assessment guidance.** Not implemented. |
+| W06 | Zhou's interviewees report promotional output including `one of the best` and `there are so many possibilities`. | Challenges any rule that treats definitiveness alone as human; unsupported superlatives remain promotional. | **Recommend adding the examples to #4 and distinguishing committed stance from puffery.** Not implemented. |
+| W07 | Isolated `perhaps`, `very`, and `tends to` appear in the positive human-writing inventory. | Broadly supports #23's density/stacking logic rather than a ban on individual hedges. | **Current approach is substantially aligned; recommend explicit passing controls.** Not implemented. |
+| W08 | `In order to` appears as a human-writing look-alike despite also being wordy. | Directly challenges #22, which currently conflates concision advice with an AI tell. | **Recommend removing isolated `in order to` from the AI-style failure while retaining concision advice.** Not implemented. |
+| W09 | The article separates dated GPT-4, GPT-4o, and GPT-5 vocabulary observations. | Challenges the project's flat, timeless vocabulary presentation. | **Recommend dated model/era metadata**, without turning individual words into model attribution. Not implemented. |
+| W10 | Grok-specific observations include `causal`, `empirical`, `correlate`, continuing `underscore`, and `X rather than Y`. | Adds relevant model-specific vocabulary and syntax observations; it is not out of scope. | **Recommend a Grok-labelled observation group**, not a universal blacklist. Not implemented. |
+| W11 | Huang measures vocabulary, auxiliary/copular use, noun/pronoun rates, syntax, readability, and model/task differences on Wikipedia text. | Adds possible structural evaluation dimensions beyond surface words. | **Recommend direct-source review before any rule decision.** No new card was requested or added. |
+| W12 | Huang reports slightly higher corrected lexical diversity after LLM revision and model differences. | Challenges #53's universal one-way low raw-TTR assumption. | **Recommend re-evaluating #53 with corrected TTR/MTLD and matched length/task/model data before retaining its direction.** Not implemented. |
+| W13 | Galpin reports that semantic synonym groups and POS-specific forms can move together. | Extends #7/#11 analysis beyond one spiking word and complicates simple replacement stories. | **Recommend semantic-family/POS evaluation as supporting evidence, not an automatic verdict.** Not implemented. |
+| W14 | The article adds cultural and educational variation to synonym avoidance. | Challenges unqualified treatment of synonym cycling as inherently AI-like. | **Recommend explicit cultural, educational, register, editorial, and rhetorical controls in #11.** Not implemented. |
+| W15 | Emoji decoration in headings and bullets remains a recorded generated-formatting tell and gains Merrill/Geng support. | Strengthens the source note for existing #16 rather than requiring a new check. | **Recommend updating #16's evidence attribution.** Not implemented. |
+| W16 | Notability inflation now includes source-type enumeration such as `trade publications`. | Extends #2 beyond local/regional/national media phrasing. | **Recommend adding source-type enumeration to #2 with named-source controls.** Not implemented. |
+| W17 | Significance inflation now includes generic `debates`/`discussions` and conceding limited impact before claiming broader importance. | Extends #1 and overlaps with, but is not identical to, false concession. | **Recommend treating this primarily as #1 significance inflation.** Not implemented. |
+| W18 | `Enhancing` is added to superficial tacked-on participial analysis. | Extends #3 with a directly observed form. | **Recommend adding the form with a concrete causal-use control.** Not implemented. |
+| W19 | Rettberg describes promotional/travel/food genre intrusions into informational or legal prose and explicitly records a human look-alike. | Adds genre mismatch to #4/#41 without making promotion authorship proof. | **Recommend a genre-mismatch assessment.** No separate card was requested or added. |
+| W20 | Sussman/Carter finds more positive, less neutral, easier political tweets across 2020/2024. Under a clarity/engagement instruction, its AI rewrites add solutions and calls to action absent from the originals and substantially restructure the wording. It does not compare GPT-4 with newer models. | Adds aggregate evidence to #4; expands #24 with invented future solutions, prescriptions, unity appeals, next steps, and calls to action; challenges a one-way #37 account; suggests a new source-versus-rewrite fidelity assessment. | **Card and complete source snapshot added. Recommend the #4/#24 evidence additions and consideration of rewrite-fidelity assessment; retain sentiment/readability as potential corpus measurements.** No rule changed. |
+| W21 | Yakura and Geng report model-preferred vocabulary entering later human speech/writing and changing over time. | Challenges authorship inference from vocabulary that may now circulate among humans. | **Recommend time-sensitive convergence reporting and human look-alike controls.** No separate card was requested or added. |
+| W22 | Cheng compares three detectors and humans across five assistance conditions, including light/heavy editing and mixed human content. | Adds evaluation-design evidence, not a prose feature. | **Recommend five-condition detector evaluation if that work is later commissioned.** No separate card was requested or added. |
+| W23 | Fiedler/Döpke studies lecturer and detector judgment across disciplines and ordinary versus professional AI prompting. | Adds calibration evidence for academic/student evaluation, not a phrase rule. | **Recommend discipline and prompt-quality strata in a future evaluation.** No separate card was requested or added. |
+| W24 | Dik reports GPTZero results for 28 AI and 50 human essays across short, medium, and long groups; the authors recommend future mixed human/AI testing. | Adds no prose-pattern evidence and no reason for human-eyes to evaluate GPTZero. It does suggest mixed-assistance samples for the human-eyes test corpus; length is only a possible stress-test dimension and cannot be transferred from GPTZero without our own experiment. | **Card and complete source snapshot added. Recommend no check change; consider mixed-assistance evaluation samples and optional human-eyes length stress testing.** |
+| W25 | Zhou's 16 interviews report promotional output, unreliable or fabricated sourcing, invented facts and references, broken wikilinks/references/wikitext, heavy editing, and evaluate-verify-modify workflows. | Adds direct #4 examples; expands #5/#41 with concrete Wikipedia source and formatting failures. Evaluate-verify-modify is process guidance, not a tell. The paper does not establish the formulaic discussion replies or boilerplate user profiles recorded by Wikipedia editors. | **Card and complete source snapshot added. Recommend #4 and #41 evidence/check expansions and separately record the process guidance.** No rule changed. |
+| W26 | The **full moved comment catalogue** covers assurances, criticism offers, review requests, speculation scripts, policy denials/inventions, decline confusion, `concrete evidence` demands, subject lines, sections, banners, sealioning, and wikilawyering. | This is the companion `Signs of AI-generated comments` article, not the current main-article body and not Zhou evidence. | **Recommend recording the full catalogue as a discussion/review composite**, not one phrase regex. Not implemented. |
+| W27 | **Canned user pages** combine `Welcome`, `About Me`, `My Interests`, `My Contributions`, `Let's Connect`, contribution/collaboration claims, emoji, bold, Markdown, and lists. | This is a separate current-main-article profile template, not the moved comment catalogue. | **Recommend a separate user-profile structural composite.** Not implemented. |
+| W28 | Direct residue expands to `turn0search0`, `turn0image0`, `attributableIndex`, `:::writing`, Grok tags/JSON, DeepSeek brackets, Gemini cites, `contentReference`, `oaicite`, `attached_file`, and `web` forms. | Extends #39 with literal interface/citation leakage. | **Recommend exact #39 candidates and controls for ordinary words such as `attribution`.** Not implemented. |
+| W29 | Generated edit summaries can be exhaustive, policy-echoing first-person explanations mentioning what was `ensured` or `avoided`, sometimes with pasted preambles. | Adds an edit-summary-specific composite rather than a general prose regex. | **Recommend a manual edit-summary assessment.** Not implemented. |
+| W30 | AI can support permissions gaming through volumes of benign-looking edits. | This is behavioural/provenance context, not sentence style. | **Recommend documenting it only in the relevant behavioural review; do not turn it into a prose rule.** Not implemented. |
+| W31 | Didactic model disclaimers are dated to November 2022-2024. | Adds an important time boundary to #20. | **Recommend recording the date range and not projecting the form onto earlier text.** Not implemented. |
+| W32 | Baseline ref `[15]` was Hollis Robbins; undefined `laurence` was later removed; `robust` remains uncited; emoji gained Merrill/Geng support. | Corrects the source-card record without changing the preserved historical snapshot. | **Evidence-card correction completed.** No behavioural change. |
+| W33 | Three additional sources were expressly requested: Sussman/Carter, Zhou/Cho/Terveen, and Dik/Erdem/Dik. | They require direct-source records rather than summaries inherited from Wikipedia. | **Completed:** three source cards and three complete PDF-text snapshots added. No other source cards were added. |
+
+The table deliberately separates evidence, its possible effect on the project, and a recommendation. A recommendation is not an implemented rule change.
