@@ -1,16 +1,17 @@
 # AI Fiction Is Easy to Detect Because It's Stupid and Bad, Research Finds
 
 - **Canonical URL:** https://www.404media.co/ai-fiction-is-easy-to-detect-because-its-stupid-and-bad-research-finds/
-- **Alternate access URL:** none; complete body supplied as a local Obsidian Web Clipper extraction and checked in the user's signed-in Chrome session
+- **Alternate access URLs:**
+  - none; complete body supplied as a local Obsidian Web Clipper extraction and checked against a current web-indexed rendering of the article
 - **Author / owner:** Matthew Gault
 - **Publisher:** 404 Media
 - **Published:** 2026-07-10 at 18:32:21 UTC; live page modified 2026-07-13 at 13:09:37 UTC
 - **Retrieved:** 2026-07-14
 - **Stable identifier:** Ghost post ID `6a513422bf6d4600013475f4`; UUID `3fe3be15-1418-4ead-83c3-884ea897b246`
 - **Version / revision:** live revision modified 2026-07-13
-- **Extraction method:** user-supplied Obsidian Web Clipper markdown; verified against signed-in Chrome body and public Ghost metadata
+- **Extraction method:** user-supplied Obsidian Web Clipper markdown; body compared with a current web-indexed rendering and metadata checked against the public article page
 - **Full-text status:** complete
-- **Access and transformation notes:** the public page, Ghost Content API, and RSS expose only a two-paragraph preview; the user-supplied authenticated clipping supplies the complete article body. Navigation, ads, membership prompts, and related-story modules are omitted. The inline podcast iframe is retained.
+- **Access and transformation notes:** the direct public page, Ghost Content API, and RSS expose only a two-paragraph preview to an unauthenticated client; a current web-indexed rendering exposes the prose body, and the user-supplied clipping preserves that body with inline links. Navigation, ads, membership prompts, and related-story modules are omitted. The inline podcast iframe is retained.
 
 ## Full text
 
@@ -69,8 +70,14 @@ I kept thinking about Harlan Ellison and Robert Silverberg’s story “Ship-Sha
 
 ## Extraction verification
 
-- **Beginning checked:** title, standfirst, byline/date, and the first two body paragraphs were compared with the live page metadata, public preview, signed-in Chrome reading view, and supplied clipping.
-- **Middle checked:** the StoryScope method, model list, Books3 discussion, copyright disclosure, and reported feature rates were compared line by line between the supplied clipping and signed-in Chrome reading view.
-- **End checked:** the AI-use disclosure, Russell's description of coding and editing assistance, Harlan Ellison discussion, and final human-creative-control quotation were compared with the signed-in Chrome reading view.
+- **Beginning checked:** title, standfirst, author/date, and the first two body paragraphs were compared across the public page metadata, current web-indexed rendering, and supplied clipping.
+- **Middle checked:** the StoryScope method, model list, Books3 discussion, copyright disclosure, and reported feature rates were compared between the supplied clipping and current web-indexed rendering.
+- **End checked:** the AI-use disclosure, Russell's description of coding and editing assistance, Harlan Ellison discussion, and final human-creative-control quotation were compared between the supplied clipping and current web-indexed rendering.
 - **Structure checked:** the supplied 49-line clipping contains the complete article body, one podcast iframe, inline links, and no article subheadings; page chrome and related-story modules were excluded.
 - **Known omissions:** navigation, advertising, subscription prompts, comments, related stories, image asset, and playable podcast media; none is part of the prose evidence reviewed.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | The article contains a header image and an embedded podcast player, but neither bears on the prose claims reviewed. | not applicable | No attachment was required for the full-text extraction. The iframe markup remains in the preserved body. |
