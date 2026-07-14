@@ -6,7 +6,7 @@ Each source card starts with the headings in [TEMPLATE.md](TEMPLATE.md). A revie
 Use [pattern-opportunities.md](pattern-opportunities.md) to track source claims promoted into pattern additions, hypotheses, process guidance, metadata conventions, or explicit non-promotions.
 
 First-pass extracted: 2026-05-05.
-Second-pass reviewed: 2026-05-05. All 72 source cards now include source notes, evidence-tier metadata, a skill-use audit, pattern/rule mappings, associated hypotheses, and follow-up questions. New source cards should include extraction date and, when relevant, model family, model version, corpus date range, or source-page update date so time-sensitive AI tells do not become stale blacklists.
+Second-pass reviewed: 2026-05-05. The 72 cards present at that review include source notes, evidence-tier metadata, a skill-use audit, pattern/rule mappings, associated hypotheses, and follow-up questions. The 2026-07-14 Wikipedia refresh added the three requested direct-source cards listed below. New source cards should include extraction date and, when relevant, model family, model version, corpus date range, or source-page update date so time-sensitive AI tells do not become stale blacklists.
 
 ## Source review procedure
 
@@ -201,6 +201,9 @@ Deep extraction exists for:
 - [Reinhart et al.: Do LLMs write like humans?](reinhart-llm-write-like-humans.md)
 - [Geng and Trotta: Human-LLM Coevolution](geng-trotta-human-llm-coevolution.md)
 - [Geng and Trotta: Is ChatGPT Transforming Academics' Writing Style?](geng-trotta-transforming-academic-style.md)
+- [Sussman and Carter: AI-mediated political communication](sussman-carter-ai-mediated-communication.md)
+- [Zhou, Cho, and Terveen: LLM use in Wikipedia workflows](zhou-llms-wikipedia.md)
+- [Dik, Erdem, and Dik: GPTZero by essay length](dik-gptzero-accuracy.md)
 - [Kousha and Thelwall: How much are LLMs changing academic papers after ChatGPT?](kousha-thelwall-academic-papers.md)
 - [Sun et al.: Idiosyncrasies in Large Language Models](sun-idiosyncrasies-llms.md)
 - [Ju, Blix, and Williams: Domain Regeneration](ju-blix-williams-domain-regeneration.md)
@@ -210,6 +213,7 @@ Deep extraction exists for:
 - [Przystalski et al.: Stylometry recognizes human and LLM-generated texts](przystalski-stylometry.md)
 - [Zaitsu et al.: Stylometry can reveal AI authorship](zaitsu-stylometry.md)
 - [Bisztray et al.: I Know Which LLM Wrote Your Code Last Summer](bisztray-code-stylometry.md)
+- [Creo and Ranganath: Show, Don't TELL: Explainable AI-Generated Text Detection](creo-ranganath-tell-explainable-detection.md)
 - [Walsh et al.: AI poetry computational analysis](walsh-ai-poetry.md)
 - [Neil Clarke: A Concerning Trend](clarke-clarkesworld-concerning-trend.md)
 - [Russell et al.: StoryScope narrative idiosyncrasies in AI fiction](russell-storyscope-ai-fiction.md)
@@ -219,6 +223,17 @@ Deep extraction exists for:
 - [Dhillon et al.: MFA students vs LLMs fiction](dhillon-mfa-students-llms-fiction.md)
 - [Spero and Emi: Pangram AI-generated text classifier technical report](spero-emi-pangram-classifier.md)
 - [Liang et al.: GPT detectors are biased against non-native English writers](liang-detector-bias.md)
+- [Lu et al.: Synergizing Stylometrics with Semantics](lu-et-al-stylometrics-semantics.md)
+- [Zhu et al.: Exons-Detect](exons-detect.md)
+- [Stowe et al.: Identifying bias in machine-generated text detection](stowe-detector-bias.md)
+- [Wang et al.: Is Human-Like Text Liked by Humans?](wang-et-al-human-like-text-liked-by-humans.md)
+- [Xia, Stańczak, and Roth: Explaining Generalization of AI-Generated Text Detectors Through Linguistic Analysis](xia-stanczak-roth-detector-generalization.md)
+- [Gao et al.: When Personalization Tricks Detectors](gao-personalization-tricks-detectors.md)
+- [Ta et al.: FAID: Fine-Grained AI-Generated Text Detection Using Multi-Task Auxiliary and Multi-Level Contrastive Learning](faid-fine-grained-ai-text-detection.md)
+- [El Attar et al.: A Systematic Analysis of Linguistic Features in AI-Generated Text Detection Across Domains and Models](el-attar-linguistic-features-ai-text-detection.md)
+- [Tolstykh et al.: GigaCheck, object-centric span localization for LLM-generated content](tolstykh-et-al-gigacheck.md)
+- [Tabach: Can Humans Detect AI? Mining Textual Signals of AI-Assisted Writing Under Varying Scrutiny Conditions](tabach-can-humans-detect-ai.md)
+- [Suvanto et al.: Interpretable Text Classification Applied to the Detection of LLM-generated Creative Writing](suvanto-interpretable-llm-creative-writing.md)
 
 ## Journalism and trade press
 - [Eve Fairbanks: The Biggest Tell That Something Was Written by AI](fairbanks-atlantic-ai-writing.md)
@@ -251,6 +266,8 @@ Deep extraction exists for:
 - [David J. Germain: Writing dialog with ChatGPT](germain-chatgpt-dialog.md)
 - [Brent Csutoras: The em-dash dilemma](csutoras-em-dash-dilemma.md)
 - [Fred Rohrer: promotional register and n-gram analysis](rohrer-promotional-register.md)
+- [Paul Graham on "delve" (April 2024)](graham-delve-post.md)
+- [@hosseeb: How to avoid AI voice](qureshi-avoiding-ai-voice.md)
 
 ## Vendor, first-party, and practitioner guides
 - [OpenAI: GPT-4 System Card](openai-gpt-4-system-card.md)
@@ -273,3 +290,12 @@ Deep extraction exists for:
 - [Hastewire: How teachers spot ChatGPT use](hastewire-teachers-spot-chatgpt.md)
 - [Copy Posse: 5 signs your email was written by AI](copyposse-email-ai-signs.md)
 - [AI for Lifelong Learners: Tells beyond the em-dash](ai-lifelong-learners-em-dash.md)
+- [theclaymethod/unslop](theclaymethod-unslop.md)
+- [chitalian/offensive-ai-speak (avoid-ai-speak skill)](chitalian-offensive-ai-speak.md)
+- [hardikpandya/stop-slop](hardikpandya-stop-slop.md)
+- [jalaalrd/anti-ai-slop-writing](jalaalrd-anti-ai-slop-writing.md)
+- [NousResearch/autonovel: ANTI-SLOP](nousresearch-autonovel-anti-slop.md)
+- [Onur Solmaz: kill-ai-smell skill and ai-smell stylometric corpus](solmaz-kill-ai-smell.md)
+- ["You're absolutely right!": Claude Code issue #3382](claude-code-youre-absolutely-right.md)
+- [Byk3y/no-slop](byk3y-no-slop.md)
+- [Paech et al.: AntiSlop Sampler and Antislop](paech-antislop-sampler.md)

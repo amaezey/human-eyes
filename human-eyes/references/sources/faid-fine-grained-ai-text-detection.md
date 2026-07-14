@@ -1,0 +1,158 @@
+# FAID: Fine-Grained AI-Generated Text Detection Using Multi-Task Auxiliary and Multi-Level Contrastive Learning
+
+## Metadata
+
+- **URL:** https://aclanthology.org/2026.eacl-long.151/
+- **Author / owner:** Minh Ngoc Ta, Dong Cao Van, Duc-Anh Hoang, Minh Le-Anh, Truong Nguyen, My Anh Tran Nguyen, Yuxia Wang, Preslav Nakov, and Dinh Viet Sang
+- **Published:** March 2026
+- **Retrieved:** 2026-07-15
+- **Extracted:** 2026-07-15
+- **Source type:** peer-reviewed empirical conference paper
+- **Evidence tier:** peer-reviewed / academic empirical
+- **Review mode:** new
+- **Stable identifier:** DOI 10.18653/v1/2026.eacl-long.151; ACL Anthology ID 2026.eacl-long.151
+- **Version / revision:** EACL 2026 final proceedings version, pages 3275-3296
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/faid-fine-grained-ai-text-detection.md`
+- **Extraction method:** official ACL paper and Responsible NLP Checklist PDFs downloaded with `curl`; all 22 paper pages and both checklist pages extracted with Poppler `pdftotext -layout`; structure checked with `pdfinfo`; paper pages 1, 11, and 22 rendered with `pdftoppm` and compared visually
+- **Snapshot SHA-256:** `f5cd67a72607965547246d891909390ef774a9e811417dd5f200a591b6e707e6`
+- **Model / corpus scope:** FAIDSet has 83,350 academic texts in English and Vietnamese from arXiv abstracts, Vietnam Journals Online abstracts, and Hanoi University of Science and Technology theses. Generated and collaborative texts use GPT-4/4o, Llama 3.x, Gemini 2.x, and DeepSeek V3/R1 families; held-out generator tests use Qwen, Mistral, and Gemma. The three main labels are human-written, LLM-generated, and human-LLM collaborative, with collaborative data including polishing, continuation, and paraphrasing. Corpus acquisition and generation dates are not reported.
+- **Access limitations:** None for the paper or official checklist. The text extraction is mechanically interleaved in places because of the two-column PDF, and raster chart labels are most reliably preserved in the attached official PDF. The user queue title, "FAID: Fine-grained AI-generated Text Detection", omits the subtitle "Using Multi-Task Auxiliary and Multi-Level Contrastive Learning" found in the authoritative work.
+
+## Summary
+
+Ta et al. introduce FAIDSet, an 83,350-item English and Vietnamese academic-text dataset, and FAID, an XLM-RoBERTa-based three-way authorship classifier with multi-level contrastive learning, an auxiliary classification objective, and fuzzy k-nearest-neighbor retrieval. The study tests fully human, fully LLM-generated, and several human-LLM collaborative categories across known and held-out domains and model families. It adds direct evidence about academic Gemini phrase clusters, model-family variation, edited collaborative text, and the difference between frozen out-of-distribution classification and test-time retrieval adaptation. Its strongest relevance to human-eyes is evaluation design and source-scoped pattern evidence, not a transferable authorship detector or product threshold.
+
+## Main insights
+
+- FAIDSet contains 83,350 examples: 20,252 human-written, 17,252 LLM-generated, and 45,846 human-LLM collaborative items across train, validation, and test splits.
+- The data covers only two academic domains, paper abstracts and student theses, and two languages, English and Vietnamese. Human sources include 2,000 arXiv abstracts, 2,195 VJOL abstracts, 4,898 English HUST thesis passages, and 11,159 Vietnamese HUST thesis passages.
+- The collaboration label collapses polishing, continuation, and paraphrasing into one class. The authors state that this does not exhaust deeply mixed or more complex workflows.
+- FAID reports 95.58% accuracy on FAIDSet, 96.99% on the adapted LLM-DetectAIve dataset, and 96.73% on HART for three-label classification. These are benchmark classifier results, not human-eyes metrics.
+- Out-of-distribution results are uneven. Accuracy is 62.78% for an unseen IELTS domain, 93.31% for unseen Qwen, Mistral, and Gemma generators on known-domain abstracts, and 66.55% when both domain and generator are unseen.
+- A manually revised set of 400 unseen collaboration samples yields 84.8% accuracy. Five annotators corrected spelling, replaced words, and refined fluency while retaining source meaning, so the result is evidence that this detector retained some signal after light human editing in this specific academic setup.
+- A five-volunteer user study reports 88.5% accuracy on 200 allegedly authentic co-writing samples produced with ChatGPT, Gemini, DeepSeek, and Llama 3.1. The paper's stated arithmetic is unclear: five volunteers times four systems times five outputs per model gives 100, not 200, unless an unstated second factor is counted.
+- The method treats each LLM family as an author. Appendix D supports this with limited length, trigram, and embedding analyses, strongest for three Gemini variants and a Gemini-versus-GPT comparison, rather than a comprehensive causal demonstration across every named family.
+- Figure 5 directly reports recurrent academic trigrams in 500 arXiv-prompted outputs from each of three Gemini variants. Repeated items include "the efficacy of", "this work presents", "presents a novel", "introduces a novel", "a significant advancement", "the proposed method", and "empirical evaluations demonstrate".
+- Gemini variants produced shorter, more tightly clustered output lengths than GPT-4o/4o-mini and Llama-3.3 on 2,000 arXiv prompt seeds per model. Length is therefore model-family and prompt/domain scoped here, not a general AI-versus-human rule.
+- Generation prompts explicitly request formal, compelling, impactful, professional, information-dense, and significance-forward academic prose. The authors also acknowledge that FAIDSet under-represents in-the-wild tool chains. These prompts can create the very phrase and style distributions later attributed to generators.
+- Generation quality control samples only 10-20 items per domain, source, and generator combination. Observed repetition, incomplete reasoning, and formal-expression overuse led to prompt or parameter changes, but the paper does not report a fixed blind protocol, rejection counts, or before-and-after distributions.
+- The classifier alone loses 15-30% on unseen data. The final system then embeds unseen items and adds them to a temporary vector database for fuzzy-neighbor inference. This is test-time adaptation using the evaluation distribution, not a strictly frozen detector generalizing without access to unseen test items.
+- The paper's limitations name synthetic construction, narrow low-resource and niche-domain coverage, and failure when one text blends several LLM families. Its ethics section warns against high-stakes use without human oversight and calls for continuing fairness audits.
+- English accuracy is 96.41% and Vietnamese accuracy is 94.42% on FAIDSet, but two languages and no uncertainty estimates cannot establish broad multilingual robustness.
+- The official checklist says the authors used GitHub Copilot and Cursor for code optimization but did not mention that use in the paper. The checklist also identifies human annotation and consent, while reporting no external recruitment and no ethics-review approval or exemption.
+
+## Evidence and claims to extract
+
+- **Direct source reviewed:** EACL 2026 final proceedings paper, DOI 10.18653/v1/2026.eacl-long.151, pages 3275-3296, plus the official two-page Responsible NLP Checklist.
+- **Method and sample:** Three-way authorship classification over 83,350 English and Vietnamese academic texts. FAID uses an unsupervised SimCSE XLM-RoBERTa-base encoder, multi-level contrastive loss, auxiliary binary classification, a vector database, and fuzzy k-nearest neighbors. Main evaluation covers FAIDSet, adapted LLM-DetectAIve, HART, a 150-source IELTS unseen-domain set, a 150-source unseen-generator abstract set, 400 manually revised collaboration items, and a reported 200-item five-volunteer user study. Training uses 50 epochs on one NVIDIA A100, with one reported result per setting and no error bars.
+- **Direct versus cited evidence:** C01-C14 are based on this paper's dataset, prompts, experiments, appendices, limitations, ethics text, and official checklist. Background claims about prior detector failures, authorship accountability, transparency, and other datasets are cited evidence and are not promoted from this card without direct review of the cited work.
+- **Important limits and counterexamples:** The dataset is synthetic by construction, academic-only, two-language, and built from prompt templates that impose target styles. Corpus dates and independent verification that all human-source text is free of undisclosed AI assistance are absent. Quality control changed prompts after observed failures. The real-world-study sample count is not reconcilable from the stated factors. Family-level analysis is narrow, test-time vector adaptation is transductive, mixed use of several LLM families remains difficult, and the paper supplies no uncertainty estimates across repeated runs.
+
+## Skill-use audit
+
+- **Good use:** Support separate evaluation lanes for human-edited collaborative text, domain and generator shifts, model-family metadata, prompt provenance, and frozen versus test-time-adapted evaluation. Use Figure 5 as direct but narrow academic-register evidence for Gemini phrase clustering.
+- **Misuse / overclaim:** Do not treat FAID accuracy as a human-eyes performance result, an individual-document verdict, a universal multilingual detector, or proof that one phrase reveals authorship.
+- **Unsupported use:** The paper cannot set human-eyes severities or thresholds, validate prose from non-academic genres, establish fairness across demographic groups, prove that all variants within a vendor family share one style, or support high-stakes academic sanctions.
+- **Underused evidence:** The project does not yet separate frozen out-of-distribution evaluation from transductive test-time adaptation, nor does it have a committed lane for lightly edited and authentic human-LLM co-writing with preserved edit histories.
+- **Patterns left on the table:** The Gemini trigram clusters are not mapped to current checks, but promotion requires matched human controls and exact normalized counts. The prompt templates themselves provide strong confound evidence because they request novelty, impact, professional tone, formal style, and significance.
+
+## Matched patterns / rules
+
+- `STRATEGY.md`: rejects document authorship classification and treats patterns as writing evidence, not provenance verdicts.
+- `dev/TESTING.md`: requires prompt and source provenance, register variation, length controls, packaging normalization, complete Audits, explicit version references, and separate treatment of coached or humanized samples.
+- `no-ai-vocabulary-clustering`, `no-significance-inflation`, `no-copula-avoidance`, `no-forced-triads`, `no-triad-density`, `no-filler-phrases`, `no-superficial-ing`, and `overall-signal-stacking`: adjacent current checks that fired on the paper or its reproduced prompts in a surface-only run, but they do not directly cover Figure 5's recurrent Gemini trigrams.
+- `sentence-length-variance`, `paragraph-length-uniformity`, and `vocabulary-diversity`: document-level distribution checks, not equivalents of model-family output-length distributions or trigram frequencies.
+- `genre_specific` academic assessment: checks source integrity, citations, and evidence quality; it does not classify collaboration or model family.
+
+## Associated hypotheses
+
+- H3, drop detection framing entirely.
+- H9, field-guide voice with similar-species disambiguation.
+- H12, genre-aware threshold calibration.
+- H19, bootstrap confidence intervals on corpus claims.
+- H21, low information density and wrong sentence subject.
+- H22, long-tail compression and grammatical standardisation.
+- H24, register-specific vocabulary density.
+- H25, model-family versus generic-AI residue.
+- Proposed extension to H25: distinguish frozen generalization from transductive or retrieval-based test-time adaptation, and require family claims to name the specific variants, prompts, domains, and dates observed.
+
+## Questions / follow-up
+
+- How do the authors obtain 200 user-study samples from five volunteers, four systems, and five outputs per model?
+- Were the reported metrics single runs, averages, or selected runs, and what is their variance?
+- What acquisition and generation dates apply to each FAIDSet component, and how was undisclosed AI assistance in the human-source corpora assessed?
+- Does the temporary vector database include all evaluation items at once, and how are fuzzy class memberships assigned to previously unlabeled unseen items without leakage?
+- A separate ingestion would be required before using claims inherited from M4GT-Bench, DeTeCtive, LLM-DetectAIve, HART, MixSet, or other cited works.
+
+## Update provenance
+
+Not applicable: initial ingestion.
+
+## Decision history
+
+None: initial review.
+
+## Project coverage
+
+This is the authoritative review table. Give every relevant source claim or example a stable claim ID in the first cell.
+
+Escape any literal pipe within any table cell as `\|`; an unescaped extra pipe makes the row invalid.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: FAIDSet has 83,350 English and Vietnamese academic texts across human, LLM, and human-LLM labels, sourced from arXiv, VJOL, and HUST, but reports no corpus acquisition or generation dates and no independent human-only verification. | Direct peer-reviewed dataset description and Appendix B counts. The synthetic construction and narrow scope are explicit; the date and human-source verification gaps are reviewer observations from absent metadata. | Partly covered: `dev/TESTING.md` requires source and generation provenance, exact model refs, genre variation, and reproducibility; source cards record model/corpus scope. It does not require a human-source AI-contamination check or acquisition date for every component. | The paper's human ground truth may include unmeasured post-LLM assistance, especially for arXiv material, and time-sensitive model outputs cannot be dated precisely. | If approved, extend the pending robustness-lane design in `dev/TESTING.md` to record acquisition/generation dates and the basis for treating each human source as human-written. Do not infer contamination when it was not tested. | pending | not started |
+| C02: The task classifies fully human, fully LLM-generated, and human-LLM collaborative text, collapsing polishing, continuation, and paraphrasing into one collaboration label. The authors also frame the ordered labels and MSE/MAE as modelling degree of human involvement from 0 to 1. | Direct task definition and evaluation framing. The authors say the collaboration forms are non-exhaustive and that multi-model blending can defeat family attribution. The system uses only three origin labels, with every collaboration form consolidated into one class, so it does not measure actual contribution within that class or locate collaboration boundaries. | Fully covered as a product boundary: `STRATEGY.md` says human-eyes does not determine who wrote a document; `genre_specific` reviews prose and evidence rather than assigning authorship. | Treating the three labels or their ordinal metrics as a fine-grained measure of human contribution would exceed the reported task, especially for deeply mixed or multi-model documents. | Record only. Preserve the no-authorship-classification stance and do not add collaboration labels, boundary claims, or contribution scores to human-eyes. | pending | not started |
+| C03: FAID reports 95.58%, 96.99%, and 96.73% three-label accuracy on FAIDSet, adapted LLM-DetectAIve, and HART. | Direct Tables 1 and 5.3 results. They are dataset-specific classifier metrics, reported without repeated-run uncertainty, and the external datasets were adapted to the paper's label space. | Fully covered: `STRATEGY.md` defines human-eyes metrics around catalogue coverage, check accuracy, context, and rewrite quality; `dev/TESTING.md` requires exact evaluation provenance and rejects raw totals as sufficient evidence. | Importing these accuracies would confuse an authorship benchmark with prose-pattern coverage. | Record the numbers as source background only. Do not use them as human-eyes performance, severity, threshold, or release evidence. | pending | not started |
+| C04: Accuracy falls to 62.78% for an unseen IELTS domain, remains 93.31% for unseen generators on known-domain abstracts, and is 66.55% when both domain and generator are unseen. | Direct Table 2 comparison. The held-out sets derive from only 150 human sources per setup, and generation remains controlled. The result shows domain shift is more severe here, not universally. | Partly covered: H12 and H25 anticipate genre and model-family drift; `xia-stanczak-roth-detector-generalization.md` already recommends a factorial prompt-model-domain robustness lane. | Current human-eyes evaluation does not report domain-only, generator-only, and joint shifts as separate axes. | If approved, add FAID as corroborating evidence for the pending factorial robustness lane and require separate domain, generator, and joint results. Keep it outside the ordinary fresh-write corpus. | pending | not started |
+| C05: FAID reaches 84.8% accuracy on 400 manually revised collaboration samples after spelling correction, synonym replacement, word refinement, and length control. | Direct Section 5.6 result. Five IT-major annotators revised about 80 samples each. The editing protocol is light and source-preserving; it is not unrestricted professional revision or a naturalistic prevalence sample. | Partly covered: `dev/TESTING.md` keeps coached, rerolled, and human-rewrite AI samples outside the main corpus and requires preserved provenance. No committed lane evaluates edit histories for human-LLM collaboration. | The project cannot tell whether findings persist through specific edit operations or whether edits introduce new catalogue patterns. | If approved, create a separately labeled human-edit robustness protocol in `dev/TESTING.md` that preserves pre-edit text, every edit, editor instructions, editor background, and complete Audits before and after. Do not add these samples to the ordinary fresh-write corpus. | pending | not started |
+| C06: A five-volunteer user study reports 88.5% accuracy on 200 real-world co-writing samples across four AI systems. | Direct Section 5.7 result with five volunteers and two academic tasks. The stated factors yield 100 samples unless an unstated factor is counted, so the sample construction is unresolved. Volunteer selection, per-system counts, and item-level provenance are insufficient for reuse. | Not covered: `dev/TESTING.md` requires provenance and complete Audits but has no authentic co-writing study protocol or sample-accounting reconciliation gate. | The result cannot support a decision-ready corpus recommendation until the 200-item accounting and release provenance are resolved. | Record as promising but unresolved evidence. If approved later, require exact item accounting, prompts, turns, edits, system versions, dates, consent, and a separate co-writing evaluation lane before reuse. | pending | not started |
+| C07: FAID treats an LLM family as an author because variants allegedly share style, length, n-gram, and embedding distributions. It reports five-way human/GPT/Gemini/Deepseek/Llama source-family accuracy of 79.64% on FAIDSet, 90.89% on adapted LLM-DetectAIve, and 89.96% on HART. | Direct method assumption, Table 3 results, and Appendix D analyses. The benchmark results are dataset-specific and do not test held-out family attribution. The supporting distribution evidence is strongest for three Gemini variants on arXiv prompts, plus a Gemini-versus-GPT embedding view and five-model length comparison. Shared training data and architecture are proposed explanations, not directly tested causes. | Partly covered: the pending H25 hypothesis proposes separating model-family residue from generic AI evidence; `sun-idiosyncrasies-llms.md` and other cards record model-specific distributions. | H25 does not yet require a minimum family sample, multiple domains, prompt controls, held-out-family evaluation, or explicit family-version boundaries before a family claim is used. | If approved, add FAID as scoped evidence under H25 and require family claims to name model variants, prompt set, domain, date, and within-family versus cross-family controls. Do not expose vendor-family attribution to users from this source alone. | pending | not started |
+| C08: Across 500 arXiv-prompted outputs per Gemini variant, Figure 5 reports frequent trigrams such as "the efficacy of", "this work presents", "presents a novel", "introduces a novel", "a significant advancement", and "empirical evaluations demonstrate". | Direct corpus plots for Gemini 2.0, Gemini 2.0 Flash-Lite, and Gemini 1.5 Flash. Counts are model- and academic-prompt-specific, and the paper supplies no matched human frequency or statistical test for these trigrams. | Not covered: a focused surface-only run on a six-line fixture containing these phrases returned no candidates or aggregate findings from current programmatic checks. `no-significance-inflation`, `no-ai-vocabulary-clustering`, and H24 are adjacent but not exact coverage. | The project has no source mapping for these phrase clusters and no matched-control evidence to justify a rule or threshold. | If approved, add the trigrams as academic-register research candidates under H24/H25 and build matched human, prompt, model, and date controls. Do not change `patterns.json`, `grade.py`, or severities from this paper alone. | pending | not started |
+| C09: Gemini variants produce shorter, tighter output-length distributions than GPT-4o/4o-mini and Llama-3.3 on 2,000 arXiv seeds per model. | Direct Figure 3 analysis. It compares generator outputs, not humans, and reflects one domain and prompt family. The authors interpret it as family coherence. | Partly covered: H12, H22, and H25 cover register, structural distribution, and model-family residue. `sentence-length-variance` and `paragraph-length-uniformity` inspect within-document rhythm, not total output length across a corpus. | A document-level rhythm finding cannot be treated as coverage of corpus-level output length, and shorter is not a universal AI direction. | Record as model-family metadata evidence. If approved, include document length as a controlled corpus variable under H25, not as a prose violation or standalone checker. | pending | not started |
+| C10: Generation prompts request formal, professional, compelling, impactful, information-dense, significance-forward academic prose, and FAIDSet under-represents in-the-wild tool-chain edits. | Direct prompt tables and explicit dataset limitation. Prompt wording plausibly induces phrase and style distributions, but the paper does not isolate each prompt's causal effect. | Fully covered: `dev/TESTING.md` requires literal-first ordinary prompts for the main corpus and keeps coached or humanized prompts in separate labeled tracks; it also requires prompt provenance. | The source's generated corpus should not enter the ordinary human-eyes fresh-write baseline without being labeled as coached academic generation. | Record an explicit non-promotion in `pattern-opportunities.md`: use FAIDSet only in a separate prompt-conditioned robustness lane, with the prompt templates preserved. No product change. | pending | not started |
+| C11: Quality control manually samples 10-20 items per domain, source, and generator, then changes prompts or generation parameters after observing repetition, incomplete reasoning, or formal-expression overuse. | Direct Section 3 quality-control procedure. The paper does not report total reviewed items, rejection rates, blinded criteria, or before-and-after distributions. Adaptive retuning can curate away failures or create generator-specific prompt differences. | Not covered: `dev/TESTING.md` requires prompt provenance and naturalistic generation but does not specify a fixed quality-control protocol or a ledger for rejected generations. | Selective prompt adjustment makes later style and accuracy comparisons harder to interpret and reproduce. | If approved, require fixed prompts or a fully preserved prompt-change and rejection ledger for any comparable generated corpus. Report results before and after quality control separately. | pending | not started |
+| C12: The classifier alone drops 15-30% on unseen data; final FAID adds unseen item embeddings to a temporary vector database and fuzzy-neighbor inference reaches 95.18% on known and 93.31% on unseen generators in the clustering ablation. | Direct Appendix F description and Table 13. The final result uses test-time distribution access and is not equivalent to frozen zero-shot generalization. The paper does not fully explain unlabeled membership assignment or whether all test items enter the database together. | Not covered: current project guidance records immutable evaluator versions and out-of-distribution conditions but does not distinguish frozen evaluation from transductive or retrieval-based adaptation. | Calling the final result generalization without naming test-time adaptation can overstate deployment transfer and obscure leakage risk. | If approved, add an evaluation-report field to `dev/TESTING.md` for frozen, supervised adaptation, unsupervised/transductive adaptation, or retrieval-augmented inference, plus exact test-data access. Require frozen results beside adapted results. | pending | not started |
+| C13: The authors limit the work to synthetic academic data, incomplete low-resource and niche-domain coverage, and single-family attribution, and they warn against high-stakes use without human oversight because of error and bias risks. | Direct Limitations and Ethics text. The fairness recommendation is broad and is not backed by a demographic fairness experiment in this paper. | Fully covered: `STRATEGY.md` rejects authorship verdicts; H3/H9 and the Stowe/Liang cards preserve detector-bias and false-positive cautions; `genre_specific` focuses on evidence quality rather than sanction. | No additional product behavior is justified. The limits must remain attached whenever the performance numbers are cited. | Record only. Keep the no-authorship and no-high-stakes-verdict boundaries unchanged, and do not treat the paper's broad fairness language as measured subgroup evidence. | pending | not started |
+| C14: FAIDSet accuracy is 96.41% for English and 94.42% for Vietnamese. | Direct Table 4 result. It covers two academic-language subsets, gives no uncertainty, and does not isolate language from source/domain composition. | Partly covered: the pending H12 hypothesis and `wang-et-al-human-like-text-liked-by-humans.md` support language-, domain-, generator-, and task-aware interpretation; current human-eyes checks are not multilingual-calibrated. | Two high scores cannot establish multilingual robustness, and no native-speaker false-positive analysis is reported. | If approved, cite this as two-language benchmark evidence only. Require native-speaker review, per-language human controls, uncertainty, and domain separation before any multilingual human-eyes calibration. | pending | not started |
+
+## Recommendations
+
+- C01: If approved, add acquisition/generation dates and human-source verification basis to the pending robustness-lane provenance fields in `dev/TESTING.md`; do not infer contamination.
+- C02: Record only; preserve the no-authorship-classification boundary and add no collaboration label or contribution score.
+- C03: Record benchmark numbers as source background only; import no metric, threshold, severity, or release claim.
+- C04: If approved, use FAID as corroborating evidence for separate domain, generator, and joint-shift reporting in the pending robustness lane.
+- C05: If approved, specify a separate human-edit robustness protocol with complete before/after Audits and preserved edit histories; keep it outside the ordinary fresh-write corpus.
+- C06: Record the user-study result as unresolved until item accounting and provenance are available; any later co-writing lane requires exact prompts, turns, edits, versions, dates, and consent.
+- C07: If approved, add scoped FAID evidence to H25 with minimum family, domain, prompt, version, and date controls; do not add user-facing family attribution.
+- C08: If approved, add the Figure 5 trigrams as research candidates under H24/H25 and evaluate them against matched human academic text before any rule or severity change.
+- C09: Record corpus-level output length as a controlled model-family variable under H25, not as a document-level violation.
+- C10: Add an explicit non-promotion note for FAIDSet in `pattern-opportunities.md`; any use belongs in a separate prompt-conditioned robustness lane.
+- C11: If approved, require a fixed quality-control protocol or complete prompt-change and rejection ledger for generated evaluation corpora.
+- C12: If approved, require evaluation reports to distinguish frozen inference from supervised, transductive, and retrieval-based adaptation, and show frozen results beside adapted results.
+- C13: Record only; retain current no-authorship and no-high-stakes-verdict boundaries.
+- C14: Record as two-language academic benchmark evidence only; require native-speaker controls and uncertainty before multilingual calibration.
+
+## Evaluation of approved changes
+
+- C01: not applicable - recommendation pending; no product change implemented.
+- C02: not applicable - record-only recommendation pending; no product change implemented.
+- C03: not applicable - record-only recommendation pending; no product change implemented.
+- C04: not applicable - recommendation pending; no product change implemented.
+- C05: not applicable - recommendation pending; no product change implemented.
+- C06: not applicable - unresolved-evidence recommendation pending; no product change implemented.
+- C07: not applicable - recommendation pending; no product change implemented.
+- C08: not applicable - recommendation pending; no product change implemented.
+- C09: not applicable - record-only recommendation pending; no product change implemented.
+- C10: not applicable - non-promotion recommendation pending; no product change implemented.
+- C11: not applicable - recommendation pending; no product change implemented.
+- C12: not applicable - recommendation pending; no product change implemented.
+- C13: not applicable - record-only recommendation pending; no product change implemented.
+- C14: not applicable - recommendation pending; no product change implemented.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: Codex CLI fresh process, did not perform the extraction
+- **Findings resolved:** corrected C02 to preserve the paper's ordinal human-involvement framing while distinguishing it from actual within-class contribution measurement; added the omitted Table 3 source-family benchmark results and held-out-family limit to C07; corrected H19's name; clarified that H12, H25, and the Wang card are pending evidence or hypotheses rather than implemented project requirements
+- **Unresolved findings:** none

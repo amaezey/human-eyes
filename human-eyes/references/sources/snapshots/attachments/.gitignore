@@ -1,0 +1,10 @@
+# Provenance artefacts are not committed. The PDFs and pinned repository tarballs
+# preserved here are large (about 19M) and are reproducible from the URLs, DOIs,
+# arXiv IDs and commit SHAs recorded against each card in ../MANIFEST.md.
+#
+# The JSON lists ARE committed. They are the substance of the antislop-sampler
+# source, not a copy of a document that describes it, so a card citing them needs
+# them present to be checkable.
+*
+!.gitignore
+!*.json

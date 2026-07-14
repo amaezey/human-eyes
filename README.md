@@ -317,6 +317,13 @@ Per-source reference notes live in [`human-eyes/references/sources/`](human-eyes
 - [Kobak et al.: Delving into LLM-assisted writing in biomedical publications through excess vocabulary](https://www.science.org/doi/10.1126/sciadv.adt3813) ([source card](human-eyes/references/sources/kobak-llm-excess-vocabulary.md))
 - [Kousha and Thelwall: How much are LLMs changing academic papers after ChatGPT?](https://arxiv.org/abs/2509.09596) ([source card](human-eyes/references/sources/kousha-thelwall-academic-papers.md))
 - [Liang et al.: GPT detectors are biased against non-native English writers](https://www.cell.com/patterns/fulltext/S2666-3899(23)00130-7) ([source card](human-eyes/references/sources/liang-detector-bias.md))
+- [Lu et al.: Synergizing Stylometrics with Semantics](https://aclanthology.org/2026.findings-acl.1855/) ([source card](human-eyes/references/sources/lu-et-al-stylometrics-semantics.md))
+- [Zhu et al.: Exons-Detect](https://aclanthology.org/2026.acl-long.1211/) ([source card](human-eyes/references/sources/exons-detect.md))
+- [Stowe et al.: Identifying bias in machine-generated text detection](https://aclanthology.org/2026.acl-long.109/) ([source card](human-eyes/references/sources/stowe-detector-bias.md))
+- [Wang et al.: Is Human-Like Text Liked by Humans? Multilingual Human Detection and Preference Against AI](https://aclanthology.org/2026.acl-long.639/) ([source card](human-eyes/references/sources/wang-et-al-human-like-text-liked-by-humans.md))
+- [Xia, Stańczak, and Roth: Explaining Generalization of AI-Generated Text Detectors Through Linguistic Analysis](https://aclanthology.org/2026.eacl-long.307/) ([source card](human-eyes/references/sources/xia-stanczak-roth-detector-generalization.md))
+- [Ta et al.: FAID: Fine-Grained AI-Generated Text Detection Using Multi-Task Auxiliary and Multi-Level Contrastive Learning](https://aclanthology.org/2026.eacl-long.151/) ([source card](human-eyes/references/sources/faid-fine-grained-ai-text-detection.md))
+- [Tolstykh et al.: GigaCheck, object-centric span localization for LLM-generated content](https://aclanthology.org/2026.findings-acl.213/) ([source card](human-eyes/references/sources/tolstykh-et-al-gigacheck.md))
 - [Murray and Tersigni: Can instructors detect AI-generated papers?](https://jalt.open-publishing.org/jalt/index.php/jalt/article/view/1895) ([source card](human-eyes/references/sources/murray-tersigni-ai-generated-papers.md))
 - [Przystalski et al.: Stylometry recognizes human and LLM-generated texts](https://arxiv.org/abs/2507.00838) ([source card](human-eyes/references/sources/przystalski-stylometry.md))
 - [Reinhart et al.: Do LLMs write like humans?](https://pnas.org/doi/10.1073/pnas.2422455122) ([source card](human-eyes/references/sources/reinhart-llm-write-like-humans.md))
@@ -329,10 +336,14 @@ Per-source reference notes live in [`human-eyes/references/sources/`](human-eyes
 **Peer-reviewed / academic empirical (preprint):**
 - [Abdulhai et al.: How LLMs Distort Our Written Language](https://arxiv.org/abs/2603.18161) ([source card](human-eyes/references/sources/abdulhai-llms-distort-written-language.md))
 - [Bisztray et al.: I Know Which LLM Wrote Your Code Last Summer](https://arxiv.org/abs/2506.17323) ([source card](human-eyes/references/sources/bisztray-code-stylometry.md))
+- [Creo and Ranganath: Show, Don't TELL: Explainable AI-Generated Text Detection](https://arxiv.org/abs/2605.27921) ([source card](human-eyes/references/sources/creo-ranganath-tell-explainable-detection.md))
 - [Dhillon et al.: MFA students vs LLMs fiction](https://arxiv.org/abs/2510.13939) ([source card](human-eyes/references/sources/dhillon-mfa-students-llms-fiction.md))
 - [Geng and Trotta: Is ChatGPT Transforming Academics' Writing Style?](https://arxiv.org/abs/2404.08627) ([source card](human-eyes/references/sources/geng-trotta-transforming-academic-style.md))
 - [Juzek and Ward: Word Overuse and Alignment in Large Language Models](https://arxiv.org/abs/2508.01930) ([source card](human-eyes/references/sources/juzek-ward-word-overuse-alignment.md))
 - [Russell et al.: StoryScope narrative idiosyncrasies in AI fiction](https://arxiv.org/abs/2604.03136) ([source card](human-eyes/references/sources/russell-storyscope-ai-fiction.md))
+- [El Attar et al.: A Systematic Analysis of Linguistic Features in AI-Generated Text Detection Across Domains and Models](https://arxiv.org/abs/2606.04177) ([source card](human-eyes/references/sources/el-attar-linguistic-features-ai-text-detection.md))
+- [Tabach: Can Humans Detect AI? Mining Textual Signals of AI-Assisted Writing Under Varying Scrutiny Conditions](https://arxiv.org/abs/2604.23471) ([source card](human-eyes/references/sources/tabach-can-humans-detect-ai.md))
+- [Suvanto et al.: Interpretable Text Classification Applied to the Detection of LLM-generated Creative Writing](https://arxiv.org/abs/2601.07368) ([source card](human-eyes/references/sources/suvanto-interpretable-llm-creative-writing.md))
 
 **First-party model docs:**
 - [Anthropic: Claude Sonnet system prompts](https://platform.claude.com/docs/en/release-notes/system-prompts) ([source card](human-eyes/references/sources/anthropic-sonnet-prompts.md))
