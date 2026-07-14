@@ -1,0 +1,4 @@
+interface:
+  display_name: "Source Ingest"
+  short_description: "Ingest or refresh evidence sources safely"
+  default_prompt: "Use $source-ingest to ingest or refresh this source with full-text provenance, review, and validation."
