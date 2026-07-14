@@ -290,13 +290,19 @@ Substitutes elaborate constructions for simple "is", "are", or "has".
 **Severity:** strong_warning · `no-copula-avoidance`
 
 
-### 9. Contrived contrast / negative parallelism
+### 9. Negative parallelism
 
-Constructions like "Not only...but..." or "It's not just about..., it's..." are overused to the point of being a reliable AI fingerprint. Treat this as a rhetorical move, not a string pattern: the problem is the fake reframe where a simple idea is rejected so a grander, more abstract idea can be revealed.
+Negative parallelism includes "not X but Y", "not just X, Y", positive-then-negative reversals, comparative reframes, and negation countdowns. It remains the same signal when split across two sentences, including "It's not X. It's Y." and "The target was never X. The target was Y."
 
-Agents often dodge the rule by flipping the syntax around. These are the same tell:
+The Atlantic reported Pangram's estimate that the not-X-but-Y construction appears about three times as often in AI writing as in human writing. This is evidence that the construction is an AI-overrepresented signal. It is not evidence that one occurrence proves AI authorship. Source: https://www.theatlantic.com/technology/2026/07/ai-chatbot-writing-tic-negative-parallelism/687892/
+
+The checker surfaces the construction wherever it appears. It does not decide whether a use is legitimate or justified, and it does not suppress concrete, purposeful, quoted, or human-authored instances. Repetition matters: overlapping regexes for one source construction count once, while separate occurrences add progressively more signal-stacking evidence.
+
+Forms include:
 
 - "It's not X, it's Y."
+- "It's not X. It's Y."
+- "The target was never X. The target was Y."
 - "It's Y, not X."
 - "Less X than Y."
 - "More Y than X."
@@ -304,10 +310,6 @@ Agents often dodge the rule by flipping the syntax around. These are the same te
 - "Beyond X, it is Y."
 - "You might think X. Actually, Y."
 - "No X. No Y. Just Z."
-
-Do not preserve the structure by swapping words, reversing the order, replacing "not" with "beyond", or splitting the contrast across sentences. If the sentence works by first rejecting a flat interpretation and then unveiling a supposedly deeper one, rewrite it as a direct claim with evidence.
-
-**Tolerance note:** Not every contrast is a problem. "The laptop is powerful, not cheap" is a concrete distinction. "The problem is not collaboration. The problem is performative attendance" can be a real argument. The tell is the inflated reveal: a plain interpretation is dismissed so an abstract payload ("meaning", "identity", "humanity", "trust", "belonging") can arrive with fake depth.
 
 **Before:**
 > It's not just about the beat riding under the vocals; it's part of the aggression and atmosphere. It's not merely a song, it's a statement.
@@ -328,6 +330,8 @@ Do not preserve the structure by swapping words, reversing the order, replacing 
 > The app earns trust by showing exactly what changed and letting users undo each step.
 
 **Severity:** strong_warning · `no-negative-parallelisms`
+
+**Detection:** Programmatic check `no-negative-parallelisms`. Runs at Balanced and All. Matches within a sentence and across two-sentence boundaries. One occurrence contributes 2 signal-stacking points; two contribute 3; three or more contribute 4. Overlapping regex matches on the same source span are deduplicated.
 
 
 ### 10. Rule of three

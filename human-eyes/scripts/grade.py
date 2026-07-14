@@ -851,7 +851,7 @@ def check_overall_signal_stacking(text):
     }
     component_labels = {
         "manufactured_insight": "manufactured insight framing",
-        "negative_parallelism": "contrived contrast framing",
+        "negative_parallelism": "negative parallelism",
         "formulaic_openers": "formulaic openings",
         "soft_scaffolding": "soft scaffolding",
         "section_scaffolding": "section scaffolding",
@@ -870,9 +870,21 @@ def check_overall_signal_stacking(text):
     vocab = vocabulary_signal_stacking_profile(text)
     score = vocab["points"]
     components = []
+    component_points = {}
     for name, result in checks.items():
         if not result["passed"]:
-            score += weights[name]
+            points = weights[name]
+            if name == "negative_parallelism":
+                occurrence_count = result.get(
+                    "candidate_count",
+                    len(result.get("matches", [])),
+                )
+                # One occurrence is already a relatively strong signal. Each
+                # additional occurrence increases the evidence until this
+                # component alone reaches the aggregate threshold.
+                points = min(4, max(1, occurrence_count) + 1)
+            score += points
+            component_points[name] = points
             components.append(component_labels[name])
 
     failed = score >= 4
@@ -882,6 +894,7 @@ def check_overall_signal_stacking(text):
         "score": score,
         "threshold": 4,
         "components": components,
+        "component_points": component_points,
         "vocabulary_signal_stacking": {
             "points": vocab["points"],
             "reasons": vocab["reasons"],
@@ -1122,6 +1135,35 @@ def check_negative_parallelisms(text):
     )
     pron = rf"(?:it{apo}s|that{apo}s|this is|it is|that is|it was|that was|this was|it becomes?|that becomes?|this becomes?)"
     sep = rf"[;:,{dash[1:-1]}]"  # punctuation break that can split clauses
+    deictic = r"(?:it|this|that)"
+    deictic_positive = rf"{deictic}(?:{apo}s|\s+(?:is|was|becomes?))"
+    deictic_negative = rf"{deictic}(?:{apo}s\s+(?:not|never)|\s+(?:is|was)\s+(?:not|never)|\s+(?:isn{apo}t|wasn{apo}t|isnt|wasnt))"
+    nonparallel_predicate_opening = (
+        r"(?:hard|difficult|easy|unusual|possible|impossible|clear|obvious)\s+"
+        r"(?:to|for)\b|until\b|going\s+to\b"
+    )
+    negative_predicate = rf"(?!\s*(?:{nonparallel_predicate_opening}))[^;:.!?\n]{{1,120}}"
+    noun_resume_predicate = (
+        rf"(?!\s*(?:{nonparallel_predicate_opening}|"
+        rf"[A-Za-z][\w’'-]*(?:ing|ed)\b|paid\b))[^;:.!?\n]{{1,120}}"
+    )
+    negative_aux = (
+        rf"(?:(?:is|are|was|were|do|does|did|should|would|could|will|can|must)\s+"
+        rf"(?:not|never)|(?:isn|aren|wasn|weren|don|doesn|didn|shouldn|wouldn|"
+        rf"couldn|won|can|mustn){apo}t|cannot|need\s+not)"
+    )
+    positive_verb = (
+        rf"(?!(?:(?:is|are|was|were|do|does|did|should|would|could|will|can|must)"
+        rf"\s+(?:not|never)|(?:isn|aren|wasn|weren|don|doesn|didn|shouldn|"
+        rf"wouldn|couldn|won|can|mustn){apo}t)\b)"
+        r"(?:is|are|was|were|do|does|did|should|would|could|will|can|must|"
+        r"[A-Za-z][\w’'-]*)"
+    )
+    structural_sep = rf"(?:{sep}|[.!?])\s*"
+    noun_subject = (
+        r"(?P<np_subject>(?:the|her|his|our|your|their|good|customer)\s+"
+        r"[A-Za-z][\w’'-]*(?:\s+[A-Za-z][\w’'-]*){0,2})"
+    )
 
     hard_patterns = [
         rf"\bnot\s+(?:just|only|merely|simply|about|a matter of|a question of|a story of)\b.{{0,120}}\bbut(?: also)?\b",
@@ -1136,6 +1178,41 @@ def check_negative_parallelisms(text):
         r"\bno\s+[^.!?\n]{1,50}[.!?]\s+no\s+[^.!?\n]{1,50}[.!?]\s+just\s+",
         r"\bnot\s+[^.!?\n]{1,50}[.!?]\s+not\s+[^.!?\n]{1,50}[.!?]\s+just\s+",
         r"\b(?:you might think|at first glance|on the surface|it may seem)\b.{0,120}\b(?:but|yet|actually|in reality)\b",
+        # The same negative-positive frame can span a punctuation break or a
+        # sentence boundary. Detect both; sentence boundaries are not a reason
+        # to discard the signal.
+        rf"\b{deictic_negative}\b{negative_predicate}{sep}\s*(?:but\s+)?{deictic_positive}\b",
+        rf"\b{deictic_negative}\b{negative_predicate}[.!?]\s*{deictic_positive}\b",
+        # Repeated subjects and immediate pronoun resumptions cover the wider
+        # negative-positive family without requiring the payload to be an
+        # abstract noun. The structure is the signal; the regex does not judge
+        # whether the writer's use is justified.
+        rf"\b{noun_subject}\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?P=np_subject)\s+{positive_verb}\b",
+        rf"\b{noun_subject}\s+{negative_aux}\s+{noun_resume_predicate}{structural_sep}(?:it|he|she|they)(?:{apo}s|{apo}re|\s+{positive_verb})\b",
+        rf"\bwe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:we{apo}re|we\s+{positive_verb})\b",
+        rf"\bthey\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:they{apo}re|they\s+{positive_verb})\b",
+        rf"\byou\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:you{apo}re|you\s+{positive_verb})\b",
+        rf"\bshe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:she{apo}s|she\s+{positive_verb})\b",
+        rf"\bhe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:he{apo}s|he\s+{positive_verb})\b",
+        rf"\b(?:it|this|that)\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:it|this|that)(?:{apo}s|\s+{positive_verb})\b",
+        # General parallel complements and coordinated negative-positive
+        # clauses that do not depend on a fixed subject vocabulary.
+        r"\bnot\s+(?!until\b)[^,;.!?\n]{1,80}\s+but\s+(?:also\s+)?[^,;.!?\n]{1,80}",
+        r"(?:^|(?<=[;.!?]))\s*[^,;.!?\n]{1,100},\s*not\s+(?!until\b)[^,;.!?\n]{1,80}",
+        r"\brather\s+than\s+[^,;.!?\n]{1,80},\s*[^,;.!?\n]{1,80}\brather\s+than\s+[^,;.!?\n]{1,80}",
+        r"\bto\s+[^;.!?\n]{1,80}\s+is\s+not\s+to\s+[^;.!?\n]{1,80}[;.!?]\s*to\s+[^;.!?\n]{1,80}\s+is\s+to\b",
+        # Comma-separated countdown negation is the same construction as its
+        # sentence-separated form already covered above.
+        r"\bno\s+[^,;.!?\n]{1,50}(?:\s*[,;]\s*no\s+[^,;.!?\n]{1,50})+\s*[,;]\s*just\s+[^.!?\n]{1,80}",
+        rf"\b(?:there\s+(?:is|was)\s+)?no\s+[^.!?\n]{{1,60}}\s+(?:and|,)\s*no\s+[^.!?\n]{{1,60}}{sep}\s*(?:just|only|simply)\s+[^.!?\n]{{1,80}}",
+        rf"\bnot\s+[^,;.!?\n]{{1,50}},\s*not\s+[^,;.!?\n]{{1,50}},\s*(?:just|only|simply)\s+[^.!?\n]{{1,80}}",
+        r"\bmore\s+[^,;.!?\n]{1,60}\s+than\s+[^,;.!?\n]{1,60},\s*less\s+[^,;.!?\n]{1,60}\s+than\s+[^,;.!?\n]{1,60}",
+        # Parallel complements and clauses, including positive-then-negative
+        # and infinitive forms.
+        r"\b(?:is|are|was|were)\s+(?:not|never)\b[^.!?\n]{1,100},\s*but\s+(?!\b(?:the|a|an)\s+\w+\s+(?:is|was|are|were)\b)[^.!?\n]{1,100}",
+        r"\b(?:is|are|was|were|becomes?)\s+[^,;.!?\n]{1,80},\s*not\s+(?!only\b)[^,;.!?\n]{1,80}",
+        r"\bto\s+[^,;.!?\n]{1,100},\s*not\s+to\s+[^,;.!?\n]{1,100}",
+        r"\bnot\s+that\b[^.!?\n]{1,120},\s*but\s+that\b[^.!?\n]{1,120}",
     ]
 
     abstract_reframe_patterns = [
@@ -1145,19 +1222,32 @@ def check_negative_parallelisms(text):
         rf"\b(?:actually|in reality|the real (?:point|story|question|issue|challenge) is)\b[^.!?\n]{{0,120}}\b{abstract}\b",
     ]
 
-    verbatim = []
+    candidates = []
     for pat in hard_patterns + abstract_reframe_patterns:
         for m in re.finditer(pat, text, flags=re.IGNORECASE | re.DOTALL):
-            verbatim.append(re.sub(r"\s+", " ", m.group(0)).strip())
+            candidates.append((m.start(), m.end(), m.group(0).strip()))
+
+    # Several expressions intentionally cover neighboring variants. When two
+    # expressions match the same source construction, keep the widest span so
+    # one occurrence cannot inflate the count merely because regexes overlap.
+    accepted = []
+    for candidate in sorted(candidates, key=lambda item: (-(item[1] - item[0]), item[0])):
+        start, end, _ = candidate
+        if any(start < kept_end and kept_start < end for kept_start, kept_end, _ in accepted):
+            continue
+        accepted.append(candidate)
+    accepted.sort(key=lambda item: item[0])
+    verbatim = [match for _, _, match in accepted]
     count = len(verbatim)
     return {
         "text": "no-negative-parallelisms",
         "passed": count == 0,
         "matches": verbatim,
+        "candidate_count": count,
         "evidence": (
-            f"Found {count} contrived contrast/reframe pattern(s)"
+            f"Found {count} negative-parallelism occurrence(s)"
             if count > 0
-            else "No negative parallelisms or contrived reframes"
+            else "No negative parallelisms"
         ),
     }
 

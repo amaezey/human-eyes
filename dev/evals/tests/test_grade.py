@@ -452,24 +452,83 @@ expect_fail("no-negative-parallelisms",
 expect_fail("no-negative-parallelisms",
     "It isn't merely a song; it's a statement.",
     "contraction plus merely variant")
+expect_fail("no-negative-parallelisms",
+    "It's not delivery. It's DiGiorno.",
+    "canonical contraction split across two sentences")
+expect_fail("no-negative-parallelisms",
+    "The target was never a man. The target was the truth.",
+    "repeated-subject negative parallelism across two sentences")
+expect_fail("no-negative-parallelisms",
+    "This isn't a feature. It is a relationship.",
+    "deictic-pronoun negative parallelism across two sentences")
+expect_fail("no-negative-parallelisms",
+    "No bag, no things, no armor, just me.",
+    "comma-separated no-X no-Y just-Z")
+expect_fail("no-negative-parallelisms",
+    "The fault is not in our stars, but in ourselves.",
+    "not-X but-Y parallel contrast")
+expect_fail("no-negative-parallelisms",
+    "I come to bury Caesar, not to praise him.",
+    "affirmative-negative infinitive parallelism")
 expect_pass("no-negative-parallelisms",
     "The building was not damaged in the fire. It was inspected the following day.",
     "factual negation, not a reframing move")
-expect_pass("no-negative-parallelisms",
+expect_fail("no-negative-parallelisms",
     "It's not the best display in its class, but it's good enough for professional work.",
-    "ordinary product comparison")
-expect_pass("no-negative-parallelisms",
+    "same-subject negative-positive comparison")
+expect_fail("no-negative-parallelisms",
     "The laptop is powerful, not cheap.",
-    "plain concrete contrast")
+    "positive-negative adjectival parallelism")
 expect_pass("no-negative-parallelisms",
     "It was not raining, but the road was still wet.",
-    "ordinary causal contrast")
+    "different-subject causal contrast")
 expect_pass("no-negative-parallelisms",
     "This is more expensive than the older model.",
     "ordinary price comparison")
 expect_pass("no-negative-parallelisms",
     "The issue was not reported until Monday.",
     "plain factual negation")
+
+_overlapping_negative_parallelism = ALL_CHECKS["no-negative-parallelisms"](
+    "To leave the earth was not merely to extend human capability but to trespass into a forbidden domain."
+)
+if _overlapping_negative_parallelism.get("candidate_count") != 1:
+    FAILURES += 1
+    print(
+        "FAIL: overlapping negative-parallelism regexes should yield one occurrence; "
+        f"got {_overlapping_negative_parallelism}"
+    )
+else:
+    print("  ok: overlapping negative-parallelism regexes yield one occurrence")
+
+_one_negative_parallelism = ALL_CHECKS["overall-signal-stacking"](
+    "The target was never a man. The target was the truth."
+)
+_two_negative_parallelisms = ALL_CHECKS["overall-signal-stacking"](
+    "The target was never a man. The target was the truth. "
+    "The result was not a delay. The result was a reset."
+)
+_three_negative_parallelisms = ALL_CHECKS["overall-signal-stacking"](
+    "The target was never a man. The target was the truth. "
+    "The result was not a delay. The result was a reset. "
+    "The outcome was not a loss. The outcome was a lesson."
+)
+_negative_parallelism_scores = [
+    _one_negative_parallelism.get("score"),
+    _two_negative_parallelisms.get("score"),
+    _three_negative_parallelisms.get("score"),
+]
+if _negative_parallelism_scores != [2, 3, 4]:
+    FAILURES += 1
+    print(
+        "FAIL: repeated negative parallelism should increase stacking evidence "
+        f"from 2 to 3 to 4 points; got {_negative_parallelism_scores}"
+    )
+elif _one_negative_parallelism["passed"] is not True or _three_negative_parallelisms["passed"] is not False:
+    FAILURES += 1
+    print("FAIL: one occurrence should remain a signal while three occurrences trigger stacking")
+else:
+    print("  ok: repeated negative parallelism increases stacking evidence")
 
 
 # --- no-copula-avoidance ---
@@ -2036,18 +2095,37 @@ else:
 print("\n=== human-opinion-passthrough ===")
 opinion_text = Path(__file__).resolve().parents[1].joinpath("samples/human-sourced/legacy/10-human-opinion.md").read_text()
 for check_name in ALL_CHECKS:
-    if check_name in {"no-staccato-sequences", "no-forced-triads"}:
+    if check_name in {
+        "no-staccato-sequences",
+        "no-forced-triads",
+        "no-negative-parallelisms",
+    }:
         continue
     expect_pass(check_name, opinion_text, f"human opinion piece ({check_name})")
+expect_fail(
+    "no-negative-parallelisms",
+    opinion_text,
+    "human opinion contains a negative-positive because/not-because construction",
+)
 expect_fail("no-forced-triads", opinion_text, "human opinion contains recognizable triads")
 
 # --- Human passthrough: instructional piece ---
 print("\n=== human-instructional-passthrough ===")
 instructional_text = Path(__file__).resolve().parents[1].joinpath("samples/human-sourced/legacy/11-human-instructional.md").read_text()
 for check_name in ALL_CHECKS:
-    if check_name in {"no-staccato-sequences", "no-performed-candour", "no-forced-triads"}:
+    if check_name in {
+        "no-staccato-sequences",
+        "no-performed-candour",
+        "no-forced-triads",
+        "no-negative-parallelisms",
+    }:
         continue
     expect_pass(check_name, instructional_text, f"human instructional piece ({check_name})")
+expect_fail(
+    "no-negative-parallelisms",
+    instructional_text,
+    "human instructional prose contains cross-sentence negative parallelism",
+)
 expect_fail("no-forced-triads", instructional_text, "human instructional prose contains a matched three-part coordination")
 
 
