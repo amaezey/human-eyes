@@ -220,6 +220,7 @@ Deep extraction exists for:
 - [Liang et al.: GPT detectors are biased against non-native English writers](liang-detector-bias.md)
 
 ## Journalism and trade press
+- [Eve Fairbanks: The Biggest Tell That Something Was Written by AI](fairbanks-atlantic-ai-writing.md)
 - [Sam Kriss: Why Does A.I. Write Like ... That?](kriss-nyt-ai-write-like-that.md)
 - [Merrill, Chen, and Kumer: What are the clues that ChatGPT wrote something?](merrill-wapo-chatgpt-clues.md)
 - [Benj Edwards: OpenAI suppressing em dashes](edwards-ars-em-dash.md)

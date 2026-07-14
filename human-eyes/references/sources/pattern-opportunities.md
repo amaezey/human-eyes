@@ -62,6 +62,7 @@ These are now tracked in `dev/hypotheses.md` as hypotheses 21-28.
 | Vague-change intros separate from contrastive negation | Pattern split/refinement | [Stockton](stockton-dont-write-like-ai.md), [Vollmer](vollmer-machine-tell-on-itself.md) | Current contrast/negation patterns may be hiding a separate "something changed" B2B/corporate opener pattern. |
 | Performative profundity / aphoristic closure | Future advisory pattern | [Vollmer](vollmer-machine-tell-on-itself.md), [Kriss](kriss-nyt-ai-write-like-that.md), [SEO Engine](seoengine-ai-writing-signs.md) | Several practitioner sources point to generic profundity, false profundity, and universal-generic statements. Start advisory, not hard gate. |
 | Originality, clarity, and formality as judgement dimensions | Future comparison-engine dimensions | [Russell, Karpinska, and Iyyer](russell-karpinska-iyyer-detectors.md) | The source does not directly validate #9/#10/#15, but it does suggest higher-level dimensions experienced reviewers use when judging generated non-fiction. |
+| Conceptual coherence and local repairability | Future non-authorship agent assessment | [Fairbanks](fairbanks-atlantic-ai-writing.md) | The editor account suggests checking whether premise, evidence, reasoning, structure, diction, and facts form a defensible whole, and whether failures are local or distributed. It needs matched-corpus and false-positive evaluation before promotion. |
 
 ## Process Guidance
 
@@ -86,6 +87,7 @@ These are promoted to `human-eyes/SKILL.md`, `human-eyes/references/process.md`,
 | Consumer recognition as pattern evidence | [Bynder](bynder-ai-marketing-study.md) | Useful for stakes and perception framing, but the source does not disclose which textual cues drove recognition. |
 | First-party prompts as direct prose-pattern proof | [Anthropic prompts](anthropic-sonnet-prompts.md), [OpenAI GPT-4 System Card](openai-gpt-4-system-card.md) | Model-background evidence unless exact prompt text or behaviour is mapped directly. |
 | Pure framing essays as pattern evidence | [Chiang art essay](chiang-why-ai-isnt-art.md), [Preston hyperabundance](preston-hyperabundance.md), [Sloan](sloan-human-ai-writing.md) | Useful for rationale/process; not direct pattern support. |
+| General colon rules or severity changes from editorial assertions | [Fairbanks](fairbanks-atlantic-ai-writing.md) | The article reports public tells and one editor's experience but supplies no rates, thresholds, verified submission provenance, or controlled comparison. |
 
 ## Suggested Next Patches
 

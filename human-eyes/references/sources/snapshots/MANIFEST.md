@@ -1,6 +1,6 @@
 # Source Snapshot Manifest
 
-Retrieved: 2026-05-05
+Initial batch retrieved: 2026-05-05. Later additions record their retrieval date in the source card and snapshot.
 
 Each source card has a saved markdown snapshot under `human-eyes/references/sources/snapshots/`. Most snapshots were fetched through Jina Reader. Exceptions are noted in the method column.
 
@@ -25,6 +25,7 @@ Each source card has a saved markdown snapshot under `human-eyes/references/sour
 | [`csutoras-em-dash-dilemma.md`](../csutoras-em-dash-dilemma.md) | https://medium.com/@brentcsutoras/the-em-dash-dilemma-how-a-punctuation-mark-became-ais-stubborn-signature-684fbcc9f559 | [`snapshots/csutoras-em-dash-dilemma.md`](csutoras-em-dash-dilemma.md) | Jina Reader URL-to-markdown |
 | [`dhillon-mfa-students-llms-fiction.md`](../dhillon-mfa-students-llms-fiction.md) | https://arxiv.org/abs/2510.13939 | [`snapshots/dhillon-mfa-students-llms-fiction.md`](dhillon-mfa-students-llms-fiction.md) | arXiv PDF downloaded and converted to markdown |
 | [`edwards-ars-em-dash.md`](../edwards-ars-em-dash.md) | https://arstechnica.com/ai/2025/11/forget-agi-sam-altman-celebrates-chatgpt-finally-following-em-dash-formatting-rules/ | [`snapshots/edwards-ars-em-dash.md`](edwards-ars-em-dash.md) | Jina Reader URL-to-markdown |
+| [`fairbanks-atlantic-ai-writing.md`](../fairbanks-atlantic-ai-writing.md) | https://www.theatlantic.com/technology/2026/05/how-to-tell-ai-writing/687345/ | [`snapshots/fairbanks-atlantic-ai-writing.md`](fairbanks-atlantic-ai-writing.md) | direct HTML article-body extraction from supplied gift link; retrieved 2026-07-14; stable identifier The Atlantic article 687345; SHA-256 `d172c568cb9a99c0bbe319623d3ac10e7569a355be646353015296e28a7925f0`; full text complete |
 | [`futurism-sports-illustrated-ai-writers.md`](../futurism-sports-illustrated-ai-writers.md) | https://futurism.com/sports-illustrated-ai-generated-writers | [`snapshots/futurism-sports-illustrated-ai-writers.md`](futurism-sports-illustrated-ai-writers.md) | Jina Reader URL-to-markdown |
 | [`geng-trotta-human-llm-coevolution.md`](../geng-trotta-human-llm-coevolution.md) | https://aclanthology.org/2025.findings-acl.657/ | [`snapshots/geng-trotta-human-llm-coevolution.md`](geng-trotta-human-llm-coevolution.md) | ACL PDF downloaded and converted to markdown |
 | [`geng-trotta-transforming-academic-style.md`](../geng-trotta-transforming-academic-style.md) | https://arxiv.org/abs/2404.08627 | [`snapshots/geng-trotta-transforming-academic-style.md`](geng-trotta-transforming-academic-style.md) | arXiv PDF downloaded and converted to markdown |

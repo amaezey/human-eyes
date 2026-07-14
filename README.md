@@ -339,6 +339,7 @@ Per-source reference notes live in [`human-eyes/references/sources/`](human-eyes
 - [OpenAI: Sycophancy in GPT-4o rollback](https://openai.com/index/sycophancy-in-gpt-4o/) ([source card](human-eyes/references/sources/openai-sycophancy-rollback.md))
 
 **Journalism / reported cases:**
+- [Eve Fairbanks: The Biggest Tell That Something Was Written by AI](https://www.theatlantic.com/technology/2026/05/how-to-tell-ai-writing/687345/) ([source card](human-eyes/references/sources/fairbanks-atlantic-ai-writing.md))
 - [Benj Edwards: OpenAI suppressing em dashes](https://arstechnica.com/ai/2025/11/forget-agi-sam-altman-celebrates-chatgpt-finally-following-em-dash-formatting-rules/) ([source card](human-eyes/references/sources/edwards-ars-em-dash.md))
 - [Brian Phillips: the em-dash defense](https://www.theringer.com/2025/08/20/pop-culture/em-dash-use-ai-artificial-intelligence-chatgpt-google-gemini) ([source card](human-eyes/references/sources/phillips-ringer-em-dash.md))
 - [Futurism: Sports Illustrated published AI-generated writers](https://futurism.com/sports-illustrated-ai-generated-writers) ([source card](human-eyes/references/sources/futurism-sports-illustrated-ai-writers.md))
