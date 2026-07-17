@@ -2625,6 +2625,24 @@ expect_pass("no-collaborative-artifacts",
     "The certainty of the schedule was never in doubt.",
     "DR-113 control: 'certainty' must not match Certainly")
 
+# --- DR-114 components 1-2: platform residue and possessive bracket labels ---
+print("\n=== DR-114 #39 additions ===")
+expect_fail("no-placeholder-residue",
+    "The market outlook remains positive citeturn0search2 according to analysts.",
+    "DR-114: ChatGPT citeturn token")
+expect_fail("no-placeholder-residue",
+    "See the full report contentReference[oaicite:3] for the methodology.",
+    "DR-114: contentReference oaicite token")
+expect_fail("no-placeholder-residue",
+    "Read more at https://example.com/guide?utm_source=chatgpt.com today.",
+    "DR-114: chatgpt.com URL tracker")
+expect_fail("no-placeholder-residue",
+    "Dear [Subject's Name], thank you for reaching out to our team.",
+    "DR-114: possessive bracket label")
+expect_pass("no-placeholder-residue",
+    "The results [sic] were later replicated [1] in two labs.",
+    "DR-114 control: editorial brackets and citation numbers stay clear")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

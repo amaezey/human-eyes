@@ -494,6 +494,12 @@ PLACEHOLDER_PATTERNS = [
     r"<(?:client|company|name|title|date|source|citation)[^>]{0,40}>",
     r"\bhi\s+\{[^}]+\}",
     r"\bdear\s+\[(?:name|client|recipient)[^\]]*\]",
+    # DR-114 components 1-2 (Mae, 2026-07-17): ChatGPT paste artifacts and
+    # possessive bracket labels.
+    r"citeturn\d+\w*",
+    r"contentreference\[oaicite:[^\]]*\]?",
+    r"utm_source=chatgpt\.com",
+    r"\[(?:subject|recipient|sender|user|customer|author)['’]s?\s[^\]]{0,40}\]",
 ]
 
 RUBRIC_ECHO_PATTERNS = [
