@@ -21,6 +21,12 @@ The source library (100+ cards under `human-eyes/references/sources/`) was re-re
    ```
 
    X counts decided rows + 1; TOTAL is the row count of the register. Cite the DR row. Before presenting, screen the row: strip components that contradict rules 1-3 and say so; verify every claim against its source card first (never present half-described components).
+
+   The product has exactly two detector types. Every option that proposes a product change must name which one it lands in and state the concrete mechanism:
+   - **programmatic** — a check function in `grade.py`'s registry, severity declared in `human-eyes/scripts/patterns.json` (`hard_fail` / `strong_warning` / `context_warning`). State what is matched or counted and the exact fail condition.
+   - **agent-judgement** — a record in `human-eyes/scripts/judgement.json` (prompt + answer schema + `flagged_when` answers). State the prompt question and which answers flag.
+
+   There is no third lane. "Manual guidance", "manual review", process notes, and similar card phrasing map to the judgement lane or to nothing; never present them as an option type. If a component is not viable as either type, say so and why. When a register row bundles multiple components, number them and give each component its own typed proposal so Mae can rule per component (as DR-114 was ruled).
 6. **Closing a decision is one indivisible action, same turn:** implement (test-first for any `grade.py`/`judgement.json` change) → run the full test loop → stamp the register row (decision, commit, validation) → write the outcome into every cited source card's claim row (User decision / Implementation status cells, dated Decision history line, `- CXX: passed - <verification>` evaluation line for implemented rows) → commit. Cards must pass `python3 .agents/skills/source-ingest/scripts/validate_source.py <card>`; the only standing validator exceptions are `aranya-poetly-ai-poetry.md` (authorised partial capture) and `spero-emi-pangram-classifier.md` (retirement tombstone).
 7. **Verify defect claims against the code before believing them** (reproduce live), and **never gate work on assumed session limits or the clock** — always launch; retry on visible failure.
 
