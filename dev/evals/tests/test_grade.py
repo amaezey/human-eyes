@@ -2442,6 +2442,45 @@ else:
     print(f"FAIL: CLI no overlay: rc={_u7_no_overlay.returncode}; stderr={_u7_no_overlay.stderr[:300]}")
 
 
+# --- 2026-07-17 hygiene-pass checker-finding regressions ---
+# Source-card focused checks exposed counting and eligibility defects.
+# Each assertion below encodes the corrected behaviour.
+
+print("\n=== hygiene-pass regressions ===")
+
+# #26: singular+plural list entries must not double-count one occurrence.
+expect_pass("no-ghost-spectral-density",
+    "The echoes faded across the valley before dawn. The whispers stopped.",
+    "#26: two spectral words must count as 2, not 4")
+
+# #7: a repeated word must count once per occurrence, not once per entry.
+expect_fail("no-ai-vocabulary-clustering",
+    "We delve into the data. We delve into the code. We delve into the tests.",
+    "#7: 'delve' three times in one paragraph is a cluster of 3")
+
+# #7: nested entries (word inside a longer phrase) must count one span once.
+expect_pass("no-ai-vocabulary-clustering",
+    "They underscore the importance of the complex interplay.",
+    "#7: two phrases containing two nested words must count as 2, not 4")
+
+# #52: documented eligibility skips prose under 100 words or under 6 sentences.
+expect_pass("sentence-length-variance",
+    ("The committee reviewed every submission that arrived before the posted "
+     "deadline and sorted all of them into three separate piles organised by "
+     "their primary topic area. Each reviewer then read through the complete "
+     "pile assigned to them and wrote one short structured report on every "
+     "single entry that the pile contained. The finished reports were then "
+     "collated into a single shared document that the committee chair "
+     "circulated to the whole committee two days before the meeting. All the "
+     "members arrived at the meeting having read the document and voted on "
+     "every entry in one long session that ran for roughly four hours."),
+    "#52: 100+ words but only 4 sentences must be skipped, not scored")
+
+# #31a: lightning bolt, rightwards arrow, and recycling glyphs are candidates.
+expect_fail("no-unicode-flair",
+    "Ship fast ⚡ iterate ➡ recycle wins ♻",
+    "#31a: three decorative glyphs missed by the prior character class")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

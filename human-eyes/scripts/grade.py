@@ -674,13 +674,26 @@ def check_em_dashes(text):
 
 
 def _find_ai_words(text_lower):
-    """Find AI vocabulary in text, including inflected multi-word phrases."""
+    """Find AI vocabulary in text, including inflected multi-word phrases.
+
+    Counts one entry per occurrence: repeats each count, and overlapping hits
+    resolve to the longest entry so nested phrases are not double-counted.
+    """
     normalized = normalize_for_regex(text_lower)
-    found = [w for w in AI_VOCABULARY if w in normalized]
-    found.extend([w for w in GPTZERO_AI_PHRASES if w in normalized])
+    spans = []
+    for entry in AI_VOCABULARY + GPTZERO_AI_PHRASES:
+        for m in re.finditer(re.escape(entry), normalized):
+            spans.append((m.start(), m.end(), entry))
     for pat in AI_VOCABULARY_REGEX:
-        if re.search(pat, normalized):
-            found.append(re.search(pat, normalized).group())
+        for m in re.finditer(pat, normalized):
+            spans.append((m.start(), m.end(), m.group()))
+    spans.sort(key=lambda s: (s[0], s[0] - s[1]))
+    found = []
+    last_end = -1
+    for start, end, matched in spans:
+        if start >= last_end:
+            found.append(matched)
+            last_end = end
     return found
 
 
@@ -1067,18 +1080,13 @@ def check_curly_quotes(text):
 def check_sentence_variance(text):
     sentences = split_sentences(text)
     word_count = len(text.split())
-    # Skip for short-form text where low variance is expected, not an AI tell
-    if len(sentences) < 6 and word_count < 100:
+    # Documented eligibility: skip prose under 100 words or under 6 sentences,
+    # where low variance is expected rather than an AI tell.
+    if len(sentences) < 6 or word_count < 100:
         return {
             "text": "sentence-length-variance",
             "passed": True,
             "evidence": f"Skipped: short text ({word_count} words, {len(sentences)} sentences)",
-        }
-    if len(sentences) < 3:
-        return {
-            "text": "sentence-length-variance",
-            "passed": False,
-            "evidence": "Too few sentences to measure variance",
         }
     lengths = [len(s.split()) for s in sentences]
     sd = stdev(lengths)
@@ -1479,9 +1487,11 @@ def check_ghost_spectral(text):
     words = ["ghost", "ghosts", "spectral", "shadow", "shadows", "whisper",
              "whispers", "echo", "echoes", "phantom", "haunting", "haunted",
              "lingering", "remnant", "remnants", "unspoken", "hidden"]
-    text_lower = text.lower()
-    found = [w for w in words if w in text_lower]
-    count = sum(text_lower.count(w) for w in found)
+    # Token match so one "echoes" cannot count for both "echo" and "echoes".
+    word_re = re.compile(r"\b(?:" + "|".join(words) + r")\b")
+    hits = word_re.findall(text.lower())
+    found = sorted(set(hits))
+    count = len(hits)
     return {
         "text": "no-ghost-spectral-density",
         "passed": count < 3,
@@ -1583,7 +1593,7 @@ def check_unicode_flair(text):
     that cluster in headings or bullet points.
     """
     symbols = re.findall(
-        r"[✓✔✕✖★☆◆◇→⇒➜➤•●○◦※✨⭐✅❌🔥🚀]"
+        r"[✓✔✕✖★☆◆◇→⇒➜➤•●○◦※✨⭐✅❌🔥🚀⚡➡♻]"
         r"|[\U0001F300-\U0001F9FF\U0001FA00-\U0001FAFF]",
         text,
     )
