@@ -1072,7 +1072,7 @@ Three or more consecutive sentences in a paragraph that begin with "This [verb]"
 
 ### 36. Faux specificity
 
-AI provides examples that feel specific without actually being specific. "The smell of coffee on a Sunday morning" or "the way the light hits your kitchen table" — plausible, relatable, grounded in nobody's actual experience. AI constructs these from genre conventions rather than lived experience.
+AI provides examples that feel specific without actually being specific. "The way your coffee smells before you even take a sip" or "how the light hits your kitchen table in the morning" — plausible, relatable, grounded in nobody's actual experience. AI constructs these from genre conventions rather than lived experience.
 
 Related to experiential vacancy (see Personality and soul in SKILL.md) but names the active mechanism: AI **performs** specificity rather than achieving it.
 
