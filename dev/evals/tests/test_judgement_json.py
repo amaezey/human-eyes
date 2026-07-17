@@ -297,6 +297,22 @@ else:
         else:
             ok(f"genre_specific.sub_records.{genre}.watchlist is a list (size={len(sub_record['watchlist'])})")
 
+    fiction_watchlist = sub.get("fiction", {}).get("watchlist", [])
+    expected_dialogue_dimensions = [
+        "dialogue speakers use indistinguishable levels of formality, technicality, politeness, or colloquial language",
+        "dialogue speakers reuse the same discourse markers, hesitation markers, acknowledgements, and turn-taking cues",
+        "dialogue speakers have indistinguishable cadence, stress patterns, pauses, and punctuation rhythm",
+        "dialogue speakers use complete sentences and fragments in the same mechanical balance",
+        "dialogue speakers use the same mix of statements, questions, commands, exclamations, and interruptions",
+    ]
+    missing_dialogue_dimensions = [
+        item for item in expected_dialogue_dimensions if item not in fiction_watchlist
+    ]
+    if missing_dialogue_dimensions:
+        fail(f"fiction watchlist missing DR-123 dialogue dimensions: {missing_dialogue_dimensions}")
+    else:
+        ok("fiction watchlist carries all five DR-123 dialogue dimensions separately")
+
 
 # --- JSON round-trip stability ---
 
