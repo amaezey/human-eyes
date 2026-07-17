@@ -2,6 +2,8 @@
 
 This file tracks useful source-card evidence from the source-card pass and where it was promoted or deliberately not promoted.
 
+Decisions on product changes are made in [dev/decision-register.md](../../../dev/decision-register.md), not here. `dev/tools/reconcile_register.py` verifies that every classification row with an additive or evaluate component is accounted for by the register, this file's claim-keyed candidate rows, or the residue mapping.
+
 Dispositions:
 - **Promoted:** added to a named subcheck, #41 genre branch, source note, report/process wording, source metadata convention, or `dev/hypotheses.md`.
 - **Hypothesis:** tracked in `dev/hypotheses.md`; needs design or validation before implementation.
