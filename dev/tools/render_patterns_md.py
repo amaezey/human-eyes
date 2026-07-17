@@ -248,11 +248,68 @@ def enrich():
     print(f"  _meta: preamble + toc_body + evidence_body + meta_check_body")
 
 
+# Patterns whose behaviour lives inside another pattern's programmatic check.
+FOLDED_INTO = {"16": "no-unicode-flair", "21": "no-collaborative-artifacts"}
+# judgement.json records whose pattern_ref is missing; mapped here until the
+# registry carries the reference itself.
+JUDGEMENT_REF_FALLBACK = {"structural_monotony": "54", "even_jargon_distribution": "55"}
+
+
+def _load_detection_registries():
+    """Return (programmatic slugs, pattern_number -> [judgement record ids])."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "grade", REPO_ROOT / "human-eyes" / "scripts" / "grade.py")
+    grade = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(grade)
+    judgement = json.loads(
+        (REPO_ROOT / "human-eyes" / "scripts" / "judgement.json").read_text())
+    by_number = {}
+    for rec in judgement["records"]:
+        ref = rec["pattern_ref"] or JUDGEMENT_REF_FALLBACK.get(rec["id"])
+        if ref is not None:
+            by_number.setdefault(str(ref), []).append(rec["id"])
+    return set(grade.ALL_CHECKS), by_number
+
+
+def derive_detection(number, slug, programmatic, judgement_by_number):
+    """Derive the Detection stem for one catalogue entry."""
+    if slug and slug in programmatic:
+        return f"Programmatic check `{slug}`"
+    if number in judgement_by_number:
+        ids = ", ".join(f"`{i}`" for i in judgement_by_number[number])
+        return f"Agent judgement {ids} (scripts/judgement.json)"
+    if number in FOLDED_INTO:
+        return f"Folded into the programmatic check `{FOLDED_INTO[number]}`"
+    return "Manual self-audit only — no programmatic check or agent-judgement record"
+
+
+DETECTION_PARA_RE = re.compile(r"\n*\*\*Detection:\*\* ([^\n]*(?:\n(?!\n)[^\n]*)*)")
+
+
+def apply_detection(body, stem):
+    """Replace or append the body's Detection paragraph with the derived stem.
+
+    Explanatory prose after the first sentence of an existing marker is kept.
+    """
+    tail = ""
+    m = DETECTION_PARA_RE.search(body)
+    if m:
+        existing = m.group(1).strip()
+        parts = re.split(r"(?<=[.!?]) ", existing, maxsplit=1)
+        if len(parts) == 2:
+            tail = " " + parts[1]
+        body = body[:m.start()] + body[m.end():]
+    return body.rstrip() + f"\n\n**Detection:** {stem}.{tail}"
+
+
 def render():
     """Read patterns.json and emit patterns.md text."""
     data = json.loads(PATTERNS_JSON.read_text())
     meta = data.get("_meta", {})
     extras = data.get("_extra_entries", [])
+
+    programmatic, judgement_by_number = _load_detection_registries()
 
     # Group all entries (checks + extras) by category, preserving original order via pattern_number.
     by_category = {cat: [] for cat in CATEGORY_ORDER}
@@ -261,17 +318,19 @@ def render():
             continue
         if "pattern_number" not in rec:
             continue
+        stem = derive_detection(rec["pattern_number"], cid, programmatic, judgement_by_number)
         by_category[rec["category"]].append({
             "number": rec["pattern_number"],
             "heading": rec["patterns_md_heading"],
-            "body": rec["patterns_md_body"],
+            "body": apply_detection(rec["patterns_md_body"], stem),
             "leading_blanks": rec.get("patterns_md_leading_blanks", 1),
         })
     for entry in extras:
+        stem = derive_detection(entry["pattern_number"], None, programmatic, judgement_by_number)
         by_category[entry["category"]].append({
             "number": entry["pattern_number"],
             "heading": entry["patterns_md_heading"],
-            "body": entry["patterns_md_body"],
+            "body": apply_detection(entry["patterns_md_body"], stem),
             "leading_blanks": entry.get("patterns_md_leading_blanks", 1),
         })
 

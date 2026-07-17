@@ -102,7 +102,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | | **Style** | | | | |
 | 13 | Boldface overuse | Wikipedia cleanup guide; Guo; Gmelius (email domain) | regex | context_warning | Mechanical bolding of terms that don't need emphasis |
 | 14 | Inline-header lists | Wikipedia cleanup guide; Guo and Shankar | regex | strong_warning | Bolded label + colon turning prose into slides |
-| 15 | Title case in headings | Wikipedia cleanup guide; Grammarly (vendor style example); Gmelius (email domain) | regex | context_warning | "Strategic Negotiations And Global Partnerships" |
+| 15 | Title case in headings | Wikipedia cleanup guide; Grammarly (vendor style example); Gmelius (email domain) | manual | context_warning | "Strategic Negotiations And Global Partnerships" |
 | 16 | Emojis in professional content | Wikipedia cleanup guide; Guo; Gmelius (email domain) | regex | context_warning | Emoji-led bullet points |
 | 17 | Curly quotation marks | Wikipedia cleanup guide; matched-genre corpus measurement | regex | context_warning | "..." instead of "..." |
 | 18 | Hyphenated modifier clusters | Wikipedia cleanup guide | regex | context_warning | 3+ hyphenated compounds in one sentence |
