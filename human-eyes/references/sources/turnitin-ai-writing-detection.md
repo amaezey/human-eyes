@@ -1,41 +1,144 @@
-# Turnitin AI writing detection
+# Turnitin: Using the AI Writing Report
+
 ## Metadata
+
 - **URL:** https://guides.turnitin.com/hc/en-us/articles/22774058814093-Using-the-AI-Writing-Report
 - **Author / owner:** Turnitin
-- **Published:** Living product page
-- **Extracted:** 2026-05-05
-- **Source type:** Commercial detector product
+- **Published:** 2023-12-29; living page edited 2026-03-06
+- **Retrieved:** 2026-07-17
+- **Extracted:** 2026-07-17
+- **Source type:** first-party vendor product documentation
 - **Evidence tier:** Vendor / detector pages
-- **Extraction status:** second-pass reviewed from Turnitin guide excerpt
+- **Review mode:** update
+- **Stable identifier:** Turnitin Guides / Zendesk article 22774058814093
+- **Version / revision:** official API `edited_at` 2026-03-06T15:18:31Z; prior snapshot body recorded as retrieved 2026-05-05 and byte-identical to the fresh Jina body
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/turnitin-ai-writing-detection.md`
+- **Extraction method:** unauthenticated first-party Zendesk API JSON fetched with `curl -L --compressed`, body checked against Jina Reader Markdown, and all ten first-party PNG attachments downloaded and visually inspected
+- **Snapshot SHA-256:** `017124001aa0fb5b4ca0aa0fce36402ba310270ac73a21e4b8684669e180da62`
+- **Model / corpus scope:** Turnitin discloses no detector model build, training corpus, evaluation sample, validation protocol, or calibration data on this page. Product scope is qualifying long-form prose of 300-30,000 words in English, Spanish, or Japanese; only the English detector is said to include AI-paraphrasing and AI-bypasser detection. Non-prose, poetry, scripts, code, bullets, tables, and annotated bibliographies are outside reliable detection on this page.
+- **Access limitations:** direct canonical HTML returned HTTP 403, but the first-party API exposed the complete published body and metadata. The body, its structure, and all ten images were preserved. The linked Turnitin FAQ and file-requirements page were opened to establish direct-versus-linked boundaries; the 538-line FAQ remains a separate, non-ingested living source.
 
 ## Summary
-Turnitin guide explaining the AI Writing Report and its limitations. The guide says the report is designed to help educators identify text that might be prepared by generative AI, but that the model may misidentify human-written, AI-generated, and AI-paraphrased text.
+
+Turnitin's living first-party guide explains the AI Writing Report's output categories, interface states, eligible text and file conditions, language-specific capabilities, and limitations. It is useful to human-eyes as vendor evidence for cautious report interpretation: Turnitin says its model can misidentify human, AI-generated, and AI-paraphrased text and must not be the sole basis for adverse action. It is not a validation study, supplies no reusable prose features, and publishes no model version, evaluation sample, calibration, subgroup result, or independent benchmark on this page. The refresh preserves the complete official body (1,102 whitespace-separated rendered-text tokens) and all ten product screenshots; the article text is unchanged from the archived Jina body, while provenance, image evidence, claim coverage, and project comparison are new.
 
 ## Main insights
-- Strong cautionary source for H3: Turnitin explicitly says its AI writing report should not be the sole basis for adverse action.
-- Supports human-in-the-loop and policy/context framing.
-- Not evidence for any specific human-eyes surface pattern.
+
+- Turnitin frames the report as a review aid, not a misconduct verdict, and explicitly requires further scrutiny, human judgment, and organisation-specific academic policy.
+- The displayed percentage concerns only qualifying long-form prose and is independent of Turnitin's Similarity Score; a mixed-format document can have percentage/highlight disparities.
+- The page defines two English report categories: likely AI-generated text, possibly modified by a bypasser, and likely AI-generated text likely modified by an AI paraphraser or word spinner. Spanish and Japanese lack the paraphrase/bypasser capabilities described here.
+- The vendor says false positives occur and that its testing found a higher incidence `between 0 and 19`. The page suppresses scores and highlights above 0% and below 20%, but uses three slightly different boundary formulations: `between 0 and 19`, `between 0 and 20`, and `above 0% and below the 20% threshold`.
+- A displayed 0% means the model did not identify qualifying text as likely AI/AI-altered; it does not establish that the whole document is human-written.
+- Product constraints and examples are not transferable human-eyes thresholds. The page gives no sentence-level feature inventory, calibrated authorship probability, current detector build, corpus, methods, or independently checked performance result.
+- The main screenshot's 56% score and 24%/32% breakdown are interface illustrations only, not a reported study result.
 
 ## Evidence and claims to extract
-- Turnitin says its detector may misidentify human-written, AI-generated, and AI-paraphrased text.
-- It says further scrutiny and human judgement, along with institutional policy, are needed before determining misconduct.
-- Related guide language says the score should be used as a single data point, not a definitive response.
+
+- **Direct source reviewed:** complete published body of Turnitin Guides / Zendesk article 22774058814093 at API `edited_at` 2026-03-06T15:18:31Z, plus all ten first-party image attachments. The official API body has 5 second-level headings, 10 third-level headings, 1 fourth-level heading, 34 paragraphs, 12 list items, 11 links, and 10 images.
+- **Method and sample:** first-party product documentation, not an empirical paper. The page reports product semantics and vendor testing language but publishes no detector version, model family, training/evaluation corpus, sample size, comparison group, annotation method, uncertainty, subgroup analysis, or raw results. Its operational scope is 300-30,000 words of long-form prose, files under 100 MB, `.docx`/`.pdf`/`.txt`/`.rtf`, and English/Spanish/Japanese.
+- **Direct versus cited evidence:** C01-C19 record the page's direct product statements, visible screenshots, or reviewer-observed omissions. The final method link, separate file-requirements page, and any FAQ-only accuracy, bias, training, model, or classroom claims are linked first-party evidence but are not direct evidence from this card's reviewed source.
+- **Important limits and counterexamples:** Turnitin expressly admits human-text false positives and AI/AI-paraphrase misidentification, excludes several genres and formats, distinguishes qualifying text from the full document, and says mixed writing types can create score/highlight disparity. The page's threshold wording is internally imprecise at the boundary, and its illustrative 56% report cannot establish calibration or accuracy.
 
 ## Skill-use audit
-- **Good use:** Back explicit non-verdict wording and human-review requirements.
-- **Misuse / overclaim:** Do not cite Turnitin as pattern evidence.
-- **Unsupported use:** All current prose rules.
-- **Underused evidence:** Turnitin's "single data point" framing should be borrowed for human-eyes report language.
-- **Patterns left on the table:** None as pattern evidence; "single data point, not a definitive answer" is promoted only as report caveat language.
+
+- **Good use:** support non-verdict language, human review before adverse academic action, explicit product/version/genre/language/length scope, and careful distinction between a percentage of eligible text and a claim about a whole document.
+- **Misuse / overclaim:** treating a Turnitin score, category, screenshot, or suppression threshold as a human-eyes severity, authorship probability, misconduct finding, or evidence that a prose pattern is AI-specific.
+- **Unsupported use:** any human-eyes surface rule; H2's comparator design; H8 audience-aware voice; model-general claims; current detector accuracy; a less-than-1% false-positive rate; bias or subgroup claims; paraphraser/bypasser mechanisms; or rewriting prose to lower a detector score.
+- **Underused evidence:** the live project has a general no-authorship boundary and a pending detector-caveat row, but does not yet quote the source-specific qualifying-text denominator, 0% limitation, mixed-format disparity, language capability difference, non-retroactive report-version warning, or the inconsistent 0-19/0-20 boundary wording.
+- **Patterns left on the table:** none as prose-pattern evidence. The only decision candidates are report/provenance wording and correction of unsupported Turnitin mappings.
 
 ## Matched patterns / rules
-- No direct pattern; comparison/detector context.
-- H3 / drop detection framing
+
+- `human-eyes/references/process.md`, Product boundary: reports do not infer who or what wrote text.
+- `human-eyes/scripts/patterns.json` and generated `human-eyes/references/patterns.md`, evidence framing: clusters and individual phrases are not authorship proof; warnings and user review are preferred to accusations.
+- `dev/TESTING.md`, benchmark-report requirement: say that human-eyes measures prose patterns and does not classify authorship.
+- `dev/hypotheses.md` H3, Drop detection framing entirely: directionally supported as product-framing context, not as an empirical test of H3.
+- `human-eyes/references/sources/pattern-opportunities.md`, Detector-output caveat wording and Do Not Promote rows.
+- No direct Turnitin-supported pattern or deterministic checker.
 
 ## Associated hypotheses
-- H2 comparison-engine product reframe
-- H3 drop detection framing
-- H8 audience-aware voice
+
+- H3, Drop detection framing entirely: the source's human-review and non-sole-basis language supports the risk framing, but the source is vendor documentation rather than validation of the proposed reframe.
+- H2, Comparison-engine product reframe: current wording says it aligns with Turnitin, but this reviewed page says the AI percentage is different from and independent of the Similarity Score. The source does not support H2's claimed alignment.
+- H8, Audience-specific audit and prescriptive voices: Turnitin is named elsewhere as product precedent, but this article does not compare writer/instructor surfaces or validate a two-voice design.
 
 ## Questions / follow-up
-- Should human-eyes mirror this limitation language in CLI/report outputs?
+
+- Should Mae add the source-specific qualifying-text, 0%, mixed-format, language, and report-version cautions to the existing detector-output guidance, or keep the current generic no-authorship boundary?
+- Should the unsupported Turnitin alignment sentence in H2 be removed or attributed to a separately reviewed Turnitin source?
+- If human-eyes wants to use any FAQ-only accuracy, training, model, bias, or classroom claim, ingest the linked FAQ as its own source rather than importing it through this card.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | Turnitin Guides / Zendesk article 22774058814093 | `snapshots/archive/turnitin-ai-writing-detection/2026-05-05-df89e53c.md` | 2026-05-05 | `df89e53ca76aaf2cc67c8f4166d61c92cc8b5ff27bb5de6bcdf48898aa7347a4` |
+| current | Turnitin Guides / Zendesk article 22774058814093 | `snapshots/turnitin-ai-writing-detection.md` | 2026-07-17 | `017124001aa0fb5b4ca0aa0fce36402ba310270ac73a21e4b8684669e180da62` |
+
+The previous card and manifest recorded no snapshot digest, so no claimed prior SHA could be matched. The archived bytes were hashed before replacement and are byte-identical to the fresh 2026-07-17 Jina body. The article text is therefore unchanged in this update. The current snapshot adds reproducible first-party API metadata, complete source-template provenance, extraction verification, all ten preserved images, and image evidence notes.
+
+## Decision history
+
+- The prior card had no claim IDs, canonical user decisions, implementation statuses, review method, or digest. Its unapproved question about mirroring limitation language is retained as pending C03/C11/C17 guidance work.
+- The prior H3 mapping is retained with a narrower evidence-tier qualification. The H2 and H8 mappings are reopened because this page does not support a comparator architecture or audience-specific voice design.
+- The prior phrase `single data point, not a definitive response` does not appear in this reviewed article. It is retired from this card as direct evidence and may be restored only through a separately preserved source that states it.
+
+## Project coverage
+
+This is the authoritative review table. Every recommendation remains pending for Mae; no product change is made in this update.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: Turnitin says its capability helps educators identify text that might have been prepared by LLMs, chatbots, word spinners, or bypasser tools. | Direct first-party purpose statement; no model version, corpus, rate, comparison, or validation is supplied. | `patterns.json`/`patterns.md` describe an AI-writing-pattern tool; partly covered as product context, not Turnitin capability coverage. | The source cannot validate any human-eyes pattern, product claim, or tool-class taxonomy. | Record as vendor product scope only; no checker change or testing required. | pending | not started |
+| C02: Turnitin says its model may misidentify human-written, AI-generated, and AI-paraphrased text. | Direct vendor limitation; no frequencies, conditions, error matrix, or independent test. Human false positives and AI false negatives are explicit counterexamples. | `process.md` Product boundary, `patterns.md` evidence framing, and `dev/TESTING.md` no-authorship statement; fully covered at the general boundary. | Current guidance does not attribute this exact three-way limitation to Turnitin. | Update the `Detector-output caveat wording` row in `human-eyes/references/sources/pattern-opportunities.md` to attribute this three-way limitation to Turnitin without adding a rate; verify with `validate_source.py` for this card and `git diff --check` for the index file. | pending | not started |
+| C03: The report should not be the sole basis for adverse action; misconduct requires further scrutiny, human judgment, and organisation-specific academic policy. | Direct first-party process instruction for educational use; not an outcome study or legal/policy standard. | H3 and the `pattern-opportunities.md` detector-caveat row; partly covered. | Human-eyes says it does not infer authorship but does not state this education-specific adverse-action workflow. | Update the `Detector-output caveat wording` row in `human-eyes/references/sources/pattern-opportunities.md` to record Turnitin's education-specific no-sole-basis, human-judgment, and local-policy boundary; verify with this card's validator and `git diff --check`. | pending | not started |
+| C04: Turnitin's AI percentage is different from and independent of its Similarity Score; AI highlights are absent from the Similarity Report. | Direct product-semantics statement. It says nothing about comparative prose engines. | `dev/hypotheses.md` H2 claims alignment with Turnitin's comparator design; challenges current behaviour/documentation. | This page contradicts using the AI report as evidence that Turnitin converges AI detection and text similarity. | In `dev/hypotheses.md` H2, remove the sentence claiming alignment with Turnitin or replace it with a separately reviewed source; verify the source link, reread H2, and run `git diff --check -- dev/hypotheses.md`. | pending | not started |
+| C05: The overall percentage is the portion of qualifying long-form prose Turnitin determines could be AI-generated or AI-generated then AI-paraphrased/bypassed. | Direct product definition; a composition-of-eligible-text output, not a calibrated probability of authorship. | Detector-output and Do Not Promote rows in `pattern-opportunities.md`; partly covered. | The live row does not name the qualifying-text denominator or distinguish composition from probability. | Update the `Detector-output caveat wording` row in `human-eyes/references/sources/pattern-opportunities.md` to say the percentage is a share of qualifying text, not authorship probability; verify with this card's validator and `git diff --check`. | pending | not started |
+| C06: `AI-generated only` means qualifying text likely generated by an LLM and possibly modified by a bypasser; it is cyan in the report. | Direct vendor category and UI semantics; mechanism and classifier validity are not disclosed. | No human-eyes equivalent; not covered. | A proprietary product label cannot become a prose feature or provenance verdict. | Record only; no product change or test. | pending | not started |
+| C07: The purple category means likely AI-generated text likely modified by an AI paraphraser or word spinner. | Direct vendor category; QuillBot is offered as an example. No evaluation or attribution method is shown. | No human-eyes equivalent; not covered. | Human-eyes cannot infer a paraphraser or spinner from prose based on this page. | Record only in this card; make no checker, registry, guidance, or hypothesis change. | pending | not started |
+| C08: Only the English detector includes the described AI-paraphrasing and bypasser capabilities; Spanish and Japanese do not. | Direct current product-scope qualification for three languages; build/date details are absent. | Source metadata convention in `pattern-opportunities.md`; partly covered as a general version/scope principle. | Existing Turnitin rows omit the language-specific capability boundary. | Update the `Source date/model metadata on imported examples` row in `human-eyes/references/sources/pattern-opportunities.md` to require Turnitin language/capability and retrieval-date scope; verify with this card's validator and `git diff --check`. | pending | not started |
+| C09: The interactive breakdown bar locates cyan/purple categories on individual pages and focuses the selected text/page. | Direct UI functionality; no claim about accuracy or evidentiary weight. | No analogous human-eyes feature; not covered. | Interface localisation does not validate the category or permit authorship inference. | Record only as product contrast; no implementation recommendation. | pending | not started |
+| C10: A displayed 0% means no qualifying text was identified as likely AI/AI-altered. | Direct product-state definition; because the denominator excludes non-qualifying text, this is not proof of a human-authored document. | General no-authorship boundary; partly covered. | Current Turnitin guidance does not explain that 0% is a scoped model result rather than an all-document conclusion. | Update the `Detector-output caveat wording` row in `human-eyes/references/sources/pattern-opportunities.md` to state that Turnitin 0% covers only qualifying text and is not proof of human authorship; verify with this card's validator and `git diff --check`. | pending | not started |
+| C11: Turnitin says its testing found more false positives `between 0 and 19`, displays an asterisk for low scores, and calls them less reliable. | Direct vendor-reported testing conclusion without sample, method, uncertainty, subgroup, or raw results. The page alternates among `between 0 and 19`, `between 0 and 20`, and `above 0% and below the 20% threshold`. | Detector-caveat and Do Not Promote rows; partly covered. | Existing rows omit the source-internal boundary mismatch and could make the threshold sound calibrated or transferable. | Update the Turnitin text in the `Detector-output caveat wording` and detector-score Do Not Promote rows in `human-eyes/references/sources/pattern-opportunities.md` to record the three exact formulations and reject threshold transfer; verify with this card's validator and `git diff --check`. | pending | not started |
+| C12: New submissions with scores above 0% and below 20% receive `*%` and no score/highlights; pre-2024-07-08 reports may still show a number. | Direct report-version and non-retroactivity statement. It is operational behaviour, not evidence that 20% separates human and AI text. | General model/date metadata convention; partly covered. | Existing Turnitin mappings omit report-generation date and old/new UI comparability. | Update the `Source date/model metadata on imported examples` row in `human-eyes/references/sources/pattern-opportunities.md` to include Turnitin report-generation/version date and non-retroactivity; verify with this card's validator and `git diff --check`. | pending | not started |
+| C13: Loading, processing error, unmet requirements, updated-report, and recently-enabled states require waiting, retrying, resubmitting, or support. | Direct operational documentation plus preserved screenshots; no prose-evidence content. | No project coverage; not covered. | These states are not pattern or detector-result evidence. | Record only; no product change. | pending | not started |
+| C14: A 20-100 display reports the amount of qualifying text identified as likely AI-generated or likely AI-generated then paraphrased. | Direct product semantics; no calibration or whole-document probability claim. | Do Not Promote detector-score row; fully covered at the non-promotion boundary. | Exact vendor threshold and eligible-text denominator are absent from generic guidance. | Take no further action beyond C05/C11 documentation if approved; no separate product change. | pending | not started |
+| C15: An earlier report can be superseded by a version with paraphrasing detection and requires resubmission; a newly enabled account also requires resubmission. | Direct version/process statement; no model identifier or change log is supplied. | Source date/model metadata convention; partly covered. | Static screenshots or scores lack comparability unless report state and generation date are known. | Update the `Source date/model metadata on imported examples` row in `human-eyes/references/sources/pattern-opportunities.md` to preserve Turnitin report state/version when scores are cited; verify with this card's validator and `git diff --check`. | pending | not started |
+| C16: Eligible submissions are under 100 MB, 300-30,000 words, English/Spanish/Japanese, and one of four file types. | Direct product input conditions, corroborated by the separately opened first-party file-requirements page. They are Turnitin constraints, not evidence thresholds. | Human-eyes has its own check-specific length floors; not covered as Turnitin scope. | Importing 300/30,000 as human-eyes thresholds would be unsupported. | Record only as vendor scope; never reuse as a human-eyes threshold without independent evaluation. | pending | not started |
+| C17: Qualifying text is paragraph-based long-form prose; the model is unreliable for poetry, scripts, code, bullets, tables, and annotated bibliographies, and mixed-format documents can show percentage/highlight disparity. | Direct genre/format exclusion and counterexample. No error rates by genre are provided. | #41 genre-specific manual review and general genre-aware hypotheses; partly covered as a principle, not detector transfer. | Turnitin output cannot support human-eyes conclusions in excluded formats, and the page gives no basis for a generic genre rule. | Update the `Detector-output caveat wording` row in `human-eyes/references/sources/pattern-opportunities.md` with Turnitin's qualifying-text exclusions and mixed-format disparity; verify with this card's validator and `git diff --check`. Keep #41 unchanged. | pending | not started |
+| C18: The page calls the detection method complex and delegates explanation to a separate FAQ. | Direct statement plus reviewer inventory: this source publishes no method, feature list, model build, corpus, sample, calibration, or subgroup results. | Source-ingest direct-versus-linked boundary and Do Not Promote row; fully covered. | FAQ-only claims cannot be imported through this card. | Keep this card method-limited; ingest the FAQ separately before using any of its claims. | pending | not started |
+| C19: The main screenshot illustrates 56% across a 738-word, four-page submission, split 24% cyan and 32% purple; the snapshot transcribes all fully visible sample prose and marks the cyan continuation as cropped. | Direct visual example; no source, ground truth, generation process, model, or validation role is supplied. It is a UI illustration and counterexample to treating a screenshot as benchmark data. | Do Not Promote detector-score row; fully covered. No deterministic run was performed because an incomplete, ground-truth-free UI fixture cannot establish source-to-pattern or detector coverage; any surface hits would describe only the visible example prose. | The old snapshot did not preserve or transcribe the image, making accidental overreading easier. | Record only in the source snapshot and card; do not add the prose to fixtures, run it as validation evidence, change a rule, or infer authorship from the score/highlights. | pending | not started |
+
+## Recommendations
+
+- C01: Record Turnitin's stated scope as vendor context only.
+- C02: Update the detector-caveat row in `pattern-opportunities.md` with Turnitin's three-way misidentification warning; validate the card and diff.
+- C03: Update the same row with Turnitin's education-specific no-sole-basis, human-judgment, and local-policy boundary; validate the card and diff.
+- C04: Remove or separately source H2's Turnitin alignment sentence in `dev/hypotheses.md`; check the source link and diff.
+- C05: Update the detector-caveat row to distinguish qualifying-text share from authorship probability; validate the card and diff.
+- C06: Record the cyan category only; do not map it to a human-eyes feature.
+- C07: Record the purple category in this card only; make no project change.
+- C08: Update the source-metadata row in `pattern-opportunities.md` with Turnitin language/capability and retrieval-date scope; validate the card and diff.
+- C09: Record the page-localisation UI as product contrast only.
+- C10: Update the detector-caveat row with the qualifying-text scope of 0%; validate the card and diff.
+- C11: Update the detector-caveat and Do Not Promote rows with the exact low-score formulations and reject threshold transfer; validate the card and diff.
+- C12: Update the source-metadata row with report-version date and non-retroactivity; validate the card and diff.
+- C13: Take no product action on operational states.
+- C14: Take no separate action beyond C05/C11 if approved.
+- C15: Update the source-metadata row with report state/version provenance; validate the card and diff.
+- C16: Keep file and length conditions product-specific.
+- C17: Update the detector-caveat row with qualifying-text exclusions and mixed-format disparity; validate the card and diff; keep #41 unchanged.
+- C18: Ingest the FAQ separately before using FAQ-only method or performance claims.
+- C19: Keep the transcribed screenshot only in this record; do not add it to fixtures or use it as validation evidence.
+
+## Evaluation of approved changes
+
+- C01-C19: not applicable - all recommendations remain pending; no product change was requested or implemented.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: /root/turnitin_record_reviewer; fresh, read-only, source-dedicated review plus focused re-check
+- **Findings resolved:** four: recommendations were made file-scoped or explicitly record-only; C19 and the snapshot now inventory the visible screenshot prose and cropped continuation; the rendered-body count now names and reproduces the 1,102-token method; low-score boundary wording now matches all three source formulations exactly
+- **Unresolved findings:** none

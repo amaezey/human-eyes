@@ -1,10 +1,20 @@
 # Human-LLM Coevolution: Evidence from Academic Writing
 
-- **Source URL:** https://aclanthology.org/2025.findings-acl.657.pdf
-- **Snapshot method:** ACL PDF text extraction
-- **Retrieved:** 2026-05-05
+- **Canonical URL:** https://aclanthology.org/2025.findings-acl.657/
+- **Alternate access URLs:**
+  - https://aclanthology.org/2025.findings-acl.657.pdf
+  - https://doi.org/10.18653/v1/2025.findings-acl.657
+- **Author / owner:** Mingmeng Geng and Roberto Trotta
+- **Publisher:** Association for Computational Linguistics
+- **Published:** July 2025; conference dates 2025-07-27 to 2025-08-01
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** DOI 10.18653/v1/2025.findings-acl.657; ACL Anthology ID 2025.findings-acl.657
+- **Version / revision:** final Findings of ACL 2025 proceedings PDF, pages 12689-12696, as retrieved 2026-07-15
+- **Extraction method:** Official ACL Anthology PDF downloaded with `curl`; all eight pages inspected with `pdfinfo`, `pdfimages -list`, and Poppler `pdftotext -layout`; the complete prior PDF text body was compared with a fresh extraction and retained because the differences were only title indentation, blank lines, and PDF page-break control characters; all seven figure-bearing pages (1-5, 7, and 8) were rendered with `pdftoppm` and visually checked against the text, figures, appendix, and table.
+- **Full-text status:** complete
+- **Access and transformation notes:** The complete embedded text is preserved below, including headings, prompts, equations, captions, limitations, acknowledgments, references, appendix captions, and Table 1. Multi-column order and equation spacing are best-effort plain-text transformations. Plot curves and labels are raster content rather than embedded text; the authoritative PDF is preserved as an attachment, and all seven figure-bearing pages plus the plotted-word legends were visually checked. The ACL page exposed no paper supplement or checklist.
 
-## Article Body
+## Full text
 
 Human-LLM Coevolution: Evidence from Academic Writing
 
@@ -360,3 +370,17 @@ citation counts are as of January 16, 2025.
  (Liu and Bu, 2024)            4            No words are highlighted.
 
                                                      12696
+
+## Extraction verification
+
+- **Beginning checked:** PDF page 1 was rendered and compared for the title, authors and affiliations, abstract, first Introduction paragraphs, Figure 1, footer, and proceedings pagination.
+- **Middle checked:** PDF page 4 was rendered and compared for Figure 4, the cross-discipline frequency-ratio discussion, Section 4, the two GPT-4o-mini prompts, and the start of the detector analysis.
+- **End checked:** PDF page 8 was rendered and compared for all four Figure 8 panels, the complete caption, Table 1, its five paper rows and highlighted-word lists, and final page number 12696.
+- **Structure checked:** `pdfinfo` reports eight A4 pages. The extraction contains Abstract; Sections 1-5; Data and Word Frequency Analysis subsections; Figures 1-8; the two P1/P2 prompts; Limitations; Acknowledgments; 25 reference entries; Appendix A; and Table 1. All seven figure-bearing pages (1-5, 7, and 8) were rendered and visually checked, and `pdfimages -list` confirmed the figure images on those pages.
+- **Known omissions:** none. Raster plot pixels are preserved in the attached authoritative PDF rather than transcribed as numeric series; legends, captions, axes, and source-discussed trends were visually reviewed.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/geng-trotta-human-llm-coevolution-acl-2025.pdf` | Authoritative eight-page Findings of ACL 2025 paper, including all figures and Table 1 | `3050cd0278bcbde239bca780fad71db8afdcc4eac623d985d53889c24e4d4893` | Downloaded directly from the ACL Anthology PDF URL on 2026-07-15; embedded text extracted with Poppler; structure checked with `pdfinfo` and `pdfimages -list`; all seven figure-bearing pages rendered and visually inspected. |

@@ -1,10 +1,20 @@
-Title: Good writing, AI slop, and the dragon
+# Good writing, AI slop, and the dragon
 
-URL Source: https://lindac.substack.com/p/good-writing-ai-slop-and-the-dragon
+- **Canonical URL:** https://lindac.substack.com/p/good-writing-ai-slop-and-the-dragon
+- **Alternate access URLs:**
+  - none recorded; the preserved extraction identifies the canonical URL but not the exact Jina Reader proxy request
+- **Author / owner:** Linda Caroll
+- **Publisher:** Linda Caroll on Substack
+- **Published:** 2026-02-03T19:03:15+00:00
+- **Retrieved:** 2026-05-05
+- **Stable identifier:** none found
+- **Version / revision:** article published 2026-02-03 and preserved 2026-05-05
+- **Extraction method:** preserved Jina Reader URL-to-Markdown capture; exact original proxy request and command were not retained; no fresh scrape during the 2026-07-15 contract update
+- **Full-text status:** complete
+- **Access and transformation notes:** the complete accessible article text, block quotations, caption, inline links, two remote image links, and postscript are preserved; page navigation, subscription chrome, and comments are absent; image pixels were not saved locally or transcribed beyond the source caption and link context; linked pages and the unnamed study were not opened as direct evidence in this source-specific update; the prior exact bytes are archived at `snapshots/archive/caroll-good-writing-ai-slop/2026-05-05-85a0d051acab.md`
 
-Published Time: 2026-02-03T19:03:15+00:00
+## Full text
 
-Markdown Content:
 [![Image 1](https://substackcdn.com/image/fetch/$s_!jJ3o!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc514d6a-5144-425d-8b69-6c851e7928ab_1109x1600.jpeg)](https://www.1st-art-gallery.com/Maxfield-Parrish-Inspired-By/The-Reluctant-Dragon.html?srsltid=AfmBOopMJWSm--rty5zvHpSz1igYBRNdOUPbtbsPrp4POOvoSCEK7ha2)
 
 The Reluctant Dragon, Maxfield Parrish, illustration, 1902
@@ -50,8 +60,8 @@ Let me show you an example. I logged into ChatGPT and typed in a prompt. The pro
 Here’s what it wrote:
 
 > _Sometimes gratitude arrives on a regular day, when nothing is happening. Like noticing how the light hits your kitchen table in the morning. Or the way your coffee smells before you even take a sip and savoring it. Like hearing someone say your name and realizing how much you like the way it sounds in their voice._
-> 
-> 
+>
+>
 > _Maybe that’s all gratitude needs to be. Just paying attention. Letting yourself feel the small, ordinary pieces of life. And for a few seconds, letting yourself be glad for them. Sometimes, the best kind of gratitude arrives when you aren’t even looking for a reason to be grateful. —written by ChatGPT_
 
 Huh!
@@ -90,11 +100,11 @@ He’d tell them it’s hard. Absolutely. Because you have to examine every para
 
 Did you guess three reasons people respond so favorably to AI?
 
-1.   It uses a simple vocabulary. 
+1.   It uses a simple vocabulary.
 
 ChatGPT writes at a 5th to 6th grade comprehension unless you ask it to write at a higher level. That’s not a bad thing. Hemingway wrote at 5th grade level. He wanted his writing accessible to all audiences. Today, 54% of American read at or below 6th grade level. That doesn’t mean they don’t like to read. It just means they skip anything that’s hard to read or confusing. It’s why they like AI.
 
-2.   It uses simple sentence structure. 
+2.   It uses simple sentence structure.
 
 I read a study were college students were asked to read writing from a century ago. The vocabulary was simple, but they still couldn’t follow. Know why? Older writing uses complex sentences. More than one action per sentence and lots of commas and semi-colons. One “action” per sentence is easier to follow. Because easy to read isn’t just simple words. It’s simple sentence structure, too.
 
@@ -113,11 +123,11 @@ On Sunday I posted on Notes and said want to play a game? I posed the exact same
 Here’s [a snippet](https://substack.com/profile/215936985-alice-wild/note/c-208640983) from [Alice Wild](https://substack.com/@alicewild)
 
 > _Melody Beattie said, “Gratitude unlocks the fullness of life,” but I don’t believe that._
-> 
-> 
+>
+>
 > _Maybe it’s because I grew up in a home where gratitude meant something else. Maybe it’s because my dad used to rattle off judgment and self-righteousness faster than the preacher that Sunday, but then always told me to “have some gratitude.”_
-> 
-> 
+>
+>
 > _Stay quiet. That’s what he really meant. A thorough resection of my identity. Except for a small trembling flame left in that hollow place..._
 
 Alice writes [Wildflowers Grow](https://alicewild.substack.com/), a healing journey for women.
@@ -151,3 +161,17 @@ Sometimes, the hardest part of life is identifying the dragon. Sometimes, the ha
 [![Image 2](https://substackcdn.com/image/fetch/$s_!v6ER!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4fea3917-b9cf-4bec-a51d-75ee60a39b40_1200x123.png)](https://substackcdn.com/image/fetch/$s_!v6ER!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4fea3917-b9cf-4bec-a51d-75ee60a39b40_1200x123.png)
 
 P.S. February gift for paid members is a list of the top 10 mistakes I keep seeing on Substack. It will be out middle of the month, so watch your email for it. 💌
+
+## Extraction verification
+
+- **Beginning checked:** the opening Maxfield Parrish image link and caption, job-loss anecdote, Merriam-Webster framing, and transition into the human-versus-AI argument are present in the preserved capture
+- **Middle checked:** the complete gratitude prompt and generated output, Caroll's human-writing observations, three numbered readability explanations, and the Alice Wild excerpt are present in order
+- **End checked:** the reader-value conclusion, complete Reluctant Dragon retelling, closing question, second remote image link, and paid-member postscript are present
+- **Structure checked:** one continuous Substack essay with two inline image links, one numbered three-item explanation, three block-quotation groups, multiple inline source/profile links, and a postscript; no tables, footnotes, appendices, or reference list are present
+- **Known omissions:** image files were not downloaded locally; the second image has no descriptive caption in the capture; comments, page chrome, linked pages, and the unnamed study are outside the preserved article body
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none; remote image links remain inline | Maxfield Parrish illustration and a closing graphic | not applicable | Remote links and the first image's source caption are preserved; pixels were not downloaded, OCRed, or used as evidence for a claim. |

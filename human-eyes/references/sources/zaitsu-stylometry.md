@@ -1,46 +1,163 @@
 # Zaitsu et al.: Stylometry can reveal AI authorship
+
 ## Metadata
+
 - **URL:** https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0335369
 - **Author / owner:** Wataru Zaitsu, Mingzhe Jin, Shunichi Ishihara, Satoru Tsuge, and Mitsuyuki Inaba
 - **Published:** 2025-10-27
-- **Extracted:** 2026-05-05
-- **Source type:** Academic empirical research
+- **Retrieved:** 2026-07-17
+- **Extracted:** 2026-07-17
+- **Source type:** Peer-reviewed empirical study
 - **Evidence tier:** Peer-reviewed / academic empirical
-- **Extraction status:** second-pass reviewed from PLOS One full article abstract
+- **Review mode:** update
+- **Stable identifier:** DOI 10.1371/journal.pone.0335369; PLOS article e0335369
+- **Version / revision:** Version of record published 2025-10-27; previous unversioned Jina capture retrieved 2026-05-05
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/zaitsu-stylometry.md`
+- **Extraction method:** Authoritative PLOS PDF downloaded directly; all 18 pages extracted with Poppler `pdftotext -layout`; pages 1, 9, and 18 rendered and visually checked; four first-party CSV supplements downloaded and parsed; PDF and supplements preserved as attachments.
+- **Snapshot SHA-256:** `dd39c26bc3f923d9bb0a178ca11d35ce4c4524e8681caca503c6e3b550c77625`
+- **Model / corpus scope:** 100 Japanese e-Gov public comments and 350 December 2024 zero-shot public-comment generations, 50 each from GPT-4o, o1, Claude 3.5, Gemini, Microsoft Copilot, Llama 3.1, and Perplexity; Study 2 collected responses on 2025-01-24 and 2025-01-25 and shows one shortest stimulus from each class to 403 Japanese adults retained from 1,103 respondents (229 men, 164 women, 10 preferring not to answer; ages 21-69, mean 47.6, median 49, SD 11.9).
+- **Access limitations:** None for the version-of-record paper or four publisher supplements. The publisher materials do not include original texts, exact prompts, provider/API model identifiers or settings, Study 2 confidence ratings, or free-text comments. S1-S3 are CP932 CSV files. The prior card recorded no snapshot digest; the archived bytes match the repository's pre-update snapshot and hash to `6c6aec123a187c08ad6058141988ae6c49b30358754da02a0476e8cb83e31561`.
 
 ## Summary
-Japanese-language study with two parts: stylometric detection potential and human detection ability. Study 1 compares 100 human-written public comments with 350 texts from seven LLMs using phrase patterns, part-of-speech bigrams, and function-word unigrams; Study 2 asks 403 Japanese participants to judge AI versus human texts.
+
+This two-study Japanese public-comment paper reports strong closed-sample separation from high-dimensional function-word, POS-bigram, and phrase-pattern distributions, then finds that lay judgments over eight single stimuli are inconsistent and sometimes confidently wrong. Its useful contribution is a bounded comparison between machine-extracted distributional features and human surface impressions. It does not validate an English prose tell, sentence-rhythm rule, vocabulary-diversity direction, universal threshold, current detector, mixed-authorship decision, or document-level authorship verdict.
 
 ## Main insights
-- Stylometric feature combinations can distinguish AI and human texts in this setting, but human participants had limited detection ability.
-- The abstract reports 99.8% random forest accuracy and perfect discrimination on integrated stylometric MDS dimensions.
-- Participants relied on superficial impressions such as phraseology, expression, word endings, conjunctions, and punctuation.
-- The language and genre scope matters: Japanese public comments, not English prose generally.
+
+- In Study 1, 450 known-origin Japanese public comments were represented by 318 function-word, 1,107 POS-bigram, and 1,313 phrase-pattern relative-frequency features. Integrated features visually separated the sampled human and LLM groups on MDS and a random forest with leave-one-out cross-validation reported 99.8% accuracy.
+- The result is closed-set, in-sample-family evidence: one language, one genre, December 2024 zero-shot generations, uneven text lengths, reused human material, no independent domain or time holdout, and no released original texts or prompts.
+- The advanced-model stylometry hypothesis failed. GPT-o1 was not generally closer to humans than GPT-4o; integrated-feature distance had Cohen's d = 0.00, and only phrase patterns moved in the predicted direction.
+- Llama 3.1 was the model-family counterexample, forming a distinct MDS cluster from the other six LLM labels. The paper's parameter-count explanation is speculative.
+- Study 2 retained 403 of 1,103 respondents and presented only one shortest text per class. Observed correct AI judgments ranged from 25.6% for the o1 stimulus to 56.8% for Claude 3.5; the human stimulus was called human by 45.2% and AI by 47.9%.
+- Five report-to-table defects constrain Study 2: prose says 31.5% correctly identified the human text while Table 1/S4 show 45.2%; prose names GPT-4o as significantly deceptive while Table 1 marks GPT-o1; prose describes Llama 3.1 as having about half GPT-4o's human-rating odds although Table 2 gives beta -0.09 (OR about 0.91) with a wide interval crossing zero; prose calls the human stimulus significantly less likely to receive "Neither" although its interval crosses zero; and converting o1's 2.39 relative odds ratio into a 70% deception probability is invalid and conflicts with the observed 59.3% human rating.
+- Participants mentioned phraseology, expression, word endings, conjunctions, and punctuation, but the source provides no coding protocol, denominator per cue, cue accuracy, raw comments, or false-positive analysis. These are impressions, not validated surface rules.
+- The paper does not measure sentence-length variance or type-token ratio. Its former #52 and #53 mappings should be retired; its direct project value is narrow stylometric-method context, detector-framing caution, and evidence for language-, genre-, model-, prompt-, length-, and time-bounded evaluation.
 
 ## Evidence and claims to extract
-- Study 1 sample: 100 human-written public comments and 350 LLM-generated texts from ChatGPT GPT-4o/o1, Claude 3.5, Gemini, Microsoft Copilot, Llama 3.1, and Perplexity.
-- Feature families: phrase patterns, POS bigrams, and function-word unigrams.
-- Classifier result: random forest reached 99.8% accuracy.
-- Human study: 403 participants; overall human AI-detection ability was limited, and ChatGPT o1 was more likely to mislead participants into judging outputs human-written.
+
+- **Direct source reviewed:** PLOS One version of record, 18 pages, DOI 10.1371/journal.pone.0335369, plus all four first-party CSV supplements: S1 function words, S2 POS bigrams, S3 phrase patterns, and S4 Study 2 judgments.
+- **Method and sample:** Study 1 compares 100 reused Japanese e-Gov comments with 350 December 2024 zero-shot generations across seven named product/model labels. It normalizes within-text feature counts, visualizes symmetric Jensen-Shannon distances with two-dimensional metric MDS, and applies a 1,000-tree random forest with leave-one-out cross-validation. Study 2 uses a within-participant web survey, one shortest stimulus per class, seven-point source judgments, six-point confidence ratings, and Bayesian multinomial/ordinal models with participant random intercepts.
+- **Direct versus cited evidence:** C01-C09, C11-C23, and C25-C27 are direct results, preserved-data checks, author interpretations, or reviewer analyses of this source. C10 and the phrase-pattern recall figures within it are inherited from references 10 and 11 and remain indirect here. Claims about cognitive biases, Llama training/size, market tools, and future harms are author interpretation or cited context, not direct validation.
+- **Important limits and counterexamples:** The paper's strongest classifier result has no external holdout, released raw texts, exact prompts, current-version replication, mixed-authorship test, open-set unknown-model test, or cross-language/genre transfer. Study 2 has one content-confounded stimulus per class, a 63.5% exclusion rate, missing confidence/comment data, internal numerical/reporting conflicts, and a text-type/distance model whose predictors cannot be separated cleanly with one fixed stimulus per type.
 
 ## Skill-use audit
-- **Good use:** Back H3 detector-framing caution and H1 feature-comparison framing.
-- **Misuse / overclaim:** Do not transfer Japanese-public-comment feature directions to English human-eyes rules without separate evidence.
-- **Unsupported use:** #52 and #53 only as broad feature-family context, not specific thresholds.
-- **Underused evidence:** The human-study component can support user-facing cautions that surface cues may feel persuasive while still being unreliable for authorship classification.
-- **Patterns left on the table:** Human reliance on superficial phrase/punctuation cues is useful as a warning against user-facing certainty.
+
+- **Good use:** Support language- and register-bounded comparison research; show that integrated distributional features can outperform unaided impressions in one known-origin closed sample; preserve the GPT-o1 stylometric null, Llama counterexample, human-rating errors, confidence mismatch, and one-stimulus limit.
+- **Misuse / overclaim:** Do not describe 99.8% leave-one-out accuracy or visual MDS separation as universal, externally validated, current, interpretable, or suitable for an individual authorship decision.
+- **Unsupported use:** The source does not support #52 sentence-length variance, #53 English type-token ratio, any English punctuation rule, a phrase blacklist, a model-independent threshold, severity, mixed-authorship localization, or process-history inference.
+- **Underused evidence:** The live project underuses the paper's advanced-model null, model-family counterexample, text-length imbalance, one-stimulus content confound, missing raw-text/prompt provenance, Table 1/prose contradiction, and distinction between reported human impressions and actual cue validity.
+- **Patterns left on the table:** Function-word/POS/phrase distributions belong in a separate Japanese, feature-vector evaluation lane if ever tested. They should not be flattened into surface prose rules.
 
 ## Matched patterns / rules
-- #52 sentence rhythm variance
-- #53 vocabulary diversity
-- H3 / detector-framing caution
-- Stylometric feature families: phrase patterns, POS bigrams, function-word unigrams, and punctuation impressions
+
+- `human-eyes/scripts/patterns.json` and `human-eyes/scripts/grade.py`: #52 `sentence-length-variance` and #53 `vocabulary-diversity` are not measured by this source; current source mappings are unsupported.
+- `human-eyes/references/process.md`: the product boundary already says Audits describe patterns and do not infer authorship; fully covers the safe interpretation of this source.
+- `dev/TESTING.md`: matched genre, length, provenance, complete-Audit, human-look-alike, and no-authorship-classification requirements cover the main controls this source lacks.
+- H1 continuous calibrated register-distance score, H2 comparison-engine reframe, H3 drop detection framing, H12 genre-aware threshold calibration, H24 register-specific vocabulary density, and H25 model-family versus generic-AI residue are relevant research homes. The source is adjacent methodological evidence, not validation of a live score or rule.
 
 ## Associated hypotheses
-- H1 calibrated register-distance score
-- H2 comparison-engine product reframe
-- H3 drop detection framing
+
+- H1 continuous calibrated register-distance score per pattern: adjacent support for distributional comparison, but no human-eyes pattern calibration or reliability curve.
+- H2 comparison-engine product reframe: adjacent support for comparisons among known groups; no validation of a two-document product output.
+- H3 drop detection framing entirely: the closed-sample classifier result challenges a blanket impossibility claim but does not justify human-eyes authorship classification.
+- H12 genre-aware threshold calibration: directly supported as a required control by the paper's Japanese public-comment boundary.
+- H24 register-specific vocabulary density: not directly tested; the paper uses Japanese function words, POS bigrams, and phrase patterns rather than English vocabulary density.
+- H25 model-family versus generic-AI residue: supported as a research question by Llama 3.1's distinct cluster and GPT-o1's stylometric null, not as a product-facing model fingerprint.
 
 ## Questions / follow-up
-- Should human-eyes explicitly warn that the cues humans notice are not necessarily the cues that robust classifiers use?
-- Are any full-paper feature directions reusable for English, or should this remain language-specific context?
+
+- Can the authors release the original 450 texts, exact zero-shot prompts, generation settings, exact provider/API model identifiers, Study 2 confidence ratings, and coded/free-text comments?
+- Did sensitivity analysis repeat feature selection or any preprocessing within each leave-one-out fold, and what exact hyperparameter grid and down-sampled results were obtained?
+- Can the Study 2 multinomial and confidence models be re-estimated with multiple randomized stimuli per model and content, distance, and text type varied independently?
+- Before any project use, would a Japanese-language, length-matched, cross-topic, cross-time, held-out-model evaluation reproduce the integrated-feature result and quantify false positives on legitimate human look-alikes?
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | DOI 10.1371/journal.pone.0335369; unversioned Jina capture | `snapshots/archive/zaitsu-stylometry/2026-05-05-6c6aec12.md` | 2026-05-05 | `6c6aec123a187c08ad6058141988ae6c49b30358754da02a0476e8cb83e31561` |
+| current | DOI 10.1371/journal.pone.0335369; PLOS article e0335369 | `snapshots/zaitsu-stylometry.md` | 2026-07-17 | `dd39c26bc3f923d9bb0a178ca11d35ce4c4524e8681caca503c6e3b550c77625` |
+
+The prior snapshot was full-article Jina Markdown but lacked template provenance, tables, equations, supporting-information descriptions, author contributions, a digest, and preserved attachments. The current snapshot replaces it with the complete 18-page PDF text layer and adds the authoritative PDF plus all four supplements. The title, article prose, six figures, three tables, conclusions, limitations, and 27 references are otherwise the same version of record; no later article correction was found on the canonical page.
+
+## Decision history
+
+- The legacy card had no claim-keyed decisions or implementation statuses. Its broad H1/H2/H3 context is retained in bounded form. Its #52 sentence-rhythm and #53 vocabulary-diversity mappings are reopened because the full paper measures neither feature. All current recommendations are pending and no product change is recorded.
+
+## Project coverage
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: Study 1 compares 100 reused human Japanese e-Gov comments with 350 December 2024 zero-shot generations, 50 per seven LLM labels; mean lengths range from 661.3 human characters to 1,136.9 Perplexity characters. | Direct sample description; one language and public-comment genre; model labels lack exact API/version identifiers; lengths and class counts are unequal. | `dev/TESTING.md` matched-register, provenance, and length-control rules; fully covered as evaluation controls, not as a live detector result. | The source's normalization does not establish that length, topic, or prompt reuse cannot drive part of the separation. | Record C01 as bounded evaluation context; retain matched-length, genre, time, prompt, and provenance controls; no checker change. Verify card/index wording only. | pending | not started |
+| C02: S1-S3 provide 318 function-word, 1,107 POS-bigram, and 1,313 phrase-pattern relative-frequency features for all 450 texts. | Direct methods plus preserved supplements; row class counts match the paper; feature rows sum to about 100 after rounding. | H1, H2, H12, and H25; partly covered as candidate distributional/comparison research. No live human-eyes implementation computes these Japanese feature vectors. | No language-specific tokenizer/parser, registered dataset, feature-selection protocol, or held-out evaluation exists in the project. | Keep C02 as a separate Japanese evaluation candidate only; require a versioned dataset and held-out design before implementation. | pending | not started |
+| C03: Each single feature family visually separates sampled human and LLM texts on two-dimensional MDS to varying degrees. | Direct figure result on the same 450 rows used to construct distances; visual descriptive evidence, not external classification validation. | H1 and H2; partly covered conceptually. | Current project has no MDS lane, and the paper supplies no out-of-sample accuracy for each family. | Record only; do not translate MDS separation into a prose rule or document verdict. | pending | not started |
+| C04: Integrated features visually produce complete sampled-group separation on MDS. | Direct Fig 4 result; known-origin, closed sample; plotted training geometry. | H1/H2; partly covered as adjacent methodology. `human-eyes/references/process.md` fully covers the no-authorship product boundary. | The phrase "perfect discrimination" can be mistaken for held-out generalization. | Describe C04 only as visual separation in this fixed sample; no product promotion. | pending | not started |
+| C05: A 1,000-tree random forest with leave-one-out cross-validation reports 99.8% accuracy, 100% AI recall, 99% human recall, and corresponding precision/F1 values. | Direct reported result; 450 folds from one source pool, 350:100 class imbalance, 2,738 integrated features, no external topic/time/model holdout or uncertainty interval. | `dev/TESTING.md` held-out/generalization and no-authorship-reporting rules; fully covered as controls. No live classifier exists. | The card previously repeated 99.8% without the closed-sample and high-dimensional boundaries. | Retain C05 only with its design limits; require external, grouped, length-matched validation before any detector claim. | pending | not started |
+| C06: Hyperparameter tuning and 100:100 down-sampling reportedly produced stable performance. | Direct author report without the grid, per-setting scores, code, seed, or uncertainty; S1-S3 permit feature inspection but not exact reproduction of original texts or pipeline. | `dev/TESTING.md` reproducibility and provenance requirements; fully covered as missing-evidence controls. | No implementation or executable analysis is released. | Record C06 as insufficiently specified sensitivity evidence; no promotion. | pending | not started |
+| C07: Llama 3.1 forms a distinct MDS cluster from the other six LLM labels across feature views. | Direct within-sample model-family counterexample. The paper's parameter-count/training explanation is speculative and cites an older Llama paper rather than the exact tested model. | H25 model-family versus generic-AI residue; partly covered as a research question. | No exact Llama model identifier, parameter size, decoding setup, or replication establishes a stable fingerprint. | Add C07 only to H25 research context; require exact version and cross-prompt/time replication; no user-facing fingerprint. | pending | not started |
+| C08: GPT-o1 is not generally closer to humans than GPT-4o: integrated-feature distance is equal at reported precision with d = 0.00; only phrase patterns move in the predicted direction, d = 0.45. | Direct null/counterexample; Hypothesis 3 not supported overall. | H25 and source-record caution; partly covered. The live source index does not state this null. | The legacy summary emphasized advanced-model deception but omitted the stylometric null. | Promote the null to source-index wording; do not generalize "more advanced" into more or less human-like style. | pending | not started |
+| C09: A few o1 texts lie visually closer to humans and the o1/GPT-4o distributions overlap. The prose says one o1 point entered the human range and that only phrase patterns supported Hypothesis 3, but cites Fig 1 (function words) rather than Fig 3 (phrase patterns). | Direct figure interpretation plus an unresolved internal figure-reference inconsistency; counterexample to simple class rules. | H1/H2/H25; partly covered. | No single-document threshold follows from overlap or one point, and the claimed point cannot be assigned confidently to the named feature family from the cited figure. | Record the overlap and the source's claim, preserve the Fig 1/Fig 3 inconsistency, and set no threshold. | pending | not started |
+| C10: Prior studies reportedly found about 100% accuracy on Japanese academic papers and about 90% on one-shot public comments; prior phrase-pattern recall was 95% AI and 96% human. | Indirect literature review and method inheritance from references 10 and 11, not re-established by this paper. | Source-ingest directness rules; fully covered as a boundary. | Those papers need their own cards before their numbers support a recommendation. | Keep C10 marked indirect and unresolved; do not use it for product evidence. | pending | not started |
+| C11: Study 2 collected responses on 2025-01-24 and 2025-01-25 and retains 403 of 1,103 respondents after filler-item and under-three-minute exclusions: 229 men, 164 women, 10 preferring not to answer; ages 21-69, mean 47.6, median 49, SD 11.9. | Direct sample report; 63.5% excluded; no attrition comparison or preregistration is supplied. | `dev/TESTING.md` covers general provenance and bounded reporting only; partly covered. | The project has no explicit participant-attrition, demographic-selection, or survey-population control; the resulting panel cannot be treated as all Japanese adults or all readers. | Record C11 as a strong population/selection limit and add no product rule; if this evidence enters evaluation guidance, require attrition and demographic reporting. | pending | not started |
+| C12: Every participant judges one shortest stimulus from each of seven LLM classes and one human class; content is not controlled across classes. | Direct design and author-stated limitation; within-participant ratings do not create multiple independent texts per class. | `dev/TESTING.md` has matched-content, multiple-sample, and provenance guidance for corpora; partly covered/adjacent. | It has no survey-specific multiple-stimulus or crossed participant/item analysis rule; model/class effects here are inseparable from the chosen stimulus and its content. | Use C12 to strengthen source-index caution; never report Study 2 as model-wide human-detection accuracy; require multiple randomized items before survey evidence affects evaluation guidance. | pending | not started |
+| C13: Table 1/S4 show AI-category rates of 25.6%-56.8% across LLM stimuli; the human stimulus is rated human 45.2%, AI 47.9%, neither 6.9%. | Direct preserved-data reproduction of all eight 403-response columns. | H3 and the product no-authorship boundary; fully covered as caution. | No single overall "human accuracy" value is reported, and forced categorization varies by stimulus. | Record the per-stimulus range and human false-negative result; no threshold. | pending | not started |
+| C14: The article prose says only 31.5% correctly identified the human text, but Table 1 and S4 show 45.2%; 31.5% is the Claude 3.5 human-rating value. It also says GPT-4o and Microsoft Copilot were significantly deceptive, while Table 1 marks GPT-o1 and Microsoft Copilot for excess human ratings and gives GPT-4o no significance mark. | Two direct internal contradictions verified against Table 1 and preserved S4 counts/markers. | `genre_specific` academic figure/data-consistency watchlist; fully covered as a source-quality issue. | The legacy card repeated only the broad limited-ability conclusion and missed both errors. | Preserve the table/data values and the prose conflicts in the card and source-index summary; do not silently repair the article. | pending | not started |
+| C15: Table 2 reports o1 versus GPT-4o log-odds 0.87 [0.51, 1.23], but the paper converts OR 2.39 into an invalid 70% deception probability. It also describes Llama 3.1 as having about half GPT-4o's human-rating odds although beta -0.09 implies OR about 0.91 and the interval [-14.82, 15.30] crosses zero, and calls the human stimulus significantly less likely to receive "Neither" although beta -0.94 has interval [-5.11, 3.24]. | Direct table results plus reviewer mathematical/reporting checks; observed o1 human rating is 59.3%. | `genre_specific` academic data-consistency review and source-record evidence boundaries; fully covered. | The model also has one fixed stimulus per type and a type-level distance covariate, so text type, content, and distance cannot be cleanly separated. | Record the table coefficients as source-reported, flag all three prose interpretations, and require a multi-stimulus reanalysis before reuse. | pending | not started |
+| C16: Participants report higher confidence for the o1 stimulus than GPT-4o, estimate 0.34 [0.03, 0.67], while often rating o1 human. | Direct Table 3 result for two single stimuli; confidence data are not included in S4. | H3 and no-authorship process guidance; fully covered as caution. | Missing raw confidence ratings and the one-stimulus design prevent independent verification or model-wide inference. | Record C16 as bounded confidence-mismatch evidence; no general confidence rule. | pending | not started |
+| C17: Free-text comments include "expression" n = 363, phraseology 36, unnatural 27, usage 25, word endings 18, conjunction 15, discomfort 13, and punctuation 12. | Direct author report only; no codebook, coding unit, overlap rules, denominator, accuracy link, quotations, or raw comments. | No exact live pattern. H3 and product-boundary guidance partly cover the caution. | Human-reported cues are not measured cue validity and include ordinary human features. | Treat C17 as evidence about impressionistic review behavior, not a phrase/punctuation detector; require coded accuracy and human controls before promotion. | pending | not started |
+| C18: The direct results are limited to Japanese public comments and zero-shot generations; authors call for other genres and one/few-shot tests. | Direct author limitation. | H12 genre-aware calibration and `dev/TESTING.md`; fully covered. | No English, academic, fiction, email, mixed-authorship, edited-output, or current-model transfer evidence. | Keep language, genre, prompting, and date in every citation of the result; no cross-register mapping. | pending | not started |
+| C19: The seven tested labels omit exact provider/API model IDs, parameter/settings, prompts, decoding, and access route. | Direct provenance gap in paper and supplements. | `dev/TESTING.md` generation-provenance checklist and H25; fully covered. | Product labels such as Gemini, Copilot, Perplexity, and Llama 3.1 are not reproducible version identifiers. | Do not call the finding current or model-family-stable; request exact generation provenance before replication. | pending | not started |
+| C20: The paper does not measure sentence-length variance, English type-token ratio, or feature-specific direction/threshold. | Direct full-text and supplement review. Function words include Japanese punctuation, but the analysis uses whole distributions and gives no punctuation-only validity. | #52 `sentence-length-variance` and #53 `vocabulary-diversity`; challenges current source mappings. | Root README and source opportunity rows currently cite Zaitsu as #52/#53 or confirmed punctuation/function-word context. | Remove Zaitsu from #52/#53 evidence lists and rewrite the opportunity as non-promotion plus a separate Japanese distributional evaluation candidate. Verify rendered catalogue remains otherwise unchanged. | pending | review required |
+| C21: S1-S3 reproduce the stated 100/50-per-class sample structure and relative-frequency matrices; S4 reproduces Table 1. | Direct preserved-data verification. | Source-record provenance and data-consistency gates; fully covered by this refresh. | Original texts, prompts, confidence ratings, and comments remain absent, so the paper cannot be fully re-run from supplements. | Record the verified and missing artifacts exactly; take no product action. | pending | not started |
+| C22: With one fixed stimulus per class, Study 2's text-type indicators and type-level distance covariate do not independently vary across texts. | Reviewer inference from the direct design and model equation; participant repetition supports random intercepts but not stimulus generalization. | `dev/TESTING.md` requires multiple samples and matched controls for text corpora; partly covered/adjacent. | The project has no crossed participant/item survey-analysis rule; the paper's wide coefficients for several classes and causal/model-wide language are not decision-ready. | Require multiple randomized stimuli with crossed participant/item effects before using the regression as model-family evidence or adding survey-design guidance. | pending | not started |
+| C23: Claims that advanced models will increasingly deceive people, that harms will intensify, and that reliable Japanese AI detectors are urgently required are author interpretation. | Discussion extrapolation beyond one o1/4o stimulus pair and one closed classifier sample; market-tool statement is unsystematic. | H3 and `human-eyes/references/process.md` no-authorship boundary; fully covered as a non-promotion. | No longitudinal model trend, harm outcome, or market benchmark is tested. | Record as author interpretation only; do not adopt urgency, trend, or detector-policy claims. | pending | not started |
+| C24: No direct result validates an English surface tell, phrase blacklist, severity, edit, or authorship score. | Evidence-category boundary from the full source. | `human-eyes/references/process.md` and patterns metadata guidance; fully covered. | Legacy #52/#53 mappings blur feature-family context into unsupported live rules. | Retire those mappings and keep this source out of surface-rule evidence. | pending | review required |
+| C25: The paper's distance-based comparison is adjacent to H1/H2 but does not supply register-specific human-eyes z-scores, reliability curves, or a two-document user study. | Direct method-to-project comparison. | H1/H2; partly covered as research framing. | No evidence connects the 2,738 Japanese features to current pattern outputs. | Cite C25 only as a bounded methodological analogue; run independent evaluation before adopting any comparison metric. | pending | not started |
+| C26: Known-origin labels in a closed research corpus permit classifier evaluation, but the result does not establish authorship of unknown, edited, assisted, translated, or mixed texts. | Direct scope boundary and reviewer inference; no such conditions are tested. | `human-eyes/references/process.md` fully covers the product boundary; `dev/TESTING.md` requires explicit no-authorship language. | The article title and discussion use "authorship" more broadly than the design warrants. | Preserve the source title but state the closed-known-label boundary wherever the result is summarized. | pending | not started |
+| C27: Publisher data are materially incomplete for reproduction, and the article contains five report-to-table/figure defects: 31.5% versus 45.2% human accuracy; GPT-4o versus GPT-o1 significance marking; the Fig 1 versus phrase-pattern claim; the unsupported "half the odds" Llama interpretation; and the unsupported significant human-"Neither" interpretation, plus the separate invalid OR-to-probability conversion. | Direct artifact inventory and table/figure checks; no correction notice was found on the canonical page at retrieval. | `genre_specific` academic consistency review and source-ingest provenance gates; fully covered. | A future correction or data release could change the record. | Preserve every conflict explicitly and recheck the canonical record for correction notices only on a future refresh; no current product change. | pending | not started |
+
+## Recommendations
+
+- C01: Keep the sample, length, genre, date, prompt, and class-balance limits attached to every use.
+- C02: Treat Japanese feature-vector work as a separate evaluation candidate, not a prose rule.
+- C03: Record single-family MDS as descriptive same-sample evidence only.
+- C04: Qualify "perfect discrimination" as visual separation in the fixed sample.
+- C05: Require grouped external validation before any classifier or authorship claim.
+- C06: Treat the unspecified sensitivity analysis as insufficient for promotion.
+- C07: Route the Llama counterexample to H25 research only.
+- C08: Promote the advanced-model stylometric null to the source summary.
+- C09: Preserve overlap and the source's one-point claim with its Fig 1/Fig 3 inconsistency; set no threshold.
+- C10: Keep cited-study numbers indirect pending separate source review.
+- C11: Preserve the 1,103-to-403 attrition and population boundary.
+- C12: Never report Study 2 as model-wide accuracy; it tests one stimulus per class.
+- C13: Report the observed per-stimulus range and human false-negative result.
+- C14: Record the Table 1/S4 values and flag both the 31.5%/45.2% and GPT-4o/GPT-o1 prose conflicts.
+- C15: Do not reuse the 70% probability, Llama half-odds, or human-"Neither" significance interpretations; require multi-stimulus reanalysis.
+- C16: Keep the confidence result bounded to the two stimuli and missing raw data.
+- C17: Treat participant cue words as impressions, not validated tells.
+- C18: Do not transfer results across language, genre, prompt strategy, or model time.
+- C19: Require exact model and generation provenance before replication.
+- C20: Remove Zaitsu from #52/#53 evidence and replace the opportunity row with a non-promotion/evaluation boundary.
+- C21: Preserve the verified supplement inventory and name all missing reproduction artifacts.
+- C22: Require crossed participant/item evaluation with multiple stimuli.
+- C23: Record detector urgency, future deception, and harm claims as author interpretation only.
+- C24: Keep this source out of English surface-rule evidence.
+- C25: Use the distance method only as a bounded H1/H2 analogue pending independent evaluation.
+- C26: Keep the closed-known-label boundary with the article's authorship language.
+- C27: Recheck the canonical record for correction notices only on a future refresh.
+
+## Evaluation of approved changes
+
+- C01-C19: not applicable - recommendations are pending; no product changes requested or made.
+- C20: not applicable - mapping corrections are pending Mae's decision and serial index application.
+- C21-C23: not applicable - recommendations are pending; no product changes requested or made.
+- C24: not applicable - mapping correction is pending Mae's decision and serial index application.
+- C25-C27: not applicable - recommendations are pending; no product changes requested or made.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `/root/zaitsu_source_reviewer`; focused re-check by the same reviewer after material corrections
+- **Findings resolved:** Four material findings: expanded the article/table contradiction inventory; preserved the Fig 1/function-word versus Fig 3/phrase-pattern inconsistency; corrected project-coverage claims for participant attrition and crossed survey items; narrowed snapshot access wording and added survey dates/demographics.
+- **Unresolved findings:** none

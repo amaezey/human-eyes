@@ -1,87 +1,21 @@
-Title: What Students Lose When ChatGPT Writes Their Essays | The Brian Lehrer Show | WNYC
-
-URL Source: https://www.wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/
-
-Markdown Content:
-# What Students Lose When ChatGPT Writes Their Essays | The Brian Lehrer Show | WNYC
-
-[](https://www.wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/)
-
-A list of our sites
-
-[](https://www.wnyc.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.gothamist.com/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.wnycstudios.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](http://www.njpublicradio.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.wqxr.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.newsounds.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.thegreenespace.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[NYPR Network](https://www.wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/)
-
-[NYPR Network](https://www.wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/)
-
-[](https://www.wnyc.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.gothamist.com/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.wnycstudios.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](http://www.njpublicradio.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.wqxr.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.newsounds.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[](https://www.thegreenespace.org/?utm_medium=partnersite&utm_campaign=brandheader&utm_source=wnyc)
-
-[Donate](https://pledge.wnyc.org/support/wnyc?utm_source=wnyc&utm_medium=wnyc&utm_campaign=donate-button "Donate")
-
-[Member Center](https://pledge.wnyc.org/user/email-link "Member Center")
-
-# WNYC Navigation[](https://www.wnyc.org/ "WNYC | New York Public Radio Home Page")
-
-[Radio](https://www.wnyc.org/radio)*   [All Streams](https://www.wnyc.org/streams)
-*   [Schedule](https://www.wnyc.org/schedule)
-*   [100 Years](https://www.wnyc.org/100)
-*   [Shows](https://www.wnyc.org/shows)
-*   [Topics](https://www.wnyc.org/topics)
-*   [Discover](https://www.wnyc.org/discover/start)
-*   [Support Us](https://www.nypublicradio.org/support/)
-
-### Follow WNYC
-
-*   [](http://www.twitter.com/wnyc "twitter")
-*   [](http://www.facebook.com/wnyc "facebook")
-*   [](https://www.instagram.com/wnyc "instagram")
-
-[![Image 3: Brian Lehrer Show Segments](https://media.wnyc.org/i/50/50/c/99/1/BL.png)Brian Lehrer Show Segments](https://www.wnyc.org/articles/brian-lehrer-show-segments)
-
-Published by
-
-[Brian Lehrer Show Segments](https://www.wnyc.org/articles/brian-lehrer-show-segments) by [The Brian Lehrer Show](https://www.wnyc.org/shows/bl)
-
 # What Students Lose When ChatGPT Writes Their Essays
 
- Listen Queue
+- **Canonical URL:** https://www.wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/
+- **Alternate access URLs:**
+  - https://wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/
+  - https://r.jina.ai/https://www.wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/
+  - https://pscrb.fm/rss/p/mgln.ai/e/14/pdst.fm/e/dts.podtrac.com/pts/redirect.mp3/waaa.wnyc.org/9ad3f75f-0bb4-4437-bf95-5e4140741c91/episodes/f642e126-059a-41de-b5ed-1c30f009bd6f/audio/128/default.mp3?aid=rss_feed&awCollectionId=9ad3f75f-0bb4-4437-bf95-5e4140741c91&awEpisodeId=f642e126-059a-41de-b5ed-1c30f009bd6f&feed=C8a1jmw4
+- **Author / owner:** The Brian Lehrer Show; interview guest Hua Hsu; host Brian Lehrer; callers Rafiq and Sarah
+- **Publisher:** New York Public Radio / WNYC
+- **Published:** 2025-07-08
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** WNYC article 1509145; publisher audio episode ID f642e126-059a-41de-b5ed-1c30f009bd6f
+- **Version / revision:** WNYC publisher transcript and audio exposed by the publisher page on 2026-07-15
+- **Extraction method:** Direct WNYC HTML fetched with curl; complete transcript recovered from the page's `__NUXT_DATA__` JSON payload and compared with the archived Jina Reader Markdown; linked MP3 followed through redirects with curl and preserved byte-for-byte; file metadata checked with file and ffprobe
+- **Full-text status:** complete
+- **Access and transformation notes:** The transcript's 72 HTML paragraph elements, including one blank element, were converted to 71 substantive Markdown paragraphs by the prior Jina extraction. Normalised-text comparison against the live embedded transcript found no substantive change. Publisher navigation, advertising, donation prompts, current top stories, and unrelated footer material were removed. WNYC warns that rush transcripts may be revised and identifies the audio as authoritative; the complete linked MP3 is preserved below. Speaker spacing and HTML emphasis/link markup were normalised in Markdown, but wording was not corrected.
 
-[](mailto:?subject=Brian%20Lehrer%20Show%20Segments%20-%20What%20Students%20Lose%20When%20ChatGPT%20Writes%20Their%20Essays&body=http%3A%2F%2Fwww.wnyc.org%2Fstory%2Fwhat-students-lose-when-chatgpt-writes-their-essays%2F)
-
- Jul 8, 2025 
-
-[Summary](https://www.wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/#ember1042)[Transcript](https://www.wnyc.org/story/what-students-lose-when-chatgpt-writes-their-essays/#ember1063)
-
-**Hua Hsu**, New Yorker staff writer, professor of English at Bard College and author of the memoir [_Stay True_](https://penguinbookshop.com/book/9780593315200)(September 2022), discusses what college students lose when ChatGPT writes their essays for them and what that says about our evolving understanding of the purpose of higher education.
-
-→ [What Happens After A.I. Destroys College Writing?](https://www.newyorker.com/magazine/2025/07/07/the-end-of-the-english-paper)
-
-Transcript
+## Full text
 
 Title: What Students Lose When ChatGPT Writes Their Essays
 
@@ -225,67 +159,16 @@ _Copyright © 2025 New York Public Radio. All rights reserved. Visit our website
 
 _New York Public Radio transcripts are created on a rush deadline, often by contractors. This text may not be in its final form and may be updated or revised in the future. Accuracy and availability may vary. The authoritative record of New York Public Radio’s programming is the audio record._
 
-# Brian Lehrer Show Segments
+## Extraction verification
 
-Brian Lehrer leads the conversation about what matters most now in local and national politics, our own communities and our lives.
+- **Beginning checked:** Compared the live embedded transcript's title, music cue, opening Shakespeare-paper scenario, and first Hua Hsu exchange with the preserved Markdown and the beginning of the MP3.
+- **Middle checked:** Compared the embedded transcript's Rafiq exchange about citizenship, doubt, risk, and Google AI summaries with the preserved Markdown near the midpoint; the MP3 is a continuous 1,596.395-second MPEG Layer III file.
+- **End checked:** Compared the embedded transcript's Sarah exchange, dysgraphia counterexample, plagiarism discussion, closing line, copyright, and transcript disclaimer with the preserved Markdown and the MP3 endpoint's complete byte count.
+- **Structure checked:** The live publisher payload contains 72 transcript `<p>` elements, including one blank element. The Markdown contains all 71 substantive paragraphs, 49 speaker-labelled paragraphs, the opening cue, copyright notice, and transcript-accuracy disclaimer. The page reports an estimated duration of 1,644 seconds; ffprobe reports 1,596.395 seconds for the preserved 25,542,468-byte MP3. Start, midpoint, and end text were checked after whitespace, link, emphasis, and HTML-entity normalisation; similarity was 0.998273 and the diff contained only formatting/spacing changes.
+- **Known omissions:** None from the official transcript or linked audio. Publisher navigation, advertising, donation prompts, current top stories, show boilerplate, and legal-navigation chrome were intentionally omitted as non-substantive page material. The transcript was not corrected against the audio, and WNYC's warning that it may be revised remains preserved above.
 
-Produced by [WNYC](http://www.wnyc.org/).
+## Preserved attachments
 
-Subscribe to the podcast ▾
-
-##### Document Footer
-
-## About WNYC
-
-Listener-supported WNYC is the home for independent journalism and courageous conversation on air and online. Broadcasting live from New York City on 93.9 FM and AM 820 and available online and on the go.
-
-*   [On Air Schedule](https://www.wnyc.org/schedule "On Air Schedule")
-*   [Daily Newsletter](https://www.wnyc.org/newsletters "Daily Newsletter")
-*   [Events](https://www.wnyc.org/events "Events")
-*   [Partner Events](https://www.wnyc.org/wnyc-partner-events "Partner Events")
-*   [Community](https://www.wnyc.org/community "Community")
-*   [Giveaways](https://www.wnyc.org/articles/wnyc-contest-rules "Giveaways")
-*   [Weather](https://www.wnyc.org/weather "Weather")
-
-*   [Download Our Apps](https://www.wnyc.org/mobile "Download Our Apps")
-*   [Podcasts](https://www.wnycstudios.org/ "Podcasts")
-*   [Archived Shows](https://www.wnyc.org/archives/collections "NYPR Archived Shows")
-*   [Audio Archives](https://www.wnyc.org/series/archives-preservation "Audio Archives")
-*   [Audio Help](https://www.wnyc.org/audio/help "Audio Help")
-*   [Support Us](https://www.nypublicradio.org/support/ "Support Us")
-
-## Inside WNYC
-
-*   [About Us](https://www.wnyc.org/about "About Us")
-*   [Contact Us / Feedback](https://www.wnyc.org/contact "Contact Us")
-*   [ONLINE MEMBER CENTER](https://pledge.wnyc.org/user/email-link "Member Center")
-*   [Become a Sponsor](http://www.nypublicradio.org/underwriting/wnyc "Become a Sponsor")
-*   [Donors](https://nypublicradio.org/impact/ "Donors")
-*   [Careers](https://nypublicradio.org/careers/ "Careers")
-*   [Diversity (DEI)](https://www.nypublicradio.org/diversity-dei-overview/ "Diversity (DEI)")
-*   [Press](https://www.wnyc.org/press "Press")
-
-## Social
-
-*   [Facebook](http://www.facebook.com/wnyc "Facebook")
-*   [Twitter](http://www.twitter.com/wnyc "Twitter")
-*   [Instagram](https://www.instagram.com/wnyc "Instagram")
-*   [YouTube](https://www.youtube.com/user/wnycradio "YouTube")
-
-[](https://www.nypublicradio.org/)[](https://www.wnyc.org/)[](http://gothamist.com/)[](https://www.wnycstudios.org/)[](https://www.wqxr.org/)[](https://www.newsounds.org/)[](http://www.njpublicradio.org/)[](http://www.thegreenespace.org/)
-
-## Legal Nav
-
-*   [© 2026 New York Public Radio](http://www.newyorkpublicradio.org/)
-*   [Terms of Use](https://www.wnyc.org/terms/ "Terms of Use")
-*   [Privacy Policy](https://www.wnyc.org/privacy/ "Privacy Policy")
-*   [Accessibility](https://media.wnyc.org/media/resources/2022/May/06/accessibility_policy_5.6.22.pdf "Privacy Policy")
-*   [Corrections](https://www.wnyc.org/corrections/)
-*   [Giveaway Rules](https://www.wnyc.org/articles/wnyc-contest-rules "Giveaway Rules")
-*   [WNYC-FM FCC Public File](https://publicfiles.fcc.gov/fm-profile/wnyc-fm "WNYC-FM FCC Public File")
-*   [EEO Report](https://www.wnyc.org/resources/912769/fcc_eeo_public_file_report.pdf "EEO Report")
-*   [WNYC-AM FCC Public File](https://publicfiles.fcc.gov/am-profile/wnyc "WNYC-AM FCC Public File")
-
-WNYC is supported by 
-
-Queue
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/hsu-students-lose-chatgpt-wnyc-1509145-f642e126.mp3` | Complete linked WNYC audio; publisher identifies audio as the authoritative programming record | `254cffce01076e08ee27e64a6e9491b69a8b32874f7404575861432fd1f45c07` | Followed the publisher payload's redirecting MP3 URL with curl; preserved 25,542,468 bytes; file identifies MPEG Layer III, 128 kb/s, 44.1 kHz joint stereo; ffprobe duration 1,596.395 seconds and date tag 2025-07-08. |

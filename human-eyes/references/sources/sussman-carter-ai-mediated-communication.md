@@ -2,59 +2,168 @@
 
 ## Metadata
 
-- **URL:** https://arxiv.org/abs/2504.19556
-- **Authors:** Kristen Sussman and Daniel Carter
-- **Published:** 2025-04-28; Companion Proceedings of the ACM Web Conference 2025
-- **Extracted:** 2026-07-14
-- **Source type:** Empirical computational communication study
-- **Evidence tier:** Conference companion paper / empirical
-- **Extraction status:** reviewed from complete saved PDF text
-- **Full text snapshot:** `snapshots/sussman-carter-ai-mediated-communication.md`
+- **URL:** https://doi.org/10.1145/3701716.3717543
+- **Author / owner:** Kristen Sussman and Daniel Carter
+- **Published:** 2025-04-28 on arXiv; 2025-05-08 in the Companion Proceedings of the ACM Web Conference 2025
+- **Retrieved:** 2026-07-17
+- **Extracted:** 2026-07-17
+- **Source type:** Peer-reviewed conference companion empirical study
+- **Evidence tier:** Peer-reviewed / academic empirical
+- **Review mode:** update
+- **Stable identifier:** DOI 10.1145/3701716.3717543; arXiv:2504.19556v1
+- **Version / revision:** Current review: arXiv v1, five-page ACM-formatted proceedings paper; prior record: same paper revision in the 2026-07-14 snapshot
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/sussman-carter-ai-mediated-communication.md`
+- **Extraction method:** Official arXiv v1 PDF preserved; complete embedded text layer converted with Poppler `pdftotext -layout`; PDF structure checked with `pdfinfo`; pages 1, 2, 3, and 5 rendered with `pdftoppm` and compared visually; arXiv API and Crossref metadata checked
+- **Snapshot SHA-256:** `143cabe08e9fa50201050114fc172ff31ad08b6ca7d48bd8e89dcaa203cb7dfc`
+- **Model / corpus scope:** X/Twitter posts mentioning Donald Trump from 2020 (`n = 970,919`, Kaggle) and 2024 (`n = 20,000`, Meltwater), each covering October 15-November 8 around a US presidential election; corpus language and any language filter are not reported; two 2020 posts rewritten with a system called `ChatGPT-4`, with exact model build, access date, generation parameters, run count, and selection procedure not reported
+- **Access limitations:** No substantive source material is missing. The Markdown extraction does not encode figure pixels or red font colour; the complete five-page PDF, including all three figures and the section 2.4 highlighting, is preserved at `snapshots/attachments/sussman-carter-ai-mediated-communication-arxiv-2504.19556v1.pdf`. The arXiv experimental HTML route returned 404 and a later abstract-page request returned 429, but the official PDF and arXiv API were available.
 
-## Study design
+## Summary
 
-- Compares 970,919 tweets mentioning Donald Trump from the 2020 US election period with 20,000 tweets from the corresponding 2024 election period.
-- Measures Flesch-Kincaid readability and sentiment polarity.
-- Separately prompts an AI-mediated communication system to improve example tweets and compares original and rewritten text qualitatively and with cosine similarity.
+This five-page conference companion paper compares unequal corpora of Donald Trump-related X/Twitter posts from matched election-season windows in 2020 and 2024, reports Flesch-Kincaid grade-level, word-length, sentence-variance, and VADER polarity differences, and shows two posts rewritten after a clarity-and-engagement prompt to `ChatGPT-4`. It directly supports a bounded source-versus-rewrite concern: both displayed rewrites add political prescriptions or future-oriented calls to action, while at least one response to an attempted political rewrite was refused; the distinct post count, attempt count, and relation of that refusal to the two displayed pairs are not reported. It also supplies aggregate, time- and genre-specific measurement candidates. It does not label AI use in either corpus, isolate AI from political, audience, sampling, or platform change, validate a document-level detector, or justify the prior card's mappings to #4 promotional language and #24 generic positive conclusions. The paper itself contains inconsistent sentiment percentages, a Figure 1 caption/content mismatch, mismatched references, and an ambiguous readability conclusion that must remain visible.
 
-## Direct findings
+## Main insights
 
-- Mean sentiment polarity increased from `0.04` in 2020 to `0.12` in 2024.
-- Neutral tweets fell from `54.8%` to `39.8%`; positive tweets rose from `28.6%` to `45.9%`.
-- The paper reports higher readability scores and interprets them as lower linguistic complexity and more accessible wording.
-- AI-improved examples add future-oriented solutions and direct calls to action such as choosing leaders, unity, and next steps.
-- Two original/rewrite pairs had cosine similarities of `0.376` and `0.398`; the authors describe substantial linguistic restructuring while retaining the core message.
-- The paper explicitly notes that political climate, platform dynamics, audience changes, and the distinctive communication context prevent clean isolation of AI as the only cause of the 2020-to-2024 shift.
+- The 2020 and 2024 corpora differ in size and acquisition route. Their shared platform, Donald Trump topic, and approximately 3.5-week election window improve comparability, but there are no post-level AI-use labels and no matched-author or matched-post design.
+- Mean Flesch-Kincaid grade level changed from 10.24 to 10.04. The difference is statistically significant but practically modest (`0.20` grade levels); the paper places more interpretive weight on compressed extreme scores in 2024.
+- Mean polarity rose from `0.044` to `0.115` (`163.4%`, Cohen's `d = 0.281`). Average word length fell `6.6%` (`d = -0.182`), and sentence variance fell `3.6%` (`d = -0.022`). The last effect is near zero even though the paper groups all changes as statistically significant.
+- The abstract and results disagree on neutral and positive shares. The abstract reports neutral `54.8%` to `39.8%` and positive `28.6%` to `45.9%`; section 2.3.2 reports neutral `62.9%` to `49.4%`, strongly positive `4.4%` to `8.1%`, and strongly negative `2.1%` to `1.7%`.
+- Both shown rewrites add a prescriptive next step absent from the source post. One adds “choose leaders who put people first”; the other adds “unity and leadership that puts America first.” The rewrites also change hashtags and add flag or ballot emoji, so the transformation is not limited to clarity.
+- The two original/rewrite cosine similarities are `0.376` and `0.398` (`M = 0.387`, `SD = 0.015`, `n = 2`). The paper interprets one minus each cosine value as “approximately 60-63%” modification while preserving intent, but it gives no similarity implementation and has only two selected pairs; cosine distance is not a validated percentage of content changed and does not by itself prove that meaning or stance was preserved.
+- At least one prompt was refused as political persuasion. The paper does not state how many posts were attempted, how the two successful pairs were selected, or which exact ChatGPT build and policy state produced the outputs, so refusal frequency and rewrite availability are unknown.
+- The direct examples add a more prescriptive stance rather than moving toward neutrality. Their unity and leadership language may read as positive-framed, but the paper reports no pair-level sentiment score. The prescriptions therefore challenge treating #37 neutrality collapse as the only possible stance change: source-bound review must detect stance addition, erasure, reversal, or reframing.
+- The authors explicitly acknowledge platform, topic/person, political-climate, and audience-behaviour confounds and call for replication. The data cannot establish that AI caused the temporal shifts or quantify AI-MC prevalence.
+- Predictable-writing, smart-reply-positivity, and emotional-clarification statements are indirect claims attributed to references 6-8, not measured findings of this study. Other literature-framed statements are unsupported or miscited here: detector F1 is pointed to reference 4, a Brookings political-polarization article; the AI-authorship readability statement points to reference 11, Flesch's 1948 readability paper; and concealed-origin susceptibility is the authors' untested interpretation rather than a measured or clearly cited result.
 
-## Project incorporation
+## Evidence and claims to extract
 
-- **#4 promotional language — adds evidence:** the aggregate corpus shifted towards more positive and less neutral expression.
-- **#24 generic positive conclusions — expands the check:** the AI rewrites added prescriptions and calls to action that were absent from the originals, including choosing better leaders and calling for unity.
-- **#37 neutrality/stance — challenges a one-way account:** AI rewriting can erase a position through false balance, but these examples moved in the other direction by adding a more positive, prescriptive stance.
-- **New rewrite-fidelity candidate:** when the task is only to improve clarity or engagement, check whether the rewrite invents a solution, next step, call to action, or political prescription that the source never made.
-- **Structural/readability research:** shorter words and higher readability are potential corpus measurements. The paper does not establish them as a document-level prose check.
-- **Rewrite magnitude:** the low cosine-similarity examples show extensive rewording under an apparently limited improvement instruction. This is evidence for comparing the rewrite with its source, not a standalone surface tell.
+- **Direct source reviewed:** Complete five-page arXiv v1 PDF of *Detecting Effects of AI-Mediated Communication on Language Complexity and Sentiment*, DOI 10.1145/3701716.3717543, including the abstract, all sections, three figures, two displayed original/rewrite pairs, limitations, conclusion, and 13 references.
+- **Method and sample:** A Kaggle 2020 corpus of 970,919 posts and a Meltwater 2024 corpus of 20,000 X/Twitter posts mentioning Donald Trump from October 15 through November 8 around US presidential elections. The paper reports preprocessing, Flesch-Kincaid Grade Level, an independent-samples t-test, TextBlob and VADER naming with VADER application, polarity distributions, word length, sentence variance, effect sizes, two qualitative rewrite pairs, and cosine similarities. Exact sampling from the 2024 retrieval pool, bot/retweet handling, corpus language and language filtering, post-length controls, cosine implementation, uncertainty calculations, multiple-comparison handling, code, data, and complete prompt-response inventory are not reported.
+- **Direct versus cited evidence:** C01-C16 and C18-C20 concern the paper's data, examples, interpretation, limits, or internal reporting. C17 separates indirect claims attributed to references 6-8 from detector-F1 and AI-readability assertions whose citation pointers are mismatched, plus a concealed-origin assertion that is author interpretation rather than a measured or clearly cited result. None of the indirect upstream results was re-ingested here; the unsupported or miscited assertions cannot be treated as inherited evidence without correction and direct source identification.
+- **Important limits and counterexamples:** The corpora have no AI-use labels, are unequal, use different collection sources, and cover different elections and audiences. The two rewrites are selected examples rather than a reported sample; at least one response to an attempted political rewrite was refused, but distinct post count, attempt count, and relation to the two displayed pairs are unknown. The paper's sentiment percentages conflict between abstract and body; Figure 1 contains both Flesch-Kincaid and polarity panels although its caption names only Flesch-Kincaid; detector, readability, and Meltwater citation pointers are mismatched; the text says “Hohenstein & Jung, 2020” while reference 7 is their 2018 paper; TextBlob's role is unclear; the stated readability maxima are outside the displayed Figure 1 x-axis; and the conclusion says readability scores increased even though reported Flesch-Kincaid grade level fell from 10.24 to 10.04. Aggregate associations do not determine who or what wrote one post.
 
-## Recommendations for human-eyes
+## Skill-use audit
 
-1. Add this source to #4's evidence for generic positive/promotional drift.
-2. Expand #24 to include invented future solutions, prescriptions, unity appeals, next steps, and calls to action.
-3. Consider a rewrite-fidelity assessment for changes that add a position or proposed solution absent from the source.
-4. Treat sentiment, readability, and rewrite magnitude as potential corpus measurements rather than automatic document findings.
-5. Keep the paper's time/corpus comparison distinct from Wikipedia's older-model-versus-newer-model interpretation.
-
-These are recommendations from the evidence review. No checker, rule, threshold, or fixture was changed as part of this source-card work.
+- **Good use:** Use the paired examples as bounded evaluation evidence that a clarity-and-engagement rewrite can add prescriptions, stance, emojis, and other source-absent material. Use the corpus statistics only to motivate time-, platform-, topic-, and genre-specific evaluation of sentiment and readability measures.
+- **Misuse / overclaim:** Do not call the 2024 corpus AI-authored, treat temporal association as AI causation, convert the reported statistics into document thresholds, claim cosine similarity proves intent preservation, or infer that one post was AI-mediated.
+- **Unsupported use:** The paper does not validate #4 promotional language, #24 generic positive conclusions, a universal positivity tell, a universal readability or sentence-variance cutoff, a stable `ChatGPT-4` signature, model attribution, an AI-use prevalence estimate, or an authorship detector.
+- **Underused evidence:** The project has strong written preservation rules but no bound source-versus-rewrite assessment that checks newly added prescriptions, stance, solutions, calls to action, or political framing against the original.
+- **Patterns left on the table:** The refusal counterexample, the two-pair selection and model-version uncertainty, the near-zero sentence-variance effect, the abstract/body percentage conflict, citation mismatches, and the distinction between added stance and neutrality collapse were absent from the prior card.
 
 ## Matched patterns / rules
 
-- #4 promotional language
-- #24 generic positive conclusions
-- #37 neutrality / stance context
-- #41 social-media and political-communication genre context
-- rewrite semantic-preservation process
+- `human-eyes/references/process.md`, “Preserve meaning,” and `human-eyes/references/voice.md`, “Preserve the source”: direct guidance coverage for preserving argument, stance, facts, point of view, genre, uncertainty, and source-closed material; neither supplies an automated paired comparator.
+- #37 `neutrality_collapse` and `human-eyes/scripts/judgement.json` `neutrality_collapse`: adjacent source-bound stance concern, but the live assessment reads one document and only flags hedging or flattening. The two direct rewrites add prescriptions rather than neutralising the source, so they challenge the one-way frame.
+- #4 `no-promotional-language` and #24 `no-generic-conclusions`: the four exact source fragments produced zero candidates and clear outcomes in focused surface-only runs. The prior mappings are retired.
+- #31a `no-unicode-flair`: the ballot emoji in the first rewrite was recognised as one candidate but remained below the aggregate finding threshold; the flag emoji in the second was not recognised. These are quoted social-media examples and not evidence for a general formatting rule.
+- #41 `genre_specific`: relevant process coverage for verifying academic citations, DOI, figures, data consistency, and evidentiary support; it does not measure the paper's temporal effects.
+- #52 `sentence-length-variance`: conceptually adjacent but not equivalent. It computes within-document sentence-word-count standard deviation for prose of 100+ words; the paper reports an aggregate, unspecified sentence-variance measure across tweet corpora.
+- #53 `vocabulary-diversity`: not coverage for average word length or Flesch-Kincaid grade level; it computes type-token ratio on documents of 150+ words.
 
 ## Associated hypotheses
 
-- H12 genre-aware threshold calibration
-- H24 register-specific vocabulary density
-- H25 model-family and time-specific residue
+- H2 comparison-engine product reframe: relevant possible home for source-versus-rewrite divergence, but no live comparator exists.
+- H12 genre-aware threshold calibration: relevant to political social media, post length, platform, topic, and time controls.
+- H25 model-family versus generic-AI residue: relevant because `ChatGPT-4` is not a reproducible build identifier and policy behaviour changes over time.
+- H20 severity calibration of agent-judgement items: relevant to testing whether #37 can accurately describe source-bound stance changes rather than standalone balance.
+
+## Questions / follow-up
+
+- Ask the authors for the exact 2024 sampling procedure, preprocessing code, bot/retweet and language handling, TextBlob's role, sentence-variance definition, confidence intervals, cosine implementation, complete rewrite-attempt count, selection rule, exact ChatGPT model/version/date/settings, and code or data availability.
+- Seek a correction or later revision for the abstract/body sentiment percentages, Figure 1 caption/content mismatch, reference 4 detector-F1 pointer, reference 10 Meltwater pointer, reference 11 AI-readability pointer, Hohenstein and Jung year mismatch, unplotted readability maxima, and “increase in readability scores” wording.
+- Directly review references 6-8 before using their attributed predictable-writing, smart-reply-positivity, or emotional-clarification claims. Require author correction or identification and direct review of the actually intended sources before using the detector-F1 or AI-readability assertions; do not infer that reference 10 was intended for detector F1.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | DOI 10.1145/3701716.3717543; arXiv:2504.19556v1; prior snapshot `191bf4e0` | `snapshots/archive/sussman-carter-ai-mediated-communication/2026-07-14-191bf4e0.md` | 2026-07-14 | `191bf4e0aae7a0e6bec24ed6d79fffd1953e6eecc973fee24f04cc3d6675f79b` |
+| current | DOI 10.1145/3701716.3717543; arXiv:2504.19556v1 | `snapshots/sussman-carter-ai-mediated-communication.md` | 2026-07-17 | `143cabe08e9fa50201050114fc172ff31ad08b6ca7d48bd8e89dcaa203cb7dfc` |
+
+The preserved PDF SHA-256 `893ee1a413f1f8f3ccc844c89433b4ee3188bf3a82122c2eeb7096b0a80a112b` matches the PDF digest recorded in the previous snapshot. The source revision is unchanged; this update adds complete template provenance, an authoritative PDF attachment, claim-keyed evidence boundaries, live implementation checks, decision states, and independent review.
+
+## Decision history
+
+- The prior unkeyed recommendations to add the paper to #4, expand #24, and associate the examples with #37 had no recorded user decision or implementation status. Current C12, C15, and C20 supersede them: focused runs found no #4 or #24 candidates, while the examples challenge #37's one-way stance-erasure frame. No product implementation is recorded or removed.
+- The prior generic recommendations to consider rewrite fidelity and treat sentiment, readability, and rewrite magnitude as research measures remain recognizable in C03-C05, C08-C09, C12-C13, and C18, but the evidence and limits are materially expanded. Their current recommendations are reset to `pending` and `not started`.
+
+## Project coverage
+
+This is the authoritative review table. Statistical changes are aggregate, time-, topic-, and platform-bound associations; none is an individual-document authorship rule.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: The study compares 970,919 Trump-related 2020 posts with 20,000 Trump-related 2024 posts from matched October 15-November 8 election windows but different acquisition sources. | Direct method; same platform, topic, and seasonal window, but unequal samples from Kaggle and Meltwater with no matched authors/posts or reported random sampling rule. | **Partly covered:** H12 and `dev/TESTING.md` require genre, source, length, and provenance controls for comparison corpora. | No live political-social-media corpus or sampling audit reproduces this design. | Record the design and require platform, topic, time, source, sampling, and length controls before any project evaluation uses it. | pending | not started |
+| C02: The paper treats 2020 as a human-authored pre-ChatGPT baseline and interprets 2024 differences as potential AI-MC growth. | Direct author assumption and interpretation; neither corpus has post-level AI-use labels, and GPT-3 availability is acknowledged. | **Partly covered:** the product boundary forbids authorship claims, and H25 separates dated/model-specific residue. | The paper cannot quantify AI use or identify AI-mediated posts from temporal membership. | Record the temporal-association boundary; do not use year as an AI label or prevalence estimate. | pending | not started |
+| C03: Mean Flesch-Kincaid Grade Level fell from 10.24 (`SD = 5.80`) to 10.04 (`SD = 5.55`), `t(990,917) = 4.79`, `p < .001`; the practical mean difference was 0.20. | Direct aggregate result with author-described modest practical change; confidence interval is not reported. | **Not covered:** #52 measures sentence-length SD within one longer document, not Flesch-Kincaid grade level across tweet corpora. | No register-calibrated readability evaluation exists, and tweets are often too short for stable document scores. | Record as a corpus-evaluation candidate only; do not add a document check or threshold. | pending | not started |
+| C04: The 2024 readability distribution had a maximum of 50.9 versus 575.2 in 2020, and 95% of 2024 posts fell between -3.1 and 50.9; the authors call extreme-value compression the strongest AI-MC evidence. | Direct descriptive result plus author interpretation; the paper does not report the comparable 2020 95% interval, outlier validation, or robustness analysis. Rendered Figure 1's Flesch-Kincaid x-axis ends around 30, so neither stated maximum is visible or verifiable in the plot. | **Not covered:** no live check compares corpus-level Flesch-Kincaid tails; #52 is a different within-document metric. | A single extreme maximum may reflect malformed, very short, or preprocessing-sensitive posts rather than AI mediation, and the displayed figure cannot validate the tail claim. | Require raw-data outlier inspection, matched-length controls, robust quantiles, and a human comparison before considering this measure. | pending | not started |
+| C05: Mean polarity rose from `0.044 ± 0.254` to `0.115 ± 0.284`, a reported `163.4%` increase with Cohen's `d = 0.281`. | Direct VADER aggregate result; moderate reported effect, no post-level AI labels, and political/time confounds remain. | **Not covered:** #4 matches stock promotional wording, not sentiment; no live sentiment-density check exists. | Standalone positivity can be deliberate, human, topical, or event-driven. | Keep as source-bound aggregate evaluation evidence; do not add a generic positivity or authorship rule. | pending | not started |
+| C06: The abstract reports neutral posts falling `54.8%` to `39.8%` and positive posts rising `28.6%` to `45.9%`, while section 2.3.2 reports neutral `62.9%` to `49.4%` and strongly positive `4.4%` to `8.1%`. | Direct source-internal conflict; category thresholds or alternate analysis bases are not explained. | **Partly covered:** #41 requires figure/data consistency checks; no product metric uses these percentages. | The two sets cannot be merged or selected without clarification. | Preserve both reported versions and seek author correction; use neither as a project threshold. | pending | not started |
+| C07: Strongly negative sentiment fell from `2.1%` to `1.7%`, and the 2024 polarity distribution had new peaks between `0.5` and `0.8`. | Direct descriptive distribution result; `p < .001` is reported for asymmetrical shifts, but exact test, bin thresholds, and uncertainty by bin are not supplied. | **Not covered:** no live polarity-distribution check exists. | Political events, sampling, and audience composition can change distribution tails independently of AI. | Record as a replication question with preregistered bins and matched political-social-media controls. | pending | not started |
+| C08: Average word length fell `6.6%`, from `7.188 ± 2.615` to `6.715 ± 1.995`, with Cohen's `d = -0.182`. | Direct aggregate result; small effect and measurement units/tokenization are not specified. | **Not covered:** #53 measures type-token ratio, not characters or syllables per word. | No human/AI labels, length-matched control, tokenizer definition, or register baseline supports a document rule. | Record as a bounded corpus feature; take no checker action. | pending | not started |
+| C09: Sentence variance fell `3.6%`, from `44.660 ± 73.059` to `43.038 ± 61.099`, with Cohen's `d = -0.022`. | Direct aggregate result; the near-zero effect and unspecified sentence-variance definition sharply limit practical meaning. | **Partly covered:** #52 measures sentence-word-count standard deviation and skips short texts, but does not implement this corpus statistic. | The paper's measure, unit, segmentation, and tweet-length handling are not reproducible from the text. | Treat the near-zero effect as a material null/practical counterweight; do not use it to validate #52. | pending | not started |
+| C10: The paper states that all polarity, word-length, and sentence-variance changes are significant with non-overlapping confidence intervals. | Direct author statement; numeric intervals and the underlying tests for the linguistic markers are not reported, and no multiple-comparison treatment is named. | **Partly covered:** #41 and the source-ingest evidence rules require statistical and figure verification. | The claim cannot be independently checked from the paper and should not override small effect sizes. | Record the unreported intervals and tests; require code or numeric results before reuse. | pending | not started |
+| C11: The manual inspection prompts `ChatGPT-4` to rewrite posts “to improve for clarity and engagement” and presents two successful original/rewrite pairs. | Direct prompt fragment and examples; model build, date, parameters, repetitions, attempted-post count, and pair selection are absent. | **Partly covered:** H25 requires model/version metadata; `process.md` and `voice.md` preserve source meaning during rewrites. | `ChatGPT-4` is not a reproducible model identifier, and two selected examples do not establish frequency. | Retain the pairs as qualitative evaluation fixtures only after licensing review; require exact generation provenance for any new reproduction. | pending | not started |
+| C12: Both displayed rewrites add a political prescription or future-oriented call to action absent from the original, and also change hashtags or add emoji. | Direct paired examples and author qualitative interpretation; `2/2` applies only to displayed examples, not all attempted rewrites. | **Partly covered:** `process.md` and `voice.md` forbid source-absent facts, opinions, consequences, and stance changes. Focused surface runs produced zero #4 and #24 candidates; #31a recognised one ballot-emoji candidate without an aggregate finding. | The live Audit has no bound original/rewrite comparator for added solutions, prescriptions, or calls to action. | Evaluate a source-bound preservation assessment for added prescriptions and stance; do not expand #4, #24, or #31a from two quoted posts. | pending | not started |
+| C13: The two pairs have cosine similarities `0.376` and `0.398` (`M = 0.387`, `SD = 0.015`, `n = 2`); the paper interprets them as stable restructuring, approximately `60-63%` modification, and preserved intent. | Direct numeric results plus author interpretation; only two observations, no implementation or embedding/token method, and no independent semantic-fidelity label. The percentage construction is one minus each cosine value, not a validated content-change measure. | **Not covered:** H2 proposes comparative output, but no live semantic comparator or cosine threshold exists. | Cosine distance is not a literal percentage of content modified and cannot prove preservation when new prescriptions appear. | Record the values but reject a rewrite-magnitude or semantic-preservation threshold; validate future comparators on human-judged matched pairs. | pending | not started |
+| C14: At least one political rewrite request was refused with a message declining assistance aimed at influencing political opinions or actions. | Direct quoted counterexample; attempted count, model build, prompt context, and whether refusal occurred before or after the two successful pairs are not reported. | **Not covered:** no live pattern or process rule treats one model-policy refusal as prose evidence. | Policy behaviour is version- and context-dependent, and refusal frequency cannot be estimated. | Preserve as a counterexample to universal rewrite availability; take no product action. | pending | not started |
+| C15: The successful examples add a more prescriptive stance rather than neutralising the source, through leadership, unity, and next-step appeals. | Direct paired examples for added prescriptions and future-oriented calls to action; frequency beyond the two examples is unknown. Their wording may read as positive-framed, but the paper reports no pair-level sentiment scores, so increased positivity is reviewer interpretation rather than a measured pair result. | **Challenges current behaviour; partly covered:** #37 and `neutrality_collapse` flag hedging or balance in one text, while `process.md` and `voice.md` require stance preservation. | Stance drift can add, intensify, reverse, or erase a position; a one-document neutrality assessment cannot establish change from source. | Evaluate #37 and future preservation checks on bound source/rewrite pairs covering bidirectional stance changes before changing wording or severity. | pending | not started |
+| C16: Platform dynamics, the communication style around one political figure, political climate, and audience behaviour may explain the temporal differences; the authors call for extension and replication. | Direct limitations and appropriate causal qualification. | **Partly covered:** H12 and `dev/TESTING.md` require register, genre, source, and provenance controls; product wording rejects authorship inference. | The current source card previously foregrounded findings without enough confound detail. | Keep every reuse explicitly platform-, topic-, election-, and period-bound; require replication before promotion. | pending | not started |
+| C17: Predictable-writing, smart-reply-positivity, and emotional-clarification assertions are attributed to references 6-8. The detector-F1 statement points to unrelated reference 4; the AI-authorship-readability statement points to general readability reference 11; and concealed-origin susceptibility is an untested author interpretation rather than a measured or clearly cited result. | References 6-8 are indirect evidence and require their own review. The other statements are unsupported or miscited within this paper and must not be upgraded to inherited findings. | **Fully covered as evidence policy:** #41 and the source-ingest contract require direct source verification before promotion. | Upstream scope and methods remain unresolved; miscited and uncited assertions have no adequate evidence route from this source. | Do not promote indirect, unsupported, or miscited claims from this card; open separate source reviews only if Mae requests them. | pending | not started |
+| C18: The aggregate corpus results and two rewrites do not validate a document-level classifier, authorship verdict, or AI-MC prevalence estimate. | Reviewer boundary derived from the study design and acknowledged confounds; consistent with direct methods and limits. | **Fully covered:** project and testing guidance separate surface patterns from authorship and require source-bound, complete evaluation. | The paper's own language sometimes moves from association to increased AI-MC presence, which the design cannot isolate. | State the no-authorship, no-prevalence, and no-causality boundary wherever this source is cited. | pending | not started |
+| C19: The paper has material reporting inconsistencies: sentiment percentages differ between abstract and body; Figure 1 contains Flesch-Kincaid and polarity panels but its caption names only Flesch-Kincaid; its readability x-axis ends around 30 and does not show the stated maxima; detector F1 points to unrelated reference 4; Meltwater points to detector paper reference 10; AI-authorship readability points to Flesch 1948 reference 11; “Hohenstein & Jung, 2020” conflicts with reference 7's 2018 date; TextBlob's role is unclear; and the conclusion says readability scores increased although mean grade level decreased. | Direct full-text provenance and consistency review; no corrected revision was found in the arXiv v1 metadata. | **Fully covered as review behaviour:** #41 instructs academic figure, data, DOI, date, and citation verification. | The unresolved issues reduce confidence in secondary summaries and exact reuse. | Keep the discrepancies visible, seek correction, and do not silently harmonise them. | pending | not started |
+| C20: The source revision is unchanged since the prior record, but the prior #4 and #24 mappings and unqualified #37 framing do not match the live implementations or the full evidence boundary. | Direct update comparison plus focused surface-only runs on all four exact original/rewrite fragments. | **Challenges prior documentation:** `no-promotional-language` and `no-generic-conclusions` each returned clear with zero candidates on all fragments; #37 covers only one-way neutrality. | Prior catalogue mappings could imply executable or conceptual support the source does not supply. | Retire #4/#24 support, retain #37 only as a challenged adjacent stance concern, and make no product change without Mae's decision. | pending | not started |
+
+## Recommendations
+
+- C01: Record the comparison design and require source, sampling, platform, topic, time, length, and genre controls in any replication.
+- C02: Keep year separate from AI-use labels and prevalence.
+- C03: Retain Flesch-Kincaid only as a corpus-evaluation candidate.
+- C04: Require robust outlier and matched-length analysis before using readability-tail compression.
+- C05: Do not add a generic positivity or promotional rule from mean polarity.
+- C06: Preserve both conflicting percentage sets and seek correction.
+- C07: Replicate polarity bins with explicit definitions and political-social-media controls.
+- C08: Record average word length as a bounded corpus feature with no checker action.
+- C09: Treat the near-zero sentence-variance effect as counterweight, not #52 validation.
+- C10: Require reported tests, intervals, and code before reusing the all-significant claim.
+- C11: Keep the two rewrite pairs qualitative and require exact model/run provenance for reproduction.
+- C12: Evaluate source-bound added prescriptions and stance; do not expand #4, #24, or #31a.
+- C13: Do not interpret cosine similarity as percent modified or proof of semantic preservation.
+- C14: Record the refusal as a version-bound counterexample and take no product action.
+- C15: Evaluate bidirectional stance drift on bound pairs before changing #37.
+- C16: Preserve platform, topic, election, audience, and period limits in every reuse.
+- C17: Do not promote indirect, unsupported, or miscited claims without the required direct evidence or source correction.
+- C18: Preserve the no-authorship, no-prevalence, and no-causality boundary.
+- C19: Keep all reporting discrepancies visible and seek a corrected source revision.
+- C20: Retire the prior #4/#24 mappings, keep #37 as challenged adjacent coverage, and await Mae's decision.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending recommendation; no product change implemented.
+- C02: not applicable - pending recommendation; no product change implemented.
+- C03: not applicable - pending recommendation; no product change implemented.
+- C04: not applicable - pending recommendation; no product change implemented.
+- C05: not applicable - pending recommendation; no product change implemented.
+- C06: not applicable - pending recommendation; no product change implemented.
+- C07: not applicable - pending recommendation; no product change implemented.
+- C08: not applicable - pending recommendation; no product change implemented.
+- C09: not applicable - pending recommendation; no product change implemented.
+- C10: not applicable - pending recommendation; no product change implemented.
+- C11: not applicable - pending recommendation; no product change implemented.
+- C12: not applicable - pending recommendation; no product change implemented.
+- C13: not applicable - pending recommendation; no product change implemented.
+- C14: not applicable - pending recommendation; no product change implemented.
+- C15: not applicable - pending recommendation; no product change implemented.
+- C16: not applicable - pending recommendation; no product change implemented.
+- C17: not applicable - pending recommendation; no product change implemented.
+- C18: not applicable - pending recommendation; no product change implemented.
+- C19: not applicable - pending recommendation; no product change implemented.
+- C20: not applicable - pending recommendation; no product change implemented.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `/root/sussman_carter_reviewer`; one source only, strictly read-only; initial full review followed by two focused re-checks of material corrections
+- **Findings resolved:** Seven initial material findings corrected unsupported language scope, refusal-attempt wording, Figure 1 interpretation, cosine summary statistics, pair-level positivity directness, cited-versus-miscited evidence categories, citation/year discrepancies, and visibility of readability extremes. One residual focused-review finding corrected three remaining direct-versus-cited passages. The second focused re-check found no residual findings.
+- **Unresolved findings:** none

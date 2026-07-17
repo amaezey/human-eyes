@@ -1,67 +1,20 @@
-Title: AI Detector - Free AI Checker for ChatGPT, GPT-5, Gemini & More
+# Copyleaks AI Detector
 
-URL Source: https://copyleaks.com/ai-content-detector
+- **Canonical URL:** https://copyleaks.com/ai-detector
+- **Alternate access URLs:**
+  - https://copyleaks.com/ai-content-detector (recorded URL; redirects to the canonical URL)
+  - https://r.jina.ai/http://copyleaks.com/ai-detector (reader extraction of the canonical first-party page)
+- **Author / owner:** Copyleaks
+- **Publisher:** Copyleaks
+- **Published:** living product page; current reader metadata reports 2026-07-12
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** none found
+- **Version / revision:** living page rendered 2026-07-15; reader metadata `Published Time: Sun, 12 Jul 2026 06:19:35 GMT`
+- **Extraction method:** complete canonical-page reader Markdown retrieved with `curl`, reduced mechanically to the first-party page's main content, and compared at the beginning, middle, and end with the rendered first-party page; five explanatory first-party image assets and one decorative scale icon downloaded directly with `curl`
+- **Full-text status:** complete
+- **Access and transformation notes:** direct unauthenticated `curl` and a fresh `agent-browser` session both reached a Cloudflare verification page rather than the source; the rendered first-party page was accessible through the browser-reading route and matched the complete reader extraction. Navigation, footer, duplicate carousel text, and decorative icons were excluded. Linked methodology, study-roundup, non-native-English, and Grammarly pages were inspected only to classify directness and scope; they were not ingested into this source snapshot.
 
-Published Time: Mon, 04 May 2026 07:10:14 GMT
-
-Markdown Content:
-# AI Detector - Free AI Checker for ChatGPT, GPT-5, Gemini & More
-[Skip to content](https://copyleaks.com/ai-content-detector#content)
-
-[![Image 1: Copyleaks Logo](https://copyleaks.com/wp-content/uploads/2025/10/copyleaks-logo-navbar.svg)](https://copyleaks.com/)
-*   Products 
-
-PRODUCTS 
-
-[![Image 2: AI Detector Icon](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) AI Detection](https://copyleaks.com/ai-content-detector)
-    *   [AI Text Detector](https://copyleaks.com/ai-content-detector)
-    *   [AI Image Detector](https://copyleaks.com/ai-content-detector/ai-image-detector)
-    *   [Deepfake Detector](https://copyleaks.com/ai-content-detector/deepfake)
-
-[![Image 4: Plagiarism Checker](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Plagiarism Checker](https://copyleaks.com/plagiarism-checker)
-
-[![Image 6: Content Moderation Icon](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Content Moderation](https://copyleaks.com/text-moderation)
-    *   [Text Moderation](https://copyleaks.com/text-moderation)
-
-[![Image 8: Grammar Checker Icon](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Grammar Checker](https://copyleaks.com/grammar-checker)
-
-INTEGRATIONS 
-
-[![Image 10: API Integration Icon](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) API Integration](https://copyleaks.com/api)[![Image 12: LMS Integration Icon](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) LMS Integration](https://copyleaks.com/learning-management-systems)[![Image 14: Browser Extension Icon](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Browser Extension](https://copyleaks.com/ai-content-detector/extension)[![Image 16: Google Docs Add-on Icon](blob:http://localhost/981b7665705e29cfdbe3cc33064344e7) Google Docs Add-on](https://workspace.google.com/marketplace/app/ai_and_plagiarism_checker_copyleaks/484212953959)
-
-*   Solutions EDUCATION [![Image 18](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Academic Integrity](https://copyleaks.com/academic-integrity)[![Image 20](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Title IV Fraud](https://copyleaks.com/title-four-ai-fraud-detection) DEVELOPERS [![Image 22](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) AI Model Training](https://copyleaks.com/ai-model-training-data)[![Image 24](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Code Governance & Compliance](https://copyleaks.com/governance-risk-and-compliance)  ENTERPRISE [![Image 26](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) GenAI Governance & Compliance](https://copyleaks.com/governance-risk-and-compliance)[![Image 28](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Unauthorized LLM Usage](https://copyleaks.com/unauthorized-llm-usage)[![Image 30](blob:http://localhost/4e38c5e92f9a00bc3a5d7d37cf133d56) Image Fraud Prevention](https://copyleaks.com/image-fraud-prevention)  MEDIA & PUBLISHING [![Image 32](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) IP & Copyright](https://copyleaks.com/ip-and-copyright)[![Image 34](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) GenAI Governance & Compliance](https://copyleaks.com/governance-risk-and-compliance)[![Image 36](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Unauthorized LLM Usage](https://copyleaks.com/unauthorized-llm-usage)    
-*   [Pricing](https://copyleaks.com/pricing)
-*   Resources 
-
-RESOURCES 
-
-    *   [![Image 38](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Blog](https://copyleaks.com/blog)
-    *   [![Image 40](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) AI Detection Hub](https://copyleaks.com/ai-detection-hub)
-    *   [![Image 42](blob:http://localhost/4e38c5e92f9a00bc3a5d7d37cf133d56) Testimonials](https://copyleaks.com/testimonials)
-    *   [![Image 44](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Case Studies](https://copyleaks.com/success-stories)
-    *   [![Image 46](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Knowledge Base](https://copyleaks.com/knowledge-base)
-
-    *   [![Image 48](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) AI Logic](https://copyleaks.com/ai-content-detector/ai-logic)
-    *   [![Image 50](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Help Center](https://help.copyleaks.com/?_gl=1*lolefr*_gcl_au*NzMwNTUxOTk0LjE3NjA0NjM1MjY.*_ga*MjE4NTE3NTQzLjE3NTk5NDgxNDE.*_ga_MBTGG7KX5Y*czE3NjA0ODY4MDckbzYkZzEkdDE3NjA0ODg2MzkkajU5JGwwJGgxNjU1MzY0MDY0)
-    *   [![Image 52](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) API Documentation](https://docs.copyleaks.com/)
-    *   [![Image 54](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Glossary](https://copyleaks.com/ai-glossary)
-    *   [![Image 56](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Podcast: The Original Source](https://copyleaks.com/the-original-source-podcast)
-
-TESTING METHODOLOGIES 
-    *   [![Image 58](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) AI Text Detection](https://copyleaks.com/ai-content-detector/testing-methodology)
-    *   [![Image 60](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) AI Image Detection](https://copyleaks.com/ai-content-detector/ai-image-detector/testing-methodology)
-    *   [![Image 62](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Text Moderation](https://copyleaks.com/text-moderation/testing-methodology)
-
-COMPANY 
-    *   [![Image 64](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) About Us](https://copyleaks.com/about-us)
-    *   [![Image 66](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Press Center](https://copyleaks.com/about-us/news)
-    *   [![Image 68](blob:http://localhost/600cc6fb3edd5b813eddb90d1f5f8932) Careers](https://copyleaks.com/careers)
-
-[Login](https://app.copyleaks.com/dashboard/v1)[Get a Demo](https://copyleaks.com/book-a-demo)[Start for Free](https://app.copyleaks.com/signup)
-
-[Home](https://copyleaks.com/fr/) 〉**AI Detector**
-
-[Home](https://copyleaks.com/fr/) 〉**AI Detector**
+## Full text
 
 # AI Detector
 
@@ -79,19 +32,19 @@ With over 30 supported languages and detection for ChatGPT, Gemini, Claude, and 
 
 With the AI Detector and award-winning [Plagiarism Checker](https://copyleaks.com/plagiarism-checker), Copyleaks provides the ultimate content integrity suite.
 
-![Image 70: AI Detector Header](blob:http://localhost/91651525ed4d56cfec25f588243ee92f)
+![AI Detector report header reading "AI Content Found"](attachments/copyleaks-detector/text-header-example.svg)
 
-![Image 72](blob:http://localhost/db03512bb55b83fbdd9b365e3c48e7a8)
+![Example AI-content percentage reading 80%](attachments/copyleaks-detector/ai-percentage.svg)
 
-![Image 74: AI text highlighting example](blob:http://localhost/14b08eec4365512153670219682dccf3)
+![Example text with phrases highlighted as AI-like](attachments/copyleaks-detector/ai-text-example.svg)
 
-![Image 76: AI Logic](blob:http://localhost/da2847ed96d811e4c534a2642b8fac1e)
+![AI Logic example showing an 80% score, source matches, and phrase-frequency output](attachments/copyleaks-detector/ai-logic.webp)
 
 ## **AI Logic:** Detection. Source-backed insights. Confidence.
 
 AI Logic demystifies detection by showing you why text has been flagged as AI-generated. AI Phrases identify text that appears in the document, displaying the statistical frequency with which it originates from AI, rather than human-generated sources. And AI Source Match identifies when any part of the submitted text already appears in content published elsewhere.
 
-Learn more about [AI Logic](https://copyleaks.com/ai-content-detector/ai-logic).
+Learn more about [AI Logic](https://copyleaks.com/ai-detector/ai-logic).
 
 ## AI Detector Extensions & Integrations
 
@@ -113,7 +66,7 @@ Quickly detect AI-written content as you work and maintain originality throughou
 
 ### Enterprise AI Detection via API
 
-[Learn More](https://copyleaks.com/api)
+[Learn More](https://copyleaks.com/api/ai-detector)
 
 Integrate Powerful AI Detection Into Your Own Workflow
 
@@ -129,13 +82,13 @@ Simple LMS integration empowers student learning and originality while keeping e
 
 ## Use The AI Detector Across Multiple Languages
 
-Copyleaks boasts one of the largest language databases for AI content detection, supporting over 30 languages with low false-positive rates for [non-native English text](https://copyleaks.com/blog/accuracy-of-ai-detection-models-for-non-native-english-speakers). Whether you’re scanning content in English, French, German, Italian, Portuguese, Spanish, Japanese, Chinese (Simplified and Traditional), Russian, Dutch, or beyond, you can trust our AI Detector to deliver consistent, reliable results.
+Copyleaks boasts one of the largest language databases for AI detection, supporting over 30 languages with low false-positive rates for [non-native English text](https://copyleaks.com/blog/accuracy-of-ai-detection-models-for-non-native-english-speakers). Whether you’re scanning content in English, French, German, Italian, Portuguese, Spanish, Japanese, Chinese (Simplified and Traditional), Russian, Dutch, or beyond, you can trust our AI Detector to deliver consistent, reliable results.
 
 We continually retrain and refine our models to stay ahead of evolving AI technologies, particularly in the languages most widely used globally. That means accuracy you can count on, no matter the context or language.
 
 Backed by rigorous testing, our technology leads the industry in multilingual accuracy, ensuring you can detect AI-generated content and verify originality across borders. The graphic to the right illustrates how our latest model performs in our most commonly used languages.
 
-Want to dive deeper? Explore our [AI Detector Testing Methodology](https://copyleaks.com/ai-content-detector/testing-methodology).
+Want to dive deeper? Explore our [AI Detector Testing Methodology](https://copyleaks.com/ai-detector/testing-methodology).
 
 English:
 
@@ -163,7 +116,7 @@ Spanish:
 
 ## How to Use Copyleaks AI Detector
 
-![Image 78: next slide](blob:http://localhost/811ff830522573fb535a0544bf280a42)![Image 80: next slide](blob:http://localhost/811ff830522573fb535a0544bf280a42)
+![Image 81: next slide](blob:http://localhost/811ff830522573fb535a0544bf280a42)![Image 83: next slide](blob:http://localhost/811ff830522573fb535a0544bf280a42)
 
 ### **Step 1:** Add Your Content
 
@@ -198,7 +151,7 @@ Key features include:
 
 **Re-scan your text:** Make edits and run another scan to see how your changes impact the results.
 
-![Image 82: checkmark](blob:http://localhost/f32186491cb3a103f697fe7daed5a3e1)
+![Image 85: checkmark](blob:http://localhost/f32186491cb3a103f697fe7daed5a3e1)
 
 ### **Step 1:** Add Your Content
 
@@ -233,23 +186,23 @@ Key features include:
 
 **Re-scan your text:** Make edits and run another scan to see how your changes impact the results.
 
-![Image 84: checkmark](blob:http://localhost/f32186491cb3a103f697fe7daed5a3e1)
+![Image 87: checkmark](blob:http://localhost/f32186491cb3a103f697fe7daed5a3e1)
 
 ## Use the Best AI Detector
 
-![Image 86: graph](blob:http://localhost/0d62f8e0e5b1e90f468877d805427c4a)
+![Decorative accuracy-scale icon](attachments/copyleaks-detector/scale.svg)
 
 ### Most Accurate AI Detection Tool
 
 With over 99% accuracy and an industry-low .03% false positive rate, Copyleaks leads the field in trusted detection.
 
-![Image 88: Implementation](blob:http://localhost/db1d4640dc43c37661291652b7445f88)
+![Image 91: Implementation](blob:http://localhost/db1d4640dc43c37661291652b7445f88)
 
 ### Highest Free Scan Limit
 
 Scan up to 25,000 characters for free—more than any other major AI detector on the market.
 
-![Image 90: sliders](blob:http://localhost/7db2fec77a85fe06c46101fc8d6b4982)
+![Image 93: sliders](blob:http://localhost/7db2fec77a85fe06c46101fc8d6b4982)
 
 ### Get Even More Scans with a Free Account
 
@@ -261,27 +214,27 @@ Copyleaks uses a combination of linguistic modeling, deep learning, and our prop
 
 Our Process:
 
-*   Trained on trillions of human-written documents 
+*   Trained on trillions of human-written documents
 
-*   Identifies statistical patterns left behind by LLMs 
+*   Identifies statistical patterns left behind by LLMs
 
 *   Separates AI-generated text from human input, even when mixed
 
-![Image 92: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
+![Image 95: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
 
-![Image 94: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
+![Image 97: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
 
-![Image 96: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
+![Image 99: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
 
-![Image 98: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
+![Image 101: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
 
-![Image 100: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
+![Image 103: Llama](blob:http://localhost/1b9a9c92552bf295d9423fb388673cac)
 
 ### ChatGPT Detection & Beyond
 
 Go beyond a simple ChatGPT detector—get detection for all AI models, including Gemini, Claude, DeepSeek, and any new models as they are released.
 
-![Image 102](blob:http://localhost/3b2406383bee0dece68b816148e43503)
+![Image 105](blob:http://localhost/3b2406383bee0dece68b816148e43503)
 
 ### Plagiarism & Paraphrased AI Detection
 
@@ -289,13 +242,13 @@ Have complete visibility of your content, identifying potential plagiarism or pa
 
 ### Looking for an API or LMS solution?
 
-[Talk to Sales](https://copyleaks.com/book-a-demo)
+[Talk to Sales](http://copyleaks.com/book-a-demo)
 
-![Image 104](blob:http://localhost/47656b018cf0db9970ab665cb93ecfe8)
+![AI Detector report example showing a 100% score, source matches, and 44 AI phrases](attachments/copyleaks-detector/ai-detector-report.webp)
 
 ### Detect AI with Unprecedented Accuracy
 
-The AI Content Detector is trained to recognize human writing patterns, flagging text as potential generative AI when it detects deviations from known human patterns and specific AI signals.
+The AI Detector is trained to recognize human writing patterns, flagging text as potential generative AI when it detects deviations from known human patterns and specific AI signals.
 
 ## It’s Not AI Evasion—It’s AI Education
 
@@ -387,7 +340,7 @@ Learn how Oakland University adopted Copyleaks and changed the conversation arou
 
 [Read Full Case Study](https://copyleaks.com/case-studies/oakland-university)
 
-![Image 106: Oakland University](blob:http://localhost/c2eed052d883bfb3dddf698de36a3e8f)
+![Image 109: Oakland University](blob:http://localhost/c2eed052d883bfb3dddf698de36a3e8f)
 
 ### Campaign KPIs
 
@@ -395,17 +348,17 @@ Ease of use & Integration, Cost-effectiveness, Customer Support, Security
 
 ## Get Started Today With the **Copyleaks AI Detector Tool**
 
-[Get a Demo](https://copyleaks.com/book-a-demo)
+[Get a Demo](http://copyleaks.com/book-a-demo)
 
 ## AI Detection FAQs
 
-### [How does AI detection work?](https://copyleaks.com/ai-content-detector)
+### [How does AI detection work?](http://copyleaks.com/ai-detector)
 
 When a Large Language Model writes a sentence, it uses all its pre-training data to create a response or an output based on statistical modeling. AI detectors can recognize this pattern and flag certain content as AI-generated because it significantly differs from the way humans write.
 
 AI detectors can be trained on human-written content samples, so the presence of an AI text generator becomes clearer compared to human writing.
 
-### [What models can the AI Detector detect?](https://copyleaks.com/ai-content-detector)
+### [What models can the AI Detector detect?](http://copyleaks.com/ai-detector)
 
 Copyleaks can detect content from:
 
@@ -420,7 +373,7 @@ Copyleaks can detect content from:
 
 …and more.
 
-### [Does Copyleaks offer a free AI detector?](https://copyleaks.com/ai-content-detector)
+### [Does Copyleaks offer a free AI detector?](http://copyleaks.com/ai-detector)
 
 Every new user receives a limited number of free credits to explore our AI and plagiarism detection tools before committing to a paid plan.
 
@@ -428,17 +381,17 @@ Our Personal and Pro plans both include full access to AI detection, plagiarism 
 
 For education institutions or enterprise teams that require API access, LMS integration, or customized pricing, please contact our sales team to discuss a tailored solution.
 
-### [How was the Copyleaks AI detection model trained?](https://copyleaks.com/ai-content-detector)
+### [How was the Copyleaks AI detection model trained?](http://copyleaks.com/ai-detector)
 
 Using AI technology, the detector can accurately recognize AI-generated text and the signals it leaves behind, adding a layer of accuracy.
 
-Learn more about our [AI Detector testing methodologies](https://copyleaks.com/ai-content-detector/testing-methodology).
+Learn more about our [AI Detector testing methodologies](https://copyleaks.com/ai-detector/testing-methodology).
 
-### [What is the best AI Detector?](https://copyleaks.com/ai-content-detector)
+### [What is the best AI Detector?](http://copyleaks.com/ai-detector)
 
 Copyleaks is an industry leader in accuracy, scalability, integration, and security.
 
-Several significant differences exist between our AI content detection tool and the rest of the market. For example:
+Several significant differences exist between our AI detection tool and the rest of the market. For example:
 
 *   We use large-scale, credible data with machine learning to understand text patterns, resulting in over 99% accuracy.
 *   We offer seamless API and LMS integrations.
@@ -446,21 +399,21 @@ Several significant differences exist between our AI content detection tool and 
 *   Our AI checker doesn’t flag non-AI features of Grammarly, like spell check and grammar, unlike other tools.
 *   All Copyleaks products are fully GDPR-compliant and certified to SOC 2 and SOC 3 standards.
 
-### [Why is there a minimum and maximum text requirement for some AI Detector content scans?](https://copyleaks.com/ai-content-detector)
+### [Why is there a minimum and maximum text requirement for some AI Detector content scans?](http://copyleaks.com/ai-detector)
 
 Our models need a certain volume of text to determine AI presence accurately. More characters improve detection confidence.
 
 AI Detector Browser Extension
 
 *   Minimum: 350 characters
-*   Maximum: 25,000 characters 
+*   Maximum: 25,000 characters
 
 AI Detector Web-Based Platform
 
 *   Minimum: 255 characters
 *   Maximum: 2,000 pages (no character max)
 
-### [How Accurate is Copyleaks AI Detector?](https://copyleaks.com/ai-content-detector)
+### [How Accurate is Copyleaks AI Detector?](http://copyleaks.com/ai-detector)
 
 The likelihood of human-written content being mistakenly labeled as AI-generated is .03%—one of the lowest among AI detectors.
 
@@ -470,7 +423,7 @@ We’re committed to digital trust and accuracy. To minimize false positives:
 *   We utilize user feedback to enhance our models.
 *   New model detection is only introduced after extensive testing.
 
-### [What is the most accurate AI detector?](https://copyleaks.com/ai-content-detector)
+### [What is the most accurate AI detector?](http://copyleaks.com/ai-detector)
 
 According to Cornell University, the answer is Copyleaks AI Detector. In July 2023, a study published on arXiv by Cornell Tech researchers declared Copyleaks AI Detector the most accurate for detecting LLM-generated text.
 
@@ -478,7 +431,7 @@ Further independent studies have validated its accuracy and efficiency.
 
 [Read more about these third-party studies](https://copyleaks.com/blog/ai-detector-continues-top-accuracy-third-party).
 
-### [Does the Copyleaks AI Detector flag writing tools like Grammarly as AI content?](https://copyleaks.com/ai-content-detector)
+### [Does the Copyleaks AI Detector flag writing tools like Grammarly as AI content?](http://copyleaks.com/ai-detector)
 
 Not all writing tool features are flagged. Grammarly’s AI-based rewriting features may trigger detection, while basic grammar and spell-check functions typically do not.
 
@@ -486,121 +439,36 @@ The AI Detector is designed to distinguish between minor edits and generative re
 
 [Read the full analysis blog post here](https://copyleaks.com/blog/do-grammar-checkers-get-flagged-as-ai).
 
-### [What data protection does Copyleaks have?](https://copyleaks.com/ai-content-detector)
+### [What data protection does Copyleaks have?](http://copyleaks.com/ai-detector)
 
 At Copyleaks, we prioritize data privacy and compliance. Current certifications include:
 
 *   SOC2 & SOC3
 *   GDPR
 *   PCI DSS
-*   NIST RMF 
+*   NIST RMF
 
 Visit our[Compliance and Certifications](https://copyleaks.com/compliance-certifications) and [Security Practices](https://copyleaks.com/security-practices) pages to learn more.
 
-### [Can the AI Detector detect mixed text where human-created text has been amended with AI-generated text?](https://copyleaks.com/ai-content-detector)
+### [Can the AI Detector detect mixed text where human-created text has been amended with AI-generated text?](http://copyleaks.com/ai-detector)
 
 Yes. Our detection report identifies specific elements written by humans and distinguishes them from AI-generated text, even when mixed.
 
-![Image 108: Copyleaks logo](blob:http://localhost/322256b1a078b13788bc103f508d0bbf)
+## Extraction verification
 
-115 E 23rd St., 7th Fl
+- **Beginning checked:** the canonical redirect, heading, 99% headline, mixed-human/AI claim, language scope, and four AI Logic image assets were compared with the rendered first-party page.
+- **Middle checked:** the six displayed language pairs, scan limits, four named linguistic/statistical feature families, score/revision workflow, `.03%` false-positive claim, training description, model list, and mixed-text language matched the rendered page.
+- **End checked:** the audience and enterprise sections, sensitivity claim, full FAQ sequence, 255/350-character minima, 2,000-page maximum, Grammarly qualification, security list, and mixed-text answer matched the rendered page.
+- **Structure checked:** one main heading, 13 product-page sections, 11 FAQ questions, all claim-bearing lists and numeric tables, and the main-content end were checked. The reader repeated the four-step carousel once; the duplicate is retained because it is present in the accessible extraction but counted once analytically.
+- **Known omissions:** page navigation, footer, cookie controls, duplicate language navigation, and decorative client-generated carousel/checkmark/model-logo/Oakland-logo icons. No claim-bearing prose, numeric table, caption, or explanatory image is known to be omitted.
 
-New York, NY 10010
+## Preserved attachments
 
-[Contact Us](https://copyleaks.com/contact-us)
-
-[![Image 110: SOC II and SOC III compliant badge](blob:http://localhost/bbbfda2f776382891d50ccbf603161f3)](https://copyleaks.com/compliance-certifications#soc2)
-
-[![Image 112: pci dss compliant](blob:http://localhost/9dc07a35676b51bb4c21619bf7d332d8)](https://copyleaks.com/compliance-certifications#pci)
-
-Solutions
-
-[Academic Integrity](https://copyleaks.com/academic-integrity)
-
-[Governance & Compliance](https://copyleaks.com/governance-risk-and-compliance)
-
-[Unauthorized LLM Usage](https://copyleaks.com/unauthorized-llm-usage)
-
-[AI Model Training](https://copyleaks.com/ai-model-training-data)
-
-[IP & Copyright](https://copyleaks.com/ip-and-copyright)
-
-[Code Governance & Compliance](https://copyleaks.com/code-governance-and-compliance)
-
-[LLM audit](https://copyleaks.com/llm-audit)
-
-[Title IV Fraud](https://copyleaks.com/title-four-ai-fraud-detection)
-
-Products
-
-[AI Detector](https://copyleaks.com/ai-content-detector)
-
-[AI Image Detector](https://copyleaks.com/ai-content-detector/ai-image-detector)
-
-[Plagiarism Checker](https://copyleaks.com/plagiarism-checker)
-
-[Grammar Checker](https://copyleaks.com/writing-assistant)
-
-[Text Moderation](https://copyleaks.com/text-moderation)
-
-Integrations
-
-[API Integration](https://copyleaks.com/api)
-
-[LMS Integration](https://copyleaks.com/learning-management-systems)
-
-[Browser Extension](https://copyleaks.com/ai-content-detector/extension)
-
-[Copyleaks for Google Docs](https://workspace.google.com/marketplace/app/ai_and_plagiarism_checker_copyleaks/484212953959)
-
-Company
-
-[About Us](https://copyleaks.com/about-us)
-
-[News & Media](https://copyleaks.com/about-us/media)
-
-[Careers](https://copyleaks.com/careers)
-
-[Resellers](https://copyleaks.com/resellers)
-
-[Affiliates](https://copyleaks.com/affiliate)
-
-Resources
-
-[Help Center](https://help.copyleaks.com/)
-
-[Blog](https://copyleaks.com/blog)
-
-[Success Stories](https://copyleaks.com/case-studies)
-
-[AI Detector Testing Methodologies](https://copyleaks.com/ai-content-detector/testing-methodology)
-
-[Text Moderation Testing Methodologies](https://copyleaks.com/text-moderation/testing-methodology)
-
-[Release Notes](https://copyleaks.com/release-notes)
-
-[Linkedin-in](https://www.linkedin.com/company/copyleaks/)[Instagram](https://www.instagram.com/copyleaksai/)[Threads Logo](https://www.threads.net/@copyleaksai)[X-twitter](https://x.com/Copyleaks)[Rss](https://feeds.buzzsprout.com/2310947.rss)
-
-[Accessibility](https://copyleaks.com/accessibility)
-
-[Compliance](https://copyleaks.com/compliance-certifications)
-
-[Security Practices](https://copyleaks.com/security-practices)
-
-[Terms of Use](https://copyleaks.com/termsofuse)
-
-[Privacy Policy](https://copyleaks.com/privacy-policy)
-
-[Manage Cookies](javascript:void(0))
-
-[System Status](https://status.copyleaks.com/)
-
-[![Image 114](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)EN](https://copyleaks.com/ai-content-detector "EN")
-
-![Image 116](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)EN
-
-[![Image 118](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)AR](https://copyleaks.com/ar/ai-content-detector "AR")[![Image 120](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)ZH](https://copyleaks.com/zh/ai-content-detector "ZH")[![Image 122](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)FR](https://copyleaks.com/fr/ai-content-detector "FR")[![Image 124](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)DE](https://copyleaks.com/de/ai-content-detector "DE")[![Image 126](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)HI](https://copyleaks.com/hi/ai-content-detector "HI")[![Image 128](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)IT](https://copyleaks.com/it/ai-content-detector "IT")[![Image 130](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)JA](https://copyleaks.com/ja/ai-content-detector "JA")[![Image 132](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)RU](https://copyleaks.com/ru/ai-content-detector "RU")[![Image 134](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)ES](https://copyleaks.com/es/ai-content-detector "ES")[![Image 136](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)TR](https://copyleaks.com/tr/ai-content-detector "TR")[![Image 138](blob:http://localhost/558ddb7306c65a878fbe11fa4df0b8cf)PT](https://copyleaks.com/pt/ai-content-detector "PT")
-
-[Linkedin-in](https://www.linkedin.com/company/copyleaks/)[Instagram](https://www.instagram.com/copyleaksai/)[Threads Logo](https://www.threads.net/@copyleaksai)[X-twitter](https://x.com/Copyleaks)[Rss](https://feeds.buzzsprout.com/2310947.rss)
-
-All rights reserved. Use of this website signifies your agreement to the [Terms of Use](https://copyleaks.com/termsofuse).
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/copyleaks-detector/text-header-example.svg` | report heading and label | `b6f93cfc3e25891bc645f45c76f1e081ebcaacfcca724631e1d841ede9f71bcb` | direct first-party SVG; rendered and visually checked |
+| `snapshots/attachments/copyleaks-detector/ai-percentage.svg` | example 80% output | `55219648bf33e5af37144699c92a011086f1f0933453e0946973f81d1ba21e56` | direct first-party SVG; rendered and visually checked |
+| `snapshots/attachments/copyleaks-detector/ai-text-example.svg` | phrase-highlighting example | `d95523d62729027897c6d80b741b53f6439054575df616817d8a194f6abd2dac` | direct first-party SVG; rendered and visually checked |
+| `snapshots/attachments/copyleaks-detector/ai-logic.webp` | AI Logic interface example | `0e6dca1117726bdf6b0395025903ce35c59a01fafd403dcbf5c555d326bd1307` | direct first-party WebP; visually checked |
+| `snapshots/attachments/copyleaks-detector/scale.svg` | decorative scale icon beside the accuracy claim | `4accc4eb65a28115fc894f08649e8afe269e7873a79452c30935313f3515ea12` | direct first-party SVG; rendered and visually checked |
+| `snapshots/attachments/copyleaks-detector/ai-detector-report.webp` | report example with a score, source matching, and phrase-frequency output | `dadb710d7bb673c23ff925d6bdc18939069ec087ab3ab808b4575264aee90c57` | direct first-party WebP; visually checked |

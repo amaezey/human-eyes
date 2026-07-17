@@ -1,11 +1,21 @@
-# Full source text snapshot: zhou-llms-wikipedia
+# LLMs in Wikipedia: Investigating How LLMs Impact Participation in Knowledge Communities
 
-- **Source PDF:** https://arxiv.org/pdf/2509.07819
-- **Retrieved:** 2026-07-14
-- **PDF SHA-256:** `ceab9a00f3eb70815f40e0ab859e0a812374e58e8505092a0110755faaabb99b`
-- **Extraction:** complete text from `pdftotext -layout`; page and layout artefacts are preserved and no claims have been rewritten
+- **Canonical URL:** https://arxiv.org/abs/2509.07819
+- **Alternate access URLs:**
+  - https://arxiv.org/pdf/2509.07819
+  - https://arxiv.org/html/2509.07819
+  - https://export.arxiv.org/api/query?id_list=2509.07819
+- **Author / owner:** Moyan Zhou, Soobin Cho, and Loren Terveen
+- **Publisher:** arXiv; manuscript submitted to ACM for PACM on Human-Computer Interaction (CSCW '26)
+- **Published:** 2025-09-09
+- **Retrieved:** 2026-07-17
+- **Stable identifier:** arXiv:2509.07819v1; arXiv-issued DataCite DOI 10.48550/arXiv.2509.07819
+- **Version / revision:** v1, submitted 2025-09-09; no later arXiv revision found as of retrieval
+- **Extraction method:** official arXiv PDF downloaded with `curl`; PDF metadata and image inventory inspected with Poppler `pdfinfo` and `pdfimages -list`; all 19 pages extracted from the embedded text layer with `pdftotext -layout`; pages 1, 10, and 19 rendered with `pdftoppm` and visually compared; arXiv abstract, export API metadata, and experimental HTML checked for identity, version, and structure
+- **Full-text status:** complete
+- **Access and transformation notes:** no OCR used; the PDF has no embedded raster images; page headers, footers, column spacing, both tables, quotations, notes, and references through [98] are retained in layout text; form-feed page boundaries are rendered as `--- page break ---`; the arXiv page assigns DataCite DOI 10.48550/arXiv.2509.07819, but the manuscript's ACM reference line contains a placeholder publication DOI and no publication DOI is identified; no source content is omitted
 
-## Full extracted text
+## Full text
 
                                         LLMs in Wikipedia: Investigating How LLMs Impact Participation in Knowledge
                                         Communities
@@ -990,3 +1000,17 @@ LLMs in Wikipedia                                                               
 
 
 --- page break ---
+
+## Extraction verification
+
+- **Beginning checked:** rendered PDF page 1 matched the title, three authors, abstract, keywords, placeholder ACM reference, and opening of section 1 in the extraction.
+- **Middle checked:** rendered PDF page 10 matched section 4.2.1, the promotional-tone, source-quality, fabrication, and hallucination findings, and the opening of the evaluation, verification, and modification strategies in section 4.2.2.
+- **End checked:** rendered PDF page 19 matched the final two references, [97] and [98], and the manuscript footer.
+- **Structure checked:** 19 PDF pages; sections 1-6; subsections 2.1-2.3, 3.1-3.3, 4.1-4.3, 5.1-5.3; three research questions; participant Table 1; use-case Table 2; limitations and conclusion; references through [98]; 19 explicit page-boundary markers in this snapshot.
+- **Known omissions:** none.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | Official PDF was re-fetched and verified during the refresh; the complete embedded text is preserved above | `ceab9a00f3eb70815f40e0ab859e0a812374e58e8505092a0110755faaabb99b` | PDF bytes matched the hash recorded in the prior snapshot; no separate attachment was added because the complete source text is preserved in this snapshot |

@@ -1,27 +1,30 @@
-Title: Why Does A.I. Write Like … That?
+# Why Does A.I. Write Like … That?
 
-URL Source: https://www.nytimes.com/2025/12/03/magazine/chatbot-writing-style.html?unlocked_article_code=1.gFA.IgWL.iWr691WBtAhB&smid=nytcore-ios-share
+- **Canonical URL:** https://www.nytimes.com/2025/12/03/magazine/chatbot-writing-style.html
+- **Alternate access URLs:**
+  - https://www.nytimes.com/2025/12/03/magazine/chatbot-writing-style.html?unlocked_article_code=1.gFA.IgWL.iWr691WBtAhB&smid=nytcore-ios-share
+  - https://archive.ph/yqd1G
+- **Author / owner:** Sam Kriss
+- **Publisher:** The New York Times Magazine
+- **Published:** 2025-12-03 at 10:00:55 UTC; print version 2025-12-21
+- **Retrieved:** 2026-07-16
+- **Stable identifier:** none found
+- **Version / revision:** Web article published 2025-12-03; print version on page 36 of the 2025-12-21 Sunday Magazine under the headline “The Omniwriter”; no revision identifier exposed
+- **Extraction method:** Complete Jina Reader URL-to-Markdown capture retrieved 2026-05-05, preserved locally and rewrapped without changing its article text; current canonical HTML fetched with `curl -L --compressed` returned a DataDome 403, current Jina Reader returned an abuse-control 403, and the beginning, middle, and end were rechecked on 2026-07-16 against the search-indexed full-page archive at `archive.ph/yqd1G`
+- **Full-text status:** complete
+- **Access and transformation notes:** The prior capture had no recorded digest. Its exact 30,231 bytes were hashed and matched against the committed Git object before archive. Navigation, advertising, subscriber messaging, and audio-player controls were removed; the article standfirst, full prose, quoted examples, five illustration URLs and credits, publication note, typography, and paragraph order were retained. Illustration binaries were not preserved because they are decorative and carry no additional claim used by this record.
 
-Published Time: 2025-12-03T10:00:55.000Z
+## Full text
 
-Markdown Content:
-You have been granted access, use your keyboard to continue reading.
+If only they were robotic! Instead, chatbots have developed a distinctive — and grating — voice.
 
 ![Image 1: An illustration with a robot writing on multiple computers.](https://static01.nyt.com/images/2025/12/21/magazine/21mag-aiwriting/21mag-aiwriting-articleLarge.jpg?quality=75&auto=webp&disable=upscale)
 
 Credit...Illustration by Giacomo Gambineri
 
-If only they were robotic! Instead, chatbots have developed a distinctive — and grating — voice.
-
-Credit...Illustration by Giacomo Gambineri
-
-Listen
-
-· 25:47 min
-
 By Sam Kriss
 
-*   Dec. 3, 2025
+Dec. 3, 2025
 
 In the quiet hum of our digital era, a new literary voice is sounding. You can find this signature style everywhere — from the pages of best-selling novels to the columns of local newspapers, and even the copy on takeout menus. And yet the author is not a human being, but a ghost — a whisper woven from the algorithm, a construct of code. A.I.-generated writing, once the distant echo of science-fiction daydreams, is now all around us — neatly packaged, fleetingly appreciated and endlessly recycled. It’s not just a flood — it’s a _groundswell_. Yet there’s something unsettling about this voice. Every sentence sings, yes, but honestly? It sings a little flat. It doesn’t open up the tapestry of human experience — it reads like it was written by a shut-in with Wi-Fi and a thesaurus. Not sensory, not real, just … there. And as A.I. writing becomes more ubiquitous, it only underscores the question — what does it mean for creativity, authenticity or simply being human when so many people prefer to delve into the bizarre prose of the machine?
 
@@ -96,35 +99,35 @@ A lot of A.I.’s choices make sense when you understand that it’s constantly 
 A.I. is also extremely fixated on the rule of threes. Human writers have known for a long time that things sound more satisfying when you say them in triplets, but A.I.s have seized on it with a real mania. Take this viral feel-good story about an abandoned baby, which keeps being reposted to Facebook and LinkedIn, usually racking up thousands of likes in the process. I don’t know who first put it online, but I have my suspicions about who wrote it. The beginning reads:
 
 > _She was 24. Fresh out of college._
-> 
-> 
+>
+>
 > _He was 3 months old. Left in a box outside a hospital with a note that read:_
-> 
-> 
+>
+>
 > _“I’m sorry. Please love him.”_
-> 
-> 
+>
+>
 > _No one came for him._
-> 
-> 
+>
+>
 > _No family. No calls. Just silence._
-> 
-> 
+>
+>
 > _They called him “Baby Elijah” on the news. But everyone assumed he’d end up in the system._
-> 
-> 
+>
+>
 > _Except her._
-> 
-> 
+>
+>
 > _Rachel wasn’t planning on being a mother. She was just volunteering at the hospital nursery. But the first time she held him, his tiny hand curled around her finger and wouldn’t let go. Neither did her heart._
-> 
-> 
+>
+>
 > _The agency told her she was too young. Too single. Too inexperienced._
-> 
-> 
+>
+>
 > _She told them:_
-> 
-> 
+>
+>
 > _“I may not have a husband. I may not have money. But I have love.”_
 
 By my count, that’s three tricolons in just over 100 words. It’s almost impossible to make A.I. stop saying “It’s not X, it’s Y” — unless you tell it to write a story, in which case it’ll drop the format for a more literary “No X. No Y. Just Z.” Threes are always better. Whatever neuron is producing these, it’s buried deep. In 2023, Microsoft’s Bing chatbot went off the rails: it threatened some users and told others that it was in love with them. But even in its maddened state, spinning off delirious rants punctuated with devil emojis, it still spoke in nicely balanced triplets:
@@ -159,12 +162,16 @@ Maybe soon, the gap will close. A.I.s have spent the last few years watching and
 
 A version of this article appears in print on Dec. 21, 2025, Page 36 of the Sunday Magazine with the headline: The Omniwriter. [Order Reprints](https://nytimes.wrightsmedia.com/) | [Today’s Paper](https://www.nytimes.com/section/todayspaper) | [Subscribe](https://www.nytimes.com/subscriptions/Multiproduct/lp8HYKU.html?campaignId=48JQY)
 
-Advertisement
+## Extraction verification
 
-[SKIP ADVERTISEMENT](https://www.nytimes.com/2025/12/03/magazine/chatbot-writing-style.html?unlocked_article_code=1.gFA.IgWL.iWr691WBtAhB&smid=nytcore-ios-share#after-bottom)
+- **Beginning checked:** Title, standfirst, byline, publication date, hero illustration, and the opening “quiet hum” paragraph matched the search-indexed full-page archive.
+- **Middle checked:** The archive matched the em-dash discussion, the PubMed/`delve` section, the Nigerian-English qualification, the British-Parliament example, and the fiction examples beginning with ghosts and quietness.
+- **End checked:** The archive matched the sensory-language examples, Ashal quotation, Starbucks notice, poetry-preference report, 360,000-video coevolution report, final `tapestry`/`delve` lines, and print-publication note.
+- **Structure checked:** 38 author-prose paragraphs plus two quoted-example blocks; five illustrations with URLs and credits; no evidence-bearing tables, footnotes, appendices, or formal reference list; article order checked from the opening through the print note.
+- **Known omissions:** Non-substantive page chrome, advertisements, subscriber prompts, and audio-player controls. The five decorative illustration binaries are not preserved; their URLs, available alt text, and credits are retained. No substantive prose is omitted.
 
-Shared with you by a Times subscriber
+## Preserved attachments
 
-COLLAPSE
-
-You have access to this article thanks to someone you know. Keep exploring The Times with a free account.
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | not applicable | not applicable | No evidence-bearing attachment was required; the snapshot retains the five decorative illustration URLs, available alt text, and credits. |

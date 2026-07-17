@@ -1,16 +1,19 @@
 # StoryScope: Investigating idiosyncrasies in AI fiction
 
 - **Canonical URL:** https://arxiv.org/abs/2604.03136
-- **Alternate access URL:** https://arxiv.org/pdf/2604.03136
+- **Alternate access URLs:**
+  - https://arxiv.org/abs/2604.03136v4
+  - https://arxiv.org/pdf/2604.03136v4
+  - https://export.arxiv.org/api/query?id_list=2604.03136
 - **Author / owner:** Jenna Russell, Rishanth Rajendhran, Chau Minh Pham, Mohit Iyyer, and John Wieting
 - **Publisher:** arXiv
 - **Published:** v1 submitted 2026-04-03; reviewed v4 dated 2026-04-13
-- **Retrieved:** 2026-07-14
-- **Stable identifier:** arXiv:2604.03136v4
+- **Retrieved:** 2026-07-17
+- **Stable identifier:** arXiv:2604.03136v4; DOI: 10.48550/arXiv.2604.03136
 - **Version / revision:** v4
-- **Extraction method:** arXiv v4 PDF downloaded and converted with `pdftotext -layout`
+- **Extraction method:** official arXiv v4 PDF downloaded with `curl`, preserved as an attachment, inspected with `pdfinfo`, converted from its embedded text layer with Poppler `pdftotext -layout`, and checked against rendered pages 1, 15, and 30; the arXiv Atom API confirmed v4 as the current revision
 - **Full-text status:** complete
-- **Access and transformation notes:** all 30 PDF pages were converted, including tables, captions, ethics statement, references, and appendices. Text layout and page breaks are preserved where Poppler emitted them. Figure images are not embedded; their captions, labels, and surrounding interpretation are present. Minor spacing artifacts from small caps, multi-column layout, and mathematical typesetting remain.
+- **Access and transformation notes:** all 30 PDF pages were converted, including tables, captions, ethics statement, references, and appendices. Text layout and page breaks are preserved where Poppler emitted them. Figure pixels are preserved in the attached authoritative PDF but are not duplicated in the Markdown full text; their captions, labels, and surrounding interpretation are present. Minor spacing artifacts from small caps, multi-column layout, and mathematical typesetting remain. The experimental arXiv HTML route returned 404 and was not used.
 
 ## Full text
 
@@ -1942,8 +1945,14 @@ prompt. Figure 8 shows the exact markdown template.
 
 ## Extraction verification
 
-- **Beginning checked:** PDF metadata, title/authors, abstract, page-one footnotes, and the start of the introduction were compared with the rendered v4 PDF.
-- **Middle checked:** pipeline sections, Tables 1-3, Sections 4-6, model-fingerprint discussion, and ethics statement were checked against rendered pages and section order.
-- **End checked:** appendices A-I, Tables 4-15, prompt templates, memorization and length/topic audits, references, and the final prompt-schema material were checked against the rendered PDF.
-- **Structure checked:** 30 pages; main Sections 1-7; acknowledgments; ethics statement; references; Appendices A-I; figures and 15 tables represented by extracted labels, captions, and text.
-- **Known omissions:** figure pixels and visual styling are not embedded. No prose, table text, caption, footnote, appendix, or reference section is known to be omitted.
+- **Beginning checked:** rendered page 1 was compared with the extraction: preprint label, arXiv v4/date margin, title, five authors and affiliations, abstract, Section 1 opening, and both page-one footnotes are present.
+- **Middle checked:** rendered page 15, the midpoint of the 30-page PDF, was compared with the extraction: the end of the references from Sturgeon through Xu et al., hyperlinks, DOI/venue details, and page number are present; Sections 2-7 and their tables/figures occur before this point in the same order as the PDF.
+- **End checked:** rendered page 30 was compared with the extraction: the preprint label, Figure 8 caption, final NarraBench prompt-schema text continuing from page 29, and terminal page number are present.
+- **Structure checked:** `pdfinfo` reports 30 pages; the extraction contains 30 form-feed page boundaries, main Sections 1-7, acknowledgments, ethics statement, references, Appendices A-I, and all figure/table labels, captions, and extractable text. The fresh 2026-07-17 `pdftotext -layout` output matched the prior preserved full text except for three trailing spaces and terminal-newline normalisation.
+- **Known omissions:** none from the preserved source. Figure pixels and visual styling are available in the attached authoritative PDF rather than duplicated in the Markdown full text; no prose, table text, caption, footnote, appendix, reference section, or PDF page is known to be omitted.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/russell-storyscope-ai-fiction-arxiv-2604.03136v4.pdf` | Authoritative full 30-page arXiv v4 paper, including figure pixels and visual layout | `ecc34b63fbbf4e0670fd76974c48e22c92f0a9a607ff81fd3f8b3000bef8be8d` | Downloaded directly from the version-pinned arXiv PDF URL on 2026-07-17; `pdfinfo`, `pdftotext -layout`, and rendered-page checks used for verification. |

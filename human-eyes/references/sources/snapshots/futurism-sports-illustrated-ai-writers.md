@@ -1,32 +1,51 @@
-Title: Sports Illustrated Published Articles by Fake, AI-Generated Writers
+# Sports Illustrated Published Articles by Fake, AI-Generated Writers
 
-URL Source: https://futurism.com/sports-illustrated-ai-generated-writers
+- **Canonical URL:** https://futurism.com/sports-illustrated-ai-generated-writers
+- **Alternate access URLs:**
+  - none
+- **Author / owner:** Maggie Harrison Dupré
+- **Publisher:** Futurism / Recurrent Ventures
+- **Published:** 2023-11-27T12:15:54-05:00
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** Futurism WordPress post 305766
+- **Version / revision:** page metadata dateModified 2023-11-27T12:15:54-05:00
+- **Extraction method:** direct canonical HTML fetched with curl 8.7.1; article metadata and `article#post-305766 .content-wrapper` parsed with Beautiful Soup 4.14.3; inline HTML transformed to Markdown with html2text 2025.4.15; current rendered page independently checked through the web renderer
+- **Full-text status:** complete
+- **Access and transformation notes:** The direct HTML returned HTTP 200. HTML entities were decoded, links and emphasis were retained, the six claim-bearing in-body figures were downloaded at their unresized source URLs, and three directly linked Generated Photos assets used for TheStreet headshot matches were preserved. Navigation, privacy banner, subscription form, related-story modules, author biography, advertising, and footer were removed as page chrome. The non-claim-bearing hero image was not preserved; its visible credit is retained. Agent-browser could not start Chrome inside the managed filesystem sandbox, so direct HTML plus the independent web renderer were used instead. No article-body text was omitted.
 
-Published Time: 2023-11-27T12:15:54-05:00
+## Full text
 
-Markdown Content:
-## Sign up to see the future, today
+# Sports Illustrated Published Articles by Fake, AI-Generated Writers
 
-Can’t-miss innovations from the bleeding edge of science and tech
+We asked them about it — and they deleted everything.
 
-There was nothing in Drew Ortiz’s [author biography](https://web.archive.org/web/20221205082417/https://www.si.com/review/author/drewortiz/) at _Sports Illustrated_ to suggest that he was anything other than human.
+By Maggie Harrison Dupré
+
+Published Nov 27, 2023 12:15 PM EST
+
+Featured image credit: Joe Raedle via Getty / Futurism
+
+There was nothing in Drew Ortiz’s [author biography](<https://web.archive.org/web/20221205082417/https://www.si.com/review/author/drewortiz/>) at _Sports Illustrated_ to suggest that he was anything other than human.
 
 “Drew has spent much of his life outdoors, and is excited to guide you through his never-ending list of the best products to keep you from falling to the perils of nature,” it read. “Nowadays, there is rarely a weekend that goes by where Drew isn’t out camping, hiking, or just back on his parents’ farm.”
 
-The only problem? Outside of _Sports Illustrated_, Drew Ortiz doesn’t seem to exist. He has no social media presence and no publishing history. And even more strangely,his profile photo on _Sports Illustrated_[is for sale](https://archive.is/ndV3A) on a website that sells AI-generated headshots,where he’s described as “neutral white young-adult male with short brown hair and blue eyes.”
+The only problem? Outside of _Sports Illustrated_, Drew Ortiz doesn’t seem to exist. He has no social media presence and no publishing history. And even more strangely, his profile photo on _Sports Illustrated_ [is for sale](<https://archive.is/ndV3A>) on a website that sells AI-generated headshots, where he’s described as “neutral white young-adult male with short brown hair and blue eyes.”
 
-![Image 1](https://futurism.com/wp-content/uploads/2023/11/drew.jpg?strip=all&quality=85&w=1200&h=421)![Image 2](https://futurism.com/wp-content/uploads/2023/11/drew_ai-1.jpg?strip=all&quality=85&w=1200&h=524)
-Ortiz isn’t the only AI-generated author published by _Sports_ _Illustrated_,according to a person involved with the creation of the content who asked to be kept anonymous to protect them from professional repercussions.
+![Drew Ortiz Sports Illustrated author profile](attachments/futurism-sports-illustrated-ai-writers-drew.jpg)
+
+![Drew Ortiz headshot listing on Generated Photos](attachments/futurism-sports-illustrated-ai-writers-drew-ai.jpg)
+
+Ortiz isn’t the only AI-generated author published by _Sports Illustrated_, according to a person involved with the creation of the content who asked to be kept anonymous to protect them from professional repercussions.
 
 “There’s a lot,” they told us of the fake authors. “I was like, what are they? This is ridiculous. This person does not exist.”
 
 “At the bottom [of the page] there would be a photo of a person and some fake description of them like, ‘oh, John lives in Houston, Texas. He loves yard games and hanging out with his dog, Sam.’ Stuff like that,” they continued. “It’s just crazy.”
 
-The AI authors’ writing often sounds like it was written by an alien;[one Ortiz article](https://web.archive.org/web/20221004090814/https://www.si.com/review/full-size-volleyball/), for instance, warns that volleyball “can be a little tricky to get into, especially without an actual ball to practice with.”
+The AI authors’ writing often sounds like it was written by an alien; [one Ortiz article](<https://web.archive.org/web/20221004090814/https://www.si.com/review/full-size-volleyball/>), for instance, warns that volleyball “can be a little tricky to get into, especially without an actual ball to practice with.”
 
 According to a second person involved in the creation of the _Sports Illustrated_ content who also asked to be kept anonymous, that’s because it’s not just the authors’ headshots that are AI-generated. At least some of the articles themselves, they said, were churned out using AI as well.
 
-“The content is absolutely AI-generated,”the second source said, “no matter how much they say that it’s not.”
+“The content is absolutely AI-generated,” the second source said, “no matter how much they say that it’s not.”
 
 After we reached out with questions to the magazine’s publisher, The Arena Group, all the AI-generated authors disappeared from _Sports Illustrated_‘s site without explanation.
 
@@ -42,46 +61,51 @@ Regardless, the AI content marks a staggering fall from grace for _Sports Illust
 
 But now that it’s under the management of The Arena Group, parts of the magazine seem to have devolved into a Potemkin Village in which phony writers are cooked up out of thin air, outfitted with equally bogus biographies and expertise to win readers’ trust, and used to pump out AI-generated buying guides that are monetized by affiliate links to products that provide a financial kickback when readers click them.
 
-> _Do you know anything about The Arena Group’s use of AI-generated content? Shoot us an email at [tips@futurism.com](mailto:tips@futurism.com). We can keep you anonymous._
+> _Do you know anything about The Arena Group’s use of AI-generated content? Shoot us an email at [tips@futurism.com](<mailto:tips@futurism.com>). We can keep you anonymous._
 
 Making the whole thing even more dubious, these AI-generated personas are periodically scrubbed from existence in favor of new ones.
 
-Sometime this summer, for example, Ortiz disappeared from _Sports Illustrated_‘s site entirely, his profile page instead redirecting to that of a “[Sora Tanaka](https://archive.is/D9DV2).” Again, there’s no online record of a writer by that name — but Tanaka’s profile picture [is for sale](https://generated.photos/face/joyful-asian-young-adult-female-with-long-brown-hair-and-brown-eyes--5f1836d41f67b00006889840) on the same AI headshot marketplace as Ortiz, where she’s listed as “joyful asian young-adult female with long brown hair and brown eyes.”
+Sometime this summer, for example, Ortiz disappeared from _Sports Illustrated_‘s site entirely, his profile page instead redirecting to that of a “[Sora Tanaka](<https://archive.is/D9DV2>).” Again, there’s no online record of a writer by that name — but Tanaka’s profile picture [is for sale](<https://generated.photos/face/joyful-asian-young-adult-female-with-long-brown-hair-and-brown-eyes--5f1836d41f67b00006889840>) on the same AI headshot marketplace as Ortiz, where she’s listed as “joyful asian young-adult female with long brown hair and brown eyes.”
 
 “Sora has always been a fitness guru, and loves to try different foods and drinks,” read Tanaka’s bio. “Ms. Tanaka is thrilled to bring her fitness and nutritional expertise to the Product Reviews Team, and promises to bring you nothing but the best of the best.”
 
-![Image 3](https://futurism.com/wp-content/uploads/2023/11/sora.jpg?strip=all&quality=85&w=1200&h=448)![Image 4](https://futurism.com/wp-content/uploads/2023/11/sora_ai.jpg?strip=all&quality=85&w=1200&h=512)
+![Sora Tanaka Sports Illustrated author profile](attachments/futurism-sports-illustrated-ai-writers-sora.jpg)
+
+![Sora Tanaka headshot listing on Generated Photos](attachments/futurism-sports-illustrated-ai-writers-sora-ai.jpg)
+
 But Tanaka didn’t last, either. Eventually she also disappeared, replaced by yet another profile that carried no headshot at all, which _Sports Illustrated_ deleted along with the other AI-generated content after we reached out.
 
 It wasn’t just author profiles that the magazine repeatedly replaced. Each time an author was switched out, the posts they supposedly penned would be reattributed to the new persona, with no editor’s note explaining the change in byline.
 
-None of the articles credited to Ortiz or the other names contained any disclosure about the use of AI or that the writer wasn’t real, though they did eventually gain a disclaimer explaining that the content was “created by a 3rd party,” and that the “_Sports Illustrated_ editorial staff are not involved in the creation of this content.”
+None of the articles credited to Ortiz or the other names contained any disclosure about the use of AI or that the writer wasn’t real, though they did eventually gain a disclaimer explaining that the content was “created by a 3rd party,” and that the “ _Sports Illustrated_ editorial staff are not involved in the creation of this content.”
 
 Though _Sports Illustrated_‘s AI-generated authors and their articles disappeared after we asked about them, similar operations appear to be alive and well elsewhere in The Arena Group’s portfolio.
 
-Take _TheStreet_, a financial publication cofounded by Jim Cramer in 1996 that The Arena Group [bought for $16.5 million](https://www.businesswire.com/news/home/20190808005215/en/Maven-Closes-Acquisition-TheStreet-New-Jim-Cramer) in 2019. Like at _Sports Illustrated_, we found authors at _TheStreet_ with highly specific biographies detailing seemingly flesh-and-blood humans with specific areas of expertise — but with profile photos traceable to that same AI face website. And like at _Sports Illustrated_, these fake writers are periodically wiped from existence and their articles reattributed to new names, with no disclosure about the use of AI.
+Take _TheStreet_, a financial publication cofounded by Jim Cramer in 1996 that The Arena Group [bought for $16.5 million](<https://www.businesswire.com/news/home/20190808005215/en/Maven-Closes-Acquisition-TheStreet-New-Jim-Cramer>) in 2019. Like at _Sports Illustrated_, we found authors at _TheStreet_ with highly specific biographies detailing seemingly flesh-and-blood humans with specific areas of expertise — but with profile photos traceable to that same AI face website. And like at _Sports Illustrated_, these fake writers are periodically wiped from existence and their articles reattributed to new names, with no disclosure about the use of AI.
 
-Sometimes _The_ _Street_‘s efforts to remove the fake writers can be sloppy. On its [review](https://archive.is/EVdBw)[section’s title page](https://archive.is/EVdBw),for instance, the site still proudly flaunts the expertise of AI-generated contributors who have since been deleted, linking to writer profiles it describes as ranging “from [stay-at-home dads](https://www.thestreet.com/review/author/domino-abrams/) to [computer and information analysts](https://www.thestreet.com/review/author/denise-mcnamara/).” This team,the site continues, “is comprised of a well-rounded group of people who bring varying backgrounds and experiences to the table.”
+Sometimes _TheStreet_‘s efforts to remove the fake writers can be sloppy. On its [review section’s title page](<https://archive.is/EVdBw>), for instance, the site still proudly flaunts the expertise of AI-generated contributors who have since been deleted, linking to writer profiles it describes as ranging “from [stay-at-home dads](<https://www.thestreet.com/review/author/domino-abrams/>) to [computer and information analysts](<https://www.thestreet.com/review/author/denise-mcnamara/>).” This team, the site continues, “is comprised of a well-rounded group of people who bring varying backgrounds and experiences to the table.”
 
 People? We’re not so sure.
 
-The “stay-at-home dad” linked in that sentence above, for instance, is a so-called “[Domino Abrams](https://web.archive.org/web/20211022203137/https://www.thestreet.com/review/author/domino-abrams/)” — “a pro at home cleaning and maintenance,” at least until he was expunged from the site — whose profile picture can [again be found](https://images.generated.photos/2X9jxxHg-BqU-lY8ER7BYjhM7v7Mk1lvBdZLexTtQjo/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODk3Njc1LmpwZw.jpg)on that same site that sells AI-generated headshots.
+The “stay-at-home dad” linked in that sentence above, for instance, is a so-called “[Domino Abrams](<https://web.archive.org/web/20211022203137/https://www.thestreet.com/review/author/domino-abrams/>)” — “a pro at home cleaning and maintenance,” at least until he was expunged from the site — whose profile picture can [again be found](<https://images.generated.photos/2X9jxxHg-BqU-lY8ER7BYjhM7v7Mk1lvBdZLexTtQjo/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODk3Njc1LmpwZw.jpg>) on that same site that sells AI-generated headshots.
 
-![Image 5](https://futurism.com/wp-content/uploads/2023/11/domino.jpg?strip=all&quality=85&w=1200&h=379)
-Or look at “[Denise McNamara](https://web.archive.org/web/20220706182957/https://www.thestreet.com/review/author/denise-mcnamara/),” the “information analyst” that _TheStreet_ boasted about — “her extensive personal experience with electronics allows her to share her findings with others online” — whose profile picture is [once again listed](https://images.generated.photos/aArmEGQt-wLB_b9taXiittj3hoiXzDkOp8Npv-yDnSk/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wMzc1ODk5LnBu/Zw.png) on the same AI headshot marketplace. Or “[Nicole Merrifield](https://web.archive.org/web/20211203045751/https://www.thestreet.com/review/author/nicole-merrifield/),” an alleged “first grade teacher” who “loves helping people,” but whose profile is [again from](https://images.generated.photos/a7aiK5ivGIOmRmVNbqI17mxJ6bknNdLxB6l2LQTEFkA/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTQ5Nzc5LmpwZw.jpg)that AI headshot site. (At some point this year, Abrams, McNamara, and Merrifield were replaced by bylines whose profile pictures aren’t for sale on the AI headshot site.)
+![Domino Abrams TheStreet author profile](attachments/futurism-sports-illustrated-ai-writers-domino.jpg)
+
+Or look at “[Denise McNamara](<https://web.archive.org/web/20220706182957/https://www.thestreet.com/review/author/denise-mcnamara/>),” the “information analyst” that _TheStreet_ boasted about — “her extensive personal experience with electronics allows her to share her findings with others online” — whose profile picture is [once again listed](<https://images.generated.photos/aArmEGQt-wLB_b9taXiittj3hoiXzDkOp8Npv-yDnSk/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wMzc1ODk5LnBu/Zw.png>) on the same AI headshot marketplace. Or “[Nicole Merrifield](<https://web.archive.org/web/20211203045751/https://www.thestreet.com/review/author/nicole-merrifield/>),” an alleged “first grade teacher” who “loves helping people,” but whose profile is [again from](<https://images.generated.photos/a7aiK5ivGIOmRmVNbqI17mxJ6bknNdLxB6l2LQTEFkA/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTQ5Nzc5LmpwZw.jpg>) that AI headshot site. (At some point this year, Abrams, McNamara, and Merrifield were replaced by bylines whose profile pictures aren’t for sale on the AI headshot site.)
 
 Basic scrutiny shows that the quality of the AI authors’ posts is often poor, with bizarre-sounding language and glaring formatting discrepancies.
 
-This [article about personal finance](https://web.archive.org/web/20221004132724/https://www.thestreet.com/review/improve-your-finances/) by the AI-generated Merrifield, for example, starts off with the sweeping libertarian claim that “your financial status translates to your value in society.”
+This [article about personal finance](<https://web.archive.org/web/20221004132724/https://www.thestreet.com/review/improve-your-finances/>) by the AI-generated Merrifield, for example, starts off with the sweeping libertarian claim that “your financial status translates to your value in society.”
 
 After that bold premise, the article explains that “people with strong financial status are revered and given special advantages everywhere around the world,” and launches into a numbered list of how you can “improve your finance status” for yourself. Each number on what should be a five-point list, though, is just number one. Mistakes happen, but we can’t imagine that anyone who can’t count to five would give stellar financial advice.
 
-![Image 6](https://futurism.com/wp-content/uploads/2023/11/merrifield.jpg?strip=all&quality=85&w=1200&h=1186)
+![Nicole Merrifield finance article with repeated list numbering](attachments/futurism-sports-illustrated-ai-writers-merrifield.jpg)
+
 Abysmal-quality AI content, though, shouldn’t be surprising at The Arena Group.
 
-Back in February, when the company first started publishing AI-generated health advice at its magazine _Men’s Journal_,[we found that its first story](https://futurism.com/neoscope/magazine-mens-journal-errors-ai-health-article) was riddled with errors, prompting it to issue a massive correction.
+Back in February, when the company first started publishing AI-generated health advice at its magazine _Men’s Journal_, [we found that its first story](<https://futurism.com/neoscope/magazine-mens-journal-errors-ai-health-article>) was riddled with errors, prompting it to issue a massive correction.
 
-Before that, when The Arena Group first announced its foray into AI, its CEO Ross Levinsohn promised in an [interview with _The Wall Street Journal_](https://www.wsj.com/articles/sports-illustrated-publisher-taps-ai-to-generate-articles-story-ideas-11675428443) that its quality would be outstanding.
+Before that, when The Arena Group first announced its foray into AI, its CEO Ross Levinsohn promised in an [interview with  _The Wall Street Journal_](<https://www.wsj.com/articles/sports-illustrated-publisher-taps-ai-to-generate-articles-story-ideas-11675428443>) that its quality would be outstanding.
 
 “It’s not about ‘crank out AI content and do as much as you can,'” he told the newspaper early this year. “Google will penalize you for that and more isn’t better; better is better.”
 
@@ -93,10 +117,32 @@ The Arena Group is also hardly alone, either. As powerful generative AI tools ha
 
 In almost every case, though, these efforts to cut out human journalists have backfired embarrassingly.
 
-We [caught _CNET_](https://futurism.com/the-byte/cnet-publishing-articles-by-ai) and[_Bankrate_](https://futurism.com/cnet-bankrate-restarts-ai-articles), both owned by Red Ventures, publishing barely-disclosed AI content that was filled with [factual mistakes](https://futurism.com/cnet-ai-errors) and even [plagiarism](https://futurism.com/cnet-ai-plagiarism); in the ensuing storm of criticism, _CNET_ issued corrections to [more than half](https://www.theverge.com/2023/1/25/23571082/cnet-ai-written-stories-errors-corrections-red-ventures) its AI-generated articles. G/O Media also published AI-generated material on its portfolio of sites, resulting in embarrassing bungles [at _Gizmodo_](https://futurism.com/gizmodo-kotaku-staff-furious-ai-content) and[_The A.V. Club_](https://futurism.com/the-av-club-imdb). We [caught](https://futurism.com/buzzfeed-publishing-articles-by-ai)_[BuzzFeed](https://futurism.com/buzzfeed-publishing-articles-by-ai)_ publishing slapdash AI-generated travel guides. And _USA Today_ and other Gannett newspapers [were busted publishing](https://www.cnn.com/2023/08/30/tech/gannett-ai-experiment-paused/index.html) hilariously garbled AI-generated sports roundups that one of the company’s own sports journalists [described as](https://futurism.com/gannett-sports-writer-ai-generated-content) “embarrassing,” saying they “shouldn’t ever” have been published.
+We [caught  _CNET_](<https://futurism.com/the-byte/cnet-publishing-articles-by-ai>) and [ _Bankrate_](<https://futurism.com/cnet-bankrate-restarts-ai-articles>), both owned by Red Ventures, publishing barely-disclosed AI content that was filled with [factual mistakes](<https://futurism.com/cnet-ai-errors>) and even [plagiarism](<https://futurism.com/cnet-ai-plagiarism>); in the ensuing storm of criticism, _CNET_ issued corrections to [more than half](<https://www.theverge.com/2023/1/25/23571082/cnet-ai-written-stories-errors-corrections-red-ventures>) its AI-generated articles. G/O Media also published AI-generated material on its portfolio of sites, resulting in embarrassing bungles [at _Gizmodo_](<https://futurism.com/gizmodo-kotaku-staff-furious-ai-content>) and [ _The A.V. Club_](<https://futurism.com/the-av-club-imdb>). We [caught ](<https://futurism.com/buzzfeed-publishing-articles-by-ai>)_[BuzzFeed](<https://futurism.com/buzzfeed-publishing-articles-by-ai>) _publishing slapdash AI-generated travel guides. And _USA Today_ and other Gannett newspapers [were busted publishing](<https://www.cnn.com/2023/08/30/tech/gannett-ai-experiment-paused/index.html>) hilariously garbled AI-generated sports roundups that one of the company’s own sports journalists [described as](<https://futurism.com/gannett-sports-writer-ai-generated-content>) “embarrassing,” saying they “shouldn’t ever” have been published.
 
 If any media organization finds a way to engage with generative AI in a way that isn’t either woefully ill-advised or actively unethical, we’re all ears. In the meantime, forgive us if we don’t hold our breath.
 
 _Disclosure: Futurism’s parent company, Recurrent Ventures, previously worked with AdVon in 2022 via its partnership to distribute select content on third-party e-commerce platforms. This content was written by Recurrent’s contributors. Presently, Recurrent maintains a business relationship with them to test Commerce content internationally for select brands (of which Futurism is not one). AdVon content has never been published on Futurism or any of Recurrent’s websites._
 
-**More on AI-generated journalism:**[_USA Today_ Updates Every AI-Generated Sports Article to Correct “Errors”](https://futurism.com/usa-today-updates-ai-generated-sports)
+**More on AI-generated journalism:**[_USA Today_ Updates Every AI-Generated Sports Article to Correct “Errors”](<https://futurism.com/usa-today-updates-ai-generated-sports>)
+
+## Extraction verification
+
+- **Beginning checked:** The rendered title, dek, byline, timestamp, featured-image credit, and opening Drew Ortiz biography paragraph matched the direct HTML and JSON-LD metadata.
+- **Middle checked:** Paragraph 23 of 44, beginning “None of the articles credited to Ortiz”, matched the direct HTML and preserved the third-party disclaimer and non-disclosure qualification.
+- **End checked:** The closing media-industry paragraph, Futurism/Recurrent Ventures disclosure, and final related-story link matched the direct HTML and rendered page.
+- **Structure checked:** The canonical page exposed article ID 305766, `datePublished` and `dateModified` of 2023-11-27T12:15:54-05:00, and JSON-LD `wordCount` 2043. The article capture contains 44 non-empty body text blocks, two blockquotes, and six in-body figures. There are no article tables, footnotes, appendices, or formal reference list.
+- **Known omissions:** Non-substantive site chrome and the non-claim-bearing hero image binary only; no article-body prose or claim-bearing figure is omitted.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/futurism-sports-illustrated-ai-writers-drew.jpg` | Sports Illustrated Drew Ortiz profile screenshot | `f549ed651ee884b7ac4007b4daebb243a38e90aef6a65db8c7a5c7cad78411c8` | Downloaded from `https://futurism.com/wp-content/uploads/2023/11/drew.jpg`; 2480 × 871 JPEG. |
+| `snapshots/attachments/futurism-sports-illustrated-ai-writers-drew-ai.jpg` | Drew Ortiz headshot listing screenshot | `0a870c2ceb99fb87e286279104bf95e858ed2c07e031e890c319910815c6def7` | Downloaded from `https://futurism.com/wp-content/uploads/2023/11/drew_ai-1.jpg`; 1995 × 871 JPEG. |
+| `snapshots/attachments/futurism-sports-illustrated-ai-writers-sora.jpg` | Sports Illustrated Sora Tanaka profile screenshot | `ab4f6001981cb18e772427ccff08c5a1bc4c87adcc211b0697bbe679dac58af9` | Downloaded from `https://futurism.com/wp-content/uploads/2023/11/sora.jpg`; 2366 × 883 JPEG. |
+| `snapshots/attachments/futurism-sports-illustrated-ai-writers-sora-ai.jpg` | Sora Tanaka headshot listing screenshot | `0c95917d8b0db217dd333d7e85c374a2bc25bb2ba8913e2c44ab5723bb5b7606` | Downloaded from `https://futurism.com/wp-content/uploads/2023/11/sora_ai.jpg`; 1996 × 851 JPEG. |
+| `snapshots/attachments/futurism-sports-illustrated-ai-writers-domino.jpg` | TheStreet Domino Abrams profile screenshot | `e58112e826aa7fdd3e9aee1a927a038ea5c7afa6ed69fffcf68803a09e2d5046` | Downloaded from `https://futurism.com/wp-content/uploads/2023/11/domino.jpg`; 2303 × 727 JPEG. |
+| `snapshots/attachments/futurism-sports-illustrated-ai-writers-merrifield.jpg` | Nicole Merrifield finance article screenshot showing repeated list numbering | `16edaf26de79484f83b0b97f066efa7b88efec5b54f2b58bf2e99db2cc4bb7c9` | Downloaded from `https://futurism.com/wp-content/uploads/2023/11/merrifield.jpg`; 1224 × 1210 JPEG. |
+| `snapshots/attachments/futurism-sports-illustrated-ai-writers-domino-ai.jpg` | Directly linked Generated Photos asset for Domino Abrams | `010795bd8a6300489c84fbd7e9bd138b202e271cbcb005d2896d1ec34052e2b3` | Downloaded from the article's direct `images.generated.photos` link; 256 × 256 JPEG. |
+| `snapshots/attachments/futurism-sports-illustrated-ai-writers-denise-ai.png` | Directly linked Generated Photos asset for Denise McNamara | `bdfba76b08135cc7a1a1f5c036ceac9a549703480097e23a858915e7445eeb7d` | Downloaded from the article's direct `images.generated.photos` link; 256 × 256 PNG. |
+| `snapshots/attachments/futurism-sports-illustrated-ai-writers-nicole-ai.jpg` | Directly linked Generated Photos asset for Nicole Merrifield | `1efdaed406d66d5c581c558450ca96569b287210dfef73aac566d951c3f2b859` | Downloaded from the article's direct `images.generated.photos` link; 256 × 256 JPEG. |

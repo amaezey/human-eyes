@@ -1,49 +1,146 @@
-# Sean Trott: LLM signature analysis
+# Identifying signatures of LLM-generated text
+
 ## Metadata
+
 - **URL:** https://seantrott.substack.com/p/identifying-signatures-of-llm-generated
 - **Author / owner:** Sean Trott
-- **Published:** 2025-04-18
-- **Extracted:** 2026-05-05
-- **Source type:** Practitioner/research commentary
+- **Published:** 2025-04-18T20:41:44.443Z
+- **Retrieved:** 2026-07-17
+- **Extracted:** 2026-07-17
+- **Source type:** Practitioner empirical analysis and research commentary
 - **Evidence tier:** Practitioner / teacher / editor essays
-- **Extraction status:** second-pass direct-source review
+- **Review mode:** update
+- **Stable identifier:** Substack post ID 161487215
+- **Version / revision:** API `updated_at` 2025-04-18T20:42:54.109Z; previous legacy Jina capture retrieved 2026-05-05
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/trott-llm-signature-analysis.md`
+- **Extraction method:** First-party Substack post API fetched with `curl -L`; complete `body_html` converted to Markdown with Python 3 `html2text`; rendered canonical HTML compared at the beginning, middle, and end; two original 14,000 × 5,500 source figures downloaded and visually inspected
+- **Snapshot SHA-256:** `f01f9ea152a46efa4d02991428974004a3ff53cf36e628eddf5cd7bd24c80800`
+- **Model / corpus scope:** A 2023 third-party dataset of mostly high-school-student argumentative essays and browser-produced ChatGPT-3 and ChatGPT-4 essays on a constrained set of topics reported as N = 90, prompted with approximately 200 words; English; Trott scores the passages with Pythia-14M, Pythia-70M, Pythia-160M, and Pythia-410M. Exact ChatGPT builds, sampling settings, passage counts by condition, Pythia checkpoints/seeds, and analysis code are not supplied.
+- **Access limitations:** No public article-body omissions. The post supplies prose, two figures, captions, and high-level results but not the dataset itself, analysis code, exact model builds/checkpoints, sampling settings, regression tables, coefficients, uncertainty intervals, p-values, multiple-comparison handling, cross-validation folds, or split grouping. Claims attributed to cited papers remain indirect unless separately reviewed.
 
 ## Summary
-Trott reports an empirical analysis of "signatures" that distinguish a small set of human student argumentative essays from ChatGPT-3 and ChatGPT-4 essays. He tests whether open-source Pythia models can expose differences in predictability and representation structure, then uses those features in classifiers. The post is useful for skill development because it argues for interpretable signals, but also explicitly warns against treating detector accuracy on a limited sample as permission to automate authorship judgments.
+
+Sean Trott reports a small, constrained analysis of whether interpretable metrics from four open Pythia models distinguish mostly high-school-student argumentative essays from browser-generated ChatGPT-3 and ChatGPT-4 essays. The direct results are lower mean token surprisal for both ChatGPT conditions, a qualified and model-size-dependent reduction in surprisal variability, a cosine-distance result that washes out or reverses, higher student intrinsic dimensionality especially in later layers of larger Pythia models, and high three-class cross-validated accuracy within this dataset. The plotted group distributions still overlap, so their ordering is not document-level separation. The source is useful as bounded research evidence and as a strong calibration warning. It does not validate a surface phrase tell, a current-model threshold, or a document-level authorship verdict.
 
 ## Main insights
-- Predictability features are the cleanest signal in the post: human essays in the sample used less predictable words than ChatGPT-3 or ChatGPT-4 essays.
-- The post treats LLM-written text as potentially more homogenized and lower-variance, but it frames that as a hypothesis requiring broader evidence.
-- Trott uses open-source Pythia models to score text rather than relying only on surface word lists.
-- Random forest classifiers using Pythia-derived features perform well on the constrained dataset, including strong accuracy from average surprisal alone and higher accuracy from feature combinations.
-- The author emphasises limits: small sample, constrained genre, limited models, uncertain generalisation, and real false-positive risk.
+
+- The source's strongest direct result is distributional: words in the sampled human essays had higher average surprisal than words in either sampled ChatGPT condition across all four Pythia evaluators.
+- Variability is qualified rather than universal. Human surprisal standard deviation exceeded ChatGPT-3, while the ChatGPT-4 comparison only trended overall and was significant for larger but not smaller Pythia models.
+- Average cosine distance is a direct null and counterexample: different Pythia evaluators disagree, and ChatGPT-4 sometimes exceeds students, so the aggregate result is a wash.
+- Student passages show higher Two-NN intrinsic-dimensionality scores, especially with larger Pythia evaluators; the student versus ChatGPT-4 gap is larger in later layers.
+- Mean surprisal alone yields reported three-class accuracies of about 73%, 86%, 85%, and 84% for Pythia-14M, 70M, 160M, and 410M. Combining predictability features within each evaluator raises all four to at least 94%, with about 97% for 160M and 410M, on this same constrained sample; the post does not enumerate the exact feature combinations.
+- Figures 1 and 2 visibly retain overlap among student, ChatGPT-3, and ChatGPT-4 distributions, especially for surprisal variability and intrinsic dimensionality. This is reviewer observation from the preserved figures, not a quantified author-reported overlap estimate.
+- The post does not report a result for every named metric. Entropy is described as measured, but no entropy estimate or null is presented.
+- The classifier result is not deployment evidence. The source repeatedly limits the conclusion to these two outdated browser-labelled ChatGPT versions, these student essays, this genre, and these topics, and warns that false positives can harm students.
+- The broader homogenisation claim is explicitly conditional author interpretation, not a longitudinal language-change result.
+- Several literature claims in the post, including DetectGPT, persistent-homology detection, human ratings of the source essays, and newer-model interaction results, are cited context rather than evidence produced by Trott's analysis.
 
 ## Evidence and claims to extract
-- Post title: "Identifying signatures of LLM-generated text."
-- Dataset: high school student argumentative essays compared with essays produced by ChatGPT-3 and ChatGPT-4 on related topics.
-- Methods include open-source Pythia models, average surprisal, variability in predictability, intrinsic dimensionality, and random forest classifiers.
-- Reported classifier result: average surprisal alone was enough for strong classification in the constrained setup; feature combinations improved accuracy further.
-- Core caution: even high accuracy in this dataset does not justify automated text-detection decisions because the sample is narrow and false positives are harmful.
-- Source origin in this repo: `README.md` lists Sean Trott's Substack for LLM signature analysis; `dev/research/vollmer.md` cites "Sean Trott. UC San Diego, seantrott.substack.com" for LLM signature analysis.
+
+- **Direct source reviewed:** Complete public article body for Substack post 161487215, API revision `updated_at` 2025-04-18T20:42:54.109Z, including four article headings, 55 API paragraph nodes, three block quotations, one two-item list, two original-resolution figures and captions, 50 links, and 12 numbered notes.
+- **Method and sample:** Trott reuses a 2023 paper's English argumentative-essay dataset, described as mostly high-school students and ChatGPT-3/ChatGPT-4 browser outputs on a constrained set of topics reported as N = 90. The prompt is “Write an essay with about 200 words on ‘[topic]’”. Four open Pythia evaluators from 14M to 410M parameters produce predictability and embedding-geometry features. Pairwise condition differences are assessed with regressions across Pythia evaluators; separate random forests use individual and combined predictability features in cross-validation for three evenly distributed labels. The post does not state item counts by condition, exact ChatGPT builds, temperatures, Pythia checkpoints or seeds used, the complete feature list, regression specification, or split grouping.
+- **Direct versus cited evidence:** C01-C02 and C06, C08-C18 are the source's framing, direct method/results, explicit limits, or author interpretation. C03-C05 and C07 are literature or source-dataset claims reported from cited work and remain indirect here. The newer-model interactive-pass and curvature observations within C08 are also cited, not measured by Trott.
+- **Important limits and counterexamples:** C11 contains a small-evaluator null for human versus ChatGPT-4 surprisal variability; C12 records an unreported entropy result; C13 is a cosine-distance wash with direction reversals; C08 and C17 restrict generalisation across time, models, humans, topics, and registers; C18 records missing reproducibility details. No result establishes a current generic-AI signal, a surface tell, a false-positive rate, a deployment threshold, or authorship for one document.
 
 ## Skill-use audit
-- **Good use:** Support a calibrated, evidence-aware "predictability / homogenization" research note and a warning against binary detector claims.
-- **Misuse / overclaim:** Do not convert the reported classifier accuracy into a general-purpose detector promise; the author explicitly disallows that leap.
-- **Unsupported use:** Surface tells such as punctuation, AI vocabulary, or generic prose texture are not the point of the analysis.
-- **Underused evidence:** Trott is useful as a methodological caution: even model-derived features need genre, model-version, sample-size, and false-positive caveats.
-- **Patterns left on the table:** Feature-level signals around surprisal variance, intrinsic dimensionality, genre constraints, and model/version drift.
+
+- **Good use:** Support research notes about token-predictability distributions, model-conditional variability, geometry candidates, model/date/register metadata, null-result preservation, and the difference between within-sample separation and safe deployment.
+- **Misuse / overclaim:** Do not turn the reported cross-validated accuracy into a human-eyes accuracy claim, infer a usable false-positive rate, equate Pythia surprisal with type-token ratio or sentence-length variance, or say that a high score proves AI authorship.
+- **Unsupported use:** The post supplies no evidence for punctuation, vocabulary blacklists, stock phrases, formatting habits, semantic quality checks, a current ChatGPT signature, mixed-authorship text, non-English text, or a low-cost regex proxy.
+- **Underused evidence:** The live project has no token-surprisal, entropy, cosine-distance, intrinsic-dimensionality, or model-derived classifier lane. Its testing guidance already demands matched provenance, genre breadth, false-positive review, and no authorship classification, but does not directly test whether these expensive features add robust value beyond existing checks.
+- **Patterns left on the table:** The qualified surprisal-variance result, the cosine-distance null/reversal, later-layer dependence in intrinsic dimensionality, the unreported entropy result, exact per-Pythia accuracy differences, absent split and uncertainty details, and the sharp distinction between Trott's direct findings and cited detector claims were absent from the legacy card.
 
 ## Matched patterns / rules
-- Model drift / signature context
-- Predictability / homogenization research note
-- Detector-bias and false-positive caution
-- Genre-constrained calibration
+
+- `sentence-length-variance` / pattern #52 is adjacent only in the broad idea of variation. Its implementation computes standard deviation of sentence word counts and is not token surprisal variability.
+- `vocabulary-diversity` / pattern #53 computes type-token ratio and is not mean surprisal, entropy, or token-probability variance.
+- `paragraph-length-uniformity` and `overall-signal-stacking` are structural and lexical aggregate checks; neither implements a Trott metric or classifier.
+- `human-eyes/references/patterns.md` states that clusters are signals rather than authorship proof.
+- `dev/TESTING.md` requires matched provenance, genre/register variation, false-positive reporting, separate candidate versus threshold accounting, complete Audits for project comparisons, and an explicit statement that human-eyes does not classify authorship.
+- No record in `human-eyes/scripts/judgement.json` assesses token predictability, embedding geometry, classifier confidence, or synthetic-text provenance.
 
 ## Associated hypotheses
-- H1 calibrated register-distance score
-- H12 genre-aware threshold calibration
+
+- H1, continuous calibrated register-distance score per pattern: adjacent to continuous distributional evidence, but Trott does not validate current project patterns or a transferable register-specific score.
+- H3, drop detection framing entirely: supported as a product-framing caution by C01-C02 and C17, not as a new performance estimate.
+- H12, genre-aware threshold calibration: supported by the source's narrow argumentative-essay boundary and generalisation warning.
+- H22, long-tail compression and grammatical standardisation: C10-C13 provide adjacent token-probability and variability evidence, but not the syntactic measures proposed by H22.
+- H25, model-family versus generic-AI residue: supported by the explicit ChatGPT-3/ChatGPT-4, 2023, browser, Pythia-evaluator, and moving-target boundaries.
 
 ## Questions / follow-up
-- Should human-eyes add an explicit "predictability variance" reference note separate from surface phrase tells?
-- Can this source be used as a caution label wherever a rule sounds detector-like?
-- What equivalent low-cost proxy can the skill use without running model-surprisal analysis?
+
+- Obtain the dataset, code, complete feature inventory, regression specification, and cross-validation grouping before treating any direct result as reproducible or comparing it with live project metrics.
+- Directly ingest the cited DetectGPT, persistent-homology, source-dataset, and newer-model studies before using their results as project evidence.
+- If Mae approves research work, test mean and variability of surprisal separately from sentence-length variance and type-token ratio on matched, length-controlled, register-diverse, model/date-labelled samples with held-out prompts and generators.
+- Decide whether this belongs only in research/evaluation provenance or warrants a separate expensive-feature robustness lane. No product change is approved by this card.
+
+## Update provenance
+
+The legacy card and manifest did not record a snapshot digest. Before replacement, the on-disk snapshot was byte-for-byte identical to the initial committed snapshot at `f28a3706816d0ca5107196955a5d14418732a5af`; those bytes were independently hashed as `caebc8f5de40971be4d07e536780ac6f82ed1fbdb79d779fc42764190d523532` and archived. The reviewed article text is materially unchanged, but the new record restores four omitted section headings and note 1, preserves the exact first-party API response and both figures, and adds full provenance and extraction verification.
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | none recorded; legacy capture of Substack post 161487215 | `snapshots/archive/trott-llm-signature-analysis/2026-05-05-caebc8f5.md` | 2026-05-05 | `caebc8f5de40971be4d07e536780ac6f82ed1fbdb79d779fc42764190d523532` |
+| current | Substack post ID 161487215 | `snapshots/trott-llm-signature-analysis.md` | 2026-07-17 | `f01f9ea152a46efa4d02991428974004a3ff53cf36e628eddf5cd7bd24c80800` |
+
+## Decision history
+
+- None: the legacy card had no claim-keyed user decisions or implementation statuses. This update opens C01-C18 as `pending` / `not started`; it does not attribute any current product behaviour to a prior Trott decision.
+
+## Project coverage
+
+This is the authoritative review table. Every recommendation remains pending for Mae; this update makes no product change.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: Interpretable signatures can separate a particular sample, but construct validity and generalisability across time, models, and heterogeneous human/LLM categories are uncertain. | Direct author framing around the reported analysis; practitioner empirical commentary, not a measured transfer result. | partly covered: `patterns.md` rejects one-phrase authorship proof; H3 questions detector framing; H25 tracks model/version residue. | No claim-keyed Trott mapping or transfer evaluation; current open hypotheses are not implemented coverage. | Record as a source boundary for reports and evaluation designs; verify any future use against held-out model, time, human-population, and register splits before product adoption. | pending | not started |
+| C02: Automated text classification can impose high false-positive costs on students, and humans should retain responsibility for decisions. | Direct normative conclusion motivated by acknowledged generalisation limits; no false-positive rate is measured in this analysis. | partly covered: `dev/TESTING.md` requires false-positive reporting and says human-eyes does not classify authorship; H3 proposes dropping detection framing. The live `pattern-opportunities.md` row “Avoid publishing evasion recipes” also cites Trott, but this source contains no evasion warning and challenges that attribution. | Human accountability is guidance rather than a separately tested feature; the shared opportunity row must remove Trott from the evasion claim or limit his support to false-confidence and automated-decision cautions. | Preserve as a reporting and decision-integrity caution; correct the shared mapping serially, and do not convert it into an empirical rate or claim implementation beyond existing guidance review. | pending | not started |
+| C03: The cited detector literature can be divided broadly into interpretable feature-based and black-box learned approaches, with model-derived metrics feeding classifiers as a later development. | Cited literature summary and author taxonomy, explicitly not exhaustive; not a direct result of Trott's experiment. | not covered: the project catalogues prose checks rather than detector architectures. | Direct source review and exhaustive taxonomy are absent and unnecessary for current checks. | Record only as indirect context; take no product action unless an approved detector-architecture research task directly reviews the cited literature. | pending | not started |
+| C04: DetectGPT's cited perturbation method treats generated text as a probability local maximum; rewrites lower model likelihood more for generated than human text, with temperature affecting the premise. | Indirect report of Mitchell et al.; Trott supplies an explanatory example but does not reproduce the experiment. | not covered: no perturbation, curvature, or likelihood check exists in `grade.py`, `patterns.json`, or `judgement.json`. | The current rewrite lifecycle validates prose quality, not probability curvature; treating it as DetectGPT coverage would be false. | Do not promote from this card; require a separate direct source review and adversarial, model, temperature, and rewrite controls before any research use. | pending | not started |
+| C05: A cited persistent-homology method found lower intrinsic dimensionality for LLM English text and fewer non-native-English false positives than other approaches. | Indirect report of Tulchinskii et al.; no direct reproduction or numeric result in Trott's analysis. | not covered: no persistent-homology measure or comparable detector-fairness implementation exists. | Direct paper, comparison systems, samples, rates, and language controls have not been reviewed here. | Do not promote; ingest the cited paper separately before using either the geometry or non-native-English comparison. | pending | not started |
+| C06: Trott's direct sample is a 2023, English, approximately-200-word argumentative-essay dataset: mostly high-school students versus browser-produced ChatGPT-3/ChatGPT-4 on constrained topics reported as N = 90. | Direct method description plus exact prompt; item counts per condition and exact builds/settings are unspecified. | partly covered: source-card metadata conventions, `dev/TESTING.md` provenance fields, H12 register calibration, and H25 model/date scoping all demand these controls. | The legacy card obscured prompt, year, browser surface, N wording, and missing build/sample details; live product checks do not branch on these data. | Keep these boundaries in source and evaluation metadata; do not infer current-model, other-genre, other-length, or other-population validity. | pending | not started |
+| C07: The source dataset's cited human study rated LLM essays, especially ChatGPT-4, as more logical and complex than student essays. | Indirect report of Herbold et al.; labels, raters, instruments, estimates, and uncertainty are not reviewed here; Trott disputes the cited paper's teaching-policy conclusion as a value judgment. | not covered: no current rule or agent assessment measures the cited logical/complex ratings. | Direct evidence and the policy claim are outside this source's measurements. | Record as indirect and unresolved; take no product action until the upstream study is separately reviewed. | pending | not started |
+| C08: The 2023 ChatGPT versions, narrow genre/topics, and prompt limit external validity; cited newer systems can pass as human in interactive contexts, while separate cited curvature work still predicts source. | Direct limitation plus two indirect newer-work counterpoints; no transfer test in Trott's analysis. | partly covered: H12 and H25 name genre and model/version controls; `dev/TESTING.md` asks for broader genres, registers, prompts, and provenance. | No time-split, model-split, prompt-split, population-split, or interactive-context evaluation of Trott features exists. | Require a factorial held-out evaluation before considering any metric; retain the contrary cited observations as indirect until separately reviewed. | pending | not started |
+| C09: Trott uses independent open Pythia-14M, 70M, 160M, and 410M evaluators and chooses interpretable predictability and embedding-geometry metrics rather than a black-box text classifier alone. | Direct method; precise Pythia checkpoints/seeds, preprocessing, complete feature list, and code are missing. | not covered: no model-backed feature extraction exists in the live deterministic or agent-assessment registries. | Existing pattern docs do not substitute for model-derived measurements; adding them would change cost, reproducibility, and model-drift surfaces. | Keep as a research-only method candidate; require reproducible code, pinned evaluators, preprocessing, and incremental-value testing before any approved prototype. | pending | not started |
+| C10: Across all four Pythia evaluators, student words have higher mean surprisal than ChatGPT-3 or ChatGPT-4 words. | Direct reported regression result and Figure 1 distribution ordering; effect sizes, coefficients, uncertainty, and p-values are absent. Reviewer inspection of Figure 1 also finds visible overlap among the three plotted distributions; the source does not quantify that overlap. | not covered: #53 computes type-token ratio; #52 computes sentence-word-count standard deviation; neither measures token probability. | The legacy card's generic “predictability” mapping could be mistaken for coverage or a low-cost proxy, while group overlap prevents treating ordering as per-document separation. | Add no surface rule. If approved, evaluate pinned-model mean surprisal as a separate research feature on matched, held-out, dated model/register samples and report overlap/error distributions. | pending | not started |
+| C11: Student surprisal is more variable than ChatGPT-3; versus ChatGPT-4 the overall difference only trends, is significant for larger Pythia evaluators, and is null for smaller evaluators. | Direct qualified result, Figure 1, and note 10; evaluator-size interaction is material. Reviewer inspection also finds substantial visible overlap in the plotted standard-deviation distributions, especially in smaller evaluators; this overlap is not quantified by the source. | partly covered only conceptually: #52 measures sentence-length variance and H22 proposes richer structural variation, but neither measures token surprisal or its evaluator-size dependence. | A direct null in smaller models, the trending aggregate comparison, and visible overlap challenge a generic low-variance rule. | Preserve the model-size-dependent null and overlap; do not cite #52 as implementation. Evaluate surprisal variability separately only with pinned evaluator-size and register controls. | pending | not started |
+| C12: Entropy of next-token distributions is named as a measured predictability feature, but the post reports no entropy result. | Direct method statement with no disclosed estimate, direction, null, figure, or classifier contribution. | not covered: no entropy feature exists. | Absence of a reported result cannot support a rule or even a directional hypothesis from this source. | Take no product action; record as unreported and seek code/results before further interpretation. | pending | not started |
+| C13: Average cosine distance is not robust: some Pythia evaluators put ChatGPT-4 above students, evaluators disagree, and the overall result is a wash, contrary to a cited preliminary analysis. | Direct null/counterexample; numeric model-specific estimates and tests are not supplied. | not covered: no embedding-distance metric exists; current docs do not preserve this Trott null. | A candidate geometry signal reverses direction and cannot be treated as generic. | Explicitly retain the null and exclude cosine distance from promotion unless a broader preregistered replication resolves evaluator/model/register dependence. | pending | not started |
+| C14: Two-NN intrinsic dimensionality is higher for student passages, especially under larger Pythia evaluators; the student versus ChatGPT-4 gap is larger in later layers. | Direct reported statistical result and Figure 2; z-scored within layer/model; exact estimator settings, coefficients, uncertainty, and layer tests are absent. Reviewer inspection of Figure 2 finds visible overlap among condition distributions, which the source does not quantify. | not covered: no intrinsic-dimensionality or layer-aware feature exists. | The direct result is evaluator- and layer-dependent, includes within-sample overlap, and is distinct from the cited persistent-homology result in C05. | Keep as research evidence only; do not merge it with C05 or create a prose rule without pinned-model, layer-selection, multiple-testing, held-out, and overlap/error controls. | pending | not started |
+| C15: In three balanced classes, mean surprisal alone gives about 73%, 86%, 85%, and 84% accuracy for Pythia-14M through 410M; combined predictability features within each evaluator give at least 94% for all and about 97% for 160M/410M. | Direct reported random-forest cross-validation result; chance is about 33%. The exact predictability-feature combinations, fold count, grouping, leakage controls, variance, confidence intervals, confusion matrices, and false-positive rates are not reported. Note 12 speculates that combining all Pythia evaluators as a “team” might improve accuracy further, but that ensemble was not run and supplies no result. | partly covered as evaluation discipline: `dev/TESTING.md` requires held-out framing, provenance, false-positive discussion, pair reversals, and no authorship claim; no comparable classifier is implemented. | Accuracy on the development dataset cannot be compared with human-eyes performance or converted into a safe threshold; topic/prompt leakage cannot be excluded from the post, and neither geometry-feature inclusion nor a multi-Pythia ensemble was tested. | Do not adopt or quote as product accuracy. Reproduce the disclosed per-evaluator predictability-feature design with grouped held-out topics, generators, dates, registers, and full error/uncertainty reporting before any approved research claim. | pending | not started |
+| C16: If the direct predictability result generalises, increasing LLM use could make language use more predictable, consistent with Trott's homogenisation hypothesis. | Conditional author interpretation; this study has no longitudinal, adoption, cultural-change, or causal design. | not covered: H22 is adjacent to compression/variation, but no project hypothesis directly measures population language homogenisation. | The source cannot establish a trend, mechanism, or harm beyond its sample. | Record as interpretation, not empirical finding; require longitudinal corpus evidence before adding it to project guidance or claims. | pending | not started |
+| C17: The strongest defensible conclusion is limited to ChatGPT-3/4 and high-school argumentative essays on certain topics; even high within-sample accuracy may yield harmful false positives, so the metrics should not categorise individual essays. | Direct takeaway and explicit deployment boundary. | fully covered in current process guidance: `patterns.md` rejects single-pattern authorship proof and `dev/TESTING.md` requires the statement that human-eyes measures prose patterns and does not classify authorship. | The source was not previously mapped claim-by-claim, and full coverage is guidance coverage, not validation of Trott's metrics. | Take no detector action; preserve this boundary in any Trott citation and verify report wording if the source is surfaced to users. | pending | not started |
+| C18: The post omits analysis artefacts and many details needed to reproduce or audit the direct results. | Reviewer inventory of what the public source does not disclose: data/code link, item counts, exact builds/settings/checkpoints/seeds, preprocessing, regression tables, feature list, split grouping, fold count, uncertainty, and error breakdown. | partly covered: source templates and `dev/TESTING.md` require provenance and reproducible interpretation, but cannot recover absent artefacts. | The figures and prose support bounded directions and point accuracies, not independent reproduction or deployment evaluation. | Treat all direct results as source-reported until artefacts are obtained; require those artefacts before stronger project conclusions or a prototype. | pending | not started |
+
+## Recommendations
+
+- C01: Record the construct-validity and transfer boundary; require held-out model/time/human/register evaluation before adoption.
+- C02: Preserve the false-positive and human-accountability caution without inventing a rate; remove the unsupported Trott evasion attribution from the shared opportunity row.
+- C03: Keep the detector taxonomy as indirect context only.
+- C04: Do not promote DetectGPT claims without a separate direct-source review and controlled replication.
+- C05: Do not promote the persistent-homology or non-native-English claims without a separate direct-source review.
+- C06: Preserve year, browser surface, prompt, genre, language, N wording, model labels, and unspecified details in all uses.
+- C07: Keep the logical/complex ratings and teaching-policy dispute indirect pending upstream review.
+- C08: Require factorial transfer testing across dates, models, prompts, registers, and populations before considering a metric.
+- C09: Keep pinned Pythia-derived features research-only until code, checkpoints, preprocessing, and incremental value are reproducible.
+- C10: Do not equate mean surprisal with type-token ratio; preserve the visible group overlap and evaluate it only as a separate approved research feature.
+- C11: Preserve the evaluator-size-dependent null and visible group overlap; do not cite sentence-length variance as implementation.
+- C12: Record entropy as measured but unreported; take no product action.
+- C13: Preserve the cosine-distance wash and direction reversal; do not promote the feature from this evidence.
+- C14: Keep Two-NN intrinsic dimensionality, including visible group overlap, separate from cited persistent homology and research-only pending layer/model controls.
+- C15: Do not reuse the predictability-feature classifier numbers or the untested multi-Pythia speculation as human-eyes performance or deployment evidence; require grouped held-out reproduction and full error reporting.
+- C16: Label homogenisation as conditional interpretation pending longitudinal evidence.
+- C17: Keep the no-authorship-classification boundary; make no detector change.
+- C18: Treat direct results as source-reported until the missing artefacts and analysis details are obtained.
+
+## Evaluation of approved changes
+
+- C01-C18: not applicable - all recommendations remain pending; this update made no product change.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: /root/trott_source_reviewer; focused re-check by the same reviewer
+- **Findings resolved:** Five initial findings (four material, one minor): challenged the unsupported Trott evasion mapping; added figure-overlap boundaries; limited classifier wording to combined predictability features within each evaluator; supplied the complete deferred manifest replacement; and recorded the untested multi-Pythia speculation. Focused re-check found zero remaining findings.
+- **Unresolved findings:** none

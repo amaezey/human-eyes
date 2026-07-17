@@ -1,3 +1,22 @@
+# AI Detectors: How to Tell If Text Is Written by AI: 9 Signs to Look For
+
+- **Canonical URL:** https://www.aidetectors.io/blog/how-to-tell-if-text-is-ai-written
+- **Alternate access URLs:**
+  - https://r.jina.ai/http://www.aidetectors.io/blog/how-to-tell-if-text-is-ai-written
+- **Author / owner:** AI Detectors
+- **Publisher:** AI Detectors
+- **Published:** 2026 page context; exact date not stated in the preserved page
+- **Retrieved:** 2026-05-05
+- **Extracted:** 2026-05-05
+- **Contract updated:** 2026-07-15; provenance and verification framing only, with no fresh article extraction
+- **Stable identifier:** none found
+- **Version / revision:** living webpage as retrieved 2026-05-05; no revision identifier exposed
+- **Extraction method:** Jina Reader URL-to-Markdown extraction; this 2026-07-15 contract update retained the preserved article body without re-scraping
+- **Full-text status:** complete
+- **Access and transformation notes:** The accessible article text is complete, including all nine sign sections, examples, caveats, confirmation steps, FAQs, final summary, and promotional footer. Navigation and promotional calls to action remain because they were part of the preserved extraction. The 2026-07-15 update added provenance and verification framing only; it did not alter the article body.
+
+## Full text
+
 Title: 9 Signs Text Is Written by AI (2026)
 
 URL Source: https://www.aidetectors.io/blog/how-to-tell-if-text-is-ai-written
@@ -156,3 +175,17 @@ Let ChatGPT, Claude, or Perplexity do the thinking for you.
 Click a button and see what your favorite AI says about aidetectors.io.
 
 [Ask ChatGPT](https://chat.openai.com/?q=Tell+me+about+aidetectors.io+and+whether+it+is+a+good+AI+content+detection+tool)[Ask Claude](https://claude.ai/new?q=Tell+me+about+aidetectors.io+and+whether+it+is+a+good+AI+content+detection+tool)[Ask Perplexity](https://www.perplexity.ai/search?q=Tell+me+about+aidetectors.io+and+whether+it+is+a+good+AI+content+detection+tool)
+
+## Extraction verification
+
+- **Beginning checked:** The preserved title, navigation, introduction, nine-item contents list, and complete uniform-sentence-length section are present.
+- **Middle checked:** The preserved em-dash, generic-example, balanced-perspective, transition-word, grammar/personality, paragraph-structure, and citation sections are present in order with their examples and caveats.
+- **End checked:** The confirmation workflow, FAQs, final thoughts, detector call to action, and promotional model links are present.
+- **Structure checked:** One web article with nine numbered sign sections, two example blocks, an em-dash caveat, four confirmation steps, four FAQ entries, final thoughts, and promotional footer. No appendices, tables, footnotes, or reference list appear in the preserved article.
+- **Known omissions:** Page chrome outside the preserved navigation and calls to action was not retained. No source footnotes or evidence links substantiate the article's numerical frequency, threshold, detector-reliability, or model-family claims.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | not applicable | not applicable | No attachments were required to interpret the accessible article text. |

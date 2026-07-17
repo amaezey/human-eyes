@@ -1,0 +1,502 @@
+[
+  {
+    "ai_to_human_ration": 181.5247457256,
+    "ngram": "provide a valuable insight",
+    "exampleUsage": "<p>The study aims to <strong>provide a valuable insight</strong> into consumer behavior.</p>"
+  },
+  {
+    "ai_to_human_ration": 111.2069878376,
+    "ngram": "left an indelible mark",
+    "exampleUsage": "<p>The artist's work <strong>left an indelible mark</strong> on the cultural landscape of the city.</p>"
+  },
+  {
+    "ai_to_human_ration": 88.3285158656,
+    "ngram": "a stark reminder",
+    "exampleUsage": "<p>The abandoned house stood as <strong>a stark reminder</strong> of the neighborhood's former glory.</p>"
+  },
+  {
+    "ai_to_human_ration": 77.2603509179,
+    "ngram": "a nuanced understanding",
+    "exampleUsage": "<p>Her experience in the field gave her <strong>a nuanced understanding</strong> of the complexities involved in the project.</p>"
+  },
+  {
+    "ai_to_human_ration": 70.1725972907,
+    "ngram": "significant role in shaping",
+    "exampleUsage": "<p>Parents play a <strong>significant role in shaping</strong> their children's values and beliefs.</p>"
+  },
+  {
+    "ai_to_human_ration": 68.5144443266,
+    "ngram": "the complex interplay",
+    "exampleUsage": "<p>Scientists study <strong>the complex interplay</strong> between genes and environmental factors in determining behavior.</p>"
+  },
+  {
+    "ai_to_human_ration": 63.6070430032,
+    "ngram": "broad implication",
+    "exampleUsage": "<p>The study's findings have a <strong>broad implication</strong> for understanding climate change and its effects on ecosystems.</p>"
+  },
+  {
+    "ai_to_human_ration": 59.0130773653,
+    "ngram": "an unwavering commitment",
+    "exampleUsage": "<p>Her success is a result of <strong>an unwavering commitment</strong> to her goals.</p>"
+  },
+  {
+    "ai_to_human_ration": 57.7744737354,
+    "ngram": "endure a legacy",
+    "exampleUsage": "<p>Artists often <strong>endure a legacy</strong> that influences generations to come.</p>"
+  },
+  {
+    "ai_to_human_ration": 52.7195113597,
+    "ngram": "underscore the importance",
+    "exampleUsage": "<p>Recent studies <strong>underscore the importance</strong> of early childhood education in developing cognitive skills.</p>"
+  },
+  {
+    "ai_to_human_ration": 48.6127378226,
+    "ngram": "play a pivotal role",
+    "exampleUsage": "<p>In the success of any project, teamwork can <strong>play a pivotal role</strong>.</p>"
+  },
+  {
+    "ai_to_human_ration": 44.3812212977,
+    "ngram": "a pivotal moment",
+    "exampleUsage": "<p>The decision to move to a new city was <strong>a pivotal moment</strong> in her life.</p>"
+  },
+  {
+    "ai_to_human_ration": 44.3065054369,
+    "ngram": "navigate the complex",
+    "exampleUsage": "<p>To succeed in today’s job market, you need to <strong>navigate the complex</strong> landscape of skills and qualifications.</p>"
+  },
+  {
+    "ai_to_human_ration": 43.537926526,
+    "ngram": "mark a turning point",
+    "exampleUsage": "<p>The new policy aims to <strong>mark a turning point</strong> in how we address climate change.</p>"
+  },
+  {
+    "ai_to_human_ration": 43.5344415423,
+    "ngram": "continue to inspire",
+    "exampleUsage": "<p>Her stories <strong>continue to inspire</strong> countless writers around the world.</p>"
+  },
+  {
+    "ai_to_human_ration": 43.1522294055,
+    "ngram": "gain a deeper understanding",
+    "exampleUsage": "<p>Reading diverse literature can help you <strong>gain a deeper understanding</strong> of different cultures.</p>"
+  },
+  {
+    "ai_to_human_ration": 42.846672465,
+    "ngram": "the transformative power",
+    "exampleUsage": "<p>The documentary highlighted <strong>the transformative power</strong> of art in communities.</p>"
+  },
+  {
+    "ai_to_human_ration": 42.7125670738,
+    "ngram": "hold a significant",
+    "exampleUsage": "<p>These artifacts <strong>hold a significant</strong> place in our cultural history.</p>"
+  },
+  {
+    "ai_to_human_ration": 42.4931999776,
+    "ngram": "play a crucial role",
+    "exampleUsage": "<p>Community volunteers <strong>play a crucial role</strong> in supporting local charities.</p>"
+  },
+  {
+    "ai_to_human_ration": 42.4599563065,
+    "ngram": "particularly a concern",
+    "exampleUsage": "<p>The rising temperatures are <strong>particularly a concern</strong> for farmers relying on stable weather patterns.</p>"
+  },
+  {
+    "ai_to_human_ration": 41.3691465968,
+    "ngram": "the relentless pursuit",
+    "exampleUsage": "<p>Many successful entrepreneurs are driven by <strong>the relentless pursuit</strong> of their dreams.</p>"
+  },
+  {
+    "ai_to_human_ration": 40.473007042,
+    "ngram": "emphasize the need",
+    "exampleUsage": "<p>The recent study aims to <strong>emphasize the need</strong> for mental health awareness in schools.</p>"
+  },
+  {
+    "ai_to_human_ration": 39.2756374784,
+    "ngram": "target an intervention",
+    "exampleUsage": "<p>Researchers aim to <strong>target an intervention</strong> that will reduce bullying in schools.</p>"
+  },
+  {
+    "ai_to_human_ration": 39.0870314235,
+    "ngram": "a multi-faceted approach",
+    "exampleUsage": "<p>The team adopted <strong>a multi-faceted approach</strong> to solve the complex problem effectively.</p>"
+  },
+  {
+    "ai_to_human_ration": 38.9538611713,
+    "ngram": "a serf reminder",
+    "exampleUsage": "<p>The note on the fridge serves as <strong>a serf reminder</strong> to pick up groceries after work.</p>"
+  },
+  {
+    "ai_to_human_ration": 37.8981835324,
+    "ngram": "highlight the potential",
+    "exampleUsage": "<p>The recent study aimed to <strong>highlight the potential</strong> of renewable energy sources in combating climate change.</p>"
+  },
+  {
+    "ai_to_human_ration": 37.2808796539,
+    "ngram": "a significant milestone",
+    "exampleUsage": "<p>Completing the project ahead of schedule was <strong>a significant milestone</strong> for the entire team.</p>"
+  },
+  {
+    "ai_to_human_ration": 35.9605418541,
+    "ngram": "implication to understand",
+    "exampleUsage": "<p>The study has significant <strong>implication to understand</strong> the relationship between diet and mental health.</p>"
+  },
+  {
+    "ai_to_human_ration": 35.6547169841,
+    "ngram": "potential risk associated",
+    "exampleUsage": "<p>Investors should assess the <strong>potential risk associated</strong> with new market ventures.</p>"
+  },
+  {
+    "ai_to_human_ration": 35.490033866,
+    "ngram": "leave a lasting",
+    "exampleUsage": "<p>The charity's efforts to improve literacy will <strong>leave a lasting</strong> impact on the community.</p>"
+  },
+  {
+    "ai_to_human_ration": 35.3219231793,
+    "ngram": "add a layer",
+    "exampleUsage": "<p>The artist decided to <strong>add a layer</strong> of color to enhance the depth of her painting.</p>"
+  },
+  {
+    "ai_to_human_ration": 34.7564599603,
+    "ngram": "offer a valuable",
+    "exampleUsage": "<p>The workshop will <strong>offer a valuable</strong> opportunity for networking and skill development.</p>"
+  },
+  {
+    "ai_to_human_ration": 34.7372994478,
+    "ngram": "a profound implication",
+    "exampleUsage": "<p>The discovery of a new planet has <strong>a profound implication</strong> for our understanding of the universe.</p>"
+  },
+  {
+    "ai_to_human_ration": 33.6997995272,
+    "ngram": "case highlights the importance",
+    "exampleUsage": "<p>The recent <strong>case highlights the importance</strong> of adhering to safety protocols in the workplace.</p>"
+  },
+  {
+    "ai_to_human_ration": 33.2335967669,
+    "ngram": "finding a highlight of the importance",
+    "exampleUsage": "<p>The presentation focused on <strong>finding a highlight of the importance</strong> of sustainable practices in our daily lives.</p>"
+  },
+  {
+    "ai_to_human_ration": 32.3051089167,
+    "ngram": "pave the way for the future",
+    "exampleUsage": "<p>The groundbreaking technology in renewable energy will <strong>pave the way for the future</strong>.</p>"
+  },
+  {
+    "ai_to_human_ration": 32.2306731819,
+    "ngram": "a significant step forward",
+    "exampleUsage": "<p>The new policy is <strong>a significant step forward</strong> in addressing climate change.</p>"
+  },
+  {
+    "ai_to_human_ration": 31.9593120198,
+    "ngram": "face a significant",
+    "exampleUsage": "<p>Many companies <strong>face a significant</strong> challenge in adapting to new technologies.</p>"
+  },
+  {
+    "ai_to_human_ration": 31.1290243064,
+    "ngram": "finding an important implication",
+    "exampleUsage": "<p>The research team is focused on <strong>finding an important implication</strong> of their study on climate change.</p>"
+  },
+  {
+    "ai_to_human_ration": 30.4392416779,
+    "ngram": "emphasize the importance",
+    "exampleUsage": "<p>The speaker aimed to <strong>emphasize the importance</strong> of mental health in the workplace.</p>"
+  },
+  {
+    "ai_to_human_ration": 30.4250364402,
+    "ngram": "a significant implication",
+    "exampleUsage": "<p>The study revealed <strong>a significant implication</strong> for environmental policy.</p>"
+  },
+  {
+    "ai_to_human_ration": 30.3227528586,
+    "ngram": "delve deeper into",
+    "exampleUsage": "<p>Researchers aim to <strong>delve deeper into</strong> the effects of climate change on local ecosystems.</p>"
+  },
+  {
+    "ai_to_human_ration": 29.9423812038,
+    "ngram": "reply in tone",
+    "exampleUsage": "<p>It's important to <strong>reply in tone</strong> when communicating with clients to maintain a professional image.</p>"
+  },
+  {
+    "ai_to_human_ration": 29.6371754735,
+    "ngram": "raise an important question",
+    "exampleUsage": "<p>The unexpected results of the experiment <strong>raise an important question</strong> about our assumptions.</p>"
+  },
+  {
+    "ai_to_human_ration": 29.4057007336,
+    "ngram": "make an informed decision in regard to",
+    "exampleUsage": "<p>To ensure you choose the best option, it's essential to <strong>make an informed decision in regard to</strong> your investment strategy.</p>"
+  },
+  {
+    "ai_to_human_ration": 29.3077413802,
+    "ngram": "far-reaching implications",
+    "exampleUsage": "<p>The new policy has <strong>far-reaching implications</strong> for the economy and social welfare.</p>"
+  },
+  {
+    "ai_to_human_ration": 29.2886174221,
+    "ngram": "a comprehensive framework",
+    "exampleUsage": "<p>The new policy was designed to establish <strong>a comprehensive framework</strong> for sustainable development.</p>"
+  },
+  {
+    "ai_to_human_ration": 28.5656315928,
+    "ngram": "importance to consider",
+    "exampleUsage": "<p>When planning a budget, it is of utmost <strong>importance to consider</strong> all potential expenses.</p>"
+  },
+  {
+    "ai_to_human_ration": 28.5502489156,
+    "ngram": "a unique blend",
+    "exampleUsage": "<p>The smoothie was made from <strong>a unique blend</strong> of tropical fruits and superfoods.</p>"
+  },
+  {
+    "ai_to_human_ration": 28.2855792358,
+    "ngram": "couldn’t help but wonder",
+    "exampleUsage": "<p>As she gazed at the stars, she <strong>couldn’t help but wonder</strong> what lies beyond our galaxy.</p>"
+  },
+  {
+    "ai_to_human_ration": 28.004863087,
+    "ngram": "underscore the need",
+    "exampleUsage": "<p>The recent events <strong>underscore the need</strong> for more stringent safety regulations.</p>"
+  },
+  {
+    "ai_to_human_ration": 27.8146772596,
+    "ngram": "framework for understanding",
+    "exampleUsage": "<p>The study offers a comprehensive <strong>framework for understanding</strong> the complexities of human behavior.</p>"
+  },
+  {
+    "ai_to_human_ration": 27.74811222,
+    "ngram": "highlight the need",
+    "exampleUsage": "<p>The recent studies <strong>highlight the need</strong> for improved mental health resources in schools.</p>"
+  },
+  {
+    "ai_to_human_ration": 27.6000389686,
+    "ngram": "a comprehensive understanding",
+    "exampleUsage": "<p>Studying different cultures gives us <strong>a comprehensive understanding</strong> of the world we live in.</p>"
+  },
+  {
+    "ai_to_human_ration": 26.9954152338,
+    "ngram": "the journey begins",
+    "exampleUsage": "<p>With excitement in the air, <strong>the journey begins</strong> as they set off on their cross-country adventure.</p>"
+  },
+  {
+    "ai_to_human_ration": 26.8951771364,
+    "ngram": "understanding the fundamental",
+    "exampleUsage": "<p>To succeed in science, students must focus on <strong>understanding the fundamental</strong> principles of the subject.</p>"
+  },
+  {
+    "ai_to_human_ration": 26.2636347346,
+    "ngram": "despite the face",
+    "exampleUsage": "<p>She smiled brightly <strong>despite the face</strong> of overwhelming challenges ahead.</p>"
+  },
+  {
+    "ai_to_human_ration": 26.2080250087,
+    "ngram": "a delicate balance",
+    "exampleUsage": "<p>Maintaining <strong>a delicate balance</strong> between work and personal life is essential for overall well-being.</p>"
+  },
+  {
+    "ai_to_human_ration": 26.1505512697,
+    "ngram": "the path ahead",
+    "exampleUsage": "<p>The team discussed strategies to navigate the challenges and clarify <strong>the path ahead</strong>.</p>"
+  },
+  {
+    "ai_to_human_ration": 26.0600301307,
+    "ngram": "gain an insight",
+    "exampleUsage": "<p>Through her research, she was able to <strong>gain an insight</strong> into the behavior of consumers.</p>"
+  },
+  {
+    "ai_to_human_ration": 26.0095145887,
+    "ngram": "laid the groundwork",
+    "exampleUsage": "<p>The early explorers <strong>laid the groundwork</strong> for future scientific discoveries in the region.</p>"
+  },
+  {
+    "ai_to_human_ration": 26.0049026297,
+    "ngram": "understand the behavior",
+    "exampleUsage": "<p>To improve our marketing strategy, we need to <strong>understand the behavior</strong> of our target audience.</p>"
+  },
+  {
+    "ai_to_human_ration": 25.9160980514,
+    "ngram": "renew a sense",
+    "exampleUsage": "<p>The workshop aimed to <strong>renew a sense</strong> of community among the participants.</p>"
+  },
+  {
+    "ai_to_human_ration": 25.7949037724,
+    "ngram": "aim to explore",
+    "exampleUsage": "<p>The seminar will <strong>aim to explore</strong> innovative solutions for sustainable living.</p>"
+  },
+  {
+    "ai_to_human_ration": 25.7461755129,
+    "ngram": "present a unique challenge",
+    "exampleUsage": "<p>The complex weather patterns of the region <strong>present a unique challenge</strong> for farmers planning their planting schedules.</p>"
+  },
+  {
+    "ai_to_human_ration": 25.4052605585,
+    "ngram": "provide a comprehensive",
+    "exampleUsage": "<p>The course aims to <strong>provide a comprehensive</strong> overview of modern web development.</p>"
+  },
+  {
+    "ai_to_human_ration": 25.2933943114,
+    "ngram": "particularly with regard to",
+    "exampleUsage": "<p>The study explores the effects of climate change, <strong>particularly with regard to</strong> its impact on biodiversity.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.8526031454,
+    "ngram": "address the root cause",
+    "exampleUsage": "<p>To create lasting change, we must <strong>address the root cause</strong> of the issue rather than just its symptoms.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.8325634857,
+    "ngram": "loom large in",
+    "exampleUsage": "<p>The consequences of climate change <strong>loom large in</strong> discussions about future policy decisions.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.8181184193,
+    "ngram": "the implication of the finding",
+    "exampleUsage": "<p>The researchers discussed <strong>the implication of the finding</strong> in their presentation.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.7625604715,
+    "ngram": "approach ensures a",
+    "exampleUsage": "<p>The team's collaborative <strong>approach ensures a</strong> successful project outcome.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.6804662253,
+    "ngram": "an ongoing dialogue",
+    "exampleUsage": "<p>The community leaders emphasized the importance of maintaining <strong>an ongoing dialogue</strong> with residents to address their concerns.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.5507528391,
+    "ngram": "carry a weight",
+    "exampleUsage": "<p>The backpack was heavy and seemed to <strong>carry a weight</strong> far more than its size suggested.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.520702958,
+    "ngram": "ability to navigate",
+    "exampleUsage": "<p>Her <strong>ability to navigate</strong> through complex challenges sets her apart as a leader.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.3089631521,
+    "ngram": "present a significant",
+    "exampleUsage": "<p>The new study will <strong>present a significant</strong> breakthrough in renewable energy technology.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.2958238489,
+    "ngram": "study shed light on",
+    "exampleUsage": "<p>The recent <strong>study shed light on</strong> the effects of climate change on local ecosystems.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.1969512631,
+    "ngram": "a diverse perspective",
+    "exampleUsage": "<p>Her background in different cultures offers <strong>a diverse perspective</strong> on global issues.</p>"
+  },
+  {
+    "ai_to_human_ration": 24.047379274,
+    "ngram": "face an adversity",
+    "exampleUsage": "<p>Many successful people <strong>face an adversity</strong> that shapes their character and determination.</p>"
+  },
+  {
+    "ai_to_human_ration": 23.9339807335,
+    "ngram": "a comprehensive overview",
+    "exampleUsage": "<p>The presentation gave <strong>a comprehensive overview</strong> of the project's objectives and outcomes.</p>"
+  },
+  {
+    "ai_to_human_ration": 23.7251594816,
+    "ngram": "potentially lead to",
+    "exampleUsage": "<p>The new policy changes could <strong>potentially lead to</strong> improved employee satisfaction.</p>"
+  },
+  {
+    "ai_to_human_ration": 23.7237801119,
+    "ngram": "a broad understanding",
+    "exampleUsage": "<p>Gaining <strong>a broad understanding</strong> of different cultures can enhance global communication.</p>"
+  },
+  {
+    "ai_to_human_ration": 23.6901895446,
+    "ngram": "contribute to the understanding",
+    "exampleUsage": "<p>The study aims to <strong>contribute to the understanding</strong> of climate change effects on biodiversity.</p>"
+  },
+  {
+    "ai_to_human_ration": 23.683012073,
+    "ngram": "shape the public",
+    "exampleUsage": "<p>The media can significantly <strong>shape the public</strong> perception of important social issues.</p>"
+  },
+  {
+    "ai_to_human_ration": 23.6763068034,
+    "ngram": "particularly noteworthy",
+    "exampleUsage": "<p>The artist's latest exhibition featured pieces that were <strong>particularly noteworthy</strong> for their innovative use of color.</p>"
+  },
+  {
+    "ai_to_human_ration": 23.192422195,
+    "ngram": "the evidence base for decision making",
+    "exampleUsage": "<p>Research studies strengthen <strong>the evidence base for decision making</strong> in public health policies.</p>"
+  },
+  {
+    "ai_to_human_ration": 23.1624588777,
+    "ngram": "identify an area of improvement",
+    "exampleUsage": "<p>To enhance team performance, we must <strong>identify an area of improvement</strong> in our current communication practices.</p>"
+  },
+  {
+    "ai_to_human_ration": 22.9538170283,
+    "ngram": "analysis of the data to analyze and use",
+    "exampleUsage": "<p>The team conducted an <strong>analysis of the data to analyze and use</strong> in their upcoming presentation.</p>"
+  },
+  {
+    "ai_to_human_ration": 22.8879586827,
+    "ngram": "undergone a significant",
+    "exampleUsage": "<p>The project has <strong>undergone a significant</strong> transformation over the past year.</p>"
+  },
+  {
+    "ai_to_human_ration": 22.6821623644,
+    "ngram": "need a robust",
+    "exampleUsage": "<p>In order to meet our project's demands, we <strong>need a robust</strong> solution that can handle multiple tasks efficiently.</p>"
+  },
+  {
+    "ai_to_human_ration": 22.6262615909,
+    "ngram": "voice will fill",
+    "exampleUsage": "<p>Her <strong>voice will fill</strong> the room with warmth and comfort during the gathering.</p>"
+  },
+  {
+    "ai_to_human_ration": 22.4147582312,
+    "ngram": "concern a potential",
+    "exampleUsage": "<p>The committee met to discuss <strong>concern a potential</strong> safety hazard in the building.</p>"
+  },
+  {
+    "ai_to_human_ration": 22.3848718869,
+    "ngram": "initiative aims to",
+    "exampleUsage": "<p>The new sustainability <strong>initiative aims to</strong> reduce plastic waste in the community.</p>"
+  },
+  {
+    "ai_to_human_ration": 22.1828814219,
+    "ngram": "offering a unique",
+    "exampleUsage": "<p>The gallery is <strong>offering a unique</strong> opportunity to view original works by emerging artists.</p>"
+  },
+  {
+    "ai_to_human_ration": 22.1341459907,
+    "ngram": "a new avenue",
+    "exampleUsage": "<p>The discovery of the ancient ruins opened up <strong>a new avenue</strong> for archaeological research.</p>"
+  },
+  {
+    "ai_to_human_ration": 21.8951433813,
+    "ngram": "despite the challenge",
+    "exampleUsage": "<p>She completed the project on time, <strong>despite the challenge</strong> of working with a tight deadline.</p>"
+  },
+  {
+    "ai_to_human_ration": 21.8691586897,
+    "ngram": "ready to embrace",
+    "exampleUsage": "<p>The team is <strong>ready to embrace</strong> the changes necessary for improvement.</p>"
+  },
+  {
+    "ai_to_human_ration": 21.7921260581,
+    "ngram": "the societal expectation",
+    "exampleUsage": "<p>Many young adults feel pressured by <strong>the societal expectation</strong> to pursue a traditional career path.</p>"
+  },
+  {
+    "ai_to_human_ration": 21.6935877489,
+    "ngram": "make accessible",
+    "exampleUsage": "<p>The library aims to <strong>make accessible</strong> a wide range of digital resources for all community members.</p>"
+  },
+  {
+    "ai_to_human_ration": 21.5669450832,
+    "ngram": "today at a fast pace",
+    "exampleUsage": "<p>Technology is evolving <strong>today at a fast pace</strong>, transforming how we live and work.</p>"
+  },
+  {
+    "ai_to_human_ration": 21.5615511894,
+    "ngram": "stand in stark contrast",
+    "exampleUsage": "<p>The vibrant colors of the painting <strong>stand in stark contrast</strong> to the muted tones of the room.</p>"
+  }
+]

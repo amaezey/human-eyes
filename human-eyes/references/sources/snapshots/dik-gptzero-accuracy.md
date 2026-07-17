@@ -1,11 +1,20 @@
-# Full source text snapshot: dik-gptzero-accuracy
+# Assessing GPTZero's Accuracy in Identifying AI vs. Human-Written Essays
 
-- **Source PDF:** https://arxiv.org/pdf/2506.23517
-- **Retrieved:** 2026-07-14
-- **PDF SHA-256:** `4c5dacf577a28005a6b2acd9b429c855c8d6b8110d85131fa28bbbba49c36e5a`
-- **Extraction:** complete text from `pdftotext -layout`; page and layout artefacts are preserved and no claims have been rewritten
+- **Canonical URL:** https://arxiv.org/abs/2506.23517
+- **Alternate access URLs:**
+  - https://arxiv.org/abs/2506.23517v1
+  - https://arxiv.org/pdf/2506.23517v1
+- **Author / owner:** Selin Dik, Osman Erdem, and Mehmet Dik
+- **Publisher:** arXiv
+- **Published:** 2025-06-30
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** arXiv:2506.23517v1; DOI 10.48550/arXiv.2506.23517
+- **Version / revision:** v1, submitted 2025-06-30 04:53:27 UTC; no later revision listed at retrieval
+- **Extraction method:** official version-specific PDF downloaded with `curl`; metadata and page count inspected with Poppler `pdfinfo`; complete embedded text layer extracted with `pdftotext -layout`; images inventoried with `pdfimages -list`; pages 1, 4, 5, and 6 rendered with `pdftoppm` and visually compared with the extraction
+- **Full-text status:** complete
+- **Access and transformation notes:** The Markdown body preserves the complete six-page embedded text layer with explicit page-break markers. Chart images are not transcribed as pixels, but their titles, axes, legends, and values are represented by the adjacent tables and text; the authoritative PDF, including both chart images and all table formatting, is preserved as an attachment. Line wraps and end-of-line hyphenation follow `pdftotext -layout`. No OCR was used. The PDF's SHA-256 is `4c5dacf577a28005a6b2acd9b429c855c8d6b8110d85131fa28bbbba49c36e5a`, matching the PDF digest recorded in the prior snapshot.
 
-## Full extracted text
+## Full text
 
                                                                                                   1
 
@@ -256,3 +265,17 @@ link.springer.com/chapter/10.1007/978-3-030-43687-2_68.
 
 
 --- page break ---
+
+## Extraction verification
+
+- **Beginning checked:** PDF page 1 was rendered and compared with the extracted title, author line, abstract, introduction, and opening methodology; the page extraction contains 43 lines, 470 words, and 3,210 bytes.
+- **Middle checked:** PDF pages 3 and 4 were checked against the extracted literature-review ending, Results opening, Table 1, Chart 1 caption, Table 2, and Chart 2 caption; page 3 contains 34 lines and 427 words, while page 4 contains 28 lines and 149 words.
+- **End checked:** PDF pages 5 and 6 were rendered and compared with Chart 2, the confusion-matrix prose and Table 3, the conclusion, and all seven references; page 5 contains 36 lines and 267 words and page 6 contains 42 lines and 317 words.
+- **Structure checked:** six pages; sections 1-6 in order; three tables; two charts; seven numbered references; no footnotes, appendices, or supplements. `pdfimages -list` reports two RGB images, the charts on pages 4 and 5. The complete extraction contains 226 lines, 2,140 words, and 15,294 bytes.
+- **Known omissions:** none from the preserved source. The Markdown extraction does not reproduce chart pixels or table borders; those are preserved in the attached official PDF, and the chart values are duplicated in Table 1 and Table 2.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/dik-gptzero-accuracy-arxiv-2506.23517v1.pdf` | Authoritative six-page arXiv v1 paper, including both charts and all table layout | `4c5dacf577a28005a6b2acd9b429c855c8d6b8110d85131fa28bbbba49c36e5a` | Downloaded from the version-specific arXiv PDF URL; embedded text extracted with Poppler and checked against rendered pages 1, 4, 5, and 6. |

@@ -1,19 +1,21 @@
-Title: Writing Dialog with ChatGPT
+# Writing Dialog with ChatGPT
 
-URL Source: https://medium.com/@dave.germain.79/writing-dialog-with-chatgpt-bd8024a69eb3
+- **Canonical URL:** https://medium.com/@dave.germain.79/writing-dialog-with-chatgpt-bd8024a69eb3
+- **Alternate access URLs:**
+  - https://r.jina.ai/http://medium.com/@dave.germain.79/writing-dialog-with-chatgpt-bd8024a69eb3
+- **Author / owner:** David J. Germain
+- **Publisher:** Medium
+- **Published:** 2023-02-18T14:13:00Z
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** Medium post ID `bd8024a69eb3`
+- **Version / revision:** live page state retrieved 2026-07-15; no publisher revision number exposed
+- **Extraction method:** complete Jina Reader URL-to-Markdown capture fetched with `curl`, compared with the rendered canonical Medium page exposed through the browsing tool; canonical HTML and `?format=json` command-line requests returned HTTP 403
+- **Full-text status:** complete
+- **Access and transformation notes:** article body, prompts, generated dialogue, Leonard comparison passage, headings, captions, and all seven article-illustration URLs are preserved; Medium byline/avatar, reading-time, newsletter, response, tag, and footer chrome are excluded; the decorative image bytes were not downloaded because their captions and surrounding prose establish that they are illustrations rather than evidence for the dialogue claims
 
-Published Time: 2023-02-18T14:13:00Z
+## Full text
 
-Markdown Content:
-[![Image 1: David J. Germain](https://miro.medium.com/v2/resize:fill:32:32/1*oHruj2MLj44XcZk0BSeaGw.png)](https://medium.com/@dave.germain.79?source=post_page---byline--bd8024a69eb3---------------------------------------)
-
-8 min read
-
-Feb 18, 2023
-
---
-
-Using Elmore Leonard to Inspire Characterization
+**Using Elmore Leonard to Inspire Characterization**
 
 Press enter or click to view image in full size
 
@@ -110,12 +112,6 @@ I then incorporated these into a large prompt that I run against several samples
 _You are an expert in discourse analysis and natural language processing (NLP). You’ve been teaching dialog writing for over 20 years. Analyze [Sight Sample] with an emphasis on the dialog. Discuss dialog sentence length, parts of speech, and number of declarative vs questions. Analyze the dialog, with an emphasis on Word choice, Grammatical structures, Register, Speech Acts, Discourse Markers, and Prosody. Discuss how these differ from typical fiction dialog. Make sure to compare sentence fragments vs complete sentences, questions vs declaratives vs instructions, and dialog tags._
 
 This was very useful because the responses were often organized into a list of topics. Since I ran the analysis against multiple samples, I used these lists to match up similar topics.
-
-## Get David J. Germain’s stories in your inbox
-
-Join Medium for free to get updates from this writer.
-
-Remember me for faster sign in
 
 Here’s the second prompt, which gave me a second opinion on the same topic:
 
@@ -220,3 +216,17 @@ Press enter or click to view image in full size
 ![Image 8](https://miro.medium.com/v2/resize:fit:700/1*Dpjo1fSx7xia8EwNajMayw.png)
 
 “Enter the Chamber” by David J. Germain with Midjourney V4
+
+## Extraction verification
+
+- **Beginning checked:** canonical rendered lines 29-58 and the current Jina capture were compared with the title, publication date, subtitle, Introduction, and opening method statement; the first generated dialogue prompt and seven-response example were present.
+- **Middle checked:** canonical rendered lines 112-159 and the current Jina capture were compared with `Analyzing the Selection` and `Using the Elmore Leonard Selection`; all three analysis/development prompts, the complete instruction paragraph, the visibly ellipsised Tony/Bob generation prompt, and the visibly ellipsised Officer follow-up generation prompt were present.
+- **End checked:** canonical rendered lines 160-210 and the current Jina capture were compared with `The Results` and `Conclusion`; all 16 preserved dialogue turns, all three stated takeaways, the next-article sentence, and the final caption were present.
+- **Structure checked:** seven substantive sections from `Introduction` through `Conclusion`, one Leonard comparison passage, three analysis/development prompts, one derived instruction paragraph, three generation-prompt excerpts (the complete vanilla prompt plus visibly ellipsised Tony/Bob and Officer prompts), two generated-dialogue examples, seven article-illustration references/captions, and three conclusion takeaways; current Jina capture was 220 lines and differed from the archived 222-line capture only in URL scheme/byline query chrome and a removed separator.
+- **Known omissions:** no substantive article text omitted; Medium byline/avatar, newsletter, response, tag, and footer chrome excluded; seven decorative article-image URLs and captions retained without downloading the image bytes.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | The seven article illustrations are decorative Midjourney images, not evidence-bearing dialogue examples. | not applicable | Their first-party `miro.medium.com` URLs and captions are retained in the full text; image bytes were not downloaded. |

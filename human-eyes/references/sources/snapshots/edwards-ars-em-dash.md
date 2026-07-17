@@ -1,13 +1,32 @@
-Title: Forget AGI—Sam Altman celebrates ChatGPT finally following em dash formatting rules
+# Forget AGI—Sam Altman celebrates ChatGPT finally following em dash formatting rules
 
-URL Source: https://arstechnica.com/ai/2025/11/forget-agi-sam-altman-celebrates-chatgpt-finally-following-em-dash-formatting-rules/
+- **Canonical URL:** https://arstechnica.com/ai/2025/11/forget-agi-sam-altman-celebrates-chatgpt-finally-following-em-dash-formatting-rules/
+- **Alternate access URLs:**
+  - https://r.jina.ai/http://arstechnica.com/ai/2025/11/forget-agi-sam-altman-celebrates-chatgpt-finally-following-em-dash-formatting-rules/
+  - https://api.fxtwitter.com/status/1989193813043069219
+  - https://api.fxtwitter.com/status/1989202710995038362
+  - https://api.fxtwitter.com/status/1989207851160727925
+  - https://api.fxtwitter.com/status/1989199176614416623
+  - https://cdn.arstechnica.net/wp-content/uploads/2025/11/sam_emdash.png
+  - https://pbs.twimg.com/media/G5sV-6qaMAECMf1.jpg?name=orig
+  - https://pbs.twimg.com/media/G5sOGuFacAAV2ix.jpg?name=orig
+- **Author / owner:** Benj Edwards
+- **Publisher:** Ars Technica
+- **Published:** 2025-11-14T18:45:34+00:00
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** none found; canonical article URL and X post ID 1989193813043069219
+- **Version / revision:** canonical article HTML with `dateModified` 2025-11-14T19:10:41+00:00
+- **Extraction method:** direct canonical HTML inspected with Beautiful Soup, cross-checked against Jina Reader URL-to-Markdown, with the article's embedded X screenshot and three cited X-post records retrieved separately; image content was visually inspected
+- **Full-text status:** complete
+- **Access and transformation notes:** All 25 article paragraphs, both body section headings, the kicker, deck, image caption, inline links, and author note were preserved. Navigation, advertising, the dynamic comment count, the unrelated “Most Read” module, and duplicate Jina caption text were excluded as page chrome. Markdown line wrapping was normalised. The article contains no tables, footnotes, appendices, or reference list. The direct HTML and Jina extraction agreed on the article body; direct HTML supplied `dateModified` and paragraph counts.
 
-Published Time: 2025-11-14T18:45:34+00:00
+## Full text
 
-Markdown Content:
-Next stop: superintelligence
+**Next stop: superintelligence**
 
 Ongoing struggles with AI model instruction-following show that true human-level AI still a ways off.
+
+**By Benj Edwards**
 
 Em dashes have become what many believe to be a [telltale sign of AI-generated text](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing#Overuse_of_em_dashes) over the past few years. The punctuation mark appears frequently in outputs from ChatGPT and other AI chatbots, sometimes to the point where readers believe they can identify AI writing by its overuse alone—although people can overuse it, too.
 
@@ -15,13 +34,9 @@ On Thursday evening, OpenAI CEO Sam Altman [posted](https://x.com/sama/status/19
 
 The post, which came two days after the release of OpenAI’s new [GPT-5.1](https://arstechnica.com/ai/2025/11/openai-walks-a-tricky-tightrope-with-gpt-5-1s-eight-new-personalities/) AI model, received mixed reactions from users who have [struggled](https://community.openai.com/t/cannot-get-responses-to-not-include-dashes-and-em-dashes/1023216/7) for years with getting the chatbot to follow specific formatting preferences. And this “small win” raises a very big question: If the world’s most valuable AI company has struggled with controlling something as simple as punctuation use after years of trying, perhaps [what people call](https://arstechnica.com/ai/2025/07/agi-may-be-impossible-to-define-and-thats-a-multibillion-dollar-problem/) artificial general intelligence (AGI) is farther off than some in the industry [claim](https://arstechnica.com/ai/2025/01/anthropic-chief-says-ai-could-surpass-almost-all-humans-at-almost-everything-shortly-after-2027/).
 
-[![Image 1: Sam Altman @sama Small-but-happy win: If you tell ChatGPT not to use em-dashes in your custom instructions, it finally does what it's supposed to do! 11:48 PM · Nov 13, 2025 · 2.4M Views](https://cdn.arstechnica.net/wp-content/uploads/2025/11/sam_emdash.png)](https://cdn.arstechnica.net/wp-content/uploads/2025/11/sam_emdash.png)
+![Screenshot of Sam Altman's X post about em dashes](attachments/edwards-ars-em-dash-altman-x-post.png)
 
-A screenshot of Sam Altman’s post about em dashes on X.
-
-Credit: [X](https://x.com/sama/status/1989193813043069219?s=20)
-
-A screenshot of Sam Altman’s post about em dashes on X.  Credit: [X](https://x.com/sama/status/1989193813043069219?s=20)
+*A screenshot of Sam Altman’s post about em dashes on X. Credit: [X](https://x.com/sama/status/1989193813043069219?s=20).*
 
 “The fact that it’s been 3 years since ChatGPT first launched, and you’ve only just now managed to make it obey this simple requirement, says a lot about how little control you have over it, and your understanding of its inner workings,” [wrote](https://x.com/daganshani1/status/1989202710995038362?s=20) one X user in a reply. “Not a good sign for the future.”
 
@@ -69,10 +84,24 @@ This gets to an implied question we mentioned earlier. If controlling punctuatio
 
 And speaking of getting lucky, some users still aren’t having luck with controlling em dash use outside of the “custom instructions” feature. Upon being told in-chat to not use em dashes within a chat, ChatGPT updated a saved memory and [replied](https://x.com/DrRishabhOnco/status/1989199176614416623?s=20) to one X user, “Got it—I’ll stick strictly to short hyphens from now on.”
 
-[![Image 2: Photo of Benj Edwards](https://cdn.arstechnica.net/wp-content/uploads/2022/08/benj_ega.png)](https://arstechnica.com/author/benjedwards/)
-
 Benj Edwards was a reporter at Ars Technica covering artificial intelligence and technology history.
 
-[163 Comments](https://arstechnica.com/ai/2025/11/forget-agi-sam-altman-celebrates-chatgpt-finally-following-em-dash-formatting-rules/#comments "163 comments")
+## Extraction verification
 
-1.   [![Image 3: Listing image for first story in Most Read: Zack Cregger has his own vision for Resident Evil reboot](https://cdn.arstechnica.net/wp-content/uploads/2026/04/evil1-768x432-1777574517.jpg)](https://arstechnica.com/culture/2026/04/stranded-traveler-gets-more-than-he-bargained-for-in-resident-evil-teaser/)
+- **Beginning checked:** The title, “Next stop: superintelligence” kicker, deck, byline, first two article paragraphs, and Altman-post screenshot were compared between the direct HTML, Jina extraction, and rendered screenshot.
+- **Middle checked:** The direct HTML's paragraphs 12–14 and the Jina extraction agree on the uncertainty about mechanism, the training-data/RLHF discussion, and the transition into “From em dashes to AGI?”.
+- **End checked:** The direct HTML's paragraphs 23–25 and Jina extraction agree on behavioural drift, the AGI interpretation, and the final quoted in-chat em-dash failure; the author note follows the article body.
+- **Structure checked:** Direct HTML contains one article, three headings including the title, 25 paragraphs including the deck, two body H2 headings, one content-bearing Altman-post image, no tables, no footnotes, no appendices, and no reference list. The Jina extraction preserves the same body order and adds only dynamic page chrome after the author note.
+- **Known omissions:** No substantive source material omitted. Navigation, advertising, comment count, related/Most Read links, duplicate generated caption text, and the generic author portrait were excluded as non-substantive page chrome. The three cited X replies were checked through mirror API records; two content-bearing reply images were preserved, but those replies remain cited evidence rather than evidence generated by the Ars article.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `human-eyes/references/sources/snapshots/attachments/edwards-ars-em-dash-altman-x-post.png` | Article's embedded screenshot of the Sam Altman post | `870a9878161d0f549330e78136a9932be96cf73b37b80c33e76a2463c32be7fc` | Downloaded from the Ars CDN at the source image URL; 745 × 348 PNG; visually checked and transcribed in the article text. |
+| `human-eyes/references/sources/snapshots/attachments/edwards-ars-em-dash-altman-post.json` | Mirror API record for cited X post 1989193813043069219 | `39d938f9e7a22d8dfc8785e5bb12d3c1cc8eccc9126ac9461dfc16c277d5a963` | Complete fxtwitter API response preserved; text, account, post ID, and timestamp checked against the article screenshot. |
+| `human-eyes/references/sources/snapshots/attachments/edwards-ars-em-dash-dagan-reply.json` | Mirror API record for the reply quoted by the article | `97319aac4e65230b7756c4b475a6b1880eee8eea6c962d06cdf3371fa509f2f0` | Complete fxtwitter API response preserved; the reply text and post ID agree with the article. |
+| `human-eyes/references/sources/snapshots/attachments/edwards-ars-em-dash-ethan-reply.json` | Mirror API record for the linked “Big-but-disappointing loss” reply | `c01a2d5b3678a0d8195cff7091b5894ccc50207ece8a805c622fce68d609dc85` | Complete fxtwitter API response preserved; its attached image carries the substantive in-chat failure example. |
+| `human-eyes/references/sources/snapshots/attachments/edwards-ars-em-dash-ethan-reply.jpg` | Linked reply image showing two in-chat em-dash failures | `ad34f77b607c2da6b3c0875b949462708d1ed730e2ef89732ca2e04e8c82267e` | Downloaded from the media URL in the preserved API record; 503 × 556 JPEG; visually checked. This is not a custom-instructions test. |
+| `human-eyes/references/sources/snapshots/attachments/edwards-ars-em-dash-rishabh-reply.json` | Mirror API record for the final linked reply | `d6dfc350316cad8a8e17340e62cfa97a6d299df7abcc3e3a8e9066f6d0f539a8` | Complete fxtwitter API response preserved; its attached image carries the response quoted by the article. |
+| `human-eyes/references/sources/snapshots/attachments/edwards-ars-em-dash-rishabh-reply.jpg` | Linked reply image showing a ChatGPT 5.1 in-chat em-dash failure | `5ca2aec8be693eecc478e1b0c145c6cf0f36322750e0b2136fd37032d5a28bd4` | Downloaded from the media URL in the preserved API record; 1290 × 764 JPEG; visually checked. This is not a custom-instructions test. |

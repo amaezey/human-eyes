@@ -1,54 +1,156 @@
-# Wendy Belcher: 10 Ways AI Is Ruining Your Students' Writing
+# Wendy Laura Belcher: 10 Ways AI Is Ruining Your Students' Writing
+
 ## Metadata
+
 - **URL:** https://www.chronicle.com/article/10-ways-ai-is-ruining-your-students-writing
-- **Author / owner:** Wendy Belcher
+- **Author / owner:** Wendy Laura Belcher
 - **Published:** 2025-09-16
+- **Retrieved:** 2026-05-05
 - **Extracted:** 2026-05-05
-- **Source type:** Higher-education journalism / pedagogy
+- **Contract updated:** 2026-07-15; the preserved extraction was brought into the source-ingest contract without a fresh article scrape
+- **Source type:** higher-education journalism / first-person pedagogy and practitioner observation
 - **Evidence tier:** Practitioner / teacher / editor essays (reported via higher-education journalism)
-- **Extraction status:** second-pass direct-source review from local Chronicle clipping supplied 2026-05-05
+- **Review mode:** update
+- **Stable identifier:** none found
+- **Version / revision:** Chronicle Advice article published 2025-09-16, preserved in the 2026-05-05 Jina Reader capture; previous record was the same article body embedded in an unnormalized page capture
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/belcher-ai-ruining-student-writing.md`
+- **Extraction method:** preserved Jina Reader URL-to-Markdown capture; no fresh scrape; page chrome removed and complete accessible article body normalized into the snapshot template
+- **Snapshot SHA-256:** `30f7de0bf57b7fbe96e11d27e772614451d01aae7e96c57b9c84ac020f8e90f4`
+- **Model / corpus scope:** Belcher's first-person observations from literature teaching and repeated interactions with unspecified ChatGPT versions, Google Gemini, Google Chrome AI Overview, and Stanford University's Storm app. Examples include AI-assisted student literary-analysis papers, author-generated model outputs, and one reported search overview. No model versions, prompts except one Gemini prompt, dates for most examples, course or paper counts, comparison sample, student demographics, language scope beyond English prose, annotation protocol, or measured frequencies are supplied.
+- **Access limitations:** none for the preserved article body. Decorative and repeated page elements were omitted from the normalized snapshot but remain in the archived prior capture. The article does not provide the underlying student papers, model transcripts, prompt history, the cited composition research, Belcher's 2007 *LIT Magazine* article, detector results, or empirical validation of prevalence, mechanisms, causality, or authorship accuracy.
 
 ## Summary
-Classroom-facing pedagogy essay arguing that ChatGPT and other LLM tools cannot help students write good literature papers because they substitute obvious, empty, derivative, distorted, and sometimes wrong material for analysis. The article is now a strong source for student-writing checks around banal thesis claims, bloated emptiness, synonym/referent cycling, abstraction chains, broken causation, missing interpreter agency, adjective inflation, moralizing/racist defaults, stolen argumentation, and factual errors.
+
+Belcher's Chronicle pedagogy essay gives a literature professor's ten-part account of recurring weaknesses in AI-assisted student papers: banal argument, fluent emptiness, referent cycling, abstraction chains, broken causal relations, erased interpretive agency, adjective inflation, moralizing and racist defaults, derivative argument, and factual error. It adds concrete literary-analysis examples, a directly checkable `not ... but` construction, and an important classroom response: identify the writing failures and require revision without claiming certainty about authorship. It is strong practitioner evidence for student-literary-analysis review prompts and weak evidence for general prevalence, model mechanisms, thresholds, or an authorship verdict because it supplies no documented sample or controlled comparison.
 
 ## Main insights
-- Useful as pedagogy/practitioner context for student-writing failure modes, not empirical measurement.
-- Strong direct support for student literary-analysis review prompts.
-- The source is less about surface AI tells and more about why the generated academic argument fails as thinking.
-- Belcher explicitly advises treating the issue as typical flaws requiring rewrite, not as a definitive authorship accusation.
+
+- The article's strongest project contribution is a genre-specific quality taxonomy for student literary analysis, not a general AI detector.
+- Several observations are already represented in #41's student-essay guidance, #11 synonym cycling, #9 negative parallelism, H21 low information density/wrong subject, and the product's non-authorship boundary.
+- The live deterministic checker catches the exact trailing `symbolizing ...` clause under #3 and the exact `not as ... but as ...` example under #9, but it does not catch the exact examples for banality, fluent emptiness, referent cycling, causal inversion, erased interpreter agency, adjective inflation, or moralizing.
+- The source's causal explanations about next-word prediction, repetition penalties, and resistance to correction are author interpretations without model/version or experimental evidence.
+- The moralizing, racism, plagiarism, and factual-error examples are important review prompts but remain anecdotal, source- and course-bound accounts whose underlying documents or upstream evidence are not preserved here.
+- Belcher explicitly advises teachers not to treat the observed flaws as proof of AI use. That framing aligns with human-eyes' existing product boundary and should govern any use of the source.
 
 ## Evidence and claims to extract
-- Local clipping metadata confirms Chronicle URL, author, publication date, and extraction date.
-- Belcher frames writing as thinking and says the lecture covers 10 reasons LLMs cannot help students write a good paper.
-- The ten named issues are: stating the banal, bloated emptiness, fragmenting unity through variation, stringing together abstractions, connecting the unconnected, removing the interpreter, evaluative adjective inflation, blaming the victim/racist defaults, stolen argumentation, and basic facts twisted.
-- The essay gives concrete student-paper examples, including generic hero's-journey arguments, empty diversity claims, referent cycling around a named protagonist, "x of y" abstraction chains, academic verbs that misstate causation, texts treated as agents, incorrect evaluative adjectives, moralizing defaults, plagiarized argumentation, and false facts.
-- Belcher's recommended response is rewrite-focused: tell the student the paper has typical AI flaws and must be rewritten without those flaws, without claiming certainty about AI use.
+
+- **Direct source reviewed:** Complete Chronicle Advice article published 2025-09-16, preserved in the 2026-05-05 Jina Reader capture and normalized without a fresh scrape on 2026-07-15. The review includes the opening, all ten numbered problems and examples, the additional scientific-term and `not ... but` notes, closing remediation, inline Guardian link, and author biography.
+- **Method and sample:** First-person practitioner essay based on Belcher's literature teaching, AI-assisted student papers she reports reading, and her interactions with ChatGPT, Gemini, Storm, and Chrome AI Overview. It gives several short examples but no sample size, denominators, prompt log beyond one Gemini prompt, model versions, dates for most outputs, comparison corpus, coding method, or outcome evaluation.
+- **Direct versus cited evidence:** C01-C09 and C11-C16 are direct author observations, interpretations, reported classroom examples, or model-output examples. C10 partly relies on the Guardian-linked account of Ngugi wa Thiong'o's language position; that upstream source was not separately reviewed in this ingest. C11 refers to Belcher's own 2007 *LIT Magazine* argument, which is not linked or preserved. C15 invokes unspecified research and technical mechanisms without citations. These inherited or mechanistic claims remain indirect or unresolved for project decisions.
+- **Important limits and counterexamples:** The article concerns English-language literature papers, not business prose, fiction, journalism, or all student genres. Belcher acknowledges that composition classes also teach variation, that varying verbs and modifiers can be useful, that her lecture does not prevent bad AI-assisted papers, and that she cannot know authorship from these flaws. Individual examples do not establish prevalence, a frequency threshold, a causal mechanism, or a document-level verdict.
 
 ## Skill-use audit
-- **Good use:** Strong source for student-literary-analysis checks and rewrite guidance.
-- **Misuse / overclaim:** Do not generalize every classroom/literary-analysis failure mode to business prose, fiction, or everyday writing.
-- **Unsupported use:** General-purpose AI detection; the source is a pedagogy article based on classroom observation, not a detector validation study.
-- **Underused evidence:** Belcher's "rewrite without accusing authorship" framing should shape classroom-facing remediation language.
-- **Patterns left on the table:** Banal thesis, bloated emptiness, dead-end sentence, noun/referent cycling, abstraction chains, causation inversion, erased interpreter agency, adjective inflation, moralizing defaults, derivative argument, and factual wrongness should be explicit student-writing review prompts.
+
+- **Good use:** Use the source as practitioner evidence for the #41 student-essay branch, H21, #11's manual synonym/referent review, the exact #3 and #9 examples, factual/source verification, and non-accusatory rewrite guidance.
+- **Misuse / overclaim:** Do not describe any one flaw, all ten flaws, or a cluster of them as proof that AI wrote a paper. Do not generalize literature-class observations to every genre, model, language, or educational setting.
+- **Unsupported use:** Do not import detector thresholds, prevalence claims, model-family profiles, causal claims about repetition penalties or prediction, a universal adjective rule, a racism classifier, or a claim that AI cannot help any student write a good paper.
+- **Underused evidence:** The current student-essay branch names banal theses, weak evidence, surface polish, derivative argument, and interpretive agency but does not explicitly name plot-summary substitution, dead-end sentences, causal inversion, adjective-to-source mismatch, moralizing/default cultural judgment, or factual verification in student literary analysis.
+- **Patterns left on the table:** Roman-genitive abstraction chains, causal-direction errors, hyper-adjectival semantic mismatch, inappropriate scientific terminology in humanities writing, source-bound cultural assumptions, and the need to verify a student's quoted evidence and factual premises remain evaluation candidates rather than validated checks.
 
 ## Matched patterns / rules
-- #1 significance inflation / evaluative inflation
-- #3 superficial analysis
-- #5 vague attributions / fuzzy authority
-- #11 synonym cycling / referent variation
-- #22 filler phrases / bloated emptiness
-- #30 generic metaphors / empty abstraction
-- #36 faux specificity
-- #37 neutrality or agency collapse
-- #41 student writing context
-- banal/generic argument
-- factuality / hallucinated evidence
+
+- #3 `no-superficial-ing` for the exact trailing `symbolizing ...` clause in C06
+- #9 `no-negative-parallelisms` for the exact `not as ... but as ...` example in C14
+- #11 synonym cycling manual self-audit for C05
+- #41 `genre_specific` student-essay description and watchlist for C02, C03, C08, C11, and adjacent parts of C04 and C12
+- H21 low information density and wrong sentence subject for C04, C07, and C08
+- `human-eyes/references/process.md` source preservation, closed-record, and product-boundary guidance for C03, C12, and C16
 
 ## Associated hypotheses
-- H3 drop detection framing
-- H9 similar-species disambiguation
-- H12 genre-aware threshold calibration
+
+- H3: Drop detection framing entirely
+- H9: Field-guide voice with similar-species disambiguation per pattern
+- H12: Genre-aware threshold calibration
+- H21: Low information density and wrong sentence subject
 
 ## Questions / follow-up
-- Should #41 get a dedicated student-literary-analysis checklist from Belcher's ten problems?
-- Should "rewrite without accusing authorship" become the default classroom-facing remediation pattern?
+
+- Independent source-record review remains pending and must be completed by a different, source-dedicated reviewer before this update is decision-ready.
+- Should the #41 student-essay branch explicitly add causal-direction, factual-premise, and source-text adjective checks, or should those remain broader evidence-quality guidance evaluated under H21?
+- The Ngugi interview, Belcher's 2007 *LIT Magazine* argument, and unspecified composition research are indirect evidence and would need separate source ingests before supporting their own project claims.
+- Any future evaluation should use matched literature-paper controls and preserve legitimate abstraction, disciplinary terms, deliberate modifiers, culturally grounded critique, and accurate `not ... but` constructions.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | none found; preserved 2026-05-05 Jina Reader capture | `snapshots/archive/belcher-ai-ruining-student-writing/2026-05-05-8c62f855.md` | 2026-05-05 | `8c62f8553c7d397047591b3bdaddab90bf404e752971f8454e2253efdb2bb208` |
+| current | none found | `snapshots/belcher-ai-ruining-student-writing.md` | 2026-05-05 | `30f7de0bf57b7fbe96e11d27e772614451d01aae7e96c57b9c84ac020f8e90f4` |
+
+The complete article body is materially unchanged. The current snapshot removes unrelated page chrome, normalizes the article into the snapshot contract, and adds provenance, extraction-verification, omission, and attachment fields. The prior card's compact ten-item summary has been expanded into a claim-keyed evidence inventory and live-project comparison.
+
+## Decision history
+
+- The previous card predated stable claim IDs, user-decision fields, implementation states, and independent source-record review. It recorded no approved recommendation or source-specific product implementation.
+- No prior decision was removed. C01-C16 are newly assigned stable IDs for the same preserved article evidence and therefore begin at `pending` / `not started`.
+- Earlier root-index mappings from Belcher to #1 significance inflation, #5 vague attribution, #22 filler phrases, #30 generic metaphors, #36 faux specificity, and #37 neutrality collapse were not carried forward: the article's adjective inflation, empty phrase, generic thesis, and erased interpreter claims do not establish those live checks. Belcher is retained for the exact #3 example and added to the exact #9 and genre-specific #41 mappings.
+
+## Project coverage
+
+This is the authoritative review table. Deterministic results below come from focused calls to the current `human-eyes/scripts/grade.py` check functions using exact or minimally combined article examples. They are surface-only execution evidence, not a complete human-eyes Audit.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: Belcher argues that ChatGPT and other LLM tools cannot help literature students write a good paper, while also saying she has seen no proof that AI brainstorming leads to good arguments and that her lecture does not prevent bad AI-assisted papers. | Direct practitioner position based on classroom observation; no sample, comparison, outcome measure, model/version scope, or review of beneficial use. The absence-of-proof statement qualifies rather than validates the universal claim. | **not covered:** human-eyes audits prose patterns and does not evaluate whether a tool can help a student or whether a teaching intervention works. H3 and the product boundary avoid authorship claims but do not test educational utility. | The source cannot support a universal inability claim or intervention result. | Record the article's purpose and qualification only. Do not turn the no-help claim into product guidance; require controlled educational evidence for any claim about learning outcomes or brainstorming utility. | pending | not started |
+| C02: Belcher reports newly common banal literary arguments such as hero's-journey, tradition-versus-modernity, individual-versus-community, and boundaries-destabilized theses; she also reports plot summary and broad cultural generalization substituting for analysis. | Direct teacher observation and named examples; no paper count, baseline, model attribution method, or comparison corpus. The examples define the concern but do not establish prevalence or authorship. | **partly covered:** #41 `genre_specific` explicitly asks the student-essay reviewer to flag a banal thesis or derivative argument and surface polish masking weak reasoning. A focused deterministic scan of the four short thesis examples produced no relevant finding, as expected for an agent-judgement item. | Plot-summary substitution and broad cultural generalization are not explicit in the live student watchlist, and no evidence threshold distinguishes a legitimately conventional thesis from an empty one. | Retain Belcher as practitioner support for #41. Before expanding the branch, evaluate banal/summary examples against introductory assignments, legitimate archetypal analysis, quoted assignments, and human student controls. | pending | not started |
+| C03: AI-assisted papers may invent plausible quotations and present claims without grounded textual evidence. | Direct practitioner assertion without a preserved invented-quote example, source paper, or verification rate. | **partly covered:** #41's academic branch verifies citations and whether sources support claims; its student branch flags claims unsupported by quoted evidence or draft history. `process.md` separately treats the source as a closed factual record and protects quotations. | The student branch does not expressly require checking that a quotation exists in the assigned text, and the Audit itself does not prove factual fidelity. | Consider explicit source-text quotation verification in the student branch, but only after evaluation on legitimate paraphrase, translation, edition, and quotation-format controls. | pending | not started |
+| C04: Fluent, grammatical, on-topic prose can be empty; Belcher's `Africa is home to some of the world's most diverse literary works` example uses common frames, an undefined evaluative term, and a claim never developed later, making it a dead-end sentence. | Direct analysis of one AI-assisted student-paper example; the claim about dead-end sentences being common is unmeasured. The source gives a contextual reading rather than a universal phrase blacklist. | **partly covered:** H21 explicitly proposes low-information-density assessment, and #41 covers surface polish masking weak reasoning. A focused deterministic scan of the exact sentence produced no relevant failure; #22 does not match `home to`, `some of`, or `world's most`. | H21 remains open; the live product has no direct information-density or dead-end-sentence assessment. The previous #22 mapping was unsupported. | Keep C04 as H21 and #41 evaluation material. Do not add its common phrases to #22 from one example; test contextual claim development and legitimate introductory sentences first. | pending | not started |
+| C05: Avoiding repeated nouns can fragment unity: after naming Sunjata, AI-assisted papers cycle through `main character`, `protagonist`, `central figure`, and `key player`, increasing cognitive load and contributing to drift from the announced subject. | Direct teacher observation with a constructed/recalled referent sequence; no measured frequency. Belcher also supplies a counterexample: composition classes teach variation, and varying verbs and modifiers can be useful. | **fully covered:** #11 synonym cycling describes excessive substitutions for one referent, gives nearly the same protagonist/main-character/central-figure sequence, considers repetition-penalty framing, and correctly remains manual because coreference exceeds regex. The focused deterministic scan produced no finding, consistent with that declared boundary. | No material coverage gap. The source cannot validate a threshold or causal mechanism. | Take no product action. Retain Belcher as direct practitioner support and preserve #11's manual, context-sensitive treatment. | pending | not started |
+| C06: AI-generated literature prose may string modular `x of y` abstractions together and misuse literary terms, as in the Storm sentence ending `symbolizing the complexity of African narratives in the face of colonial legacies` and the claim that an act of mercy is `a metaphor for mercy`. | Direct author-generated Storm and ChatGPT examples with semantic critique; no prompt, model version, repeat sample, or human control. | **partly covered:** a focused run of #3 `no-superficial-ing` on the exact Storm sentence found the trailing `, symbolizing ...` clause. #7 guidance names abstract scenery nouns, but the live vocabulary cluster did not fire on this one sentence. H21 is adjacent to wrong-subject and low-information concerns. | #3 catches the participial surface but cannot assess the Roman-genitive chain, incorrect literary term, agentless abstraction, or colonial implication. | Retain the exact #3 example and evaluate Roman-genitive density and literary-term/source-text mismatch only as genre-specific semantic questions with legitimate academic controls. | pending | not started |
+| C07: AI-assisted prose may reverse causal direction and stitch ideas with academic verbs such as `highlights`, `underscores`, or `emphasizes`, making a reading appear to reinforce the principle from which it actually results. | Direct analysis of one AI-assisted paper sentence plus an unmeasured recurring observation. | **partly covered:** #7 guidance calls these inflation verbs and H21 proposes wrong-subject review. A focused combined passage containing Belcher's causal example and all three verbs produced no relevant deterministic finding because the live vocabulary logic requires supported clustering and neither component assesses causal direction. | The project names the verbs but does not determine whether they express the correct causal/evidential relation. Root vocabulary coverage would overstate the source if it implied those words are always wrong. | Evaluate a non-authorship causal-direction/evidence-relation assessment under H21 or #41 using correct uses of the same verbs as controls; do not add a bare blacklist. | pending | not started |
+| C08: AI-assisted literary analysis may erase the student interpreter by assigning agency to a text or abstraction, as in `The folktale subverts ... by exposing ...`, and may avoid first-person authorial agency. | Direct classroom example and teacher interpretation; no paper count or control for legitimate metonymic statements about what a text does. | **fully covered:** #41's student-essay description explicitly names loss of the student's own interpretive agency, and H21 covers wrong grammatical subject. The focused deterministic scan was clear, consistent with semantic rather than regex coverage. | The student sub-record description carries the exact concern, but any implementation must preserve legitimate critical shorthand such as `the novel argues` and disciplines that discourage first person. | Take no product action now. Retain Belcher as direct #41 support and preserve genre/discourse controls in any later evaluation. | pending | not started |
+| C09: AI-generated prose may be hyper-adjectival, attaching positive or negative modifiers that sound elegant but contradict the source text or create incoherent abstract pairings. | Direct teacher observation and one AI-assisted example; no adjective count, human comparison, model/version, or rate. The source's criticism depends on knowledge of the play, not adjective presence alone. | **not covered:** #1 significance inflation targets importance claims, not adjective density or source-text mismatch; #36 tests performed specificity, not evaluative modifiers. The focused exact-example scan produced no relevant finding. #41's weak-reasoning prompt is only adjacent. | The previous #1 and #36 source mappings misrepresented this claim. A general adjective detector would overflag ordinary description and cannot know whether `silent` is factually wrong. | Remove the unsupported #1/#36 mappings. Keep C09 as a source-grounded literary-analysis evaluation candidate requiring the assigned text and matched human controls. | pending | not started |
+| C10: Belcher reports moralizing AI-assisted papers that impose Western ethical standards, blame African characters rather than colonialism, and can reverse a historically important African-language argument into a supposedly bad or racist position. | Direct teacher observations and one author-generated Gemini output from the prompt `give me a bad argument about African literature`; the Ngugi language-position support is inherited through a linked Guardian interview not directly reviewed here. No sample, model version, or cultural-bias evaluation is supplied. | **not covered:** #37 neutrality collapse is unrelated, and #41 does not explicitly assess moralizing, cultural premises, or blame direction. The exact example's `rather than` structure did not trigger #9, which targets supported negative-parallel forms rather than every comparison. | The prior #37 mapping conflated interpretive agency/cultural judgment with stance erasure. A generic moralizing or racism check would require expert, source-specific evidence and strong false-positive controls. | Remove the #37 mapping. Record C10 as a high-stakes, source-bound review prompt; require direct upstream review and culturally competent evaluation before any project change. | pending | not started |
+| C11: Belcher reports derivative or plagiarized student argument, including a student's `quiet resistance` phrase that closely reproduced her published `indirect resistance` theory after she had lectured on it. | First-person incident account; the student paper, model transcript, lecture, and 2007 *LIT Magazine* article are not preserved, so the copying pathway cannot be independently established from this card. | **fully covered:** #41's student watchlist explicitly includes banal or derivative argument and unsupported draft history; academic/source-verification guidance is adjacent. | The live audit can prompt review but cannot prove plagiarism or distinguish the student's memory, model training, lecture exposure, and independent convergence. | Take no product action. Keep as provenance/draft-history context and require direct source comparison before using plagiarism language in any case. | pending | not started |
+| C12: AI-assisted work can twist basic facts, illustrated by Chrome AI Overview calling *Things Fall Apart* a novel translated into English even though Achebe wrote it in English; Belcher reports finding an error in every tool answer she checks. | One reported first-party observation plus an anecdotal universal-rate statement; the live overview, query, date, and response capture are not preserved. | **partly covered:** #41's academic and journalism branches verify dates, citations, quotes, and source support; `process.md` requires separate factual-fidelity checks. The student branch does not explicitly require basic-fact verification, and human-eyes states that an Audit does not prove factual fidelity. | Factual verification is outside deterministic pattern coverage. The `every answer` error-rate claim cannot support a threshold or prevalence statement. | Add Belcher only as practitioner support for student source/fact verification. Evaluate a #41 wording change that clearly separates prose audit from checking the assigned text and named sources. | pending | not started |
+| C13: Belcher additionally reports AI inserting scientific terms into humanities writing. | Direct practitioner observation without an example, model/version, term list, frequency, or distinction between misuse and legitimate interdisciplinary analysis. | **not covered:** `even_jargon_distribution` asks about suspiciously uniform technical vocabulary across sections, not incorrect scientific terminology in one humanities argument. #41 is only generally adjacent. | There is insufficient evidence to define candidates, scope, or a safe control set. | Record only as an unresolved practitioner lead. Do not promote without direct examples and matched interdisciplinary humanities controls. | pending | not started |
+| C14: Belcher identifies a `not ... but` tic and gives `not as a distant intercessor but as a direct actor in domestic injustice` as an example. | Direct practitioner observation with one exact generated example; no frequency comparison, prompt, model version, or human control. | **fully covered:** focused #9 `no-negative-parallelisms` execution found exactly one candidate spanning `not as a distant intercessor but as a direct actor in domestic injustice`. The project explicitly treats one occurrence as an overrepresented construction, not authorship proof. | No implementation gap. Belcher cannot supply prevalence or a threshold. | Add Belcher as bounded practitioner support for the already-implemented exact construction; retain existing frequency, context, quotation, and deliberate-use cautions. | pending | not started |
+| C15: Belcher explains the observations through next-word prediction, a repetition penalty, common/cliched language, and model persistence after she chastises the tools. | Direct author explanation and repeated-use impression; no citations, system settings, model versions, prompts, output series, or experiment. The statement that all research supports regular patterns is also unattributed. | **not covered:** human-eyes documents some training/mechanism hypotheses but does not test these causal accounts. H24/H25 model/date work and source metadata conventions are adjacent. | The article cannot establish that the named mechanisms caused the classroom examples or that correction attempts generally fail. | Keep the mechanisms explicitly as author interpretation, not evidence for severity or implementation. Require first-party/versioned or experimental sources before using them causally. | pending | not started |
+| C16: Teachers should identify the writing flaws, require revision, and explicitly say they do not know whether AI was used; the point is the paper's problems, not an authorship accusation. | Direct pedagogical recommendation grounded in Belcher's classroom practice; no measured learning outcome, but the epistemic caution is explicit. | **fully covered:** the root README says human-eyes is a pattern detector, not an AI detector; `process.md` prohibits authorship statements and requires reports to describe the construction, reading problem, and edit. H3 aligns with dropping detection framing. | No material policy gap. Belcher's specific stop-grading/passing-grade procedure is institution- and instructor-dependent and should not become a universal rule. | Take no product action. Retain the non-accusatory, flaw-specific rewrite framing while leaving grading policy to the user and institution. | pending | not started |
+
+## Recommendations
+
+- C01: Record the article's educational position and qualification only; do not encode a universal no-help claim.
+- C02: Retain as #41 practitioner support and evaluate banal/summary prompts with matched literature-paper controls before expanding the branch.
+- C03: Evaluate explicit source-text quotation verification with edition, translation, paraphrase, and formatting controls.
+- C04: Keep as H21/#41 evaluation material; do not add the example's common phrases to #22.
+- C05: Take no product action; retain direct practitioner support for manual #11.
+- C06: Retain the exact #3 example and evaluate abstraction/literary-term mismatch only as a genre-specific semantic question.
+- C07: Evaluate causal-direction/evidence-relation assessment under H21 or #41; do not blacklist academic verbs.
+- C08: Take no product action; retain direct support for interpretive-agency review with disciplinary controls.
+- C09: Remove unsupported #1/#36 mappings and evaluate source-text adjective mismatch only with bound literary sources.
+- C10: Remove the unsupported #37 mapping and keep this as a high-stakes, source-bound lead pending direct upstream and culturally competent review.
+- C11: Take no product action; require direct comparison and provenance evidence before using plagiarism language.
+- C12: Evaluate explicit student source/fact-verification wording while preserving the Audit/factual-fidelity boundary.
+- C13: Record only as an unresolved lead until direct examples and matched controls exist.
+- C14: Add bounded Belcher support to #9; retain the current contextual and non-authorship framing.
+- C15: Record mechanisms as author interpretation only; require first-party or experimental evidence before causal use.
+- C16: Take no product action; retain the existing flaw-specific, non-accusatory product boundary.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending recommendation; no product change implemented.
+- C02: not applicable - pending recommendation; no product change implemented.
+- C03: not applicable - pending recommendation; no product change implemented.
+- C04: not applicable - pending recommendation; no product change implemented.
+- C05: not applicable - pending recommendation; no product change implemented.
+- C06: not applicable - pending recommendation; no product change implemented.
+- C07: not applicable - pending recommendation; no product change implemented.
+- C08: not applicable - pending recommendation; no product change implemented.
+- C09: not applicable - pending recommendation; no product change implemented.
+- C10: not applicable - pending recommendation; no product change implemented.
+- C11: not applicable - pending recommendation; no product change implemented.
+- C12: not applicable - pending recommendation; no product change implemented.
+- C13: not applicable - pending recommendation; no product change implemented.
+- C14: not applicable - pending recommendation; no product change implemented.
+- C15: not applicable - pending recommendation; no product change implemented.
+- C16: not applicable - pending recommendation; no product change implemented.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: review_belcher_batch2_once
+- **Reviewer isolation:** fresh source-dedicated agent; one source only; not reused
+- **Findings resolved:** none
+- **Unresolved findings:** none

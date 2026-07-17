@@ -1,3 +1,22 @@
+# Aranya / Poetly: Poetry and Artificial Intelligence
+
+- **Canonical URL:** https://poetly.substack.com/p/poetry-and-artificial-intelligence
+- **Alternate access URLs:**
+  - https://r.jina.ai/http://poetly.substack.com/p/poetry-and-artificial-intelligence
+- **Author / owner:** Aranya, as recorded by the existing source catalogue; the preserved extraction does not display a byline
+- **Publisher:** Poetly on Substack
+- **Published:** 2025-07-16
+- **Retrieved:** 2026-05-05
+- **Extracted:** 2026-05-05
+- **Contract updated:** 2026-07-15; provenance and verification framing only, with no fresh article extraction
+- **Stable identifier:** none found
+- **Version / revision:** public Substack post as preserved 2026-05-05; published timestamp `2025-07-16T14:35:15+00:00`; no post or revision identifier exposed in the capture
+- **Extraction method:** Jina Reader URL-to-Markdown extraction preserved from 2026-05-05; this update retained the article body without re-scraping
+- **Full-text status:** partial
+- **Access and transformation notes:** The preserved Markdown contains the accessible prose article text, its links, the Campbell McGrath quotation, and all three footnotes. The content-bearing opening Poetry Daily poem is present only as an embedded-image URL; its image bytes were not preserved and its text was not transcribed or independently reviewed. Under the user's no-rescrape waiver, this update accurately records that omission instead of attempting a fresh retrieval. Page navigation and unrelated Substack chrome were not retained. The 2026-07-15 update added provenance and verification framing and removed trailing spaces from two blank quotation lines; it did not change article wording.
+
+## Full text
+
 Title: Poetry and Artificial Intelligence
 
 URL Source: https://poetly.substack.com/p/poetry-and-artificial-intelligence
@@ -26,8 +45,8 @@ To cut a long story short, our response to AI must be attuned to its process. Li
 My emphasis on process - _tareeka -_ is deliberate. I want to draw your attention briefly to Campbell Mcgrath’s writing and editing routine. This is also directed at readers who ask poets questions like “What’s your routine?”, “Do you write everyday?” etc.
 
 > “Most of my poems begin in a notebook, and then work their way through revision moving between the computer screen and more hand-written versions on the page. That has been a constant for me, over thirty years as a writer. But much of the rest of my process as a writer has evolved over time, as my life has changed. When one is busy with a family life, a full time job, etc., then writing time has to become flexible. Some days, or weeks, I have time to write all day; often, I can only write for an hour or two. Sometimes, nothing at all gets done on the creative front—but even those slack periods have their value, as one returns to one’s work with a fresh mind. Poetry is so variable that it can be written in big gulps or tiny nibbles, just as poems themselves can be as small as a haiku or as large as the _Odyssey_.”
-> 
-> 
+>
+>
 > From [“Process of Creation, History, and Location: An Interview with Campbell McGrath”](https://reunion.utdallas.edu/2023/11/03/process-of-creation-history-and-location-an-interview-with-campbell-mcgrath/)
 
 I like Mcgrath’s answer - especially the part about “moving between the computer screen” and more “hand-written versions” on the page. My own process is similar. My poems go through several rounds of editing - the words touch different interfaces. One round of editing takes place when the words travel from the mind to the hand. The pen (or even the keyboard) allows a second round _while_ writing. Another round of editing usually happens when I transfer the poem from one app/software to another (Evernote to MS Word, for eg., or ppt to email - by the way it can be a lot of fun to write directly on different apps. Ever tried writing a poem on Microsoft Powerpoint? _or_ Composing a poem, that is actually an angry reply to someone, on gmail?) Inevitably, another round of editing takes place when I share the poem (with a friend, the internet, or as part of a submission to a poetry journal). These edits are natural. They are a part of my attempt to be as precise as possible. There always comes a point in the writing, when I say… “Hmmm I have said _exactly_ what I wanted to say in this poem”, or, “This is exactly what happened”. This is the point at which poetry becomes testimony.
@@ -61,3 +80,17 @@ If you like what you read, do consider ‘buying me a coffee’.
 Thanks for reading Poetly ! This post is public so feel free to share it.
 
 [Share](https://poetly.substack.com/p/poetry-and-artificial-intelligence?utm_source=substack&utm_medium=email&utm_content=share&action=share)
+
+## Extraction verification
+
+- **Beginning checked:** The preserved title, canonical URL, publication timestamp, opening discussion, embedded Poetry Daily image link, and the author's initial claims about AI as a tool and poetry concern are present.
+- **Middle checked:** The preserved student-writing observations, poetry-prompt discussion, research-assistant advice, process argument, and complete Campbell McGrath quotation appear in source order.
+- **End checked:** The author's multi-interface revision account, fragments-and-mistakes discussion, linked poetry references, all three footnotes, archive-comparison exercise, contact line, support link, and share link are present.
+- **Structure checked:** One continuous practitioner essay with one block quotation, one content-bearing embedded poem image, inline links, and three endnotes. No tables, appendix, formal reference list, or disclosed study method appears.
+- **Known omissions:** The content-bearing opening-poem image was not preserved or transcribed, so the snapshot is partial and that poem's language is unavailable for claim extraction. This omission is retained under the user's no-rescrape waiver. The preserved extraction also does not expose a byline, post ID, revision history, or evidence behind the reported Instagram incident, editor/anthologist experience, university-teaching observations, energy-use aside, or uncertain Grok complaint claim.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | content-bearing opening Poetry Daily poem image not locally preserved | not applicable | The image URL is retained in the article body, but the image bytes and poem transcription are not part of the preserved source. The card does not infer or quote the unseen wording; the omission makes this snapshot partial under the user's no-rescrape waiver. |

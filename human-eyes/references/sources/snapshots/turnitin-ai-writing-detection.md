@@ -1,8 +1,22 @@
-Title: Using the AI Writing Report
+# Using the AI Writing Report
 
-URL Source: https://guides.turnitin.com/hc/en-us/articles/22774058814093-Using-the-AI-Writing-Report
+- **Canonical URL:** https://guides.turnitin.com/hc/en-us/articles/22774058814093-Using-the-AI-Writing-Report
+- **Alternate access URLs:**
+  - https://guides.turnitin.com/api/v2/help_center/en-us/articles/22774058814093.json
+  - https://turnitinguides.zendesk.com/api/v2/help_center/en-us/articles/22774058814093.json
+  - https://r.jina.ai/https://guides.turnitin.com/hc/en-us/articles/22774058814093-Using-the-AI-Writing-Report
+- **Author / owner:** Turnitin
+- **Publisher:** Turnitin, LLC, through Turnitin Guides / Zendesk Help Center
+- **Published:** 2023-12-29T15:49:00Z (official API `created_at`)
+- **Retrieved:** 2026-07-17
+- **Stable identifier:** Turnitin Guides / Zendesk article 22774058814093
+- **Version / revision:** official API `edited_at` 2026-03-06T15:18:31Z; API record `updated_at` 2026-07-16T12:34:25Z
+- **Extraction method:** fetched the unauthenticated first-party Zendesk Help Center API JSON with `curl -L --compressed`; converted its complete `article.body` HTML to Markdown by comparison with Jina Reader; checked the two text routes for the full body and downloaded all ten first-party image attachments
+- **Full-text status:** complete
+- **Access and transformation notes:** direct `curl` access to the canonical rendered page returned HTTP 403; the official unauthenticated API returned the complete published body and metadata. Jina Reader returned the same 120-line Markdown body already preserved in the prior snapshot. Navigation and page chrome were excluded. HTML headings, paragraphs, lists, callouts, links, and image order were represented in Markdown. All ten images were preserved; their content was visually checked, and the main report screenshot is described below. The linked FAQ and file-requirements pages were opened only to establish the cited-source boundary and were not recursively ingested.
 
-Markdown Content:
+## Full text
+
 This guide helps instructors understand what the AI Writing Report shows and how to read its results. It also explains key limitations so you can review reports confidently and consistently.
 
 **In this guide:**
@@ -118,3 +132,36 @@ This means that a document containing several different writing types would resu
 ## How do we detect AI-generated writing?[](https://guides.turnitin.com/hc/en-us/articles/22774058814093-Using-the-AI-Writing-Report#h_01J2XW2JPNTW23MNFD7D3CG6R1)
 
 How Turnitin has made this determination is complex. To help our users understand Turnitin’s method of detecting AI writing text, we have created an extensive FAQ. [Learn more about Turnitin’s AI writing detection tool](https://www.turnitin.com/products/features/ai-writing-detection/faq).
+
+## Content-bearing image notes
+
+- The main report screenshot shows an illustrative four-page, 738-word submission with a 56% combined result: 24% labelled `AI-generated only` in cyan and 32% labelled `AI-generated text that was AI-paraphrased` in purple. The screenshot also displays Turnitin's warning that its assessment may produce false positives or false negatives, should not be the sole basis for adverse action, and requires further scrutiny, human judgment, and applicable academic policy. This is a product-interface illustration, not a published validation case or calibrated probability example.
+- Before the highlights, the screenshot's fully visible sample prose reads: “The pervasive presence of social media platforms in contemporary society has fundamentally altered the dynamics of human interaction and communication. From the proliferation of Facebook to the rise of Instagram influencers, social media has become an integral aspect of daily life for billions worldwide. However, amid the convenience and connectivity afforded by these platforms lies a nuanced relationship with mental health that warrants deeper exploration. This essay embarks on a comprehensive journey to dissect the multifaceted impact of social media on mental well-being, delving into its intricate layers and divergent effects.”
+- The fully visible purple-highlighted passage reads: “Despite the myriad challenges posed by social media, it is essential to acknowledge its potential for positive impact on mental health when utilized mindfully. Online support groups and communities offer invaluable resources and solidarity for individuals facing mental health challenges, providing a sense of belonging and understanding in times of need. Additionally, social media platforms serve as powerful tools for raising awareness about mental health issues and reducing stigma through advocacy efforts and storytelling.”
+- The cyan-highlighted passage begins: “To mitigate the negative effects of social media on mental health, individuals can adopt proactive strategies to cultivate a healthy relationship with these platforms. Setting boundaries around social media usage, such as limiting screen time and prioritizing offline interactions, can help restore”. The screenshot's bottom navigation controls obscure the continuation, and the image ends before the passage finishes; the partially visible continuation is therefore not transcribed as complete text.
+- The image describes cyan as “Likely AI-generated text from a large-language model” and purple as “Likely AI-generated text that was likely revised using an AI-paraphrase tool or word spinner.” These are vendor-assigned UI labels. The screenshot supplies no source, authorship ground truth, generation process, detector build, or validation role for the sample, so its prose cannot establish a human-eyes pattern, severity, or detector result.
+- Images 2 and 3 isolate the two category labels and the same illustrative 24% and 32% values. Images 4 and 5 show the page-level submission-breakdown bar and its interactive tooltip. Images 6-10 illustrate loading, processing-error, unmet-requirements, updated-report, and recently-enabled states; they add interface examples but no performance evidence.
+
+## Extraction verification
+
+- **Beginning checked:** compared the title, five-item guide contents, purpose statement, accuracy/adverse-action warning, similarity-score distinction, first heading, and first report image across the official API body, Jina Markdown, and preserved image.
+- **Middle checked:** compared the two submission categories, English-versus-Spanish/Japanese capability qualification, interactive breakdown description, all seven indicator-state subsections, and images 2-10 across the official API body and Jina Markdown; visually inspected all ten preserved images.
+- **End checked:** compared the below-20 suppression rule, non-retroactivity date, five file requirements, qualifying-text definition and exclusions, mixed-format disparity warning, and final FAQ link across the official API body, Jina Markdown, and the separately opened first-party file-requirements and FAQ pages.
+- **Structure checked:** official body contains 5 `h2`, 10 `h3`, 1 `h4`, 34 `p`, 12 `li`, 11 `a`, and 10 `img` elements. Beautiful Soup `get_text(" ", strip=True).split()` produces 1,102 whitespace-separated tokens from the rendered body. The Markdown preserves the complete article order. The first-party API JSON, all ten images, and their hashes are retained below.
+- **Known omissions:** none from the article body or its ten image attachments. Site chrome is intentionally excluded. The linked 538-line FAQ is a separate living source and was not incorporated as direct evidence; claims unique to it remain indirect and unresolved for this card.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-zendesk-article-22774058814093-2026-07-17.json` | Official article metadata and complete HTML body | `4eed8e3d290dbe8cba1ccc1e60aa308642c4eba2380d009f441f414abbb07f72` | Byte-preserved unauthenticated first-party API response; body HTML SHA-256 `9639b9f0cefc44e7e792cebf5f6818387d664e0d173a1f19de9a21652f0cc8ab`. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-01-44070469530381.png` | Main AI Writing Report example | `ef3a46cf9ca280f2a130e9019d389d9278f0a40fb5fbe8c35b19f22c53e4cc06` | Complete 1886 x 1234 first-party PNG; visually checked and transcribed in the image notes. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-02-28458350848397.png` | `AI-generated only` category example | `0448a0464e8f8c564657f9aacc1eda0acf200c55c62ca08b70b317f4de37a07e` | Complete 1600 x 205 first-party PNG; visually checked. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-03-28458326084621.png` | AI-generated then AI-paraphrased category example | `8a10f04a8626733322d8e6c61d4cf884e850d8aaf7c6f77a563e143ccd22c742` | Complete 1600 x 255 first-party PNG; visually checked. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-04-28458350851853.png` | Submission-breakdown bar | `6dd65ed5b91739001cf43ada6739ca88206e8efb3e3d2f949123b38f3e9997ff` | Complete 1600 x 356 first-party PNG; visually checked. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-05-28458326089229.png` | Interactive breakdown tooltip | `7203407792451fdbe2601aead437d8b0bbfa7e6a2b97c724bab1c4530144ff27` | Complete 1600 x 345 first-party PNG; visually checked. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-06-39128439421709.png` | Loading-state illustration | `c4e1350651d66254805bf92fafdeb774db2adaead995aaaa3a8b2b1567790258` | Complete 694 x 388 first-party PNG; visually checked. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-07-39128455005581.png` | Processing-error illustration | `6b20d78ab0001ae217a5abf8a34b28c07504f2b2faf6fcfd59da09f2cf65c2a8` | Complete 702 x 240 first-party PNG; visually checked. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-08-39128455006989.png` | File-requirements failure illustration | `fb5168b0441001a18c01a9603cd53a068e3493eb45ad4fc07899161ae3f2c956` | Complete 694 x 380 first-party PNG; visually checked. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-09-39128455008397.png` | Updated-report illustration | `a4a3b982e66d3d86a7506c710749581b9f76e64cf3f8830d72a301e730772e32` | Complete 596 x 390 first-party PNG; visually checked. |
+| `snapshots/attachments/turnitin-ai-writing-detection/turnitin-ai-writing-detection-image-10-39128439428365.png` | Recently-enabled state illustration | `d6855a0be7742e822709c172e96fd58165c4d9f796da4d2bb73801e111f41fcf` | Complete 784 x 206 first-party PNG; visually checked. |

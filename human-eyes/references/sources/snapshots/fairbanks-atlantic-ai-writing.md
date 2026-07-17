@@ -1,16 +1,17 @@
 # The Biggest Tell That Something Was Written by AI
 
 - **Canonical URL:** https://www.theatlantic.com/technology/2026/05/how-to-tell-ai-writing/687345/
-- **Alternate access URL:** https://www.theatlantic.com/technology/2026/05/how-to-tell-ai-writing/687345/?gift=EY8xLBI5GqhRe3pE2DIZZ2OHNQ97ceCiusZNs_k0M00
+- **Alternate access URLs:**
+  - https://www.theatlantic.com/technology/2026/05/how-to-tell-ai-writing/687345/?gift=EY8xLBI5GqhRe3pE2DIZZ2OHNQ97ceCiusZNs_k0M00
 - **Author / owner:** Eve Fairbanks
 - **Publisher:** The Atlantic
 - **Published:** 2026-05-29
-- **Retrieved:** 2026-07-14
+- **Retrieved:** 2026-07-15
 - **Stable identifier:** The Atlantic article 687345
 - **Version / revision:** published version modified 2026-05-29T17:08:00Z
-- **Extraction method:** direct HTML article-body extraction from supplied gift link
+- **Extraction method:** direct canonical and gift-link HTML fetched with `curl`; Python 3 and BeautifulSoup 4 used for DOM counts and text comparison; Markdown body retained from the prior verified extraction after the current rendered article matched it token for token
 - **Full-text status:** complete
-- **Access and transformation notes:** The complete accessible headline, deck, and article body are preserved below. Navigation, advertising, audio controls, artwork credit, sharing controls, and author boilerplate were omitted. Editorial cross-links were retained. No article-body text was omitted.
+- **Access and transformation notes:** The canonical and gift routes both returned the complete server-rendered article without a login or paywall. The complete headline, deck, and article body are preserved below; Markdown links replace HTML anchors, and the four poem lines use `<br>` within one block quote. Navigation, advertising, audio controls, sharing controls, author boilerplate, and the non-substantive lead illustration were omitted. Its caption, `Illustration by The Atlantic. Source: Getty.`, was checked but does not bear on the article's claims. No article-body text was omitted.
 
 ## Full text
 
@@ -69,8 +70,14 @@ Or maybe smooth communiqués that arrive on time and betray no confusion, doubt,
 
 ## Extraction verification
 
-- **Beginning checked:** The deck and Johannesburg crash opening were compared with the rendered article body returned by the supplied gift link.
-- **Middle checked:** The sycophancy-study passage and ChatGPT metaphor exchange were compared with the rendered article body.
-- **End checked:** The vocabulary-transfer passage, poem, and final paragraph were compared with the rendered article body.
-- **Structure checked:** The article is one unheaded essay body with two editorial `Read:` cross-links and one four-line poem. The cross-links and poem line breaks are preserved. There are no article tables, notes, appendices, or reference list.
-- **Known omissions:** Page chrome, advertisements, artwork credit, audio and sharing controls, and author boilerplate only; no source-body omissions.
+- **Beginning checked:** Current canonical and gift HTML were checked against the deck and Johannesburg crash opening; both routes matched the snapshot.
+- **Middle checked:** The sycophancy-study passage and the full ChatGPT metaphor exchange were checked against current rendered HTML.
+- **End checked:** The vocabulary-transfer passage, artisanal-writing forecast, four poem lines, and final trade-off paragraph were checked against current rendered HTML.
+- **Structure checked:** The current article has 27 rendered `<p>` elements including the deck, two editorial `Read:` modules, and four poem-line elements; 10 article-body links; one block quote; and one non-substantive lead figure. The snapshot and current HTML body contain the same 2,097 word-or-punctuation tokens in the same order. There are no article tables, notes, appendices, or reference list. The publisher metadata still reports publication at `2026-05-29T11:00:00Z` and modification at `2026-05-29T17:08:00Z`.
+- **Known omissions:** Page chrome, advertisements, audio and sharing controls, author boilerplate, and the lead illustration bytes; the checked caption and omission are recorded above. No source-body omissions.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | non-substantive lead illustration | not applicable | Image bytes were not preserved; the caption and source credit were checked and recorded because the illustration carries no article claim. |

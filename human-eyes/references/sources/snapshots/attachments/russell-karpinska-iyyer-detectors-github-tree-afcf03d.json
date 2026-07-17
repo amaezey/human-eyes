@@ -1,0 +1,187 @@
+{
+  "sha": "afcf03d14d2da4a038d8d0fafa5ec779dd858181",
+  "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/trees/afcf03d14d2da4a038d8d0fafa5ec779dd858181",
+  "tree": [
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "026774a5e1e19f5af31fdfb4609a79409e12bd73",
+      "size": 1070,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/026774a5e1e19f5af31fdfb4609a79409e12bd73"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99da7676b20c14b9e0acaf5b6a77e453de275b56",
+      "size": 9928,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/99da7676b20c14b9e0acaf5b6a77e453de275b56"
+    },
+    {
+      "path": "detect.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12041d577a121fd473fcd91eab40ad99906dcf2d",
+      "size": 4084,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/12041d577a121fd473fcd91eab40ad99906dcf2d"
+    },
+    {
+      "path": "evade.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e0fe90efde89f3b2a47cae94e46dfa96b3b1557",
+      "size": 4084,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/4e0fe90efde89f3b2a47cae94e46dfa96b3b1557"
+    },
+    {
+      "path": "helpers.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f729564c19b33ce20df715dbeb8bfcc93933c84d",
+      "size": 5452,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/f729564c19b33ce20df715dbeb8bfcc93933c84d"
+    },
+    {
+      "path": "human_detectors.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb4030e4591de8fd687089b15bf86d6688b128eb",
+      "size": 10288957,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/eb4030e4591de8fd687089b15bf86d6688b128eb"
+    },
+    {
+      "path": "models.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a145054eb52ce9e9486d4c2a1e8b5883c85c85c0",
+      "size": 8091,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/a145054eb52ce9e9486d4c2a1e8b5883c85c85c0"
+    },
+    {
+      "path": "prompts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "797435240464b6d3d6b07ae68ff33fe8b13fcc60",
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/trees/797435240464b6d3d6b07ae68ff33fe8b13fcc60"
+    },
+    {
+      "path": "prompts/categorizing_explanations.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "73b6c5456213af917dbc8830659a605234c28122",
+      "size": 7901,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/73b6c5456213af917dbc8830659a605234c28122"
+    },
+    {
+      "path": "prompts/detection_guide.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56b068ad8b36235d66a6bad5f51c87521516ed46",
+      "size": 17840,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/56b068ad8b36235d66a6bad5f51c87521516ed46"
+    },
+    {
+      "path": "prompts/detector_prompts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "881277fd4b1a8bf56af6286b490fea796945e8df",
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/trees/881277fd4b1a8bf56af6286b490fea796945e8df"
+    },
+    {
+      "path": "prompts/detector_prompts/classify_zero_shot.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "87a8546bc9f1d5ada5e5987f9492963a0f4c59e3",
+      "size": 516,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/87a8546bc9f1d5ada5e5987f9492963a0f4c59e3"
+    },
+    {
+      "path": "prompts/detector_prompts/classify_zero_shot_cot.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9783371024748a9034b86aa996764afce92d362b",
+      "size": 658,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/9783371024748a9034b86aa996764afce92d362b"
+    },
+    {
+      "path": "prompts/detector_prompts/classify_zero_shot_cot_guide.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "302737f0f567c9390484e1a645e052543b10b4e3",
+      "size": 838,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/302737f0f567c9390484e1a645e052543b10b4e3"
+    },
+    {
+      "path": "prompts/detector_prompts/classify_zero_shot_guide.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6eda1b349fd30be5b069894d68a278d98cc902dc",
+      "size": 654,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/6eda1b349fd30be5b069894d68a278d98cc902dc"
+    },
+    {
+      "path": "prompts/generation_prompt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "432ac161873cff5e7e7be2d3fbef307b837b72ff",
+      "size": 297,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/432ac161873cff5e7e7be2d3fbef307b837b72ff"
+    },
+    {
+      "path": "prompts/humanizer_prompts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "72e9d86955391d1ef2f16ec1b5230e72541da38e",
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/trees/72e9d86955391d1ef2f16ec1b5230e72541da38e"
+    },
+    {
+      "path": "prompts/humanizer_prompts/evade_fewshot.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7de27ffdef1bcea46863e2d100603ee0bde6d832",
+      "size": 2845,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/7de27ffdef1bcea46863e2d100603ee0bde6d832"
+    },
+    {
+      "path": "prompts/humanizer_prompts/evade_prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c06f1994931bc4c2c8a4e763faceb4e85f51f7dd",
+      "size": 2437,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/c06f1994931bc4c2c8a4e763faceb4e85f51f7dd"
+    },
+    {
+      "path": "prompts/paraphrase_prompts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2a3e3c729da920b35e4c6ef194c0db2b2660db63",
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/trees/2a3e3c729da920b35e4c6ef194c0db2b2660db63"
+    },
+    {
+      "path": "prompts/paraphrase_prompts/paraphrase_sent.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90b7acd853ec69b724f83442df06d47586498e7e",
+      "size": 339,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/90b7acd853ec69b724f83442df06d47586498e7e"
+    },
+    {
+      "path": "requirements.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a366a59516a52085ae290607ed7e54e0bc0a03b6",
+      "size": 239,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/a366a59516a52085ae290607ed7e54e0bc0a03b6"
+    },
+    {
+      "path": "utils.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e28abd203dab5b191e1d690ef1a2830a743abf9e",
+      "size": 3792,
+      "url": "https://api.github.com/repos/jenna-russell/human_detectors/git/blobs/e28abd203dab5b191e1d690ef1a2830a743abf9e"
+    }
+  ],
+  "truncated": false
+}

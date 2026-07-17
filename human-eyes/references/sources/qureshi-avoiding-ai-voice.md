@@ -55,7 +55,7 @@ This September 2025 X post gives practitioner advice for avoiding a recognisable
 - `no-em-dashes` / pattern #49 in `human-eyes/scripts/grade.py`, `human-eyes/scripts/patterns.json`, and `human-eyes/references/patterns.md` detects every U+2014 occurrence. Its current implementation fails a single occurrence at Balanced and All depth.
 - `no-ai-vocabulary-clustering` / pattern #7 recognises `delve` and `intricate`, but the deterministic check passes one or two listed words in a paragraph and fails at three or more.
 - `no-negative-parallelisms` / pattern #9 directly detects `not just X, but Y`, reports occurrence count, and states that a match is not proof of authorship.
-- `pangram-classifier.md`, `spero-emi-pangram-classifier.md`, and the detector-caution rows in `pattern-opportunities.md` cover Pangram as evaluation context rather than prose-pattern evidence. They do not verify the post's 99%+ claim.
+- `pangram-classifier.md` (with `spero-emi-pangram-classifier.md` retired 2026-07-17 as its duplicate) and the detector-caution rows in `pattern-opportunities.md` cover Pangram as evaluation context rather than prose-pattern evidence. They do not verify the post's 99%+ claim.
 - No live agent-assessment record in `human-eyes/scripts/judgement.json` covers one-shot drafting, editor-versus-ghostwriter workflow, selective acceptance, or agreement between detector output and reader perception.
 
 ## Associated hypotheses

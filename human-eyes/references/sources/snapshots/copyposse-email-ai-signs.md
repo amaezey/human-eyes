@@ -1,10 +1,22 @@
-Title: 5 Signs Your Email Was Written By AI (and how to write emails that sound like a human)
+# 5 Signs Your Email Was Written By AI (and how to write emails that sound like a human)
 
-URL Source: https://copyposse.com/blog/5-signs-your-email-was-written-by-ai-and-how-to-write-emails-that-sound-like-a-human/
+- **Canonical URL:** https://copyposse.com/blog/5-signs-your-email-was-written-by-ai-and-how-to-write-emails-that-sound-like-a-human/
+- **Alternate access URLs:**
+  - https://copyposse.com/wp-json/wp/v2/posts/21553?context=view
+  - https://copyposse.com/wp-json/wp/v2/posts/21553?context=view&_embed=author,wp:featuredmedia,wp:term
+  - https://www.youtube.com/embed/EcZoIReAoig (page-embedded alternate video; URL and public metadata checked, stream not preserved or used as claim evidence)
+- **Author / owner:** Alex Cattoni / Copy Posse (the WordPress record names account `alexadmin`; the article signs off “I’m Alex,” and the alternate video is by Alex Cattoni)
+- **Publisher:** Copy Posse
+- **Published:** 2025-10-01T18:00:00+00:00
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** WordPress post 21553
+- **Version / revision:** modified 2025-11-10T23:32:27+00:00
+- **Extraction method:** canonical HTML and first-party WordPress REST post fetched with `curl`; the complete 75-paragraph REST-rendered body was compared with the single canonical article body using Python 3 and BeautifulSoup 4; five inline images, the featured image, and the embedded 21.27-second WSU screen recording were downloaded and visually checked
+- **Full-text status:** complete
+- **Access and transformation notes:** Navigation, related-post modules, pop-ups, subscription forms, and footer chrome were excluded. HTML emphasis, lists, links, headings, and inline-media positions were converted to Markdown. The page-embedded YouTube video is an alternate rendering titled “Seriously, watch this before you use AI to write emails”; its public metadata and linkage back to this article were checked, but its stream and captions were not preserved because the complete article text is the reviewed source. All five inline image pixels and the embedded WSU video were preserved and their relevant text was transcribed below.
 
-Published Time: 2025-10-01T18:00:00+00:00
+## Full text
 
-Markdown Content:
 ## How Can You Tell If an Email Was Written by AI?
 
 NOOOO!!!! I’m NOT talking about the em dash. Stop picking on the em dash!!
@@ -33,7 +45,7 @@ Source: Washington State University
 
 Said another way, your customers’ guard is up and their trust is low right now. And with the overwhelming number of options available out there, they are looking for a quick reason to count you out and narrow their “brands I trust” folder in their mind.
 
-One little sniff of inauthentic marketing and you could lose that customer forever –and you won’t even know because a human isn’t going to take the time to write to you and tell you they’ve lost trust in you when you haven’t taken the time to communicate with them, as a human.
+One little sniff of inauthentic marketing and you could lose that customer forever – and you won’t even know because a human isn’t going to take the time to write to you and tell you they’ve lost trust in you when you haven’t taken the time to communicate with them, as a human.
 
 And yes, most people can spot AI-written content. Can you?
 
@@ -186,7 +198,7 @@ And sometimes, things need to be written in a certain way to be approachable and
 
 It’s okay to emphasize a word or statement with well-placed bolding. It’s okay to use “…” to help make a smoother transition.
 
-It’s okay to make up fun words if they are on brand. It’s okay to use the occasional uppercase text and misplaced dash, yes even a EM-DASH!!If the email is obviously NOT AI, the em-dash isn’t going to reek as much as it usually does.
+It’s okay to make up fun words if they are on brand. It’s okay to use the occasional uppercase text and misplaced dash, yes even a EM-DASH!! If the email is obviously NOT AI, the em-dash isn’t going to reek as much as it usually does.
 
 So:
 
@@ -210,10 +222,48 @@ Until next time, I’m Alex. Ciao for now!
 
 ## Watch This Instead
 
-### Like this post? _You might also like..._
+Embedded alternate video: [Seriously, watch this before you use AI to write emails](https://www.youtube.com/embed/EcZoIReAoig) (YouTube video ID `EcZoIReAoig`; 622 seconds; author Alex Cattoni). The video description links back to this article as its read-along version.
 
-## freebies
+## Embedded-media transcriptions
 
-Explore our collection of free tools to level up your marketing & messaging.
+### Image 1: Bynder excerpt
 
-[](https://copyposse.com/freebies)[Explore Freebies](https://copyposse.com/freebies)[](https://copyposse.com/freebies)
+The screenshot says Bynder surveyed 2,000 UK and US participants who were shown two car-cleaning articles, one written by ChatGPT and one by a trained copywriter, produced from the same brief: “Write 300 words on how to clean your car.” It does not supply the articles, so their actual output lengths are unavailable. It reports 50% overall correct identification, 55% among US participants, and 45% among UK participants. It calls the US/UK difference a correlation with generative-AI use and presents awareness as likely to increase. This is a screenshot of the Bynder release, not independent Copy Posse evidence; the directly reviewed [Bynder card](../bynder-ai-marketing-study.md) records its missing questionnaire, response design, stimuli, raw data, uncertainty, and model/version details.
+
+### Images 2 and 3: troll-comment email
+
+The first email screenshot opens with a quoted YouTube comment accusing a video of being a scam, replies to it, explains “rage bait,” asks whether the commenter is a bot or troll, and then pivots to marketing lessons from the video. The continuation uses emojis, ellipses, a numbered list, bold headings, direct address, and specific references to the Rhode acquisition and the original comment. These screenshots illustrate the author's own story-to-lesson example; they do not supply comparative performance data.
+
+### Image 4: gym-bro email
+
+The screenshot recounts accepting copywriting work selling gym supplements while short of rent, quotes the phrases “crushing reps,” “get shredded,” and “rippling muscles,” and reflects on the experience. It uses parenthetical asides, emoji, ellipses, emphasis, and the author’s work history. This is the concrete personal-history example behind the article’s storytelling recommendation.
+
+### Image 5: Story Formula promotion
+
+The promotional image lists four intended workshop audiences and a “SAVE MY FREE SEAT” call to action. It is advertising for the linked workshop, not evidence for the five-sign claims.
+
+### Embedded WSU screen recording
+
+The 21.27-second, 1920×1080 screen recording shows the executive summary and five key findings of Washington State University Carson College of Business's 2024 Ethical Marketing Survey. The highlighted first finding says Americans are skeptical about AI's growing role in marketing, that AI-generated marketing rarely improves brand perception, and that 76% agree companies should be transparent about AI in marketing, with 53% strongly agreeing. Other visible findings concern demographic differences in comfort with AI marketing, confidence spotting misinformation, ethical-marketing transparency, and mixed views on regulation. The article states only the first headline conclusion; the recording does not connect any survey result to the five prose features.
+
+## Extraction verification
+
+- **Beginning checked:** The canonical article headline, publication time, first heading, Bynder paragraph, first inline image, and ethics discussion match the REST-rendered content and preserved raw HTML.
+- **Middle checked:** The five numbered headings occur in order; the repeated-pattern examples, all five inline-image positions, lists, links, and the storytelling/transition sections match the REST-rendered body.
+- **End checked:** The grammar section, AI-drafting qualification, sign-off, `Watch This Instead` heading, and YouTube embed match the REST-rendered body; unrelated page chrome after the article was excluded.
+- **Structure checked:** One canonical article; 75 body paragraphs; seven `h2` headings (intro, five numbered signs, and `Watch This Instead`); one three-item list; nine body links; five inline images; one 21.27-second embedded MP4; one YouTube iframe; no tables, footnotes, appendices, or reference list.
+- **Known omissions:** The page-embedded YouTube stream and captions were not downloaded because it is an alternate video version and the complete read-along article is preserved; its URL, title, author, duration, and reciprocal article link are recorded. No article prose or content-bearing inline image/video was omitted.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/copyposse-email-ai-signs/source-html-2026-07-15.html` | Canonical rendered page | `05a3cedfdc90c2023f61a31af5b00f861b0c9771c663e45cddd78e2dfce76da3` | Raw response bytes preserved; article body checked against REST content. |
+| `snapshots/attachments/copyposse-email-ai-signs/post-21553-2026-07-15.json` | First-party WordPress post record | `85ec40e64a0e56212af877786c5db71cc3f391c5da765a4b69e872cb19402935` | Contains identifiers, dates, complete rendered content, links, author account, featured-media metadata, and terms. |
+| `snapshots/attachments/copyposse-email-ai-signs/bynder-chart.png` | Image 1, Bynder excerpt | `6eb88683bc84a7a4ee4c4cd310f1aafa698939e5ad46a736661a226c3ff60fbc` | Original 1552×1168 PNG downloaded and visually transcribed. |
+| `snapshots/attachments/copyposse-email-ai-signs/troll-comment-email.png` | Image 2, email-story example | `8ddca041c5393fb753197e431389a58fe34aebce9f953c0f3396d5a24b7e6791` | Original 998×1392 PNG downloaded and visually transcribed. |
+| `snapshots/attachments/copyposse-email-ai-signs/troll-comment-email-transition.png` | Image 3, email-story continuation | `ceb198a81d6ce0ca6e010e031d4fc7c4002924a530f0cd7b902d6cb256036680` | Original 908×1434 PNG downloaded and visually transcribed. |
+| `snapshots/attachments/copyposse-email-ai-signs/gym-bro-email.png` | Image 4, personal-history email | `b0d4198a6d1d475a321566874c13671f392b7e2e4cc6d5de428acda7a704a428` | Original 1062×1150 PNG downloaded and visually transcribed. |
+| `snapshots/attachments/copyposse-email-ai-signs/story-formula-promo.png` | Image 5, workshop promotion | `94e662f70d8bfdaab8619af94d586adc4530ebef3d2e5dd36ecc80c9e3bdfebf` | Original 1520×1032 PNG downloaded and visually transcribed; not evidentiary. |
+| `snapshots/attachments/copyposse-email-ai-signs/wsu-ethical-marketing-survey.mp4` | Embedded WSU survey screen recording | `2b8de9c6c329c3b097c511fa6822eb979c422b50dccd03a76ce5577df1b94cfd` | Original 21.27-second 1920×1080 H.264/AAC MP4 downloaded; sampled across its duration and transcribed. |
+| `snapshots/attachments/copyposse-email-ai-signs/featured-image.jpg` | Article featured image | `c2c945237841fa08eabed2d90b3b12868ee4bed18f69051baf8409f9e6c9b1b8` | Original 1280×720 JPEG downloaded; decorative headline image. |

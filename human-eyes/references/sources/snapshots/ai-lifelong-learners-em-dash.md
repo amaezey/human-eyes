@@ -1,12 +1,19 @@
-Title: Tells beyond the em dash
+# Tells beyond the em dash
 
-URL Source: https://aiforlifelonglearners.substack.com/p/tells-beyond-the-em-dash
+- **Canonical URL:** https://aiforlifelonglearners.substack.com/p/tells-beyond-the-em-dash
+- **Alternate access URLs:**
+  - none
+- **Author / owner:** Lily Chambers (co-author and writer of the first-person body); published by AI for Lifelong Learners. The inherited card identified Tom Parish as the Substack owner "per directory listing", but neither the directory URL nor a preserved directory capture survives in the repository, so that owner attribution is not independently verified in this update.
+- **Publisher:** AI for Lifelong Learners on Substack
+- **Published:** 2025-06-10T09:01:10+00:00
+- **Retrieved:** 2026-05-05
+- **Stable identifier:** none found
+- **Version / revision:** screenshot sequence supplied 2026-05-05; no source revision identifier was available
+- **Extraction method:** direct manual transcription from the supplied screenshot sequence; a Jina Reader request against the canonical URL returned only the paywalled lede; no fresh scrape was performed during the 2026-07-15 contract update
+- **Full-text status:** complete
+- **Access and transformation notes:** the complete article body visible in the supplied screenshot sequence was transcribed to Markdown on 2026-05-05. The screenshot image files were not preserved in the repository, so the 2026-07-15 update could verify the preserved transcription's continuity and structure but could not repeat the visual comparison. Italic, bold, heading, list, and table formatting were represented in Markdown. The paywalled live page was not required or re-scraped for this update. The prior card's Tom Parish ownership note cited an unspecified directory listing; because that route and its bytes were not preserved, this update records the attribution as inherited and unverified rather than as current direct provenance.
 
-Published Time: 2025-06-10T09:01:10+00:00
-
-Extraction: Direct transcription from supplied screenshot sequence on 2026-05-05 (Jina Reader returned only the paywalled lede; the full body below is from the screenshots).
-
-Markdown Content:
+## Full text
 
 Does this sound familiar? You find yourself staring at a blank page, cursor blinking mockingly, as the weight of having to write something "good" settles into your gut. I'm not really a writer.
 
@@ -148,3 +155,17 @@ Do you have a question about AI? Send us your AI inquiries and your question cou
 This article was co-authored by Lily Chambers. The use of first person refers to her opinions and impressions. Lily is a conversational AI designer with an academic background in rhetoric and writing. She is a fierce defender of human-written words and a semi-willing participant in AI help.
 
 Check out more of Lily Chamber's ramblings here.
+
+## Extraction verification
+
+- **Beginning checked:** the preserved transcription begins with the blank-page scenario, the ChatGPT introduction, and the handoff to Lily Chambers recorded in the 2026-05-05 screenshot review; the underlying screenshots are not preserved for a repeat visual comparison.
+- **Middle checked:** the preserved transcription contains all seven numbered topic sections, including the phrasing, structure, vocabulary, tone, content, social, and practical-caveat material recorded in the 2026-05-05 screenshot review; the underlying screenshots are not preserved for a repeat visual comparison.
+- **End checked:** the preserved transcription ends with the context-dependent bottom line, the reader-inquiry invitation, and the Lily Chambers co-author note recorded in the 2026-05-05 screenshot review; the underlying screenshots are not preserved for a repeat visual comparison.
+- **Structure checked:** one introductory Q&A followed by seven sections, a bottom line, a reader-inquiry invitation, and a co-author note. The source contains one two-column vocabulary table and nested bullet/numbered lists. No references, footnotes, appendices, or formal bibliography appear in the preserved body.
+- **Known omissions:** the supplied screenshot images, live-page chrome, subscription interface, and any destination behind the final unlinked "here" are not preserved. No article-body text was known to be omitted from the screenshot sequence.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | The screenshot sequence used for the 2026-05-05 transcription was not retained in the repository. | not applicable | The complete body transcription is preserved above; a repeat image-to-text comparison is not possible from repository files alone. |

@@ -1,44 +1,153 @@
 # Liang et al.: GPT detectors are biased against non-native English writers
+
 ## Metadata
+
 - **URL:** https://www.cell.com/patterns/fulltext/S2666-3899(23)00130-7
 - **Author / owner:** Weixin Liang, Mert Yuksekgonul, Yining Mao, Eric Wu, and James Zou
-- **Published:** 2023-07
-- **Extracted:** 2026-05-05
-- **Source type:** Academic empirical research
+- **Published:** 2023-07-10 online; Patterns volume 4 issue 7 dated 2023-07-14
+- **Retrieved:** 2026-07-16
+- **Extracted:** 2026-07-16
+- **Source type:** Peer-reviewed empirical opinion article with supporting preprint, code, data, and detector outputs
 - **Evidence tier:** Peer-reviewed / academic empirical
-- **Extraction status:** second-pass reviewed from ScienceDirect/Stanford summaries on 2026-05-05
+- **Review mode:** update
+- **Stable identifier:** DOI 10.1016/j.patter.2023.100779; PMID 37521038; PMCID PMC10382961; arXiv:2304.02819v3; Zenodo 10.5281/zenodo.7893958 (v1.0.0)
+- **Version / revision:** Published Patterns article plus final arXiv v3 methods version and cited Zenodo v1.0.0 code/data record; previous source record was a 2026-05-05 Jina capture without a recorded stable identifier or digest
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/liang-detector-bias.md`
+- **Extraction method:** Complete published JATS XML from Europe PMC converted to Markdown; complete nine-page arXiv v3 PDF extracted with Poppler and pages 1, 5, and 9 rendered and checked; complete Zenodo v1.0.0 ZIP and API metadata preserved, checksummed, inventoried, and its five Python files inspected
+- **Snapshot SHA-256:** `3061a0517316608f70b302713c978bfb4bcd9b6da70f1da2096c1d3d324a75ba`
+- **Model / corpus scope:** Seven named public detectors as accessed 2023-03-15; GPT-2 XL for the paper's perplexity analysis; March 14, 2023 ChatGPT 3.5 for 31 college essays and 145 CS224N abstracts plus their self-edits; GPT-4, exact build/date unstated, for 91 TOEFL vocabulary enhancements and 88 Hewlett eighth-grade simplifications; English text from 91 TOEFL essays collected from a Chinese forum through 2020, 88 Hewlett ASAP essays, 70 published college essays, 145 Stanford CS224N Winter 2021 abstracts, and 1,574 ICLR 2023 accepted-paper abstracts
+- **Access limitations:** No substantive source material is missing. Cell's PDF route returned HTTP 403 and the current PMC PDF route returned an interstitial/404, so the published version is preserved as complete PMC JATS XML; the arXiv PDF preserves figures and full methods. The detector services are proprietary and version/build identifiers, thresholds, and training data are mostly undisclosed. The Zenodo release preserves data and detector outputs but not an executable end-to-end analysis: `extract_scores.py` imports absent modules, contains an undefined `foler` name, and no figure-generation script is present.
 
 ## Summary
-Shows detector false-positive risk for non-native English writers. human-eyes uses it to justify warnings, not accusations.
+
+Liang et al. compare seven March 2023 GPT detectors on 91 TOEFL essays used as a non-native-English group and 88 US eighth-grade essays used as a native-English comparison, then intervene on vocabulary and test prompt-based evasion on 31 college essays and 145 scientific abstracts. The headline false-positive disparity is large, but the source is a small English-language pilot with dataset-level proxies for language background, proprietary detector versions, and incomplete reproduction code. Its strongest contribution to human-eyes is a direct warning against treating predictability, limited lexical range, or any detector-like surface signal as individual authorship evidence. It does not validate a prose pattern, a human-eyes threshold, or a document-level origin verdict.
 
 ## Main insights
-- User-facing language must avoid authorship verdicts.
-- False-positive risk should be part of pattern disambiguation.
-- Supports process safeguards.
+
+- The published article reports a 61.3% average false-positive rate across seven detectors on 91 human TOEFL essays; 18/91 were flagged by all seven and 89/91 by at least one. The arXiv methods version gives 61.22%, 19.78%, and 97.80%.
+- The 18 unanimously flagged TOEFL essays had lower GPT-2 XL perplexity than the others, but lower perplexity is an association and the limited-expression mechanism is an author interpretation, not an individual authorship rule.
+- GPT-4 vocabulary enhancement moved the average TOEFL false-positive rate from 61.22% to 11.77%, a 49.45 percentage-point decrease, while the reverse simplification intervention moved the 88 Hewlett essays from 5.19% to 56.65%.
+- In 1,574 ICLR 2023 abstracts, country of the first author's institution was used as a language-background proxy; the lower-perplexity difference remained after controlling for review ratings. This is an ecological comparison, not individually reported native-language data.
+- Second-round style prompts reduced maximum reported detector rates from up to 100% to up to 13% for 31 college essays and from up to 68% to up to 28% for 145 scientific abstracts. These are detector-specific maxima, not a universal average or proof that every detector was bypassed.
+- The study is date-, detector-, threshold-, genre-, language-, model-, and sample-specific. It does not establish transfer to present detectors, languages other than English, longer texts, or other populations.
+- The authors caution against detector use in evaluative and educational settings, ask for heterogeneous and domain-specific evaluation with risk communication, and suggest only a potential low-risk educational self-check use. The educational-aid proposal was not evaluated.
+- The preserved Zenodo artifact supports inspection but not exact end-to-end reproduction. It also labels GPT-edited human datasets as `AI-Generated` and labels one `CS224N_gpt3PromptEng` folder's model as `GPT4` despite the paper describing March 14 ChatGPT 3.5, so those metadata labels cannot be treated as ground-truth provenance without resolution.
 
 ## Evidence and claims to extract
-- Direct source reviewed: ScienceDirect article summary and Stanford SCALE listing.
-- Study setup: seven GPT detectors evaluated on 91 TOEFL essays by non-native English writers and 88 US eighth-grade essays.
-- Main quantified finding: average false-positive rate on TOEFL essays was 61.3%; all detectors unanimously flagged 19.8% of human TOEFL essays; at least one detector flagged 97.8% of TOEFL essays.
-- Mechanism noted in the source: lower perplexity in TOEFL essays contributed to detector misclassification.
-- Limit: this source critiques detector fairness; it does not supply a positive pattern catalogue for human-eyes.
+
+- **Direct source reviewed:** Complete published Patterns article, DOI 10.1016/j.patter.2023.100779, through the complete PMC JATS record; complete final arXiv:2304.02819v3 nine-page PDF with figures, 36 references, Materials and Methods, prompts, data descriptions, statistical method, and detector inventory; complete cited Zenodo v1.0.0 archive, DOI 10.5281/zenodo.7893958, containing 98 files and ten data/result folders.
+- **Method and sample:** Seven detector services were accessed on 2023-03-15. The source compares 91 TOEFL essays collected through 2020 from a Chinese forum with 88 Hewlett ASAP eighth-grade essays; applies paired GPT-4 word-choice interventions; uses GPT-2 XL log probability/perplexity and one-sided paired t-tests; compares 1,574 ICLR 2023 abstracts with a country-of-affiliation language proxy and rating residualisation; and tests March 14 ChatGPT 3.5 college-essay and CS224N-abstract generations before and after self-edit prompts. Exact detector thresholds/builds and the GPT-4 build are unstated.
+- **Direct versus cited evidence:** C01-C08 and C15 are direct experiments or reported results/methods; C09 is the authors' direct limitations section; C10-C13 are author interpretation or recommendations grounded in those experiments, not measured downstream outcomes; C14 is direct artifact inspection. Claims that humans struggle to detect AI, that non-native writers generally have lower lexical/syntactic/grammatical complexity, and that second-order or watermarking methods may perform better are inherited from cited sources and are not promoted as direct results here.
+- **Important limits and counterexamples:** TOEFL and Hewlett membership proxy individual native-language status; the paper does not give individual proficiency, demographic, socioeconomic, or consent metadata; samples are small and English-only; detector versions and thresholds are largely absent; the paper reports a one-sided paired t-test but does not explain pairing for every cross-group comparison; the ICLR analysis uses affiliation-country rather than writer language; proprietary services prevent exact replay; published numbers are rounded relative to arXiv v3; and human-edited-by-GPT records are not clean binary-authorship controls. Low perplexity and limited lexical range are demonstrated human look-alikes, not positive AI evidence.
 
 ## Skill-use audit
-- **Good use:** Strongly backs human-eyes avoiding authorship verdicts and using warnings/review framing.
-- **Misuse / overclaim:** It should not be cited as evidence that any human-eyes pattern identifies AI writing. It is evidence that detector framing can harm non-native writers.
-- **Unsupported use:** No individual pattern should claim support from Liang et al. unless the claim is about false positives, bias, or process safeguards.
-- **Underused evidence:** This should be connected to every user-facing place that says "AI generated", "detector", or implies authorship classification.
-- **Patterns left on the table:** Not a pattern source; it argues for disambiguation and uncertainty language around all surface/register features.
+
+- **Good use:** Support the no-authorship-classification boundary; require false-positive and subgroup cautions; treat lexical/predictability features as context-sensitive review signals; require exact detector/model/date/genre/language metadata; and keep coached or self-edited samples in a separately labeled evaluation lane.
+- **Misuse / overclaim:** Do not cite the paper as evidence that a phrase, low type-token ratio, low perplexity, detector score, or human-eyes finding proves AI use. Do not generalize the 61.3% rate to all non-native writers, all detectors, or current products.
+- **Unsupported use:** The source cannot set a human-eyes severity or threshold, validate pattern #53, prove a causal linguistic mechanism, rank current detectors, establish performance outside English educational/academic text, or show that second-order and watermarking alternatives are fair.
+- **Underused evidence:** The current #53 tolerance note names dialogue, technical writing, and old prose but not non-native/L2 writing. The source supplies direct human-look-alike evidence adjacent to lexical diversity and predictability, although it measures perplexity rather than type-token ratio.
+- **Patterns left on the table:** The project already rejects authorship verdicts, but future evaluation can more explicitly separate native-language/proficiency, country affiliation, genre, length, detector version, threshold, and mixed human-plus-AI editing. The released source data are not ready for binary corpus reuse because of metadata contradictions and licensing/governance questions.
 
 ## Matched patterns / rules
-- Overall audit stance
-- field-guide disambiguation
-- no authorship classification
+
+- `human-eyes/SKILL.md` Keep the product boundary: never classify authorship.
+- `human-eyes/references/process.md` Product boundary and no score/confidence/authorship report.
+- `human-eyes/scripts/patterns.json` and `human-eyes/references/patterns.md`: evidence preamble, #53 `vocabulary-diversity`, #41 genre-specific student/academic review, and `overall-signal-stacking`.
+- `dev/TESTING.md`: complete-Audit requirement, matched genre/register/length controls, packaging normalization, false-positive reporting, and separate labeling for coached or humanized generations.
+- H3 drop detection framing, H9 similar-species disambiguation, H12 genre-aware threshold calibration, H19 bootstrap confidence intervals, H24 register-specific vocabulary density, and H25 model-family versus generic-AI residue.
 
 ## Associated hypotheses
-- H3 drop detection framing
-- H9 similar-species disambiguation
+
+- H3: Drop detection framing entirely.
+- H9: Field-guide voice with similar-species disambiguation per pattern.
+- H12: Genre-aware threshold calibration.
+- H19: Bootstrap confidence intervals on corpus claims.
+- H24: Register-specific vocabulary density.
+- H25: Model-family versus generic-AI residue.
 
 ## Questions / follow-up
-- Should every source-backed pattern card include a false-positive/look-alike note when used on non-native English prose?
-- Should README wording move further from "detects" toward "surfaces register features"?
+
+- Should the #53 tolerance note explicitly name non-native/L2 writing and distinguish type-token ratio from model perplexity?
+- Should detector/fairness evaluation metadata include self-reported language background and proficiency rather than dataset or affiliation-country proxies, subject to consent and governance?
+- Can the released Zenodo data be reused under appropriate rights and privacy review after resolving mixed-authorship and model-name metadata, or should it remain source evidence only?
+- No product, checker, registry, test, hypothesis, guidance, or shared-index change is made in this source-specific update; all recommendations remain pending for Mae.
+
+## Update provenance
+
+The previous snapshot had no digest recorded in its card or manifest. Before replacement, its bytes were verified against the unchanged snapshot at commit `f28a370` and both produced SHA-256 `9f4bf5f7ce4bb41742e145a3e200ec44455f6204c420954518145083c90a18f2`. The exact prior bytes are archived below. The current update replaces page chrome and summary-shaped analysis with the complete published JATS text, final arXiv methods PDF, and cited Zenodo release; it changes preservation and evidentiary precision, not the identity of the work.
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | canonical Cell URL; no stable identifier recorded | `snapshots/archive/liang-detector-bias/2026-05-05-9f4bf5f7ce4b.md` | 2026-05-05 | `9f4bf5f7ce4bb41742e145a3e200ec44455f6204c420954518145083c90a18f2` |
+| current | DOI 10.1016/j.patter.2023.100779; PMID 37521038; PMCID PMC10382961; arXiv:2304.02819v3; Zenodo 10.5281/zenodo.7893958 (v1.0.0) | `snapshots/liang-detector-bias.md` | 2026-07-16 | `3061a0517316608f70b302713c978bfb4bcd9b6da70f1da2096c1d3d324a75ba` |
+
+## Decision history
+
+- The previous card had no claim IDs, authoritative coverage table, user decisions, implementation statuses, snapshot digest, or completed review gate. No prior product recommendation was recorded as approved or implemented.
+- The broad legacy mappings to overall audit stance, field-guide disambiguation, H3, and H9 are retained in the narrower claim-keyed rows below. The legacy suggestion that the evidence should attach to every user-facing use of `AI generated` or `detector` remains a pending product decision rather than an implemented state.
+
+## Project coverage
+
+This is the authoritative review table. Every recommendation remains pending; no product change was requested or made.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: Seven March 2023 detectors averaged a 61.3% false-positive rate on 91 TOEFL essays; all seven flagged 18/91 and at least one flagged 89/91, while 88 Hewlett eighth-grade essays were nearly always classified as human. | Direct English pilot result; arXiv gives 61.22%, 19.78%, and 97.80%. TOEFL/Hewlett dataset membership is a proxy for individual native-language status, and detector builds/thresholds are mostly unknown. | `SKILL.md`, `process.md`, `patterns.md` evidence preamble, README product boundary, H3, H9, and existing Liang citations; partly covered as a no-verdict/false-positive boundary. | The project has no claim-keyed direct record of the exact rates, 2023 version boundary, dataset proxy, or seven-detector disagreement. | Preserve C01 as source- and date-specific caution; do not transfer its rates to human-eyes. Verify through source-card validation and any future detector-evidence wording review. | pending | not started |
+| C02: The 18 unanimously flagged TOEFL essays had lower GPT-2 XL perplexity than the other TOEFL essays, reported at p=9.74e-05; the authors infer that restricted linguistic expression contributes to misclassification. | Direct association plus author interpretation. Perplexity is not type-token ratio, causal mediation was not tested, and the paper does not define pairing for this comparison despite describing one-sided paired t-tests. | No live perplexity check. H9/H12/H24 and #53 are adjacent; partly covered. Focused live #53 inspection found all 91 TOEFL essays below its 150-word eligibility floor, so it produced no source-sample findings. | #53's tolerance note omits non-native/L2 prose and its prose generalization could be read more broadly than its type-token metric supports. | Add non-native/L2 prose as a human look-alike candidate in #53 evaluation and documentation only after Mae approves; explicitly distinguish TTR from perplexity. Verify on matched, length-controlled L2 and L1 human samples. | pending | not started |
+| C03: GPT-4 vocabulary enhancement of the 91 TOEFL essays reduced average false positives from 61.22% to 11.77%, a 49.45 percentage-point decrease; perplexity rose at p=9.36e-05 and unanimous flags fell to 1/91. | Direct paired intervention; published prose rounds this to 61.3%, 11.6%, and 49.7%. Exact GPT-4 build/date is unstated, edits may change more than lexical diversity, and lower detector output is not proof of improved writing. | H12/H24/H25 and `dev/TESTING.md` coached-sample separation; partly covered. The live #53 check skips both TOEFL sets because every text is under 150 eligible words. | The project has no L2-specific mixed-authorship evaluation or evidence that detector-directed lexical polishing preserves meaning and voice. | Keep the intervention as detector-vulnerability and look-alike evidence; if evaluated, use a separate coached/mixed-authorship lane with source-fidelity review, never as a rewrite recommendation. | pending | not started |
+| C04: GPT-4 simplification of 88 human Hewlett essays raised average detector misclassification from 5.19% to 56.65% and lowered perplexity. | Direct reverse intervention. Exact GPT-4 build, edit magnitude, and detector versions are unstated. The released metadata calls these edited human essays `AI-Generated`, which is not a sufficient provenance label. | H9/H12/H25 and `dev/TESTING.md` provenance/genre controls; partly covered. Focused #53 output flagged 23/87 eligible original Hewlett essays but 0/14 eligible simplified essays, showing TTR direction/length behavior does not reproduce the paper's perplexity result. | Current evidence and dataset labels do not support treating lexical simplification, low TTR, or a human-plus-AI edit as binary authorship. | Record the counterexample and require mixed-authorship metadata plus matched length before any corpus use; do not change #53 direction or threshold from this result. | pending | not started |
+| C05: Among 1,574 ICLR 2023 accepted-paper abstracts, first authors based in countries classified as non-native-English had lower perplexity at p=.035 and p=.033 after controlling for review rating. | Direct ecological comparison. Affiliation country proxies language background; the country list, individual native language, multilingual status, and proficiency are not reported. Rating residualisation does not remove all domain/topic/institution confounding. | H12/H19/H24/H25 and academic genre review; partly covered as requirements, not as an implemented fairness study. | Future evaluation metadata do not yet specify consented language-background/proficiency fields or a governance protocol. | Treat C05 as a hypothesis-generating academic-register result; require self-reported, governed language variables and uncertainty before reuse. | pending | not started |
+| C06: For 31 March 14 ChatGPT 3.5 college essays, a literary-language self-edit reduced detector rates from up to 100% to up to 13% and raised perplexity at p=1.94e-15. | Direct proof-of-concept on 31 filtered outputs. `Up to` values are detector maxima, 39/70 initial trials were discarded as invalid, and detector builds/thresholds are unknown. | `dev/TESTING.md` already separates coached/humanized generations from ordinary baselines and requires exact provenance; fully covered as evaluation discipline. | No current source mapping records this exact prompt-adversarial result; the project does not need a detector-evasion feature. | Record as adversarial-evaluation context only; take no checker or rewrite action. Any future test must retain all prompts, filtering, model date, and per-detector results. | pending | not started |
+| C07: For 145 March 14 ChatGPT 3.5 CS224N abstracts, an advanced-technical-language self-edit reduced detector rates from up to 68% to up to 28% and raised perplexity at p=1.06e-31. | Direct proof-of-concept in one technical-course genre. `Up to` values are maxima and the generated texts use titles from Winter 2021 course projects rather than matched author drafts. | H12/H25 and `dev/TESTING.md` genre, prompt, and coached-lane requirements; fully covered as evaluation discipline. | No evidence supports transfer to present models, other academic genres, or human-eyes pattern accuracy. | Record C07 without product action; if used in evaluation, keep it separate from ordinary fresh-write and human-rewrite cohorts. | pending | not started |
+| C08: The experiment used Originality.AI, Quil, Sapling, OpenAI's hosted detector, Crossplag, GPTZero, and ZeroGPT as accessed 2023-03-15, with GPT-2 XL for perplexity and one-sided paired t-tests. | Direct method disclosure, but most service versions, thresholds, model builds, calibration data, and pairing details are missing. The error bars in the figures are standard deviations across detectors, not confidence intervals over a population of systems. | H19/H25, source-ingest metadata, and `dev/TESTING.md` immutable-version reporting; partly covered. | The source cannot support current detector comparisons or a pooled generic-detector rate. | Keep all results pinned to the named March 2023 access date and report detector heterogeneity; do not pool them into a current benchmark. | pending | not started |
+| C09: The authors call the work a pilot with relatively small samples, mostly GPT-2-backbone public detectors, and focus on perplexity- and supervised-learning-based approaches; they do not claim coverage of all detector types or GPT generations. | Direct limitations section. It also notes DetectGPT as a more costly unevaluated example; that cited performance claim is indirect. | H12/H19/H25 and source quality gates; fully covered as scope discipline. | The old card omitted the complete limitations, making the headline rates easier to overgeneralize. | Carry C09 with every reuse; take no threshold, severity, or universal mechanism action. | pending | not started |
+| C10: The authors strongly caution against using GPT detectors in evaluative or educational settings, especially for non-native English writers, because false accusations can harm education, reputation, well-being, visibility, and participation; they further hypothesize that socioeconomic linguistic variation could expose some native-English writers to disproportionate false accusations. | Author recommendation and consequence analysis grounded in the measured language-group disparity. Downstream harms, socioeconomic status, and native-speaker socioeconomic subgroup effects were not measured in this experiment. | `SKILL.md` and `process.md` prohibit provenance estimates and authorship claims; H3 and patterns/README caution already cite Liang. Fully covered in product behavior. | Index and neighboring cards still describe this record as a legacy summary, obscuring that the direct source is now preserved; the socioeconomic extension must remain an untested author hypothesis. | Retain the hard no-authorship boundary and correct source-record references only; make no new product behavior or socioeconomic-group claim from the unmeasured hypothesis. | pending | not started |
+| C11: Detector evaluation should use heterogeneous writing samples, intended-domain testing, domain experts, user collaboration, and risk communication rather than a one-size-fits-all design. | Author recommendation, not a tested comparison of evaluation designs. | H12/H19/H25 and `dev/TESTING.md` matched genre/register/provenance controls; partly covered. | The project lacks an approved, consented subgroup-evaluation protocol and cannot infer sensitive attributes from prose. | Draft no detector system; record these as requirements for any future fairness evaluation and require governance review before demographic data collection. | pending | not started |
+| C12: The authors suggest a potential low-risk use in which detector-like tools highlight clichés or repetition as educational self-checks instead of assessment tools. | Author proposal only; no user study, learning outcome, false-positive analysis, or comparison supports the `low-risk` label. | Human-eyes already acts as a writing-pattern audit/edit tool and never classifies authorship; fully covered at the product-model level. | Calling a use low-risk from this paper would overstate evidence, and detector-directed rewriting can become camouflage or damage voice. | Record the conceptual alignment but do not cite C12 as validation of safety, efficacy, or current checks; take no product action. | pending | not started |
+| C13: Non-native writers may use GPT legitimately as a language aid, while false-positive pressure may paradoxically push them toward more AI editing; stakeholder policy should distinguish augmentation from substitution. | Author interpretation and policy question. The study did not measure adoption, coercion, learning, originality, or policy outcomes. | No-authorship boundary, source-fidelity process, H3, H9, and mixed/coached evaluation separation; partly covered. | The project has no mixed-authorship taxonomy beyond provenance fields and must not infer tool use from style. | Keep legitimate assistance and mixed authorship explicit in future provenance/evaluation design; do not add an origin classifier or policy verdict. | pending | not started |
+| C14: The cited Zenodo v1.0.0 release preserves 98 files and matched detector-output row counts, but the released code is not end-to-end runnable and dataset metadata conflict with the paper's mixed-authorship/model descriptions. | Direct artifact inspection. Missing modules, an undefined variable, absent analysis/figure scripts, proprietary service opacity, `AI-Generated` labels on GPT-edited human text, and a GPT4 label on a paper-described GPT-3.5 folder limit reproduction and corpus reuse. | Source-ingest provenance gates fully capture the archive and hashes; no project corpus uses this release. Partly covered as preservation, not as resolved provenance. | Exact aggregate recreation, binary authorship labels, licenses for every underlying essay, and model-name conflicts remain unresolved. | Preserve the archive as evidence only. Do not import it into project evaluation until rights, privacy, labels, model metadata, and a reproducible analysis path are independently resolved. | pending | not started |
+| C15: The arXiv Discussion reports near-zero misclassification for `college essays` presumed to have native-English authors, and Methods identifies 70 authentic college essays. | Direct reported null/control result with no exact rate. The principal Results comparison and Figure 1 instead use 88 Hewlett eighth-grade essays, so the source does not clearly establish whether the Discussion sentence refers to the 70-college-essay corpus or imprecisely renames the Hewlett control; `presumably` is a dataset proxy, not individual language evidence. | H9/H12 and the product no-authorship boundary; partly covered as proxy and genre cautions, not as a specific null result. | The source's dataset-label inconsistency and missing exact rate prevent a precise native-comparison estimate. | Preserve the near-zero result and inconsistency as a qualified control only; do not merge the 70- and 88-document cohorts or infer individual native-language status. | pending | not started |
+
+## Recommendations
+
+- C01: Preserve the exact March 2023 subgroup result as a source-specific false-positive caution, not a transferable rate.
+- C02: Add non-native/L2 prose to future #53 look-alike evaluation and explicitly distinguish type-token ratio from perplexity before any documentation change.
+- C03: Treat GPT-4 TOEFL polishing as detector-vulnerability evidence in a separate mixed/coached lane, never as a rewrite prescription.
+- C04: Preserve the reverse-intervention counterexample and require mixed-authorship and length metadata before any dataset reuse.
+- C05: Treat the ICLR result as hypothesis-generating until consented individual language-background/proficiency data and governance exist.
+- C06: Record the college-essay evasion result as prompt-adversarial context only.
+- C07: Record the CS224N evasion result as genre- and model-specific context only.
+- C08: Pin all detector results to the named services and 2023-03-15 access date; do not pool them into a current generic rate.
+- C09: Carry the pilot, sample, model, method, and generalization limits with every reuse.
+- C10: Retain the no-authorship product boundary and correct stale neighboring source-record descriptions only.
+- C11: Treat diverse, domain-specific, collaborative evaluation as a governed research requirement, not an implemented detector plan.
+- C12: Record conceptual alignment with educational self-checking but do not claim validated safety or efficacy.
+- C13: Preserve legitimate assistance and mixed-authorship distinctions in future evaluation provenance; never infer tool use from style.
+- C14: Keep the Zenodo archive as preserved evidence only until rights, privacy, labels, model metadata, and reproduction gaps are resolved.
+- C15: Preserve the near-zero native-comparison control with its absent exact rate and college-versus-eighth-grade dataset ambiguity; do not merge cohorts.
+
+## Evaluation of approved changes
+
+- C01: not applicable - recommendation pending; no product change made.
+- C02: not applicable - recommendation pending; no product change made.
+- C03: not applicable - recommendation pending; no product change made.
+- C04: not applicable - recommendation pending; no product change made.
+- C05: not applicable - recommendation pending; no product change made.
+- C06: not applicable - recommendation pending; no product change made.
+- C07: not applicable - recommendation pending; no product change made.
+- C08: not applicable - recommendation pending; no product change made.
+- C09: not applicable - recommendation pending; no product change made.
+- C10: not applicable - recommendation pending; no product change made.
+- C11: not applicable - recommendation pending; no product change made.
+- C12: not applicable - recommendation pending; no product change made.
+- C13: not applicable - recommendation pending; no product change made.
+- C14: not applicable - recommendation pending; no product change made.
+- C15: not applicable - recommendation pending; no product change made.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `/root/liang_source_reviewer`; fresh source-dedicated agent; one source only; not reused; full five-lens review followed by a focused recheck of the remediated C10 and C15 material
+- **Findings resolved:** two completeness findings: added the near-zero presumed-native college-essay control with its absent exact rate and 70-college-versus-88-Hewlett ambiguity; added the authors' unmeasured socioeconomic-variation hypothesis for some native-English writers
+- **Unresolved findings:** none

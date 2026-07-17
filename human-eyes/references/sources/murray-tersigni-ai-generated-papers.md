@@ -1,43 +1,194 @@
 # Murray and Tersigni: Can instructors detect AI-generated papers?
+
 ## Metadata
-- **URL:** https://jalt.open-publishing.org/jalt/index.php/jalt/article/view/1895
+
+- **URL:** https://jalt.open-publishing.org/index.php/jalt/article/view/1895
 - **Author / owner:** Nathan Murray and Elisa Tersigni
-- **Published:** 2024-07-21
-- **Extracted:** 2026-05-05
-- **Source type:** Academic research
+- **Published:** 2024-07-21; publisher PDF says available online 2024-07-22
+- **Retrieved:** 2026-07-16
+- **Extracted:** 2026-07-16
+- **Source type:** peer-reviewed empirical study
 - **Evidence tier:** Peer-reviewed / academic empirical
-- **Extraction status:** second-pass reviewed from Journal of Applied Learning and Teaching abstract
+- **Review mode:** update
+- **Stable identifier:** DOI 10.37074/jalt.2024.7.2.12
+- **Version / revision:** publisher PDF, Journal of Applied Learning & Teaching 7(2), pages 155-167; prior reviewed capture was the same DOI and substantive article text, retrieved 2026-05-05
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/murray-tersigni-ai-generated-papers.md`
+- **Extraction method:** publisher PDF download plus Poppler `pdftotext` and embedded-image transcription
+- **Snapshot SHA-256:** `4c61e54756cea774b91d7f77bba292ec2058216797e1178128ead9196f9f2f52`
+- **Model / corpus scope:** two English student essays submitted to an August 2022 first-year composition course before public ChatGPT release; two English essays generated with ChatGPT3.5 editions dated 2023-01-30 and 2023-02-13 on 2023-02-06 and 2023-03-03; one generated with the assignment prompt alone and one with three refinement prompts; twenty experienced postsecondary writing instructors interviewed in Canada, the United States, and New Zealand in March-April 2023
+- **Access limitations:** none for the 13-page article, figures, table, appendix prompt, rubric, and references; the four essay texts, participant-level ratings, interview transcripts, questionnaire, analysis code, and underlying data are not published or linked in the article
 
 ## Summary
-Tests experienced postsecondary writing instructors' ability to distinguish student-written essays from ChatGPT-generated essays. The abstract reports low detection accuracy despite moderate confidence, and notes different scoring profiles for AI-generated essays.
+
+This small mixed-method study asked twenty experienced postsecondary writing instructors to grade four anonymized first-year composition essays and classify two pre-ChatGPT student essays and two dated ChatGPT3.5 essays. It directly reports grading, classification, self-reported knowledge and confidence, interview rationales, teaching practices, and perceptions. The generated essays averaged slightly higher grades and had stronger spelling and grammar but weaker evidence, yet only 35% of instructors classified all four correctly. The useful human-eyes evidence is therefore bounded: the study supports academic and student-writing review of evidence, references, reasoning, cross-rubric unevenness, and known-writer baselines, while its own false positives show that cue labels such as formulaic, bland, clean, and robotic are not authorship proof. The sample is preliminary, dated, geographically concentrated, and does not publish the essays or participant-level data.
 
 ## Main insights
-- Only 35% of instructors correctly identified authorship for all four essays.
-- AI-generated essays scored higher for spelling, grammar, and organization, but lower for argumentation and evidence.
-- This supports moving away from "clean prose means good prose" and toward argument/evidence quality checks.
+
+- Two ChatGPT3.5 essays averaged 72.5% and two student essays 70.44%; the guided ChatGPT essay received the highest mean grade, 75.5%, while the unguided ChatGPT essay and one student essay were the lower-scoring pair.
+- The generated essays were rated highly for spelling and grammar and poorly for evidence. Both generated essays used entirely fabricated references, although the paper says their deliberately general claims were not false.
+- The abstract says generated essays scored lower in argumentation, but Figure 2 shows the two generated essays with ten excellent and three needs-improvement argumentation ratings, versus four excellent and five needs-improvement ratings for the two student essays. The methods and results also call the four levels excellent, good, fair, and needs improvement, while the appendix rubric labels the last two below average and ineffective.
+- Only seven of twenty instructors classified all four essays correctly. Per-essay AI classifications included both false positives and false negatives.
+- Mean classification confidence was 3.2 of 5, with median 3 and standard deviation 1.01. Self-reported knowledge and confidence did not meaningfully predict classification accuracy, and the most confident participant classified only one essay correctly.
+- Instructors named fake or poor references, formulaic writing, bland or robotic prose, spelling and grammar, repetition, superficial analysis, gut instinct, and lack of evidence. They also applied stereotyped AI descriptions when they had actually selected student work.
+- The authors propose unevenness across rubric categories as a possible flag. That is an interpretation of four essays, not a validated threshold or standalone rule.
+- Familiarity with a student's prior writing was described as potentially useful, but the experiment did not test instructors on their own students. A baseline shift can prompt review; it cannot establish authorship.
+- The article's detector limits, software false-positive claims, EAL detector-bias claim, ChatGPT-4 consistency and hedging claims, and no-foolproof-software conclusion rely on cited work rather than tests conducted in this study.
+- The direct teaching interviews show mixed practice, policy, and opinion, including disagreement about which stages of writing should remain independent. The paper's policy and pedagogical recommendations are author interpretation, not outcome-tested interventions.
+- The study is preliminary: twenty instructors, four essays, two ChatGPT3.5 generations from early 2023, no student participants, no released essay texts or row-level data, and no test of current models, editing, detector software, or real-course authorship decisions. The authors make an untested ChatGPT 4o source-behaviour assertion and anomalously say the study was designed before the release of "ChatGPT-3," a model/version wording ambiguity that the paper does not resolve.
 
 ## Evidence and claims to extract
-- Participants: 20 experienced postsecondary instructors currently teaching writing.
-- Task: grade four essays and identify which were AI-generated.
-- Reported outcome: moderate confidence, low accuracy; 35% got all four authorship calls right.
-- Scoring contrast: AI essays stronger on spelling/grammar/organization, weaker on argumentation/evidence.
+
+- **Direct source reviewed:** complete first-party publisher PDF for DOI 10.37074/jalt.2024.7.2.12, 13 pages, five figures, Table 1, full references, appendix essay prompt, and appendix rubric; after whitespace normalization, the current PDF extraction and archived 2026-05-05 article body were byte-identical at 69,746 characters with SHA-256 `3784c28d052793bde6988f4ed35499be5251c02433279ef532feaae77e114943`, while the refreshed snapshot adds current provenance, reading-order extraction, and complete embedded-image transcription.
+- **Method and sample:** twenty current college or university composition instructors, seventeen in Canada, two in the United States, and one in New Zealand; 70% had taught more than five years, 65% at least eleven years, and 60% four or more courses in the preceding year. Interviews ran in March-April 2023. Participants graded four equally formatted English essays against argumentation, evidence, organization, and spelling and grammar, then classified authorship and completed a semi-structured interview. Two essays were August 2022 first-year student submissions and two were dated ChatGPT3.5 outputs.
+- **Direct versus cited evidence:** C01-C20 and C24-C28 are direct design, results, author interpretation, or limitations from this article. C21 separates detector, EAL, sentence-consistency, grammatical-variation, and hedging claims inherited from cited studies. C22-C23 are the authors' recommendations, not tested intervention outcomes. C25 is a prediction. No cited source was promoted as direct human-eyes evidence in this refresh.
+- **Important limits and counterexamples:** two human and two generated essays cannot establish a reusable prose taxonomy or threshold; essay bodies and row-level data are unavailable; instructors did not grade their own students; the model builds and prompts are dated; the source's "ChatGPT-3" limitations wording is ambiguous; one high-scoring and one lower-scoring essay occurred in each authorship group; the abstract's lower-argumentation statement conflicts with Figure 2; rating-level labels differ between the methods/results and appendix rubric; instructor stereotypes were sometimes applied to student work; confidence and knowledge regressions were null; no student participants were interviewed; and the study did not test detectors, editing, current models, or intervention effectiveness.
 
 ## Skill-use audit
-- **Good use:** Back H3 detector-framing caution and academic/student manual checks around argument/evidence quality.
-- **Misuse / overclaim:** Do not cite this as a source for surface patterns; the reviewed abstract does not list textual tells.
-- **Unsupported use:** Any deterministic AI-writing classifier.
-- **Underused evidence:** The spelling/grammar/organization versus argument/evidence contrast is a concrete academic-writing review prompt.
-- **Patterns left on the table:** A useful academic-writing check is surface polish masking weak argument/evidence.
+
+- **Good use:** support #41 academic and student-essay review of reference validity, evidence quality, reasoning, surface polish masking weak evidence, cross-rubric unevenness as a candidate question, and known-student baseline context; support the no-authorship and false-positive boundary in product guidance.
+- **Misuse / overclaim:** treating formulaic, bland, clean, robotic, repetitive, error-free, weak-evidence, or uneven prose as a validated authorship rule; converting 35% all-four accuracy into per-essay accuracy; presenting slight mean-grade differences as a general ChatGPT advantage; or describing author recommendations as tested outcomes.
+- **Unsupported use:** current-model claims, a detector threshold, a probability of AI use, an EAL subgroup error rate, an editing-evasion rate, causal learning-loss claims, a general policy effect, a generic rubric-echoing pattern, or proof that a particular student used AI.
+- **Underused evidence:** the exact four-category assessment distributions, false-positive and false-negative rates, null knowledge and confidence regressions, the high-confidence counterexample, fake-reference versus true-but-general-claim distinction, and the fact that stereotyped cue language was sometimes attached to human essays.
+- **Patterns left on the table:** a carefully evaluated cross-rubric unevenness question may add value to #41, but four essays and unreleased row-level data are insufficient to implement it. The participant cue list supplies review prompts and human counterexamples, not deterministic patterns.
 
 ## Matched patterns / rules
-- #41 genre-specific manual checks: academic/student writing
-- argument/evidence quality review
-- H3 / drop detection framing
+
+- #41 `genre_specific` academic branch: fake, broken, or irrelevant citations; wrong citation details; unsupported claims; polished academic surface masking weak evidence or generic argument.
+- #41 `genre_specific` student-essay branch: weak reasoning, unsupported claims, abrupt change from a known student baseline, and surface polish masking weak reasoning.
+- #40 `no-rubric-echoing`: inspected implementation in `grade.py`; it matches seven boilerplate phrase families only after three candidates. The source does not test those phrases. A source-cue sample containing formulaic, repetitive, fake references, clean grammar, superficial analysis, bland, robotic, and lack of evidence returned zero rubric-echo candidates in a surface-only audit.
+- Product boundary in `human-eyes/references/process.md` and the root README: the Audit describes patterns and editing problems and does not infer authorship.
+- H3 `Drop detection framing entirely`: the classification errors and cited detector cautions support the hypothesis's epistemic concern but do not decide the product-positioning question.
+- H12 `Genre-aware threshold calibration`: the narrow first-year composition register and dated model scope support register-specific evaluation, not a threshold.
+- H21 `Low information density and wrong sentence subject`: weak evidence and superficial analysis are adjacent, but this source neither measures sentence-level information density nor identifies sentence subjects.
+- H22 `Long-tail compression and grammatical standardisation`: the paper's speculative homogenization discussion is adjacent only; it supplies no structural distribution measurement.
+- `pattern-opportunities.md` candidate `Student-writing argument/evidence quality`: the source directly supports the evidence-quality and false-positive boundary, with the qualifications in this card.
 
 ## Associated hypotheses
-- H3 drop detection framing
-- H12 genre-aware threshold calibration
+
+- H3: Drop detection framing entirely.
+- H12: Genre-aware threshold calibration.
+- H21: Low information density and wrong sentence subject, adjacent only.
+- H22: Long-tail compression and grammatical standardisation, adjacent and speculative only.
 
 ## Questions / follow-up
-- Should human-eyes add a student/academic check for polished organization with weak evidence?
-- Does the full paper report specific instructor cues and whether they correlate with accuracy?
+
+- Can the authors release the four essay texts, participant-level rubric scores, authorship decisions, and interview coding so the cross-category and cue claims can be independently reproduced?
+- Would a preregistered, adequately powered replication with current models, multiple assignments, matched student baselines, blinded coding, and held-out essays reproduce the cross-rubric unevenness and cue results?
+- If Mae wants to consider a #41 cross-rubric unevenness question, approve evaluation work first; no product change is warranted from this four-essay study alone.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | DOI 10.37074/jalt.2024.7.2.12 | `snapshots/archive/murray-tersigni-ai-generated-papers/2026-05-05-41915ef0.md` | 2026-05-05 | `41915ef0f53e0bba49294b7a0e89fb02d8bfffb9ef805235e5b0d0a1fb49dbc3` |
+| current | DOI 10.37074/jalt.2024.7.2.12 | `snapshots/murray-tersigni-ai-generated-papers.md` | 2026-07-16 | `4c61e54756cea774b91d7f77bba292ec2058216797e1178128ead9196f9f2f52` |
+
+## Decision history
+
+- The 2026-05-05 card was a pre-contract, abstract-framed review with no claim IDs, user decisions, implementation statuses, evaluation records, or independent source-record review. Its useful H3, H12, #41, argument, evidence, and surface-polish mappings are reopened and qualified here. No prior approved or implemented decision exists to preserve or retire.
+- The source itself did not materially change: the current PDF and archived extraction contain the same substantive article text. The refresh changes provenance, completeness verification, image and table preservation, claim boundaries, live-project comparison, and review status.
+
+## Project coverage
+
+This is the authoritative review table. Every recommendation remains a pending decision for Mae; no product change was made.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: The study used twenty experienced composition instructors from Canada, the United States, and New Zealand in March-April 2023 to grade and classify four first-year essays and then complete interviews. | Direct method; small convenience recruitment through professional listservs and social media; 70% had over five years of teaching, 65% at least eleven, and 60% at least four courses in the prior year; no population weighting or power analysis. | fully covered by this card's model and corpus scope; no live prose check should encode participant metadata. | Prior card omitted geography, dates, experience distribution, recruitment, and method detail. | Record the scope only; verify through source-card validation. | pending | not started |
+| C02: Two August 2022 student essays were compared with one unguided and one three-step-refined ChatGPT3.5 essay generated from dated January and February 2023 editions; all four were formatted alike, but titles, references, spelling, and grammar were retained. | Direct method; same assignment prompt, but only two examples per source and the actual essays are unpublished; generated on 2023-02-06 and 2023-03-03. The limitations section anomalously says the study was designed and funded before the release of "ChatGPT-3," which is not reconciled with the reported chronology. | partly covered by source metadata conventions and H12; no runtime check binds model, prompt, date, and transformation provenance to a finding. | Prior card omitted model editions, generation dates, prompt asymmetry, formatting control, retained-error conditions, and the source's unresolved "ChatGPT-3" wording. | Keep the source model-specific and dated; preserve the model-name ambiguity and require equivalent provenance in any future replication. | pending | not started |
+| C03: Both generated essays used entirely fabricated references, while the paper says their deliberately general claims were not false; the authors additionally assert, without testing it here, that ChatGPT 4o is more likely to produce real sources when asked but that content cited from a real source is still likely to be hallucinated. | The early-2023 essay inspection is a direct author-reported result; essay texts and source-verification log are unavailable, so it cannot be independently reproduced. The ChatGPT 4o statement is an untested author assertion with no build, prompt, sample, or citation attached at that point. | fully covered by #41 academic-review questions that separately name fake, broken, or irrelevant citations, citations that do not support a claim, and polished academic surface masking weak evidence or generic argument; no-rubric-echoing is unrelated. | No live coverage gap. This card must still preserve the source-specific boundary between the directly observed fabricated references and generic claims, and the untested current-model assertion. | Take no product action. Evaluate any future current-model source-behaviour claim on matched academic essays with real, fake, and misused citations; do not promote the 4o assertion from this study. | pending | not started |
+| C04: Ninety percent first encountered AI writing technology around ChatGPT's launch; mean self-rated knowledge was 4.85 of 10; mean classification confidence was 3.2 of 5, median 3, and standard deviation 1.01; 40% gave an erroneous or no mechanism explanation, including one instructor who believed ChatGPT could verify whether a text was AI-written. | Direct questionnaire and interview result from twenty instructors; knowledge coding details and raw responses are unavailable. | not covered by a prose-pattern check; H3 is adjacent because misunderstandings can support overconfident authorship claims. | No current source mapping records the difference between self-rated familiarity, confidence, tested mechanism knowledge, and unsupported use of ChatGPT as an authorship verifier. | Record as instructor-context evidence only; do not turn mechanism knowledge or confidence into an authorship criterion. | pending | not started |
+| C05: Seventy percent had discussed AI with students, 60% had no syllabus rules, only 15% completely prohibited use, 45% suspected unauthorized use, and none had confirmed a case. | Direct questionnaire and interview result; suspected use is perception, not validated misconduct. | partly covered by the product's no-authorship boundary; no current check covers syllabus policy. | The prior card omitted the crucial no-confirmed-case null and policing reluctance; syllabus policy remains outside product coverage. | Record the null result and take no product action. | pending | not started |
+| C06: Instructors reported mixed student motives and feelings; 60% were sympathetic to unauthorized users and 40% more negative. | Direct instructor interviews about instructor attitudes; student motives and feelings are second-hand because the study had no student participants. | not covered; the project audits prose, not student motivation or misconduct policy. | Risk of misreporting instructor perceptions as direct student evidence. | Record as perception context only and label student claims indirect within this study. | pending | not started |
+| C07: Thirty-five percent were using AI in teaching, 20% planned to, 45% had no immediate plans, all expected major field change, and no participant expressed serious interest in AI grading; views on benefits and harms varied. | Direct interview results; not an intervention study and not representative of all instructors. | not covered by prose checks; process guidance is adjacent but does not prescribe classroom policy. | Prior card collapsed heterogeneous practice into a single pedagogical direction. | Record the heterogeneity and take no product action. | pending | not started |
+| C08: The two ChatGPT essays averaged 72.5% and the two student essays 70.44%; guided ChatGPT Essay 4 was highest at 75.5%, but one generated and one student essay formed both the higher- and lower-scoring pairs, so there was no clear source preference. | Direct aggregate grades for four essays; no uncertainty, inferential test, marker reliability, or released row-level data. | partly covered by #41's academic quality review, which can assess argument, evidence, and surface; it does not compare authorship-group grades. | A two-essay mean difference cannot support a general quality advantage. | Record the exact descriptive result; do not promote a general AI-versus-human quality claim. | pending | not started |
+| C09: Generated essays were strong in spelling and grammar but weak in evidence; Essay 2 had 12 needs-improvement evidence ratings, while neither generated essay received a needs-improvement spelling and grammar rating. The abstract additionally says generated essays scored lower in argumentation, but Figure 2 shows generated essays with more excellent and fewer needs-improvement argumentation ratings than student essays. The methods/results call the levels excellent, good, fair, and needs improvement, while the appendix rubric uses excellent, good, below average, and ineffective. | Direct blind rubric ratings; exact aggregate distributions and source labels are transcribed, but row-level pairings and reliability are unavailable. The argumentation statement and rating-label pairs are source-internal inconsistencies, not harmonized equivalents. | partly covered by #41 academic and student branches for polished surface masking weak evidence or reasoning. | Live #41 does not require a cross-category comparison or distinguish evidence validity from grammatical polish in one structured finding; the source inconsistencies weaken any exact rubric inference. | Test a cross-rubric comparison prompt on a larger matched corpus before deciding whether to refine #41; preserve both source discrepancies in any use. | pending | not started |
+| C10: Only seven of twenty instructors classified all four essays correctly; AI classifications were 35% for student Essay 1, 70% for generated Essay 2, 15% for student Essay 3, and 60% for generated Essay 4. | Direct experiment; exact per-essay false positives and false negatives; all-four accuracy is not a per-essay accuracy rate. | fully covered by the README and process boundary that human-eyes does not classify authorship; H3 is adjacent. | Prior card reported only 35% and obscured the per-essay variation and false positives. | Record exact outcomes and use them only as a warning against authorship inference. | pending | not started |
+| C11: Mean classification confidence was 3.2 of 5, median 3, and standard deviation 1.01; knowledge versus confidence, confidence versus accuracy, and knowledge versus accuracy had reported R² values of 0.15%, 2.0%, and 3.8%, respectively. | Direct descriptive and null linear-regression results; N=20 and no coefficients, intervals, p-values, diagnostics, or raw data are provided. | not covered by a prose check; supports H3's concern about confidence framing. | The prior card omitted the confidence distribution and all three null results. | Record the descriptive confidence result and nulls; do not infer that confidence or self-rated knowledge improves classification. | pending | not started |
+| C12: The participant with confidence 5 of 5 classified only one essay correctly, while a participant who noticed the two different generation procedures did not report greater confidence. | Direct counterexamples from participant results; individual records are described but not released. | fully covered by the no-authorship boundary; no check should infer accuracy from reviewer confidence. | No explicit project reminder separates confidence from evidence quality in source comparisons. | Record as a counterexample; take no product action. | pending | not started |
+| C13: Instructors named fake or poor references, formulaic writing, bland or robotic prose, spelling and grammar, repetition, superficial analysis, gut instinct, and lack of evidence as AI cues; they described student essays as messier, better thought out, and less consistent. | Direct coded interview descriptions; counts range from one to nine and do not measure cue accuracy, prevalence, specificity, or independent predictive value. | partly covered by #41 for references, evidence, reasoning, surface polish, and known baseline; other catalogue checks address some formulaic structures but not these labels as generic traits. Focused surface-only run on the exact cue words returned zero no-rubric-echoing candidates. | Most cues lack exact essay spans and human controls; no generic bland, robotic, clean, or formulaic detector is justified. | Keep these as manual questions with human counterexamples; do not add deterministic patterns. | pending | not started |
+| C14: Participants consistently used stereotyped AI descriptions even when they had misclassified an essay and were discussing student-written work. | Direct qualitative counterexample; the paper does not publish cue-by-decision coding, so magnitude is unknown. | challenges current behaviour when catalogue labels are used as provenance verdicts, although the project's explicit no-authorship boundary already prohibits that inference. | Catalogue labels can still be misread as authorship evidence despite disclaimers. | Preserve this source as explicit false-positive context in #41 and source mapping; no checker change without user approval. | pending | not started |
+| C15: The authors propose unevenness across rubric categories as a possible flag because generated essays were exceptional in some categories and poor in others, while student ratings were more consistent. | Author interpretation grounded in four direct essay profiles; no preregistered rule, threshold, validation sample, or row-level covariance analysis. | not covered as a cross-rubric mechanism; #41 separately names polished surface and weak reasoning. | The candidate could help quality review but is unvalidated for classification and may describe ordinary uneven student work. | Run matched, blinded evaluation before deciding whether to add a #41 cross-rubric question; never frame it as authorship proof. | pending | not started |
+| C16: The cue inventory does not validate formulaic, clean, robotic, bland, repetitive, superficial, or gut-instinct labels as reliable classifiers. | Reviewer boundary derived directly from the paper's false positives, small cue counts, and absent cue-level accuracy analysis. | fully covered by project product-boundary language; no-rubric-echoing checks different exact assignment boilerplate and requires three candidates. | README source mappings could still imply stronger direct support for #40 than this paper supplies; this source supports #41 limits, not #40. | Keep Murray and Tersigni mapped to #41 only and explicitly non-promote it for #40 or generic surface rules. | pending | not started |
+| C17: The authors expect instructors would be more accurate with their own students and prompts, and participants said a known student's writing voice would increase confidence; the experiment did not test that condition. | Author interpretation and participant perception, not a measured result; North American non-blind grading context is described. | fully covered as a #41 student-essay watchlist question about abrupt shifts from a known baseline. | Live wording could be read as validated detection evidence rather than a reason to inspect context and draft history. | Retain the baseline question but qualify it as contextual review, not authorship evidence; test only with longitudinal student controls. | pending | not started |
+| C18: Some instructors said AI use seemed easier to notice in known ELL students, and the authors warn this could expose marginalized students to disproportionate accusations. | Direct participant perception plus author equity interpretation; no ELL sample, accusation rate, or subgroup outcome was measured. | fully covered by README detector-bias cautions and the no-authorship boundary. | This study cannot quantify ELL bias or validate a subgroup rule. | Record as an equity warning only; rely on directly reviewed subgroup studies for quantitative claims. | pending | not started |
+| C19: Guided Essay 4 was 100% ChatGPT output, produced in under seven minutes, earned the highest mean grade, and was identified as AI by 60%; the authors speculate moderate editing could reduce detection. | Direct generation time, grade, and classification result; editing-evasion statement was not tested. | not covered by a product check; #41 can review the essay's quality if text is available, but it is not. | Prior card omitted prompt effort, generation time, and the untested editing qualification. | Record the direct result and label editing evasion as untested; take no product action. | pending | not started |
+| C20: The results are preliminary because the study used twenty instructors, four essays, two early-2023 ChatGPT3.5 outputs, no student participants, and no released essays or row-level data. The limitations section's statement that design and funding preceded "ChatGPT-3" is chronologically and terminologically ambiguous, and the paper's ChatGPT 4o source-behaviour assertion was not tested. | Explicit limitation plus reviewer scope synthesis; current-model, language, assignment, and population generalization are unsupported; the source does not resolve its model-name wording. | fully covered by card metadata and H12's register-aware evaluation concern. | The previous abstract-based card did not state the full set of limits or the model/version ambiguities. | Keep every mapping dated, English, first-year composition, and model-specific; preserve the wording ambiguity and require replication before implementation. | pending | not started |
+| C21: The article's claims about detector false positives, EAL bias, no foolproof software, an arms race among generation, detection, and evasion systems, more consistent ChatGPT-4 sentence lengths, less tense, mood, and voice variation, and less ChatGPT-4 hedging than student writing come from cited studies and reports rather than tests in this experiment. | Indirect evidence; the cited style claims are attributed to Alafnan and Mohdzuki and to Amirjalili et al. Those and the other cited sources were not separately ingested or re-reviewed here and cannot be promoted through this card. | partly covered: H3 and product-boundary cautions cover detector framing, while the cited sentence-length, grammatical-variation, and hedging claims have no live structural coverage; H22 is only adjacent. | The article sometimes moves from citations to broad policy or style interpretations that exceed its own experiment, and this card supplies no direct detector or structural-distribution evaluation. | Record the direct-versus-cited boundary; take no detector-product action and do not promote the style claims to H22 or a pattern until the primary studies are reviewed. | pending | not started |
+| C22: The authors recommend independent student work combined with ethical, guided AI use, scaffolded assignments, and a mix of in-class and take-home stages. | Author recommendation informed by interviews and literature; no intervention, learning outcome, or comparison was tested. | partly covered by process guidance that preserves planning, evidence, stance, and source grounding, but human-eyes is not a curriculum tool. | No evidence here establishes the recommendation's effectiveness or the correct division of AI-supported stages. | Record as pedagogy context only; do not change product guidance without a separate decision and stronger intervention evidence. | pending | not started |
+| C23: The authors recommend clear adaptable policy, instructor and student education, and institutional AI access rather than subscriptions to detector software. | Author policy recommendation; detector premise is cited and institutional effects were not tested. | not covered by prose checks; aligned with H3's non-detector direction. | This project is not an academic-integrity policy system. | Record only; take no product action. | pending | not started |
+| C24: Participants disagreed about whether automating outlining, drafting, or other stages would free time for higher-order work or undermine learning. | Direct qualitative counterexample showing heterogeneity; no outcome comparison. | partly covered by the writing process's preservation of planning, argument, evidence, and deliberate choices. | The source does not identify a universally safe or harmful writing stage for AI support. | Preserve the disagreement and avoid categorical process rules derived from this study. | pending | not started |
+| C25: The paper predicts that repeated AI use may homogenize student voice and shift it away from human burstiness. | Author speculation; no student text corpus, longitudinal measure, burstiness analysis, or causal test. | not covered by H22 or #52 because this study supplies no direct structural measure; the topics are adjacent only. | Promoting this prediction would overstate the source and conflate detector terminology with measured style change. | Record as speculation only; do not map it as evidence for #52 or H22 beyond an unresolved follow-up. | pending | not started |
+| C26: The study supplies no deterministic phrase, structure, count, density, probability, or document-level authorship threshold. | Direct completeness boundary from the method and reported results; participant labels are uncoded at text-span level and sometimes false positives. | fully covered by product-boundary guidance and the source's current #41 mapping. | The prior abstract card could be read as supporting a polished-organization tell without this explicit boundary. | Preserve the no-threshold and no-authorship boundary in all index summaries. | pending | not started |
+| C27: The results section reports no relationship between self-rated knowledge and accuracy, while the discussion calls knowledge the best indicator but immediately qualifies it as very weak. | Internal interpretation tension; reported R² is 3.8%, and no inferential support is provided for a useful predictor. | not covered by a product check; relevant to evidence-quality review. | A summary that says knowledge improves detection would contradict the reported null. | Prefer the numeric null in project summaries and record the discussion wording only as qualified author interpretation. | pending | not started |
+| C28: The authors interpret overestimated technology knowledge and underestimated writing-assessment ability through a Dunning-Kruger account. | Author interpretation from self-report and performance data; the study was not designed to test that mechanism and reports no causal analysis. | not covered and not relevant to prose checking. | The mechanism could be repeated as an empirical finding if not separated from the direct results. | Record as interpretation only and take no product action. | pending | not started |
+
+## Recommendations
+
+- C01: Record the participant and method scope only.
+- C02: Keep every finding model-, prompt-, and date-specific.
+- C03: Consider a #41 clarification separating reference validity from claim truth only after broader source review and matched evaluation.
+- C04: Record instructor knowledge context without using it as an authorship criterion.
+- C05: Preserve the no-confirmed-case null and take no product action.
+- C06: Keep instructor perceptions separate from direct student evidence.
+- C07: Record heterogeneous teaching practice and take no product action.
+- C08: Preserve exact descriptive grades without a general quality claim.
+- C09: Evaluate cross-category review on a larger matched corpus before deciding whether to refine #41.
+- C10: Use classification results only as a warning against authorship inference.
+- C11: Preserve all three null regressions.
+- C12: Preserve confidence counterexamples and take no product action.
+- C13: Keep participant cues as manual questions with human controls; do not add deterministic patterns.
+- C14: Preserve the false-positive stereotype result in #41 source context.
+- C15: Test cross-rubric unevenness before any #41 change and never frame it as authorship proof.
+- C16: Keep the source mapped to #41, not #40 or generic surface rules.
+- C17: Retain known-baseline review only as contextual review with longitudinal controls.
+- C18: Record the equity warning without a quantitative subgroup claim.
+- C19: Separate direct generation results from untested editing-evasion speculation.
+- C20: Keep mappings dated, English, first-year composition, and ChatGPT3.5-specific.
+- C21: Do not promote inherited detector or style claims through this card.
+- C22: Record pedagogy recommendations without product changes.
+- C23: Record policy recommendations without product changes.
+- C24: Preserve participant disagreement and avoid categorical writing-stage rules.
+- C25: Do not promote the homogenization prediction as evidence for #52 or H22.
+- C26: Preserve the no-threshold and no-authorship boundary.
+- C27: Prefer the numeric null over the discussion's weak-predictor wording.
+- C28: Keep the Dunning-Kruger account as author interpretation only.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending source-record recommendation; no product change implemented.
+- C02: not applicable - pending source-record recommendation; no product change implemented.
+- C03: not applicable - pending source-record recommendation; no product change implemented.
+- C04: not applicable - pending source-record recommendation; no product change implemented.
+- C05: not applicable - pending source-record recommendation; no product change implemented.
+- C06: not applicable - pending source-record recommendation; no product change implemented.
+- C07: not applicable - pending source-record recommendation; no product change implemented.
+- C08: not applicable - pending source-record recommendation; no product change implemented.
+- C09: not applicable - pending source-record recommendation; no product change implemented.
+- C10: not applicable - pending source-record recommendation; no product change implemented.
+- C11: not applicable - pending source-record recommendation; no product change implemented.
+- C12: not applicable - pending source-record recommendation; no product change implemented.
+- C13: not applicable - pending source-record recommendation; no product change implemented.
+- C14: not applicable - pending source-record recommendation; no product change implemented.
+- C15: not applicable - pending source-record recommendation; no product change implemented.
+- C16: not applicable - pending source-record recommendation; no product change implemented.
+- C17: not applicable - pending source-record recommendation; no product change implemented.
+- C18: not applicable - pending source-record recommendation; no product change implemented.
+- C19: not applicable - pending source-record recommendation; no product change implemented.
+- C20: not applicable - pending source-record recommendation; no product change implemented.
+- C21: not applicable - pending source-record recommendation; no product change implemented.
+- C22: not applicable - pending source-record recommendation; no product change implemented.
+- C23: not applicable - pending source-record recommendation; no product change implemented.
+- C24: not applicable - pending source-record recommendation; no product change implemented.
+- C25: not applicable - pending source-record recommendation; no product change implemented.
+- C26: not applicable - pending source-record recommendation; no product change implemented.
+- C27: not applicable - pending source-record recommendation; no product change implemented.
+- C28: not applicable - pending source-record recommendation; no product change implemented.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `/root/murray_source_review`; full five-lens review followed by focused re-checks of materially changed claims, provenance, and project-coverage statements
+- **Findings resolved:** five initial findings covering source-internal scoring and rubric inconsistencies, model/version provenance, inherited style claims, confidence and mechanism-knowledge results, and noncanonical coverage labels; two residual finding groups covering the exact ChatGPT 4o qualifications and semantic coverage states for C03, C05, and C21
+- **Unresolved findings:** none

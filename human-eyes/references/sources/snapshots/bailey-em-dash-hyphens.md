@@ -1,3 +1,20 @@
+# Em Dashes, Hyphens and Spotting AI Writing
+
+- **Canonical URL:** https://www.plagiarismtoday.com/2025/06/26/em-dashes-hyphens-and-spotting-ai-writing/
+- **Alternate access URLs:**
+  - none accessed in this update
+- **Author / owner:** Jonathan Bailey
+- **Publisher:** Plagiarism Today
+- **Published:** 2025-06-26T14:08:08-05:00
+- **Retrieved:** 2026-05-05
+- **Stable identifier:** none found
+- **Version / revision:** article as published 2025-06-26 and captured 2026-05-05
+- **Extraction method:** preserved Jina Reader URL-to-Markdown extraction; the exact historical proxy endpoint or invocation was not recorded; no fresh scrape in the 2026-07-15 contract update
+- **Full-text status:** complete
+- **Access and transformation notes:** The complete accessible article text, headings, numbered results, inline links, hero-image link, and reuse footer are preserved. Site navigation, advertising, and unrelated page chrome are absent. The linked Google Doc containing the six raw model outputs was not preserved or reviewed, so the reported counts and factual-error examples can be attributed only to Bailey's article, not independently reproduced. One trailing space in a numbered-result line was removed during the contract update.
+
+## Full text
+
 Title: Em Dashes, Hyphens and Spotting AI Writing
 
 URL Source: https://www.plagiarismtoday.com/2025/06/26/em-dashes-hyphens-and-spotting-ai-writing/
@@ -39,7 +56,7 @@ I decided to test six different AI systems to see how heavily they use the em da
 
 Here are the results:
 
-1.   ChatGPT: 573 Words, 8 Em Dashes 
+1.   ChatGPT: 573 Words, 8 Em Dashes
 2.   Microsoft Copilot: 466 Words, 8 Em Dashes
 3.   Deepseek: 555 Words, 9 Em Dashes (4 En Dashes)
 4.   Claude: 948 Words, 2 Em Dashes (1 En Dash)
@@ -91,3 +108,17 @@ But it can’t be much more than that.
 If you want to feature this article in your site, classroom or elsewhere, just let us know! We usually grant permission within 24 hours.
 
 [Click Here to Get Permission for Free](https://www.plagiarismtoday.com/reprint-permissions/)
+
+## Extraction verification
+
+- **Beginning checked:** The preserved title, canonical URL, publication timestamp, hero-image link, opening account of ChatGPT's launch, and em-dash premise were inspected in the saved extraction.
+- **Middle checked:** The punctuation definitions, style-guide links, six-system prompt, all word and dash counts, Google Doc link, and sample-size qualification were inspected in the saved extraction.
+- **End checked:** The circumvention discussion, probability and no-certainty conclusions, three factual-error examples, deeper-analysis recommendation, and reuse footer were inspected in the saved extraction.
+- **Structure checked:** The extraction contains the article's four substantive headings, one six-item numbered results list, inline citations, one hero-image link, and the reuse footer. No tables, footnotes, appendices, or article-body captions are present in the saved text.
+- **Known omissions:** The linked Google Doc with the six raw generated articles was not preserved or reviewed. The hero image is linked but not saved; it is a generic OpenAI logo and does not bear on the article's claims. Site chrome and advertising are intentionally omitted.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | linked Google Doc raw outputs and generic hero image | not applicable | Neither attachment was preserved; the article text itself is complete, but its reported model-output observations were not independently reproduced. |

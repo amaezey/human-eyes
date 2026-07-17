@@ -1,10 +1,37 @@
-Title: Detecting LLM writing in Text
+# Detecting LLM writing in Text
 
-URL Source: https://blog.frohrer.com/how-to-detect-llm-writing-in-text/
+- **Canonical URL:** https://blog.frohrer.com/how-to-detect-llm-writing-in-text/
+- **Alternate access URLs:**
+  - https://blog.frohrer.com/ghost/api/content/posts/slug/how-to-detect-llm-writing-in-text/?key=8f816ee42c4bce750917e82b99&formats=html,plaintext
+  - https://blog.frohrer.com/rss/
+- **Author / owner:** Fred Rohrer
+- **Publisher:** Fred Rohrer's Blog
+- **Published:** 2025-07-28T20:04:04.000Z
+- **Retrieved:** 2026-07-17
+- **Stable identifier:** Ghost post ID `6a22e56c0a8fb3000174b6c1`; UUID `871b44d3-c117-4eee-a6da-6835e54ee822`
+- **Version / revision:** Ghost `updated_at` `2025-07-28T20:13:35.000+00:00`
+- **Extraction method:** direct HTML and first-party Ghost Content API JSON fetched with `curl`; API `html` and `plaintext` fields checked against the rendered article and RSS item; complete feature image downloaded directly and visually transcribed
+- **Full-text status:** complete
+- **Access and transformation notes:** article navigation, subscription controls, sharing controls, and unrelated page chrome omitted; source headings and body wording retained in Markdown; HTML entities decoded; the feature image is preserved separately and its visible labels and values are transcribed below; no article references, footnotes, appendices, or tables exist
 
-Published Time: 2025-07-28T20:04:04.000Z
+## Full text
 
-Markdown Content:
+![Feature image: AI detection analysis dashboard](attachments/rohrer-promotional-register-feature-image.png)
+
+### Feature image transcription
+
+The image is an unlabeled example dashboard. It does not identify the analyzed input, model, corpus, software, calculation code, decision rule, or validation data. Visible content:
+
+- `AI Likelihood: 56.3%` on a four-colour gauge.
+- `Entropy vs Perplexity`: one point at approximately entropy 6.29 and perplexity 78; background bands are labelled `AI-like (Low Perplexity)` below 100 and `Human-like (High Perplexity)` from 100 upward.
+- `Markov Chain Analysis 1.000`: `Uniformity 0.000`; `Predictability 1.000`.
+- `Vocabulary Diversity`: `TTR 0.744`; `Hapax Ratio 0.839`.
+- `Word Frequency Distribution (Zipf's Law)`: log probability against log word rank; the plot supplies no fitted slope or goodness-of-fit value.
+- `Sentence Length Distribution`: five displayed observations with `Mean: 24.4` words.
+- `Repetition Analysis`: `Word Repetition 0.064`; `Phrase Repetition 0.000`.
+- `N-gram Analysis`: `Trigram TTR 1.000`; `Frequency Variance 0.000`.
+- `AI Detection Features (Higher = More AI-like)`: a radar chart with axes `Perplexity`, `Markov`, `Entropy`, `Sentences`, `AUC`, `Vocabulary`, and `Repetition`, but no numeric scale mapping beyond 0.2 increments and no formula for combining the axes.
+- `AI DETECTION SUMMARY`: `Overall AI Likelihood: 56.3%`; `Key Findings:` `MODERATE signs of AI generation`; `Some patterns consistent with AI writing`; `Low Markov uniformity (0.000) indicates predictable transitions`.
 LLMs are harder and harder to detect in text, and detection vary between models. In this article I will explore a couple of easy and hard methods to find LLM generated text. This is not foolproof so please don't rely on it.
 
 ## Linguistic and Stylistic Recognition
@@ -116,3 +143,17 @@ Sentence structure analysis complements phrase repetition detection by examining
 ### Conclusion
 
 Thats all folks! Thanks for coming to my TED talk.
+
+## Extraction verification
+
+- **Beginning checked:** the title, byline, publication timestamp, opening caveat, `Linguistic and Stylistic Recognition` heading, and first two promotional-language paragraphs match the direct rendered HTML, Ghost API HTML/plaintext, and RSS item.
+- **Middle checked:** the placeholder and platform-artifact sections match all three first-party routes; the Ghost plaintext midpoint falls in the second placeholder paragraph before `Technical Artifacts from Specific Platforms`.
+- **End checked:** the AUC, repetition, sentence-structure, `Conclusion`, and final `Thats all folks! Thanks for coming to my TED talk.` text match the direct HTML, API fields, and RSS item.
+- **Structure checked:** one opening image; one H2 linguistic section; eight H3 linguistic subsections; one H2 statistical section; six H3 method subsections plus one H3 conclusion; 39 body paragraphs. The direct rendered page exposes 119 reader lines; the first-party API exposes 57 HTML lines and 10,325 plaintext characters. No tables, citations, references, footnotes, notes, appendices, or inline links appear in the article body.
+- **Known omissions:** none from the substantive article. Page chrome and the feature image's unlabeled decorative background are not reproduced as text; the complete image bytes are preserved below and all visible labels and values were transcribed above.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/rohrer-promotional-register-feature-image.png` | Opening analysis-dashboard image; contains the source's only numeric example or output | `3cfd23fc7c27542cb972c0b751ee48455d44fbe1e9e96f6462731c4c8100b778` | Downloaded directly from the first-party Ghost content URL at its original 2000 by 1605 pixels; visually inspected at original resolution; all visible titles, values, legends, axes, and summary text transcribed above. |

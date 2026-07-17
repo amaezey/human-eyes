@@ -1,10 +1,19 @@
-# MFA students vs LLMs fiction
+# Readers Prefer Outputs of AI Trained on Copyrighted Books over Expert Human Writers
 
-- **Source URL:** https://arxiv.org/pdf/2510.13939
-- **Snapshot method:** arXiv PDF text extraction
-- **Retrieved:** 2026-05-05
+- **Canonical URL:** https://arxiv.org/abs/2510.13939
+- **Alternate access URLs:**
+  - https://arxiv.org/pdf/2510.13939v4
+- **Author / owner:** Tuhin Chakrabarty, Jane C. Ginsburg, and Paramveer Dhillon
+- **Publisher:** arXiv
+- **Published:** 2025-10-15 submitted; revised 2026-03-17
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** arXiv:2510.13939v4; DOI 10.48550/arXiv.2510.13939
+- **Version / revision:** arXiv v4, 2026-03-17
+- **Extraction method:** authoritative PDF downloaded from arXiv; all 50 pages extracted from the embedded text layer with Poppler `pdftotext -layout`; PDF metadata checked with `pdfinfo`; pages 1, 25, 46, 48, and 50 rendered with `pdftoppm` and visually compared with the extraction; image inventory checked with `pdfimages -list`
+- **Full-text status:** complete
+- **Access and transformation notes:** The Markdown body preserves the complete normalized text of all 50 PDF pages, including the main paper, references, figures and captions, methods, supplementary information, tables, preregistration deviations, and code/data statement. The extraction omits only non-textual pixel geometry from figures whose captions and surrounding interpretation are preserved; selected figure- and table-heavy pages were visually checked. The prior complete v4 text extraction had no recorded digest in its card or manifest; its exact bytes were verified locally and archived before this wrapper refresh.
 
-## Article Body
+## Full text
 
 Readers Prefer Outputs of AI Trained on Copyrighted Books
                                                           over Expert Human Writers
@@ -1631,3 +1640,17 @@ All code and data necessary to reproduce Figures 2-4 and the associated statisti
       mations applied.
 
                                                           50
+
+## Extraction verification
+
+- **Beginning checked:** PDF page 1 title, authors, affiliations, arXiv v4/date marker, abstract, model names, sample sizes, odds ratios, detector rates, and stated cost/length limits match the extracted text.
+- **Middle checked:** PDF page 25 visually confirms the MFA-program alumni table and New Yorker's 20 Under 40 list; the extracted captions, names, and page transition are present. Figure-heavy pages 4-38 retain their captions and surrounding source interpretation, while the complete PDF preserves their rendered pixels.
+- **End checked:** PDF pages 46, 48, and 50 visually confirm the continued per-author results table, detection-model table and mediation section, preregistration deviations, and code/data-availability ending.
+- **Structure checked:** `pdfinfo` reports 50 letter-size pages; the extraction contains the 13-page main paper, references, and supplementary sections S1-S10, including Tables 1-19, Figures 1-25, methods, ethics, notes, preregistration deviations, and code/data availability. `pdfimages -list` was used to inventory embedded figure assets.
+- **Known omissions:** none from the authoritative paper; figure pixels are preserved in the PDF attachment rather than duplicated as images in this Markdown snapshot.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/dhillon-mfa-students-llms-fiction-arxiv-2510.13939v4.pdf` | authoritative 50-page arXiv v4 paper | `b0ddd928ae98b948e5d0fe1802eca3b91548694a0866edec37d5514108b617ea` | Downloaded directly from arXiv; complete text layer extracted with Poppler and selected beginning, middle, table-heavy, and ending pages rendered for visual verification. |

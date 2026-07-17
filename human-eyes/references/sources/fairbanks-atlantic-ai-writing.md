@@ -5,134 +5,184 @@
 - **URL:** https://www.theatlantic.com/technology/2026/05/how-to-tell-ai-writing/687345/
 - **Author / owner:** Eve Fairbanks / The Atlantic
 - **Published:** 2026-05-29
-- **Retrieved:** 2026-07-14
-- **Extracted:** 2026-07-14
-- **Source type:** Journalism / editor essay with reported cases, one prompted model interaction, personal writing-process anecdotes, and secondary reporting of two empirical studies
+- **Retrieved:** 2026-07-15
+- **Extracted:** 2026-07-15
+- **Source type:** Journalism and editor essay with reported cases, personal writing-process anecdotes, one reproduced model interaction, and secondary reporting of two empirical studies
 - **Evidence tier:** Journalism / reported cases
-- **Review mode:** new
+- **Review mode:** update
 - **Stable identifier:** The Atlantic article 687345
-- **Version / revision:** Published version modified 2026-05-29T17:08:00Z
+- **Version / revision:** Current and previous reviews cover the published version modified 2026-05-29T17:08:00Z; current canonical and gift HTML were retrieved 2026-07-15
 - **Full-text status:** complete
 - **Snapshot:** `snapshots/fairbanks-atlantic-ai-writing.md`
-- **Extraction method:** direct HTML article-body extraction from supplied gift link
-- **Snapshot SHA-256:** `d172c568cb9a99c0bbe319623d3ac10e7569a355be646353015296e28a7925f0`
-- **Model / corpus scope:** The direct example is labelled ChatGPT Pro, but the model name, version, date, system prompt, and sampling settings are not supplied. Broader observations concern unspecified AI-assisted submissions to one editor. English-language technology commentary and literary journalism.
-- **Access limitations:** The supplied gift link exposed the complete article. Page chrome, advertising, artwork credit, audio and sharing controls, and author boilerplate were omitted from the snapshot; the deck, article body, editorial cross-links, links, quotations, and poem were preserved. The article's authorship is presumed human under The Atlantic's stated disclosure policy, not independently verified.
+- **Extraction method:** direct canonical and gift-link HTML fetched with `curl`; Python 3 and BeautifulSoup 4 used for DOM counts and text comparison; Markdown body retained from the prior verified extraction after the current rendered article matched it token for token
+- **Snapshot SHA-256:** `e2fcd6ea012535eee831ba6f224590ff4ec534dec9123580bad3f6ee8f4a7db4`
+- **Model / corpus scope:** The direct model example is labelled ChatGPT Pro, but the model name, version, interaction date, system prompt, complete conversation context, and sampling settings are not supplied. Broader direct observations concern unspecified AI-assisted English-language messages and submissions seen by one Johannesburg-based editor. The cited sycophancy study concerns advice and interpersonal-conflict tasks across 11 models, not finished-prose drafting. The cited vocabulary study concerns spoken English in YouTube academic talks and podcasts, not written prose.
+- **Access limitations:** Both current Atlantic routes returned the complete server-rendered article. The snapshot omits page chrome, advertising, audio and sharing controls, author boilerplate, and a non-substantive lead illustration; its checked caption is recorded. No article-body text is omitted. The article's publisher policy supports only presumed human authorship, not independently verified provenance.
 
 ## Summary
 
-Fairbanks argues that familiar AI-writing tics are only the removable surface of a deeper problem. Drawing on her work as an editor, personal experiences with AI-mediated messages, one prompted ChatGPT exchange, and two cited studies, she describes AI-shaped prose as clean, evenly paced, tonally polished, and locally plausible while remaining conceptually untested. Her distinct contribution to human-eyes is a process and evaluation lens: weak AI-assisted prose may fail across premise, reasoning, facts, structure, diction, and tone because generation bypassed the stopping, backtracking, and revision through which writers test what they mean. This is strong craft framing and a useful candidate calibration case, but the article's broad claims are not measured pattern evidence.
+Fairbanks argues that removable surface tics are less important than prose that has not undergone a writer's stopping, backtracking, premise-testing, and revision. The essay combines one editor's recent observations, personal anecdotes, links to reported cases, one reproduced ChatGPT Pro exchange, and secondary summaries of sycophancy and spoken-language-transfer studies. Its strongest contribution to human-eyes is a craft and evaluation frame for conceptual coherence and local repairability, plus a useful human-look-alike case against punctuation and rhetorical-form shortcuts. It supplies no verified submission corpus, prevalence estimate, authorship method, model metadata, controlled comparison, or threshold, so its broad claims remain journalism and interpretation rather than detector evidence.
 
 ## Main insights
 
-- Surface camouflage is not improved thought. Removing em dashes, colons, or negative parallelism can leave the premise, facts, structure, and word choices wrong.
-- The central distinction is between prose that has undergone judgment and prose that has merely continued. Human writers may pause, backtrack, revise a premise, discard a draft, or decide not to communicate.
-- The reproduced ChatGPT exchange demonstrates local fluency without stable semantic grounding: the model defends a metaphor after the fact and agrees when challenged, but one unspecified interaction cannot establish prevalence.
-- Fairbanks's description of simultaneous failures suggests separately evaluating conceptual coherence and local repairability, then combining them only if a joint assessment adds nonredundant value. Neither should become a regex feature or authorship score.
-- The cited study indicates that model-preferred vocabulary can transfer into later spoken English. Written-prose guidance still requires register-matched written evidence.
-- The article itself contains 14 em dashes and two negative-parallelism candidates, showing why public tells require register, quotation, density, and purpose context.
-- Praise of genuine confusion and revision must not become an instruction to manufacture errors, anecdotes, uncertainty, or stylistic irregularity.
+- The source distinguishes removable public tells from distributed failures in premise, reasoning, facts, structure, diction, and tone.
+- Mechanical cleanliness, even pacing, and a breezy-grandiose register are one editor's observations about submissions she inferred were substantially AI-assisted; the source supplies no counts, verification method, or comparison corpus.
+- Writing friction can prompt a writer to revise a premise, abandon a draft, or withhold a message. The essay treats that process as part of thinking, not inefficiency to be cosmetically simulated.
+- Fairbanks also says writing may become easy after the writer finds the right idea. Ease and fluency alone are therefore not adverse evidence; her distinction is between premature frictionlessness and ease after premise resolution.
+- One ChatGPT Pro exchange shows a fluent metaphor being rationalised through successive prompts and then conceded when challenged. It is a qualitative example, not model-wide prevalence evidence.
+- The article reports that sycophantic systems affirm users more than humans and that model-associated vocabulary may transfer into later spoken English. These are indirect claims whose direct papers have different task and register boundaries.
+- The source itself contains 14 em dashes, two detected negative-parallelism candidates, three detected triads, 83 curly quotation marks, and ordinary uses of `renowned` and `crucial`. That makes it useful for contextual calibration, not verified authorship classification.
+- The essay's claims that all substantially generated writing is incoherent, that AI cannot make human-like judgments, and that infiltration cannot be stopped are arguments or forecasts, not results established by its evidence.
+- Valuing genuine confusion, doubt, and revision must not become guidance to invent errors, uncertainty, autobiography, or irregularity.
 
 ## Evidence and claims to extract
 
-- **Direct source reviewed:** The complete Atlantic article body returned by the supplied gift link, canonical article 687345, published 2026-05-29 and modified 2026-05-29T17:08:00Z.
-- **Method and sample:** The source combines one editor's recent submission experience with two personal communication cases, two autobiographical writing cases, one reproduced ChatGPT Pro exchange, and secondary summaries of Cheng et al. and Yakura et al. It supplies no submission count, sampling rule, verified provenance, comparison corpus, or direct model metadata.
-- **Direct versus cited evidence:** C01-C06 and C08-C09/C11 are observations, examples, or interpretations made in this article. C07 inherits empirical sycophancy findings from Cheng et al., *Science* 391, eaec8352 (2026), DOI `10.1126/science.aec8352`. C10 inherits vocabulary-transfer findings from Yakura et al., arXiv `2409.01754v3`. Their primary abstracts were checked, but neither paper is promoted as primary project evidence by this card.
-- **Important limits and counterexamples:** The article often generalises from reported cases to AI writing broadly. Its public-tell list supplies no rates or thresholds. The article is presumed human-authored under its publisher's disclosure policy but was not independently provenance-verified; its own surface-check results are therefore a candidate calibration case, not ground truth for classifier accuracy.
+- **Direct source reviewed:** Current canonical and gift-link HTML for The Atlantic article 687345, published 2026-05-29 and still carrying publisher modification time `2026-05-29T17:08:00Z`; the complete body was compared with the preserved snapshot.
+- **Method and sample:** Twenty-seven rendered paragraph elements including the deck, two editorial cross-links, and four poem-line elements; 10 body links; one block quote; one editor's submission observations; two AI-mediated message anecdotes; two autobiographical writing examples; one reproduced ChatGPT Pro exchange; and secondary reports of Cheng et al. and Yakura et al. No submission count, selection rule, verified provenance, model configuration, controlled comparison, uncertainty estimate, or direct written-language corpus is supplied.
+- **Direct versus cited evidence:** C01-C13, C15-C16, and C18-C21 are Fairbanks's observations, examples, arguments, or forecasts. C14 reports Cheng et al., *Science* 391, eaec8352 (2026), DOI `10.1126/science.aec8352`; its structured abstract was checked for scope, but this card does not ingest the paper. C17 reports Yakura et al., arXiv `2409.01754v3`; its abstract was checked for spoken-English scope, but this card does not promote it as direct project evidence. Linked journalism, the X post, surveys, tutorials, and submission provenance were not independently substantiated here.
+- **Important limits and counterexamples:** The article generalises from anecdotes and editorial judgments; its public-tell list supplies no rates or thresholds; its own edited prose triggers the named surface checks; the ChatGPT exchange lacks model/version and full context; the sycophancy evidence is conversational and interpersonal; the vocabulary evidence is spoken English; no null result or systematic counterexample set is reported; and the publisher's disclosure policy is not independent authorship proof.
 
 ### Deterministic coverage check
 
-The audit input was derived reproducibly from the saved snapshot: take the content between `## Full text` and `## Extraction verification`, remove the two editorial `[Read: ...]` lines, replace Markdown links with their visible labels, remove the poem's `<br>` rendering markers, and remove blockquote markers while retaining paragraph and poem line boundaries. The resulting UTF-8 body has SHA-256 `584b5b9c1c17dec0cf3c5b235ab8fd1bb5faaf91ed3a82086b2d061cdd486540`. Run that derived body with:
+The checked input is the snapshot content between `## Full text` and `## Extraction verification`, excluding the two editorial `Read:` lines, with Markdown links reduced to visible text, `<br>` markers removed, and block-quote markers removed while preserving paragraph and poem-line boundaries. The UTF-8 body at `tmp/fairbanks-atlantic-body-from-snapshot-2026-07-15.txt` has SHA-256 `c48d86595a35556c7368a23f477bf05084eed7bc170fbcbab2dcfb6933dd9c8f`, 1,775 whitespace-delimited words, and 52 lines. Running:
 
 ```bash
-python3 human-eyes/scripts/grade.py audit /tmp/fairbanks-atlantic-body-from-snapshot.txt --surface-only
+python3 human-eyes/scripts/grade.py audit tmp/fairbanks-atlantic-body-from-snapshot-2026-07-15.txt --surface-only --format json
 ```
 
-The result is correctly labelled `coverage_mode: surface_only` and `audit_status: incomplete`; it is not a complete Audit. Of 50 checks, seven flag: `no-em-dashes` (14 candidates), `no-negative-parallelisms` (2), `no-forced-triads` (2), `no-curly-quotes`, `no-promotional-language` (`renowned`), `no-significance-inflation` (`crucial`), and `overall-signal-stacking`. One em dash is in the quoted poem and the other 13 are in Fairbanks's prose. The two triads are ordinary coordination and the quoted list `boast, swift, and meticulous`. Publication typography drives the curly-quote result. These are context and false-positive-pressure observations, not evidence that the checks are useless or that the article's provenance is independently known.
+returns `coverage_mode: surface_only`, `audit_status: incomplete`, and seven flagged programmatic checks: `no-em-dashes` with 14 candidates; `no-negative-parallelisms` with two candidates; `no-forced-triads` with three candidates; `no-curly-quotes` with 83 glyphs across 45 candidate sentences; `no-promotional-language` for `renowned`; `no-significance-inflation` for `crucial`; and `overall-signal-stacking` at 5/4 from four negative-parallelism points plus one vocabulary point. One em dash occurs in the poem and one in the quoted vocabulary-study language; the remaining 12 occur in Fairbanks's prose. One triad is inside the cited word list and one is in the poem. This is deterministic surface coverage only, not a complete Audit or an authorship result.
+
+The quoted tutorial form `It’s not X; it’s Y` is intentionally masked as quoted material by the audit pipeline, so it is not one of the two document-level candidates. A focused direct call to `check_negative_parallelisms` on that exact curly-apostrophe semicolon construction returns `passed: false`, `candidate_count: 1`, and match `It’s not X; it’s`. The live rule therefore recognises the named form outside quotation; the two body-audit candidates are separate, unquoted human-look-alike constructions.
 
 ## Skill-use audit
 
-- **Good use:** Rationale for testing conceptual coherence; a qualitative example of post-hoc metaphor rationalisation; dated evidence that surface-tell camouflage is public; a professionally edited journalism candidate calibration case; support for reviewing distributed failures together.
-- **Misuse / overclaim:** Do not cite the essay as empirical proof that all substantially generated writing is incoherent or impossible to edit. Do not treat the editor's inference about submissions as verified provenance.
-- **Unsupported use:** The article cannot set thresholds for punctuation, paragraph length, tone, metaphor, or signal stacking. Its single ChatGPT Pro exchange cannot establish a model-wide tendency or identify the underlying model.
-- **Underused evidence:** The project does not directly ask whether a draft's premise, evidence, argumentative steps, and word choices compose into a defensible whole, or whether repair is local versus a rebuild.
-- **Patterns left on the table:** Conceptual dead ends; post-hoc justification instead of revision; missing argumentative steps; local repairability; and process questions about what the writer rejected or changed.
+- **Good use:** Craft framing for premise-testing, conceptual coherence, local repairability, and genuine revision; a bounded qualitative metaphor-rationalisation case; public-tell/evasion context; and a human-look-alike case for register, quotation, density, and purpose controls.
+- **Misuse / overclaim:** Do not cite the essay as empirical proof that substantially generated writing is always incoherent, uneditable, tonally uniform, or authored by a particular model. Do not treat Fairbanks's inferred submission provenance or The Atlantic's policy as verified authorship.
+- **Unsupported use:** The source cannot establish punctuation, colon, paragraph-length, tone, metaphor, sycophancy, vocabulary, or signal-stacking thresholds. It cannot validate a detector, an authorship verdict, a causal model mechanism, current prevalence, or transfer from speech to writing.
+- **Underused evidence:** The project does not directly assess whether a draft's premise, evidence, reasoning, structure, diction, and facts compose into a defensible whole, nor whether repair is local or requires rebuilding.
+- **Patterns left on the table:** Premise revision or abandonment; local repairability; distributed cross-level failure; post-hoc justification across turns; blurred meanings of `writing tool`; and the risk that public cue removal optimises camouflage without improving thought.
 
 ## Matched patterns / rules
 
-- **#9 Negative parallelism / `no-negative-parallelisms`:** Explicitly named as a public tell; the article also supplies two deliberate-use candidates.
-- **#21 Sycophantic or servile tone:** Supported indirectly by Cheng et al. and illustrated by one ChatGPT exchange; current surface phrasing does not cover premise-level agreement.
-- **#30 Generic or ungrounded metaphors / `generic_metaphors`:** The raccoon example is a qualitative semantic case, not prevalence evidence.
-- **#34, #52, `paragraph-length-uniformity`, `sentence-length-variance`:** Related to the editor's description of uniform, evenly paced submissions. The current audit does not reproduce that observation on this human article.
-- **#35 `tonal_uniformity`:** Partly related to the reported breezy-grandiose register, though a hybrid register is not the same as register lock.
-- **#41 and semantic assessments:** Cover some missing support, structural, and factual problems but not conceptual coherence or repairability as one cross-level assessment.
-- **#49 `no-em-dashes`:** Explicit public tell; its any-occurrence warning flags 14 uses in this edited article and needs calibration before any severity change.
-- **`overall-signal-stacking`:** Flags the article from negative parallelism plus vocabulary-list overlap, reinforcing that stacking is a writing-pattern review rather than an authorship verdict.
+- **#9 / `no-negative-parallelisms`:** Named as a public tell and challenged by two detected deliberate-use candidates in the article.
+- **#21 / `no-collaborative-artifacts`:** Covers fixed praise and agreement residue, but not premise-level sycophancy or user self-correction.
+- **#30 / `generic_metaphors` and `underspecified_language`:** Relevant to the raccoon exchange as a qualitative semantic case, not a prevalence finding.
+- **#34, #52, `paragraph-length-uniformity`, and `sentence-length-variance`:** Related to the editor's cleanliness, uniformity, and pacing observation but do not verify provenance or reproduce her submission judgment.
+- **#35 / `tonal_uniformity`:** Related to the reported breezy-grandiose consistency, although hybrid register and register lock are not identical.
+- **#41 / `genre_specific`:** Journalism review covers sourcing and factual support, but not conceptual coherence or local repairability.
+- **#49 / `no-em-dashes`:** Named as a public tell and challenged by 14 occurrences in the presumed-human edited article.
+- **`overall-signal-stacking`:** Flags the article at 5/4, reinforcing that the output describes accumulated writing signals rather than authorship.
 
 ## Associated hypotheses
 
-- **H9 / H12:** Relevant to em-dash and negative-parallelism calibration, but this article is only a presumed-human journalism case.
-- **H21:** Low information density and wrong sentence subject overlap with missing thought, but do not fully capture conceptual dead ends or distributed failure.
-- **H24 / H25:** Yakura et al.'s reported vocabulary transfer supports time-sensitive, model- and register-aware vocabulary treatment.
-- **Proposed hypothesis:** Conceptual coherence across premise, evidence, reasoning, structure, diction, and facts. It must assess text quality without inferring authorship.
-- **Proposed hypothesis:** Local repairability, assessed independently from coherence: whether the reasoning can be corrected through bounded edits or requires rebuilding the argument. Combine the two only if evaluation demonstrates nonredundant value.
+- **H3:** The essay supports dropping authorship-detection framing for these craft judgments.
+- **H9 and H12:** The article is a journalism-register look-alike case for em-dash and negative-parallelism interpretation, not ground-truth classifier evidence.
+- **H21:** Low information density and weak reasoning overlap with Fairbanks's distributed-failure argument but do not capture premise validity or repair cost.
+- **H24 and H25:** The reported vocabulary transfer supports time-, register-, and model-aware treatment and cautions against static blacklists.
+- **Proposed hypothesis:** Conceptual coherence across premise, evidence, reasoning, structure, diction, and facts, assessed as text quality without provenance inference.
+- **Proposed hypothesis:** Local repairability, assessed separately from coherence: whether bounded edits can fix the draft or whether the argument needs reconstruction.
 
 ## Questions / follow-up
 
-- Should the article enter a journalism-register calibration set, labelled as presumed human-authored under a publisher policy rather than independently verified?
-- Should conceptual coherence and local repairability become separate hypotheses, and should either be incorporated into H21?
-- Should premise-level sycophancy remain separate from conversational phrase residue?
-- Should #49's any-occurrence warning be recalibrated for edited magazine and literary prose?
-- Should #35 guidance be clarified so that a suggested register break cannot become manufactured irregularity?
-- Should Cheng et al. and Yakura et al. receive direct source cards now, or wait until the dependent recommendations are approved?
+- Whether to add the article to a journalism calibration corpus labelled `presumed human under publisher policy`, with licence and provenance review before committing text.
+- Whether conceptual coherence and local repairability should become separate hypotheses, extend H21, or remain source-record concepts.
+- Whether premise-level sycophancy belongs outside phrase-level #21 and requires writing-assistance evidence before product work.
+- Whether #49 and `overall-signal-stacking` need journalism, quotation, poem, and publisher-typography controls.
+- Whether to ingest Cheng et al. and Yakura et al. separately before using their findings for project changes.
 
 ## Update provenance
 
-- Not applicable: initial ingestion.
+The source body and publisher modification timestamp are unchanged. This update archives the exact prior bytes, replaces the snapshot wrapper with current-template provenance and verification fields, expands the claim inventory, and re-runs live coverage. A changed retrieval date is not treated as a source revision.
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | The Atlantic article 687345 | `snapshots/archive/fairbanks-atlantic-ai-writing/2026-07-14-d172c568.md` | 2026-07-14 | `d172c568cb9a99c0bbe319623d3ac10e7569a355be646353015296e28a7925f0` |
+| current | The Atlantic article 687345 | `snapshots/fairbanks-atlantic-ai-writing.md` | 2026-07-15 | `e2fcd6ea012535eee831ba6f224590ff4ec534dec9123580bad3f6ee8f4a7db4` |
 
 ## Decision history
 
-- None: initial review.
+- The previous reviewed record had C01-C11 at `pending` / `not started`; no recommendation was approved or implemented. Their evidence was materially unchanged and is remapped as follows: old C01 to current C04, old C02 to C05, old C03 to C08, old C04 to C09, old C05 to C10, old C06 to C12, old C07 to C14, old C08 to C16, old C09 to C15, old C10 to C17, and old C11 to C21.
+- Current C01-C03, C06-C07, C11, C13, C18-C20 make previously implicit source material explicit. All current rows remain `pending` / `not started`; the refresh carries forward no approval.
 
 ## Project coverage
 
-This is the authoritative review table. Coverage status is stated in the Existing project coverage column; no recommendation has been approved or implemented.
+This is the authoritative review table. Coverage status is stated in the Existing project coverage column; every recommendation remains a pending decision for Mae.
 
 | Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
 |---|---|---|---|---|---|---|
-| C01: AI-assisted submissions can look mechanically clean, uniform in length, and evenly paced | Direct editor observation; recent submissions to one editor; no count, sampling rule, verified provenance, threshold, or systematic human comparison | #34, #52, `paragraph-length-uniformity`, and `sentence-length-variance`; partly covered | Existing metrics cover rhythm variation, not cleanliness as provenance evidence; this article does not validate a threshold | Take no further product action from this claim; require matched-corpus testing before any later change | pending | not started |
-| C02: A stable breezy-grandiose tone can cue substantial AI assistance | Direct qualitative observation; no corpus, rate, or model scope | #35 and lexical-inflation families; partly covered | A hybrid register is not the same as current register-lock assessment | Hold as a semantic example and test in matched corpora | pending | not started |
-| C03: Em dashes are a publicly recognised AI tell | Report of public tutorials, not frequency evidence; this article contains 14 em dashes | #49 `no-em-dashes`; covered and challenges current behaviour | Any-occurrence warning produces false-positive pressure in edited journalism; provenance remains presumed, not verified | Add as a labelled calibration case if approved; evaluate genre and quotation handling before changing severity | pending | not started |
-| C04: Colons are a publicly recognised AI tell | Unsupported beyond reported tutorials; no subtype, rate, model comparison, or human comparison | No general colon rule; not covered by design | No evidence supports a new rule | Do not promote a colon rule from this source | pending | not started |
-| C05: Negative parallelism is a publicly recognised AI tell | Public-salience report; stronger dedicated sources exist; this article has two candidates | #9 `no-negative-parallelisms`; covered and challenges current behaviour | Deliberate human use and quotation context remain valid | Use as a look-alike calibration case only; make no severity change from this card | pending | not started |
-| C06: Drafting friction can reveal a flawed premise or message that should be revised, discarded, or withheld | Two autobiographical examples and a craft argument; direct experience but no controlled comparison | Semantic-preservation and rewrite-process guidance; partly covered | No assessment asks whether the premise survived challenge before polishing; conceptual coherence and edit cost are distinct constructs | Decide the product home for separate conceptual-coherence and local-repairability hypotheses without inferring provenance | pending | not started |
-| C07: Sycophantic models affirm premises instead of helping users self-correct | Accurate secondary report of Cheng et al.; the checked primary abstract covers 11 models, three datasets, three preregistered experiments, and 2,405 participants across social advice, moral-transgression and harmful-scenario datasets, vignette experiments, and discussion of past interpersonal conflicts | #21 and sycophancy process guidance; partly covered | Phrase-level coverage does not assess premise-level agreement; the tested tasks are conversational and interpersonal rather than finished-prose drafting | Ingest Cheng et al. directly and require task-matched writing-assistance evidence before implementing semantic premise-level sycophancy coverage | pending | not started |
-| C08: A fluent generated metaphor can collapse under explanation while the model rationalises it after the fact | One reproduced ChatGPT Pro interaction; underlying model/version and full prompt context unspecified; no human comparison | #30, `generic_metaphors`, `underspecified_language`, and #21; partly covered | No cross-turn post-hoc-rationalisation assessment and no prevalence evidence | Retain as a qualitative semantic test case only | pending | not started |
-| C09: Tone, diction, structure, omitted reasoning, and facts may fail together, making local editing ineffective | Professional editor judgment; no operational definition, measured sample, or comparison set | #41, semantic assessments, and `overall-signal-stacking`; partly covered | The meta-check does not assess factual support or missing reasoning; conceptual coherence and local repairability need separate definitions and success measures | After the C06 product-home decision, prototype conceptual coherence and local repairability separately; combine them only if evaluation shows nonredundant value | pending | not started |
-| C10: Model-preferred vocabulary can transfer into later human speech | Accurate secondary report of Yakura et al.; checked arXiv v3 abstract reports 740,249 hours, 360,445 YouTube academic talks, and 771,591 podcasts; evidence is spoken English only | #7, H24, H25, and an indirect citation in the Kobak snapshot; partly covered | No dedicated direct-source card; the study does not establish transfer into written prose, and static word lists can become stale as humans adopt terms | Ingest Yakura et al. directly, then require register-matched written corpora before changing written-prose vocabulary evidence, wording, or thresholds | pending | not started |
-| C11: Human writing contains genuine confusion, doubt, and revision that polished generation can erase | Craft argument and personal examples; not a measured textual distinction | #35, #37, and voice/process safeguards; partly covered and challenges guidance | Advice to add a register break can become cosmetic camouflage if detached from real meaning | Preserve genuine qualifications and revisions; review #35 wording; never manufacture irregularity | pending | not started |
+| C01: Two different people sent Fairbanks unusually polished messages in what she judged to be the same AI voice | Two personal anecdotes; AI use and shared voice inferred, not verified; no model, baseline, or comparison set | #35, H25, and journalism provenance review; partly covered | No evidence separates common tool use, editing, accommodation, or Fairbanks's perception | Record as provenance/craft context only; require source-verified, baseline-aware data before any voice-convergence claim | pending | not started |
+| C02: People report distrust of generated writing while using it more in everyday communication, creating cognitive load for readers | Unspecified surveys, trend assertion, and a linked Koebler quotation; secondary and unquantified here | H3 and product-boundary guidance; partly covered | No named survey, rate, time series, or user study is reviewed in this card | Record the trust-and-uncertainty context; do not derive a prose check or prevalence claim | pending | not started |
+| C03: AI-assisted writing is entering elite publishing spaces and editors face inferred-provenance submissions | Linked journalism plus one editor's observation; no direct review of the linked cases or verified submission sample | #41 journalism watchlist and source provenance guidance; partly covered | No submission count, verification method, current prevalence, or false-positive analysis | Keep as dated reported context; ingest linked incidents separately before using them as direct evidence | pending | not started |
+| C04: Some submissions appeared perfectly clean, uniform in length, and evenly paced | Direct editor observation; recent unspecified submissions; no count, threshold, provenance verification, or matched human set | #34, #52, `paragraph-length-uniformity`, and `sentence-length-variance`; partly covered; the current body audit clears both metrics with paragraph-length CV 0.45 across 19 substantial paragraphs and sentence-length SD 12.6 | Metrics measure form, not cleanliness or provenance, and the source validates no threshold | Take no product action; require matched, register-controlled evaluation before any threshold or severity change | pending | not started |
+| C05: A simultaneously breezy and grandiose tone can recur in inferred AI-assisted submissions | Direct qualitative observation; no operational definition, examples, corpus, rate, or model scope | #35 `tonal_uniformity` plus inflation families; partly covered | Hybrid register is not the same construct as register lock | Retain as a semantic research example only; test definition and inter-rater agreement before promotion | pending | not started |
+| C06: `Writing tool` spans minor assistance through full drafting, while competition and volume pressure encourage adoption within perceived professional boundaries | Author reports and interpretation, plus The Atlantic's stated disclosure policy; no adoption study or boundary taxonomy | Process, provenance, and disclosure guidance; partly covered | No graduated assistance metadata or tested policy model | Record the scope ambiguity; consider a separate provenance-policy decision without treating disclosure as a writing tell | pending | not started |
+| C07: Smooth grammatical output can mislead skimming readers, and public tutorials remove familiar cues without fixing deeper problems | Author assertion and report that tutorials exist; no reader experiment or tutorial sample | Product boundary, #9, and #49; partly covered | No skim-versus-close-read comparison, evasion rate, or post-edit quality measure | Use as motivation for meaning-focused evaluation; require direct adversarial evidence before changing checks | pending | not started |
+| C08: Em dashes are publicly recognised as an AI tell | Public-salience report without frequency evidence; current article contains 14 em dashes | #49 `no-em-dashes`; fully covered and challenges current behaviour | Any-occurrence warning creates false-positive pressure in edited journalism, quotation, and poetry | If approved, evaluate #49 on licensed journalism look-alikes by genre, quotation, density, and purpose before changing severity | pending | not started |
+| C09: Colons are publicly recognised as an AI tell | One reported tutorial cue; no subtype, rate, model comparison, or human control | No general colon rule; not covered by design | Evidence cannot support a colon check or severity | Do not promote a general colon rule from this source | pending | not started |
+| C10: Negative parallelism is publicly recognised as an AI tell, exemplified as `It’s not X; it’s Y` | Public-salience report; stronger sources exist; current article has two other detected candidates | #9 `no-negative-parallelisms`; fully covered and challenges current behaviour; a focused direct check recognises the exact semicolon form with one candidate, the full audit intentionally masks its quoted occurrence, and the body audit detects two separate unquoted human-look-alikes | Deliberate human use, quotation context, and cross-sentence forms need contextual interpretation | Use as a look-alike calibration case only; make no syntax or severity change from this card | pending | not started |
+| C11: Generating prose to flesh out ideas can bypass part of the thinking performed during drafting, while writing may become easy after the right idea is found | Fairbanks's qualified craft argument; no controlled human, assisted, or model comparison | Rewrite/write process and meaning-preservation guidance; partly covered | No process measure distinguishes premature frictionlessness from ease after premise resolution or helpful assistance from premise substitution | Record the qualified process framing; never treat ease or fluency alone as adverse evidence; require direct writing-process studies before a product claim | pending | not started |
+| C12: Drafting friction, doubt, and backtracking can expose a flawed premise or message that should be revised, discarded, or withheld | Two autobiographical examples and a craft argument, qualified by the source's statement that writing can become easy after resolving the idea; no measured comparison | Process safeguards and H21; partly covered | No assessment asks whether the premise survived challenge; coherence and repair cost remain distinct, and fluency alone cannot answer either | Decide whether conceptual coherence and local repairability belong as separate hypotheses; preserve the ease-after-resolution counterexample and do not infer provenance | pending | not started |
+| C13: Users say they want agreeable, compliant models, and Fairbanks predicts companies will not build systems that make human-like judgments | User-preference assertion plus Fairbanks's capability and incentive argument; the company forecast is not tested by the article | #21 and product-boundary guidance; partly covered | Phrase-level agreement residue does not establish user preference, capability, company incentives, or future design | Record the direct assertion and forecast separately; do not promote capability or inevitability claims | pending | not started |
+| C14: In advice tasks, leading models affirmed users 49% more often than humans, and users preferred sycophantic responses | Secondary report of Cheng et al.; checked structured abstract covers 11 models, three datasets, three preregistered experiments, and 2,405 participants; tasks are interpersonal advice and conflict | #21 `no-collaborative-artifacts`; partly covered; the current body audit clears this fixed-phrase check | A clear phrase check does not assess premise-level affirmation; no finished-prose drafting condition | Ingest Cheng et al. separately and require task-matched writing-assistance evidence before premise-level product work | pending | not started |
+| C15: Tone, diction, structure, missing reasoning, and facts may fail together, making local editing ineffective | Professional editor judgment and body analogy; no operational definition, sample, repair protocol, or comparison | #41 `genre_specific`, `generic_metaphors`, `underspecified_language`, `semantic_redundancy`, `referential_clarity`, H21, and `overall-signal-stacking`; partly covered; the surface-only audit flags signal stacking at 5/4, but no complete agent-assessed Audit was run | The aggregate check excludes factual support and does not measure coherence or edit cost; the named semantic registry checks operate separately | Prototype conceptual coherence and local repairability separately only after their product homes and success measures are approved | pending | not started |
+| C16: A fluent metaphor can collapse under explanation while the model justifies it and later agrees with the user's rejection | One reproduced ChatGPT Pro interaction; model/version, date, full prompt context, and human comparison absent | #30, `generic_metaphors`, `underspecified_language`, and #21; partly covered | No cross-turn rationalisation assessment or prevalence evidence | Retain as a qualitative test case only; do not generalise beyond the interaction | pending | not started |
+| C17: Words preferentially generated by ChatGPT increased abruptly in later spoken English | Secondary report of Yakura et al.; checked arXiv v3 abstract covers 740,249 hours, 360,445 YouTube academic talks, and 771,591 podcast episodes | #7, H24, H25, and source metadata; partly covered | The direct evidence is spoken English and does not establish written-prose direction, threshold, or causality for one text | Ingest Yakura et al. separately; require register-matched written corpora before changing written-prose vocabulary handling | pending | not started |
+| C18: Humans may absorb model-associated language and cultural cues, making static public tells drift | Fairbanks's interpretation of the cited spoken-language result; plausible but not separately measured here | H24 and H25; partly covered | No written transfer study or update cadence for the project's word lists | Use as a drift warning; keep vocabulary claims dated and register-specific without changing product behavior from this card | pending | not started |
+| C19: All substantially AI-generated writing is incoherent under close examination | Explicit universal author claim contradicted by the article's anecdotal evidence base; no systematic sample or null-result search | Product boundary and H3; challenges current behavior if treated as detector evidence | No prevalence, definition of substantial assistance, blinded rating, human control, or counterexample set | Record as unsupported overclaim and prohibit its use as source evidence for an authorship or universal-quality verdict | pending | not started |
+| C20: AI-mediated communication will spread unstoppably, while human or older writing may become an artisanal or authenticated record | Forecast, analogy, and cultural framing; not a measured finding | H3 and provenance framing; partly covered | No forecast method, adoption data, authenticity method, or counterfactual test | Keep as framing only; take no product action | pending | not started |
+| C21: Genuine confusion, doubt, internal struggle, and revision can carry meaning that polished generation erases | Craft argument, personal examples, and a final trade-off; no measured textual distinction | #35, #37, voice/process safeguards, and meaning preservation; partly covered and challenges guidance | Advice to insert a register break or imperfection can become cosmetic camouflage | Preserve genuine qualifications and revision history; review guidance only after evaluation and never manufacture irregularity | pending | not started |
 
 ## Recommendations
 
-- **C01:** Take no further product action from the cleanliness and pacing observation; require matched-corpus testing before any later change.
-- **C02:** Hold the breezy-grandiose register as a semantic example pending matched-corpus evidence.
-- **C03:** If approved, add the article as a presumed-human journalism calibration case and evaluate #49 by genre, quotation, density, and purpose before changing severity.
-- **C04:** Do not add a general colon rule from this source.
-- **C05:** Use the two negative-parallelism candidates as look-alike examples only; make no severity change from this card.
-- **C06:** Decide where separate conceptual-coherence and local-repairability hypotheses belong; both must report text quality without inferring authorship.
-- **C07:** Ingest Cheng et al. as a direct source and require task-matched writing-assistance evidence before implementing premise-level sycophancy coverage.
-- **C08:** Retain the metaphor exchange as a qualitative test case only.
-- **C09:** After C06 establishes the product homes, prototype conceptual coherence and local repairability separately, with distinct success measures, matched human and AI-assisted examples, blind review, overlap analysis, inter-rater agreement, and false-positive review on literary and experimental prose. Combine them only if a joint assessment adds nonredundant value.
-- **C10:** Ingest Yakura et al. directly, then require register-matched written corpora before changing written-prose vocabulary evidence, wording, or thresholds.
-- **C11:** Preserve real uncertainty and revision; review #35 wording for conflict with the ban on manufactured irregularity.
+- **C01:** Record the message anecdotes as provenance/craft context only; require source-verified, baseline-aware data before any voice-convergence claim.
+- **C02:** Record the trust-and-uncertainty context without deriving a prose check or prevalence claim.
+- **C03:** Keep the publishing-space claim as dated reported context and ingest linked incidents separately before direct use.
+- **C04:** Take no product action; require matched, register-controlled evaluation before threshold or severity changes.
+- **C05:** Retain breezy-grandiose tone as a research example pending a definition and inter-rater test.
+- **C06:** Record `writing tool` scope ambiguity and consider provenance metadata as a separate policy decision.
+- **C07:** Use the camouflage argument as motivation for meaning-focused adversarial evaluation, not as direct check evidence.
+- **C08:** If approved, evaluate #49 on licensed journalism look-alikes by genre, quotation, density, and purpose before changing severity.
+- **C09:** Do not promote a general colon rule from this source.
+- **C10:** Use the two detected unquoted instances as look-alikes and retain quotation masking for the recognised semicolon form; make no syntax or severity change from this card.
+- **C11:** Record the qualified process framing, including that ease may follow premise resolution; never treat ease or fluency alone as adverse evidence.
+- **C12:** Decide whether conceptual coherence and local repairability belong as separate hypotheses; preserve the ease-after-resolution counterexample, and let neither infer provenance.
+- **C13:** Record the user-preference assertion and Fairbanks's company forecast separately without promoting capability or inevitability claims.
+- **C14:** Ingest Cheng et al. separately and require writing-task transfer evidence before premise-level sycophancy work.
+- **C15:** After C12, prototype coherence and repairability separately with blind ratings, matched samples, inter-rater agreement, overlap analysis, and false-positive review.
+- **C16:** Retain the ChatGPT exchange as a qualitative test case only.
+- **C17:** Ingest Yakura et al. separately and require register-matched written evidence before vocabulary changes.
+- **C18:** Keep vocabulary sources dated and register-specific; make no product change from this interpretation.
+- **C19:** Record the universal incoherence statement as unsupported and exclude it from authorship or universal-quality evidence.
+- **C20:** Keep the artisanal-writing and inevitability forecast as framing only; take no product action.
+- **C21:** Preserve real uncertainty and revision; never manufacture irregularity, autobiography, or error.
 
 ## Evaluation of approved changes
 
-No recommendations have been approved or implemented. If C03, C06, or C09 is approved, evaluate catalogue coverage, contextual treatment, overlap with existing checks, and false-positive pressure in register-matched samples. Single-document authorship accuracy is not an appropriate success metric.
+- C01: not applicable - pending recommendation; no product change requested.
+- C02: not applicable - pending recommendation; no product change requested.
+- C03: not applicable - pending recommendation; no product change requested.
+- C04: not applicable - pending recommendation; no product change requested.
+- C05: not applicable - pending recommendation; no product change requested.
+- C06: not applicable - pending recommendation; no product change requested.
+- C07: not applicable - pending recommendation; no product change requested.
+- C08: not applicable - pending recommendation; no product change requested.
+- C09: not applicable - pending recommendation; no product change requested.
+- C10: not applicable - pending recommendation; no product change requested.
+- C11: not applicable - pending recommendation; no product change requested.
+- C12: not applicable - pending recommendation; no product change requested.
+- C13: not applicable - pending recommendation; no product change requested.
+- C14: not applicable - pending recommendation; no product change requested.
+- C15: not applicable - pending recommendation; no product change requested.
+- C16: not applicable - pending recommendation; no product change requested.
+- C17: not applicable - pending recommendation; no product change requested.
+- C18: not applicable - pending recommendation; no product change requested.
+- C19: not applicable - pending recommendation; no product change requested.
+- C20: not applicable - pending recommendation; no product change requested.
+- C21: not applicable - pending recommendation; no product change requested.
 
 ## Document review
 
 - **Review status:** passed
-- **Review method:** `ce-doc-review` coherence, feasibility, product-fit, and adversarial review, supplemented by evidence-directness, provenance, live-project mapping, decision/status, deterministic-audit reproducibility, full-text beginning/middle/end/structure comparison, snapshot-hash, link, manifest, and validator checks. The optional cross-model pass was skipped because no permitted non-Claude peer CLI was available; Claude was not invoked.
-- **Findings resolved:** Migrated the card and snapshot to the current templates; made the canonical URL and extraction method consistent; added stable claim IDs and one authoritative table; removed duplicate decision statements; corrected #39 and provenance overclaims; documented the body-only audit derivation and candidate context; added extraction verification; updated the snapshot digest and retrieval-date treatment; made calibration status and C01 disposition consistent; sequenced C09 after the C06 product-home decision; scoped C10 to spoken English with a written-register evidence gate; added a writing-task transfer gate to C07; and separated conceptual coherence from local repairability.
+- **Review method:** independent source-record reviewer: `/root/fairbanks_review_2` (fresh source-dedicated re-review after `/root/fairbanks_review_1`)
+- **Findings resolved:** Added the ease-after-premise-resolution counterexample; recorded exact live metric and check results; named the semantic registry coverage and incomplete-Audit boundary; separated user-preference assertion from Fairbanks's company forecast; and clarified through a focused direct check that the exact semicolon negative-parallelism form is recognised while its occurrence in the article is intentionally masked as quotation.
 - **Unresolved findings:** none

@@ -1,10 +1,19 @@
-Title: Can Customers Tell an Email May Have Been Written Using Generative AI?
+# Can Customers Tell an Email May Have Been Written Using Generative AI?
 
-URL Source: https://gmelius.com/blog/can-customers-tell-an-email-is-written-using-generative-ai
+- **Canonical URL:** https://gmelius.com/blog/can-customers-tell-an-email-is-written-using-generative-ai
+- **Alternate access URLs:**
+  - https://r.jina.ai/https://gmelius.com/blog/can-customers-tell-an-email-is-written-using-generative-ai
+- **Author / owner:** Anwesha Roy / Gmelius
+- **Publisher:** Gmelius
+- **Published:** 2025-07-22
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** Webflow page ID `6737568a4ac417efeb387e46`
+- **Version / revision:** page metadata `dateModified` 2025-07-22; current article body is byte-identical to the Jina Reader body preserved on 2026-05-05
+- **Extraction method:** direct canonical HTML fetched with `curl -L`; article body converted to Markdown through Jina Reader; canonical HTML headings, JSON-LD metadata, author line, and article boundaries checked with Beautiful Soup
+- **Full-text status:** complete
+- **Access and transformation notes:** Jina Reader converted the canonical HTML article body to Markdown. Navigation, cookie controls, recommendation cards, footer, signup chrome, the decorative hero image, the author avatar, and unrelated promotional video assets were omitted. The complete substantive article body, all 20 numbered signs, all four following major sections, and all 10 FAQ entries are present. No content-bearing inline figures, tables, notes, appendices, or references occur in the canonical article body.
 
-Published Time: Jul 22, 2025
-
-Markdown Content:
+## Full text
 Is your AI-generated email sounding generic and unnatural? Read on to know the 20 AI-isms to watch for, when writing emails using artificial intelligence. Learn how to generate more personalized and effective emails at scale.
 
 While the**use of AI for emails is skyrocketing**, [research](https://www.gartner.com/en/newsroom/press-releases/2024-07-09-gartner-survey-finds-64-percent-of-customers-would-prefer-that-companies-didnt-use-ai-for-customer-service) shows that customer opinion about it is mixed. Gartner found that 64% of customers would prefer that companies didn’t use AI for customer service. Some fear AI will provide wrong answers, while others feel that it might make it harder to get personalized support.
@@ -178,3 +187,17 @@ Gmelius continuously adapts by learning from your team’s emails and context. I
 ### 10. **Can I train AI to write emails in my own tone of voice?**
 
 Yes, but it takes more than just prompting. You need to feed the AI examples of how you typically write, including your phrasing, level of formality, and preferred structure. The more context you give (like past replies, customer info, and tone guidelines) the more “you” it will sound.
+
+## Extraction verification
+
+- **Beginning checked:** canonical H1, description, publication date, author, opening customer-expectations paragraphs, and first numbered sign matched the preserved Markdown.
+- **Middle checked:** signs 10 through 17, including repetitive language, jargon, pronoun perspective, subject lines, domain understanding, the explicit human-use qualification for complex words, and overly formal register, matched the canonical HTML in order.
+- **End checked:** product section, conclusion, and FAQ entries 1 through 10 matched the canonical HTML through the final tone-of-voice answer.
+- **Structure checked:** 1 H1, 6 substantive H2 headings total, 20 numbered sign H3s, and 10 FAQ H3s were checked against the canonical page. There are no content tables, footnotes, appendices, or content-bearing inline figures. The current Jina extraction is 180 lines and 15,056 bytes before this provenance wrapper and exactly matches the prior preserved extraction.
+- **Known omissions:** decorative hero image, author avatar, site navigation, cookie controls, promotional page chrome, recommendation cards, footer, and unrelated video assets only; none carries evidence needed to interpret the article's claims.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | not applicable | not applicable | The canonical article contains no content-bearing attachments, figures, tables, supplements, or datasets. |

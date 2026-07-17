@@ -34,7 +34,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 - Run on matched human / AI pairs from the corpus.
 - Check whether the divergence output is more useful than the current single-document audit for the kinds of decisions the skill is invoked for.
 
-**Impact:** The skill's framing shifts from "does this read like AI" to "how does this differ from this other thing". Absolute claims become structurally impossible. Aligns with Turnitin's converged design (similarity is always between texts).
+**Impact:** The skill's framing shifts from "does this read like AI" to "how does this differ from this other thing". Absolute claims become structurally impossible.
 
 ## 3. Drop detection framing entirely
 
@@ -119,7 +119,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** open
 
-**Source:** Internal ideation, survivor #6. External: Turnitin precedent (Draft Coach for writers, Feedback Studio for instructors).
+**Source:** Internal ideation, survivor #6. External Turnitin product precedent requires a separately reviewed direct source; the AI Writing Report guide does not compare writer and instructor surfaces or validate a two-voice design.
 
 **Statement:** One engine, one registry, one corpus, one set of patterns. Voice changes by invocation surface. `/human-eyes audit` (reviewer voice) uses calibrated audit framing: review priority, register-X density, look-alike disambiguator. `/human-eyes rewrite` (writer voice) uses prescriptive framing: consider replacing with X. The registry holds twin fields and renders the right one for each surface.
 
@@ -361,10 +361,10 @@ The two assignments most plausibly wrong:
 
 **Source:** External source card: Reinhart et al.
 
-**Statement:** Present-participial clauses are only one part of a broader rhetorical-style shift. Nominalization density, noun-heavy phrasing, subject "that" clauses, and phrasal coordination may be more precise future features.
+**Statement:** Live #3's closed comma-led trailing-lexeme matcher is only adjacent to Reinhart's parser-derived present-participial-clause measure. Reinhart's paired aggregate results instead make nominalizations, source-named "that" clauses as subject, phrasal coordination, model-specific reversals, and register controls candidates for evaluation, with no safe document-level threshold.
 
 **Test:**
-- Extract candidate features named by Reinhart et al.
+- Reproduce selected Reinhart features on the released matched data, preserving model/register controls, the Table S4/S5-S6 inventory mismatch, and parser dependence.
 - Measure them on current human and AI samples.
 - Decide whether any feature is strong enough for a programmatic advisory check, or whether the evidence should stay in academic-register notes.
 
@@ -374,7 +374,7 @@ The two assignments most plausibly wrong:
 
 **Status:** open
 
-**Source:** External source cards: Kobak et al.; Kousha and Thelwall; Juzek and Ward; Geng and Trotta; Nature; Grammarly.
+**Source:** External source cards: Kobak et al.; Kousha and Thelwall; Juzek and Ward; Geng and Trotta; Reinhart et al.; Nature; Grammarly.
 
 **Statement:** AI vocabulary evidence should be repeated, co-occurring, time-sensitive, and register-specific. Flat one-word blacklists should give way to register-aware density, increases and decreases, and source-specific date metadata.
 
@@ -389,7 +389,7 @@ The two assignments most plausibly wrong:
 
 **Status:** open
 
-**Source:** External source cards: Sun et al.; Rudnicka; Merrill/WaPo; Sean Trott.
+**Source:** External source cards: Sun et al.; Rudnicka; Merrill/WaPo; Sean Trott; Reinhart et al.
 
 **Statement:** Some writing signals point to model family, model version, prompt style, or public-tell drift rather than generic AI authorship. The source metadata and future scoring should separate these claims.
 
@@ -404,7 +404,7 @@ The two assignments most plausibly wrong:
 
 **Status:** open
 
-**Source:** External source cards: Blake Stockton and Matthew Vollmer.
+**Source:** No current direct-source support; the Stockton mapping came from an uncaptured later post, and the reviewed Vollmer record contains no vague-change-intro example. Reopen after separate full-text evidence is ingested.
 
 **Statement:** B2B/corporate openers like "something changed" may be a separate rhetorical pattern from contrastive negation and manufactured insight. They deserve separate tracking before being folded into #9 or #50.
 
@@ -419,7 +419,7 @@ The two assignments most plausibly wrong:
 
 **Status:** open
 
-**Source:** External source cards: Matthew Vollmer, Sam Kriss, and SEO Engine.
+**Source:** External source cards: Matthew Vollmer and Sam Kriss. SEO Engine / VRID supplies only adjacent motivational-poster and generic-conclusion assertions, not direct aphoristic-closure or false-profundity evidence.
 
 **Statement:** Generic profundity, false profundity, aphoristic closure, and universal-generic statements may be a recurring AI-shaped ending pattern. It should start advisory because sources are practitioner/editorial rather than strong empirical evidence.
 

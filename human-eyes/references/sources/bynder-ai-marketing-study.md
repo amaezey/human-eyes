@@ -1,39 +1,166 @@
 # Bynder: AI marketing identification study
+
 ## Metadata
+
 - **URL:** https://www.bynder.com/en/press-media/ai-vs-human-made-content-study/
 - **Author / owner:** Bynder
 - **Published:** 2024-04-03
+- **Retrieved:** 2026-05-05
 - **Extracted:** 2026-05-05
-- **Source type:** Vendor/consumer study
+- **Contract updated:** 2026-07-15; the preserved extraction was brought into the source-ingest contract without a fresh article scrape
+- **Source type:** vendor press release reporting a consumer survey and copy-comparison exercise
 - **Evidence tier:** Vendor / detector pages
-- **Extraction status:** second-pass reviewed from Bynder study page
+- **Review mode:** update
+- **Stable identifier:** none found
+- **Version / revision:** Bynder press release as published 2024-04-03 and preserved 2026-05-05; previous record was the same preserved article body before source-ingest contract framing
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/bynder-ai-marketing-study.md`
+- **Extraction method:** preserved direct HTML article-body extraction; exact original command and rendered-page comparison were not recorded; no fresh scrape
+- **Snapshot SHA-256:** `12d4cfdff4c315f82200abcef52466bf48c2e518e3dd0c5995a4eaa8e153afb5`
+- **Model / corpus scope:** 2,000 surveyed participants, described as 1,000 US and 1,000 UK participants; two undisclosed articles generated from the same prompt requesting 300 words on how to clean a car, one attributed to ChatGPT and one to a trained copywriter; a marketing-framed blind article comparison and hypothetical brand-attitude questions; the articles' actual lengths and genres, field dates, ChatGPT version and settings, article texts, participant recruitment, weighting, subgroup denominators, questionnaire, response options, and inferential statistics are not reported
+- **Access limitations:** none for the preserved press-release body; the two stimulus articles, questionnaire, response data, tabulations, standalone study report, exact HTML extraction command, and original rendered-page verification are unavailable
 
 ## Summary
-Bynder consumer study comparing AI-generated and human-written marketing copy. The study surveyed 2,000 UK and US participants and asked them to identify which of two car-cleaning articles was written by ChatGPT and which by a trained copywriter.
+
+Bynder's vendor press release reports a survey of 2,000 US and UK participants who saw one ChatGPT article and one copywriter article generated from the same prompt requesting 300 words about cleaning a car. The articles themselves are undisclosed, so their actual lengths and genres are unknown; the survey and press release frame the exercise around marketing and brand perception. The page reports recognition, preference, engagement, demographic, country, and hypothetical brand-attitude percentages, then interprets them in favour of keeping a "human touch" while promoting Bynder's own AI-enabled marketing product. The useful project contribution is consumer-perception and marketing-stakes context. It is not prose-pattern evidence: the stimuli, questionnaire, response design, raw data, model version, copywriter conditions, uncertainty, and textual cues are undisclosed, and the reported 50% identification rate may be chance-level under a forced binary choice. The press release therefore cannot establish authorship, a reliable human-recognition ability, or any surface tell.
 
 ## Main insights
-- Primary source found; it reports 50% of consumers correctly identified AI-generated copy.
-- The study is useful for marketing-domain stakes and consumer perception, not as direct pattern evidence.
-- The setup is narrow: two 300-word articles on a car-cleaning brief.
+
+- Bynder reports that 50% of participants correctly identified the AI-written article, but does not publish the response options or enough design detail to establish whether this differs from chance.
+- The narrow comparison used two undisclosed articles generated from one prompt requesting 300 words about cleaning a car, one attributed to an unspecified ChatGPT version and one to an unspecified trained copywriter; the page does not establish the articles' actual lengths or genres.
+- The US subgroup reportedly identified the AI article at 55% versus 45% in the UK, while 25-34-year-olds were described as the most successful age group; neither subgroup denominator nor statistical uncertainty is reported.
+- In the blind article comparison, 56% reportedly preferred the AI version, while 52% separately said they would be less engaged by copy they suspected was AI-generated. The observed preference and stated general attitude are different measures and point in different directions.
+- Hypothetical website, social-media, and chatbot questions associate suspected AI use with perceptions such as impersonal, lazy, untrustworthy, or uncreative, but the page does not show actual behaviour or brand outcomes.
+- Bynder explains country and age differences through AI awareness and use, citing three external sources. Those sources were not preserved or reviewed here, and the press release does not test the proposed causal explanation.
+- Bynder sells AI-enabled digital-asset-management and content-workflow products. Its recommendations and product-performance statements are vendor interpretation and marketing copy, not independent study findings.
+- The page discloses no stimulus text, questionnaire, recruitment, sampling frame, weighting, order or randomisation, field dates, ChatGPT version or settings, copywriter instructions beyond the brief, subgroup bases, confidence intervals, significance tests, response rates, exclusions, raw data, or standalone report.
 
 ## Evidence and claims to extract
-- Sample: 2,000 UK and US participants.
-- Task: compare two articles, one written by ChatGPT and one by a trained copywriter, both using the same 300-word car-cleaning brief.
-- Reported result: 50% correctly identified AI-generated copy; Millennials aged 25-34 were most successful.
+
+- **Direct source reviewed:** Complete preserved Bynder press release titled "Study reveals how consumers interact with AI-generated content vs human-made," including all reported percentages, CMO quotations, product copy, methodology paragraph, and three source URLs, retrieved 2026-05-05.
+- **Method and sample:** Bynder says 1,000 US and 1,000 UK participants were surveyed. Participants were shown two undisclosed articles created from the same instruction, "Write 300 words on how to clean your car": one attributed to ChatGPT and one to a trained copywriter. The press release frames the exercise around marketing and brand perception, but does not establish the articles' actual lengths or genres. It reports identification and preference for those articles plus general and platform-specific attitude questions. It does not disclose field dates, recruitment, representativeness, weighting, order, randomisation, exact response options, stimulus texts, model version, generation settings, copywriter background or conditions, subgroup bases, uncertainty, or raw data.
+- **Direct versus cited evidence:** C02-C05 and C07-C12 are direct author-reported methods or results from Bynder's exercise, but cannot be independently recomputed from the preserved material. C01 and C13 are Bynder framing or interpretation. C06 inherits awareness and use figures from three linked sources and adds Bynder's causal interpretation; the linked sources were not reviewed in this work unit. C14 is vendor self-description and promotional product copy. C15 identifies omissions visible in the press release. C16-C19 are review assessments about chance, construct validity, citation provenance, and source identity rather than claims made by Bynder.
+- **Important limits and counterexamples:** The 56% blind preference for the AI article complicates the separate 52% stated intention to disengage from suspected AI copy. If identification required choosing one of two articles, 50% is the chance baseline, but the response design is not published, so this remains a bounded reviewer inference rather than a confirmed null result. Recognition and hypothetical brand attitudes do not identify which textual cues participants used, do not establish actual behaviour, and cannot be converted into a pattern threshold or authorship verdict. The page is a Bynder press release rather than an accessible study report, and Bynder markets AI-enabled content products.
 
 ## Skill-use audit
-- **Good use:** Back marketing/business #41 context around consumer perception and brand impact.
-- **Misuse / overclaim:** Do not cite for any specific textual tell unless the study discloses which features participants used.
-- **Unsupported use:** Pattern-level matches.
-- **Underused evidence:** The study is useful for stakes and perception framing: users may notice AI-marketing copy, but the source does not explain which textual cues caused that judgement.
-- **Patterns left on the table:** None as pattern evidence; consumer-identification results stay separate from expert/source-grounded pattern evidence.
+
+- **Good use:** Use the page as narrow, dated vendor evidence that consumer perceptions of suspected AI use may matter in marketing contexts, and as a reason to keep actual blind preference separate from stated attitudes about suspected provenance.
+- **Misuse / overclaim:** Do not cite the 50% result as evidence that humans can reliably detect AI writing, that half of all consumers recognize AI copy, or that any particular phrase, structure, style, or error caused recognition.
+- **Unsupported use:** The page cannot support a prose-pattern rule, severity, threshold, authorship inference, model-general conclusion, country or age causal explanation, actual engagement effect, brand-performance outcome, or a claim that adding a "human touch" improves measured performance.
+- **Underused evidence:** H3, the product boundary, root row 41, and `pattern-opportunities.md` now consistently limit Bynder to marketing-stakes and perception context rather than watchlist support. The blind-preference versus suspected-provenance contrast remains useful construct-validity evidence for separating observed response from provenance-labelled attitude.
+- **Patterns left on the table:** None. The page publishes no stimulus text, participant rationales, linguistic coding, or textual feature analysis. Its consumer percentages must remain outside the pattern catalogue.
 
 ## Matched patterns / rules
-- #41 genre-specific manual checks: marketing/business (context)
-- consumer-perception context
+
+- #41 `genre_specific` marketing/email branch, as marketing-stakes context only; the source does not support any item in the live watchlist
+- H3: Drop detection framing entirely
+- Root `README.md` pattern table row 41 and vendor-source list
+- Product boundary in root `README.md` and `human-eyes/references/process.md`: human-eyes reviews prose patterns and does not classify authorship
+- `pattern-opportunities.md` explicit non-promotion of consumer recognition as pattern evidence
+- Source-ingest provenance, directness, scope, and limitation requirements
 
 ## Associated hypotheses
-- H3 drop detection framing
+
+- H3: Drop detection framing entirely
+- No pattern or threshold hypothesis is justified by the disclosed evidence
 
 ## Questions / follow-up
-- Does the study report why participants identified the AI copy, or only whether they did?
+
+- A fresh independent source-record reviewer still needs to compare this draft with the preserved snapshot and live project before the review gate can pass.
+- If the questionnaire, two stimulus articles, response data, tabulations, fieldwork details, or standalone report become available, ingest them as a new version before interpreting chance, subgroup differences, textual cues, or uncertainty.
+- If the three linked awareness and use claims become decision-relevant, ingest their direct sources separately; they remain indirect and do not establish Bynder's causal explanation.
+- Recommendation decisions remain pending; no checker, registry, guidance, test, or hypothesis was changed.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | none found; direct HTML article-body capture preserved 2026-05-05 | `snapshots/archive/bynder-ai-marketing-study/2026-05-05-f0dd7d1d6508.md` | 2026-05-05 | `f0dd7d1d650867a10c25f6b509e6ccb944320a1e81bdbf6cf2d65e56fa309b80` |
+| current | none found | `snapshots/bynder-ai-marketing-study.md` | 2026-05-05 | `12d4cfdff4c315f82200abcef52466bf48c2e518e3dd0c5995a4eaa8e153afb5` |
+
+The press-release wording is unchanged apart from whitespace normalisation and splitting the three terminal source URLs onto separate lines. The current snapshot adds provenance, directness, extraction-verification, limitation, and attachment fields around that preserved text. The previous compact card had no stable claim IDs or decision table; this update assigns them and separates direct results, cited claims, Bynder interpretation, and reviewer inference.
+
+## Decision history
+
+- The previous card predated stable claim IDs and user-decision or implementation fields. It recorded no approved recommendation and no source-specific implementation.
+- The old card mapped the source to #41 and H3 and already warned against pattern-level use. Those mappings remain, but #41 is now explicitly limited to marketing-stakes and consumer-perception context rather than evidence for any marketing/email watchlist item.
+- The old summary repeated Bynder's “correctly identified” wording without naming the possible chance baseline. That ambiguity is retained here as history; the current C03 and C16 rows apply the bounded response-design caveat.
+- C01-C19 are newly assigned IDs for the unchanged preserved press release and begin at `pending` / `not started`.
+
+## Project coverage
+
+This is the authoritative review table. No stimulus text was available for a deterministic pattern check, and no surface-only output is described as a complete human-eyes Audit.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: Bynder expected consumer awareness of non-human content to rise with AI use and framed the exercise as a test of recognition, engagement, and brand opinion. | Vendor framing and prediction; no longitudinal awareness data or tested trend is supplied. | **partly covered:** H3 and the root/process product boundary question detection framing and reject authorship classification; #41 names marketing context. | The project source mapping did not distinguish the press release's untested awareness prediction from its reported survey results. | Record the framing as vendor motivation only; do not use the predicted trend as prevalence, pattern, or product evidence. | pending | not started |
+| C02: Bynder surveyed 2,000 participants, described as 1,000 US and 1,000 UK participants, and showed two undisclosed car-cleaning articles generated from the same prompt requesting 300 words, one by ChatGPT and one by a trained copywriter. | Direct author-reported method; one prompt, one topic, and two writers or systems in a marketing-framed survey. The stimuli are absent, so their actual lengths and genres are unknown and the protocol is not reproducible. | **partly covered:** the prior card recorded the sample and prompt, while the source-ingest contract now captures method, sample, framing, and model limits without inventing stimulus properties. #41 does not implement study methods. | ChatGPT version, generation settings, copywriter conditions, article texts and actual lengths or genres, field dates, ordering, randomisation, recruitment, weighting, and response design are missing. | Preserve the narrow two-article, prompt-requested method and missing fields; require the study materials before using the exercise as a fixture or generalising beyond these two articles. | pending | not started |
+| C03: Bynder reports that 50% of participants correctly identified the AI-generated copy. | Direct author-reported aggregate percentage; no raw counts beyond the stated N, response options, uncertainty, significance test, or published stimuli. | **fully covered:** H3 and the product boundary reject authorship classification; `pattern-opportunities.md` explicitly excludes consumer recognition from pattern evidence; root row 41 limits Bynder to perception context. | Without the response design, the figure cannot establish reliable recognition, and it identifies no textual cue. | Keep the result as bounded consumer-perception context and explicit non-promotion; do not use it as detection accuracy, a pattern rate, a threshold, or an authorship claim. | pending | not started |
+| C04: Participants aged 25-34 were described as the most successful age group at identifying the AI article. | Direct author-reported rank with no percentage, subgroup N, weighting, uncertainty, multiple-comparison handling, or significance test. | **not covered:** the project has no age-based pattern or inference, appropriately; #41's marketing branch does not encode demographic recognition claims. | The result's magnitude and reliability cannot be assessed, and it says nothing about the prose cues used. | Record only as an unquantified subgroup observation; do not create demographic, pattern, or authorship guidance. | pending | not started |
+| C05: Bynder reports 55% correct identification among US participants and 45% among UK participants, describing US participants as 10% more likely to identify the AI article. | Direct author-reported country percentages; the arithmetic is a 10-percentage-point difference, while “10% more likely” is imprecise. No confidence interval, significance test, weighting, or subgroup exclusions are disclosed. | **not covered:** correctly, no live check or #41 watchlist item uses nationality to interpret prose or provenance. H3 cautions against detector-like inference. | The press release does not establish that the subgroup difference is statistically reliable or generalisable, and it publishes no cue analysis. | Preserve the 55% versus 45% report as a dated subgroup result, describe the difference as percentage points, and do not promote it into demographic or pattern inference. | pending | not started |
+| C06: Bynder explains the age and country differences through greater AI awareness or use, citing external figures about Millennials, US ChatGPT awareness, and UK generative-AI use. | Bynder causal interpretation built from three cited external sources; those sources were not reviewed or preserved here, their populations and measures differ, and the Bynder exercise does not test mediation or causation. | **not covered:** appropriately, the project does not encode awareness or tool use as a cause of recognition. Source-ingest requires inherited evidence to stay indirect until directly reviewed. | The explanation can be mistaken for a study finding even though exposure was not reported as measured or analysed in the disclosed method. | Mark the explanation indirect and untested; do not use it for project rationale or demographic inference unless the upstream sources and Bynder analysis are separately reviewed. | pending | not started |
+| C07: In the blind comparison, 56% of participants reportedly preferred the ChatGPT article over the copywriter article. | Direct author-reported preference for one undisclosed stimulus pair; no response options, raw counts, uncertainty, order control, or repeated topics. The article heading calls this engagement, while the sentence reports preference. | **not covered:** #41 reviews marketing copy quality but does not measure reader preference, and H3 is about product framing rather than preference. | One pair cannot establish a general AI-copy preference, and preference is not the same construct as engagement or writing quality. | Record the blind preference result with its one-pair scope; do not generalise it to AI marketing copy, engagement, performance, or prose patterns. | pending | not started |
+| C08: Separately, 52% said they would become less engaged when reading copy they suspect is AI-generated. | Direct author-reported stated attitude about suspected provenance; hypothetical and not tied to verified provenance or observed behaviour. No wording, response scale, or denominator is published. | **partly covered:** #41 uses Bynder as marketing-stakes context, while the product boundary prevents a pattern finding from becoming an authorship claim. | The page does not separate provenance labelling from copy quality and does not measure actual disengagement. The result also differs from C07's blind preference. | Retain as hypothetical provenance-perception context only; keep it separate from observed preference and do not claim a measured engagement effect. | pending | not started |
+| C09: Participants aged 16-24 were the only age group described as preferring the human article; among those in that bracket who expressed a preference, 55% chose it as more engaging. | Direct author-reported subgroup result with an explicit “of those who had a preference” denominator restriction but no subgroup N, no-preference rate, uncertainty, weighting, or significance test. | **not covered:** appropriately, the project does not encode age-based preference or engagement assumptions. | The missing subgroup base and exclusions prevent population interpretation; one article pair supplies no pattern evidence. | Preserve the qualified subgroup report; do not generalise it into age, engagement, marketing, or authorship guidance. | pending | not started |
+| C10: For website copy that did not feel human-written, 26% reportedly would view the brand as impersonal and 20% as lazy. | Direct author-reported hypothetical attitudes; exact question, response options, multi-select design, denominator, uncertainty, and behavioural validation are not published. | **partly covered:** #41's marketing branch supplies a contextual quality review, and root row 41 cites Bynder for consumer-perception context only. | The live branch does not and should not infer brand attitude from a prose flag; the source identifies no textual cause and measures no actual outcome. | Keep as marketing-stakes context only; do not add “human-feeling” language, brand-perception scoring, or a prose-pattern rule. | pending | not started |
+| C11: For social copy perceived as AI-generated, 25% reportedly would view the brand as impersonal, 20% as untrustworthy, 20% as lazy, and 19% as uncreative. | Direct author-reported hypothetical attitudes; no item wording, response design, denominator, uncertainty, provenance verification, or behavioural outcome. | **partly covered:** #41 can prompt context-specific review, but none of its live watchlist items measures trust, laziness, creativity, or provenance perception. | The percentages cannot validate the marketing watchlist or establish that any writing pattern causes the attitudes. | Record the hypothetical social-media attitudes as context; do not translate them into pattern evidence, severity, authorship, or brand-performance claims. | pending | not started |
+| C12: More than 30% reportedly would regard a brand as impersonal when interacting with a chatbot they suspected was AI-generated. | Direct author-reported hypothetical chatbot attitude; exact percentage, question, denominator, system behaviour, and response design are absent. | **not covered:** #41's marketing/email branch reviews prose, not chatbot disclosure or brand-attitude measurement; the product boundary avoids provenance claims. | “Over 30%” is imprecise and suspicion is not verified AI use; the result does not identify a prose feature. | Record as broad perception context only; do not map it to chatbot prose patterns, disclosure policy, or authorship inference. | pending | not started |
+| C13: Bynder's CMO interprets the results as support for a “human touch,” responsible AI, and the benefits of AI for growing marketing-asset workloads. | Named executive interpretation and normative recommendation; the disclosed exercise does not measure asset workload, responsible-AI practice, human intervention, or campaign performance. | **partly covered:** H3 and #41 can contextualise marketing review, but no project guidance adopts Bynder's “human touch” prescription. | The quotation can be mistaken for an empirical conclusion even though it extends beyond the reported measures. | Attribute the interpretation to Bynder's CMO and keep it separate from the reported percentages; do not promote “human touch” as a measured intervention or rewrite rule. | pending | not started |
+| C14: Bynder describes itself as a global Digital Asset Management leader and says its AI-enabled Content Workflow improves speed, collaboration, engagement, and performance while facilitating human input. | Vendor self-description and promotional product claims on the same page; no comparative product evidence or performance measurement is supplied. | **not covered:** correctly, the pattern catalogue and #41 do not treat vendor product claims as writing evidence. The Vendor / detector tier warns against independent-validity use. | Commercial interest and unsupported performance wording need to remain visible when interpreting the page. | Record the vendor conflict and product-copy boundary; take no product action and do not cite these claims as study findings. | pending | not started |
+| C15: The press release omits the stimuli, questionnaire, recruitment, sampling frame, weighting, field dates, randomisation, order, response options, ChatGPT version and settings, copywriter conditions, subgroup bases, uncertainty, significance tests, response rates, exclusions, raw data, and standalone report. | Review assessment from the complete preserved page; these materials do not appear in the article body, methodology paragraph, source list, or preserved attachments. | **fully covered:** the source-ingest contract requires exact omissions, model and sample scope, directness, limitations, archive history, and hashes; this card and snapshot now record them. | The prior card said only that cues were undisclosed and did not enumerate the missing methodology that limits every result. | Preserve the limitation inventory; require the missing study materials before any threshold, fixture, subgroup, causal, or general marketing decision. | pending | not started |
+| C16: If the identification question forced a choice between exactly one AI and one human article, 50% is the chance baseline, so the aggregate result may be chance-level rather than evidence of detection ability. | Reviewer inference from the disclosed two-article task, not a claim Bynder makes. The exact response options and whether abstention or uncertainty were allowed are unavailable, so the null interpretation cannot be confirmed. | **partly covered:** H3 and the product boundary reject detection and authorship framing, while `pattern-opportunities.md` and root row 41 apply the bounded perception-only treatment. The old card's ambiguity is retained in Decision history rather than treated as current behaviour. | The press release headline implies successful spotting while omitting the baseline and design needed to interpret 50%; the live project records the caveat but cannot resolve it without the response design. | Retain the bounded chance-level caveat wherever the result is summarised; do not claim either reliable detection or a confirmed null until the response design is available. | pending | not started |
+| C17: Recognition, preference, hypothetical engagement, and brand attitudes are distinct constructs, and none discloses a textual cue or establishes actual behaviour, prose quality, or authorship. | Review construct-validity assessment grounded in the page's separate questions and missing stimuli; not a Bynder claim. C07 and C08 are a direct counterexample to collapsing blind preference and suspected-provenance attitude. | **fully covered:** root/process product boundaries distinguish pattern review from authorship, and `pattern-opportunities.md` explicitly excludes consumer recognition as pattern evidence. | The promoted email/marketing opportunity row previously listed Bynder beside sources that actually name prose features, risking evidence-category leakage. | Keep Bynder only as stakes and perception context, remove it from prose-feature support, and explicitly separate blind preference, suspected provenance, and actual behaviour. | pending | not started |
+| C18: The press release links three external sources for age, US awareness, and UK use context, but does not preserve their titles or methods in the article body; one sentence calls the US awareness study “March 2023” while the preserved Pew URL is dated 2023-11-21. | Review provenance assessment of the preserved source list and adjacent claims. The linked pages were not opened in this work unit, so the date discrepancy and inherited figures remain unresolved rather than corrected. | **partly covered:** source-ingest requires cited evidence used for a conclusion to be directly reviewed or marked indirect; this card now does so. | The prior card did not classify the contextual figures as indirect or flag the visible date mismatch. | Keep all three inherited claims indirect and unresolved; ingest the upstream sources separately before using them, and do not silently repair the date from the URL alone. | pending | not started |
+| C19: The preserved direct source is a Bynder press release reporting study results, not the questionnaire, data, analysis, or standalone study report. | Review source-identity assessment based on the canonical press-media URL, page structure, commercial product copy, minimal methodology, and absence of study attachments. | **fully covered:** the Vendor / detector evidence tier and source-ingest contract distinguish first-party reporting from independently reviewable empirical evidence. | Calling the page simply a “consumer study” can obscure the directness and commercial limits of the accessible evidence. | Describe the reviewed source as a vendor press release throughout; retain its results as author-reported and require study materials for stronger empirical use. | pending | not started |
+
+## Recommendations
+
+- C01: Record the awareness framing as vendor motivation only; do not use it as prevalence, pattern, or product evidence.
+- C02: Preserve the narrow two-article method as a shared prompt requesting 300 words, without asserting actual stimulus length or genre; require study materials before fixture or broader use.
+- C03: Keep 50% as bounded perception context and explicit non-promotion, not detection accuracy, a threshold, or authorship evidence.
+- C04: Record the unquantified age-rank observation only; do not create demographic or pattern guidance.
+- C05: Preserve the 55% versus 45% subgroup report as a percentage-point difference with no reliability claim.
+- C06: Keep the age and country explanation indirect and untested until its sources and Bynder analysis are separately reviewed.
+- C07: Record the blind preference result with its one-pair scope; do not generalise to engagement, performance, or prose patterns.
+- C08: Retain the hypothetical disengagement response separately from observed preference and actual behaviour.
+- C09: Preserve the qualified 16-24 subgroup report without age, engagement, marketing, or authorship generalisation.
+- C10: Keep the website-attitude figures as stakes context only; add no “human-feeling” or brand-perception rule.
+- C11: Keep the social-media attitudes as context only; do not translate them into pattern evidence or severity.
+- C12: Keep the imprecise chatbot attitude as broad context only; do not map it to prose patterns or provenance.
+- C13: Attribute the “human touch” and responsible-AI recommendation to Bynder's CMO and do not treat it as a measured intervention.
+- C14: Record the vendor conflict and product-copy boundary; take no product action.
+- C15: Preserve the full limitation inventory and require missing materials before stronger empirical use.
+- C16: Retain the bounded chance-level caveat in summaries of the 50% result; do not claim a confirmed null without response-design evidence.
+- C17: Keep Bynder only as stakes and perception context, remove it from prose-feature support, and separate preference, suspected provenance, and behaviour.
+- C18: Keep the three inherited claims indirect and unresolved; ingest their sources separately before use.
+- C19: Name the reviewed source as a vendor press release and require study materials for stronger evidence claims.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending source-record recommendation; no product change requested.
+- C02: not applicable - pending source-record recommendation; stimulus length and genre claims were corrected in the source record, with no product change requested.
+- C03: not applicable - pending source-record recommendation; no product change requested.
+- C04: not applicable - pending source-record recommendation; no product change requested.
+- C05: not applicable - pending source-record recommendation; no product change requested.
+- C06: not applicable - pending source-record recommendation; linked sources were not reviewed in this work unit.
+- C07: not applicable - pending source-record recommendation; no product change requested.
+- C08: not applicable - pending source-record recommendation; no product change requested.
+- C09: not applicable - pending source-record recommendation; no product change requested.
+- C10: not applicable - pending source-record recommendation; no product change requested.
+- C11: not applicable - pending source-record recommendation; no product change requested.
+- C12: not applicable - pending source-record recommendation; no product change requested.
+- C13: not applicable - pending source-record recommendation; no product change requested.
+- C14: not applicable - pending source-record recommendation; no product change requested.
+- C15: not applicable - pending source-record recommendation; the omission inventory was checked against the complete preserved press release.
+- C16: not applicable - pending source-record recommendation; live coverage now records the bounded caveat, while exact response options remain unavailable.
+- C17: not applicable - pending source-record recommendation; index and mapping reconciliation is documentation only, not a product implementation.
+- C18: not applicable - pending source-record recommendation; the visible date mismatch remains unresolved.
+- C19: not applicable - pending source-record recommendation; prior and current snapshot hashes were verified.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `rereview_bynder_batch2_once`; initial review by `review_bynder_batch2_once`, remediation by `remediate_bynder_batch2_once`, and focused independent re-review by `rereview_bynder_batch2_once`
+- **Reviewer isolation:** fresh source-dedicated agent; one source only; not reused
+- **Findings resolved:** four: recast the undisclosed stimuli without asserting actual length or genre; corrected C03/C16 live coverage while retaining the old ambiguity in Decision history; reconciled the Copy Posse and Vollmer indirect references; corrected manifest wording about absent or unlinked study materials
+- **Unresolved findings:** none

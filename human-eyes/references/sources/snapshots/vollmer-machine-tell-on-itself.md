@@ -1,10 +1,20 @@
-Title: I Asked the Machine to Tell on Itself: A Field Guide to AI Tells
+# I Asked the Machine to Tell on Itself: A Field Guide to AI Tells
 
-URL Source: https://matthewvollmer.substack.com/p/i-asked-the-machine-to-tell-on-itself
+- **Canonical URL:** https://matthewvollmer.substack.com/p/i-asked-the-machine-to-tell-on-itself
+- **Alternate access URLs:**
+  - https://matthewvollmer.substack.com/i/195382258
+  - https://r.jina.ai/http://matthewvollmer.substack.com/p/i-asked-the-machine-to-tell-on-itself
+- **Author / owner:** Matthew Vollmer
+- **Publisher:** Matthew Vollmer, Substack
+- **Published:** 2026-04-24T19:43:23.647Z
+- **Retrieved:** 2026-07-17
+- **Stable identifier:** Substack post ID 195382258; publication ID 3707068
+- **Version / revision:** published post updated 2026-04-24T19:49:27.140Z
+- **Extraction method:** Direct Substack HTML fetched with `curl -L --compressed`; embedded `window._preloads` JSON supplied the post ID, timestamps, word count, and complete `body_html`; Jina Reader Markdown was compared with the previous snapshot and direct body from beginning through end.
+- **Full-text status:** complete
+- **Access and transformation notes:** The complete 6,185-word public post was available without login or paywall. The direct HTML, including embedded full `body_html`, is preserved at `attachments/vollmer-machine-tell-on-itself-substack-post-195382258-2026-07-17.html` with trailing indentation whitespace removed for repository hygiene (SHA-256 `64f1e4c838614d63a549e161aee2731842ce4eabe75853e45e2e053e3ef29ad3`); no markup or text content was changed. The Markdown body below preserves the Jina rendering used by the previous reviewed snapshot; direct fetch and current Jina retrieval showed no substantive body change. The hero image is retained by source URL rather than copied as a separate binary attachment.
 
-Published Time: 2026-04-24T19:43:23+00:00
-
-Markdown Content:
+## Full text
 [![Image 1](https://substackcdn.com/image/fetch/$s_!vx0f!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d95794b-103e-407c-88d1-94f4939d878c_1024x1536.jpeg)](https://substackcdn.com/image/fetch/$s_!vx0f!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d95794b-103e-407c-88d1-94f4939d878c_1024x1536.jpeg)
 
 I was recently at a reading at the university where I teach, where the finalists for a university-wide prize were reading their poems. I heard one poet deliver his and thought, _I bet he used ChatGPT for that_. There was some negation, some deployment of aphorisms that seemed optimized for resonance. The poem won first prize.
@@ -602,3 +612,11 @@ None of these, individually, prove anything. Together, they constitute the _AI-e
 **Coda**
 
 One last observation worth keeping close. Neil Clarke’s most-quoted line about AI submissions — “they are bad in ways that no human has been bad before” — contains a quietly hopeful corollary. Human badness is _specific_: bad in the particular grain of one person’s particular failure. The LLM’s badness is generic. Which means that the most human defense against AI prose is also the oldest instruction of any decent writing teacher: **be specific, be strange, be where you actually are**. The machine cannot be where you are. It can only approximate. The field guide above is really just a catalog of approximation’s signatures. The prose that gets written _against_ them will continue to be recognizably ours.
+
+## Extraction verification
+
+- **Beginning checked:** Compared the title, hero image, Vollmer's university-prize anecdote, the prompt, the preamble, and the opening lexical section against direct Substack `body_html` and the current Jina rendering.
+- **Middle checked:** Compared the fiction/poetry domain section around point-of-view lock, pacing flatness, and mood-saturated settings against direct `body_html`; section order and list items were present.
+- **End checked:** Compared the detection-limit sections, cultural reception, five pedagogical exercises, 12-item field check, and coda against direct `body_html` and the current Jina rendering.
+- **Structure checked:** Direct metadata reports 6,185 words. The rendered capture contains 12 numbered top-level field-guide sections plus a coda, one prompt blockquote, 141 list items, 91 links, and one hero image; direct HTML exposes 298 paragraph elements because Substack nests paragraph tags inside list items. Beginning, midpoint, and final content all matched the refreshed Jina Markdown.
+- **Completeness conclusion:** Complete public post body preserved; no paywall, login wall, truncation, appendix, footnote, table, caption, or reference section was omitted. The hero image remains linked at its full source URL.

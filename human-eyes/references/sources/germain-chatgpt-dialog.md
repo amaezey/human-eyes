@@ -1,40 +1,166 @@
-# David J. Germain: Writing dialog with ChatGPT
+# David J. Germain: Writing Dialog with ChatGPT
+
 ## Metadata
+
 - **URL:** https://medium.com/@dave.germain.79/writing-dialog-with-chatgpt-bd8024a69eb3
 - **Author / owner:** David J. Germain
-- **Published:** 2023-02-18
-- **Extracted:** 2026-05-05
-- **Source type:** Practitioner fiction-writing commentary
+- **Published:** 2023-02-18T14:13:00Z
+- **Retrieved:** 2026-07-15
+- **Extracted:** 2026-07-15
+- **Source type:** practitioner observation and fiction-writing process commentary
 - **Evidence tier:** Practitioner / teacher / editor essays
-- **Extraction status:** second-pass reviewed from Medium page excerpt
+- **Review mode:** update
+- **Stable identifier:** Medium post ID `bd8024a69eb3`
+- **Version / revision:** live page state retrieved 2026-07-15; prior Jina capture extracted 2026-05-05; Medium exposes no publisher revision number
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/germain-chatgpt-dialog.md`
+- **Extraction method:** complete Jina Reader URL-to-Markdown capture fetched with `curl`, checked against the rendered canonical Medium page at the beginning, middle, and end; command-line requests for canonical HTML and `?format=json` returned HTTP 403
+- **Snapshot SHA-256:** `2f7fb7d79d9b4b4930baab85ee8c453858bcf51ecd0d59a171a12c6278f09c9a`
+- **Model / corpus scope:** unspecified February 2023 ChatGPT model and product surface; English fiction dialogue; one practitioner, one canonical trunk scene, one seven-turn vanilla generation, an unspecified number of Elmore Leonard dialogue samples analysed through ChatGPT, and 16 preserved turns from the first two chunks of one iterative generation sequence; generation settings, full analysis outputs, exact sample count, repeated trials, and comparison corpus are not supplied
+- **Access limitations:** none for the complete substantive article text. The canonical rendered page and current Jina capture agree on all seven substantive sections, prompts, dialogue examples, and conclusion takeaways. Medium account and newsletter chrome were removed. Seven decorative article-image URLs and captions are preserved without image bytes. The quoted *Out of Sight* passage is cited evidence, not Germain's direct experimental material.
 
 ## Summary
-Practitioner fiction-writing article comparing vanilla ChatGPT dialogue with Elmore Leonard-inspired dialogue prompts. The reviewed example shows ChatGPT producing on-the-nose dialogue with little voice differentiation, then Germain uses discourse-analysis prompts to improve colloquial characterization.
+
+Germain gives a dated practitioner account of using ChatGPT to analyse an Elmore Leonard passage and turn the resulting discourse categories into dialogue instructions. One vanilla generation displays explicit role exposition and undifferentiated voices. A later, iteratively prompted generation shows some differentiation, but Bob and Tony still blend while Officer is recognisable; parenthetical stage directions and blunt ethics/bravery exposition remain. The article contributes concrete fiction-review prompts for rhythm, diction, speech acts, register, discourse markers, prosody, fragments, and role-explaining dialogue. It does not measure prevalence, compare current models, validate a detector, or establish that demographic prompting, short-sentence targets, or the full recipe improve dialogue generally.
 
 ## Main insights
-- Domain-specific fiction cue, especially for dialogue.
-- More directly supports "on-the-nose dialogue" and lack of voice differentiation than parenthetical stage-direction tics.
-- Model-version stale: February 2023 ChatGPT behaviour.
+
+- Germain avoids a direct “write in the style of” request. He asks ChatGPT to analyse Leonard dialogue, asks for a second AI-facing instruction, combines topics across several unspecified samples, and uses the resulting paragraph as a generation prompt.
+- The seven-turn vanilla output states occupations and motivations directly. Germain calls it on-the-nose and says Karen and Jack have no difference in voice.
+- The author-reported analysis categories include sentence length, parts of speech, declaratives versus questions, word choice, grammar, register, speech acts, discourse markers, prosody, fragments, instructions, and dialogue tags.
+- The resulting prescription calls for informal colloquial register, mostly four-to-five-word sentences with some ten-to-fifteen-word sentences, one-to-three clauses, simple and compound structures, fragments, contractions, second-person pronouns, mixed sentence functions, and discourse markers. These are practitioner instructions, not measured Leonard statistics in the preserved article.
+- Germain supplies demographic information to prompt colloquial differentiation and says it must be repeated. He reports no stereotyping controls, alternative prompt conditions, or comparison without demographics.
+- He withholds the science-fiction setting at first to avoid prompt misalignment, improvises rewrites, renames a model-introduced character, and supplies more demographic information. The complete prompt history and intermediate outputs are not preserved.
+- Bob and Tony still blend in the reported result, while Officer is easier to identify without dialogue tags. This is a direct counterexample to any claim that the instruction or demographics guarantee distinct voices.
+- One of seven vanilla turns and 11 of 16 final-result turns contain parenthetical stage directions. The article neither criticises nor tests them, so it cannot support treating parentheticals as an AI-writing defect.
+- The improved output still contains repeated `I'm telling` turns, explicit ethics and bravery exposition, and the contrast `with pride, not fear`. The colloquial instruction did not eliminate every role-explaining or formulaic construction.
+- A focused surface-only comparison is incomplete by design. The 113-word vanilla excerpt stayed clear on #9 and #52 with sentence-length standard deviation 5.1; the 180-word prompted result added one #9 finding and flagged #52 at standard deviation 2.5. #25 stayed clear in both; #17 reported 19 curly glyphs in vanilla and 18 in the result. These are project-coverage observations, not a complete Audit or validation of the source's recipe.
+- The source is model-version stale and narrow: one 2023 practitioner workflow, one scene, unknown ChatGPT version, unknown generation parameters, unspecified analysis-sample count, selected outputs, no blinding, no rates, and no matched human or model control.
 
 ## Evidence and claims to extract
-- Vanilla ChatGPT dialogue example has characters stating roles and motivations directly and speaking with similar voices.
-- Germain calls the result "horrendous" and says it writes on-the-nose dialogue with no difference between the two voices.
-- His improved-prompt method emphasises register, speech acts, discourse markers, prosody, fragments, sentence length, and colloquial information.
+
+- **Direct source reviewed:** Complete Medium post `bd8024a69eb3` as rendered and captured on 2026-07-15, including seven substantive sections, one Leonard comparison passage, three analysis/development prompts, one derived instruction paragraph, three generation-prompt excerpts (one complete vanilla prompt and visibly ellipsised Tony/Bob and Officer prompts), a seven-turn vanilla dialogue, 16 reported result turns, seven illustration references/captions, and three conclusion takeaways. The exact prior 2026-05-05 snapshot bytes were verified and archived before replacement.
+- **Method and sample:** Practitioner self-report and selected examples. Germain gives one vanilla prompt/output, quotes one passage from Leonard's *Out of Sight*, says he ran an analysis prompt against several dialogue samples, derives an instruction paragraph, supplies character demographics, iterates through unspecified rewrites, and reproduces the first two result chunks. No model/version, temperature, seed, interface, complete prompt log, count of analysed samples, full analysis outputs, repeated generations, blinded ratings, or comparison corpus appears.
+- **Direct versus cited evidence:** C01-C03 and C05-C17 come directly from Germain's described process, selected prompts, outputs, interpretations, or this review's source-bound project comparison. C04 is a cited Leonard passage and Germain's craft judgement, not measured evidence produced by the article. C06-C10 and C17 separate author interpretation or reviewer inference from visible examples. C16 is this review's focused live-project result, not a claim made by Germain.
+- **Important limits and counterexamples:** Bob and Tony remain hard to distinguish after the intervention; parenthetical stage directions remain but are not criticised; the improved output retains explicit role/ethics exposition and a negative parallelism; the numerical sentence recipe is not shown as a measured property of the Leonard samples; no evidence supports current-model generalisation, an authorship inference, a severity threshold, mandatory demographic prompting, or a universal dialogue formula.
 
 ## Skill-use audit
-- **Good use:** Back fiction/dialogue manual checks around on-the-nose exposition and undifferentiated character voices.
-- **Misuse / overclaim:** Do not cite this for general prose patterns or current model behaviour without caveat.
-- **Unsupported use:** Parenthetical stage-direction tics are not the strongest direct extraction from reviewed text.
-- **Underused evidence:** Dialogue review should look for voice differentiation, speech acts, register, fragments, and prosody rather than generic prose texture.
-- **Patterns left on the table:** "Dialogue voice differentiation" and "role-exposition dialogue" are clearer fiction checks.
+
+- **Good use:** Use the source as dated practitioner evidence for the #41 fiction prompts covering role-explaining dialogue, voice differentiation by rhythm/diction/speech act, and a broader research checklist involving register, discourse markers, prosody, fragments, sentence functions, and dialogue tags.
+- **Misuse / overclaim:** Do not cite it as empirical prevalence, model-wide or current-model behaviour, detector validation, proof that dialogue was AI-written, a four-to-five-word threshold, or evidence that demographic prompting reliably improves voice.
+- **Unsupported use:** Do not use the article to support parenthetical stage directions as a defect, mandate dialect or demographic stereotypes, require contractions or short sentences, claim that the Leonard excerpt was quantitatively analysed, or treat one selected workflow as a controlled comparison.
+- **Underused evidence:** Live #41 already names rhythm, diction, speech act, voice differentiation, and role-explaining dialogue. It does not explicitly name register, discourse markers, prosody, sentence-function balance, or fragments in its executable fiction watchlist, and it does not encode the source's counterexample that two prompted voices still blended.
+- **Patterns left on the table:** No new deterministic rule is justified. Decision-ready research questions are whether the broader dialogue-review dimensions improve treatment in context, whether #52's documented dialogue tolerance is applied consistently in complete Audits, and whether any future voice-differentiation evaluation can avoid demographic stereotyping and current-model drift.
 
 ## Matched patterns / rules
-- #41 genre-specific manual checks: fiction
-- on-the-nose dialogue / voice differentiation
-- dialogue register/prosody checks
+
+- #41 `genre_specific`, fiction branch in `human-eyes/scripts/judgement.json`: `dialogue voices not differentiated by rhythm, diction, or speech act`; `"as-you-know" exposition or role-explaining dialogue`; style imitation that misses a source's oddities
+- #41 rendered catalogue description in `human-eyes/references/patterns.md`: flattened dialogue, weak voice differentiation, parenthetical stage directions, and generic target-style fidelity; the parenthetical wording is broader than the executable fiction watchlist
+- #52 `sentence-length-variance`: the focused result dialogue flags at sentence-length standard deviation 2.5, while the catalogue expressly names dialogue as a legitimate uniformity control
+- #25 `no-staccato-sequences`: focused result dialogue stays clear; its catalogue tolerance preserves dialogue and character voice
+- #9 `no-negative-parallelisms`: focused result dialogue flags `I enter these chambers with pride, not fear`; the checker surfaces the construction without deciding that it is unjustified or artificial
+- #35 `tonal_uniformity`: adjacent whole-text register review only; it is not equivalent to character-to-character voice differentiation and should not be cited as direct coverage
+- `human-eyes/references/process.md`: preserve genre, deliberate devices, source facts, and character voice; do not infer authorship
+- `dev/TESTING.md`: complete-Audit requirement, register variation, matched controls, and separation of deterministic from agent-assessed results
+- H12 genre-aware threshold calibration and H25 model-family versus generic-AI residue
+- `human-eyes/references/sources/pattern-opportunities.md` row `Fiction dialogue and style-fidelity review`
 
 ## Associated hypotheses
-- H12 genre-aware threshold calibration
+
+- H12: Genre-aware threshold calibration
+- H25: Model-family versus generic-AI residue
+- Proposed evaluation question only: whether source-listed dialogue dimensions add useful treatment-in-context evidence beyond the current #41 rhythm/diction/speech-act watchlist without rewarding stereotypes or fixed sentence targets
 
 ## Questions / follow-up
-- Should fiction #41 include a dialogue-specific checklist?
+
+- Independent source-record review and fresh re-review passed; all recommendations remain pending Mae's decision and no product change was requested.
+- If Mae wants to expand #41, first test register, discourse-marker, prosody, fragment, and sentence-function prompts against matched human and model dialogue, multiple fiction subgenres, quoted dialogue, stylised voices, deliberate exposition, and demographic-stereotype controls.
+- If the sentence-length result matters, run complete Audits and source-bound agent assessments on matched dialogue rather than treating the surface-only #52 finding as a verdict.
+- No product, checker, registry, test, hypothesis, or guidance change was requested or made.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | Medium post ID `bd8024a69eb3`; no prior digest recorded in the card or manifest | `snapshots/archive/germain-chatgpt-dialog/2026-05-05-31791d77.md` | 2026-05-05 | `31791d773031cf8f7f4b9217c9d2846e6499c550a3663904dae16c4d1bb41c9e` |
+| current | Medium post ID `bd8024a69eb3` | `snapshots/germain-chatgpt-dialog.md` | 2026-07-15 | `2f7fb7d79d9b4b4930baab85ee8c453858bcf51ecd0d59a171a12c6278f09c9a` |
+
+The current capture contains no substantive article addition, removal, or correction relative to the archived capture. The refresh replaces the legacy Jina wrapper and injected newsletter block with the current snapshot contract, records reproducible access failures and verification checks, and keeps the complete article evidence. The old and current source captures differ only in wrapper/provenance material, removed Medium chrome, and a non-substantive Jina URL/query/separator change.
+
+## Decision history
+
+- The pre-contract card had no stable claim IDs, recommendation decisions, implementation states, snapshot digest, update-provenance table, or document-review gate.
+- Its useful role-exposition and voice-differentiation mappings are retained and narrowed to the dated practitioner scope. Its caution that parenthetical stage-direction tics were not directly supported is retained as C14.
+- C01-C17 are stable IDs assigned in this update. All recommendations begin at `pending` / `not started`; no source-specific approved or implemented decision was found.
+
+## Project coverage
+
+This is the authoritative review table. Focused results use the live surface-only grader on exact extracted dialogue. They are deterministic surface checks with `coverage_mode: surface_only` and `audit_status: incomplete`, not complete human-eyes Audits.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: Germain analyses Leonard dialogue with ChatGPT and converts recurring analysis topics into instructions instead of directly asking for writing “in the style of” Leonard. | Direct practitioner workflow description. Several Leonard samples are mentioned but not counted or preserved, analysis outputs are absent, and no direct-style-prompt comparison is run. | **partly covered:** #41 asks whether style imitation misses a source's oddities; `process.md` protects genre and deliberate devices. The project does not evaluate prompt-engineering workflows. | The source cannot show that analysis-derived prompting outperforms direct imitation or that the selected categories capture Leonard's style. | Record the process distinction only; do not add prompt guidance or claim comparative efficacy without controlled source-grounded examples. | pending | not started |
+| C02: The vanilla seven-turn output states roles and motives directly, including “I'm a police officer” and “I'm just a bank robber.” | Direct preserved prompt and output from an unspecified February 2023 ChatGPT surface; one selected generation with no repetition or control. Germain directly calls it on-the-nose. | **fully covered as a manual review prompt:** #41's executable fiction watchlist names `"as-you-know" exposition or role-explaining dialogue`. The focused surface-only scan has no semantic #41 layer and therefore cannot establish a complete Audit result. | No source or project evidence establishes prevalence, a threshold, or that every explicit role statement is defective in context. | Retain as a bounded #41 example; evaluate with necessary introductions, deliberate comic exposition, quoted speech, and scene-context controls before adding fixtures. | pending | not started |
+| C03: Germain says Karen and Jack have no difference between their voices. | Direct author judgement tied to one visible generation. The article supplies no independent raters, rubric, blind comparison, or measurable voice-distance method. | **fully covered as a manual question:** #41 asks whether dialogue voices differ by rhythm, diction, or speech act. #35 is adjacent but assesses whole-text register lock, not speaker differentiation. | The source does not validate reviewer agreement, severity, or a general model tendency. | Retain as practitioner support for #41 only; do not promote a detector or whole-text tonal-uniformity mapping. | pending | not started |
+| C04: Germain treats the quoted *Out of Sight* passage as punchy and full of character and uses it as the source model for analysis. | Cited human-authored comparison passage plus author craft judgement. It is not a measured control, and the article does not publish the multiple-sample analyses or demonstrate which listed traits occur in this passage at what rate. | **partly covered:** #41 reviews style imitation that misses a source's oddities and protects character-level rhythm/diction. | Treating one admired excerpt as a quantitative or general human baseline would exceed the evidence and overlook deliberate genre/style variation. | Keep the passage as cited comparative context; do not convert its traits into universal human-dialogue requirements. | pending | not started |
+| C05: The analysis workflow considers sentence length, parts of speech, sentence functions, word choice, grammar, register, speech acts, discourse markers, prosody, fragments, and dialogue tags. | Direct inventory of questions Germain put to ChatGPT. The source says the list was useful but preserves neither full analyses nor validation that each dimension was accurate or causally useful. | **partly covered:** #41 explicitly names rhythm, diction, and speech act; its description adds weak voice differentiation. Register, discourse markers, prosody, fragment balance, and sentence-function balance are not explicit executable fiction-watchlist items. | An inventory of analysed dimensions does not establish which ones distinguish voices, improve prose, or generalise across fiction. | If Mae approves research, evaluate the missing dimensions separately with source-bound examples and human controls before any #41 expansion. | pending | not started |
+| C06: Germain reports that asking AI how to analyse dialogue, then asking for an AI-facing second opinion, was helpful for building his instruction paragraph. | Direct author interpretation of his workflow; no alternative method, scoring rubric, preserved analysis outputs, or failed cases. | **not covered:** human-eyes audits prose and does not assess whether one prompt-development method is helpful. | The source cannot establish prompt-method efficacy or transfer to current models. | Record as process context only; take no product action. | pending | not started |
+| C07: The derived instruction calls for an informal, colloquial, conversational, natural, spontaneous, and immediate register. | Direct preserved instruction paragraph built from author-selected ChatGPT analyses; no evidence that the categories were measured in Leonard or that this register suits every character or scene. | **partly covered:** #41 reviews voice differentiation and diction; #35 reviews whole-text register lock. Neither requires one informal register. | Applying this register universally would flatten formal characters, historical settings, technical speech, code-switching, or deliberate stiffness. | Do not promote a required register; use only as one scene-specific prompt example if Mae approves evaluation. | pending | not started |
+| C08: The instruction targets mostly four-to-five-word sentences, some ten-to-fifteen-word sentences with one-to-three clauses, simple/compound structures, a mix of complete sentences and fragments, and mixed declaratives, questions, and exclamations. | Direct prescription, not reported statistics. The source supplies no counts for Leonard, alternative prompts, or quality ratings. | **challenges simplistic surface interpretation:** the focused 113-word vanilla excerpt stays clear on #52 at sentence-length standard deviation 5.1, while the 180-word prompted result flags #52 at 2.5; #25 `no-staccato-sequences` stays clear in both. #52's catalogue already names dialogue as a legitimate uniformity control; #41 names rhythm. | The paired surface results do not measure quality or validate the source's numeric targets or #52 threshold. A surface-only result without the complete genre assessment is incomplete. | Record as a dialogue-context control for H12; do not change #52 or add numeric dialogue rules without matched complete-Audit evaluation. | pending | not started |
+| C09: The instruction recommends simple colloquial vocabulary, contractions, second-person pronouns, fewer formal or technical terms, fewer adverbs/conjunctions, and discourse markers that signal flow and attitude. | Direct practitioner prescription derived from model analysis; no ablation, rate, model comparison, human baseline, or evidence that all listed features improve the output. | **partly covered:** #41's rhythm, diction, and speech-act watchlist can review some speaker differences; `process.md` preserves genre and voice. There is no generic rule requiring contractions, second person, or fewer adverbs/conjunctions, which is appropriate. | Mandatory colloquialism can erase character, setting, formality, dialect, or task requirements. Flat part-of-speech preferences would overgeneralise one exercise. | Preserve as a candidate review vocabulary, not a rule. Evaluate each dimension separately before any #41 wording proposal. | pending | not started |
+| C10: Germain gives Tony and Bob demographic information to provide a basis for colloquial prompting and concludes that such data must be supplied and regularly reinforced. | Direct prompt and author conclusion from one workflow. No condition without demographics, stereotype audit, cultural review, participant input, or evidence that model-rendered dialect is authentic. | **not covered:** no live check or process rule requires demographic markers; #41 reviews the resulting dialogue rather than inferring speech from identity. | Generalising demographic-to-dialect mappings risks stereotyping and fabricated personal/cultural detail, conflicting with the closed-source boundary. | Explicitly do not promote demographic prompting as a requirement. Any research must use consent, source-bound character facts, stereotype controls, and relevant reviewers. | pending | not started |
+| C11: Germain initially withholds the science-fiction context because he fears it will misalign the model and lets dialogue flesh out the characters before defining the chambers. | Direct author workflow choice with no comparison prompt/output and no operational definition of misalignment. | **not covered:** this is story-development prompting, not a prose pattern. `process.md` instead requires preserving supplied genre and facts. | Withholding relevant context could also cause inconsistency; the source does not compare the trade-off. | Record only as one author's workflow; take no product action. | pending | not started |
+| C12: The author improvises rewrites, accepts a model-introduced third character, renames Boss to Officer to avoid name similarity, and adds Officer demographics. | Direct process account. Intermediate prompts and outputs are not preserved, so the path cannot be reproduced or separated from author editing. | **not covered:** human-eyes preserves source facts and reviews resulting prose; it does not evaluate iterative co-writing provenance. | The final output cannot be attributed to one prompt or intervention, and the source cannot estimate which change caused voice differentiation. | Keep the iterative provenance and causal limit attached; do not infer intervention efficacy. | pending | not started |
+| C13: In the reported result Bob and Tony quickly blend, while Officer is easier to distinguish even without dialogue tags. | Direct author judgement and visible selected output; Bob/Tony provide a null or counterexample after prompting, while Officer provides a positive example. No independent ratings or alternate generations appear. | **fully covered as a #41 question:** voice differentiation by rhythm, diction, or speech act. The no-tags observation is review context, not a live rule requiring tag removal. | The source does not show that demographic data caused Officer's differentiation, that tags are unnecessary generally, or that Bob/Tony could not be repaired another way. | Preserve both positive and null results; use them as paired evaluation candidates only after source-bound controls are added. | pending | not started |
+| C14: One of seven vanilla turns contains `(pulls lever)`, and 11 of 16 final-result turns contain parenthetical stage directions such as `(frustrated)`, `(defensive)`, and `(lecturing)`. | Direct visible examples and reviewer count. Germain neither criticises nor tests the parentheticals, so their presence is not evidence that he regards them as a defect or an AI tell. | **mapping discrepancy:** the rendered #41 description mentions parenthetical stage directions, but the executable fiction watchlist does not list them. The source does not validate either treatment. | The prior card correctly warned that parenthetical tics were not the strongest extraction; this complete review shows the source supplies examples only, not negative evidence. | Record an explicit non-promotion. Do not cite Germain to support a parenthetical-stage-direction rule or watchlist expansion. | pending | not started |
+| C15: The “improved” output still repeats `I'm telling`, has Officer explain ethics and bravery directly, and ends with explicit team expectations. | Direct visible output plus reviewer interpretation. Germain presents the result but does not explicitly call these residuals defects; their relevance follows from his earlier on-the-nose and voice-difference criteria. | **partly covered:** #41 covers role-explaining dialogue and voice differentiation; repeated rhythm may inform the same agent assessment. The exact surface-only scan does not perform this semantic review. | The source does not measure improvement from vanilla to final, and the prompt's apparent gains coexist with residual exposition and repetition. | Preserve as a counterexample to recipe sufficiency; evaluate before/after dialogue with complete source-bound #41 assessments if Mae approves. | pending | not started |
+| C16: In the focused comparison, the exact vanilla output stays clear on #9 and #52 at sentence-length standard deviation 5.1; the prompted result adds one #9 match on `I enter these chambers with pride, not fear` and flags #52 at 2.5. #25 stays clear in both; #17 reports 19 curly glyphs in vanilla and 18 in the result. | Reviewer-run live surface-only results on the exact 113- and 180-word preserved excerpts; both report `coverage_mode: surface_only` and `audit_status: incomplete`. Curly punctuation is inherited from the Medium capture. This is project-comparison evidence, not a Germain claim, quality measure, or authorship result. | **fully covered for the named deterministic candidates only:** #9 surfaces the contrast without judging legitimacy; #52 documents dialogue as a look-alike; #17 recommends preserving sourced literary typography; #25 does not meet threshold in either excerpt. | None of these paired surface results answers #41 voice/exposition questions or measures improvement. Counting capture typography as source support would confuse packaging with prose evidence. | Record the exact boundary only. Do not promote the surface findings as source claims, complete Audits, quality comparisons, or proof that either dialogue is defective. | pending | not started |
+| C17: The source is limited to an unspecified February 2023 ChatGPT version, selected English fiction dialogue, one author, one scene, unknown generation settings, unspecified analysis-sample count, and no matched or blinded evaluation. | Direct metadata plus explicit omissions from the complete page. The narrow dated scope is material to every behaviour and recommendation above. | **fully covered as an evidence boundary:** H12, H25, `dev/TESTING.md`, and the source-ingest contract require genre, model/version, date, matched controls, complete Audits, and separate deterministic/agent-assessed reporting. | The source cannot support current-model, cross-genre, multilingual, population, prevalence, severity, or authorship conclusions. | Keep the limits attached to every use; require fresh versioned, matched evidence before any implementation decision. | pending | not started |
+
+## Recommendations
+
+- C01: Record the analysis-derived prompting distinction only; do not claim comparative efficacy or add prompt guidance.
+- C02: Retain the role-explaining example as bounded #41 practitioner evidence; evaluate legitimate exposition controls before any fixture decision.
+- C03: Retain as practitioner support for #41 voice differentiation; do not map it to a detector or whole-text tonal uniformity.
+- C04: Keep the Leonard excerpt as cited comparative context, not a universal or quantitative human baseline.
+- C05: If Mae approves research, evaluate register, discourse markers, prosody, fragments, and sentence functions separately before changing #41.
+- C06: Record the author's prompt-development judgement only; take no product action.
+- C07: Do not promote an informal-colloquial register as a requirement; keep it scene-specific.
+- C08: Record the dialogue-context counterexample for H12; do not change #52 or add numeric rules from this source.
+- C09: Preserve the dimensions as candidate review vocabulary, not required stylistic features.
+- C10: Do not promote demographic prompting; require source-bound facts, consent, stereotype controls, and relevant reviewers in any research.
+- C11: Record the context-withholding choice as one author's workflow; take no product action.
+- C12: Preserve the iterative-provenance and causal limit; do not infer which intervention worked.
+- C13: Preserve Bob/Tony as the null and Officer as the positive example; use as paired candidates only with controlled evaluation.
+- C14: Explicitly do not promote Germain as evidence against parenthetical stage directions.
+- C15: Preserve residual exposition and repetition as a counterexample to recipe sufficiency; evaluate complete before/after #41 assessments if approved.
+- C16: Record the exact surface-only boundaries; do not present them as source claims, complete Audits, or authorship evidence.
+- C17: Keep the date/model/sample limits attached; require fresh versioned matched evidence before implementation.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending source-record recommendation; no product change requested.
+- C02: not applicable - pending source-record recommendation; no product change requested.
+- C03: not applicable - pending source-record recommendation; no product change requested.
+- C04: not applicable - pending source-record recommendation; no product change requested.
+- C05: not applicable - pending source-record recommendation; no product change requested.
+- C06: not applicable - pending source-record recommendation; no product change requested.
+- C07: not applicable - pending source-record recommendation; no product change requested.
+- C08: not applicable - pending source-record recommendation; focused surface-only comparison kept vanilla clear on #52 at standard deviation 5.1, flagged the prompted result at 2.5, and kept #25 clear in both.
+- C09: not applicable - pending source-record recommendation; no product change requested.
+- C10: not applicable - pending source-record recommendation; no product change requested.
+- C11: not applicable - pending source-record recommendation; no product change requested.
+- C12: not applicable - pending source-record recommendation; no product change requested.
+- C13: not applicable - pending source-record recommendation; no product change requested.
+- C14: not applicable - pending source-record non-promotion; no product change requested.
+- C15: not applicable - pending source-record recommendation; no product change requested.
+- C16: not applicable - pending source-record recommendation; exact paired surface-only results kept vanilla clear on #9/#52 at standard deviation 5.1, added one #9 match and a #52 finding at 2.5 in the prompted result, kept #25 clear in both, and reported 19 versus 18 #17 curly glyphs; both audit statuses remained incomplete.
+- C17: not applicable - pending source-record recommendation; no product change requested.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `/root/germain_review_1`; fresh independent re-reviewer: `/root/germain_review_2`
+- **Reviewer isolation:** fresh source-dedicated agent; one source only; not reused
+- **Findings resolved:** First fresh reviewer found four material issues: corrected the parenthetical counts to one of seven vanilla turns and 11 of 16 final turns; expanded the prompt inventory to three analysis/development prompts and three generation excerpts with ellipsis boundaries; added the paired vanilla/result surface findings; replaced the generic `sample_size` reading with exact whitespace-delimited word counts.
+- **Unresolved findings:** none

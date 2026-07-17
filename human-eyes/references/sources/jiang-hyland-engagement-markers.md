@@ -1,40 +1,157 @@
 # Jiang and Hyland: Engagement markers in ChatGPT-generated argumentative essays
+
 ## Metadata
+
 - **URL:** https://journals.sagepub.com/doi/10.1177/07410883251328311
 - **Author / owner:** Feng (Kevin) Jiang and Ken Hyland
-- **Published:** 2025-04-30 first published online
-- **Extracted:** 2026-05-05
-- **Source type:** Academic research
+- **Published:** 2025-04-30 online; 2025-07 in Written Communication 42(3), pp. 463-492
+- **Retrieved:** 2026-07-15
+- **Extracted:** 2026-07-15
+- **Source type:** peer-reviewed corpus study; complete author accepted manuscript reviewed
 - **Evidence tier:** Peer-reviewed / academic empirical
-- **Extraction status:** reviewed from saved full-text accepted manuscript snapshot
+- **Review mode:** update
+- **Stable identifier:** DOI 10.1177/07410883251328311; UEA eprint 97952; accepted-manuscript DOCX SHA-256 74c25cbd1df63d6f4ecc6cfc29cf134b7692036b0684fe5f77f6b1e3e945d3b1
+- **Version / revision:** current UEA author accepted manuscript, DOCX core revision 426, modified 2024-12-05T20:00:00Z; prior library snapshot retrieved 2026-05-05 and archived unchanged at SHA-256 ce48e0ac5932c1ba4350be5d45a46e58ed763b02cb526cf2046494de52dd0d87
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/jiang-hyland-engagement-markers.md`
+- **Extraction method:** UEA accepted-manuscript DOCX text extraction with textutil, python-docx, and OOXML footnote inspection
+- **Snapshot SHA-256:** `c2eef38f5867353fe9e3918af17c3a2af3a58ae37725722389374a71f9174afc`
+- **Model / corpus scope:** 145 English argumentative essays generated with the authors' label "ChatGPT 4.0" and 145 English argumentative essays by second-year British university students from LOCNESS; 72,819 versus 78,060 tokens; eight named topic families; prompts specified role, persuasive style, topic, and about 500 words, but the generation date, model build, sampling settings, full prompt set, and outputs are not reported
+- **Access limitations:** complete 37-page accepted manuscript, six tables, two footnotes, references, and appendix were accessible. Publisher HTML exposed only abstract, references, biographies, and metadata without subscription access, and the direct publisher PDF returned HTTP 403, so Version of Record copy-editing differences were not compared. The underlying essay corpora, full prompt set, model build/date/settings, analysis data, and code were not supplied with the manuscript.
 
 ## Summary
-Compares ChatGPT-generated and student-written argumentative essays by analysing engagement markers: how writers relate to readers while advancing positions. The study analyses 145 essays from each group.
+
+This peer-reviewed corpus study compares 145 argumentative essays generated under the authors' "ChatGPT 4.0" label with 145 second-year British university student essays from LOCNESS. It searches about 100 candidate expressions across five reader-engagement categories, manually verifies their function, and reports substantially fewer total markers in the ChatGPT corpus, with especially large differences for questions and personal asides. The direct evidence is aggregate, English, model-, prompt-, period-, topic-, and genre-bound. It supports a contextual academic-argument review prompt, not an authorship classifier, universal absence rule, causal account of model cognition, or claim that more markers necessarily improve an essay.
 
 ## Main insights
-- Student essays were significantly richer in quantity and variety of engagement features.
-- ChatGPT-generated essays had fewer engagement markers, especially questions and personal asides.
-- This directly supports a student/argumentative-essay check for reduced reader interaction, but not a general claim that all AI prose lacks engagement.
+
+- The direct headline comparison is 393 engagement cases, or 5.40 per 1,000 words, in the ChatGPT corpus versus 1,326, or 16.99 per 1,000 words, in the student corpus (LL 471.98, %DIFF 68.23, p below .001).
+- Five functional categories were reviewed: reader mentions, questions, appeals to shared knowledge, directives, and personal asides. Manual concordance checking matters because forms such as obligation modals, `obvious`, parentheses, and imperatives do not always address a reader.
+- ChatGPT produced six questions and no personal asides, compared with 134 questions and 91 asides in the student corpus. The source treats these as its clearest engagement-depletion results.
+- Directives formed similar shares of each corpus's engagement inventory, but their normalized rates were lower in ChatGPT. The overview table also reports similar reader-mention shares, but that comparison is numerically unsafe because its student subtotal conflicts with the subtype table. ChatGPT relied almost entirely on inclusive `we/our/us` among reader mentions and on obligation modals among directives.
+- Appeals to shared knowledge were a larger share of ChatGPT's smaller engagement inventory, not more frequent overall: 1.28 versus 1.59 per 1,000 words. Almost all ChatGPT knowledge appeals concerned tradition or typicality; none were classified as logical-reasoning appeals.
+- ChatGPT's category-level standard deviations and dispersion values were generally narrower. The paper interprets this as less variation, but does not turn it into a document-level threshold; its unexplained personal-aside DP of 0.30 despite raw, normalized, and SD values of zero makes that dispersion row unsafe for reuse.
+- The authors explicitly say that more interactional devices do not necessarily mean a better text, that students are not expert writers and may overuse engagement, and that both corpora use more engagement than research-article corpora reported by cited work.
+- Prompt wording is a stated confound. The authors used iterative prompt refinement and acknowledge, without testing, that `argumentative` and `persuasive` may have changed the generated feature mix.
+- The accepted manuscript contains a material internal table conflict: the overview table reports 499 student reader mentions (6.39 per 1,000 words), while the subtype table reports 721 inclusive forms plus 78 second-person forms, totaling 799 (10.24 per 1,000). It also gives ChatGPT personal asides a DP of 0.30 despite zero raw, normalized, and SD values, duplicates the Koubaa reference block after the corpus table, says ChatGPT contained the engagement categories despite zero asides, and labels two early tables as Table 1. These values and integrity anomalies are unsafe to reuse without clarification or a Version of Record comparison.
+- Claims that statistical generation causes audience blindness, reduced higher-order thinking, or a preference for coherence over asides are author interpretation or cited context, not causal tests in this study.
 
 ## Evidence and claims to extract
-- Corpus: 145 ChatGPT essays and 145 student essays.
-- Feature focus: frequency and types of engagement markers.
-- Reported finding: student writing is more interactive and persuasive; ChatGPT essays show fewer engagement markers, particularly questions and personal asides.
+
+- **Direct source reviewed:** complete University of East Anglia author accepted manuscript for DOI 10.1177/07410883251328311, DOCX SHA-256 `74c25cbd1df63d6f4ecc6cfc29cf134b7692036b0684fe5f77f6b1e3e945d3b1`, core revision 426; publisher and Crossref metadata were checked separately.
+- **Method and sample:** 145 LOCNESS essays by second-year British university students and 145 ChatGPT essays on matched topic families; 78,060 and 72,819 tokens respectively. The authors used TagAnt, AntConc, about 100 candidate engagement items, manual functional filtering, normalization per 1,000 words, log-likelihood tests with a 3.8 cutoff at p=.05, and %DIFF. Both authors independently coded a random 10% of engagement expressions, reporting 97% agreement before resolving disagreements.
+- **Direct versus cited evidence:** C01-C12 and C17 describe the study's own method, counts, examples, cautions, and internal inconsistencies. C13 distinguishes the authors' causal interpretation from the measured comparison. C14 records the authors' pedagogical proposals. C15 is a project inference about what the study does not validate. C16 inventories relevant claims inherited from cited literature rather than measured here.
+- **Important limits and counterexamples:** no generation date, exact model build, sampling settings, complete prompt set, outputs, released corpus, analysis code, preregistration, blinded coding statement, confidence intervals, multiple-comparison discussion, or document-level classifier evaluation is reported. Topics are heterogeneous but topic-stratified results are absent. The LOCNESS essays lack references despite their formal style, so they do not support #41's citation-checking branch. The prompt was iteratively refined. Students are not expert writers and may overuse markers. More markers do not necessarily improve quality. The study deliberately focuses on an interactional feature that the authors concede the program might be expected to handle poorly. The student reader-mention tables conflict, the personal-aside DP conflicts with the zero count/rate/SD, the Koubaa block is duplicated, and the conclusion's statement that ChatGPT contained the engagement categories conflicts with the reported zero personal asides.
 
 ## Skill-use audit
-- **Good use:** Back academic/student argumentative essay checks around reader engagement, questions, and personal asides.
-- **Misuse / overclaim:** Do not collapse this into #37 neutrality collapse; the saved manuscript is specifically about engagement markers in argumentative essays.
-- **Underused evidence:** The stronger pattern candidate is engagement-marker depletion in argumentative essays, not broad neutrality collapse.
-- **Patterns left on the table:** "Reduced engagement markers" deserves a more precise academic-writing pattern than broad neutrality.
+
+- **Good use:** support a context-warning review of engagement depletion in English argumentative academic prose, especially questions, reader address, personal asides, and the functional balance of knowledge appeals and directives; use the category taxonomy to design matched, genre-aware evaluation.
+- **Misuse / overclaim:** do not treat absence of a question or aside, a knowledge-appeal word, or any aggregate frequency as proof of authorship. Do not equate engagement quantity with essay quality or collapse reader engagement into neutrality or stance erasure.
+- **Unsupported use:** the study cannot establish current ChatGPT behavior, other model families, other languages or genres, a universal threshold, a single-document classification rate, a causal model mechanism, or a required rewrite that adds invented personality.
+- **Underused evidence:** the live academic #41 assessment names depleted questions, reader engagement, personal asides, and stance-bearing commentary, but does not represent the five-category functional taxonomy, the within-category distributions, manual false-positive filtering, prompt sensitivity, or the internal numeric conflicts. The student-essay #41 branch contains no engagement-marker wording.
+- **Patterns left on the table:** knowledge-appeal function and directive realization are possible comparison dimensions; narrower category dispersion is an evaluation hypothesis. None is ready for an active lexical rule or fixed threshold.
 
 ## Matched patterns / rules
-- #41 genre-specific manual checks: academic/student essay
-- reader-engagement marker depletion
-- questions / personal asides underuse
+
+- #41 `genre_specific`, academic sub-record in `human-eyes/scripts/judgement.json`: direct conceptual coverage for an argumentative essay with depleted questions, reader engagement, or stance markers; the generated catalogue also names reader address and personal asides.
+- #37 `neutrality_collapse`: not a match. Engagement markers concern overt reader alignment, while #37 concerns stance erasure and balanced framing. The prior mapping is retired.
+- `human-eyes/SKILL.md` product boundary and `human-eyes/references/process.md`: reports constructions and editing issues without classifying authorship or inventing personal detail.
+- `dev/evals/tests/test_judgement_json.py`: confirms #41 is a registered composite, context-warning agent assessment with academic and student-essay branches; it does not validate source-specific recall, specificity, or thresholds.
 
 ## Associated hypotheses
-- H12 genre-aware threshold calibration
+
+- H12, genre-aware threshold calibration: directly relevant because the paper's comparison is specific to argumentative academic/student essays and warns that genre changes engagement rates.
+- H25, model-family versus generic-AI residue: relevant because the paper uses an underspecified "ChatGPT 4.0" label and omits generation date/build/settings, preventing transfer to current or generic model claims.
+- Proposed source-bound evaluation question: do the five engagement categories and their functional subtypes separate matched current-model and human argumentative essays after controlling topic, prompt, length, proficiency, and deliberate rhetorical choices?
 
 ## Questions / follow-up
-- Should engagement-marker depletion become a named student/academic subpattern?
-- Does the full paper list exact marker categories usable for examples?
+
+- Obtain lawful Version of Record full-text access or an author correction to determine whether the 499-versus-799 student reader-mention conflict was repaired in publication.
+- Obtain the generation date, exact model build/API surface, sampling settings, complete prompt set, outputs, and topic-level counts before any replication or current-model claim.
+- If Mae wants to change #41, first approve a matched, source-bound evaluation covering legitimate low-engagement essays, quoted questions, non-engaging parentheses, non-addressee modals, and deliberately interactive human and model prose.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | DOI 10.1177/07410883251328311; prior library snapshot with no recorded digest field | `snapshots/archive/jiang-hyland-engagement-markers/2026-05-05-ce48e0ac.md` | 2026-05-05 | `ce48e0ac5932c1ba4350be5d45a46e58ed763b02cb526cf2046494de52dd0d87` |
+| current | DOI 10.1177/07410883251328311; UEA eprint 97952; accepted-manuscript DOCX SHA-256 74c25cbd1df63d6f4ecc6cfc29cf134b7692036b0684fe5f77f6b1e3e945d3b1 | `snapshots/jiang-hyland-engagement-markers.md` | 2026-07-15 | `c2eef38f5867353fe9e3918af17c3a2af3a58ae37725722389374a71f9174afc` |
+
+The prior card and manifest recorded no snapshot digest, so no declared prior SHA-256 existed to verify. Before replacement, the exact on-disk bytes were hashed as `ce48e0ac5932c1ba4350be5d45a46e58ed763b02cb526cf2046494de52dd0d87`, copied unchanged to the archive path above, and byte-compared with the prior snapshot. The refreshed source route returned the same accepted-manuscript work. The substantive extraction adds the two DOCX footnotes omitted previously; the record adds current provenance, full structure checks, claim boundaries, project comparison, and review fields.
+
+## Decision history
+
+- The 2026-05-05 legacy card had no stable claim IDs, user-decision fields, implementation statuses, or recorded product approval, so there are no approved or implemented decisions to preserve.
+- The legacy association with #37 neutrality collapse is superseded as a source mapping because engagement markers measure overt reader alignment rather than whether a draft's stance was flattened. `pattern-opportunities.md` already records that removal. No #37 product behavior changed in this refresh.
+- The existing #41 academic engagement-marker mapping remains current but is reopened as claims C03-C12 and C17 so Mae can decide whether to keep it as contextual guidance or commission source-bound evaluation. The shared `pattern-opportunities.md` wording that also names the student branch needs serial correction because only the academic sub-record implements this prompt.
+
+## Project coverage
+
+This is the authoritative review table. Every recommendation remains a pending decision for Mae; this refresh makes no product change.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: The study compares 145 "ChatGPT 4.0" argumentative essays with 145 second-year British university student LOCNESS essays across eight named topic families; the reported corpora contain 72,819 and 78,060 tokens. | Direct corpus-method report. English argumentative essays, about 500 words requested for generated texts; the formal-style LOCNESS essays lack references. Generation date, exact build, settings, complete prompts, outputs, and topic-stratified results are absent. | H12 and H25 are partly covered as open hypotheses; source metadata now records the model/genre limits. | The live #41 prompt does not expose this source's dated model, prompt, corpus, or length boundary. Because the comparator essays lack references, this study cannot validate #41's citation-checking items. | Adopt as source metadata only; require these factors in any future #41 evaluation and verify with a source-bound protocol before product changes. | pending | not started |
+| C02: The authors searched about 100 items in five engagement categories, manually filtered concordances for reader-directed function, normalized per 1,000 words, used LL and %DIFF, and report 97% agreement on an independently coded random 10% sample. | Direct method. Manual filtering rejects non-addressee modals and non-aside interjections; disagreements were discussed. The sampling unit for the 10% and blinding are not further reported. | #41 is partly covered as an agent assessment, which can make functional judgments; `test_judgement_json.py` confirms the registry contract but not source-specific measurement validity. | The project has no implemented feature inventory, annotation protocol, or reliability test for this source's taxonomy. | Test-adapt only if Mae commissions evaluation: preserve functional annotation and agreement checks rather than converting the appendix into bare lexical matches. | pending | not started |
+| C03: Total engagement is 393 cases or 5.40 per 1,000 words in ChatGPT versus 1,326 or 16.99 in students, with LL 471.98, %DIFF 68.23, and p below .001. | Direct aggregate comparison. The paper calls the difference distinctive but explicitly says more devices do not necessarily mean better texts. No document classifier, interval, or topic-stratified result is reported. | #41's academic watchlist is partly covered because it asks about depleted engagement in argumentative essays. It has no numeric threshold, which is appropriate at present. | The source does not validate a universal density cutoff or current-model transfer. | Keep #41 contextual; run matched current-model, topic-, length-, and genre-controlled evaluation before considering a threshold or severity change. | pending | not started |
+| C04: ChatGPT's engagement inventory has similar directive shares, a larger share of knowledge appeals, and much smaller shares of questions and asides; category SD and dispersion values are generally narrower. The reported reader-mention share is excluded pending correction. | Direct descriptive table evidence. Shares are within each corpus's unequal total. The conflicting student reader count invalidates that category's composition comparison, and the personal-aside DP of 0.30 conflicts with zero raw, normalized, and SD values. Smaller dispersion is interpreted as less variation but is not tested as a document rule. | #41 is partly covered for questions, reader engagement, and asides; H12 is adjacent but open. | The live assessment does not distinguish composition from total frequency or measure dispersion. Reader-mention composition and personal-aside DP are unsafe without clarification. | Test-adapt only the non-conflicting category profile as comparative evaluation dimensions; exclude reader-mention composition and personal-aside DP pending correction, and do not add absence rules or a composite score without matched controls. | pending | not started |
+| C05: Reader mentions are reported as 160 or 2.20 per 1,000 words for ChatGPT and 499 or 6.39 for students; both groups favor inclusive `we/our/us`, while no ChatGPT example used rhetorical generic `you`. | Direct result with a material conflict: the subtype table's student counts are 721 plus 78, totaling 799 rather than 499. ChatGPT's 152 plus 8 equals 160. | #41 is partly covered through reader address and reader-engagement wording. | The exact student subtotal and rate cannot be treated as settled; #41 does not distinguish inclusive versus second-person function. | Record the qualitative reader-address finding but do not reuse the conflicting student count; seek a Version of Record correction before quantitative use. | pending | not started |
+| C06: Questions occur 6 times in ChatGPT and 134 times in students, or 0.08 versus 1.72 per 1,000 words; student examples often combine questions with inclusive `we`. | Direct measured category and examples. Function was manually checked. The cited claim that ChatGPT fabricates questions comes from Curry et al., not this corpus. | #41 is fully covered at the conceptual manual-review level through its explicit depleted-question watchlist. | No current-model replication, density baseline, quote handling, or legitimate no-question control exists. | Retain the #41 question prompt; test-adapt with genre, quotation, deliberate-use, and low-engagement human controls before changing behavior. | pending | not started |
+| C07: Shared-knowledge appeals occur at 1.28 per 1,000 words in ChatGPT and 1.59 in students, but form 23.66% versus 9.35% of each engagement inventory; 98.92% of ChatGPT appeals concern tradition/typicality and none are coded as logical reasoning. | Direct distribution and manual functional categories. The authors' claims about regurgitation and higher-order thinking are interpretations, not tested mechanisms. | Not covered in #41 as a distinct functional subtype; #7 vocabulary checks do not measure rhetorical function and are not a match. | A word list would confuse common factual language with reader-directed sharedness and would miss function. | Test-adapt only as a manually annotated comparison dimension; do not promote appendix words to a lexical blacklist or authorship cue. | pending | not started |
+| C08: Directives occur at 1.84 per 1,000 words in ChatGPT and 6.12 in students, but make up similar shares; ChatGPT uses obligation modals and adjective-plus-infinitive forms, with zero `let us/let's` and imperative cases in this corpus. | Direct category and subtype result. Manual filtering removed non-addressee modals, so surface modal counts alone are insufficient. | Not covered as a directive subtype in #41. The agent assessment could reason about function, but its prompt does not ask for this distinction. | No matched controls or functional annotation contract exists for legitimate directives and non-addressee modals. | Test-adapt with functional annotations if #41 is evaluated; do not add a modal or imperative regex from this source. | pending | not started |
+| C09: Personal asides occur 0 times in ChatGPT and 91 times or 1.17 per 1,000 words in students; the source examples are parenthetical comments that add reader-oriented personal commentary. | Direct null result in this corpus plus functional examples. The claimed reason that model design prioritizes coherence and concision is interpretation. | #41 is fully covered at the conceptual manual-review level because the generated catalogue explicitly names personal asides. | The live prompt has no functional boundary between an aside and ordinary parentheses, and adding asides can invent personality or facts. | Retain as contextual review evidence; test-adapt with parenthetical controls and never require a rewrite to manufacture a personal aside. | pending | not started |
+| C10: The authors were impressed by the generated essays' extended coherence, grammaticality, and logical sequencing, and warn that engagement quantity does not itself establish quality. | Direct author observation and qualification, not a scored quality comparison. It counters a one-directional deficit reading. | The #41 context-warning severity and the product's no-authorship boundary are partly covered; this specific counterevidence is absent from the live prompt. | A depletion finding could be misread as a quality or provenance verdict. | Adopt the qualification in source mapping and evaluation reports; make no new check. | pending | not started |
+| C11: Both corpora reportedly use more engagement than research articles in cited work; the authors say genre constraints, student expertise, culture, L1, and proficiency can affect engagement, students may overuse it, and the chosen interactional feature is one the program might be expected to handle poorly. | Mixed evidence: the current study directly compares its corpora and states the feature-selection limitation, while cross-genre and writer-background claims rely on cited studies. No within-study stratification tests these moderators. | H12 is partly covered as an open genre-calibration hypothesis; #41 already routes by broad genre. | The live assessment has no register baseline and cannot infer depletion from absence alone. The selected-feature limitation constrains broader claims about model writing ability. | Adopt as a scope warning and test-adapt within matched register; do not transfer the observed rates to research articles, other students, languages, genres, or general model quality. | pending | not started |
+| C12: The prompt was iteratively refined and specified role, context, rules, persuasive style, topic, and length; the authors acknowledge without testing that `argumentative` and `persuasive` may have altered the feature mix. | Direct method and limitation. The full prompts, revision history, generation date, build, settings, and rerun variance are missing. | H25 is partly covered as an open model/version/prompt-drift hypothesis; the live #41 assessment records none of these inputs. | Prompt sensitivity prevents a generic "ChatGPT" inference from this one generation setup. | Adopt the provenance warning; require prompt/build/date/settings and multiple runs in any replication before product decisions. | pending | not started |
+| C13: The paper attributes reduced engagement and absent asides to training data, statistical generation, generic audience modeling, and a preference for coherence and formality. | Author interpretation plus cited context. The study manipulates neither training data nor algorithm and does not test causal mechanisms or audience representation. | Source-ingest evidence discipline is fully covered in requiring direct versus interpreted evidence to remain separate; no product mechanism depends on this source. | The legacy card repeated a causal framing without marking it as interpretation. | Do not adopt the causal account as established fact; retain it only as the authors' interpretation and require direct mechanistic evidence for any future claim. | pending | not started |
+| C14: The authors recommend explicit teaching of engagement strategies, comparing AI and student texts, and asking students to add personalized and context-appropriate rhetorical features to AI drafts. | Author pedagogical proposal. The study does not evaluate learning outcomes, revision quality, or the intervention. | Not covered in product behavior; `references/process.md` protects source facts and prohibits invented personal detail, which constrains any adaptation. | A literal "add personalization" instruction could fabricate experience, personality, or reader claims. | Test-adapt only as optional, source-bound classroom guidance with closed-source and no-invention safeguards; do not implement without Mae's decision. | pending | not started |
+| C15: Aggregate engagement differences do not validate a document-level authorship detector, a probability, or a rule that one absent marker identifies AI use. | Project inference from the study design: no classifier, confusion matrix, threshold, held-out evaluation, or single-document analysis is reported. The authors also concede that the chosen interactional feature is one the program might be expected to handle poorly, limiting broader inference. | `human-eyes/SKILL.md` is fully covered: it identifies unwanted constructions and never classifies authorship; `references/process.md` repeats the boundary. | Root/source prose can still encourage "tell" readings if the aggregate and selected-feature boundaries are omitted. | Adopt the explicit no-authorship, no-single-marker, and selected-feature boundaries in this source record; no product change. | pending | not started |
+| C16: Claims about detector unreliability, prior involvement/stance findings, ChatGPT question fabrication, higher-order thinking, and engagement in other academic genres come from cited works rather than this study's data. | Indirect evidence. The accepted manuscript names the upstream sources, but this refresh did not ingest or validate each one as part of Jiang and Hyland's direct record. | Source-ingest policy is partly covered because it requires separate direct review before cited evidence drives a recommendation. | Treating literature-review statements as direct results would overstate this source. | Do not promote inherited claims from this card; review each upstream source separately if it becomes decision-bearing. | pending | not started |
+| C17: The accepted manuscript reports 499 student reader mentions in the overall table but 799 in its subtype table; gives ChatGPT personal asides raw 0, normalized 0.00, SD 0.00, but DP 0.30; duplicates the Koubaa reference block after the corpus table; says ChatGPT texts contained the engagement categories despite zero asides; and labels two early tables as Table 1. | Direct source-integrity findings from all six DOCX tables, nearby body text, references, and conclusion. The count and DP conflicts are material; the duplicate, wording, and numbering conflicts are provenance and interpretation cautions. | #41's reference-consistency scope is partly covered for the duplicated citation block; the other anomalies were not covered before this refresh. The legacy snapshot preserved them but the card did not surface them. | Quantitative reuse could silently choose incompatible values, and a source-integrity scan could miss a duplicate citation block. | Record all conflicts, exclude the disputed count/share/DP values, and seek lawful Version of Record or author clarification before correction. | pending | not started |
+
+## Recommendations
+
+- C01: Adopt as source metadata only; require model, prompt, date, setting, genre, length, and topic controls in future evaluation.
+- C02: Test-adapt the functional annotation method only if evaluation is approved; preserve manual filtering and reviewer agreement.
+- C03: Keep #41 contextual and require matched current-model evaluation before any threshold or severity change.
+- C04: Test-adapt only non-conflicting category composition and dispersion values; exclude reader-mention composition and personal-aside DP pending correction.
+- C05: Record the reader-mention table conflict and do not reuse the exact student subtotal without correction.
+- C06: Retain the current #41 question prompt and test it with genre, quotation, deliberate-use, and no-question controls.
+- C07: Test shared-knowledge functions manually; do not convert appendix terms into a word blacklist.
+- C08: Test directive functions with non-addressee controls; do not create a modal or imperative regex from this source.
+- C09: Retain personal-aside depletion as contextual evidence; never manufacture an aside during rewriting.
+- C10: Adopt the source's coherence and no-quality-inference qualification in evidence reporting; make no check.
+- C11: Adopt the genre and writer-population scope warning and evaluate only within matched register.
+- C12: Adopt the prompt/build/date provenance warning and require reproducible generation settings for replication.
+- C13: Do not adopt the paper's causal mechanism as established; preserve it as author interpretation.
+- C14: Test-adapt the pedagogical proposal only with closed-source, no-invention safeguards and Mae's approval.
+- C15: Adopt the explicit aggregate-only, no-authorship boundary in this source record; make no product change.
+- C16: Do not promote cited claims until the relevant upstream source receives its own direct review.
+- C17: Record the count, DP, duplicated-reference, wording, and table-number conflicts; seek Version of Record or author clarification before correction.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending; no product change was requested or made.
+- C02: not applicable - pending; no product change was requested or made.
+- C03: not applicable - pending; no product change was requested or made.
+- C04: not applicable - pending; no product change was requested or made.
+- C05: not applicable - pending; no product change was requested or made.
+- C06: not applicable - pending; no product change was requested or made.
+- C07: not applicable - pending; no product change was requested or made.
+- C08: not applicable - pending; no product change was requested or made.
+- C09: not applicable - pending; no product change was requested or made.
+- C10: not applicable - pending; no product change was requested or made.
+- C11: not applicable - pending; no product change was requested or made.
+- C12: not applicable - pending; no product change was requested or made.
+- C13: not applicable - pending; no product change was requested or made.
+- C14: not applicable - pending; no product change was requested or made.
+- C15: not applicable - pending; no product change was requested or made.
+- C16: not applicable - pending; no product change was requested or made.
+- C17: not applicable - pending; no product change was requested or made.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `/root/jiang_hyland_reviewer`; focused re-check by the same reviewer. Backup reviewer `/root/jiang_hyland_reviewer_2` was interrupted before reporting and contributed no findings or verdict.
+- **Findings resolved:** five: corrected six-table logical row count from 79 to 32 and propagated the new snapshot digest; excluded the conflicting reader-mention composition and personal-aside DP from C04 adaptation; separated live academic #41 coverage from the student branch and identified both shared-index corrections; added the no-references comparator and selected-feature limitations; added the personal-aside DP, duplicated Koubaa block, conclusion wording, and duplicate table-number anomalies to C17.
+- **Unresolved findings:** none

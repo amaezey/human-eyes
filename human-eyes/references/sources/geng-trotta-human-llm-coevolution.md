@@ -1,44 +1,175 @@
 # Geng and Trotta: Human-LLM Coevolution
+
 ## Metadata
+
 - **URL:** https://aclanthology.org/2025.findings-acl.657/
 - **Author / owner:** Mingmeng Geng and Roberto Trotta
-- **Published:** 2025-07
-- **Extracted:** 2026-05-05
-- **Source type:** Academic empirical research
-- **Evidence tier:** Peer-reviewed / academic empirical
-- **Extraction status:** reviewed from saved full-text ACL Anthology PDF snapshot
+- **Published:** July 2025; Findings of ACL conference dates 2025-07-27 to 2025-08-01
+- **Retrieved:** 2026-07-15
+- **Extracted:** 2026-07-15
+- **Source type:** peer-reviewed conference paper with academic empirical and exploratory analyses
+- **Evidence tier:** peer-reviewed / academic empirical
+- **Review mode:** update
+- **Stable identifier:** DOI 10.18653/v1/2025.findings-acl.657; ACL Anthology ID 2025.findings-acl.657
+- **Version / revision:** final Findings of ACL 2025 proceedings PDF as retrieved 2026-07-15; prior record retrieved 2026-05-05 from the same ACL PDF URL without a recorded stable identifier or digest
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/geng-trotta-human-llm-coevolution.md`
+- **Extraction method:** official eight-page ACL Anthology PDF downloaded directly; embedded text checked with Poppler `pdftotext -layout`; structure inspected with `pdfinfo` and `pdfimages -list`; pages 1, 4, and 8 rendered with `pdftoppm` and visually compared; complete prior text body compared with the fresh extraction
+- **Snapshot SHA-256:** `592b4e360ec6c97c5ac87d134f843bca2b5bcd1b0c361ba53322968e7bc0987f`
+- **Model / corpus scope:** 1,294,653 arXiv abstracts submitted from January 2018 through December 2024, using Kaggle arXiv metadata version 214 and monthly frequencies normalised per 10,000 abstracts; a separate WithdrarXiv comparison of more than 14,000 withdrawn papers through September 2024; and the first 1,000 arXiv papers submitted in each year from 2018 through 2025, revised by GPT-4o-mini with temperature 1 and top-p 0.9 under two prompts and assessed with Binoculars. Computer-science and other arXiv categories are compared by assigning each paper to its first listed arXiv category, including for cross-listed papers. The paper reports no language filter; the analysed word examples and prompts are English.
+- **Access limitations:** none for the paper. The PDF plots are raster images, so their curves are preserved in the authoritative PDF rather than reproduced as numeric series in the Markdown; all plot legends, axes, captions, and source-discussed trends were visually reviewed. The ACL page exposed no supplement or checklist.
 
 ## Summary
-Analyses arXiv abstracts and reports coevolution between LLM outputs and academic authors' behaviour. The saved full text says several public ChatGPT-overuse tells dropped after public attention, while other favoured words kept increasing, and it identifies declining "is" and "are" frequency as a subtle LLM-impact example.
+
+This eight-page Findings of ACL 2025 paper combines longitudinal word-frequency analysis with a small detector experiment. In 1,294,653 arXiv abstracts, the average frequencies of two Liang et al. word groups, covering ten list entries and nine distinct words, rose sharply and then declined after March or April 2024; several individual trajectories and the separately attributed `delve` trajectory also declined, while `versatile` continued upward. Several common or less-publicised words continued to rise, while `is` and `are` continued to fall. The authors interpret this as human selection and editing of LLM output, but explicitly acknowledge that the study is correlational and does not establish causality. In a separate GPT-4o-mini experiment, prompt-based avoidance reduced but did not eliminate selected words, and Binoculars scores did not significantly separate original abstracts from fully revised abstracts on average. For human-eyes, the paper supports dated, register-specific, aggregate vocabulary evidence and prompt-aware evaluation. It does not validate document-level authorship inference, a stable word blacklist, the current three-word paragraph threshold, or pattern #8's substitute-construction detector. The last point reverses the prior card's loose mapping: falling corpus frequency of `is` and `are` is not direct evidence that `serves as`, `stands as`, `features`, or the other live #8 constructions replace those copulas.
 
 ## Main insights
-- The source supports time-sensitive vocabulary drift: once a tell becomes public, users may select around it or edit it out.
-- It supports continued aggregate word-frequency analysis, but with attention to already-common words and words that decrease because LLMs disfavor them.
-- It makes detection harder in real-world settings because humans and LLMs adapt together.
+
+- The average frequencies of two Liang et al. groups, comprising ten entries but nine distinct words, rose sharply after ChatGPT and then declined after March or April 2024, when the authors say the prior studies drew attention to them: `realm`, `pivotal`, `intricate`, `showcasing`, `commendable`, `innovative`, `meticulous`, `notable`, and `versatile`. The individual trajectories are not uniform: several decline, but `versatile` continues upward in Figure 2b. The paper discusses `delve` as a separately reported decline from Leiter et al. and includes it in its own plots. The aggregate timing is direct; public exposure and its effect are not measured.
+- Other words did not share that decline. `significant` and `additionally` kept rising, and the paper's prior eight-word group was `significant`, `crucial`, `effectively`, `additionally`, `comprehensive`, `enhance`, `capabilities`, and `valuable`.
+- The authors' public-attention explanation is plausible timing-based interpretation, not causal proof. Their own Limitations section says the analysis identifies correlations and suggests questionnaires for causal study.
+- Withdrawn-paper comparisons do not produce a strong counterfactual: `intricate` is higher in withdrawn abstracts, but the reported difference is not large, and the smaller withdrawn set is smoothed with a 12-month rolling average.
+- `significant` and `additionally` rise in computer-science and non-computer-science abstracts and across the AI, computation-and-language, and computer-vision subcategories. The paper therefore treats the change as broader than one research topic, but does not rule out all discipline or publication-process confounds.
+- GPT-4o-mini P1 revision increased certain displayed word frequencies, not every trajectory. Figure 5 shows later P1 `delve` below the original series. The authors state that P2 reduced targeted terms without eliminating them, but Figure 5 directly plots only `intricate` among P2's four prohibited words. The experiment therefore shows prompt-sensitive residue without establishing a uniform direction for every selected or prohibited word.
+- Binoculars produced no average time trend on the original abstracts and no significant average score change between original and fully revised abstracts. Prompt choice also changed detector results.
+- The falling frequency of `is` and `are` is an aggregate negative-frequency observation and an author-attributed example of subtle LLM influence. It is not a measured sentence-level substitution pathway and does not validate the current #8 regex family.
+- The paper recommends common-word frequency for measuring change across very large publication corpora while saying that this approach is less suitable for precise detection of short texts.
+- The study is narrow: one short paper, one detector, one generated-model condition, word-frequency features, arXiv abstracts, limited withdrawn-paper comparison, and observational correlations without causal identification.
 
 ## Evidence and claims to extract
-- Corpus described in the abstract: arXiv paper abstracts.
-- Direct examples: "delve" drops after being singled out in early 2024; "significant" keeps increasing.
-- Copula evidence: the saved full text states that declining "is" and "are" frequency in arXiv abstracts is an example of a subtle and increasing LLM-impact trend.
-- Stated implication: human selection and modification of LLM outputs introduces additional challenges for machine-text detection.
+
+- **Direct source reviewed:** final Findings of ACL 2025 proceedings paper, DOI 10.18653/v1/2025.findings-acl.657, all eight pages including Figures 1-8, Table 1, Limitations, references, and Appendix A. The authoritative PDF is preserved at `snapshots/attachments/geng-trotta-human-llm-coevolution-acl-2025.pdf`, SHA-256 `3050cd0278bcbde239bca780fad71db8afdcc4eac623d985d53889c24e4d4893`.
+- **Method and sample:** Kaggle arXiv metadata version 214 supplies 1,294,653 abstracts from January 2018 to December 2024, analysed monthly and normalised per 10,000 abstracts. WithdrarXiv supplies more than 14,000 withdrawn papers through September 2024, plotted as 12-month rolling averages. The detector experiment uses the first 1,000 arXiv papers submitted in each year from 2018 through 2025, GPT-4o-mini at temperature 1 and top-p 0.9, prompt P1 (`Revise the following sentences`) and prompt P2 (the same instruction with four prohibited words), and Binoculars scores.
+- **Direct versus cited evidence:** C01-C11, C13-C14, C18, and C20 are direct dataset descriptions, figures, experiments, source interpretations tied to direct results, or explicit limitations. C12 is an author interpretation from direct timing evidence. C15 is an author interpretation informed by the paper's direct detector result and cited mixed-text work. C19 is the authors' forecast and interpretation, partly supported by cited work but not an inherited empirical result. C16 and C17 are broader detector, Grammarly, and experienced-user claims inherited from cited studies; they are recorded as indirect and are not used as independent product evidence.
+- **Important limits and counterexamples:** the paper reports correlations rather than causality; gives no confidence intervals, uncertainty bands, statistical model, or multiple-comparison procedure for the longitudinal vocabulary curves; compares only one detector and one model condition; smooths a much smaller withdrawn set; supplies no paper-level LLM-use labels or human baseline matched on topic and publication process; and says word-frequency analysis is unsuitable for precise short-text detection. Some highlighted words decline, others keep rising, avoidance prompts do not eliminate terms, withdrawn differences are small, detector score changes are not significant, and all causal or intentional-evasion explanations remain author interpretations.
 
 ## Skill-use audit
-- **Good use:** Cite as evidence that academic vocabulary signals are temporally unstable and need extraction dates, source dates, and register-aware baselines.
-- **Misuse / overclaim:** Do not treat it as a stable list of bad words. Its central point is that visible tells can decay or mutate.
-- **Supported scope:** #8 copula avoidance is supported for arXiv-abstract corpus frequency drift, not as a universal sentence-level rule.
-- **Underused evidence:** Public attention can make a tell fade or invert, so each vocabulary source needs corpus date range and extraction date in addition to publication date.
-- **Patterns left on the table:** Add a rule-note concept for "publicly known tells may invert or fade"; use it to prevent stale blacklist behaviour.
+
+- **Good use:** support H24's dated, register-specific, aggregate vocabulary-density work; require corpus dates, model and prompt details, trend direction, and public-attention context; preserve detector nulls and source limitations; separate corpus monitoring from document review.
+- **Misuse / overclaim:** do not use one occurrence, three words in a paragraph, falling `is` or `are`, or the Binoculars experiment as proof of authorship. Do not convert the timing association into a proven evasion mechanism. Do not cite this paper as validation of #8's elaborate substitute constructions.
+- **Unsupported use:** the paper does not validate the live #7 token list, its three-per-paragraph threshold, the overall-signal-stacking threshold, any severity, any rewrite replacement, a universal academic-writing direction, a cross-model detector result, or a causal claim that public discussion made authors edit specific words.
+- **Underused evidence:** the project records H24 but the current #7 documentation still makes a static, strong threshold claim. The runtime has no date, register, corpus, model, prompt, increase-versus-decrease, or public-attention fields. The detector null and explicit P1/P2 prompt sensitivity are also absent from ordinary evaluation reporting.
+- **Patterns left on the table:** common-word decreases as aggregate evidence, temporal inversion after a tell becomes public, category and subcategory comparisons, withdrawn-paper controls, prompt-conditioned word suppression, non-elimination under avoidance, and detector nulls on fully revised text.
 
 ## Matched patterns / rules
-- #7 AI vocabulary words and phrases
-- academic-register context
-- detector limitation / model-drift context
-- #8 copula avoidance in arXiv-abstract corpus frequency drift
+
+- #7 `no-ai-vocabulary-clustering` in `human-eyes/scripts/grade.py`: direct token coverage for seven of the nine distinct Liang words in the local list, plus eight of nine in the Kobak style list; separately, `delve` appears in both lists; five of the paper's eight Geng-Trotta words are in the local list and all eight are in the Kobak style list; no temporal or register model
+- `overall-signal-stacking` and `vocabulary_signal_stacking_profile` in `human-eyes/scripts/grade.py`: aggregate vocabulary points, but not longitudinal corpus evidence or the paper's methods
+- #8 `no-copula-avoidance` in `human-eyes/scripts/grade.py`: catches `serves as`, `stands as`, `functions as`, `marks a`, `represents a`, `boasts`, and `features`; it does not measure a corpus-level fall in `is` or `are`
+- #41 academic genre assessment in `human-eyes/scripts/judgement.json`: checks source support and evidence quality, not temporal word-frequency change
+- H1 continuous calibrated register-distance score, H3 drop detection framing, H12 genre-aware threshold calibration, H24 register-specific vocabulary density, and H25 model-family versus generic-AI residue in `dev/hypotheses.md`
+- complete-audit and cross-version requirements in `dev/TESTING.md`; non-authorship and source-preservation boundaries in `human-eyes/references/process.md`
 
 ## Associated hypotheses
-- H1 calibrated register-distance score
+
+- H1 continuous calibrated register-distance score per pattern
+- H3 drop detection framing entirely
 - H12 genre-aware threshold calibration
+- H24 register-specific vocabulary density
+- H25 model-family versus generic-AI residue
+- Proposed H24 evaluation extension: treat public-tell date, corpus window, trend direction, category, model, and prompt as required strata before vocabulary evidence affects a user-facing finding
+- Proposed detector-evaluation question: do source-bound full Audits remain useful on mixed or fully revised text when opaque detector scores do not separate the conditions?
 
 ## Questions / follow-up
-- Should rule evidence store the date range of the corpus, not just source publication date?
-- Does the full paper list disfavoured words that matter for negative evidence or baseline shifts?
+
+- Can the authors' code or exact monthly counts be obtained for uncertainty estimates and reproducibility? The ACL page exposes no supplement, and no separate repository is linked in the paper.
+- Does the post-April decline remain after category, topic, author, venue, abstract revision, and publication-delay controls?
+- Does avoidance persist across models, prompt families, languages, genres, and repeated generations?
+- Should the current #7 wording and threshold remain strong while H24 is still open and this source shows signal inversion?
+- Should the remaining inaccurate #8 mappings in `pattern-opportunities.md` and the root `README.md` be retired or rewritten as aggregate H24 evidence? The companion `geng-trotta-transforming-academic-style.md` card now correctly rejects #8 construction-level validation.
+- Direct ingestion of the paper's cited studies, Kaggle metadata, WithdrarXiv dataset, or Binoculars implementation remains separate work and requires its own source boundary.
+
+## Update provenance
+
+The prior card and manifest did not record a snapshot digest, so there was no recorded SHA-256 to verify. Before replacement, the exact prior snapshot bytes were hashed as `bc4457d832118978a568660ad00fa353463ba280b1fdecbdadfe1ea28e28fe2e`, copied to the archive path below, and verified byte-for-byte with `cmp`. The source identity is unchanged; the current record adds complete provenance, an authoritative PDF attachment, extraction verification, claim-keyed review, and corrected project mappings. The prior and current full-text bodies are substantively identical; a fresh `pdftotext -layout` comparison differed only in title indentation, blank lines, and PDF page-break control characters.
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | none recorded; ACL PDF URL for 2025.findings-acl.657 | `snapshots/archive/geng-trotta-human-llm-coevolution/2026-05-05-bc4457d83211.md` | 2026-05-05 | `bc4457d832118978a568660ad00fa353463ba280b1fdecbdadfe1ea28e28fe2e` |
+| current | DOI 10.18653/v1/2025.findings-acl.657; ACL Anthology ID 2025.findings-acl.657 | `snapshots/geng-trotta-human-llm-coevolution.md` | 2026-07-15 | `592b4e360ec6c97c5ac87d134f843bca2b5bcd1b0c361ba53322968e7bc0987f` |
+
+## Decision history
+
+- The prior record had no claim IDs, user decisions, implementation statuses, or evaluation entries. Its unkeyed #7, H1, and H12 mappings are reopened as C02-C04, C06-C07, C09, C12-C15, and C20 with `pending` / `not started` states.
+- The prior unkeyed #8 mapping is retired from this card's supported mappings. No user decision or implementation was recorded. C13 now records that falling aggregate frequency of `is` and `are` does not establish the live substitute-construction mechanism; the correction remains pending Mae's decision and requires no product change.
+
+## Project coverage
+
+This is the authoritative review table. Every row separates source evidence, current implementation, gaps, and pending decisions.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: The longitudinal corpus contains 1,294,653 arXiv abstracts from January 2018 through December 2024, using Kaggle metadata version 214, monthly counts normalised per 10,000 abstracts. | Direct Data-section method and Figure 2 caption. Lowest and highest monthly submission counts are 10,593 and 24,226. No uncertainty model or paper-level LLM-use labels are supplied. | Source metadata practice and H24; **partly covered** as documentation, not an implemented longitudinal analysis. | The runtime has no corpus-window, category, date, or trend representation and cannot reproduce the study. | Record the scope and require corpus date, register, source version, normalisation, and uncertainty for future vocabulary evidence. No product change. | pending | not started |
+| C02: The four Liang academic-paper entries `realm`, `pivotal`, `intricate`, and `showcasing` and six peer-review entries `commendable`, `innovative`, `meticulous`, `intricate`, `notable`, and `versatile` form two groups whose average frequencies rise sharply and then decline after March or April 2024. Because `intricate` appears in both groups, these are nine distinct words; their individual trajectories are not uniform, and `versatile` continues upward in Figure 2b. The paper discusses `delve` separately through Leiter et al. | Direct Figures 1-3 and Table 1. The source entries are inherited from Liang et al., while `delve` is separately attributed to Leiter et al. The ACL paper directly measures the group averages and individual arXiv trajectories but does not independently establish their original ChatGPT association. | #7 and Kobak vocabulary coverage; **partly covered**. Focused execution on the nine distinct Liang words makes #7 fail with seven local matches and finds eight Kobak style words; separately adding `delve` produces eight and nine. These artificial one-paragraph tests check token recognition only. | `versatile` is absent from both active lists, and no implementation models time, public attention, differing individual trajectories, corpus, or source directness. The three-word paragraph threshold is not evaluated by this paper. | Keep the grouped decline, individual counterexample, and separately attributed `delve` as dated aggregate H24 evidence. Do not add `versatile` or alter thresholds without matched register and time-sliced evaluation. | pending | not started |
+| C03: The paper's earlier eight-word group is `significant`, `crucial`, `effectively`, `additionally`, `comprehensive`, `enhance`, `capabilities`, and `valuable`; `significant` and `additionally` continue to rise after March 2024. | Direct Figures 1, 2d, 3a, and Table 1. The original association comes from Geng and Trotta 2024; this paper directly measures later trajectories. | #7 local list and Kobak list; **partly covered**. A focused token-recognition run finds five local matches and all eight Kobak style words. | Single `significant`, `effectively`, and `capabilities` occurrences are not local #7 tokens, and the runtime does not distinguish a continuing rise from a declining public tell. | Add this paper to H24's source mapping and evaluate increasing and decreasing vocabulary separately. Do not create a flat blacklist. | pending | not started |
+| C04: The two Liang groups' average frequencies, representing ten list entries but nine distinct words, begin declining after March or April 2024, while common or less-publicised words continue growing. | Direct longitudinal contrast. The explanation that attention changed author behaviour is an author interpretation rather than a measured intervention. Table 1 reports Google Scholar citation counts as of 2025-01-16, with 87 and 58 for the two Liang papers versus 11 for Geng and Trotta 2024, as a rough author-used attention proxy; it does not measure who saw the claims or changed writing. | H24 and source-date metadata in `pattern-opportunities.md`; **partly covered** as an open hypothesis. | Current #7 prose still says listed words are high-frequency AI vocabulary and applies a static strong threshold without tell-publication date or decay handling. | Use public-tell date, attention-proxy limits, and trend direction as H24 evaluation fields. Reconsider any static severity only after matched time-sliced evaluation. | pending | not started |
+| C05: In the smaller WithdrarXiv comparison, `intricate` is higher in withdrawn abstracts, but the difference is not large; other plotted withdrawn differences are also small. | Direct Figures 3a, 3b, 8b, 8c, and 8d with more than 14,000 withdrawn papers through September 2024, smoothed as 12-month rolling averages. Withdrawal is not a human-control or LLM-use label. | No matching control in the live project; **not covered**. | The comparison does not validate a document rule, and withdrawal status may reflect many unrelated processes. | Preserve this weak comparison and null-like result as a limit. Take no product action. | pending | not started |
+| C06: `significant` and `additionally` are more frequent in computer-science abstracts, but both also increase outside computer science and across AI, computation-and-language, and computer-vision subcategories. | Direct Figures 3c and 3d. Each paper, including a cross-listed paper, is assigned only to its first listed arXiv category; the paper does not report uncertainty or adjustments for topic, venue, or publication process. | H12 and H24; **partly covered** as register-calibration proposals. | No active category-aware vocabulary baseline exists, and first-category assignment is not a multi-category observation. | Require an explicit category-assignment rule and category/subcategory controls in any H24 evaluation; do not transfer computer-science rates to general prose. | pending | not started |
+| C07: The 2023-versus-2022 and Q1-2024-versus-January-2023-to-December-2024 ratios show topic words and cross-field outliers, with very few words such as `delve` and `showcasing` peaking specifically in Q1 2024. | Direct Figure 4 and surrounding analysis. Figure 4 includes only words occurring at least 20 times on average per 10,000 abstracts; its labelled points are exploratory outliers, not a validated reusable list. | H1, H12, and H24; **partly covered** as hypotheses only. | The project has no ratio analysis, frequency-eligibility threshold, outlier uncertainty, or topic-control pipeline. | Record the ratio design as a candidate H24 method. Require a declared candidate-frequency threshold, predeclared periods, topic controls, and uncertainty before use. | pending | not started |
+| C08: The detector experiment uses the first 1,000 arXiv papers submitted in each year from 2018 through 2025 and GPT-4o-mini at temperature 1, top-p 0.9. | Direct Section 4 method. The paper does not give API date, exact model snapshot, repeated generations, length changes, or year-by-year sample attrition. | `dev/TESTING.md` requires model, prompt, version, corpus, and cross-version provenance; **partly covered** as evaluation procedure. | The current ordinary corpus does not reproduce this longitudinal rewrite experiment. | Preserve the condition as narrow model-and-prompt evidence. Any reproduction needs an immutable model identifier, prompts, generation records, and paired bindings. | pending | not started |
+| C09: P1 revision increases certain displayed word frequencies rather than all of them. The authors state that P2's ban on `realm`, `pivotal`, `intricate`, and `showcasing` reduces targeted-word frequency without eliminating it. | Direct Figure 5 plus Section 4 author interpretation. The displayed series are `intricate`, `delve`, `significant`, and `additionally`; later P1 `delve` falls below the original series, and only `intricate` among P2's four prohibited words is plotted. No significance test is reported for these word-frequency differences. | #7 token recognition, H24, and H25; **partly covered**. | Current checks do not represent prompt-conditioned suppression, residual frequency, or avoidance efficacy. The figure does not directly verify all four prohibited-word trajectories. | Add prompt condition, displayed-word boundaries, and non-elimination as evaluation metadata. Do not turn suppression results into evasion instructions or token rules. | pending | not started |
+| C10: Binoculars scores on original abstracts do not change on average over time. | Direct Figure 6a author-reported null. Only one detector and this arXiv sample are tested. | H3 and the no-authorship boundary; **fully covered** as caution, not as a reproduced detector result. | Human-eyes is not Binoculars and cannot claim the same null. | Record the detector-specific null and take no product action. | pending | not started |
+| C11: Average Binoculars score changes between original and fully GPT-4o-mini-revised abstracts are not significant, and P1/P2 influence detector results. | Direct Figure 6 and prose, but no test statistic, p-value, effect interval, or paired distribution table is reported. | H3, H25, and `dev/TESTING.md` prompt/model provenance; **partly covered**. | The project has no mixed/full-rewrite detector robustness lane and no source-specific reproduction. | Preserve the null and prompt sensitivity. If Mae approves evaluation work, keep it separate from the ordinary human-eyes writing-pattern corpus and report paired uncertainty. | pending | not started |
+| C12: The authors suggest the early decline is mainly a response to the words' bad reputation rather than GPT-4o's May 2024 release because the decline starts earlier. | Timing evidence is direct; the behavioural and causal explanation is author interpretation. The Limitations section says causality remains unexplored. | H24 and H25; **partly covered** as drift concepts. | No questionnaire, author-use label, intervention, revision history, or causal design proves intention or mechanism. | Record as a hypothesis, not a causal finding. Require author or revision evidence before claiming intentional avoidance. | pending | not started |
+| C13: Falling `is` and `are` frequency is attributed to subtle and increasing LLM influence. | Direct Figures 1 and 8d plus author interpretation, repeated from Geng and Trotta 2024. No sentence-level replacement analysis is performed. | #8 `no-copula-avoidance`; **not covered**. Focused execution on `is are` passes #8, whose implementation instead finds elaborate constructions such as `serves as` and `features`. | The source does not contradict the runtime constructions; it challenges the previous card and `pattern-opportunities.md` evidence mapping that calls this paper confirmation of #8. It does not test those substitute constructions or show that their rise causes the copula decline. | Retire this paper's #8 confirmation. Keep the decrease as aggregate H24 evidence unless a separate direct construction study establishes substitution. | pending | not started |
+| C14: Common-word frequency may be more reliable for measuring LLM impact across a vast publication corpus, but is less suitable for precise detection of short texts. | Direct author conclusion, scoped to aggregate monitoring. It does not supply a document threshold or calibrated accuracy. | H1, H24, #7 aggregate stacking, and the non-authorship boundary; **partly covered**. | Runtime #7 still produces a strong paragraph-level warning, while the source's recommended use is corpus-level measurement. | Treat this paper as support for aggregate research, not current document severity. Evaluate any user-facing vocabulary result against register-matched human controls. | pending | not started |
+| C15: The authors say real academic text may mix human and machine writing and that accurate text-by-text detection is becoming harder, perhaps impossible. | Author interpretation informed by direct detector results and cited mixed-text work. No mixed-authorship ground-truth corpus is directly analysed here. | H3 and `human-eyes/references/process.md`; **fully covered** as a no-authorship product boundary. | No project gap requires a detector claim. | Retain inspectable writing-pattern reporting and no-authorship language. Do not add a mixed-text classifier. | pending | not started |
+| C16: Detector effectiveness depends on model and text type, some methods lack robustness, accuracy may be exaggerated, and real use exceeds binary classification. | Cited background from several studies, not directly established by this paper beyond the narrow Binoculars experiment. | H3, H12, H25, and `dev/TESTING.md`; **fully covered** as evaluation cautions. | The upstream studies need their own direct source review before their specific claims support changes. | Record as indirect context only; no product change from this row. | pending | not started |
+| C17: Grammarly may produce ChatGPT-like effects, and frequent ChatGPT users may distinguish generated text and therefore may be able to foil detectors. | Both are cited claims. The detector-evasion implication is the authors' inference, not a direct result of either experiment in this paper. | H3/H25 and source-directness rules; **fully covered** as a provenance boundary. | No direct Grammarly or experienced-user experiment is included here. | Do not promote these cited claims from this card. Review upstream sources separately if a decision depends on them. | pending | not started |
+| C18: The paper is short; tests one of many detectors; uses word frequencies rather than higher-level patterns; examines arXiv rather than other data sources; and identifies correlation rather than causality. | Explicit Limitations section. | Source-record gates and `dev/TESTING.md`; **fully covered** as required limitation reporting. | None in the source record once preserved. | Keep every conclusion bounded by these limits. No product action. | pending | not started |
+| C19: The authors predict long-term LLM influence on academic writing and say coevolution will increase detection difficulty. | Author interpretation and forecast, partly supported by cited work. It is not a measured long-term causal effect. | H3, H24, and H25; **partly covered** as strategic context. | The source ends in December 2024 and cannot establish later persistence or universal evolution. | Record the forecast as interpretation, not empirical prevalence or a product rationale. | pending | not started |
+| C20: Appendix Figure 8 adds `advancements`, `emphasizing`, `facilitated`, and `elucidating`; it also contrasts withdrawn-paper trajectories for `realm`, `pivotal`, `showcasing`, `crucial`, `effectively`, `comprehensive`, `is`, and `are`. | Direct appendix plots. These are examples and comparisons, not a complete vocabulary taxonomy or validated standalone rules. | Kobak style vocabulary contains all four first-panel words; local #7 recognises `emphasizing` and substring-matches `facilitate` within `facilitated`; **partly covered** as token inventory only. | Current local coverage misses `advancements` and `elucidating`, has no temporal direction, and substring matching does not establish semantic validity. | Preserve the appendix evidence. Do not expand the local list until matched, time-sliced, register-specific evaluation supports it. | pending | not started |
+
+## Recommendations
+
+- C01: Record the complete corpus method and require date, register, normalisation, and uncertainty metadata for future vocabulary evidence.
+- C02: Keep the Liang group averages, differing individual trajectories, and separately attributed `delve` as dated aggregate H24 evidence; do not add `versatile` or change #7 thresholds without evaluation.
+- C03: Add this ACL paper to H24's source mapping and evaluate increasing and decreasing words separately.
+- C04: Add public-tell date and trend direction to H24 evaluation; reconsider static severity only after time-sliced controls.
+- C05: Preserve the weak withdrawn-paper comparison and take no product action.
+- C06: Require an explicit category-assignment rule and category/subcategory controls in any H24 evaluation.
+- C07: Record the ratio design as a candidate aggregate method with a declared candidate-frequency threshold, predeclared periods, and topic controls.
+- C08: Preserve the GPT-4o-mini condition as narrow evaluation evidence and require immutable generation provenance for reproduction.
+- C09: Add prompt condition and non-elimination to evaluation metadata without publishing an evasion recipe.
+- C10: Record the detector-specific time-trend null and take no product action.
+- C11: Preserve the fully revised-text null and prompt sensitivity; any robustness lane requires separate approval and paired uncertainty.
+- C12: Record the public-attention explanation as a hypothesis, not a causal result.
+- C13: Retire this paper's #8 confirmation and keep the `is`/`are` decrease only as aggregate H24 evidence.
+- C14: Use the paper for corpus-level research context, not document-level vocabulary severity.
+- C15: Retain the no-authorship boundary and do not add a mixed-text classifier.
+- C16: Keep broader detector claims indirect until their upstream studies receive direct review.
+- C17: Do not promote the cited Grammarly or experienced-user claims from this source.
+- C18: Preserve the paper's explicit limitations in every downstream use; no product action.
+- C19: Record the long-term claim as an author forecast rather than measured prevalence.
+- C20: Preserve the appendix vocabulary examples without expanding the local list before matched evaluation.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending review; no product change implemented.
+- C02: not applicable - pending review; no product change implemented.
+- C03: not applicable - pending review; no product change implemented.
+- C04: not applicable - pending review; no product change implemented.
+- C05: not applicable - pending review; no product change implemented.
+- C06: not applicable - pending review; no product change implemented.
+- C07: not applicable - pending review; no product change implemented.
+- C08: not applicable - pending review; no product change implemented.
+- C09: not applicable - pending review; no product change implemented.
+- C10: not applicable - pending review; no product change implemented.
+- C11: not applicable - pending review; no product change implemented.
+- C12: not applicable - pending review; no product change implemented.
+- C13: not applicable - pending review; no product change implemented.
+- C14: not applicable - pending review; no product change implemented.
+- C15: not applicable - pending review; no product change implemented.
+- C16: not applicable - pending review; no product change implemented.
+- C17: not applicable - pending review; no product change implemented.
+- C18: not applicable - pending review; no product change implemented.
+- C19: not applicable - pending review; no product change implemented.
+- C20: not applicable - pending review; no product change implemented.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `/root/geng_trotta_reviewer_1`; fresh re-reviewers after material fixes: `/root/geng_trotta_reviewer_2`, `/root/geng_trotta_reviewer_3`, `/root/geng_trotta_reviewer_4`, `/root/geng_trotta_reviewer_5`, `/root/geng_trotta_reviewer_6`, and `/root/geng_trotta_reviewer_7`
+- **Reviewer isolation:** fresh source-dedicated agent; one source only; not reused
+- **Findings resolved:** 11 total across six review rounds: corrected the nine-distinct-word and `delve` counts, English-language scope, #8 runtime and live-project mappings, Liang-group and Table 1 attention boundaries, P1/P2 figure scope, direct/cited/interpretive categories, withdrawn-paper figure attribution, Figure 4 frequency-selection threshold, first-category assignment, and aggregate-versus-individual word trajectories including the `versatile` counterexample
+- **Unresolved findings:** none

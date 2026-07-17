@@ -1,5 +1,7 @@
 # Wikipedia: "Signs of AI writing"
 
+**Status:** Historical analysis through 2026-07-14; the contract-complete source card and snapshot now review main revision 1364308809 and companion revision 1364289488.
+
 **Source:** https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
 **Type:** Living field guide maintained by WikiProject AI Cleanup; combines editor observations, examples, practitioner reports, and research citations.
 **Baseline revision:** `1352608561`, 2026-05-05 06:04 UTC. The original extraction header said 2026-04-30, but the saved snapshot's permanent link resolves to this 5 May revision.
@@ -105,7 +107,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations:** `geng2` (Geng & Trotta — documented over 10% decrease in usage of "is"/"are" in academic writing in 2023).
 
-**Maps to evidence map:** #8 Copula avoidance.
+**Maps to evidence map:** H24 register-specific vocabulary density; Geng and Trotta support declining aggregate `is`/`are` frequency, not the live #8 replacement constructions.
 
 ---
 
@@ -372,7 +374,7 @@ These should become literal regression fixtures because they are direct interfac
 
 - Adds direct Wikipedia evidence rather than relying only on academic abstracts or generated examples.
 - Supports the rise of `Additionally` and `crucial` and strengthens #7.
-- Shows reduced `to be`/copular use in LLM processing and strengthens #8.
+- Shows reduced `to be`/copular use in LLM processing; this supports H24's decreasing-frequency evaluation but does not validate #8's replacement-construction regex.
 - Reports changes in noun rate, long-word rate, sentence length, parse depth, clause rate, pronoun rate, and corrected type-token ratio. This supports H22/H23 and provides new feature candidates.
 - Shows that lexical diversity can increase under LLM revision/generation and vary by model. This challenges #53's one-directional low-TTR claim.
 - Uses multiple model/task conditions, which directly supports H25's model-family metadata.

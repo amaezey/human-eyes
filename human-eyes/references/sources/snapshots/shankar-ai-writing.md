@@ -1,8 +1,19 @@
-Title: Writing in the Age of LLMs
+# Writing in the Age of LLMs
 
-URL Source: https://www.sh-reya.com/blog/ai-writing/
+- **Canonical URL:** https://www.sh-reya.com/blog/ai-writing/
+- **Alternate access URLs:**
+  - none
+- **Author / owner:** Shreya Shankar
+- **Publisher:** Shreya Shankar's personal website
+- **Published:** 2025-06-16
+- **Retrieved:** 2026-07-17
+- **Stable identifier:** none found
+- **Version / revision:** Canonical HTML served with HTTP ETag `"32e39a37ce87f6c27fbac72f4c69b43c"` and Last-Modified `Thu, 02 Jul 2026 09:13:29 GMT`
+- **Extraction method:** Direct canonical HTML downloaded with `curl` and parsed with Python 3 and Beautiful Soup 4.14.3; the prior Markdown article body was retained after complete current-HTML structure checks and a 2,142-token normalized word-sequence match.
+- **Full-text status:** complete
+- **Access and transformation notes:** HTTP 200 with no paywall, login, script-only shell, or bot challenge. Page navigation, site header, table of contents, and footer were omitted as non-substantive chrome. The article contained no inline links, images, tables, code blocks, notes, or references. The previously preserved Markdown article body was reused because every normalized word token and the complete heading/paragraph/list/blockquote structure matched the current canonical HTML. A current html2text 2025.4.15 conversion was used only as a comparison and was not adopted because it differed in Markdown spacing and list formatting without changing prose.
 
-Markdown Content:
+## Full text
 In the last couple of years, I’ve written and reviewed several technical papers and blog posts. I often come across LLM-generated writing that feels slightly “off”—sometimes, to be honest, even uninviting. At the same time, I get tremendous value from using LLMs to draft early versions, summarize dense material, and rephrase messy thoughts.
 
 This post details some of my thoughts on writing in a world where much of what we read is now machine-generated. First, I’ll lay out some common patterns of bad writing I see from LLM tools. Then, I’ll defend some writing habits that people often dismiss as “LLM-sounding” but are actually fine—even helpful—when used intentionally. Finally, I’ll share concrete rules and formulas I rely on in my own writing and in the prompts I use to guide LLMs.
@@ -133,3 +144,17 @@ The first is to **put the subject and verb close together, at the beginning of t
 It’s now cheap to generate medium-quality text—and even high-quality text, when the scope is narrow and well-defined. But figuring out what to say, how to frame it, and when and how to go deep is still the hard part. That’s what takes judgment, and that’s what LLMs can’t do for me (yet).
 
 Perhaps the most important mark of good writing, particularly in the age of LLM-generated text, is that the contribution is commensurate with the length. The reader walks away feeling their time was well spent, and this is the bar I strive to meet.
+
+## Extraction verification
+
+- **Beginning checked:** Compared the rendered headline, publication date, first two introductory paragraphs, first section heading, and first two-item example list with the canonical HTML.
+- **Middle checked:** Compared the `Low information density` block quotation, the `Fluency without understanding` section, and the transition into the counterexample section with the canonical HTML.
+- **End checked:** Compared all three `How I Write with LLMs` subsections, both `Parting Thoughts` paragraphs, and the final sentence with the canonical HTML.
+- **Structure checked:** Canonical article content contains 4 level-two headings, 17 level-three headings, 43 paragraphs, 1 block quotation, and 2 list items. It contains no article-body links, images, tables, code blocks, footnotes, appendices, or references. All 2,142 normalized article-content word tokens match the prior extraction in order.
+- **Known omissions:** Non-substantive page chrome and the duplicate table of contents only; no substantive source material omitted.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | none | not applicable | No content-bearing attachment exists in the canonical article. |

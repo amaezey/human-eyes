@@ -1,10 +1,21 @@
-# Is ChatGPT Transforming Academics Writing Style?
+# Is ChatGPT Transforming Academics' Writing Style?
 
-- **Source URL:** https://arxiv.org/pdf/2404.08627
-- **Snapshot method:** arXiv PDF text extraction
-- **Retrieved:** 2026-05-05
+- **Canonical URL:** https://arxiv.org/abs/2404.08627
+- **Alternate access URLs:**
+  - https://arxiv.org/abs/2404.08627v2
+  - https://arxiv.org/pdf/2404.08627v2
+  - https://export.arxiv.org/api/query?id_list=2404.08627
+- **Author / owner:** Mingmeng Geng and Roberto Trotta
+- **Publisher:** arXiv
+- **Published:** 2024-04-12; v2 revised 2024-11-08
+- **Retrieved:** 2026-07-15
+- **Stable identifier:** arXiv:2404.08627v2
+- **Version / revision:** v2, submitted 2024-11-08 18:56:42 UTC
+- **Extraction method:** Official arXiv v2 PDF downloaded directly; all 19 pages re-extracted from the embedded text layer with Poppler `pdftotext -layout`; the prior complete text body was compared with the fresh extraction and retained because differences were limited to page-break control characters, blank lines, and title indentation; PDF structure checked with `pdfinfo` and `pdfimages -list`; pages 1, 9, and 19 rendered with `pdftoppm` and visually checked; current arXiv identity confirmed through the export API.
+- **Full-text status:** complete
+- **Access and transformation notes:** The Markdown body preserves the complete embedded PDF text, including equations, tables, figure captions, references, and appendices. Multi-column and equation layout is a best-effort plain-text transformation; the authoritative PDF is preserved below. No source page or substantive section is omitted.
 
-## Article Body
+## Full text
 
 Is ChatGPT Transforming Academics’ Writing Style?
 
@@ -1119,3 +1130,17 @@ and its derivative,                                                     q      
 Combining the above equations, we can get similar conclusions as in case 1.
 
                                                                       19
+
+## Extraction verification
+
+- **Beginning checked:** Rendered PDF page 1 was compared with the title, author block, abstract, and opening of section 1 in the extraction; title, authors, abstract, and opening sequence agree.
+- **Middle checked:** Rendered PDF page 9 was compared with Figure 2, section 5.2, Figure 3, captions, and surrounding prose in the extraction; all three Figure 2 panels, both Figure 3 panels, captions, and section order are represented.
+- **End checked:** Rendered PDF page 19 was compared with equations 40-43 and the final sentence of appendix F.2; the extraction reaches the same end.
+- **Structure checked:** `pdfinfo` reports 19 pages. The extraction contains numbered sections 1-7, References, appendices A-F, Tables 1-2, and Figures 1-8. `pdfimages -list` reports content-bearing images on pages 3, 9, and 15-18; their figure captions and explanatory prose are preserved in the text, while the authoritative PDF preserves the plotted graphics.
+- **Known omissions:** none; plot pixels are not duplicated as separate image attachments because the complete authoritative PDF is preserved.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/geng-trotta-transforming-academic-style-arxiv-2404.08627v2.pdf` | Authoritative arXiv v2 paper, including plotted figures and page layout | `cb4d566904e84edd80f864a6a985d0551d0fd0c78e81e7104b482ac7710c19d5` | Downloaded directly from the official arXiv PDF route on 2026-07-15; 19 pages; embedded text re-extracted with `pdftotext -layout`; pages 1, 9, and 19 rendered and visually checked. |

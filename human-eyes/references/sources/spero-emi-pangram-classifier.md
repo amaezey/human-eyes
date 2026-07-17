@@ -1,4 +1,6 @@
 # Spero and Emi: Pangram AI-generated text classifier technical report
+
+> **Retired 2026-07-17 (user decision).** This card duplicated the same arXiv work (arXiv:2402.14873) as [pangram-classifier.md](pangram-classifier.md), which now holds the complete full-text-reviewed record (15-page v3 report, source bundle, and benchmark CSV). Retired at Mae's direction during the 2026-07-15 source-ingest hygiene pass; see `dev/source-ingest-hygiene-ledger-2026-07-15.md`. The abstract-only record below is preserved unchanged for history and is no longer indexed as active evidence.
 ## Metadata
 - **URL:** https://arxiv.org/abs/2402.14873
 - **Author / owner:** Bradley Emi and Max Spero

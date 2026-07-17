@@ -3,68 +3,171 @@
 ## Metadata
 
 - **URL:** https://arxiv.org/abs/2509.07819
-- **Authors:** Moyan Zhou, Soobin Cho, and Loren Terveen
+- **Author / owner:** Moyan Zhou, Soobin Cho, and Loren Terveen
 - **Published:** 2025-09-09
-- **Extracted:** 2026-07-14
-- **Source type:** Qualitative empirical study of Wikipedia editors
-- **Evidence tier:** Academic preprint / semi-structured interviews
-- **Extraction status:** reviewed from complete saved PDF text
-- **Full text snapshot:** `snapshots/zhou-llms-wikipedia.md`
+- **Retrieved:** 2026-07-17
+- **Extracted:** 2026-07-17
+- **Source type:** Academic empirical preprint; qualitative semi-structured interview study
+- **Evidence tier:** Peer-reviewed / academic empirical (preprint; this version is not identified as peer reviewed)
+- **Review mode:** update
+- **Stable identifier:** arXiv:2509.07819v1; arXiv-issued DataCite DOI 10.48550/arXiv.2509.07819
+- **Version / revision:** Current review: arXiv v1 submitted 2025-09-09; prior record: the same v1 PDF in a 2026-07-14 complete-text snapshot
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/zhou-llms-wikipedia.md`
+- **Extraction method:** Official arXiv v1 PDF downloaded with `curl`; all 19 pages extracted from the embedded text layer with Poppler `pdftotext -layout`; PDF metadata and image inventory checked with `pdfinfo` and `pdfimages -list`; pages 1, 10, and 19 rendered with `pdftoppm` and visually compared; arXiv abstract, export API metadata, and experimental HTML checked for identity, version, and structure
+- **Snapshot SHA-256:** `b129295c355db9c62346b4f966c39274ef81346fdf95c5704a137da0611389ce`
+- **Model / corpus scope:** Sixteen Wikipedia editors who had used LLMs in editing; 11 recorded interviews and five email interviews; participant table lists ChatGPT for 14 participants and leaves P14-P15's model cells blank, with additional Gemini, You.com, Grok, Claude, and Llama entries; a result quotation also names Perplexity; English-language paper about multilingual Wikipedia workflows, with participant language, Wikipedia edition, exact interview dates, tool builds, prompts, and output corpus not reported
+- **Access limitations:** No substantive source material is missing. The 19-page PDF has no embedded raster images and required no OCR. Both tables, quotations, limitations, and references through [98] are preserved. The arXiv page assigns DataCite DOI 10.48550/arXiv.2509.07819, but the manuscript's ACM reference contains a placeholder publication DOI and no publication DOI is identified. The official PDF was re-fetched and its SHA-256, `ceab9a00f3eb70815f40e0ab859e0a812374e58e8505092a0110755faaabb99b`, matches the prior snapshot's recorded PDF digest.
 
-## Study design
+## Summary
 
-- Semi-structured interviews with 16 Wikipedia editors who had used LLMs during editing.
-- Includes newcomers and experienced editors with different contribution volumes and editing frequencies.
-- Every participant listed ChatGPT; several also listed Gemini, Grok, Claude, Perplexity, Microsoft Copilot, or other tools.
-- The study examines content contribution, conformity to community norms, and other editors' responses.
+This 19-page arXiv v1 qualitative preprint reports semi-structured interviews with 16 Wikipedia editors who had used LLMs in their editing. It identifies generation, search, and refinement uses; reports that experienced editors described broader topics, more perspectives, confidence, and self-perceived quality while newcomers described lower entry barriers but heavier reliance on LLM guidance; and records direct participant observations about promotional tone, absent or unreliable sources, fabricated facts and references, and damaged wikilinks or wikitext. Its strongest human-eyes contribution is a Wikipedia-specific review boundary: evaluation, verification, and modification are editorial safeguards, not authorship tells, and extensive editing can make LLM-assisted work acceptable while human editors can still be falsely accused. The study supplies no output corpus, rates, comparison group, prevalence estimate, causal estimate, detector validation, or document-level threshold. Its newcomer participation model and three assistant-design proposals are author synthesis and design implications, not tested product outcomes.
 
-## Direct prose and sourcing observations
+## Main insights
 
-- Editors observed overly positive and promotional output, including `it's one of the best` and `there are so many possibilities`.
-- Editors reported unreliable commercial sources, missing sources, hallucinated facts, and fabricated references.
-- Participants described neutralising tone, heavily editing output, repairing wikitext and links, and checking every word for verifiability.
-- The paper names three recurring editorial strategies: **evaluation, verification, and modification**.
-- Newcomers sometimes use LLMs to draft whole articles or fill knowledge gaps before they have developed the editorial judgment needed to filter the output.
-- Experienced editors more often adapt or reject suggestions using accumulated knowledge of policies, genre, and context.
+- The authors received an IRB exemption, excluded two graduate-student pilots, obtained participant consent, conducted 16 interviews with anonymous reporting, used email for five interviews, observed saturation after interview 13, and derived 1,524 open codes with ATLAS.ti through collaborative thematic analysis; the sample was purposive, snowball-assisted, and limited to editors who had used LLMs.
+- Reported uses fall into generation, search, and refinement, including examples, editing guidance, article creation, code, sources, images, information, copyediting, formatting, and translation.
+- Experienced editors described new topics and tasks, alternative perspectives, confidence in unfamiliar areas, and improved contribution quality. These are participant perceptions and anecdotes, not controlled performance measurements.
+- Newcomers described lower research, language, and technical barriers, but some relied on LLMs to draft articles or fill gaps before they had developed Wikipedia policy and editorial judgment.
+- Participants directly described overly positive or promotional Wikipedia prose, including `it's one of the best`, `there are so many possibilities`, `puffery peacock terms`, and unspecified English expressions not typically found in Wikipedia, especially in text generated from scratch; the last observation supplies no lexical examples.
+- Participants reported missing sources, click-driven commercial sources, fabricated sources, invented facts, and hallucination, with an explicit qualification that obscure content and less common programming languages can be harder for the tools.
+- Editors described three safeguards: evaluate readability, coherence, consistency, and whether a suggestion improves the writing; verify every claim and source; then modify tone, style, context, links, references, and wikitext.
+- Community response was not a reliable authorship test. Newcomers reported call-outs and rejection, including criticism of one article as `promotional and essay-like`; experienced editors reported approval after substantial editing, and an experienced editor reported a false accusation.
+- The authors interpret these reports as a participation paradox: LLMs lower entry barriers while moving newcomers prematurely into high-stakes editorial judgment and interrupting gradual social learning.
+- The proposed assistant designs scaffold complex work into steps, teach community norms through feedback and examples, and adapt guidance to editor expertise. The source does not test these designs.
+- The paper explicitly does not quantify prevalence or generalisability and excludes editors who never used LLMs or stopped using them, creating adoption-confidence and selection boundaries.
 
-## Direct workflow and design recommendations
+## Evidence and claims to extract
 
-The authors recommend three forms of support:
+- **Direct source reviewed:** Complete 19-page arXiv v1 PDF of *LLMs in Wikipedia: Investigating How LLMs Impact Participation in Knowledge Communities*, including abstract, sections 1-6, participant Table 1, use-case Table 2, limitations, conclusion, and references through [98].
+- **Method and sample:** After an institutional IRB exemption, two graduate-student pilot interviews were used to refine the protocol and excluded from analysis. The authors obtained participant consent, described recording, privacy, and anonymity, and conducted 16 semi-structured interviews with Wikipedia editors recruited through a Wikimedia project page, targeted outreach, and snowball referrals. Eleven recorded Zoom interviews lasted 42:22-77:29 with a 1:03:18 average; five interviews used email; participants received no compensation; saturation was observed after interview 13. The authors used ATLAS.ti for inductive thematic analysis, jointly open-coded three interviews to establish a shared standard, asynchronously coded the rest into 1,524 codes, and collaboratively grouped and named themes. There is no non-user comparison group, output corpus, blind quality rating, prevalence sample, or causal design. Exact interview dates, Wikipedia editions, participant languages, LLM builds, prompts, settings, and output lengths are not reported.
+- **Direct versus cited evidence:** C01-C15 and C20 concern the paper's method, participant reports, tables, stated limits, or direct qualitative synthesis. C16 is the authors' discussion-level interpretation. C17-C19 are proposed design implications, not evaluated interventions. C21 records inherited context only: the paper cites [3] for NPOV limits, [46] for a 14-million-abstract vocabulary result, [65] and [95] for writing workflows, [34] and [98] for good-faith newcomer harm from bots, and [84] for Wikimedia's AI-editor strategy. None is a new result of this study, none was recursively ingested here, and none is promoted through this card.
+- **Important limits and counterexamples:** Experienced editors reported beneficial uses and accepted edits; one experienced editor reported a false accusation; LLM-assisted editing is broader than copy-pasting a whole generated article; participants self-selected as LLM users; participant reports do not establish prevalence, tool accuracy, causality, authorship, or objective contribution quality; model entries are incomplete and versionless; direct findings are Wikipedia-workflow- and expertise-specific.
 
-1. **Scaffold participation through incremental guidance:** break complex article creation into source finding, summarising, and structuring rather than returning a complete draft immediately.
-2. **Teach community norms through interaction:** highlight problematic passages, provide acceptable and unacceptable examples, and ask questions that require editors to evaluate the output.
-3. **Adapt to user expertise:** give newcomers more guided, stepwise assistance while allowing experienced editors more direct control.
+## Skill-use audit
 
-## Project incorporation
-
-- **#4 promotional language — adds direct evidence and examples:** editors observed overly positive language, `it's one of the best`, `there are so many possibilities`, and unsupported `puffery peacock terms`.
-- **#5/#41 source review — expands the Wikipedia branch:** check for no source, click-driven commercial sources presented as reliable evidence, invented facts, invented references, and citations that do not support the claim.
-- **#41 Wikipedia formatting — adds a new genre-specific failure group:** check mistranslated or broken wikilinks, references, and wikitext. This is what `source/markup failure` means here; it is concrete Wikipedia formatting and citation damage, not an abstract authorship signal.
-- **Audit/rewrite process — guidance, not a tell:** `evaluate, verify, modify` means judge whether the suggestion improves the writing, check every factual claim and source, and then repair tone, text, links, references, and wikitext. It should not be presented as evidence that a text is human.
-- **Interaction-design context — future guidance, not a prose check:** incremental help and different support for newcomers and experienced editors may matter if human-eyes later develops a guided Wikipedia workflow.
-- This paper does **not** establish the formulaic Wikipedia discussion replies or boilerplate Wikipedia user profiles catalogued on Wikipedia's own guidance pages. Those observations must not be attributed to Zhou et al.
-
-## Recommendations for human-eyes
-
-1. Add the direct promotional examples and `puffery peacock terms` to #4's evidence/examples.
-2. Expand #41's Wikipedia branch with missing, unreliable, fabricated, and non-supporting sources and references.
-3. Add broken or mistranslated wikilinks, references, and wikitext as Wikipedia-specific formatting failures.
-4. Record evaluate–verify–modify as possible audit/rewrite process guidance, not as a writing tell.
-5. Preserve the three design recommendations for any future guided-workflow work.
-6. Preserve the 16-editor sampling frame and participant tool table when discussing model usage.
-
-These are recommendations from the direct source. No checker, assessment registry, process file, or fixture was changed as part of this source-card work.
+- **Good use:** Use the participant quotations as bounded qualitative evidence for Wikipedia-specific review prompts covering promotional tone, source reliability, factual support, reference integrity, and wikitext, and for preserving evaluate-verify-modify as a manual workflow with expertise and false-accusation controls.
+- **Misuse / overclaim:** Do not convert anecdotes or thematic findings into prevalence, model-general behaviour, a lexical threshold, a causal claim, objective quality improvement, or proof that a particular article or edit was AI-generated.
+- **Unsupported use:** The paper does not validate #4's current phrase list or severity, #5's vague-attribution matcher, #19 assistant residue, #37 neutrality collapse, a Wikipedia genre branch, an authorship detector, or the formulaic discussion replies and user-profile boilerplate catalogued by Wikipedia's separate guidance page.
+- **Underused evidence:** The live project has no Wikipedia branch in `genre_specific`, no check for citation existence or support, no wikitext integrity check, and no bound workflow that distinguishes source evaluation, factual verification, and format/tone modification.
+- **Patterns left on the table:** Exact promotional examples, the uncited observation about non-Wikipedia English expressions, `promotional and essay-like` criticism, absent versus low-quality versus fabricated sources, damaged wikilinks and references, false accusations, acceptance after substantial editing, incomplete participant tool metadata, self-selection, no-prevalence limitation, the untested design implications, and the paper's inherited claims were not fully represented in the prior unkeyed card.
 
 ## Matched patterns / rules
 
-- #4 promotional language
-- #5 vague/unreliable attribution context
-- #19 context and workflow residue
-- #37 neutrality / positive-tone correction
-- #41 genre-specific provenance and citation review
+- #4 `no-promotional-language`: adjacent construction family only. Focused execution on the three source examples returned clear because the live implementation matches nine fixed hype terms plus five product-performance expressions, not `one of the best`, `so many possibilities`, or `puffery peacock terms`.
+- #5 `no-vague-attributions`: not coverage for source absence, reliability, fabrication, or claim-citation support. Focused execution on the source-derived examples returned clear; the live matcher covers unnamed-authority phrasing.
+- #19 `no-collaborative-artifacts` and `context_leakage`: not supported by this study. The paper concerns human editorial workflows, not conversational residue in finished prose.
+- #37 `neutrality_collapse`: adjacent to stance review but not NPOV coverage. It flags hedging or balance that erases a source stance; the participant reports concern overly positive Wikipedia tone and neutralising it.
+- #41 `genre_specific`: relevant architecture but no Wikipedia value or branch exists in `human-eyes/scripts/judgement.json`; the academic and journalism branches cover some citation review but do not test Wikipedia policies, source quality, wikilinks, references, or wikitext.
+- `human-eyes/references/process.md`: partly covers evaluation and preservation through complete Audit, factual-source closure, quotation/citation preservation, and protected qualifications; it does not implement the paper's Wikipedia-specific three-stage workflow or validate external sources.
 
 ## Associated hypotheses
 
-- H9 similar-species and process disambiguation
-- H12 genre-aware threshold calibration
-- H25 model-family and workflow context
+- H9 field-guide voice with similar-species disambiguation: relevant to distinguishing whole-draft reliance, legitimate assistance, extensive human editing, and false accusations.
+- H12 genre-aware threshold calibration: relevant because Wikipedia has norms, markup, sourcing, and tone requirements absent from the live genre registry.
+- H25 model-family versus generic-AI residue: relevant because the study's participant tool labels are incomplete and versionless and cannot support generic model behaviour.
+
+## Questions / follow-up
+
+- Ask the authors for interview dates, Wikipedia editions and participant language scope, full model/version metadata, coding audit or codebook, and any de-identified use-case materials that can be shared.
+- If Mae wants a Wikipedia workflow branch, first specify whether it is an editorial-quality review rather than an AI-tell check, then test source-existence, source-support, reliable-source, quotation, wikitext, translation, and false-accusation controls on known examples.
+- Directly review cited sources [3], [34], [46], [65], [84], [95], and [98] before using their NPOV, newcomer-harm, vocabulary, writing-workflow, Wikimedia-strategy, or bot-role claims as project evidence.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | arXiv:2509.07819v1; prior snapshot `87d138ed` | `snapshots/archive/zhou-llms-wikipedia/2026-07-14-87d138ed.md` | 2026-07-14 | `87d138ed4f8a45a2c59f26b51fc17ac4dc0b64e6e3f826edbe85aafc9e44d9f9` |
+| current | arXiv:2509.07819v1; arXiv-issued DataCite DOI 10.48550/arXiv.2509.07819 | `snapshots/zhou-llms-wikipedia.md` | 2026-07-17 | `b129295c355db9c62346b4f966c39274ef81346fdf95c5704a137da0611389ce` |
+
+The prior card recorded the authoritative PDF SHA-256 rather than a snapshot digest. Re-fetching the official PDF produced the same `ceab9a00f3eb70815f40e0ab859e0a812374e58e8505092a0110755faaabb99b` digest. The source revision and substantive PDF text are unchanged. This refresh archives the exact prior snapshot and adds current-template provenance, extraction verification, claim-keyed boundaries, live implementation checks, decisions, and independent review.
+
+## Decision history
+
+- The prior record had six unkeyed recommendations and no user-decision or implementation states. No product implementation was recorded. C06-C11, C17-C19, and C20 retain their recognizable evidence areas but materially qualify their directness, scope, coverage, and required controls, so every current recommendation is reset to `pending` and `not started`.
+- The prior #19 mapping is retired because the paper supplies no finished-prose assistant-residue evidence. The prior #37 mapping is narrowed to adjacent positive-tone and stance context, not live neutrality-collapse coverage. The prior #5/#41 source-review mapping is split into absent, unreliable, fabricated, non-supporting, and format-integrity claims; none is implemented by #5, and no Wikipedia #41 branch exists.
+- The prior card incorrectly said every participant listed ChatGPT and grouped Perplexity and Microsoft Copilot with the participant tool table. Table 1 actually lists ChatGPT for 14 participants, leaves P14-P15's model cells blank, and contains no Perplexity or Microsoft Copilot entry; Perplexity appears only in a results quotation. The current metadata corrects those source-provenance errors.
+
+## Project coverage
+
+This is the authoritative review table. Participant reports are qualitative workflow evidence, not prevalence estimates or document-level authorship rules.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: After an IRB exemption and two excluded pilots, 16 consenting Wikipedia editors who had used LLMs were interviewed; 11 recorded interviews averaged 1:03:18, five used email, saturation was observed after 13, and ATLAS.ti-assisted thematic analysis produced 1,524 codes. | Direct method; privacy and anonymous reporting were described; purposive, targeted, and snowball recruitment; LLM-user-only qualitative sample with no control group, output corpus, prevalence frame, or objective quality measure. | **Partly covered:** source metadata conventions, H9, H12, H25, and `dev/TESTING.md` require provenance and scope controls. | Exact dates, editions, languages, model builds, prompts, full codebook, and participant-output materials are unavailable. | Record the design and limits; require source-bound, model/date/edition metadata before any evaluation or implementation. | pending | not started |
+| C02: Participant use cases span generation, search, and refinement: examples, guidance, articles, code, sources, images, information, copyediting, formatting, and translation. | Direct Table 2 and participant reports; categories describe uses, not outcome rates or quality. | **Not covered:** no live pattern or process taxonomy represents this full workflow. | Treating all assistance as whole-article generation would erase meaningful provenance differences. | Record the use-case taxonomy as workflow context only; take no prose-check action. | pending | not started |
+| C03: Experienced editors reported venturing into new topics and tasks, seeing new perspectives, gaining confidence, and improving contribution quality. | Direct participant perceptions and anecdotes, including fewer later cleanups; no blind assessment, baseline measurement, or causal comparison. | **Partly covered:** process guidance preserves source and user intent; H9/H25 caution against generic interpretation. | The project cannot verify the self-reported improvement or generalise it to other editors or tools. | Preserve as bounded benefit context; do not convert it into a model-capability or quality claim. | pending | not started |
+| C04: LLMs lowered research, linguistic, and technical entry barriers for newcomers, including non-native-English proofreading and pre-library topic orientation. | Direct newcomer and experienced-editor reports; local access and language examples are specific, not quantified. | **Partly covered:** H9 and H12 cover look-alikes and register; no accessibility or newcomer workflow exists. | A blanket anti-assistance rule could erase legitimate language and access support. | Preserve accessibility and legitimate-assistance controls in any future Wikipedia review. | pending | not started |
+| C05: Some newcomers used LLMs to draft whole articles or fill subject and Wikipedia-knowledge gaps before developing filtering judgment. | Direct participant reports and experienced-editor observation; no prevalence count for whole-draft behaviour. | **Not covered:** #19 detects fixed conversational residue, not reliance or process provenance; #41 has no Wikipedia branch. | No live review distinguishes drafting, search, guidance, translation, and refinement or binds output to edit history. | Evaluate workflow provenance only with disclosed history; do not infer it from surface prose. | pending | not started |
+| C06: Participants reported overly positive or promotional Wikipedia prose, including `it's one of the best`, `there are so many possibilities`, `puffery peacock terms`, and unspecified English expressions not typically found in Wikipedia, especially when generating from scratch. | Direct qualitative quotations and observation; the first three are exact examples, while the non-Wikipedia-expression report supplies no words; no output corpus, rate, human comparison, model versions, or threshold. | **Partly covered:** #4 addresses stock promotional language, but focused `check_promotional` execution returned clear on all three exact examples; #37 concerns a different stance-erasure construct. | Exact candidate coverage, Wikipedia context, quotation handling, supported praise, density, human look-alikes, and any lexical evidence for the broader expression claim are missing. | Add only the three exact phrases as pending Wikipedia evaluation fixtures; record the broader expression observation without implementation; require quoted, attributed, supported-praise, human, model, and density controls before any #4 change. | pending | not started |
+| C07: Participants reported outputs with no sources or click-driven commercial sources that did not meet Wikipedia reliability standards. | Direct participant reports, including one named Perplexity anecdote; reliability judgment is context- and source-specific. | **Not covered:** #5 only matches unnamed-authority phrasing; focused examples returned clear. #41 lacks a Wikipedia source-quality branch. | Source presence and source reliability require link and claim context, not a lexical authorship rule. | Consider a manual Wikipedia source-existence and reliability review, explicitly non-authorial, after policy and false-positive fixtures are defined. | pending | not started |
+| C08: Participants reported invented facts, fabricated references, and hallucination, especially for obscure content; one participant reported weaker performance on less common programming languages than Python or R. | Direct qualitative reports and qualification; no audited output set, rate, or tool/version comparison. | **Partly covered:** process guidance treats the source as closed and preserves citations; #41 academic/journalism branches mention fake or unsupported citations, but no Wikipedia branch or source-validation runtime exists. | The project cannot verify external facts or generalise the language comparison from one report. | Add fact, reference-existence, and claim-support prompts only as manual Wikipedia quality review; keep the obscure-content/programming example as a limitation, not a rule. | pending | not started |
+| C09: Evaluation asks whether a suggestion improves readability and coherence, makes sense, and remains consistent across regenerations or tools. | Direct participant strategy; consistency-by-regeneration is a user practice, not validated accuracy evidence. | **Partly covered:** complete Audit and contextual review inspect prose, but do not compare regenerations or prove factuality. | Repeated agreement can reproduce the same error, and the source reports no effectiveness test. | Record evaluation as one workflow stage; do not present cross-model agreement as verification. | pending | not started |
+| C10: Verification checks factual accuracy, reliability, source support, terminology, and every word of LLM output. | Direct participant strategy; web search and asking knowledgeable friends are examples, not evaluated protocols. | **Partly covered:** `process.md` protects facts, quotations, citations, and qualifications and forbids invented material. | The product does not validate external sources or evidence support. | Consider source-bound verification guidance for Wikipedia only; require named evidence and report unresolved access rather than guessing. | pending | not started |
+| C11: Modification included neutralising positive tone, heavy editing, contextual fit, wiki formatting, and repairing wrongly translated wikilinks, references, and wikitext. | Direct participant reports; no rate or before/after corpus, and heavy editing can remove surface clues. | **Partly covered:** process guidance preserves meaning and context; no Wikipedia format validator exists. | Tone correction, link integrity, reference syntax, and wikitext are separate quality dimensions and not authorship proof. | Evaluate a Wikipedia modification checklist with valid-markup, intentional-tone, quotation, and translated-link controls before implementation. | pending | not started |
+| C12: Newcomers may be pushed into gatekeeping before they know Wikipedia guidelines, while experienced editors described faster accept/reject judgment. | Direct participant reports plus author synthesis; expertise is proxied through tenure, edits, frequency, and narrative examples, not experimentally assigned. | **Not covered:** no live expertise-aware workflow; H9/H12 are open hypotheses. | A uniform review path can under-support newcomers or over-constrain experienced editors. | Record as an interaction-design requirement only; test with editors before any expertise-adaptive product change. | pending | not started |
+| C13: Newcomers reported being called out, rejected, or removing LLM-generated content; one article was criticised as `promotional and essay-like`, and one participant said poorly written AI content is removed quickly. | Direct experiences, reported criticism, and one participant interpretation; the quoted criticism is not a validated genre or authorship judgment; no community-wide moderation sample or validated authorship labels. | **Partly covered:** README/process product boundary forbids authorship claims. | Rejection does not validate the accusation, measure accuracy, or prove that surface cues identify origin. | Preserve the criticism as bounded social and moderation context; take no genre, detector, or severity action. | pending | not started |
+| C14: Experienced editors reported accepted or praised LLM-assisted edits after editing, while one experienced editor reported a false accusation. | Direct participant reports and counterexample; no independent edit-quality adjudication. | **Partly covered:** product boundary says patterns do not establish authorship, and H9 supports look-alike disambiguation. | Existing #41 has no Wikipedia prompt that explicitly surfaces edited assistance and false accusations. | Add false-accusation and extensively-edited controls to any future Wikipedia evaluation; no prose rule. | pending | not started |
+| C15: Editors described `using LLMs` as ambiguous, ranging beyond unreviewed copy-paste, and reported that origin concerns can persist even when content is accurate. | Direct participant reports and author interpretation; community prevalence is unknown. | **Partly covered:** project boundary separates prose findings from authorship, and source metadata can describe assistance. | The project lacks graduated Wikipedia workflow provenance but should not infer it from text. | Preserve the ambiguity and non-accusatory language; consider optional disclosed-use metadata only with user consent. | pending | not started |
+| C16: The authors interpret a participation paradox in which LLMs lower entry barriers but interrupt gradual learning, shift newcomers into editorial judgment, and widen an expertise-mediated divide. | Author synthesis grounded in interviews and LPP/second-level-digital-divide framing; not a causal or longitudinal test. | **Not covered:** no product mechanism or outcome evaluation tests this participation model. | Turning the framework into a workflow requirement without user testing would exceed the evidence. | Record as a design hypothesis; require longitudinal newcomer and experienced-editor evaluation. | pending | not started |
+| C17: Proposed assistants should decompose article creation into source finding, summarising, and structuring rather than return a complete draft immediately. | Author design implication, not an evaluated intervention; example prompt is illustrative. | **Not covered:** no Wikipedia guided workflow exists. | Quality, learning, completion, and user-burden effects are unknown. | If Mae pursues this, prototype and test it as a pending interaction design, not a writing tell. | pending | not started |
+| C18: Proposed assistants should teach norms by highlighting problematic passages, showing acceptable and unacceptable examples, and asking reflective questions. | Author design implication grounded in interview themes; no tested feedback design or outcome. | **Partly covered:** Audit reports exact findings and contextual explanations, but no Wikipedia norm curriculum exists. | Examples could anchor users or overstate policy certainty without community review. | Co-design and test policy-grounded feedback with Wikipedia editors before product adoption. | pending | not started |
+| C19: Proposed assistants should adapt to expertise, with more stepwise guidance for newcomers and more direct control for experienced editors; the authors also note newcomers might have attempted complex tasks without LLMs. | Author design implication plus explicit alternative explanation; no personalization trial or expertise classifier. | **Not covered:** no expertise inference or adaptive response policy exists. | Automatic expertise classification could be wrong or paternalistic; the alternative explanation weakens a simple LLM-caused-bypass story. | Preserve the counterexplanation and require user-controlled assistance level in any trial. | pending | not started |
+| C20: The study does not estimate prevalence or generalisability and includes only editors who used LLMs, underrepresenting non-users and people who stopped. | Direct limitations section; exact null boundary for every thematic finding. | **Fully covered:** source-card scope fields, H12/H25, and project non-authorship boundary require bounded interpretation. | Index summaries could still flatten qualitative themes into general behaviour without this limit. | Put the no-prevalence, LLM-user-only, Wikipedia-specific boundary in every index summary and future use. | pending | not started |
+| C21: The paper cites prior work for NPOV limits [3], a 14-million-abstract vocabulary result [46], plan-draft-revise and active-modification writing workflows [65, 95], good-faith newcomer harm from bots [34, 98], and Wikimedia's AI-editor strategy [84]. | Indirect cited context only; these upstream studies and first-party strategy were not directly reviewed in this refresh, and this paper supplies no new test of their claims. | **Partly covered:** related cards, process guidance, H12/H25, and existing Wikipedia-source material may overlap, but this card cannot establish direct project evidence for any inherited claim. | Recursive promotion would blur direct interviews with literature and strategy context. | Record the cited claims as unresolved and non-promoted; require separate direct source review before any recommendation relies on them. | pending | not started |
+
+## Recommendations
+
+- C01: Record the full qualitative design and missing provenance fields; require source-bound metadata before evaluation.
+- C02: Preserve the generation/search/refinement taxonomy as workflow context only.
+- C03: Keep experienced-editor benefits as self-reported, bounded context.
+- C04: Preserve legitimate language, access, and newcomer-support controls.
+- C05: Do not infer workflow provenance or whole-draft reliance from surface prose.
+- C06: Use the exact promotional phrases as pending Wikipedia fixtures only after matched controls.
+- C07: Consider manual source-existence and source-reliability review, not a lexical tell.
+- C08: Consider manual fact, reference-existence, and claim-support review; keep the counterexamples bounded.
+- C09: Record evaluation as one workflow stage and do not equate repeated agreement with truth.
+- C10: Consider source-bound verification guidance that reports unresolved evidence.
+- C11: Evaluate a Wikipedia modification checklist for tone, links, references, and wikitext.
+- C12: Treat expertise-sensitive support as an untested interaction-design requirement.
+- C13: Preserve rejection as social context, not detector validation.
+- C14: Add false-accusation and extensive-editing controls to any future Wikipedia evaluation.
+- C15: Preserve graduated assistance and origin ambiguity without inferring provenance.
+- C16: Treat the participation paradox as a longitudinal design hypothesis.
+- C17: Prototype incremental scaffolding only if Mae chooses a guided Wikipedia workflow.
+- C18: Co-design and test norm-teaching feedback with Wikipedia editors.
+- C19: Preserve the alternative explanation and use user-controlled assistance levels in any trial.
+- C20: Carry the no-prevalence, user-only, Wikipedia-specific boundary into every index summary.
+- C21: Keep the inherited NPOV, vocabulary, writing-workflow, newcomer-harm, and Wikimedia-strategy claims non-promoted pending separate direct review.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending source-record recommendation; no product change implemented.
+- C02: not applicable - pending source-record recommendation; no product change implemented.
+- C03: not applicable - pending source-record recommendation; no product change implemented.
+- C04: not applicable - pending source-record recommendation; no product change implemented.
+- C05: not applicable - pending source-record recommendation; no product change implemented.
+- C06: not applicable - pending source-record recommendation; no product change implemented.
+- C07: not applicable - pending source-record recommendation; no product change implemented.
+- C08: not applicable - pending source-record recommendation; no product change implemented.
+- C09: not applicable - pending source-record recommendation; no product change implemented.
+- C10: not applicable - pending source-record recommendation; no product change implemented.
+- C11: not applicable - pending source-record recommendation; no product change implemented.
+- C12: not applicable - pending source-record recommendation; no product change implemented.
+- C13: not applicable - pending source-record recommendation; no product change implemented.
+- C14: not applicable - pending source-record recommendation; no product change implemented.
+- C15: not applicable - pending source-record recommendation; no product change implemented.
+- C16: not applicable - pending source-record recommendation; no product change implemented.
+- C17: not applicable - pending source-record recommendation; no product change implemented.
+- C18: not applicable - pending source-record recommendation; no product change implemented.
+- C19: not applicable - pending source-record recommendation; no product change implemented.
+- C20: not applicable - pending source-record recommendation; no product change implemented.
+- C21: not applicable - pending source-record recommendation; no product change implemented.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `/root/zhou_source_record_reviewer`; full five-lens review followed by a focused re-check of the six remediated findings
+- **Reviewer isolation:** fresh source-dedicated agent; one source only; not reused
+- **Findings resolved:** six initial findings remediated: added the arXiv-issued DOI, expanded inherited-evidence boundaries as C21, completed method provenance, restored the two omitted prose/genre observations, narrowed C14-C15 coverage, and recorded the prior tool-table correction
+- **Unresolved findings:** none

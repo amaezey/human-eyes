@@ -1,46 +1,177 @@
 # Reinhart et al.: Do LLMs write like humans?
+
 ## Metadata
-- **URL:** https://pnas.org/doi/10.1073/pnas.2422455122
+
+- **URL:** https://doi.org/10.1073/pnas.2422455122
 - **Author / owner:** Alex Reinhart, Ben Markey, Michael Laudenbach, Kachatad Pantusen, Ronald Yurko, Gordon Weinberg, and David West Brown
-- **Published:** 2025-02-18 online; PNAS issue 2025-02-25
-- **Extracted:** 2026-05-05
-- **Source type:** Academic empirical research
+- **Published:** 2025-02-18 online; PNAS issue date 2025-02-25
+- **Retrieved:** 2026-07-17
+- **Extracted:** 2026-07-17
+- **Source type:** peer-reviewed empirical corpus study
 - **Evidence tier:** Peer-reviewed / academic empirical
-- **Extraction status:** second-pass reviewed from PMC open-access full text on 2026-05-05
+- **Review mode:** update
+- **Stable identifier:** DOI 10.1073/pnas.2422455122; PMCID PMC11874169; no PMID found
+- **Version / revision:** PNAS version of record, volume 122, issue 8, e2422455122, six-page article plus 22-page Supporting Information; compared with arXiv:2410.16107v2 and the prior 2026-05-05 web-page capture
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/reinhart-llm-write-like-humans.md`
+- **Extraction method:** complete publisher-version main and Supporting Information PDFs downloaded from PubMed Central, converted from embedded text layers with Poppler `pdftotext -layout`, checked with `pdfinfo`, and compared with rendered beginning, middle, and end pages; PMC HTML and Europe PMC XML used for identity and structure cross-checks
+- **Snapshot SHA-256:** `b6712fb0f226139db0d0e8660c5af97d10923e9a3b39fc40232700296e37c9e0`
+- **Model / corpus scope:** English continuations of roughly 500 words generated in 2024 from roughly 500-word human prompts; GPT-4o `2024-08-06`, GPT-4o Mini `2024-07-18`, Llama 3 8B, Llama 3 70B, Llama 3 8B Instruct, and Llama 3 70B Instruct; HAP-E spans academic, blog, fiction, news, spoken, and TV/movie-script material, while CAP spans eight COCA registers; final complete-case samples contain 8,290 HAP-E and 9,615 CAP prompt documents, eight chunks per document
+- **Access limitations:** none for the six-page article, four figures, Table 1, footnote, 35 references, 22-page Supporting Information, Fig. S1, Tables S1-S12, or 24 SI references; raw corpora, parsed features, and analysis code are linked but were not recursively ingested, and several HAP-E source corpora are only described at category level in the paper
 
 ## Summary
-Examines grammatical and rhetorical variation in LLM writing. The repo uses it for vocabulary, rhetorical-style, and model-drift context.
+
+This study compares matched human continuations with six LLM continuations across two large, multi-register English corpora. It measures 66 Biber lexical, grammatical, and rhetorical features, vocabulary frequencies, and classifier performance. In these 2024 models and prompts, instruction-tuned GPT-4o and Llama 3 variants diverged more from human register variation than Llama 3 base models: they overused several clause and noun-phrase features, showed strong model-specific vocabulary preferences, and were easier to separate from human continuations within the study corpora. The external GPT-3.5/arXiv test sharply reduced accuracy, the authors explicitly reject using this work to police student authorship, and the design supplies no safe document-level threshold. For human-eyes, the paper is strong aggregate evidence for testing register- and model-specific structural features and vocabulary density. It only partly covers live #7, challenges the claim that #3 detects the paper's present-participial construction, and does not directly support #52 sentence-length variance.
 
 ## Main insights
-- Supports drift-aware pattern maintenance.
-- Useful for grammar/rhetoric changes rather than one-off phrase bans.
-- Needs mapping to exact checks before stronger claims.
+
+- The final complete-case datasets contain 8,290 HAP-E and 9,615 CAP prompt documents. Each contributes two human chunks and six LLM chunks, for 66,320 and 76,920 roughly 500-word chunks respectively.
+- GPT-4o used present participial clauses 5.3 times as often as paired human continuations, “that” clauses as subject 2.6 times as often, nominalizations 2.1 times as often, and phrasal coordination 1.9 times as often. The corresponding paired Cohen's d values were 1.38, 0.77, 1.23, and 0.81.
+- Direction and magnitude vary by model and feature. GPT-4o models used less clausal coordination while all Llama 3 variants used more; GPT-4o models used more downtoners while all Llama variants used fewer. Llama base models often stayed nearer the paired human rate.
+- Larger paired models were not consistently more human-like than smaller ones. In the Llama comparison, instruction-tuned variants diverged more than base variants, but the undisclosed tuning processes prevent a precise causal account and no untuned GPT control exists.
+- GPT-4o and GPT-4o Mini used several words more than 100 times as often as paired human continuations. `tapestry` appeared in 23% and 24% of their outputs, and `amidst` in 27% of both. The authors stress that humans use these words and that conspicuousness depends on genre.
+- Vocabulary is model-specific. The instruction-tuned Llama variants share some preferences with GPT-4o at lower rates, while the base Llama lists include names and corpus-specific tokens. Some extreme ratios arise from generation artifacts or a single repeating document.
+- A seven-class random forest reached 66% accuracy against 14% chance on the HAP-E holdout, with 4.2% of LLM texts labelled human and 9.8% of human texts labelled LLM. Most errors confused sizes of the same model family.
+- Pairwise human-versus-one-model random forests transferred between HAP-E and CAP at 89.1% to 98.4% accuracy. Lasso models were above 90% for instruction-tuned systems but about 73% to 75% for Llama base systems.
+- On M4 arXiv abstracts generated by a different model and task, random-forest accuracy fell to 57.95% to 70.68% for instruction-tuned models and roughly 51% for Llama base models. The paper concludes that generalization across models or registers is difficult.
+- The authors use classification to describe writing differences, not to propose a detector. They argue for expert, genre-aware revision and against policing students; their learner and productivity discussion is interpretation rather than a tested intervention.
+- Supporting Information Table S2 literally prints `5550,463` for the HAP-E academic word count of Llama 3 8B Instruct, while the row total and arithmetic require `550,463`. The typo is preserved and must not be treated as a measured 5.55-million-word cell.
 
 ## Evidence and claims to extract
-- Direct source reviewed: PMC open-access copy of the PNAS article.
-- Study setup: parallel human and LLM corpora using GPT-4o, GPT-4o Mini, and Llama 3 variants prompted from human text chunks across multiple genres/registers.
-- Main claim: instruction-tuned models have a distinct noun-heavy, informationally dense style and struggle to match human stylistic variation.
-- Quantified example: GPT-4o overused present participial clauses, "that" clauses as subjects, nominalizations, and phrasal coordination relative to humans.
-- The paper's features are linguistic/rhetorical variables, not surface phrase lists.
+
+- **Direct source reviewed:** complete PNAS version-of-record article for DOI 10.1073/pnas.2422455122 and its complete Supporting Information, preserved as final PDFs and full Poppler text extractions; PMC HTML, Europe PMC XML, and arXiv v2 were used for identity and version comparison only.
+- **Method and sample:** two corpora each began from 12,000 English documents. A roughly 500-word first chunk prompted six models to continue for roughly 500 words, and each continuation was paired with the next human chunk. Responses under 100 words, refusals, and nonsense outputs caused the entire prompt set to be removed from the complete-case analysis. HAP-E retained 8,290 documents across six genres; CAP retained 9,615 across eight COCA registers. Features were counted per 1,000 words with `pseudobibeR`; paired Wilcoxon tests used Bonferroni correction; paired Cohen's d, random forests, lasso logistic regression, cross-corpus tests, and an external M4/arXiv test were reported.
+- **Direct versus cited evidence:** C01-C17 and C19-C22 are direct methods, results, source limitations, author interpretations, or record-integrity findings from the article and supplement. C18 separates claims inherited from cited studies. None of the cited studies was promoted through this card without its own direct review.
+- **Important limits and counterexamples:** only English roughly 500-word continuations and six dated 2024 models were generated; no untuned GPT comparison exists; default GPT settings and one fixed instruction prompt limit prompt generality; refusals and short outputs were complete-case exclusions; COCA removes 10 words per 200 for licensing, which can damage parsing; HAP-E construction draws from heterogeneous corpora, including OCR-converted scripts; feature counts depend on dependency parsing and `pseudobibeR`; reported classifiers are closed-task descriptive models without subgroup fairness, calibration, or authorship-decision analysis; external transfer falls sharply; larger models do not eliminate the differences; human prose contains the named words and structures; author pedagogy and productivity claims were not intervention-tested; Table S2 has an internal numeric typo; and Table S4's 66-row feature inventory disagrees with the 66 result rows in Tables S5-S6 on type-token ratio versus time adverbials.
 
 ## Skill-use audit
-- **Good use:** Strongly backs H1 and H12, plus the general need for register-aware structural/rhetorical features.
-- **Misuse / overclaim:** It should not be cited mainly as vocabulary evidence. Its stronger contribution is grammatical/rhetorical style variation and genre mismatch.
-- **Unsupported use:** The direct source does not specifically validate current regex phrases for #3 or #7 without additional mapping.
-- **Underused evidence:** Present participial clauses directly support revisiting #3 superficial -ing analyses, but the source frames them as part of an informationally dense style, not simply vague analysis.
-- **Patterns left on the table:** Nominalization density, noun-heavy style, "that" subject clauses, and phrasal coordination could become future structural/rhetorical features.
+
+- **Good use:** support H23 evaluation of nominalization, noun-heavy phrasing, present-participial clauses, source-named “that” clauses as subject, and phrasal coordination; support H24 register-specific vocabulary density and H25 model/version metadata; qualify #7 with exact model, date, genre, clustering, and human-use controls; reinforce the no-authorship boundary.
+- **Misuse / overclaim:** saying #3 already detects the paper's present-participial clause feature; applying the paper's aggregate rate ratios to one sentence; treating every occurrence of `tapestry`, `amidst`, `intricate`, `palpable`, or any other word as evidence of authorship; converting classifier accuracy into a general detector claim; or attributing all differences causally to instruction tuning.
+- **Unsupported use:** current-model prevalence, non-English claims, short-text claims, a universal severity or count threshold, sentence-length variance, a probability that a document is AI-authored, student-misconduct policing, fairness across writer groups, or intervention effectiveness.
+- **Underused evidence:** the 66 reported direction/effect-size rows and their unresolved inventory mismatch with Table S4, source-specific vocabulary document fractions, feature reversals between GPT and Llama, size null, complete-case exclusion rule, COCA deletion limitation, cross-corpus pairwise results, external-transfer decline, and the source's explicit non-detector purpose.
+- **Patterns left on the table:** no live check measures nominalization density, source-named “that” clauses as subject, phrasal coordination, agentless passive underuse, or multi-feature register distance. Current #7 omits several of the paper's highest-ratio words and has no model/register metadata. Evaluation is required before any product change.
 
 ## Matched patterns / rules
-- #3 superficial -ing analyses
-- #52 sentence rhythm variance / structural style context
-- Future nominalization and noun-heavy-style checks
-- model drift context
+
+- #3 `no-superficial-ing`: the implementation matches a closed list of comma-led trailing verbs such as `highlighting`, `reflecting`, and `ensuring`. It does not parse present-participial clauses and returned clear on the paper's exact `leaning ... evading ...` example. The source measures grammatical frequency, not superficiality or information content, so coverage is only adjacent and current README support is overstated.
+- #7 `no-ai-vocabulary-clustering`: partly covered. The live list contains `intricate`, `tapestry`, `vibrant`, and `unspoken`; a focused four-paragraph surface-only run flagged a synthetic paragraph containing those four. It does not contain source-high words including `amidst`, `camaraderie`, `palpable`, `fleeting`, `solace`, `unravel`, `cacophony`, `unease`, and `reminder`, and its three-per-paragraph threshold is not evaluated by this paper.
+- #35 `tonal_uniformity` and #41 `genre_specific`: conceptually cover register lock and genre misfit, but the live assessments are qualitative. They do not measure Biber-feature distance or preserve model/date baselines.
+- #52 `sentence-length-variance` and #53 `vocabulary-diversity`: inspected implementations measure sentence-word-count standard deviation and punctuation-stripped document type-token ratio. The paper does not measure sentence-length variance. Its supplement lists punctuation-inclusive type-token ratio among the 66 intended Biber features, but the visible Tables S5-S6 report no TTR row, effect, or threshold. Neither live check is directly validated.
+- H12 `Genre-aware threshold calibration`, H23 `Nominalization and noun-heavy style`, H24 `Register-specific vocabulary density`, and H25 `Model-family versus generic-AI residue`: directly relevant open evaluation paths; none is implemented by this source review.
+- `human-eyes/references/process.md` product boundary: aligned with the authors' explicit statement that their aim is description and revision, not a detector or student policing.
+- `pattern-opportunities.md` row `Nominalization and noun-heavy style`: relevant but currently overstates #3 as covering present-participial clauses and lacks the source's model, effect-size, external-transfer, and no-threshold qualifications.
 
 ## Associated hypotheses
-- H1 calibrated register-distance score
-- H7 five-check gating plus advisory catalogue
-- H12 genre-aware threshold calibration
+
+- H12: Genre-aware threshold calibration.
+- H23: Nominalization and noun-heavy style.
+- H24: Register-specific vocabulary density.
+- H25: Model-family versus generic-AI residue.
+- H3: Drop detection framing entirely, supported only as product-boundary context by the paper's explicit non-detector aim and external-transfer limits.
 
 ## Questions / follow-up
-- Should #3 be narrowed from generic -ing phrases to present-participial-clause overuse with context?
-- Are Biber-style features feasible in the deterministic grader?
+
+- Should H23 be evaluated with the released parsed corpora and `pseudobibeR` before deciding whether any structural feature belongs in an advisory check?
+- Should #7 source metadata and tests distinguish GPT-4o `2024-08-06`, GPT-4o Mini `2024-07-18`, and Llama 3 base/instruction variants, and should any omitted vocabulary be tested rather than added directly?
+- Can the paper's released code and feature datasets reproduce every Table S5-S12 value, including corrected treatment of the Table S2 typo and the complete-case filtering rule?
+- No product change is approved by this review; every recommendation below remains pending for Mae.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | DOI 10.1073/pnas.2422455122; prior snapshot recorded no digest | `snapshots/archive/reinhart-llm-write-like-humans/2026-05-05-9f45832b.md` | 2026-05-05 | `9f45832b9ca95a5c98b08aeb781f438a7ade48d8fd950f7fc35f4fb39a6eb7d1` |
+| current | DOI 10.1073/pnas.2422455122; PMCID PMC11874169; no PMID found | `snapshots/reinhart-llm-write-like-humans.md` | 2026-07-17 | `b6712fb0f226139db0d0e8660c5af97d10923e9a3b39fc40232700296e37c9e0` |
+
+## Decision history
+
+- The 2026-05-05 pre-contract card had no stable claim IDs, user decisions, implementation statuses, evaluation records, snapshot digest, update history, or independent source-record review. Its broad H1, H7, H12, #3, #52, nominalization, noun-heavy-style, and model-drift mappings are reopened here. No prior approved or implemented decision exists to preserve.
+- The prior snapshot's exact on-disk SHA-256 was `9f45832b9ca95a5c98b08aeb781f438a7ade48d8fd950f7fc35f4fb39a6eb7d1`, but neither the old card nor old manifest recorded a digest to compare against. Those exact bytes were archived before replacement. The refresh changes provenance, preserves the final PDFs and supplement, expands claim and limitation coverage, and corrects project mappings.
+- **Prior-to-current comparison:** unchanged source identity and version-of-record article title, authors, DOI, main findings, figures, table, footnote, and references were retained. The current record adds the complete 22-page Supporting Information, final main and supplement PDF attachments, exact model builds, prompt and corpus construction, all feature/result tables, external-transfer results, source-internal numeric issues, reproducible provenance, hashes, and claim-keyed coverage. It removes publisher navigation, account, advertising, footer, and other web chrome from the working snapshot while the exact old chrome-heavy capture remains archived. It corrects the old card's implication that #3 covers the measured present-participial construction, the #52 adjacency, the vocabulary/model boundaries, and the absent threshold/no-authorship qualifications; it does not claim that the source itself was substantively revised.
+
+## Project coverage
+
+This is the authoritative review table. Every recommendation remains a pending decision for Mae; no product change was made.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: The study built parallel human/LLM continuation corpora from two initial sets of 12,000 English documents; after excluding any prompt set with a refusal, nonsense output, or response under 100 words, HAP-E retained 8,290 documents and CAP 9,615, yielding 66,320 and 76,920 roughly 500-word chunks. | Direct method and Tables S2-S3; complete-case filtering means results describe prompts answered validly by all six models, not all sampled documents. | fully covered by this card's scope metadata; no live check should encode sample counts. | Prior card omitted complete-case filtering, final document/chunk counts, and response-length exclusion. | Record scope only; verify through source-card validation. | pending | not started |
+| C02: The six generators were GPT-4o `2024-08-06`, GPT-4o Mini `2024-07-18`, and Llama 3 8B/70B base and Instruct; instruction models received one fixed style-continuation prompt, GPT used Batch API defaults, and Llama used vLLM 0.5.5. | Direct Supporting Information and Table S1; no decoding settings beyond GPT defaults are reported, and only Llama supplies base/tuned pairs. | partly covered by source metadata conventions and H25; no live finding binds model build, prompt, or generation settings. | Previous card named families but not exact GPT builds, fixed prompt, API/default setting, or vLLM version. | Keep all findings model-, build-, prompt-, and date-specific; add Reinhart to H25 evidence only after Mae approves the dev-file change. | pending | not started |
+| C03: HAP-E spans six described source categories; CAP spans eight COCA registers, but COCA deletes 10 words in every 200 for licensing and HAP-E includes heterogeneous source corpora, including OCR-converted scripts. | Direct Supporting Information; HAP-E source corpora are described, not fully enumerated in the paper; COCA gaps may affect parsing and feature extraction. | fully covered by this card's limits and H12's register-aware evaluation concern. | No live evaluation records the COCA deletion artifact or source-corpus/OCR differences. | Preserve the corpus-construction limits and require source-corpus controls in any H23/H24 evaluation. | pending | not started |
+| C04: The paper counts 66 Biber features per 1,000 words with dependency parses and `pseudobibeR`, uses paired Wilcoxon tests with Bonferroni correction, reports paired Cohen's d, and fits random-forest and lasso classifiers. | Direct method; feature validity depends on parsing and implementation; the paper reports no parser/tagger error audit on these corpora. | not covered by live regexes; H23 proposes evaluation but no Biber-feature runtime exists. | Project adjacency cannot substitute for measuring the same grammatical features. | Reproduce selected H23 candidates on the released parsed/features data before considering implementation. | pending | not started |
+| C05: A seven-class HAP-E random forest reached 66% test accuracy versus 14% chance; 4.2% of LLM chunks were labelled human and 9.8% of human chunks LLM, while most errors confused sizes within a model family. | Direct 75/25 document-category-stratified split and Figure 2; closed-set descriptive classification, not calibrated authorship inference. | fully covered by the no-authorship boundary; H25 is relevant to within-family similarity. | Raw accuracy can be misread as a deployable detector result. | Record as descriptive only; do not convert to an authorship or student-policing claim. | pending | not started |
+| C06: All four instruction-tuned models overused present participial clauses, source-named “that” clauses as subject, nominalizations, and phrasal coordination; GPT-4o rates were 5.3x, 2.6x, 2.1x, and 1.9x human, with paired d 1.38, 0.77, 1.23, and 0.81. | Direct paired HAP-E feature rates, effect sizes, Fig. 3, and Tables S5-S6; aggregate across multiple registers and roughly 500-word continuations. | partly covered: H23 names these candidates. #3 is only adjacent; its exact implementation returned clear on the paper's `leaning ... evading ...` example and does not measure frequency. | Current README says Reinhart supports #3 without stating that the check detects a different closed lexical form and adds an unsupported superficiality judgment. No nominalization, source-named “that” clause, or phrasal-coordination metric exists. | Correct the #3 source mapping; evaluate H23 on matched registers before any advisory check or threshold. | pending | not started |
+| C07: Feature direction is model-specific: GPT-4o models used less clausal coordination while all Llama variants used more; GPT-4o models used more downtoners while all Llama variants used fewer. Tables S5-S6 each report 66 direction/effect-size rows, but their result inventory includes time adverbials and omits type-token ratio, while Table S4's 66-row feature inventory does the reverse. | Direct rates and paired effect sizes; multiple-comparison tests are reported. The snapshot preserves the complete tables, including the source-internal inventory mismatch, rather than turning every row into a standalone rule. | partly covered by H23/H25 framing; no live multi-feature register-distance implementation exists. | A generic “LLMs are noun-heavy” summary hides reversals, base-model near-nulls, feature-specific direction, and the unresolved inventory discrepancy. | Treat feature families as model-specific evaluation candidates; preserve nulls, reversals, and the Table S4/S5-S6 mismatch. | pending | not started |
+| C08: Larger versions did not consistently match humans better than smaller paired versions. | Direct comparison of GPT-4o vs Mini and Llama 70B vs 8B in Fig. 3; descriptive null within six models, not a universal scaling result. | fully covered by H25's model-specific framing. | Previous card's generic model-drift note omitted this size null. | Record the bounded null; take no product action. | pending | not started |
+| C09: Llama instruction-tuned variants diverged more from humans than Llama base variants, and the authors interpret instruction tuning as central; they cannot isolate GPT tuning or determine the tuning mechanism because those processes are undisclosed. | Direct Llama base/tuned comparison plus qualified author causal interpretation; GPT has no base control, and training/task differences remain confounded. | partly covered by H25; no product mechanism claim is implemented. | The source does not justify a universal causal claim that instruction tuning creates each feature or word preference. | Keep the association and causal qualification together; require controlled model-family evidence before mechanism claims. | pending | not started |
+| C10: Both GPT-4o builds used `camaraderie`, `tapestry`, and `intricate` at more than 100x human rates; `palpable` was 95x for GPT-4o and 145x for Mini, despite the prose grouping the examples under “more than 100 times.” `tapestry` occurred in 23%/24% and `amidst` in 27%/27% of outputs, with other model-specific lists in Tables 1 and S7. | Direct lemmatized HAP-E word-frequency and document-fraction analysis; only words occurring more than once per million human words entered the rate comparison. Table 1 supplies the exact per-model correction to the prose's grouped wording. | partly covered by #7, which includes `intricate`, `tapestry`, `vibrant`, and `unspoken` but omits several source-high words. A focused synthetic cluster of four live entries flagged #7. | #7 has no model/build/register metadata and its three-per-paragraph threshold is not tested by this paper. A flat expansion would ignore human use and model variation. | Add Reinhart to H24 evidence and evaluate source words by model, register, repetition, and clustering before any list change. | pending | not started |
+| C11: Humans use the named words; the authors argue that their conspicuousness depends on genre, and the instruction-tuned models also strongly underused some words, including obscenities, in model-specific ways. | Direct author qualification plus Tables S7-S8; underrepresented lists contain domain/named tokens as well as register-sensitive vocabulary. | challenges any generic blacklist interpretation of #7; #41 genre review and H24 are conceptually aligned. | Live #7 says density matters but does not implement register baselines or negative features. | Preserve human look-alikes and genre controls; do not treat one word or absence as evidence of authorship. | pending | not started |
+| C12: Some extreme vocabulary ratios are generation artifacts: instruction-tuned Llama outputs sometimes begin with `Here is the continuation of the text...`, and one Llama 3 8B document repeated `Deborah` 308 times, driving a 52x aggregate rate. | Direct substantive footnote and corpus observation; explicit counterexamples to naive word-ratio interpretation. | partly covered by assistant-residue checks for continuation framing, but #7 does not identify single-document leverage on aggregate word ratios. | Prior card omitted both counterexamples. | Record as aggregation and provenance cautions; take no list action from artifact-driven terms. | pending | not started |
+| C13: Pairwise random forests transferred between HAP-E and CAP at 89.1%-98.4%; lasso models exceeded 90% for instruction-tuned systems but were about 73%-75% for Llama base systems, implying useful nonlinear interactions for base-model separation. | Direct Tables S9-S10; cross-corpus but same six model builds and continuation design. The interaction statement is author inference from RF-vs-lasso performance. | not covered by live surface checks; no product classifier is in scope. | These results do not validate #3, #7, #52, or any individual feature threshold. | Record as multivariate, closed-task evidence only; take no detector action. | pending | not started |
+| C14: On external M4 arXiv GPT-3.5 abstracts, pairwise random-forest accuracy fell to 57.95%-70.68% for instruction-tuned training sources and about 51% for Llama base sources. | Direct Tables S11-S12; changed model, prompt task, and register are confounded, but the test is a material external-transfer counterexample. | fully covered by H12/H25 and the project no-authorship boundary. | Root #7 and #52 mappings do not state this external-generalization failure. | Use this as a mandatory qualification for any project mapping; require held-out model/register evaluation. | pending | not started |
+| C15: The authors explicitly say they are not proposing another detector or a way to police students; classification is used to describe writing and identify teachable revision moments. | Direct purpose statement in Supporting Information and Discussion. | fully covered by `process.md` and README product boundaries. | Any source summary that advertises detection accuracy without this purpose would invert the authors' stated use. | Preserve the no-detector/no-policing boundary in indexes and recommendations. | pending | not started |
+| C16: The authors interpret register misalignment as a revision problem that experts may correct and learners may not, and recommend expert-guided creation and revision. | Author interpretation grounded in corpus differences; no expert/learner study, revision trial, learning outcome, or productivity comparison was conducted. | partly covered by #41 genre review and process guidance. | The source does not validate a specific rewrite, pedagogy, or expert-productivity outcome. | Record as interpretation and evaluate revision guidance separately before product changes. | pending | not started |
+| C17: The evidence is bounded to English, roughly 500-word continuations, two constructed corpora, six 2024 model builds, one instruction prompt, default GPT settings, complete-case exclusions, and parser-derived features; it supplies no current-model, short-text, multilingual, fairness, or general authorship result. | Direct scope synthesis from Methods and Supporting Information. | fully covered by card metadata; H12/H25 require these boundaries in future evaluation. | Previous card's broad “model drift context” did not enumerate the actual scope. | Keep every downstream mapping dated and register/model specific. | pending | not started |
+| C18: Introductory and Discussion claims about prior detector work, informational density, lexical diversity, human judgments, ChatGPT-4 nominalization/stance, and instruction-tuning cognitive bias come from cited studies, not new tests in this paper. | Indirect evidence; cited works 10-17 and 33-35 were not recursively ingested here. The paper's direct results can corroborate some feature directions but not inherit every cited mechanism or judgment. | partly covered by existing source cards and hypotheses, but this card cannot promote those studies as direct evidence. | Prior summary blurred direct paper findings and broader literature context. | Preserve the direct-versus-cited boundary; require separate source review before new recommendations based on cited work. | pending | not started |
+| C19: Supporting Information Table S2 prints `5550,463` in one HAP-E cell, while its row total and the column arithmetic require `550,463`. | Direct visual and arithmetic record-integrity finding; the source typo is preserved in the PDF and text extraction. | not covered; source-record review only. | Silently accepting the literal cell would inflate the row and conflict with printed totals. | Record the typo; use `550,463` only as an explicitly inferred correction in reproduction work. | pending | not started |
+| C20: The source supplies aggregate rates and classifier results, not a safe occurrence count, paragraph-density rule, severity, probability, or single-document authorship threshold for any word or grammatical feature. | Direct method boundary plus authors' explicit non-detector purpose and external-transfer result. | challenges any overconfident reading of #3's strong-warning severity, #7's three-per-paragraph threshold, or generic authorship language; project product boundary already prohibits authorship inference. | Current source mappings do not consistently state that thresholds and severities are project choices, not paper findings. | Correct source summaries; require matched-register, held-out evaluation before any threshold decision. | pending | not started |
+| C21: The paper does not measure sentence-length standard deviation. Table S4 has 66 feature rows including punctuation-inclusive type-token ratio but no time-adverbial row; Tables S5-S6 each have 66 result rows including time adverbials but no TTR rate, effect size, importance, or threshold, and page 12 is only an empty continuation header. | Direct feature-table and rendered-supplement boundary; sentence length appears only as prior-work context. The conflicting 66-row inventories leave the intended TTR treatment unresolved, and live #53 strips punctuation. | #52 and #53 implementations were inspected and measure different statistics. #52's root README cites Reinhart only as structural-style context; #53 has no Reinhart mapping. | “Structural style context” can be misread as direct #52 validation. The Table S4/S5-S6 inventory mismatch is a reproducibility problem, not evidence for live #53. | Remove or explicitly negate Reinhart as direct #52 evidence; take no #53 product action and ask the authors/code release to clarify the feature inventory and omitted TTR result. | pending | not started |
+| C22: The refreshed record preserves the complete six-page article and 22-page supplement; the prior 1,703-line web-page snapshot included publisher chrome, omitted current provenance fields and digest, and did not preserve the final PDFs as attachments. | Direct update comparison; old exact bytes archived before replacement. No prior digest existed in the card or manifest, so only the computed on-disk digest can be verified. | fully covered by the current source-record contract after index handoff and independent review. | Shared manifest and source-index rows still describe the old Jina route until the primary agent applies the handoff. | Replace the shared index rows exactly as reported after review passes. | pending | not started |
+
+## Recommendations
+
+- C01: Record the complete-case sample and chunk counts only.
+- C02: Keep findings build-, prompt-, setting-, and date-specific; add Reinhart to H25 only after Mae approves.
+- C03: Preserve corpus-source, deletion, and OCR limitations in future evaluation.
+- C04: Reproduce selected Biber features before any H23 implementation decision.
+- C05: Keep closed-set accuracy descriptive and non-authorial.
+- C06: Correct the #3 source mapping and evaluate H23 candidates rather than treating #3 as coverage.
+- C07: Preserve direction reversals and near-null base-model results.
+- C08: Record the bounded model-size null; take no product action.
+- C09: Keep the instruction-tuning association qualified and avoid a universal causal mechanism.
+- C10: Evaluate source-high vocabulary by model, register, repetition, and clustering before any #7 change.
+- C11: Preserve human use, genre dependence, and underuse evidence; do not build a blacklist.
+- C12: Record generation and single-document artifacts as aggregate-evidence cautions.
+- C13: Keep pairwise classifier results as multivariate closed-task context only.
+- C14: Require held-out model/register evaluation for any candidate feature.
+- C15: Preserve the authors' no-detector and no-policing purpose.
+- C16: Treat revision, expertise, and learner claims as untested interpretation.
+- C17: Keep every downstream mapping model-, language-, length-, prompt-, date-, and register-bounded.
+- C18: Do not promote cited claims through this card without separate direct review.
+- C19: Preserve the Table S2 typo and make any corrected value explicitly inferential.
+- C20: Do not derive a document-level threshold, severity, probability, or authorship decision from this source.
+- C21: Remove or qualify Reinhart as direct #52 support; record the S4/S5-S6 inventory mismatch and take no #53 product action.
+- C22: Apply the exact shared-index handoff only after the source record passes review.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending source-record recommendation; no product change implemented.
+- C02: not applicable - pending source-record recommendation; no product change implemented.
+- C03: not applicable - pending source-record recommendation; no product change implemented.
+- C04: not applicable - pending source-record recommendation; no product change implemented.
+- C05: not applicable - pending source-record recommendation; no product change implemented.
+- C06: not applicable - pending source-record recommendation; no product change implemented.
+- C07: not applicable - pending source-record recommendation; no product change implemented.
+- C08: not applicable - pending source-record recommendation; no product change implemented.
+- C09: not applicable - pending source-record recommendation; no product change implemented.
+- C10: not applicable - pending source-record recommendation; no product change implemented.
+- C11: not applicable - pending source-record recommendation; no product change implemented.
+- C12: not applicable - pending source-record recommendation; no product change implemented.
+- C13: not applicable - pending source-record recommendation; no product change implemented.
+- C14: not applicable - pending source-record recommendation; no product change implemented.
+- C15: not applicable - pending source-record recommendation; no product change implemented.
+- C16: not applicable - pending source-record recommendation; no product change implemented.
+- C17: not applicable - pending source-record recommendation; no product change implemented.
+- C18: not applicable - pending source-record recommendation; no product change implemented.
+- C19: not applicable - pending source-record recommendation; no product change implemented.
+- C20: not applicable - pending source-record recommendation; no product change implemented.
+- C21: not applicable - pending source-record recommendation; no product change implemented.
+- C22: not applicable - pending source-record recommendation; no product change implemented.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: `/root/reinhart_source_review`; full five-lens review followed by a focused re-check of the corrected source-fidelity and provenance material
+- **Findings resolved:** one - qualified the Table S4 versus Tables S5-S6 feature-inventory mismatch consistently across the limits, underused evidence, C07, C21, recommendation, and snapshot structure notes
+- **Unresolved findings:** none

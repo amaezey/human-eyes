@@ -1,45 +1,177 @@
 # Kobak et al.: Delving into LLM-assisted writing in biomedical publications through excess vocabulary
+
 ## Metadata
-- **URL:** https://www.science.org/doi/10.1126/sciadv.adt3813
-- **Author / owner:** Dmitry Kobak, Rita Gonzalez-Marquez, Emoke-Agnes Horvat, and Jan Lause
+
+- **URL:** https://doi.org/10.1126/sciadv.adt3813
+- **Author / owner:** Dmitry Kobak, Rita González-Márquez, Emőke-Ágnes Horvát, and Jan Lause
 - **Published:** 2025-07-02 online; Science Advances 11(27), 2025-07-04
-- **Extracted:** 2026-05-05
-- **Source type:** Academic empirical research
+- **Retrieved:** 2026-07-15
+- **Extracted:** 2026-07-15
+- **Source type:** peer-reviewed corpus study
 - **Evidence tier:** Peer-reviewed / academic empirical
-- **Extraction status:** second-pass reviewed from PMC open-access full text on 2026-05-05
+- **Review mode:** update
+- **Stable identifier:** DOI 10.1126/sciadv.adt3813
+- **Version / revision:** current peer-reviewed Science Advances version, PMCID PMC12219543; previous snapshot retrieved 2026-05-05
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/kobak-llm-excess-vocabulary.md`
+- **Extraction method:** PMC HTML article body checked against Europe PMC JATS XML; 16-page supplementary PDF extracted with pdftotext and preserved with five main figure images
+- **Snapshot SHA-256:** `f537bcadb8a80388aaf30fbeeb1327d34f3ee559f6c8852e075a515471483f3c`
+- **Model / corpus scope:** no named LLM family or version; 15,103,888 complete English PubMed abstracts from 2010-2024, each 250-4000 characters, analysed at corpus and subcorpus level against 2021-2022 frequency trends
+- **Access limitations:** none for substantive material; direct PMC PDF links returned a JavaScript proof-of-work page, but complete HTML/JATS text, the complete supplementary PDF, five main figures, and linked code/data routes were accessible
 
 ## Summary
-Analyses biomedical publications for excess vocabulary associated with LLM-assisted writing and provides the dataset bundled in human-eyes. The source supports corpus-level lexical signals, not single-word authorship claims.
+
+This peer-reviewed corpus study measures abrupt post-ChatGPT changes in word occurrence across 15.1 million English biomedical abstracts. Its excess-frequency method uses historical counterfactuals rather than labelled human and LLM text, identifies a 2024 shift dominated by style words, and estimates a 13.5% lower bound for abstracts processed with LLMs. It supports time-bound, biomedical-register vocabulary monitoring at corpus scale. It does not identify individual abstracts, distinguish model families, separate direct LLM assistance from later human adoption of LLM-preferred vocabulary, or validate human-eyes' document-level density thresholds.
 
 ## Main insights
-- Use excess vocabulary as density evidence.
-- Keep register scope explicit: biomedical/scientific prose.
-- The bundled CSV should remain reference data, not a standalone verdict.
+
+- The direct method measures annual abstract-level word occurrence against a conservative 2021-2022 extrapolation. It does not train on prompted LLM samples or use a black-box detector.
+- The main corpus has 15,103,888 English PubMed abstracts from 2010-2024 after length, language, contamination, correction, and retraction-notice filtering.
+- In 2024, 454 word forms, or 343 unique lemmas, crossed the study's excess thresholds. The analogous 2021 COVID peak was 190 forms or 180 lemmas.
+- The 2024 excess set was dominated by style words. The direct examples include rare high-ratio forms such as `delves`, `underscores`, and `showcasing`, and common high-gap words such as `potential`, `findings`, and `crucial`.
+- Two nonoverlapping marker sets gave similar corpus-level lower bounds: 291 rare style words gave 13.6%, while ten manually selected common words gave 13.4%; the authors averaged them to 13.5%.
+- A four-word 2021 COVID content set had a 0.069 gap. The authors call the 0.135 LLM-associated gap at least twice the peak COVID-literature share, while the displayed rounded values imply about 1.96 times. They extrapolate the 13.5% lower bound to at least about 200,000 PubMed papers per year from a roughly 1.5-million-paper annual flow; that is a derived estimate, not an observed document count.
+- The result is heterogeneous by field, affiliation country, journal, and intersections, but those differences can reflect editing behaviour, publication lag, or detectability as well as adoption.
+- The authors speculate that true use may be nearer their highest subgroup lower bounds above 30% and expect lower bounds to rise after more publication cycles. Those are interpretations, not measured overall rates.
+- The study explicitly cannot identify individual LLM-processed abstracts, infer authorship, distinguish LLM families, or separate direct use from diffusion of LLM-preferred vocabulary into human writing.
+- The three real-abstract passages in the Discussion illustrate the observed style but are not validated single-document classifications.
+- The 900-row repository CSV is a union of excess words from 2013-2024. It has no year column. Human-eyes loads 414 style-labelled terms after exclusions, whereas the paper reports 379 excess style words specifically for 2024.
+- Focused inspection shows the live aggregate check can fail from vocabulary points alone or structural points alone, contrary to generated documentation saying vocabulary and structural signals are both required. Neither the paper nor its dataset validates the live document thresholds.
 
 ## Evidence and claims to extract
-- Direct source reviewed: PMC open-access copy of Science Advances article.
-- Corpus: 15.1 million English PubMed abstracts from 2010-2024 after filtering.
-- Method: excess-word analysis compares post-ChatGPT word-frequency jumps against pre-LLM baselines rather than using a ground-truth human/LLM classifier.
-- Main quantified claim: at least 13.5% of 2024 biomedical abstracts were likely processed with LLMs; some subcorpora reached around 40%.
-- Limit: the paper is about biomedical abstracts and style-word frequency shifts. It does not say a single word or phrase proves AI authorship in arbitrary prose.
+
+- **Direct source reviewed:** the peer-reviewed Science Advances article at DOI 10.1126/sciadv.adt3813, complete PMC/Europe PMC full text, all five main figures and captions, the complete 16-page Supplementary Materials with figures S1-S7 and references, and the linked repository/data record needed to verify the bundled CSV
+- **Method and sample:** 15,103,888 complete English abstracts dated 2010-2024 from the early-2025 PubMed baseline, restricted to 250-4000 characters; binary occurrence matrix over 273,112 four-or-more-letter alphabetic word forms; main analysis over 26,657 words above 0.0001 frequency in both 2023 and 2024; conservative extrapolation from 2021-2022
+- **Direct versus cited evidence:** C01-C16 and C18 are direct article or supplement evidence; C17 separates the paper's own proposed future use from demonstrated scope; C19 is direct repository/data provenance checked against the project file; C20-C22 are this review's live-project comparisons, not paper findings. Claims about LLM benefits, factual errors, bias, plagiarism, diversity, policy, and spoken-language transfer in the Discussion are cited context rather than findings measured by this study.
+- **Important limits and counterexamples:** historical content-word spikes such as Ebola, Zika, and COVID show that abrupt vocabulary change need not be an LLM signal; the method is corpus-level, cannot assign individual abstracts, may miss careful editing, cannot separate models or human lexical uptake, uses approximate first-name gender inference for only 55% of authors, and has no demonstrated threshold for arbitrary documents or non-biomedical genres
 
 ## Skill-use audit
-- **Good use:** Strongly backs #7 and `overall-signal-stacking` when human-eyes treats vocabulary as corpus/register evidence and a density signal.
-- **Misuse / overclaim:** Using the Kobak word list as a per-document detector or hard failure would misuse the paper. The paper's logic is aggregate excess vocabulary, not one-token accusation.
-- **Unsupported use:** It does not directly support non-academic prose, fiction, marketing copy, em dashes, assistant residue, or structural tells.
-- **Underused evidence:** The source supports H1 and H12 more strongly than the current first-pass note implied: it is a model for register-specific baseline comparison.
-- **Patterns left on the table:** A future "biomedical/academic register" branch could expose corpus-normalized excess-word density separately from the generic AI vocabulary rule.
+
+- **Good use:** support biomedical-register, time-bounded corpus monitoring; justify retaining corpus frequency, baseline, date, and register when describing vocabulary evidence; keep individual words advisory; use the source to challenge unsupported document-level thresholds.
+- **Misuse / overclaim:** treating one listed word, one passage, or the 900-row union as proof that a document or author used an LLM; calling the 13.5% estimate a classifier accuracy; importing the paper's corpus lower bound as a per-document score.
+- **Unsupported use:** cross-genre thresholds, model-family attribution, generic human-versus-AI authorship classification, structural-signal weights, rewriting rules, and the live aggregate threshold of four.
+- **Underused evidence:** the project discards the paper's year, observed frequency, expected frequency, gap, ratio, and biomedical baseline, and does not distinguish the 379 style words excess in 2024 from style-labelled words in the 2013-2024 union.
+- **Patterns left on the table:** declining as well as rising vocabulary, publication-cycle lag, detectability differences across author groups, content-word event controls, the rare/common marker-set distinction, and the null that inferred-gender differences were minor.
 
 ## Matched patterns / rules
-- #7 AI vocabulary words and phrases
-- overall-signal-stacking
-- kobak-excess-words.csv
+
+- #7 `no-ai-vocabulary-clustering`: related vocabulary guidance, but this check uses the local generic and GPTZero lists rather than the Kobak CSV.
+- `overall-signal-stacking`: loads Kobak style-labelled terms and applies document-level distinct-count and density thresholds in `human-eyes/scripts/grade.py`.
+- `human-eyes/references/kobak-excess-words.csv`: byte-identical to upstream `results/excess_words.csv` at repository head `53db991afc251782106cd817a1c3fa47a4d41781`; that data file last changed at commit `3345a2eea967ecc14e5d5f7b56c8249c65c82257` on 2025-02-12.
+- `human-eyes/references/patterns.md` and `human-eyes/scripts/patterns.json`: state the corpus-level and no-single-word boundary, but overstate the live aggregate's vocabulary-plus-structure conjunction.
+- Product boundary and `human-eyes/references/process.md`: correctly prohibit authorship inference.
 
 ## Associated hypotheses
-- H1 calibrated register-distance score
-- H7 five-check gating plus advisory catalogue
-- H12 genre-aware threshold calibration
+
+- H1 Continuous calibrated register-distance score per pattern
+- H3 Drop detection framing entirely
+- H7 Five-check gating grader plus advisory catalogue
+- H12 Genre-aware threshold calibration
+- H24 Register-specific vocabulary density
+- H25 Model-family versus generic-AI residue
 
 ## Questions / follow-up
-- Should `kobak-excess-words.csv` stay advisory-only outside academic/scientific prose?
-- Should the audit name the register limit when Kobak terms drive signal stacking?
+
+- Should the live Kobak contribution be disabled pending matched, register-specific calibration, or retained as visibly experimental evidence?
+- Should the project replace the 2013-2024 union with a dated source table that preserves selection year, observed and expected frequencies, gap, ratio, and annotation?
+- Should `overall-signal-stacking` enforce the documented vocabulary-plus-structural conjunction, or should the documentation be corrected after Mae reviews the intended behavior?
+- Should the root pattern descriptions distinguish the paper's corpus-level set-presence calculation from human-eyes' per-document distinct-count and per-1000-word density calculation?
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | DOI 10.1126/sciadv.adt3813; prior snapshot lacked a recorded digest | `snapshots/archive/kobak-llm-excess-vocabulary/2026-05-05-ba6d2766.md` | 2026-05-05 | `ba6d27667027e83f7b42d898bd76735d29e113f6e4a083370800e0e15a265ad5` |
+| current | DOI 10.1126/sciadv.adt3813 | `snapshots/kobak-llm-excess-vocabulary.md` | 2026-07-15 | `f537bcadb8a80388aaf30fbeeb1327d34f3ee559f6c8852e075a515471483f3c` |
+
+## Decision history
+
+- The previous card had no claim IDs, user-decision fields, implementation statuses, snapshot digest, update-provenance table, or review gate. Its informal proposals to keep the CSV advisory, state the biomedical register limit, and consider register-specific density were not recorded as approved. This refresh reopens them as C12, C19, C20, and C22 with `pending` decisions.
+- No previous approved or rejected claim was found. No prior implementation state is preserved as a user decision.
+- The prior snapshot's article body remains substantively unchanged. The current snapshot adds contract metadata, the complete 16-page supplementary text, all five main figures, the original supplementary PDF, extraction checks, and current retrieval provenance.
+
+## Project coverage
+
+This is the authoritative review table. Deterministic examples below are focused surface checks of the named functions, not complete Audits or authorship results.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: The study infers unexpected lexical change from historical word frequencies without a labelled human-versus-LLM training corpus. | Direct peer-reviewed method over the full PubMed corpus; it avoids prompt/model assumptions but still interprets 2024 style-word excess as LLM-associated. | H1, H3, H12, H24, the product boundary, and source guidance partly cover calibration and non-authorship framing. | No live check implements the source's historical counterfactual or uncertainty; the project instead applies fixed document thresholds. | Record the method as corpus-monitoring evidence; do not describe current document checks as implementations of it. Verification: source-card review and no product diff. | pending | not started |
+| C02: The analysed corpus is 15,103,888 complete English PubMed abstracts from 2010-2024, restricted to 250-4000 characters after cleaning. | Direct dataset and method statement; 24,814,136 abstracts remained before the 2010-2024 restriction, 286,744 were altered by cleaning, and 3,514 correction/retraction notices were erased. | Source metadata and H12 can record register, language, dates, and length. The product does not reproduce this corpus. | Current output does not expose this narrow evidence scope when Kobak terms contribute. | Require any user-facing Kobak attribution to name biomedical abstracts, English, 2010-2024, and the corpus-level design. Verification: documentation review. | pending | not started |
+| C03: Word occurrence is binary per abstract; the main matrix has 15,103,888 by 273,112 entries, and the main analysis retains 26,657 words above 0.0001 frequency in both 2023 and 2024. | Direct method. Inflections remain separate and only alphabetic words of at least four letters are analysed. | The project loads a flat CSV and token counts; it does not preserve abstract-level occurrence, frequency eligibility, or source thresholds. | Repeated tokens in one document affect project density, unlike the paper's binary abstract occurrence. | Record the measurement mismatch and avoid equating project token density with paper frequency. Verification: inspect `grade.py` and source data. | pending | review required |
+| C04: Expected 2024 frequency is a conservative nondecreasing linear extrapolation from 2021 and 2022; 2023 is excluded because it may already contain LLM effects. | Direct method with formulas for expected frequency, gap, and ratio. | H1 and H24 conceptually cover baselines and time sensitivity. | No source year, expected frequency, gap, ratio, or confidence information reaches the live checker. | Pending Mae, design a provenance-rich vocabulary table before using Kobak data for calibrated scoring. Verification would require schema, source-data, and regression tests. | pending | not started |
+| C05: Historical controls show content-event spikes: Ebola and Zika had high ratios, COVID words reached ratios above 1000 and a gap of 0.06, while no pre-COVID 2013-2019 word exceeded a 0.01 gap. | Direct main and supplementary results. This is a counterexample to treating any lexical spike as AI-specific. | H12 and H24 allow register/time controls; current checker has a small biomedical content-term list but does not use historical event controls in decisions. | The live project cannot distinguish a topical spike from a style shift using the paper's method. | Preserve the event-control boundary and do not promote raw excess to an authorship signal. Verification: source review only. | pending | not started |
+| C06: In 2024, `delves` had ratio 28.0, `underscores` 13.8, and `showcasing` 10.7; `potential`, `findings`, and `crucial` had gaps 0.052, 0.041, and 0.037. | Direct measured examples from 26,657 eligible word forms; ratios and gaps answer different frequency questions. | #7 names several terms and the Kobak CSV contains them. A focused sentence with one `delves` match leaves both #7 and the aggregate clear. | The project discards the measurements and applies unrelated generic-list and document-density thresholds. | Keep examples with their metric, year, and biomedical scope; never present them as universal banned words. Verification: focused checker tests and source metadata. | pending | review required |
+| C07: The authors identified 900 unique excess words across 2013-2024, manually blinded their content/style and part-of-speech annotations to selection year, and left ambiguous items unlabelled. | Direct method. The 900 is a multi-year union, not a list of 900 LLM markers. | The bundled CSV is complete and byte-identical to upstream at the reviewed repository revision. | The project uses substring membership in the annotation and lacks selection year; it therefore cannot reconstruct which words were 2024 excess markers. | Preserve the 900-row file as reference data, but relabel its role as a multi-year annotated union. Verification: hash and data-schema check. | pending | review required |
+| C08: The 2024 excess set contains 454 forms and 343 lemmas, versus 190 forms and 180 lemmas in 2021; 379 2024 excess style words were 66% verbs and 14% adjectives. | Direct main result and supplementary figure S5; inflections materially affect form counts. | Patterns #7 and H24 partly represent style-word clustering. | The live loader uses 414 terms after filtering 434 style-containing annotations from the 900-row union, not the paper's 379-word 2024 set. | Do not call the live set “the 379 2024 markers.” Pending Mae, preserve year-selection data or stop using the union as a current marker set. | pending | review required |
+| C09: A 291-word rare set below 2% occurrence gave a 13.6% corpus gap; a manually optimized ten-word common set gave 13.4%; averaging produced a 13.5% lower bound. A four-word 2021 COVID content set gave 0.069; the authors call the LLM-associated gap at least two times higher. | Direct result. The rare set avoids manual selection bias; the common set is more transparent; neither estimate assumes word independence. The COVID comparison is between corpus frequency gaps, not individual papers. The displayed rounded values imply about 1.96 times rather than at least 2.00, so the authors' wording and the arithmetic must remain distinguishable. | The project counts distinct Kobak terms and density in a document, but does not reproduce either marker group, the corpus gap calculation, or the historical content-set comparison. | The source combines whether abstracts contain at least one marker; it does not define per-document co-occurrence, 12/20, 25/35, or score-four thresholds. | Remove any implication that live thresholds come from the paper. Report 13.5% and 0.069 as corpus gaps, attribute the authors' “at least two times” comparison, and disclose that the rounded values imply about 1.96 times. | pending | review required |
+| C10: The 13.5% result is a lower bound because LLM-assisted abstracts without selected marker words do not contribute; from roughly 1.5 million PubMed papers per year, the authors extrapolate at least about 200,000 LLM-assisted papers per year. | The lower-bound construction follows the measured gap. The annual count is an author extrapolation from annual indexing volume, not a measured document count, classifier output, sensitivity, precision, accuracy, or document probability. | Product boundary and source guidance partly cover uncertainty. | User-facing density evidence can still be read as a classifier, and the derived 200,000 figure can be mistaken for individually observed papers. | When citing either estimate, name the lower-bound construction and the annual figure's derived status; prohibit accuracy and per-document probability language. Verification: documentation review. | pending | not started |
+| C11: Subcorpora vary materially: computational fields are near 0.20, selected English-speaking countries near 0.05, China/South Korea/Taiwan near 0.20, Sensors 0.25, Cureus 0.20, MDPI 0.21, Frontiers 0.20, and high-prestige groups 0.07-0.10. | Direct subgroup analysis using the same common and rare marker sets; groups require at least 300 papers per year from 2018-2023. | H12 and H24 recognize register variation; no live subgroup model exists. | Field, country, journal, language background, review lag, and author behavior are collapsed in the generic checker. | Use these values only as evidence of heterogeneity and calibration need, not as priors about a specific author or venue. | pending | not started |
+| C12: Intersections reach 0.34 for South Korea plus Sensors and 0.41 for computation plus China; local t-SNE neighborhoods reach about 0.50. | Direct exploratory subgroup and supplementary S7 result. S7 defines local gaps over 100 neighboring 2022 and 100 neighboring 2024 abstracts. The black-circled high-gap area is about 400 object-detection papers with 83.4% Chinese affiliations and 56.3% in Sensors. A separate 2022 island lower-right of the circle has 48.7% of papers from four closed Hindawi journals and 28.8% retractions. | No live project coverage beyond general H12/H24 calibration ideas. | The local map remains descriptive and entangles topic, venue, affiliation, and year. The separate retraction-heavy island must not be presented as the circled high-gap area's composition or confound. | Record both S7 regions separately as exploratory heterogeneity; take no document-level or demographic action. | pending | not started |
+| C13: The method cannot identify individual abstracts that were processed by an LLM. | Explicit direct limitation. The three quoted 2023 abstracts are illustrations, not adjudicated classifications. | The product boundary and `process.md` prohibit authorship inference, and a single-word focused test remains clear. #7 prose is not protective: it calls three words a “fingerprint” and describes scaffold phrases as markers of a generated explainer. | #7's stronger language and `overall-signal-stacking` document flags can exceed the source boundary; the aggregate partly uses Kobak-derived terms without direct document validation. | Keep all Kobak-derived document findings advisory and explicitly source-limited; review both #7 wording and whether Kobak terms should contribute to a document threshold. | pending | review required |
+| C14: The method cannot separate direct LLM use from human adoption of LLM-preferred words and cannot distinguish LLM families. | Explicit direct limitation; spoken-language transfer is cited, while the size and speed of transfer here are author hypotheses. | H24 and H25 partly cover drift and model specificity. | The live vocabulary description uses generic AI language without a model/time uncertainty field. | Add no model-family or generic-authorship inference from this source; retain drift as an unresolved confound. | pending | review required |
+| C15: Observed subgroup heterogeneity may reflect adoption, editing/censorship of suggestions, native-language differences, or publication timelines rather than true use differences. The authors speculate that true overall use may be nearer the highest subgroup lower bounds above 30% and expect lower bounds to rise after more publication cycles. | Direct author interpretation and limitation, not a causal test or measured overall rate. | H12 anticipates genre/register dependence. | Current fixed thresholds have no field, journal, language-background, or publication-lag control; the source does not validate adopting the speculative above-30% interpretation as a project prior. | Treat subgroup values and future-rise expectations as calibration hypotheses; do not encode country, venue, language-background, or above-30% priors. | pending | not started |
+| C16: Inferred-gender gaps were minor at 0.11 versus 0.10, but first-name inference covered only 55% of authors and used limited US training data. | Direct null result plus explicit method limitation. | No product feature uses gender. | Demographic inference would be unsupported and risky. | Record the null and limitation; take no product action. | pending | not started |
+| C17: The Discussion proposes future use for grants, peer review, news, social media, and prose, but the study measures only biomedical abstracts. | Direct author proposal, not demonstrated external validity. | H12 and H24 correctly require register-specific testing. | Existing project language sometimes broadens the paper into generic prose support. | Treat non-biomedical application as unvalidated follow-up requiring direct corpus evidence. | pending | not started |
+| C18: The paper states that no LLM was used to write or edit the manuscript. | Direct disclosure. | No relevant checker or guidance depends on this disclosure. | It does not validate the method or make the paper a human-writing control. | Record provenance only; take no further action. | pending | not started |
+| C19: The paper links code and data; the project CSV exactly matches upstream `results/excess_words.csv` at current commit `53db991...`, and that file last changed at `3345a2e...` on 2025-02-12. | Direct repository and local-byte comparison. The linked Zenodo record is 10.5281/zenodo.14898666; current repository head also contains a later post-publication update that is not part of the reviewed paper result. | The project preserves the complete 900-row data file and names it in #7 and aggregate documentation. | It records no upstream commit, file hash, selection-year limitation, or distinction between paper results and later repository updates. | Pin the embedded CSV provenance before any future data refresh; do not silently treat moving repository content as the paper version. | pending | review required |
+| C20: The live #7 check does not use the Kobak CSV; Kobak terms contribute only through `overall-signal-stacking`. | Direct code inspection. `check_ai_vocabulary` reads local generic and GPTZero phrases; `kobak_excess_profile` is called by the aggregate profile. | Partly covered by code and generated pattern prose, which distinguish the long-tail aggregate role. | Root/source prose can make #7 sound like a single Kobak-backed implementation. | Correct future documentation to distinguish #7 generic clustering from the aggregate Kobak profile. Verification: registry/render consistency tests. | pending | review required |
+| C21: The live Kobak profile counts token frequency and distinct terms, then awards one point at 12 distinct and 20 per 1000 words or two at 25 distinct and 35 per 1000. | Direct code inspection and focused execution. A constructed 25-term Kobak-only paragraph yields two points but remains below the aggregate threshold. | The aggregate exposes count, density, and samples. | These thresholds are absent from the paper, apply beyond biomedical abstracts, and use the multi-year union. No matched validation is named. | Pending Mae, disable, recalibrate by register with matched controls, or label the thresholds experimental and unsupported by Kobak. | pending | review required |
+| C22: Generated documentation says the aggregate fires only when vocabulary and structural signals combine, but code fires at score four with no conjunction. | Direct code/document comparison and focused execution. A vocabulary-only example returns `Overall signal stacking 4/4 from []`; a three-negative-parallelism example returns `4/4` with zero vocabulary points. | The product exposes component and vocabulary breakdowns, making the discrepancy observable. | Current behavior contradicts `patterns.json`, generated `patterns.md`, and the claimed source rationale. The paper does not validate either all-vocabulary or all-structural document decisions. | Mae must choose the intended contract: enforce a conjunction with tests, or revise the documentation and source attribution. No change is authorized in this review. | pending | review required |
+
+## Recommendations
+
+- C01: Record the historical-counterfactual method as corpus evidence only.
+- C02: Require the biomedical, English, date, and length scope whenever Kobak evidence is named.
+- C03: Record that token density is not the paper's binary abstract-occurrence measure.
+- C04: Preserve year, expected frequency, gap, and ratio before any calibrated use.
+- C05: Keep historical content-event spikes as a mandatory counterexample.
+- C06: Retain measured examples with metric and scope, never as universal banned words.
+- C07: Relabel the 900-row CSV as a multi-year annotated union.
+- C08: Do not describe the live 414-term set as the paper's 379-word 2024 marker set.
+- C09: Keep 13.5% and 0.069 as corpus results; attribute the authors' two-times wording while disclosing the rounded-value ratio of about 1.96; disown live document thresholds as paper-derived.
+- C10: Mark the about-200,000 annual figure as a derived extrapolation and prohibit accuracy or per-document probability paraphrases.
+- C11: Use subgroup results only to motivate calibration, not venue or demographic priors.
+- C12: Keep the circled high-gap region and separate retraction-heavy island distinct; treat both as exploratory heterogeneity.
+- C13: Review #7's stronger language and whether Kobak evidence should contribute to any document-level threshold.
+- C14: Preserve human lexical uptake and model-family ambiguity.
+- C15: Do not encode country, venue, language-background, publication-lag, or speculative above-30% priors.
+- C16: Record the minor inferred-gender difference and weak inference coverage; take no product action.
+- C17: Require direct evidence before generalizing beyond biomedical abstracts.
+- C18: Record the no-LLM-use disclosure as provenance only.
+- C19: Pin upstream commit and data hash before any future CSV refresh.
+- C20: Distinguish #7 generic clustering from the aggregate Kobak profile in future docs.
+- C21: Mae should disable, recalibrate, or explicitly mark the live thresholds unsupported and experimental.
+- C22: Mae should choose whether to enforce the documented vocabulary-plus-structure conjunction or revise the contract and source attribution.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending; no product change authorized.
+- C02: not applicable - pending; no product change authorized.
+- C03: not applicable - pending; no product change authorized.
+- C04: not applicable - pending; no product change authorized.
+- C05: not applicable - pending; no product change authorized.
+- C06: not applicable - pending; no product change authorized.
+- C07: not applicable - pending; no product change authorized.
+- C08: not applicable - pending; no product change authorized.
+- C09: not applicable - pending; no product change authorized.
+- C10: not applicable - pending; no product change authorized.
+- C11: not applicable - pending; no product change authorized.
+- C12: not applicable - pending; no product change authorized.
+- C13: not applicable - pending; no product change authorized.
+- C14: not applicable - pending; no product change authorized.
+- C15: not applicable - pending; no product change authorized.
+- C16: not applicable - pending; no product change authorized.
+- C17: not applicable - pending; no product change authorized.
+- C18: not applicable - pending; no product change authorized.
+- C19: not applicable - pending; no product change authorized.
+- C20: not applicable - pending; no product change authorized.
+- C21: not applicable - pending; no product change authorized.
+- C22: not applicable - pending; no product change authorized.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: /root/kobak_source_reviewer; initial five-lens review plus two focused rechecks
+- **Findings resolved:** four material findings: separated the two S7 regions; corrected #7's authorship-boundary coverage; added the COVID 0.069 comparison, about-200,000 annual extrapolation, and speculative above-30% interpretation with directness labels; disclosed that the authors' two-times COVID comparison is about 1.96 using the displayed rounded values
+- **Unresolved findings:** none

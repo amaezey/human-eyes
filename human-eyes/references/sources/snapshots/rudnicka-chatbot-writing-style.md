@@ -1,27 +1,48 @@
-Title: ChatGPT and Gemini AIs Have Uniquely Different Writing Styles
+# Each AI Chatbot Has Its Own Distinctive Writing Style—Just as Humans Do
 
-URL Source: https://www.scientificamerican.com/article/chatgpt-and-gemini-ai-have-uniquely-different-writing-styles/
+- **Canonical URL:** https://www.scientificamerican.com/article/chatgpt-and-gemini-ai-have-uniquely-different-writing-styles/
+- **Alternate access URLs:**
+  - https://r.jina.ai/https://www.scientificamerican.com/article/chatgpt-and-gemini-ai-have-uniquely-different-writing-styles/
+  - http://r.jina.ai/http://www.scientificamerican.com/article/chatgpt-and-gemini-ai-have-uniquely-different-writing-styles/
+- **Author / owner:** Karolina Rudnicka; edited by Madhusree Mukerjee
+- **Publisher:** Scientific American
+- **Published:** 2025-07-09T08:00:00-04:00
+- **Retrieved:** 2026-07-17
+- **Stable identifier:** Scientific American article ID 1309411; Contentful ID `3MPLDwXrQZYNJY9I2LsWUB`
+- **Version / revision:** canonical article record updated 2025-07-10T17:52:31.284000+00:00; structured article image revision 1
+- **Extraction method:** canonical HTML downloaded with `curl --compressed`; the single rendered `<article>` and embedded `window.__DATA__` article record were parsed with Python 3 and Beautiful Soup; complete prose was cross-checked against both HTTP- and HTTPS-target Jina Reader Markdown; both first-party article images were downloaded and visually inspected
+- **Full-text status:** complete
+- **Access and transformation notes:** the canonical page returned the complete article without a login or challenge. The 12 substantive body paragraphs, two substantive section headings, one content-bearing chart, display headline, standfirst, byline, editor, lead-image metadata, and links are preserved. Navigation, advertising, newsletter prompts, the separate “It’s Time to Stand Up for Science” fundraising module, recommendations, and other page chrome were excluded. HTML entities were decoded and paragraph/link structure was normalized to Markdown. The linked Zenodo dataset was inspected to determine scope and verify the chart boundary, but it is a cited source and was not recursively ingested here.
 
-Published Time: 2025-07-09T08:00:00-04:00
+## Full text
 
-Markdown Content:
+### Each AI Chatbot Has Its Own Distinctive Writing Style—Just as Humans Do
+
+ChatGPT and Gemini AI write in different idioms, linguists find
+
+By Karolina Rudnicka, edited by Madhusree Mukerjee
+
+![Illustration of a chatbot with speech bubble](attachments/rudnicka-chatbot-writing-style-lead-image.jpg)
+
+Miakievy/Getty Images
+
 The last time you interacted with ChatGPT, did it feel like you were chatting with one person, or more like you were conversing with multiple individuals? Did the chatbot appear to have a consistent personality, or did it seem different each time you engaged with it?
 
-A few weeks ago, while comparing language proficiency in essays written by ChatGPT with that in essays by human authors, I had an [aha](https://www.scientificamerican.com/article/the-elusive-brain-science-of-aha-moments/)[!](https://www.scientificamerican.com/article/the-elusive-brain-science-of-aha-moments/)[moment](https://www.scientificamerican.com/article/the-elusive-brain-science-of-aha-moments/). I realized that I was comparing a single voice—that of the large language model, or LLM, that powers ChatGPT—to a diverse range of voices from multiple writers. Linguists like me know that every person has a distinct way of expressing themselves, depending on their native language, age, gender, education and other factors. We call that individual speaking style an “idiolect.” It is similar in concept to, but much narrower than, a dialect, which is the variety of a language spoken by a community. My insight: one could analyze the language produced by ChatGPT to find out whether it expresses itself in an idiolect—a single, distinct way.
+A few weeks ago, while comparing language proficiency in essays written by ChatGPT with that in essays by human authors, I had an [aha! moment](https://www.scientificamerican.com/article/the-elusive-brain-science-of-aha-moments/). I realized that I was comparing a single voice—that of the large language model, or LLM, that powers ChatGPT—to a diverse range of voices from multiple writers. Linguists like me know that every person has a distinct way of expressing themselves, depending on their native language, age, gender, education and other factors. We call that individual speaking style an “idiolect.” It is similar in concept to, but much narrower than, a dialect, which is the variety of a language spoken by a community. My insight: one could analyze the language produced by ChatGPT to find out whether it expresses itself in an idiolect—a single, distinct way.
 
 Idiolects are essential in forensic linguistics. This field examines language use in police interviews with suspects, attributes authorship of documents and text messages, traces the linguistic backgrounds of asylum seekers and detects plagiarism, among other activities. While we don’t (yet) need to put LLMs on the stand, a growing group of people, including teachers, worry about such models being used by students to the detriment of their education—for instance, by [outsourcing](https://www.scientificamerican.com/article/chatgpt-can-get-good-grades-what-should-educators-do-about-it/) writing assignments to ChatGPT. So I decided to check whether ChatGPT and its artificial intelligence cousins, such as Gemini and Copilot, indeed possess idiolects.
 
-## **The Elements of Style**
+## The Elements of Style
 
 To test whether a text has been generated by an LLM, we need to examine not only the content but also the form—the language used. Research shows that ChatGPT tends to favor standard grammar and academic expressions, [shunning slang](https://aclanthology.org/2024.emnlp-main.750/) or [colloquialisms](https://www.degruyterbrill.com/document/doi/10.1515/iral-2024-0196/html). Compared with texts written by human authors, ChatGPT tends to [overuse sophisticated verbs](https://aclanthology.org/2025.coling-main.426/), such as “delve,” “align” and “underscore,” [and adjectives](https://www.scientificamerican.com/article/chatbots-have-thoroughly-infiltrated-scientific-publishing/), such as “noteworthy,” “versatile” and “commendable.” We might consider these words typical for the idiolect of ChatGPT. But does ChatGPT express ideas differently than other LLM-powered tools when discussing the same topic? Let’s delve into that.
 
 Online repositories are full of amazing datasets that can be used for research. One is a [dataset](https://zenodo.org/records/14284509) compiled by computer scientist Muhammad Naveed, which contains hundreds of short texts on diabetes written by ChatGPT and Gemini. The texts are of virtually the same size, and, according to their creator’s description, they can be used “to compare and analyze the performance of both AI models in generating informative and coherent content on a medical topic.” The similarities in topic and size make them ideal for determining whether the outputs appear to come from two distinct “authors” or from a single “individual.”
 
-One popular way of attributing authorship uses the Delta method, [introduced](https://academic.oup.com/dsh/article-abstract/17/3/267/929277?redirectedFrom=fulltext)[in 200](https://academic.oup.com/dsh/article-abstract/17/3/267/929277?redirectedFrom=fulltext)[1](https://academic.oup.com/dsh/article-abstract/17/3/267/929277?redirectedFrom=fulltext)[by John Burrows](https://academic.oup.com/dsh/article-abstract/17/3/267/929277?redirectedFrom=fulltext), a pioneer of computational stylistics. The formula compares frequencies of words commonly used in the texts: words that function to express relationships with other words—a category that includes “and,” “it,” “of,” “the,” “that” and “for”—and content words such as “glucose” or “sugar.” In this way, the Delta method captures features that vary according to their authors’ idiolects. In particular, it outputs numbers that measure the linguistic “distances” between the text being investigated and reference texts by preselected authors. The smaller the distance, which typically is slightly below or above 1, the higher the likelihood that the author is the same.
+One popular way of attributing authorship uses the Delta method, [introduced in 2001 by John Burrows](https://academic.oup.com/dsh/article-abstract/17/3/267/929277?redirectedFrom=fulltext), a pioneer of computational stylistics. The formula compares frequencies of words commonly used in the texts: words that function to express relationships with other words—a category that includes “and,” “it,” “of,” “the,” “that” and “for”—and content words such as “glucose” or “sugar.” In this way, the Delta method captures features that vary according to their authors’ idiolects. In particular, it outputs numbers that measure the linguistic “distances” between the text being investigated and reference texts by preselected authors. The smaller the distance, which typically is slightly below or above 1, the higher the likelihood that the author is the same.
 
 I found that a random sample of 10 percent of texts on diabetes generated by ChatGPT has a distance of 0.92 to the entire ChatGPT diabetes dataset and a distance of 1.49 to the entire Gemini dataset. Similarly, a random 10 percent sample of Gemini texts has a distance of 0.84 to Gemini and of 1.45 to ChatGPT. In both cases, the authorship turns out to be quite clear, indicating that the two tools’ models have distinct writing styles.
 
-## **You Say Sugar, I Say Glucose**
+## You Say Sugar, I Say Glucose
 
 To better understand these styles, let’s imagine that we are looking at the diabetes texts and selecting words in groups of three. Such combinations are called “trigrams.” By seeing which trigrams are used most often, we can get a sense of someone’s unique way of putting the words together. I extracted the 20 most frequent trigrams for both ChatGPT and Gemini and compared them.
 
@@ -29,22 +50,34 @@ ChatGPT’s trigrams in these texts suggest a more formal, clinical and academic
 
 The chart below contains the most striking frequency-related differences between the trigrams. Gemini uses the formal phrase “blood glucose levels” only once in the whole dataset—so it knows the phrase but seems to avoid it. Conversely, “high blood sugar” appears only 25 times in ChatGPT’s responses compared to 158 times in Gemini’s. In fact, ChatGPT uses the word “glucose” more than twice as many times as it uses “sugar,” while Gemini does just the opposite, writing “sugar” more than twice as often as “glucose.”
 
-![Image 1: Dumbbell chart shows the difference in word frequency from two different tools powered by large language models, Gemini and ChatGPT. Gemini tends to favor simple and straightforward language (such as “high blood sugar”) while ChatGPT favors formal word combinations (such as “blood glucose levels”).](https://static.scientificamerican.com/dam/m/36dd16b42eeb678/original/Gemini-vs-ChatGPT_graphic_d_TEXT.png?m=1751907902.817&w=900)
+![Dumbbell chart showing word-choice frequencies for Gemini and ChatGPT](attachments/rudnicka-chatbot-writing-style-gemini-vs-chatgpt-chart.png)
 
-Eve Lu; Source: Karolina Rudnicka (_data_)
+Chart title: “Word Choice Preferences of Two Language Models.” The legend assigns yellow to Gemini and blue to ChatGPT. The ten displayed rows are “individuals with diabetes,” “blood glucose levels,” “the development of,” “characterized by elevated,” “an increased risk,” “high blood sugar,” “blood sugar control,” “the way for,” “a cascade of,” and “is not a.” The horizontal scale runs from 0 to 450 in steps of 50. The source prose says “the cascade of,” but the preserved chart says “a cascade of.”
+
+Eve Lu; Source: Karolina Rudnicka (data)
 
 Why would LLMs develop idiolects? The phenomenon could be associated with the principle of least effort—the tendency to choose the least demanding way to accomplish a given task. Once a word or phrase becomes part of their linguistic repertoire during training, the models might continue using it and combine it with similar expressions, much like people have favorite words or phrases they use with above-average frequency in their speech or writing. Or it might be a form of priming—something that happens to humans when we hear a word and then are more likely to use it ourselves. Perhaps each model is in some way priming itself with words it uses repeatedly. Idiolects in LLMs might also reflect what are known as [emergent abilities](https://www.scientificamerican.com/podcast/episode/should-we-care-about-ais-emergent-abilities/)—skills the models were not explicitly trained to perform but that they nonetheless demonstrate.
 
 The fact that LLM-based tools produce different idiolects—which might change and develop across updates or new versions—matters for the ongoing debate regarding how far AI is from achieving human-level intelligence. It makes a difference if chatbots’ models don’t just average or mirror their training data but develop distinctive lexical, grammatical or syntactic habits in the process, much like humans are shaped by our experiences. Meanwhile, knowing that LLMs write in idiolects could help determine if an essay or an article was produced by a model or by a particular individual—just as you might recognize a friend’s message in a group chat by their signature style.
 
-## It’s Time to Stand Up for Science
+## Cited-source cross-checks
 
-If you enjoyed this article, I’d like to ask for your support.Scientific American has served as an advocate for science and industry for 180 years, and right now may be the most critical moment in that two-century history.
+- Zenodo record 14284509 identifies the cited dataset as “AI-Generated Text on Diabetes: A Dataset of ChatGPT and Gemini Responses,” by Muhammad Naveed, published 2024-12-05, DOI `10.5281/zenodo.14284509`, record revision 3. Its metadata and one-sentence README give no model versions, prompts, generation settings, sampling procedure, language field, or human comparison.
+- The cited ZIP contains 220 ChatGPT-named files, of which 205 contain text and 15 numbered 206-220 are empty, plus 205 nonempty Gemini-named files. Nonempty files usually contain 590-601 whitespace-separated words; one Gemini file contains 754. ZIP timestamps span 2024-01-10 to 2024-01-15 for ChatGPT files and 2024-01-11 to 2024-01-20 for Gemini files. These are archive observations, not generation-provenance metadata.
+- A case-insensitive literal-substring check of all cited dataset files reproduces the article’s exact “blood glucose levels” count of 1 for Gemini and “high blood sugar” counts of 25 for ChatGPT and 158 for Gemini. It finds “a cascade of” 12 times in ChatGPT and 52 times in Gemini, and “the cascade of” zero times in both, supporting the chart label rather than the prose variant. This mechanical cross-check does not reproduce the Delta analysis, its random sample, or its trigram ranking method.
 
-I’ve been a Scientific American subscriber since I was 12 years old, and it helped shape the way I look at the world.SciAm always educates and delights me, and inspires a sense of awe for our vast, beautiful universe. I hope it does that for you, too.
+## Extraction verification
 
-If you[subscribe to Scientific American](https://www.scientificamerican.com/getsciam/), you help ensure that our coverage is centered on meaningful research and discovery; that we have the resources to report on the decisions that threaten labs across the U.S.; and that we support both budding and working scientists at a time when the value of science itself too often goes unrecognized.
+- **Beginning checked:** the canonical display headline, internal title, standfirst, byline, editor, lead-image alt/credit, and body paragraphs 1-3 were compared across the rendered `<article>`, embedded structured article record, and both Jina routes.
+- **Middle checked:** body paragraphs 4-10, including the four Delta distances, the 20-most-frequent-trigrams description, both model-specific five-phrase lists, and the exact `blood glucose levels` and `high blood sugar` counts, were compared across the canonical structured record and Jina Markdown.
+- **End checked:** body paragraphs 11-12, covering the three speculative mechanism families, update/version drift, and the proposed authorship application, were compared across the canonical structured record and Jina Markdown.
+- **Structure checked:** the publisher record reports 1,156 words. Its substantive `content` array has 15 entries: 12 paragraphs, two `h2` headings, and one image embed. The chart was visually inspected at its original 2917×2108 resolution; the lead illustration was visually inspected at its original 2880×1920 resolution. There are no source footnotes, tables, appendices, or formal reference list. All article-body links were retained.
+- **Known omissions:** none from the substantive article. The non-article fundraising module and page chrome were intentionally excluded. The article supplies neither its Delta/trigram code nor the random seed or selected file IDs for the reported 10 percent samples, so those results cannot be independently reproduced from this page.
 
-In return, you get essential news,[captivating podcasts](https://www.scientificamerican.com/podcasts/), brilliant infographics,[can't-miss newsletters](https://www.scientificamerican.com/newsletters/), must-watch videos,[challenging games](https://www.scientificamerican.com/games/), and the science world's best writing and reporting. You can even[gift someone a subscription](https://www.scientificamerican.com/getsciam/gift/).
+## Preserved attachments
 
-There has never been a more important time for us to stand up and show why science matters. I hope you’ll support us in that mission.
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/rudnicka-chatbot-writing-style-scientific-american-2026-07-17.html.gz` | Gzip-preserved canonical publisher HTML and embedded structured article record | `16d863301ac1e66cd52b5915820ccc3f4297b6f92e49b47220be1c27f833c210` | The byte-for-byte `curl --compressed` response was gzip-compressed with timestamp/name fields suppressed (`gzip -n`); decompression reproduces HTML SHA-256 `c22e2c0e72877eeb4f4ac0c5696e82f5512ff7ee4b06df1c70666c24f7ed8c14`. The HTML was parsed with Python 3 and Beautiful Soup; the structured article record supplied the 15-item body, IDs, timestamps, assets, byline, and editor. |
+| `snapshots/attachments/rudnicka-chatbot-writing-style-gemini-vs-chatgpt-chart.png` | Content-bearing word-frequency chart | `b05973eb13b8eacbd969b906a0c47c1a19e49b0ece8970c8895b3b32b8891cdb` | Downloaded from the first-party original desktop asset URL at 2917×2108; visually inspected and its title, legend, scale, ten labels, and prose/chart `cascade` discrepancy transcribed above. |
+| `snapshots/attachments/rudnicka-chatbot-writing-style-lead-image.jpg` | Decorative lead illustration and source credit | `2a7b7241d8f12cfa3aba9f73c6f557e0d903612fcc45072272b03940347fbb0d` | Downloaded from the first-party original asset URL at 2880×1920; visually inspected; publisher alt text and credit retained. |

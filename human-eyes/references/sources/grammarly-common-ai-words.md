@@ -1,43 +1,167 @@
 # Grammarly: Common AI words and phrases
+
 ## Metadata
+
 - **URL:** https://www.grammarly.com/blog/ai/common-ai-words/
 - **Author / owner:** Grammarly
-- **Published:** Updated 2025-04-09
-- **Extracted:** 2026-05-05
-- **Source type:** Vendor writing guide
+- **Published:** 2025-04-09T13:02:38+00:00; modified 2026-02-11T10:10:17+00:00
+- **Retrieved:** 2026-07-15
+- **Extracted:** 2026-07-15
+- **Source type:** vendor writing guide with product marketing and practitioner-style phrase catalogue
 - **Evidence tier:** Vendor / detector pages
-- **Extraction status:** second-pass reviewed from Grammarly page on 2026-05-05
+- **Review mode:** update
+- **Stable identifier:** none found
+- **Version / revision:** canonical living page with `article:modified_time` 2026-02-11T10:10:17+00:00; prior snapshot was a page-wide Jina Reader capture extracted 2026-05-05 and already showed the same 2026-02-11 update date
+- **Full-text status:** complete
+- **Snapshot:** `snapshots/grammarly-common-ai-words.md`
+- **Extraction method:** direct canonical HTML downloaded with `curl`, parsed and counted with Python 3 and Beautiful Soup 4.14.3, converted for comparison with `html2text` 2025.4.15, and checked against the prior Jina capture; raw HTML plus the hero PNG and complete Authorship GIF were preserved
+- **Snapshot SHA-256:** `6e41ff6ed3f0a8c17eef3e7ca9e95a31bf2cb1a15d73ec318082f2d3d8c994d2`
+- **Model / corpus scope:** English vendor blog article. It names Grammarly, ChatGPT, Gemini, GPT, and LLMs generically but supplies no model versions, prompts, outputs, corpus, corpus dates, sample size, genre distribution, comparison group, coding method, frequency table, threshold, uncertainty, or human baseline. The page is product-adjacent writing advice, not an empirical detector or vocabulary study.
+- **Access limitations:** No substantive article material is inaccessible. The canonical HTML contains one complete article with two images. Both current Jina Reader routes redirected to an advertising-tracker pixel and returned only a tracker description; the direct HTML was complete. Page chrome was omitted. Linked product pages, general explainers, and the linked RAID/Grammarly detector-ranking article were not recursively ingested, so their claims remain cited or promotional rather than direct evidence from this page.
 
 ## Summary
-Cited for common AI indicator words and phrases. It is a tentative phrase-list source.
+
+Grammarly's updated vendor guide offers a 31-item catalogue of words and phrases it associates with AI-generated English prose, four broader style characteristics, editing alternatives, responsible-use advice, a next-word-prediction explanation, and product claims. It does not describe a study, sample, comparison, model/version set, rate, or validation method. Its strongest project contribution is therefore a dated vendor phrase-list and editing prompt, not independent support for prevalence, severity, a threshold, a model fingerprint, a causal mechanism for the selected entries, or authorship. The live project already recognizes 17 of the 31 listed entries in the executable #7 vocabulary cluster (six high-frequency entries, one transition, no qualifiers, four analytical terms, and six buzzwords), recognizes two transition openers elsewhere, and contains strong process overlap for review and voice preservation. The refresh exposes material documentation-to-code drift for the transition and hedge examples and recommends removing Grammarly from a proposed empirical/register-specific evidence grouping while retaining it as weak vendor catalogue context.
 
 ## Main insights
-- Useful as weak corroboration.
-- Vendor list should not define severity alone.
-- Needs extraction and deduplication.
+
+- The page directly groups 31 named items into six high-frequency words, six transitions, six qualifiers, six analytical/academic terms, and seven buzzwords. It provides a definition, example, and replacement for every item.
+- Grammarly calls the items common or frequent and says they can offer clues, but it publishes no counts, sample, human comparison, models or versions, dates, genres, languages, statistical method, or threshold.
+- The page describes AI output positively as fluent, well structured, clear, readable, efficient, able to organize ideas, and quick to generalize or synthesize information, while also characterizing it as formal or robotic, repetitive, reliant on familiar phrases or clichés, sometimes outdated, limited in personality or nuance, and predictably formatted. Both sides are practitioner assertions, not measured findings.
+- The qualifier section contains an important concession: hedging can maintain neutrality and prevent overgeneralization. Removing a qualifier is therefore not always an improvement.
+- The recommended alternatives are not validated. Several preserve or introduce similar problems, including vague attribution (`Some may say`, `Technologists agree`), other formulaic phrases (`Simply put`), and promotional language (`Groundbreaking`, `Impactful`, `State-of-the-art`).
+- The page recommends human review, intent and voice preservation, process tracking, transparency, citation of AI involvement, compliance with field-specific rules, and adding personal insights or anecdotes.
+- Adding anecdotes or personal details is safe only when the writer supplies them. Used as generic rewrite advice, it would conflict with human-eyes' closed-source rule against inventing experience, facts, voice, or personal detail.
+- The FAQ says AI detectors estimate likelihood and are not foolproof; accuracy varies with model capability and later editing. This supports the project's no-authorship boundary, not a detector score.
+- Claims about Grammarly Authorship, the AI Humanizer, and the AI Detector are first-party product claims. The “#1 for quality by RAID” statement points to a separate Grammarly article and is indirect here.
+- The preserved Authorship GIF is an illustrative marketing UI, not independent provenance evidence. It labels a formulaic paragraph “Typed by a human” even though live #7 flags four terms, and labels a different paragraph “AI-generated” even though live #7 finds none.
+- The page attributes recurring vocabulary to LLM next-word prediction over training-data patterns, but supplies no analysis connecting that general explanation to the 31 selected entries.
+- The opening definition says AI-generated content is created by AI “rather than a human,” while later sections explicitly describe AI assistance and co-creation. The page therefore does not supply a stable boundary for mixed authorship or assistance.
+- The prior snapshot had no recorded digest in the card or manifest. Its exact bytes were hashed, archived, and reverified before replacement. Direct inspection found the substantive 2026-02-11 article revision unchanged; the new snapshot repairs provenance, removes page chrome, and preserves both article assets.
 
 ## Evidence and claims to extract
-- Direct source reviewed: Grammarly blog page.
-- Grammarly frames common AI words as clues because LLMs predict likely next words from learned patterns.
-- The page groups signals into high-frequency words, transition/structured phrases, qualifiers/softening words, and analytical/academic words.
-- Named examples include "delve into", "underscore", "pivotal", "realm", "harness", "illuminate", "that being said", "at its core", "to put it simply", "a key takeaway is", "generally speaking", "typically", "tends to", and "arguably".
-- Grammarly's examples are prescriptive writing advice with alternatives, not an empirical detector study.
+
+- **Direct source reviewed:** Complete canonical article “Decoding AI Language: Common Words and Phrases in AI-Generated Content,” direct metadata revision `article:modified_time` 2026-02-11T10:10:17+00:00, including the title/byline/update date, three key takeaways, six-item contents list, six H2 sections, 15 H3 sections, all 31 named phrase entries and their examples/alternatives, responsible-use guidance, conclusion, five FAQs, detector/RAID promotion, hero image, and complete 366-frame Authorship GIF.
+- **Method and sample:** Vendor editorial guidance and product marketing. No empirical method or sample is disclosed. Models are named generically, language is English, platform is Grammarly Blog, and the reviewed living-page revision is dated 2026-02-11. Model versions, prompts, text lengths, corpus dates, genres, comparison conditions, counts, uncertainty, and validation are absent.
+- **Direct versus cited evidence:** C01-C12 and C15 are direct statements, lists, advice, qualifications, mechanism explanations, or first-party product claims on the page, but none is an empirical result. C13 is a linked/cited detector-ranking claim whose supporting article and benchmark were not directly reviewed in this ingestion. C14 is this review's provenance and evidence-boundary assessment, not a claim by Grammarly.
+- **Important limits and counterexamples:** The source gives no human frequency baseline, so it cannot show that any item distinguishes AI from deliberate human use. It does not say that one word proves authorship or define a document threshold. Its own hedge section says qualification can be useful, its alternatives sometimes reproduce the same problem, and its mixed-assistance language complicates the opening binary definition. Product claims are not independent validation.
 
 ## Skill-use audit
-- **Good use:** Weakly backs #7, #22, #23, and #50 as practitioner/vendor corroboration for common AI-ish phrasing.
-- **Misuse / overclaim:** It should not define severity or prove AI generation. The page says terms can offer clues, not verdicts.
-- **Unsupported use:** Compared with Kobak/Juzek/GPTZero, this is a less rigorous source for vocabulary frequency.
-- **Underused evidence:** It supports separating lexical substitutions from structural rewrites: many examples are direct replacement candidates for `alternatives.md`.
-- **Patterns left on the table:** "Analytical and academic words" may overlap with #47 soft explainer scaffolding and #43 corporate AI-speak, but should be deduplicated before adding anything.
+
+- **Good use:** Treat the page as a dated vendor phrase catalogue, a source of exact examples for coverage inspection, a practitioner prompt to review tone/structure/formatting, and first-party advice to preserve intent and voice during editing.
+- **Misuse / overclaim:** Do not cite it for measured word overuse, register-specific density, a three-hit threshold, strong severity, a model mechanism, detector accuracy, or authorship. “Common,” “high-frequency,” and “telltale” are unsupported by a disclosed dataset on this page.
+- **Unsupported use:** The page cannot validate #7's threshold, #23's hedge threshold, #15 or #31 severity, sentence or vocabulary distribution metrics, a human/AI comparison, language transfer, model-family attribution, provenance classification, or the linked RAID ranking.
+- **Underused evidence:** The live executable checks omit all six qualifier examples, two of six analytical terms, one of seven buzzwords, and most of the transition family despite rendered/root catalogue wording that implies broader coverage. The page's own qualification about useful hedging and its unvalidated replacement advice are also absent from the current source mapping.
+- **Patterns left on the table:** `That being said`, `To put it simply`, `A key takeaway is`, `Generally speaking`, `Typically`, `Tends to`, `Arguably`, `To some extent`, `Broadly speaking`, `Refine`, `Differentiate`, and `Scalable solution` lack exact executable #7/#22/#23 coverage in the focused run. This is a coverage fact, not a recommendation to add them without stronger evidence and matched controls.
 
 ## Matched patterns / rules
-- #7 AI vocabulary words and phrases
-- #22 filler phrases
-- #50 formulaic openers
+
+- #7 `no-ai-vocabulary-clustering` in `human-eyes/scripts/grade.py` and its registry/catalogue records
+- #1 `no-significance-inflation` for `pivotal` and `underscores the importance of`
+- #11 synonym cycling, manual only
+- #15 title case in headings, manual only in `patterns.json` and `patterns.md` despite the root README calling it regex
+- #22 `no-filler-phrases`; rendered/root examples are broader than the live `FILLER_PHRASES` implementation
+- #23 `no-excessive-hedging`; the six source qualifiers returned zero live matches
+- #31 `no-excessive-lists`; thresholded list-density coverage, not a title-case check
+- #35 tonal uniformity as adjacent judgement coverage; #36 faux specificity and #37 neutrality collapse are rewrite guardrails, not coverage for Grammarly's general style characterizations
+- #50 `no-formulaic-openers`; exact paragraph-initial coverage for `At its core` and `From a broader perspective`
+- #52 sentence-length variance and #53 vocabulary diversity as adjacent distribution checks, not validation of Grammarly's claims
+- Root README product boundary; `human-eyes/references/process.md` review, intent, voice, qualification, source-preservation, and no-authorship boundaries
+- H3 drop detection framing, H7 five-check gating plus advisory catalogue, H12 genre-aware thresholds, H24 register-specific vocabulary density, and H25 model-family versus generic-AI residue
 
 ## Associated hypotheses
-- H7 five-check gating plus advisory catalogue
+
+- H3: Drop detection framing entirely
+- H7: Five-check gating grader plus advisory catalogue
+- H12: Genre-aware threshold calibration
+- H24: Register-specific vocabulary density
+- H25: Model-family versus generic-AI residue
 
 ## Questions / follow-up
-- Which Grammarly examples are already covered by `patterns.json` and `alternatives.md`?
-- Should Grammarly stay citation-only in alternatives rather than pattern severity?
+
+- Recommendation decisions remain pending; no checker, registry, test, hypothesis, guidance, or shared index was changed in this work unit.
+- Decide whether Grammarly should remain only a weak vendor phrase-list citation in #7/#15/#22/#23/#50 and be removed from the register-specific evidence grouping in `pattern-opportunities.md`.
+- Before adding any uncovered term, run matched human/generated evaluation by register and date, including quoted text, necessary technical terms, legitimate hedging, deliberate title case, reference lists, and human-authored corporate/academic prose.
+- Correct documentation-to-code mismatches only as a separately approved product/documentation task. The source refresh records them but does not choose whether code or catalogue wording should change.
+- If the RAID ranking becomes decision-relevant, ingest the linked detector-ranking article and its primary benchmark separately.
+
+## Update provenance
+
+| Version | Stable identifier | Snapshot | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| previous | none found | `snapshots/archive/grammarly-common-ai-words/2026-05-05-d619b56c.md` | 2026-05-05 | `d619b56cffe8a573f26763d6101ab8edcd141fb39dacb9b4af4841c0fcf0d236` |
+| current | none found | `snapshots/grammarly-common-ai-words.md` | 2026-07-15 | `6e41ff6ed3f0a8c17eef3e7ca9e95a31bf2cb1a15d73ec318082f2d3d8c994d2` |
+
+The previous card and four-column manifest did not record a snapshot digest, so there was no pre-existing recorded SHA-256 to compare. Before replacement, the exact prior snapshot bytes were hashed as `d619b56cffe8a573f26763d6101ab8edcd141fb39dacb9b4af4841c0fcf0d236`, copied byte-for-byte to the archive path, and rehashed there with the same result. The prior and current captures both show the 2026-02-11 page update, and direct comparison found no substantive article revision. The current snapshot replaces the page-wide Jina wrapper with the complete article under `SNAPSHOT_TEMPLATE.md`, preserves direct HTML and both article images, records current Jina failures, and adds beginning/middle/end verification.
+
+## Decision history
+
+- The previous compact card predated stable claim IDs, update provenance, the authoritative coverage table, canonical decision fields, and document review. It recorded no approved recommendation or implemented source-specific change.
+- The prior broad #7/#22/#50 and H7 mappings are retained only where the live implementation and source actually overlap. The inherited #23 mapping is narrowed because the focused run returned zero hedge matches, and the old statement that the source backs register-specific vocabulary density is reopened because the page discloses no register, corpus, counts, or comparison.
+- C01-C15 are newly assigned IDs for the current contract and begin at `pending` / `not started`.
+
+## Project coverage
+
+This is the authoritative review table. Focused results come from direct calls to current `grade.py` functions plus `python3 human-eyes/scripts/grade.py audit tmp/grammarly-common-ai-words/focused-surface.md --surface-only --format json`. The sample groups every source list family and the page's formatting/process examples. Surface-only output is incomplete and establishes deterministic candidate coverage only, not a complete human-eyes Audit or authorship result.
+
+| Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
+|---|---|---|---|---|---|---|
+| C01: The page defines AI-generated content as media created by AI rather than a human, while later distinguishing fully self-authored, AI-assisted, pasted, and co-created work. | Direct vendor definition and later product/process categories; no mixed-authorship taxonomy, adjudication rule, or empirical boundary. The two framings are in tension. | **partly covered:** the root README and `process.md` explicitly avoid authorship classification and treat the source/brief as the factual boundary. No project component classifies degrees of AI assistance. | Importing the binary definition would conflict with both the page's later categories and the project's no-authorship boundary. | Record the definitional tension only; take no provenance-classification action. | pending | not started |
+| C02: The page describes AI output positively as fluent, well structured, clear, readable, efficient, useful for organizing ideas, and quick to generalize or synthesize information, while also saying it tends toward a formal or robotic and steady tone, repetitive phrasing or sentence structure, familiar phrases and clichés, outdated language or information, limited emotion/nuance/personal perspective, and predictable title-case headings, bullets, and polished formatting. | Direct practitioner/vendor assertions and examples; no sample, coding, prevalence, factual review, human comparison, genre, model/version, language comparison, or threshold. Human look-alikes are not examined, and neither the positive nor negative characterization is measured. | **partly covered:** #11, #15, #31, #35, and `structural_monotony` address repetition, formatting, tonal uniformity, or structural repetition. `process.md` protects source facts and requires validation after rewriting, but it does not detect outdated information as an AI-writing characteristic. #15 is manual in live registries, #31 is thresholded, and the focused eight-item list flagged #31 only because its line ratio was 38%. #36/#37 are rewrite guardrails, while #52/#53 and `even_jargon_distribution` measure different properties and do not cover this claim. | No check covers the whole claim; absence of emotion or personal detail is not itself a safe violation, and factual-fidelity safeguards do not validate the claim that outdated information characterizes AI text. Root README row 15 incorrectly labels the manual title-case item as regex. | Keep as weak review prompts only; require genre-matched human controls before changing severity or executable coverage, and correct catalogue drift separately if approved. | pending | not started |
+| C03: The six “high-frequency AI words” are `delve into`, `underscore`, `pivotal`, `realm`, `harness`, and `illuminate`. | Direct vendor list with definitions, isolated examples, and alternatives; “high-frequency” is not supported by counts or a disclosed corpus on this page. | **fully covered for clustered recognition:** direct `check_ai_vocabulary` on the six-item group failed with `Worst paragraph has 6 AI words` and named all six. #1 also found `pivotal`; source example phrasing can trigger the significance frame. | The source does not validate #7's three-item paragraph threshold, strong severity, individual substitution, or authorship interpretation. | Retain as weak vendor catalogue provenance for existing clustered recognition; do not use it to set threshold or severity. | pending | not started |
+| C04: The six transition/structured phrases are `That being said`, `At its core`, `To put it simply`, `This underscores the importance of`, `A key takeaway is`, and `From a broader perspective`; the page says they can aid clarity but may be wordy. | Direct vendor list with a useful clarity qualification; no rate, comparison, genre control, or validation of replacements. | **partly covered:** the focused file flagged #50 only for paragraph-initial `At its core` and `From a broader perspective`; #1 recognized `underscores the importance of`. The grouped direct #7 call found only one AI-vocabulary item and no filler or hedge result. | `patterns.json`/`patterns.md` list all six under #7, and rendered/root #22 wording includes `From a broader perspective`, but live #7/#22 code does not recognize most of the family. #50 is paragraph-initial only. | Record the exact drift; do not add the missing phrases without stronger direct evidence and matched controls. | pending | not started |
+| C05: The six qualifiers are `Generally speaking`, `Typically`, `Tends to`, `Arguably`, `To some extent`, and `Broadly speaking`; hedging may prevent overgeneralization but can also sound hesitant. | Direct vendor list and explicit qualification; no count, density, accuracy, genre, or human comparison. The examples mix defensible uncertainty with generic claims. | **not covered by the exact live checks:** direct calls returned zero #7 words, zero #22 filler matches, and zero #23 hedging constructions for the six-item group. #37 is a broader source-versus-rewrite stance assessment, not phrase recognition. | Root/rendered #22 examples name `Generally speaking` and `Broadly speaking`, and root row 23 cites Grammarly, but code does not implement these examples. Removing valid qualification could violate `process.md`'s protected-uncertainty rule. | Preserve honest qualification; treat the six as evaluation candidates only and require factual-uncertainty and academic controls before any product change. | pending | not started |
+| C06: The six analytical/academic terms are `shed light on`, `facilitate`, `refine`, `bolster`, `differentiate`, and `streamline`. | Direct vendor list with isolated examples and simpler alternatives; no academic corpus, frequency comparison, model/version set, or test of meaning preservation. | **partly covered:** direct #7 call found four items, `shed light on`, `facilitate`, `bolster`, and `streamline`, and missed `refine` and `differentiate`. | The source does not show that the two misses or any single term distinguish AI from ordinary academic or technical prose. | Retain the four existing overlaps as weak catalogue context; evaluate `refine` and `differentiate` with register controls before deciding whether to add them. | pending | not started |
+| C07: The seven buzzword entries are `revolutionize`, `innovative`, `cutting-edge`, `game-changing`, `transformative`, `seamless integration`, and `scalable solution`; the page says they can exaggerate or lose meaning. | Direct vendor list and prescriptive interpretation; no marketing corpus, counts, human comparison, or threshold. | **partly covered:** direct #7 call found six via `revolutionize`, `innovative`, `cutting-edge`, `game-changing`, `transformative`, and `seamless`; it missed `scalable solution`. `no-promotional-language` returned no findings for the group. | The #4 promotional check and #43 corporate check do not cover most of this exact family. Source support is insufficient to turn `scalable solution` or single buzzwords into failures. | Keep existing #7 items as weak vendor context; evaluate marketing and technical controls before any extension. | pending | not started |
+| C08: The page recommends replacing or deleting each listed item with plainer, more specific, more concise, or more colloquial language. | Direct prescriptive advice, not an evaluated rewrite study. Alternatives sometimes preserve the function and sometimes introduce vague attribution, new formulaic phrasing, or promotional terms. | **partly covered:** `process.md` permits lexical substitution only when meaning survives, requires context validation, and protects facts, uncertainty, quotation, stance, and voice. No wholesale Grammarly replacement table is imported. | Several alternatives, including `Some may say`, `Technologists agree`, `Simply put`, `Groundbreaking`, `Impactful`, and `State-of-the-art`, can trigger other project concerns or weaken attribution. | Do not import the alternatives wholesale; keep context-bound substitution and executed validation as the controlling process. | pending | not started |
+| C09: Human oversight should review and refine AI-assisted text so it aligns with the writer's intent, voice, quality standards, creativity, and personal style; the FAQ also advises adding personal insights or anecdotes. | Direct vendor process advice; no outcome study. It mixes sound review principles with a potentially unsafe generic request for personal material. | **partly covered and partly challenged:** `process.md` requires complete Audit, source/brief preservation, intent/voice checks, and no invented facts or personal details. The project correctly has no rule to manufacture anecdotes or experience. | Generic “add an anecdote” advice would violate the closed-source contract when the writer supplied none. The source does not test whether suggested edits preserve meaning or improve quality. | Retain oversight, intent, and voice preservation; explicitly reject invented personal detail and require writer-supplied material. | pending | not started |
+| C10: Responsible use includes tracking the writing process, distinguishing self-authored/AI-assisted/pasted content, being transparent, citing AI use when required, and following institutional or industry rules. The Authorship GIF illustrates categories for typed by a human, typed then rephrased with AI, typed then edited with Grammarly, AI-generated, copied from a website, unnatural typing, and unknown source. | Direct first-party guidance and an illustrative marketing UI intertwined with Grammarly Authorship and citation-product promotion; no policy comparison, user study, adjudication method, accuracy result, or proof that tracking removes ambiguity. The labels are not independent authorship evidence. | **not covered:** human-eyes audits prose patterns and preserves source material but is not an authorship tracker, disclosure system, citation generator, or policy engine. #41 has genre-specific source verification, not AI-use provenance categories. | Adding tracking or disclosure policy would expand product scope and require user/policy decisions beyond this source refresh. The UI categories cannot be inferred from prose-pattern checks. | Record as adjacent process context only; take no product action without an explicit provenance-policy project. | pending | not started |
+| C11: AI detectors estimate likelihood, are not 100% foolproof, and vary with model advancement and later editing. | Direct vendor FAQ qualification; no detector names, evaluated sample, rates, subgroups, language conditions, lengths, thresholds, or uncertainty. | **fully covered at the product boundary:** root README says human-eyes is a pattern detector, not an AI detector; `process.md` says reports do not infer who or what wrote the text; `dev/TESTING.md` separates candidate recognition from threshold and authorship. | The source is too general to support a quantitative detector caveat, a score, or a threshold. | Retain as weak corroboration for the no-authorship boundary; take no scoring action. | pending | not started |
+| C12: Grammarly Authorship can categorize writing activity; the AI Humanizer improves flow and phrasing; Grammarly's detector can analyze AI-generated patterns. | First-party product claims on a marketing-adjacent article; no direct accuracy, user, or comparative evidence on this page. The complete 366-frame Authorship GIF demonstrates a UI workflow, not validity. Its “Typed by a human” example fails live #7 with four matches (`highlighting`, `cornerstone`, `multifaceted`, `explore`), while its “AI-generated” example passes with zero. | **challenged:** the two illustrative UI examples invert what a vocabulary-only authorship inference would suggest. This is appropriately outside the human-eyes prose-pattern evidence and rewrite-product boundary, which disclaims authorship classification. | Product capability assertions do not validate the 31-item phrase list or any human-eyes rule; the two UI labels are marketing-demo provenance categories, not validated ground truth. | Record as vendor context and a counterexample to authorship inference from #7; do not promote product claims or UI labels into pattern evidence. | pending | not started |
+| C13: Grammarly says its AI Detector ranks #1 for quality by RAID and calls that independent proof of best available detection. | Indirect promotional claim linked to another Grammarly article and an external benchmark name; neither supporting page nor benchmark was directly reviewed here. | **not covered:** no project rule or evidence mapping should rely on an unreviewed linked claim. | The direct source does not supply benchmark version, detector versions, metrics, tasks, dates, subgroup results, or reproducible evidence. | Do not use the ranking; ingest the linked article and primary RAID benchmark separately if the claim becomes decision-relevant. | pending | not started |
+| C14: The complete source is a living English vendor page with no disclosed empirical method, and the prior/current captures show the same 2026-02-11 substantive revision. | Reviewer provenance assessment from direct HTML, prior Jina bytes, two current failed Jina routes, structural counts, assets, and on-disk hashes; not a Grammarly finding. | **fully covered by the refreshed record:** snapshot, archive, direct HTML, two images, dates, access failures, scope limits, focused checks, and hashes are recorded. `pattern-opportunities.md` currently groups Grammarly with sources said to support repeated/co-occurring, register-specific vocabulary evidence. | The existing opportunity row overstates this source: Grammarly gives a flat vendor list and no register, corpus, count, increase/decrease, or human comparison. The old digest was computed during this update because no recorded digest existed. | Keep the provenance repair; remove Grammarly from the register-specific evidence row while retaining it as weak vendor phrase-list context elsewhere. | pending | not started |
+| C15: LLMs predict likely next words from patterns learned in training data, and the page says this predictive process causes certain words and phrases to appear frequently in AI-generated content. | Direct vendor mechanism explanation; the page supplies no supporting analysis connecting next-word prediction to the 31 selected entries, no model/version comparison, and no human baseline. | **partly covered only as signal packaging:** #7 clusters configured vocabulary, but it neither tests nor validates the claimed causal mechanism. H25 keeps model-family and generic-residue questions open rather than assuming one explanation. | Treating configured vocabulary as proof of a generation mechanism would overstate both the source and the project. | Record the explanation only; make no mechanism claim in project guidance without direct model- and corpus-based evidence. | pending | not started |
+
+## Recommendations
+
+- C01: Record the mixed-authorship definitional tension only; take no provenance-classification action.
+- C02: Keep the four characteristics as weak review prompts and require matched controls before changing coverage or severity.
+- C03: Retain the six existing #7 overlaps as vendor catalogue provenance only; do not use this source to set threshold or severity.
+- C04: Record the transition documentation-to-code drift; do not extend checks from this source alone.
+- C05: Preserve legitimate qualification and test the six hedge candidates with factual-uncertainty and academic controls before any change.
+- C06: Keep the four current analytical-term overlaps; evaluate `refine` and `differentiate` before deciding whether to add them.
+- C07: Keep existing buzzword overlaps as weak vendor context; evaluate `scalable solution` with marketing and technical controls before any extension.
+- C08: Do not import Grammarly's alternatives wholesale; preserve human-eyes' context-bound substitution and executed-validation requirements.
+- C09: Retain human oversight, intent, voice, and quality review; never invent anecdotes or personal details absent from the source/brief.
+- C10: Record process tracking, disclosure, citation, and policy compliance as adjacent context; take no product action without a separate policy decision.
+- C11: Retain the detector limitation as weak support for the existing no-authorship boundary; take no scoring action.
+- C12: Keep Authorship, Humanizer, and detector capability statements as vendor product context only.
+- C13: Do not use the RAID ranking until its linked article and primary benchmark receive separate direct review.
+- C14: Retain the repaired archive/provenance and remove Grammarly from the register-specific vocabulary-evidence opportunity row while keeping it as vendor phrase-list context.
+- C15: Record the vendor's next-word-prediction explanation only; make no project mechanism claim without direct model- and corpus-based evidence.
+
+## Evaluation of approved changes
+
+- C01: not applicable - pending source-record recommendation; no product change requested.
+- C02: not applicable - pending source-record recommendation; no product change requested.
+- C03: not applicable - pending source-record recommendation; focused clustered recognition recorded without changing the threshold.
+- C04: not applicable - pending source-record recommendation; documentation-to-code drift recorded only.
+- C05: not applicable - pending source-record recommendation; valid qualification remains protected.
+- C06: not applicable - pending source-record recommendation; no vocabulary extension requested.
+- C07: not applicable - pending source-record recommendation; no vocabulary or promotional-check extension requested.
+- C08: not applicable - pending source-record recommendation; no alternatives table imported.
+- C09: not applicable - pending source-record recommendation; closed-source preservation remains controlling.
+- C10: not applicable - pending source-record recommendation; no provenance-policy product work requested.
+- C11: not applicable - pending source-record recommendation; existing no-authorship boundary retained.
+- C12: not applicable - pending source-record recommendation; product claims remain non-promoted.
+- C13: not applicable - pending source-record recommendation; linked evidence not recursively ingested.
+- C14: not applicable - pending source-record recommendation; exact shared-index correction will be handed to the primary agent.
+- C15: not applicable - pending source-record recommendation; no mechanism claim or product change requested.
+
+## Document review
+
+- **Review status:** passed
+- **Review method:** independent source-record reviewer: four sequential, strictly read-only reviews by `/root/grammarly_review_1`, `/root/grammarly_review_2`, `/root/grammarly_review_3`, and `/root/grammarly_review_4`; each applied source fidelity, provenance, project coverage, decision integrity, and completeness lenses
+- **Reviewer isolation:** each reviewer was a fresh source-dedicated agent, reviewed only this record, made no edits, and was not reused for re-review
+- **Findings resolved:** 8 total: five from reviewer 1, two from reviewer 2, and one from reviewer 3; fixes covered complete GIF review and counterexamples, balanced source characterizations, the causal-mechanism claim boundary, exact coverage, the 17/31 count, correct selection-versus-paragraph counts, and pending-decision wording. Reviewer 4 returned 0 findings and the verbatim verdict “PASS with no unresolved findings.”
+- **Unresolved findings:** none

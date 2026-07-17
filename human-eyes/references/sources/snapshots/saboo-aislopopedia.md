@@ -1,10 +1,20 @@
-Title: AISLOPOPEDIA — The Complete Encyclopedia of AI-Generated Slop
+# AISLOPOPEDIA — The Complete Encyclopedia of AI-Generated Slop
 
-URL Source: https://aislopopedia.com/
+- **Canonical URL:** https://aislopopedia.com/
+- **Alternate access URLs:**
+  - https://aislopopedia.com/assets/index-Djudj3zB.js
+  - https://aislopopedia.com/assets/index-BICP4pqK.css
+- **Author / owner:** @Saboo_Shubham_ (HTML author metadata, X account link, and footer credit)
+- **Publisher:** @Saboo_Shubham_
+- **Published:** none found; footer displays © 2024
+- **Retrieved:** 2026-07-17
+- **Stable identifier:** Netlify HTML ETag `1276d3ef57de87cd4271e160a3a2dadb-ssl`; content asset `index-Djudj3zB.js` SHA-256 `64d3158ee371c395c94b3c739744f9c48b81bf9b139f95ec8ccfac503e05982c`
+- **Version / revision:** live Netlify deployment retrieved 2026-07-17; content asset `index-Djudj3zB.js`
+- **Extraction method:** direct HTML fetched with curl; current first-party JavaScript content bundle fetched with curl and parsed to recover all page text, 10 section records, 26 labelled phrase groups, and 217 phrase records; current strings checked against the prior rendered-page capture
+- **Full-text status:** complete
+- **Access and transformation notes:** the direct HTML is a 1,169-byte JavaScript shell with SHA-256 `3e8165397195e1a978b57a13a6d4ed3b6bb8277db523a04d2bde58f5a387d280`. The substantive page text is embedded in the first-party 467,127-byte content bundle. The accessed 66,136-byte first-party stylesheet `index-BICP4pqK.css`, SHA-256 `13b9f6531721a1f78e078ccc332b0ec2db3d2dde56bbc19d64225340c7ca5a92`, contains styling but no substantive source text. Interactive controls were normalized to their default state: score 0, one complete rotating hero phrase, and the expanded confession punchline. Navigation mechanics, CSS declarations, and animation code were excluded. The rendered text below preserves every current phrase, group description, annotation, severity band, confession paragraph, and footer line. The bundle's styled phrase “overused invisible” is preserved as the rendered word sequence; its styling strikes out “overused” but does not insert a conjunction.
 
-Fetched: 2026-07-14 using the rendered website. The confession punchline was expanded before extraction. The rotating hero quotation was normalized to one complete phrase shown by the page ("Here's the thing:"). The interactive self-score remains at its untouched default of 0.
-
-Rendered Text Content:
+## Full text
 
 YOUR SLOP SCORE
 
@@ -1286,3 +1296,16 @@ AISLOPOPEDIA © 2024 — A self-incriminating document
 
 No AI-generated phrases were harmed in the making of this encyclopedia. Several were exposed.
 
+## Extraction verification
+
+- **Beginning checked:** the live HTML title, description, author metadata, hero phrase set, title, subtitle, expanded opening confession, and ten-item table of contents were checked against the current bundle and the prior rendered capture.
+- **Middle checked:** sections 5 and 6 were checked group by group: three comment groups with 18 phrases and two emoji groups with 16 phrases, including inline annotations and variation-selector forms.
+- **End checked:** section 9's ten templates, all five section 10 severity bands, the complete AI confession, irony block, closing challenge, author credit, © 2024 footer, and final sentence were checked against the current bundle and prior rendered capture.
+- **Structure checked:** one living web page; 10 numbered sections; 26 labelled phrase groups in sections 1-9; 217 phrase records total; section order, group titles, descriptions, annotations, table-of-contents labels, interactive score bands, and beginning/middle/end prose all checked. No tables, references, footnotes in the academic sense, appendices, pagination, or separate substantive media are present.
+- **Known omissions:** none from the substantive source. CSS, animation, interaction state beyond the default score, page mechanics, and empty root-shell markup were excluded because they add no source claims. No cited external source is present.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| none | not applicable | not applicable | The complete substantive source is preserved in this snapshot; the live HTML shell and content-bundle identifiers and hashes are recorded above. |

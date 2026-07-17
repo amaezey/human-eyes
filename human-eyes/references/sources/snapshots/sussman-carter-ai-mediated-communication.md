@@ -1,11 +1,22 @@
-# Full source text snapshot: sussman-carter-ai-mediated-communication
+# Detecting Effects of AI-Mediated Communication on Language Complexity and Sentiment
 
-- **Source PDF:** https://arxiv.org/pdf/2504.19556
-- **Retrieved:** 2026-07-14
-- **PDF SHA-256:** `893ee1a413f1f8f3ccc844c89433b4ee3188bf3a82122c2eeb7096b0a80a112b`
-- **Extraction:** complete text from `pdftotext -layout`; page and layout artefacts are preserved and no claims have been rewritten
+- **Canonical URL:** https://doi.org/10.1145/3701716.3717543
+- **Alternate access URLs:**
+  - https://arxiv.org/abs/2504.19556v1
+  - https://arxiv.org/pdf/2504.19556v1
+  - https://export.arxiv.org/api/query?id_list=2504.19556
+  - https://api.crossref.org/works/10.1145/3701716.3717543
+- **Author / owner:** Kristen Sussman and Daniel Carter
+- **Publisher:** Association for Computing Machinery (ACM)
+- **Published:** 2025-04-28 on arXiv; 2025-05-08 in the Companion Proceedings of the ACM Web Conference 2025
+- **Retrieved:** 2026-07-17
+- **Stable identifier:** DOI 10.1145/3701716.3717543; arXiv:2504.19556v1
+- **Version / revision:** arXiv v1, submitted 2025-04-28; five-page ACM-formatted proceedings paper
+- **Extraction method:** Official arXiv PDF downloaded with `curl`; PDF metadata and five-page extent checked with `pdfinfo`; complete embedded text layer converted with Poppler `pdftotext -layout`; pages 1, 2, 3, and 5 rendered with `pdftoppm` and visually compared; arXiv API and Crossref metadata used to verify revision and publication identity
+- **Full-text status:** complete
+- **Access and transformation notes:** The arXiv experimental HTML route returned 404 and a later arXiv abstract-page request returned 429; the versioned PDF and arXiv API remained available. The text extraction retains the two-column reading order, headings, captions, references, and marked page breaks. Figure graphics and the red change-highlighting described in section 2.4 are not encoded as text but remain complete in the preserved PDF attachment. No substantive pages, notes, appendices, or references were omitted.
 
-## Full extracted text
+## Full text
 
 Detecting Effects of AI-Mediated Communication on Language
                   Complexity and Sentiment∗
@@ -282,3 +293,17 @@ Complexity and Sentiment
 
 
 --- page break ---
+
+## Extraction verification
+
+- **Beginning checked:** Rendered page 1 was compared with the extraction from the title and author block through the abstract, ACM citation, introduction, and opening of related work; the paper identifies the same title, authors, DOI, 2020 and 2024 sample sizes, abstract percentages, and five-page proceedings extent.
+- **Middle checked:** Rendered pages 2 and 3 were compared with the extraction across data sources, methods, Figure 1, readability results, Figure 2, polarity distributions, Figure 3, manual-inspection method, and the opening of the first original/rewrite pair. Figure 1 visibly contains separate Flesch-Kincaid and polarity panels although its caption names only Flesch-Kincaid; its readability x-axis ends around 30, so the text's stated maxima of 50.9 and 575.2 are not visible in that plot. The remaining displayed captions, statistics, prompt, and text align with the extraction.
+- **End checked:** Rendered page 5 was compared with the extraction through references 9-13; the final reference entries and page ending align, with no continuation or appendix after reference 13.
+- **Structure checked:** Five PDF pages, 3 figures, abstract, sections 1, 1.1, 2, 2.2.1, 2.2.2, 2.3, 2.3.1, 2.3.2, 2.4, 3, 3.1, 3.2, and 13 references. The PDF contains no appendix, footnote section, supplementary file, or separate endnotes.
+- **Known omissions:** None from the source record. The Markdown body does not reproduce figure pixels or red font colour; the complete authoritative PDF is preserved below.
+
+## Preserved attachments
+
+| Path | Role in the source | SHA-256 | Preservation / extraction notes |
+|---|---|---|---|
+| `snapshots/attachments/sussman-carter-ai-mediated-communication-arxiv-2504.19556v1.pdf` | Authoritative five-page arXiv v1 PDF containing the complete paper, figures, colour highlighting, and references | `893ee1a413f1f8f3ccc844c89433b4ee3188bf3a82122c2eeb7096b0a80a112b` | Exact bytes downloaded from the official arXiv PDF route on 2026-07-17. This digest matches the PDF SHA-256 recorded in the prior 2026-07-14 snapshot. Complete embedded text extracted with `pdftotext -layout`; pages 1, 2, 3, and 5 rendered and checked visually. |
