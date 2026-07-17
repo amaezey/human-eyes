@@ -2520,6 +2520,28 @@ expect_fail("no-manufactured-insight",
     "But here’s the thing about all of it.",
     "family-1: curly-apostrophe here's the thing")
 
+# Family 1: documented filler transitions must fire on #22.
+expect_fail("no-filler-phrases",
+    "In today’s fast-paced world, teams move quickly.",
+    "family-1: README's own #22 example, curly apostrophe")
+expect_fail("no-filler-phrases",
+    "That being said, the plan still works as designed.",
+    "family-1: Grammarly transition 'That being said'")
+expect_fail("no-filler-phrases",
+    "From a broader perspective, the results hold.",
+    "family-1: documented transition 'From a broader perspective'")
+expect_fail("no-filler-phrases",
+    "As technology continues to evolve, our tooling adapts.",
+    "family-1: Guo transition 'As technology continues to evolve'")
+
+# Family 1: documented qualifiers count toward #23 density; singles stay clear.
+expect_fail("no-excessive-hedging",
+    "Generally speaking, results vary. Arguably, they typically improve to some extent.",
+    "family-1: four stacked documented qualifiers")
+expect_pass("no-excessive-hedging",
+    "Typically, the build finishes in about ten minutes.",
+    "family-1: one qualifier alone must not flag")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

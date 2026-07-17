@@ -119,7 +119,10 @@
       "prompt": "List vague this, that, it, these, those, and vague nouns such as moves when the antecedent is not identifiable. Also list unsupported first-use definite descriptions such as the gap, and separately identify passages whose repeated the + noun cadence is excessive even though each referent can be recovered. Quote the phrase and name the missing or over-repeated referent.",
       "answer_schema": {
         "type": "list",
-        "items": ["phrase", "why_unclear"]
+        "items": [
+          "phrase",
+          "why_unclear"
+        ]
       },
       "flagged_when": "non_empty"
     },
@@ -130,7 +133,10 @@
       "prompt": "List counted slogans, balanced bicolons, repeated syntactic skeletons, or cross-sentence correction scripts whose symmetry substitutes for information. Quote the complete construction and explain what the parallel form fails to say.",
       "answer_schema": {
         "type": "list",
-        "items": ["phrase", "why_formulaic"]
+        "items": [
+          "phrase",
+          "why_formulaic"
+        ]
       },
       "flagged_when": "non_empty"
     },
@@ -141,7 +147,10 @@
       "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats.",
       "answer_schema": {
         "type": "list",
-        "items": ["phrase", "what_it_repeats"]
+        "items": [
+          "phrase",
+          "what_it_repeats"
+        ]
       },
       "flagged_when": "non_empty"
     },
@@ -152,7 +161,10 @@
       "prompt": "List evaluative adjectives, comparisons, superlatives, modifier stacks, nominalisations, and metaphors that do not name the relevant property or comparison basis. Common examples include steady, rougher, cold, sharp, and load-bearing. Quote the phrase and state the missing criterion, property, actor, or action.",
       "answer_schema": {
         "type": "list",
-        "items": ["phrase", "missing_criterion"]
+        "items": [
+          "phrase",
+          "missing_criterion"
+        ]
       },
       "flagged_when": "non_empty"
     },
@@ -163,7 +175,10 @@
       "prompt": "List prose that answers, concedes to, corrects, or defends against a chat comment or critique absent from the document. Quote the answer-shaped language and name the missing conversational context required to understand it.",
       "answer_schema": {
         "type": "list",
-        "items": ["phrase", "missing_context"]
+        "items": [
+          "phrase",
+          "missing_context"
+        ]
       },
       "flagged_when": "non_empty"
     },
@@ -174,7 +189,10 @@
       "prompt": "List sincerity announcements and authenticity boosters such as honest, real, actual, genuine, frankly, candidly, and truthfully when they perform candour instead of adding literal meaning. Quote the complete frame and explain why the claim can be stated directly. Preserve literal uses and quotations.",
       "answer_schema": {
         "type": "list",
-        "items": ["phrase", "why_unnecessary"]
+        "items": [
+          "phrase",
+          "why_unnecessary"
+        ]
       },
       "flagged_when": "non_empty"
     },
@@ -185,7 +203,10 @@
       "prompt": "List connectors and coordinated clauses that imply a logical relationship without stating one. Quote the connection and name the missing causal, temporal, contrastive, or evidential relationship.",
       "answer_schema": {
         "type": "list",
-        "items": ["phrase", "missing_relationship"]
+        "items": [
+          "phrase",
+          "missing_relationship"
+        ]
       },
       "flagged_when": "non_empty"
     },
@@ -193,7 +214,7 @@
       "id": "genre_specific",
       "pattern_ref": 41,
       "severity": "context_warning",
-      "prompt": "First detect the genre of the text (academic, student_essay, poetry, fiction, journalism, marketing_email, or default if none of these fit). Then run the genre's watchlist below. Report `Genre detected: <genre>.` plus either watchlist findings or \"No genre-specific findings.\"",
+      "prompt": "First detect the genre of the text (academic, student_essay, poetry, fiction, journalism, marketing_email, or default if none of these fit). Then run that genre's watchlist. Academic: unverifiable or unsupported citations, DOIs, dates, journals, reference order, figure/data inconsistency, cited works not supporting the claim, depleted engagement markers (missing questions, reader address, personal asides, stance-bearing commentary). Student essay: rubric language echoed back, banal thesis claims, weak or missing evidence, student-level mismatch, abrupt tone or complexity shifts, surface polish masking weak argument, loss of the student's own interpretive agency. Poetry: default quatrains, unrequested rhyme, first-person plural overuse, mood-word accumulation, form compliance without pressure, process traces that look too neat, revisions that do not deepen the poem. Fiction: flattened dialogue, as-you-know exposition, weak voice differentiation, parenthetical stage directions, locked POV with no pressure, scene pacing that never surprises, over-resolved endings, generic fidelity to a target style without the source author's stranger choices. Journalism: unsupported claims, vague sourcing, fake or disappearing bylines, synthetic headshots, broken links, wrong dates, unverifiable quotes, undisclosed vendor or affiliate provenance. Marketing/email: placeholders, generic subject lines, fake personalisation, weak domain understanding, exaggerated transformation claims, empty hype verbs, over-warm openings, unsupported business jargon, action lists dressed up with symbols. Report `Genre detected: <genre>.` plus either watchlist findings or \"No genre-specific findings.\"",
       "answer_schema": {
         "type": "composite",
         "fields": {

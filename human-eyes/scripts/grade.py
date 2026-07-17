@@ -370,6 +370,13 @@ FILLER_PHRASES = [
     r"on the whole", r"at the end of the day",
     r"when all is said and done", r"the fact of the matter",
     r"is often framed as\b", r"is often (?:seen|viewed|regarded|described|characterized) as\b",
+    # Documented transitions the check previously never fired on
+    # (Grammarly C04/C05, Guo C13, AI for Lifelong Learners C06/C07).
+    r"in today['’]s fast-paced world", r"as technology continues to evolve",
+    r"that being said", r"to put it simply", r"a key takeaway is",
+    r"at its core\b", r"at the heart of the matter",
+    r"from a broader perspective", r"through this lens",
+    r"this underscores the importance of",
 ]
 
 GENERIC_CONCLUSIONS = [
@@ -2067,6 +2074,10 @@ def check_type_token_ratio(text):
 
 
 HEDGING_PATTERNS = [
+    # Documented qualifiers previously absent from the density count
+    # (Grammarly C05); the minimum-candidates threshold guards single uses.
+    r"\bgenerally speaking\b", r"\bbroadly speaking\b", r"\bto some extent\b",
+    r"\barguably\b", r"\btends? to\b", r"\btypically\b",
     r"\bis (?:often|frequently|widely|commonly|generally|typically) (?:framed|seen|viewed|regarded|considered|described|understood|presented|perceived|characterized|characterised)\b",
     r"\bis (?:increasingly|often) (?:measured|prioritised|prioritized|recognized|recognised|valued|questioned)\b",
     r"\bis (?:contingent|predicated|dependent) on\b",
