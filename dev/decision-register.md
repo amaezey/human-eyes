@@ -159,3 +159,14 @@ Each row is one pending decision; claim keys sit in the Source cards cell. Secti
 - **Pending lexical-feature decisions (2026-07-15):** The El Attar et al. preprint adds direct feature-ablation evidence and a release-significant challenge to the current low-TTR direction. These rows are pending recommendations, not approved product changes.
 - **Pending AISLOPOPEDIA decisions (2026-07-17):** These catalogue-derived recommendations remain pending. No product change is approved.
 - **Pending Zhou Wikipedia-workflow decisions (2026-07-17):** The complete arXiv v1 qualitative preprint contributes Wikipedia-specific workflow and editorial-quality evidence. These recommendations remain pending and must not be treated as authorship checks or implemented product behaviour.
+
+## POS-dependent candidates (2026-07-17)
+
+Mae's ruling: these need part-of-speech tagging; a tagger built for another of her projects will be brought in rather than writing regex proxies. Tag new POS-reliant candidates here.
+
+| ID | Candidate | Evidence | Decision | Commit | Validation |
+|---|---|---|---|---|---|
+| POS-01 | Weak sentence subjects: nominalised/abstract subjects displacing the sentence topic | shankar-ai-writing:C05 | tagged pos-dependency 2026-07-17 | | |
+| POS-02 | Subject-verb distance: long interruptions between subject and finite verb | shankar-ai-writing:C21 | tagged pos-dependency 2026-07-17 | | |
+
+SWBST (shankar-ai-writing:C22) is parked: single-source assertion, no output evidence anywhere in the library.
