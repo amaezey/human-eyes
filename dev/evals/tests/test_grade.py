@@ -2542,6 +2542,21 @@ expect_pass("no-excessive-hedging",
     "Typically, the build finishes in about ten minutes.",
     "family-1: one qualifier alone must not flag")
 
+# Family 1: #9 comma-form two-clause contrastive negation (Stockton C01).
+expect_fail("no-negative-parallelisms",
+    "We're not just building a product, we're creating an experience.",
+    "family-1: comma-form not-just contrast with repeated subject")
+expect_fail("no-negative-parallelisms",
+    "They aren't just using AI, they're restructuring the whole team around it.",
+    "family-1: comma-form aren't-just contrast")
+# Controls: single-clause forms are ordinary usage and must stay clear.
+expect_pass("no-negative-parallelisms",
+    "The fee isn't just about administration costs.",
+    "family-1 control: bare isn't-just-about with no contrast clause")
+expect_pass("no-negative-parallelisms",
+    "The grant covers more than just travel.",
+    "family-1 control: more-than-just as ordinary quantification")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

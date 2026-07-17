@@ -1206,6 +1206,10 @@ def check_negative_parallelisms(text):
         rf"\b{noun_subject}\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?P=np_subject)\s+{positive_verb}\b",
         rf"\b{noun_subject}\s+{negative_aux}\s+{noun_resume_predicate}{structural_sep}(?:it|he|she|they)(?:{apo}s|{apo}re|\s+{positive_verb})\b",
         rf"\bwe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:we{apo}re|we\s+{positive_verb})\b",
+        # Contracted-copula negation: "we're not just X, we're Y" and the
+        # you/they/it/this/that equivalents (Stockton comma form).
+        rf"\b(we|you|they){apo}re\s+not\s+{negative_predicate}{structural_sep}(?:\1{apo}re|\1\s+{positive_verb})\b",
+        rf"\b(it|this|that){apo}s\s+not\s+{negative_predicate}{structural_sep}(?:\1{apo}s|\1\s+{positive_verb})\b",
         rf"\bthey\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:they{apo}re|they\s+{positive_verb})\b",
         rf"\byou\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:you{apo}re|you\s+{positive_verb})\b",
         rf"\bshe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:she{apo}s|she\s+{positive_verb})\b",
