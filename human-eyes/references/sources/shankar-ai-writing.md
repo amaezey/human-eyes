@@ -91,7 +91,7 @@ The previous card and manifest recorded no SHA-256, so there was no declared dig
 
 
 
-- 2026-07-17: Mae tagged weak sentence subjects (C05) and subject-verb distance (C21) as POS-dependency candidates, to be implemented with the tagger from her other project (register POS-01/POS-02). SWBST (C22) parked: single-source assertion, no output evidence.
+- 2026-07-17: Mae tagged weak sentence subjects (C05) and subject-verb distance (C21) as POS-dependency candidates, to be implemented with the tagger from her other project (register POS-01/POS-02). SWBST (C22) remains pending: single-source assertion, no output evidence.
 - 2026-07-17: Mae approved two agent-judgement changes: audience-knowledge mismatch added as a registry record, and empty-summary endings folded into semantic_redundancy. Weak sentence subjects, the subject-verb interruption regex, and SWBST remain pending her explicit call.
 - 2026-07-17: Mae approved removing the #47 soft-scaffolding citation from the root README; the essay does not support that exact mapping. Pattern #47 unchanged.
 - The 2026-05-05 card contained an unkeyed second-pass summary, no authoritative claim table, no recorded user decisions, and no implementation statuses. This update reopens all evidence as C01-C23 with `pending` decisions and `not started` implementation statuses. No prior approved or implemented decision is retired.

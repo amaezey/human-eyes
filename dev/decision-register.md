@@ -5,7 +5,7 @@ Single decision point for every proposed product change arising from source evid
 Columns:
 
 - **Evidence:** claim keys in `slug:CNN` form. These are what the reconciliation tool matches against `source-ingest-hygiene-recommendation-classification-2026-07-17.csv`.
-- **Decision:** `pending`, `approved <date>`, `rejected <date>`, or `parked-for-evaluation <date>`.
+- **Decision:** `pending`, `approved <date>`, or `rejected <date>`.
 - **Commit / validation:** filled when implemented; validation names the test or check that holds the change in place.
 
 Run `python3 dev/tools/reconcile_register.py` to see how many classification rows with an additive or evaluate component are not yet accounted for by a register row. The count must reach zero before the source-evaluation pass is considered fully triaged.
@@ -169,7 +169,7 @@ Mae's ruling: these need part-of-speech tagging; a tagger built for another of h
 | POS-01 | Weak sentence subjects: nominalised/abstract subjects displacing the sentence topic | shankar-ai-writing:C05 | tagged pos-dependency 2026-07-17 | | |
 | POS-02 | Subject-verb distance: long interruptions between subject and finite verb | shankar-ai-writing:C21 | tagged pos-dependency 2026-07-17 | | |
 
-SWBST (shankar-ai-writing:C22) is parked: single-source assertion, no output evidence anywhere in the library.
+SWBST (shankar-ai-writing:C22) remains pending: single-source assertion, no output evidence anywhere in the library.
 
 ## Recovered items from the corrected-framing re-read (2026-07-17)
 
