@@ -86,6 +86,8 @@ EXPECTED_IDS = [
     "audience_knowledge_mismatch",
     # DR-119, approved 2026-07-17
     "unprompted_caveats",
+    # DR-121, approved 2026-07-18
+    "change_narration",
 ]
 actual_ids = [r.get("id") for r in records]
 if actual_ids != EXPECTED_IDS:
@@ -134,6 +136,7 @@ EXPECTED_PATTERN_REFS = {
     "vacuous_connection": 22,
     "genre_specific": 41,
     "unprompted_caveats": None,
+    "change_narration": None,
 }
 for record in records:
     rid = record.get("id")
@@ -229,6 +232,32 @@ elif caveats.get("pattern_ref") is not None or not caveats.get("flagged_when"):
     fail("unprompted_caveats record misconfigured (pattern_ref None per agent-only convention; #61 maps via the render fallback)")
 else:
     ok("unprompted_caveats record present as #61")
+
+change_narration = records_by_id.get("change_narration", {})
+change_prompt = change_narration.get("prompt", "").lower()
+required_change_guidance = (
+    "documentation or code comments",
+    "current behaviour",
+    "changelogs",
+    "release notes",
+    "migration guides",
+    "deprecation notices",
+    "historical analysis",
+)
+missing_change_guidance = [
+    phrase for phrase in required_change_guidance if phrase not in change_prompt
+]
+if change_narration.get("answer_schema") != {
+    "type": "list",
+    "items": ["phrase", "missing_current_state"],
+}:
+    fail("change_narration should return phrase and missing_current_state list items")
+elif change_narration.get("flagged_when") != "non_empty":
+    fail("change_narration should flag any non-empty finding list")
+elif missing_change_guidance:
+    fail(f"change_narration prompt missing DR-121 guidance: {missing_change_guidance}")
+else:
+    ok("change_narration describes current-state prose and all version-scoped exclusions")
 
 neutrality_prompt = records_by_id.get("neutrality_collapse", {}).get("prompt", "")
 if "genre-required neutrality" not in neutrality_prompt.lower():

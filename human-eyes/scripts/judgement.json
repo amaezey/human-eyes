@@ -348,6 +348,20 @@
         "one unprompted caveat",
         "caveat passages recur"
       ]
+    },
+    {
+      "id": "change_narration",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "List passages in documentation or code comments that narrate what wording or behaviour changed instead of describing the current behaviour. Quote each passage and state the current-state information it should supply. Do not list changelogs, release notes, migration guides, deprecation notices, historical analysis, or other writing whose purpose is to compare versions.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "missing_current_state"
+        ]
+      },
+      "flagged_when": "non_empty"
     }
   ]
 }

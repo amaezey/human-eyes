@@ -165,10 +165,10 @@ print("\n=== load_judgement / judgement_for ===")
 
 judgement = registries.load_judgement()
 records = judgement.get("records", [])
-if len(records) != 17:
-    fail(f"expected 17 agent-judgement records, got {len(records)}")
+if len(records) != 18:
+    fail(f"expected 18 agent-judgement records, got {len(records)}")
 else:
-    ok("loaded 15 agent-judgement records")
+    ok("loaded 18 agent-judgement records")
 
 j_rec = registries.judgement_for("structural_monotony")
 if not isinstance(j_rec, dict) or j_rec.get("id") != "structural_monotony":
