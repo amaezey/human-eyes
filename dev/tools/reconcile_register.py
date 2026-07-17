@@ -35,7 +35,15 @@ def action_rows():
 
 def register_keys():
     text = REGISTER_PATH.read_text(encoding="utf-8")
-    return {(slug, claim) for slug, claim in CLAIM_KEY_RE.findall(text)}
+    keys = {(slug, claim) for slug, claim in CLAIM_KEY_RE.findall(text)}
+    # Rows imported from pattern-opportunities cite claims in link form.
+    for m in re.finditer(r"\]\(([a-z0-9-]+)\.md\), claims? ([^|;\[]+?)(?=[|;\[])", text):
+        slug, claims = m.group(1), m.group(2)
+        for c in re.finditer(r"C(\d{2,})(?:-C(\d{2,}))?", claims):
+            lo, hi = int(c.group(1)), int(c.group(2) or c.group(1))
+            for n in range(lo, hi + 1):
+                keys.add((slug, f"C{n:02d}"))
+    return keys
 
 
 def pattern_opportunities_keys():
