@@ -957,10 +957,14 @@ print("\n=== vocabulary-diversity ===")
 expect_pass("vocabulary-diversity",
     "Short text with only a few words.",
     "short text skipped (under 150 words)")
-expect_fail("vocabulary-diversity",
-    " ".join(["the system is very good and the system is very effective and the system is very reliable"] * 20),
-    "extremely repetitive text with low TTR")
+# Direction flipped 2026-07-17 (Mae): high windowed diversity is the AI
+# direction, so repetition is no longer flagged by this check.
 expect_pass("vocabulary-diversity",
+    " ".join(["the system is very good and the system is very effective and the system is very reliable"] * 20),
+    "extremely repetitive text with low TTR (clear under flipped direction)")
+# Flipped 2026-07-17: this fixture was engineered for maximal diversity and
+# now sits above the observed human range, so it flags.
+expect_fail("vocabulary-diversity",
     "The cathedral was built between 1163 and 1345 on the Ile de la Cite in Paris. "
     "Its flying buttresses were among the first in Gothic architecture, allowing thinner walls "
     "and larger stained glass windows. During the French Revolution, much of the religious imagery "
@@ -973,7 +977,7 @@ expect_pass("vocabulary-diversity",
     "decades, revealing the original pale colour beneath centuries of pollution. Historians debate "
     "whether the restoration should preserve Viollet-le-Duc's additions or return to an earlier "
     "medieval form. The cathedral reopened in December 2024 after five years of intensive work.",
-    "varied human prose with diverse vocabulary")
+    "engineered maximal-diversity fixture (0.773, above the observed human range)")
 
 
 # --- new vocabulary items ---
@@ -2572,6 +2576,33 @@ expect_pass("overall-signal-stacking",
 expect_fail("overall-signal-stacking",
     "At its core, the summary works. I hope this helps! The offer goes beyond the price.",
     "single-clause contrast stand-in tips stacking to four")
+
+# --- #53 flip: windowed lexical diversity, flag high (Mae, 2026-07-17) ---
+
+print("\n=== #53 windowed diversity regressions ===")
+
+# High-diversity text (every word unique) must flag.
+_unique_words = " ".join(f"w{chr(97+i%26)}{chr(97+(i//26)%26)}{chr(97+(i//676)%26)}q" for i in range(200))
+expect_fail("vocabulary-diversity", _unique_words,
+    "#53: maximal windowed diversity is the AI direction")
+
+# Repetitive long text must stay clear (old rule would have flagged it).
+_repetitive = ("The strategy emphasises customer outcomes and the strategy "
+               "emphasises operational efficiency for the team. ") * 20
+expect_pass("vocabulary-diversity", _repetitive,
+    "#53: heavy repetition is no longer the flagged direction")
+
+# Under 150 words stays skipped.
+expect_pass("vocabulary-diversity", "Short note. " * 30,
+    "#53: sub-window text skipped")
+
+# Two-tier evidence: >=0.74 states the human-range tier.
+_r = ALL_CHECKS["vocabulary-diversity"](_unique_words)
+if "above the observed human range" not in _r["evidence"]:
+    FAILURES += 1
+    print(f"FAIL: #53 upper tier missing from evidence: {_r['evidence']}")
+else:
+    print("  ok: #53 upper-tier evidence present at extreme diversity")
 
 # --- Summary ---
 

@@ -2085,24 +2085,38 @@ def check_triad_density(text):
 
 
 def check_type_token_ratio(text):
-    """Detect low vocabulary diversity via type-token ratio."""
+    """Flag unusually high windowed lexical diversity (pattern 53).
+
+    Direction and thresholds set by Mae 2026-07-17 from the eval-corpus
+    calibration (dev/evals/ttr-calibration-2026-07-17.md): generated prose
+    ran more lexically diverse than human prose in every length band, so
+    the check scores the mean type-token ratio over sliding 150-word
+    windows (length-neutral) and flags at 0.71, with 0.74 marking the top
+    of the observed human range.
+    """
+    window, step, flag_at, upper_tier = 150, 25, 0.71, 0.74
     clean = re.sub(r'[^a-zA-Z\s]', '', text.lower())
     words = clean.split()
-    if len(words) < 150:
+    if len(words) < window:
         return {
             "text": "vocabulary-diversity",
             "passed": True,
-            "evidence": f"Skipped: short text ({len(words)} words, need 150+)",
+            "evidence": f"Skipped: short text ({len(words)} words, need {window}+)",
         }
-    unique = len(set(words))
-    ratio = unique / len(words)
-    flagged = ratio <= 0.40
-    metric = f"type-token ratio {ratio:.2f} ({unique} unique of {len(words)} words, target above 0.40)"
+    ratios = [len(set(words[i:i + window])) / window
+              for i in range(0, len(words) - window + 1, step)]
+    mattr = sum(ratios) / len(ratios)
+    flagged = mattr >= flag_at
+    tier = " — above the observed human range" if mattr >= upper_tier else ""
+    metric = (f"windowed type-token ratio {mattr:.3f} "
+              f"({window}-word windows, flag at {flag_at:.2f}){tier}")
     return {
         "text": "vocabulary-diversity",
         "passed": not flagged,
         "metric": metric if flagged else None,
-        "evidence": f"Type-token ratio: {ratio:.3f} ({unique} unique / {len(words)} total, target: >0.40)",
+        "evidence": f"Windowed type-token ratio: {mattr:.3f} "
+                    f"({len(ratios)} window{'s' if len(ratios) != 1 else ''} of {window} words, "
+                    f"flag at {flag_at:.2f}){tier}",
     }
 
 

@@ -98,7 +98,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | 9 | Contrived contrast / negative parallelism | Merrill et al. (WaPo); Stockton, Guo, and Belcher (practitioner examples); Kriss/NYT; Vollmer (synthesis); Wikipedia cleanup guide | regex | strong_warning | "It's not X; it's Y" / "It's Y, not X" |
 | 10 | Rule of three | Kriss/NYT and Guo; SEO Engine; Wikipedia cleanup guide | regex | context_warning | Forcing ideas into triads |
 | 10a | Triad density | Same source family as #10 (Kriss/NYT, Guo, SEO Engine, Wikipedia cleanup guide); matched-genre corpus measurement | regex | context_warning | The density variant of #10 rule of three: three or more triads in a paragraph or short passage. |
-| 53 | Vocabulary diversity | Matched-genre corpus measurement; Przystalski et al. (stylometric feature family); GPTZero burstiness and NetusAI (detector/vendor feature family); SEO Engine (Latinate word choice); Rohrer | regex | context_warning | A coarse type-token ratio metric for prose of 150+ words: low ratios suggest narrow vocabulary. |
+| 53 | Vocabulary diversity | Matched-genre corpus measurement; Przystalski et al. (stylometric feature family); GPTZero burstiness and NetusAI (detector/vendor feature family); SEO Engine (Latinate word choice); Rohrer | regex | context_warning | Windowed type-token ratio for prose of 150+ words: unusually high lexical diversity is the flagged direction. |
 | | **Style** | | | | |
 | 13 | Boldface overuse | Wikipedia cleanup guide; Guo; Gmelius (email domain) | regex | context_warning | Mechanical bolding of terms that don't need emphasis |
 | 14 | Inline-header lists | Wikipedia cleanup guide; Guo and Shankar | regex | strong_warning | Bolded label + colon turning prose into slides |
