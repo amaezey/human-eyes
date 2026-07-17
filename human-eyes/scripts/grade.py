@@ -373,18 +373,19 @@ COPULA_AVOIDANCE = [
 
 FILLER_PHRASES = [
     r"in order to\b", r"due to the fact that",
-    r"at this point in time", r"it is important to note",
+    r"at this point in time",
+    r"it (?:is|['’]s) important to (?:note|remember|understand|recognise|recognize|keep in mind)",
     r"(?:it is\s+)?worth\s+(?:noting|knowing(?:\s+about)?|recognising|recognizing|mentioning|emphasising|emphasizing|highlighting|acknowledging)\b",
-    r"it should be noted",
-    r"has the ability to", r"in the event that",
+    r"it (?:should|must) (?:also )?be noted",
+    r"ha(?:s|ve) the ability to", r"in the event that",
     r"on the whole", r"at the end of the day",
     r"when all is said and done", r"the fact of the matter",
     r"is often framed as\b", r"is often (?:seen|viewed|regarded|described|characterized) as\b",
     # Documented transitions the check previously never fired on
     # (Grammarly C04/C05, Guo C13, AI for Lifelong Learners C06/C07).
-    r"in today['’]s fast-paced world", r"as technology continues to evolve",
-    r"that being said", r"to put it simply", r"a key takeaway is",
-    r"at its core\b", r"at the heart of the matter",
+    r"in today['’]s fast-paced world", r"as \w+(?: \w+)? continues? to evolve",
+    r"that being said", r"to put it simply", r"\bkey takeaways?\b",
+    r"at its core\b", r"at the heart of\b",
     r"from a broader perspective", r"through this lens",
     r"this underscores the importance of",
 ]
@@ -1385,6 +1386,21 @@ def check_filler_phrases(text):
 
 def check_generic_conclusions(text):
     count, matches = count_pattern_matches(text, GENERIC_CONCLUSIONS)
+    # DR-119: peppy call-to-action ending — the document's final sentence is
+    # short, imperative-formed, and exclamation-terminated.
+    sentences = [s.strip() for s in split_sentences(text) if s.strip()]
+    if sentences:
+        final = sentences[-1]
+        words = re.findall(r"[A-Za-z']+", final)
+        subject_openers = {
+            "i", "we", "you", "it", "this", "that", "these", "those",
+            "the", "a", "an", "there", "what", "how", "my", "our",
+            "your", "he", "she", "they",
+        }
+        if (final.endswith("!") and words and len(words) <= 8
+                and words[0].lower() not in subject_openers):
+            count += 1
+            matches = list(matches) + [final]
     return {
         "text": "no-generic-conclusions",
         "passed": count == 0,

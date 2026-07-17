@@ -121,6 +121,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | 48 | Dense negation | Stockton part 1 (practitioner examples and a three-in-250-words anecdote) | regex | context_warning | Clusters of "is not", "are not", "does not", "isn't", "aren't"... |
 | 50 | Formulaic openers | Grammarly (vendor transition examples); Gmelius (email domain); Vollmer (synthesis); Guo; AI Detectors (paragraph-initial `It is worth noting`); AI for Lifelong Learners (practitioner phrase list) | regex | strong_warning | "At its core,", "At a foundational level,", "Beyond this..." |
 | 60 | Modal qualifier stacks | AI for Lifelong Learners (stacked modal example) | regex | context_warning | Three or more bare qualifiers in one sentence: "can potentially often" |
+| 61 | Unprompted caveats | AI for Lifelong Learners (reflexive limitations example) | agent | context_warning | Limitations or disclaimer passages nobody asked for |
 | | **Sensory and atmospheric** | | | | |
 | 26 | Ghost/spectral language | Kriss/NYT; corpus measurement | regex | context_warning | shadows, whispers, echoes, phantoms |
 | 27 | Quietness obsession | Kriss/NYT | regex | context_warning | "quiet" 10 times in 759 words about pebbles |

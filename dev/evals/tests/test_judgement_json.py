@@ -84,6 +84,8 @@ EXPECTED_IDS = [
     "genre_specific",
     # Shankar additions, approved 2026-07-17
     "audience_knowledge_mismatch",
+    # DR-119, approved 2026-07-17
+    "unprompted_caveats",
 ]
 actual_ids = [r.get("id") for r in records]
 if actual_ids != EXPECTED_IDS:
@@ -131,6 +133,7 @@ EXPECTED_PATTERN_REFS = {
     "performed_candour": 42,
     "vacuous_connection": 22,
     "genre_specific": 41,
+    "unprompted_caveats": None,
 }
 for record in records:
     rid = record.get("id")
@@ -198,6 +201,34 @@ if missing_tonal_guidance:
     fail(f"tonal_uniformity prompt missing DR-117 guidance: {missing_tonal_guidance}")
 else:
     ok("tonal_uniformity prompt covers abstraction movement and the breezy-grandiose cue")
+
+under_prompt = records_by_id.get("underspecified_language", {}).get("prompt", "")
+missing_under = [p for p in ("develop no claim", "telling rather than showing")
+                 if p not in under_prompt.lower()]
+if missing_under:
+    fail(f"underspecified_language prompt missing DR-119 guidance: {missing_under}")
+else:
+    ok("underspecified_language prompt covers dead-end sentences and telling-not-showing")
+
+vac_prompt = records_by_id.get("vacuous_connection", {}).get("prompt", "")
+if "highlights" not in vac_prompt.lower():
+    fail("vacuous_connection prompt missing DR-119 causal-verb guidance")
+else:
+    ok("vacuous_connection prompt covers causal-verb misuse")
+
+sem_prompt = records_by_id.get("semantic_redundancy", {}).get("prompt", "")
+if "re-explain" not in sem_prompt.lower():
+    fail("semantic_redundancy prompt missing DR-119 over-explaining guidance")
+else:
+    ok("semantic_redundancy prompt covers over-explaining")
+
+caveats = records_by_id.get("unprompted_caveats")
+if not caveats:
+    fail("unprompted_caveats record missing (DR-119)")
+elif caveats.get("pattern_ref") is not None or not caveats.get("flagged_when"):
+    fail("unprompted_caveats record misconfigured (pattern_ref None per agent-only convention; #61 maps via the render fallback)")
+else:
+    ok("unprompted_caveats record present as #61")
 
 neutrality_prompt = records_by_id.get("neutrality_collapse", {}).get("prompt", "")
 if "genre-required neutrality" not in neutrality_prompt.lower():

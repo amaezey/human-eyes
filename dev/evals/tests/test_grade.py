@@ -2732,6 +2732,26 @@ expect_pass("no-ai-vocabulary-clustering",
     "The change profoundly reshaped the team.\n\nPlanning shifted the next quarter.\n\nThe roadmap moved a month later.",
     "DR-118 control: one intensifier per paragraph stays clear")
 
+# --- DR-119: #22 generalisations and #24 peppy-ending shape ---
+print("\n=== DR-119 #22/#24 additions ===")
+expect_fail("no-filler-phrases",
+    "It's important to remember that the queue drains overnight. "
+    "As AI continues to evolve, the key takeaway is that at the heart of this debate "
+    "we all have the ability to adapt. It must also be noted the exports run late.",
+    "DR-119: generalised filler variants are counted")
+expect_pass("no-filler-phrases",
+    "The queue drains overnight. The exports run late on Fridays.",
+    "DR-119 control: plain prose stays clear")
+expect_fail("no-generic-conclusions",
+    "The migration took three weeks and two rollbacks.\n\nGive it a try today!",
+    "DR-119: short imperative exclamation ending")
+expect_pass("no-generic-conclusions",
+    "The migration took three weeks and two rollbacks.\n\nThe project shipped on time!",
+    "DR-119 control: non-imperative exclamation ending stays clear")
+expect_pass("no-generic-conclusions",
+    "Give it a try today! The trial takes three minutes and needs no card details.",
+    "DR-119 control: exclamation mid-document stays clear")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

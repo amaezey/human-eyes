@@ -165,8 +165,8 @@ print("\n=== load_judgement / judgement_for ===")
 
 judgement = registries.load_judgement()
 records = judgement.get("records", [])
-if len(records) != 16:
-    fail(f"expected 16 agent-judgement records, got {len(records)}")
+if len(records) != 17:
+    fail(f"expected 17 agent-judgement records, got {len(records)}")
 else:
     ok("loaded 15 agent-judgement records")
 

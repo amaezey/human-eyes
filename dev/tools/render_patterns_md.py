@@ -252,7 +252,11 @@ def enrich():
 FOLDED_INTO = {"16": "no-unicode-flair", "21": "no-collaborative-artifacts"}
 # judgement.json records whose pattern_ref is missing; mapped here until the
 # registry carries the reference itself.
-JUDGEMENT_REF_FALLBACK = {"structural_monotony": "54", "even_jargon_distribution": "55"}
+JUDGEMENT_REF_FALLBACK = {
+    "structural_monotony": "54",
+    "even_jargon_distribution": "55",
+    "unprompted_caveats": "61",
+}
 
 
 def _load_detection_registries():

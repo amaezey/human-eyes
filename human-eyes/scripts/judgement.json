@@ -144,7 +144,7 @@
       "id": "semantic_redundancy",
       "pattern_ref": 34,
       "severity": "strong_warning",
-      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats. Include closing paragraphs and endings that restate what the piece already established without adding information, judgement, or consequence.",
+      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats. Include closing paragraphs and endings that restate what the piece already established without adding information, judgement, or consequence. Include over-explanation: passages that re-explain what the text has already made clear.",
       "answer_schema": {
         "type": "list",
         "items": [
@@ -158,7 +158,7 @@
       "id": "underspecified_language",
       "pattern_ref": 43,
       "severity": "strong_warning",
-      "prompt": "List evaluative adjectives, comparisons, superlatives, modifier stacks, nominalisations, and metaphors that do not name the relevant property or comparison basis. Common examples include steady, rougher, cold, sharp, and load-bearing. Quote the phrase and state the missing criterion, property, actor, or action.",
+      "prompt": "List evaluative adjectives, comparisons, superlatives, modifier stacks, nominalisations, and metaphors that do not name the relevant property or comparison basis. Common examples include steady, rougher, cold, sharp, and load-bearing. Quote the phrase and state the missing criterion, property, actor, or action. Also list complete sentences that develop no claim: fluent, on-topic statements the reader could delete without losing information. Include qualities asserted with no concrete behaviour in the surrounding prose (telling rather than showing).",
       "answer_schema": {
         "type": "list",
         "items": [
@@ -200,7 +200,7 @@
       "id": "vacuous_connection",
       "pattern_ref": 22,
       "severity": "context_warning",
-      "prompt": "List connectors and coordinated clauses that imply a logical relationship without stating one. Quote the connection and name the missing causal, temporal, contrastive, or evidential relationship.",
+      "prompt": "List connectors and coordinated clauses that imply a logical relationship without stating one. Quote the connection and name the missing causal, temporal, contrastive, or evidential relationship. Include academic verbs such as highlights, underscores, or emphasizes when they assert a causal or reinforcing relation the content does not state.",
       "answer_schema": {
         "type": "list",
         "items": [
@@ -329,6 +329,24 @@
       "flagged_when": [
         "some explanations undershoot the audience",
         "explanations routinely undershoot the audience"
+      ]
+    },
+    {
+      "id": "unprompted_caveats",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "List limitations, disclaimers, or pre-emptive caveat passages the text volunteers where neither the genre nor the content calls for them. Quote each passage and name what prompted it, if anything. Caveats tied to a stated risk, limit, or requirement are legitimate; do not list them.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "no unprompted caveats",
+          "one unprompted caveat",
+          "caveat passages recur"
+        ]
+      },
+      "flagged_when": [
+        "one unprompted caveat",
+        "caveat passages recur"
       ]
     }
   ]
