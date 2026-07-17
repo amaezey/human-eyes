@@ -117,7 +117,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | 23a | False balance or concession | Wikipedia cleanup guide; Vollmer (synthesis); Abdulhai (source-bound stance evidence) | regex | strong_warning | "While critics argue..., supporters say...", "the truth lies somewhere in the middle" |
 | 24 | Generic positive conclusions | Wikipedia cleanup guide; Shankar and Guo; AI for Lifelong Learners (peppy calls to action) | regex | hard_fail | "The future looks bright", "Exciting times lie ahead" |
 | 25 | Staccato rhythm | Shankar and Guo; Wikipedia cleanup guide; matched-genre corpus measurement | regex | context_warning | Short sentences at predictable positions |
-| 47 | Soft explainer scaffolding | Shankar; Vollmer (closing-ritual phrases); matched-genre corpus measurement | regex | strong_warning | "One useful area...", "Another useful area...", "The main strength..." |
+| 47 | Soft explainer scaffolding | Vollmer (closing-ritual phrases); matched-genre corpus measurement | regex | strong_warning | "One useful area...", "Another useful area...", "The main strength..." |
 | 48 | Dense negation | Stockton part 1 (practitioner examples and a three-in-250-words anecdote) | regex | context_warning | Clusters of "is not", "are not", "does not", "isn't", "aren't"... |
 | 50 | Formulaic openers | Grammarly (vendor transition examples); Gmelius (email domain); Vollmer (synthesis); Guo; AI Detectors (paragraph-initial `It is worth noting`); AI for Lifelong Learners (practitioner phrase list) | regex | strong_warning | "At its core,", "At a foundational level,", "Beyond this..." |
 | | **Sensory and atmospheric** | | | | |

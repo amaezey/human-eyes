@@ -34,7 +34,7 @@ Run `python3 dev/tools/reconcile_register.py` to see how many classification row
 
 | ID | Change | Evidence | Decision | Commit | Validation |
 |---|---|---|---|---|---|
-| DR-11 | Retire the #47 Shankar mapping (unsupported exact mapping; README row 47 and card) | shankar-ai-writing:C? | pending | | |
+| DR-11 | Retire the #47 Shankar mapping (unsupported exact mapping; README row 47 and card) | shankar-ai-writing:C? | approved 2026-07-17 | (this commit) | detection/readme tests pass |
 | DR-12 | Retire the unsupported #15 mapping recorded in two cards | (claim keys to be pulled during pattern-ops restructure) | pending | | |
 | DR-13 | Retire the former #39 grammar-cleanliness mapping (live #39 is placeholder residue) | (claim keys to be pulled during pattern-ops restructure) | pending | | |
 | DR-29 | Retire the Stockton later-post mappings the card records as unsupported | stockton-dont-write-like-ai:C15 | pending | | |

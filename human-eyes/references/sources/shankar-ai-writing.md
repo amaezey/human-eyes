@@ -88,6 +88,8 @@ The previous card and manifest recorded no SHA-256, so there was no declared dig
 
 ## Decision history
 
+
+- 2026-07-17: Mae approved removing the #47 soft-scaffolding citation from the root README; the essay does not support that exact mapping. Pattern #47 unchanged.
 - The 2026-05-05 card contained an unkeyed second-pass summary, no authoritative claim table, no recorded user decisions, and no implementation statuses. This update reopens all evidence as C01-C23 with `pending` decisions and `not started` implementation statuses. No prior approved or implemented decision is retired.
 - C04 approved 2026-07-17: reconcile #52's documented eligibility with the implementation. Implemented in commit 13e235f; #52 now skips prose under 100 words or under 6 sentences per the documented eligibility.
 - C17 decided 2026-07-17: #49 remains fail-on-any (deliberate stance); the proposed density/threshold reconsideration is declined and no product change follows.
