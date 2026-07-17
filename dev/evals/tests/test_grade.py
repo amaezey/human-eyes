@@ -1307,6 +1307,8 @@ expected_checks = {
     "no-performed-candour",
     "no-staccato-sequences",
     "no-anaphora",
+    "no-paragraph-anaphora",
+    "no-heading-one-liners",
     "no-collaborative-artifacts",
     "no-curly-quotes",
     "sentence-length-variance",
@@ -2642,6 +2644,51 @@ expect_fail("no-placeholder-residue",
 expect_pass("no-placeholder-residue",
     "The results [sic] were later replicated [1] in two labs.",
     "DR-114 control: editorial brackets and citation numbers stay clear")
+
+# --- DR-115 components 4 and 6: paragraph anaphora and heading one-liners ---
+print("\n=== DR-115 #51a/#38a additions ===")
+expect_fail("no-paragraph-anaphora",
+    "Customers want faster onboarding and clearer pricing pages.\n\n"
+    "Customers also expect the invoice history to export cleanly.\n\n"
+    "Customers who churn cite the same three support gaps every quarter.",
+    "DR-115: three consecutive paragraphs opening with the same word")
+expect_pass("no-paragraph-anaphora",
+    "Customers want faster onboarding and clearer pricing pages.\n\n"
+    "Billing exports were the second theme in the interviews.\n\n"
+    "Customers who churn cite the same three support gaps every quarter.",
+    "DR-115 control: no three-paragraph run")
+expect_pass("no-paragraph-anaphora",
+    "The onboarding flow is slow on the first login.\n\n"
+    "The invoices export cleanly once the account is verified.\n\n"
+    "The support queue clears within a day.",
+    "DR-115 control: trivial opener 'The' is excluded")
+expect_fail("no-paragraph-anaphora",
+    "Customers want faster onboarding and clearer pricing pages.\n\n"
+    "## Billing\n\n"
+    "Customers also expect the invoice history to export cleanly.\n\n"
+    "Customers who churn cite the same three support gaps every quarter.",
+    "DR-115: a heading between paragraphs does not break the run")
+expect_pass("no-paragraph-anaphora",
+    "- Customers want speed\n- Customers want clarity\n- Customers want exports",
+    "DR-115 control: list blocks are not paragraphs")
+expect_fail("no-heading-one-liners",
+    "## Performance\n\nSpeed matters.\n\n"
+    "The benchmark suite covers cold starts, warm paths, and the worst-case joins we see in production telemetry.\n\n"
+    "## Security\n\nWe take security seriously.\n\n"
+    "Access tokens rotate hourly and the audit log is append-only.",
+    "DR-115: two headings each followed by a one-sentence paragraph")
+expect_pass("no-heading-one-liners",
+    "## Performance\n\nSpeed matters.\n\n"
+    "The benchmark suite covers cold starts and warm paths.",
+    "DR-115 control: a single occurrence stays clear (Blader fixture)")
+expect_pass("no-heading-one-liners",
+    "## Performance\n\nThe suite covers cold starts. It also covers warm paths.\n\n"
+    "## Security\n\nTokens rotate hourly. The audit log is append-only.",
+    "DR-115 control: multi-sentence paragraphs under headings stay clear")
+expect_pass("no-heading-one-liners",
+    "## Performance\n\n- cold starts\n- warm paths\n\n"
+    "## Security\n\n- token rotation\n- audit logging",
+    "DR-115 control: a list under a heading is not a one-line paragraph")
 
 # --- Summary ---
 

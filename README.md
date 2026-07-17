@@ -135,6 +135,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | 44 | Signposted conclusion | Vollmer (closing rituals); Wikipedia cleanup guide | regex | context_warning | "In summary,", "In conclusion,", "To summarise,", "To sum up,..." |
 | 52 | Sentence rhythm variance | Guo; Grammarly; Przystalski (stylometric feature family); GPTZero burstiness and NetusAI (detector/vendor feature family); AI Detectors, AI for Lifelong Learners, SEO Engine, and Rohrer; Ju, Blix, and Williams (domain syntax); matched-genre corpus measurement | regex | context_warning | A coarse rhythm metric for prose of 100+ words: low variance suggests mechanical pacing. |
 | 54 | Structural monotony | Shankar and Guo; AI Detectors, SEO Engine, and SAGE | agent | context_warning | Every section follows the same arc: opener, supporting argument, micro-conclusion, repeat. |
+| 59 | One-line sections under headings | blader/humanizer (removal rule) | regex | context_warning | A heading followed by a single-sentence paragraph, twice or more |
 | | **Voice and register** | | | | |
 | 33 | Countdown negation | SAGE | regex | context_warning | "It wasn't X. It wasn't Y. It was Z." |
 | 34 | Per-paragraph miniature conclusions | Shankar; AI Detectors and SAGE; SEO Engine (repeated paragraph structure) | regex | context_warning | Every paragraph wraps up neatly |
@@ -151,6 +152,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | 46 | Bland critical template | Vollmer (synthesis); matched-genre corpus measurement | regex | strong_warning | "the kind of contemporary novel/film/book/album/show that..." |
 | 51 | Mechanical repeated sentence starts | Guo; Grammarly; matched-genre corpus measurement | regex | context_warning | Three or more consecutive sentences whose first word matches: "The X… The Y… The Z…" |
 | 55 | Even jargon distribution | SAGE | agent | context_warning | Jargon spreads uniformly across the text instead of clumping where the writer knows things. |
+| 58 | Mechanical repeated paragraph starts | SAGE (peer-reviewer guidance) | regex | context_warning | Three or more consecutive paragraphs opening with the same word |
 | | **Signal stacking** | | | | |
 | | Signal stacking from stacked AI tells | Kobak et al. (corpus-level density logic); Juzek & Ward, Kousha & Thelwall, Nature, and GPTZero vocabulary (co-occurrence support); composite of components #9, #19, #24, #34, #38, #42, #46, #47, #50 | regex | context_warning | Stacked weak signals reaching the threshold (e.g., "headings in prose, assistant residue, generic conclusion") |
 

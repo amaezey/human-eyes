@@ -2,7 +2,7 @@
 
 <!-- This file is generated from `human-eyes/scripts/patterns.json`. Edit the JSON and regenerate via `python3 dev/tools/render_patterns_md.py --write`. -->
 
-53 patterns plus five sub-letter variants (10a, 23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
+55 patterns plus five sub-letter variants (10a, 23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
 
 ## Contents
 
@@ -966,6 +966,29 @@ A coarse rhythm metric for prose of 100+ words. Human writing varies sentence le
 
 **Detection:** Programmatic check `sentence-length-variance`. Computes the standard deviation of sentence word counts and fails when the SD drops below 4. Skipped on prose under 100 words and 6 sentences. Distinct from #34 paragraph-length uniformity (which measures paragraph block sizes, not sentence-level rhythm) and from #25 staccato (which targets very short standalone sentences regardless of variance).
 
+
+### 59. One-line sections under headings
+
+A heading followed by a single generic sentence, repeated across the document. Humanizer tooling treats the sentence under the heading as removable padding, which makes the shape itself the tell: sections open with a filler line instead of content. One deliberate short section is fine; the check needs the shape twice.
+
+**Before:**
+> ## Performance
+>
+> Speed matters.
+>
+> ## Security
+>
+> We take security seriously.
+
+**After:**
+> ## Performance
+>
+> The benchmark suite covers cold starts, warm paths, and the worst-case joins we see in production.
+
+**Severity:** context_warning · `no-heading-one-liners`
+
+**Detection:** Programmatic check `no-heading-one-liners`. Flags two or more headings each immediately followed by a paragraph consisting of a single sentence. Lists, blockquotes, and further headings do not count as the following paragraph.
+
 ---
 
 ## Voice and register
@@ -1229,6 +1252,25 @@ These phrases announce sincerity before a claim. The announcement rarely changes
 **Severity:** strong_warning · `no-performed-candour`
 
 **Detection:** Programmatic check `no-performed-candour`. The `performed_candour` semantic record reviews contextual uses of honest, real, actual, and genuine.
+
+
+### 58. Mechanical repeated paragraph starts
+
+The paragraph-level sibling of #51: three or more consecutive paragraphs whose first word matches. Peer-reviewer guidance flags identical paragraph starts and rigid paragraph patterns as overly uniform structure. As with sentence-level anaphora, deliberate rhetorical patterning exists; the tell is repetition without escalation.
+
+**Before:**
+> Customers want faster onboarding and clearer pricing pages.
+>
+> Customers also expect the invoice history to export cleanly.
+>
+> Customers who churn cite the same three support gaps.
+
+**After:**
+> Customers want faster onboarding, clearer pricing, and invoices that export cleanly. The ones who churn cite the same three support gaps.
+
+**Severity:** context_warning · `no-paragraph-anaphora`
+
+**Detection:** Programmatic check `no-paragraph-anaphora`. Flags three or more consecutive prose paragraphs whose first word matches case-insensitively, ignoring trivial starts ("I", "A", "The", "It", "It's"). Headings, list blocks, and blockquotes are not paragraphs and do not break a run. Distinct from #51, which works on consecutive sentences.
 
 ---
 

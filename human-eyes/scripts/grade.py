@@ -1092,6 +1092,52 @@ def check_anaphora(text):
     }
 
 
+def check_paragraph_anaphora(text):
+    """Detect 3+ consecutive prose paragraphs opening with the same word (pattern 58)."""
+    blocks = [b.strip() for b in text.split('\n\n') if b.strip()]
+    openers = []
+    for block in blocks:
+        first_line = block.split('\n', 1)[0].lstrip()
+        # Headings, list items, and blockquotes are not prose paragraphs.
+        if re.match(r'^(#{1,6}\s|[-*+]\s|\d+[.)]\s|>)', first_line):
+            continue
+        words = block.split()
+        if not words:
+            continue
+        word = words[0].strip('*_`"\'().,;:!?').lower()
+        if word:
+            openers.append((word, first_line))
+    max_run = 1
+    current_run = 1
+    worst_word = ""
+    longest_run_end = 0
+    for i in range(1, len(openers)):
+        prev_word = openers[i - 1][0]
+        curr_word = openers[i][0]
+        if prev_word == curr_word and prev_word not in ("i", "a", "the", "it's", "it"):
+            current_run += 1
+            if current_run > max_run:
+                max_run = current_run
+                worst_word = curr_word
+                longest_run_end = i
+        else:
+            current_run = 1
+    matches = []
+    if max_run >= 3:
+        run_start = longest_run_end - max_run + 1
+        matches = [line[:80] for _, line in openers[run_start:longest_run_end + 1]]
+    return {
+        "text": "no-paragraph-anaphora",
+        "passed": max_run < 3,
+        "matches": matches,
+        "evidence": (
+            f"Found {max_run} consecutive paragraphs opening with '{worst_word}'"
+            if max_run >= 3
+            else f"Max paragraph-opener run: {max_run}"
+        ),
+    }
+
+
 def check_collaborative_artifacts(text):
     count, matches = count_pattern_matches(text, COLLABORATIVE_ARTIFACTS)
     return {
@@ -2197,6 +2243,37 @@ def check_section_scaffolding(text):
     }
 
 
+def check_heading_one_liners(text):
+    """Detect headings followed by a one-sentence paragraph (pattern 59)."""
+    thresholds = CHECK_THRESHOLDS.get("no-heading-one-liners", {})
+    minimum = thresholds.get("minimum_candidates", 2)
+    blocks = [b.strip() for b in text.split('\n\n') if b.strip()]
+    matches = []
+    for i, block in enumerate(blocks[:-1]):
+        if '\n' in block or not re.match(r'^#{1,6}\s+\S', block):
+            continue
+        following = blocks[i + 1]
+        first_line = following.split('\n', 1)[0].lstrip()
+        if re.match(r'^(#{1,6}\s|[-*+]\s|\d+[.)]\s|>)', first_line):
+            continue
+        if '\n' in following:
+            continue
+        if len(split_sentences(following)) == 1:
+            heading = re.sub(r'^#+\s*', '', block)
+            matches.append(f"{heading}: {following}"[:120])
+    passed = len(matches) < minimum
+    return {
+        "text": "no-heading-one-liners",
+        "passed": passed,
+        "matches": [] if passed else matches,
+        "evidence": (
+            f"Found {len(matches)} heading(s) each followed by a one-sentence paragraph"
+            if not passed
+            else f"One-line sections under headings: {len(matches)}"
+        ),
+    }
+
+
 def check_hedging_density(text):
     """Detect excessive impersonal passive hedging density."""
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
@@ -2398,6 +2475,8 @@ ALL_CHECKS = {
     "no-performed-candour": check_performed_candour,
     "no-staccato-sequences": check_staccato,
     "no-anaphora": check_anaphora,
+    "no-paragraph-anaphora": check_paragraph_anaphora,
+    "no-heading-one-liners": check_heading_one_liners,
     "no-collaborative-artifacts": check_collaborative_artifacts,
     "no-curly-quotes": check_curly_quotes,
     "sentence-length-variance": check_sentence_variance,
@@ -2469,6 +2548,7 @@ STATISTICAL_CHECKS = {
     "no-countdown-negation", "no-negation-density",
     "paragraph-length-uniformity", "vocabulary-diversity",
     "no-section-scaffolding", "no-compound-modifier-density",
+    "no-paragraph-anaphora", "no-heading-one-liners",
 }
 
 AGGREGATE_CHECKS = {"overall-signal-stacking"}
@@ -2489,6 +2569,7 @@ CHECK_THRESHOLDS = {
     "no-triad-density": {"minimum_words": 300, "minimum_candidates": 4},
     "no-boldface-overuse": {"minimum_candidates": 4},
     "no-inline-header-lists": {"minimum_candidates": 2},
+    "no-heading-one-liners": {"minimum_candidates": 2},
     "no-compound-modifier-density": {"minimum_per_sentence": 3},
 }
 
