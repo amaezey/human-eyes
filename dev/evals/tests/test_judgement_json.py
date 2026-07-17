@@ -185,6 +185,27 @@ else:
     ok("generic_metaphors prompt covers common low-information families and list precision")
 
 
+tonal_prompt = records_by_id.get("tonal_uniformity", {}).get("prompt", "")
+required_tonal_guidance = (
+    "abstraction",
+    "concrete",
+    "breezy and grandiose",
+)
+missing_tonal_guidance = [
+    phrase for phrase in required_tonal_guidance if phrase not in tonal_prompt.lower()
+]
+if missing_tonal_guidance:
+    fail(f"tonal_uniformity prompt missing DR-117 guidance: {missing_tonal_guidance}")
+else:
+    ok("tonal_uniformity prompt covers abstraction movement and the breezy-grandiose cue")
+
+neutrality_prompt = records_by_id.get("neutrality_collapse", {}).get("prompt", "")
+if "genre-required neutrality" not in neutrality_prompt.lower():
+    fail("neutrality_collapse prompt missing DR-117 genre-neutrality guidance")
+else:
+    ok("neutrality_collapse prompt covers genre-required neutrality")
+
+
 # --- polymorphic genre slot ---
 
 print("\n=== judgement.json genre_specific sub_records ===")
