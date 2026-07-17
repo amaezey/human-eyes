@@ -272,7 +272,7 @@ Full GPTZero phrase list used by the grader:
 
 **Kobak excess vocabulary:** The grader also loads the full 900-row `kobak-excess-words.csv` file from Kobak et al.'s `llm-excess-vocab` repository. The file includes `style`, `content`, `content/style`, and `other` annotations. The aggregate signal-stacking check uses style-annotated terms as one vocabulary signal alongside the local AI-vocabulary list and all 100 GPTZero phrases. Kobak words do not fail text by themselves.
 
-Current threshold: vocabulary signals contribute points to an overall score. The overall score only trips when vocabulary signals combine with structural signals such as manufactured insight, contrived reframes, paragraph uniformity, unrequested headings, soft scaffolding, or assistant residue. This follows the paper's corpus-level logic: excess vocabulary is evidence in a pattern, not a standalone detector verdict.
+Current threshold: vocabulary signals contribute points to an overall score alongside structural signals such as manufactured insight, contrived reframes, paragraph uniformity, unrequested headings, soft scaffolding, and assistant residue; the aggregate trips at four points from any mix. This follows the paper's corpus-level logic: excess vocabulary is evidence in a pattern, not a standalone detector verdict.
 
 **Before:**
 > Additionally, a distinctive feature of Somali cuisine is the incorporation of camel meat. An enduring testament to Italian colonial influence is the widespread adoption of pasta in the local culinary landscape, showcasing how these dishes have integrated into the traditional diet.
@@ -1254,7 +1254,7 @@ The grader also runs one meta-check that does not correspond to a single AI tell
 
 Plus Kobak et al. excess-vocabulary evidence (style-annotated terms from the `kobak-excess-words.csv` reference file).
 
-The check fires when the weighted score crosses a threshold AND vocabulary signals combine with structural signals. Per Kobak et al.'s corpus-level logic, vocabulary alone cannot decide authorship — the meta-check therefore requires both vocabulary and structural signals stacking before tripping. Individually, each component may be weak; their combination indicates a generated piece that has been polished enough to dodge any single regex.
+The check fires when the weighted score crosses the threshold of four points. Vocabulary and structural signals both contribute points and neither family is required on its own; vocabulary evidence carries few points, so it tips the score rather than deciding it, consistent with Kobak et al.'s corpus-level logic that excess vocabulary is evidence in a pattern rather than a verdict. Individually, each component may be weak; their combination indicates a generated piece that has been polished enough to dodge any single regex.
 
 **Severity:** context_warning · `overall-signal-stacking`
 
