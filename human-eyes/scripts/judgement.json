@@ -144,7 +144,7 @@
       "id": "semantic_redundancy",
       "pattern_ref": 34,
       "severity": "strong_warning",
-      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats.",
+      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats. Include closing paragraphs and endings that restate what the piece already established without adding information, judgement, or consequence.",
       "answer_schema": {
         "type": "list",
         "items": [
@@ -306,6 +306,24 @@
           "watchlist": []
         }
       }
+    },
+    {
+      "id": "audience_knowledge_mismatch",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "If the text states or clearly implies its audience, does it explain things that audience necessarily already knows (defining basic terms for experts, walking practitioners through their own fundamentals)? If the audience is not evident, answer 'audience not evident'.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "audience not evident or explanations fit",
+          "some explanations undershoot the audience",
+          "explanations routinely undershoot the audience"
+        ]
+      },
+      "flagged_when": [
+        "some explanations undershoot the audience",
+        "explanations routinely undershoot the audience"
+      ]
     }
   ]
 }

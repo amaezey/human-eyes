@@ -82,6 +82,8 @@ EXPECTED_IDS = [
     "performed_candour",
     "vacuous_connection",
     "genre_specific",
+    # Shankar additions, approved 2026-07-17
+    "audience_knowledge_mismatch",
 ]
 actual_ids = [r.get("id") for r in records]
 if actual_ids != EXPECTED_IDS:
