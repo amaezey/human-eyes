@@ -2557,6 +2557,22 @@ expect_pass("no-negative-parallelisms",
     "The grant covers more than just travel.",
     "family-1 control: more-than-just as ordinary quantification")
 
+# #9 bare-noun subject resuming with a deictic (Stockton example shape).
+expect_fail("no-negative-parallelisms",
+    "AI isn’t just evolving—it’s accelerating!",
+    "#9: bare-noun subject with deictic resumption")
+
+# Single-clause contrast stand-ins feed stacking only (Mae, 2026-07-17).
+expect_pass("no-negative-parallelisms",
+    "The grant covers more than just travel.",
+    "single-clause form must not fail #9 directly")
+expect_pass("overall-signal-stacking",
+    "At its core, the summary works. I hope this helps!",
+    "three stacked points stay under the threshold")
+expect_fail("overall-signal-stacking",
+    "At its core, the summary works. I hope this helps! The offer goes beyond the price.",
+    "single-clause contrast stand-in tips stacking to four")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

@@ -840,9 +840,33 @@ def kobak_excess_profile(text):
     }
 
 
+def check_single_clause_contrast(text):
+    """Single-clause contrast stand-ins from Stockton's prompt variants.
+
+    Deliberately not a standalone check: "more than just" and "goes beyond"
+    are ordinary in isolation, so they only feed the signal-stacking
+    aggregate at low weight (Mae's ruling, 2026-07-17).
+    """
+    patterns = [
+        r"\b(?:is|are|was|were|['’]s)\s+more than just\b",
+        r"\bgoes beyond\b",
+    ]
+    count, matches = count_pattern_matches(text, patterns)
+    return {
+        "text": "single-clause-contrast",
+        "passed": count == 0,
+        "matches": matches,
+        "evidence": (
+            f"Found {count}: {matches}" if count
+            else "No single-clause contrast stand-ins"
+        ),
+    }
+
+
 def check_overall_signal_stacking(text):
     """Aggregate multiple weak/medium signals instead of overreacting to one list."""
     checks = {
+        "single_clause_contrast": check_single_clause_contrast(text),
         "manufactured_insight": check_manufactured_insight(text),
         "negative_parallelism": check_negative_parallelisms(text),
         "formulaic_openers": check_formulaic_openers(text),
@@ -857,6 +881,7 @@ def check_overall_signal_stacking(text):
         "false_concession": check_false_concession(text),
     }
     weights = {
+        "single_clause_contrast": 1,
         "manufactured_insight": 2,
         "negative_parallelism": 2,
         "formulaic_openers": 1,
@@ -871,6 +896,7 @@ def check_overall_signal_stacking(text):
         "false_concession": 1,
     }
     component_labels = {
+        "single_clause_contrast": "single-clause contrast stand-ins",
         "manufactured_insight": "manufactured insight framing",
         "negative_parallelism": "negative parallelism",
         "formulaic_openers": "formulaic openings",
@@ -1206,6 +1232,9 @@ def check_negative_parallelisms(text):
         rf"\b{noun_subject}\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?P=np_subject)\s+{positive_verb}\b",
         rf"\b{noun_subject}\s+{negative_aux}\s+{noun_resume_predicate}{structural_sep}(?:it|he|she|they)(?:{apo}s|{apo}re|\s+{positive_verb})\b",
         rf"\bwe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:we{apo}re|we\s+{positive_verb})\b",
+        # Bare-noun subjects resuming with a deictic: "AI isn't just
+        # evolving—it's accelerating!" (Stockton displayed example shape).
+        rf"(?:^|[.!?]\s+)([A-Za-z][\w'’-]*)\s+{negative_aux}\s+(?:just|only|merely|simply)\s+{negative_predicate}{structural_sep}(?:it|this|that)(?:{apo}s|\s+{positive_verb})\b",
         # Contracted-copula negation: "we're not just X, we're Y" and the
         # you/they/it/this/that equivalents (Stockton comma form).
         rf"\b(we|you|they){apo}re\s+not\s+{negative_predicate}{structural_sep}(?:\1{apo}re|\1\s+{positive_verb})\b",
