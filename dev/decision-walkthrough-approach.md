@@ -36,7 +36,7 @@ The source library (100+ cards under `human-eyes/references/sources/`) was re-re
 
 ## The files
 
-- `dev/decision-register.md` — the one decision file. 140 DR rows + POS list. Sections: checker behaviour, product documentation, retirements, residue-mapping groups (DR-14..29), imported working-list candidates (DR-30..105, original pattern-opportunities order), recovered items (DR-106..140).
+- `dev/decision-register.md` — the one decision file. 153 DR rows + POS list, one uniform seven-column layout (ID | Change | Evidence | Extends | Decision | Commit | Validation) across every section; its own "How to read this file" header is canonical. Sections group by origin only: checker behaviour, product documentation, retirements, residue-mapping groups (DR-14..29), imported working-list candidates (DR-30..105), recovered items and orphan re-queues (DR-106..153).
 - `dev/source-ingest-hygiene-recommendation-classification-2026-07-17.csv` — all 1,636 recommendation rows, labelled by the original pass.
 - `dev/source-evaluation-residue-mapping-2026-07-17.csv` — first mapping sweep (440 rows).
 - `dev/source-evaluation-corrected-framing-2026-07-17.csv` — the corrected-framing sweep's 243 action items with per-claim descriptions (the "nothing" dispositions are recoverable from the classification CSV minus these).
