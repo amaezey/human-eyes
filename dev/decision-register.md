@@ -169,7 +169,6 @@ Mae's ruling: these need part-of-speech tagging; a tagger built for another of h
 | POS-01 | Weak sentence subjects: nominalised/abstract subjects displacing the sentence topic | shankar-ai-writing:C05 | tagged pos-dependency 2026-07-17 | | |
 | POS-02 | Subject-verb distance: long interruptions between subject and finite verb | shankar-ai-writing:C21 | tagged pos-dependency 2026-07-17 | | |
 
-SWBST (shankar-ai-writing:C22) remains pending: single-source assertion, no output evidence anywhere in the library.
 
 ## Recovered items from the corrected-framing re-read (2026-07-17)
 
@@ -224,3 +223,4 @@ Each row is one pending decision. Rows noting an existing DR number extend that 
 | DR-150 | Explanation-honesty test (OpenAI GPT-4 system card C07): hedging and refusal-cue reporting; the card proposes no pattern now and a possible future test separating epistemic qualification from unsupported confidence cues. Left pending at the DR-113 write-back and stranded by that closure. | openai-gpt-4-system-card:C07 |  | pending | | |
 | DR-151 | McGrath process context (Aranya C12): the notebooks-screens-revision process description; the card proposes keeping it attributed as indirect evidence and reviewing the McGrath interview separately before it changes guidance. Stranded by the DR-39 closure. | aranya-poetly-ai-poetry:C12 |  | approved 2026-07-17 (attributed process context endorsed) | (this commit) | card records ruling |
 | DR-152 | Randomness observation bounds (Aranya C14): fragments, mistakes, and randomness in the author's process; the card proposes preserving the observation while rejecting the machine-incapacity and authorship inference. Stranded by the DR-39 closure. | aranya-poetly-ai-poetry:C14 |  | rejected 2026-07-17 (no verdict on the source's machine-incapacity argument) | (this commit) | card records ruling |
+| DR-153 | SWBST narrative frame (Shankar C22): the Somebody-Wanted-But-So-Then summarising frame for technical decision narratives; single-source craft assertion with no output evidence in the library. Previously a floating register note outside any row; queued 2026-07-17 so it is asked rather than stranded. | shankar-ai-writing:C22 |  | pending | | |
