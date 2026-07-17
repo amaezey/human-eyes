@@ -5,7 +5,7 @@ Single decision point for every proposed product change arising from source evid
 Columns:
 
 - **Evidence:** claim keys in `slug:CNN` form. These are what the reconciliation tool matches against `source-ingest-hygiene-recommendation-classification-2026-07-17.csv`.
-- **Decision:** `pending`, `approved <date>`, or `rejected <date>`.
+- **Decision:** `pending`, `approved <date>`, `rejected <date>`, or `pos-dependent-pattern <date>`. `pos-dependent-pattern` is reserved solely for patterns blocked on the POS tagger from Mae's other project; nothing buildable right now may carry it.
 - **Commit / validation:** filled when implemented; validation names the test or check that holds the change in place.
 
 Run `python3 dev/tools/reconcile_register.py` to see how many classification rows with an additive or evaluate component are not yet accounted for by a register row. The count must reach zero before the source-evaluation pass is considered fully triaged.
@@ -166,8 +166,8 @@ Mae's ruling: these need part-of-speech tagging; a tagger built for another of h
 
 | ID | Candidate | Evidence | Decision | Commit | Validation |
 |---|---|---|---|---|---|
-| POS-01 | Weak sentence subjects: nominalised/abstract subjects displacing the sentence topic | shankar-ai-writing:C05 | tagged pos-dependency 2026-07-17 | | |
-| POS-02 | Subject-verb distance: long interruptions between subject and finite verb | shankar-ai-writing:C21 | tagged pos-dependency 2026-07-17 | | |
+| POS-01 | Weak sentence subjects: nominalised/abstract subjects displacing the sentence topic | shankar-ai-writing:C05 | pos-dependent-pattern 2026-07-17 | | |
+| POS-02 | Subject-verb distance: long interruptions between subject and finite verb | shankar-ai-writing:C21 | pos-dependent-pattern 2026-07-17 | | |
 
 
 ## Recovered items from the corrected-framing re-read (2026-07-17)
@@ -214,7 +214,7 @@ Each row is one pending decision. Rows noting an existing DR number extend that 
 | DR-141 | Source-bound specificity guidance (Caroll C13): anything non-generic must be supplied manually and manual additions usually break generated flow; the card proposes retaining source-bound rewrite guidance and adopting no universal or frequency wording. Stranded when DR-30 closed via DR-106 without this claim being asked. | caroll-good-writing-ai-slop:C13 |  | approved 2026-07-17 (no product change; the existing source-bound rewrite rule stands, the universal/frequency wording is not adopted) | (this commit) | card records ruling |
 | DR-142 | Personal material only from the source (Caroll C14): personal, emotional writing can outperform generated prose; the card proposes using personal material only when the source supplies it and the genre calls for it. Stranded by the DR-30 closure. | caroll-good-writing-ai-slop:C14 |  | approved 2026-07-17 (card context only; voice.md addition declined) | (this commit) | card records ruling |
 | DR-143 | Alice Wild excerpt bounds (Caroll C15): keep the excerpt attributed and bounded; review the direct note and rights before any fixture promotion. Stranded by the DR-30 closure. | caroll-good-writing-ai-slop:C15 |  | rejected 2026-07-17 (hypothetical fixture condition declined) | (this commit) | card records ruling |
-| DR-144 | Hyper-symmetry research candidate (AI for Lifelong Learners C10): repeated sentence and paragraph lengths, cadences, and clause skeletons partly covered by rhythm checks; the card proposes testing incremental value of structural-template features beyond existing rhythm metrics. Stranded when DR-44 closed via DR-115 without this claim being asked. | ai-lifelong-learners-em-dash:C10 |  | pending | | |
+| DR-144 | Hyper-symmetry research candidate (AI for Lifelong Learners C10): repeated sentence and paragraph lengths, cadences, and clause skeletons partly covered by rhythm checks; the card proposes testing incremental value of structural-template features beyond existing rhythm metrics. Stranded when DR-44 closed via DR-115 without this claim being asked. | ai-lifelong-learners-em-dash:C10 |  | pos-dependent-pattern 2026-07-17 (skeleton measurement needs the POS tagger) | (this commit) | card records ruling |
 | DR-145 | ESL claims non-promotion (GPTZero C13): the vendor's ESL-debiasing and 1% ESL false-positive claims; the card proposes not promoting them without direct subgroup evaluation. Stranded by the DR-02 closure (claims renumbered after refresh). | gptzero-ai-vocabulary:C13 |  | rejected 2026-07-17 (Mae agrees with the source; non-promotion hedge declined) | (this commit) | card records ruling |
 | DR-146 | Clarkesworld spam-history context (Clarke C01): pre-chatbot spam was author-name replacement, plagiarism, and paraphraser output; the card proposes preserving this as dated provenance context and adding no prose check. Stranded by the DR-09 closure (claims renumbered after refresh). | clarke-clarkesworld-concerning-trend:C01 |  | approved 2026-07-17 (dated provenance context endorsed) | (this commit) | card records ruling |
 | DR-147 | Complexity-preservation rationale (Phillips C06): complex grammar can support complex ideas; the card proposes adopting this only as rewrite-preservation rationale for source-backed complexity, with no complexity rule. Stranded by the DR-07 closure (claims renumbered after refresh). | phillips-ringer-em-dash:C06 |  | pending | | |

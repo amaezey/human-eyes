@@ -97,6 +97,7 @@ The pre-contract snapshot had no digest recorded in its card or manifest. Its ex
 - C06 and C07 approved 2026-07-17: "At its core", "At the heart of the matter", "From a broader perspective", and "Through this lens" now fire on #22 `no-filler-phrases` (commit 9c7f3b8), closing the documented #7/#22/#50 mapping drift and adding the two missing variants.
 - C09 approved 2026-07-17 via DR-113: commit 340ea99 added apology-led refusals ("I'm sorry, but I can't") and AI-identity disclaimers ("As an AI language model") to #19 `no-collaborative-artifacts`, alongside sentence-opening "Certainly,", offer-to-continue questions, and "here's a detailed breakdown". The C08 brief-restatement component was excluded because an audit of finished text has no brief to compare against, so C08's paired brief-output evaluation stays pending; literal prompt-leak fixtures also remain outside #19.
 - C11, C12, and C27 rejected 2026-07-17 via DR-115 components 1-3: the five-paragraph default shape, nested-list awkwardness, and three-to-five-bucket taxonomies were declined, C12 explicitly as already covered by `no-excessive-lists`. No change lands from this card; the sibling SAGE and Blader claims in the same ruling added #58 `no-paragraph-anaphora` and #59 `no-heading-one-liners`.
+- C10 marked pos-dependent-pattern 2026-07-17 (DR-144): the skeleton-repetition experiment is blocked on the POS tagger from Mae's other project; it returns to her when the tagger lands. Claim row stays pending until then.
 
 ## Project coverage
 
