@@ -85,7 +85,7 @@ The prior card and manifest recorded no snapshot digest. Before replacement, the
 ## Decision history
 
 - The prior card used no claim IDs, user-decision states, or implementation statuses. It broadly mapped the source to #7, #9, #31a, and #49 and asked whether emoji, `core`, and `modern` should enter the catalogue. This update reopens those mappings as C02-C10 because the complete charts expose drift, human-look-alike, and threshold limits absent from the pre-contract record. No prior user approval or completed product change is inferred.
-- C02 approved 2026-07-17 (DR-116): Mae approved running the two-candidate threshold calibration; it ran with matched genre controls and recommends keeping the threshold at 2. Threshold 1 adds only a legitimate single-emoji professional email; threshold 3 gains nothing on AI-styled text. The 70 percent chat-prevalence figure has no human baseline and anchors nothing.
+- C02 approved 2026-07-17 (DR-116): the calibration ran and could not test the question, since no library corpus contains emoji-bearing genres; Mae ruled the threshold unchanged at 2. The 70 percent chat-prevalence figure has no human baseline and anchors nothing.
 
 ## Prior-to-current comparison
 
@@ -131,7 +131,7 @@ This is the authoritative review table. Focused deterministic results below came
 ## Evaluation of approved changes
 
 - C01: not applicable - recommendation pending; no product change made.
-- C02: passed - the DR-116 calibration ran 2026-07-17 (`dev/evals/unicode-flair-calibration-2026-07-17.md`): corpus emoji rates 1/55 human and 2/38 generated, plus the card's required chat/professional/UI/checklist/quotation/social controls; recommendation keep `minimum_candidates: 2`, threshold unchanged. Candidate recognition was verified live, including variation-selector forms.
+- C02: passed - the DR-116 calibration ran 2026-07-17 (`dev/evals/unicode-flair-calibration-2026-07-17.md`) and could not test the threshold: the library corpora are essays (1/55 human and 2/38 generated texts contained any symbol) and the genre fixtures were constructed, not sampled, so no like-for-like emoji measurement exists. Mae ruled the threshold stays at 2 as the no-evidence default. Candidate recognition was verified live, including variation-selector forms.
 - C03: not applicable - recommendation pending; no product change made.
 - C04: not applicable - recommendation pending; existing #49 behavior marked review required.
 - C05: not applicable - recommendation pending; existing #9 behavior marked review required.

@@ -39,9 +39,9 @@ Constructed fixtures in `dev/evals/samples/unicode-flair-controls/`, per the car
 - The WaPo 70 percent figure measures chat-message prevalence for one model with no human chat baseline, no genre split, and no uncertainty; it cannot anchor a prose-document threshold at any value.
 - Chat, checklist, and UI fixtures fire at every threshold from 2 up. That is genre exposure, not threshold error; the audit's input genre is prose documents, and no genre carve-out is proposed here (a context gate would be a separate decision).
 
-## Recommendation
+## Outcome
 
-Keep `minimum_candidates: 2`. No measured basis exists to move in either direction: 1 is strictly worse, 3 buys nothing on any AI-styled text and is supported by no corpus signal.
+This calibration could not test the threshold question. Emoji occur in chat and social text; the library's corpora are essays, which contain almost none of the phenomenon on either side, and the genre fixtures were constructed for this session rather than sampled, so essay-vs-essay comparison was not like-for-like and the fixture table shows mechanics, not rates. Mae's ruling 2026-07-17: threshold stays at `minimum_candidates: 2`, unchanged, as the no-evidence default. A like-for-like answer would need a provenance-labelled social/chat corpus (for example pre-2022 archived human posts against AI posts generated to matched briefs); no such work is currently queued.
 
 ## Limits
 
