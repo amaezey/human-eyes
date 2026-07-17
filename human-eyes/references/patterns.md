@@ -33,7 +33,7 @@ Use source strength when deciding severity. The ruleset should surface clusters 
 
 - GPTZero's AI Vocabulary page is useful as a phrase list, but its own framing separates vocabulary scanning from AI-probability scoring. Use all 100 public table rows only as clustering signals. Source: https://gptzero.me/ai-vocabulary
 - Shreya Shankar's AI Writing essay is one of the strongest craft references: bad sentence subjects, orphaned demonstratives, empty paragraph endings, over-bulleting, flat rhythm, low information density, vagueness, and fluency without understanding. These directly support the self-audit and several programmatic checks. Source: https://www.sh-reya.com/blog/ai-writing/
-- OpenAI's April 2025 GPT-4o sycophancy rollback supports hard-failing assistant flattery and fake affirmation such as "great question" and "you're absolutely right." Source: https://openai.com/index/sycophancy-in-gpt-4o/
+- OpenAI's April 2025 GPT-4o sycophancy rollback documents sycophantic model behaviour as a shipped incident class. Source: https://openai.com/index/sycophancy-in-gpt-4o/
 
 **Domain and provenance signals:**
 
@@ -530,7 +530,7 @@ Individual hyphenations are often correct, but AI stacks four or five in a singl
 
 ChatGPT and similar systems use the em dash (`—`) as default mid-sentence punctuation where most human writers would use a comma, a semicolon, a period, or a parenthetical pair of dashes. A single em dash reads naturally; routine em dashes in plain web prose are a strong 2026 AI-style fingerprint.
 
-**Tolerance note:** Em dashes are legitimate punctuation in literary prose, narrative voice, and publication-ready formatting where they are part of an author's deliberate style. Treat them as a strong AI-style signal in plain web prose, technical writing, instructional reference, and policy briefs. Preserve only when the source genuinely uses them stylistically and the preservation is disclosed.
+**Tolerance note:** Em dashes are treated as a violation: the check fails on any occurrence and rewrite depths remove them. Deliberate use is a human decision, not a tool decision. Preserve one only when the author explicitly chooses to keep it, and disclose the preservation.
 
 **Before:**
 > The framework offers a unified approach — one that combines flexibility with rigour — and integrates with existing tooling without friction.

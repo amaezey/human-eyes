@@ -89,7 +89,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | | **Content** | | | | |
 | 1 | Significance inflation | Juzek & Ward and Kobak et al. (scientific/academic register); GPTZero and Grammarly (vendor phrase lists); Kriss/NYT; Wikipedia cleanup guide | regex | context_warning | "a pivotal moment in the evolution of..." |
 | 2 | Notability claims | Wikipedia cleanup guide; Futurism (fabricated bylines) | regex | strong_warning | Listing media mentions as proof of importance |
-| 3 | Superficial -ing analyses | Reinhart et al. (PNAS 2025; present-participial-clause overuse); Belcher; Wikipedia cleanup guide; SEO Engine (sentence-opening `-ing`); SAGE | regex | strong_warning | "highlighting...", "underscoring...", "reflecting..." |
+| 3 | Superficial -ing analyses | Belcher; Wikipedia cleanup guide; SEO Engine (sentence-opening `-ing`); SAGE | regex | strong_warning | "highlighting...", "underscoring...", "reflecting..." |
 | 4 | Promotional language | Wikipedia cleanup guide; Grammarly (vendor phrase list); Rohrer and Copy Posse (practitioner examples) | regex | context_warning | "nestled in the heart of...", "vibrant", "stunning" |
 | 5 | Vague attributions | Wikipedia cleanup guide; Shankar | regex | strong_warning | "Experts argue...", "Industry reports suggest..." |
 | | **Language and grammar** | | | | |
