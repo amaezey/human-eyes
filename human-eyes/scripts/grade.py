@@ -1505,10 +1505,12 @@ def check_ghost_spectral(text):
 
 def check_quietness(text):
     """Detect quietness obsession density (pattern 27)."""
-    words = ["quiet", "quietly", "silent", "silently", "softly", "stillness", "hushed",
-             "murmur", "gentle", "tender", "settled"]
+    words = ["quiet", "quietly", "silent", "silently", "soft", "softly", "stillness",
+             "hushed", "murmur", "hum", "humming", "gentle", "tender", "settle", "settled"]
     text_lower = text.lower()
-    count = sum(text_lower.count(w) for w in words)
+    # Token match so inflected pairs cannot double-count and "hum" cannot
+    # match inside "human"; list follows the documented words-to-watch.
+    count = len(re.findall(r"\b(?:" + "|".join(words) + r")\b", text_lower))
     word_count = len(text_lower.split())
     density = count / max(word_count, 1) * 1000
     flagged = count >= 4

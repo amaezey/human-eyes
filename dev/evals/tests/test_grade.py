@@ -2476,6 +2476,22 @@ expect_pass("sentence-length-variance",
      "every entry in one long session that ran for roughly four hours."),
     "#52: 100+ words but only 4 sentences must be skipped, not scored")
 
+# #27: singular+inflected list entries must not double-count one occurrence.
+expect_pass("no-quietness-obsession",
+    "The quietly confident team settled in for the afternoon meeting.",
+    "#27: two quietness words must count as 2, not 4")
+
+# #27: documented words hum/humming, soft, and settle must be counted.
+expect_fail("no-quietness-obsession",
+    "The hum of the fans went soft. A low hum settled over the room as "
+    "things settle into stillness.",
+    "#27: six documented quietness words including hum and soft")
+
+# #27: 'hum' must not match inside unrelated words like 'human'.
+expect_pass("no-quietness-obsession",
+    "Every human on the humid subcontinent heard the announcement clearly.",
+    "#27: human/humid must not count as hum")
+
 # #31a: lightning bolt, rightwards arrow, and recycling glyphs are candidates.
 expect_fail("no-unicode-flair",
     "Ship fast ⚡ iterate ➡ recycle wins ♻",
