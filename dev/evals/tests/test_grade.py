@@ -2497,6 +2497,29 @@ expect_fail("no-unicode-flair",
     "Ship fast ⚡ iterate ➡ recycle wins ♻",
     "#31a: three decorative glyphs missed by the prior character class")
 
+# --- 2026-07-17 defect-sweep family-1 regressions ---
+# Documented phrases the runtime never fired on. Approved as additions.
+
+print("\n=== defect-sweep family-1 regressions ===")
+
+# #21 documents the excellent-point family as its own example.
+expect_fail("no-collaborative-artifacts",
+    "Excellent point! That framing works much better.",
+    "family-1: excellent-point praise is a documented #21 artifact")
+expect_fail("no-collaborative-artifacts",
+    "You raise an excellent point about the deadline.",
+    "family-1: raised-excellent-point variant")
+
+# #19/#21 document the ASCII form; curly apostrophes must match too.
+expect_fail("no-collaborative-artifacts",
+    "You’re absolutely right about that.",
+    "family-1: curly-apostrophe you're absolutely right")
+
+# #42 documents 'here's the thing'; curly apostrophe must match too.
+expect_fail("no-manufactured-insight",
+    "But here’s the thing about all of it.",
+    "family-1: curly-apostrophe here's the thing")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

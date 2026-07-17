@@ -281,7 +281,7 @@ MANUFACTURED_INSIGHT = [
     # Formulaic depth framing
     r"what's strange is", r"what's interesting is", r"what's remarkable is",
     r"the reason is straightforward", r"the reason is simple",
-    r"here's the thing:?", r"here's why:?", r"but here's",
+    r"here['’]s the thing:?", r"here['’]s why:?", r"but here['’]s",
     # "The real X?" rhetorical revelation
     r"the real (?:insight|challenge|takeaway|kicker|question)\??",
     # Performed revelation closings
@@ -315,7 +315,8 @@ PERFORMED_CANDOUR = [
 COLLABORATIVE_ARTIFACTS = [
     r"\bi hope this helps", r"\bgreat question", r"\bhere is a\b",
     r"\bwould you like (?:me|us) to\b", r"\bcertainly!",
-    r"\byou're absolutely right",
+    r"\byou['’]re absolutely right",
+    r"\bexcellent point\b",
     r"\bwhat a thoughtful (?:question|observation)\b",
     r"\bthat's a brilliant observation\b",
     r"\bi'd be happy to help\b", r"\blet me explain\b",
