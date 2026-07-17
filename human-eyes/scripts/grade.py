@@ -2198,6 +2198,14 @@ HEDGING_PATTERNS = [
     r"\bmay possibly\b",
     r"\bmight conceivably\b",
     r"\b(?:some|certain) (?:people|residents|users|cases|areas|contexts)\b",
+    # DR-150 additions (Mae, 2026-07-17): reflexive qualifiers previously
+    # invisible to the density count.
+    r"\bmay vary\b",
+    r"\bin most cases\b",
+    r"\bit depends\b",
+    r"\bin general[,.]",
+    r"\bas a rule\b",
+    r"\bmore often than not\b",
 ]
 
 

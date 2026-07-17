@@ -2690,6 +2690,26 @@ expect_pass("no-heading-one-liners",
     "## Security\n\n- token rotation\n- audit logging",
     "DR-115 control: a list under a heading is not a one-line paragraph")
 
+# --- DR-150: #23 hedging watch-list expansion ---
+print("\n=== DR-150 #23 additions ===")
+expect_fail("no-excessive-hedging",
+    "Results may vary depending on the configuration you start from. "
+    "In most cases the defaults are fine for small teams. "
+    "More often than not, the cache hides the real cost until launch.",
+    "DR-150: three new hedge cues reach the density threshold")
+expect_fail("no-excessive-hedging",
+    "Generally speaking, the migration is safe. It depends on the size of the tenant. "
+    "In general, the older exports are the risky ones.",
+    "DR-150: new cues stack with an existing cue")
+expect_pass("no-excessive-hedging",
+    "Results may vary between regions. The benchmark covers the four largest tenants "
+    "and the deploy finished inside the window.",
+    "DR-150 control: a single hedge stays under the threshold")
+expect_pass("no-excessive-hedging",
+    "As a rule the exports finish overnight. In general, the queue clears by morning. "
+    "The alerting has paged twice this quarter.",
+    "DR-150 control: two hedges stay under the threshold")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")
