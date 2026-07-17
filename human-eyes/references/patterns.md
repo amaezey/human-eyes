@@ -38,7 +38,7 @@ Use source strength when deciding severity. The ruleset should surface clusters 
 **Domain and provenance signals:**
 
 - Walsh, Preus, and Gronski support poetry-specific manual checks: constrained uniformity, rhyme/quatrain defaults, first-person plural overuse, and mood-word clusters. Keep this genre-specific. Source: https://arxiv.org/abs/2410.15299
-- Clarkesworld reporting supports fiction as a submission/provenance problem and a manual craft-audit area. Use it for flat dialogue, exposition, pacing, lack of subtext, and over-resolved endings, not as a global regex rule. Source: https://www.npr.org/2023/02/24/1159286436/ai-chatbot-chatgpt-magazine-clarkesworld-artificial-intelligence
+- Clarkesworld reporting supports fiction as a submission/provenance problem and a manual craft-audit area. Source: https://www.npr.org/2023/02/24/1159286436/ai-chatbot-chatgpt-magazine-clarkesworld-artificial-intelligence
 - Futurism's Sports Illustrated reporting supports journalism and review-provenance checks: fake bylines, fake bios, AI headshots, affiliate product-review sludge, undisclosed generated content, and byline laundering. Source: https://futurism.com/sports-illustrated-ai-generated-writers
 
 **2026 operating stance:**
@@ -368,7 +368,7 @@ The density variant of #10 rule of three. While #10 surfaces each individual tri
 
 ### 11. Synonym cycling
 
-Excessive synonym substitution, cycling through different words for the same referent within a short span due to repetition-penalty mechanisms.
+Excessive synonym substitution, cycling through different words for the same referent within a short span. A proposed but untested explanation is repetition-penalty or anti-repetition tuning; no cited source demonstrates the mechanism.
 
 **Before:**
 > The protagonist faces many challenges. The main character must overcome obstacles. The central figure eventually triumphs. The hero returns home.
