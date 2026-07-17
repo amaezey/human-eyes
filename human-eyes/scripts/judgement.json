@@ -214,7 +214,7 @@
       "id": "genre_specific",
       "pattern_ref": 41,
       "severity": "context_warning",
-      "prompt": "First detect the genre of the text (academic, student_essay, poetry, fiction, journalism, marketing_email, or default if none of these fit). Then run that genre's watchlist. Academic: unverifiable or unsupported citations, DOIs, dates, journals, reference order, figure/data inconsistency, cited works not supporting the claim, depleted engagement markers (missing questions, reader address, personal asides, stance-bearing commentary). Student essay: rubric language echoed back, banal thesis claims, weak or missing evidence, student-level mismatch, abrupt tone or complexity shifts, surface polish masking weak argument, loss of the student's own interpretive agency. Poetry: default quatrains, unrequested rhyme, first-person plural overuse, mood-word accumulation, form compliance without pressure, process traces that look too neat, revisions that do not deepen the poem. Fiction: flattened dialogue, as-you-know exposition, weak voice differentiation, parenthetical stage directions, locked POV with no pressure, scene pacing that never surprises, over-resolved endings, generic fidelity to a target style without the source author's stranger choices. Journalism: unsupported claims, vague sourcing, fake or disappearing bylines, synthetic headshots, broken links, wrong dates, unverifiable quotes, undisclosed vendor or affiliate provenance, correction history, suspiciously uniform or too-perfectly placed quotes, repeated stock names and uniform titles, scene-setting openings that omit basic context; deadline prose and house style are human look-alikes, so report findings as review prompts, never accusations. Marketing/email: placeholders, generic subject lines, fake personalisation, weak domain understanding, exaggerated transformation claims, empty hype verbs, over-warm openings, unsupported business jargon, action lists dressed up with symbols. Report `Genre detected: <genre>.` plus either watchlist findings or \"No genre-specific findings.\"",
+      "prompt": "First detect the genre of the text (academic, student_essay, poetry, fiction, journalism, marketing_email, or default if none of these fit). Then run that genre's watchlist. Academic: unverifiable or unsupported citations, DOIs, dates, journals, reference order, figure/data inconsistency, cited works not supporting the claim, depleted engagement markers (missing questions, reader address, personal asides, stance-bearing commentary). Student essay: rubric language echoed back, banal thesis claims, weak or missing evidence, student-level mismatch, abrupt tone or complexity shifts, surface polish masking weak argument, loss of the student's own interpretive agency. Poetry: default quatrains and rhyme density, strict form compliance, repeated complete-form units, first-person plural clustering, opening-word distributions skewed to stock openers, mood-word and vocabulary clusters. Fiction: flattened dialogue, as-you-know exposition, weak voice differentiation, parenthetical stage directions, locked POV with no pressure, scene pacing that never surprises, over-resolved endings, generic fidelity to a target style without the source author's stranger choices. Journalism: unsupported claims, vague sourcing, fake or disappearing bylines, synthetic headshots, broken links, wrong dates, unverifiable quotes, undisclosed vendor or affiliate provenance, correction history, suspiciously uniform or too-perfectly placed quotes, repeated stock names and uniform titles, scene-setting openings that omit basic context; deadline prose and house style are human look-alikes, so report findings as review prompts, never accusations. Marketing/email: placeholders, generic subject lines, fake personalisation, weak domain understanding, exaggerated transformation claims, empty hype verbs, over-warm openings, unsupported business jargon, action lists dressed up with symbols. Report `Genre detected: <genre>.` plus either watchlist findings or \"No genre-specific findings.\"",
       "answer_schema": {
         "type": "composite",
         "fields": {
@@ -264,11 +264,12 @@
         "poetry": {
           "description": "Watch for default quatrains, unrequested rhyme, first-person plural overuse, mood-word accumulation, form compliance without pressure, process traces that look too neat, and revisions that do not deepen the poem.",
           "watchlist": [
-            "default quatrains or regular stanzas without a reason",
-            "unrequested rhyme or high rhyme density",
+            "default quatrains and rhyme density",
+            "strict form compliance",
+            "repeated complete-form units",
             "first-person plural clustering",
-            "mood-word accumulation without concrete perception",
-            "form compliance without surprise, breakage, or revision depth"
+            "opening-word distributions skewed to stock openers",
+            "mood-word and vocabulary clusters"
           ]
         },
         "fiction": {
