@@ -53,7 +53,7 @@ Use this checklist for each new or updated card. A card does not pass because it
 
 ## Source-record verification gate
 
-Use a read-only independent reviewer that did not perform the extraction whenever subagents are available. This is a generic source-record review, not a required invocation of `ce-doc-review`. Give the reviewer the finished card, preserved full text, relevant project evidence, and these lenses:
+Use one freshly spawned, read-only, source-dedicated independent reviewer that did not perform the extraction and has not participated in another source ingestion in the request or batch. This is a generic source-record review, not a required invocation of `ce-doc-review`. Give the reviewer the finished card, preserved full text, relevant project evidence, and these lenses:
 
 - **Evidence reviewer:** checks whether the card says what the source supports, with the same scope and uncertainty.
 - **Provenance reviewer:** checks identity, version, access route, archive history, snapshot integrity, and directness.
@@ -61,9 +61,11 @@ Use a read-only independent reviewer that did not perform the extraction wheneve
 - **Decision reviewer:** checks that recommendations, user decisions, and implementation statuses cannot be confused.
 - **Completeness reviewer:** checks the full source against the claim inventory for omissions.
 
-The reviewer reports findings without editing. The ingesting agent resolves them and requests a focused recheck after material changes. Resolve material findings before setting `Review status: passed`. Record unresolved material findings rather than hiding them in prose.
+The reviewer reports findings without editing. The ingesting agent resolves them and requests a focused recheck from the same source-dedicated reviewer after material changes. Resolve material findings before setting `Review status: passed`. Record unresolved material findings rather than hiding them in prose.
 
-If subagents are unavailable, perform the same checks as a self-review and record `self-review fallback: subagents unavailable`. Otherwise record `independent source-record reviewer: <agent name>`.
+Treat each source as a separate context boundary. Never assign multiple sources to one ingesting subagent or reviewer, reuse a reviewer for another source, send one reviewer multiple active source drafts, or cross-review sources in the same context. A dedicated reviewer may perform rechecks for its original source only. When several sources are requested, process them with separate fresh agents or sequentially when capacity is limited.
+
+Record `independent source-record reviewer: <agent name or task ID>`, and add `Reviewer isolation: fresh source-dedicated agent; one source only; not reused` when the review ran that way. If subagents are unavailable, perform the same checks as a self-review and record `self-review fallback: subagents unavailable`. Never borrow an agent from another source.
 
 `ce-doc-review` may be added as a coherence/feasibility pass when available, but it is not required. The source-specific lenses above remain mandatory because a plan-oriented document review cannot establish source-to-claim fidelity.
 

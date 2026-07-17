@@ -89,5 +89,6 @@ Escape any literal pipe within a table cell as `\|`; an unescaped extra pipe mak
 
 - **Review status:** <pending, passed, or failed>
 - **Review method:** <`independent source-record reviewer: <agent name>` or `self-review fallback: subagents unavailable`, plus any optional review method>
+- **Reviewer isolation:** <optional: `fresh source-dedicated agent; one source only; not reused` when the review ran that way>
 - **Findings resolved:** <material findings fixed, or none>
 - **Unresolved findings:** <none, or exact finding that prevents a pass>

@@ -169,13 +169,25 @@ Update all applicable indexes:
 
 Do not change checkers, registries, tests, hypotheses, or product guidance during the review phase unless the user already requested implementation.
 
+## Isolate every source work unit
+
+Treat one source as one context boundary. If a request contains multiple sources, create a separate work unit for each source and complete extraction, card drafting, review, and validation independently.
+
+- Never assign more than one source to the same ingesting subagent or reviewer.
+- Never reuse an agent, thread, reviewer task, or prior named reviewer for a second source, even sequentially or after it becomes idle.
+- Never cross-review active ingestions. A reviewer assigned to source A must not review source B, compare source B's draft, or receive source B's source text, card, findings, or reviewer context.
+- Spawn a fresh reviewer for exactly one source after that source's extraction is drafted. The reviewer must not have extracted that source or participated in any other source ingestion in the request or batch.
+- Give the reviewer only that source's card, snapshot, identity and version, plus the source-specific project files or executed-check evidence needed to verify coverage. The reviewer may inspect existing library records when they are relevant project evidence, but must not be tasked with reviewing another new or updated source.
+- Keep focused rechecks with the same dedicated reviewer for that same source so its context remains intact. Never give that reviewer a second source.
+- If agent capacity is limited, process sources sequentially and spawn a fresh reviewer for each one. If subagents are unavailable entirely, fall back to a recorded self-review rather than skipping review, and never borrow an agent assigned to another source.
+
 ## Verify the finished source record
 
 This is an independent semantic review, not an invocation of `ce-doc-review`. Run it after the card and indexes are drafted and before deterministic validation.
 
-When subagents are available, spawn one read-only generic reviewer that did not perform the extraction. Give it the card, snapshot, source identity and version, relevant project files or executed-check evidence, and the five lenses below. Instruct it to return concrete findings without editing files. Obey the checkout's provider and tool restrictions in the reviewer prompt.
+Spawn one fresh, read-only, source-dedicated generic reviewer that did not perform the extraction and has not participated in another source ingestion in the request or batch. Give it the card, snapshot, source identity and version, relevant project files or executed-check evidence, and the five lenses below. Instruct it to return concrete findings without editing files. Obey the checkout's provider and tool restrictions in the reviewer prompt.
 
-The ingesting agent resolves the findings. If a fix materially changes claims, provenance, coverage, recommendations, or statuses, ask the independent reviewer to check the affected material again. Use same-agent review only when subagents are unavailable, and record `self-review fallback: subagents unavailable` as the review method.
+The ingesting agent resolves the findings. If a fix materially changes claims, provenance, coverage, recommendations, or statuses, ask the same source-dedicated reviewer to check the affected material again. Do not use that reviewer for any other source. Use same-agent review only when subagents are unavailable, and record `self-review fallback: subagents unavailable` as the review method.
 
 1. **Source fidelity:** compare every claim row with the preserved full text. Confirm that wording, scope, qualifications, counterexamples, and direct-versus-cited attribution still match.
 2. **Provenance:** confirm the source identity, reviewed version, access routes, snapshot, archive history, and hashes.
@@ -186,7 +198,7 @@ The ingesting agent resolves the findings. If a fix materially changes claims, p
 
 If `ce-doc-review` is installed or the user requests it, it may be used as an additional coherence/feasibility pass. It is optional and cannot replace the checks above.
 
-Record either `independent source-record reviewer: <agent name>` or the explicit self-review fallback under `Review method`. The gate passes only when `Review status` is `passed` and `Unresolved findings` is `none`. If a material finding cannot be resolved, leave the gate failed and report it to the user.
+Record either `independent source-record reviewer: <agent name or task ID>` or the explicit self-review fallback under `Review method`. When the review ran with a fresh dedicated reviewer, also record `Reviewer isolation: fresh source-dedicated agent; one source only; not reused`. The gate passes only when `Review status` is `passed` and `Unresolved findings` is `none`. If a material finding cannot be resolved, leave the gate failed and report it to the user.
 
 ## When ingestion cannot pass
 
