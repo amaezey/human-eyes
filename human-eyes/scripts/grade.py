@@ -317,6 +317,12 @@ COLLABORATIVE_ARTIFACTS = [
     r"\bwould you like (?:me|us) to\b", r"\bcertainly!",
     r"\byou['’]re absolutely right",
     r"\bexcellent point\b",
+    # DR-113 residue families (Mae, 2026-07-17)
+    r"\bi['’]m sorry,? but i can['’]t\b",
+    r"\bas an ai(?: language model| assistant| model)?\b",
+    r"(?:^|[.!?]\s+)certainly,",
+    r"\bwant me to\b[^.?!\n]{0,60}\?",
+    r"\bhere['’]s a detailed breakdown\b",
     r"\bwhat a thoughtful (?:question|observation)\b",
     r"\bthat's a brilliant observation\b",
     r"\bi'd be happy to help\b", r"\blet me explain\b",

@@ -2604,6 +2604,27 @@ if "above the observed human range" not in _r["evidence"]:
 else:
     print("  ok: #53 upper-tier evidence present at extreme diversity")
 
+# --- DR-113: #19 pasted-chat residue families (Mae, 2026-07-17) ---
+print("\n=== DR-113 #19 residue families ===")
+expect_fail("no-collaborative-artifacts",
+    "I'm sorry, but I can't help with that request.",
+    "DR-113: apology-led refusal")
+expect_fail("no-collaborative-artifacts",
+    "As an AI language model, I don't have personal opinions.",
+    "DR-113: AI-identity disclaimer")
+expect_fail("no-collaborative-artifacts",
+    "Certainly, here are the main considerations for the rollout.",
+    "DR-113: sentence-opening Certainly without exclamation")
+expect_fail("no-collaborative-artifacts",
+    "Want me to expand on any of these sections?",
+    "DR-113: offer-to-continue question")
+expect_fail("no-collaborative-artifacts",
+    "Here's a detailed breakdown of the quarterly results.",
+    "DR-113: here's-a-detailed-breakdown residue")
+expect_pass("no-collaborative-artifacts",
+    "The certainty of the schedule was never in doubt.",
+    "DR-113 control: 'certainty' must not match Certainly")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")
