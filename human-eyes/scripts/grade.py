@@ -48,6 +48,10 @@ AI_VOCABULARY = [
     "optimize", "empower", "navigate", "unpack", "explore", "embrace",
     "unlock", "commendable", "paramount", "unwavering", "alignment",
     "resonate", "compelling",
+    # DR-118 (Mae, 2026-07-17): intensifiers with the highest measured
+    # generated-vs-human rate in the corpus sweep; human-leaning intensifiers
+    # (truly, deeply) deliberately excluded.
+    "profoundly", "significantly", "fundamentally",
 ]
 
 # GPTZero's April 2026 public AI Vocabulary table exposes 100 high-ratio
@@ -2201,6 +2205,9 @@ HEDGING_PATTERNS = [
     # DR-150 additions (Mae, 2026-07-17): reflexive qualifiers previously
     # invisible to the density count.
     r"\bmay vary\b",
+    # DR-118 addition (Mae, 2026-07-17): the AIDetectors hedge frame missing
+    # from the list ("could potentially" was present, "can potentially" was not).
+    r"\bcan potentially\b",
     r"\bin most cases\b",
     r"\bit depends\b",
     r"\bin general[,.]",
@@ -2248,6 +2255,34 @@ def check_section_scaffolding(text):
         "text": "no-section-scaffolding",
         "passed": True,
         "evidence": "No repeated section labels",
+    }
+
+
+MODAL_QUALIFIERS = {
+    "can", "could", "might", "potentially", "possibly",
+    "often", "sometimes", "typically", "usually", "generally",
+}
+
+
+def check_modal_stacks(text):
+    """Detect sentences stacking 3+ bare modal/frequency qualifiers (pattern 60)."""
+    sentences = split_sentences(text)
+    matches = []
+    for sentence in sentences:
+        words = re.findall(r"[A-Za-z']+", sentence)
+        # "may" counts only in lowercase so the month stays out.
+        hits = [w for w in words if w.lower() in MODAL_QUALIFIERS or w == "may"]
+        if len(hits) >= 3:
+            matches.append(sentence.strip()[:100])
+    return {
+        "text": "no-modal-stacks",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} sentence(s) stacking 3+ modal/frequency qualifiers"
+            if matches
+            else "No modal qualifier stacks"
+        ),
     }
 
 
@@ -2485,6 +2520,7 @@ ALL_CHECKS = {
     "no-anaphora": check_anaphora,
     "no-paragraph-anaphora": check_paragraph_anaphora,
     "no-heading-one-liners": check_heading_one_liners,
+    "no-modal-stacks": check_modal_stacks,
     "no-collaborative-artifacts": check_collaborative_artifacts,
     "no-curly-quotes": check_curly_quotes,
     "sentence-length-variance": check_sentence_variance,
@@ -2556,7 +2592,7 @@ STATISTICAL_CHECKS = {
     "no-countdown-negation", "no-negation-density",
     "paragraph-length-uniformity", "vocabulary-diversity",
     "no-section-scaffolding", "no-compound-modifier-density",
-    "no-paragraph-anaphora", "no-heading-one-liners",
+    "no-paragraph-anaphora", "no-heading-one-liners", "no-modal-stacks",
 }
 
 AGGREGATE_CHECKS = {"overall-signal-stacking"}

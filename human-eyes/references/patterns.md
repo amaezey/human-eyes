@@ -2,7 +2,7 @@
 
 <!-- This file is generated from `human-eyes/scripts/patterns.json`. Edit the JSON and regenerate via `python3 dev/tools/render_patterns_md.py --write`. -->
 
-55 patterns plus five sub-letter variants (10a, 23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
+56 patterns plus five sub-letter variants (10a, 23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
 
 ## Contents
 
@@ -746,6 +746,21 @@ Generated paragraph openers that frame the next bit as a step up in abstraction.
 **Severity:** strong_warning · `no-formulaic-openers`
 
 **Detection:** Programmatic check `no-formulaic-openers`. Anchored regex against the first line of each paragraph; flags any paragraph whose opener fits the formulaic-opener template. Distinct from #7 AI vocabulary words (which lists opener phrases as one sub-bullet under the broader vocabulary check) and from #47 soft scaffolding (which catches between-sentence connectives like "One useful area..." rather than paragraph-opening abstractions).
+
+
+### 60. Modal qualifier stacks
+
+Several modal and frequency qualifiers inside one sentence until the claim loses commitment: "The change can potentially often improve results." Each qualifier alone is ordinary; the stack is the tell. Document-wide hedge density is #23's job; this check reads one sentence at a time.
+
+**Before:**
+> The new cache can potentially often reduce latency for most tenants.
+
+**After:**
+> The new cache reduces latency for most tenants; the gain depends on cache hit rate.
+
+**Severity:** context_warning · `no-modal-stacks`
+
+**Detection:** Programmatic check `no-modal-stacks`. Flags any sentence containing three or more bare modal or frequency qualifiers (can, could, may, might, potentially, possibly, often, sometimes, typically, usually, generally); capitalised May is excluded. Distinct from #23, which counts fixed hedge phrases across the whole text.
 
 ---
 

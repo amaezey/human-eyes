@@ -1309,6 +1309,7 @@ expected_checks = {
     "no-anaphora",
     "no-paragraph-anaphora",
     "no-heading-one-liners",
+    "no-modal-stacks",
     "no-collaborative-artifacts",
     "no-curly-quotes",
     "sentence-length-variance",
@@ -2709,6 +2710,27 @@ expect_pass("no-excessive-hedging",
     "As a rule the exports finish overnight. In general, the queue clears by morning. "
     "The alerting has paged twice this quarter.",
     "DR-150 control: two hedges stay under the threshold")
+
+# --- DR-118: modal stacks (#60), can-potentially (#23), intensifiers (#7) ---
+print("\n=== DR-118 additions ===")
+expect_fail("no-modal-stacks",
+    "The new cache can potentially often reduce latency for most tenants.",
+    "DR-118: three qualifiers stacked in one sentence")
+expect_pass("no-modal-stacks",
+    "The cache can often help. Results might improve. Costs may fall.",
+    "DR-118 control: qualifiers spread across sentences stay clear")
+expect_pass("no-modal-stacks",
+    "In May the team can meet to review the typical rollout.",
+    "DR-118 control: capitalised May and non-adverb typical do not count")
+expect_fail("no-excessive-hedging",
+    "This can potentially improve results. It tends to help. Generally speaking, it works.",
+    "DR-118: can potentially joins the #23 density list")
+expect_fail("no-ai-vocabulary-clustering",
+    "The change profoundly reshaped the team. It significantly altered planning and fundamentally moved the roadmap.",
+    "DR-118: three AI-leaning intensifiers cluster in one paragraph")
+expect_pass("no-ai-vocabulary-clustering",
+    "The change profoundly reshaped the team.\n\nPlanning shifted the next quarter.\n\nThe roadmap moved a month later.",
+    "DR-118 control: one intensifier per paragraph stays clear")
 
 # --- Summary ---
 
