@@ -737,9 +737,9 @@ Distinct from #9 (contrived contrast in a single sentence) and #33 (countdown ne
 
 ### 50. Formulaic openers
 
-**Words to watch:** "At its core,", "At a foundational/fundamental/practical level,", "Beyond this/that/[abstract noun],", "There is also a [\…] dimension/aspect/element,", "It is worth recognising/noting/mentioning,", "From a [\…] perspective/standpoint,", "On a [\…] level,", "In a broader/wider/larger/similar context/sense/vein,", "Perhaps most importantly/significantly/notably/crucially,", "What makes this particularly/especially/uniquely [\…]", "Here's what nobody's talking about:", "Let me be clear:", "Can we talk about [X] for a second?", "Let's talk about [X].", "We need to talk about [X].", "I need to say something about [X]."
+**Words to watch:** "At its core,", "At a foundational/fundamental/practical level,", "Beyond this/that/[abstract noun],", "There is also a [\…] dimension/aspect/element,", "It is worth recognising/noting/mentioning,", "From a [\…] perspective/standpoint,", "On a [\…] level,", "In a broader/wider/larger/similar context/sense/vein,", "Perhaps most importantly/significantly/notably/crucially,", "What makes this particularly/especially/uniquely [\…]", "Here's what nobody's talking about:", "Let me be clear:", "Can we talk about [X] for a second?", "Let's talk about [X].", "We need to talk about [X].", "I need to say something about [X].", "[N] things I learned from [X]", "[N] mistakes I see everyone making", "[N] lessons from [X] nobody talks about", "The [N] pillars of [X]", "[N] things I wish I knew before [X]", "Here are [N] frameworks that changed how I think about [X]"
 
-Formulaic paragraph openers that delay the claim, stage it as a disclosure, or frame it as a step up in abstraction. They survive rewrites because they are bland connectives rather than vocabulary tells, but they mark prose that stitches paragraphs together with the same handful of moves.
+Formulaic paragraph or headline openers that delay the claim, stage it as a disclosure, or frame it as a step up in abstraction. They survive rewrites because they are bland connectives rather than vocabulary tells, but they mark prose that stitches paragraphs together with the same handful of moves.
 
 **Before:**
 > At its core, the proposal is about consolidation. From a broader perspective, it reduces operational overhead. Perhaps most importantly, it aligns with the strategic plan.
@@ -749,7 +749,7 @@ Formulaic paragraph openers that delay the claim, stage it as a disclosure, or f
 
 **Severity:** strong_warning · `no-formulaic-openers`
 
-**Detection:** Programmatic check `no-formulaic-openers`. Anchored regex against the first line of each paragraph; flags any paragraph whose opener fits the formulaic-opener template. Distinct from #7 AI vocabulary words (which lists opener phrases as one sub-bullet under the broader vocabulary check) and from #47 soft scaffolding (which catches between-sentence connectives like "One useful area..." rather than paragraph-opening abstractions).
+**Detection:** Programmatic check `no-formulaic-openers`. Anchored regex against the first line of each paragraph, with optional Markdown heading markers for numbered social-post hooks; flags any paragraph whose opener fits the formulaic-opener template. Distinct from #7 AI vocabulary words (which lists opener phrases as one sub-bullet under the broader vocabulary check) and from #47 soft scaffolding (which catches between-sentence connectives like "One useful area..." rather than paragraph-opening abstractions).
 
 
 ### 60. Modal qualifier stacks

@@ -81,6 +81,7 @@ The prior card named a snapshot but recorded no digest. The exact 15,854-byte on
 
 ## Decision history
 
+- 2026-07-19: Mae approved all six C05 numbered-list hook templates for programmatic #50, including plain paragraph and Markdown-heading openers, with its existing severity and one-occurrence failure condition.
 - 2026-07-18: Mae approved all nine C03 manufactured-urgency hooks for programmatic #42 with its existing severity and one-occurrence failure condition.
 - 2026-07-18: Mae approved all ten C02 false-exclusivity hooks for programmatic #42 with its existing severity and one-occurrence failure condition.
 - 2026-07-18: Mae approved all six previously uncovered C01 throat-clearer openers for programmatic #50. Together with the four forms already recognised by #42 or #56, all ten catalogue forms now produce deterministic findings.
@@ -106,7 +107,7 @@ This is the authoritative review table. Focused results came from the live `huma
 | C02: Ten false-exclusivity hooks simulate suppressed or insider information. | Direct catalogue judgment with ten exact examples. | fully covered: DR-135C added all ten hidden-, suppressed-, secrecy-, and insider-knowledge structures to programmatic #42. | No remaining exact-form gap for this family. | Retain all ten false-exclusivity hooks in #42 with its existing severity and failure condition. | approved | implemented |
 | C03: Nine urgency hooks create pressure around non-expiring information. | Direct catalogue judgment with nine exact examples. | fully covered: DR-135D added all nine urgency-hook structures to programmatic #42. | No remaining exact-form gap for this family. | Retain all nine manufactured-urgency hooks in #42 with its existing severity and failure condition. | approved | implemented |
 | C04: Ten binary-contrast templates stage an X-to-Y reversal. | Direct catalogue examples with ten exact structural forms. | fully covered: the current #9 matcher recognises all ten. Six forms were already live; DR-135A added the remaining stop/start, future-replacement, dead/next, and forget/focus structures. | No remaining exact-form gap for this family. | Retain all ten X-to-Y reversal shapes in programmatic #9 with its existing severity and failure condition. | approved | implemented |
-| C05: Six numbered-list hooks package lessons, mistakes, pillars, or frameworks. | Direct catalogue examples; no evidence that numbering itself is inappropriate. | not covered: 0 of 6 isolated hooks fails; #31 and #38 inspect actual list density and repeated scaffolding, not headlines. | A headline-template distinction and list-content context are absent. | **test-adapt:** evaluate generic numbered-hook nouns in social/marketing headlines; preserve genuinely comparative or procedural lists. | pending | not started |
+| C05: Six numbered-list hooks package lessons, mistakes, pillars, or frameworks. | Direct catalogue examples with six exact structural forms. | fully covered: DR-135E added all six numbered-hook structures to programmatic #50 for plain paragraph and Markdown-heading openers. | No remaining exact-form gap for this family; #31 and #38 remain separate list-density and scaffolding checks. | Retain all six numbered-list hook structures in #50 with its existing severity and failure condition. | approved | implemented |
 | C06: Nine dramatic fragments use short commands or chopped sentences for emphasis. | Direct catalogue examples; no validation of generic versus deliberate rhythm. | partly covered: #42 finds `Let that sink in` and `Read that again`; #25 finds `This. Is. The. Future.`; 3 of 9 fail. | `Full stop`, `Period`, tweet, one-word, sit-with-that, and louder-for-the-back forms remain outside exact coverage. | **test-adapt:** add fixtures first and evaluate closing position, clustering, dialogue, comedy, quotation, and deliberate rhythm before broadening. | pending | not started |
 | C07: Nine vulnerability or anticipated-backlash frames perform relatability. | Direct catalogue interpretation; actual vulnerability is unknowable from surface form. | partly covered: #56 finds only `I'm going to be honest with you`; 1 of 9 fails. | Scary-to-share, hot-take, unpopular-opinion, hate, public-first, feather, and follower-loss frames are not covered. | **test-adapt:** route to performed-candour or genre assessment only after controls distinguish real disclosure and named risk from empty framing. | pending | not started |
 | C08: Ten false-agency clichés give data, markets, technology, industries, results, implications, or possibilities actor-like force. | Direct catalogue interpretation; several examples are ordinary metonymy or evaluation. | partly covered: only `The implications are staggering` fails, through #1; 1 of 10. | No actor/inference review for the other nine; literal and conventional agency are look-alikes. | **test-adapt:** prefer `underspecified_language` review that asks for actor, measure, or inference; do not add a flat phrase blacklist. | pending | not started |
@@ -137,7 +138,7 @@ This is the authoritative review table. Focused results came from the live `huma
 - C02: retain all ten false-exclusivity hooks in programmatic #42.
 - C03: retain all nine manufactured-urgency hooks in programmatic #42.
 - C04: retain all ten exact X-to-Y reversal structures in programmatic #9.
-- C05: test-adapt numbered-hook headlines separately from actual list density.
+- C05: retain all six numbered-list hook structures in programmatic #50.
 - C06: test-adapt missing emphasis fragments with deliberate-rhythm and quotation controls.
 - C07: test-adapt vulnerability framing through contextual assessment, not sincerity inference.
 - C08: test-adapt false agency through actor, measure, and inference review.
@@ -168,7 +169,7 @@ This is the authoritative review table. Focused results came from the live `huma
 - C02: passed - all ten catalogue forms now fail programmatic #42; focused `test_grade.py` coverage includes every DR-135C addition.
 - C03: passed - all nine catalogue forms now fail programmatic #42; focused `test_grade.py` coverage includes every DR-135D addition.
 - C04: passed - all ten catalogue forms now fail programmatic #9; focused `test_grade.py` coverage includes each of the four DR-135A additions.
-- C05: not applicable - recommendation pending; no product change made.
+- C05: passed - all six catalogue structures now fail programmatic #50 as plain paragraph and Markdown-heading openers; focused `test_grade.py` coverage includes every DR-135E addition.
 - C06: not applicable - recommendation pending; no product change made.
 - C07: not applicable - recommendation pending; no product change made.
 - C08: not applicable - recommendation pending; no product change made.

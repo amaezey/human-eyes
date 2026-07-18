@@ -1889,6 +1889,14 @@ def check_formulaic_openers(text):
         r"^let['’]s talk about\b",
         r"^we need to talk about\b",
         r"^i need to say something about\b",
+        # DR-135E: source-defined numbered social-post hooks. Optional
+        # Markdown heading markers keep the same opener logic for headlines.
+        r"^(?:#{1,6}\s*)?\d+ things i learned from [^:\n]{1,80}:?\s*$",
+        r"^(?:#{1,6}\s*)?\d+ mistakes i see everyone making:?\s*$",
+        r"^(?:#{1,6}\s*)?\d+ lessons from [^:\n]{1,80} nobody talks about:?\s*$",
+        r"^(?:#{1,6}\s*)?the \d+ pillars of [^:\n]{1,80}:?\s*$",
+        r"^(?:#{1,6}\s*)?\d+ things i wish i knew before [^:\n]{1,80}:?\s*$",
+        r"^(?:#{1,6}\s*)?here are \d+ frameworks that changed how i think about [^:\n]{1,80}:?\s*$",
     ]
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     found = []

@@ -842,6 +842,17 @@ expect_fail("no-formulaic-openers",
 expect_fail("no-formulaic-openers",
     "I need to say something about the renewal deadline.",
     "i-need-to-say throat-clearer")
+for hook in (
+    "5 things I learned from running a studio:",
+    "3 mistakes I see everyone making:",
+    "7 lessons from launching a product nobody talks about:",
+    "The 3 pillars of incident response:",
+    "10 things I wish I knew before managing a team:",
+    "Here are 6 frameworks that changed how I think about planning:",
+):
+    for heading_prefix in ("", "## "):
+        expect_fail("no-formulaic-openers", heading_prefix + hook,
+            f"DR-135E numbered-hook opener: {heading_prefix + hook}")
 expect_pass("no-formulaic-openers",
     "Libraries provide access to information.\n\nThey also serve communities.",
     "plain direct openers")
