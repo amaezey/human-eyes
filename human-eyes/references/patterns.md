@@ -165,7 +165,7 @@ These words and phrases appear far more frequently in post-2023 text than in hum
 
 **Soft scaffold phrases:** "One useful area...", "Another useful area...", "The main strength...", "The main risk...", "Good use usually comes down to..." These phrases are not flashy, which is why they survive rewrites. They mark a generated explainer that is arranging information into bland labelled blocks instead of writing from a real line of thought.
 
-**Tentative high-ratio phrase list:** GPTZero's April 2026 AI Vocabulary page is based on 3.3 million texts and exposes 100 public table rows. Use all 100 as clustering signals only. A single phrase is not proof of AI writing, but several in one paragraph is a strong smell.
+**Tentative high-ratio phrase list:** GPTZero's 100-row AI Vocabulary client payload is based on 3.3 million texts. Use all 100 as clustering signals only. A single phrase is not proof of AI writing, but several in one paragraph is a strong smell.
 
 Full GPTZero phrase list used by the grader:
 

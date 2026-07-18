@@ -55,7 +55,7 @@ AI_VOCABULARY = [
     "profoundly", "significantly", "fundamentally",
 ]
 
-# GPTZero's April 2026 public AI Vocabulary table exposes 100 high-ratio
+# GPTZero's AI Vocabulary client payload exposes 100 high-ratio
 # phrases. Treat them as tentative clustering signals, not single-phrase proof.
 GPTZERO_AI_PHRASES = [
     "provide a valuable insight",
