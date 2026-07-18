@@ -1258,11 +1258,11 @@ Three or more consecutive sentences whose first word matches — "The X… The Y
 **Detection:** Programmatic check `no-anaphora`. Flags three or more consecutive sentences whose first word matches case-insensitively, ignoring trivial starts ("I", "A", "The", "It", "It's"). Distinct from #25 staccato rhythm (which fires on short standalone sentences regardless of opener) and from #35a orphaned demonstratives (vague-subject `this` in a single sentence) and #35b `This …` chains (paragraph-level repetition of `This` as subject).
 
 
-### 56. Performed candour
+### 56. Performed candour and vulnerability
 
-**Frames to watch:** Honestly,; To be honest; The honest answer; Frankly,; Candidly,; Truthfully,; In all honesty.
+**Frames to watch:** Honestly,; To be honest; The honest answer; Frankly,; Candidly,; Truthfully,; In all honesty; "I wasn't going to post this, but"; "This is scary to share"; "Hot take incoming (don't hate me)"; "Unpopular opinion"; "I know I'll get hate for this, but"; "I've never said this publicly before"; "This might ruffle some feathers"; "I might lose followers for this, but".
 
-These phrases announce sincerity before a claim. The announcement rarely changes the meaning, and repeated use gives prose a rehearsed authenticity beat. Literal uses remain valid: an honest account is not performed candour. Quoted source text also remains unchanged.
+These phrases announce sincerity, vulnerability, or anticipated backlash before a claim. The announcement rarely changes the meaning and gives prose a rehearsed authenticity beat. Literal uses remain valid: an honest account is not performed candour. Quoted source text also remains unchanged.
 
 **Before:**
 > To be honest, the review process is too slow.

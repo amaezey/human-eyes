@@ -345,6 +345,18 @@ expect_fail("no-performed-candour",
 expect_fail("no-performed-candour",
     "In all honesty, the migration plan has too many unknowns.",
     "performed candour — 'in all honesty'")
+for phrase in (
+    "I wasn't going to post this, but here it is.",
+    "This is scary to share.",
+    "Hot take incoming (don't hate me):",
+    "Unpopular opinion:",
+    "I know I'll get hate for this, but the plan is wrong.",
+    "I've never said this publicly before.",
+    "This might ruffle some feathers.",
+    "I might lose followers for this, but the deadline matters.",
+):
+    expect_fail("no-performed-candour", phrase,
+        f"DR-135G performed-vulnerability frame: {phrase}")
 expect_pass("no-manufactured-insight",
     "The manual was updated in 2024 to reflect new safety standards.",
     "plain factual statement")

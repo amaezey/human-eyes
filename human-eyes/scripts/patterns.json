@@ -547,19 +547,19 @@
   },
   "no-performed-candour": {
     "category": "Voice and register",
-    "short_name": "Performed candour",
-    "description": "Checks for sincerity announcements such as honestly, frankly, and the honest answer.",
-    "why_it_matters": "Announcing sincerity adds a rehearsed authenticity beat instead of strengthening the claim.",
+    "short_name": "Performed candour and vulnerability",
+    "description": "Checks for sincerity, vulnerability, and anticipated-backlash announcements before a claim.",
+    "why_it_matters": "Announcing sincerity or personal risk adds a rehearsed authenticity beat instead of strengthening the claim.",
     "severity": "strong_warning",
     "failure_modes": [
       "voice_erasure",
       "generic_abstraction"
     ],
     "evidence_role": "candour_frame",
-    "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+    "guidance": "Remove the candour or vulnerability announcement and state the claim directly. Preserve literal uses and quoted source text.",
     "pattern_number": "56",
-    "patterns_md_heading": "Performed candour",
-    "patterns_md_body": "**Frames to watch:** Honestly,; To be honest; The honest answer; Frankly,; Candidly,; Truthfully,; In all honesty.\n\nThese phrases announce sincerity before a claim. The announcement rarely changes the meaning, and repeated use gives prose a rehearsed authenticity beat. Literal uses remain valid: an honest account is not performed candour. Quoted source text also remains unchanged.\n\n**Before:**\n> To be honest, the review process is too slow.\n\n**After:**\n> The review process is too slow.\n\n**Severity:** strong_warning · `no-performed-candour`\n\n**Detection:** Programmatic check `no-performed-candour` catches fixed discourse frames outside quoted text. The `performed_candour` semantic record reviews contextual uses of honest, real, actual, and genuine.",
+    "patterns_md_heading": "Performed candour and vulnerability",
+    "patterns_md_body": "**Frames to watch:** Honestly,; To be honest; The honest answer; Frankly,; Candidly,; Truthfully,; In all honesty; \"I wasn't going to post this, but\"; \"This is scary to share\"; \"Hot take incoming (don't hate me)\"; \"Unpopular opinion\"; \"I know I'll get hate for this, but\"; \"I've never said this publicly before\"; \"This might ruffle some feathers\"; \"I might lose followers for this, but\".\n\nThese phrases announce sincerity, vulnerability, or anticipated backlash before a claim. The announcement rarely changes the meaning and gives prose a rehearsed authenticity beat. Literal uses remain valid: an honest account is not performed candour. Quoted source text also remains unchanged.\n\n**Before:**\n> To be honest, the review process is too slow.\n\n**After:**\n> The review process is too slow.\n\n**Severity:** strong_warning · `no-performed-candour`\n\n**Detection:** Programmatic check `no-performed-candour` catches fixed discourse frames outside quoted text. The `performed_candour` semantic record reviews contextual uses of honest, real, actual, and genuine.",
     "patterns_md_leading_blanks": 2
   },
   "no-negation-density": {

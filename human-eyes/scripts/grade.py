@@ -364,6 +364,15 @@ PERFORMED_CANDOUR = [
     r"\blet me be honest\b",
     r"\bi(?:'ll| will) be honest\b",
     r"\blet(?:'s| us) be real\b",
+    # DR-135G: source-defined performed-vulnerability frames.
+    r"\bi wasn['’]t going to post this,? but\b",
+    r"\bthis is scary to share\b",
+    r"\bhot take incoming\s*\(don['’]t hate me\)\s*:?",
+    r"\bunpopular opinion\s*:",
+    r"\bi know i['’]ll get hate for this,? but\b",
+    r"\bi['’]ve never said this publicly before\b",
+    r"\bthis might ruffle some feathers\b",
+    r"\bi might lose followers for this,? but\b",
 ]
 
 COLLABORATIVE_ARTIFACTS = [
