@@ -220,7 +220,8 @@ AI_VOCABULARY_REGEX = [
         r"literally|incredibly|essentially|arguably|undeniably|remarkably|"
         r"interestingly|notably|particularly|ultimately|groundbreaking|"
         r"revolutionary|next-level|world-class|double down|spearhead|"
-        r"supercharge|reimagine|synergize)\b"
+        r"supercharge|reimagine|synergize|thoughtful strategy|clear messaging|"
+        r"intentional design)\b"
     ),
     r"aligns? with\b",
     r"aligned with\b",
@@ -474,7 +475,8 @@ COLLABORATIVE_ARTIFACTS = [
 PROMOTIONAL = [
     "breathtaking", "stunning", "nestled", "profound",
     "showcasing", "exemplifies", "must-visit", "groundbreaking",
-    "renowned",
+    "renowned", "game-changer", "unlock your true potential",
+    "unstoppable", "cutting-edge", "unprecedented",
 ]
 
 PRODUCT_PERFORMANCE_PROMOTIONAL = [
@@ -2050,6 +2052,9 @@ def check_formulaic_openers(text):
         # DR-135H: time-stamped social-post opener templates.
         r"^in \d{4},? [^.!?\n]{1,80} won['’]t be optional[.!?]\s+it['’]ll be table stakes[.!?]?\s*$",
         r"^the [^.!?\n]{1,40} of \d{4} will look nothing like the [^.!?\n]{1,40} of \d{4}[.!?]?\s*$",
+        # DR-132A: source-defined marketing-email greeting and hype opener.
+        r"^i hope this email finds you well\b",
+        r"^are you tired of [^?\n]{1,120}\?\s+look no further than\b",
     ]
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     found = []

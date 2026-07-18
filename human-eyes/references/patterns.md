@@ -115,6 +115,8 @@ Reads like tourism marketing rather than description.
 **After:**
 > Alamata Raya Kobo is a town in the Gonder region of Ethiopia, known for its weekly market and 18th-century church.
 
+**Additional marketing formulas:** "game-changer", "unlock your true potential", "unstoppable", "cutting-edge", "groundbreaking", and "unprecedented".
+
 **Severity:** context_warning · `no-promotional-language`
 
 **Detection:** Programmatic check `no-promotional-language`.
@@ -283,6 +285,8 @@ Current threshold: vocabulary signals contribute points to an overall score alon
 > Somali cuisine also includes camel meat, which is considered a delicacy. Pasta dishes, introduced during Italian colonisation, remain common, especially in the south.
 
 **Additional exact vocabulary candidates:** literally, incredibly, essentially, arguably, undeniably, remarkably, interestingly, notably, particularly, ultimately, groundbreaking, revolutionary, next-level, world-class, double down, spearhead, supercharge, reimagine, synergize.
+
+**Additional marketing-email phrase candidates:** "thoughtful strategy", "clear messaging", and "intentional design".
 
 **Severity:** strong_warning · `no-ai-vocabulary-clustering` (the soft-scaffold sub-bullet now also references `no-soft-scaffolding` — see #47)
 
@@ -779,6 +783,8 @@ Formulaic paragraph or headline openers that delay the claim, stage it as a disc
 > The proposal consolidates three legacy tools into one, which reduces integration points and on-call rotations. It is also the move the strategic plan has been pointing at since 2025.
 
 **Additional templates:** "In [year], [X] won't be optional. It'll be table stakes" and "The [role] of [year] will look nothing like the [role] of [earlier year]".
+
+**Additional email openers:** "I hope this email finds you well" and "Are you tired of X? Look no further than Y".
 
 **Severity:** strong_warning · `no-formulaic-openers`
 

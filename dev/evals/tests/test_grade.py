@@ -3188,6 +3188,40 @@ for phrase in DR135_VOCABULARY_ADDITIONS:
     else:
         print(f"  ok: DR-135H #7 recognizes {phrase!r} exactly once")
 
+# --- DR-132A: approved marketing-email regex routes ---
+print("\n=== DR-132A marketing-email regex routes ===")
+
+for phrase in (
+    "This is a game-changer.",
+    "Unlock your true potential.",
+    "Make your emails unstoppable.",
+    "This is cutting-edge.",
+    "This is groundbreaking.",
+    "This is unprecedented.",
+):
+    expect_fail("no-promotional-language", phrase,
+        f"DR-132A #4 hype formula: {phrase}")
+
+for phrase in ("thoughtful strategy", "clear messaging", "intentional design"):
+    matches = _grade._find_ai_words(phrase)
+    if matches != [phrase]:
+        FAILURES += 1
+        print(f"FAIL: DR-132A #7 should recognize {phrase!r} exactly once; got {matches}")
+    else:
+        print(f"  ok: DR-132A #7 recognizes {phrase!r} exactly once")
+expect_fail(
+    "no-ai-vocabulary-clustering",
+    "Your thoughtful strategy needs clear messaging and intentional design.",
+    "DR-132A #7 clusters the three approved adjective-noun phrases",
+)
+
+for phrase in (
+    "I hope this email finds you well. The release is ready.",
+    "Are you tired of rewriting reports by hand? Look no further than Acme.",
+):
+    expect_fail("no-formulaic-openers", phrase,
+        f"DR-132A #50 email opener: {phrase}")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")
