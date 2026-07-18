@@ -82,11 +82,12 @@ Juzek and Ward identify 21 inflected focal words by intersecting statistically i
 
 ## Decision history
 
-- The previous card had no claim-keyed user decisions or implementation statuses. Its broad #7 and `overall-signal-stacking` mappings were analysis notes, not approvals. This update replaces them with C01-C18 and leaves every recommendation `pending`; no product change has been made.
+- The previous card had no claim-keyed user decisions or implementation statuses. Its broad #7 and `overall-signal-stacking` mappings were analysis notes, not approvals. This update replaces them with C01-C18; all recommendations except the ruled C16 remain `pending`.
+- C16 rejected 2026-07-18 via DR-126: do not add the four appendix abstracts as dedicated grader fixtures. All four are manipulated GPT-3.5 experimental stimuli, they provide no legitimate-writing control or clear desired output, and this card already preserves the focused current-checker results.
 
 ## Project coverage
 
-This is the authoritative review table. Every recommendation remains a pending decision for Mae.
+This is the authoritative review table. C16 records Mae's ruling; every other recommendation remains pending.
 
 | Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
 |---|---|---|---|---|---|---|
@@ -105,7 +106,7 @@ This is the authoritative review table. Every recommendation remains a pending d
 | C13: Almost all focal forms were already increasing before ChatGPT, so LLMs may accelerate rather than originate lexical change. | Direct trend observation plus author interpretation. It supplies a human look-alike and historical baseline. | H24 is partly covered by time-sensitive evidence language. | A flat blacklist obscures pre-existing human trends and feedback loops. | Make pre-2023 trend and corpus-date context mandatory for any source-specific vocabulary profile. | pending | not started |
 | C14: The identification method is transferable, but the reported results are bounded to English biomedical scientific abstracts and dated models. | Direct scope statement and future-work limit. The paper proposes other disciplines, domains, languages, and LLMs as untested work. | `dev/TESTING.md` is fully covered in calling for register, genre, model, prompt, and provenance variation. | The 21 forms are not validated across general prose, fiction, journalism, marketing, or non-English text. | Keep the evidence tier register-specific and do not promote generic coverage without new direct sources. | pending | not started |
 | C15: Training data, fine-tuning, architecture, algorithms, context priming, RLHF, and other settings are non-exclusive possible causes, while model secrecy blocks direct discrimination. | Direct framework and limitation. The paper reports negative or mixed indirect probes, not a settled causal model. | No project rule needs a mechanism; the process boundary is fully covered. | Existing prose that says words appear more because of a specific mechanism would overclaim. | Keep mechanism fields separate from measured lexical results; take no product action. | pending | not started |
-| C16: Appendix examples contrast focal-word and no-focal-word abstracts; the focal versions often contain clusters and sometimes unsupported inflation, but they are generated experimental stimuli. | Direct examples, not prevalence samples. Focused live execution on the complete focal excerpts found the `delve`-initial excerpt below #7 and aggregate thresholds despite nine Kobak style types, while the non-`delve` excerpt triggered #7 through `intricate`, `showcase`, and `highlight the potential` and scored 2/4 on `overall-signal-stacking`. Neither excerpt triggered #4 or #8. | #7 is partly covered and `overall-signal-stacking` is partly covered. | Current outcomes depend on distinct-type lists, paragraph boundaries, overlapping phrase entries, and unrelated semantics rather than the paper's corpus method. | Use the appendix pairs as development examples only after preserving meaning and adding legitimate controls; do not treat surface-only output as a complete Audit. | pending | not started |
+| C16: Appendix examples contrast focal-word and no-focal-word abstracts; the focal versions often contain clusters and sometimes unsupported inflation, but they are generated experimental stimuli. | Direct examples, not prevalence samples. Focused live execution on the complete focal excerpts found the `delve`-initial excerpt below #7 and aggregate thresholds despite nine Kobak style types, while the non-`delve` excerpt triggered #7 through `intricate`, `showcase`, and `highlight the potential` and scored 2/4 on `overall-signal-stacking`. Neither excerpt triggered #4 or #8. | #7 is partly covered and `overall-signal-stacking` is partly covered. | Current outcomes depend on distinct-type lists, paragraph boundaries, overlapping phrase entries, and unrelated semantics rather than the paper's corpus method. | Do not add dedicated grader fixtures for these manipulated stimuli; retain the focused outputs in this source record only. | rejected | not applicable |
 | C17: The paper interprets lexical overrepresentation as part of language change and speculates that rushed evaluator labour and form-as-quality heuristics could shape RLHF. | Author interpretation combined with cited labour and language-change sources; the paper does not observe RLHF workers or establish the labour mechanism. | No direct project coverage is needed. | These claims are social and causal context, not prose-pattern evidence. | Record as indirect context and require direct review of cited labour sources before any policy or mechanism claim. | pending | not started |
 | C18: The supporting repository preserves code, notebook outputs, filtered ratings, items, and small samples, but not a complete paper environment or full corpora. | Reviewer inspection of all 39 tracked files at current commit. The repository is post-publication, reports AI-assisted polishing/refactoring, has no dependency lockfile or fixed random seeds, and contains a 2022-versus-2020 path discrepancy in `brute_force_div.py`. Its chi-square code uses word and total-token counts rather than word and non-word counts, and substitutes an occurrences-per-million value for an absent-word count. | The source-ingest provenance fields are fully covered by the refreshed snapshot and attachments. | Current repository success cannot be presented as a full independent reproduction; the publication-time code revision is unidentified; the significance results need independent recomputation. | Preserve the repository as supplementary provenance, label the reproduction and statistical-code limits, independently recompute before product use, and request no product change. | pending | not started |
 
@@ -126,7 +127,7 @@ This is the authoritative review table. Every recommendation remains a pending d
 - C13: Require pre-2023 trend context for source-specific vocabulary profiles.
 - C14: Keep the evidence register-specific.
 - C15: Keep mechanism claims separate from measured lexical results.
-- C16: Use appendix pairs only as controlled development examples; do not equate surface output with a complete Audit.
+- C16: Do not add dedicated grader fixtures; retain the focused appendix results in this source record only.
 - C17: Keep labour and language-change claims indirect until their cited sources receive direct review.
 - C18: Treat the code archive as supplementary provenance, not a reproduced result, and independently recompute the significance statistics before product use.
 
@@ -147,7 +148,7 @@ This is the authoritative review table. Every recommendation remains a pending d
 - C13: not applicable - pending recommendation; no product change requested.
 - C14: not applicable - pending recommendation; no product change requested.
 - C15: not applicable - pending recommendation; no product change requested.
-- C16: not applicable - pending recommendation; no product change requested.
+- C16: not applicable - rejected 2026-07-18; no fixtures or product change made.
 - C17: not applicable - pending recommendation; no product change requested.
 - C18: not applicable - pending recommendation; no product change requested.
 
