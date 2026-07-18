@@ -324,6 +324,12 @@ for phrase in (
 ):
     expect_fail("no-manufactured-insight", phrase,
         f"DR-135D manufactured-urgency hook: {phrase}")
+for phrase in (
+    "Sit with that for a second.",
+    "I'll say it louder for the people in the back.",
+):
+    expect_fail("no-manufactured-insight", phrase,
+        f"DR-135F performed-emphasis frame: {phrase}")
 expect_fail("no-performed-candour",
     "The honest answer is that the data was incomplete from the start.",
     "performed candour — 'the honest answer is'")
@@ -365,6 +371,14 @@ expect_fail("no-staccato-sequences",
 expect_pass("no-staccato-sequences",
     "The library was built in 1923 and has served the community ever since.",
     "one long sentence")
+for phrase in (
+    "Full stop.",
+    "Period.",
+    "That's it. That's the tweet.",
+    "Trust. That's the word.",
+):
+    expect_fail("no-staccato-sequences", phrase,
+        f"DR-135F exact dramatic-fragment formula: {phrase}")
 
 
 # --- no-anaphora ---

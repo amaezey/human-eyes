@@ -54,7 +54,7 @@ for t in dev/evals/tests/test_*.py; do python3 "$t" >/dev/null 2>&1 || python3 -
 
 `patterns.md` is generated: edit `human-eyes/scripts/patterns.json`, then `python3 dev/tools/render_patterns_md.py --write`. Detection markers in it are derived from `grade.py`'s check registry and `judgement.json`; the README Check column is tested against the same derivation (`test_detection_markers.py`).
 
-## Position (2026-07-19, after DR-135E)
+## Position (2026-07-19, after DR-135F)
 
 Decided and closed: DR-01..11, DR-30 (via DR-106), DR-39/40, DR-43..49 (via their recovered rows), DR-106, DR-111..127, and orphan rows DR-141..152 except DR-144. Standing rulings recorded in the rules above: plain pattern numbers only (catalogue now runs to #61); four statuses verbatim; two detector types named in every option; deterministic routing first and agent judgement last; labelled option lists in question order; product action names used exactly (Audit, Suggestions, Rewrite, Write, Save report); closures reported in product terms; the orphan sweep is part of every close.
 
@@ -75,6 +75,8 @@ DR-135C is implemented. Mae approved all ten C02 false-exclusivity hooks for pro
 DR-135D is implemented. Mae chose to fold all nine C03 manufactured-urgency hooks into programmatic #42 rather than create a separate pattern number. They use #42's existing severity and one-occurrence failure condition. DR-135 remains pending for its other independent social-post families.
 
 DR-135E is implemented. Mae chose to fold all six C05 numbered-list hook structures into programmatic #50 rather than create a separate pattern number. The regex branches recognise plain paragraph openers and Markdown headings and use #50's existing severity and one-occurrence failure condition. #31 and #38 remain separate list-density and repeated-scaffolding checks. DR-135 remains pending for its other independent social-post families.
+
+DR-135F is implemented. Mae chose split programmatic routing for the six previously uncovered C06 dramatic-fragment forms. `Full stop`, `Period`, `That's it. That's the tweet`, and `[One word]. That's the word` are exact one-match branches in #25; `Sit with that for a second` and the louder-for-the-back command are in #42. Together with the three forms already covered, all nine C06 forms now produce findings. No new pattern was created. DR-135 remains pending for its other independent social-post families.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Current counts after DR-127: 102 open, 50 decided, 3 pos-dependent-pattern (POS-01, POS-02, DR-144 wait on Mae's tagger).
 

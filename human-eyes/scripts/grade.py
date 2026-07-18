@@ -323,6 +323,8 @@ MANUFACTURED_INSIGHT = [
     r"\b[\w][^.!?\n]{0,79} just changed the game forever",
     # Performed knowingness
     r"let that sink in", r"read that again", r"if you know,? you know",
+    r"sit with that for a second",
+    r"i['’]ll say it louder for the people in the back",
     r"and that changes everything", r"which tells you everything",
     r"and that's the point",
     # Pseudo-profundity
@@ -1138,6 +1140,15 @@ def check_performed_candour(text):
 
 def check_staccato(text):
     sentences = split_sentences(text)
+    formula_matches = [
+        match.strip()
+        for match in nonoverlapping_pattern_matches(text, [
+            r"(?:^|(?<=[.!?])\s+|(?<=\n)\s*)full stop[.!?](?=\s|$)",
+            r"(?:^|(?<=[.!?])\s+|(?<=\n)\s*)period[.!?](?=\s|$)",
+            r"that['’]s it\.\s+that['’]s the tweet[.!?]?",
+            r"(?:^|(?<=[.!?])\s+|(?<=\n)\s*)[a-z][\w'’\-]*\.\s+that['’]s the word[.!?]?",
+        ])
+    ]
     max_run = 0
     current_run = 0
     longest_run_end = -1
@@ -1157,13 +1168,19 @@ def check_staccato(text):
     if max_run >= 3 and longest_run_end >= 0:
         run_start = longest_run_end - max_run + 1
         matches = [s.strip() for s in sentences[run_start:longest_run_end + 1] if s.strip()]
+    matches.extend(formula_matches)
+    evidence = []
+    if max_run >= 3:
+        evidence.append(f"sequence of {max_run} consecutive short sentences")
+    if formula_matches:
+        evidence.append(f"exact dramatic-fragment formula(s): {formula_matches}")
     return {
         "text": "no-staccato-sequences",
-        "passed": max_run < 3,
+        "passed": max_run < 3 and not formula_matches,
         "matches": matches,
         "evidence": (
-            f"Found sequence of {max_run} consecutive short sentences"
-            if max_run >= 3
+            f"Found {'; '.join(evidence)}"
+            if evidence
             else f"Max consecutive short sentences: {max_run}"
         ),
     }
