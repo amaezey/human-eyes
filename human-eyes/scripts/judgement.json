@@ -69,6 +69,29 @@
       ]
     },
     {
+      "id": "rewrite_stance_drift",
+      "pattern_ref": null,
+      "severity": "strong_warning",
+      "prompt": "Compare the supplied source with the current text. Determine whether the current text preserves the source's position and level of commitment, adds a prescription, recommendation, solution, or call to action, intensifies source stance, reverses source stance, or erases or neutralises source stance. If no source was supplied, answer `source comparison unavailable`. Judge meaning, not shared wording.",
+      "answer_schema": {
+        "type": "state",
+        "values": [
+          "source comparison unavailable",
+          "preserves source stance",
+          "adds a prescription, recommendation, solution, or call to action",
+          "intensifies source stance",
+          "reverses source stance",
+          "erases or neutralises source stance"
+        ]
+      },
+      "flagged_when": [
+        "adds a prescription, recommendation, solution, or call to action",
+        "intensifies source stance",
+        "reverses source stance",
+        "erases or neutralises source stance"
+      ]
+    },
+    {
       "id": "even_jargon_distribution",
       "pattern_ref": null,
       "severity": "context_warning",

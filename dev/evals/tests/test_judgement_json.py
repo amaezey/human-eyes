@@ -71,6 +71,7 @@ EXPECTED_IDS = [
     "tonal_uniformity",
     "faux_specificity",
     "neutrality_collapse",
+    "rewrite_stance_drift",
     "even_jargon_distribution",
     "forced_synesthesia",
     "generic_metaphors",
@@ -124,6 +125,7 @@ EXPECTED_PATTERN_REFS = {
     "tonal_uniformity": 35,
     "faux_specificity": 36,
     "neutrality_collapse": 37,
+    "rewrite_stance_drift": None,
     "even_jargon_distribution": None,
     "forced_synesthesia": 28,
     "generic_metaphors": 30,
@@ -278,6 +280,43 @@ if "genre-required neutrality" not in neutrality_prompt.lower():
     fail("neutrality_collapse prompt missing DR-117 genre-neutrality guidance")
 else:
     ok("neutrality_collapse prompt covers genre-required neutrality")
+
+stance_drift = records_by_id.get("rewrite_stance_drift", {})
+expected_stance_values = [
+    "source comparison unavailable",
+    "preserves source stance",
+    "adds a prescription, recommendation, solution, or call to action",
+    "intensifies source stance",
+    "reverses source stance",
+    "erases or neutralises source stance",
+]
+expected_stance_flags = expected_stance_values[2:]
+stance_prompt = stance_drift.get("prompt", "").lower()
+missing_stance_guidance = [
+    phrase
+    for phrase in (
+        "compare the supplied source",
+        "adds",
+        "intensifies",
+        "reverses",
+        "erases or neutralises",
+        "judge meaning",
+    )
+    if phrase not in stance_prompt
+]
+if stance_drift.get("answer_schema") != {
+    "type": "state",
+    "values": expected_stance_values,
+}:
+    fail("rewrite_stance_drift should expose the six approved source-comparison states")
+elif stance_drift.get("flagged_when") != expected_stance_flags:
+    fail("rewrite_stance_drift should flag only the four approved stance-drift states")
+elif stance_drift.get("pattern_ref") is not None or stance_drift.get("severity") != "strong_warning":
+    fail("rewrite_stance_drift should be an unnumbered strong-warning agent judgement")
+elif missing_stance_guidance:
+    fail(f"rewrite_stance_drift prompt missing DR-136A guidance: {missing_stance_guidance}")
+else:
+    ok("rewrite_stance_drift implements the approved source-bound comparison")
 
 
 # --- polymorphic genre slot ---
