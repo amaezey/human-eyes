@@ -311,6 +311,16 @@ MANUFACTURED_INSIGHT = [
     r"the thing nobody tells beginners",
     r"the secret that [^.!?\n]{1,80} (?:doesn['’]t|does not) want you to know",
     r"i['’]ve been sitting on this for weeks",
+    # DR-135D: source-defined manufactured-urgency hooks.
+    r"stop what you['’]re doing",
+    r"drop everything",
+    r"read this before [^.!?\n]{1,80}",
+    r"if you haven['’]t seen this yet",
+    r"you['’]re going to want to bookmark this",
+    r"save this before it gets taken down",
+    r"this changes everything",
+    r"this is bigger than people reali[sz]e",
+    r"\b[\w][^.!?\n]{0,79} just changed the game forever",
     # Performed knowingness
     r"let that sink in", r"read that again", r"if you know,? you know",
     r"and that changes everything", r"which tells you everything",

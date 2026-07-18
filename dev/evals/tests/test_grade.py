@@ -311,6 +311,19 @@ for phrase in (
 ):
     expect_fail("no-manufactured-insight", phrase,
         f"DR-135C false-exclusivity hook: {phrase}")
+for phrase in (
+    "Stop what you're doing.",
+    "Drop everything.",
+    "Read this before your next meeting.",
+    "If you haven't seen this yet...",
+    "You're going to want to bookmark this.",
+    "Save this before it gets taken down.",
+    "This changes everything.",
+    "This is bigger than people realize.",
+    "Email just changed the game forever.",
+):
+    expect_fail("no-manufactured-insight", phrase,
+        f"DR-135D manufactured-urgency hook: {phrase}")
 expect_fail("no-performed-candour",
     "The honest answer is that the data was incomplete from the start.",
     "performed candour — 'the honest answer is'")
