@@ -248,6 +248,23 @@ AI_VOCABULARY_REGEX = [
     r"\bwatch(?:ing)? (?:the writer|the author|him|her|them) make (?:a|this|that) move\b",
 ]
 
+# Exact term families from Kousha and Thelwall's Table 1. These support the
+# document-wide distinct-family rule; they do not replace the broader #7 list.
+KOUSHA_THELWALL_TERM_FAMILY_REGEX = (
+    ("underscore", r"\bunderscor(?:e|es|ed|ing)\b"),
+    ("delve", r"\bdelv(?:e|es|ed|ing)\b"),
+    ("showcase", r"\bshowcas(?:e|es|ed|ing)\b"),
+    ("unveil", r"\bunveil(?:s|ed|ing)?\b"),
+    ("intricate", r"\bintricat(?:e|es|ed|ing)\b"),
+    ("meticulous", r"\bmeticulous(?:ly)?\b"),
+    ("pivotal", r"\bpivotal\b"),
+    ("heighten", r"\bheighten(?:s|ed|ing)?\b"),
+    ("nuance", r"\bnuanc(?:e|es|ed)\b"),
+    ("bolster", r"\bbolster(?:s|ed|ing)?\b"),
+    ("foster", r"\bfoster(?:s|ed|ing)?\b"),
+    ("interplay", r"\binterplay(?:s|ed|ing)?\b"),
+)
+
 NONLITERAL_LAND_SURFACE = [
     r"\b(?:argument|claim|point|idea|thinking|analysis|story|piece|draft|sentence|paragraph|message|feedback|critique|comment|line|joke|scene|ending)\s+lands?\b",
     r"\b(?:argument|claim|point|idea|thinking|analysis|story|piece|draft|sentence|paragraph|message|feedback|critique|comment|line|joke|scene|ending)\s+landed\b",
@@ -761,6 +778,28 @@ def _find_ai_words(text_lower):
     return found
 
 
+def _kousha_thelwall_term_pair_evidence(text):
+    """Return exact occurrences when at least two source families match."""
+    matched_patterns = [
+        (family, pattern)
+        for family, pattern in KOUSHA_THELWALL_TERM_FAMILY_REGEX
+        if re.search(pattern, text, flags=re.IGNORECASE)
+    ]
+    if len(matched_patterns) < 2:
+        return {}, []
+
+    matched_families = {}
+    source_order_occurrences = []
+    for family, pattern in matched_patterns:
+        matches = list(re.finditer(pattern, text, flags=re.IGNORECASE))
+        matched_families[family] = [match.group() for match in matches]
+        source_order_occurrences.extend(
+            (match.start(), match.group()) for match in matches
+        )
+    source_order_occurrences.sort(key=lambda occurrence: occurrence[0])
+    return matched_families, [match for _, match in source_order_occurrences]
+
+
 def vocabulary_signal_stacking_profile(text):
     """Score vocabulary evidence as one aggregate signal-stacking contribution."""
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
@@ -824,15 +863,28 @@ def check_ai_vocabulary(text):
     # Also report total count across the whole text
     text_lower = text.lower()
     total = len(_find_ai_words(text_lower))
-    return {
+    document_families, document_matches = _kousha_thelwall_term_pair_evidence(text)
+    document_pair = len(document_families) >= 2
+    family_evidence = ", ".join(
+        f"{family}={occurrences}"
+        for family, occurrences in document_families.items()
+    )
+    if max_count >= 3:
+        evidence = f"Worst paragraph has {max_count} AI words: {worst_words} ({total} total in text)"
+        if document_pair:
+            evidence += f"; document-wide term families: {family_evidence}"
+    elif document_pair:
+        evidence = f"Document-wide term families: {family_evidence} ({total} total AI words in text)"
+    else:
+        evidence = f"Max AI words per paragraph: {max_count} ({total} total in text)"
+    result = {
         "text": "no-ai-vocabulary-clustering",
-        "passed": max_count < 3,
-        "evidence": (
-            f"Worst paragraph has {max_count} AI words: {worst_words} ({total} total in text)"
-            if max_count >= 3
-            else f"Max AI words per paragraph: {max_count} ({total} total in text)"
-        ),
+        "passed": max_count < 3 and not document_pair,
+        "evidence": evidence,
     }
+    if document_pair:
+        result["matches"] = document_matches
+    return result
 
 
 def check_nonliteral_land_surface(text):

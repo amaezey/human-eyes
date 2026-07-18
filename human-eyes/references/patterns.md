@@ -161,7 +161,7 @@ Formulaic "Challenges" sections that acknowledge a problem then immediately reas
 
 **AI transition phrases** (a whole category AI overuses): "that being said", "at its core", "to put it simply", "a key takeaway is", "from a broader perspective", "in today's fast-paced world", "as technology continues to evolve", "but here's..."
 
-These words and phrases appear far more frequently in post-2023 text than in human writing from earlier periods. They often cluster in the same paragraph, which is a strong tell. No single word is proof, but density is: three or more in one paragraph is a fingerprint.
+These words and phrases appear far more frequently in post-2023 text than in human writing from earlier periods. They often cluster in the same paragraph, which is a strong tell. The programmatic #7 check fails at three occurrences in one paragraph. It also fails when two distinct Kousha-Thelwall families appear anywhere in the document, even across paragraphs: underscore, delve, showcase, unveil, intricate, meticulous, pivotal, heighten, nuance, bolster, foster, and interplay.
 
 **Soft scaffold phrases:** "One useful area...", "Another useful area...", "The main strength...", "The main risk...", "Good use usually comes down to..." These phrases are not flashy, which is why they survive rewrites. They mark a generated explainer that is arranging information into bland labelled blocks instead of writing from a real line of thought.
 

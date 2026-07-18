@@ -52,7 +52,7 @@ Most em dashes are doing the job of a different punctuation mark. The right repl
 
 ## AI vocabulary words
 
-Words that appear far more frequently in post-2023 LLM output than in human writing. No single word is proof. The tell is density: three or more in one paragraph reads as AI even when each word is individually defensible.
+Words that appear far more frequently in post-2023 LLM output than in human writing. No single word is proof. The tell is density: three or more in one paragraph reads as AI even when each word is individually defensible. The check also flags two distinct Kousha-Thelwall term families anywhere in a document: underscore, delve, showcase, unveil, intricate, meticulous, pivotal, heighten, nuance, bolster, foster, and interplay.
 
 The vocabulary clusters by semantic function: verbs of intellectual work, inflation verbs, action-flavoured corporate verbs, and abstract scenery nouns. The middle column names what the AI word usually stands in for. The writer picks the meaning that fits and uses that word, or cuts the verb if none of the meanings apply.
 
@@ -103,7 +103,7 @@ These words promise analytical work the sentence does not do. The plain alternat
 
 ### Cluster-level fix
 
-When a paragraph trips the AI-vocabulary density check (three or more in one paragraph), single-word substitution rarely fixes it. Rewrite the paragraph around its concrete claim, with concrete verbs in place of the abstract ones and no scenery nouns.
+When a paragraph has three or more vocabulary signals, or a document has two distinct Kousha-Thelwall families, single-word substitution rarely fixes it. Rewrite the affected passages around their concrete claims, with concrete verbs in place of abstract ones and no scenery nouns.
 
 ---
 

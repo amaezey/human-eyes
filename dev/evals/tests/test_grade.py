@@ -2496,7 +2496,7 @@ expect_fail("no-ai-vocabulary-clustering",
 
 # #7: nested entries (word inside a longer phrase) must count one span once.
 expect_pass("no-ai-vocabulary-clustering",
-    "They underscore the importance of the complex interplay.",
+    "They offer a valuable insight and provide a valuable insight.",
     "#7: two phrases containing two nested words must count as 2, not 4")
 
 # #52: documented eligibility skips prose under 100 words or under 6 sentences.
@@ -2816,6 +2816,100 @@ expect_fail("no-ai-vocabulary-clustering",
 expect_pass("no-ai-vocabulary-clustering",
     "The response was versatile.\n\nThe result was significant.\n\nThe method worked effectively.",
     "DR-125 control: approved signals in separate paragraphs stay clear")
+
+# --- DR-126B: #7 document-wide Kousha-Thelwall term pairs ---
+print("\n=== DR-126B #7 document-wide term pairs ===")
+DR126_KOUSHA_TERM_PAIRS = [
+    ("delve", "underscore"),
+    ("delving", "showcases"),
+    ("unveiled", "intricated"),
+    ("meticulously", "pivotal"),
+    ("heightening", "nuanced"),
+    ("bolstered", "fostering"),
+    ("interplaying", "underscore"),
+]
+for first, second in DR126_KOUSHA_TERM_PAIRS:
+    expect_fail("no-ai-vocabulary-clustering",
+        f"The first section uses {first}.\n\nThe final section uses {second}.",
+        f"DR-126B: distinct document-wide families {first!r} and {second!r} fail #7")
+
+dr126_evidence = ALL_CHECKS["no-ai-vocabulary-clustering"](
+    "The report will delve into the method.\n\nThe conclusion underscores the result."
+)["evidence"]
+for expected in ["delve=['delve']", "underscore=['underscores']"]:
+    if expected not in dr126_evidence:
+        FAILURES += 1
+        print(f"FAIL: DR-126B evidence should contain {expected!r}; got {dr126_evidence!r}")
+    else:
+        print(f"  ok: DR-126B evidence reports canonical family and occurrence {expected!r}")
+
+dr126_same_paragraph = ALL_CHECKS["no-ai-vocabulary-clustering"](
+    "We FOSTER careful discussion before we Delve into the evidence."
+)
+dr126_same_paragraph_phrases = _grade._evidence_envelope(
+    dr126_same_paragraph
+)["quoted_phrases"]
+if dr126_same_paragraph["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-126B exactly two distinct families in one paragraph should fail #7")
+elif dr126_same_paragraph_phrases != ["FOSTER", "Delve"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-126B structured evidence should preserve every occurrence in "
+        f"source order and source casing; got {dr126_same_paragraph_phrases!r}"
+    )
+else:
+    print(
+        "  ok: DR-126B exactly two same-paragraph families fail and structured "
+        "evidence preserves source order and casing"
+    )
+
+dr126_combined = ALL_CHECKS["no-ai-vocabulary-clustering"](
+    "We Delve into the evidence, FOSTER discussion, and work effectively."
+)
+dr126_combined_phrases = _grade._evidence_envelope(dr126_combined)["quoted_phrases"]
+if dr126_combined["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-126B combined paragraph and document-family failure should fail #7")
+elif "Worst paragraph has 3 AI words" not in dr126_combined["evidence"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-126B combined failure should retain worst-paragraph evidence; "
+        f"got {dr126_combined['evidence']!r}"
+    )
+elif dr126_combined_phrases != ["Delve", "FOSTER"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-126B combined failure should retain both family occurrences; "
+        f"got {dr126_combined_phrases!r}"
+    )
+else:
+    print(
+        "  ok: DR-126B combined failure retains worst-paragraph evidence and "
+        "both family occurrences"
+    )
+
+dr126_legacy_paragraph = ALL_CHECKS["no-ai-vocabulary-clustering"](
+    "The response was versatile, significant, and worked effectively."
+)
+dr126_legacy_phrases = _grade._evidence_envelope(
+    dr126_legacy_paragraph
+)["quoted_phrases"]
+if "matches" in dr126_legacy_paragraph:
+    FAILURES += 1
+    print("FAIL: DR-126B should not add an empty matches list to legacy failures")
+elif dr126_legacy_phrases != ["versatile", "significant", "effectively"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-126B should preserve fallback evidence parsing for legacy "
+        f"paragraph-only failures; got {dr126_legacy_phrases!r}"
+    )
+else:
+    print("  ok: DR-126B preserves structured evidence for legacy paragraph-only failures")
+
+expect_pass("no-ai-vocabulary-clustering",
+    "The first section will delve into the method.\n\nThe final section delves into the result.",
+    "DR-126B control: one repeated family across paragraphs stays clear")
 
 # --- Summary ---
 
