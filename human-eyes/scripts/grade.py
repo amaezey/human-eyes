@@ -209,9 +209,15 @@ KOBAK_CONTENT_WORDS = {
     if "content" in row["type"]
 }
 
-# Multi-word phrases where the first word may be inflected (e.g. "align with" ->
-# "aligns with", "aligned with"). Checked via regex, not substring.
+# Exact-boundary, inflected, and context-sensitive vocabulary patterns.
 AI_VOCABULARY_REGEX = [
+    (
+        r"\b(?:versatile|significant|effectively|capabilities|advancements|"
+        r"elucidating|firstly|reliance|generalizability|amidst|camaraderie|"
+        r"palpable|fleeting|solace|unravel|cacophony|unease|reminder|commence|"
+        r"leverage|elevate|align|surpass|notable|despite|nuanc(?:e|es|ing)|"
+        r"delving|unveil(?:s|ed|ing)?|heighten(?:s|ed|ing)?|dive into)\b"
+    ),
     r"aligns? with\b",
     r"aligned with\b",
     r"aligning with\b",

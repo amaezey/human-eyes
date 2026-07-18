@@ -2781,6 +2781,42 @@ expect_pass("no-generic-conclusions",
     "Give it a try today! The trial takes three minutes and needs no card details.",
     "DR-119 control: exclamation mid-document stays clear")
 
+# --- DR-125: #7 vocabulary watch-list expansions ---
+print("\n=== DR-125 #7 vocabulary expansions ===")
+DR125_AI_VOCABULARY = [
+    "versatile", "significant", "effectively", "capabilities",
+    "advancements", "elucidating", "firstly", "reliance",
+    "generalizability", "nuance", "nuances", "nuancing", "delving",
+    "unveil", "unveils", "unveiled", "unveiling",
+    "heighten", "heightens", "heightened", "heightening",
+    "amidst", "camaraderie", "palpable", "fleeting", "solace",
+    "unravel", "cacophony", "unease", "reminder", "commence",
+    "leverage", "elevate", "align", "dive into", "surpass",
+    "notable", "despite",
+]
+for word in DR125_AI_VOCABULARY:
+    matches = _grade._find_ai_words(word)
+    if matches != [word]:
+        FAILURES += 1
+        print(f"FAIL: DR-125 #7 should recognize {word!r} exactly once; got {matches}")
+    else:
+        print(f"  ok: DR-125 #7 recognizes {word!r} exactly once")
+
+for word in ["realign", "despiteful", "capability"]:
+    matches = _grade._find_ai_words(word)
+    if matches:
+        FAILURES += 1
+        print(f"FAIL: DR-125 #7 exact-boundary control {word!r} matched {matches}")
+    else:
+        print(f"  ok: DR-125 #7 exact-boundary control leaves {word!r} clear")
+
+expect_fail("no-ai-vocabulary-clustering",
+    "The response was versatile, significant, and worked effectively.",
+    "DR-125: three newly approved vocabulary signals trip the existing threshold")
+expect_pass("no-ai-vocabulary-clustering",
+    "The response was versatile.\n\nThe result was significant.\n\nThe method worked effectively.",
+    "DR-125 control: approved signals in separate paragraphs stay clear")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")
