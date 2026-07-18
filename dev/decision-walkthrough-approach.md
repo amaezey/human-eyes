@@ -54,7 +54,7 @@ for t in dev/evals/tests/test_*.py; do python3 "$t" >/dev/null 2>&1 || python3 -
 
 `patterns.md` is generated: edit `human-eyes/scripts/patterns.json`, then `python3 dev/tools/render_patterns_md.py --write`. Detection markers in it are derived from `grade.py`'s check registry and `judgement.json`; the README Check column is tested against the same derivation (`test_detection_markers.py`).
 
-## Position (2026-07-18, after DR-136A)
+## Position (2026-07-18, after DR-135A)
 
 Decided and closed: DR-01..11, DR-30 (via DR-106), DR-39/40, DR-43..49 (via their recovered rows), DR-106, DR-111..127, and orphan rows DR-141..152 except DR-144. Standing rulings recorded in the rules above: plain pattern numbers only (catalogue now runs to #61); four statuses verbatim; two detector types named in every option; deterministic routing first and agent judgement last; labelled option lists in question order; product action names used exactly (Audit, Suggestions, Rewrite, Write, Save report); closures reported in product terms; the orphan sweep is part of every close.
 
@@ -65,6 +65,8 @@ DR-126 is closed. Its claimed `valuable`-inside-`invaluable` threshold bug was a
 DR-127 is closed. Mae chose concise GPTZero provenance: the false `April 2026` revision month is removed, and #7 identifies GPTZero's 100-row AI Vocabulary client payload. The page's `Top 50` mismatch and viewer-clock date behavior remain in the GPTZero source record rather than the catalogue. The programmatic matcher, thresholds, and severity are unchanged. All other row components made no product change under standing rule 1. Next unresolved row: DR-128, Kobak citation scope corrections.
 
 DR-136A is implemented. Mae chose a separate source-bound `rewrite_stance_drift` agent judgement: it flags a rewrite that adds a prescription, recommendation, solution, or call to action; intensifies or reverses source stance; or erases or neutralises it. `neutrality_collapse` is unchanged. DR-136 stays pending only for its lower-priority fixture-licensing, mapping-retirement, and dated spelling-candidate components; continue the significance queue before returning to them.
+
+DR-135A is implemented. Mae approved all four remaining C04 X-to-Y reversal shapes for programmatic #9: stop/start, future-replacement, dead/next, and forget/focus. The live matcher now recognises all ten catalogue forms with #9's existing severity and one-occurrence failure condition. DR-135 remains pending for its independent social-post families.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Current counts after DR-127: 102 open, 50 decided, 3 pos-dependent-pattern (POS-01, POS-02, DR-144 wait on Mae's tagger).
 

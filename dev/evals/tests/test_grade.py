@@ -499,6 +499,18 @@ expect_fail("no-negative-parallelisms",
 expect_fail("no-negative-parallelisms",
     "I come to bury Caesar, not to praise him.",
     "affirmative-negative infinitive parallelism")
+expect_fail("no-negative-parallelisms",
+    "Stop thinking of it as a tool. Start thinking of it as a partner.",
+    "stop-X start-Y reversal")
+expect_fail("no-negative-parallelisms",
+    "Email isn't the future. Messaging is.",
+    "X-is-not-the-future Y-is reversal")
+expect_fail("no-negative-parallelisms",
+    "SEO is dead. Community is what's next.",
+    "X-is-dead Y-is-next reversal")
+expect_fail("no-negative-parallelisms",
+    "Forget reach. Focus on retention.",
+    "forget-X focus-on-Y reversal")
 expect_pass("no-negative-parallelisms",
     "The building was not damaged in the fire. It was inspected the following day.",
     "factual negation, not a reframing move")

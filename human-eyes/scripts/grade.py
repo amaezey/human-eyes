@@ -1363,6 +1363,14 @@ def check_negative_parallelisms(text):
     )
 
     hard_patterns = [
+        # DR-135A: source-defined X-to-Y reversal templates used in social
+        # posts. These are the same structural move as the existing negative-
+        # positive family even when the first clause uses an imperative or a
+        # replacement/death frame instead of the word "not".
+        r"\bstop\s+thinking\s+of\s+it\s+as\s+[^.!?\n]{1,80}[.!?]\s+start\s+thinking\s+of\s+it\s+as\s+[^.!?\n]{1,80}",
+        rf"(?:^|(?<=[.!?]))\s*[^.!?\n]{{1,80}}\s+(?:isn{apo}t|is\s+not)\s+the\s+future[.!?]\s+[^.!?\n]{{1,80}}\s+is(?:[.!?]|$)",
+        rf"(?:^|(?<=[.!?]))\s*[^.!?\n]{{1,80}}\s+is\s+dead[.!?]\s+[^.!?\n]{{1,80}}\s+is\s+what{apo}s\s+next(?:[.!?]|$)",
+        r"\bforget\s+[^.!?\n]{1,80}[.!?]\s+focus\s+on\s+[^.!?\n]{1,80}",
         rf"\bnot\s+(?:just|only|merely|simply|about|a matter of|a question of|a story of)\b.{{0,120}}\bbut(?: also)?\b",
         rf"\b(?:isn{apo}t|is not|wasn{apo}t|was not|aren{apo}t|are not|isnt|wasnt|arent)\s+(?:just|only|merely|simply|about|a matter of|a question of|a story of)\b.{{0,120}}\bbut(?: also)?\b",
         rf"\bnot\s+so\s+much\b.{{0,120}}\bas\b",

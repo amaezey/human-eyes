@@ -322,6 +322,10 @@ Forms include:
 - "Beyond X, it is Y."
 - "You might think X. Actually, Y."
 - "No X. No Y. Just Z."
+- "Stop thinking of it as X. Start thinking of it as Y."
+- "X isn't the future. Y is."
+- "X is dead. Y is what's next."
+- "Forget X. Focus on Y."
 
 **Before:**
 > It's not just about the beat riding under the vocals; it's part of the aggression and atmosphere. It's not merely a song, it's a statement.
