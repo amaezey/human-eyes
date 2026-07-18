@@ -3,6 +3,7 @@
 
 import csv
 import ast
+from bisect import bisect_left
 from datetime import datetime, timezone
 from functools import lru_cache
 import hashlib
@@ -300,6 +301,9 @@ MANUFACTURED_INSIGHT = [
     r"\b(?:it|this|that|(?:this|that|the) (?:experience|moment|process|project|failure|mistake|work)) taught me that\b",
     r"\bwhat (?:this|that|(?:this|that|the) (?:experience|moment|process|project|failure|mistake|work)) taught me was\b",
     r"\bthe lesson (?:i|we) learned was\b",
+    r"\b[\w'’-]+(?:\s+[\w'’-]+){0,5}\s+is the [\w'’-]+(?:\s+[\w'’-]+){0,3}\s+of\s+[\w'’-]+",
+    r"\b[\w'’-]+(?:\s+[\w'’-]+){0,5}\s+becomes? a trap\b",
+    r"\bthe (?:language|currency|architecture) of\b",
 ]
 
 PERFORMED_CANDOUR = [
@@ -538,6 +542,35 @@ def count_pattern_matches(text, patterns):
             total += len(found)
             matches.extend(found)
     return total, matches
+
+
+def _collapse_overlapping_matches(candidates):
+    """Keep the longest candidate from every group of overlapping spans."""
+    kept = []
+    kept_starts = []
+    for candidate in sorted(
+        candidates,
+        key=lambda item: (-(item[1] - item[0]), item[0]),
+    ):
+        start, end, _ = candidate
+        index = bisect_left(kept_starts, start)
+        overlaps_previous = index > 0 and kept[index - 1][1] > start
+        overlaps_next = index < len(kept) and kept[index][0] < end
+        if overlaps_previous or overlaps_next:
+            continue
+        kept.insert(index, candidate)
+        kept_starts.insert(index, start)
+    return kept
+
+
+def nonoverlapping_pattern_matches(text, patterns):
+    """Return regex matches with overlapping candidates collapsed to the longest."""
+    candidates = [
+        (match.start(), match.end(), match.group(0).lower())
+        for pattern in patterns
+        for match in re.finditer(pattern, text, flags=re.IGNORECASE)
+    ]
+    return [match for _, _, match in _collapse_overlapping_matches(candidates)]
 
 
 def normalize_for_regex(text):
@@ -990,7 +1023,8 @@ def check_overall_signal_stacking(text):
 
 
 def check_manufactured_insight(text):
-    count, matches = count_pattern_matches(text, MANUFACTURED_INSIGHT)
+    matches = nonoverlapping_pattern_matches(text, MANUFACTURED_INSIGHT)
+    count = len(matches)
     return {
         "text": "no-manufactured-insight",
         "passed": count == 0,
@@ -1339,16 +1373,7 @@ def check_negative_parallelisms(text):
         for m in re.finditer(pat, text, flags=re.IGNORECASE | re.DOTALL):
             candidates.append((m.start(), m.end(), m.group(0).strip()))
 
-    # Several expressions intentionally cover neighboring variants. When two
-    # expressions match the same source construction, keep the widest span so
-    # one occurrence cannot inflate the count merely because regexes overlap.
-    accepted = []
-    for candidate in sorted(candidates, key=lambda item: (-(item[1] - item[0]), item[0])):
-        start, end, _ = candidate
-        if any(start < kept_end and kept_start < end for kept_start, kept_end, _ in accepted):
-            continue
-        accepted.append(candidate)
-    accepted.sort(key=lambda item: item[0])
+    accepted = _collapse_overlapping_matches(candidates)
     verbatim = [match for _, _, match in accepted]
     count = len(verbatim)
     return {

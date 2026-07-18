@@ -130,7 +130,7 @@
       "id": "formulaic_parallelism",
       "pattern_ref": 10,
       "severity": "context_warning",
-      "prompt": "List counted slogans, balanced bicolons, repeated syntactic skeletons, or cross-sentence correction scripts whose symmetry substitutes for information. Quote the complete construction and explain what the parallel form fails to say.",
+      "prompt": "List counted slogans, balanced bicolons, repeated syntactic skeletons, or cross-sentence correction scripts whose symmetry substitutes for information. Also check dismissive roast phrases shaped as `an X with Y and Z`; list them when an appended attribute repeats what X already implies or does not make sense. Quote the complete construction and explain what the parallel form fails to say.",
       "answer_schema": {
         "type": "list",
         "items": [

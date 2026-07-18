@@ -225,6 +225,20 @@ if "re-explain" not in sem_prompt.lower():
 else:
     ok("semantic_redundancy prompt covers over-explaining")
 
+parallel_prompt = records_by_id.get("formulaic_parallelism", {}).get("prompt", "").lower()
+required_roast_guidance = (
+    "an x with y and z",
+    "already implies",
+    "does not make sense",
+)
+missing_roast_guidance = [
+    phrase for phrase in required_roast_guidance if phrase not in parallel_prompt
+]
+if missing_roast_guidance:
+    fail(f"formulaic_parallelism prompt missing DR-124 roast-formula guidance: {missing_roast_guidance}")
+else:
+    ok("formulaic_parallelism covers the DR-124 an-X-with-Y-and-Z roast formula")
+
 caveats = records_by_id.get("unprompted_caveats")
 if not caveats:
     fail("unprompted_caveats record missing (DR-119)")

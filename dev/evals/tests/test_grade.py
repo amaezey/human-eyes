@@ -268,6 +268,35 @@ expect_fail("no-manufactured-insight",
 expect_fail("no-manufactured-insight",
     "The lesson I learned was to ask before changing the corpus.",
     "explicit lesson-learned frame")
+expect_fail("no-manufactured-insight",
+    "Symmetry is the language of trust.",
+    "DR-124 aphorism formula: X is the Y of Z")
+expect_fail("no-manufactured-insight",
+    "Efficiency becomes a trap when teams forget the goal.",
+    "DR-124 aphorism formula: X becomes a trap")
+expect_fail("no-manufactured-insight",
+    "Trust is the currency of leadership.",
+    "DR-124 aphorism formula: the currency of")
+expect_fail("no-manufactured-insight",
+    "The architecture of belonging shapes the campaign.",
+    "DR-124 aphorism formula: the architecture of")
+expect_fail("no-manufactured-insight",
+    "Teams speak in the language of continuous improvement.",
+    "DR-124 aphorism formula: standalone the language of")
+expect_fail("no-manufactured-insight",
+    "Routine can become a trap.",
+    "DR-124 aphorism formula: X become a trap")
+aphorism_result = ALL_CHECKS["no-manufactured-insight"](
+    "Symmetry is the language of trust."
+)
+if aphorism_result.get("matches") != ["symmetry is the language of trust"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-124 overlapping aphorism regexes should keep the longest occurrence, "
+        f"got {aphorism_result.get('matches', [])}"
+    )
+else:
+    print("  ok: DR-124 overlapping aphorism regexes keep the longest occurrence")
 expect_fail("no-performed-candour",
     "The honest answer is that the data was incomplete from the start.",
     "performed candour — 'the honest answer is'")
