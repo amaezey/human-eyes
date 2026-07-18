@@ -797,6 +797,24 @@ expect_fail("no-formulaic-openers",
 expect_fail("no-formulaic-openers",
     "From a governance perspective, libraries support democratic participation.",
     "from a X perspective")
+expect_fail("no-formulaic-openers",
+    "Here's what nobody's talking about: the renewal deadline.",
+    "nobody-is-talking throat-clearer")
+expect_fail("no-formulaic-openers",
+    "Let me be clear: the renewal deadline is Friday.",
+    "let-me-be-clear throat-clearer")
+expect_fail("no-formulaic-openers",
+    "Can we talk about the renewal deadline for a second?",
+    "can-we-talk throat-clearer")
+expect_fail("no-formulaic-openers",
+    "Let's talk about the renewal deadline.",
+    "lets-talk throat-clearer")
+expect_fail("no-formulaic-openers",
+    "We need to talk about the renewal deadline.",
+    "we-need-to-talk throat-clearer")
+expect_fail("no-formulaic-openers",
+    "I need to say something about the renewal deadline.",
+    "i-need-to-say throat-clearer")
 expect_pass("no-formulaic-openers",
     "Libraries provide access to information.\n\nThey also serve communities.",
     "plain direct openers")

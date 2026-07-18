@@ -1860,6 +1860,14 @@ def check_formulaic_openers(text):
         r"^perhaps (?:most )?(?:importantly|significantly|notably|crucially)[,:]",
         r"^what (?:is|makes) (?:this|it) (?:particularly|especially|uniquely) \w+",
         r"^in today(?:'s|’s) (?:fast[- ]paced|rapidly changing) world\b",
+        # DR-135B: source-defined social-post throat-clearers not already
+        # covered by manufactured-insight or performed-candour checks.
+        r"^here['’]s what nobody['’]s talking about\b",
+        r"^let me be clear\b",
+        r"^can we talk about .{1,80} for a second\?",
+        r"^let['’]s talk about\b",
+        r"^we need to talk about\b",
+        r"^i need to say something about\b",
     ]
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     found = []
