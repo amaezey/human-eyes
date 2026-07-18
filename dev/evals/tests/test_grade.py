@@ -2911,6 +2911,43 @@ expect_pass("no-ai-vocabulary-clustering",
     "The first section will delve into the method.\n\nThe final section delves into the result.",
     "DR-126B control: one repeated family across paragraphs stays clear")
 
+# --- DR-126C: GPTZero preserved-payload equality ---
+print("\n=== DR-126C GPTZero payload equality ===")
+dr126_gptzero_payload = _json.loads(
+    (
+        ROOT
+        / "human-eyes"
+        / "references"
+        / "sources"
+        / "snapshots"
+        / "attachments"
+        / "gptzero-ai-vocabulary-2026-07-15-client-data.json"
+    ).read_text()
+)
+dr126_source_phrases = [
+    row["ngram"].replace("\u2019", "'")
+    for row in dr126_gptzero_payload
+]
+if dr126_source_phrases != _grade.GPTZERO_AI_PHRASES:
+    FAILURES += 1
+    print(
+        "FAIL: DR-126C runtime GPTZero phrases must equal the preserved 100-row "
+        "payload after apostrophe normalization"
+    )
+    print(f"  Source rows: {len(dr126_source_phrases)}")
+    print(f"  Runtime rows: {len(_grade.GPTZERO_AI_PHRASES)}")
+    for index, (source_phrase, runtime_phrase) in enumerate(
+        zip(dr126_source_phrases, _grade.GPTZERO_AI_PHRASES), start=1
+    ):
+        if source_phrase != runtime_phrase:
+            print(
+                f"  First mismatch at row {index}: source={source_phrase!r}, "
+                f"runtime={runtime_phrase!r}"
+            )
+            break
+else:
+    print("  ok: DR-126C runtime list exactly matches all 100 preserved payload rows")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")
