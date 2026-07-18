@@ -300,6 +300,17 @@ MANUFACTURED_INSIGHT = [
     r"what (?:no one|nobody) noticed", r"the shift (?:no one|nobody) noticed",
     r"when (?:no one|nobody) noticed", r"while (?:no one|nobody) noticed",
     r"before anyone noticed", r"without anyone noticing",
+    # DR-135C: source-defined false-exclusivity hooks.
+    r"this is the part most people skip",
+    r"most people (?:won['’]t|will not) tell you this",
+    r"nobody['’]s talking about this",
+    r"everyone['’]s sleeping on this",
+    r"this flew under the radar",
+    r"i wasn['’]t supposed to share this,? but",
+    r"what they don['’]t want you to know",
+    r"the thing nobody tells beginners",
+    r"the secret that [^.!?\n]{1,80} (?:doesn['’]t|does not) want you to know",
+    r"i['’]ve been sitting on this for weeks",
     # Performed knowingness
     r"let that sink in", r"read that again", r"if you know,? you know",
     r"and that changes everything", r"which tells you everything",

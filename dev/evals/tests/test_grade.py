@@ -297,6 +297,20 @@ if aphorism_result.get("matches") != ["symmetry is the language of trust"]:
     )
 else:
     print("  ok: DR-124 overlapping aphorism regexes keep the longest occurrence")
+for phrase in (
+    "This is the part most people skip.",
+    "Most people won't tell you this.",
+    "Nobody's talking about this.",
+    "Everyone's sleeping on this.",
+    "This flew under the radar.",
+    "I wasn't supposed to share this, but here it is.",
+    "What they don't want you to know:",
+    "The thing nobody tells beginners:",
+    "The secret that advertising doesn't want you to know:",
+    "I've been sitting on this for weeks.",
+):
+    expect_fail("no-manufactured-insight", phrase,
+        f"DR-135C false-exclusivity hook: {phrase}")
 expect_fail("no-performed-candour",
     "The honest answer is that the data was incomplete from the start.",
     "performed candour — 'the honest answer is'")

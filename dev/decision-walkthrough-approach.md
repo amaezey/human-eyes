@@ -54,7 +54,7 @@ for t in dev/evals/tests/test_*.py; do python3 "$t" >/dev/null 2>&1 || python3 -
 
 `patterns.md` is generated: edit `human-eyes/scripts/patterns.json`, then `python3 dev/tools/render_patterns_md.py --write`. Detection markers in it are derived from `grade.py`'s check registry and `judgement.json`; the README Check column is tested against the same derivation (`test_detection_markers.py`).
 
-## Position (2026-07-18, after DR-135B)
+## Position (2026-07-18, after DR-135C)
 
 Decided and closed: DR-01..11, DR-30 (via DR-106), DR-39/40, DR-43..49 (via their recovered rows), DR-106, DR-111..127, and orphan rows DR-141..152 except DR-144. Standing rulings recorded in the rules above: plain pattern numbers only (catalogue now runs to #61); four statuses verbatim; two detector types named in every option; deterministic routing first and agent judgement last; labelled option lists in question order; product action names used exactly (Audit, Suggestions, Rewrite, Write, Save report); closures reported in product terms; the orphan sweep is part of every close.
 
@@ -69,6 +69,8 @@ DR-136A is implemented. Mae chose a separate source-bound `rewrite_stance_drift`
 DR-135A is implemented. Mae approved all four remaining C04 X-to-Y reversal shapes for programmatic #9: stop/start, future-replacement, dead/next, and forget/focus. The live matcher now recognises all ten catalogue forms with #9's existing severity and one-occurrence failure condition. DR-135 remains pending for its independent social-post families.
 
 DR-135B is implemented. Mae approved the six previously uncovered C01 throat-clearer openers for programmatic #50. Together with the three manufactured-insight forms already caught by #42 and `I'll be honest` in #56, all ten catalogue throat-clearers now produce deterministic findings. DR-135 remains pending for its other independent social-post families.
+
+DR-135C is implemented. Mae approved all ten C02 false-exclusivity hooks for programmatic #42. The exact hidden-, suppressed-, secrecy-, and insider-knowledge structures now fail with #42's existing severity and one-occurrence condition. DR-135 remains pending for its other independent social-post families.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Current counts after DR-127: 102 open, 50 decided, 3 pos-dependent-pattern (POS-01, POS-02, DR-144 wait on Mae's tagger).
 

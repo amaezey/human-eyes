@@ -81,6 +81,7 @@ The prior card named a snapshot but recorded no digest. The exact 15,854-byte on
 
 ## Decision history
 
+- 2026-07-18: Mae approved all ten C02 false-exclusivity hooks for programmatic #42 with its existing severity and one-occurrence failure condition.
 - 2026-07-18: Mae approved all six previously uncovered C01 throat-clearer openers for programmatic #50. Together with the four forms already recognised by #42 or #56, all ten catalogue forms now produce deterministic findings.
 - 2026-07-18: Mae approved all four remaining C04 X-to-Y reversal shapes for programmatic #9. `Stop thinking... Start thinking`, `X isn't the future. Y is`, `X is dead. Y is what's next`, and `Forget X. Focus on Y` are implemented as exact structural regex branches with the existing #9 severity and one-occurrence failure condition.
 - The prior card used no claim IDs, user-decision states, implementation statuses, independent-review record, or snapshot digest. It proposed broad checker extensions but recorded no user approval and no completed product change. This update reopens the 26 families, self-score, and confession as C01-C28 with `pending` and `not started` states.
@@ -101,7 +102,7 @@ This is the authoritative review table. Focused results came from the live `huma
 | Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
 |---|---|---|---|---|---|---|
 | C01: Ten throat-clearers stage a claim before stating it. | Direct catalogue judgment with ten exact examples. | fully covered: #42 recognises three manufactured-insight forms, #56 recognises `I'll be honest`, and DR-135B added the remaining six paragraph-opening structures to #50. | No remaining exact-form gap for this family. | Retain all ten programmatic findings across #42, #56, and #50. | approved | implemented |
-| C02: Ten false-exclusivity hooks simulate suppressed or insider information. | Direct catalogue judgment; no evidence the forms are AI-overrepresented. | not covered: none of 10 isolated examples produces a deterministic candidate or finding; #42 is conceptually adjacent. | No exact secrecy, under-the-radar, or withheld-information family. | **test-adapt:** collect matched promotional and journalistic controls before deciding whether to extend #42 or add a genre-specific assessment; verify recall and specificity. | pending | not started |
+| C02: Ten false-exclusivity hooks simulate suppressed or insider information. | Direct catalogue judgment with ten exact examples. | fully covered: DR-135C added all ten hidden-, suppressed-, secrecy-, and insider-knowledge structures to programmatic #42. | No remaining exact-form gap for this family. | Retain all ten false-exclusivity hooks in #42 with its existing severity and failure condition. | approved | implemented |
 | C03: Nine urgency hooks create pressure around non-expiring information. | Direct catalogue judgment; the no-expiration premise is page interpretation, not measured. | not covered: 0 of 9 isolated examples produces a deterministic candidate or finding. | Real deadlines, safety alerts, and necessary calls to action are strong look-alikes. | **test-adapt:** evaluate urgency only with deadline and platform context; prefer an assessment prompt unless matched controls support a narrow check. | pending | not started |
 | C04: Ten binary-contrast templates stage an X-to-Y reversal. | Direct catalogue examples with ten exact structural forms. | fully covered: the current #9 matcher recognises all ten. Six forms were already live; DR-135A added the remaining stop/start, future-replacement, dead/next, and forget/focus structures. | No remaining exact-form gap for this family. | Retain all ten X-to-Y reversal shapes in programmatic #9 with its existing severity and failure condition. | approved | implemented |
 | C05: Six numbered-list hooks package lessons, mistakes, pillars, or frameworks. | Direct catalogue examples; no evidence that numbering itself is inappropriate. | not covered: 0 of 6 isolated hooks fails; #31 and #38 inspect actual list density and repeated scaffolding, not headlines. | A headline-template distinction and list-content context are absent. | **test-adapt:** evaluate generic numbered-hook nouns in social/marketing headlines; preserve genuinely comparative or procedural lists. | pending | not started |
@@ -132,7 +133,7 @@ This is the authoritative review table. Focused results came from the live `huma
 ## Recommendations
 
 - C01: retain all ten exact throat-clearer forms across programmatic #42, #56, and #50.
-- C02: test-adapt false-exclusivity hooks before any #42 or genre-assessment change.
+- C02: retain all ten false-exclusivity hooks in programmatic #42.
 - C03: test-adapt urgency with real-deadline and safety-alert controls.
 - C04: retain all ten exact X-to-Y reversal structures in programmatic #9.
 - C05: test-adapt numbered-hook headlines separately from actual list density.
@@ -163,7 +164,7 @@ This is the authoritative review table. Focused results came from the live `huma
 ## Evaluation of approved changes
 
 - C01: passed - all ten catalogue forms now produce deterministic findings; focused `test_grade.py` coverage includes each of the six DR-135B additions to #50.
-- C02: not applicable - recommendation pending; no product change made.
+- C02: passed - all ten catalogue forms now fail programmatic #42; focused `test_grade.py` coverage includes every DR-135C addition.
 - C03: not applicable - recommendation pending; no product change made.
 - C04: passed - all ten catalogue forms now fail programmatic #9; focused `test_grade.py` coverage includes each of the four DR-135A additions.
 - C05: not applicable - recommendation pending; no product change made.
