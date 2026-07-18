@@ -2,14 +2,14 @@
 
 <!-- This file is generated from `human-eyes/scripts/patterns.json`. Edit the JSON and regenerate via `python3 dev/tools/render_patterns_md.py --write`. -->
 
-56 patterns plus five sub-letter variants (10a, 23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
+57 patterns plus five sub-letter variants (10a, 23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
 
 ## Contents
 
 - [Content patterns (1-6)](#content-patterns)
 - [Language and grammar (7-12, 53)](#language-and-grammar)
 - [Style (13-18, 49, 57)](#style)
-- [Communication (19-21)](#communication)
+- [Communication (19-21, 62)](#communication)
 - [Filler and hedging (22-25, 47-48, 50)](#filler-and-hedging)
 - [Sensory and atmospheric (26-28)](#sensory-and-atmospheric)
 - [Structural tells (29-32, 38, 42, 44, 52)](#structural-tells)
@@ -54,13 +54,15 @@ Use source strength when deciding severity. The ruleset should surface clusters 
 
 **Words to watch:** stands/serves as, is a testament/reminder, a vital/significant/crucial/pivotal/key role/moment, underscores/highlights its importance, underline/underscore/highlight/emphasise the importance/value/significance of, reflects broader, symbolizing its ongoing/enduring/lasting, setting the stage for, marking/shaping the, represents/marks a shift, key turning point, evolving landscape, indelible mark, deeply rooted, remarkably, strikingly, staggering/staggeringly
 
-Inflates importance by claiming things "represent" or "contribute to" broader trends without explaining why anyone should care. Importance/value emphasis frames are surfaced for contextual review even when the underlying claim may be justified. Literal formatting instructions such as "Underline the heading" remain clear.
+Inflates importance by claiming things "represent" or "contribute to" broader trends without explaining why anyone should care. Every matching importance/value frame is surfaced; the writer can then rewrite it or retain it intentionally. Literal formatting instructions such as "Underline the heading" remain clear.
 
 **Before:**
 > The Statistical Institute of Catalonia was officially established in 1989, marking a pivotal moment in the evolution of regional statistics in Spain. This initiative was part of a broader movement across Spain to decentralize administrative functions and enhance regional governance.
 
 **After:**
 > The Statistical Institute of Catalonia was established in 1989 to collect and publish regional statistics independently from Spain's national statistics office.
+
+**Additional frame:** "If you're still [X], you're already behind".
 
 **Severity:** context_warning · `no-significance-inflation`
 
@@ -280,6 +282,8 @@ Current threshold: vocabulary signals contribute points to an overall score alon
 **After:**
 > Somali cuisine also includes camel meat, which is considered a delicacy. Pasta dishes, introduced during Italian colonisation, remain common, especially in the south.
 
+**Additional exact vocabulary candidates:** literally, incredibly, essentially, arguably, undeniably, remarkably, interestingly, notably, particularly, ultimately, groundbreaking, revolutionary, next-level, world-class, double down, spearhead, supercharge, reimagine, synergize.
+
 **Severity:** strong_warning · `no-ai-vocabulary-clustering` (the soft-scaffold sub-bullet now also references `no-soft-scaffolding` — see #47)
 
 **Detection:** Programmatic check `no-ai-vocabulary-clustering`.
@@ -306,9 +310,9 @@ Substitutes elaborate constructions for simple "is", "are", or "has".
 
 Negative parallelism includes "not X but Y", "not just X, Y", positive-then-negative reversals, comparative reframes, and negation countdowns. It remains the same signal when split across two sentences, including "It's not X. It's Y." and "The target was never X. The target was Y."
 
-The Atlantic reported Pangram's estimate that the not-X-but-Y construction appears about three times as often in AI writing as in human writing. This is evidence that the construction is an AI-overrepresented signal. It is not evidence that one occurrence proves AI authorship. Source: https://www.theatlantic.com/technology/2026/07/ai-chatbot-writing-tic-negative-parallelism/687892/
+The Atlantic reported Pangram's estimate that the not-X-but-Y construction appears about three times as often in AI writing as in human writing. This is evidence that the construction is an AI-overrepresented signal. Source: https://www.theatlantic.com/technology/2026/07/ai-chatbot-writing-tic-negative-parallelism/687892/
 
-The checker surfaces the construction wherever it appears. It does not decide whether a use is legitimate or justified, and it does not suppress concrete, purposeful, quoted, or human-authored instances. Repetition matters: overlapping regexes for one source construction count once, while separate occurrences add progressively more signal-stacking evidence.
+The checker surfaces the construction wherever it appears. It does not suppress a match based on inferred intention. Repetition matters: overlapping regexes for one source construction count once, while separate occurrences add progressively more signal-stacking evidence.
 
 Forms include:
 
@@ -344,6 +348,8 @@ Forms include:
 
 **After:**
 > The app earns trust by showing exactly what changed and letting users undo each step.
+
+**Additional forms:** "I stopped X and started Y" and "Teams that X will thrive. Teams that don't will be left behind".
 
 **Severity:** strong_warning · `no-negative-parallelisms`
 
@@ -613,6 +619,23 @@ Overly positive, people-pleasing language that performs agreement rather than en
 
 **Detection:** Folded into the programmatic check `no-collaborative-artifacts`. The headline sycophantic phrases ("you're absolutely right", "great question!", "what a thoughtful question/observation", "that's a brilliant observation") already live in the COLLABORATIVE_ARTIFACTS pattern set; no separate check.
 
+
+### 62. Formulaic social-post frames
+
+**Frames to watch:** engagement requests ("Drop your take below", "Agree or disagree?", "Save this for later"); empty agreement and bait comments ("This is gold", "Hot take:", "I'd add a #6"); credential prefaces ("As someone who's been doing this for 10 years"); AI-experiment wrappers ("I asked ChatGPT to... and the results shocked me"); time-compression brags ("From zero to launch in 48 hours"); and artificial scarcity hooks ("I spent 100+ hours so you don't have to").
+
+These are complete reusable platform formulas, not isolated vocabulary. Rewrite the frame around the post's actual request, evidence, experience, or constraint.
+
+**Before:**
+> I spent 100+ hours so you don't have to. Save this for later.
+
+**After:**
+> I compared the 14 tools against export quality, revision history, and price. The table below shows the results.
+
+**Severity:** strong_warning · `no-formulaic-social-posts`
+
+**Detection:** Programmatic check `no-formulaic-social-posts`. One complete regex-matched frame triggers a finding. Evidence reports the matched subtype: engagement request, agreement comment, engagement comment, credential preface, AI wrapper, time compression, or scarcity hook.
+
 ---
 
 ## Filler and hedging
@@ -632,6 +655,8 @@ Common substitutions:
 - "Generally speaking" -> "Usually" or cut
 - "Broadly speaking" -> "Overall" or cut
 - "From a broader perspective" -> cut or state the perspective directly
+
+**Additional frames:** "That said", "To be clear", and "With the caveat that".
 
 **Severity:** strong_warning · `no-filler-phrases`
 
@@ -664,6 +689,8 @@ AI often performs nuance by staging two generic positions and then landing in a 
 **After:**
 > Remote work improves flexibility for most desk workers, but it exposes weak management habits that office routines used to hide.
 
+**Additional frames:** "To be fair", "I'm not saying X, but", "Don't get me wrong", "This isn't to say that", and "Granted, X, but".
+
 **Severity:** strong_warning · `no-false-concession-hedges`
 
 **Detection:** Programmatic check `no-false-concession-hedges`.
@@ -678,6 +705,8 @@ Vague upbeat endings that could be appended to any article on any topic.
 
 **After:**
 > The company plans to open two more locations next year, both in the southeast.
+
+**Additional closer formulas:** "The question isn't whether, but when", "We're still early", "This is just the beginning", "The genie is out of the bottle", "Buckle up", "Welcome to the future", "Think about that", "This is the new normal", "Act accordingly", and "[X] will never be the same".
 
 **Severity:** hard_fail · `no-generic-conclusions`
 
@@ -748,6 +777,8 @@ Formulaic paragraph or headline openers that delay the claim, stage it as a disc
 
 **After:**
 > The proposal consolidates three legacy tools into one, which reduces integration points and on-call rotations. It is also the move the strategic plan has been pointing at since 2025.
+
+**Additional templates:** "In [year], [X] won't be optional. It'll be table stakes" and "The [role] of [year] will look nothing like the [role] of [earlier year]".
 
 **Severity:** strong_warning · `no-formulaic-openers`
 
@@ -944,6 +975,8 @@ Performs revelation through phrasing — claims hidden depth or secret significa
 
 **After:**
 > Symmetric layouts often feel more predictable because repeated elements tell readers where to look. Teams can over-optimise workflow speed while ignoring whether the result helps the people using it.
+
+**Additional frames:** "The data speaks for itself", "The market has spoken", "The numbers don't lie", "This technology wants to", "AI is coming for your [X]", "The industry is waking up to", "The results were eye-opening", "This opens up a world of", "The possibilities are endless", "And here's the kicker", "Wait, it gets better", "The plot thickens", "Enter: [X]", "X is the new Y", and "X is only as good as Y".
 
 **Severity:** strong_warning · `no-manufactured-insight`
 

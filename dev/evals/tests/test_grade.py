@@ -1345,6 +1345,7 @@ print("\n=== group-b-resolution-coverage ===")
 _GROUP_B_CHECKS = [
     "no-manufactured-insight",
     "no-performed-candour",
+    "no-formulaic-social-posts",
     "no-corporate-ai-speak",
     "no-signposted-conclusions",
     "no-nonliteral-land-surface",
@@ -1428,6 +1429,7 @@ expected_checks = {
     "overall-signal-stacking",
     "no-manufactured-insight",
     "no-performed-candour",
+    "no-formulaic-social-posts",
     "no-staccato-sequences",
     "no-anaphora",
     "no-paragraph-anaphora",
@@ -3041,6 +3043,150 @@ if dr126_source_phrases != _grade.GPTZERO_AI_PHRASES:
             break
 else:
     print("  ok: DR-126C runtime list exactly matches all 100 preserved payload rows")
+
+# --- DR-135H: consolidated remaining social-post catalogue ---
+print("\n=== DR-135H consolidated social-post catalogue ===")
+
+DR135_EXISTING_RULE_EXPANSIONS = {
+    "no-manufactured-insight": [
+        "The data speaks for itself.",
+        "The market has spoken.",
+        "The numbers don't lie.",
+        "This technology wants to replace the manager.",
+        "AI is coming for your job.",
+        "The industry is waking up to the problem.",
+        "The results were eye-opening.",
+        "This opens up a world of possibilities.",
+        "The possibilities are endless.",
+        "And here's the kicker: the queue is empty.",
+        "But that's not even the best part.",
+        "Wait, it gets better.",
+        "And that's just the beginning.",
+        "But wait, there's more.",
+        "The plot thickens.",
+        "Enter: the compliance team.",
+        "Prompt engineering is the new programming.",
+        "Your agent is only as good as your context window.",
+    ],
+    "no-filler-phrases": [
+        "That said, the rollout is delayed.",
+        "To be clear, the rollout is delayed.",
+        "With the caveat that the sample is small, the result held.",
+    ],
+    "no-false-concession-hedges": [
+        "To be fair, the first version was faster.",
+        "Now, I'm not saying the plan is impossible, but it is late.",
+        "Don't get me wrong, the team worked hard.",
+        "This isn't to say that the result is useless.",
+        "Granted, the sample is small, but the trend is clear.",
+    ],
+    "no-generic-conclusions": [
+        "The question isn't whether, but when.",
+        "We're still early.",
+        "The best time to start was yesterday. The second best time is now.",
+        "This is just the beginning.",
+        "The genie is out of the bottle.",
+        "The cat is out of the bag.",
+        "Buckle up.",
+        "Welcome to the future.",
+        "And we're just getting started.",
+        "Think about that.",
+        "This is the new normal.",
+        "Act accordingly.",
+        "Plan accordingly.",
+        "Adjust your strategy accordingly.",
+        "Hiring will never be the same.",
+    ],
+    "no-negative-parallelisms": [
+        "The best engineers don't write code. They design systems.",
+        "I stopped scheduling meetings and started writing memos. The results speak for themselves.",
+        "Teams that adapt will thrive. Teams that don't will be left behind.",
+    ],
+    "no-formulaic-openers": [
+        "In 2026, AI literacy won't be optional. It'll be table stakes.",
+        "The engineer of 2026 will look nothing like the engineer of 2024.",
+    ],
+    "no-significance-inflation": [
+        "If you're still writing every report by hand, you're already behind.",
+    ],
+}
+for check_id, phrases in DR135_EXISTING_RULE_EXPANSIONS.items():
+    for phrase in phrases:
+        expect_fail(check_id, phrase,
+            f"DR-135H existing-rule routing ({check_id}): {phrase}")
+
+DR135_SOCIAL_POST_FORMULAS = [
+    "What do you think? Drop your take below 👇",
+    "Agree or disagree? Let me know.",
+    "What would you add to this list?",
+    "Follow for more writing content.",
+    "Repost if this resonated ♻️",
+    "Share this with someone who needs to see it.",
+    "Save this for later 🔖",
+    "Tag someone who needs to hear this.",
+    "If this helped, you'll love my newsletter.",
+    "Link in comments 👇",
+    "This is gold 🔥",
+    "Saving this for later!",
+    "More people need to see this.",
+    "This resonates deeply.",
+    "Couldn't agree more.",
+    "So well articulated.",
+    "You nailed it.",
+    "This is spot on.",
+    "I'd add a #6 to this list:",
+    "Counterpoint:",
+    "Hot take: the launch was rushed.",
+    "This, but also the budget matters.",
+    "Respectfully disagree on point 3.",
+    "As someone who runs these audits, I can confirm.",
+    "As someone who's been doing this for 10 years, I can confirm this is exactly right.",
+    "I literally just had this conversation with my CEO yesterday.",
+    "My team and I were just discussing this.",
+    "Funny, I was just speaking about this at a conference.",
+    "I asked ChatGPT to rewrite the memo and the results shocked me.",
+    "I gave Claude my resume and it rewrote every bullet.",
+    "I fed my business plan to a model and here's what happened.",
+    "I replaced search with AI for a week.",
+    "Day 1 of using AI to plan meals:",
+    "I built this in 2 hours with a code generator.",
+    "From zero to launch in 48 hours.",
+    "Went from idea to launch in a weekend.",
+    "What used to take 3 months now takes 3 minutes.",
+    "Built my first app in a single afternoon. No code.",
+    "I curated the top writing tools:",
+    "The ultimate list of research prompts:",
+    "I spent 100+ hours so you don't have to.",
+    "I read 50 papers on automation. Here's the summary:",
+    "I analyzed 1,000 posts. Here's what I found:",
+    "AI did in two hours what used to take two weeks.",
+]
+for phrase in DR135_SOCIAL_POST_FORMULAS:
+    expect_fail("no-formulaic-social-posts", phrase,
+        f"DR-135H #62 formulaic social-post frame: {phrase}")
+
+dr135_subtype_result = ALL_CHECKS["no-formulaic-social-posts"](
+    "I asked ChatGPT to draft the post and the results shocked me. Save this for later."
+)
+if dr135_subtype_result.get("subtypes") != ["ai_wrapper", "engagement_request"]:
+    FAILURES += 1
+    print(f"FAIL: DR-135H #62 should report matched subtypes; got {dr135_subtype_result.get('subtypes')}")
+else:
+    print("  ok: DR-135H #62 reports matched social-post subtypes")
+
+DR135_VOCABULARY_ADDITIONS = [
+    "literally", "incredibly", "essentially", "arguably", "undeniably",
+    "remarkably", "interestingly", "notably", "particularly", "ultimately",
+    "groundbreaking", "revolutionary", "next-level", "world-class",
+    "double down", "spearhead", "supercharge", "reimagine", "synergize",
+]
+for phrase in DR135_VOCABULARY_ADDITIONS:
+    matches = _grade._find_ai_words(phrase)
+    if matches != [phrase]:
+        FAILURES += 1
+        print(f"FAIL: DR-135H #7 should recognize {phrase!r} exactly once; got {matches}")
+    else:
+        print(f"  ok: DR-135H #7 recognizes {phrase!r} exactly once")
 
 # --- Summary ---
 

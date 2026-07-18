@@ -216,7 +216,11 @@ AI_VOCABULARY_REGEX = [
         r"elucidating|firstly|reliance|generalizability|amidst|camaraderie|"
         r"palpable|fleeting|solace|unravel|cacophony|unease|reminder|commence|"
         r"leverage|elevate|align|surpass|notable|despite|nuanc(?:e|es|ing)|"
-        r"delving|unveil(?:s|ed|ing)?|heighten(?:s|ed|ing)?|dive into)\b"
+        r"delving|unveil(?:s|ed|ing)?|heighten(?:s|ed|ing)?|dive into|"
+        r"literally|incredibly|essentially|arguably|undeniably|remarkably|"
+        r"interestingly|notably|particularly|ultimately|groundbreaking|"
+        r"revolutionary|next-level|world-class|double down|spearhead|"
+        r"supercharge|reimagine|synergize)\b"
     ),
     r"aligns? with\b",
     r"aligned with\b",
@@ -333,6 +337,19 @@ MANUFACTURED_INSIGHT = [
     r"what's strange is", r"what's interesting is", r"what's remarkable is",
     r"the reason is straightforward", r"the reason is simple",
     r"here['’]s the thing:?", r"here['’]s why:?", r"but here['’]s",
+    # DR-135H: false-agency, reveal-pivot, escalation, and sentence-template
+    # formulas routed to the existing manufactured-insight check.
+    r"the data speaks for itself", r"the market has spoken",
+    r"the numbers don['’]t lie", r"this technology wants to",
+    r"ai is coming for your [^.!?\n]{1,80}",
+    r"the industry is waking up to", r"the results were eye-opening",
+    r"this opens up a world of", r"the possibilities are endless",
+    r"and here['’]s the kicker", r"but that['’]s not even the best part",
+    r"wait,? it gets better", r"and that['’]s just the beginning",
+    r"but wait,? there['’]s more", r"the plot thickens",
+    r"(?:^|[.!?]\s+)enter\s*:\s*[^.!?\n]{1,80}",
+    r"\b[^.!?\n]{1,80} is the new [^.!?\n]{1,80}",
+    r"\b(?:your|the|this|that|our|my) [^.!?\n]{1,80} is only as good as (?:your|the|this|that|our|my) [^.!?\n]{1,80}",
     # "The real X?" rhetorical revelation
     r"the real (?:insight|challenge|takeaway|kicker|question)\??",
     # Performed revelation closings
@@ -374,6 +391,63 @@ PERFORMED_CANDOUR = [
     r"\bthis might ruffle some feathers\b",
     r"\bi might lose followers for this,? but\b",
 ]
+
+FORMULAIC_SOCIAL_POST_PATTERNS = {
+    "engagement_request": [
+        r"what do you think\?\s*drop your take below",
+        r"agree or disagree\?\s*let me know",
+        r"what would you add to this list\?",
+        r"follow for more [^.!?\n]{1,80} content",
+        r"repost if this resonated",
+        r"share this with someone who needs to see it",
+        r"save this for later",
+        r"tag someone who needs to hear this",
+        r"if this helped,? you['’]ll love my newsletter",
+        r"link in comments",
+    ],
+    "agreement_comment": [
+        r"this is gold", r"saving this for later",
+        r"more people need to see this", r"this resonates deeply",
+        r"couldn['’]t agree more", r"so well articulated",
+        r"you nailed it", r"this is spot on",
+    ],
+    "engagement_comment": [
+        r"i['’]d add a #?\d+ to this list",
+        r"(?:^|[.!?]\s+)counterpoint\s*:",
+        r"(?:^|[.!?]\s+)hot take\s*:",
+        r"(?:^|[.!?]\s+)this,? but also\b",
+        r"respectfully disagree on point \d+",
+        r"as someone who [^.!?\n]{1,80},? i can confirm",
+    ],
+    "credential_preface": [
+        r"as someone who['’]s been doing this for \d+ years,? i can confirm",
+        r"i literally just had this conversation with my [^.!?\n]{1,40} (?:today|yesterday)",
+        r"my team and i were just discussing this",
+        r"funny,? i was just speaking about this at [^.!?\n]{1,80}",
+    ],
+    "ai_wrapper": [
+        r"i asked chatgpt to [^.!?\n]{1,100} and the results shocked me",
+        r"i gave claude my [^.!?\n]{1,80} and\b",
+        r"i fed my [^.!?\n]{1,80} to [^.!?\n]{1,40} and here['’]s what happened",
+        r"i replaced [^.!?\n]{1,80} with ai for a week",
+        r"day 1 of using ai to [^.!?\n]{1,80}",
+    ],
+    "time_compression": [
+        r"i built this in \d+(?:\+)? (?:minutes?|hours?|days?|weeks?) with [^.!?\n]{1,80}",
+        r"from zero to [^.!?\n]{1,80} in \d+(?:\+)? (?:minutes?|hours?|days?|weeks?)",
+        r"went from idea to launch in (?:a|one) (?:day|weekend|week)",
+        r"what used to take \d+(?:\+)? (?:minutes?|hours?|days?|weeks?|months?|years?) now takes \d+(?:\+)? (?:minutes?|hours?|days?|weeks?)",
+        r"built my first [^.!?\n]{1,80} in a single (?:afternoon|day|weekend|week)",
+        r"[^.!?\n]{1,80} did in [^.!?\n]{1,40} what used to take [^.!?\n]{1,40}",
+    ],
+    "scarcity_hook": [
+        r"i curated the top [^.!?\n]{1,80}",
+        r"the ultimate list of [^.!?\n]{1,80}",
+        r"i spent \d+\+? hours so you don['’]t have to",
+        r"i read \d+\+? [^.!?\n]{1,80}\.\s*here['’]s the summary",
+        r"i analy[sz]ed \d[\d,]*\+? [^.!?\n]{1,80}\.\s*here['’]s what i found",
+    ],
+}
 
 COLLABORATIVE_ARTIFACTS = [
     r"\bi hope this helps", r"\bgreat question", r"\bhere is a\b",
@@ -422,6 +496,7 @@ SIGNIFICANCE_EMPHASIS_FRAMES = [
     r"\b(?:underline|underlines|underlined|underscore|underscores|underscored|"
     r"highlight|highlights|highlighted|emphasise|emphasises|emphasised|"
     r"emphasize|emphasizes|emphasized) the (?:importance|value|significance) of\b",
+    r"\bif you['’]re still [^.!?\n]{1,100},? you['’]re already behind\b",
 ]
 
 COPULA_AVOIDANCE = [
@@ -447,6 +522,7 @@ FILLER_PHRASES = [
     r"at its core\b", r"at the heart of\b",
     r"from a broader perspective", r"through this lens",
     r"this underscores the importance of",
+    r"\bthat said,", r"\bto be clear,", r"\bwith the caveat that\b",
 ]
 
 GENERIC_CONCLUSIONS = [
@@ -458,6 +534,18 @@ GENERIC_CONCLUSIONS = [
     r"\bremember,\s+when\b",
     r"\bas we navigate\b",
     r"\bthe journey (?:doesn't|does not) end here\b",
+    r"\bthe question isn['’]t whether,? but when\b",
+    r"\bwe['’]re still early\b",
+    r"\bthe best time to start was yesterday\.\s*the second best time is now\b",
+    r"\bthis is just the beginning\b",
+    r"\bthe genie is out of the bottle\b",
+    r"\bthe cat is out of the bag\b",
+    r"\bbuckle up\b", r"\bwelcome to the future\b",
+    r"\band we['’]re just getting started\b", r"\bthink about that\b",
+    r"\bthis is the new normal\b",
+    r"\b(?:act|plan) accordingly\b",
+    r"\badjust (?:your|the|our|my) [^.!?\n]{1,60} accordingly\b",
+    r"\b[^.!?\n]{1,80} will never be the same\b",
 ]
 
 SOFT_SCAFFOLD_PHRASES = [
@@ -544,6 +632,11 @@ FALSE_CONCESSION_PATTERNS = [
     r"\bwhile this may vary\b.{0,120}\b(?:generally speaking|in most cases|it is worth noting)\b",
     r"\bon (?:the )?one hand\b.{0,180}\bon the other(?: hand)?\b",
     r"\bon the other(?: hand)?\b.{0,180}\bon (?:the )?one hand\b",
+    r"\bto be fair,",
+    r"\b(?:now,?\s*)?i['’]m not saying [^.!?\n]{1,100},? but\b",
+    r"\bdon['’]t get me wrong,",
+    r"\bthis isn['’]t to say that\b",
+    r"\bgranted,? [^.!?\n]{1,100},? but\b",
 ]
 
 ORPHANED_DEMONSTRATIVE_VERBS = [
@@ -1147,6 +1240,35 @@ def check_performed_candour(text):
     }
 
 
+def check_formulaic_social_posts(text):
+    candidates = []
+    for subtype, patterns in FORMULAIC_SOCIAL_POST_PATTERNS.items():
+        for pattern in patterns:
+            for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+                candidates.append((match.start(), match.end(), match.group(0), subtype))
+
+    accepted = []
+    for start, end, match_text, subtype in sorted(candidates):
+        if accepted and start < accepted[-1][1]:
+            continue
+        accepted.append((start, end, match_text, subtype))
+
+    matches = [match_text for _, _, match_text, _ in accepted]
+    subtypes = sorted({subtype for _, _, _, subtype in accepted})
+    return {
+        "text": "no-formulaic-social-posts",
+        "passed": not matches,
+        "matches": matches,
+        "subtypes": subtypes,
+        "evidence": (
+            f"Found {len(matches)} formulaic social-post frame(s) "
+            f"across {', '.join(subtypes)}: {matches}"
+            if matches
+            else "No formulaic social-post frames"
+        ),
+    }
+
+
 def check_staccato(text):
     sentences = split_sentences(text)
     formula_matches = [
@@ -1418,6 +1540,8 @@ def check_negative_parallelisms(text):
         rf"(?:^|(?<=[.!?]))\s*[^.!?\n]{{1,80}}\s+(?:isn{apo}t|is\s+not)\s+the\s+future[.!?]\s+[^.!?\n]{{1,80}}\s+is(?:[.!?]|$)",
         rf"(?:^|(?<=[.!?]))\s*[^.!?\n]{{1,80}}\s+is\s+dead[.!?]\s+[^.!?\n]{{1,80}}\s+is\s+what{apo}s\s+next(?:[.!?]|$)",
         r"\bforget\s+[^.!?\n]{1,80}[.!?]\s+focus\s+on\s+[^.!?\n]{1,80}",
+        r"\bi stopped [^.!?\n]{1,80} and started [^.!?\n]{1,80}",
+        r"\b(?P<dr135_subject>[A-Za-z][\w’'-]*(?:\s+[A-Za-z][\w’'-]*){0,2}?)\s+that\s+[^.!?\n]{1,80}\s+will thrive[.!?]\s+(?P=dr135_subject)\s+that don['’]t will be left behind",
         rf"\bnot\s+(?:just|only|merely|simply|about|a matter of|a question of|a story of)\b.{{0,120}}\bbut(?: also)?\b",
         rf"\b(?:isn{apo}t|is not|wasn{apo}t|was not|aren{apo}t|are not|isnt|wasnt|arent)\s+(?:just|only|merely|simply|about|a matter of|a question of|a story of)\b.{{0,120}}\bbut(?: also)?\b",
         rf"\bnot\s+so\s+much\b.{{0,120}}\bas\b",
@@ -1923,6 +2047,9 @@ def check_formulaic_openers(text):
         r"^(?:#{1,6}\s*)?the \d+ pillars of [^:\n]{1,80}:?\s*$",
         r"^(?:#{1,6}\s*)?\d+ things i wish i knew before [^:\n]{1,80}:?\s*$",
         r"^(?:#{1,6}\s*)?here are \d+ frameworks that changed how i think about [^:\n]{1,80}:?\s*$",
+        # DR-135H: time-stamped social-post opener templates.
+        r"^in \d{4},? [^.!?\n]{1,80} won['’]t be optional[.!?]\s+it['’]ll be table stakes[.!?]?\s*$",
+        r"^the [^.!?\n]{1,40} of \d{4} will look nothing like the [^.!?\n]{1,40} of \d{4}[.!?]?\s*$",
     ]
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     found = []
@@ -2686,6 +2813,7 @@ ALL_CHECKS = {
     "overall-signal-stacking": check_overall_signal_stacking,
     "no-manufactured-insight": check_manufactured_insight,
     "no-performed-candour": check_performed_candour,
+    "no-formulaic-social-posts": check_formulaic_social_posts,
     "no-staccato-sequences": check_staccato,
     "no-anaphora": check_anaphora,
     "no-paragraph-anaphora": check_paragraph_anaphora,
@@ -2739,6 +2867,7 @@ ALL_CHECKS = {
 LEXICAL_CHECKS = {
     "no-ai-vocabulary-clustering", "no-nonliteral-land-surface",
     "no-manufactured-insight", "no-performed-candour",
+    "no-formulaic-social-posts",
     "no-collaborative-artifacts", "no-promotional-language",
     "no-significance-inflation", "no-negative-parallelisms",
     "no-copula-avoidance", "no-filler-phrases", "no-generic-conclusions",
