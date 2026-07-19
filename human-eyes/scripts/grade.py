@@ -484,7 +484,9 @@ PROMOTIONAL = [
     "unstoppable", "cutting-edge", "unprecedented", "rich cultural heritage",
 ]
 
-PRODUCT_PERFORMANCE_PROMOTIONAL = [
+PROMOTIONAL_PATTERNS = [
+    r"\bone of the best\b(?!-)",
+    r"\bthere are so many possibilities\b",
     r"\bfaster and more responsive\b",
     r"\bquicker (?:page )?load(?:ing|s?)\b",
     r"\buses? (?:memory|resources?) more efficiently\b",
@@ -1529,7 +1531,7 @@ def check_sentence_variance(text):
 def check_promotional(text):
     text_lower = text.lower()
     found = [w for w in PROMOTIONAL if w in text_lower]
-    for pattern in PRODUCT_PERFORMANCE_PROMOTIONAL:
+    for pattern in PROMOTIONAL_PATTERNS:
         found.extend(match.group(0) for match in re.finditer(pattern, text, re.IGNORECASE))
     return {
         "text": "no-promotional-language",
@@ -2912,20 +2914,25 @@ def check_boldface_overuse(text):
 
 def check_inline_header_lists(text):
     """Detect list items that start with a bolded header and colon (pattern 14)."""
-    header_in_list = re.compile(
+    list_prefix = re.compile(
         r"^\s*(?:[-*+•◦▪▫‣⁃●○]|\d+[.)])\s+"
-        r"\*\*[^*\n]{1,60}?(?::\*\*|\*\*:)",
-        re.MULTILINE,
     )
-    matches = header_in_list.findall(text)
+    bold_label = re.compile(r"\*\*[^*\n]{1,60}?(?::\*\*|\*\*:)")
+    matches = []
+    for line in text.splitlines():
+        labels = bold_label.findall(line)
+        if len(labels) >= 2:
+            matches.extend(labels)
+        elif labels and list_prefix.match(line):
+            matches.append(labels[0])
     return {
         "text": "no-inline-header-lists",
         "passed": len(matches) < threshold_value("no-inline-header-lists", "minimum_candidates", 2),
         "matches": matches,
         "evidence": (
-            f"Found {len(matches)} list item(s) with bolded headers"
+            f"Found {len(matches)} bold-label segment(s)"
             if len(matches) >= 2
-            else f"List items with bolded headers: {len(matches)}"
+            else f"Bold-label segments: {len(matches)}"
         ),
     }
 

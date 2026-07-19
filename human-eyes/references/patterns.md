@@ -115,7 +115,7 @@ Reads like tourism marketing rather than description.
 **After:**
 > Alamata Raya Kobo is a town in the Gonder region of Ethiopia, known for its weekly market and 18th-century church.
 
-**Additional marketing formulas:** "game-changer", "unlock your true potential", "unstoppable", "cutting-edge", "groundbreaking", and "unprecedented".
+**Additional marketing formulas:** "game-changer", "unlock your true potential", "unstoppable", "cutting-edge", "groundbreaking", "unprecedented", "one of the best", and "there are so many possibilities".
 
 **Severity:** context_warning · `no-promotional-language`
 
@@ -462,7 +462,7 @@ Emphasises phrases in boldface mechanically, bolding things that do not need vis
 
 ### 14. Inline-header lists
 
-List items start with bolded headers followed by colons, turning prose into a slide deck.
+List items start with bolded headers followed by colons, turning prose into a slide deck. The same structure can remain after pasted formatting loses its list markers and line breaks.
 
 **Before:**
 > - **User Experience:** The user experience has been significantly improved with a new interface.
@@ -474,7 +474,7 @@ List items start with bolded headers followed by colons, turning prose into a sl
 
 **Severity:** strong_warning · `no-inline-header-lists`
 
-**Detection:** Programmatic check `no-inline-header-lists`. Flags two or more list items beginning with a bolded header and colon. The colon may sit inside or immediately after the bold span; list markers include Markdown bullets, common Unicode bullets, `1.`, and `1)` numbering.
+**Detection:** Programmatic check `no-inline-header-lists`. Flags two or more bold-label-and-colon segments. Canonical list items count across lines; two or more unmarked segments count when they occur on the same input line. The colon may sit inside or immediately after the bold span; list markers include Markdown bullets, common Unicode bullets, `1.`, and `1)` numbering.
 
 
 ### 15. Title case in headings

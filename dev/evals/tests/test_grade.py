@@ -477,6 +477,15 @@ print("\n=== no-promotional-language ===")
 expect_fail("no-promotional-language",
     "The stunning views and vibrant culture make this a must-visit destination.",
     "stunning + vibrant + must-visit")
+expect_fail("no-promotional-language",
+    "The editor called it one of the best options available.",
+    "DR-100 exact one-of-the-best promotional formula")
+expect_fail("no-promotional-language",
+    "There are so many possibilities for the project.",
+    "DR-100 exact so-many-possibilities promotional formula")
+expect_pass("no-promotional-language",
+    "It is one of the best-known examples in the archive.",
+    "hyphenated best-known phrase is not the approved formula")
 expect_pass("no-promotional-language",
     "The hotel is on a quiet street near the old quarter.",
     "neutral description")
@@ -1429,6 +1438,9 @@ expect_fail("no-inline-header-lists",
 expect_fail("no-inline-header-lists",
     "- **Time: Cost:** Compare both.\n- **Risk: Impact:** Compare both.",
     "existing labels may contain an internal colon")
+expect_fail("no-inline-header-lists",
+    "**Speed:** Fast. **Cost:** Low.",
+    "two bold-label segments on one input line")
 expect_pass("no-inline-header-lists",
     "The update improves the interface, speeds up load times through optimised algorithms, and adds end-to-end encryption.",
     "patterns.md After — flowing prose")
@@ -1438,6 +1450,9 @@ expect_pass("no-inline-header-lists",
 expect_pass("no-inline-header-lists",
     "- **One bolded header:** definition only",
     "single bolded-header item — under threshold of 2")
+expect_pass("no-inline-header-lists",
+    "**Speed:** Fast.\n**Cost:** Low.",
+    "one unmarked bold-label segment per input line")
 
 
 # --- no-compound-modifier-density (pattern 18) ---
