@@ -1198,9 +1198,9 @@ When rewriting, compare your rewrite's conclusions to the input's conclusions. I
 
 ### 39. Template and placeholder residue
 
-**Words to watch:** `{client_name}`, `[Company Name]`, `[insert date]`, `<source>`, "Hi {name}".
+**Words and structures to watch:** `{client_name}`, `[Company Name]`, `[insert date]`, `<source>`, "Hi {name}", `Insert Table 1 here`, `turn0search0`, private-use citation wrappers, `_generated-reference-identifier_`, `contentReference`, `oaicite`, `oai_citation`, source-name `+1` suffixes, `[attached_file:1]`, `[web:1]`, Grok citation-card markup, `【85†L261-269】`, `[cite: 3, 12]`, `attributableIndex`, and `:::writing{...}`.
 
-Unfilled placeholders are not style issues; they are generated/template residue. Replace them with real values if known, or remove the surrounding sentence if not.
+These are unfinished template, publishing, citation, or rendering residues. Replace placeholders with real values when known, remove production instructions from finished prose, and strip platform markup while preserving any underlying source information.
 
 **Severity:** hard_fail · `no-placeholder-residue`
 

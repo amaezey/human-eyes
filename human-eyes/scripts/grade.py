@@ -693,6 +693,21 @@ PLACEHOLDER_PATTERNS = [
     r"contentreference\[oaicite:[^\]]*\]?",
     r"utm_source=chatgpt\.com",
     r"\[(?:subject|recipient|sender|user|customer|author)['’]s?\s[^\]]{0,40}\]",
+    # DR-20A: publishing instructions and platform citation/rendering residue.
+    r"\binsert\s+(?:table|figure|chart|diagram|appendix)\s+\d+\s+here\b",
+    r"\bturn\d+(?:search|image|news|file)\d+\b",
+    r"[\ue000-\uf8ff]+",
+    r"_generated-reference-identifier_",
+    r"(?<![a-z])\d+(?:search|image|news|file)\d+\b",
+    r"\b(?:oaicite|oai_citation)\b",
+    r"\b[a-z][a-z0-9_.-]{1,30}\+\d+\b",
+    r"\[(?:attached_file|web):\d+\]",
+    r"<grok[-_]card\b[^>]{0,200}>",
+    r"\bgrok_render_citation_card_json\b",
+    r"【\d+†l\d+(?:-\d+)?】",
+    r"\[cite:\s*\d+(?:\s*,\s*\d+)*\]",
+    r"\battributableindex\b",
+    r":::\s*writing(?:\{[^}\n]{0,200}\})?",
 ]
 
 RUBRIC_ECHO_PATTERNS = [

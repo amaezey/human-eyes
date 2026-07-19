@@ -778,9 +778,34 @@ print("\n=== no-placeholder-residue ===")
 expect_fail("no-placeholder-residue",
     "Hi {client_name}, thanks for meeting with [Company Name] on [insert date].",
     "unfilled placeholders")
+for residue in (
+    "Insert Table 1 here",
+    "turn0search0",
+    "turn0image4",
+    "turn0news2",
+    "turn1file0",
+    "0",
+    "_generated-reference-identifier_",
+    '<ref name="0search12">',
+    "oai_citation:0",
+    "Wikipedia+1",
+    "[attached_file:1]",
+    "[web:1]",
+    '<grok-card data-id="e8ff4f">',
+    'grok_render_citation_card_json={"cardIds":["3bb883"]}',
+    "【85†L261-269】",
+    "[cite: 3, 12, 13]",
+    '({"attribution":{"attributableIndex":"1009-1"}})',
+    ':::writing{variant="document" id="51724"}',
+):
+    expect_fail("no-placeholder-residue", residue,
+        f"DR-20A platform or publishing residue: {residue}")
 expect_pass("no-placeholder-residue",
     "Hi Mara, thanks for meeting with Northline on Tuesday.",
     "filled-in email")
+expect_pass("no-placeholder-residue",
+    "The web team attached the file after checking x + 1 examples.",
+    "ordinary words and spaced arithmetic are not platform residue")
 
 
 # --- no-soft-scaffolding ---
