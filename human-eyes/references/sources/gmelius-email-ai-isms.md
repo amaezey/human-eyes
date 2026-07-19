@@ -91,9 +91,10 @@ The prior card and manifest recorded no snapshot digest. Before archiving, the p
 ## Decision history
 
 - 2026-07-19: Mae approved `I hope this email finds you well` for programmatic #50, rejected the proposed #63 dense-paragraph check, and left the shorter `I hope you are well` form for DR-134.
+- 2026-07-19: Mae approved the remaining C24 greeting, `I hope you are well`, for #50 via DR-134 option B. Both exact greetings are now implemented.
 - The previous unstructured mappings to #13, #15, #16/#31a, #19, #31, #39, #41, #43, #50, and H12 recorded no user decision or implementation status. They are superseded by C01-C34 below.
 - The prior #19 and #50 mappings are narrowed analytically: neither `no-collaborative-artifacts` nor `no-formulaic-openers` detects the article's `I hope you are well` or `I hope this email finds you well` examples. The root README already calls Gmelius an `email-domain example`, so no root-index wording change is required.
-- C23 is rejected, the approved C24 slice is implemented, and the shorter C24 greeting remains with DR-134. Other source rows retain their recorded states.
+- C23 is rejected and both approved C24 greeting forms are implemented. Other source rows retain their recorded states.
 - C08 approved 2026-07-17 via DR-114 components 1-2: commit d986dd5 extended #39 `no-placeholder-residue` with ChatGPT paste artifacts and possessive bracket labels; the `{company name}` brace form was already caught by the existing `\{[a-z0-9_ -]{2,40}\}` pattern, so coverage was confirmed rather than added. DR-114 component 3, the quoted-example quote-context fix this row proposed, was declined, so #39 remains not quote-aware.
 
 ## Project coverage
@@ -123,7 +124,7 @@ The prior card and manifest recorded no snapshot digest. Before archiving, the p
 | C21: Difficult words such as `meticulous` and `pivotal` may appear where simpler words work, but the page says this is not unique to AI and matters especially when repeated. | Direct examples plus explicit human look-alike and frequency qualification; no measured rate. | #7 vocabulary clustering contains both words and uses density rather than one-word proof; partly covered. | Register and meaning can require either word; the page supplies no threshold. | Preserve the human-use and repetition qualifications; add no isolated-word rule. | pending | not started |
 | C22: AI email can be overly formal or cold unless trained or instructed. | Direct register claim with prompt/training qualification and an unsupported business-data causal explanation. | #35 `tonal_uniformity` and #41 genre review are adjacent; partly covered. | The live #35 item evaluates uniformity, not formality itself, and formal email can be correct. | Treat as audience and brief fit only; reject the causal and model-general claims. | pending | not started |
 | C23: Dense long paragraphs without white space can look synthetic in email. | Direct layout observation. | Existing paragraph-length checks remain unchanged. | Mae rejected the proposed programmatic #63 dense-paragraph check. | Make no product change. | rejected | not applicable |
-| C24: Formulaic greetings include `I hope you are well` and `I hope this email finds you well`. | Direct exact examples. | partly covered: `I hope this email finds you well` now fails programmatic #50; the shorter greeting remains uncovered. | The remaining decision is limited to `I hope you are well`. | Retain the approved longer greeting in #50 and decide the shorter form separately. | pending | review required |
+| C24: Formulaic greetings include `I hope you are well` and `I hope this email finds you well`. | Direct exact examples. | Fully covered: both exact paragraph-opening greetings fail #50 `no-formulaic-openers`. | No broader greeting family was added. | Keep both exact greetings in #50. | approved | implemented |
 | C25: AI may overuse or misplace rocket, fire, and alert emojis in email. | Direct practitioner examples; no rate, rendering, audience, or comparison. | #16/#31a `no-unicode-flair` covers emoji glyphs and shortcodes with a 2-candidate threshold; fully covered for the surface, context still required. | The source gives no threshold and emoji use can be deliberate or audience-appropriate. | Keep the existing contextual check and UI, quoted-source, checklist, and genre exceptions. | pending | not started |
 | C26: Supplying desired structure, customer history, phrasing, formality, preferred structure, and other context can reduce generic paragraphing and help an email reflect the user's tone. | Direct workflow and tone-training advice; no before-and-after outputs or evaluation. | #41 `genre_specific` and `human-eyes/references/process.md`, `Preserve meaning`, require genre fit and source-grounded detail; fully covered in principle. | No measured improvement and no permission to invent missing customer context, preferences, or voice examples. | Retain only as closed-source prompting guidance; verify all added specifics against supplied material. | pending | not started |
 | C27: Reusing a prompt causes monotonous outputs, while small prompt changes help the model keep learning. | Direct causal and mechanism claim; no experiment, model behavior evidence, or distinction between in-context variation and model training. | No exact project evidence; not covered. | Repeated inference does not by itself train most deployed models, so `keep learning` is unsupported here. | Do not promote the mechanism; treat prompt variation as unvalidated workflow advice only. | pending | not started |
@@ -160,7 +161,7 @@ The prior card and manifest recorded no snapshot digest. Before archiving, the p
 - C21: Preserve human-use, context, and repetition qualifications for vocabulary.
 - C22: Treat formality as audience fit, not an AI cue by itself.
 - C23: Add no #63 dense-paragraph check.
-- C24: Retain `I hope this email finds you well` in #50; decide the shorter greeting separately.
+- C24: Keep both exact greetings in #50.
 - C25: Keep the contextual emoji check and its exceptions.
 - C26: Retain only closed-source structure, context, and tone-example prompting guidance.
 - C27: Do not promote the unsupported prompt-reuse learning mechanism.
@@ -175,7 +176,8 @@ The prior card and manifest recorded no snapshot digest. Before archiving, the p
 ## Evaluation of approved changes
 
 - C08: passed - DR-114 (commit d986dd5) confirmed rather than added coverage: the existing `\{[a-z0-9_ -]{2,40}\}` pattern in #39 `no-placeholder-residue` already detects `{company name}`; `python3 dev/evals/tests/test_grade.py` passes the DR-114 assertions on 2026-07-17. The declined component 3 leaves quoted examples untreated.
-- C01-C07, C09-C34: not applicable - all other recommendations remain pending; no checker, registry, test, hypothesis, guidance, or product implementation was authorized.
+- C24: passed - DR-134B asserts that `I hope you are well` fails #50; the longer greeting retains its DR-132 coverage.
+- C01-C07, C09-C22, and C25-C34: not applicable - all other recommendations remain pending; no checker, registry, test, hypothesis, guidance, or product implementation was authorized.
 
 ## Document review
 

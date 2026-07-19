@@ -3251,6 +3251,49 @@ expect_fail(
     "DR-133A #7 clusters the two editorial phrases with an existing candidate",
 )
 
+# --- DR-134B: exact transition and candour additions; #44 unchanged ---
+print("\n=== DR-134B exact transition and candour additions ===")
+
+for phrase in (
+    "Furthermore, the deadline moved.",
+    "Moreover, the deadline moved.",
+    "Additionally, the deadline moved.",
+    "In addition, the deadline moved.",
+    "On the other hand, the deadline moved.",
+    "Let's dive in. The first issue is cost.",
+    "Here's what you need to know: the release moved.",
+    "I hope you are well. The release is ready.",
+):
+    expect_fail("no-formulaic-openers", phrase,
+        f"DR-134B #50 exact opener: {phrase}")
+
+for phrase in (
+    "Honestly? The estimate is wrong.",
+    "Real talk. The estimate is wrong.",
+    "I aim to be direct: the estimate is wrong.",
+    "I need to be clear: the estimate is wrong.",
+):
+    expect_fail("no-performed-candour", phrase,
+        f"DR-134B #56 exact candour frame: {phrase}")
+
+straightforward_matches = _grade._find_ai_words("straightforward")
+if straightforward_matches != ["straightforward"]:
+    FAILURES += 1
+    print(f"FAIL: DR-134B #7 should recognize 'straightforward' exactly once; got {straightforward_matches}")
+else:
+    print("  ok: DR-134B #7 recognizes 'straightforward' exactly once")
+expect_fail(
+    "no-ai-vocabulary-clustering",
+    "The straightforward plan is genuinely effective and undeniably clear.",
+    "DR-134B #7 clusters straightforward with two existing candidates",
+)
+
+expect_fail(
+    "no-signposted-conclusions",
+    "In summary, LLMs cannot reliably distinguish assumed knowledge from material that needs explanation, so a writer must fill the gap.",
+    "DR-134B leaves the rejected #44 content-bearing control unchanged",
+)
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

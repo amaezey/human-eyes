@@ -93,6 +93,7 @@ The prior body and current REST body contain the same five numbered sections and
 - The previous unstructured mappings to #4, #10, #41, #43, and H12 had no recorded user decision or implementation status. They are superseded by C01-C25 below. The #43 mapping is explicitly retired: C07-C09 support #4/#41 marketing-hype review, not #43's operational corporate-AI-speak phrases, and the focused full-source `no-corporate-ai-speak` check returned clear.
 - The previous open Bynder-verification item is resolved only as provenance: a direct review now exists in [the Bynder card](bynder-ai-marketing-study.md). It confirms that the 55% US figure is an author-reported perception result while withholding the stimuli and response design, so it cannot validate Copy Posse's feature list.
 - The approved C08 and exact C12 slices are implemented; the proposed #41 additions are rejected. Other source rows retain their recorded states.
+- 2026-07-19: C18 approved via DR-134 option B. `Furthermore` joined #50; `In conclusion` and `That being said` were already covered by #44 and #22. No connector-density mechanism was added.
 
 ## Project coverage
 
@@ -115,7 +116,7 @@ The prior body and current REST body contain the same five numbered sections and
 | C15: AI can produce a story but cannot supply the author's own story; the two image examples use identifiable events and work history. | Direct author argument and two preserved self-examples; authenticity and performance are not independently measured. | #36 asks whether detail is lived/source-grounded; `references/process.md` forbids inventing experience; fully covered as a preservation principle. | #36's generic rewrite advice could be misread as permission to invent specificity unless process constraints remain binding. | Keep source-grounded specificity and closed-source protection together; never manufacture anecdotes. | pending | not started |
 | C16: The author's best-performing emails use stories, and stories improve memorability. | Unquantified self-report and general claim; no messages, metrics, baseline, or experiment. | No exact performance evidence; not covered. | Performance and memory effects cannot be verified from screenshots. | Do not promote performance or causal claims; record examples only. | pending | not started |
 | C17: Human email can pivot conversationally; AI uses awkward transitions because it lacks life context. | Direct craft view with categorical model-general causal explanation. | #35 `tonal_uniformity`, #44, and #47 cover parts of register and scaffolding; partly covered. | No broad awkward-transition test, model study, or evidence that life context causes transition style. | Keep as manual register review; reject the causal and categorical model claim. | pending | not started |
-| C18: “Furthermore,” “In conclusion,” and “That being said” can sound stiff, but “that being said” is legitimate in the author's own contexts. | Direct examples plus an explicit human-use counterexample. | #44 catches line-initial conclusion signposts; focused surface output found none because the quoted phrase is inline. #47 does not cover these exact forms; partly covered. | “Furthermore” and contextual “that being said” are not exact live checks; blanket removal would erase the source's qualification. | Preserve the context exception; evaluate only repeated or register-misaligned use, not isolated phrases. | pending | not started |
+| C18: “Furthermore,” “In conclusion,” and “That being said” can sound stiff, but “that being said” is legitimate in the author's own contexts. | Direct examples plus an explicit human-use counterexample. | Fully covered for the exact forms: paragraph-opening `Furthermore` fails #50; `In conclusion` fails #44; `That being said` fails #22. | No connector-density mechanism exists or was added. | Keep the three exact programmatic forms in their existing checks; add no density mechanism. | approved | implemented |
 | C19: Grammar that is too perfect, and overly formal, long-winded, or technical messaging, can feel wrong for conversational email. | Direct genre advice; no authorship or outcome study. | #35 and #41 address register/weak domain understanding; partly covered. | No “perfect grammar” rule should be inferred, and technical language can be required by content. | Treat as register fit only; do not add grammar errors or punish correctness. | pending | not started |
 | C20: One-word emphasis, interjections, fragments, parentheses, and varied sentence shapes can be deliberate email voice. | Direct author examples and human-authored article controls. | #25 and #29 tolerance notes, #35 register assessment, and process preservation rules; partly covered. | Surface checks can still flag deliberate staccato/question patterns without a complete Audit's context. | Add these forms to marketing-email look-alike evaluation, not positive origin evidence. | pending | not started |
 | C21: Bolding, ellipses, invented words, uppercase, and even an em dash may be legitimate when on-brand and contextual. | Direct practitioner qualification; the preserved article itself uses these devices. | #13 permits genuine definition headers; #49 permits limited source-style preservation but calls em dashes a strong signal and requires All-depth removal; challenges current behaviour. | The source does not validate unrestricted formatting, but it contradicts an origin inference or unconditional deletion from voiced email. | Evaluate #49 and #13 on human marketing-email controls before changing policy; preserve deliberate source devices meanwhile. | pending | not started |
@@ -143,7 +144,7 @@ The prior body and current REST body contain the same five numbered sections and
 - C15: Keep source-grounded specificity bound to the no-invention contract.
 - C16: Do not promote performance or memorability claims.
 - C17: Keep transition quality as manual register review and reject the causal mechanism.
-- C18: Preserve the “that being said” context exception.
+- C18: Keep the exact forms in #50, #44, and #22; add no connector-density mechanism.
 - C19: Treat formality and grammar as register fit, never an instruction to add errors.
 - C20: Add deliberate fragments/questions/interjections to future human-look-alike evaluation.
 - C21: Evaluate dash and formatting policy on human marketing-email controls before any change.
@@ -156,7 +157,8 @@ The prior body and current REST body contain the same five numbered sections and
 
 - C08: passed - `python3 dev/evals/tests/test_grade.py` confirms all six exact hype formulas fail #4.
 - C12: passed - `python3 dev/evals/tests/test_grade.py` confirms all three exact phrases are #7 candidates and fail together at #7's existing threshold; no broader #41 question was added.
-- Other claims: not applicable - their recommendations remain pending.
+- C18: passed - DR-134B asserts paragraph-opening `Furthermore` fails #50; `In conclusion` and `That being said` retain their existing #44/#22 coverage.
+- Other undecided claims: not applicable - their recommendations remain pending.
 
 ## Document review
 

@@ -221,7 +221,7 @@ AI_VOCABULARY_REGEX = [
         r"interestingly|notably|particularly|ultimately|groundbreaking|"
         r"revolutionary|next-level|world-class|double down|spearhead|"
         r"supercharge|reimagine|synergize|thoughtful strategy|clear messaging|"
-        r"intentional design|defining feature|powerful tools)\b"
+        r"intentional design|defining feature|powerful tools|straightforward)\b"
     ),
     r"aligns? with\b",
     r"aligned with\b",
@@ -372,6 +372,8 @@ MANUFACTURED_INSIGHT = [
 
 PERFORMED_CANDOUR = [
     r"\b(?:honestly|frankly|candidly|truthfully)\s*[,;:]",
+    r"\bhonestly\?",
+    r"\breal talk(?:[.!?:]|$)",
     r"\bto be (?:perfectly |completely |entirely )?honest\b",
     r"\bif (?:i am|i'm|we are|we're) (?:being )?honest\b",
     r"\bin all honesty\b",
@@ -382,6 +384,8 @@ PERFORMED_CANDOUR = [
     r"\blet me be honest\b",
     r"\bi(?:'ll| will) be honest\b",
     r"\blet(?:'s| us) be real\b",
+    r"\bi aim to be direct\b",
+    r"\bi need to be clear\b",
     # DR-135G: source-defined performed-vulnerability frames.
     r"\bi wasn['’]t going to post this,? but\b",
     r"\bthis is scary to share\b",
@@ -2036,6 +2040,11 @@ def check_formulaic_openers(text):
         r"^perhaps (?:most )?(?:importantly|significantly|notably|crucially)[,:]",
         r"^what (?:is|makes) (?:this|it) (?:particularly|especially|uniquely) \w+",
         r"^in today(?:'s|’s) (?:fast[- ]paced|rapidly changing) world\b",
+        # DR-134B: exact transition, signposting, and email openers.
+        r"^(?:furthermore|moreover|additionally|in addition|on the other hand)\b[,:]?",
+        r"^let['’]s dive in\b",
+        r"^here['’]s what you need to know\b",
+        r"^i hope you are well\b",
         # DR-135B: source-defined social-post throat-clearers not already
         # covered by manufactured-insight or performed-candour checks.
         r"^here['’]s what nobody['’]s talking about\b",
