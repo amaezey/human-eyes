@@ -583,6 +583,41 @@ expect_fail("no-negative-parallelisms",
 expect_fail("no-negative-parallelisms",
     "Forget reach. Focus on retention.",
     "forget-X focus-on-Y reversal")
+_dr137_source_structures = (
+    "Credit card fraud isn’t just evolving—it’s accelerating!",
+    "The teams who will thrive now aren’t just using AI for speed. They’re combining it with judgment.",
+    "Atlas didn’t shrug. He drilled.",
+    "*AI doesn’t eliminate labor; it redistributes it.*",
+    "Not performative updates—but real transparency that restores confidence.",
+    "The strategy prioritizes empirical consolidation rather than ideological purity.",
+)
+for phrase in _dr137_source_structures:
+    result = ALL_CHECKS["no-negative-parallelisms"](phrase)
+    if result.get("passed") or result.get("candidate_count") != 1:
+        FAILURES += 1
+        print(
+            "FAIL: DR-137 source structure should return one #9 candidate; "
+            f"got {result} for {phrase}"
+        )
+    else:
+        print(f"  ok: DR-137 source structure returns one #9 candidate: {phrase}")
+for separator in (",", ":", ";", "-", "–", "—"):
+    expect_fail(
+        "no-negative-parallelisms",
+        f"Not performative updates{separator} but real transparency.",
+        f"DR-137 not-X-but-Y separator variant: {separator}",
+    )
+_two_rather_than_frames = ALL_CHECKS["no-negative-parallelisms"](
+    "Choose evidence rather than polish. Prefer specifics rather than slogans."
+)
+if _two_rather_than_frames.get("candidate_count") != 2:
+    FAILURES += 1
+    print(
+        "FAIL: DR-137 should count each rather-than frame; "
+        f"got {_two_rather_than_frames}"
+    )
+else:
+    print("  ok: DR-137 counts each rather-than frame")
 _repeated_negative_reversals = (
     "I may not have a husband. I may not have money. But I have love.",
     "I cannot promise speed. I may not guarantee certainty. Yet I can deliver a tested result.",
@@ -634,18 +669,18 @@ for phrase in (
 ):
     expect_pass("no-negative-parallelisms", phrase,
         f"DR-19B incomplete reversal frame: {phrase}")
-expect_pass("no-negative-parallelisms",
+expect_fail("no-negative-parallelisms",
     "The building was not damaged in the fire. It was inspected the following day.",
-    "factual negation, not a reframing move")
+    "negative clause followed by an it-resumption")
 expect_fail("no-negative-parallelisms",
     "It's not the best display in its class, but it's good enough for professional work.",
     "same-subject negative-positive comparison")
 expect_fail("no-negative-parallelisms",
     "The laptop is powerful, not cheap.",
     "positive-negative adjectival parallelism")
-expect_pass("no-negative-parallelisms",
+expect_fail("no-negative-parallelisms",
     "It was not raining, but the road was still wet.",
-    "different-subject causal contrast")
+    "not-X-but-Y structure")
 expect_pass("no-negative-parallelisms",
     "This is more expensive than the older model.",
     "ordinary price comparison")
@@ -2447,6 +2482,7 @@ for check_name in ALL_CHECKS:
         "no-performed-candour",
         "no-forced-triads",
         "no-negative-parallelisms",
+        "overall-signal-stacking",
     }:
         continue
     expect_pass(check_name, instructional_text, f"human instructional piece ({check_name})")
@@ -2456,6 +2492,7 @@ expect_fail(
     "human instructional prose contains cross-sentence negative parallelism",
 )
 expect_fail("no-forced-triads", instructional_text, "human instructional prose contains a matched three-part coordination")
+expect_fail("overall-signal-stacking", instructional_text, "human instructional prose reaches the aggregate signal threshold")
 
 
 # --- U7: --judgement-file CLI flag + agent_judgement overlay validation ---

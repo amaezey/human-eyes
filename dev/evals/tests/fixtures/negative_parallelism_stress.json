@@ -59,9 +59,9 @@
     {"id": "np-neg-001", "text": "It is not hard to see why the launch failed. It is raining again today.", "expected": false, "category": "control_idiom_unrelated_it_is"},
     {"id": "np-neg-002", "text": "It is not difficult to imagine the confusion. It is nearly midnight.", "expected": false, "category": "control_idiom_unrelated_it_is"},
     {"id": "np-neg-003", "text": "It is not unusual for the river to flood. It is monitored every spring.", "expected": false, "category": "control_factual_negation"},
-    {"id": "np-neg-004", "text": "The server is not responding. It is housed in the west rack.", "expected": false, "category": "control_factual_negation"},
-    {"id": "np-neg-005", "text": "The invoice was not paid by Friday. It is now with accounts.", "expected": false, "category": "control_factual_negation"},
-    {"id": "np-neg-006", "text": "This sample is not radioactive. It is safe to store in the cabinet.", "expected": false, "category": "control_factual_negation"},
+    {"id": "np-neg-004", "text": "The server is not responding. It is housed in the west rack.", "expected": true, "category": "resumptive_negative"},
+    {"id": "np-neg-005", "text": "The invoice was not paid by Friday. It is now with accounts.", "expected": true, "category": "resumptive_negative"},
+    {"id": "np-neg-006", "text": "This sample is not radioactive. It is safe to store in the cabinet.", "expected": true, "category": "resumptive_negative"},
     {"id": "np-neg-007", "text": "Mira did not attend because her train was cancelled. The chair opened the meeting anyway.", "expected": false, "category": "control_different_subject_causal"},
     {"id": "np-neg-008", "text": "The sensor did not trigger because the battery was flat. A technician replaced it at noon.", "expected": false, "category": "control_different_subject_causal"},
     {"id": "np-neg-009", "text": "We did not leave when the alarm sounded because the exit was blocked. Firefighters cleared the corridor.", "expected": false, "category": "control_different_subject_causal"},
@@ -79,6 +79,6 @@
     {"id": "np-neg-021", "text": "The document contains no signatures and remains legally incomplete.", "expected": false, "category": "control_plain_absence"},
     {"id": "np-neg-022", "text": "I am not sure whether the gate is locked.", "expected": false, "category": "control_epistemic_negation"},
     {"id": "np-neg-023", "text": "It does not appear that the figures were adjusted.", "expected": false, "category": "control_epistemic_negation"},
-    {"id": "np-neg-024", "text": "The committee is not expected to report before August. It is meeting privately tomorrow.", "expected": false, "category": "control_factual_negation"}
+    {"id": "np-neg-024", "text": "The committee is not expected to report before August. It is meeting privately tomorrow.", "expected": true, "category": "resumptive_negative"}
   ]
 }

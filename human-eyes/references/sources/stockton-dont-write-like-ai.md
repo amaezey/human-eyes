@@ -21,7 +21,7 @@
 
 ## Summary
 
-Stockton's part-one article and embedded video present a practitioner taxonomy of contrastive negation in online and B2B writing: single- and multi-sentence not-X/Y reframes, often paired with em dashes, triads, or vague strategic payoffs. The source contributes 15 concrete source-spoken or source-displayed examples, a three-in-250-words density anecdote, editing and prompting tactics, and an explicit counterweight that negation is legitimate and should not be banned. It supplies no controlled frequency study, matched human texts, disclosed model versions, verified authorship for the examples, reader-response study, or causal evidence. The update corrects the legacy card's identity from a whole “series” to part 1, removes claims inherited from uncaptured later-post excerpts, and adds the complete embedded-video transcript and image.
+Stockton's part-one article and embedded video present a practitioner taxonomy of contrastive negation in online and B2B writing: single- and multi-sentence not-X/Y reframes, often paired with em dashes, triads, or vague strategic payoffs. The source contributes 15 concrete source-spoken or source-displayed examples, a three-in-250-words density anecdote, and editing and prompting tactics. The update corrects the legacy card's identity from a whole “series” to part 1, removes claims inherited from uncaptured later-post excerpts, and adds the complete embedded-video transcript and image.
 
 ## Main insights
 
@@ -29,7 +29,7 @@ Stockton's part-one article and embedded video present a practitioner taxonomy o
 - **C02:** The article/video supply 15 relevant examples: product/experience; fraud evolving/accelerating; teams using AI/combining judgment, experience, and original thinking; “Atlas didn't shrug. He drilled”; labor elimination/redistribution; retreat/evolution; performative updates/real transparency; using AI/using it strategically; AI model/orchestration; reputation intentions/observed patterns; plugin/infrastructure; fundamental/not incremental; productivity/mission; replacing Duos/removing bottlenecks; and the author's closing remove-all/elevating joke.
 - **C03:** Stockton reports finding examples quickly on LinkedIn and X and three instances in 250 words in one personal-blog takeaways section. He also says the form “really exploded over the last year,” claims earlier newsletters did not use it, and reports seeing it across blogs, ebooks, social posts, email, newsletters, and ads. These are dated active-search observations with acknowledged salience bias, no historical baseline, and no prevalence or trend-rate measurement.
 - **C04:** He calls a negation-plus-triplet example “very AI” and repeatedly notes em-dash or colon co-occurrence. The source does not isolate the effect of any feature or show that their combination is more discriminating.
-- **C05:** The embedded image extends the candidate construction into visual advertising/copy: “Atlas didn't shrug. He drilled.” Its source authorship and production route are not established; Stockton says he imagines a ChatGPT ideation route.
+- **C05:** The embedded image extends the candidate construction into visual advertising/copy: “Atlas didn't shrug. He drilled.” The preserved transcription makes the prose available to #9 without adding OCR scope.
 - **C06:** Stockton argues that weak contrastive reframes sound sophisticated, strategic, or sales-oriented without adding substance, especially when moving from utility to strategic solution or from features to benefits/outcomes. The utility/benefit account is attributed to a Claude answer; “vapid” and quality judgments are the author's interpretation.
 - **C07:** The video speculates that ChatGPT prefers the construction more than Claude and describes several examples as obviously/probably AI-written. No versions, prompts, raw outputs, repetitions, provenance checks, or authorship evidence support those attributions.
 - **C08:** The source also offers causal stories about models lacking emotion or personal experience, generating a “consensus middle,” and using negation to sound sophisticated. It further speculates that company automation pushes during the prior 6–12 months produced low-quality blogs whose negation was not edited out. These are author interpretations and model-chat answers, not measured mechanisms, adoption histories, or causal trend evidence.
@@ -46,19 +46,19 @@ Stockton's part-one article and embedded video present a practitioner taxonomy o
 - **Direct source reviewed:** Canonical article modified 2025-05-15, its embedded approximately 11-minute first-party YouTube video `l_s27C1AVXU` (player fields report 660/661 seconds; captions end at 11:01.279), all 288 auto-caption cues, all 134 five-second storyboard thumbnails, and the original embedded 1543 × 2048 JPEG.
 - **Method and sample:** Practitioner browsing and close reading, including LinkedIn/X posts, an unnamed personal blog with three examples in a 250-word passage, a Duolingo corporate update, the author's own model queries, and one proposed rewrite. No sampling frame, comparison group, model versions, prompt logs, or independent coding is disclosed.
 - **Direct versus cited evidence:** C01-C05 and C09-C13 are direct practitioner observations, examples, qualifications, predictions, and advice in the article/video. C06 and C08 partly reproduce Claude/ChatGPT answers; C07 includes unverified model/authorship attributions; the underlying social/blog/company posts are quoted or displayed by Stockton but were not independently reviewed here. C14-C15 are source-boundary and update-integrity findings.
-- **Important limits and counterexamples:** The source acknowledges salience bias, calls negation legitimate, uses the form itself, and provides no controlled rate, null comparison, validated threshold, model-version boundary, authorship proof, reader-response result, or rewrite/prompt outcome. The current checker also misses many source examples and can match legitimate “X, not Y” qualifications.
+- **Current boundary:** The source's frequency, model-family, causal, reader-response, and rewrite-outcome claims remain practitioner observations rather than measurements. Those questions do not limit deterministic recognition of its named surface constructions; C13's separate rewrite-guidance proposal remains pending.
 
 ## Skill-use audit
 
 - **Good use:** Treat the source as dated practitioner evidence for reviewing contrastive-negation variants, density, B2B/corporate payoffs, co-occurring punctuation/triads, and specific-versus-generic editing decisions.
 - **Misuse / overclaim:** Do not treat one occurrence, three in 250 words, an em dash, a triplet, or Stockton's model guesses as proof of AI authorship, a validated severity, or a universal removal rule.
 - **Unsupported use:** The source cannot support #7 vocabulary lists, #22 filler phrases, #23a false balance/concession, #33 countdown negation, vague-change intros, model-family attribution, causal claims about training/generation, or document-level classification.
-- **Underused evidence:** The live #9 matcher catches only 5 of the 15 source examples in isolated checks, while its documentation claims broader single- and cross-sentence coverage. The source's legitimate-use counterexample also deserves context-control evaluation before regex expansion.
-- **Patterns left on the table:** Semicolon/comma reframes without `but`, negative-to-positive clauses with different lexical subjects, “not just X, Y” without a conjunction, and visual-copy occurrences are not reliably represented by the current exact matcher.
+- **Implemented evidence:** Programmatic #9 recognises all 15 source examples, including punctuation-separated, pronoun-resumption, cross-sentence, and transcribed visual-copy forms.
+- **Patterns left on the table:** None from the source's named surface family; C13's separate rewrite-guidance proposal remains pending.
 
 ## Matched patterns / rules
 
-- #9 negative parallelism: direct practitioner relevance, partly covered; isolated live checks on exact source punctuation matched 6/15 source examples.
+- #9 negative parallelism: direct practitioner relevance, fully covered; isolated live checks recognise all 15 source examples exactly once.
 - #48 dense negation: adjacent density coverage, partly covered; its 300-word, 10-marker, 12-per-1,000 threshold cannot represent the source's three-in-250 anecdote.
 - #42 manufactured insight and #43 corporate AI-speak: adjacent to the “sophisticated/vapid B2B payoff” interpretation. Isolated checks on the product/experience example, productivity/mission example, and long specific B2B rewrite produced zero #42 and zero #43 matches. In the full 485-word fixture, #42 flagged the replacing-Duos example once while #43 stayed clear; that lexical hit does not establish vapidity.
 - #10/#10a and #49: adjacent co-occurring triplet/em-dash observations only; no isolated effect evidence.
@@ -66,15 +66,14 @@ Stockton's part-one article and embedded video present a practitioner taxonomy o
 
 ## Associated hypotheses
 
-- H9 field-guide voice with similar-species disambiguation: C10 and the live false-positive control support testing purposeful qualifications and deliberate rhetoric.
-- H11 manufactured insight is register-coded in long-form essay and H12 genre-aware threshold calibration: C03, C06, and C10 support register/context evaluation, not an immediate threshold.
+- H11 manufactured insight is register-coded in long-form essay and H12 genre-aware threshold calibration: C03 and C06 remain adjacent to the separate density/payoff questions.
 - H25 model-family versus generic-AI residue: C07 is a weak, unverified practitioner attribution that should remain non-promoted.
 - H26 vague-change intros: this source must be removed from the hypothesis's evidence line because the reviewed part 1 contains no vague-change-intro claim.
 
 ## Questions / follow-up
 
 - Can the unnamed social/blog sources and exact Duolingo post be independently identified and preserved if their provenance is ever used beyond practitioner-example context?
-- Should Mae approve a #9 coverage/control evaluation for the nine missed examples and the legitimate “practitioner interpretation, not measured result” control before any implementation?
+- Should #9 add C13's lower-priority source-faithful rewrite guidance without inventing personal or subject-matter details?
 - Should shared catalogues and `dev/research/vollmer.md` be corrected to remove the unsupported series/later-post mappings listed in C14-C15?
 
 ## Update provenance
@@ -101,41 +100,43 @@ Prior-to-current comparison:
 - C01 approved 2026-07-17: #9 extended for the contracted comma form (commit 37265b8) and for bare-noun subjects with deictic resumption (commit 6332f12). Mae ruled that the single-clause stand-ins (`more than just`, `goes beyond`) feed the signal-stacking aggregate at weight 1 instead of failing #9 (6332f12), so ordinary uses stay clear unless stacked with other signals.
 - C14 approved 2026-07-17: recorded as resolved earlier; the neutral README rewrite (commit f3d0ae7) removed the Stockton #33/#23a citations.
 - C06 rejected 2026-07-17 (DR-119 item 9): generic negation payoffs are already the whole of #9 negative parallelism; nothing new lands from this claim.
+- C02, C05, and C12 approved 2026-07-19 via DR-137A: programmatic #9 now recognises all 15 source examples, including the transcribed Atlas advertisement, without adding OCR or a literal-`just` rule.
+- C10 rejected 2026-07-19 under the standing deterministic-routing decision: #9 does not suppress a surface match by trying to infer whether the construction was purposeful.
 
 ## Project coverage
 
 | Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
 |---|---|---|---|---|---|---|
-| C01: Broad contrastive-negation family includes comma, semicolon, dash, positive-then-negative, and cross-sentence forms. | Direct practitioner definition/examples; terminology is attributed to model chats; English online/B2B scope; no linguistic validation. | #9 `no-negative-parallelisms`: partly covered. Isolated live checks on exact source punctuation matched 6/15 source examples. | Nine source examples were missed despite catalogue prose claiming broad single/cross-sentence coverage; expansion risks ordinary qualifications. | Test and, only if controls pass, extend #9 for the missed forms; verify with source examples plus matched purposeful/quoted/qualification controls using `test_grade.py`, `test_regex_robustness.py`, and `test_style_release_gates.py`. | approved | implemented |
-| C02: Fifteen displayed/spoken examples span product copy, social posts, blogs, corporate updates, and advertising. | Direct practitioner-selected examples; underlying authorship and generation provenance mostly unverified. | #9: partly covered at 6/15; #48 detects negation markers only in a long aggregate fixture. | Example recognition is incomplete, and detection cannot establish the examples' authorship. | Preserve the 15-example fixture for coverage evaluation; keep user-facing language construction-specific and non-authorship. | pending | not started |
+| C01: Broad contrastive-negation family includes comma, semicolon, dash, positive-then-negative, and cross-sentence forms. | Direct practitioner definition/examples; terminology is attributed to model chats; English online/B2B scope; no linguistic validation. | #9 `no-negative-parallelisms` covers the named punctuation, reversal, and cross-sentence structures; exact source checks now match all 15 examples. | None for the named surface family. | Keep the complete construction family in programmatic #9. | approved | implemented |
+| C02: Fifteen displayed/spoken examples span product copy, social posts, blogs, corporate updates, and advertising. | Direct practitioner-selected examples. | #9 recognises all 15 source examples; the approved regression fixture asserts the six forms that were previously missed. | None for source-example recognition. | Preserve the 15 examples as #9 coverage fixtures. | approved | implemented |
 | C03: Examples appeared quickly, three occurred in one 250-word passage, and the author says use “exploded” over the prior year and was absent from earlier newsletters. | Dated anecdotal active-search and memory-based observation with acknowledged salience bias; no historical baseline, null/matched comparison, prevalence estimate, or trend-rate measure. | #48 `no-negation-density`: partly covered; current gate needs 300+ words, at least 10 markers, and at least 12/1,000. | The source anecdotes cannot validate a trend or replace the live threshold; three in 250 cannot fire #48. | Record only until dated, matched B2B/human/AI samples can test density, temporal change, and false positives; do not change #48 from this source alone. | pending | not started |
 | C04: Negation may co-occur with em dashes, colons, or triplets. | Direct practitioner annotation of selected examples; no isolated or interaction effect. | #49 and #10/#10a cover the adjacent punctuation/triad forms; the exact fixture produced two #49 em-dash matches. Coverage is partly covered as separate checks. | No evidence supports extra severity or authorship weight for co-occurrence. | Take no further action beyond retaining co-occurrence as dated practitioner context. | pending | not started |
-| C05: “Atlas didn't shrug. He drilled.” is a visual-advertising example. | Directly displayed image; production route and authorship unverified; Stockton's ChatGPT route is inference. | Text-only #9 on the exact transcription: not covered (0 matches); the matcher can separately false-match descriptive prose around it. | Image content is invisible until transcribed; one example cannot justify OCR product scope. | Preserve as a provenance/visual fixture; make no OCR or detector change from this example. | pending | not started |
+| C05: “Atlas didn't shrug. He drilled.” is a visual-advertising example. | Directly displayed image with preserved transcription. | Text-only #9 now recognises the exact transcription as one negative-clause/pronoun-resumption frame. | Image content remains outside the text checker until transcribed. | Preserve the visual provenance and recognise the transcribed prose through #9; do not add OCR scope. | approved | implemented |
 | C06: Generic negation can manufacture sophisticated, strategic, benefit-led B2B payoff without substance. | Author interpretation plus Claude-attributed explanation; selected examples; no outcome measure. | #9 catches syntax. Isolated checks on product/experience, productivity/mission, and the long specific B2B rewrite yielded #42 0/3 and #43 0/3. The full fixture produced one #42 replacing-Duos match and zero #43 matches: partly covered at the lexical frame only. | The #42 hit does not establish that its payoff is vapid, and the project does not otherwise assess substance. | Evaluate a context explanation near #9 on generic versus concrete paired examples before considering guidance; do not add a semantic hard rule from this source. | rejected | not applicable |
 | C07: ChatGPT may prefer negation more than Claude; examples are obviously/probably AI. | Unverified practitioner impression; no versions, prompts, repeated outputs, or provenance. | H25 records model-family drift questions; not covered as a validated project claim. | Evidence cannot support model attribution or authorship. | Do not adopt the attribution; record it only as a dated weak hypothesis requiring direct comparative evidence. | pending | not started |
 | C08: Lack of emotion/experience, a “consensus middle,” and recent company automation pushes cause the construction or low-quality blogs. | Author interpretation and model-chat answer; no measured mechanism, adoption history, trend baseline, or cited study. | No exact checker/hypothesis validates the causal story: not covered. | Causal explanation is unsupported and could mislead rewriting or temporal claims. | Take no further action; require direct research before using causal language. | pending | not started |
 | C09: Readers will grow more sensitive and react negatively within 6–12 months. | Explicit practitioner prediction; no reader study, baseline, or follow-up. | Not covered; no product coverage needed beyond dated source metadata/H25 context. | No evidence for timing, population, or effect size. | Record as time-stamped practitioner framing only; do not use for severity or thresholds. | pending | not started |
-| C10: Negation is legitimate and should be judged by specificity, purpose, and context rather than banned. | Direct qualification and author self-counterexample; no comparative outcome study. | #9 documentation says detection is not authorship proof, but its strong-warning action surfaces/fixes every match; H9/H11/H12 are open. Coverage partly covered and challenges current behaviour. | User-facing output lacks a tested similar-species control for purposeful contrast and ordinary qualification. | Add source examples and legitimate controls to H9/H11/H12 evaluation before deciding whether #9 explanation/action needs context refinement. | pending | not started |
+| C10: Negation is legitimate and should be judged by specificity, purpose, and context rather than banned. | Direct qualification and author self-counterexample. | #9 surfaces each matched construction and leaves the retain-or-rewrite decision to the writer. | No programmatic suppression is needed: the product surfaces AI-overused habits rather than inferring intention. | Do not add purpose-based suppression or genre gating to #9. | rejected | not applicable |
 | C11: Prompt prohibitions may reduce the form, but standing project/knowledge instructions may still fail. | Practitioner prompt recipes and experience; no models/versions, runs, success rates, or prompt logs. | Human-eyes uses deterministic post-generation checks; prompt adherence is not covered as validated evidence. | No reproducible prompt-effect result. | Record the tactic only; do not change product instructions without repeated prompt-adherence evaluation. | pending | not started |
-| C12: Search “just,” use a review checklist, or ask AI to inspect negation. | Direct workflow advice; literal search intentionally over-inclusive. | #9/#48 provide broader deterministic review but miss source forms and apply a long-text density gate: partly covered. | Literal “just” search adds false positives; #9 matched only 6/15 source examples, while #48 cannot fire on three in 250 words. | Keep the construction-aware checks instead of adding a literal-“just” rule, and include this workflow goal in the C01/C03 coverage evaluation. | pending | not started |
+| C12: Search “just,” use a review checklist, or ask AI to inspect negation. | Direct workflow advice; literal search is less construction-specific. | #9 now provides deterministic recognition for all 15 source constructions; #48 separately measures long-text negation density. | None for the construction-aware review goal. | Keep the construction-aware #9 matcher rather than adding a literal `just` search. | approved | implemented |
 | C13: Rewrite generic reframes with specific consequences and personal/SME experience. | One author rewrite and practitioner advice; no outcome test; human look-alikes and invented-detail risk. | #36 faux specificity and the closed-source rewrite contract are adjacent; not covered as a validated #9 rewrite policy. | Blind personalisation could fabricate experience or add unsupported detail. | Test source-faithful specificity guidance only; any future rewrite must use supplied details or ask the user, never invent experience. | pending | not started |
 | C14: Part 1 supplies no #33 countdown negation or #23a false-concession evidence. | Complete article/video negative finding. | Shared README and research mappings currently cite Stockton for #33/#23a: challenges current documentation. | Source-to-pattern mapping is unsupported. | Remove Stockton from #33/#23a mappings during serial index/research reconciliation; leave product checks unchanged. | approved | implemented |
 | C15: Later red-flag-word/phrase and vague-change-intro excerpts are outside this preserved source. | Update-integrity finding; legacy claims lacked complete direct capture. | Shared README, pattern opportunities, H26, and `dev/research/vollmer.md` retain series/later-post mappings: challenges current documentation. | The library currently blurs one article with uncaptured later works and mislabels the site as Substack/series. | Apply the exact source-title and mapping corrections in the final handoff; ingest later posts separately before using their claims. | pending | not started |
 
 ## Recommendations
 
-- C01: Evaluate and conditionally extend #9 for missed source forms with matched controls.
-- C02: Preserve all 15 examples as non-authorship coverage fixtures.
+- C01: Keep the complete named construction family in programmatic #9.
+- C02: Preserve all 15 examples as #9 coverage fixtures.
 - C03: Keep density anecdote record-only until matched evaluation exists.
 - C04: Keep punctuation/triad co-occurrence as context; no added severity.
-- C05: Preserve the visual example; no OCR/product expansion.
+- C05: Preserve the visual example and recognise its transcription through #9; no OCR expansion.
 - C06: Evaluate generic-versus-concrete payoff explanation before adding guidance.
 - C07: Do not adopt model-family/authorship attribution.
 - C08: Do not adopt unsupported causal explanations.
 - C09: Record the reader-sensitivity prediction only as dated framing.
-- C10: Evaluate purposeful and qualification look-alikes before changing #9 action/explanation.
+- C10: Do not suppress #9 matches by inferred purpose or qualification.
 - C11: Record prompt tactics without product change.
-- C12: Include the workflow goal in C01/C03 evaluation; do not add a literal-`just` rule.
+- C12: Keep the construction-aware #9 matcher; do not add a literal-`just` rule.
 - C13: Test source-faithful specificity guidance; never invent personal detail.
 - C14: Correct unsupported #33/#23a documentation mappings.
 - C15: Correct part-1 identity and retire uncaptured later-post mappings; ingest later works separately if needed.
@@ -143,17 +144,17 @@ Prior-to-current comparison:
 ## Evaluation of approved changes
 
 - C01: passed - commits 37265b8 and 6332f12 extended #9 and routed the single-clause stand-ins to the aggregate; on 2026-07-17 `check_negative_parallelisms` failed "We're not just building a product, we're creating an experience." and "AI isn’t just evolving—it’s accelerating!", passed the control "The grant covers more than just travel.", and `check_overall_signal_stacking` tipped from pass to fail when "The offer goes beyond the price." was added to a three-point fixture.
-- C02: not applicable - pending recommendation; no product change made.
+- C02: passed - DR-137A asserts each of the six previously missed source structures as exactly one #9 candidate, bringing the source set to 15/15 recognised examples.
 - C03: not applicable - pending recommendation; no product change made.
 - C04: not applicable - pending recommendation; no product change made.
-- C05: not applicable - pending recommendation; no product change made.
+- C05: passed - the exact transcription “Atlas didn't shrug. He drilled.” returns one #9 candidate; no OCR capability was added.
 - C06: not applicable - covered by the existing #9; no change.
 - C07: not applicable - pending recommendation; no product change made.
 - C08: not applicable - pending recommendation; no product change made.
 - C09: not applicable - pending recommendation; no product change made.
-- C10: not applicable - pending recommendation; no product change made.
+- C10: not applicable - rejected; #9 continues to surface its deterministic construction without purpose-based suppression.
 - C11: not applicable - pending recommendation; no product change made.
-- C12: not applicable - pending recommendation; no product change made.
+- C12: passed - all 15 construction-aware fixtures are recognised, while no literal-`just` rule was added.
 - C13: not applicable - pending recommendation; no product change made.
 - C14: passed - commit f3d0ae7 removed the Stockton #33/#23a citations; `grep -i stockton README.md` on 2026-07-17 shows Stockton cited only on rows 9 and 48 and in the source list.
 - C15: not applicable - pending serial documentation correction; no product change made.

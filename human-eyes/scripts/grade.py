@@ -1633,6 +1633,16 @@ def check_negative_parallelisms(text):
         rf"have\s+is\s+[^;.!?\n]{{1,120}}"
         rf")(?:[;.!?]|$)"
     )
+    resumptive_subject = (
+        r"(?!i\b|we\b|you\b|he\b|she\b|they\b|it\b)"
+        r"[A-Za-z][\w’'-]*(?:\s+[A-Za-z][\w’'-]*){0,11}?"
+    )
+    resumption_start = r"(?:^|(?<=[.!?])|(?<=\n))\s*[\"'“‘*_`(\[]*"
+    resumptive_negative = (
+        rf"{resumption_start}{resumptive_subject}\s+{reversal_negative_aux}\s+"
+        rf"{negative_predicate}{structural_sep}"
+        rf"(?:it|they|he|she)(?:{apo}s|{apo}re|\s+{positive_verb})\b"
+    )
 
     hard_patterns = [
         # DR-19B: repeated same-subject negative clauses followed by an
@@ -1687,9 +1697,11 @@ def check_negative_parallelisms(text):
         rf"\b(?:it|this|that)\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:it|this|that)(?:{apo}s|\s+{positive_verb})\b",
         # General parallel complements and coordinated negative-positive
         # clauses that do not depend on a fixed subject vocabulary.
+        resumptive_negative,
         r"\bnot\s+(?!until\b)[^,;.!?\n]{1,80}\s+but\s+(?:also\s+)?[^,;.!?\n]{1,80}",
+        rf"\bnot\s+(?!until\b)[^,;:.!?\n]{{1,80}}\s*(?:[,;:]|{dash})\s*but\s+[^,;:.!?\n]{{1,100}}",
         r"(?:^|(?<=[;.!?]))\s*[^,;.!?\n]{1,100},\s*not\s+(?!until\b)[^,;.!?\n]{1,80}",
-        r"\brather\s+than\s+[^,;.!?\n]{1,80},\s*[^,;.!?\n]{1,80}\brather\s+than\s+[^,;.!?\n]{1,80}",
+        r"\brather\s+than\b",
         r"\bto\s+[^;.!?\n]{1,80}\s+is\s+not\s+to\s+[^;.!?\n]{1,80}[;.!?]\s*to\s+[^;.!?\n]{1,80}\s+is\s+to\b",
         # Comma-separated countdown negation is the same construction as its
         # sentence-separated form already covered above.
