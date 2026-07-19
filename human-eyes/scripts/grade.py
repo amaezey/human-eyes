@@ -2077,19 +2077,51 @@ def check_quietness(text):
 
 
 def check_rhetorical_questions(text):
-    """Detect mid-sentence rhetorical questions (pattern 29)."""
-    # Pattern: short question (under 8 words) followed by a declarative answer
-    pattern = r'(?:^|[.!]\s+)([^.?!]{3,50}\?)\s+(?:Because|It\'?s?|They\'re|You|We|The|This|That|And)\b'
-    matches = re.findall(pattern, text, flags=re.IGNORECASE | re.MULTILINE)
+    """Detect terse non-question fragments followed by immediate answers."""
+    pattern = re.compile(
+        r"(?:^|[.!]\s+)"
+        r"(?P<prompt>[A-Za-z][A-Za-z'’\-]*"
+        r"(?:[ \t]+[A-Za-z][A-Za-z'’\-]*){0,3})"
+        r"\?[ \t\r\n]+"
+        r"(?P<answer>[A-Za-z0-9][^?!\n]{0,99}(?:[.!]|$))",
+        flags=re.MULTILINE,
+    )
+    interrogative_starters = {
+        "who", "whom", "whose", "what", "when", "where", "why", "how", "which",
+        "am", "is", "are", "was", "were", "do", "does", "did", "can", "could",
+        "would", "should", "will", "have", "has", "had", "may", "might", "must",
+        "shall", "ain't", "aren't", "can't", "couldn't", "didn't", "doesn't",
+        "don't", "hasn't", "haven't", "isn't", "wasn't", "weren't", "won't",
+        "wouldn't",
+    }
+    matches = []
+    for match in pattern.finditer(text):
+        prompt = match.group("prompt")
+        prompt_words = prompt.lower().replace("’", "'").split()
+        if prompt_words[0] in {"and", "but", "so"}:
+            prompt_words = prompt_words[1:]
+        if not prompt_words:
+            continue
+        first_word = prompt_words[0]
+        first_base = first_word.split("'", 1)[0]
+        if first_word in interrogative_starters or first_base in interrogative_starters:
+            continue
+
+        answer = match.group("answer").strip()
+        answer_words = re.findall(r"[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*", answer)
+        if not 1 <= len(answer_words) <= 12:
+            continue
+        matches.append(f"{prompt}? {answer}")
+
     count = len(matches)
     return {
         "text": "no-rhetorical-questions",
-        "passed": count < threshold_value("no-rhetorical-questions", "minimum_candidates", 2),
+        "passed": count < threshold_value("no-rhetorical-questions", "minimum_candidates", 1),
         "matches": matches,
         "evidence": (
-            f"Found {count} mid-sentence rhetorical question(s): {matches[:3]}"
-            if count >= 2
-            else f"Rhetorical questions: {count}"
+            f"Found {count} fragment-question answer beat(s): {matches[:3]}"
+            if count
+            else "Fragment-question answer beats: 0"
         ),
     }
 
@@ -3116,7 +3148,7 @@ CHECK_THRESHOLDS = {
     "no-staccato-sequences": {"minimum_run": 3, "minimum_repeated_opener_run": 2},
     "no-soft-scaffolding": {"minimum_candidates": 2},
     "no-orphaned-demonstratives": {"minimum_candidates": 3},
-    "no-rhetorical-questions": {"minimum_candidates": 2},
+    "no-rhetorical-questions": {"minimum_candidates": 1},
     "no-excessive-lists": {"minimum_items": 8, "minimum_blocks": 2, "minimum_line_ratio": 0.3},
     "no-unicode-flair": {"minimum_candidates": 2},
     "no-excessive-hedging": {"minimum_candidates": 3},

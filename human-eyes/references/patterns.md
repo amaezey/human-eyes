@@ -874,19 +874,17 @@ AI blends senses inappropriately to simulate literary depth: emotions get tastes
 
 ### 29. Mid-sentence rhetorical questions
 
-Short questions dropped mid-paragraph as a pacing device, followed by a declarative answer. Borrowed from long-form journalism but deployed indiscriminately. Includes the "The real X?" pattern: "The real insight?", "The real challenge?", "The takeaway?", "The kicker?" These perform revelation through question format.
-
-**Tolerance note:** Interviews, teaching prose, polemic, and comic essays often use questions legitimately. Treat as an AI tell when the answer is immediate, generic, and framed as revelation.
+A one-to-four-word fragment is punctuated as a question even though it does not begin with an interrogative word or question-forming auxiliary, then an answer or evaluation follows immediately: "And honestly? That's amazing.", "The result? It's remarkable.", "Best part? It actually works." The construction manufactures conversational emphasis through a terse setup-and-answer rhythm.
 
 **Before:**
-> But now? You won't be able to unsee this one. The solution? It's simpler than you think. The real question? Whether we're ready to face it.
+> The result? It's simpler than you think.
 
 **After:**
-> Once you notice it, you will keep noticing it. The solution is simpler than most people assume, though whether anyone is ready to act on it is a separate issue.
+> The result is simpler than you might expect.
 
 **Severity:** context_warning · `no-rhetorical-questions`
 
-**Detection:** Programmatic check `no-rhetorical-questions`.
+**Detection:** Programmatic check `no-rhetorical-questions`. One complete fragment-question answer beat triggers the finding. The fragment contains at most four words; the immediate answer contains at most twelve.
 
 
 ### 30. Generic/ungrounded metaphors

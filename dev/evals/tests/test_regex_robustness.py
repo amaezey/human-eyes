@@ -88,8 +88,8 @@ mutation_cases = {
         "The plan leverages a cross-team synergy before the review.",
     ],
     "no-rhetorical-questions": [
-        "Why does this matter? Because costs doubled. What changed? The supplier withdrew.",
-        "Why does this matter?\nBecause costs doubled.\nWhat changed?\nThe supplier withdrew.",
+        "And honestly? That's amazing.",
+        "The result?\nIt’s remarkable.",
     ],
 }
 for check_id, variants in mutation_cases.items():

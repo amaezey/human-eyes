@@ -982,8 +982,29 @@ expect_pass("no-quietness-obsession",
 
 print("\n=== no-rhetorical-questions ===")
 expect_fail("no-rhetorical-questions",
-    "The data is clear. But what about cost? The answer is simple. But what about time? The answer is complicated.",
-    "2 rhetorical questions with declarative answers")
+    "You made a strong point. And honestly? That's amazing.",
+    "DR-21C source-shaped non-question fragment and emphatic answer")
+expect_fail("no-rhetorical-questions",
+    "The result? It’s remarkable.",
+    "DR-21C noun-fragment beat with smart-apostrophe answer")
+expect_fail("no-rhetorical-questions",
+    "Best part? It actually works.",
+    "DR-21C bare noun-fragment beat")
+expect_fail("no-rhetorical-questions",
+    "The problem? That's only the beginning.",
+    "DR-21C noun-fragment beat with direct evaluation")
+expect_pass("no-rhetorical-questions",
+    "What makes the advert persuasive? The repeated product name keeps the claim memorable. Why carry on? This question remains unresolved.",
+    "ordinary interrogative questions are not the approved fragment beat")
+expect_pass("no-rhetorical-questions",
+    "What's next? That's explained in the final section. What’s missing? It is listed in the appendix.",
+    "contracted interrogative starters are not the approved fragment beat")
+expect_pass("no-rhetorical-questions",
+    "## Can We Fix This?\n\nThe team can fix it by replacing the broken parser.",
+    "question-form Markdown heading")
+expect_pass("no-rhetorical-questions",
+    "She asked, \"Why, how can I, dear?\" Then she closed the door.",
+    "literary dialogue")
 expect_pass("no-rhetorical-questions",
     "The project was completed on time and under budget.",
     "no questions at all")
