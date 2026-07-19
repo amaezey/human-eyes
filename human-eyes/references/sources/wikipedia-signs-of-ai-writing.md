@@ -90,6 +90,7 @@ The legacy card did not record a snapshot digest. Before replacement, the existi
 - The 2026-07-14 card contained 33 recommendation rows but did not record a user approval state. None was implemented as a product change. Its completed work was evidence-library maintenance: three separately requested source cards were added and the Wikipedia evidence record was corrected.
 - This contract refresh reconciles the legacy rows into C01-C43 below. All product recommendations are reset or retained as `pending` / `not started`; no checker, registry, test, hypothesis, or guidance change is represented as approved.
 - Removed or narrowed legacy mappings: direct interface/citation residue is not current #39 placeholder coverage; `in order to` is counterevidence to isolated #22 treatment; `X rather than Y`, source-type notability enumeration, small tables, skipped headings, and several comment/edit-history composites remain uncovered; inherited research claims remain indirect unless separately reviewed.
+- C08 approved 2026-07-19 via DR-15 option A: #5 now recognises the catalogue's bare `Industry reports` and `several sources/publications` forms; the observer, expert, critic, and passive-consensus forms were already covered.
 
 ## Project coverage
 
@@ -102,7 +103,7 @@ The legacy card did not record a snapshot digest. Before replacement, the existi
 | C05: Notability inflation includes policy echoing, unnamed prestige, media tiers, and source-type enumeration such as trade publications. | Direct Wikipedia examples and editor observation; human press-release look-alike is explicit. | Partly covered by `no-notability-claims`; `independent coverage` fails, while `covered in trade publications` passes. | Source-type enumeration and several policy-echo variants are absent. | Add candidate-recognition tests with named-source and ordinary press-release controls before deciding an expansion. | pending | not started |
 | C06: Superficial analysis often appears as tacked-on present-participial clauses. | Direct examples plus indirect citations; the problem is semantic shallowness, not every `-ing` clause. | Partly covered by `no-superficial-ing`; focused `enhancing the city's cultural landscape` passes, showing closed-lexeme limits. | Opening and novel trailing forms, causal legitimate uses, and semantic emptiness remain uncovered. | Evaluate candidate coverage and concrete-causal controls before extending #3. | pending | not started |
 | C07: Promotional output includes travel, food, heritage, superlative, and marketing register intruding into informational prose. | Direct selected examples, genre-bound; human promotional genres are look-alikes. | Partly covered by `no-promotional-language`; a focused `nestled` / `breathtaking` / `renowned` example fails. #41 has genre branches. | The live lexicon is narrow and does not assess register mismatch. | Test a genre-mismatch assessment and source examples against legitimate marketing/travel controls. | pending | not started |
-| C08: Vague authorities and overgeneralised opinions include unnamed experts, critics, observers, reports, and passive consensus claims. | Direct catalogue examples; ordinary unattributed prose can look similar. | Partly covered by `no-vague-attributions`; `Experts argue` fails. | Many source variants and quotation/citation context are not represented. | Extend only after candidate-recognition and named-authority/quotation controls. | pending | not started |
+| C08: Vague authorities and overgeneralised opinions include unnamed experts, critics, observers, reports, and passive consensus claims. | Direct catalogue examples. | Fully covered for the listed exact forms by #5 `no-vague-attributions`: `Industry reports`, `Observers have cited`, `Experts argue`, `Some critics argue`, `several sources/publications`, and passive-consensus frames. | No remaining listed surface-form gap. | Keep the listed exact forms in #5. | approved | implemented |
 | C09: Formulaic challenges sections follow a positive opening, generic challenge list, and reassuring future close; merely discussing challenges is not the sign. | Direct selected examples and explicit negative control. | Partly covered only as manual pattern #6 and adjacent #23a/#24; the focused source-shaped example passes both deterministic checks. | No executable or agent-assessed composite captures the full section arc. | Evaluate a structural-monotony / challenges composite with genre and legitimate-policy controls. | pending | not started |
 | C10: Some generated leads treat list titles or broad article names as real-world proper nouns. | Direct selected Wikipedia examples; platform-specific. | Not covered by any live deterministic or judgement record. | Requires title/body relation and Wikipedia genre context. | Record as a Wikipedia-specific manual review candidate, not a global prose regex. | pending | not started |
 | C11: AI-vocabulary evidence is about density, co-occurrence, register, date, and model drift; individual words and timeless lists are unsafe. | Direct page synthesis plus many cited sources; dates/models vary and causal explanations are indirect. | Partly covered by #7 clustering, aggregate signal stacking, H24, and H25; a four-item focused cluster fails. | User-facing catalogue language still contains broad fingerprint wording and flat lists. | Use this source only to reinforce H24/H25 and dated metadata; do not promote new standalone words. | pending | not started |
@@ -148,7 +149,7 @@ The legacy card did not record a snapshot digest. Before replacement, the existi
 - C05: Test source-type notability enumeration and named-source controls before extending #2.
 - C06: Test novel superficial-participle candidates and concrete causal controls before extending #3.
 - C07: Evaluate a genre-mismatch assessment rather than expanding a flat promotional blacklist.
-- C08: Test additional vague-attribution variants with named and quoted controls.
+- C08: Keep the listed exact vague-authority forms in #5.
 - C09: Evaluate a challenges-section structural composite with legitimate genre controls.
 - C10: Keep proper-noun list leads as a Wikipedia-specific manual candidate.
 - C11: Reinforce H24/H25 and dated metadata; add no standalone vocabulary item from this conduit.
@@ -187,7 +188,8 @@ The legacy card did not record a snapshot digest. Before replacement, the existi
 
 ## Evaluation of approved changes
 
-- C01-C43: not applicable - all recommendations remain pending, and no product change was authorised.
+- C08: passed - DR-15A asserts the previously missing `Industry reports` and `several sources/publications` forms; the other listed forms retain existing #5 coverage.
+- C01-C07 and C09-C43: not applicable - all other recommendations remain pending, and no other product change was authorised.
 
 ## Document review
 

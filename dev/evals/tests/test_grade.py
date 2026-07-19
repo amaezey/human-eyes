@@ -3294,6 +3294,26 @@ expect_fail(
     "DR-134B leaves the rejected #44 content-bearing control unchanged",
 )
 
+# --- DR-15A: remaining vague-attribution and research-boilerplate forms ---
+print("\n=== DR-15A vague-attribution and research-boilerplate forms ===")
+
+for phrase in (
+    "Industry reports support the claim.",
+    "Several sources support the claim.",
+    "Several publications support the claim.",
+    "Data proves the method works.",
+    "Studies have shown benefits.",
+):
+    expect_fail("no-vague-attributions", phrase,
+        f"DR-15A #5 exact attribution: {phrase}")
+
+for phrase in (
+    "This is an important area of research.",
+    "More research is needed.",
+):
+    expect_fail("no-filler-phrases", phrase,
+        f"DR-15A #22 exact research formula: {phrase}")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

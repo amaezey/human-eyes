@@ -84,6 +84,7 @@ The prior snapshot's bytes match commit `f28a370`; no digest was recorded in the
 
 - C13 approved 2026-07-18 via DR-125: #7 now recognises `commence`; the source's named `utilize` and `facilitate` candidates were already recognised.
 - C05 approved 2026-07-19 via DR-133: #24 now recognises the full `Despite ... challenges ... continues to thrive` formula.
+- C25 approved 2026-07-19 via DR-15 option A: #5 now recognises all three exact forms, including the previously missing `data proves`.
 
 ## Project coverage
 
@@ -115,7 +116,7 @@ This is the authoritative review table. “Covered” means the live project can
 | C22: AI over-explains concepts because it cannot infer audience knowledge. | Uncited mechanism claim with illustrative email/website examples. | `semantic_redundancy`, `genre_specific`, and H21 partly cover needless explanation. | Audience knowledge and brief context are required; no dedicated construct or rate exists. | Test-adapt as audience-relative redundancy under H21, never as authorship evidence. | pending | not started |
 | C23: AI list items are visually and syntactically symmetrical. | Uncited practitioner claim with no sample or metric. | `formulaic_parallelism`, `structural_monotony`, #14, #31, paragraph uniformity, and #38 partly cover adjacent structures. | No item-length/skeleton implementation; legitimate comparison tables/specs are controls. | Test-adapt with list-purpose and reference-format controls before any new measure. | pending | not started |
 | C24: AI lacks personal stakes even when using first person; Google values first-hand experience. | Vendor interpretation plus Google pointer; absence of stakes is not measured. | Not covered as a requirement; `faux_specificity` may question invented detail and process forbids adding unsupported experience. | Requiring `I`, loss, money, tenure, or emotion would fabricate facts and penalize impersonal genres. | Do not adopt as a generic check; preserve source-grounded experience when supplied and never invent it. | pending | not started |
-| C25: “Ghost citations” use unnamed authorities such as `studies show`, `experts agree`, and `data proves`. | Direct practitioner examples; no prevalence study. | `no-vague-attributions` (#5) and `genre_specific` academic/journalism checks, partly covered. Focused execution recognized `Experts agree` but not the exact `Studies show` or `Data proves` examples; the agent assessment still asks for source verification. | Candidate recognition is incomplete and does not prove AI use; some summary phrasing may be followed by a real citation. | Test-adapt the exact variants with named-source and nearby-citation controls; retain agent source verification. | pending | not started |
+| C25: “Ghost citations” use unnamed authorities such as `studies show`, `experts agree`, and `data proves`. | Direct practitioner examples; no prevalence study. | Fully covered for the three exact forms by #5 `no-vague-attributions`; the academic/journalism branch separately checks source support. | No remaining surface-form gap. | Keep all three exact forms in #5. | approved | implemented |
 | C26: The “nice-nice wrap” praises both options and avoids choosing. | Uncited practitioner template and causal RLHF interpretation. | `neutrality_collapse` and `no-false-concession-hedges`, fully covered at construct level. | Balanced conclusions can be correct; source supplies no original stance or decision criterion. | Retain contextual stance assessment; do not force a winner when evidence is genuinely mixed. | pending | not started |
 | C27: Raw code, bold, bullets, headings, and Markdown can leak into clean article prose. | Direct workflow-residue examples; no rate. | #13, #14, #31, #31a, #38, and #39 partly cover specific formatting/template residues. | Live checks do not generically flag every raw `*`, `#`, or bracket link and should not punish legitimate Markdown. | Test-adapt exact malformed-output cases; keep valid Markdown, specs, and quotations as controls. | pending | not started |
 | C28: Fix 1 removes filler and rewrites a hedged market sentence as a direct forecast. | Direct editing advice; the rewrite also removes uncertainty and may change evidential force. | #22 and process guidance fully cover filler removal while protecting qualified claims. | Source's example can turn a suggestion into certainty; closed-source preservation forbids that. | Adopt filler removal only when meaning is unchanged; explicitly reject qualification loss. | pending | not started |
@@ -165,7 +166,7 @@ This is the authoritative review table. “Covered” means the live project can
 - C22: Test audience-relative over-explanation under H21.
 - C23: Test list-item symmetry with comparison-table, spec, and reference controls.
 - C24: Do not require personal stakes; preserve supplied experience and never invent it.
-- C25: Test the exact vague-attribution variants with named-source and nearby-citation controls.
+- C25: Keep all three exact vague-attribution forms in #5.
 - C26: Retain contextual stance review; do not force a winner when evidence is mixed.
 - C27: Test malformed output residue while preserving legitimate Markdown and source quotations.
 - C28: Remove filler only when qualification and meaning remain unchanged.
@@ -195,7 +196,8 @@ This is the authoritative review table. “Covered” means the live project can
 - C16: passed - commit 340ea99 (DR-113) added sentence-opening `Certainly,` and offer-to-continue question patterns to #19 `no-collaborative-artifacts`; model attribution was not adopted; `python3 dev/evals/tests/test_grade.py` passes the DR-113 assertions on 2026-07-17.
 - C19: not applicable - rejected 2026-07-18 via DR-124; no generic professional-content personification rule was added.
 - C13: passed - DR-125 adds exact #7 recognition for `commence`; existing `utilize` and `facilitate` recognition is retained.
-- All other rows (C01-C04, C06-C12, C14-C15, C17-C18, C20-C47): not applicable - recommendations remain pending; no other checker, registry, test, hypothesis, guidance, or product behaviour changed.
+- C25: passed - DR-15A asserts that `Data proves` fails #5; `Studies show` and `Experts agree` retain their existing #5 coverage.
+- All other rows (C01-C04, C06-C12, C14-C15, C17-C18, C20-C24, C26-C47): not applicable - recommendations remain pending; no other checker, registry, test, hypothesis, guidance, or product behaviour changed.
 
 ## Document review
 

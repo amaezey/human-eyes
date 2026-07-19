@@ -531,6 +531,8 @@ FILLER_PHRASES = [
     r"from a broader perspective", r"through this lens",
     r"this underscores the importance of",
     r"\bthat said,", r"\bto be clear,", r"\bwith the caveat that\b",
+    r"\bthis is an important area of research\b",
+    r"\bmore research is needed\b",
 ]
 
 GENERIC_CONCLUSIONS = [
@@ -2684,14 +2686,15 @@ def check_notability_claims(text):
 
 
 VAGUE_ATTRIBUTIONS = [
-    r"\bindustry reports? (?:say|state|claim|note|suggest|indicate|highlight|reveal|show|find)\b",
+    r"\bindustry reports?(?: (?:say|state|claim|note|suggest|indicate|highlight|reveal|show|find))?\b",
     r"\bobservers? (?:have )?(?:cited|noted|argued|claimed|suggested|pointed out)\b",
     r"\bexperts? (?:argue|believe|say|note|suggest|claim|indicate|warn|caution|agree)\b",
     r"\b(?:some|many|several|various|certain|a number of) (?:critics?|analysts?|scholars?|researchers?|commentators?|observers?) (?:argue|believe|say|note|suggest|claim|warn|cite|point out)\b",
-    r"\bseveral (?:sources?|publications?|outlets?|reports?) (?:have )?(?:cited|noted|reported|claimed|confirmed)\b",
+    r"\bseveral (?:sources?|publications?|outlets?|reports?)(?: (?:have )?(?:cited|noted|reported|claimed|confirmed))?\b",
     r"\bit is (?:widely |often |frequently |commonly |generally )?(?:believed|argued|claimed|noted|reported|understood|accepted|acknowledged|recognised|recognized)\b",
-    r"\b(?:research|studies) (?:has|have)? ?(?:shown|demonstrated|indicated|suggested|found) that\b",
+    r"\b(?:research|studies) (?:has|have)? ?(?:shown|demonstrated|indicated|suggested|found)(?: that)?\b",
     r"\bstudies show(?: that)?\b",
+    r"\bdata proves\b",
 ]
 
 
