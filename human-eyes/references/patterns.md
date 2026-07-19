@@ -312,7 +312,7 @@ Substitutes elaborate constructions for simple "is", "are", or "has".
 
 ### 9. Negative parallelism
 
-Negative parallelism includes "not X but Y", "not just X, Y", positive-then-negative reversals, comparative reframes, and negation countdowns. It remains the same signal when split across two sentences, including "It's not X. It's Y." and "The target was never X. The target was Y."
+Negative parallelism includes "not X but Y", "not just X, Y", positive-then-negative reversals, comparative reframes, and negation countdowns. It remains the same signal when split across sentences, including "It's not X. It's Y.", "The target was never X. The target was Y.", and repeated negative clauses that turn affirmative.
 
 The Atlantic reported Pangram's estimate that the not-X-but-Y construction appears about three times as often in AI writing as in human writing. This is evidence that the construction is an AI-overrepresented signal. Source: https://www.theatlantic.com/technology/2026/07/ai-chatbot-writing-tic-negative-parallelism/687892/
 
@@ -330,6 +330,9 @@ Forms include:
 - "Beyond X, it is Y."
 - "You might think X. Actually, Y."
 - "No X. No Y. Just Z."
+- "I may not have X. I may not have Y. But I have Z."
+- The same repeated-negative reversal with `Yet`, `However`, `Still`, `Nevertheless`, `Nonetheless`, `Even so`, `That said`, `Instead`, `In contrast`, or `On the other hand`.
+- The same reversal without a connector when the affirmative turn is emphatic: "I do have Z", "What I have is Z", or "What I do have is Z".
 - "Stop thinking of it as X. Start thinking of it as Y."
 - "X isn't the future. Y is."
 - "X is dead. Y is what's next."
@@ -357,7 +360,7 @@ Forms include:
 
 **Severity:** strong_warning · `no-negative-parallelisms`
 
-**Detection:** Programmatic check `no-negative-parallelisms`. Runs at Balanced and All. Matches within a sentence and across two-sentence boundaries. One occurrence contributes 2 signal-stacking points; two contribute 3; three or more contribute 4. Overlapping regex matches on the same source span are deduplicated.
+**Detection:** Programmatic check `no-negative-parallelisms`. Runs at Balanced and All. Matches within a sentence and across sentence boundaries. A repeated-negative reversal requires at least two negative clauses with the same explicit subject followed by an explicit or emphatic affirmative turn with that subject; the whole frame counts once. One occurrence contributes 2 signal-stacking points; two contribute 3; three or more contribute 4. Overlapping regex matches on the same source span are deduplicated.
 
 
 ### 10. Rule of three

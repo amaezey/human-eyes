@@ -574,6 +574,57 @@ expect_fail("no-negative-parallelisms",
 expect_fail("no-negative-parallelisms",
     "Forget reach. Focus on retention.",
     "forget-X focus-on-Y reversal")
+_repeated_negative_reversals = (
+    "I may not have a husband. I may not have money. But I have love.",
+    "I cannot promise speed. I may not guarantee certainty. Yet I can deliver a tested result.",
+    "The team did not win the contract. The team never received the endorsement. "
+    "But the team changed the market.",
+)
+for phrase in _repeated_negative_reversals:
+    expect_fail("no-negative-parallelisms", phrase,
+        f"DR-19B repeated negative-to-affirmative reversal: {phrase}")
+_negative_reversal_prefix = "I may not have a husband. I may not have money. "
+for affirmative_turn in (
+    "However, I have love.",
+    "Still, I have love.",
+    "Nevertheless, I have love.",
+    "Nonetheless, I have love.",
+    "Even so, I have love.",
+    "That said, I have love.",
+    "Instead, I have love.",
+    "In contrast, I have love.",
+    "On the other hand, I have love.",
+    "I do have love.",
+    "What I have is love.",
+    "What I do have is love.",
+):
+    expect_fail(
+        "no-negative-parallelisms",
+        _negative_reversal_prefix + affirmative_turn,
+        f"DR-19B affirmative reversal variant: {affirmative_turn}",
+    )
+_source_reversal = ALL_CHECKS["no-negative-parallelisms"](
+    _repeated_negative_reversals[0]
+)
+if (
+    _source_reversal.get("candidate_count") != 1
+    or not _source_reversal.get("matches")
+    or "But I have love" not in _source_reversal["matches"][0]
+):
+    FAILURES += 1
+    print(
+        "FAIL: DR-19B should return the complete negative-to-affirmative frame "
+        f"as one candidate; got {_source_reversal}"
+    )
+else:
+    print("  ok: DR-19B returns the complete reversal as one candidate")
+for phrase in (
+    "I may not have a husband. But I have love.",
+    "I may not have a husband. I may not have money. But she has love.",
+    "I may not have a husband. I may not have money. I have love.",
+):
+    expect_pass("no-negative-parallelisms", phrase,
+        f"DR-19B incomplete reversal frame: {phrase}")
 expect_pass("no-negative-parallelisms",
     "The building was not damaged in the fire. It was inspected the following day.",
     "factual negation, not a reframing move")

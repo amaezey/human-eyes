@@ -1586,8 +1586,42 @@ def check_negative_parallelisms(text):
         r"(?P<np_subject>(?:the|her|his|our|your|their|good|customer)\s+"
         r"[A-Za-z][\w’'-]*(?:\s+[A-Za-z][\w’'-]*){0,2})"
     )
+    reversal_subject = (
+        r"(?P<reversal_subject>[A-Za-z][\w’'-]*"
+        r"(?:\s+[A-Za-z][\w’'-]*){0,3}?)"
+    )
+    reversal_negative_aux = (
+        rf"(?:(?:am|is|are|was|were|do|does|did|have|has|had|may|might|can|"
+        rf"could|will|would|shall|should|must|need)\s+(?:not|never)|"
+        rf"(?:ain|isn|aren|wasn|weren|don|doesn|didn|haven|hasn|hadn|mightn|"
+        rf"can|couldn|won|wouldn|shan|shouldn|mustn|needn){apo}t|cannot|never)"
+    )
+    reversal_connector = (
+        r"(?:but|yet|however|still|nevertheless|nonetheless|even\s+so|"
+        r"that\s+said|instead|in\s+contrast|on\s+the\s+other\s+hand)"
+    )
+    reversal_clause_boundary = r"[;.!?]\s*[\"'”’*_`)\]]*\s*"
+    repeated_negative_reversal = (
+        rf"(?:^|(?<=[.!?;]))\s*[\"'“‘*_`(\[]*"
+        rf"{reversal_subject}\s+{reversal_negative_aux}\s+[^;.!?\n]{{1,120}}"
+        rf"{reversal_clause_boundary}"
+        rf"(?:(?P=reversal_subject)\s+{reversal_negative_aux}\s+"
+        rf"[^;.!?\n]{{1,120}}{reversal_clause_boundary})+"
+        rf"(?:"
+        rf"{reversal_connector}\s*,?\s*(?P=reversal_subject)\s+"
+        rf"(?!{reversal_negative_aux}\b)[^;.!?\n]{{1,120}}"
+        rf"|(?P=reversal_subject)\s+(?:do|does|did)\s+(?!not\b)"
+        rf"[^;.!?\n]{{1,120}}"
+        rf"|what\s+(?P=reversal_subject)\s+(?:(?:do|does|did)\s+)?"
+        rf"have\s+is\s+[^;.!?\n]{{1,120}}"
+        rf")(?:[;.!?]|$)"
+    )
 
     hard_patterns = [
+        # DR-19B: repeated same-subject negative clauses followed by an
+        # explicit or emphatic affirmative reversal. The complete frame is
+        # one candidate regardless of how many negative clauses it contains.
+        repeated_negative_reversal,
         # DR-135A: source-defined X-to-Y reversal templates used in social
         # posts. These are the same structural move as the existing negative-
         # positive family even when the first clause uses an imperative or a
