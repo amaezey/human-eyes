@@ -122,6 +122,8 @@ DR-21D is implemented. Mae approved programmatic #4 detection for the source's t
 
 DR-22A is implemented. Mae approved the two remaining deterministic Wikipedia catalogue families together. Programmatic #1 now recognises generic debate/discussion/reflection, broader-history, and enduring/lasting/ongoing impact frames. Programmatic #2 now recognises source-type publications/outlets, `profiled in`, and prestige-tier media-outlet forms. Both retain their existing one-match failure condition and severity. DR-22's contextual Wikipedia questions remain pending for the agent-judgement phase.
 
+DR-22 is closed. Mae rejected the consolidated Wikipedia agent-judgement branch covering promotional register mismatch, challenges-section arcs, list-title entities, unnecessary tables, comments, edit summaries, and platform-page composites. `genre_specific` remains unchanged. The source's positive/ineffective-indicator proposals make no Audit change because they do not identify a writing problem.
+
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Current counts after DR-17: 95 open, 57 decided, 3 pos-dependent-pattern (POS-01, POS-02, DR-144 wait on Mae's tagger).
 
 Continue in the fixed significance order: remaining broad programmatic coverage, narrow programmatic phrase/glyph variants, agent-judgement branches, product-unlocking evaluations, then documentation, provenance, caveats, citation mappings, and source-record-only rows. Recompute only when a ruling changes dependencies. A like-for-like social/chat corpus for any future emoji rerun is noted in the DR-116 record but not queued.
