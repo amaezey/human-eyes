@@ -92,6 +92,7 @@ Vollmer introduces an anecdote about a prize-winning student poem, explicitly sa
 - The source body is substantively unchanged. This refresh archives the exact prior snapshot, adds stable Substack identifiers and direct HTML preservation, distinguishes Vollmer from the Claude-generated guide, records the complete claim and limit inventory, and reopens every recommendation as `pending` / `not started`.
 
 - C04 approved 2026-07-18 via DR-125: #7 now recognises the missing list entries `leverage`, `elevate`, standalone `align`, `dive into`, `surpass`, and `cacophony`.
+- C14 combined programmatic proposal rejected 2026-07-19 via DR-21A: no automatic warning was added for 300+ prose words with zero contractions and at least three Oxford-comma lists. The exact thresholds were project proposals rather than measurements supplied by this source. C14's separate contextual-distribution question remains pending for the later agent-judgement phase.
 
 ## Project coverage
 
@@ -176,7 +177,7 @@ This is the authoritative review table. Every recommendation is a pending decisi
 - C11: not applicable - pending source-record recommendation; no product change implemented.
 - C12: not applicable - pending source-record recommendation; no product change implemented.
 - C13: not applicable - pending source-record recommendation; no product change implemented.
-- C14: not applicable - pending source-record recommendation; no product change implemented.
+- C14: not applicable - DR-21A rejected the combined automatic zero-contractions/Oxford-list warning; no checker or test change was made. The separate contextual-distribution question remains pending.
 - C15: not applicable - pending source-record recommendation; no product change implemented.
 - C16: not applicable - pending source-record recommendation; no product change implemented.
 - C17: not applicable - pending source-record recommendation; no product change implemented.
