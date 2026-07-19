@@ -487,6 +487,8 @@ PROMOTIONAL = [
 PROMOTIONAL_PATTERNS = [
     r"\bone of the best\b(?!-)",
     r"\bthere are so many possibilities\b",
+    r"\b(?:every|each)\s+(?:challenge|obstacle|setback|problem|difficulty)\s+(?:is|becomes?)\s+(?:an?\s+)?(?:opportunity|lesson|chance)\b",
+    r"\b(?:every|each)\s+(?:problem|challenge|setback|difficulty)\s+has\s+(?:a\s+)?silver\s+lining\b",
     r"\bfaster and more responsive\b",
     r"\bquicker (?:page )?load(?:ing|s?)\b",
     r"\buses? (?:memory|resources?) more efficiently\b",

@@ -86,6 +86,7 @@ The prior snapshot's bytes match commit `f28a370`; no digest was recorded in the
 - C05 approved 2026-07-19 via DR-133: #24 now recognises the full `Despite ... challenges ... continues to thrive` formula.
 - C25 approved 2026-07-19 via DR-15 option A: #5 now recognises all three exact forms, including the previously missing `data proves`.
 - C17 approved 2026-07-19 via DR-18 option A: #3 now recognises the tested sentence-opening participial-clause structure programmatically.
+- C21 partly approved 2026-07-20 via DR-21D: #4 now recognises the source's `Every/Each ... is/becomes ... opportunity/lesson/chance` and `Every/Each ... has a silver lining` formula families; broader positive-tone judgement remains pending for the later agent phase.
 
 ## Project coverage
 
@@ -113,7 +114,7 @@ This is the authoritative review table. “Covered” means the live project can
 | C18: Repeated `From X to Y` constructions create false comprehensiveness. | Uncited practitioner claim with three examples and a once/article human-use assertion. | Manual #12 false ranges fully covers the semantic construction; no programmatic check. | Some ranges are real and informative; source's occurrence limit is unsupported. | Keep manual contextual treatment; do not implement an occurrence threshold without endpoint and genre controls. | pending | not started |
 | C19: Personifying data, tools, and markets is a steady AI tell in professional content. | Uncited universal vendor claim with three examples. | `generic_metaphors` can assess ungrounded figures; #45 covers only land/surface metaphors; partly covered. | The proposed generic personification addition was rejected. | Do not add a generic professional-content personification rule. | rejected | not applicable |
 | C20: AI text lacks subtext, irony, mood, and “between the lines” meaning. | Uncited broad interpretation spanning fiction and advertising. | `genre_specific` fiction watchlist and StoryScope pending candidates are partly covered; no generic absence detector. | Absence is hard to bind to a span; many factual genres appropriately lack subtext. | Do not adopt globally; leave as a fiction-specific research question with genre controls. | pending | not started |
-| C21: AI defaults to relentlessly positive motivational-poster tone. | Uncited vendor claim plus one Reddit example; RLHF causal claim untested. | `tonal_uniformity`, `no-promotional-language` (#4), `no-generic-conclusions` (#24), and assistant residue are partly covered. | Existing checks target specific forms, not optimism; legitimate encouragement and brand voice are controls. | Test-adapt only as register- and genre-aware tone evaluation; no optimism blacklist. | pending | not started |
+| C21: AI defaults to relentlessly positive motivational-poster tone. | Uncited vendor claim with exact formula examples plus one Reddit example; RLHF causal claim untested. | #4 now recognises the two source-derived formula families: `Every/Each ... is/becomes ... opportunity/lesson/chance` and `Every/Each ... has a silver lining`; `tonal_uniformity`, #24, and assistant residue remain adjacent. | The exact surface formulas are implemented. Broader positive tone is not reducible to those forms and remains a separate later judgement question. | Keep the approved formula matchers in #4; consider broader register- and genre-aware tone only in the agent-judgement phase. | pending | not started |
 | C22: AI over-explains concepts because it cannot infer audience knowledge. | Uncited mechanism claim with illustrative email/website examples. | `semantic_redundancy`, `genre_specific`, and H21 partly cover needless explanation. | Audience knowledge and brief context are required; no dedicated construct or rate exists. | Test-adapt as audience-relative redundancy under H21, never as authorship evidence. | pending | not started |
 | C23: AI list items are visually and syntactically symmetrical. | Uncited practitioner claim with no sample or metric. | `formulaic_parallelism`, `structural_monotony`, #14, #31, paragraph uniformity, and #38 partly cover adjacent structures. | No item-length/skeleton implementation; legitimate comparison tables/specs are controls. | Test-adapt with list-purpose and reference-format controls before any new measure. | pending | not started |
 | C24: AI lacks personal stakes even when using first person; Google values first-hand experience. | Vendor interpretation plus Google pointer; absence of stakes is not measured. | Not covered as a requirement; `faux_specificity` may question invented detail and process forbids adding unsupported experience. | Requiring `I`, loss, money, tenure, or emotion would fabricate facts and penalize impersonal genres. | Do not adopt as a generic check; preserve source-grounded experience when supplied and never invent it. | pending | not started |
@@ -163,7 +164,7 @@ This is the authoritative review table. “Covered” means the live project can
 - C18: Keep false ranges manual and contextual; do not add an occurrence threshold.
 - C19: Do not adopt a personification rule; assess whether metaphors name a concrete property.
 - C20: Keep subtext as a fiction-specific research question, not a generic requirement.
-- C21: Test tone only with register and legitimate-encouragement controls.
+- C21: Keep the two approved motivational-formula families in #4; consider broader tone only in the later agent-judgement phase.
 - C22: Test audience-relative over-explanation under H21.
 - C23: Test list-item symmetry with comparison-table, spec, and reference controls.
 - C24: Do not require personal stakes; preserve supplied experience and never invent it.
@@ -200,8 +201,9 @@ This is the authoritative review table. “Covered” means the live project can
 - C13: passed - DR-125 adds exact #7 recognition for `commence`; existing `utilize` and `facilitate` recognition is retained.
 - C25: passed - DR-15A asserts that `Data proves` fails #5; `Studies show` and `Experts agree` retain their existing #5 coverage.
 - C17: passed - DR-18B asserts the approved opening-participial structure and its finite-verb, `According`, and `During` exclusions.
+- C21: passed for the DR-21D programmatic subset - focused assertions cover five approved formula variants plus ordinary challenge/opportunity wording and literal silver-lining boundaries; broader positive-tone judgement remains pending.
 - C07, C31, and C33: not applicable - rejected 2026-07-19 via DR-17; #44 and #47 remain unchanged.
-- All other rows (C01-C04, C08-C12, C14-C15, C18, C20-C24, C26-C30, C32, C34-C47): not applicable - recommendations remain pending; no other checker, registry, test, hypothesis, guidance, or product behaviour changed.
+- All other rows (C01-C04, C08-C12, C14-C15, C18, C20, C22-C24, C26-C30, C32, C34-C47): not applicable - recommendations remain pending; no other checker, registry, test, hypothesis, guidance, or product behaviour changed.
 
 ## Document review
 

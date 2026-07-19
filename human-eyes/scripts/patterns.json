@@ -700,7 +700,7 @@
   "no-promotional-language": {
     "category": "Content patterns",
     "short_name": "Generic promotional language",
-    "description": "Checks for stock hype and sales-like adjectives.",
+    "description": "Checks for stock hype, sales-like adjectives, and motivational-poster formulas.",
     "why_it_matters": "Stock hype weakens credibility and often appears in generated product or venue copy.",
     "severity": "context_warning",
     "failure_modes": [
@@ -711,7 +711,7 @@
     "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm.",
     "pattern_number": "4",
     "patterns_md_heading": "Promotional language",
-    "patterns_md_body": "**Words to watch:** boasts a, vibrant, rich (figurative), profound, enhancing its, showcasing, exemplifies, commitment to, natural beauty, nestled, in the heart of, groundbreaking (figurative), renowned, breathtaking, must-visit, stunning\n\nReads like tourism marketing rather than description.\n\n**Before:**\n> Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and stunning natural beauty.\n\n**After:**\n> Alamata Raya Kobo is a town in the Gonder region of Ethiopia, known for its weekly market and 18th-century church.\n\n**Additional marketing formulas:** \"game-changer\", \"unlock your true potential\", \"unstoppable\", \"cutting-edge\", \"groundbreaking\", \"unprecedented\", \"one of the best\", and \"there are so many possibilities\".\n\n**Severity:** context_warning · `no-promotional-language`",
+    "patterns_md_body": "**Words to watch:** boasts a, vibrant, rich (figurative), profound, enhancing its, showcasing, exemplifies, commitment to, natural beauty, nestled, in the heart of, groundbreaking (figurative), renowned, breathtaking, must-visit, stunning\n\nReads like tourism marketing rather than description.\n\n**Before:**\n> Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and stunning natural beauty.\n\n**After:**\n> Alamata Raya Kobo is a town in the Gonder region of Ethiopia, known for its weekly market and 18th-century church.\n\n**Additional marketing formulas:** \"game-changer\", \"unlock your true potential\", \"unstoppable\", \"cutting-edge\", \"groundbreaking\", \"unprecedented\", \"one of the best\", and \"there are so many possibilities\". The check also catches motivational reversals such as \"Every challenge is an opportunity\", \"Each setback becomes a lesson\", and \"Every problem has a silver lining\".\n\n**Severity:** context_warning · `no-promotional-language`",
     "patterns_md_leading_blanks": 2
   },
   "no-quietness-obsession": {

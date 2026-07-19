@@ -483,9 +483,24 @@ expect_fail("no-promotional-language",
 expect_fail("no-promotional-language",
     "There are so many possibilities for the project.",
     "DR-100 exact so-many-possibilities promotional formula")
+for phrase in (
+    "Every challenge is an opportunity.",
+    "Each setback becomes a lesson.",
+    "Every difficulty is a chance.",
+    "Every problem has a silver lining.",
+    "Each challenge has a silver lining.",
+):
+    expect_fail("no-promotional-language", phrase,
+        f"DR-21D motivational-poster formula: {phrase}")
 expect_pass("no-promotional-language",
     "It is one of the best-known examples in the archive.",
     "hyphenated best-known phrase is not the approved formula")
+expect_pass("no-promotional-language",
+    "The team treated the challenge as an opportunity to revise the plan.",
+    "ordinary challenge and opportunity wording outside the formula")
+expect_pass("no-promotional-language",
+    "The report describes the silver lining around the storm cloud.",
+    "literal silver-lining discussion outside the formula")
 expect_pass("no-promotional-language",
     "The hotel is on a quiet street near the old quarter.",
     "neutral description")

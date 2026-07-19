@@ -115,7 +115,7 @@ Reads like tourism marketing rather than description.
 **After:**
 > Alamata Raya Kobo is a town in the Gonder region of Ethiopia, known for its weekly market and 18th-century church.
 
-**Additional marketing formulas:** "game-changer", "unlock your true potential", "unstoppable", "cutting-edge", "groundbreaking", "unprecedented", "one of the best", and "there are so many possibilities".
+**Additional marketing formulas:** "game-changer", "unlock your true potential", "unstoppable", "cutting-edge", "groundbreaking", "unprecedented", "one of the best", and "there are so many possibilities". The check also catches motivational reversals such as "Every challenge is an opportunity", "Each setback becomes a lesson", and "Every problem has a silver lining".
 
 **Severity:** context_warning · `no-promotional-language`
 
