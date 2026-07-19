@@ -2121,15 +2121,16 @@ def check_unicode_flair(text):
     that cluster in headings or bullet points.
     """
     symbols = re.findall(
-        r"[✓✔✕✖★☆◆◇→⇒➜➤•●○◦※✨⭐✅❌🔥🚀⚡➡♻]"
+        r"[✓✔✕✖×★☆◆◇→⇒➜➤•●○◦※✨⭐✅❌🔥🚀⚡➡♻]"
         r"|[\U0001F300-\U0001F9FF\U0001FA00-\U0001FAFF]",
         text,
     )
+    styled_runs = re.findall(r"[\U0001D400-\U0001D7FF]+", text)
     shortcodes = re.findall(
         r"(?<![A-Za-z0-9]):[a-z][a-z0-9_]{2,}:(?![A-Za-z0-9])",
         text,
     )
-    findings = symbols + shortcodes
+    findings = symbols + styled_runs + shortcodes
     return {
         "text": "no-unicode-flair",
         "passed": len(findings) < threshold_value("no-unicode-flair", "minimum_candidates", 2),
@@ -2671,8 +2672,34 @@ HEDGING_PATTERNS = [
 
 
 def check_section_scaffolding(text):
-    """Detect repeated identical subheadings across sections (pattern 38)."""
-    lines = text.split('\n')
+    """Detect repeated labels and mechanical heading structure (pattern 38)."""
+    lines = strip_front_matter(text).split('\n')
+    heading_pattern = re.compile(r"^\s*(#{1,6})\s+\S")
+    thematic_break_pattern = re.compile(r"^\s*(?:-{3,}|\*{3,}|_{3,})\s*$")
+    headings = []
+    structural_matches = []
+    for line_number, line in enumerate(lines):
+        heading = heading_pattern.match(line)
+        if not heading:
+            continue
+        level = len(heading.group(1))
+        headings.append((line_number, level, line.strip()))
+
+        previous_line = line_number - 1
+        while previous_line >= 0 and not lines[previous_line].strip():
+            previous_line -= 1
+        if (previous_line >= 0
+                and thematic_break_pattern.fullmatch(lines[previous_line])):
+            structural_matches.append(
+                "\n".join(lines[previous_line:line_number + 1])
+            )
+
+    if headings and headings[0][1] > 2:
+        structural_matches.append(headings[0][2])
+    for previous, current in zip(headings, headings[1:]):
+        if current[1] > previous[1] + 1:
+            structural_matches.append(current[2])
+
     counts = {}
     for line in lines:
         stripped = line.strip()
@@ -2687,23 +2714,31 @@ def check_section_scaffolding(text):
             counts[normalised] = counts.get(normalised, 0) + 1
     # Flag if any normalised line appears 3+ times
     repeated = {label: n for label, n in counts.items() if n >= 3}
-    if repeated:
-        worst = max(repeated, key=repeated.get)
-        # Re-find the verbatim label in the original text (case preserved).
+    if repeated or structural_matches:
         verbatim = []
-        seen = set()
-        for label_lc in sorted(repeated, key=lambda k: -repeated[k]):
-            for line in lines:
-                stripped = re.sub(r'^#+\s*', '', line.strip()).strip()
-                if stripped.lower() == label_lc and stripped not in seen:
-                    seen.add(stripped)
-                    verbatim.append(stripped)
-                    break
+        if repeated:
+            worst = max(repeated, key=repeated.get)
+            # Re-find the verbatim label in the original text (case preserved).
+            seen = set()
+            for label_lc in sorted(repeated, key=lambda k: -repeated[k]):
+                for line in lines:
+                    stripped = re.sub(r'^#+\s*', '', line.strip()).strip()
+                    if stripped.lower() == label_lc and stripped not in seen:
+                        seen.add(stripped)
+                        verbatim.append(stripped)
+                        break
+        evidence_parts = []
+        if repeated:
+            evidence_parts.append(f"'{worst}' repeated {repeated[worst]} times")
+        if structural_matches:
+            evidence_parts.append(
+                f"{len(structural_matches)} heading-structure issue(s)"
+            )
         return {
             "text": "no-section-scaffolding",
             "passed": False,
-            "matches": verbatim,
-            "evidence": f"'{worst}' repeated {repeated[worst]} times",
+            "matches": verbatim + structural_matches,
+            "evidence": "; ".join(evidence_parts),
         }
     return {
         "text": "no-section-scaffolding",
@@ -2878,7 +2913,8 @@ def check_boldface_overuse(text):
 def check_inline_header_lists(text):
     """Detect list items that start with a bolded header and colon (pattern 14)."""
     header_in_list = re.compile(
-        r"^\s*(?:[-*+•]|\d+\.)\s+\*\*[^*\n]{1,60}:\*\*",
+        r"^\s*(?:[-*+•◦▪▫‣⁃●○]|\d+[.)])\s+"
+        r"\*\*[^*\n]{1,60}?(?::\*\*|\*\*:)",
         re.MULTILINE,
     )
     matches = header_in_list.findall(text)

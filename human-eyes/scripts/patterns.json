@@ -508,7 +508,7 @@
     "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list.",
     "pattern_number": "14",
     "patterns_md_heading": "Inline-header lists",
-    "patterns_md_body": "List items start with bolded headers followed by colons, turning prose into a slide deck.\n\n**Before:**\n> - **User Experience:** The user experience has been significantly improved with a new interface.\n> - **Performance:** Performance has been enhanced through optimised algorithms.\n> - **Security:** Security has been strengthened with end-to-end encryption.\n\n**After:**\n> The update improves the interface, speeds up load times through optimised algorithms, and adds end-to-end encryption.\n\n**Severity:** strong_warning · `no-inline-header-lists`\n\n**Detection:** Programmatic check `no-inline-header-lists`. Flags two or more list items beginning with a bolded header and colon.",
+    "patterns_md_body": "List items start with bolded headers followed by colons, turning prose into a slide deck.\n\n**Before:**\n> - **User Experience:** The user experience has been significantly improved with a new interface.\n> - **Performance:** Performance has been enhanced through optimised algorithms.\n> - **Security:** Security has been strengthened with end-to-end encryption.\n\n**After:**\n> The update improves the interface, speeds up load times through optimised algorithms, and adds end-to-end encryption.\n\n**Severity:** strong_warning · `no-inline-header-lists`\n\n**Detection:** Programmatic check `no-inline-header-lists`. Flags two or more list items beginning with a bolded header and colon. The colon may sit inside or immediately after the bold span; list markers include Markdown bullets, common Unicode bullets, `1.`, and `1)` numbering.",
     "patterns_md_leading_blanks": 2
   },
   "no-knowledge-cutoff-disclaimers": {
@@ -767,9 +767,9 @@
   },
   "no-section-scaffolding": {
     "category": "Structural tells",
-    "short_name": "Repeated section scaffolding",
-    "description": "Checks for repeated section labels or repeated structural templates.",
-    "why_it_matters": "Repeated section structure makes the whole piece feel assembled from a template.",
+    "short_name": "Section scaffolding",
+    "description": "Checks for repeated section labels, skipped heading levels, and thematic breaks immediately before headings.",
+    "why_it_matters": "Mechanical section structure can make a piece feel assembled from a template.",
     "severity": "strong_warning",
     "failure_modes": [
       "frictionless_structure"
@@ -778,7 +778,7 @@
     "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material.",
     "pattern_number": "38",
     "patterns_md_heading": "Section scaffolding",
-    "patterns_md_body": "**Words to watch:** Identical subheadings repeated across sections (\"How to make this work:\", \"Key takeaways:\", \"Why this matters:\")\n\nAI-generated articles with numbered sections often repeat the same structural label in each section, creating a cookie-cutter template. The repetition itself is the tell — human writers vary their section structure and rarely use identical action labels across multiple sections.\n\n**Before:**\n> 1. Build trust early\n> How to make this work:\n> Start with small wins...\n>\n> 2. Communicate clearly\n> How to make this work:\n> Hold regular standups...\n>\n> 3. Measure outcomes\n> How to make this work:\n> Define success metrics...\n\n**After:**\n> 1. Build trust early\n> Start with small wins and let the team see results before asking for bigger commitments...\n>\n> 2. Communicate clearly\n> The teams that got this right held short daily standups, but the format mattered less than consistency...\n>\n> 3. Measure outcomes\n> We learned the hard way that vanity metrics kill momentum. Define what actually matters before you start tracking anything.\n\n**Severity:** strong_warning · `no-section-scaffolding`",
+    "patterns_md_body": "**Structures to watch:** Identical short section labels repeated three or more times; a document whose first Markdown heading starts below level 2; a later heading that jumps more than one level deeper; or a thematic break (`---`, `***`, or `___`) immediately before a heading. YAML frontmatter delimiters are excluded.\n\nThese repeated or mechanically skipped structures can create a cookie-cutter template.\n\n**Before:**\n> 1. Build trust early\n> How to make this work:\n> Start with small wins...\n>\n> 2. Communicate clearly\n> How to make this work:\n> Hold regular standups...\n>\n> 3. Measure outcomes\n> How to make this work:\n> Define success metrics...\n\n**After:**\n> 1. Build trust early\n> Start with small wins and let the team see results before asking for bigger commitments...\n>\n> 2. Communicate clearly\n> The teams that got this right held short daily standups, but the format mattered less than consistency...\n>\n> 3. Measure outcomes\n> We learned the hard way that vanity metrics kill momentum. Define what actually matters before you start tracking anything.\n\n**Severity:** strong_warning · `no-section-scaffolding`",
     "patterns_md_leading_blanks": 1
   },
   "no-heading-one-liners": {
@@ -936,8 +936,8 @@
   "no-unicode-flair": {
     "category": "Structural tells",
     "short_name": "Decorative Unicode",
-    "description": "Checks for symbols and decorative punctuation that look like generated formatting.",
-    "why_it_matters": "Decorative symbols can make output look like generated formatting.",
+    "description": "Checks for decorative symbols, stylized Unicode letter runs, emoji, and emoji shortcodes.",
+    "why_it_matters": "Decorative symbols and imitation bold or italic characters can make formatting feel pasted or automatic.",
     "severity": "context_warning",
     "failure_modes": [
       "provenance_residue",
@@ -947,7 +947,7 @@
     "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source.",
     "pattern_number": "31a",
     "patterns_md_heading": "Unicode flair",
-    "patterns_md_body": "**Words/symbols to watch:** arrows, checkmarks, stars, ornamental bullets, emoji-style symbols in prose or professional content.\n\nDecorative Unicode makes prose look like a generated checklist or social post. Remove it unless the symbols are part of a real UI, quoted material, or an actual checklist whose visual form matters.\n\n**Severity:** context_warning · `no-unicode-flair`",
+    "patterns_md_body": "**Words/symbols to watch:** arrows, checkmarks, stars, ornamental bullets, emoji-style symbols, `×`, and stylized Unicode letter runs such as `𝗯𝗼𝗹𝗱` or `𝘪𝘵𝘢𝘭𝘪𝘤`. Ordinary Markdown bold and italics are not included.\n\nDecorative Unicode can make prose read like a generated checklist or social post. Each contiguous stylized-letter run counts as one candidate; the check warns at two candidates.\n\n**Severity:** context_warning · `no-unicode-flair`",
     "patterns_md_leading_blanks": 1
   },
   "no-vague-attributions": {

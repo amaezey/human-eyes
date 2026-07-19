@@ -962,6 +962,18 @@ print("\n=== no-unicode-flair ===")
 expect_fail("no-unicode-flair",
     "Next steps → draft the plan ✓ review the risks ★ ship the update.",
     "decorative Unicode symbols")
+expect_fail("no-unicode-flair",
+    "Use 𝗯𝗼𝗹𝗱 for the title and 𝘪𝘵𝘢𝘭𝘪𝘤 for the subtitle.",
+    "two contiguous stylized-Unicode runs")
+expect_fail("no-unicode-flair",
+    "Use 𝗯𝗼𝗹𝗱 for the title and practise 5 minutes × day.",
+    "one stylized-Unicode run plus a multiplication sign")
+expect_pass("no-unicode-flair",
+    "Use 𝗯𝗼𝗹𝗱 for the title.",
+    "one stylized word counts as one candidate, not one per letter")
+expect_pass("no-unicode-flair",
+    "Use **bold** for the title and *italic* for the subtitle.",
+    "ordinary Markdown bold and italics are not Unicode flair")
 expect_pass("no-unicode-flair",
     "Next steps: draft the plan, review the risks, and ship the update.",
     "plain punctuation")
@@ -1316,6 +1328,21 @@ expect_pass("no-section-scaffolding",
 expect_fail("no-section-scaffolding",
     "### How to apply:\nContent.\n\n### How to apply:\nContent.\n\nHow to apply:\nContent.",
     "markdown heading stripped, matches plain version")
+expect_fail("no-section-scaffolding",
+    "### First section\nContent.",
+    "first Markdown heading starts below level 2")
+expect_fail("no-section-scaffolding",
+    "## Parent section\nContent.\n\n#### Skipped child level\nMore content.",
+    "later Markdown heading skips a level")
+expect_fail("no-section-scaffolding",
+    "## First section\nContent.\n\n----\n\n## Second section\nMore content.",
+    "thematic break immediately precedes a Markdown heading")
+expect_pass("no-section-scaffolding",
+    "## Parent section\nContent.\n\n### Child section\nMore content.\n\n## Next section\nDone.",
+    "heading hierarchy changes one level at a time")
+expect_pass("no-section-scaffolding",
+    "---\ntitle: Example document\n---\n# Example document\nContent.",
+    "YAML frontmatter delimiter before a title is not a thematic break")
 
 
 # --- no-notability-claims (pattern 2) ---
@@ -1390,6 +1417,18 @@ expect_fail("no-inline-header-lists",
 expect_fail("no-inline-header-lists",
     "1. **First step:** Do this thing.\n2. **Second step:** Do that thing.",
     "two bolded-header numbered items")
+expect_fail("no-inline-header-lists",
+    "- **First step**: Do this thing.\n- **Second step**: Do that thing.",
+    "colon appears after the closing bold marker")
+expect_fail("no-inline-header-lists",
+    "1) **First step:** Do this thing.\n2) **Second step:** Do that thing.",
+    "numbered items use a closing parenthesis")
+expect_fail("no-inline-header-lists",
+    "‣ **First step:** Do this thing.\n◦ **Second step:** Do that thing.",
+    "items use Unicode bullet markers")
+expect_fail("no-inline-header-lists",
+    "- **Time: Cost:** Compare both.\n- **Risk: Impact:** Compare both.",
+    "existing labels may contain an internal colon")
 expect_pass("no-inline-header-lists",
     "The update improves the interface, speeds up load times through optimised algorithms, and adds end-to-end encryption.",
     "patterns.md After — flowing prose")

@@ -474,7 +474,7 @@ List items start with bolded headers followed by colons, turning prose into a sl
 
 **Severity:** strong_warning · `no-inline-header-lists`
 
-**Detection:** Programmatic check `no-inline-header-lists`. Flags two or more list items beginning with a bolded header and colon.
+**Detection:** Programmatic check `no-inline-header-lists`. Flags two or more list items beginning with a bolded header and colon. The colon may sit inside or immediately after the bold span; list markers include Markdown bullets, common Unicode bullets, `1.`, and `1)` numbering.
 
 
 ### 15. Title case in headings
@@ -914,9 +914,9 @@ When you encounter unnecessary bullet points or numbered lists, fold the content
 
 ### 31a. Unicode flair
 
-**Words/symbols to watch:** arrows, checkmarks, stars, ornamental bullets, emoji-style symbols in prose or professional content.
+**Words/symbols to watch:** arrows, checkmarks, stars, ornamental bullets, emoji-style symbols, `×`, and stylized Unicode letter runs such as `𝗯𝗼𝗹𝗱` or `𝘪𝘵𝘢𝘭𝘪𝘤`. Ordinary Markdown bold and italics are not included.
 
-Decorative Unicode makes prose look like a generated checklist or social post. Remove it unless the symbols are part of a real UI, quoted material, or an actual checklist whose visual form matters.
+Decorative Unicode can make prose read like a generated checklist or social post. Each contiguous stylized-letter run counts as one candidate; the check warns at two candidates.
 
 **Severity:** context_warning · `no-unicode-flair`
 
@@ -941,9 +941,9 @@ Standalone sentences that claim a narrative turning point without earning it. Th
 
 ### 38. Section scaffolding
 
-**Words to watch:** Identical subheadings repeated across sections ("How to make this work:", "Key takeaways:", "Why this matters:")
+**Structures to watch:** Identical short section labels repeated three or more times; a document whose first Markdown heading starts below level 2; a later heading that jumps more than one level deeper; or a thematic break (`---`, `***`, or `___`) immediately before a heading. YAML frontmatter delimiters are excluded.
 
-AI-generated articles with numbered sections often repeat the same structural label in each section, creating a cookie-cutter template. The repetition itself is the tell — human writers vary their section structure and rarely use identical action labels across multiple sections.
+These repeated or mechanically skipped structures can create a cookie-cutter template.
 
 **Before:**
 > 1. Build trust early
