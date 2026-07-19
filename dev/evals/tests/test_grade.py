@@ -524,6 +524,15 @@ expect_fail("no-significance-inflation",
 expect_fail("no-significance-inflation",
     "The review emphasises the importance of clear ownership.",
     "British emphasises the importance of")
+for phrase in (
+    "The phenomenon generated debate about authenticity and consent.",
+    "These works shaped emerging policy discussions about ownership.",
+    "The project contributes to the broader history of aviation.",
+    "The studies demonstrate ongoing relevance and lasting influence.",
+    "The policy had enduring impacts on the region.",
+):
+    expect_fail("no-significance-inflation", phrase,
+        f"DR-22A significance formula: {phrase}")
 expect_pass("no-significance-inflation",
     "The policy was introduced in 2019 and applied to three regions.",
     "plain factual")
@@ -1437,6 +1446,14 @@ expect_fail("no-notability-claims",
 expect_fail("no-notability-claims",
     "The artist's work has received independent coverage from regional media outlets across the country.",
     "independent coverage + regional media outlets")
+for phrase in (
+    "The company was covered in trade publications.",
+    "The artist was profiled in Vogue.",
+    "The launch appeared in music and tech outlets.",
+    "Her insights appeared in other prominent media outlets.",
+):
+    expect_fail("no-notability-claims", phrase,
+        f"DR-22A notability formula: {phrase}")
 expect_pass("no-notability-claims",
     "In a 2024 New York Times interview, she argued that AI regulation should focus on outcomes rather than methods.",
     "named source + specific date and claim")

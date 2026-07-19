@@ -62,7 +62,7 @@ Inflates importance by claiming things "represent" or "contribute to" broader tr
 **After:**
 > The Statistical Institute of Catalonia was established in 1989 to collect and publish regional statistics independently from Spain's national statistics office.
 
-**Additional frame:** "If you're still [X], you're already behind".
+**Additional frames:** "generated debate about", "shaped emerging policy discussions about", "contributes to the broader history", "ongoing relevance", "lasting influence", "enduring impact", and "If you're still [X], you're already behind".
 
 **Severity:** context_warning · `no-significance-inflation`
 
@@ -71,7 +71,7 @@ Inflates importance by claiming things "represent" or "contribute to" broader tr
 
 ### 2. Notability claims
 
-**Words to watch:** independent coverage, local/regional/national media outlets, written by a leading expert, active social media presence
+**Words to watch:** independent coverage, local/regional/national media outlets, trade/industry/music/business/tech/specialist publications or outlets, profiled in, prominent/respected/major media outlets, written by a leading expert, active social media presence
 
 Asserts notability by listing sources without context, as though the mention itself is the story.
 

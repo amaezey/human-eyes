@@ -509,6 +509,9 @@ SIGNIFICANCE_EMPHASIS_FRAMES = [
     r"emphasize|emphasizes|emphasized) the (?:importance|value|significance) of\b",
     r"\bunderscor(?:e|es|ed|ing) its importance\b",
     r"\bif you['’]re still [^.!?\n]{1,100},? you['’]re already behind\b",
+    r"\b(?:generate[sd]?|prompt(?:s|ed)?|spark(?:s|ed)?|shape[sd]?|fuel(?:s|ed|led)?)\s+(?:(?:broader|emerging|ongoing)\s+)?(?:policy\s+)?(?:debates?|discussions?|reflection|questions?)\s+(?:about|around|on)\b",
+    r"\bcontribut(?:e|es|ed|ing)\s+to\s+(?:the\s+)?broader\s+(?:history|story|discussion|understanding)\b",
+    r"\b(?:enduring\s+(?:influence|impacts?|relevance)|lasting\s+(?:legacy|influence|impacts?|relevance)|ongoing\s+(?:legacy|influence|impacts?|relevance))\b",
 ]
 
 COPULA_AVOIDANCE = [
@@ -2889,6 +2892,9 @@ NOTABILITY_CLAIMS = [
     r"\b(?:cited|featured|covered|profiled) (?:in|by) (?:multiple|numerous|several) (?:major )?(?:outlets?|publications?|media)\b",
     r"\bgained (?:significant|widespread|notable) (?:media )?attention\b",
     r"\bcited in [^,.;:\n]{1,40},\s*[^,.;:\n]{1,40},\s*(?:[^,.;:\n]{1,40},\s*)?(?:and|&) [^.;:\n]{1,60}",
+    r"\b(?:trade|industry|music|business|tech(?:nology)?|specialist|professional|toy industry) (?:outlets?|publications?)\b",
+    r"\bprofiled in\b",
+    r"\b(?:prominent|respected|major) (?:news )?media outlets?\b",
 ]
 
 
