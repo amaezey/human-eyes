@@ -852,7 +852,7 @@
   "no-staccato-sequences": {
     "category": "Filler and hedging",
     "short_name": "Generic staccato emphasis",
-    "description": "Checks for repeated short dramatic sentences used as generic emphasis.",
+    "description": "Checks for repeated short dramatic sentences, including adjacent short fragments that share an opening word.",
     "why_it_matters": "Repeated short emphasis beats can make prose sound generated rather than naturally paced.",
     "severity": "context_warning",
     "failure_modes": [
@@ -863,7 +863,7 @@
     "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
     "pattern_number": "25",
     "patterns_md_heading": "Staccato rhythm in extended contexts",
-    "patterns_md_body": "**Words to watch:** \"Full stop.\", \"Period.\", \"That's it. That's the tweet.\", \"[One word]. That's the word.\"\n\nThese four exact dramatic-fragment formulas fail at one occurrence. Other staccato rhythm fails when at least three consecutive sentences contain fewer than six words each.\n\n**Tolerance note:** Staccato is not automatically bad. Preserve it when it is character voice, panic, comedy, dialogue, aphorism, or deliberate literary rhythm. Cut it when it functions as generic article emphasis.\n\n**Before:**\n> The data was clear. Unmistakably so. Every metric pointed in the same direction. And that direction was down.\n\n**After:**\n> The data pointed unambiguously in one direction: every metric was declining, and the trend had been consistent for three consecutive quarters.\n\n**Severity:** context_warning · `no-staccato-sequences`",
+    "patterns_md_body": "**Words to watch:** \"Full stop.\", \"Period.\", \"That's it. That's the tweet.\", \"[One word]. That's the word.\", \"Too young. Too single.\", \"No family. No calls.\"\n\nThe four exact dramatic-fragment formulas fail at one occurrence. A pair of adjacent short fragments also fails when both begin with the same word. Other staccato rhythm fails when at least three consecutive sentences contain fewer than six words each.\n\n**Tolerance note:** Staccato is not automatically bad. Preserve it when it is character voice, panic, comedy, dialogue, aphorism, or deliberate literary rhythm. Cut it when it functions as generic article emphasis.\n\n**Before:**\n> The data was clear. Unmistakably so. Every metric pointed in the same direction. And that direction was down.\n\n**After:**\n> The data pointed unambiguously in one direction: every metric was declining, and the trend had been consistent for three consecutive quarters.\n\n**Severity:** context_warning · `no-staccato-sequences`",
     "patterns_md_leading_blanks": 2
   },
   "no-superficial-ing": {

@@ -384,6 +384,16 @@ expect_pass("no-staccato-sequences",
     "The library was built in 1923 and has served the community ever since.",
     "one long sentence")
 for phrase in (
+    "Too young. Too single.",
+    "The agency told her she was too young. Too single. Too inexperienced.",
+    "No family. No calls.",
+):
+    expect_fail("no-staccato-sequences", phrase,
+        f"DR-19A repeated short-fragment opener pair: {phrase}")
+expect_pass("no-staccato-sequences",
+    "Too young. Still uncertain.",
+    "two short fragments with different opening words")
+for phrase in (
     "Full stop.",
     "Period.",
     "That's it. That's the tweet.",

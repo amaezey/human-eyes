@@ -719,9 +719,9 @@ Vague upbeat endings that could be appended to any article on any topic.
 
 ### 25. Staccato rhythm in extended contexts
 
-**Words to watch:** "Full stop.", "Period.", "That's it. That's the tweet.", "[One word]. That's the word."
+**Words to watch:** "Full stop.", "Period.", "That's it. That's the tweet.", "[One word]. That's the word.", "Too young. Too single.", "No family. No calls."
 
-These four exact dramatic-fragment formulas fail at one occurrence. Other staccato rhythm fails when at least three consecutive sentences contain fewer than six words each.
+The four exact dramatic-fragment formulas fail at one occurrence. A pair of adjacent short fragments also fails when both begin with the same word. Other staccato rhythm fails when at least three consecutive sentences contain fewer than six words each.
 
 **Tolerance note:** Staccato is not automatically bad. Preserve it when it is character voice, panic, comedy, dialogue, aphorism, or deliberate literary rhythm. Cut it when it functions as generic article emphasis.
 

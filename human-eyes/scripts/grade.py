@@ -1331,19 +1331,39 @@ def check_staccato(text):
                 longest_run_end = i
         else:
             current_run = 0
+    repeated_opening_pairs = []
+    for previous, current in zip(sentences, sentences[1:]):
+        previous_words = previous.split()
+        current_words = current.split()
+        if len(previous_words) >= 6 or len(current_words) >= 6:
+            continue
+        previous_opener = re.search(r"[^\W_]+(?:['’\-][^\W_]+)*", previous, re.UNICODE)
+        current_opener = re.search(r"[^\W_]+(?:['’\-][^\W_]+)*", current, re.UNICODE)
+        if (
+            previous_opener
+            and current_opener
+            and previous_opener.group(0).casefold() == current_opener.group(0).casefold()
+        ):
+            repeated_opening_pairs.append(f"{previous.strip()} {current.strip()}")
     matches = []
     if max_run >= 3 and longest_run_end >= 0:
         run_start = longest_run_end - max_run + 1
         matches = [s.strip() for s in sentences[run_start:longest_run_end + 1] if s.strip()]
+    matches.extend(repeated_opening_pairs)
     matches.extend(formula_matches)
+    matches = list(dict.fromkeys(matches))
     evidence = []
     if max_run >= 3:
         evidence.append(f"sequence of {max_run} consecutive short sentences")
     if formula_matches:
         evidence.append(f"exact dramatic-fragment formula(s): {formula_matches}")
+    if repeated_opening_pairs:
+        evidence.append(
+            f"adjacent short-fragment pair(s) sharing an opener: {repeated_opening_pairs}"
+        )
     return {
         "text": "no-staccato-sequences",
-        "passed": max_run < 3 and not formula_matches,
+        "passed": max_run < 3 and not formula_matches and not repeated_opening_pairs,
         "matches": matches,
         "evidence": (
             f"Found {'; '.join(evidence)}"
@@ -2989,7 +3009,7 @@ AGGREGATE_CHECKS = {"overall-signal-stacking"}
 
 CHECK_THRESHOLDS = {
     "overall-signal-stacking": 4,
-    "no-staccato-sequences": {"minimum_run": 3},
+    "no-staccato-sequences": {"minimum_run": 3, "minimum_repeated_opener_run": 2},
     "no-soft-scaffolding": {"minimum_candidates": 2},
     "no-orphaned-demonstratives": {"minimum_candidates": 3},
     "no-rhetorical-questions": {"minimum_candidates": 2},

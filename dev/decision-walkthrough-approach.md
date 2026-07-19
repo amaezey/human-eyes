@@ -100,6 +100,8 @@ DR-18A is implemented. Mae approved all programmatic #8 copula-substitute gaps: 
 
 DR-18 is closed with option A. Programmatic #3 now recognises the exact sentence-opening participial-clause shape tested against both paired corpora and the six missing trailing verbs `creating`, `enhancing`, `facilitating`, `shaping`, `driving`, and `embodying`. It keeps #3's existing strong-warning severity and one-occurrence failure condition. Together with DR-18A's #8 expansion, every DR-18 component is implemented.
 
+DR-19A is implemented. Mae approved the broader staccato mechanism rather than an exact `Too` triplet: programmatic #25 now flags any adjacent pair of short fragments that share an opening word, including `Too young. Too single.` and `No family. No calls.` It does not require a three-part sequence. #51 is unchanged. DR-19 remains pending for the separate negative-modal/affirmative reversal and its other format variants.
+
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Current counts after DR-17: 95 open, 57 decided, 3 pos-dependent-pattern (POS-01, POS-02, DR-144 wait on Mae's tagger).
 
 Next by current product significance: the remaining executable variant groups DR-18..20 and DR-93. Re-scan the full pending register after each closure rather than treating this as a fixed row-order queue. Agent-judgement branches and product-unlocking evaluations follow the executable programmatic gaps. Documentation, provenance, caveats, citation mappings, and source-record-only rows are last. A like-for-like social/chat corpus for any future emoji rerun is noted in the DR-116 record but not queued.
