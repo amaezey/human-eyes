@@ -83,6 +83,7 @@ The prior snapshot's bytes match commit `f28a370`; no digest was recorded in the
 - C19 rejected 2026-07-18 via DR-124: no generic professional-content personification rule was added.
 
 - C13 approved 2026-07-18 via DR-125: #7 now recognises `commence`; the source's named `utilize` and `facilitate` candidates were already recognised.
+- C05 approved 2026-07-19 via DR-133: #24 now recognises the full `Despite ... challenges ... continues to thrive` formula.
 
 ## Project coverage
 
@@ -94,7 +95,7 @@ This is the authoritative review table. “Covered” means the live project can
 | C02: A list of words headed by `delve` is framed as an AI giveaway, with a three-word/article threshold and a cited 900%+ post-ChatGPT spike. | Vendor assertion. Focused review of the linked arXiv abstract confirms excess-vocabulary analysis across more than 15 million biomedical abstracts, not this article's word list, 900% figure, three-word threshold, or document-level claim. | `no-ai-vocabulary-clustering` (#7), partly covered: it measures paragraph clusters and requires three candidates for this check; H24 tracks dated register-specific density. | Source's blanket ban and document threshold conflict with cluster, register, date, quotation, and human-use controls. | Do not adopt the blacklist or authorship wording; keep exact forms only as dated cluster-evaluation candidates under H24. | pending | not started |
 | C03: “Perfect grammar, zero personality” is an AI sign, while a quoted human complains that intelligent writing is falsely accused. | Unmeasured vendor generalisation plus a human false-positive anecdote. | Not covered: live #39 is placeholder residue, not grammar cleanliness; `tonal_uniformity` assesses register, not correctness. | A grammar-cleanliness rule would punish edited, formal, and L2 prose and contradict the source's own anecdote. | Do not adopt; record as false-positive caution and retire the old #39 mapping. | pending | not started |
 | C04: Every AI paragraph follows topic sentence, support, summary; humans vary structure. | Uncited absolute claim with one asserted template and no comparator. | `structural_monotony` and `semantic_redundancy`, partly covered; #38 only detects the same short label repeated three times. | No implementation establishes this three-step arc or “every paragraph”; legitimate expository forms are controls. | Test-adapt only in matched long-form samples; do not add a universal rule. | pending | not started |
-| C05: AI uses a `Despite its ... faces challenges` reassurance formula. | Vendor explanation attributed to Wikipedia; no independent sample; source gives exact construction. | Manual #6 covers the exact family; `no-false-concession-hedges` (#23a) and `neutrality_collapse` are adjacent, partly covered. | Manual catalogue coverage is not executable detection; causal RLHF claim is unsupported here. | Record the exact example as manual evidence; require upstream review and human controls before implementation. | pending | not started |
+| C05: AI uses a `Despite its ... faces challenges` reassurance formula. | Vendor explanation attributed to Wikipedia; no independent sample; source gives exact construction. | fully covered for the complete reassurance frame: #24 recognises `Despite ... challenges ... continues to thrive`. | The source's exact surface frame fits the existing generic-conclusion mechanism. | Add the complete formula to programmatic #24. | approved | implemented |
 | C06: AI uses uniform cautiousness and hedge phrases such as `arguably`, `potentially`, `it's worth noting`, and `it could be said`. | Indirect practitioner-source claim; no disclosed page-specific method or frequency. | `no-filler-phrases` (#22), `no-formulaic-openers` (#50), `no-excessive-hedging` (#23), and `neutrality_collapse`, partly covered. | #23's live patterns do not implement the whole list and valid scientific/legal uncertainty must survive. | Test-adapt exact variants with honest-uncertainty, quotation, and academic controls; preserve qualifications. | pending | not started |
 | C07: Meta-commentary such as `In this article` and `In conclusion` should be deleted when it adds no information. | Direct practitioner editing advice with exact examples; no frequency evidence. | `no-signposted-conclusions` (#44), `no-soft-scaffolding` (#47), `semantic_redundancy`, and process guidance, partly covered. Focused execution on the two exact examples in one Markdown paragraph produced no #44 or #47 finding because both checks require line/paragraph starts. | Formal, academic, instructional, and quoted uses remain legitimate; mid-line sentence starts are missed; source's “dead giveaway” wording overclaims. | Test-adapt exact sentence-position variants while retaining genre controls; keep the existing contextual editing guidance. | pending | not started |
 | C08: AI sentences cluster at 15-20 words and sound metronomic; humans vary pace. | Uncited vendor frequency claim with no sample, distribution, or genre control. | `sentence-length-variance` (#52), partly covered as a coarse metric: eligible prose fails when SD is not above 4, but the implementation does not test the asserted 15-20-word band. | Live metric does not test authorship and has known genre/length limits. | Record as weak corroboration; evaluate #52 on matched register before changing it. | pending | not started |
@@ -144,7 +145,7 @@ This is the authoritative review table. “Covered” means the live project can
 - C02: Do not adopt a blacklist; retain dated vocabulary only for register-aware cluster evaluation.
 - C03: Do not adopt grammar cleanliness; retire the old #39 mapping.
 - C04: Test repeated paragraph arcs only in matched long-form samples.
-- C05: Keep the exact challenges formula as manual evidence pending upstream and human-control review.
+- C05: Add the complete `Despite ... challenges ... continues to thrive` formula to #24.
 - C06: Test exact hedge variants while preserving honest uncertainty.
 - C07: Test sentence-position variants for meta-commentary and retain genre controls.
 - C08: Record weak corroboration for #52 and run matched-register evaluation before any change.
@@ -190,10 +191,11 @@ This is the authoritative review table. “Covered” means the live project can
 
 ## Evaluation of approved changes
 
+- C05: passed - DR-133A asserts that `Despite these challenges, the town continues to thrive` fails #24 `no-generic-conclusions`.
 - C16: passed - commit 340ea99 (DR-113) added sentence-opening `Certainly,` and offer-to-continue question patterns to #19 `no-collaborative-artifacts`; model attribution was not adopted; `python3 dev/evals/tests/test_grade.py` passes the DR-113 assertions on 2026-07-17.
 - C19: not applicable - rejected 2026-07-18 via DR-124; no generic professional-content personification rule was added.
 - C13: passed - DR-125 adds exact #7 recognition for `commence`; existing `utilize` and `facilitate` recognition is retained.
-- All other rows (C01-C12, C14-C15, C17-C18, C20-C47): not applicable - recommendations remain pending; no other checker, registry, test, hypothesis, guidance, or product behaviour changed.
+- All other rows (C01-C04, C06-C12, C14-C15, C17-C18, C20-C47): not applicable - recommendations remain pending; no other checker, registry, test, hypothesis, guidance, or product behaviour changed.
 
 ## Document review
 

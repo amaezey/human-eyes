@@ -3222,6 +3222,35 @@ for phrase in (
     expect_fail("no-formulaic-openers", phrase,
         f"DR-132A #50 email opener: {phrase}")
 
+# --- DR-133A: approved promotional and conclusion variants ---
+print("\n=== DR-133A promotional and conclusion variants ===")
+
+for check_id, phrase, label in (
+    ("no-significance-inflation", "This underscores its importance.", "#1 significance frame"),
+    ("no-significance-inflation", "The policy left an enduring legacy.", "#1 enduring legacy"),
+    ("no-promotional-language", "The town has a rich cultural heritage.", "#4 promotional phrase"),
+    ("no-filler-phrases", "It's important to note the date.", "#22 contracted editorial phrase"),
+    ("no-filler-phrases", "It’s important to note the date.", "#22 smart-apostrophe editorial phrase"),
+    ("no-filler-phrases", "No discussion would be complete without the archive.", "#22 editorial phrase"),
+    ("no-notability-claims", "She was cited in NYT, BBC, FT, and The Hindu.", "#2 outlet-list shape"),
+    ("no-generic-conclusions", "Despite these challenges, the town continues to thrive.", "#24 challenge-ending formula"),
+    ("no-vague-attributions", "Studies show that the approach works.", "#5 bare attribution"),
+):
+    expect_fail(check_id, phrase, f"DR-133A {label}: {phrase}")
+
+for phrase in ("defining feature", "powerful tools"):
+    matches = _grade._find_ai_words(phrase)
+    if matches != [phrase]:
+        FAILURES += 1
+        print(f"FAIL: DR-133A #7 should recognize {phrase!r} exactly once; got {matches}")
+    else:
+        print(f"  ok: DR-133A #7 recognizes {phrase!r} exactly once")
+expect_fail(
+    "no-ai-vocabulary-clustering",
+    "Its defining feature is a suite of powerful tools and clear messaging.",
+    "DR-133A #7 clusters the two editorial phrases with an existing candidate",
+)
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

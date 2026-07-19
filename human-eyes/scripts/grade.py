@@ -221,7 +221,7 @@ AI_VOCABULARY_REGEX = [
         r"interestingly|notably|particularly|ultimately|groundbreaking|"
         r"revolutionary|next-level|world-class|double down|spearhead|"
         r"supercharge|reimagine|synergize|thoughtful strategy|clear messaging|"
-        r"intentional design)\b"
+        r"intentional design|defining feature|powerful tools)\b"
     ),
     r"aligns? with\b",
     r"aligned with\b",
@@ -476,7 +476,7 @@ PROMOTIONAL = [
     "breathtaking", "stunning", "nestled", "profound",
     "showcasing", "exemplifies", "must-visit", "groundbreaking",
     "renowned", "game-changer", "unlock your true potential",
-    "unstoppable", "cutting-edge", "unprecedented",
+    "unstoppable", "cutting-edge", "unprecedented", "rich cultural heritage",
 ]
 
 PRODUCT_PERFORMANCE_PROMOTIONAL = [
@@ -491,13 +491,14 @@ SIGNIFICANCE_INFLATION = [
     "pivotal", "crucial", "vital role", "testament",
     "evolving landscape", "indelible mark", "key turning point",
     "deeply rooted", "setting the stage", "remarkably",
-    "strikingly", "staggering",
+    "strikingly", "staggering", "enduring legacy",
 ]
 
 SIGNIFICANCE_EMPHASIS_FRAMES = [
     r"\b(?:underline|underlines|underlined|underscore|underscores|underscored|"
     r"highlight|highlights|highlighted|emphasise|emphasises|emphasised|"
     r"emphasize|emphasizes|emphasized) the (?:importance|value|significance) of\b",
+    r"\bunderscor(?:e|es|ed|ing) its importance\b",
     r"\bif you['’]re still [^.!?\n]{1,100},? you['’]re already behind\b",
 ]
 
@@ -510,7 +511,8 @@ COPULA_AVOIDANCE = [
 FILLER_PHRASES = [
     r"in order to\b", r"due to the fact that",
     r"at this point in time",
-    r"it (?:is|['’]s) important to (?:note|remember|understand|recognise|recognize|keep in mind)",
+    r"it(?: is|['’]s) important to (?:note|remember|understand|recognise|recognize|keep in mind)",
+    r"no discussion would be complete without\b",
     r"(?:it is\s+)?worth\s+(?:noting|knowing(?:\s+about)?|recognising|recognizing|mentioning|emphasising|emphasizing|highlighting|acknowledging)\b",
     r"it (?:should|must) (?:also )?be noted",
     r"ha(?:s|ve) the ability to", r"in the event that",
@@ -548,6 +550,7 @@ GENERIC_CONCLUSIONS = [
     r"\b(?:act|plan) accordingly\b",
     r"\badjust (?:your|the|our|my) [^.!?\n]{1,60} accordingly\b",
     r"\b[^.!?\n]{1,80} will never be the same\b",
+    r"\bdespite\b[^.!?\n]{0,160}\bchallenges?\b[^.!?\n]{0,160}\bcontinues? to thrive\b",
 ]
 
 SOFT_SCAFFOLD_PHRASES = [
@@ -2653,6 +2656,7 @@ NOTABILITY_CLAIMS = [
     r"\b(?:over|more than) [\d,]+\+? (?:followers?|subscribers?|fans?)\b",
     r"\b(?:cited|featured|covered|profiled) (?:in|by) (?:multiple|numerous|several) (?:major )?(?:outlets?|publications?|media)\b",
     r"\bgained (?:significant|widespread|notable) (?:media )?attention\b",
+    r"\bcited in [^,.;:\n]{1,40},\s*[^,.;:\n]{1,40},\s*(?:[^,.;:\n]{1,40},\s*)?(?:and|&) [^.;:\n]{1,60}",
 ]
 
 
@@ -2678,6 +2682,7 @@ VAGUE_ATTRIBUTIONS = [
     r"\bseveral (?:sources?|publications?|outlets?|reports?) (?:have )?(?:cited|noted|reported|claimed|confirmed)\b",
     r"\bit is (?:widely |often |frequently |commonly |generally )?(?:believed|argued|claimed|noted|reported|understood|accepted|acknowledged|recognised|recognized)\b",
     r"\b(?:research|studies) (?:has|have)? ?(?:shown|demonstrated|indicated|suggested|found) that\b",
+    r"\bstudies show(?: that)?\b",
 ]
 
 
