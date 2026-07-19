@@ -96,6 +96,8 @@ DR-16 is closed with option A. Mae approved every remaining exact phrase variant
 
 DR-17 is rejected. The current evaluation did not show the proposed sentence-position variants occurring more often in generated prose: only one newly relevant structural-narration form appeared in the five matched AI-rewrite samples, no newly relevant mid-line conclusion form appeared, and the broader sample folders did not favour the generated set. #44 and #47 remain unchanged; the register's unrelated #33 reference was removed.
 
+DR-18A is implemented. Mae approved all programmatic #8 copula-substitute gaps: `operates as`, `offers a/an/the`, third-person `maintains a/an/the`, lead-opening article-subject `refers to`, and the exact `ventured into politics as a candidate` / `began ... career as` forms. Imperative `Maintain ...` and embedded ordinary `refers to` remain outside #8. DR-18 stays pending only for the separate sentence-opening participle decision.
+
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Current counts after DR-17: 95 open, 57 decided, 3 pos-dependent-pattern (POS-01, POS-02, DR-144 wait on Mae's tagger).
 
 Next by current product significance: the remaining executable variant groups DR-18..20 and DR-93. Re-scan the full pending register after each closure rather than treating this as a fixed row-order queue. Agent-judgement branches and product-unlocking evaluations follow the executable programmatic gaps. Documentation, provenance, caveats, citation mappings, and source-record-only rows are last. A like-for-like social/chat corpus for any future emoji rerun is noted in the DR-116 record but not queued.

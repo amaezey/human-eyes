@@ -509,8 +509,12 @@ SIGNIFICANCE_EMPHASIS_FRAMES = [
 
 COPULA_AVOIDANCE = [
     r"serves? as\b", r"stands? as\b", r"functions? as\b",
+    r"operates? as\b",
     r"marks? a\b", r"represents? a\b",
     r"boasts?\b", r"features\b(?! film| movie| documentary)",
+    r"offers? (?:a|an|the)\b", r"maintains (?:a|an|the)\b",
+    r"ventured into politics as (?:a |the )?candidate\b",
+    r"began (?:his|her|their|its) career as\b",
 ]
 
 FILLER_PHRASES = [
@@ -1660,6 +1664,18 @@ def check_negative_parallelisms(text):
 
 def check_copula_avoidance(text):
     count, matches = count_pattern_matches(text, COPULA_AVOIDANCE)
+    paragraphs = prose_paragraphs(text)
+    if paragraphs:
+        first_sentences = split_sentences(paragraphs[0])
+        if first_sentences:
+            lead_match = re.match(
+                r"^((?:The (?:term|phrase|name|concept|expression|designation)|"
+                r"[A-Z][\w-]*(?:\s+[A-Z][\w-]*){0,4})\s+refers? to\b)",
+                first_sentences[0],
+            )
+            if lead_match:
+                count += 1
+                matches.append(lead_match.group(1))
     return {
         "text": "no-copula-avoidance",
         "passed": count == 0,

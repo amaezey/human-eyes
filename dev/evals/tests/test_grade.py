@@ -646,6 +646,30 @@ expect_pass("no-copula-avoidance",
 expect_fail("no-copula-avoidance",
     "The gallery features four separate spaces.",
     "verb 'features' as copula avoidance")
+expect_fail("no-copula-avoidance",
+    "The frontier operates as a unifying thread.",
+    "DR-18A operates as")
+expect_fail("no-copula-avoidance",
+    "The film offers a different entry point.",
+    "DR-18A offers plus article")
+expect_fail("no-copula-avoidance",
+    "The organisation maintains a strong digital presence.",
+    "DR-18A third-person maintains plus article")
+expect_pass("no-copula-avoidance",
+    "Maintain a visible list of open questions.",
+    "DR-18A imperative maintain is not a copula substitute")
+expect_fail("no-copula-avoidance",
+    "Widgetry refers to the practice of making widgets.",
+    "DR-18A lead-opening refers to")
+expect_pass("no-copula-avoidance",
+    "The guide discusses what Brown refers to as the second phase.",
+    "DR-18A embedded refers to is not the lead formula")
+expect_fail("no-copula-avoidance",
+    "She ventured into politics as a candidate in 2018.",
+    "DR-18A elaborate candidate substitute")
+expect_fail("no-copula-avoidance",
+    "He began his career as a teacher.",
+    "DR-18A elaborate career substitute")
 
 
 # --- no-filler-phrases ---
