@@ -221,7 +221,8 @@ AI_VOCABULARY_REGEX = [
         r"interestingly|notably|particularly|ultimately|groundbreaking|"
         r"revolutionary|next-level|world-class|double down|spearhead|"
         r"supercharge|reimagine|synergize|thoughtful strategy|clear messaging|"
-        r"intentional design|defining feature|powerful tools|straightforward)\b"
+        r"intentional design|defining feature|powerful tools|straightforward|"
+        r"refine|differentiate|scalable solution)\b"
     ),
     r"aligns? with\b",
     r"aligned with\b",
@@ -328,7 +329,7 @@ MANUFACTURED_INSIGHT = [
     r"\b[\w][^.!?\n]{0,79} just changed the game forever",
     # Performed knowingness
     r"let that sink in", r"read that again", r"if you know,? you know",
-    r"sit with that for a second",
+    r"sit with that for (?:a second|a moment)",
     r"i['’]ll say it louder for the people in the back",
     r"and that changes everything", r"which tells you everything",
     r"and that's the point",
@@ -533,6 +534,14 @@ FILLER_PHRASES = [
     r"\bthat said,", r"\bto be clear,", r"\bwith the caveat that\b",
     r"\bthis is an important area of research\b",
     r"\bmore research is needed\b",
+    # DR-16A: source-defined filler frames routed through the existing check.
+    r"\bnavigating the complexities of\b",
+    r"\ba deeper understanding of\b",
+    r"\bwhen it comes to\b",
+    r"\bin the realm of\b",
+    r"\ba nuanced (?:take|understanding) (?:on|of)\b",
+    r"\bdelve into the intricacies of\b",
+    r"\bdive deep into\b",
 ]
 
 GENERIC_CONCLUSIONS = [
@@ -543,7 +552,7 @@ GENERIC_CONCLUSIONS = [
     r"\boverall,\s+(?:this|the|these|it)\b",
     r"\bremember,\s+when\b",
     r"\bas we navigate\b",
-    r"\bthe journey (?:doesn't|does not) end here\b",
+    r"\bthe journey (?:doesn['’]t|does not) end here\b",
     r"\bthe question isn['’]t whether,? but when\b",
     r"\bwe['’]re still early\b",
     r"\bthe best time to start was yesterday\.\s*the second best time is now\b",
@@ -557,6 +566,18 @@ GENERIC_CONCLUSIONS = [
     r"\badjust (?:your|the|our|my) [^.!?\n]{1,60} accordingly\b",
     r"\b[^.!?\n]{1,80} will never be the same\b",
     r"\bdespite\b[^.!?\n]{0,160}\bchallenges?\b[^.!?\n]{0,160}\bcontinues? to thrive\b",
+    # DR-16A: source-defined generic wrap-up, praise, and sales endings.
+    r"\bultimately,",
+    r"\b(?:his|her|its|their|\w+[’']s) legacy endures\b",
+    r"\bremains an icon of\b",
+    r"\blegacy will (?:undoubtedly )?endure for generations to come\b",
+    r"\blegacy continues to live on\b",
+    r"\bcontinue to inspire and captivate\b",
+    r"\bpositive sign for (?:the|a|its|their) [^.!?\n]{1,60}future prospects\b",
+    r"\bwell-positioned to meet\b",
+    r"\bdon['’]t miss your chance to\b",
+    r"\bremains hopeful that\b",
+    r"\blegacy is a testament to\b",
 ]
 
 SOFT_SCAFFOLD_PHRASES = [
@@ -2047,6 +2068,9 @@ def check_formulaic_openers(text):
         r"^let['’]s dive in\b",
         r"^here['’]s what you need to know\b",
         r"^i hope you are well\b",
+        # DR-16A: remaining exact transition and explainer openers.
+        r"^therefore\b[,:]?",
+        r"^let['’]s (?:break it down|unpack this)\b",
         # DR-135B: source-defined social-post throat-clearers not already
         # covered by manufactured-insight or performed-candour checks.
         r"^here['’]s what nobody['’]s talking about\b",
@@ -2510,11 +2534,12 @@ HEDGING_PATTERNS = [
     r"\bis (?:difficult|hard|impossible) to (?:overstate|ignore|deny|dismiss|overlook)\b",
     r"\bremains (?:to be seen|unclear|uncertain|an open question)\b",
     r"\bit (?:could|might|may) be argued\b",
+    r"\bit could be said\b",
     r"\bis not (?:guaranteed|without)\b",
     r"\bis (?:overstated|understated|underestimated|overestimated)\b",
     r"\bis less about\b.*\bmore about\b",
     r"\ba common (?:assumption|misconception|objection|criticism) is\b",
-    r"\bcould potentially\b",
+    r"\bpotentially\b",
     r"\bmay possibly\b",
     r"\bmight conceivably\b",
     r"\b(?:some|certain) (?:people|residents|users|cases|areas|contexts)\b",

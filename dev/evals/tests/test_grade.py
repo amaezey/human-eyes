@@ -3314,6 +3314,73 @@ for phrase in (
     expect_fail("no-filler-phrases", phrase,
         f"DR-15A #22 exact research formula: {phrase}")
 
+# --- DR-16A: remaining exact phrase variants through existing checks ---
+print("\n=== DR-16A remaining exact phrase variants ===")
+
+dr16_vocab = _grade._find_ai_words(
+    "refine differentiate scalable solution"
+)
+for phrase in ("refine", "differentiate", "scalable solution"):
+    if phrase not in dr16_vocab:
+        FAILURES += 1
+        print(f"FAIL: DR-16A #7 should recognize {phrase!r}; got {dr16_vocab}")
+    else:
+        print(f"  ok: DR-16A #7 recognizes {phrase!r}")
+expect_fail(
+    "no-ai-vocabulary-clustering",
+    "Refine the plan, differentiate the offer, and build a scalable solution.",
+    "DR-16A #7 clusters the three remaining vocabulary forms",
+)
+
+expect_fail(
+    "no-excessive-hedging",
+    "Arguably, it could be said that the result is potentially useful.",
+    "DR-16A #23 counts the two missing hedges with an existing candidate",
+)
+
+for phrase in (
+    "Therefore, we changed the plan.",
+    "Let’s break it down.",
+    "Let’s unpack this.",
+):
+    expect_fail("no-formulaic-openers", phrase,
+        f"DR-16A #50 exact opener: {phrase}")
+
+expect_fail(
+    "no-manufactured-insight",
+    "Sit with that for a moment.",
+    "DR-16A #42 exact performed-knowingness phrase",
+)
+
+for phrase in (
+    "Navigating the complexities of procurement takes time.",
+    "A deeper understanding of the problem would help.",
+    "When it comes to procurement, timing matters.",
+    "In the realm of procurement, timing matters.",
+    "A nuanced take on the problem would help.",
+    "Delve into the intricacies of the proposal.",
+    "Dive deep into the proposal.",
+):
+    expect_fail("no-filler-phrases", phrase,
+        f"DR-16A #22 exact filler frame: {phrase}")
+
+for phrase in (
+    "Ultimately, the choice is yours.",
+    "The journey doesn’t end here.",
+    "His legacy endures.",
+    "He remains an icon of American values and ideals.",
+    "Its legacy will undoubtedly endure for generations to come.",
+    "Achilles’ legacy continues to live on.",
+    "His story will continue to inspire and captivate audiences.",
+    "This is a positive sign for the company’s future prospects.",
+    "It is well-positioned to meet changing needs.",
+    "Don’t miss your chance to experience the show.",
+    "The community remains hopeful that she will be found.",
+    "Aristotle’s legacy is a testament to his influence.",
+):
+    expect_fail("no-generic-conclusions", phrase,
+        f"DR-16A #24 exact ending formula: {phrase}")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

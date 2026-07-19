@@ -98,7 +98,7 @@ This is the authoritative review table. The focused deterministic evidence is fr
 | C03: Human rhythm mixes short and complex sentences; uniform 12-18-word sentences are an AI red flag. | Direct vendor assertion plus invented examples; linked burstiness page is indirect; no counts or comparison. | #52 computes SD and passed the full article at 11.6; H13/H22 are open; partly covered. | Source band and project SD threshold are both unvalidated by this page; genre and length controls matter. | Test-adapt only through matched, genre-aware evaluation of #52/H13/H22; do not adopt 12-18 as a threshold. | pending | not started |
 | C04: `Lexical density` includes filler frequency, rare/common vocabulary, pronouns, passive voice, formal diction, and colloquial spikes. | Direct taxonomy with a linked definition; terminology combines distinct measures and supplies no results. | #7 and #53 cover stock vocabulary and TTR; H23/H24 cover grammar and register; partly covered. | Pronoun/passive features absent; #53 direction already faces stronger contradictory evidence. | Keep as candidate taxonomy only; compare with academic sources before any #53, H23, or H24 test. | pending | not started |
 | C05: Comma/dash/semicolon ratios, paragraph openers, bullet uniformity, pauses, dashes, and fragments distinguish styles. | Direct vendor list; no weights, thresholds, examples of ratios, or human controls. | #38, #31, #31a, #49, #25, and #50 cover narrower constructions; partly covered. | The source praises punctuation that live checks can flag and equates identical formatting with machine output. | Test only exact, separately defined features with deliberate-use and genre controls; do not treat punctuation as authorship proof. | pending | not started |
-| C06: AI overuses `Therefore`, `Additionally`, and `In conclusion`. | Direct vendor phrase assertion; no frequency data. | Focused surface-only sample: #50 missed the first two; `no-signposted-conclusions` found `In conclusion`; partly covered. | Position-sensitive implementation differs from broad source claim; human transition use is uncontrolled. | If considered, add evaluation fixtures before any expansion; keep all three as contextual, frequency-sensitive candidates. | pending | not started |
+| C06: AI overuses `Therefore`, `Additionally`, and `In conclusion`. | Direct vendor phrase assertion; no frequency data. | #50 recognises paragraph-opening `Therefore` and `Additionally`; #44 recognises line-opening `In conclusion`. | The three forms route through two existing position-sensitive mechanisms. | Add the missing exact `Therefore` opener to #50 and retain the existing routes for the other two. | approved | implemented |
 | C07: High perplexity is human-like and low perplexity is AI-like. | Direct explanation with invented examples; no model, tokenizer, score, distribution, or threshold. | No live perplexity check; the `pattern-opportunities.md` do-not-promote row for product detector scores explicitly includes NetusAI and GPTZero perplexity; not covered. | Project intentionally avoids opaque detector-style authorship scoring. | Do not add a perplexity rule from this source. | pending | not started |
 | C08: `Low Perplexity + Low Stylometric Variance = AI-Generated`, and hybrid models outperform perplexity alone. | Direct vendor formula and interpretation; no experiment or performance result. | Product boundary and pattern-opportunities non-promotion oppose detector-score transfer; not covered. | Formula lacks calibration, uncertainty, detector versions, and validation. | Do not adopt as a score, rule, severity, or report verdict. | pending | not started |
 | C09: Perplexity alone fails for Claude 3 Opus and technical/academic writing. | Direct qualification; model/version named only for one example and no evidence shown. | H9/H12 and genre controls address look-alikes; partly covered as caution. | No observed failure rate or direct technical/academic sample. | Record as a false-positive/evaluation control, not model performance evidence. | pending | not started |
@@ -128,7 +128,7 @@ This is the authoritative review table. The focused deterministic evidence is fr
 - C03: Test-adapt #52/H13/H22 only with matched, genre-aware data.
 - C04: Keep as a candidate taxonomy pending academic comparison.
 - C05: Test exact punctuation and structure features separately with controls.
-- C06: Add evaluation fixtures before considering any transition expansion.
+- C06: Add paragraph-opening `Therefore` to #50 and retain the existing `Additionally` and `In conclusion` routes.
 - C07: Do not add a perplexity rule.
 - C08: Do not adopt the hybrid verdict formula.
 - C09: Record legitimate low-perplexity genres and dated model output as controls.
@@ -153,7 +153,8 @@ This is the authoritative review table. The focused deterministic evidence is fr
 
 ## Evaluation of approved changes
 
-- C01-C27: not applicable - all recommendations remain pending and no product changes were requested or made.
+- C06: passed - DR-16A asserts that paragraph-opening `Therefore` fails #50; `Additionally` and `In conclusion` retain their existing #50/#44 coverage.
+- C01-C05 and C07-C27: not applicable - recommendations remain pending and no product changes were requested or made.
 
 ## Document review
 
