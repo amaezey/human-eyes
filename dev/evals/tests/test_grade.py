@@ -789,6 +789,39 @@ expect_pass("no-superficial-ing",
     "The temple uses blue and gold. According to the architect, these reference local flora.",
     "no tacked-on -ing")
 
+for _verb, _tail in (
+    ("creating", "a generic sense of importance"),
+    ("enhancing", "its significance"),
+    ("facilitating", "regional development"),
+    ("shaping", "the wider conversation"),
+    ("driving", "a commitment to change"),
+    ("embodying", "the spirit of unity"),
+):
+    expect_fail(
+        "no-superficial-ing",
+        f"The project expanded rapidly, {_verb} {_tail}.",
+        f"DR-18B trailing {_verb} clause",
+    )
+
+expect_fail("no-superficial-ing",
+    "Drawing on earlier research, the report proposes a new model.",
+    "DR-18B sentence-opening participial clause")
+expect_fail("no-superficial-ing",
+    "Recognising the unresolved problem, I sought advice.",
+    "DR-18B sentence-opening participial clause before first person")
+expect_pass("no-superficial-ing",
+    "Writing this essay was difficult, but I finished it.",
+    "DR-18B gerund subject is not an opening participial clause")
+expect_pass("no-superficial-ing",
+    "According to the report, the rate increased.",
+    "DR-18B According opener is excluded")
+expect_pass("no-superficial-ing",
+    "During the review, the team found an error.",
+    "DR-18B During opener is excluded")
+expect_pass("no-superficial-ing",
+    "Consulting work should support a decision, even if it takes time.",
+    "DR-18B noun modifier with finite verb is excluded")
+
 
 # --- no-ghost-spectral-density ---
 

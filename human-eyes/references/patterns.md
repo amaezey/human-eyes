@@ -88,15 +88,15 @@ Asserts notability by listing sources without context, as though the mention its
 
 ### 3. Superficial -ing analyses
 
-**Words to watch:** highlighting/underscoring/emphasizing..., ensuring..., reflecting/symbolizing..., contributing to..., cultivating/fostering..., encompassing..., showcasing...
+**Words and structures to watch:** sentence-opening participial clauses; highlighting/underscoring/emphasizing..., ensuring..., reflecting/symbolizing..., contributing to..., cultivating/fostering..., encompassing..., showcasing..., creating..., enhancing..., facilitating..., shaping..., driving..., embodying...
 
-Present participle phrases tacked onto sentences to simulate analytical depth without adding information.
+Formulaic present-participle phrases at the start of sentences or tacked onto their ends.
 
 **Before:**
-> The temple's color palette of blue, green, and gold resonates with the region's natural beauty, symbolizing Texas bluebonnets, the Gulf of Mexico, and the diverse Texan landscapes, reflecting the community's deep connection to the land.
+> Drawing on earlier research, the report proposes a new model. The temple's color palette of blue, green, and gold resonates with the region's natural beauty, symbolizing Texas bluebonnets and the Gulf coast.
 
 **After:**
-> The temple uses blue, green, and gold. According to the architect, the colours were chosen to reference local bluebonnets and the Gulf coast.
+> The report draws on earlier research to propose a new model. The temple uses blue, green, and gold. According to the architect, the colours reference local bluebonnets and the Gulf coast.
 
 **Severity:** strong_warning · `no-superficial-ing`
 

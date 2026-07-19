@@ -868,18 +868,18 @@
   },
   "no-superficial-ing": {
     "category": "Content patterns",
-    "short_name": "Tacked-on -ing analysis",
-    "description": "Checks for trailing -ing clauses that pretend to analyse without adding meaning.",
-    "why_it_matters": "Tacked-on -ing clauses often pretend to analyse while adding little.",
+    "short_name": "Overused -ing clauses",
+    "description": "Checks for formulaic sentence-opening participial clauses and trailing -ing analysis.",
+    "why_it_matters": "Repeated participial constructions can make prose feel mechanically compressed or append generic analysis.",
     "severity": "strong_warning",
     "failure_modes": [
       "generic_abstraction"
     ],
     "evidence_role": "analysis_substitution",
-    "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
+    "guidance": "Rewrite formulaic participial clauses when a direct sentence or precise causal statement is clearer.",
     "pattern_number": "3",
     "patterns_md_heading": "Superficial -ing analyses",
-    "patterns_md_body": "**Words to watch:** highlighting/underscoring/emphasizing..., ensuring..., reflecting/symbolizing..., contributing to..., cultivating/fostering..., encompassing..., showcasing...\n\nPresent participle phrases tacked onto sentences to simulate analytical depth without adding information.\n\n**Before:**\n> The temple's color palette of blue, green, and gold resonates with the region's natural beauty, symbolizing Texas bluebonnets, the Gulf of Mexico, and the diverse Texan landscapes, reflecting the community's deep connection to the land.\n\n**After:**\n> The temple uses blue, green, and gold. According to the architect, the colours were chosen to reference local bluebonnets and the Gulf coast.\n\n**Severity:** strong_warning · `no-superficial-ing`",
+    "patterns_md_body": "**Words and structures to watch:** sentence-opening participial clauses; highlighting/underscoring/emphasizing..., ensuring..., reflecting/symbolizing..., contributing to..., cultivating/fostering..., encompassing..., showcasing..., creating..., enhancing..., facilitating..., shaping..., driving..., embodying...\n\nFormulaic present-participle phrases at the start of sentences or tacked onto their ends.\n\n**Before:**\n> Drawing on earlier research, the report proposes a new model. The temple's color palette of blue, green, and gold resonates with the region's natural beauty, symbolizing Texas bluebonnets and the Gulf coast.\n\n**After:**\n> The report draws on earlier research to propose a new model. The temple uses blue, green, and gold. According to the architect, the colours reference local bluebonnets and the Gulf coast.\n\n**Severity:** strong_warning · `no-superficial-ing`",
     "patterns_md_leading_blanks": 2
   },
   "no-this-chains": {

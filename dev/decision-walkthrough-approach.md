@@ -96,7 +96,9 @@ DR-16 is closed with option A. Mae approved every remaining exact phrase variant
 
 DR-17 is rejected. The current evaluation did not show the proposed sentence-position variants occurring more often in generated prose: only one newly relevant structural-narration form appeared in the five matched AI-rewrite samples, no newly relevant mid-line conclusion form appeared, and the broader sample folders did not favour the generated set. #44 and #47 remain unchanged; the register's unrelated #33 reference was removed.
 
-DR-18A is implemented. Mae approved all programmatic #8 copula-substitute gaps: `operates as`, `offers a/an/the`, third-person `maintains a/an/the`, lead-opening article-subject `refers to`, and the exact `ventured into politics as a candidate` / `began ... career as` forms. Imperative `Maintain ...` and embedded ordinary `refers to` remain outside #8. DR-18 stays pending only for the separate sentence-opening participle decision.
+DR-18A is implemented. Mae approved all programmatic #8 copula-substitute gaps: `operates as`, `offers a/an/the`, third-person `maintains a/an/the`, lead-opening article-subject `refers to`, and the exact `ventured into politics as a candidate` / `began ... career as` forms. Imperative `Maintain ...` and embedded ordinary `refers to` remain outside #8. At that point, DR-18 remained pending only for the separate sentence-opening participle decision.
+
+DR-18 is closed with option A. Programmatic #3 now recognises the exact sentence-opening participial-clause shape tested against both paired corpora and the six missing trailing verbs `creating`, `enhancing`, `facilitating`, `shaping`, `driving`, and `embodying`. It keeps #3's existing strong-warning severity and one-occurrence failure condition. Together with DR-18A's #8 expansion, every DR-18 component is implemented.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Current counts after DR-17: 95 open, 57 decided, 3 pos-dependent-pattern (POS-01, POS-02, DR-144 wait on Mae's tagger).
 

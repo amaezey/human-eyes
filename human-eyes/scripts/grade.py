@@ -1888,12 +1888,40 @@ def check_rule_of_three(text):
 
 
 def check_superficial_ing(text):
-    """Detect sentences ending with tacked-on -ing phrases (pattern 3)."""
-    pattern = r',\s+(?:highlighting|underscoring|emphasizing|reflecting|symbolizing|contributing to|cultivating|fostering|encompassing|showcasing|ensuring|demonstrating|illustrating|reinforcing|signaling|representing)\b[^.]*\.'
+    """Detect overused opening and tacked-on participial clauses (pattern 3)."""
+    source = strip_front_matter(text)
+    trailing_pattern = (
+        r',\s+(?:highlighting|underscoring|emphasizing|reflecting|symbolizing|'
+        r'contributing to|cultivating|fostering|encompassing|showcasing|ensuring|'
+        r'demonstrating|illustrating|reinforcing|signaling|representing|creating|'
+        r'enhancing|facilitating|shaping|driving|embodying)\b[^.]*\.'
+    )
+    opening_pattern = re.compile(
+        r"(?:^|(?<=[.!?])\s+|\n+)"
+        r"(?P<clause>"
+        r"(?!(?:According|During)\b)"
+        r"(?![^.!?\n,]{0,80}\b(?:is|are|was|were|has|have|had|means?|meant|"
+        r"felt|feels?|depends?|should|would|could|can|will|must|came|comes?|"
+        r"do|does|did)\b[^.!?\n,]*,)"
+        r"[a-z]+ing\b[^.!?\n,\"“”'’]{0,80}"
+        r"),\s+"
+        r"(?!(?:and|but|or|nor|for|so|yet|even|not|because|while|although|"
+        r"though)\b)"
+        r"(?=(?:I|we|you|he|she|it|they|this|that|these|those|the|a|an|"
+        r"[a-z][a-z-]*)\b)",
+        flags=re.IGNORECASE | re.MULTILINE,
+    )
     verbatim = []
     seen = set()
-    for m in re.finditer(pattern, text, flags=re.IGNORECASE):
+
+    for m in re.finditer(trailing_pattern, source, flags=re.IGNORECASE):
         span = re.sub(r"\s+", " ", m.group(0)).strip()
+        key = span.lower()
+        if key not in seen:
+            seen.add(key)
+            verbatim.append(span)
+    for m in opening_pattern.finditer(source):
+        span = re.sub(r"\s+", " ", m.group("clause")).strip()
         key = span.lower()
         if key not in seen:
             seen.add(key)

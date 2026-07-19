@@ -92,6 +92,7 @@ The legacy card did not record a snapshot digest. Before replacement, the existi
 - Removed or narrowed legacy mappings: direct interface/citation residue is not current #39 placeholder coverage; `in order to` is counterevidence to isolated #22 treatment; `X rather than Y`, source-type notability enumeration, small tables, skipped headings, and several comment/edit-history composites remain uncovered; inherited research claims remain indirect unless separately reviewed.
 - C08 approved 2026-07-19 via DR-15 option A: #5 now recognises the catalogue's bare `Industry reports` and `several sources/publications` forms; the observer, expert, critic, and passive-consensus forms were already covered.
 - C12 approved 2026-07-19 via DR-18A option A: #8 now recognises the remaining named copula substitutes, including `operates as`, article-led `offers` and `maintains`, the lead `refers to` formula, and the two elaborate career/politics forms.
+- C06 approved 2026-07-19 via DR-18 option A: #3 now recognises sentence-opening participial clauses and the six remaining source-shaped trailing verbs.
 
 ## Project coverage
 
@@ -102,7 +103,7 @@ The legacy card did not record a snapshot digest. Before replacement, the existi
 | C03: The page explains generic positive smoothing as statistical regression to the mean. | Editor interpretation and analogy, not a measured mechanism in this source. | Partly covered by #1, #4, #30, #36, H21, and source-grounding guidance. | No live check validates the causal explanation or generic-detail substitution. | Record as framing only; do not use the mechanism to set severity or authorship claims. | pending | not started |
 | C04: Significance, legacy, trend, and importance language is a recurring catalogue family. | Direct selected examples plus cited support; no rate or threshold. | Partly covered by `no-significance-inflation`; focused check fails `pivotal` / `testament`, but the matcher is a closed list. | Broader frames such as generic debates, discussions, enduring impact, and conceded minor impact are not exhaustively covered. | Evaluate source examples and matched informational controls before extending #1. | pending | not started |
 | C05: Notability inflation includes policy echoing, unnamed prestige, media tiers, and source-type enumeration such as trade publications. | Direct Wikipedia examples and editor observation; human press-release look-alike is explicit. | Partly covered by `no-notability-claims`; `independent coverage` fails, while `covered in trade publications` passes. | Source-type enumeration and several policy-echo variants are absent. | Add candidate-recognition tests with named-source and ordinary press-release controls before deciding an expansion. | pending | not started |
-| C06: Superficial analysis often appears as tacked-on present-participial clauses. | Direct examples plus indirect citations; the problem is semantic shallowness, not every `-ing` clause. | Partly covered by `no-superficial-ing`; focused `enhancing the city's cultural landscape` passes, showing closed-lexeme limits. | Opening and novel trailing forms, causal legitimate uses, and semantic emptiness remain uncovered. | Evaluate candidate coverage and concrete-causal controls before extending #3. | pending | not started |
+| C06: Superficial analysis often appears as tacked-on present-participial clauses. | Direct examples plus indirect citations. | Covered by `no-superficial-ing`: the programmatic check recognises the approved sentence-opening structure and the complete trailing-verb set, including `creating`, `enhancing`, `facilitating`, `shaping`, `driving`, and `embodying`. | No remaining approved surface-form gap. | Keep the complete participial-clause family in programmatic #3. | approved | implemented |
 | C07: Promotional output includes travel, food, heritage, superlative, and marketing register intruding into informational prose. | Direct selected examples, genre-bound; human promotional genres are look-alikes. | Partly covered by `no-promotional-language`; a focused `nestled` / `breathtaking` / `renowned` example fails. #41 has genre branches. | The live lexicon is narrow and does not assess register mismatch. | Test a genre-mismatch assessment and source examples against legitimate marketing/travel controls. | pending | not started |
 | C08: Vague authorities and overgeneralised opinions include unnamed experts, critics, observers, reports, and passive consensus claims. | Direct catalogue examples. | Fully covered for the listed exact forms by #5 `no-vague-attributions`: `Industry reports`, `Observers have cited`, `Experts argue`, `Some critics argue`, `several sources/publications`, and passive-consensus frames. | No remaining listed surface-form gap. | Keep the listed exact forms in #5. | approved | implemented |
 | C09: Formulaic challenges sections follow a positive opening, generic challenge list, and reassuring future close; merely discussing challenges is not the sign. | Direct selected examples and explicit negative control. | Partly covered only as manual pattern #6 and adjacent #23a/#24; the focused source-shaped example passes both deterministic checks. | No executable or agent-assessed composite captures the full section arc. | Evaluate a structural-monotony / challenges composite with genre and legitimate-policy controls. | pending | not started |
@@ -148,7 +149,7 @@ The legacy card did not record a snapshot digest. Before replacement, the existi
 - C03: Record regression-to-the-mean as source framing only.
 - C04: Evaluate broader significance frames with matched controls before extending #1.
 - C05: Test source-type notability enumeration and named-source controls before extending #2.
-- C06: Test novel superficial-participle candidates and concrete causal controls before extending #3.
+- C06: Keep the complete approved participial-clause family in programmatic #3.
 - C07: Evaluate a genre-mismatch assessment rather than expanding a flat promotional blacklist.
 - C08: Keep the listed exact vague-authority forms in #5.
 - C09: Evaluate a challenges-section structural composite with legitimate genre controls.
@@ -190,8 +191,9 @@ The legacy card did not record a snapshot digest. Before replacement, the existi
 ## Evaluation of approved changes
 
 - C08: passed - DR-15A asserts the previously missing `Industry reports` and `several sources/publications` forms; the other listed forms retain existing #5 coverage.
+- C06: passed - DR-18B asserts the sentence-opening participial shape, all six added trailing verbs, and the excluded `According`, `During`, gerund-subject, and noun-modifier forms.
 - C12: passed - DR-18A asserts every added #8 form plus the imperative `Maintain ...` and embedded `refers to` boundaries.
-- C01-C07, C09-C11, and C13-C43: not applicable - all other recommendations remain pending, and no other product change was authorised.
+- C01-C05, C07, C09-C11, and C13-C43: not applicable - all other recommendations remain pending, and no other product change was authorised.
 
 ## Document review
 

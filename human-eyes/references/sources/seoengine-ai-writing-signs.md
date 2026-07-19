@@ -85,6 +85,7 @@ The prior snapshot's bytes match commit `f28a370`; no digest was recorded in the
 - C13 approved 2026-07-18 via DR-125: #7 now recognises `commence`; the source's named `utilize` and `facilitate` candidates were already recognised.
 - C05 approved 2026-07-19 via DR-133: #24 now recognises the full `Despite ... challenges ... continues to thrive` formula.
 - C25 approved 2026-07-19 via DR-15 option A: #5 now recognises all three exact forms, including the previously missing `data proves`.
+- C17 approved 2026-07-19 via DR-18 option A: #3 now recognises the tested sentence-opening participial-clause structure programmatically.
 
 ## Project coverage
 
@@ -108,7 +109,7 @@ This is the authoritative review table. “Covered” means the live project can
 | C14: “Sensing without sensing” produces plausible but empty sensory lines. | Uncited philosophical and craft claim with illustrative examples; no generated provenance or human comparison. | `generic_metaphors`, `faux_specificity`, and `forced_synesthesia` are adjacent, partly covered. | Source treats absence of lived experience as detectable from prose; this risks invented authenticity and authorship claims. | Test-adapt only as grounded-detail craft review with real-source preservation; do not require fabricated sensory detail. | pending | not started |
 | C15: A “hedging seesaw” both-sides even clearly settled issues because RLHF discourages conflict. | Uncited causal claim with one extreme example. | `no-false-concession-hedges` (#23a) plus `neutrality_collapse` (#37), fully covered at surface and agent-assessment levels. | Originating stance is needed to distinguish honest comparison; RLHF mechanism is not established here. | Retain existing stance-preservation assessment; do not adopt the causal explanation. | pending | not started |
 | C16: ChatGPT, Claude, and Gemini have first-word fingerprints such as `Certainly`, `I'd`, and `Great question`. | Indirect BethZ attribution with no preserved study, counts, versions, prompts, or controls. | `no-collaborative-artifacts` (#19/folded #21) recognizes some finished-prose residue; H25 tracks model-specific evidence; partly covered. | Positive model attribution and current-frequency claims are absent; ordinary dialogue is a look-alike. | Do not promote model attribution; use exact assistant-residue forms only where context proves pasted chat. | approved | implemented |
-| C17: AI starts sentences with `-ing` phrases at 2-5x the human rate. | Vendor transfer from indirect research. WHYY reports Reinhart saying GPT-4o used the present participle “something like five times” more often, but does not say the feature was sentence-opening; the article changes the feature and range without showing the analysis. | Not covered: #3 detects trailing comma-plus-`-ing` clauses, not sentence-opening participial phrases; #51 detects repeated identical first words, not this family. | The opener-specific rate and “rarely” human claim are unsupported; legitimate prose needs controls. | Test-adapt exact opener candidates on matched genres before any new check. | pending | not started |
+| C17: AI starts sentences with `-ing` phrases at 2-5x the human rate. | Reinhart directly reports a 2-5x rate for present-participial clauses generally; the page applies that range to sentence openings. The exact proposed opening shape occurred three times in the established AI samples and zero times in their human pairs; neither cohort contained it in the newer pilot. | Covered by programmatic #3, which recognises the tested opening-clause structure. | No remaining approved surface-form gap. | Keep the tested sentence-opening structure in programmatic #3. | approved | implemented |
 | C18: Repeated `From X to Y` constructions create false comprehensiveness. | Uncited practitioner claim with three examples and a once/article human-use assertion. | Manual #12 false ranges fully covers the semantic construction; no programmatic check. | Some ranges are real and informative; source's occurrence limit is unsupported. | Keep manual contextual treatment; do not implement an occurrence threshold without endpoint and genre controls. | pending | not started |
 | C19: Personifying data, tools, and markets is a steady AI tell in professional content. | Uncited universal vendor claim with three examples. | `generic_metaphors` can assess ungrounded figures; #45 covers only land/surface metaphors; partly covered. | The proposed generic personification addition was rejected. | Do not add a generic professional-content personification rule. | rejected | not applicable |
 | C20: AI text lacks subtext, irony, mood, and “between the lines” meaning. | Uncited broad interpretation spanning fiction and advertising. | `genre_specific` fiction watchlist and StoryScope pending candidates are partly covered; no generic absence detector. | Absence is hard to bind to a span; many factual genres appropriately lack subtext. | Do not adopt globally; leave as a fiction-specific research question with genre controls. | pending | not started |
@@ -158,7 +159,7 @@ This is the authoritative review table. “Covered” means the live project can
 - C14: Test grounded-detail craft review without requiring fabricated sensory experience.
 - C15: Retain stance-preservation assessment; do not adopt the causal RLHF explanation.
 - C16: Do not promote model attribution; treat exact assistant strings only as context-bound residue.
-- C17: Test opening-`-ing` candidates with matched human and genre controls.
+- C17: Keep the tested sentence-opening participial structure in programmatic #3.
 - C18: Keep false ranges manual and contextual; do not add an occurrence threshold.
 - C19: Do not adopt a personification rule; assess whether metaphors name a concrete property.
 - C20: Keep subtext as a fiction-specific research question, not a generic requirement.
@@ -198,8 +199,9 @@ This is the authoritative review table. “Covered” means the live project can
 - C19: not applicable - rejected 2026-07-18 via DR-124; no generic professional-content personification rule was added.
 - C13: passed - DR-125 adds exact #7 recognition for `commence`; existing `utilize` and `facilitate` recognition is retained.
 - C25: passed - DR-15A asserts that `Data proves` fails #5; `Studies show` and `Experts agree` retain their existing #5 coverage.
+- C17: passed - DR-18B asserts the approved opening-participial structure and its finite-verb, `According`, and `During` exclusions.
 - C07, C31, and C33: not applicable - rejected 2026-07-19 via DR-17; #44 and #47 remain unchanged.
-- All other rows (C01-C04, C08-C12, C14-C15, C17-C18, C20-C24, C26-C30, C32, C34-C47): not applicable - recommendations remain pending; no other checker, registry, test, hypothesis, guidance, or product behaviour changed.
+- All other rows (C01-C04, C08-C12, C14-C15, C18, C20-C24, C26-C30, C32, C34-C47): not applicable - recommendations remain pending; no other checker, registry, test, hypothesis, guidance, or product behaviour changed.
 
 ## Document review
 
