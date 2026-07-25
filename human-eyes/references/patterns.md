@@ -2,12 +2,12 @@
 
 <!-- This file is generated from `human-eyes/scripts/patterns.json`. Edit the JSON and regenerate via `python3 dev/tools/render_patterns_md.py --write`. -->
 
-59 patterns plus four sub-letter variants (23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
+62 patterns plus four sub-letter variants (23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
 
 ## Contents
 
 - [Content patterns (1-5, 12)](#content-patterns)
-- [Language and grammar (7-10, 53, 64)](#language-and-grammar)
+- [Language and grammar (7-10, 53, 64-67)](#language-and-grammar)
 - [Style (13-18, 49, 57)](#style)
 - [Communication (19-21, 62)](#communication)
 - [Filler and hedging (22-25, 47-48, 50)](#filler-and-hedging)
@@ -420,6 +420,63 @@ The check reads the word families that genuinely alternate: `-ise`/`-ize`, `-yse
 **Severity:** context_warning · `no-mixed-spelling-conventions`
 
 **Detection:** Programmatic check `no-mixed-spelling-conventions`.
+
+
+### 65. Nominalisation rate
+
+Nominalisations are nouns formed from verbs or adjectives: `development`, `robustness`, `implementation`, `effectiveness`. The check speaks only about how densely they run: it fails at 29.0 or more per 1000 words, in prose of 300 words or more.
+
+A single nominalisation says nothing. Across the project corpora the median human document runs 21.8 per 1000 words and the median generated document 36.8. At the 29.0 threshold the check flags 70% of generated documents and 24% of human ones, matching the false-positive rate the #10 triad check already carries.
+
+**Before:**
+> The implementation of the transformation required the development of a new specification, and the assessment of the requirements involved consideration of the limitations.
+
+**After:**
+> To change it we had to write a new spec first, which meant working out what it needed to do and what it could not do.
+
+Evidence: Reinhart et al., PNAS, February 2025, measuring Douglas Biber's 66-feature tagset over paired human and LLM text. Calibration in `dev/evals/biber-rate-calibration-2026-07-26.md`.
+
+**Severity:** context_warning · `no-nominalisation-rate`
+
+**Detection:** Programmatic check `no-nominalisation-rate`.
+
+
+### 66. Subject `that` relative rate
+
+A `that` relative clause in subject position is the shape in `the dog that bit me`, where `that` is followed straight by the relative clause's verb. Object-position relatives, `the dog that I saw`, are a different construction and are not counted: they run the opposite way in the corpora. The check fails at 3.5 or more subject relatives per 1000 words, in prose of 300 words or more.
+
+Across the project corpora the median human document runs 2.3 per 1000 words and the median generated document 3.7. At the 3.5 threshold the check flags 52% of generated documents and 27% of human ones.
+
+**Before:**
+> The tool that generates the summary is slow, and the process that creates the index runs nightly.
+
+**After:**
+> Summary generation is slow. The index rebuilds overnight.
+
+Evidence: Reinhart et al., PNAS, February 2025. Calibration in `dev/evals/biber-rate-calibration-2026-07-26.md`.
+
+**Severity:** context_warning · `no-that-relative-rate`
+
+**Detection:** Programmatic check `no-that-relative-rate`.
+
+
+### 67. Present participial clause rate
+
+A present participial clause is an adverbial clause headed by an `-ing` verb, as in `Stuffing his mouth with cookies, Joe ran out the door`. Gerunds (`Walking is good for you`) and progressives (`She is walking`) are different constructions and are not counted. The check fails at 4.4 or more per 1000 words, in prose of 300 words or more.
+
+Across the project corpora the median human document runs 3.9 per 1000 words and the median generated document 5.5. At the 4.4 threshold the check flags 70% of generated documents and 37% of human ones. That is the widest false-positive rate of any check in the catalogue, well above the 24% the #10 triad check carries.
+
+**Before:**
+> Leaning on the rail, she watched the boats, counting them as they passed.
+
+**After:**
+> She leaned on the rail and watched the boats. She counted them as they passed.
+
+Evidence: Reinhart et al., PNAS, February 2025. Calibration in `dev/evals/biber-rate-calibration-2026-07-26.md`.
+
+**Severity:** context_warning · `no-participial-clause-rate`
+
+**Detection:** Programmatic check `no-participial-clause-rate`.
 
 ---
 

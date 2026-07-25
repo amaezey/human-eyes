@@ -2035,6 +2035,173 @@ def check_rule_of_three(text):
     }
 
 
+# --- Reinhart/Biber rate checks (DR-159) ---
+#
+# Reinhart et al. (PNAS, Feb 2025) measured 66 Biber features over paired
+# human/LLM text and found instruction-tuned models overuse a noun-heavy
+# cluster. Three of those features are recoverable from surface form without a
+# parser and reproduce on this project's corpora; thresholds come from
+# dev/evals/biber-rate-calibration-2026-07-26.md. Phrasal coordination, the
+# paper's fourth headline feature, is deliberately absent: it runs the other way
+# here, so no check was built for it.
+
+# Nouns formed from verbs or adjectives, per Biber: "development", "robustness".
+NOMINALISATION_RE = re.compile(
+    r"\b\w{4,}(?:tion|tions|ment|ments|ness|ity|ities|ance|ances|ence|ences)\b",
+    re.IGNORECASE,
+)
+
+# "That" relative clauses in SUBJECT position ("the dog that bit me"), where
+# `that` is followed directly by the relative clause's verb. Object-position
+# relatives ("the dog that I saw") are a separate Biber feature and run the
+# opposite way in the corpora, so they are excluded by the negative lookahead.
+# Verb forms that can head a relative clause. Irregular pasts are listed
+# explicitly because the defining example is "the dog that bit me".
+_REL_IRREGULAR = (
+    r"bit|ran|won|led|took|made|gave|came|went|saw|got|had|held|kept|left|lost|"
+    r"met|paid|put|read|said|sat|sold|sent|set|shot|shut|spent|stood|struck|"
+    r"swept|taught|told|threw|wore|wrote|drove|fell|felt|found|grew|knew|"
+    r"brought|built|bought|caught|chose|cut|dealt|drew|broke"
+)
+_REL_VERB = (
+    rf"(?:{_REL_IRREGULAR}|is|are|was|were|has|have|does|do|can|could|will|"
+    r"would|may|might|must|\w+ed|\w+es|\w+s)"
+)
+# A following pronoun or determiner means object position ("the dog that I
+# saw"), which is a separate Biber feature running the opposite way here.
+_REL_NOT_SUBJECT = (
+    r"(?:i|you|he|she|it|we|they|the|a|an|this|these|those|his|her|its|their|our|your)"
+)
+# A preceding word from this set means a `that` complement clause ("I know that
+# sounds odd") or a demonstrative ("though that helps"). Biber counts `that`
+# verb and adjective complements as their own features. The list holds only
+# forms that are almost never a head noun, so ambiguous noun/verb words such as
+# "report" or "claim" still count as relative heads.
+_REL_COMPLEMENT_HEAD = (
+    r"know|knows|knew|think|thinks|thought|say|says|said|believe|believes|"
+    r"believed|realise|realised|realize|realized|argue|argues|argued|admit|"
+    r"admits|admitted|agree|agrees|agreed|imagine|imagines|imagined|assume|"
+    r"assumes|assumed|expect|expects|expected|seem|seems|seemed|appear|appears|"
+    r"appeared|suppose|supposes|supposed|reckon|reckons|glad|sure|certain|"
+    r"clear|aware|afraid|confident|convinced|obvious|so|now|given|though|"
+    r"although|is|was|are|were|be|been|mean|means|meant|found|find|finds|feel|"
+    r"feels|felt|hope|hopes|hoped|see|sees|saw|notice|notices|noticed|"
+    r"remember|remembers|remembered"
+)
+THAT_SUBJECT_RELATIVE_RE = re.compile(
+    rf"\b(?!(?:{_REL_COMPLEMENT_HEAD})\b)\w+\s+that\s+"
+    rf"(?!{_REL_NOT_SUBJECT}\b)(?:{_REL_VERB})\b",
+    re.IGNORECASE,
+)
+
+# Present participial clauses used adverbially, per Biber's example "Stuffing his
+# mouth with cookies, Joe ran out the door". Gerunds are a separate feature and
+# progressives are not participial clauses at all, so both are excluded.
+_PARTICIPIAL_AUX = (
+    r"(?:am|is|are|was|were|be|been|being|keeps?|kept|starts?|started|stops?|"
+    r"stopped|continues?|continued)"
+)
+_PARTICIPIAL_PROGRESSIVE_RE = re.compile(
+    rf"\b{_PARTICIPIAL_AUX}\s+(?:\w+ly\s+)?[a-z]+ing\b", re.IGNORECASE
+)
+_PARTICIPIAL_INITIAL_RE = re.compile(
+    r"(?:^|(?<=[.!?]\s))\s*([A-Za-z]+ing)\b[^.!?\n]{3,90}?,",
+    re.MULTILINE | re.IGNORECASE,
+)
+_PARTICIPIAL_MEDIAL_RE = re.compile(r"[,;]\s+([a-z]+ing)\b", re.IGNORECASE)
+_PARTICIPIAL_SUBORD_RE = re.compile(
+    r"\b(?:while|when|before|after|since|by|through|without|despite|besides|upon)"
+    r"\s+([a-z]+ing)\b",
+    re.IGNORECASE,
+)
+# -ing tokens that are ordinary nouns, adjectives, or prepositions. Listed
+# explicitly so a miss is visible rather than silently folded into the rate.
+PARTICIPIAL_STOPWORDS = {
+    "during", "something", "nothing", "everything", "anything", "morning",
+    "evening", "building", "buildings", "ceiling", "king", "thing", "things",
+    "ring", "spring", "string", "wing", "sibling", "siblings", "being",
+    "willing", "outstanding", "interesting", "exciting", "according",
+    "regarding", "concerning", "including", "notwithstanding", "upcoming",
+    "ongoing", "following", "surrounding", "engineering", "marketing",
+    "training", "meeting", "meetings", "learning", "writing", "reading",
+    "understanding", "feeling", "feelings", "finding", "findings", "beginning",
+    "ending", "warning", "offering", "opening", "setting", "settings",
+    "holding", "holdings", "housing", "clothing", "funding", "spending",
+    "wedding", "painting", "drawing", "recording", "screening", "briefing",
+    "hearing", "landing", "booking", "savings", "earnings", "proceedings",
+    "surroundings", "belongings",
+}
+
+
+def extract_participial_clauses(text):
+    """Return adverbial present-participial clause heads (Biber's definition)."""
+    without_progressives = _PARTICIPIAL_PROGRESSIVE_RE.sub(" ", text)
+    found = []
+    for pattern in (
+        _PARTICIPIAL_INITIAL_RE,
+        _PARTICIPIAL_MEDIAL_RE,
+        _PARTICIPIAL_SUBORD_RE,
+    ):
+        found.extend(
+            match
+            for match in pattern.findall(without_progressives)
+            if match.lower() not in PARTICIPIAL_STOPWORDS
+        )
+    return found
+
+
+def _biber_rate_check(check_id, text, extract, default_rate, label):
+    """Shared body for the three Reinhart rate checks."""
+    source = strip_front_matter(text)
+    words = source.split()
+    matches = extract(source)
+    count = len(matches)
+    minimum_words = threshold_value(check_id, "minimum_words", 300)
+    maximum_rate = threshold_value(check_id, "maximum_rate_per_1000", default_rate)
+    eligible = len(words) >= minimum_words
+    rate = count / len(words) * 1000 if words else 0.0
+    if not eligible:
+        evidence = (
+            f"{label}: {count}; below minimum length "
+            f"({len(words)}/{minimum_words} words)"
+        )
+    elif rate >= maximum_rate:
+        evidence = f"Found {count} {label} at {rate:.1f} per 1000 words: {matches[:12]}"
+    else:
+        evidence = f"{label}: {count} at {rate:.1f} per 1000 words"
+    return {
+        "text": check_id,
+        "passed": not eligible or rate < maximum_rate,
+        "candidate_count": count,
+        "matches": matches,
+        "evidence": evidence,
+    }
+
+
+def check_nominalisation_rate(text):
+    """Flag a high rate of nominalisations (pattern 65)."""
+    return _biber_rate_check(
+        "no-nominalisation-rate", text,
+        lambda s: NOMINALISATION_RE.findall(s), 29.0, "nominalisation(s)",
+    )
+
+
+def check_that_relative_rate(text):
+    """Flag a high rate of subject-position `that` relative clauses (pattern 66)."""
+    return _biber_rate_check(
+        "no-that-relative-rate", text,
+        lambda s: THAT_SUBJECT_RELATIVE_RE.findall(s), 3.5, "subject relative(s)",
+    )
+
+
+def check_participial_clause_rate(text):
+    """Flag a high rate of present participial clauses (pattern 67)."""
+    return _biber_rate_check(
+        "no-participial-clause-rate", text,
+        extract_participial_clauses, 4.4, "participial clause(s)",
+    )
+
+
 def check_superficial_ing(text):
     """Detect overused opening and tacked-on participial clauses (pattern 3)."""
     source = strip_front_matter(text)
@@ -3360,6 +3527,9 @@ ALL_CHECKS = {
     "no-soft-scaffolding": check_soft_scaffolding,
     "no-orphaned-demonstratives": check_orphaned_demonstratives,
     "no-forced-triads": check_rule_of_three,
+    "no-nominalisation-rate": check_nominalisation_rate,
+    "no-that-relative-rate": check_that_relative_rate,
+    "no-participial-clause-rate": check_participial_clause_rate,
     "no-superficial-ing": check_superficial_ing,
     "no-ghost-spectral-density": check_ghost_spectral,
     "no-quietness-obsession": check_quietness,

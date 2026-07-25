@@ -1743,6 +1743,9 @@ expected_checks = {
     "no-soft-scaffolding",
     "no-orphaned-demonstratives",
     "no-forced-triads",
+    "no-nominalisation-rate",
+    "no-that-relative-rate",
+    "no-participial-clause-rate",
     "no-superficial-ing",
     "no-ghost-spectral-density",
     "no-quietness-obsession",
@@ -2527,6 +2530,14 @@ for check_name in ALL_CHECKS:
     if check_name in {
         "no-staccato-sequences",
         "no-negative-parallelisms",
+        # DR-159 rate checks. These flag a calibrated share of human prose by
+        # design (24%, 27%, and 37% of the human corpus respectively). This
+        # 476-word opinion piece runs 39.9 nominalisations and 4.2 subject
+        # relatives per 1000 words, so it sits in that share. Excluded here
+        # rather than raising the thresholds, which would fit the instrument
+        # to two fixtures.
+        "no-nominalisation-rate",
+        "no-that-relative-rate",
     }:
         continue
     expect_pass(check_name, opinion_text, f"human opinion piece ({check_name})")
@@ -2543,6 +2554,9 @@ for check_name in ALL_CHECKS:
     if check_name in {
         "no-staccato-sequences",
         "no-performed-candour",
+        # DR-159: this instructional fixture runs 6.7 subject relatives per
+        # 1000 words, inside the 27% of human prose the check flags by design.
+        "no-that-relative-rate",
         "no-negative-parallelisms",
         "overall-signal-stacking",
     }:
@@ -4117,6 +4131,76 @@ if _patterns_data["no-significance-inflation"]["severity"] != "context_warning":
     print("FAIL: DR-71 #1 should still be a context warning")
 else:
     print("  ok: DR-71 #1 keeps its context-warning severity")
+
+print("\n=== DR-159 Biber rate checks (Reinhart) ===")
+
+# Nominalisation rate: nouns formed from verbs or adjectives (development,
+# robustness). Fails at 29.0 per 1000 words in prose of 300+ words.
+_dr159_nom_fail = (
+    "The implementation of the transformation required the development of a new "
+    "specification. The assessment of the requirements involved consideration of "
+    "the limitations and the identification of dependencies. The establishment of "
+    "governance improved the effectiveness of the organisation and the "
+    "responsiveness of its administration. The evaluation of performance depends "
+    "on the availability of information and the reliability of measurement. "
+) * 7
+expect_fail("no-nominalisation-rate", _dr159_nom_fail, "DR-159 dense nominalisation")
+
+_dr159_nom_pass = (
+    "She walked to the shop and bought bread. The baker had sold out of rye so she "
+    "took a white loaf instead. On the way home it began to rain, and by the time "
+    "she reached the door her coat was wet through. She put the kettle on and sat "
+    "down by the window to watch the street fill with water. "
+) * 5
+expect_pass("no-nominalisation-rate", _dr159_nom_pass, "DR-159 plain narrative prose")
+
+# That-relatives in subject position ("the dog that bit me"), not object
+# position ("the dog that I saw"). Fails at 3.5 per 1000 words.
+_dr159_that_fail = (
+    "The report that describes the failure was withdrawn. The team that builds the "
+    "pipeline has moved on. The tool that generates the summary is slow. The system "
+    "that handles payments went down. The process that creates the index runs "
+    "nightly. The rule that governs access changed. "
+) * 8
+expect_fail("no-that-relative-rate", _dr159_that_fail, "DR-159 dense subject relatives")
+
+_dr159_that_pass = (
+    "The dog that I saw belonged to the neighbour. The book that she recommended "
+    "arrived today. The house that they bought needs work. The film that he "
+    "mentioned is showing at the cinema on the corner near the station. "
+) * 6
+expect_pass("no-that-relative-rate", _dr159_that_pass, "DR-159 object relatives stay clear")
+
+# Present participial clauses: adverbial, per Biber's example "Stuffing his mouth
+# with cookies, Joe ran out the door". Fails at 4.4 per 1000 words.
+_dr159_part_fail = (
+    "Stuffing his mouth with cookies, Joe ran out the door. Leaning on the rail, she "
+    "watched the boats, counting them as they passed. Turning the corner, he saw the "
+    "lights, wondering what had happened. Holding the letter, she sat down, reading "
+    "it twice. "
+) * 9
+expect_fail("no-participial-clause-rate", _dr159_part_fail, "DR-159 dense participial clauses")
+
+_dr159_part_pass = (
+    "She is walking to the shop and he was running late. The building has a ceiling "
+    "of glass. During the morning meeting we reviewed the training plan. Something "
+    "was wrong with the recording. Nothing in the findings changed the outcome. "
+) * 6
+expect_pass("no-participial-clause-rate", _dr159_part_pass, "DR-159 progressives and -ing nouns stay clear")
+
+# All three are rate checks: short prose is out of scope whatever the rate.
+for _cid in ("no-nominalisation-rate", "no-that-relative-rate", "no-participial-clause-rate"):
+    _short = ALL_CHECKS[_cid]("The implementation of the transformation requires consideration.")
+    if not _short["passed"]:
+        FAILURES += 1
+        print(f"FAIL: DR-159 {_cid} should skip prose under 300 words")
+    else:
+        print(f"  ok: DR-159 {_cid} skips prose under 300 words")
+    if _patterns_data[_cid]["severity"] != "context_warning":
+        FAILURES += 1
+        print(f"FAIL: DR-159 {_cid} should be a context warning")
+    else:
+        print(f"  ok: DR-159 {_cid} is a context warning")
 
 # --- Summary ---
 
