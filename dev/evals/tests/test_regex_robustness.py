@@ -145,18 +145,16 @@ for variant in importance_frames:
         raise AssertionError(f"no-significance-inflation missed emphasis frame: {variant!r}")
     assert result["candidate_count"] >= 1
 
-# Recognition is measured before document-level thresholds. A short sample can
-# contain a valid triad candidate without constituting excessive triad density.
+# Recognition is measured before the document-level rate. A short sample can
+# contain a valid triad candidate without reaching the density threshold.
 short_triad = "The plan covers research, design, and delivery."
-triad_density = grade.ALL_CHECKS["no-triad-density"](short_triad)
-assert triad_density["passed"]
-assert_equal(triad_density["candidate_count"], 1, "short triad candidate extraction")
-assert not triad_density["threshold_met"]
-assert not grade.ALL_CHECKS["no-forced-triads"](short_triad)["passed"]
+triad_result = grade.ALL_CHECKS["no-forced-triads"](short_triad)
+assert triad_result["passed"]
+assert_equal(triad_result["candidate_count"], 1, "short triad candidate extraction")
+assert not triad_result["threshold_met"]
 
 quoted_triad = 'The report quotes "research, design, and delivery" verbatim.'
 quoted_result = grade.ALL_CHECKS["no-forced-triads"](quoted_triad)
-assert not quoted_result["passed"]
 assert_equal(quoted_result["candidate_count"], 1, "quoted triad remains detectable")
 assert quoted_result["candidates"][0]["quoted"] is True
 
@@ -289,7 +287,7 @@ for variant in triad_variants:
 for check_id in (
     "no-soft-scaffolding", "no-orphaned-demonstratives", "no-rhetorical-questions",
     "no-unicode-flair", "no-excessive-hedging", "no-tidy-paragraph-endings",
-    "no-bland-critical-template", "no-rubric-echoing", "no-triad-density",
+    "no-bland-critical-template", "no-rubric-echoing", "no-forced-triads",
     "no-boldface-overuse", "no-inline-header-lists",
 ):
     assert check_id in grade.CHECK_THRESHOLDS

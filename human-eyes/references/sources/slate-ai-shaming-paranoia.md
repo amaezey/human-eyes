@@ -51,7 +51,7 @@ Clarke's 1,261-word Slate article combines her own reaction to accusations of AI
 
 ## Matched patterns / rules
 
-- `human-eyes/scripts/patterns.json` and `human-eyes/scripts/grade.py`: #7 `no-ai-vocabulary-clustering`, #9 `no-negative-parallelisms`, #10 `no-forced-triads`, #10a `no-triad-density`, #30 `generic_metaphors` in `human-eyes/scripts/judgement.json`, #31 `no-excessive-lists`, #41 `genre_specific`, #49 `no-em-dashes`, and `overall-signal-stacking`.
+- `human-eyes/scripts/patterns.json` and `human-eyes/scripts/grade.py`: #7 `no-ai-vocabulary-clustering`, #9 `no-negative-parallelisms`, #10 `no-forced-triads`, #30 `generic_metaphors` in `human-eyes/scripts/judgement.json`, #31 `no-excessive-lists`, #41 `genre_specific`, #49 `no-em-dashes`, and `overall-signal-stacking`.
 - `human-eyes/references/process.md`: preserve argument, stance, genre, factual qualifications, quotations, and deliberate devices; do not make authorship statements.
 - `dev/hypotheses.md`: H3 drop detection framing, H24 register-specific vocabulary density, and H25 model-family versus generic-AI residue.
 - Focused deterministic evidence on the 21 body paragraphs: #49 flagged six em dashes; #7 was below threshold at two watched terms in the worst paragraph and three in the article; #10 surfaced two candidates while #10a stayed below its four-candidate density threshold; #9 surfaced one candidate (`promises to improve, not everyone is fearful of the future`); sentence-length variance and paragraph-length uniformity were clear. The exact illustrative sentence `It’s not just X, it’s Y.` separately triggered #9. These are surface-only results, not a complete Audit and not authorship evidence.

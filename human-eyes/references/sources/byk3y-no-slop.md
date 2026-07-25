@@ -54,7 +54,7 @@ Byk3y/no-slop turns categories from Wikipedia's "Signs of AI writing" into promp
 
 - `no-ai-vocabulary-clustering`, `no-nonliteral-land-surface`, pattern #7, and H24 for high-frequency and conditional vocabulary.
 - `no-copula-avoidance`, `no-promotional-language`, `no-vague-attributions`, `no-significance-inflation`, and `underspecified_language` for wording, hype, attribution, and unsupported evaluation.
-- `no-forced-triads`, `no-triad-density`, `formulaic_parallelism`, and `no-negative-parallelisms` for structural formulas.
+- `no-forced-triads`, `formulaic_parallelism`, and `no-negative-parallelisms` for structural formulas.
 - Pattern #6, `no-generic-conclusions`, and `no-signposted-conclusions` for challenges, outlook, and section-summary endings.
 - `no-superficial-ing` and pattern #11 synonym cycling for present-participle filler and elegant variation.
 - `no-em-dashes`, `no-collaborative-artifacts`, `context_leakage`, and `no-knowledge-cutoff-disclaimers` for punctuation and assistant residue.

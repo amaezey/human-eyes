@@ -36,7 +36,7 @@ TENDENCY_CHECKS = {
     "staccato": ("no-staccato-sequences",),
     "anaphora": ("no-anaphora",),
     "rhetorical questions": ("no-rhetorical-questions",),
-    "triads": ("no-forced-triads", "no-triad-density"),
+    "triads": ("no-forced-triads",),
     "uniform rhythm and vocabulary": ("sentence-length-variance", "vocabulary-diversity"),
     "em dashes": ("no-em-dashes",),
     "em dash": ("no-em-dashes",),

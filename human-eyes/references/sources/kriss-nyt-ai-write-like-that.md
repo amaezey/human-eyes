@@ -52,7 +52,7 @@ Kriss's 4,713-word New York Times Magazine essay combines personal model use, cl
 
 - `no-ai-vocabulary-clustering` (#7); partial coverage, with a three-item paragraph threshold and no register-specific source profile.
 - `no-negative-parallelisms` (#9), `no-countdown-negation` (#33), and `no-staccato-sequences` (#25); direct structural overlap, including `No X. No Y. Just Z.`, but no automatic distinction between AI-associated and deliberate human uses.
-- `no-forced-triads` (#10) and `no-triad-density` (#10a); partial and challenged coverage. The exact viral excerpt's three sentence-level tricolons produce zero #10 candidates, while the separate Bing quotation produces three coordinated-list candidates; #10a does not fire on either short excerpt.
+- `no-forced-triads` (#10); partial and challenged coverage. The exact viral excerpt's three sentence-level tricolons produce zero #10 candidates, while the separate Bing quotation produces three coordinated-list candidates; #10a does not fire on either short excerpt.
 - `no-ghost-spectral-density` (#26) and `no-quietness-obsession` (#27); partial direct overlap. The quietness catalogue names `hum`, `humming`, and `soft`, but the executable check does not.
 - `forced_synesthesia` (#28), `generic_metaphors` (#30), `semantic_redundancy` (#34), and `genre_specific` (#41); agent-assessed contextual overlap.
 - `no-rhetorical-questions` (#29); full coverage for the approved fragment-question answer beat, with one complete occurrence producing a finding.

@@ -910,27 +910,34 @@ expect_pass("no-orphaned-demonstratives",
 # --- no-forced-triads ---
 
 print("\n=== no-forced-triads ===")
-expect_fail("no-forced-triads",
-    "It supports equity, participation, and resilience.",
+
+
+def expect_triad(text, reason, recognized=True):
+    """Assert extractor coverage. #10 judges the rate, not any single triad."""
+    global FAILURES
+    found = bool(_grade.extract_triad_candidates(text))
+    if found != recognized:
+        FAILURES += 1
+        verb = "recognize" if recognized else "ignore"
+        print(f"FAIL: extract_triad_candidates should {verb}: {reason}")
+    else:
+        print(f"  ok: extract_triad_candidates correctly handles: {reason}")
+
+
+expect_triad("It supports equity, participation, and resilience.",
     "equity doesn't match but participation (-tion) and resilience (-ence) do")
-expect_fail("no-forced-triads",
-    "The program builds curation, classification, and neutrality.",
+expect_triad("The program builds curation, classification, and neutrality.",
     "all three match -tion/-ity")
-expect_fail("no-forced-triads",
-    "The store sells apples, bread, and milk.",
+expect_triad("The store sells apples, bread, and milk.",
     "concrete triad is still a triad")
-expect_fail("no-forced-triads",
-    "They know when to engage, how to respond, and when a decision closes.",
+expect_triad("They know when to engage, how to respond, and when a decision closes.",
     "parallel clause triad")
-expect_fail("no-forced-triads",
-    "They have to risk receiving, admitting limits, or letting someone else do it.",
+expect_triad("They have to risk receiving, admitting limits, or letting someone else do it.",
     "parallel verb-phrase triad")
-expect_fail("no-forced-triads",
-    "Pleasure softens my edges, which makes service kinder and less controlling.",
+expect_triad("Pleasure softens my edges, which makes service kinder and less controlling.",
     "three-part rhetorical coordination")
-expect_pass("no-forced-triads",
-    "She answers quickly, smooths things over, and then wonders why life feels tight.",
-    "narrative sequence rather than a parallel triad")
+expect_triad("She answers quickly, smooths things over, and then wonders why life feels tight.",
+    "narrative sequence rather than a parallel triad", recognized=False)
 
 
 # --- no-superficial-ing ---
@@ -1355,9 +1362,9 @@ expect_fail("no-ai-vocabulary-clustering",
     "'unparalleled' + 'invaluable' + 'meticulous' = 3 new AI vocab items")
 
 
-# --- no-triad-density ---
+# --- no-forced-triads density (#10) ---
 
-print("\n=== no-triad-density ===")
+print("\n=== no-forced-triads density ===")
 
 # Build a 400+ word text with 5 triads
 _triad_heavy = (
@@ -1368,33 +1375,33 @@ _triad_heavy = (
     "The pace was fast, slow, and steady throughout the quarter. "
     + "This is filler text to reach the word count threshold. " * 30
 )
-expect_fail("no-triad-density",
+expect_fail("no-forced-triads",
     _triad_heavy,
-    "5 triads in 400+ words")
+    "5 triads in 400+ words is above 4.0 per 1000")
 
 # 1 triad in 400+ words should pass
 _triad_light = (
     "The team needed apples, bananas, and oranges for the project. "
     + "This is filler text to reach the word count threshold. " * 30
 )
-expect_pass("no-triad-density",
+expect_pass("no-forced-triads",
     _triad_light,
-    "only 1 triad in 400+ words")
+    "1 triad in 400+ words is below 4.0 per 1000")
 
 # Short text with 5 triads should skip (pass)
 _triad_short = (
     "Apples, bananas, and oranges. Cats, dogs, and birds. "
     "Red, blue, and green. Small, medium, or large. Fast, slow, and steady."
 )
-expect_pass("no-triad-density",
+expect_pass("no-forced-triads",
     _triad_short,
     "short text (under 300 words) with 5 triads should skip")
 
 # Empty/minimal text should pass
-expect_pass("no-triad-density",
+expect_pass("no-forced-triads",
     "",
     "empty text")
-expect_pass("no-triad-density",
+expect_pass("no-forced-triads",
     "A single sentence.",
     "minimal text")
 
@@ -1755,7 +1762,6 @@ expected_checks = {
     "no-bland-critical-template",
     "no-rubric-echoing",
     "vocabulary-diversity",
-    "no-triad-density",
     "no-section-scaffolding",
     # U1 (audit-report redesign): Group A patterns 2, 5, 13, 14, 18, 20.
     "no-notability-claims",
@@ -2515,7 +2521,6 @@ opinion_text = Path(__file__).resolve().parents[1].joinpath("samples/human-sourc
 for check_name in ALL_CHECKS:
     if check_name in {
         "no-staccato-sequences",
-        "no-forced-triads",
         "no-negative-parallelisms",
     }:
         continue
@@ -2525,7 +2530,6 @@ expect_fail(
     opinion_text,
     "human opinion contains a negative-positive because/not-because construction",
 )
-expect_fail("no-forced-triads", opinion_text, "human opinion contains recognizable triads")
 
 # --- Human passthrough: instructional piece ---
 print("\n=== human-instructional-passthrough ===")
@@ -2534,7 +2538,6 @@ for check_name in ALL_CHECKS:
     if check_name in {
         "no-staccato-sequences",
         "no-performed-candour",
-        "no-forced-triads",
         "no-negative-parallelisms",
         "overall-signal-stacking",
     }:
@@ -2545,7 +2548,6 @@ expect_fail(
     instructional_text,
     "human instructional prose contains cross-sentence negative parallelism",
 )
-expect_fail("no-forced-triads", instructional_text, "human instructional prose contains a matched three-part coordination")
 expect_fail("overall-signal-stacking", instructional_text, "human instructional prose reaches the aggregate signal threshold")
 
 
@@ -3746,6 +3748,53 @@ if _patterns_data["no-symmetric-list-items"]["severity"] != "context_warning":
     print("FAIL: DR-19E #63 should be a context warning")
 else:
     print("  ok: DR-19E #63 carries context_warning severity")
+
+# --- DR-19G: triad density replaces the one-triad verdict (#10) ---
+print("\n=== DR-19G triad density ===")
+
+DR19G_FILLER = "The team reviewed the plan carefully and at length again today. "
+DR19G_TRIAD = "It was fast, cheap, and reliable. "
+
+# 408 words, 2 triads = 4.90 per 1000: at or above the 4.0 threshold.
+expect_fail("no-forced-triads", DR19G_FILLER * 36 + DR19G_TRIAD * 2,
+    "DR-19G density at 4.90 per 1000 words")
+
+# 402 words, 1 triad = 2.49 per 1000: below the threshold.
+expect_pass("no-forced-triads", DR19G_FILLER * 36 + DR19G_TRIAD,
+    "DR-19G density at 2.49 per 1000 words")
+
+# A single triad no longer carries a verdict on its own.
+expect_pass("no-forced-triads", "The plan was fast, cheap, and reliable.",
+    "DR-19G one triad in a short text")
+
+# Under the 300-word floor the check does not speak, however dense.
+expect_pass("no-forced-triads", DR19G_TRIAD * 4,
+    "DR-19G below the minimum-length floor")
+
+dr19g_result = ALL_CHECKS["no-forced-triads"](DR19G_FILLER * 36 + DR19G_TRIAD * 2)
+if "per 1000" not in dr19g_result["evidence"]:
+    FAILURES += 1
+    print(f"FAIL: DR-19G evidence should report the rate; got {dr19g_result['evidence']!r}")
+else:
+    print("  ok: DR-19G evidence reports the measured rate")
+
+if "no-triad-density" in ALL_CHECKS:
+    FAILURES += 1
+    print("FAIL: DR-19G should retire the redundant #10a density check")
+else:
+    print("  ok: DR-19G retired #10a no-triad-density")
+
+if "no-triad-density" in _patterns_data:
+    FAILURES += 1
+    print("FAIL: DR-19G should remove the #10a catalogue entry")
+else:
+    print("  ok: DR-19G removed the #10a catalogue entry")
+
+if _patterns_data["no-forced-triads"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-19G #10 should stay a context warning")
+else:
+    print("  ok: DR-19G #10 keeps context_warning severity")
 
 # --- Summary ---
 

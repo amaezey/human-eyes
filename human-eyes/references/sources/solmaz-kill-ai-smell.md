@@ -51,7 +51,7 @@ Solmaz presents a writing skill, a standard-library checker, and an 18-document 
 
 ## Matched patterns / rules
 
-- `no-forced-triads` (#10) and `no-triad-density` (#10a): related but broader and differently thresholded than Solmaz's narrow exact-triad rate.
+- `no-forced-triads` (#10): related but broader and differently thresholded than Solmaz's narrow exact-triad rate.
 - `no-inline-header-lists` (#14) and `no-excessive-lists` (#31): related but do not calculate labelled bullets as a share of all bullets with Solmaz's separators.
 - `sentence-length-variance` (#52), `no-staccato-sequences` (#25), and `paragraph-length-uniformity`: related rhythm measures, not sentence flow.
 - `vocabulary-diversity` (#53), manual synonym cycling (#11), `no-ai-vocabulary-clustering` (#7), and H24: relevant lexical coverage; #53 is directly challenged.

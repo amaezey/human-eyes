@@ -1960,17 +1960,36 @@ def threshold_value(check_id, key, default):
 
 
 def check_rule_of_three(text):
-    """Surface every recognized triad; density is reported separately."""
+    """Flag a high rate of three-part constructions (pattern 10).
+
+    Counting triads does not separate generated from human prose: 95% of the
+    human corpus and 100% of the generated corpus contain at least one, and a
+    raw count of four is cleared by 71% of human texts because long documents
+    accumulate triads whatever their source. The rate does separate them, so
+    the check measures triads per 1000 words against the length-controlled
+    calibration in dev/evals/triad-density-calibration-2026-07-25.md.
+    """
+    words = text.split()
     matches = extract_triad_candidates(text)
     count = len(matches)
+    minimum_words = threshold_value("no-forced-triads", "minimum_words", 300)
+    maximum_rate = threshold_value("no-forced-triads", "maximum_rate_per_1000", 4.0)
+    eligible = len(words) >= minimum_words
+    rate = count / len(words) * 1000 if words else 0.0
     return {
         "text": "no-forced-triads",
-        "passed": count == 0,
+        "passed": not eligible or rate < maximum_rate,
+        "candidate_count": count,
         "matches": matches,
         "evidence": (
-            f"Found {count} triad(s): {matches}"
-            if count > 0
-            else "No forced triads"
+            f"Found {count} triad(s) at {rate:.1f} per 1000 words: {matches}"
+            if eligible and rate >= maximum_rate
+            else (
+                f"Triads: {count}; below minimum length "
+                f"({len(words)}/{minimum_words} words)"
+                if not eligible
+                else f"Triads: {count} at {rate:.1f} per 1000 words"
+            )
         ),
     }
 
@@ -2692,30 +2711,6 @@ def check_rubric_echoing(text):
     }
 
 
-def check_triad_density(text):
-    """Detect high density of three-item lists ('X, Y, and/or Z') regardless of word type."""
-    words = text.split()
-    match_strs = extract_triad_candidates(text)
-    count = len(match_strs)
-    minimum_words = threshold_value("no-triad-density", "minimum_words", 300)
-    minimum_candidates = threshold_value("no-triad-density", "minimum_candidates", 4)
-    eligible = len(words) >= minimum_words
-    return {
-        "text": "no-triad-density",
-        "passed": not eligible or count < minimum_candidates,
-        "candidate_count": count,
-        "matches": match_strs,
-        "evidence": (
-            f"Found {count} triad(s): {match_strs}"
-            if eligible and count >= minimum_candidates
-            else (
-                f"Triads: {count}; below minimum length ({len(words)}/{minimum_words} words)"
-                if not eligible else f"Triads: {count}"
-            )
-        ),
-    }
-
-
 def check_type_token_ratio(text):
     """Flag unusually high windowed lexical diversity (pattern 53).
 
@@ -3174,7 +3169,6 @@ ALL_CHECKS = {
     "no-bland-critical-template": check_bland_critical_template,
     "no-rubric-echoing": check_rubric_echoing,
     "vocabulary-diversity": check_type_token_ratio,
-    "no-triad-density": check_triad_density,
     "no-section-scaffolding": check_section_scaffolding,
     "no-notability-claims": check_notability_claims,
     "no-vague-attributions": check_vague_attributions,
@@ -3231,7 +3225,7 @@ CHECK_THRESHOLDS = {
     "no-tidy-paragraph-endings": {"minimum_candidates": 3},
     "no-bland-critical-template": {"minimum_candidates": 3},
     "no-rubric-echoing": {"minimum_candidates": 3},
-    "no-triad-density": {"minimum_words": 300, "minimum_candidates": 4},
+    "no-forced-triads": {"minimum_words": 300, "maximum_rate_per_1000": 4.0},
     "no-boldface-overuse": {"minimum_candidates": 4},
     "no-inline-header-lists": {"minimum_candidates": 2},
     "no-heading-one-liners": {"minimum_candidates": 2},
@@ -3407,7 +3401,7 @@ def friendly_evidence(result):
     if not isinstance(samples, list):
         return evidence
     prefix = evidence[:list_match.start()].strip()
-    if result["text"] == "no-triad-density":
+    if result["text"] == "no-forced-triads":
         shown = samples[:3]
         sample_text = ", ".join(f'"{sample}"' for sample in shown)
         suffix = "" if len(samples) <= 3 else f", plus {len(samples) - 3} more"

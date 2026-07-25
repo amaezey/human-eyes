@@ -427,18 +427,18 @@
   "no-forced-triads": {
     "category": "Language and grammar",
     "short_name": "Three-part constructions",
-    "description": "Surfaces three-part item, phrase, and clause coordinations for contextual review.",
-    "why_it_matters": "AI prose often leans on repeated three-part constructions, but each detected triad remains evidence to interpret rather than an authorship claim.",
+    "description": "Checks how densely three-part item, phrase, and clause coordinations run through a piece.",
+    "why_it_matters": "Generated prose runs about twice the human rate of three-part constructions, so the rate carries the signal that a single triad does not.",
     "severity": "context_warning",
     "failure_modes": [
       "frictionless_structure",
       "genre_misfit"
     ],
     "evidence_role": "list_rhythm",
-    "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+    "guidance": "Thin out decorative or interchangeable triads until the rate drops. Preserve meaningful lists, quotations, and deliberate rhetoric.",
     "pattern_number": "10",
     "patterns_md_heading": "Rule of three",
-    "patterns_md_body": "Three-part structures are surfaced wherever they occur, including item lists, verb phrases, clauses, and quoted material. Detection records the construction; it does not decide that the writing is artificial or that the triad should be removed.\n\n**Tolerance note:** Three-part structures are common in human rhetoric, comedy, fiction, speeches, and criticism. Treat them as an AI-associated misuse when they cluster densely, feel interchangeable, or use abstractions to simulate breadth. Preserve concrete, necessary, funny, rhythmic, quoted, or deliberately voiced triads.\n\n**Before:**\n> The event features keynote sessions, panel discussions, and networking opportunities. Attendees can expect innovation, inspiration, and industry insights.\n\n**After:**\n> The event includes talks and panels, with time for informal networking between sessions.\n\n**Severity:** context_warning · `no-forced-triads` (the density escalation lives at #10a)\n\n**Detection:** Programmatic recognition surfaces every grammatical three-part coordination. Candidate evidence records whether the matched span is inside quotation marks; quotation context does not suppress detection.",
+    "patterns_md_body": "Three-part structures are recognised wherever they occur, including item lists, verb phrases, clauses, and quoted material. The check speaks only about how densely they run: it fails at 4.0 or more triads per 1000 words, in prose of 300 words or more.\n\nA single triad says nothing. In a length-controlled comparison of the project corpora, 95% of human texts and 100% of generated texts contained at least one, and 71% of human texts contained four or more. What separated the two was the rate: a median of 2.68 triads per 1000 words in human prose against 5.33 in generated prose. At the 4.0 threshold the check flags 66% of the generated samples and 24% of the human ones.\n\n**Tolerance note:** Three-part structures are common in human rhetoric, comedy, fiction, speeches, and criticism. A finding means the cadence has become repetitive across the whole piece, not that any one triad is wrong. Preserve concrete, necessary, funny, rhythmic, quoted, or deliberately voiced triads.\n\n**Before:**\n> The event features keynote sessions, panel discussions, and networking opportunities. Attendees can expect innovation, inspiration, and industry insights.\n\n**After:**\n> The event includes talks and panels, with time for informal networking between sessions.\n\n**Severity:** context_warning · `no-forced-triads`\n\n**Detection:** Programmatic recognition surfaces every grammatical three-part coordination, then scores the rate per 1000 words. Candidate evidence records whether the matched span is inside quotation marks; quotation context does not suppress detection.",
     "patterns_md_leading_blanks": 2
   },
   "no-formulaic-openers": {
@@ -930,23 +930,6 @@
     "pattern_number": "34",
     "patterns_md_heading": "Per-paragraph miniature conclusions",
     "patterns_md_body": "Every paragraph wraps up with a tidy summary sentence that transitions perfectly to the next. Humans digress, leave threads hanging, circle back later. AI's paragraph-level tidiness is itself a tell.\n\n**Before:**\n> The study surveyed 400 teachers across 12 districts. Most reported increased workload since 2020. The takeaway is clear: teachers are stretched thin and the trend shows no signs of reversing.\n>\n> The funding picture compounds this pressure. Per-pupil spending has risen by 4% nominally but fallen in real terms. This financial squeeze makes the workload problem even harder to address.\n\n**After:**\n> The study surveyed 400 teachers across 12 districts. Most reported increased workload since 2020, with marking and administrative tasks growing fastest.\n>\n> Per-pupil spending has risen by 4% nominally but fallen in real terms. Whether the two trends are connected is debatable, though several principals I spoke to thought so.\n\nWhen you spot a paragraph where the final sentence restates the paragraph's point or transitions smoothly to the next topic, consider cutting it or replacing it with something that leaves a thread open.\n\nWatch for endings such as \"That is why...\", \"The takeaway is...\", \"The result is...\", \"In the end,...\", \"Ultimately,...\", and \"With that distinction in mind...\". The deterministic candidate surface also recognises compact interpretive closures such as \"The selection was already an interpretation\" and balanced semicolon closures whose two halves each contain their own subject and linking verb. Literal states and subordinate fragments are controls. Quoted occurrences remain candidates and are marked as quoted. One can be legitimate. Three or more usually means the piece is landing every paragraph the same way.\n\nAlso check paragraph size. AI-generated longform often settles into near-identical blocks: ten paragraphs of 65-85 words, each making one balanced point. Human paragraphs usually show uneven pressure; some are short, some wander, some carry a scene or example longer than expected.\n\n**Severity:** context_warning · `no-tidy-paragraph-endings` and context_warning · `paragraph-length-uniformity` (this pattern covers two related checks)",
-    "patterns_md_leading_blanks": 2
-  },
-  "no-triad-density": {
-    "category": "Language and grammar",
-    "short_name": "Triad density",
-    "description": "Checks whether three-part list structures are overused across the piece.",
-    "why_it_matters": "Too many three-part lists create a recognisable generated cadence.",
-    "severity": "context_warning",
-    "failure_modes": [
-      "frictionless_structure",
-      "genre_misfit"
-    ],
-    "evidence_role": "list_rhythm",
-    "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-    "pattern_number": "10a",
-    "patterns_md_heading": "Triad density",
-    "patterns_md_body": "The density variant of #10 rule of three. While #10 surfaces each individual triad, #10a escalates when triads cluster across longer prose: four or more three-part item, phrase, or clause coordinations in a piece of 300+ words. This is the rate-of-triads metric — even when each individual triad reads naturally, the aggregate cadence can become mechanical.\n\n**Before:**\n> The team values clarity, directness, and rigour. Their meetings are short, focused, and outcome-driven. The retros surface what worked, what didn't, and what to try next. The roadmap balances delivery, learning, and team health.\n\n**After:**\n> The team runs short meetings and uses retros to decide what to try next. The roadmap is mostly about delivery, with deliberate space for the things the team is still learning how to do well.\n\n**Severity:** context_warning · `no-triad-density`\n\n**Detection:** Programmatic check `no-triad-density` uses the same candidate set as #10 and fails at 4+ triads in prose of 300+ words. Quoted candidates remain counted and are separately marked as quoted evidence.",
     "patterns_md_leading_blanks": 2
   },
   "no-unicode-flair": {

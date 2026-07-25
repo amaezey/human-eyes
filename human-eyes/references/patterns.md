@@ -369,9 +369,11 @@ Forms include:
 
 ### 10. Rule of three
 
-Three-part structures are surfaced wherever they occur, including item lists, verb phrases, clauses, and quoted material. Detection records the construction; it does not decide that the writing is artificial or that the triad should be removed.
+Three-part structures are recognised wherever they occur, including item lists, verb phrases, clauses, and quoted material. The check speaks only about how densely they run: it fails at 4.0 or more triads per 1000 words, in prose of 300 words or more.
 
-**Tolerance note:** Three-part structures are common in human rhetoric, comedy, fiction, speeches, and criticism. Treat them as an AI-associated misuse when they cluster densely, feel interchangeable, or use abstractions to simulate breadth. Preserve concrete, necessary, funny, rhythmic, quoted, or deliberately voiced triads.
+A single triad says nothing. In a length-controlled comparison of the project corpora, 95% of human texts and 100% of generated texts contained at least one, and 71% of human texts contained four or more. What separated the two was the rate: a median of 2.68 triads per 1000 words in human prose against 5.33 in generated prose. At the 4.0 threshold the check flags 66% of the generated samples and 24% of the human ones.
+
+**Tolerance note:** Three-part structures are common in human rhetoric, comedy, fiction, speeches, and criticism. A finding means the cadence has become repetitive across the whole piece, not that any one triad is wrong. Preserve concrete, necessary, funny, rhythmic, quoted, or deliberately voiced triads.
 
 **Before:**
 > The event features keynote sessions, panel discussions, and networking opportunities. Attendees can expect innovation, inspiration, and industry insights.
@@ -379,24 +381,9 @@ Three-part structures are surfaced wherever they occur, including item lists, ve
 **After:**
 > The event includes talks and panels, with time for informal networking between sessions.
 
-**Severity:** context_warning · `no-forced-triads` (the density escalation lives at #10a)
+**Severity:** context_warning · `no-forced-triads`
 
 **Detection:** Programmatic check `no-forced-triads`. Candidate evidence records whether the matched span is inside quotation marks; quotation context does not suppress detection.
-
-
-### 10a. Triad density
-
-The density variant of #10 rule of three. While #10 surfaces each individual triad, #10a escalates when triads cluster across longer prose: four or more three-part item, phrase, or clause coordinations in a piece of 300+ words. This is the rate-of-triads metric — even when each individual triad reads naturally, the aggregate cadence can become mechanical.
-
-**Before:**
-> The team values clarity, directness, and rigour. Their meetings are short, focused, and outcome-driven. The retros surface what worked, what didn't, and what to try next. The roadmap balances delivery, learning, and team health.
-
-**After:**
-> The team runs short meetings and uses retros to decide what to try next. The roadmap is mostly about delivery, with deliberate space for the things the team is still learning how to do well.
-
-**Severity:** context_warning · `no-triad-density`
-
-**Detection:** Programmatic check `no-triad-density`. Quoted candidates remain counted and are separately marked as quoted evidence.
 
 
 ### 11. Synonym cycling

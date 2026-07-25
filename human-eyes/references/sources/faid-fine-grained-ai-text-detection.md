@@ -61,7 +61,7 @@ Ta et al. introduce FAIDSet, an 83,350-item English and Vietnamese academic-text
 
 - `STRATEGY.md`: rejects document authorship classification and treats patterns as writing evidence, not provenance verdicts.
 - `dev/TESTING.md`: requires prompt and source provenance, register variation, length controls, packaging normalization, complete Audits, explicit version references, and separate treatment of coached or humanized samples.
-- `no-ai-vocabulary-clustering`, `no-significance-inflation`, `no-copula-avoidance`, `no-forced-triads`, `no-triad-density`, `no-filler-phrases`, `no-superficial-ing`, and `overall-signal-stacking`: adjacent current checks that fired on the paper or its reproduced prompts in a surface-only run, but they do not directly cover Figure 5's recurrent Gemini trigrams.
+- `no-ai-vocabulary-clustering`, `no-significance-inflation`, `no-copula-avoidance`, `no-forced-triads`, `no-filler-phrases`, `no-superficial-ing`, and `overall-signal-stacking`: adjacent current checks that fired on the paper or its reproduced prompts in a surface-only run, but they do not directly cover Figure 5's recurrent Gemini trigrams.
 - `sentence-length-variance`, `paragraph-length-uniformity`, and `vocabulary-diversity`: document-level distribution checks, not equivalents of model-family output-length distributions or trigram frequencies.
 - `genre_specific` academic assessment: checks source integrity, citations, and evidence quality; it does not classify collaboration or model family.
 
