@@ -2926,6 +2926,100 @@ def check_heading_one_liners(text):
     }
 
 
+# British and American spelling families that genuinely alternate.  Words whose
+# American form is also an ordinary British word with its own sense (tyre/tire,
+# kerb/curb, cheque/check, draught/draft, licence/license, practise/practice,
+# storey/story, programme/program, judgement/judgment, learnt/learned) are left
+# out: counting them would manufacture a mixture that is not there.
+_ISE_STEMS = (
+    "apolog", "author", "categor", "character", "civil", "colon", "critic",
+    "emphas", "familiar", "formal", "general", "harmon", "hospital", "ideal",
+    "industrial", "initial", "legitim", "local", "maxim", "memor", "minim",
+    "mobil", "modern", "normal", "optim", "organ", "penal", "personal",
+    "priorit", "public", "rational", "real", "recogn", "revolution", "social",
+    "special", "stabil", "standard", "steril", "summar", "symbol", "sympath",
+    "theor", "util", "visual",
+)
+_OUR_STEMS = (
+    "arm", "behavi", "cand", "clam", "col", "demean", "endeav", "fav", "flav",
+    "harb", "hon", "hum", "lab", "neighb", "od", "parl", "rig", "rum", "savi",
+    "splend", "tum", "val", "vap", "vig",
+)
+_RE_STEMS = (
+    "calib", "cent", "fib", "lust", "meag", "scept", "somb", "spect", "theat",
+    "lit",
+)
+_OGUE_STEMS = ("anal", "catal", "dial", "epil", "monol", "prol")
+_DOUBLE_L_STEMS = (
+    "cancel", "counsel", "equal", "fuel", "initial", "jewel", "label", "level",
+    "marvel", "model", "rival", "signal", "total", "travel",
+)
+_AE_OE_PAIRS = (
+    ("anaem", "anem"), ("anaesthe", "anesthe"), ("diarrhoe", "diarrhe"),
+    ("encyclopaed", "encycloped"), ("foet", "fet"), ("gynaecolog", "gynecolog"),
+    ("haemo", "hemo"), ("leukaem", "leukem"), ("oesophag", "esophag"),
+    ("orthopaed", "orthoped"), ("palaeo", "paleo"), ("paediatr", "pediatr"),
+    ("manoeuvr", "maneuver"),
+)
+_SPELLING_ONE_OFFS = (
+    ("grey", "gray"), ("aluminium", "aluminum"), ("sulphur", "sulfur"),
+    ("pyjamas", "pajamas"), ("moustache", "mustache"), ("cosy", "cozy"),
+    ("sceptic", "skeptic"), ("defence", "defense"), ("offence", "offense"),
+    ("pretence", "pretense"), ("plough", "plow"), ("smoulder", "smolder"),
+    ("mould", "mold"), ("artefact", "artifact"),
+)
+
+
+def _spelling_patterns(american):
+    """Build one convention's regex list; `american` picks the spelling side."""
+    joined = lambda stems: "|".join(stems)
+    ise = "iz" if american else "is"
+    yse = "yz" if american else "ys"
+    our = "or" if american else "our"
+    reer = "er" if american else "re"
+    ogue = "og" if american else "ogue"
+    doubled = "" if american else "l"
+    patterns = [
+        rf"\b(?:{joined(_ISE_STEMS)}){ise}(?:e|es|ed|ing|er|ers|ation|ations|ational)\b",
+        rf"\b(?:anal|catal|paral){yse}(?:e|ed|ing|er|ers)\b",
+        rf"\b(?:{joined(_OUR_STEMS)}){our}(?:|s|ed|ing|ful|fully|less|able|ably|ite|ites)\b",
+        rf"\b(?:{joined(_RE_STEMS)}){reer}(?:|s|d|ed|ing)\b",
+        rf"\b(?:{joined(_OGUE_STEMS)}){ogue}(?:|s)\b",
+        rf"\b(?:{joined(_DOUBLE_L_STEMS)}){doubled}(?:ed|ing|er|ers|ous)\b",
+    ]
+    patterns += [rf"\b{a if american else b}\w*\b" for b, a in _AE_OE_PAIRS]
+    patterns += [rf"\b{a if american else b}(?:s|al|ally|ism|ical)?\b"
+                 for b, a in _SPELLING_ONE_OFFS]
+    return patterns
+
+
+BRITISH_SPELLINGS = _spelling_patterns(american=False)
+AMERICAN_SPELLINGS = _spelling_patterns(american=True)
+
+
+def check_mixed_spelling_conventions(text):
+    """Detect British and American spellings of the same families in one text (pattern 64).
+
+    Either convention used consistently is fine.  The finding is the mixture,
+    which is what appears when generated text is pasted into a document written
+    the other way.
+    """
+    british_count, british = count_pattern_matches(text, BRITISH_SPELLINGS)
+    american_count, american = count_pattern_matches(text, AMERICAN_SPELLINGS)
+    mixed = british_count > 0 and american_count > 0
+    return {
+        "text": "no-mixed-spelling-conventions",
+        "passed": not mixed,
+        "matches": british + american if mixed else [],
+        "evidence": (
+            f"Found both conventions: British {sorted(set(british))} "
+            f"and American {sorted(set(american))}"
+            if mixed
+            else "No mixed spelling conventions"
+        ),
+    }
+
+
 TITLE_CASE_MINOR_WORDS = {
     "a", "an", "the", "and", "or", "but", "nor", "for", "so", "yet",
     "as", "at", "by", "in", "into", "of", "on", "over", "per", "than",
@@ -3186,6 +3280,7 @@ ALL_CHECKS = {
     "no-paragraph-anaphora": check_paragraph_anaphora,
     "no-heading-one-liners": check_heading_one_liners,
     "no-title-case-headings": check_title_case_headings,
+    "no-mixed-spelling-conventions": check_mixed_spelling_conventions,
     "no-modal-stacks": check_modal_stacks,
     "no-collaborative-artifacts": check_collaborative_artifacts,
     "no-curly-quotes": check_curly_quotes,

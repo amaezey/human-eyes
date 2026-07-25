@@ -1748,6 +1748,7 @@ expected_checks = {
     "no-excessive-lists",
     "no-symmetric-list-items",
     "no-title-case-headings",
+    "no-mixed-spelling-conventions",
     "no-unicode-flair",
     "no-dramatic-transitions",
     "no-formulaic-openers",
@@ -3899,6 +3900,111 @@ if _patterns_data["no-title-case-headings"]["severity"] != "context_warning":
     print("FAIL: DR-21G #15 should be a context warning")
 else:
     print("  ok: DR-21G #15 is a context warning")
+
+# --- DR-136B: mixed British and American spelling (#64) ---
+print("\n=== DR-136B mixed spelling conventions ===")
+
+expect_fail("no-mixed-spelling-conventions",
+    "The council organised the review in March. By June the department had "
+    "recognized that the timetable would not hold.",
+    "DR-136B organised alongside recognized")
+
+expect_fail("no-mixed-spelling-conventions",
+    "Standardisation of the forms began in 2019. The agency later criticized "
+    "the rollout in its annual report.",
+    "DR-136B -isation noun alongside an -ized verb")
+
+expect_fail("no-mixed-spelling-conventions",
+    "Researchers analysed the first cohort, then paralyzed the second by "
+    "changing the protocol midway.",
+    "DR-136B -yse alongside -yze")
+
+expect_pass("no-mixed-spelling-conventions",
+    "The council organised the review in March and recognised by June that "
+    "the timetable would not hold. Standardisation followed.",
+    "DR-136B consistent British spelling")
+
+expect_pass("no-mixed-spelling-conventions",
+    "The council organized the review in March and recognized by June that "
+    "the timetable would not hold. Standardization followed.",
+    "DR-136B consistent American spelling")
+
+# Words with no American variant must never count as British.
+expect_pass("no-mixed-spelling-conventions",
+    "The surprise announcement compromised the schedule, so the agency "
+    "advertised a revised timetable and organized a briefing.",
+    "DR-136B surprise, compromised, advertised, revised are not markers")
+
+expect_pass("no-mixed-spelling-conventions",
+    "The enterprise promised to supervise the exercise and televise the "
+    "final round, which criticized nobody.",
+    "DR-136B franchise-class words alongside an American form")
+
+# The noun 'analyses' is spelled the same in both conventions.
+expect_pass("no-mixed-spelling-conventions",
+    "The report's analyses were thorough. The team recognized every gap and "
+    "organized a follow-up.",
+    "DR-136B the noun analyses is not a British marker")
+
+expect_pass("no-mixed-spelling-conventions",
+    "The committee met on Tuesday and approved the budget without amendment.",
+    "DR-136B prose with no alternating words")
+
+# Every alternating family the check claims to read.
+for label, text in (
+    ("-our/-or", "The colour of the harbour changed after the labor dispute."),
+    ("-re/-er", "The centre reopened; the theater across the road did not."),
+    ("-ogue/-og", "The catalogue was reprinted while the dialog box still failed."),
+    ("doubled l", "She travelled north and he canceled the meeting."),
+    ("-lous/-lous", "A marvellous result, though the modeling was marvelous too."),
+    ("ae/oe", "The paediatric ward closed and the pediatric unit reopened."),
+    ("one-offs", "The grey walls needed defence; the gray annexe needed defense."),
+):
+    expect_fail("no-mixed-spelling-conventions", text, f"DR-136B {label} mixture")
+
+for label, text in (
+    ("-ogue British only", "The catalogue and the dialogue were reprinted together."),
+    ("-ogue American only", "The catalog and the dialog were reprinted together."),
+    ("-our American only",
+     "The color of the harbor changed after the labor dispute. The center reopened."),
+):
+    expect_pass("no-mixed-spelling-conventions", text, f"DR-136B {label}")
+
+# Words deliberately left out: their American spelling is ordinary British too.
+for label, text in (
+    ("tyre", "He changed the tyre and organised the tools."),
+    ("cheque", "She wrote a cheque and organised the files."),
+    ("practice", "Daily practice organised the week."),
+    ("judgement", "The judgment was organised into three parts."),
+    ("learnt", "They learned the process and organised a handover."),
+    ("programme", "The program was organised around three themes."),
+):
+    expect_pass("no-mixed-spelling-conventions", text,
+                f"DR-136B {label} is not a convention marker")
+
+# British words that keep their spelling across conventions must not count.
+for label, text in (
+    ("vigorous", "A vigorous defence of the colour scheme."),
+    ("laboratory", "The laboratory analysed the colour samples."),
+    ("literature", "The literature on behaviour is thin."),
+    ("glamorous", "A glamorous parlour with a harbour view."),
+):
+    expect_pass("no-mixed-spelling-conventions", text,
+                f"DR-136B {label} does not create a false mixture")
+
+dr136b = ALL_CHECKS["no-mixed-spelling-conventions"](
+    "The council organised the review, then recognized the delay.")
+if not ("organised" in dr136b["evidence"] and "recognized" in dr136b["evidence"]):
+    FAILURES += 1
+    print(f"FAIL: DR-136B evidence should name both spellings; got {dr136b['evidence']!r}")
+else:
+    print("  ok: DR-136B evidence names both spellings")
+
+if _patterns_data["no-mixed-spelling-conventions"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-136B #64 should be a context warning")
+else:
+    print("  ok: DR-136B #64 is a context warning")
 
 # --- Summary ---
 

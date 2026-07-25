@@ -145,6 +145,22 @@
     "patterns_md_body": "Three or more consecutive sentences whose first word matches — \"The X… The Y… The Z…\", \"We did… We saw… We learned…\", \"It was… It was… It was…\". Anaphora is a real rhetorical device when it earns its weight (Lincoln, Churchill, Baldwin), but AI reaches for it as a default rhythm pattern when it has run out of structural ideas. The tell is repetition without escalation: three sentences starting the same way that do not build, contrast, or accumulate force.\n\n**Tolerance note:** Deliberate anaphora is one of the oldest rhetorical figures in English. Preserve when the repetition is doing structural work — building, contrasting, intensifying — or when it is character voice, oratory, or quoted speech.\n\n**Before:**\n> The team adopted the new framework. The team rewrote the docs. The team trained the support staff. The team rolled out the migration in three phases.\n\n**After:**\n> Adopting the new framework meant rewriting the docs and training the support staff before the team could roll out the migration in three phases.\n\n**Severity:** context_warning · `no-anaphora`\n\n**Detection:** Programmatic check `no-anaphora`. Flags three or more consecutive sentences whose first word matches case-insensitively, ignoring trivial starts (\"I\", \"A\", \"The\", \"It\", \"It's\"). Distinct from #25 staccato rhythm (which fires on short standalone sentences regardless of opener) and from #35a orphaned demonstratives (vague-subject `this` in a single sentence) and #35b `This …` chains (paragraph-level repetition of `This` as subject).",
     "patterns_md_leading_blanks": 2
   },
+  "no-mixed-spelling-conventions": {
+    "category": "Language and grammar",
+    "short_name": "Mixed spelling conventions",
+    "description": "Checks whether British and American spellings of the same word families appear in one document.",
+    "why_it_matters": "Generated text pasted into a document written the other way leaves both spellings behind; either convention used consistently is fine.",
+    "severity": "context_warning",
+    "failure_modes": [
+      "genre_misfit"
+    ],
+    "evidence_role": "lexical_distribution",
+    "guidance": "Fix the mixture by settling on one convention; preserve whichever one the document and its audience already use.",
+    "pattern_number": "64",
+    "patterns_md_heading": "Mixed spelling conventions",
+    "patterns_md_body": "A model continuing a British-English document will often switch to American spellings partway through, leaving both in the same text. The mixture is the finding, not either convention on its own.\n\n**Before:**\n> The council organised the review in March. By June the department had recognized that the timetable would not hold.\n\n**After:**\n> The council organised the review in March. By June the department had recognised that the timetable would not hold.\n\nThe check reads the word families that genuinely alternate: `-ise`/`-ize`, `-yse`/`-yze`, `-our`/`-or`, `-re`/`-er`, `-ogue`/`-og`, doubled `l` before an ending, the `ae`/`oe` medical and classical forms, and one-offs such as grey, aluminium, sulphur, defence, and mould. Words whose American spelling is also an ordinary British word with its own sense, among them tyre, kerb, cheque, draught, licence, practise, storey, programme, and judgement, are left out so they cannot manufacture a mixture.\n\n**Severity:** context_warning · `no-mixed-spelling-conventions`",
+    "patterns_md_leading_blanks": 2
+  },
   "no-paragraph-anaphora": {
     "category": "Voice and register",
     "short_name": "Mechanical repeated paragraph starts",

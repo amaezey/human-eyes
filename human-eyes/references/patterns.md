@@ -432,6 +432,23 @@ A windowed lexical-diversity metric for prose of 150+ words: the mean type-token
 
 **Detection:** Programmatic check `vocabulary-diversity`.
 
+
+### 64. Mixed spelling conventions
+
+A model continuing a British-English document will often switch to American spellings partway through, leaving both in the same text. The mixture is the finding, not either convention on its own.
+
+**Before:**
+> The council organised the review in March. By June the department had recognized that the timetable would not hold.
+
+**After:**
+> The council organised the review in March. By June the department had recognised that the timetable would not hold.
+
+The check reads the word families that genuinely alternate: `-ise`/`-ize`, `-yse`/`-yze`, `-our`/`-or`, `-re`/`-er`, `-ogue`/`-og`, doubled `l` before an ending, the `ae`/`oe` medical and classical forms, and one-offs such as grey, aluminium, sulphur, defence, and mould. Words whose American spelling is also an ordinary British word with its own sense, among them tyre, kerb, cheque, draught, licence, practise, storey, programme, and judgement, are left out so they cannot manufacture a mixture.
+
+**Severity:** context_warning · `no-mixed-spelling-conventions`
+
+**Detection:** Programmatic check `no-mixed-spelling-conventions`.
+
 ---
 
 ## Style

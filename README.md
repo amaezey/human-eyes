@@ -98,6 +98,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | 9 | Contrived contrast / negative parallelism | Merrill et al. (WaPo); Stockton, Guo, and Belcher (practitioner examples); Kriss/NYT; Vollmer (synthesis); Wikipedia cleanup guide | regex | strong_warning | "It's not X; it's Y" / "It's Y, not X" |
 | 10 | Rule of three | Kriss/NYT and Guo; SEO Engine; Wikipedia cleanup guide; matched-genre corpus measurement | regex | context_warning | Triads per 1000 words in prose of 300+ words: generated prose runs about twice the human rate. |
 | 53 | Vocabulary diversity | Matched-genre corpus measurement; Przystalski et al. (stylometric feature family); GPTZero burstiness and NetusAI (detector/vendor feature family); SEO Engine (Latinate word choice); Rohrer | regex | context_warning | Windowed type-token ratio for prose of 150+ words: unusually high lexical diversity is the flagged direction. |
+| 64 | Mixed spelling conventions | Ju, Blix, and Williams (Llama-2 Wikipedia continuations normalising British `-ise` to American `-ize`) | regex | context_warning | "organised" in one paragraph and "recognized" in the next |
 | | **Style** | | | | |
 | 13 | Boldface overuse | Wikipedia cleanup guide; Guo; Gmelius (email domain) | regex | context_warning | Mechanical bolding of terms that don't need emphasis |
 | 14 | Inline-header lists | Wikipedia cleanup guide; Guo and Shankar | regex | strong_warning | Bolded label + colon turning prose into slides |
