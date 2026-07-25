@@ -1747,6 +1747,7 @@ expected_checks = {
     "no-rhetorical-questions",
     "no-excessive-lists",
     "no-symmetric-list-items",
+    "no-title-case-headings",
     "no-unicode-flair",
     "no-dramatic-transitions",
     "no-formulaic-openers",
@@ -3795,6 +3796,109 @@ if _patterns_data["no-forced-triads"]["severity"] != "context_warning":
     print("FAIL: DR-19G #10 should stay a context warning")
 else:
     print("  ok: DR-19G #10 keeps context_warning severity")
+
+# --- DR-21E: plan-announcement signposting (#47) ---
+print("\n=== DR-21E plan-announcement signposting ===")
+
+# Vollmer's own sequence: two announcements clear the aggregate threshold.
+expect_fail("no-soft-scaffolding",
+    "First, we'll look at the origins of the policy. Second, we'll examine how "
+    "it was implemented across the three states. Finally, we'll conclude by "
+    "weighing what the evidence supports.",
+    "DR-21E ordinal plan announcements in sequence")
+
+expect_fail("no-soft-scaffolding",
+    "Next, let's explore what the submissions actually said. Finally, I'll wrap "
+    "up with the two recommendations the committee accepted.",
+    "DR-21E let's and I'll variants")
+
+# One announcement stays below #47's two-candidate threshold.
+expect_pass("no-soft-scaffolding",
+    "First, we'll look at the origins of the policy. The department drafted it "
+    "in 1998 after two failed attempts at a national scheme.",
+    "DR-21E single announcement is below the threshold")
+
+# Ordinals doing ordinary work are not plan announcements.
+expect_pass("no-soft-scaffolding",
+    "First, the department drafted the policy. Second, the states argued about "
+    "funding. Finally, the scheme lapsed without a vote.",
+    "DR-21E ordinary ordinal narration")
+
+expect_pass("no-soft-scaffolding",
+    "We'll look at the origins of the policy once the archive reopens, and we "
+    "will examine the funding papers after that.",
+    "DR-21E plan verbs without an ordinal opener")
+
+# --- DR-21F: sales endings and reader address in news copy (#24) ---
+print("\n=== DR-21F news sales endings ===")
+
+expect_fail("no-generic-conclusions",
+    "Whether you're a tech enthusiast, a developer, or simply someone "
+    "interested in the future of technology, ARKit 1.5 demos are worth a look.",
+    "DR-21F audience-enumeration reader address")
+
+expect_fail("no-generic-conclusions",
+    "As developers continue to explore the potential of this technology, we "
+    "can expect to see even more innovative applications in the years ahead.",
+    "DR-21F forward-looking expectation closer")
+
+expect_fail("no-generic-conclusions",
+    "The demos are rudimentary for now but they are certainly worth keeping an "
+    "eye on.",
+    "DR-21F certainly-worth-watching closer")
+
+expect_pass("no-generic-conclusions",
+    "Whether the scheme survives the next budget is a question the department "
+    "would not answer.",
+    "DR-21F ordinary whether clause")
+
+expect_pass("no-generic-conclusions",
+    "Two councils said they would keep an eye on the trial before committing "
+    "their own funds.",
+    "DR-21F ordinary keeping-watch wording")
+
+# --- DR-21G: title case headings in surprising places (#64) ---
+print("\n=== DR-21G title case headings ===")
+
+expect_fail("no-title-case-headings",
+    "## The Impact Of The New Policy On Regional Councils\n\nThe committee met "
+    "on Tuesday and approved the budget without amendment.\n",
+    "DR-21G minor words capitalised inside a heading")
+
+expect_fail("no-title-case-headings",
+    "# Title Case Headings In Surprising Places\n\nThe guide lists this as a "
+    "formatting habit worth watching.\n",
+    "DR-21G the source's own example heading")
+
+expect_pass("no-title-case-headings",
+    "## The impact of the new policy on regional councils\n\nThe committee met "
+    "on Tuesday and approved the budget without amendment.\n",
+    "DR-21G sentence case heading")
+
+expect_pass("no-title-case-headings",
+    "## What This Is For\n\nThe scheme pays for road maintenance in three "
+    "shires.\n",
+    "DR-21G title case with the minor word last")
+
+expect_pass("no-title-case-headings",
+    "## Rollout: The First Year\n\nCouncils reported no incidents in the first "
+    "twelve months.\n",
+    "DR-21G capital after a colon")
+
+expect_pass("no-title-case-headings",
+    "## Regional Council Budgets\n\nThe committee met on Tuesday and approved "
+    "the budget.\n",
+    "DR-21G title case with no minor words")
+
+expect_pass("no-title-case-headings",
+    "The impact of the new policy on regional councils was small.",
+    "DR-21G prose without headings")
+
+if _patterns_data["no-title-case-headings"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-21G #15 should be a context warning")
+else:
+    print("  ok: DR-21G #15 is a context warning")
 
 # --- Summary ---
 

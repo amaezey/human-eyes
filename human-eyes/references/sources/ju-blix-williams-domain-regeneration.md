@@ -90,6 +90,7 @@ The legacy card did not record a snapshot digest. Before replacement, the exact 
 - The prior #52 mapping is retained only as partial coverage because the live check measures one document's sentence-word-count standard deviation and does not implement the paper's corpus distributions, means, parse metrics, or tails.
 - Prior H1 and H2 associations are retired from the active mapping: continuous calibration and a comparison-engine reframe are internal product proposals that this paper does not directly evaluate. H12 remains relevant, and the existing H22 is the more precise research home.
 - All current recommendations are reopened as `pending` and `not started` for Mae. No checker, registry, hypothesis, guidance, test, or product file changed in this update.
+- C19 approved 2026-07-25 via DR-21F: #24 now recognises the paper's three uncovered Table 10 ending and reader-address forms.
 
 ## Project coverage
 
@@ -115,7 +116,7 @@ This is the authoritative review table. Give every relevant source claim or exam
 | C16: Llama-2 Wikipedia continuations add value judgments that violate neutral-point-of-view style. | Direct manual observation and examples; no prevalence estimate. | Partly covered by source-preservation guidance and #41 source/factual review; `neutrality_collapse` concerns stance erasure, not added praise. | Current mappings could confuse added judgment with loss of stance. | Keep separate from #37; evaluate only in paired source/rewrite or domain-style review. | pending | not started |
 | C17: Llama-2 Wikipedia examples add essay-like wrap-ups, explicit conclusion labels, praise, and enduring-legacy claims. | Direct qualitative examples; anecdotal. | #44 recognises explicit conclusion labels; #24 now recognises the source's exact legacy, praise, hope, and sales-ending formulas. | The exact generic-ending variants were the executable gap. | Add the source's exact ending formulas to #24. | approved | implemented |
 | C18: Llama CCNews continuations insert quotations attributed to famous people and acronyms absent from the source; original quoted articles usually contain one longer quote. | Direct manual comparison; no corpus rate or verification of every named quotation. | Fully covered as a manual journalism/source-verification concern by #41; no deterministic quote-provenance check. | Bare prose cannot establish whether a quote or acronym was supplied by the source. | Preserve paired-source verification as manual guidance; do not add lexical authorship rules. | pending | not started |
-| C19: CCNews continuations add PR/sales endings, reader address, praise, and explicit `In conclusion` framing. | Direct qualitative examples and Table 10; anecdotal and model-specific. | Partly covered by #44/#4/#24/#1/#34. Focused checks catch `In conclusion` and `testament` in one China example but miss the exact ARKit ending and many sales variants. | Sales-register and reader-address variants are not reliably covered; legitimate marketing is a look-alike. | Evaluate as journalism-domain mismatch with human news and quoted marketing controls before product change. | pending | not started |
+| C19: CCNews continuations add PR/sales endings, reader address, praise, and explicit `In conclusion` framing. | Direct qualitative examples and Table 10; anecdotal and model-specific. | Covered by #44/#4/#24/#1/#34. #24 now also recognises the three uncovered Table 10 forms: the `Whether you're ... or simply someone ...` audience address, `we can expect to see even more`, and `certainly worth keeping an eye on`. | None for the named surface forms. | Keep the three approved ending and reader-address frames in #24. | approved with changes | implemented |
 | C20: The generated Wikipedia `A` passage contains factual/grammatical errors, including false pronoun and suffix analyses. | Direct author correction in text and footnote; one extended example. | Fully covered as a manual source-grounding/factual-verification concern; surface pattern checks miss it. | Human-eyes does not run general factual verification. | Record as a source-checking example only; do not claim factuality detection or authorship. | pending | not started |
 | C21: Regenerations were never word-for-word identical to originals and did not exactly meet prompted average lengths. | Direct Appendix B observation; no detailed length-error distribution. | Not covered by prose-pattern checks; process guidance forbids assuming prompt compliance. | No prompt-versus-output binding exists in ordinary Audit. | Record as generation-protocol context; take no pattern action. | pending | not started |
 | C22: Parsing and metric calculation can fail on extremely long, complicated, non-English, malformed, or link-only material; uniform processing is expected to make errors comparable. | Direct limitation plus author expectation; residual bias unmeasured. | Fully covered by testing/provenance expectations at a general level. | No project parser metric is being implemented, and comparability is not proof of no bias. | Require per-condition exclusions and sensitivity checks in future H22 work. | pending | not started |
@@ -147,7 +148,7 @@ This is the authoritative review table. Give every relevant source claim or exam
 - C16: Keep added judgment separate from #37 neutrality-collapse evidence.
 - C17: Add the exact legacy, praise, hope, and sales-ending formulas to #24.
 - C18: Keep quote/acronym verification as paired-source manual journalism guidance.
-- C19: Evaluate sales/news domain mismatch with legitimate marketing and human-news controls.
+- C19: Keep the three approved sales-ending and reader-address frames in #24.
 - C20: Record factual error as source-verification context only.
 - C21: Record non-identical and target-length noncompliance as protocol context only.
 - C22: Require condition-level exclusion and sensitivity reporting in H22 work.
@@ -179,7 +180,7 @@ This is the authoritative review table. Give every relevant source claim or exam
 - C16: not applicable - pending recommendation; no product change.
 - C17: passed - DR-16A asserts #24 failures for the source's legacy, icon, enduring-generations, inspire-and-captivate, future-prospects, well-positioned, sales-call, hopeful, and testament formulas.
 - C18: not applicable - pending recommendation; no product change.
-- C19: not applicable - pending recommendation; no product change.
+- C19: passed - DR-21F asserts #24 failures for the audience-enumeration reader address, the forward-looking expectation closer, and the certainly-worth-watching closer, and passes for an ordinary `whether` clause and ordinary keeping-watch wording.
 - C20: not applicable - pending recommendation; no product change.
 - C21: not applicable - pending recommendation; no product change.
 - C22: not applicable - pending recommendation; no product change.

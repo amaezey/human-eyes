@@ -589,6 +589,10 @@ GENERIC_CONCLUSIONS = [
     r"\bdon['’]t miss your chance to\b",
     r"\bremains hopeful that\b",
     r"\blegacy is a testament to\b",
+    # DR-21F: sales endings and reader address in generated news copy.
+    r"\bwhether you(?:['’]re| are)\b[^.!?\n]{1,120}\bor (?:simply |just )?(?:someone|somebody|anyone)\b",
+    r"\bwe can expect to see even more\b",
+    r"\bcertainly worth keeping an eye on\b",
 ]
 
 SOFT_SCAFFOLD_PHRASES = [
@@ -602,6 +606,11 @@ SOFT_SCAFFOLD_PHRASES = [
     r"\bespecially (?:helpful|useful|valuable|effective) when\b",
     r"\bin those cases,\b",
     r"\bwith (?:that|this) distinction in mind\b",
+    # DR-21E: the text announcing its own plan before making it.
+    r"\b(?:first|second|third|fourth|next|then|finally|lastly),?\s+(?:we|i)(?:['’]ll| will)\s+"
+    r"(?:look at|examine|explore|discuss|cover|consider|turn to|conclude|wrap up|review|unpack|break down)\b",
+    r"\b(?:first|second|third|fourth|next|then|finally|lastly),?\s+let['’]s\s+"
+    r"(?:look at|examine|explore|discuss|cover|consider|turn to|conclude|wrap up|review|unpack|break down)\b",
 ]
 
 REPORT_SCAFFOLD_OPENERS = [
@@ -2917,6 +2926,49 @@ def check_heading_one_liners(text):
     }
 
 
+TITLE_CASE_MINOR_WORDS = {
+    "a", "an", "the", "and", "or", "but", "nor", "for", "so", "yet",
+    "as", "at", "by", "in", "into", "of", "on", "over", "per", "than",
+    "that", "to", "up", "via", "with", "from", "if",
+}
+
+
+def check_title_case_headings(text):
+    """Detect headings that capitalise minor words (pattern 64).
+
+    Conventional title case leaves articles, prepositions, and conjunctions
+    lowercase inside a heading.  Capitalising them is the machine variant, so
+    the check looks for a capitalised minor word between the first and last
+    words.  A word opening a subtitle after a colon is left alone.
+    """
+    matches = []
+    for line in text.split("\n"):
+        heading = re.match(r"^\s*#{1,6}\s+(\S.*)$", line)
+        if not heading:
+            continue
+        title = heading.group(1).strip()
+        words = title.split()
+        if len(words) < 4:
+            continue
+        for index, word in enumerate(words[1:-1], start=1):
+            if words[index - 1].endswith(":"):
+                continue
+            bare = re.sub(r"[^\w'’-]", "", word)
+            if bare[:1].isupper() and bare.casefold() in TITLE_CASE_MINOR_WORDS:
+                matches.append(title)
+                break
+    return {
+        "text": "no-title-case-headings",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} heading(s) capitalising minor words: {matches}"
+            if matches
+            else "No title case headings"
+        ),
+    }
+
+
 def check_hedging_density(text):
     """Detect excessive impersonal passive hedging density."""
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
@@ -3133,6 +3185,7 @@ ALL_CHECKS = {
     "no-anaphora": check_anaphora,
     "no-paragraph-anaphora": check_paragraph_anaphora,
     "no-heading-one-liners": check_heading_one_liners,
+    "no-title-case-headings": check_title_case_headings,
     "no-modal-stacks": check_modal_stacks,
     "no-collaborative-artifacts": check_collaborative_artifacts,
     "no-curly-quotes": check_curly_quotes,

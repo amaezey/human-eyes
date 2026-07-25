@@ -39,15 +39,6 @@
       "patterns_md_leading_blanks": 2
     },
     {
-      "pattern_number": "15",
-      "patterns_md_heading": "Title case in headings",
-      "category": "Style",
-      "kind": "manual",
-      "check_id": null,
-      "patterns_md_body": "Capitalising all main words in headings reads as formal to the point of stiffness.\n\n**Before:**\n> ## Strategic Negotiations And Global Partnerships\n\n**After:**\n> ## Strategic negotiations and global partnerships\n\n**Severity:** N/A · manual self-audit only (see Detection)\n\n**Detection:** Manual self-audit only. Markdown headings themselves are not treated as an indicator; title-case treatment can be reviewed only when the requested house style calls for sentence case.",
-      "patterns_md_leading_blanks": 2
-    },
-    {
       "pattern_number": "16",
       "patterns_md_heading": "Emojis",
       "category": "Style",
@@ -896,6 +887,22 @@
     "pattern_number": "63",
     "patterns_md_heading": "Symmetric list items",
     "patterns_md_body": "Generated lists tend to hold every item to the same length and the same frame, so the list reads as one template filled in three times rather than three separate things worth saying.\n\n**Before:**\n> - Automated reporting for finance teams\n> - Integrated dashboards for product teams\n> - Streamlined workflows for support teams\n\n**After:**\n> - Finance stopped chasing invoices by hand\n> - Product now has one dashboard instead of four\n> - Support was unchanged\n\nBoth conditions must hold before the check says anything: the items run to a uniform length and they share an opening or closing word. A ragged list that happens to end on the same word is left alone, and so is a list of matching length whose items open and close differently. Specifications, comparison tables, and reference entries are where uniformity does real work; keep those.\n\n**Severity:** context_warning · `no-symmetric-list-items`",
+    "patterns_md_leading_blanks": 2
+  },
+  "no-title-case-headings": {
+    "category": "Style",
+    "short_name": "Title case headings",
+    "description": "Checks for headings that capitalise articles, prepositions, and conjunctions.",
+    "why_it_matters": "Capitalising the small words is the machine version of title case, and it turns up in documents whose house style never used title case anywhere else.",
+    "severity": "context_warning",
+    "failure_modes": [
+      "genre_misfit"
+    ],
+    "evidence_role": "typographic_signal",
+    "guidance": "Fix headings that capitalise minor words; match whatever heading style the rest of the document uses.",
+    "pattern_number": "15",
+    "patterns_md_heading": "Title case in headings",
+    "patterns_md_body": "Capitalising all main words in headings reads as formal to the point of stiffness. Conventional title case still leaves articles, prepositions, and conjunctions lowercase, so capitalising those is the machine variant, and it often turns up in a document that uses sentence case everywhere else.\n\n**Before:**\n> ## Strategic Negotiations And Global Partnerships\n\n**After:**\n> ## Strategic negotiations and global partnerships\n\nThe check reads headings of four or more words and looks for a capitalised minor word between the first and last words. A minor word in the last position is left alone, because correct title case capitalises it there, and so is a word opening a subtitle after a colon.\n\n**Severity:** context_warning · `no-title-case-headings`",
     "patterns_md_leading_blanks": 2
   },
   "no-this-chains": {

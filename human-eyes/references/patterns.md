@@ -470,7 +470,7 @@ List items start with bolded headers followed by colons, turning prose into a sl
 
 ### 15. Title case in headings
 
-Capitalising all main words in headings reads as formal to the point of stiffness.
+Capitalising all main words in headings reads as formal to the point of stiffness. Conventional title case still leaves articles, prepositions, and conjunctions lowercase, so capitalising those is the machine variant, and it often turns up in a document that uses sentence case everywhere else.
 
 **Before:**
 > ## Strategic Negotiations And Global Partnerships
@@ -478,9 +478,11 @@ Capitalising all main words in headings reads as formal to the point of stiffnes
 **After:**
 > ## Strategic negotiations and global partnerships
 
-**Severity:** N/A · manual self-audit only (see Detection)
+The check reads headings of four or more words and looks for a capitalised minor word between the first and last words. A minor word in the last position is left alone, because correct title case capitalises it there, and so is a word opening a subtitle after a colon.
 
-**Detection:** Manual self-audit only — no programmatic check or agent-judgement record. Markdown headings themselves are not treated as an indicator; title-case treatment can be reviewed only when the requested house style calls for sentence case.
+**Severity:** context_warning · `no-title-case-headings`
+
+**Detection:** Programmatic check `no-title-case-headings`.
 
 
 ### 16. Emojis
