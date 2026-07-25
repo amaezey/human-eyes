@@ -100,7 +100,7 @@ The source text was not refetched or replaced. The update preserves the pre-cont
 
 ## Project coverage
 
-This is the authoritative review table. Each verdict was checked against the live `grade.py`, `patterns.json`, `judgement.json`, rendered catalogue, process guidance, testing method, and hypotheses. Focused function calls confirmed that the live triad checker recognises both narrow and broad triads, `no-triad-density` does not fire below 300 words, `no-inline-header-lists` catches two bold-colon bullets, plain labelled bullets bypass that check, and no live heading checker catches comma-couplet, wh-frame, Title Case, or manually numbered headings.
+This is the authoritative review table. Each verdict was checked against the live `grade.py`, `patterns.json`, `judgement.json`, rendered catalogue, process guidance, testing method, and hypotheses. Focused function calls confirmed that the live triad checker recognises both narrow and broad triads, the then-separate #10a density check (retired 2026-07-25 via DR-19G) did not fire below 300 words, `no-inline-header-lists` catches two bold-colon bullets, plain labelled bullets bypass that check, and no live heading checker catches comma-couplet, wh-frame, Title Case, or manually numbered headings.
 
 | Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
 |---|---|---|---|---|---|---|

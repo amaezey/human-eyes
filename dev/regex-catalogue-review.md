@@ -59,7 +59,7 @@ The blind seed contains one example in many cells, so its rates are directional.
 | `no-bland-critical-template` | Candidate only | Review language is genre-specific and semantically broad; three lexical hits are not enough context by themselves. |
 | `no-rubric-echoing` | Contextualize | Suppress rubrics discussed as subject matter and attributed examples; retain student-response candidate extraction. |
 | `vocabulary-diversity` | Contextualize | Keep as a coarse length-normalized metric with genre gates; do not interpret it as authorship evidence alone. |
-| `no-triad-density` | Merge | Reuse the same triad extractor as `no-forced-triads`, then apply document-length and density policy separately. |
+| `no-triad-density` | Merged 2026-07-25 (DR-19G) | Done. The two checks shared the triad extractor, and the density condition could never fail without `no-forced-triads` having already failed, so they were consolidated into `no-forced-triads` at 4.0 triads per 1000 words in prose of 300+ words. |
 | `no-section-scaffolding` | Contextualize | Repeated labels are legitimate in references, forms, templates, and procedural documentation. |
 | `no-notability-claims` | Candidate only | Authority wording can be factual. Named-source and surrounding-evidence checks need semantic or citation-aware disposition. |
 | `no-vague-attributions` | Candidate only | Candidate extraction is useful, but source naming can occur elsewhere in the sentence or preceding prose. |

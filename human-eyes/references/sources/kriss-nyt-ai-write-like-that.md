@@ -52,7 +52,7 @@ Kriss's 4,713-word New York Times Magazine essay combines personal model use, cl
 
 - `no-ai-vocabulary-clustering` (#7); partial coverage, with a three-item paragraph threshold and no register-specific source profile.
 - `no-negative-parallelisms` (#9), `no-countdown-negation` (#33), and `no-staccato-sequences` (#25); direct structural overlap, including `No X. No Y. Just Z.`, but no automatic distinction between AI-associated and deliberate human uses.
-- `no-forced-triads` (#10); partial and challenged coverage. The exact viral excerpt's three sentence-level tricolons produce zero #10 candidates, while the separate Bing quotation produces three coordinated-list candidates; #10a does not fire on either short excerpt.
+- `no-forced-triads` (#10); partial and challenged coverage. The exact viral excerpt's three sentence-level tricolons produce zero #10 candidates, while the separate Bing quotation produces three coordinated-list candidates; neither short excerpt reaches #10's density threshold.
 - `no-ghost-spectral-density` (#26) and `no-quietness-obsession` (#27); partial direct overlap. The quietness catalogue names `hum`, `humming`, and `soft`, but the executable check does not.
 - `forced_synesthesia` (#28), `generic_metaphors` (#30), `semantic_redundancy` (#34), and `genre_specific` (#41); agent-assessed contextual overlap.
 - `no-rhetorical-questions` (#29); full coverage for the approved fragment-question answer beat, with one complete occurrence producing a finding.
@@ -178,5 +178,5 @@ This is the authoritative review table. Focused results below are surface-only d
 
 - **Review status:** passed
 - **Review method:** independent source-record reviewer: /root/kriss_nyt_reviewer_2 (fresh, read-only, source-dedicated); /root/kriss_nyt_reviewer was interrupted before reporting and did not supply a verdict
-- **Findings resolved:** 2 material findings from /root/kriss_nyt_reviewer_2: C14 was corrected to distinguish the viral excerpt's zero #10 candidates from the separate Bing quotation's three coordinated-list candidates and to record both excerpts below #10a; the reviewer verified the exact drafted manifest replacement row for serial application. Focused recheck found 0 residual findings.
+- **Findings resolved:** 2 material findings from /root/kriss_nyt_reviewer_2: C14 was corrected to distinguish the viral excerpt's zero #10 candidates from the separate Bing quotation's three coordinated-list candidates and to record both excerpts below the then-separate #10a density check (retired 2026-07-25 via DR-19G); the reviewer verified the exact drafted manifest replacement row for serial application. Focused recheck found 0 residual findings.
 - **Unresolved findings:** none
