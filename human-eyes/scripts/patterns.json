@@ -882,6 +882,22 @@
     "patterns_md_body": "**Words and structures to watch:** sentence-opening participial clauses; highlighting/underscoring/emphasizing..., ensuring..., reflecting/symbolizing..., contributing to..., cultivating/fostering..., encompassing..., showcasing..., creating..., enhancing..., facilitating..., shaping..., driving..., embodying...\n\nFormulaic present-participle phrases at the start of sentences or tacked onto their ends.\n\n**Before:**\n> Drawing on earlier research, the report proposes a new model. The temple's color palette of blue, green, and gold resonates with the region's natural beauty, symbolizing Texas bluebonnets and the Gulf coast.\n\n**After:**\n> The report draws on earlier research to propose a new model. The temple uses blue, green, and gold. According to the architect, the colours reference local bluebonnets and the Gulf coast.\n\n**Severity:** strong_warning · `no-superficial-ing`",
     "patterns_md_leading_blanks": 2
   },
+  "no-symmetric-list-items": {
+    "category": "Structural tells",
+    "short_name": "Symmetric list items",
+    "description": "Checks for list items held to the same length and the same opening or closing word.",
+    "why_it_matters": "Items trimmed to a matching length and frame read as a filled-in template rather than a list of real things.",
+    "severity": "context_warning",
+    "failure_modes": [
+      "frictionless_structure"
+    ],
+    "evidence_role": "listification",
+    "guidance": "Fix template-shaped list items; preserve specifications, comparison tables, and reference entries where uniformity carries meaning.",
+    "pattern_number": "63",
+    "patterns_md_heading": "Symmetric list items",
+    "patterns_md_body": "Generated lists tend to hold every item to the same length and the same frame, so the list reads as one template filled in three times rather than three separate things worth saying.\n\n**Before:**\n> - Automated reporting for finance teams\n> - Integrated dashboards for product teams\n> - Streamlined workflows for support teams\n\n**After:**\n> - Finance stopped chasing invoices by hand\n> - Product now has one dashboard instead of four\n> - Support was unchanged\n\nBoth conditions must hold before the check says anything: the items run to a uniform length and they share an opening or closing word. A ragged list that happens to end on the same word is left alone, and so is a list of matching length whose items open and close differently. Specifications, comparison tables, and reference entries are where uniformity does real work; keep those.\n\n**Severity:** context_warning · `no-symmetric-list-items`",
+    "patterns_md_leading_blanks": 2
+  },
   "no-this-chains": {
     "category": "Voice and register",
     "short_name": "Repeated 'This...' chains",

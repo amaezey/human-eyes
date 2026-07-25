@@ -1739,6 +1739,7 @@ expected_checks = {
     "no-quietness-obsession",
     "no-rhetorical-questions",
     "no-excessive-lists",
+    "no-symmetric-list-items",
     "no-unicode-flair",
     "no-dramatic-transitions",
     "no-formulaic-openers",
@@ -3667,6 +3668,84 @@ for phrase in (
 ):
     expect_fail("no-generic-conclusions", phrase,
         f"DR-16A #24 exact ending formula: {phrase}")
+
+# --- DR-19E: symmetric list items (#63) ---
+print("\n=== DR-19E symmetric list items ===")
+
+DR19E_LEAD = (
+    "Our review covered the rollout in some depth and the findings were "
+    "consistent across every region we visited.\n\n"
+)
+DR19E_TAIL = "\n\nWe then interviewed staff about how the rollout changed their week.\n"
+
+
+def _dr19e(items, marker="-"):
+    body = "\n".join(f"{marker} {item}" for item in items)
+    return DR19E_LEAD + body + DR19E_TAIL
+
+
+# Uniform length AND a shared trailing token: the source's own shape.
+expect_fail("no-symmetric-list-items", _dr19e([
+    "Automated reporting for finance teams",
+    "Integrated dashboards for product teams",
+    "Streamlined workflows for support teams",
+]), "DR-19E shared trailing token with uniform length")
+
+# Uniform length AND a shared opening token.
+expect_fail("no-symmetric-list-items", _dr19e([
+    "Improved latency across the checkout path",
+    "Improved caching inside the search index",
+    "Improved logging around the payment queue",
+]), "DR-19E shared opening token with uniform length")
+
+# Numbered markers carry the same structure.
+expect_fail("no-symmetric-list-items", _dr19e([
+    "Faster onboarding for new staff",
+    "Clearer reporting for new staff",
+    "Simpler approvals for new staff",
+], marker="1."), "DR-19E numbered list with shared trailing token")
+
+# Uniform length but no shared opening or trailing token: one condition only.
+expect_pass("no-symmetric-list-items", _dr19e([
+    "The finance team stopped chasing invoices",
+    "Support closed its oldest backlog last month",
+    "Product shipped the migration without incident",
+]), "DR-19E uniform length alone is not enough")
+
+# Shared trailing token but ragged lengths: one condition only.
+expect_pass("no-symmetric-list-items", _dr19e([
+    "Finance now gets its numbers automatically each morning without chasing anyone",
+    "Support was unchanged",
+    "Product asked for one dashboard, then quietly built four more",
+]), "DR-19E shared token alone is not enough")
+
+# Two items never qualify.
+expect_pass("no-symmetric-list-items", _dr19e([
+    "Automated reporting for finance teams",
+    "Integrated dashboards for product teams",
+]), "DR-19E two-item list is below the minimum")
+
+# Prose with no list at all.
+expect_pass("no-symmetric-list-items",
+    "The rollout covered three regions and the team reported no incidents.",
+    "DR-19E prose without a list")
+
+dr19e_result = ALL_CHECKS["no-symmetric-list-items"](_dr19e([
+    "Automated reporting for finance teams",
+    "Integrated dashboards for product teams",
+    "Streamlined workflows for support teams",
+]))
+if len(dr19e_result["matches"]) != 3:
+    FAILURES += 1
+    print(f"FAIL: DR-19E should report the matched items; got {dr19e_result['matches']}")
+else:
+    print("  ok: DR-19E reports the matched list items")
+
+if _patterns_data["no-symmetric-list-items"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-19E #63 should be a context warning")
+else:
+    print("  ok: DR-19E #63 carries context_warning severity")
 
 # --- Summary ---
 

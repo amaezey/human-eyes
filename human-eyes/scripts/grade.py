@@ -2164,6 +2164,71 @@ def check_list_density(text):
     }
 
 
+LIST_ITEM_PREFIX_RE = re.compile(r"^\s*(?:[-*+•◦▪▫‣⁃●○]|\d+[.)])\s+")
+
+
+def list_item_blocks(text):
+    """Group runs of list-item lines into blocks of their item text."""
+    blocks = []
+    current = []
+    for line in text.split("\n"):
+        match = LIST_ITEM_PREFIX_RE.match(line)
+        if match:
+            current.append(line[match.end():].strip())
+        elif line.strip():
+            if current:
+                blocks.append(current)
+            current = []
+    if current:
+        blocks.append(current)
+    return blocks
+
+
+def list_item_edge_token(item, index):
+    """Return an item's casefolded first or last word, punctuation removed."""
+    words = re.findall(r"[\w'’-]+", item)
+    return words[index].casefold() if words else ""
+
+
+def check_symmetric_list_items(text):
+    """Detect list items sharing both a uniform length and an edge token (pattern 63).
+
+    Symmetry needs both conditions. A list whose items merely run to the same
+    length, or merely share an opening or closing word, is left alone; only the
+    combination reads as the generated 'X for Y teams' template.
+    """
+    minimum_items = threshold_value("no-symmetric-list-items", "minimum_items", 3)
+    maximum_deviation = threshold_value(
+        "no-symmetric-list-items", "maximum_deviation", 2
+    )
+    matches = []
+    for block in list_item_blocks(text):
+        if len(block) < minimum_items:
+            continue
+        counts = sorted(len(item.split()) for item in block)
+        median = counts[len(counts) // 2]
+        if any(abs(count - median) > maximum_deviation for count in counts):
+            continue
+        openings = {list_item_edge_token(item, 0) for item in block}
+        endings = {list_item_edge_token(item, -1) for item in block}
+        shared = (len(openings) == 1 and "" not in openings) or (
+            len(endings) == 1 and "" not in endings
+        )
+        if shared:
+            matches.extend(block)
+    return {
+        "text": "no-symmetric-list-items",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} list item(s) of uniform length "
+            f"sharing an edge word: {matches}"
+            if matches
+            else "No symmetric list items"
+        ),
+    }
+
+
 def check_unicode_flair(text):
     """Detect decorative Unicode symbols and emoji shortcodes (patterns 31a + 16).
 
@@ -3093,6 +3158,7 @@ ALL_CHECKS = {
     "no-quietness-obsession": check_quietness,
     "no-rhetorical-questions": check_rhetorical_questions,
     "no-excessive-lists": check_list_density,
+    "no-symmetric-list-items": check_symmetric_list_items,
     "no-unicode-flair": check_unicode_flair,
     "no-dramatic-transitions": check_dramatic_transitions,
     "no-formulaic-openers": check_formulaic_openers,
@@ -3158,6 +3224,7 @@ CHECK_THRESHOLDS = {
     "no-orphaned-demonstratives": {"minimum_candidates": 3},
     "no-rhetorical-questions": {"minimum_candidates": 1},
     "no-excessive-lists": {"minimum_items": 8, "minimum_blocks": 2, "minimum_line_ratio": 0.3},
+    "no-symmetric-list-items": {"minimum_items": 3, "maximum_deviation": 2},
     "no-unicode-flair": {"minimum_candidates": 2},
     "no-excessive-hedging": {"minimum_candidates": 3},
     "paragraph-length-uniformity": {"minimum_paragraphs": 7, "maximum_cv": 0.18},

@@ -1054,6 +1054,27 @@ A heading followed by a single generic sentence, repeated across the document. H
 
 **Detection:** Programmatic check `no-heading-one-liners`. Flags two or more headings each immediately followed by a paragraph consisting of a single sentence. Lists, blockquotes, and further headings do not count as the following paragraph.
 
+
+### 63. Symmetric list items
+
+Generated lists tend to hold every item to the same length and the same frame, so the list reads as one template filled in three times rather than three separate things worth saying.
+
+**Before:**
+> - Automated reporting for finance teams
+> - Integrated dashboards for product teams
+> - Streamlined workflows for support teams
+
+**After:**
+> - Finance stopped chasing invoices by hand
+> - Product now has one dashboard instead of four
+> - Support was unchanged
+
+Both conditions must hold before the check says anything: the items run to a uniform length and they share an opening or closing word. A ragged list that happens to end on the same word is left alone, and so is a list of matching length whose items open and close differently. Specifications, comparison tables, and reference entries are where uniformity does real work; keep those.
+
+**Severity:** context_warning · `no-symmetric-list-items`
+
+**Detection:** Programmatic check `no-symmetric-list-items`.
+
 ---
 
 ## Voice and register
