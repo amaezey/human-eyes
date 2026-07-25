@@ -86,6 +86,7 @@ The article body is unchanged except for removal of one trailing space. The curr
 
 ## Decision history
 
+- DR-36 and DR-38 rejected 2026-07-26. C05, C06, C07, C08 and C17: Bailey's one-output-per-service dash counts are not recorded as dated practitioner observations and the DeepSeek lineage allegation stays unreviewed. C04, C08 and C15: no hyphen, en-dash, or parenthesis detection is built. The substitution argument was countable and was declined on its merits. #49 stays fail-on-any per DR-07 and DR-50; no other punctuation gains a check.
 - DR-35 closed 2026-07-26: #49 still fails on a single em dash, the deliberate stance ruled through DR-07 and reaffirmed through DR-50. Verified against the live checker; no check changed.
 - The previous card predated stable claim IDs and decision or implementation fields. It recorded no user-approved recommendation and no source-specific implementation.
 - The old card mapped the source to #49 and factual-error review. Those useful mappings remain, but the current review narrows #49 to dated small-sample context and makes clear that #41 source verification does not establish authorship.

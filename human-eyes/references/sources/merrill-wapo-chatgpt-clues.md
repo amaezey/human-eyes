@@ -84,6 +84,7 @@ The prior card and manifest recorded no snapshot digest. Before replacement, the
 
 ## Decision history
 
+- DR-109 rejected 2026-07-26 (C04): the `strong 2026 AI-style fingerprint` wording in #49 stays as written. The date- and model-specific evidence objection is not actioned and no citation changes.
 - The prior card used no claim IDs, user-decision states, or implementation statuses. It broadly mapped the source to #7, #9, #31a, and #49 and asked whether emoji, `core`, and `modern` should enter the catalogue. This update reopens those mappings as C02-C10 because the complete charts expose drift, human-look-alike, and threshold limits absent from the pre-contract record. No prior user approval or completed product change is inferred.
 - C02 approved 2026-07-17 (DR-116): the calibration ran and could not test the question, since no library corpus contains emoji-bearing genres; Mae ruled the threshold unchanged at 2. The 70 percent chat-prevalence figure has no human baseline and anchors nothing.
 

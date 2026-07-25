@@ -87,6 +87,7 @@ The current page adds one 2026-06-22 paragraph and a Gmail grammar-suggestion sc
 
 ## Decision history
 
+- DR-109 rejected 2026-07-26 (C13): the #49 dated-fingerprint wording stays as written; no citation changes.
 - The previous card had no stable claim IDs, recommendation decisions, implementation states, snapshot digest, or review gate.
 - Its useful #49 caution remains but is narrowed to dated practitioner context. Its #39 machine-cleanliness mapping is retired because live #39 is placeholder residue and cannot support typo-absence claims.
 - C01-C17 are stable IDs assigned in this update. All recommendations begin at `pending` / `not started`; no prior user-approved source-specific implementation was found.

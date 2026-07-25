@@ -94,6 +94,7 @@ Russell, Karpinska, and Iyyer compare selected frequent LLM users, four less-exp
 
 ## Decision history
 
+- DR-109 rejected 2026-07-26 (C14): the #49 dated-fingerprint wording stays as written; no citation changes.
 - The previous abstract-only card had no claim-keyed user decisions or implementation statuses. Its #9, #10, and #15 associations were provisional analysis notes, not approvals. This update replaces them with C01-C32, retires #15 as unsupported by the source's ALL-CAPS/consistency wording, keeps #9 and #10 only as partial candidate recognition, and leaves every recommendation `pending`; no product change has been made.
 - C16, C21, C23, and C26 approved 2026-07-17 by Mae under decision-register row DR-111: five items were added to the #41 journalism watchlist in the `genre_specific` record of `human-eyes/scripts/judgement.json` (commit 88a04bb): correction history; suspiciously uniform or too-perfectly placed quotes (C16); repeated stock names and uniform titles (C21); scene-setting openings that omit basic context (C23); and human look-alike guards naming deadline prose, house style, and wire conventions and requiring findings as review prompts, never accusations (C26). These are manual review questions, not name/title blacklists, regex expansions, or authorship rules. All other rows remain pending.
 - C20 rejected 2026-07-17 (DR-117 component 3): the informality-is-not-human-proof caution for `tonal_uniformity` was declined.

@@ -89,6 +89,7 @@ The prior body and current REST body contain the same five numbered sections and
 
 ## Decision history
 
+- DR-109 rejected 2026-07-26 (C21): the #49 dated-fingerprint wording stays as written; no citation changes.
 - 2026-07-19: Mae approved all six C08 hype formulas for programmatic #4 and the three exact C12 adjective-noun phrases as #7 clustering candidates. Mae rejected every proposed #41 addition: the broader taxonomy, transformation framing, adjective-noun saturation, missing-story question, awkward-formality question, and uniformly polished-cadence question. #41 remains unchanged.
 - The previous unstructured mappings to #4, #10, #41, #43, and H12 had no recorded user decision or implementation status. They are superseded by C01-C25 below. The #43 mapping is explicitly retired: C07-C09 support #4/#41 marketing-hype review, not #43's operational corporate-AI-speak phrases, and the focused full-source `no-corporate-ai-speak` check returned clear.
 - The previous open Bynder-verification item is resolved only as provenance: a direct review now exists in [the Bynder card](bynder-ai-marketing-study.md). It confirms that the 55% US figure is an author-reported perception result while withholding the stimuli and response design, so it cannot validate Copy Posse's feature list.
