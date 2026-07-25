@@ -38,12 +38,15 @@ The source library (100+ cards under `human-eyes/references/sources/`) was re-re
 
 ## The files
 
-- `dev/decision-register.md` — the one decision file. 154 DR rows + POS list, one uniform seven-column layout (ID | Change | Evidence | Extends | Decision | Commit | Validation) across every section; its own "How to read this file" header is canonical. Sections group by origin only: checker behaviour, product documentation, retirements, residue-mapping groups (DR-14..29), imported working-list candidates (DR-30..105), recovered items and orphan re-queues (DR-106..153).
+- `dev/decision-register.md` — the one decision file. 157 DR rows + POS list, one uniform seven-column layout (ID | Change | Evidence | Extends | Decision | Commit | Validation) across every section; its own "How to read this file" header is canonical. Sections group by origin only: checker behaviour, product documentation, retirements, residue-mapping groups (DR-14..29), imported working-list candidates (DR-30..105), recovered items and orphan re-queues (DR-106..153).
 - `dev/source-ingest-hygiene-recommendation-classification-2026-07-17.csv` — all 1,636 recommendation rows, labelled by the original pass.
 - `dev/source-evaluation-residue-mapping-2026-07-17.csv` — first mapping sweep (440 rows).
 - `dev/source-evaluation-corrected-framing-2026-07-17.csv` — the corrected-framing sweep's 243 action items with per-claim descriptions (the "nothing" dispositions are recoverable from the classification CSV minus these).
 - `dev/tools/reconcile_register.py` — completeness check; must exit 0 (every add/evaluate recommendation row accounted for by the register, pattern-opportunities citations, or the mapping CSV).
 - `dev/evals/ttr-calibration-2026-07-17.md` — the #53 threshold calibration record.
+- `dev/evals/triad-density-calibration-2026-07-25.md` — the #10 rate calibration and #10a retirement.
+- `dev/evals/false-range-calibration-2026-07-25.md` — the #12 stacked-pair calibration.
+- `dev/evals/biber-rate-calibration-2026-07-26.md` — the #65, #66, and #67 rate calibration, and why phrasal coordination got no check.
 - `human-eyes/references/sources/pattern-opportunities.md` — settled evidence detail only; holds no pending decisions.
 
 ## Test loop
@@ -134,7 +137,7 @@ DR-92, DR-93 and DR-94 are stamped closed. The claim that the programmatic tier 
 
 **Read the register's "Screening rule and the 2026-07-25 re-screen" section before choosing a row.** Every pending row carries its own `Screened 2026-07-25:` sentence saying whether it can still add a programmatic check, an agent-judgement record, neither, or only a documentation fix. Those sentences replace the `Original-pass note` and `Original-pass disposition` text in the same cells, which is an importing agent's opinion and was found to gate additions on evidence grade in breach of rule 1. Never quote a disposition to Mae as a screening result.
 
-DR-155 and DR-156 come before everything else; Mae put them there on 2026-07-25. They are catalogue entries (#6, #11) that no check implements, which the two-detector-type rule forbids. DR-157 closed the third: #12 false ranges is now programmatic `no-false-ranges`, flagging one sentence that stacks two or more `from X to Y` pairs. A single pair never fires, because the corpora run it slightly more often in human prose. Calibration in `dev/evals/false-range-calibration-2026-07-25.md`.
+DR-155 and DR-156 were put ahead of everything else by Mae on 2026-07-25, and are now closed. They were catalogue entries (#6, #11) that no check implemented, which the two-detector-type rule forbids. DR-157 closed the third: #12 false ranges is now programmatic `no-false-ranges`, flagging one sentence that stacks two or more `from X to Y` pairs. A single pair never fires, because the corpora run it slightly more often in human prose. Calibration in `dev/evals/false-range-calibration-2026-07-25.md`.
 
 DR-155 is closed. Mae chose removal over a check, so catalogue entry #6 `Formulaic challenges sections` is gone and nothing was added in either lane. The agent-judgement form of the same section arc had already been rejected through DR-22B. Measured against the live checker before the ruling: of the Wikipedia source's eight dated examples, only Korattur produces a finding, through #24 `continues to thrive`; the opener frame and the `Challenges and Legacy` / `Future Outlook` heading names are matched by nothing, and the project corpora contain none of the source's forms in either sample set. The `UNCHECKED` guard in `test_patterns_md_generator.py` now pins `{11}`. Closing it exposed stale generated-preamble text that two earlier closes left behind: the count sentence still named retired 10a, and the TOC still filed #12 under Language and grammar and omitted #64. Those were corrected in the same commit.
 
@@ -150,7 +153,31 @@ DR-158 is Mae's own queue item, not a source decision: rebuild the pattern numbe
 
 That calibration is also a worked example of two mistakes to avoid. Document-level percentages understated the difference because the generated corpora hold under half the words; the comparable figure is rate per 1000 words. And the first reading of the flagged sentences dismissed them as good writing, which is not the agent's call: humans fail checks by design and the writer decides what to keep.
 
-After DR-155 and DR-156 the fixed order resumes: DR-71 and DR-87, both exact-phrase families, then DR-66, DR-25, DR-38, DR-153 and DR-21. DR-26, DR-32, DR-35, DR-82 and DR-88 carry no open question and can be verified against `grade.py` and closed at any point.
+## Position after the 2026-07-26 session
+
+DR-159 built three rate checks from Reinhart et al. (PNAS, February 2025), which measured 66 Biber features over paired human/LLM text. #65 `no-nominalisation-rate` fails at 29.0 per 1000 words (70% of generated documents, 24% of human), #66 `no-that-relative-rate` at 3.5 for subject-position `that` relatives (52% and 27%), and #67 `no-participial-clause-rate` at 4.4 for adverbial present participial clauses (70% and 37%). All context warnings, 300-word minimum, matching #10. Calibration in `dev/evals/biber-rate-calibration-2026-07-26.md`.
+
+The paper's fourth named feature, phrasal coordination, got no check. Measured against its own definition it runs 0.85x here, more common in human prose than generated. A clean-context subagent independently rebuilt it four ways and agreed: 0.96, 0.91, 0.97, and 0.74, none above 1. That subagent also validated its instrument by reproducing the paper's *clausal* coordination result in the right direction, which is why the null is trustworthy.
+
+Three lessons from that work, all earned the hard way:
+
+1. **Read the appendix definition before writing the regex.** Two features were implemented against assumed definitions and produced numbers that matched the paper by coincidence while measuring different constructions: 2.61x against a reported 2.6x, and 1.81x against 1.9x. Biber's `that` clauses as subject means "the dog that bit me", a relative clause, not a sentence beginning with "That". Phrasal coordination means pairs of same-class words joined by a conjunction, not three-item lists.
+2. **Sample size before conclusion.** A five-pair subset (human essays and their AI rewrites) was used to overturn a 111-document result. It has no power: the subject-relative feature does not occur once across those five documents.
+3. **The paper's method is not the requirement.** Reinhart tagged with a dependency parser; three of the four features are recoverable from surface form without one. Do not infer a blocker from how a source did its own work.
+
+Also: `AI_VOCABULARY` and `GPTZERO_AI_PHRASES` sit adjacent in `grade.py` and `_find_ai_words` searches both, so a wrong-list addition passes every behaviour test. `GPTZERO_AI_PHRASES` is now a tuple with `_assert_gptzero_payload_frozen` raising at import if its row count leaves 100. Clustering candidates go in `AI_VOCABULARY`.
+
+DR-87 is closed. DR-87A added `exited` as a #7 clustering candidate (Suvanto counted it 61 times across the GPT-4.1 rewrites and zero times in the source passages; it never fires alone). DR-87B added said-bookisms to the fiction branch of `genre_specific`, naming `remarked`, `responded`, `mentioned`, `replied`, `exclaimed`, and `chuckled` as substitutes for plain `said`. Those six are every model-preferred dialogue verb the paper names; it reports 17 with 14 favouring the model but publishes no feature list, so the other eight would need the Zenodo deposit and a source re-ingest. Mae rejected the remaining rewrite-fidelity components: period modernisation, and removed foreign-language passages and colloquialisms.
+
+Eight further rows closed on Mae's rulings. DR-26, DR-32, DR-35, DR-82 and DR-88 were verified against the live checker and closed as already covered; DR-32 is worth noting, because three of the four #29 candidates it cites as deliberate human use now pass since DR-21C's rebuild. DR-36, DR-38 and DR-109 were rejected, so **em dashes are now entirely out of the queue**: behaviour settled by DR-07 and DR-50, no substitution check for hyphens or parentheses, no dated-observation recording, and #49 keeps its `strong 2026 AI-style fingerprint` wording.
+
+**Never stamp a row without Mae.** During this session five rows were marked `approved` on the agent's own authority, on the reasoning that their screening notes said nothing was left to ask. That reasoning is wrong: "nothing to ask about" is not "no approval needed", and writing `approved <date>` records a ruling as hers. The stamps were reverted and re-made only after she ruled. A row's screening note never authorises its closure.
+
+The root README pattern table must list every numbered check. Three were missing after DR-159 and were only caught when Mae asked whether the work was documented. Check it whenever a pattern number is added or removed.
+
+## What is next
+
+The fixed order now resumes at DR-66, DR-25 and DR-153. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Counts move with every closure, so recount rather than quoting a figure from this file: `python3 dev/tools/reconcile_register.py` must exit 0, and the decided/pending split comes from reading the Decision column. Three rows carry `pos-dependent-pattern` (POS-01, POS-02, DR-144) and wait on Mae's tagger.
 

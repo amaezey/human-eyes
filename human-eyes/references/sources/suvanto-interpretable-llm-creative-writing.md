@@ -85,6 +85,7 @@ Not applicable: initial ingestion.
 
 ## Decision history
 
+- DR-87 closed 2026-07-26. Mae rejected the remaining rewrite-fidelity components: no detection of period modernisation (`to-day` to `today`), and none for removed foreign-language passages (`mon ami`) or colloquial short forms (`'em`). These describe what a model changed when rewriting an existing text rather than habits visible in a fresh draft. DR-87A (`exited` in #7) and DR-87B (said-bookisms in the fiction watchlist) stand as built.
 - DR-87B implemented 2026-07-26: the six LLM-preferred dialogue verbs the paper names (`remarked`, `responded`, `mentioned`, `replied`, `exclaimed`, `chuckled`) are now in the fiction branch of the `genre_specific` agent-judgement record, framed as the avoidance of plain `said`. The paper reports 17 dialogue verbs with 14 favouring the model but publishes no full feature list, so the other eight are not recoverable from the preserved text; the Zenodo deposit was not fetched. No programmatic check was built and no pattern number was added.
 - DR-87A implemented 2026-07-26: `exited` is now an #7 clustering candidate, on the source's 61-versus-zero count across the GPT-4.1 rewrites and their source passages. It contributes to #7's paragraph threshold and never fails alone. The project corpora contain no occurrence in either sample set. DR-87's rewrite-fidelity components stay open.
 
