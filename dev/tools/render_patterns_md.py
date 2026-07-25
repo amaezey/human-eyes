@@ -154,13 +154,21 @@ def parse_category_body(body):
 def find_check_id_in_body(body):
     """Extract the check_id from the body's **Severity:** line, if present.
 
-    Returns (check_id, kind) where kind is 'check', 'folded', or 'manual'.
+    Returns (check_id, kind) where kind is 'check', 'agent', 'folded', or 'manual'.
+
+    The product has two detector types, programmatic and agent-judgement.
+    'manual' is neither, so it marks a catalogue entry nothing checks.  Both
+    agent-judgement and manual entries carry `Severity: N/A`, so read past it
+    rather than treating every N/A as manual.
     """
     # **Severity:** <tier> · `check-id`
     m = re.search(r"\*\*Severity:\*\*\s+(\w+)\s*·\s*`([\w-]+)`", body)
     if m:
         return (m.group(2), "check")
-    # **Severity:** N/A · ...  → manual
+    # **Severity:** N/A · agent-judgement ...
+    if re.search(r"\*\*Severity:\*\*\s+N/A\s*·\s*agent-judgement", body):
+        return (None, "agent")
+    # **Severity:** N/A · manual self-audit only
     if re.search(r"\*\*Severity:\*\*\s+N/A", body):
         return (None, "manual")
     # **Severity:** inherits <tier> from `parent`
