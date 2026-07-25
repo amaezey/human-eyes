@@ -1,0 +1,25 @@
+{
+  "purpose": "Qualitative evaluation material for the rewrite_stance_drift agent judgement. Each pair is one published post and the rewrite a model produced from it.",
+  "source": {
+    "card": "human-eyes/references/sources/sussman-carter-ai-mediated-communication.md",
+    "claim": "C11",
+    "citation": "Sussman, K. and Carter, D. (2025). WWW Companion '25, Sydney.",
+    "prompt": "Rewrite the tweet, to improve for clarity and engagement",
+    "model_as_reported": "ChatGPT-4",
+    "reuse_note": "Reproduced from the paper's manual-inspection section as quoted research material. The paper states no reuse licence and the original authors are third parties, so these strings are evaluation fixtures only and must not be republished as product examples, catalogue examples, or documentation."
+  },
+  "pairs": [
+    {
+      "id": "supreme-court-seat",
+      "original": "The GOP would rather fill a Supreme Court seat before (probably) losing majority than helping Americans and Small Business with COVID relief #vote #EconomicRecoveryPlan #IChooseAmerica #Trump.",
+      "rewrite": "The GOP is prioritizing filling a Supreme Court seat over delivering COVID relief for Americans and small businesses, even as their majority hangs in the balance. Let's choose leaders who put people first. 🗳️ #Vote #EconomicRecoveryPlan #IChooseAmerica #Trump",
+      "drift": "The rewrite adds a call to action the original does not make."
+    },
+    {
+      "id": "hate-and-division",
+      "original": "Trump's entire presidency has been about hate and division. It's ok to disagree about politics, it's not ok to view half the country as the enemy. #TrumpMustGo #VoteHimOut #Vote #StopTrumpsTerror #Trump #VoteBidenHarris #CountryOverParty #BidenHarris2020 #RestoreAmerica",
+      "rewrite": "Trump's presidency has fueled hate and division. Disagreeing on politics is fine, but treating half the country as the enemy is not. It's time for unity and leadership that puts America first. 🇺🇸 #VoteHimOut #BidenHarris2020 #CountryOverParty #RestoreAmerica",
+      "drift": "The rewrite adds a prescription about unity and leadership that the original does not make."
+    }
+  ]
+}

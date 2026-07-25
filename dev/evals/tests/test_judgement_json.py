@@ -367,6 +367,48 @@ else:
         ok("fiction watchlist carries all five DR-123 dialogue dimensions separately")
 
 
+# --- DR-136C: rewrite_stance_drift evaluation fixtures ---
+
+print("\n=== DR-136C rewrite_stance_drift fixtures ===")
+
+FIXTURE_PATH = Path(__file__).resolve().parent / "fixtures" / "rewrite_stance_drift_pairs.json"
+
+if not FIXTURE_PATH.exists():
+    fail("rewrite_stance_drift_pairs.json is missing")
+else:
+    fixture = json.loads(FIXTURE_PATH.read_text())
+    if "rewrite_stance_drift" not in {r.get("id") for r in data["records"]}:
+        fail("fixtures reference rewrite_stance_drift but the record is absent")
+    else:
+        ok("rewrite_stance_drift record exists for the fixtures to evaluate")
+
+    source = fixture.get("source", {})
+    for field in ("card", "claim", "citation", "prompt", "model_as_reported", "reuse_note"):
+        if not source.get(field):
+            fail(f"fixture source is missing {field}")
+    if all(source.get(f) for f in ("card", "claim", "citation", "reuse_note")):
+        ok("fixture carries its card, claim, citation, and reuse note")
+
+    pairs = fixture.get("pairs", [])
+    if len(pairs) != 2:
+        fail(f"expected the paper's two pairs, found {len(pairs)}")
+    else:
+        ok("fixture carries both published pairs")
+
+    incomplete = [p.get("id") for p in pairs
+                  if not (p.get("original") and p.get("rewrite") and p.get("drift"))]
+    if incomplete:
+        fail(f"pairs missing original, rewrite, or drift note: {incomplete}")
+    else:
+        ok("every pair carries an original, a rewrite, and its drift note")
+
+    unchanged = [p.get("id") for p in pairs if p.get("original") == p.get("rewrite")]
+    if unchanged:
+        fail(f"pairs whose rewrite equals the original: {unchanged}")
+    else:
+        ok("every rewrite differs from its original")
+
+
 # --- JSON round-trip stability ---
 
 print("\n=== judgement.json round-trip ===")
