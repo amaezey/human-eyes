@@ -4202,6 +4202,22 @@ for _cid in ("no-nominalisation-rate", "no-that-relative-rate", "no-participial-
     else:
         print(f"  ok: DR-159 {_cid} is a context warning")
 
+print("\n=== DR-87A exited ===")
+
+# Suvanto et al.: `exited` occurs 61 times across GPT-4.1 rewrites of twelve
+# 1920s-30s British detective novels and zero times in the source passages.
+# Added as an #7 clustering candidate, so it never fails on its own.
+if _grade._find_ai_words("exited") != ["exited"]:
+    FAILURES += 1
+    print("FAIL: DR-87A `exited` should be an #7 clustering candidate")
+else:
+    print("  ok: DR-87A `exited` is an #7 clustering candidate")
+
+expect_pass("no-ai-vocabulary-clustering",
+    "He exited the drawing room without another word, and the inspector followed "
+    "him into the hall a moment later.",
+    "DR-87A `exited` alone does not fail #7")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

@@ -54,9 +54,13 @@ AI_VOCABULARY = [
     # (truly, deeply) deliberately excluded.
     "profoundly", "significantly", "fundamentally",
     # DR-71: FAID Figure 5 academic Gemini trigrams that could stand alone in
-    # honest academic prose, so they only count toward the clustering threshold.
+    # ordinary academic prose, so they only count toward the clustering threshold.
     "the efficacy of", "the proposed method",
     "empirical evaluations demonstrate",
+    # DR-87A: Suvanto et al. counted `exited` 61 times across GPT-4.1 rewrites of
+    # twelve interwar British detective novels and zero times in the source
+    # passages.
+    "exited",
 ]
 
 # FROZEN PAYLOAD - DO NOT ADD PHRASES HERE.
