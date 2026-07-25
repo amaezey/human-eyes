@@ -4061,6 +4061,57 @@ if _patterns_data["no-false-ranges"]["severity"] != "context_warning":
 else:
     print("  ok: DR-157 #12 is a context warning")
 
+print("\n=== DR-71 FAID academic Gemini trigrams ===")
+
+# Figure 5's novelty and impact openers fire #1 on one match.
+expect_fail("no-significance-inflation",
+    "This work presents a scheduling layer that sits between the client and the "
+    "shard map.",
+    "DR-71 this work presents")
+
+expect_fail("no-significance-inflation",
+    "The paper presents a novel treatment of write amplification.",
+    "DR-71 presents a novel")
+
+expect_fail("no-significance-inflation",
+    "The paper introduces a novel eviction policy derived from queue depth.",
+    "DR-71 introduces a novel")
+
+expect_fail("no-significance-inflation",
+    "The results represent a significant advancement over prior schedulers.",
+    "DR-71 a significant advancement")
+
+# The three that could stand alone in honest academic prose only count toward
+# #7's existing clustering threshold; one of them on its own stays clear.
+expect_pass("no-ai-vocabulary-clustering",
+    "The efficacy of the method was measured against three production workloads "
+    "over six weeks, and the raw traces are published alongside the paper.",
+    "DR-71 one clustering candidate alone does not fail #7")
+
+expect_fail("no-ai-vocabulary-clustering",
+    "The efficacy of the proposed method was measured over six weeks. Empirical "
+    "evaluations demonstrate consistent gains, and the proposed method holds "
+    "under load.",
+    "DR-71 three clustering candidates in one paragraph")
+
+for _phrase, _label in [
+    ("the efficacy of", "DR-71 the efficacy of"),
+    ("the proposed method", "DR-71 the proposed method"),
+    ("empirical evaluations demonstrate", "DR-71 empirical evaluations demonstrate"),
+]:
+    if _grade._find_ai_words(_phrase) != [_phrase]:
+        FAILURES += 1
+        print(f"FAIL: {_label} should be an #7 clustering candidate")
+    else:
+        print(f"  ok: {_label} is an #7 clustering candidate")
+
+# The four openers keep #1's existing severity; nothing about the check changes.
+if _patterns_data["no-significance-inflation"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-71 #1 should still be a context warning")
+else:
+    print("  ok: DR-71 #1 keeps its context-warning severity")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

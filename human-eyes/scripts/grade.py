@@ -53,6 +53,10 @@ AI_VOCABULARY = [
     # generated-vs-human rate in the corpus sweep; human-leaning intensifiers
     # (truly, deeply) deliberately excluded.
     "profoundly", "significantly", "fundamentally",
+    # DR-71: FAID Figure 5 academic Gemini trigrams that could stand alone in
+    # honest academic prose, so they only count toward the clustering threshold.
+    "the efficacy of", "the proposed method",
+    "empirical evaluations demonstrate",
 ]
 
 # GPTZero's AI Vocabulary client payload exposes 100 high-ratio
@@ -501,6 +505,10 @@ SIGNIFICANCE_INFLATION = [
     "evolving landscape", "indelible mark", "key turning point",
     "deeply rooted", "setting the stage", "remarkably",
     "strikingly", "staggering", "enduring legacy",
+    # DR-71: FAID Figure 5 novelty and impact openers recurring across three
+    # Gemini variants on arXiv-style prompts.
+    "this work presents", "presents a novel", "introduces a novel",
+    "a significant advancement",
 ]
 
 SIGNIFICANCE_EMPHASIS_FRAMES = [
