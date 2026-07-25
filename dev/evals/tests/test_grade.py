@@ -3319,11 +3319,17 @@ dr126_source_phrases = [
     row["ngram"].replace("\u2019", "'")
     for row in dr126_gptzero_payload
 ]
-if dr126_source_phrases != _grade.GPTZERO_AI_PHRASES:
+# GPTZERO_AI_PHRASES is a tuple so the frozen payload cannot be appended to or
+# mutated at runtime; compare like for like.
+if dr126_source_phrases != list(_grade.GPTZERO_AI_PHRASES):
     FAILURES += 1
     print(
         "FAIL: DR-126C runtime GPTZero phrases must equal the preserved 100-row "
-        "payload after apostrophe normalization"
+        "payload after apostrophe normalization."
+    )
+    print(
+        "      This list is frozen. New #7 clustering candidates go in "
+        "AI_VOCABULARY (grade.py), not here."
     )
     print(f"  Source rows: {len(dr126_source_phrases)}")
     print(f"  Runtime rows: {len(_grade.GPTZERO_AI_PHRASES)}")

@@ -59,9 +59,16 @@ AI_VOCABULARY = [
     "empirical evaluations demonstrate",
 ]
 
-# GPTZero's AI Vocabulary client payload exposes 100 high-ratio
-# phrases. Treat them as tentative clustering signals, not single-phrase proof.
-GPTZERO_AI_PHRASES = [
+# FROZEN PAYLOAD - DO NOT ADD PHRASES HERE.
+# This is a verbatim copy of GPTZero's AI Vocabulary client payload: exactly 100
+# high-ratio phrases, in source order. `_assert_gptzero_payload_frozen` below
+# rejects any edit to its length, and test_grade.py's DR-126C block compares it
+# row by row against the preserved client JSON. New clustering candidates belong
+# in AI_VOCABULARY above; both lists feed the same #7 matcher, so an addition
+# here still changes detection and still passes every behaviour test, which is
+# exactly how DR-71 nearly shipped three phrases into a preserved record.
+# Treat these as tentative clustering signals, not single-phrase proof.
+GPTZERO_AI_PHRASES = (
     "provide a valuable insight",
     "left an indelible mark",
     "a stark reminder",
@@ -162,7 +169,24 @@ GPTZERO_AI_PHRASES = [
     "make accessible",
     "today at a fast pace",
     "stand in stark contrast",
-]
+)
+
+
+def _assert_gptzero_payload_frozen():
+    """Fail at import if the frozen GPTZero payload has been edited.
+
+    The row count is the cheap half of the guard; test_grade.py's DR-126C block
+    holds the exact contents against the preserved client JSON.
+    """
+    if len(GPTZERO_AI_PHRASES) != 100:
+        raise RuntimeError(
+            f"GPTZERO_AI_PHRASES is a frozen 100-row GPTZero payload but now has "
+            f"{len(GPTZERO_AI_PHRASES)} rows. Add new clustering candidates to "
+            f"AI_VOCABULARY instead."
+        )
+
+
+_assert_gptzero_payload_frozen()
 
 KOBAK_EXCESS_WORDS_PATH = "kobak-excess-words.csv"
 KOBAK_IGNORED_STYLE_POS = {"preposition", "pronoun", "pronoun/adverb", "particle"}
@@ -962,7 +986,7 @@ def _find_ai_words(text_lower):
     """
     normalized = normalize_for_regex(text_lower)
     spans = []
-    for entry in AI_VOCABULARY + GPTZERO_AI_PHRASES:
+    for entry in [*AI_VOCABULARY, *GPTZERO_AI_PHRASES]:
         for m in re.finditer(re.escape(entry), normalized):
             spans.append((m.start(), m.end(), entry))
     for pat in AI_VOCABULARY_REGEX:
