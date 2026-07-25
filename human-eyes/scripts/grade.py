@@ -1412,12 +1412,32 @@ def check_staccato(text):
             and previous_opener.group(0).casefold() == current_opener.group(0).casefold()
         ):
             repeated_opening_pairs.append(f"{previous.strip()} {current.strip()}")
+    # Rate branch (DR-66): short sentences spread through a document rather than
+    # bunched into a run. Ten words or fewer is the Desaire threshold the Xia
+    # paper measures, and prose paragraphs are used so headings do not count.
+    prose = " ".join(prose_paragraphs(text))
+    prose_words = len(strip_front_matter(text).split())
+    short_sentences = [
+        sentence.strip()
+        for sentence in split_sentences(prose)
+        if len(sentence.split()) <= 10
+    ]
+    short_sentence_count = len(short_sentences)
+    minimum_words = threshold_value("no-staccato-sequences", "rate_minimum_words", 300)
+    maximum_rate = threshold_value(
+        "no-staccato-sequences", "maximum_short_rate_per_1000", 30.0
+    )
+    short_rate = short_sentence_count / prose_words * 1000 if prose_words else 0.0
+    rate_failed = prose_words >= minimum_words and short_rate >= maximum_rate
+
     matches = []
     if max_run >= 3 and longest_run_end >= 0:
         run_start = longest_run_end - max_run + 1
         matches = [s.strip() for s in sentences[run_start:longest_run_end + 1] if s.strip()]
     matches.extend(repeated_opening_pairs)
     matches.extend(formula_matches)
+    if rate_failed:
+        matches.extend(short_sentences)
     matches = list(dict.fromkeys(matches))
     evidence = []
     if max_run >= 3:
@@ -1428,9 +1448,19 @@ def check_staccato(text):
         evidence.append(
             f"adjacent short-fragment pair(s) sharing an opener: {repeated_opening_pairs}"
         )
+    if rate_failed:
+        evidence.append(
+            f"{short_sentence_count} sentences of ten words or fewer at "
+            f"{short_rate:.1f} per 1000 words"
+        )
     return {
         "text": "no-staccato-sequences",
-        "passed": max_run < 3 and not formula_matches and not repeated_opening_pairs,
+        "passed": (
+            max_run < 3
+            and not formula_matches
+            and not repeated_opening_pairs
+            and not rate_failed
+        ),
         "matches": matches,
         "evidence": (
             f"Found {'; '.join(evidence)}"
@@ -2155,7 +2185,7 @@ def extract_participial_clauses(text):
 
 
 def _biber_rate_check(check_id, text, extract, default_rate, label):
-    """Shared body for the three Reinhart rate checks."""
+    """Shared body for the Reinhart and Xia feature-rate checks."""
     source = strip_front_matter(text)
     words = source.split()
     matches = extract(source)
@@ -2203,6 +2233,94 @@ def check_participial_clause_rate(text):
     return _biber_rate_check(
         "no-participial-clause-rate", text,
         extract_participial_clauses, 4.4, "participial clause(s)",
+    )
+
+
+# Irregular past participles, for the passive head. Regular participles are
+# recognised by their -ed ending, so only the irregular forms need listing.
+IRREGULAR_PARTICIPLES = frozenset({
+    "arisen", "awoken", "beaten", "become", "begun", "bent", "bet", "bitten",
+    "bled", "blown", "born", "borne", "bought", "bound", "bred", "broken",
+    "brought", "built", "burnt", "burst", "cast", "caught", "chosen", "clung",
+    "come", "cost", "crept", "cut", "dealt", "dug", "done", "drawn", "driven",
+    "drunk", "dwelt", "eaten", "fallen", "fed", "felt", "fled", "flown",
+    "flung", "forbidden", "forgiven", "forgotten", "fought", "found", "frozen",
+    "given", "gone", "got", "gotten", "grown", "heard", "held", "hidden",
+    "hit", "hung", "hurt", "kept", "knelt", "known", "laid", "lain", "led",
+    "leant", "leapt", "learnt", "left", "lent", "let", "lit", "lost", "made",
+    "meant", "met", "paid", "put", "quit", "read", "ridden", "risen", "run",
+    "rung", "said", "sat", "seen", "sent", "set", "sewn", "shaken", "shed",
+    "shone", "shot", "shown", "shrunk", "shut", "slept", "slid", "slung",
+    "smelt", "sold", "sought", "sown", "spat", "sped", "spent", "spilt",
+    "split", "spoilt", "spoken", "spread", "sprung", "spun", "stolen", "stood",
+    "struck", "stuck", "stung", "stunk", "sung", "sunk", "sworn", "swept",
+    "swum", "swung", "taken", "taught", "thought", "thrown", "thrust", "told",
+    "torn", "trodden", "understood", "upset", "withdrawn", "woken", "won",
+    "worn", "wound", "woven", "written", "wept",
+})
+
+BE_FORMS = frozenset({"am", "is", "are", "was", "were", "be", "been", "being"})
+
+# Deverbal adjectives that follow a be-form without forming a passive: "the
+# model is based on the data", "she is interested in the outcome".
+PASSIVE_ADJECTIVE_EXCLUSIONS = frozenset({
+    "based", "limited", "related", "detailed", "advanced", "mixed", "used",
+    "supposed", "complicated", "sophisticated", "dedicated", "concerned",
+    "interested", "excited", "tired", "worried", "surprised", "pleased",
+    "known", "called", "aged", "united", "armed", "crowded", "educated",
+    "experienced", "qualified", "skilled", "talented", "gifted", "unexpected",
+    "unprecedented", "alleged", "beloved", "sacred", "wicked", "naked",
+    "embedded", "entrenched", "engaged", "involved", "committed", "focused",
+    "determined", "motivated", "informed", "prepared", "willing", "unwilling",
+    "needed", "wanted",
+})
+
+PASSIVE_INTERVENING = frozenset({"not", "also", "already", "being"})
+
+_PASSIVE_WORD_RE = re.compile(r"[A-Za-z][A-Za-z'’-]*")
+
+
+def extract_passive_verbs(text):
+    """Return one entry per verb in the passive voice (be-form + participle)."""
+    words = _PASSIVE_WORD_RE.findall(text)
+    found = []
+    index = 0
+    while index < len(words):
+        head = words[index].lower()
+        if head in BE_FORMS:
+            step = 1
+            candidate = words[index + 1].lower() if index + 1 < len(words) else ""
+            if candidate.endswith("ly") or candidate in PASSIVE_INTERVENING:
+                step = 2
+                candidate = words[index + 2].lower() if index + 2 < len(words) else ""
+            is_participle = (
+                candidate in IRREGULAR_PARTICIPLES
+                or (candidate.endswith("ed") and len(candidate) > 3)
+            )
+            if is_participle and candidate not in PASSIVE_ADJECTIVE_EXCLUSIONS:
+                found.append(f"{head} {candidate}")
+                index += 1 + step
+                continue
+        index += 1
+    return found
+
+
+IT_PRONOUN_RE = re.compile(r"\bit\b", re.IGNORECASE)
+
+
+def check_passive_voice_rate(text):
+    """Flag a high rate of passive-voice verbs (pattern 68)."""
+    return _biber_rate_check(
+        "no-passive-voice-rate", text,
+        extract_passive_verbs, 5.0, "passive verb(s)",
+    )
+
+
+def check_it_pronoun_rate(text):
+    """Flag a high rate of the `it` pronoun (pattern 69)."""
+    return _biber_rate_check(
+        "no-it-pronoun-rate", text,
+        lambda source: IT_PRONOUN_RE.findall(source), 18.0, "`it` pronoun(s)",
     )
 
 
@@ -3534,6 +3652,8 @@ ALL_CHECKS = {
     "no-nominalisation-rate": check_nominalisation_rate,
     "no-that-relative-rate": check_that_relative_rate,
     "no-participial-clause-rate": check_participial_clause_rate,
+    "no-passive-voice-rate": check_passive_voice_rate,
+    "no-it-pronoun-rate": check_it_pronoun_rate,
     "no-superficial-ing": check_superficial_ing,
     "no-ghost-spectral-density": check_ghost_spectral,
     "no-quietness-obsession": check_quietness,
@@ -3599,7 +3719,12 @@ AGGREGATE_CHECKS = {"overall-signal-stacking"}
 
 CHECK_THRESHOLDS = {
     "overall-signal-stacking": 4,
-    "no-staccato-sequences": {"minimum_run": 3, "minimum_repeated_opener_run": 2},
+    "no-staccato-sequences": {
+        "minimum_run": 3,
+        "minimum_repeated_opener_run": 2,
+        "rate_minimum_words": 300,
+        "maximum_short_rate_per_1000": 30.0,
+    },
     "no-soft-scaffolding": {"minimum_candidates": 2},
     "no-orphaned-demonstratives": {"minimum_candidates": 3},
     "no-rhetorical-questions": {"minimum_candidates": 1},

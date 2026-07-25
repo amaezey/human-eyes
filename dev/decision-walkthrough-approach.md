@@ -175,9 +175,15 @@ Eight further rows closed on Mae's rulings. DR-26, DR-32, DR-35, DR-82 and DR-88
 
 The root README pattern table must list every numbered check. Three were missing after DR-159 and were only caught when Mae asked whether the work was documented. Check it whenever a pattern number is added or removed.
 
+DR-66 is closed. The paper names four features and supplies a direction for none of them: its numbers are correlations between detector accuracy and shifts in the human-AI feature gap, not measurements of who writes more. So all four were measured on the project corpora and Mae ruled on the result. Passive voice ships as programmatic #68 `no-passive-voice-rate` at 5.0 per 1000 words (57% of generated documents, 29% of human). The `it` pronoun ships as programmatic #69 `no-it-pronoun-rate` at 18.0 (50% and 18%). The short-sentence rate was folded into #25 rather than numbered, at 30.0 (48% and 21%). Past tense got no check: 0.97x by aggregate rate and 0.73x by document median, with a second strict counter agreeing at 0.79x and 0.56x. Calibration in `dev/evals/xia-feature-rate-calibration-2026-07-26.md`.
+
+Two things from that close are worth carrying forward. A ratio cannot tell an artefact from a finding: passive voice measured over unambiguous irregular participles alone runs a flat 1.05x, which looked like a refutation until the actual matches were read and turned out to be ordinary regular-verb passives on both sides. The register difference sits in the Latinate verbs, which are regular. And #25 does not separate the corpora: before the new branch it flagged 39% of generated documents against 50% of human ones, and the branch moves it to 54% against 53%. The branch points the right way; the host check does not. Nothing is queued for that yet.
+
+The DR-66 orphan sweep queued four Xia claims that no row carried: DR-160 (multiple-hypothesis correction and a null-result ledger), DR-161 (raw versus residue-cleaned evaluation lane), DR-162 (detector/evaluator-architecture hypothesis), and DR-163 (direction-specific generator-transfer reporting). All four are evaluation-methodology work, not checker work.
+
 ## What is next
 
-The fixed order now resumes at DR-66, DR-25 and DR-153. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
+The fixed order now resumes at DR-25 and DR-153. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Counts move with every closure, so recount rather than quoting a figure from this file: `python3 dev/tools/reconcile_register.py` must exit 0, and the decided/pending split comes from reading the Decision column. Three rows carry `pos-dependent-pattern` (POS-01, POS-02, DR-144) and wait on Mae's tagger.
 

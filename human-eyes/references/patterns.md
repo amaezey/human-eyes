@@ -478,6 +478,46 @@ Evidence: Reinhart et al., PNAS, February 2025. Calibration in `dev/evals/biber-
 
 **Detection:** Programmatic check `no-participial-clause-rate`.
 
+
+### 68. Passive voice rate
+
+A passive verb is a form of `be` followed by a past participle: `was rejected`, `is being reviewed`, `had been checked`. The check speaks only about density: it fails at 5.0 or more per 1000 words, in prose of 300 words or more.
+
+Across the project corpora human prose runs 4.66 passive verbs per 1000 words and generated prose 6.47, a ratio of 1.39. By document median the gap is wider, 3.66 against 5.57. At the 5.0 threshold the check flags 57% of generated documents and 29% of human ones, close to the #66 subject-relative check.
+
+**Before:**
+> The proposal was rejected and the minutes were circulated the following week. The figures had been checked twice before they were released.
+
+**After:**
+> The committee rejected the proposal and circulated the minutes the following week. Two people checked the figures before anyone released them.
+
+Evidence: Xia, Stańczak, and Roth, EACL 2026, which names passive voice among the features most correlated with detector behaviour across 516,000 texts. The paper reports no direction, so the direction and threshold here come from measurement on the project corpora. Calibration in `dev/evals/xia-feature-rate-calibration-2026-07-26.md`.
+
+**Severity:** context_warning · `no-passive-voice-rate`
+
+**Detection:** Programmatic check `no-passive-voice-rate`.
+
+
+### 69. `it` pronoun rate
+
+The check counts the pronoun `it` and speaks only about density: it fails at 18.0 or more per 1000 words, in prose of 300 words or more. Possessive `its` is a determiner and is not counted.
+
+Across the project corpora human prose runs 13.83 per 1000 words and generated prose 19.31, a ratio of 1.40. By document median the gap is wider, 10.96 against 17.84. At the 18.0 threshold the check flags 50% of generated documents and 18% of human ones, the narrowest human flag rate of the rate checks.
+
+The lift is spread across both uses rather than concentrated in one construction: placeholder subjects such as `it is worth noting` run 1.30 times the human rate and ordinary back-reference 1.48, so the check measures the whole habit rather than a phrase family.
+
+**Before:**
+> It is worth noting that it took three attempts. It seemed obvious afterwards, though it was not obvious at the time.
+
+**After:**
+> The fix took three attempts. The answer seemed obvious afterwards, though nobody saw it at the time.
+
+Evidence: Xia, Stańczak, and Roth, EACL 2026, which names “It” pronoun frequency among the features most correlated with detector behaviour across 516,000 texts. The paper reports no direction, so the direction and threshold here come from measurement on the project corpora. Calibration in `dev/evals/xia-feature-rate-calibration-2026-07-26.md`.
+
+**Severity:** context_warning · `no-it-pronoun-rate`
+
+**Detection:** Programmatic check `no-it-pronoun-rate`.
+
 ---
 
 ## Style
@@ -764,6 +804,8 @@ Vague upbeat endings that could be appended to any article on any topic.
 **Words to watch:** "Full stop.", "Period.", "That's it. That's the tweet.", "[One word]. That's the word.", "Too young. Too single.", "No family. No calls."
 
 The four exact dramatic-fragment formulas fail at one occurrence. A pair of adjacent short fragments also fails when both begin with the same word. Other staccato rhythm fails when at least three consecutive sentences contain fewer than six words each.
+
+Short sentences that are spread through a piece rather than bunched into a run fail on their rate: sentences of ten words or fewer at 30.0 or more per 1000 words, in prose of 300 words or more. Across the project corpora human prose runs 19.05 such sentences per 1000 words and generated prose 34.96. At the 30.0 threshold the branch flags 48% of generated documents and 21% of human ones, and roughly two thirds of what it flags the run and repeated-opener branches already catch. Evidence for the rate: Xia, Stańczak, and Roth, EACL 2026, using the ten-word definition from Desaire et al. Calibration in `dev/evals/xia-feature-rate-calibration-2026-07-26.md`.
 
 **Tolerance note:** Staccato is not automatically bad. Preserve it when it is character voice, panic, comedy, dialogue, aphorism, or deliberate literary rhythm. Cut it when it functions as generic article emphasis.
 

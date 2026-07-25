@@ -859,7 +859,7 @@
     "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
     "pattern_number": "25",
     "patterns_md_heading": "Staccato rhythm in extended contexts",
-    "patterns_md_body": "**Words to watch:** \"Full stop.\", \"Period.\", \"That's it. That's the tweet.\", \"[One word]. That's the word.\", \"Too young. Too single.\", \"No family. No calls.\"\n\nThe four exact dramatic-fragment formulas fail at one occurrence. A pair of adjacent short fragments also fails when both begin with the same word. Other staccato rhythm fails when at least three consecutive sentences contain fewer than six words each.\n\n**Tolerance note:** Staccato is not automatically bad. Preserve it when it is character voice, panic, comedy, dialogue, aphorism, or deliberate literary rhythm. Cut it when it functions as generic article emphasis.\n\n**Before:**\n> The data was clear. Unmistakably so. Every metric pointed in the same direction. And that direction was down.\n\n**After:**\n> The data pointed unambiguously in one direction: every metric was declining, and the trend had been consistent for three consecutive quarters.\n\n**Severity:** context_warning · `no-staccato-sequences`\n\n**Detection:** Programmatic check `no-staccato-sequences`.",
+    "patterns_md_body": "**Words to watch:** \"Full stop.\", \"Period.\", \"That's it. That's the tweet.\", \"[One word]. That's the word.\", \"Too young. Too single.\", \"No family. No calls.\"\n\nThe four exact dramatic-fragment formulas fail at one occurrence. A pair of adjacent short fragments also fails when both begin with the same word. Other staccato rhythm fails when at least three consecutive sentences contain fewer than six words each.\n\nShort sentences that are spread through a piece rather than bunched into a run fail on their rate: sentences of ten words or fewer at 30.0 or more per 1000 words, in prose of 300 words or more. Across the project corpora human prose runs 19.05 such sentences per 1000 words and generated prose 34.96. At the 30.0 threshold the branch flags 48% of generated documents and 21% of human ones, and roughly two thirds of what it flags the run and repeated-opener branches already catch. Evidence for the rate: Xia, Stańczak, and Roth, EACL 2026, using the ten-word definition from Desaire et al. Calibration in `dev/evals/xia-feature-rate-calibration-2026-07-26.md`.\n\n**Tolerance note:** Staccato is not automatically bad. Preserve it when it is character voice, panic, comedy, dialogue, aphorism, or deliberate literary rhythm. Cut it when it functions as generic article emphasis.\n\n**Before:**\n> The data was clear. Unmistakably so. Every metric pointed in the same direction. And that direction was down.\n\n**After:**\n> The data pointed unambiguously in one direction: every metric was declining, and the trend had been consistent for three consecutive quarters.\n\n**Severity:** context_warning · `no-staccato-sequences`\n\n**Detection:** Programmatic check `no-staccato-sequences`.",
     "patterns_md_leading_blanks": 2
   },
   "no-superficial-ing": {
@@ -1086,6 +1086,40 @@
     "pattern_number": "67",
     "patterns_md_heading": "Present participial clause rate",
     "patterns_md_body": "A present participial clause is an adverbial clause headed by an `-ing` verb, as in `Stuffing his mouth with cookies, Joe ran out the door`. Gerunds (`Walking is good for you`) and progressives (`She is walking`) are different constructions and are not counted. The check fails at 4.4 or more per 1000 words, in prose of 300 words or more.\n\nAcross the project corpora the median human document runs 3.9 per 1000 words and the median generated document 5.5. At the 4.4 threshold the check flags 70% of generated documents and 37% of human ones. That is the widest false-positive rate of any check in the catalogue, well above the 24% the #10 triad check carries.\n\n**Before:**\n> Leaning on the rail, she watched the boats, counting them as they passed.\n\n**After:**\n> She leaned on the rail and watched the boats. She counted them as they passed.\n\nEvidence: Reinhart et al., PNAS, February 2025. Calibration in `dev/evals/biber-rate-calibration-2026-07-26.md`.\n\n**Severity:** context_warning · `no-participial-clause-rate`\n\n**Detection:** Programmatic check `no-participial-clause-rate`.",
+    "patterns_md_leading_blanks": 2
+  },
+  "no-passive-voice-rate": {
+    "category": "Language and grammar",
+    "short_name": "Passive voice rate",
+    "description": "Checks how densely passive-voice verbs run through a piece.",
+    "why_it_matters": "Generated prose here runs about 1.4 times the human rate of passive constructions, and the passive is the easiest of the register habits to reverse: name who did the thing.",
+    "severity": "context_warning",
+    "failure_modes": [
+      "frictionless_structure",
+      "genre_misfit"
+    ],
+    "evidence_role": "register_rate",
+    "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
+    "pattern_number": "68",
+    "patterns_md_heading": "Passive voice rate",
+    "patterns_md_body": "A passive verb is a form of `be` followed by a past participle: `was rejected`, `is being reviewed`, `had been checked`. The check speaks only about density: it fails at 5.0 or more per 1000 words, in prose of 300 words or more.\n\nAcross the project corpora human prose runs 4.66 passive verbs per 1000 words and generated prose 6.47, a ratio of 1.39. By document median the gap is wider, 3.66 against 5.57. At the 5.0 threshold the check flags 57% of generated documents and 29% of human ones, close to the #66 subject-relative check.\n\n**Before:**\n> The proposal was rejected and the minutes were circulated the following week. The figures had been checked twice before they were released.\n\n**After:**\n> The committee rejected the proposal and circulated the minutes the following week. Two people checked the figures before anyone released them.\n\nEvidence: Xia, Stańczak, and Roth, EACL 2026, which names passive voice among the features most correlated with detector behaviour across 516,000 texts. The paper reports no direction, so the direction and threshold here come from measurement on the project corpora. Calibration in `dev/evals/xia-feature-rate-calibration-2026-07-26.md`.\n\n**Severity:** context_warning · `no-passive-voice-rate`\n\n**Detection:** Programmatic check `no-passive-voice-rate`.",
+    "patterns_md_leading_blanks": 2
+  },
+  "no-it-pronoun-rate": {
+    "category": "Language and grammar",
+    "short_name": "`it` pronoun rate",
+    "description": "Checks how densely the pronoun `it` runs through a piece.",
+    "why_it_matters": "Generated prose leans on `it` about 1.4 times as often as human prose, across both the placeholder subject of `it is worth noting` and ordinary back-reference.",
+    "severity": "context_warning",
+    "failure_modes": [
+      "frictionless_structure",
+      "generic_abstraction"
+    ],
+    "evidence_role": "register_rate",
+    "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
+    "pattern_number": "69",
+    "patterns_md_heading": "`it` pronoun rate",
+    "patterns_md_body": "The check counts the pronoun `it` and speaks only about density: it fails at 18.0 or more per 1000 words, in prose of 300 words or more. Possessive `its` is a determiner and is not counted.\n\nAcross the project corpora human prose runs 13.83 per 1000 words and generated prose 19.31, a ratio of 1.40. By document median the gap is wider, 10.96 against 17.84. At the 18.0 threshold the check flags 50% of generated documents and 18% of human ones, the narrowest human flag rate of the rate checks.\n\nThe lift is spread across both uses rather than concentrated in one construction: placeholder subjects such as `it is worth noting` run 1.30 times the human rate and ordinary back-reference 1.48, so the check measures the whole habit rather than a phrase family.\n\n**Before:**\n> It is worth noting that it took three attempts. It seemed obvious afterwards, though it was not obvious at the time.\n\n**After:**\n> The fix took three attempts. The answer seemed obvious afterwards, though nobody saw it at the time.\n\nEvidence: Xia, Stańczak, and Roth, EACL 2026, which names “It” pronoun frequency among the features most correlated with detector behaviour across 516,000 texts. The paper reports no direction, so the direction and threshold here come from measurement on the project corpora. Calibration in `dev/evals/xia-feature-rate-calibration-2026-07-26.md`.\n\n**Severity:** context_warning · `no-it-pronoun-rate`\n\n**Detection:** Programmatic check `no-it-pronoun-rate`.",
     "patterns_md_leading_blanks": 2
   }
 }

@@ -1746,6 +1746,8 @@ expected_checks = {
     "no-nominalisation-rate",
     "no-that-relative-rate",
     "no-participial-clause-rate",
+    "no-passive-voice-rate",
+    "no-it-pronoun-rate",
     "no-superficial-ing",
     "no-ghost-spectral-density",
     "no-quietness-obsession",
@@ -2538,6 +2540,9 @@ for check_name in ALL_CHECKS:
         # to two fixtures.
         "no-nominalisation-rate",
         "no-that-relative-rate",
+        # DR-66: the same principle. This piece runs 8.4 passive verbs per 1000
+        # words, inside the 29% of human prose #68 flags by design.
+        "no-passive-voice-rate",
     }:
         continue
     expect_pass(check_name, opinion_text, f"human opinion piece ({check_name})")
@@ -2557,6 +2562,9 @@ for check_name in ALL_CHECKS:
         # DR-159: this instructional fixture runs 6.7 subject relatives per
         # 1000 words, inside the 27% of human prose the check flags by design.
         "no-that-relative-rate",
+        # DR-66: this piece runs 25.6 `it` pronouns per 1000 words, inside the
+        # 18% of human prose #69 flags by design.
+        "no-it-pronoun-rate",
         "no-negative-parallelisms",
         "overall-signal-stacking",
     }:
@@ -4217,6 +4225,120 @@ expect_pass("no-ai-vocabulary-clustering",
     "He exited the drawing room without another word, and the inspector followed "
     "him into the hall a moment later.",
     "DR-87A `exited` alone does not fail #7")
+
+print("\n=== DR-66 passive voice, 'it' rate, and the #25 short-sentence rate ===")
+
+# Passive voice: be-form plus past participle, per the paper's definition
+# ("the frequency of verbs in passive voice"). Fails at 5.0 per 1000 words in
+# prose of 300 words or more.
+_dr66_passive_fail = (
+    "The proposal was rejected by the committee and the minutes were circulated "
+    "the following week. The figures had been checked twice before they were "
+    "released, and the discrepancy was noticed only after the report was filed. "
+    "Staff were told that the decision is being reviewed and that a revised "
+    "schedule will be published once the funding is confirmed. "
+) * 8
+expect_fail("no-passive-voice-rate", _dr66_passive_fail, "DR-66 dense passive voice")
+
+_dr66_passive_pass = (
+    "She walked to the shop and bought bread. The baker had sold out of rye so she "
+    "took a white loaf instead. On the way home it began to rain, and by the time "
+    "she reached the door her coat clung to her shoulders. She put the kettle on "
+    "and sat by the window to watch the street fill with water. "
+) * 6
+expect_pass("no-passive-voice-rate", _dr66_passive_pass, "DR-66 active prose stays clear")
+
+_dr66_passive_controls = (
+    "She is writing the letter and he was running late. The room is quiet and the "
+    "children are tired. The model is based on the data we collected last spring, "
+    "and the team is going to revisit it. She has written three drafts already. "
+) * 7
+expect_pass(
+    "no-passive-voice-rate",
+    _dr66_passive_controls,
+    "DR-66 progressives, copula adjectives, and active perfects are not passives",
+)
+
+# "It" pronoun frequency, StyloMetrix's per-pronoun measure. Fails at 18.0 per
+# 1000 words. Possessive "its" is a determiner and is not counted.
+_dr66_it_fail = (
+    "It works well enough, and it shows in the numbers. It is worth noting that it "
+    "took three attempts. It seemed obvious afterwards, though it was not obvious "
+    "at the time. It matters because it changes what the team does next. "
+) * 9
+expect_fail("no-it-pronoun-rate", _dr66_it_fail, "DR-66 dense 'it' pronouns")
+
+_dr66_it_pass = (
+    "The committee met on Thursday and reviewed the budget line by line. Members "
+    "argued about the depot lease for most of the afternoon. The chair adjourned "
+    "the meeting before a vote, and the papers went back to the officers for "
+    "redrafting. Its final form will reach the council in March. "
+) * 6
+expect_pass("no-it-pronoun-rate", _dr66_it_pass, "DR-66 sparse 'it' and possessive 'its' stay clear")
+
+# #25 gains a rate branch: short sentences of ten words or fewer at 30.0 or more
+# per 1000 words. Short sentences are interleaved with long ones here, so
+# neither the three-in-a-row run nor the repeated-opener pair can fire.
+_dr66_staccato_rate = (
+    "The tender closed on Friday. Officers spent the weekend reading submissions "
+    "that had arrived in the final hour, most of them incomplete. Nobody expected "
+    "that many. A second panel was convened on Monday morning to work through the "
+    "backlog before the council meeting. Costs had already blown out. Procurement "
+    "asked for an extension that the chair was unwilling to grant without a written "
+    "case. Everyone knew how that would end. "
+) * 7
+expect_fail("no-staccato-sequences", _dr66_staccato_rate, "DR-66 #25 short-sentence rate branch")
+
+_dr66_staccato_rate_pass = (
+    "The tender closed on Friday afternoon and officers spent the weekend reading "
+    "submissions that had arrived in the final hour, most of them incomplete and "
+    "several of them addressed to the wrong department entirely. A second panel was "
+    "convened on Monday morning to work through the backlog before the council "
+    "meeting, by which point the costs had already blown well past the estimate. "
+) * 6
+expect_pass(
+    "no-staccato-sequences",
+    _dr66_staccato_rate_pass,
+    "DR-66 long-sentence prose does not trip the #25 rate branch",
+)
+
+# The same interleaving as the failing fixture, but under 300 words, so the
+# rate branch is out of scope. The run and repeated-opener branches cannot fire
+# on it either, which is what makes it a clean length-gate test.
+_dr66_staccato_short_doc = (
+    "The tender closed on Friday. Officers spent the weekend reading submissions "
+    "that had arrived in the final hour, most of them incomplete. Nobody expected "
+    "that many. A second panel was convened on Monday morning to work through the "
+    "backlog before the council meeting. Costs had already blown out. "
+)
+expect_pass(
+    "no-staccato-sequences",
+    _dr66_staccato_short_doc,
+    "DR-66 the #25 rate branch skips prose under 300 words",
+)
+
+# Both new checks are rate checks with the same 300-word gate and severity as
+# the #10 and DR-159 family.
+for _cid in ("no-passive-voice-rate", "no-it-pronoun-rate"):
+    _short = ALL_CHECKS[_cid]("It was rejected by the committee and it was filed.")
+    if not _short["passed"]:
+        FAILURES += 1
+        print(f"FAIL: DR-66 {_cid} should skip prose under 300 words")
+    else:
+        print(f"  ok: DR-66 {_cid} skips prose under 300 words")
+    if _patterns_data[_cid]["severity"] != "context_warning":
+        FAILURES += 1
+        print(f"FAIL: DR-66 {_cid} should be a context warning")
+    else:
+        print(f"  ok: DR-66 {_cid} is a context warning")
+
+# Past tense got no check: measured 0.97x aggregate and 0.73x by document
+# median, so human prose here carries at least as much of it as generated prose.
+if any("past-tense" in _cid or "past_tense" in _cid for _cid in ALL_CHECKS):
+    FAILURES += 1
+    print("FAIL: DR-66 ruled no past-tense check; one exists")
+else:
+    print("  ok: DR-66 added no past-tense check")
 
 # --- Summary ---
 
