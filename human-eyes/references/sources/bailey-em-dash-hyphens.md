@@ -86,6 +86,7 @@ The article body is unchanged except for removal of one trailing space. The curr
 
 ## Decision history
 
+- DR-35 closed 2026-07-26: #49 still fails on a single em dash, the deliberate stance ruled through DR-07 and reaffirmed through DR-50. Verified against the live checker; no check changed.
 - The previous card predated stable claim IDs and decision or implementation fields. It recorded no user-approved recommendation and no source-specific implementation.
 - The old card mapped the source to #49 and factual-error review. Those useful mappings remain, but the current review narrows #49 to dated small-sample context and makes clear that #41 source verification does not establish authorship.
 - C01-C17 are newly assigned stable IDs for the unchanged preserved article and therefore begin at `pending` / `not started`.

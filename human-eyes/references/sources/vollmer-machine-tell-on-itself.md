@@ -87,6 +87,7 @@ Vollmer introduces an anecdote about a prize-winning student poem, explicitly sa
 
 ## Decision history
 
+- DR-26 closed 2026-07-26: `overall-signal-stacking` already aggregates 13 weighted checks into a combined score, which is the stacked-tell account this claim describes. Verified against the live registry; no check changed.
 - The 2026-05-05 card was a pre-contract summary with no claim IDs, decisions, implementation statuses, update provenance, snapshot digest, or independent source-record review. It contained useful conduit and project-lineage notes but did not record a prior approved or implemented recommendation.
 - The 2026-07-15 inventory-time edit corrected the card's Gmelius and Bynder mapping language. That correction is preserved in C20 and the coverage notes; it was not a product implementation or user decision.
 - The source body is substantively unchanged. This refresh archives the exact prior snapshot, adds stable Substack identifiers and direct HTML preservation, distinguishes Vollmer from the Claude-generated guide, records the complete claim and limit inventory, and reopens every recommendation as `pending` / `not started`.

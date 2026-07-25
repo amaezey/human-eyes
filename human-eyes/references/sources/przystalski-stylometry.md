@@ -82,6 +82,7 @@ The prior snapshot's computed digest matches both the archived bytes and the pre
 
 ## Decision history
 
+- DR-88 closed 2026-07-26: the low-TTR direction this claim questions was reversed by DR-06; #53 flags high windowed lexical diversity. Verified against the live checker; no check changed.
 
 - 2026-07-17: Mae approved and implemented the #53 direction flip: windowed 150-word lexical diversity flagging high values, two-tier (0.71 flag, 0.74 above-observed-human-range note), commit b199a6d.
 - The prior 2026-05-05 card had no claim IDs, user decisions, implementation statuses, or evaluation records. Its broad H1/H2/#7/#52/#53 associations are reopened as C01-C25 below; none is carried forward as approved or implemented.

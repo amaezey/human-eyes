@@ -86,6 +86,7 @@ The current snapshot wraps the preserved article in the provenance template and 
 
 ## Decision history
 
+- DR-32 closed 2026-07-26: #29 no longer treats deliberate rhetorical questions as candidates. `Who hasn't felt silenced?` and `That's it, isn't it?` both pass the live checker, because DR-21C rebuilt #29 around a short non-interrogative fragment answered immediately. Verified against the live checker; no check changed.
 
 - C15 rejected 2026-07-17 (DR-143): the fixture-promotion condition addressed a hypothetical no one proposed; no endorsed condition. The excerpt remains attributed source material in this card only.
 - C14 approved 2026-07-17 (DR-142, option b): the craft observation is endorsed as card context only; Mae declined the optional voice.md addition, so rewrite guidance is unchanged and personal material handling stays governed by the existing never-invent rule.
