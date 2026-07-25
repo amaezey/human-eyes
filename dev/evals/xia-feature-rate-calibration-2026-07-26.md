@@ -122,10 +122,29 @@ through its consecutive-run and repeated-opener branches. Mae chose to widen
 #25 rather than create a pattern number for territory an existing check already
 half-covered. The branch adds 7 generated findings and 2 human ones.
 
-Note for any future work on #25: the check does not separate the corpora. Before
-this change it flagged 39% of generated documents against 50% of human ones, a
-ratio of 0.78. The rate branch moves it to 54% against 53%. The branch itself
-points the right way; the host check does not.
+### A comparison that does not work for one-occurrence checks
+
+#25's two older branches appeared to run backwards: before this change the check
+flagged 39% of generated documents against 50% of human ones. That reading was
+wrong, and the reason is worth keeping.
+
+A share-of-documents comparison is length-biased whenever the check fires on one
+occurrence anywhere in the text. The human corpus averages 2,172 words per
+document against the generated corpus's 1,051, so it gets roughly twice the
+chances to contain a single qualifying occurrence. Measured as a rate per 1000
+words, both branches run the right way:
+
+| #25 branch | human /1k | AI /1k | ratio |
+|---|---|---|---|
+| runs of 3+ short sentences | 0.49 | 0.89 | 1.82x |
+| repeated-opener pairs | 0.48 | 1.20 | 2.50x |
+
+Truncating every document to its first 1000 words holds the direction: 1.38x and
+1.83x. #25 separates the corpora. Nothing about it needs changing.
+
+Any future flag-share figure quoted for a one-occurrence check across these two
+corpora carries the same bias. Rate checks are not affected, because the
+threshold is already normalised by length.
 
 ## Past tense: no check
 

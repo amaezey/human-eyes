@@ -426,7 +426,7 @@ The check reads the word families that genuinely alternate: `-ise`/`-ize`, `-yse
 
 Nominalisations are nouns formed from verbs or adjectives: `development`, `robustness`, `implementation`, `effectiveness`. The check speaks only about how densely they run: it fails at 29.0 or more per 1000 words, in prose of 300 words or more.
 
-A single nominalisation says nothing. Across the project corpora the median human document runs 21.8 per 1000 words and the median generated document 36.8. At the 29.0 threshold the check flags 70% of generated documents and 24% of human ones, matching the false-positive rate the #10 triad check already carries.
+A single nominalisation says nothing. Across the project corpora human prose runs 21.8 nominalisations per 1000 words and generated prose 36.8. At the 29.0 threshold the check flags 70% of generated documents and 24% of human ones, matching the false-positive rate the #10 triad check already carries.
 
 **Before:**
 > The implementation of the transformation required the development of a new specification, and the assessment of the requirements involved consideration of the limitations.
@@ -445,7 +445,7 @@ Evidence: Reinhart et al., PNAS, February 2025, measuring Douglas Biber's 66-fea
 
 A `that` relative clause in subject position is the shape in `the dog that bit me`, where `that` is followed straight by the relative clause's verb. Object-position relatives, `the dog that I saw`, are a different construction and are not counted: they run the opposite way in the corpora. The check fails at 3.5 or more subject relatives per 1000 words, in prose of 300 words or more.
 
-Across the project corpora the median human document runs 2.3 per 1000 words and the median generated document 3.7. At the 3.5 threshold the check flags 52% of generated documents and 27% of human ones.
+Across the project corpora human prose runs 2.6 subject relatives per 1000 words and generated prose 3.8. At the 3.5 threshold the check flags 52% of generated documents and 27% of human ones.
 
 **Before:**
 > The tool that generates the summary is slow, and the process that creates the index runs nightly.
@@ -464,7 +464,7 @@ Evidence: Reinhart et al., PNAS, February 2025. Calibration in `dev/evals/biber-
 
 A present participial clause is an adverbial clause headed by an `-ing` verb, as in `Stuffing his mouth with cookies, Joe ran out the door`. Gerunds (`Walking is good for you`) and progressives (`She is walking`) are different constructions and are not counted. The check fails at 4.4 or more per 1000 words, in prose of 300 words or more.
 
-Across the project corpora the median human document runs 3.9 per 1000 words and the median generated document 5.5. At the 4.4 threshold the check flags 70% of generated documents and 37% of human ones. That is the widest false-positive rate of any check in the catalogue, well above the 24% the #10 triad check carries.
+Across the project corpora human prose runs 3.9 participial clauses per 1000 words and generated prose 5.5. At the 4.4 threshold the check flags 70% of generated documents and 37% of human ones. That is the widest false-positive rate of any check in the catalogue, well above the 24% the #10 triad check carries.
 
 **Before:**
 > Leaning on the rail, she watched the boats, counting them as they passed.
