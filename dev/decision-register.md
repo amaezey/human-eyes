@@ -24,7 +24,7 @@ What the re-screen found, over the 78 rows pending at the time: 9 can still add 
 
 **The three catalogue entries with no check behind them are resolved.** DR-157 made #12 programmatic as `no-false-ranges`; DR-155 and DR-156 removed #6 and #11 rather than build either lane. Every catalogue entry now belongs to a programmatic check or an agent-judgement record, so the two-detector-type rule holds with no exceptions. Any new entry must arrive with a lane.
 
-Pick up in the order rule 5 sets: broad programmatic coverage first, then narrow programmatic variants, then agent judgement, then evaluation, then documentation. **On that order the next rows are DR-66, DR-25 and DR-153.** Closed since the re-screen: DR-71 and DR-87 (the exact-phrase families), DR-38 (rejected), and the five already-covered rows DR-26, DR-32, DR-35, DR-82 and DR-88. DR-158, Mae's pattern-numbering rebuild, sits outside the source queue and is unstarted.
+Pick up in the order rule 5 sets: broad programmatic coverage first, then narrow programmatic variants, then agent judgement, then evaluation, then documentation. **On that order the next rows are DR-25 and DR-153.** Closed since the re-screen: DR-71, DR-87 and DR-66 (the feature families), DR-38 (rejected), and the five already-covered rows DR-26, DR-32, DR-35, DR-82 and DR-88. DR-158, Mae's pattern-numbering rebuild, sits outside the source queue and is unstarted.
 
 ## Checker behaviour
 
