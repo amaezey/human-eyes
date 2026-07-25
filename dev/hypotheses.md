@@ -4,6 +4,8 @@ Hypotheses to test in future iterations of the human-eyes project. Each entry st
 
 Each hypothesis includes status, source, statement, test, and impact.
 
+**These are proposals, never permission.** Several predate standing rulings that now forbid them, and a hypothesis marked `open` here has not been agreed by Mae. Nothing in this file authorises a product change; that happens only through a decided row in `dev/decision-register.md`. Two entries are contradicted outright and are marked in place: **H9** proposes a "looks like, but isn't" block on every pattern, which rule 1 of `dev/decision-walkthrough-approach.md` forbids (no look-alike disclaimers, no machinery designed to spare legitimate human uses), and **H3** proposes dropping the detection framing, which Mae rejected on 2026-07-25 when she kept the README's positioning through DR-108.
+
 ## 1. Continuous calibrated register-distance score per pattern
 
 **Status:** open
@@ -38,7 +40,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 ## 3. Drop detection framing entirely
 
-**Status:** open
+**Status:** rejected 2026-07-25 via DR-108. Mae kept the README's framing. Kept as a record of the question, not as live work.
 
 **Source:** Internal: meta-question raised during this session's ideation and review of the README. Current positioning kept for now.
 
@@ -132,7 +134,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 ## 9. Field-guide voice with similar-species disambiguation per pattern
 
-**Status:** open
+**Status:** contradicted by rule 1; do not build. Look-alike disambiguation blocks are exactly the machinery that rule forbids. Kept for its record of the register-bias finding only.
 
 **Source:** Internal ideation, worth-revisiting #1. External: Stanford HAI / TOEFL bias finding on register features misread as authorship.
 

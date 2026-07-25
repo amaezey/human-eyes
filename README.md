@@ -139,6 +139,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | 52 | Sentence rhythm variance | Guo; Grammarly; Przystalski (stylometric feature family); GPTZero burstiness and NetusAI (detector/vendor feature family); AI Detectors, AI for Lifelong Learners, SEO Engine, and Rohrer; Phillips (complexity-flattening rationale); Ju, Blix, and Williams (domain syntax); matched-genre corpus measurement | regex | context_warning | A coarse rhythm metric for prose of 100+ words: low variance suggests mechanical pacing. |
 | 54 | Structural monotony | Shankar and Guo; AI Detectors, SEO Engine, and SAGE | agent | context_warning | Every section follows the same arc: opener, supporting argument, micro-conclusion, repeat. |
 | 59 | One-line sections under headings | blader/humanizer (removal rule) | regex | context_warning | A heading followed by a single-sentence paragraph, twice or more |
+| 63 | Symmetric list items | SEO Engine | regex | context_warning | Three or more items of matching length sharing an opening or closing word |
 | | **Voice and register** | | | | |
 | 33 | Countdown negation | SAGE | regex | context_warning | "It wasn't X. It wasn't Y. It was Z." |
 | 34 | Per-paragraph miniature conclusions | Shankar; AI Detectors and SAGE; SEO Engine (repeated paragraph structure) | regex | context_warning | Every paragraph wraps up neatly |

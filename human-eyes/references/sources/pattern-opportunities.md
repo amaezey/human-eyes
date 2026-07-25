@@ -95,6 +95,9 @@ These are promoted to `human-eyes/SKILL.md`, `human-eyes/references/process.md`,
 
 ## Do Not Promote
 
+This table governs what a source may be **cited as evidence for**. It does not decide whether a pattern may be **added**. Those are separate questions and the second one is settled only in `dev/decision-register.md` under rule 1 of `dev/decision-walkthrough-approach.md`: human-eyes audits prose habits AI overuses, it is not an authorship detector, and a practitioner phrase list is sufficient evidence for a watch-list addition. A row here never means "this pattern cannot be built".
+
+
 | Candidate | Source cards | Reason |
 |---|---|---|
 | Upstream humanizer catalogue, examples, severities, hard dash/personality rules, causal mechanism claims, and “33 Patterns Detected” framing as independent evidence | [blader/humanizer](blader-humanizer.md), claims C03, C05-C46 | The complete prompt-only repository has constructed examples, qualitative false-positive controls, and no corpus, named model/version, comparison group, rates, thresholds, executable detector, architecture evidence, test suite, independent raters, or rewrite evaluation. Its repetition-penalty explanation is unsupported here, its zero-dash gate contradicts its own statement that em dashes alone are unreliable, and its personality recipe can invite unsupplied opinions or lived detail despite a preservation instruction. Its source-reported removal of model-fingerprinting guidance is migration history consistent with, but not proof of, the no-authorship boundary. Inheritance proves lineage rather than validity. Keep upstream rules and mechanisms out of evidentiary severity, prevalence, authorship, automatic restoration, and source-fidelity decisions. |
@@ -120,7 +123,7 @@ These are promoted to `human-eyes/SKILL.md`, `human-eyes/references/process.md`,
 
 1. Keep `human-eyes/scripts/judgement.json`, `human-eyes/scripts/patterns.json`, `human-eyes/SKILL.md`, `human-eyes/references/process.md`, `human-eyes/references/voice.md`, `dev/hypotheses.md`, and `README.md` in sync when source evidence changes.
 2. For **Hypotheses**, validate against corpus or qualitative examples before moving anything into active detector behaviour.
-3. Keep **Do not promote** entries out of rule evidence unless a future direct source changes the evidence tier.
+3. Keep **Do not promote** entries out of a pattern's cited sources unless a future direct source supports the attribution. This constrains citation only; it is not a reason to decline a pattern addition, and evidence tier is never such a reason (rule 1).
 
 ## Pending candidate decisions
 
