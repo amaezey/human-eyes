@@ -1717,10 +1717,31 @@ def check_negative_parallelisms(text):
         r"(?!i\b|we\b|you\b|he\b|she\b|they\b|it\b)"
         r"[A-Za-z][\w’'-]*(?:\s+[A-Za-z][\w’'-]*){0,11}?"
     )
+    # DR-25A: the reversal survives three decorations that used to break the
+    # word-run regexes. A comma parenthetical inside the subject, a
+    # subordinator in front of the negative clause, and an adverbial phrase
+    # before the affirmative turn all leave the construction itself intact.
+    subject_parenthetical = r"(?:,\s+[^,;.!?\n]{1,40},)?"
+    # The adverbial bridge only spans a declarative break on the same line: a
+    # question is not the first half of a reversal, and a paragraph break means
+    # the two clauses are not the same move.
+    resumption_lead = r"[A-Za-z][\w’'-]*(?:[ \t]+[A-Za-z][\w’'-]*){0,4},[ \t]+"
+    bridge = rf"(?:{structural_sep}|(?:{sep}|[.!])[ \t]*{resumption_lead})"
     resumption_start = r"(?:^|(?<=[.!?])|(?<=\n))\s*[\"'“‘*_`(\[]*"
     resumptive_negative = (
-        rf"{resumption_start}{resumptive_subject}\s+{reversal_negative_aux}\s+"
-        rf"{negative_predicate}{structural_sep}"
+        rf"{resumption_start}{resumptive_subject}{subject_parenthetical}\s+"
+        rf"{reversal_negative_aux}\s+"
+        rf"{negative_predicate}{bridge}"
+        rf"(?:it|they|he|she)(?:{apo}s|{apo}re|\s+{positive_verb})\b"
+    )
+    # A subordinator gives the negative clause a second entry point. Its
+    # predicate excludes commas so the clause cannot swallow a comma-joined
+    # main clause and treat an unrelated later pronoun as the affirmative turn.
+    subordinated_negative = (
+        r"\b(?:that|because|when|while|since|although|though)\s+"
+        rf"{resumptive_subject}{subject_parenthetical}\s+"
+        rf"{reversal_negative_aux}\s+"
+        rf"[^,;:.!?\n]{{1,80}}{bridge}"
         rf"(?:it|they|he|she)(?:{apo}s|{apo}re|\s+{positive_verb})\b"
     )
 
@@ -1774,10 +1795,11 @@ def check_negative_parallelisms(text):
         rf"\byou\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:you{apo}re|you\s+{positive_verb})\b",
         rf"\bshe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:she{apo}s|she\s+{positive_verb})\b",
         rf"\bhe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:he{apo}s|he\s+{positive_verb})\b",
-        rf"\b(?:it|this|that)\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:it|this|that)(?:{apo}s|\s+{positive_verb})\b",
+        rf"\b(?:it|this|that)\s+{negative_aux}\s+{negative_predicate}{bridge}(?:it|this|that)(?:{apo}s|\s+{positive_verb})\b",
         # General parallel complements and coordinated negative-positive
         # clauses that do not depend on a fixed subject vocabulary.
         resumptive_negative,
+        subordinated_negative,
         r"\bnot\s+(?!until\b)[^,;.!?\n]{1,80}\s+but\s+(?:also\s+)?[^,;.!?\n]{1,80}",
         rf"\bnot\s+(?!until\b)[^,;:.!?\n]{{1,80}}\s*(?:[,;:]|{dash})\s*but\s+[^,;:.!?\n]{{1,100}}",
         r"(?:^|(?<=[;.!?]))\s*[^,;.!?\n]{1,100},\s*not\s+(?!until\b)[^,;.!?\n]{1,80}",

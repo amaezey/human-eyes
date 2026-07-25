@@ -185,9 +185,19 @@ A ratio cannot tell an artefact from a finding. Passive voice measured over unam
 
 The DR-66 orphan sweep queued four Xia claims that no row carried: DR-160 (multiple-hypothesis correction and a null-result ledger), DR-161 (raw versus residue-cleaned evaluation lane), DR-162 (detector/evaluator-architecture hypothesis), and DR-163 (direction-specific generator-transfer reporting). All four are evaluation-methodology work, not checker work.
 
+DR-25 is closed on four rulings. Three were rejections. Rudnicka's ten published diabetes trigrams add nothing: nine of them occur zero times across both project corpora, and the tenth, `is not a`, is ordinary syntax. Burrows's Delta adds nothing either, because it scores a document against reference corpora, which is authorship attribution and neither detector type. Mae kept #31 `no-excessive-lists` exactly as it is, including the 30% line-ratio branch that flags a 328-word human blog post over a single three-item list.
+
+DR-25A is the one change. Programmatic #9 was losing the reversal frame to three decorations, and now keeps it: a comma parenthetical inside the negative clause's subject, a subordinator in front of the negative clause, and an adverbial phrase before the affirmative turn. Severity and the one-frame failure condition are unchanged.
+
+Two things worth carrying from it.
+
+**Measure the phrase list before treating it as a phrase list.** DR-25's screening note called the trigrams exact candidates. They are exact, and they are also medical domain vocabulary from a ChatGPT-versus-Gemini comparison with no human side, so nine of the ten never appear in the writing this product reads. That is not an evidence-grade objection, which rule 1 forbids; it is a measured absence. Run the counter, and verify it against a control term that does occur, before ruling either way.
+
+**A relaxed regex needs its own control sweep, not just its target case.** Each of the three #9 relaxations was verified against paired minimal cases, and the corpora still turned up two over-matches the pairs could not have shown: an adverbial bridge spanning a rhetorical question across a paragraph break, and a subordinated negative clause swallowing a comma-joined main clause so an unrelated later pronoun read as the turn. The bridge is now restricted to a declarative break on the same line, and the subordinator path takes a comma-free predicate. Diff the match lists before and after, and read the additions.
+
 ## What is next
 
-The fixed order now resumes at DR-25 and DR-153. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
+The fixed order now resumes at DR-153. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Counts move with every closure, so recount rather than quoting a figure from this file: `python3 dev/tools/reconcile_register.py` must exit 0, and the decided/pending split comes from reading the Decision column. Three rows carry `pos-dependent-pattern` (POS-01, POS-02, DR-144) and wait on Mae's tagger.
 

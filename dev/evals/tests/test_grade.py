@@ -712,6 +712,37 @@ expect_pass("no-negative-parallelisms",
     "The issue was not reported until Monday.",
     "plain factual negation")
 
+# DR-25A: the reversal frame survives three decorations that previously broke
+# the matcher. Each pair below is the bare frame (already caught) followed by
+# the decorated form that must now be caught too.
+expect_fail("no-negative-parallelisms",
+    "The Moon landing, in this context, is not a moment of transcendence "
+    "in the usual sense. It is quieter, more ambiguous.",
+    "DR-25A comma parenthetical inside the negative clause's subject")
+expect_fail("no-negative-parallelisms",
+    "It has reminded me that design judgement is not a private talent. "
+    "It is a practice formed through examples.",
+    "DR-25A negative clause embedded under a subordinator")
+expect_fail("no-negative-parallelisms",
+    "That is not a lesser outcome. In many organisations, that is the work "
+    "nobody has been able to do.",
+    "DR-25A adverbial opener before the affirmative turn")
+expect_pass("no-negative-parallelisms",
+    "The council, meeting on Tuesday, did not publish the report. "
+    "Residents waited another week.",
+    "DR-25A parenthetical subject with no resumption")
+expect_pass("no-negative-parallelisms",
+    "She said that the road was not closed. Traffic moved slowly all morning.",
+    "DR-25A subordinated negation with no resumption")
+expect_pass("no-negative-parallelisms",
+    "That is not a lesser outcome. In many organisations, budgets decide "
+    "which work happens.",
+    "DR-25A adverbial opener with no repeated subject")
+expect_pass("no-negative-parallelisms",
+    "What if the heat does not bother the camels?\n\nAs humans, it is hard "
+    "to imagine that.",
+    "DR-25A adverbial bridge does not span a question or a paragraph break")
+
 _overlapping_negative_parallelism = ALL_CHECKS["no-negative-parallelisms"](
     "To leave the earth was not merely to extend human capability but to trespass into a forbidden domain."
 )
