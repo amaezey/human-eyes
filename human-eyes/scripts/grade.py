@@ -3020,6 +3020,37 @@ def check_mixed_spelling_conventions(text):
     }
 
 
+FALSE_RANGE_PAIR = re.compile(
+    r"\bfrom\b\s+(?:[^,.;:!?]{1,70}?)\s+\bto\b", re.IGNORECASE
+)
+
+
+def check_false_ranges(text):
+    """Detect stacked `from X to Y` pairs inside one sentence (pattern 12).
+
+    A single pair is ordinary English and runs slightly more often in human
+    prose than generated (0.61 against 0.48 per 1000 words in the project
+    corpora).  Stacking two or more in one sentence is what skews generated:
+    0.069 against 0.014 per 1000 words, about five times the rate.
+    """
+    matches = []
+    for sentence in split_sentences(text):
+        pairs = FALSE_RANGE_PAIR.findall(sentence)
+        if len(pairs) >= 2:
+            matches.append(sentence[:160])
+    return {
+        "text": "no-false-ranges",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} sentence(s) stacking 2 or more from-to "
+            f"pairs: {matches}"
+            if matches
+            else "No stacked from-to ranges"
+        ),
+    }
+
+
 TITLE_CASE_MINOR_WORDS = {
     "a", "an", "the", "and", "or", "but", "nor", "for", "so", "yet",
     "as", "at", "by", "in", "into", "of", "on", "over", "per", "than",
@@ -3281,6 +3312,7 @@ ALL_CHECKS = {
     "no-heading-one-liners": check_heading_one_liners,
     "no-title-case-headings": check_title_case_headings,
     "no-mixed-spelling-conventions": check_mixed_spelling_conventions,
+    "no-false-ranges": check_false_ranges,
     "no-modal-stacks": check_modal_stacks,
     "no-collaborative-artifacts": check_collaborative_artifacts,
     "no-curly-quotes": check_curly_quotes,

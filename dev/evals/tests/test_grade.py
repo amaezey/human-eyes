@@ -1749,6 +1749,7 @@ expected_checks = {
     "no-symmetric-list-items",
     "no-title-case-headings",
     "no-mixed-spelling-conventions",
+    "no-false-ranges",
     "no-unicode-flair",
     "no-dramatic-transitions",
     "no-formulaic-openers",
@@ -4005,6 +4006,58 @@ if _patterns_data["no-mixed-spelling-conventions"]["severity"] != "context_warni
     print("FAIL: DR-136B #64 should be a context warning")
 else:
     print("  ok: DR-136B #64 is a context warning")
+
+# --- DR-157: false ranges (#12) ---
+print("\n=== DR-157 false ranges ===")
+
+# The catalogue's own example, and the shape it describes.
+expect_fail("no-false-ranges",
+    "Our journey through the universe has taken us from the singularity of the "
+    "Big Bang to the grand cosmic web, from the birth and death of stars to the "
+    "enigmatic dance of dark matter.",
+    "DR-157 the catalogue's Big Bang example")
+
+expect_fail("no-false-ranges",
+    "This guide covers everything from onboarding new staff to scaling your "
+    "infrastructure, from managing budgets to building culture.",
+    "DR-157 stacked breadth claim")
+
+expect_fail("no-false-ranges",
+    "The story moves from fear to mastery, from Sputnik to the Sea of "
+    "Tranquillity, and it ends with a kind of secular apotheosis.",
+    "DR-157 three stacked pairs")
+
+# A single pair is ordinary English and is slightly more common in human prose.
+expect_pass("no-false-ranges",
+    "The scheme ran from 1990 to 2005 without amendment.",
+    "DR-157 a single date range")
+
+expect_pass("no-false-ranges",
+    "She walked from the station to the office in twelve minutes.",
+    "DR-157 a single ordinary range")
+
+expect_pass("no-false-ranges",
+    "The scheme ran from 1990 to 2005. Funding later moved from the states to "
+    "the Commonwealth.",
+    "DR-157 one pair each in two sentences")
+
+expect_pass("no-false-ranges",
+    "The committee met on Tuesday and approved the budget without amendment.",
+    "DR-157 prose with no range at all")
+
+dr157 = ALL_CHECKS["no-false-ranges"](
+    "It covers everything from onboarding to scaling, from budgets to culture.")
+if "2" not in dr157["evidence"]:
+    FAILURES += 1
+    print(f"FAIL: DR-157 evidence should report the pair count; got {dr157['evidence']!r}")
+else:
+    print("  ok: DR-157 evidence reports the pair count")
+
+if _patterns_data["no-false-ranges"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-157 #12 should be a context warning")
+else:
+    print("  ok: DR-157 #12 is a context warning")
 
 # --- Summary ---
 

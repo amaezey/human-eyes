@@ -57,7 +57,7 @@ if mislabelled:
     sys.exit(1)
 print("  ok: every agent-judgement entry is labelled agent")
 
-UNCHECKED = {"6", "11", "12"}
+UNCHECKED = {"6", "11"}
 actual = {n for n, e in extras.items() if e["kind"] in ("manual", "unknown")}
 if actual != UNCHECKED:
     print(f"FAIL: entries nothing checks changed from {sorted(UNCHECKED)} to {sorted(actual)}.")

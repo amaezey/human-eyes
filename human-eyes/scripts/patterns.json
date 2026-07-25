@@ -30,15 +30,6 @@
       "patterns_md_leading_blanks": 2
     },
     {
-      "pattern_number": "12",
-      "patterns_md_heading": "False ranges",
-      "category": "Language and grammar",
-      "kind": "manual",
-      "check_id": null,
-      "patterns_md_body": "\"From X to Y\" constructions where X and Y are not on a meaningful scale, creating an illusion of breadth without communicating scope.\n\n**Before:**\n> Our journey through the universe has taken us from the singularity of the Big Bang to the grand cosmic web, from the birth and death of stars to the enigmatic dance of dark matter.\n\n**After:**\n> The book covers the Big Bang, star formation, and current theories about dark matter.\n\n**Severity:** N/A · manual self-audit only (see Detection)\n\n**Detection:** Manual self-audit only — no programmatic check or agent-judgement record. Judging whether range endpoints sit on a meaningful scale requires semantic context the grader does not have.",
-      "patterns_md_leading_blanks": 2
-    },
-    {
       "pattern_number": "16",
       "patterns_md_heading": "Emojis",
       "category": "Style",
@@ -364,6 +355,22 @@
     "patterns_md_heading": "False concession hedges",
     "patterns_md_body": "**Words to watch:** \"While critics argue..., supporters say...\", \"the truth lies somewhere in the middle\", \"both sides have valid points\", \"it depends on context\" when used to avoid a claim.\n\nAI often performs nuance by staging two generic positions and then landing in a bland middle. Real nuance names the evidence, stakes, and tradeoffs. If the sentence only balances abstractions, rewrite it as a direct claim.\n\n**Before:**\n> While critics argue remote work weakens culture, supporters say it improves flexibility. The truth lies somewhere in the middle.\n\n**After:**\n> Remote work improves flexibility for most desk workers, but it exposes weak management habits that office routines used to hide.\n\n**Additional frames:** \"To be fair\", \"I'm not saying X, but\", \"Don't get me wrong\", \"This isn't to say that\", and \"Granted, X, but\".\n\n**Severity:** strong_warning · `no-false-concession-hedges`\n\n**Detection:** Programmatic check `no-false-concession-hedges`.",
     "patterns_md_leading_blanks": 1
+  },
+  "no-false-ranges": {
+    "category": "Content patterns",
+    "short_name": "False ranges",
+    "description": "Checks for two or more `from X to Y` pairs stacked inside one sentence.",
+    "why_it_matters": "Stacked ranges promise breadth without delivering scope; a single range is ordinary and slightly more common in human prose.",
+    "severity": "context_warning",
+    "failure_modes": [
+      "generic_abstraction"
+    ],
+    "evidence_role": "rhetorical_pattern",
+    "guidance": "Fix stacked from-to pairs by naming what the passage actually covers; keep single ranges.",
+    "pattern_number": "12",
+    "patterns_md_heading": "False ranges",
+    "patterns_md_body": "`From X to Y` constructions where X and Y are not on a meaningful scale, creating an illusion of breadth without communicating scope.\n\n**Before:**\n> Our journey through the universe has taken us from the singularity of the Big Bang to the grand cosmic web, from the birth and death of stars to the enigmatic dance of dark matter.\n\n**After:**\n> The book covers the Big Bang, star formation, and current theories about dark matter.\n\nThe check counts `from X to Y` pairs within a sentence and speaks when two or more are stacked. Whether a single pair's endpoints sit on a shared scale needs meaning the grader does not have, and single pairs run slightly more often in human prose than generated, so one is always left alone. Stacking is the part that separates: 0.069 stacked sentences per 1000 words across the generated corpora against 0.014 across the human ones.\n\n**Severity:** context_warning · `no-false-ranges`",
+    "patterns_md_leading_blanks": 2
   },
   "no-filler-phrases": {
     "category": "Filler and hedging",

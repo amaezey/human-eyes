@@ -153,6 +153,23 @@ Formulaic "Challenges" sections that acknowledge a problem then immediately reas
 
 **Detection:** Manual self-audit only — no programmatic check or agent-judgement record.
 
+
+### 12. False ranges
+
+`From X to Y` constructions where X and Y are not on a meaningful scale, creating an illusion of breadth without communicating scope.
+
+**Before:**
+> Our journey through the universe has taken us from the singularity of the Big Bang to the grand cosmic web, from the birth and death of stars to the enigmatic dance of dark matter.
+
+**After:**
+> The book covers the Big Bang, star formation, and current theories about dark matter.
+
+The check counts `from X to Y` pairs within a sentence and speaks when two or more are stacked. Whether a single pair's endpoints sit on a shared scale needs meaning the grader does not have, and single pairs run slightly more often in human prose than generated, so one is always left alone. Stacking is the part that separates: 0.069 stacked sentences per 1000 words across the generated corpora against 0.014 across the human ones.
+
+**Severity:** context_warning · `no-false-ranges`
+
+**Detection:** Programmatic check `no-false-ranges`.
+
 ---
 
 ## Language and grammar
@@ -399,21 +416,6 @@ Excessive synonym substitution, cycling through different words for the same ref
 **Severity:** N/A · manual self-audit only (see Detection)
 
 **Detection:** Manual self-audit only — no programmatic check or agent-judgement record. Reliable detection requires coreference resolution to recognise that two noun phrases share a referent, which is beyond regex.
-
-
-### 12. False ranges
-
-"From X to Y" constructions where X and Y are not on a meaningful scale, creating an illusion of breadth without communicating scope.
-
-**Before:**
-> Our journey through the universe has taken us from the singularity of the Big Bang to the grand cosmic web, from the birth and death of stars to the enigmatic dance of dark matter.
-
-**After:**
-> The book covers the Big Bang, star formation, and current theories about dark matter.
-
-**Severity:** N/A · manual self-audit only (see Detection)
-
-**Detection:** Manual self-audit only — no programmatic check or agent-judgement record. Judging whether range endpoints sit on a meaningful scale requires semantic context the grader does not have.
 
 
 ### 53. Vocabulary diversity
