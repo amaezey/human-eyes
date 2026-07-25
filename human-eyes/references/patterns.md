@@ -2,12 +2,12 @@
 
 <!-- This file is generated from `human-eyes/scripts/patterns.json`. Edit the JSON and regenerate via `python3 dev/tools/render_patterns_md.py --write`. -->
 
-60 patterns plus four sub-letter variants (23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
+59 patterns plus four sub-letter variants (23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
 
 ## Contents
 
 - [Content patterns (1-5, 12)](#content-patterns)
-- [Language and grammar (7-11, 53, 64)](#language-and-grammar)
+- [Language and grammar (7-10, 53, 64)](#language-and-grammar)
 - [Style (13-18, 49, 57)](#style)
 - [Communication (19-21, 62)](#communication)
 - [Filler and hedging (22-25, 47-48, 50)](#filler-and-hedging)
@@ -386,21 +386,6 @@ A single triad says nothing. In a length-controlled comparison of the project co
 **Severity:** context_warning · `no-forced-triads`
 
 **Detection:** Programmatic check `no-forced-triads`. Candidate evidence records whether the matched span is inside quotation marks; quotation context does not suppress detection.
-
-
-### 11. Synonym cycling
-
-Excessive synonym substitution, cycling through different words for the same referent within a short span. A proposed but untested explanation is repetition-penalty or anti-repetition tuning; no cited source demonstrates the mechanism.
-
-**Before:**
-> The protagonist faces many challenges. The main character must overcome obstacles. The central figure eventually triumphs. The hero returns home.
-
-**After:**
-> The protagonist faces many challenges but eventually triumphs and returns home.
-
-**Severity:** N/A · manual self-audit only (see Detection)
-
-**Detection:** Manual self-audit only — no programmatic check or agent-judgement record. Reliable detection requires coreference resolution to recognise that two noun phrases share a referent, which is beyond regex.
 
 
 ### 53. Vocabulary diversity

@@ -1616,7 +1616,9 @@ print("\n=== group-a-resolution-markers ===")
 import re as _re_meta
 _patterns_md = (ROOT / "human-eyes" / "references" / "patterns.md").read_text()
 _pattern_sections = _re_meta.split(r"(?=^### \d+[a-z]?\.\s)", _patterns_md, flags=_re_meta.MULTILINE)
-_GROUP_A = [2, 5, 11, 12, 13, 14, 15, 16, 18, 20, 21, 28, 30, 35, 36, 37, 41]
+# #6 and #11 were removed from the catalogue by DR-155 and DR-156: each carried a
+# pattern number with no check behind it, which the two-detector-type rule forbids.
+_GROUP_A = [2, 5, 12, 13, 14, 15, 16, 18, 20, 21, 28, 30, 35, 36, 37, 41]
 _resolution_seen = {}
 for _sec in _pattern_sections:
     _h = _re_meta.match(r"^### (\d+)([a-z])?\.\s", _sec)

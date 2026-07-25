@@ -58,7 +58,7 @@ Grammarly's updated vendor guide offers a 31-item catalogue of words and phrases
 
 - #7 `no-ai-vocabulary-clustering` in `human-eyes/scripts/grade.py` and its registry/catalogue records
 - #1 `no-significance-inflation` for `pivotal` and `underscores the importance of`
-- #11 synonym cycling, manual only
+- synonym cycling: no live record, former #11 removed 2026-07-25 through DR-156
 - #15 title case in headings, programmatic since 2026-07-25; `patterns.json`, `patterns.md`, and the root README agree
 - #22 `no-filler-phrases`; rendered/root examples are broader than the live `FILLER_PHRASES` implementation
 - #23 `no-excessive-hedging`; the six source qualifiers returned zero live matches
