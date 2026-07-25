@@ -85,6 +85,7 @@ Not applicable: initial ingestion.
 
 ## Decision history
 
+- DR-87B implemented 2026-07-26: the six LLM-preferred dialogue verbs the paper names (`remarked`, `responded`, `mentioned`, `replied`, `exclaimed`, `chuckled`) are now in the fiction branch of the `genre_specific` agent-judgement record, framed as the avoidance of plain `said`. The paper reports 17 dialogue verbs with 14 favouring the model but publishes no full feature list, so the other eight are not recoverable from the preserved text; the Zenodo deposit was not fetched. No programmatic check was built and no pattern number was added.
 - DR-87A implemented 2026-07-26: `exited` is now an #7 clustering candidate, on the source's 61-versus-zero count across the GPT-4.1 rewrites and their source passages. It contributes to #7's paragraph threshold and never fails alone. The project corpora contain no occurrence in either sample set. DR-87's rewrite-fidelity components stay open.
 
 - 2026-07-17: Mae approved and implemented the #53 direction flip: windowed 150-word lexical diversity flagging high values, two-tier (0.71 flag, 0.74 above-observed-human-range note), commit b199a6d.

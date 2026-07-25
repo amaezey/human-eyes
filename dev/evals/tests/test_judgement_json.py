@@ -419,6 +419,26 @@ else:
     ok("data round-trips through JSON cleanly")
 
 
+# --- DR-87B: said-bookisms in the fiction watchlist ---
+print("\n=== DR-87B fiction dialogue verbs ===")
+_fiction = (genre_record or {}).get("sub_records", {}).get("fiction", {})
+_watch = " ".join(_fiction.get("watchlist", []))
+_desc = _fiction.get("description", "")
+_prompt = (genre_record or {}).get("prompt", "")
+if "said" not in _watch.lower():
+    fail("DR-87B fiction watchlist should name the avoidance of `said`")
+else:
+    ok("DR-87B fiction watchlist names the avoidance of `said`")
+for _verb in ("remarked", "responded", "mentioned", "replied", "exclaimed", "chuckled"):
+    if _verb not in _watch.lower() and _verb not in _desc.lower():
+        fail(f"DR-87B fiction watchlist should cite `{_verb}` as a source-named example")
+    else:
+        ok(f"DR-87B fiction watchlist cites `{_verb}`")
+if "said" not in _prompt.lower():
+    fail("DR-87B genre_specific prompt should carry the fiction dialogue-verb cue")
+else:
+    ok("DR-87B genre_specific prompt carries the fiction dialogue-verb cue")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")
