@@ -2,12 +2,12 @@
 
 <!-- This file is generated from `human-eyes/scripts/patterns.json`. Edit the JSON and regenerate via `python3 dev/tools/render_patterns_md.py --write`. -->
 
-57 patterns plus five sub-letter variants (10a, 23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
+60 patterns plus four sub-letter variants (23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
 
 ## Contents
 
-- [Content patterns (1-6)](#content-patterns)
-- [Language and grammar (7-12, 53)](#language-and-grammar)
+- [Content patterns (1-5, 12)](#content-patterns)
+- [Language and grammar (7-11, 53, 64)](#language-and-grammar)
 - [Style (13-18, 49, 57)](#style)
 - [Communication (19-21, 62)](#communication)
 - [Filler and hedging (22-25, 47-48, 50)](#filler-and-hedging)
@@ -137,21 +137,6 @@ Attributes opinions to vague authorities without specific sources, creating illu
 **Severity:** strong_warning · `no-vague-attributions`
 
 **Detection:** Programmatic check `no-vague-attributions`.
-
-
-### 6. Formulaic challenges sections
-
-**Words to watch:** Despite its... faces several challenges..., Despite these challenges, Challenges and Legacy, Future Outlook
-
-Formulaic "Challenges" sections that acknowledge a problem then immediately reassure the reader things are fine.
-
-**Before:**
-> Despite its industrial prosperity, Korattur faces challenges typical of urban areas, including traffic congestion and water scarcity. Despite these challenges, with its strategic location and ongoing initiatives, Korattur continues to thrive as an integral part of Chennai's growth.
-
-**After:**
-> Traffic congestion increased after 2015 when three new IT parks opened. The municipal corporation began a stormwater drainage project in 2022 to address recurring floods.
-
-**Detection:** Manual self-audit only — no programmatic check or agent-judgement record.
 
 
 ### 12. False ranges
