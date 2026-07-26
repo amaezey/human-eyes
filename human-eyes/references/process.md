@@ -46,7 +46,7 @@ For Rewrite, compare the output with the source. Protect the argument, facts, ex
 
 Before rewriting, record every direct quotation, citation, name, date, link, stated quantity, and explicitly qualified claim as an exact protected literal. For factual sentences containing `may`, `might`, `can`, `could`, `often`, `sometimes`, `especially`, `particularly`, a stated limitation, or uncertainty, protect the complete sentence. Compare that list after every pass. Reject the pass if any protected literal is missing or changed. Finding-count improvement cannot compensate for preservation failure.
 
-The source is also a closed factual record. Do not add recommendations, thresholds, safety criteria, research descriptions, process facts, or consequences absent from it. Keep Audit commentary out of the rewrite; report missing sources and other constraints in `Remaining findings`.
+The source is also a closed factual record. Do not add recommendations, thresholds, safety criteria, research descriptions, process facts, or consequences absent from it. A Rewrite may only reuse specifics the source already supplies. Never invent personal or expert experience, a named case, a specific outcome, or a concrete figure to give a vague passage more weight. When a generic construction has no specifics behind it, cut the formula and state the claim at the generality the source actually carries, or leave it in `Remaining findings` naming what the writer would need to supply. Keep Audit commentary out of the rewrite; report missing sources and other constraints in `Remaining findings`.
 
 For Write, compare the draft with the brief. Do not add facts, experience, opinions, emotion, humour, doubt, or personal details the brief does not supply.
 

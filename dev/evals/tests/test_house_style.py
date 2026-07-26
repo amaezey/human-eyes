@@ -66,6 +66,8 @@ for required in (
     "treat the brief as a closed factual source",
     "never generate a blanket all-clear answer set",
     "the source is also a closed factual record",
+    # DR-137: a generic contrast must not be repaired by inventing specifics.
+    "rewrite may only reuse specifics the source already supplies",
 ):
     if required not in process_text:
         failures.append(f"process.md missing action completion guard: {required}")
@@ -75,6 +77,8 @@ for required in (
     "an improved finding set does not override failed preservation",
     "never bulk-fill semantic answers as clear",
     "do not insert audit commentary into the rewritten document",
+    # DR-137: no invented personal or expert experience in a Rewrite.
+    "never invent personal or expert experience",
 ):
     if required not in skill_text:
         failures.append(f"SKILL.md missing action completion guard: {required}")
