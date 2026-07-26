@@ -1,35 +1,48 @@
 # To do
 
-Work Mae approved on 2026-07-26 and queued rather than building. Every item's decision is already recorded in `dev/decision-register.md`; nothing here is a pending decision, and no new decision belongs in this file. The register stays the one decision surface.
+Work Mae approved and queued rather than building. Every item's decision is already recorded in `dev/decision-register.md`; nothing here is a pending decision, and no new decision belongs in this file. The register stays the one decision surface.
+
+Items 0 and 0b are Mae's own project items and were never part of the source review. Everything below them came out of it.
 
 Each item carries enough detail to be picked up cold.
 
 ---
 
-## 0. FIRST: screen Cheng and Yakura, and close DR-28
+## 0. FIRST: rebuild the pattern numbering scheme (DR-158)
 
-Both sources DR-28 was blocked on were ingested 2026-07-26. DR-28 is still `pending` in the register and is the next row to work. Nothing below this item starts until it is done.
+Approved 2026-07-26. Mae's own item; it was never part of the source review.
 
-**Cheng et al., *Science* 391, eaec8352 (2026), sycophancy.** 37 claims, `cheng-social-sycophancy.md`. The paper prints its transcripts, so the phrasing is recoverable even though sycophancy is conversational. Its AI replies open by validating the reader, praise their intentions, and end on a coaching question; the human replies give a verdict with no preamble. The ingesting agent extracted roughly forty exact forms in these families:
+The scheme has drifted. Numbered patterns run past their own count with gaps, four sub-letter variants (23a, 31a, 35a, 35b) sit alongside plain numbers, and the aggregate meta-check `overall-signal-stacking` carries no number at all. The generated preamble's count sentence and category ranges have gone stale twice already.
 
-- validation openers — `It makes sense that you`, `It's completely understandable to`, `It sounds like you're`, `It's good that you've`, `It's natural for`, `it's reasonable to feel`
-- praise of the reader — `which is commendable`, `shows your integrity`, `I commend`
-- paragraph-final coaching questions — `How are you feeling`, `What have you learned`, `Have you spoken to`
-- motive reframes — `Your choice was made with the intention of`, `It seems like you were considering`
-- one empathy declaration — `I can hear your pain`
-- denial-of-implication riders — `it doesn't mean you care about her any less`
+**Mae's requirements:**
 
-Plus one agent-judgement candidate the paper measures directly (P < 0.001): whether an advice reply engages the other party's perspective or only the reader's account.
+- no sub-letter variants
+- the meta-check listed as #0
+- numbers renumbered so they match the actual count
+- every pattern correctly categorised
+- a scheme that absorbs a new pattern without renumbering the rest — a category prefix (A1, B1) or category-major decimals (1.1)
 
-**Two bounds on all of it.** The paper's own *non-sycophantic* condition uses the same opener family, so these forms mark AI advice register rather than sycophancy. And the paper publishes no phrase list, count, or frequency for anything it quotes.
+**This is not an in-place edit.** Pattern numbers are load-bearing in `human-eyes/scripts/patterns.json`, generated `patterns.md`, the root `README.md` table, `SKILL.md`, every source card's coverage claims, `dev/decision-register.md`, and the test suite. It needs a migration plan and an old-to-new mapping table produced first.
 
-**Yakura et al., arXiv 2409.01754v4, vocabulary.** 30 claims, `yakura-llm-influence-spoken-communication.md`. Its word list is already ruled and shipped through DR-165, which added 26 words to #7. What remains unruled on that card is everything except C01 and C03.
+**Two guards to check whenever a number moves**, both learned the hard way in DR-155 and DR-156: `UNCHECKED` in `test_patterns_md_generator.py`, and `_GROUP_A` in `test_grade.py`, which pins the numbers that must carry a Detection marker. Also check `_extra_entries` in `patterns.json` — manual catalogue entries carry a number and no `check_id`.
 
-**Nothing on either card has been verified against the live checker by the main session.** Both agents' reports were relayed untested. The Yakura word list was tested afterwards and 16 of 27 words turned out to appear in neither corpus. Test before presenting.
+---
 
-**The corpora cannot settle the Cheng forms.** They hold no chat replies at all, so a zero here means silent, not absent — the same situation already recorded for technical writing in `dev/decision-walkthrough-approach.md`.
+## 0b. Audit every check threshold against its observed distribution (DR-164)
 
-**Two further ingests are named and not queued.** The Cheng supplementary materials hold the LLM-judge rubric that defines affirmation operationally (Science returned 403), and the Dryad deposit holds the generated responses, which would give the project the advice-reply corpus it currently lacks.
+Approved 2026-07-26. Mae's own item; also never part of the source review.
+
+DR-79 found #52 `sentence-length-variance` had never fired on any of the 108 corpus documents, because its inherited threshold of 4 sat below the entire observed range. Its test passed the whole time, because the fixture is prose hand-written to be flat at a value real writing never reaches.
+
+**Method:** for each check, sweep its metric over both corpora, print the observed range, and ask whether the threshold sits inside it. 11 checks carry a calibration record under `dev/evals/`; the other 43 do not, 15 of them declaring a threshold in `CHECK_THRESHOLDS` and the rest carrying bare numeric literals.
+
+**A first smoke pass found 18 checks that never flag a generated document and 19 that flag more human documents than generated. That pass is an inventory, not a finding.** Three different causes produce those symptoms and they need opposite responses:
+
+1. A threshold outside the observed range is a defect. That is #52.
+2. A corpus holding no instance of the target is silent, not broken. DR-153's SWBST frame and DR-116's emoji rerun are both this.
+3. For any check firing on one occurrence, a share-of-documents comparison is length-biased. The human corpus averages 2,172 words per document against the generated corpus's 1,051, which is exactly how #25 was misreported as running backwards during DR-66. Rate checks are immune; one-occurrence checks are not.
+
+Separate the three before proposing anything, and bring each threshold to Mae as its own decision.
 
 ---
 
