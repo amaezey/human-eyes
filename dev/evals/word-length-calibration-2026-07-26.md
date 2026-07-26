@@ -80,4 +80,4 @@ Three arguments against adding it were raised and none survived:
 
 The failing fixture is council-report prose at 5.98 characters per word, inside the observed generated range, where four documents exceed 5.5. The passing fixture is plain narrative at 3.27.
 
-Neither sits near 4.80, so the threshold itself is pinned separately with words of controlled length: 400 five-letter words must fail and 400 four-letter words must pass. A fixture written to trip a check proves the code path runs and says nothing about whether the threshold sits where prose lives, which is how #52 went three years without ever firing.
+Neither sits near 4.80, so the threshold itself is pinned separately with words of controlled length: 400 five-letter words must fail and 400 four-letter words must pass. A fixture written to trip a check proves the code path runs and says nothing about whether the threshold sits where prose lives, which is how #52 shipped with a threshold below the entire observed range and never fired on a real document until DR-79A.
