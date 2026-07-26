@@ -805,7 +805,9 @@ Vague upbeat endings that could be appended to any article on any topic.
 
 The four exact dramatic-fragment formulas fail at one occurrence. A pair of adjacent short fragments also fails when both begin with the same word. Other staccato rhythm fails when at least three consecutive sentences contain fewer than six words each.
 
-Short sentences that are spread through a piece rather than bunched into a run fail on their rate: sentences of ten words or fewer at 30.0 or more per 1000 words, in prose of 300 words or more. Across the project corpora human prose runs 19.05 such sentences per 1000 words and generated prose 34.96. At the 30.0 threshold the branch flags 48% of generated documents and 21% of human ones, and roughly two thirds of what it flags the run and repeated-opener branches already catch. Evidence for the rate: Xia, Stańczak, and Roth, EACL 2026, using the ten-word definition from Desaire et al. Calibration in `dev/evals/xia-feature-rate-calibration-2026-07-26.md`.
+Short sentences that are spread through a piece rather than bunched into a run fail on their rate: sentences of ten words or fewer at 30.0 or more per 1000 words, in prose of 300 words or more.
+
+Prose whose sentences all sit in one short band produces no run, no repeated opener, and too few ten-word sentences to trip the rate, but its average still separates the corpora: 13.9 words per sentence in generated prose against 17.7 in human prose. That branch fails a mean below 15.0 words in prose of 300 words or more, and quotes up to five sentences from the band so the finding points at something readable. Calibration in `dev/evals/sentence-variance-calibration-2026-07-26.md`. Across the project corpora human prose runs 19.05 such sentences per 1000 words and generated prose 34.96. At the 30.0 threshold the branch flags 48% of generated documents and 21% of human ones, and roughly two thirds of what it flags the run and repeated-opener branches already catch. Evidence for the rate: Xia, Stańczak, and Roth, EACL 2026, using the ten-word definition from Desaire et al. Calibration in `dev/evals/xia-feature-rate-calibration-2026-07-26.md`.
 
 **Tolerance note:** Staccato is not automatically bad. Preserve it when it is character voice, panic, comedy, dialogue, aphorism, or deliberate literary rhythm. Cut it when it functions as generic article emphasis.
 
@@ -1096,6 +1098,8 @@ Explicit conclusion labels turn the ending into a generic summary. AI overuses t
 
 A coarse rhythm metric for prose of 100+ words. Human writing varies sentence length naturally, mixing short punch sentences with longer connective passages. AI prose tends toward the centre of the distribution: most sentences land in a similar word count band, and the resulting cadence reads mechanical even when individual sentences are competent.
 
+Across the project corpora the standard deviation of sentence word counts runs 12.3 in human prose against 7.6 in generated prose. At the 9.0 threshold the check flags 72% of generated documents and 11% of human ones. The threshold was calibrated in `dev/evals/sentence-variance-calibration-2026-07-26.md`; the inherited value of 4 sat below the entire observed range and never fired on real prose.
+
 **Tolerance note:** Some genres legitimately run uniform: instructional steps, headlines, dialogue, dictionary entries, telegraphic memos. The check skips short-form prose under 100 words. Treat low variance as a signal, not a hard fail — preserve when the form genuinely calls for uniformity.
 
 **Before:**
@@ -1106,7 +1110,7 @@ A coarse rhythm metric for prose of 100+ words. Human writing varies sentence le
 
 **Severity:** context_warning · `sentence-length-variance`
 
-**Detection:** Programmatic check `sentence-length-variance`. Computes the standard deviation of sentence word counts and fails when the SD drops below 4. Skipped on prose under 100 words and 6 sentences. Distinct from #34 paragraph-length uniformity (which measures paragraph block sizes, not sentence-level rhythm) and from #25 staccato (which targets very short standalone sentences regardless of variance).
+**Detection:** Programmatic check `sentence-length-variance`. Computes the standard deviation of sentence word counts and fails when the SD is 9.0 or below. Skipped on prose under 100 words and 6 sentences. Distinct from #34 paragraph-length uniformity (which measures paragraph block sizes, not sentence-level rhythm) and from #25 staccato (which targets very short standalone sentences regardless of variance).
 
 
 ### 59. One-line sections under headings

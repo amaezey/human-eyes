@@ -201,9 +201,23 @@ The reusable point: a source recommending a construction is not the same as a so
 
 Note also that the corpora hold no technical decision narrative, engineering writeup, or design doc. Any future row whose claim is bound to that register cannot be settled by a corpus measurement until such a corpus exists, and a zero from the current sample must be reported as silent rather than null.
 
+DR-79 is closed, and it found a dead check. #52 `sentence-length-variance` fails a document when the standard deviation of its sentence word counts drops to 4 or below. The flattest document in either corpus reaches 4.4, so it had never fired on any of the 108. The measure separates them well: median 12.3 human against 7.6 generated. DR-79A retunes it to 9.0, at 72% of generated documents against 11% of human, the widest separation in the catalogue. DR-79B folds mean sentence length into #25 at 15.0 words in prose of 300 words or more. The rewrite-rigidity component was rejected, and noun ratio, verb ratio, and the two dependency measures were re-queued as POS-03 to POS-06 against Mae's tagger. Calibration in `dev/evals/sentence-variance-calibration-2026-07-26.md`.
+
+Four things worth carrying forward.
+
+**A check that never fires reads exactly like a check with nothing to find.** #52's pass rate was 100% on every real document and that looked like a clean result. Compare a threshold against the observed distribution, not against its pass rate. Any check whose threshold predates calibration deserves the same sweep: run it over both corpora, print the metric's range, and see whether the threshold is inside it.
+
+**Its test passed the whole time.** The #52 fixture is prose hand-written to be flat at SD 0.66, a value real writing never reaches. A fixture built to trip a check proves the code path works and says nothing about whether the threshold is set where prose lives.
+
+**Retuning can beat adding.** The row's live component was average sentence length. Measured alone it was a viable check at 70%/19%. Measured after the #52 retune it added 1 generated document and 0 human ones, because spread and average correlate at 0.71. Check whether an existing mechanism is merely miscalibrated before building an adjacent one.
+
+**Quote something, even for a document-level metric.** `test_phrase_capture_coverage.py` requires every flagged check to expose either quoted phrases or a metric string. The mean branch has no offending span, and the tempting fix was to allow-list #25, which would have exempted its quoting branches too. It quotes up to five sentences sitting within three words of the mean instead.
+
 ## What is next
 
-The fixed order now resumes at DR-79 and DR-102, the last two rows the re-screen marked as able to add a programmatic check. DR-79 is parser-dependent; DR-102 is deterministic wikitext markup faults, genre-bound to Wikipedia input. After those, DR-21's stiff-substitution word list is the remaining programmatic question, then the agent-judgement rows. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
+The fixed order now resumes at DR-102, the last row the re-screen marked as able to add a programmatic check: deterministic wikitext markup faults, genre-bound to Wikipedia input. After that, DR-21's stiff-substitution word list is the remaining programmatic question, then the agent-judgement rows. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
+
+One thing raised and not yet ruled: #25 flags 58% of the human corpus after DR-79B, up from 53% before it. That rate predates this work and no register row questions it.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Counts move with every closure, so recount rather than quoting a figure from this file: `python3 dev/tools/reconcile_register.py` must exit 0, and the decided/pending split comes from reading the Decision column. Three rows carry `pos-dependent-pattern` (POS-01, POS-02, DR-144) and wait on Mae's tagger.
 

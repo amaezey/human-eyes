@@ -470,6 +470,71 @@ expect_pass("sentence-length-variance",
     "Thanks for the invite. I can't make Tuesday but could do Thursday afternoon.",
     "short-form text skipped (under 100 words, under 6 sentences)")
 
+# DR-79B: #25 gains a mean-sentence-length branch at 15 words, in prose of 300
+# words or more. Sentences here are uniformly mid-length, so no run, repeated
+# opener, formula, or ten-word-or-fewer rate fires; only the mean does.
+_flat_mid_length = (
+    "The committee reviewed the revised funding proposal at its ordinary meeting on Tuesday afternoon. "
+    "Members asked detailed questions about the delivery timeline and the projected costs over three years. "
+    "The chair confirmed that the capital grant had been secured in early March this year. "
+    "Several members raised concerns about how the public consultation arrangements had been organised locally. "
+    "Officers agreed to publish the full set of written responses at some point next month. "
+    "A final vote on the proposal was deferred until the next ordinary council meeting. "
+    "Residents across the affected wards will be notified as soon as a date is fixed. "
+    "All supporting papers for the item remain available on the council website until then. "
+    "A second report on the same subject is expected before the summer recess begins. "
+    "The committee will meet again in the autumn to consider that report in detail. "
+    "Officers have already started drafting the supporting technical annexes for the second report. "
+    "The chair thanked all attending members for sitting through an unusually long evening session. "
+    "Minutes of the meeting were circulated to every attendee on the following working morning. "
+    "Two members submitted written corrections to those minutes within the agreed seven day window. "
+    "The corrected minutes were later approved without any further discussion at the following meeting. "
+    "Budget monitoring reports will follow exactly the same publication schedule as in previous years. "
+    "The finance officer confirmed the reporting dates for the coming financial year in writing. "
+    "No member present objected to the proposed schedule of committee meetings for next year. "
+    "The chair formally closed the meeting shortly after four o'clock in the afternoon. "
+    "Light refreshments had been provided in the adjoining committee room an hour beforehand. "
+    "Each future agenda will be published fourteen clear days before the meeting it covers. "
+    "Members were reminded to declare any relevant financial interests well in advance of business. "
+    "The clerk will circulate the standing declaration form to all members again shortly. "
+    "Late declarations must be made verbally at the very start of the meeting business. "
+    "The deputy chair will take the next meeting because of a diary clash. "
+    "Apologies for absence had been received from two members before the meeting began."
+)
+expect_fail("no-staccato-sequences", _flat_mid_length,
+    "DR-79B mean sentence length below 15 in prose of 300+ words")
+
+# DR-79A: the old threshold of 4 sat underneath the whole observed range, so
+# the check never fired on real prose. At 9 it separates the corpora. These two
+# fixtures bracket the new boundary; both were inert under the old threshold.
+_narrow_band = (
+    "The council met on Tuesday to review the proposal. Members asked about "
+    "the budget and the timeline for delivery. The chair explained that "
+    "funding had been secured in March. Several members raised concerns about "
+    "the consultation process. Officers agreed to publish the responses next "
+    "month. The vote was deferred until the next ordinary meeting. Residents "
+    "will be notified once a date has been fixed. The papers remain available "
+    "on the council website for now. A second report is expected before the "
+    "summer recess begins. The committee will meet again in the autumn to "
+    "review it. Officers have already begun drafting the supporting annexes. "
+    "The chair thanked everyone for attending the long session."
+)
+expect_fail("sentence-length-variance", _narrow_band,
+    "DR-79A sentences clustered in one length band (SD between 4 and 9)")
+_varied_band = (
+    "The council met. Members asked about the budget, the timeline for "
+    "delivery, the consultation process that had run over the winter, and "
+    "whether the funding secured in March would still cover the revised "
+    "scope of works now that three contractors had withdrawn. The chair "
+    "explained. Officers agreed to publish every response received during "
+    "the consultation period alongside a summary of the themes raised, and "
+    "to circulate that document to all members a fortnight before the next "
+    "ordinary meeting so that nobody would arrive unprepared. It was "
+    "deferred. Residents will be notified."
+)
+expect_pass("sentence-length-variance", _varied_band,
+    "DR-79A genuinely varied sentence lengths stay clear at the new threshold")
+
 
 # --- no-promotional-language ---
 
@@ -2574,6 +2639,10 @@ for check_name in ALL_CHECKS:
         # DR-66: the same principle. This piece runs 8.4 passive verbs per 1000
         # words, inside the 29% of human prose #68 flags by design.
         "no-passive-voice-rate",
+        # DR-79A: the same principle again. This piece's sentence-length spread
+        # is 7.56 across 36 sentences, inside the 11% of human prose #52 flags
+        # at its calibrated threshold of 9.
+        "sentence-length-variance",
     }:
         continue
     expect_pass(check_name, opinion_text, f"human opinion piece ({check_name})")

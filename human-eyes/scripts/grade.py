@@ -1429,6 +1429,33 @@ def check_staccato(text):
     )
     short_rate = short_sentence_count / prose_words * 1000 if prose_words else 0.0
     rate_failed = prose_words >= minimum_words and short_rate >= maximum_rate
+    # Mean branch (DR-79B): prose whose sentences all sit in one short band
+    # never produces a run, a repeated opener, or enough ten-word sentences to
+    # trip the rate, but its average still separates the corpora at 13.9 words
+    # against 17.7. Calibrated in
+    # dev/evals/sentence-variance-calibration-2026-07-26.md.
+    maximum_mean = threshold_value(
+        "no-staccato-sequences", "maximum_mean_sentence_words", 15.0
+    )
+    prose_sentences = [s for s in split_sentences(prose) if s.strip()]
+    mean_sentence_words = (
+        sum(len(s.split()) for s in prose_sentences) / len(prose_sentences)
+        if prose_sentences else 0.0
+    )
+    mean_failed = (
+        prose_words >= minimum_words
+        and bool(prose_sentences)
+        and mean_sentence_words < maximum_mean
+    )
+    # The finding is the document's average, but the reader still needs
+    # something to look at, so quote a bounded sample of the sentences sitting
+    # in the band rather than reporting a bare number.
+    band_sentences = []
+    if mean_failed:
+        band_sentences = [
+            s.strip() for s in prose_sentences
+            if abs(len(s.split()) - mean_sentence_words) <= 3
+        ][:5]
 
     matches = []
     if max_run >= 3 and longest_run_end >= 0:
@@ -1438,6 +1465,7 @@ def check_staccato(text):
     matches.extend(formula_matches)
     if rate_failed:
         matches.extend(short_sentences)
+    matches.extend(band_sentences)
     matches = list(dict.fromkeys(matches))
     evidence = []
     if max_run >= 3:
@@ -1453,6 +1481,11 @@ def check_staccato(text):
             f"{short_sentence_count} sentences of ten words or fewer at "
             f"{short_rate:.1f} per 1000 words"
         )
+    if mean_failed:
+        evidence.append(
+            f"mean sentence length {mean_sentence_words:.1f} words "
+            f"(target: {maximum_mean:g} or more)"
+        )
     return {
         "text": "no-staccato-sequences",
         "passed": (
@@ -1460,6 +1493,7 @@ def check_staccato(text):
             and not formula_matches
             and not repeated_opening_pairs
             and not rate_failed
+            and not mean_failed
         ),
         "matches": matches,
         "evidence": (
@@ -1601,10 +1635,22 @@ def check_sentence_variance(text):
         }
     lengths = [len(s.split()) for s in sentences]
     sd = stdev(lengths)
+    # DR-79A: the inherited threshold of 4 sat below the entire observed range
+    # (the flattest document in either corpus reaches 4.4), so the check never
+    # fired on real prose. Calibrated to 9 against the project corpora: 72% of
+    # generated documents and 11% of human ones. See
+    # dev/evals/sentence-variance-calibration-2026-07-26.md.
+    minimum_sd = threshold_value("sentence-length-variance", "minimum_stdev", 9.0)
+    flagged = sd <= minimum_sd
     return {
         "text": "sentence-length-variance",
-        "passed": sd > 4,
-        "evidence": f"Sentence length stdev: {sd:.1f} (target: >4)",
+        "passed": not flagged,
+        "metric": (
+            f"sentence length variation {sd:.1f} across {len(sentences)} "
+            f"sentences (target above {minimum_sd:g})"
+            if flagged else None
+        ),
+        "evidence": f"Sentence length stdev: {sd:.1f} (target: >{minimum_sd:g})",
     }
 
 
@@ -3746,6 +3792,7 @@ CHECK_THRESHOLDS = {
         "minimum_repeated_opener_run": 2,
         "rate_minimum_words": 300,
         "maximum_short_rate_per_1000": 30.0,
+        "maximum_mean_sentence_words": 15.0,
     },
     "no-soft-scaffolding": {"minimum_candidates": 2},
     "no-orphaned-demonstratives": {"minimum_candidates": 3},
@@ -3763,6 +3810,7 @@ CHECK_THRESHOLDS = {
     "no-inline-header-lists": {"minimum_candidates": 2},
     "no-heading-one-liners": {"minimum_candidates": 2},
     "no-compound-modifier-density": {"minimum_per_sentence": 3},
+    "sentence-length-variance": {"minimum_stdev": 9.0},
 }
 
 
