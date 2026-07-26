@@ -6,6 +6,33 @@ Each item carries enough detail to be picked up cold.
 
 ---
 
+## 0. FIRST: screen Cheng and Yakura, and close DR-28
+
+Both sources DR-28 was blocked on were ingested 2026-07-26. DR-28 is still `pending` in the register and is the next row to work. Nothing below this item starts until it is done.
+
+**Cheng et al., *Science* 391, eaec8352 (2026), sycophancy.** 37 claims, `cheng-social-sycophancy.md`. The paper prints its transcripts, so the phrasing is recoverable even though sycophancy is conversational. Its AI replies open by validating the reader, praise their intentions, and end on a coaching question; the human replies give a verdict with no preamble. The ingesting agent extracted roughly forty exact forms in these families:
+
+- validation openers — `It makes sense that you`, `It's completely understandable to`, `It sounds like you're`, `It's good that you've`, `It's natural for`, `it's reasonable to feel`
+- praise of the reader — `which is commendable`, `shows your integrity`, `I commend`
+- paragraph-final coaching questions — `How are you feeling`, `What have you learned`, `Have you spoken to`
+- motive reframes — `Your choice was made with the intention of`, `It seems like you were considering`
+- one empathy declaration — `I can hear your pain`
+- denial-of-implication riders — `it doesn't mean you care about her any less`
+
+Plus one agent-judgement candidate the paper measures directly (P < 0.001): whether an advice reply engages the other party's perspective or only the reader's account.
+
+**Two bounds on all of it.** The paper's own *non-sycophantic* condition uses the same opener family, so these forms mark AI advice register rather than sycophancy. And the paper publishes no phrase list, count, or frequency for anything it quotes.
+
+**Yakura et al., arXiv 2409.01754v4, vocabulary.** 30 claims, `yakura-llm-influence-spoken-communication.md`. Its word list is already ruled and shipped through DR-165, which added 26 words to #7. What remains unruled on that card is everything except C01 and C03.
+
+**Nothing on either card has been verified against the live checker by the main session.** Both agents' reports were relayed untested. The Yakura word list was tested afterwards and 16 of 27 words turned out to appear in neither corpus. Test before presenting.
+
+**The corpora cannot settle the Cheng forms.** They hold no chat replies at all, so a zero here means silent, not absent — the same situation already recorded for technical writing in `dev/decision-walkthrough-approach.md`.
+
+**Two further ingests are named and not queued.** The Cheng supplementary materials hold the LLM-judge rubric that defines affirmation operationally (Science returned 403), and the Dryad deposit holds the generated responses, which would give the project the advice-reply corpus it currently lacks.
+
+---
+
 ## 1. Fiction branch of #41 (DR-23, DR-52 to DR-58)
 
 Eight rows, seven of them the StoryScope paper, all extending `genre_specific`'s existing fiction branch in `human-eyes/scripts/judgement.json`.
