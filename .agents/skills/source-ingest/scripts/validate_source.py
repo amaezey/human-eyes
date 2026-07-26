@@ -396,7 +396,7 @@ def validate_card(card: Path) -> list[str]:
 
     sources_dir = find_sources_dir(card)
     if sources_dir is None:
-        return ["Card must be inside human-eyes/references/sources/"]
+        return ["Card must be inside dev/references/sources/"]
 
     text = card.read_text(encoding="utf-8")
     sections = parse_sections(text)

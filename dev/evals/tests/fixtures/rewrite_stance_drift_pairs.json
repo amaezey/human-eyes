@@ -1,7 +1,7 @@
 {
   "purpose": "Qualitative evaluation material for the rewrite_stance_drift agent judgement. Each pair is one published post and the rewrite a model produced from it.",
   "source": {
-    "card": "human-eyes/references/sources/sussman-carter-ai-mediated-communication.md",
+    "card": "dev/references/sources/sussman-carter-ai-mediated-communication.md",
     "claim": "C11",
     "citation": "Sussman, K. and Carter, D. (2025). WWW Companion '25, Sydney.",
     "prompt": "Rewrite the tweet, to improve for clarity and engagement",

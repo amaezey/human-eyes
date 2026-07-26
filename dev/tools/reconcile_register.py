@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[2]
 CSV_PATH = ROOT / "dev" / "source-ingest-hygiene-recommendation-classification-2026-07-17.csv"
 REGISTER_PATH = ROOT / "dev" / "decision-register.md"
 MAPPING_PATH = ROOT / "dev" / "source-evaluation-residue-mapping-2026-07-17.csv"
-PO_PATH = ROOT / "human-eyes" / "references" / "sources" / "pattern-opportunities.md"
+PO_PATH = ROOT / "dev" / "references" / "sources" / "pattern-opportunities.md"
 
 ACTION_LABELS = {"ADDITIVE", "EVALUATE", "MIXED"}
 ACTION_FLAGS = {"secondary-add", "secondary-evaluate"}

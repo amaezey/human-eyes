@@ -3436,18 +3436,14 @@ expect_pass("no-ai-vocabulary-clustering",
     "DR-126B control: one repeated family across paragraphs stays clear")
 
 # --- DR-126C: GPTZero preserved-payload equality ---
-print("\n=== DR-126C GPTZero payload equality ===")
-dr126_gptzero_payload = _json.loads(
-    (
-        ROOT
-        / "human-eyes"
-        / "references"
-        / "sources"
-        / "snapshots"
-        / "attachments"
-        / "gptzero-ai-vocabulary-2026-07-15-client-data.json"
-    ).read_text()
+# The payload is the preserved provenance record for GPTZERO_AI_PHRASES, a
+# hardcoded runtime constant in grade.py. This test is the drift guard between
+# them.
+_DR126_PAYLOAD = (
+    ROOT / "dev" / "references" / "sources" / "snapshots" / "attachments"
+    / "gptzero-ai-vocabulary-2026-07-15-client-data.json"
 )
+dr126_gptzero_payload = _json.loads(_DR126_PAYLOAD.read_text())
 dr126_source_phrases = [
     row["ngram"].replace("\u2019", "'")
     for row in dr126_gptzero_payload

@@ -4,7 +4,7 @@ description: >-
   Ingests a new source into the human-eyes evidence library or refreshes an
   existing source. Use when the user supplies a source URL or file, asks to add
   research or practitioner evidence, or asks to update, refresh, re-extract, or
-  re-review a card under human-eyes/references/sources.
+  re-review a card under dev/references/sources.
 ---
 
 # Source ingest
@@ -15,16 +15,16 @@ Create a complete, reviewable evidence record for one source. Preserve the direc
 
 Find the active repository root from the current working directory. It must contain:
 
-- `human-eyes/references/sources/README.md`
-- `human-eyes/references/sources/TEMPLATE.md`
-- `human-eyes/references/sources/snapshots/MANIFEST.md`
+- `dev/references/sources/README.md`
+- `dev/references/sources/TEMPLATE.md`
+- `dev/references/sources/snapshots/MANIFEST.md`
 
 If those files are absent, ask for the `human-eyes` checkout path. Do not write into an installed release copy or guess which checkout the user meant.
 
 Set these paths conceptually:
 
 - `REPO_ROOT`: the checkout root.
-- `SOURCES_DIR`: `$REPO_ROOT/human-eyes/references/sources`.
+- `SOURCES_DIR`: `$REPO_ROOT/dev/references/sources`.
 - `SKILL_DIR`: the directory containing this `SKILL.md`.
 
 Read the checkout's `AGENTS.md` before using tools. Obey its restrictions, including model/provider and command restrictions. A source-review request does not grant permission to call a prohibited provider.
@@ -56,7 +56,7 @@ For project comparison, also inspect the current versions of:
 - `human-eyes/scripts/judgement.json`
 - `human-eyes/references/patterns.md`
 - `human-eyes/references/process.md`
-- `human-eyes/references/sources/pattern-opportunities.md`
+- `dev/references/sources/pattern-opportunities.md`
 - `dev/hypotheses.md`, `STRATEGY.md`, and `dev/TESTING.md` when present
 
 Do not rely on remembered catalogue contents or a prior source review.

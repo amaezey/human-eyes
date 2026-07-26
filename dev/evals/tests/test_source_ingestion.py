@@ -27,7 +27,7 @@ class SourceIngestionValidatorTests(unittest.TestCase):
     def setUp(self):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp_dir.name)
-        self.sources = self.repo / "human-eyes" / "references" / "sources"
+        self.sources = self.repo / "dev" / "references" / "sources"
         self.snapshots = self.sources / "snapshots"
         self.snapshots.mkdir(parents=True)
 
@@ -190,7 +190,7 @@ The source compares measured writing patterns and supplies direct evidence.
         self.assertIn("PASS example-source.md", stdout)
 
     def test_repository_template_matches_validator_contract(self):
-        template = (REPO_ROOT / "human-eyes" / "references" / "sources" / "TEMPLATE.md").read_text(
+        template = (REPO_ROOT / "dev" / "references" / "sources" / "TEMPLATE.md").read_text(
             encoding="utf-8"
         )
         sections = VALIDATOR.parse_sections(template)

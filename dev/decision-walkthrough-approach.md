@@ -4,7 +4,7 @@ How the 2026-07-17 source-evaluation walkthrough works, for any agent continuing
 
 ## The mission
 
-The source library (100+ cards under `human-eyes/references/sources/`) was re-reviewed against preserved source text. Every resulting recommendation is a pending decision for Mae: what each source says the product should **add, change, or remove**. The job is to bring her those decisions one at a time, implement her answers, and keep every record consistent.
+The source library (100+ cards under `dev/references/sources/`) was re-reviewed against preserved source text. Every resulting recommendation is a pending decision for Mae: what each source says the product should **add, change, or remove**. The job is to bring her those decisions one at a time, implement her answers, and keep every record consistent.
 
 ## Non-negotiable rules
 
@@ -47,7 +47,7 @@ The source library (100+ cards under `human-eyes/references/sources/`) was re-re
 - `dev/evals/triad-density-calibration-2026-07-25.md` — the #10 rate calibration and #10a retirement.
 - `dev/evals/false-range-calibration-2026-07-25.md` — the #12 stacked-pair calibration.
 - `dev/evals/biber-rate-calibration-2026-07-26.md` — the #65, #66, and #67 rate calibration, and why phrasal coordination got no check.
-- `human-eyes/references/sources/pattern-opportunities.md` — settled evidence detail only; holds no pending decisions.
+- `dev/references/sources/pattern-opportunities.md` — settled evidence detail only; holds no pending decisions.
 
 ## Test loop
 
