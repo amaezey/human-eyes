@@ -1878,6 +1878,8 @@ expected_checks = {
     "no-knowledge-cutoff-disclaimers",
     # DR-21: Latinate verb rate, pattern 70.
     "no-latinate-verb-rate",
+    # DR-97: word length average, pattern 71.
+    "word-length-average",
 }
 actual_checks = set(ALL_CHECKS)
 if actual_checks != expected_checks:
@@ -4497,6 +4499,60 @@ if _patterns_data["no-latinate-verb-rate"]["severity"] != "context_warning":
     print("FAIL: DR-21 no-latinate-verb-rate should be a context warning")
 else:
     print("  ok: DR-21 no-latinate-verb-rate is a context warning")
+
+# DR-97: word length average, pattern 71. Fails when the mean word runs 4.80
+# characters or longer, in prose of 300 words or more. A draft-wide measure with
+# no offending span, so it reports a metric string rather than quoting phrases.
+_dr97_long_words = (
+    "The review found that delivery has slipped behind the original programme in "
+    "several areas. Officers reported that procurement delays affected the eastern "
+    "corridor, and that revised timelines require further consultation with local "
+    "residents. The committee agreed to receive an update in September, alongside "
+    "financial modelling for the remaining capital works and a summary of the "
+    "responses received during the earlier engagement period. "
+) * 7
+expect_fail("word-length-average", _dr97_long_words, "DR-97 long average word length")
+
+_dr97_short_words = (
+    "The dog got up and went to the door. It had been a long day and the light "
+    "was going. She put down her cup, took the lead off the hook, and let him "
+    "out. The street was wet. A car went past. Down at the end of the road a man "
+    "was pulling in his bins for the night, and the sky was going dark fast. " * 7
+)
+expect_pass("word-length-average", _dr97_short_words, "DR-97 short average word length stays clear")
+
+# The prose fixtures above sit well either side of the line, so the threshold
+# itself is pinned with words of controlled length: 400 five-letter words average
+# 5.00 and must fail, 400 four-letter words average 4.00 and must pass.
+_dr97_over = ALL_CHECKS["word-length-average"](" ".join(["abcde"] * 400))
+_dr97_under = ALL_CHECKS["word-length-average"](" ".join(["abcd"] * 400))
+if _dr97_over["passed"] or not _dr97_under["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-97 word-length-average threshold is not at 4.80")
+else:
+    print("  ok: DR-97 word-length-average threshold sits at 4.80")
+
+_dr97_short_doc = ALL_CHECKS["word-length-average"](
+    "The organisation's implementation methodology necessitated reconfiguration."
+)
+if not _dr97_short_doc["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-97 word-length-average should skip prose under 300 words")
+else:
+    print("  ok: DR-97 word-length-average skips prose under 300 words")
+
+_dr97_metric = ALL_CHECKS["word-length-average"](_dr97_long_words).get("metric")
+if not _dr97_metric:
+    FAILURES += 1
+    print("FAIL: DR-97 word-length-average must surface a metric string when it flags")
+else:
+    print(f"  ok: DR-97 word-length-average surfaces a metric: {_dr97_metric}")
+
+if _patterns_data["word-length-average"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-97 word-length-average should be a context warning")
+else:
+    print("  ok: DR-97 word-length-average is a context warning")
 
 # --- Summary ---
 

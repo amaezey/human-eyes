@@ -539,6 +539,29 @@ Evidence: Wikipedia's *Signs of AI writing*, which names stiff or euphemistic ve
 
 **Detection:** Programmatic check `no-latinate-verb-rate`.
 
+
+### 71. Word length average
+
+The check takes the mean length in characters of every word in the piece and fails at 4.80 or above, in prose of 300 words or more. Letters and internal apostrophes count; Markdown punctuation and numerals do not.
+
+It reports a number and quotes nothing, because there is no offending span: the signal is the register of the whole draft. For the words to change, read the nominalisation and Latinate verb findings, which name them.
+
+Across the project corpora human prose runs a median 4.58 characters per word and generated prose 4.95. The gap looks small and separates sharply: at 4.80 the check flags 67% of generated documents and 13% of human ones, the second widest separation in the catalogue after sentence length variation.
+
+Two controls were run before it shipped. Excluding every nineteenth-century document, which is where the shortest human word lengths sit, leaves the result unchanged. Four documents exist as a human original and its AI rewrite, and all four rise: 4.69 to 5.07, 4.81 to 5.50, 3.93 to 5.79, and 4.58 to 5.02.
+
+**Before:**
+> The organisation's implementation methodology necessitated considerable administrative reconfiguration.
+
+**After:**
+> We had to change how the office was run.
+
+Evidence: measurement on the project corpora. Sussman and Carter report average word length falling in later social-media posts, which this project's corpora do not reproduce; their corpus carries no AI labels. Calibration in `dev/evals/word-length-calibration-2026-07-26.md`.
+
+**Severity:** context_warning · `word-length-average`
+
+**Detection:** Programmatic check `word-length-average`.
+
 ---
 
 ## Style

@@ -39,6 +39,7 @@ METRIC_ONLY_CHECKS = {
     "vocabulary-diversity",
     "paragraph-length-uniformity",
     "sentence-length-variance",
+    "word-length-average",
 }
 
 # Checks whose signal is genuinely structural — no single phrase or

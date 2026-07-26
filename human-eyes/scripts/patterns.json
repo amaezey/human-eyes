@@ -1138,5 +1138,22 @@
     "patterns_md_heading": "Latinate verb rate",
     "patterns_md_body": "The check counts 44 Latinate verbs that stand in for plain ones, among them `obtain`, `commence`, `ascertain`, `utilise`, `facilitate`, `necessitate`, and `procure`. It speaks only about density: it fails at 2.5 or more per 1000 words, in prose of 300 words or more.\n\nUnlike the nominalisation rate above, no suffix marks these verbs, so the list is curated by hand and grows only when a word is added to it deliberately. Only verb forms count: `information`, `assistant`, `department`, `residents`, and `alternative` are built on the same stems and are not matched.\n\nAcross the project corpora human prose runs a median 1.07 per 1000 words and generated prose 2.51, a ratio of 2.35. At the 2.5 threshold the check flags 52% of generated documents and 15% of human ones, the second narrowest human flag rate of the rate checks.\n\n**Before:**\n> The department will initiate a review to ascertain whether the contractor can facilitate the transfer and provide the records it requires.\n\n**After:**\n> The department will start a review to find out whether the contractor can hand over the transfer and the records it needs.\n\nEvidence: Wikipedia's *Signs of AI writing*, which names stiff or euphemistic verb substitution as a habit. The page supplies five words and no counts, so the list and the threshold come from measurement on the project corpora. Calibration in `dev/evals/latinate-verb-rate-calibration-2026-07-26.md`.\n\n**Severity:** context_warning · `no-latinate-verb-rate`\n\n**Detection:** Programmatic check `no-latinate-verb-rate`.",
     "patterns_md_leading_blanks": 2
+  },
+  "word-length-average": {
+    "category": "Language and grammar",
+    "short_name": "Word length average",
+    "description": "Checks whether the average word in a piece runs long.",
+    "why_it_matters": "Generated prose reaches for the longer word by default, and the average word length separates it from human prose more sharply than almost any other single measure here.",
+    "severity": "context_warning",
+    "failure_modes": [
+      "generic_abstraction",
+      "frictionless_structure"
+    ],
+    "evidence_role": "register_rate",
+    "guidance": "Look for the shorter word that does the same job. `necessitated` becomes `needed`, `demonstrated substantial improvement` becomes `got better`. The measure is draft-wide, so it points at register rather than at one sentence.",
+    "pattern_number": "71",
+    "patterns_md_heading": "Word length average",
+    "patterns_md_body": "The check takes the mean length in characters of every word in the piece and fails at 4.80 or above, in prose of 300 words or more. Letters and internal apostrophes count; Markdown punctuation and numerals do not.\n\nIt reports a number and quotes nothing, because there is no offending span: the signal is the register of the whole draft. For the words to change, read the nominalisation and Latinate verb findings, which name them.\n\nAcross the project corpora human prose runs a median 4.58 characters per word and generated prose 4.95. The gap looks small and separates sharply: at 4.80 the check flags 67% of generated documents and 13% of human ones, the second widest separation in the catalogue after sentence length variation.\n\nTwo controls were run before it shipped. Excluding every nineteenth-century document, which is where the shortest human word lengths sit, leaves the result unchanged. Four documents exist as a human original and its AI rewrite, and all four rise: 4.69 to 5.07, 4.81 to 5.50, 3.93 to 5.79, and 4.58 to 5.02.\n\n**Before:**\n> The organisation's implementation methodology necessitated considerable administrative reconfiguration.\n\n**After:**\n> We had to change how the office was run.\n\nEvidence: measurement on the project corpora. Sussman and Carter report average word length falling in later social-media posts, which this project's corpora do not reproduce; their corpus carries no AI labels. Calibration in `dev/evals/word-length-calibration-2026-07-26.md`.\n\n**Severity:** context_warning · `word-length-average`\n\n**Detection:** Programmatic check `word-length-average`.",
+    "patterns_md_leading_blanks": 2
   }
 }

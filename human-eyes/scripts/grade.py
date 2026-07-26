@@ -2153,6 +2153,10 @@ NOMINALISATION_RE = re.compile(
     re.IGNORECASE,
 )
 
+# DR-97: word tokens for the mean-word-length measure. Letters and internal
+# apostrophes only, so Markdown punctuation and numerals do not distort the mean.
+WORD_TOKEN_RE = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)*")
+
 # DR-21: Latinate verbs used where a plain verb would do ("obtain" for "get",
 # "commence" for "start"). Unlike the nominalisations above there is no suffix
 # that marks them, so this is a curated list and grows only by hand. The stems
@@ -2420,6 +2424,38 @@ def check_it_pronoun_rate(text):
         "no-it-pronoun-rate", text,
         lambda source: IT_PRONOUN_RE.findall(source), 18.0, "`it` pronoun(s)",
     )
+
+
+def check_word_length_average(text):
+    """Flag prose whose mean word runs long (pattern 71)."""
+    source = strip_front_matter(text)
+    words = WORD_TOKEN_RE.findall(source)
+    minimum_words = threshold_value("word-length-average", "minimum_words", 300)
+    maximum_mean = threshold_value("word-length-average", "maximum_mean_characters", 4.80)
+    if len(source.split()) < minimum_words or not words:
+        return {
+            "text": "word-length-average",
+            "passed": True,
+            "evidence": (
+                f"Mean word length: below minimum length "
+                f"({len(source.split())}/{minimum_words} words)"
+            ),
+        }
+    mean = sum(len(w) for w in words) / len(words)
+    flagged = mean >= maximum_mean
+    return {
+        "text": "word-length-average",
+        "passed": not flagged,
+        "metric": (
+            f"mean word length {mean:.2f} characters across {len(words)} words "
+            f"(target below {maximum_mean:g})"
+            if flagged else None
+        ),
+        "evidence": (
+            f"Mean word length {mean:.2f} characters across {len(words)} words "
+            f"(target: <{maximum_mean:g})"
+        ),
+    }
 
 
 def check_latinate_verb_rate(text):
@@ -3761,6 +3797,7 @@ ALL_CHECKS = {
     "no-passive-voice-rate": check_passive_voice_rate,
     "no-it-pronoun-rate": check_it_pronoun_rate,
     "no-latinate-verb-rate": check_latinate_verb_rate,
+    "word-length-average": check_word_length_average,
     "no-superficial-ing": check_superficial_ing,
     "no-ghost-spectral-density": check_ghost_spectral,
     "no-quietness-obsession": check_quietness,
@@ -3815,7 +3852,7 @@ LEXICAL_CHECKS = {
 QUOTE_AWARE_LEXICAL_CHECKS = {"no-tidy-paragraph-endings"}
 
 STATISTICAL_CHECKS = {
-    "sentence-length-variance", "no-excessive-lists", "no-this-chains",
+    "sentence-length-variance", "word-length-average", "no-excessive-lists", "no-this-chains",
     "no-countdown-negation", "no-negation-density",
     "paragraph-length-uniformity", "vocabulary-diversity",
     "no-section-scaffolding", "no-compound-modifier-density",
