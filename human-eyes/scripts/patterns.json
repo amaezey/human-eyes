@@ -1171,5 +1171,22 @@
     "patterns_md_heading": "Mixed-script words",
     "patterns_md_body": "The check flags any word containing both a Latin letter and a Cyrillic or Greek letter that is visually identical to a Latin one. One word fails.\n\nOnly confusable characters count. Cyrillic а е о р с у х і ј ѕ and their capitals, and Greek ο ρ ν and the capitals that mirror Latin letters. A Greek or Cyrillic character that looks like nothing in Latin is not a substitution, so scientific notation such as `ΔH1` and `ηj` stays clear, and so does a whole passage written in Greek or Cyrillic.\n\nThe habit comes from adversarial rewriting: swapping a Latin `e` for a Cyrillic `е` leaves the word looking unchanged while defeating a string match. The tool has no way to know who did it, and does not need to. The word is broken either way: search will not find it, screen readers mispronounce it, and it propagates through every copy.\n\nAcross the project corpora no document in either sample carries one. Three files in the evidence library do, two of them a single `Коrd` inside preserved source text and one a Kazakh passage where extraction mixed a Latin `i` into Cyrillic words.\n\n**Before:**\n> The rеport covers the two main findіngs.\n\n**After:**\n> The report covers the two main findings.\n\nEvidence: Creo and Ranganath's TELL, Appendix A, which presents a mixed-script homoglyph text and notes that its intent cannot be read off a human-versus-AI label.\n\n**Severity:** hard_fail · `no-mixed-script-words`\n\n**Detection:** Programmatic check `no-mixed-script-words`.",
     "patterns_md_leading_blanks": 2
+  },
+  "concreteness-average": {
+    "category": "Language and grammar",
+    "short_name": "Concreteness average",
+    "description": "Checks whether a piece leans on abstract words where concrete ones would do.",
+    "why_it_matters": "Generated prose reaches for `framework`, `approach`, and `concept` where human prose reaches for the thing itself. Naming the thing is the single most useful move in a rewrite, and this is the check that points at it.",
+    "severity": "context_warning",
+    "failure_modes": [
+      "generic_abstraction",
+      "voice_erasure"
+    ],
+    "evidence_role": "register_rate",
+    "guidance": "Name the thing. `The framework provides a basis for the approach` becomes `the rota tells people when to turn up`. Abstraction is right where the subject really is abstract; the measure is draft-wide, so read it as register rather than as one sentence.",
+    "pattern_number": "73",
+    "patterns_md_heading": "Concreteness average",
+    "patterns_md_body": "The check looks up every word in Brysbaert, Warriner and Kuperman's concreteness norms, 39,954 English words rated from 1 (fully abstract, `justice`) to 5 (fully concrete, `hammer`) by human raters. It takes the mean across the draft's content words and fails at 2.915 or below, in prose of 100 words or more.\n\nIt reports a number and quotes nothing, because the signal is the register of the whole draft rather than one span. Function words are excluded, because the norms rate them as maximally abstract (`the` 1.43, `a` 1.46, `because` 1.22) and they would swamp the mean, turning the check into a measure of function-word density. Excluding them widens the separation from 32 points to 38. Words the norms do not cover are skipped.\n\nAcross the project corpora human prose averages 2.972 and generated prose 2.820 over content words. At 2.915 the check flags 67% of generated documents and 29% of human ones.\n\nIt overlaps the word length and nominalisation rates heavily, because abstract words tend to be long Latinate words, and it is kept as its own check because it says something they cannot: which direction to rewrite in. A character count tells a writer their words are long. This tells them their words name categories instead of things.\n\n**Before:**\n> The framework provides a basis for the approach, and the concept informs the strategy that underpins the process.\n\n**After:**\n> The rota says who opens up, who locks the door, and who carries the keys between shifts.\n\nEvidence: El Attar et al. name psycholinguistic features as a candidate area without supplying a direction, so the direction and threshold come from measurement on the project corpora. Calibration in `dev/evals/concreteness-calibration-2026-07-26.md`.\n\n**Severity:** context_warning · `concreteness-average`\n\n**Detection:** Programmatic check `concreteness-average`.",
+    "patterns_md_leading_blanks": 2
   }
 }

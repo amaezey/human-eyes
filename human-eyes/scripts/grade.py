@@ -205,6 +205,9 @@ def _assert_gptzero_payload_frozen():
 _assert_gptzero_payload_frozen()
 
 KOBAK_EXCESS_WORDS_PATH = "kobak-excess-words.csv"
+# DR-84: Brysbaert, Warriner and Kuperman concreteness norms, 39,954 English
+# lemmas rated 1 (fully abstract) to 5 (fully concrete) by human raters.
+CONCRETENESS_WORDS_PATH = "brysbaert-concreteness.csv"
 KOBAK_IGNORED_STYLE_POS = {"preposition", "pronoun", "pronoun/adverb", "particle"}
 KOBAK_IGNORED_STYLE_WORDS = {"were", "based", "background", "like", "this", "their", "these"}
 BIOMEDICAL_DOMAIN_TERMS = {
@@ -237,6 +240,43 @@ def _load_kobak_excess_vocab():
                     "part_of_speech": row.get("part_of_speech", "").strip().lower(),
                 })
         return rows
+
+
+
+def _load_concreteness_norms():
+    """Load Brysbaert et al. concreteness ratings from the skill data file."""
+    path = Path(__file__).resolve().parent.parent / "references" / CONCRETENESS_WORDS_PATH
+    if not path.exists():
+        return {}
+    norms = {}
+    with path.open(newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            word = row.get("word", "").strip().lower()
+            score = row.get("concreteness", "").strip()
+            if word and score:
+                try:
+                    norms[word] = float(score)
+                except ValueError:
+                    continue
+    return norms
+
+
+CONCRETENESS_NORMS = _load_concreteness_norms()
+CONCRETENESS_TOKEN_RE = re.compile(r"[a-z']+")
+# Function words are rated as maximally abstract by the norms ("the" 1.43,
+# "a" 1.46, "because" 1.22) and swamp the mean, so the measure would track
+# function-word density rather than whether the writer names things. Excluding
+# them widens the separation on the project corpora from 32 to 38 points.
+CONCRETENESS_STOPWORDS = frozenset("""
+a an the and or but if so as because though although while of to in on at by for
+with from into over under this that these those it its is are was were be been
+being am do does did done has have had having will would can could shall should
+may might must not no nor than then there here when where how why what which who
+whom whose all any both each few more most other some such only own same too very
+just also about after again against before below between during further once out
+off up down i you he she we they me him her us them my your his their our mine
+yours hers ours theirs one two three first second next last another
+""".split())
 
 
 KOBAK_EXCESS_VOCAB = _load_kobak_excess_vocab()
@@ -2474,6 +2514,42 @@ def check_mixed_script_words(text):
     }
 
 
+def check_concreteness_average(text):
+    """Flag prose whose words run abstract rather than concrete (pattern 73)."""
+    source = strip_front_matter(text)
+    minimum_words = threshold_value("concreteness-average", "minimum_words", 100)
+    maximum_mean = threshold_value("concreteness-average", "maximum_mean_concreteness", 2.915)
+    scored = [
+        CONCRETENESS_NORMS[word]
+        for word in CONCRETENESS_TOKEN_RE.findall(source.lower())
+        if word in CONCRETENESS_NORMS and word not in CONCRETENESS_STOPWORDS
+    ]
+    if len(source.split()) < minimum_words or not scored:
+        return {
+            "text": "concreteness-average",
+            "passed": True,
+            "evidence": (
+                f"Mean concreteness: below minimum length "
+                f"({len(source.split())}/{minimum_words} words)"
+            ),
+        }
+    mean = sum(scored) / len(scored)
+    flagged = mean <= maximum_mean
+    return {
+        "text": "concreteness-average",
+        "passed": not flagged,
+        "metric": (
+            f"mean concreteness {mean:.2f} of 5 across {len(scored)} content words "
+            f"(target above {maximum_mean:g})"
+            if flagged else None
+        ),
+        "evidence": (
+            f"Mean concreteness {mean:.2f} of 5 across {len(scored)} content words "
+            f"(target: >{maximum_mean:g})"
+        ),
+    }
+
+
 def check_word_length_average(text):
     """Flag prose whose mean word runs long (pattern 71)."""
     source = strip_front_matter(text)
@@ -3847,6 +3923,7 @@ ALL_CHECKS = {
     "no-latinate-verb-rate": check_latinate_verb_rate,
     "word-length-average": check_word_length_average,
     "no-mixed-script-words": check_mixed_script_words,
+    "concreteness-average": check_concreteness_average,
     "no-superficial-ing": check_superficial_ing,
     "no-ghost-spectral-density": check_ghost_spectral,
     "no-quietness-obsession": check_quietness,
@@ -3901,7 +3978,7 @@ LEXICAL_CHECKS = {
 QUOTE_AWARE_LEXICAL_CHECKS = {"no-tidy-paragraph-endings"}
 
 STATISTICAL_CHECKS = {
-    "sentence-length-variance", "word-length-average", "no-excessive-lists", "no-this-chains",
+    "sentence-length-variance", "word-length-average", "concreteness-average", "no-excessive-lists", "no-this-chains",
     "no-countdown-negation", "no-negation-density",
     "paragraph-length-uniformity", "vocabulary-diversity",
     "no-section-scaffolding", "no-compound-modifier-density",

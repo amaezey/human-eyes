@@ -40,6 +40,7 @@ METRIC_ONLY_CHECKS = {
     "paragraph-length-uniformity",
     "sentence-length-variance",
     "word-length-average",
+    "concreteness-average",
 }
 
 # Checks whose signal is genuinely structural — no single phrase or

@@ -564,6 +564,29 @@ Evidence: measurement on the project corpora. Sussman and Carter report average 
 
 **Detection:** Programmatic check `word-length-average`.
 
+
+### 73. Concreteness average
+
+The check looks up every word in Brysbaert, Warriner and Kuperman's concreteness norms, 39,954 English words rated from 1 (fully abstract, `justice`) to 5 (fully concrete, `hammer`) by human raters. It takes the mean across the draft's content words and fails at 2.915 or below, in prose of 100 words or more.
+
+It reports a number and quotes nothing, because the signal is the register of the whole draft rather than one span. Function words are excluded, because the norms rate them as maximally abstract (`the` 1.43, `a` 1.46, `because` 1.22) and they would swamp the mean, turning the check into a measure of function-word density. Excluding them widens the separation from 32 points to 38. Words the norms do not cover are skipped.
+
+Across the project corpora human prose averages 2.972 and generated prose 2.820 over content words. At 2.915 the check flags 67% of generated documents and 29% of human ones.
+
+It overlaps the word length and nominalisation rates heavily, because abstract words tend to be long Latinate words, and it is kept as its own check because it says something they cannot: which direction to rewrite in. A character count tells a writer their words are long. This tells them their words name categories instead of things.
+
+**Before:**
+> The framework provides a basis for the approach, and the concept informs the strategy that underpins the process.
+
+**After:**
+> The rota says who opens up, who locks the door, and who carries the keys between shifts.
+
+Evidence: El Attar et al. name psycholinguistic features as a candidate area without supplying a direction, so the direction and threshold come from measurement on the project corpora. Calibration in `dev/evals/concreteness-calibration-2026-07-26.md`.
+
+**Severity:** context_warning · `concreteness-average`
+
+**Detection:** Programmatic check `concreteness-average`.
+
 ---
 
 ## Style

@@ -1882,6 +1882,8 @@ expected_checks = {
     "word-length-average",
     # DR-78: mixed-script confusables, pattern 72.
     "no-mixed-script-words",
+    # DR-84: concreteness average, pattern 73.
+    "concreteness-average",
 }
 actual_checks = set(ALL_CHECKS)
 if actual_checks != expected_checks:
@@ -2671,6 +2673,9 @@ for check_name in ALL_CHECKS:
         # DR-66: this piece runs 25.6 `it` pronouns per 1000 words, inside the
         # 18% of human prose #69 flags by design.
         "no-it-pronoun-rate",
+        # DR-84: this piece averages 2.845 concreteness across its content
+        # words, inside the 29% of human prose #73 flags by design.
+        "concreteness-average",
         "no-negative-parallelisms",
         "overall-signal-stacking",
     }:
@@ -4654,6 +4659,55 @@ if _dr165_unbounded:
     print(f"FAIL: DR-165 should still match as whole words: {_dr165_unbounded}")
 else:
     print("  ok: DR-165 boundary-sensitive candidates still match as whole words")
+
+# DR-84: concreteness rate, pattern 73. Mean concreteness of a draft's words on
+# Brysbaert's 1-to-5 scale, where 1 is fully abstract and 5 fully concrete.
+# Fails at 2.458 or below in prose of 100 words or more. Draft-wide metric, so it
+# reports a metric string rather than quoting phrases.
+_dr84_abstract = (
+    "The framework provides a basis for the approach, and the concept informs the "
+    "strategy that underpins the process. The principle behind the method reflects "
+    "a broader theory of value, meaning, and purpose within the wider context. "
+    "Significance emerges from the relationship between intention and outcome. "
+) * 8
+expect_fail("concreteness-average", _dr84_abstract, "DR-84 abstract vocabulary")
+
+_dr84_concrete = (
+    "The dog knocked the mug off the table and the tea ran under the fridge. "
+    "She found the mop behind the door, wiped the tiles, and put the broken "
+    "handle in the bin by the back step. Rain hit the window. The cat sat on the "
+    "warm bricks by the stove and watched the water dry off the floor. "
+) * 7
+expect_pass("concreteness-average", _dr84_concrete, "DR-84 concrete vocabulary stays clear")
+
+_dr84_short = ALL_CHECKS["concreteness-average"]("The framework informs the approach and the concept.")
+if not _dr84_short["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-84 concreteness-average should skip prose under 100 words")
+else:
+    print("  ok: DR-84 concreteness-average skips prose under 100 words")
+
+_dr84_metric = ALL_CHECKS["concreteness-average"](_dr84_abstract).get("metric")
+if not _dr84_metric:
+    FAILURES += 1
+    print("FAIL: DR-84 concreteness-average must surface a metric string when it flags")
+else:
+    print(f"  ok: DR-84 concreteness-average surfaces a metric: {_dr84_metric}")
+
+if not _grade.CONCRETENESS_NORMS:
+    FAILURES += 1
+    print("FAIL: DR-84 concreteness norms file did not load")
+elif len(_grade.CONCRETENESS_NORMS) < 39000:
+    FAILURES += 1
+    print(f"FAIL: DR-84 concreteness norms truncated: {len(_grade.CONCRETENESS_NORMS)} rows")
+else:
+    print(f"  ok: DR-84 concreteness norms loaded, {len(_grade.CONCRETENESS_NORMS)} words")
+
+if _patterns_data["concreteness-average"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-84 concreteness-average should be a context warning")
+else:
+    print("  ok: DR-84 concreteness-average is a context warning")
 
 # --- Summary ---
 
