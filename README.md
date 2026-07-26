@@ -172,7 +172,6 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | H15 | Performed candour and vulnerability | House style, requested by Mae; AISLOPOPEDIA, Blader, Rohrer and Copy Posse supply exact frames | regex | strong_warning | "Honestly?", "Real talk", "I need to be clear" |
 | H16 | Mechanical repeated paragraph starts | SAGE (peer-reviewer guidance) | regex | context_warning | Three or more consecutive paragraphs opening with the same word |
 | H17 | Change narration | blader/humanizer (Pattern 30, diff-anchored writing) | agent | context_warning | A docstring reading "now returns a list instead of a tuple" |
-| H18 | Even jargon distribution |   | agent | context_warning | Jargon spreads uniformly across the text instead of clumping where the writer knows things. |
 | | **Signal stacking** | | | | |
 | S1 | Signal stacking from stacked AI tells | Kobak et al. (corpus-level density logic); Juzek & Ward, Kousha & Thelwall, Nature, and GPTZero vocabulary (co-occurrence support); composite of components B3, D1, E4, E6, E8, G6, G7, H2, H13| regex | context_warning | Stacked weak signals reaching the threshold (e.g., "headings in prose, assistant residue, generic conclusion") |
 

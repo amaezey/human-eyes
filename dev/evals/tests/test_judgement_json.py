@@ -72,7 +72,6 @@ EXPECTED_IDS = [
     "faux_specificity",
     "neutrality_collapse",
     "rewrite_stance_drift",
-    "even_jargon_distribution",
     "forced_synesthesia",
     "generic_metaphors",
     "referential_clarity",
@@ -134,7 +133,6 @@ EXPECTED_PATTERN_REFS = {
     "faux_specificity": "H6",
     "neutrality_collapse": "H7",
     "rewrite_stance_drift": None,
-    "even_jargon_distribution": "H18",
     "forced_synesthesia": "F3",
     "generic_metaphors": "G2",
     "referential_clarity": "H3",
@@ -164,26 +162,6 @@ for record in records:
 
 print("\n=== judgement.json targeted semantic contracts ===")
 records_by_id = {record.get("id"): record for record in records}
-
-jargon_record = records_by_id.get("even_jargon_distribution", {})
-jargon_values = jargon_record.get("answer_schema", {}).get("values")
-expected_jargon_values = [
-    "jargon is not suspiciously uniform",
-    "jargon spreads suspiciously uniformly across the text",
-]
-if jargon_record.get("answer_schema", {}).get("type") != "state":
-    fail("even_jargon_distribution should use a two-state answer schema")
-elif jargon_values != expected_jargon_values:
-    fail(
-        "even_jargon_distribution should expose one non-flagged state and one "
-        f"flagged state; got {jargon_values!r}"
-    )
-else:
-    ok("even_jargon_distribution does not classify harmless non-flagged distributions")
-if jargon_record.get("flagged_when") != [expected_jargon_values[1]]:
-    fail("even_jargon_distribution should flag only suspiciously uniform distribution")
-else:
-    ok("even_jargon_distribution keeps harmless distributions non-flagged")
 
 metaphor_prompt = records_by_id.get("generic_metaphors", {}).get("prompt", "")
 required_metaphor_guidance = (
