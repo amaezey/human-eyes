@@ -217,7 +217,9 @@ DR-164 is queued: audit every check threshold against its observed distribution.
 
 ## What is next
 
-DR-102 is next in the fixed order: deterministic wikitext markup faults, genre-bound to Wikipedia input. It is one of only two rows left that the re-screen marked as able to add a programmatic check; the other is DR-21's stiff-substitution word list, which is only a question of which further words join #7's existing Latinate family. After those two, the programmatic tier is exhausted and the queue moves to the 15 agent-judgement rows.
+DR-102 is closed and rejected, and the Wikipedia genre is closed with it. Mae ruled on 2026-07-26 that Wikipedia is not a genre this product covers, which took DR-101, DR-103 and DR-138 with it; DR-104 and DR-105 closed in the same sweep on their own grounds, assistant interaction design and authorship evidence. The Zhou paper produced exactly one product change in total, DR-100's two #4 phrases. Before the ruling the live checker was measured: a well-formed and a deliberately broken Wikipedia article produce identical output, one #39 hard fail on `{reflist}`, so valid Wikipedia templates read as placeholder residue and genuine markup faults go unread. That behaviour was left in place. Note that `wikipedia-signs-of-ai-writing` is Wikipedia's own guidance page listing AI-writing tells, not the Wikipedia genre; rows citing it (DR-21, DR-137) are unaffected.
+
+DR-21's stiff-substitution word list is now the last row the re-screen marked as able to add a programmatic check. It is only a question of which further words join #7's existing Latinate family. After it the programmatic tier is exhausted and the queue moves to the 15 agent-judgement rows.
 
 One thing raised and not yet ruled: #25 flags 58% of the human corpus after DR-79B, up from 53% before it. That rate predates this work and no register row questions it.
 
