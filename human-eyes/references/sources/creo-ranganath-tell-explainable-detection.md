@@ -145,7 +145,8 @@ All recommendations remain pending Mae's review. This ingestion made no product,
 
 ## Evaluation of approved changes
 
-- C01-C16: not applicable - all recommendations remain pending and no product changes were implemented.
+- C01-C08 and C10-C16: not applicable - recommendations remain pending or were rejected; no product change implemented.
+- C09: passed - `python3 dev/evals/tests/test_judgement_json.py` and `test_registries.py` pin the new `internal_consistency` record's position, required fields, null pattern_ref, and the registry count of 20. A 175-word document carrying all six Appendix A failures was run through `grade.py audit --surface-only` before the change and produced no finding for any of them.
 
 ## Document review
 

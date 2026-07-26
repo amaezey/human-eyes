@@ -14,7 +14,7 @@
 - **Version / revision:** arXiv v4, 65 pages (main paper, Methods, Appendix A, Appendix B, references, and Supplementary Materials with Figures S1-S20 and Tables S1-S7). Compared against v3 (submitted 2025-07-08) at the abstract and submission-history level only.
 - **Extraction method:** User-supplied local PDF, verified as the arXiv v4 artefact by its embedded arXiv page stamp, title, author list, and abstract against the arXiv Atom API record. Complete embedded text layer extracted from all 65 pages with Poppler `pdftotext -layout`; a second pass with plain `pdftotext` was taken for cross-checking. Structure and page count checked with `pdfinfo`; raster-image inventory checked with `pdfimages -list`. Figure panels whose labels are drawn as vector graphics rather than page text (Figure 1D, Figure 3A, Figure 3B) were rendered at high zoom with PyMuPDF and transcribed by direct visual reading; those transcriptions are recorded separately below and are marked as such.
 - **Full-text status:** complete
-- **Access and transformation notes:** The PDF has an embedded text layer throughout; no OCR was used. Poppler linearises the paper's single-column layout faithfully but cannot recover text that the figure generator emitted as vector paths, so the word labels inside Figure 1D, Figure 3A, and Figure 3B are absent from the extracted text below and are supplied instead in the `Figure transcriptions` section, read visually from high-zoom renders of the same pages. Figures S14, S15, and S16 carry a broken embedded font-encoding map: their axis labels extract as a uniform one-character-forward shift (`D P M P S G V M` for `colorful`, `U I F S N P T  C P U U M F` for `thermos bottle`). Those labels are the 18 synonym pairs that Supplementary Table S7 prints correctly, so no content is lost; the garbled extraction is preserved verbatim below rather than silently corrected. Two raster images are embedded (page 47, the spontaneity-annotation web interface of Figure S8; page 52, the experiment interface of Figure S13); neither carries claim-bearing prose beyond its caption. The authoritative PDF is preserved as an attachment and remains authoritative for figure layout. The AsPredicted preregistration, the PodcastIndex feed database, the release materials referenced for the annotation manual and classifier metrics, and every cited work were not retrieved; this snapshot is bounded to the paper itself.
+- **Access and transformation notes:** The PDF has an embedded text layer throughout; no OCR was used. Poppler linearises the paper's single-column layout faithfully but cannot recover text that the figure generator emitted as vector paths, so the word labels inside Figure 1D, Figure 3A, and Figure 3B are absent from the extracted text below and are supplied instead in the `Figure transcriptions` section, read visually from high-zoom renders of the same pages. Figures S14, S15, and S16 carry a broken embedded font-encoding map: their axis labels extract as a uniform one-character-forward shift (`D P M P S G V M` for `colorful`, `U I F S N P T  C P U U M F` for `thermos bottle`). Those labels are the 18 synonym pairs that Supplementary Table S7 prints correctly, so no content is lost; the shifted letters are preserved verbatim below rather than silently corrected. The same three figures emit interleaved NUL bytes around those labels, which made the raw extraction unreadable to `file`, `grep`, and `git diff`, all of which treated it as binary. The NUL bytes carry no content and are stripped from this snapshot; every visible character, including the shifted letters, is preserved. Two raster images are embedded (page 47, the spontaneity-annotation web interface of Figure S8; page 52, the experiment interface of Figure S13); neither carries claim-bearing prose beyond its caption. The authoritative PDF is preserved as an attachment and remains authoritative for figure layout. The AsPredicted preregistration, the PodcastIndex feed database, the release materials referenced for the annotation manual and classifier metrics, and every cited work were not retrieved; this snapshot is bounded to the paper itself.
 
 ## Full text
 
@@ -2864,40 +2864,40 @@ repair rather than to fix).
 Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                                                         Preprint
 
 
-                                                                  D P M P S G V M    N V M U J D P M P S F E    D S B D L F E    G S B D U V S F E                      Q M B J E    D I F D L F S F E                 S P V O E    D J S D V M B S                          T I J O Z    H M P T T Z                        T Q P U U F E    E P U U F E
-                                                          
-                                                          
+                                                                 DPMPSGVMNVMUJDPMPSFE   DSBDLFEGSBDUVSFE                     QMBJEDIFDLFSFE                SPVOEDJSDVMBS                         TIJOZHMPTTZ                       TQPUUFEEPUUFE
+                                                      
+                                                      
 
- " E K F D U J W F    1 	 V T F E  W B S J B O U 
+"EKFDUJWF   1	VTFEWBSJBOU
 
-                                                          
-                                                          
-                                                          
-                                                                       D P M P S G V M  N V M U J D P M P S F E      D S B D L F E        G S B D U V S F E                      Q M B J E      D I F D L F S F E               S P V O E             D J S D V M B S                   T I J O Z            H M P T T Z                   T Q P U U F E           E P U U F E
-                                                                        C F B O J F    L O J U  I B U                 D P V D I    T P G B                                     D V Q    N V H                            H J G U    Q S F T F O U               N F S S Z  H P  S P V O E    D B S P V T F M U I F S N P T  C P U U M F    W B D V V N  G M B T L
-                                                          
-                                                          
-
-
-                      1 	 V T F E  W B S J B O U 
-
- / P V O                                                  
-                                                          
-                                                          
-                                                                        C F B O J F          L O J U  I B U          D P V D I                T P G B                            D V Q              N V H                        H J G U            Q S F T F O U            N F S S Z  H P  S P V O E D B S P V T F M            U I F S N P T  C P U U M F
-                                                                                                                                                                                                                                                                                                                                                             W B D V V N  G M B T L
-                                                                        U P  D V U    U P  D I P Q               U P  G J Y    U P  S F Q B J S                   U P  I V H    U P  F N C S B D F     U P  K V N Q  P W F S    U P  I P Q  P W F S       U P  M P P L  B U    U P  F Y B N J O F           U P  Q V U  V Q    U P  J O T U B M M
-                                                          
-                                                          
+                                                      
+                                                      
+                                                      
+                                                                      DPMPSGVM NVMUJDPMPSFE     DSBDLFE       GSBDUVSFE                     QMBJE     DIFDLFSFE              SPVOE            DJSDVMBS                  TIJOZ           HMPTTZ                  TQPUUFE          EPUUFE
+                                                                       CFBOJFLOJUIBU                DPVDITPGB                                    DVQNVH                           HJGUQSFTFOU              NFSSZHPSPVOEDBSPVTFMUIFSNPTCPUUMFWBDVVNGMBTL
+                                                      
+                                                      
 
 
-                      1 	 V T F E  W B S J B O U 
+                     1	VTFEWBSJBOU
 
- 7 F S C                                                  
-                                                          
-                                                          
-                                                                        U P  D V U          U P  D I P Q             U P  G J Y         U P  S F Q B J S                   U P  I V H     U P  F N C S B D F        U P  K V N Q  P W F S U P  I P Q  P W F S             U P  M P P L  B U  U P  F Y B N J O F              U P  Q V U  V Q      U P  J O T U B M M
-                                                                                                                                                                " *  J O U S P E V D F E  W B S J B O U                  " M U F S O B U J W F  W B S J B O U
+/PVO                                              
+                                                      
+                                                      
+                                                                       CFBOJF         LOJUIBU         DPVDI               TPGB                           DVQ             NVH                       HJGU           QSFTFOU           NFSSZHPSPVOEDBSPVTFM           UIFSNPTCPUUMF
+                                                                                                                                                                                                                                                                                                                                                            WBDVVNGMBTL
+                                                                       UPDVUUPDIPQ              UPGJYUPSFQBJS                  UPIVHUPFNCSBDF    UPKVNQPWFSUPIPQPWFS      UPMPPLBUUPFYBNJOF          UPQVUVQUPJOTUBMM
+                                                      
+                                                      
+
+
+                     1	VTFEWBSJBOU
+
+7FSC                                              
+                                                      
+                                                      
+                                                                       UPDVU         UPDIPQ            UPGJY        UPSFQBJS                  UPIVH    UPFNCSBDF       UPKVNQPWFSUPIPQPWFS            UPMPPLBU UPFYBNJOF             UPQVUVQ     UPJOTUBMM
+                                                                                                                                                               "*JOUSPEVDFEWBSJBOU                 "MUFSOBUJWFWBSJBOU
 
 
 Figure S14: Per-word-pair usage rates in the Interaction Phase. Each panel shows one
@@ -2909,40 +2909,40 @@ Small translucent dots show individual participant means; large markers show gro
 Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                                                         Preprint
 
 
-                                                                  D P M P S G V M    N V M U J D P M P S F E    D S B D L F E    G S B D U V S F E                      Q M B J E    D I F D L F S F E                 S P V O E    D J S D V M B S                          T I J O Z    H M P T T Z                        T Q P U U F E    E P U U F E
-                                                          
-                                                          
+                                                                 DPMPSGVMNVMUJDPMPSFE   DSBDLFEGSBDUVSFE                     QMBJEDIFDLFSFE                SPVOEDJSDVMBS                         TIJOZHMPTTZ                       TQPUUFEEPUUFE
+                                                      
+                                                      
 
- " E K F D U J W F    1 	 V T F E  W B S J B O U 
+"EKFDUJWF   1	VTFEWBSJBOU
 
-                                                          
-                                                          
-                                                          
-                                                                       D P M P S G V M  N V M U J D P M P S F E      D S B D L F E        G S B D U V S F E                      Q M B J E      D I F D L F S F E               S P V O E             D J S D V M B S                   T I J O Z            H M P T T Z                   T Q P U U F E           E P U U F E
-                                                                        C F B O J F    L O J U  I B U                 D P V D I    T P G B                                     D V Q    N V H                            H J G U    Q S F T F O U               N F S S Z  H P  S P V O E    D B S P V T F M U I F S N P T  C P U U M F    W B D V V N  G M B T L
-                                                          
-                                                          
-
-
-                      1 	 V T F E  W B S J B O U 
-
- / P V O                                                  
-                                                          
-                                                          
-                                                                        C F B O J F          L O J U  I B U          D P V D I                T P G B                            D V Q              N V H                        H J G U            Q S F T F O U            N F S S Z  H P  S P V O E D B S P V T F M            U I F S N P T  C P U U M F
-                                                                                                                                                                                                                                                                                                                                                             W B D V V N  G M B T L
-                                                                        U P  D V U    U P  D I P Q               U P  G J Y    U P  S F Q B J S                   U P  I V H    U P  F N C S B D F     U P  K V N Q  P W F S    U P  I P Q  P W F S       U P  M P P L  B U    U P  F Y B N J O F           U P  Q V U  V Q    U P  J O T U B M M
-                                                          
-                                                          
+                                                      
+                                                      
+                                                      
+                                                                      DPMPSGVM NVMUJDPMPSFE     DSBDLFE       GSBDUVSFE                     QMBJE     DIFDLFSFE              SPVOE            DJSDVMBS                  TIJOZ           HMPTTZ                  TQPUUFE          EPUUFE
+                                                                       CFBOJFLOJUIBU                DPVDITPGB                                    DVQNVH                           HJGUQSFTFOU              NFSSZHPSPVOEDBSPVTFMUIFSNPTCPUUMFWBDVVNGMBTL
+                                                      
+                                                      
 
 
-                      1 	 V T F E  W B S J B O U 
+                     1	VTFEWBSJBOU
 
- 7 F S C                                                  
-                                                          
-                                                          
-                                                                        U P  D V U          U P  D I P Q             U P  G J Y         U P  S F Q B J S                   U P  I V H     U P  F N C S B D F        U P  K V N Q  P W F S U P  I P Q  P W F S             U P  M P P L  B U  U P  F Y B N J O F              U P  Q V U  V Q      U P  J O T U B M M
-                                                                                                                                                                " *  J O U S P E V D F E  W B S J B O U                  " M U F S O B U J W F  W B S J B O U
+/PVO                                              
+                                                      
+                                                      
+                                                                       CFBOJF         LOJUIBU         DPVDI               TPGB                           DVQ             NVH                       HJGU           QSFTFOU           NFSSZHPSPVOEDBSPVTFM           UIFSNPTCPUUMF
+                                                                                                                                                                                                                                                                                                                                                            WBDVVNGMBTL
+                                                                       UPDVUUPDIPQ              UPGJYUPSFQBJS                  UPIVHUPFNCSBDF    UPKVNQPWFSUPIPQPWFS      UPMPPLBUUPFYBNJOF          UPQVUVQUPJOTUBMM
+                                                      
+                                                      
+
+
+                     1	VTFEWBSJBOU
+
+7FSC                                              
+                                                      
+                                                      
+                                                                       UPDVU         UPDIPQ            UPGJY        UPSFQBJS                  UPIVH    UPFNCSBDF       UPKVNQPWFSUPIPQPWFS            UPMPPLBU UPFYBNJOF             UPQVUVQ     UPJOTUBMM
+                                                                                                                                                               "*JOUSPEVDFEWBSJBOU                 "MUFSOBUJWFWBSJBOU
 
 
 Figure S15: Per-word-pair usage rates in the Test Phase. Same layout as Supplementary
@@ -2951,40 +2951,40 @@ translucent dots show individual participant means; large markers show group mea
 Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                                                           Preprint
 
 
-                                                                    D P M P S G V M    N V M U J D P M P S F E    D S B D L F E    G S B D U V S F E                      Q M B J E    D I F D L F S F E                 S P V O E    D J S D V M B S                          T I J O Z    H M P T T Z                        T Q P U U F E    E P U U F E
-                                                            
-                                                            
+                                                                   DPMPSGVMNVMUJDPMPSFE   DSBDLFEGSBDUVSFE                     QMBJEDIFDLFSFE                SPVOEDJSDVMBS                         TIJOZHMPTTZ                       TQPUUFEEPUUFE
+                                                        
+                                                        
 
- " E K F D U J W F    1 	 D I P T F  W B S J B O U 
+"EKFDUJWF   1	DIPTFWBSJBOU
 
-                                                            
-                                                            
-                                                            
-                                                                         D P M P S G V M  N V M U J D P M P S F E      D S B D L F E        G S B D U V S F E                      Q M B J E      D I F D L F S F E               S P V O E             D J S D V M B S                   T I J O Z            H M P T T Z                   T Q P U U F E           E P U U F E
-                                                                          C F B O J F    L O J U  I B U                 D P V D I    T P G B                                     D V Q    N V H                            H J G U    Q S F T F O U               N F S S Z  H P  S P V O E    D B S P V T F M U I F S N P T  C P U U M F    W B D V V N  G M B T L
-                                                            
-                                                            
-
-
-                      1 	 D I P T F  W B S J B O U 
-
- / P V O                                                    
-                                                            
-                                                            
-                                                                          C F B O J F          L O J U  I B U          D P V D I                T P G B                            D V Q              N V H                        H J G U            Q S F T F O U            N F S S Z  H P  S P V O E D B S P V T F M            U I F S N P T  C P U U M F
-                                                                                                                                                                                                                                                                                                                                                               W B D V V N  G M B T L
-                                                                          U P  D V U    U P  D I P Q               U P  G J Y    U P  S F Q B J S                   U P  I V H    U P  F N C S B D F     U P  K V N Q  P W F S    U P  I P Q  P W F S       U P  M P P L  B U    U P  F Y B N J O F           U P  Q V U  V Q    U P  J O T U B M M
-                                                            
-                                                            
+                                                        
+                                                        
+                                                        
+                                                                        DPMPSGVM NVMUJDPMPSFE     DSBDLFE       GSBDUVSFE                     QMBJE     DIFDLFSFE              SPVOE            DJSDVMBS                  TIJOZ           HMPTTZ                  TQPUUFE          EPUUFE
+                                                                         CFBOJFLOJUIBU                DPVDITPGB                                    DVQNVH                           HJGUQSFTFOU              NFSSZHPSPVOEDBSPVTFMUIFSNPTCPUUMFWBDVVNGMBTL
+                                                        
+                                                        
 
 
-                      1 	 D I P T F  W B S J B O U 
+                     1	DIPTFWBSJBOU
 
- 7 F S C                                                    
-                                                            
-                                                            
-                                                                          U P  D V U          U P  D I P Q             U P  G J Y         U P  S F Q B J S                   U P  I V H     U P  F N C S B D F        U P  K V N Q  P W F S U P  I P Q  P W F S             U P  M P P L  B U  U P  F Y B N J O F              U P  Q V U  V Q      U P  J O T U B M M
-                                                                                                                                                                  " *  J O U S P E V D F E  W B S J B O U                  " M U F S O B U J W F  W B S J B O U
+/PVO                                                
+                                                        
+                                                        
+                                                                         CFBOJF         LOJUIBU         DPVDI               TPGB                           DVQ             NVH                       HJGU           QSFTFOU           NFSSZHPSPVOEDBSPVTFM           UIFSNPTCPUUMF
+                                                                                                                                                                                                                                                                                                                                                              WBDVVNGMBTL
+                                                                         UPDVUUPDIPQ              UPGJYUPSFQBJS                  UPIVHUPFNCSBDF    UPKVNQPWFSUPIPQPWFS      UPMPPLBUUPFYBNJOF          UPQVUVQUPJOTUBMM
+                                                        
+                                                        
+
+
+                     1	DIPTFWBSJBOU
+
+7FSC                                                
+                                                        
+                                                        
+                                                                         UPDVU         UPDIPQ            UPGJY        UPSFQBJS                  UPIVH    UPFNCSBDF       UPKVNQPWFSUPIPQPWFS            UPMPPLBU UPFYBNJOF             UPQVUVQ     UPJOTUBMM
+                                                                                                                                                                 "*JOUSPEVDFEWBSJBOU                 "MUFSOBUJWFWBSJBOU
 
 
 Figure S16: Per-word-pair selection rates in the Forced-Choice Phase. Each panel shows
@@ -3414,11 +3414,30 @@ Axis subtitle `GPT score across model versions`. X axis `Log-odds ratio (median,
 
 ### Figure 3A, page 7 - `Changing trend of word usages upon ChatGPT release`
 
-Twelve panels in a four-column by three-row grid, each titled with its word and post-release change-point slope. Reading across rows, then down: `delve (β=+0.12)`, `showcase (β=+0.08)`, `groundbreaking (β=+0.09)`, `innovative (β=+0.04)`; `boast (β=+0.11)`, `intricacies (β=+0.09)`, `meticulous (β=+0.08)`, `underscore (β=-0.06)`; `alongside (β=+0.04)`, `hinges (β=+0.07)`, `crucial (β=+0.04)`, `surpassed (β=+0.07)`. Panel legend: `GPT-3 era (Nov 2022 - May 2024)`, `actual - synthetic`, `sigmoid fit (95% HDI)`, `CP fit on delta`. The same twelve words, in the same order, are the first twelve rows of Supplementary Table S2, which is extracted as text above.
+Twelve panels in a four-column by three-row grid, each titled with its word and post-release change-point slope. Reading across rows, then down: `delve (β=+0.12)`, `showcase (β=+0.08)`, `groundbreaking (β=+0.09)`, `innovative (β=+0.04)`; `boast (β=+0.11)`, `intricacies (β=+0.09)`, `meticulous (β=+0.08)`, `surpassed (β=+0.07)`; `alongside (β=+0.04)`, `hinges (β=+0.07)`, `crucial (β=+0.04)`, `underscore (β=-0.06)`. Panel legend: `GPT-3 era (Nov 2022 - May 2024)`, `actual - synthetic`, `sigmoid fit (95% HDI)`, `CP fit on delta`. Supplementary Table S2's caption states that its rows are ordered as in Figure 3A, and its first twelve rows carry the same twelve words, but in a different order: `delve`, `showcase`, `groundbreaking`, `innovative`, `boasts`, `meticulous`, `underscored`, `intricacies`, `surpassed`, `alongside`, `hinges`, `crucial`. The word set and all twelve slopes agree; only the ordering claim does not, and that inconsistency is the paper's own.
 
 ### Figure 3B, page 7 - `Changes of word usages associated with ChatGPT's preference`
 
-Scatter of per-word beta-Post against GPT-score percentile rank, zoomed to the top 10%. The twelve labelled points are the same twelve words as Figure 3A. The four robustness renderings of the same panel in Supplementary Figure S3 extract as text above and print the identical label set.
+Scatter of per-word beta-Post against GPT-score percentile rank, zoomed to the top 10%. The twelve labelled points are the same twelve words as Figure 3A, printed top to bottom as `delve`, `boast`, `groundbreaking`, `intricacies`, `meticulous`, `showcase`, `surpassed`, `hinges`, `innovative`, `alongside`, `crucial`, `underscore`. The four robustness renderings of the same panel in Supplementary Figure S3 extract as text above and print the identical label set.
+
+## Prior version compared
+
+The reviewed v4 supersedes v3, which the human-eyes library previously cited second-hand. The v3 abstract and the arXiv submission history are preserved here so that the version comparison recorded in the source card rests on preserved text rather than on an unrecorded retrieval. Both were retrieved from `https://arxiv.org/abs/2409.01754v3` on 2026-07-26. No v3 full text was retrieved; this is an abstract-level comparison only.
+
+### arXiv submission history for 2409.01754
+
+```text
+[v1] Tue, 3 Sep 2024 10:01:51 UTC (2,346 KB)
+[v2] Mon, 30 Jun 2025 14:43:32 UTC (8,008 KB)
+[v3] Tue, 8 Jul 2025 14:34:57 UTC (8,008 KB)
+[v4] Thu, 16 Jul 2026 15:15:44 UTC (11,508 KB)
+```
+
+### v3 abstract, as published on the arXiv abstract page
+
+```text
+From the invention of writing and the printing press, to television and social media, human history is punctuated by major innovations in communication technology, which fundamentally altered how ideas spread and reshaped our culture. Recent chatbots powered by generative artificial intelligence constitute a novel medium that encodes cultural patterns in their neural representations and disseminates them in conversations with hundreds of millions of people. Understanding whether these patterns transmit into human language, and ultimately shape human culture, is a fundamental question. While fully quantifying the causal impact of a chatbot like ChatGPT on human culture is very challenging, lexicographic shift in human spoken communication may offer an early indicator of such broad phenomenon. Here, we apply econometric causal inference techniques to 740,249 hours of human discourse from 360,445 YouTube academic talks and 771,591 conversational podcast episodes across multiple disciplines. We detect a measurable and abrupt increase in the use of words preferentially generated by ChatGPT, such as delve, comprehend, boast, swift, and meticulous, after its release. These findings suggest a scenario where machines, originally trained on human data and subsequently exhibiting their own cultural traits, can, in turn, measurably reshape human culture. This marks the beginning of a closed cultural feedback loop in which cultural traits circulate bidirectionally between humans and machines. Our results motivate further research into the evolution of human-machine culture, and raise concerns over the erosion of linguistic and cultural diversity, and the risks of scalable manipulation.
+```
 
 ## Extraction verification
 
