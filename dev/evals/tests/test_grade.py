@@ -1876,6 +1876,8 @@ expected_checks = {
     "no-inline-header-lists",
     "no-compound-modifier-density",
     "no-knowledge-cutoff-disclaimers",
+    # DR-21: Latinate verb rate, pattern 70.
+    "no-latinate-verb-rate",
 }
 actual_checks = set(ALL_CHECKS)
 if actual_checks != expected_checks:
@@ -4439,6 +4441,62 @@ if any("past-tense" in _cid or "past_tense" in _cid for _cid in ALL_CHECKS):
     print("FAIL: DR-66 ruled no past-tense check; one exists")
 else:
     print("  ok: DR-66 added no past-tense check")
+
+# DR-21: Latinate verb rate, pattern 70. Fails at 2.5 per 1000 words in prose
+# of 300 words or more. The list is 44 curated verbs; there is no suffix that
+# marks them, so unlike #65 it cannot grow on its own.
+_dr21_latinate_fail = (
+    "The department will initiate a review and obtain the records it requires. "
+    "Officers must ascertain whether the contractor can facilitate the transfer "
+    "and provide the documents. The board will determine the outcome, identify "
+    "the gaps, and demonstrate that the process has commenced. "
+) * 8
+expect_fail("no-latinate-verb-rate", _dr21_latinate_fail, "DR-21 dense Latinate verbs")
+
+_dr21_latinate_pass = (
+    "The council met on Thursday and went through the budget line by line. "
+    "Members argued about the depot lease for most of the afternoon before the "
+    "chair called a halt. The papers went back to the officers, who will rewrite "
+    "them and bring them again in March. Nobody was happy about the delay. "
+) * 7
+expect_pass(
+    "no-latinate-verb-rate",
+    _dr21_latinate_pass,
+    "DR-21 plain verbs stay clear",
+)
+
+# Nouns and adjectives built on the same stems are not verbs and must not count.
+_dr21_latinate_lookalikes = (
+    "The information in the department's assistant report covers construction, "
+    "generation, and identity. Alternative arrangements were informal. The "
+    "residents of the district read the requirement notice and the departure "
+    "board. Executive transmission and facilitation costs sit elsewhere in an "
+    "alternative appendix. " * 8
+)
+_dr21_lookalike_hits = ALL_CHECKS["no-latinate-verb-rate"](_dr21_latinate_lookalikes)
+if _dr21_lookalike_hits["candidate_count"] != 0:
+    FAILURES += 1
+    print(
+        "FAIL: DR-21 Latinate verb check matched non-verb look-alikes: "
+        f"{_dr21_lookalike_hits['matches']}"
+    )
+else:
+    print("  ok: DR-21 Latinate verb check ignores nouns built on the same stems")
+
+_dr21_short = ALL_CHECKS["no-latinate-verb-rate"](
+    "The board will initiate a review, obtain the records, and determine the outcome."
+)
+if not _dr21_short["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-21 no-latinate-verb-rate should skip prose under 300 words")
+else:
+    print("  ok: DR-21 no-latinate-verb-rate skips prose under 300 words")
+
+if _patterns_data["no-latinate-verb-rate"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-21 no-latinate-verb-rate should be a context warning")
+else:
+    print("  ok: DR-21 no-latinate-verb-rate is a context warning")
 
 # --- Summary ---
 

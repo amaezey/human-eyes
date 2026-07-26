@@ -2153,6 +2153,36 @@ NOMINALISATION_RE = re.compile(
     re.IGNORECASE,
 )
 
+# DR-21: Latinate verbs used where a plain verb would do ("obtain" for "get",
+# "commence" for "start"). Unlike the nominalisations above there is no suffix
+# that marks them, so this is a curated list and grows only by hand. The stems
+# are grouped by inflection so the pattern matches verb forms and not the nouns
+# and adjectives built on the same stems ("information", "assistant",
+# "department", "residents", "alternative").
+_LATINATE_DROP_E = (
+    "initiat", "terminat", "demonstrat", "indicat", "illustrat", "acquir",
+    "procur", "purchas", "requir", "necessitat", "generat", "resid", "inquir",
+    "provid", "contemplat", "determin", "execut", "disseminat", "observ",
+    "ceas", "discontinu", "utiliz", "utilis", "facilitat", "commenc", "relocat",
+)
+_LATINATE_PLAIN = (
+    "assist", "obtain", "construct", "inhabit", "inform", "maintain", "retain",
+    "ascertain", "encounter", "alter", "depart",
+)
+_LATINATE_SIBILANT = ("furnish", "diminish")
+_LATINATE_Y = ("notif", "identif", "modif", "rectif")
+_LATINATE_DOUBLING = ("transmit",)
+LATINATE_VERB_RE = re.compile(
+    r"\b(?:"
+    + "|".join(stem + r"(?:e|es|ed|ing)" for stem in _LATINATE_DROP_E)
+    + "|" + "|".join(stem + r"(?:s|ed|ing)?" for stem in _LATINATE_PLAIN)
+    + "|" + "|".join(stem + r"(?:es|ed|ing)?" for stem in _LATINATE_SIBILANT)
+    + "|" + "|".join(stem + r"(?:y|ies|ied|ying)" for stem in _LATINATE_Y)
+    + "|" + "|".join(stem + r"(?:s|ted|ting)?" for stem in _LATINATE_DOUBLING)
+    + r")\b",
+    re.IGNORECASE,
+)
+
 # "That" relative clauses in SUBJECT position ("the dog that bit me"), where
 # `that` is followed directly by the relative clause's verb. Object-position
 # relatives ("the dog that I saw") are a separate Biber feature and run the
@@ -2389,6 +2419,14 @@ def check_it_pronoun_rate(text):
     return _biber_rate_check(
         "no-it-pronoun-rate", text,
         lambda source: IT_PRONOUN_RE.findall(source), 18.0, "`it` pronoun(s)",
+    )
+
+
+def check_latinate_verb_rate(text):
+    """Flag a high rate of Latinate verbs used for plain ones (pattern 70)."""
+    return _biber_rate_check(
+        "no-latinate-verb-rate", text,
+        lambda source: LATINATE_VERB_RE.findall(source), 2.5, "Latinate verb(s)",
     )
 
 
@@ -3722,6 +3760,7 @@ ALL_CHECKS = {
     "no-participial-clause-rate": check_participial_clause_rate,
     "no-passive-voice-rate": check_passive_voice_rate,
     "no-it-pronoun-rate": check_it_pronoun_rate,
+    "no-latinate-verb-rate": check_latinate_verb_rate,
     "no-superficial-ing": check_superficial_ing,
     "no-ghost-spectral-density": check_ghost_spectral,
     "no-quietness-obsession": check_quietness,

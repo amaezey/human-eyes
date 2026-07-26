@@ -105,6 +105,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | 67 | Present participial clause rate | Reinhart et al. (PNAS 2025; Biber tagset over paired human/LLM text); matched corpus measurement | regex | context_warning | "Stuffing his mouth with cookies, Joe ran out the door" per 1000 words: generated prose runs 5.5 against 3.9 human; fails at 4.4 |
 | 68 | Passive voice rate | Xia, Stańczak, and Roth (EACL 2026; feature set over 516,000 texts); matched corpus measurement | regex | context_warning | Passive verbs per 1000 words in prose of 300+ words: generated prose runs 6.47 against 4.66 human; fails at 5.0 |
 | 69 | `it` pronoun rate | Xia, Stańczak, and Roth (EACL 2026; feature set over 516,000 texts); matched corpus measurement | regex | context_warning | The pronoun `it` per 1000 words in prose of 300+ words: generated prose runs 19.31 against 13.83 human; fails at 18.0 |
+| 70 | Latinate verb rate | Wikipedia *Signs of AI writing* (stiff verb substitution); matched corpus measurement | regex | context_warning | 44 curated Latinate verbs per 1000 words in prose of 300+ words: generated prose runs a median 2.51 against 1.07 human; fails at 2.5 |
 | | **Style** | | | | |
 | 13 | Boldface overuse | Wikipedia cleanup guide; Guo; Gmelius (email domain) | regex | context_warning | Mechanical bolding of terms that don't need emphasis |
 | 14 | Inline-header lists | Wikipedia cleanup guide; Guo and Shankar | regex | strong_warning | Bolded label + colon turning prose into slides |

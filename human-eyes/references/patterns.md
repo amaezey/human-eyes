@@ -518,6 +518,27 @@ Evidence: Xia, Stańczak, and Roth, EACL 2026, which names “It” pronoun freq
 
 **Detection:** Programmatic check `no-it-pronoun-rate`.
 
+
+### 70. Latinate verb rate
+
+The check counts 44 Latinate verbs that stand in for plain ones, among them `obtain`, `commence`, `ascertain`, `utilise`, `facilitate`, `necessitate`, and `procure`. It speaks only about density: it fails at 2.5 or more per 1000 words, in prose of 300 words or more.
+
+Unlike the nominalisation rate above, no suffix marks these verbs, so the list is curated by hand and grows only when a word is added to it deliberately. Only verb forms count: `information`, `assistant`, `department`, `residents`, and `alternative` are built on the same stems and are not matched.
+
+Across the project corpora human prose runs a median 1.07 per 1000 words and generated prose 2.51, a ratio of 2.35. At the 2.5 threshold the check flags 52% of generated documents and 15% of human ones, the second narrowest human flag rate of the rate checks.
+
+**Before:**
+> The department will initiate a review to ascertain whether the contractor can facilitate the transfer and provide the records it requires.
+
+**After:**
+> The department will start a review to find out whether the contractor can hand over the transfer and the records it needs.
+
+Evidence: Wikipedia's *Signs of AI writing*, which names stiff or euphemistic verb substitution as a habit. The page supplies five words and no counts, so the list and the threshold come from measurement on the project corpora. Calibration in `dev/evals/latinate-verb-rate-calibration-2026-07-26.md`.
+
+**Severity:** context_warning · `no-latinate-verb-rate`
+
+**Detection:** Programmatic check `no-latinate-verb-rate`.
+
 ---
 
 ## Style
