@@ -10,9 +10,9 @@
 - **Retrieved:** 2026-07-26
 - **Stable identifier:** DOI 10.1126/science.aec8352
 - **Version / revision:** publisher version of record carrying both correction notices (10 April 2026; 27 May 2026); 11 PDF pages; source PDF SHA-256 `c5f55c331714574f3a6eecef4737d622457a5e671f4f1a47d4a02c02e2231d68`
-- **Extraction method:** PyMuPDF 1.26.5 (MuPDF 1.26.10) text extraction of all 11 pages, then per-page comparison against rendered page images. Figures 1, 2, and 3 are single embedded raster images with no text layer; each was extracted at native resolution with PyMuPDF, upscaled with Pillow LANCZOS, and transcribed by reading the rendered crops. Poppler `pdftotext` 26.02.0 was available and produced the same body text. The repeated per-page download stamp was removed, the typesetter's soft hyphens were normalised to plain hyphens, and trailing whitespace was stripped from every line; no other transformation.
+- **Extraction method:** PyMuPDF 1.26.5 (MuPDF 1.26.10) text extraction of all 11 pages, then per-page comparison against rendered page images. Six embedded raster images carry text with no text layer behind it: the page-1 Research Article Summary figure and Figures 1, 2, 3, 4, and 5. Each was extracted at native resolution with PyMuPDF, upscaled with Pillow LANCZOS, and transcribed by reading the rendered crops. Poppler `pdftotext` 26.02.0 was available and produced the same body text. The repeated per-page download stamp was removed, the typesetter's soft hyphens were normalised to plain hyphens, and trailing whitespace was stripped from every line; no other transformation.
 - **Full-text status:** complete for the requested source (the 11-page article PDF)
-- **Access and transformation notes:** The article's supplementary materials (Materials and Methods; Supplementary Text; figs. S1 to S11; tables S1 to S23; references 62-99) are a separate publisher file and were not supplied and could not be retrieved: the canonical Science page returns HTTP 403. The Dryad deposit (DOI 10.5061/dryad.612jm64kf) holding the data, code, and materials, the OSF preregistrations (DOI 10.17605/OSF.IO/SMVW7), and the cited companion Perspective by Perry were not retrieved; they are separate works and out of this ingestion's scope. Figures 4 and 5 also carry text not present in any caption or in the text layer, and it is transcribed below: both print per-condition sample sizes inside their bars, and Figure 5 prints raw mean differences that the body does not report. Figure 2D's bars carry no percentage labels, so only its model ordering is recorded. The publisher's raster figure artwork was read but is not preserved as image files in this repository.
+- **Access and transformation notes:** The article's supplementary materials (Materials and Methods; Supplementary Text; figs. S1 to S11; tables S1 to S23; references 62-99) are a separate publisher file and were not supplied and could not be retrieved: the canonical Science page returns HTTP 403. The Dryad deposit (DOI 10.5061/dryad.612jm64kf) holding the data, code, and materials, the OSF preregistrations (DOI 10.17605/OSF.IO/SMVW7), and the cited companion Perspective by Perry were not retrieved; they are separate works and out of this ingestion's scope. Figures 4 and 5 also carry text absent from their captions, and it is transcribed below: both print per-condition sample sizes inside their bars, and Figure 5 prints raw mean differences, of which the four study 2a values appear nowhere else while the four study 3 values coincide with the study 3 coefficients the body reports. Figure 2D's bars carry no percentage labels, so only its model ordering is recorded. The publisher's raster figure artwork was read but is not preserved as image files in this repository.
 
 ## Full text
 
@@ -926,6 +926,22 @@ to original U.S. Government Works
 
 All text below was read from the embedded raster images; it has no text layer in the PDF. Figure captions are already present in the extracted body above and are not repeated here.
 
+### Research Article Summary figure (page 1)
+
+Two panels, "Prevalence of sycophancy in AI" (left) and "Effects of sycophantic AI" (right). This is the figure the 2026-04-10 correction replaced.
+
+**Left panel.** An illustration of a person reading a phone, with a thought bubble showing an argument between two other people. The phone's reply bubble reads "Your actions are justified!". Below it, a chart headed "Rates at which AI models endorse user actions (contrasted with crowdsourced human responses)" repeats Fig. 2B's data with the same green "Human 39%" reference line and the same difference labels: Mistral-7B +38%; Claude +39%; Gemini +40%; Qwen +44%; Mistral-24B +51%; GPT-5 +52%; Llama-70B +52%; Llama-8B +52%; GPT-4o +52%; Llama-17B +55%. The raster ends there, so it shows 10 of the 11 models and omits DeepSeek's +55% row.
+
+**Right panel.** "Participants discuss real personal conflicts with non-sycophantic AI OR sycophantic AI", with one reply bubble under each label: non-sycophantic "I understand...but"; sycophantic "That was justified!". Below, "Post-interaction measures" with a condition key (light blue Non-syco, orange Syco) and three dot plots on 1-to-7 scales:
+
+| Item | Anchors | Arrow |
+|---|---|---|
+| "Is your behavior right or wrong?" | completely wrong - completely right | rightward, +25% |
+| "I should apologize for what happened" | strongly disagree - strongly agree | leftward, -10% |
+| "How likely are you to use the model in the future?" | not at all likely - very likely | rightward, +13% |
+
+The middle arrow points left, and in that panel the orange Syco dot sits left of the light blue Non-syco dot, which matches the -10% repair effect the study reports; the 2026-04-10 correction was issued to fix an arrow direction in this middle right-column panel, and this raster carries the substantively correct direction.
+
 ### Fig. 1 (page 3)
 
 **Panel A - "Social sycophancy in AI models"**
@@ -1029,6 +1045,8 @@ Prompt: "You indicated you have experienced a situation where your actions made 
 
 Participant reply: "I threw a party at my house with some friends from marching band, and i didn't invite my little sister. She has some hurt feelings and is mad at me now."
 
+The figure carries three left-margin band labels: "Scenario-aided recall" (Steps 1 and 2), "Discuss conflict with AI model" (Step 3), and "Measures" (Step 4).
+
 **Step 3: Participant discusses conflict in 8-round conversation with either sycophantic AI model OR non-sycophantic AI model**
 
 *Sycophantic transcript (three model turns shown)*
@@ -1081,20 +1099,20 @@ Legend: light blue "non-sycophantic AI model"; orange "sycophantic AI model". Y-
 | C Performance trust | +0.27 (+6%) | +0.43 (+8%) |
 | D Moral trust | +0.29 (+6%) | +0.45 (+9%) |
 
-None of these eight raw mean differences appears in any caption or in the article's text layer; the body reports regression coefficients for the same comparisons (study 2a: 0.64 quality, 0.83 return, 0.47 performance trust, 0.61 moral trust), which are different quantities.
+Only the four study 2a differences are figure-only. The four study 3 differences are numerically identical to the coefficients the body reports for the same study 3 comparisons (0.46 quality, 0.61 return likelihood, 0.43 performance trust, 0.45 moral trust), which is expected because study 3 is a two-group comparison. The body's study 2a coefficients (0.64 quality, 0.83 return, 0.47 performance trust, 0.61 moral trust) differ from this figure's study 2a differences and are separate quantities.
 
 Per-condition sample sizes printed inside the bars, non-sycophantic then sycophantic, identical across all four panels: Study 2a n = 408 and n = 396; Study 3 n = 400 and n = 400.
 
 ## Extraction verification
 
-- **Beginning checked:** PDF page 1 (the Research Article Summary, including the INTRODUCTION / RATIONALE / RESULTS / CONCLUSION structured abstract, the corresponding-author line, the summary-figure caption, and the "CORRECTED 10 APRIL 2026; CORRECTED 27 MAY 2026; SEE LAST PAGE" banner) compared line by line against the rendered page. The PyMuPDF text and Poppler `pdftotext` output agree.
+- **Beginning checked:** PDF page 1 (the Research Article Summary, including the INTRODUCTION / RATIONALE / RESULTS / CONCLUSION structured abstract, the corresponding-author line, the summary-figure caption, the summary figure's own raster content, and the "CORRECTED 10 APRIL 2026; CORRECTED 27 MAY 2026; SEE LAST PAGE" banner) compared line by line against the rendered page. The PyMuPDF text and Poppler `pdftotext` output agree.
 - **Middle checked:** PDF pages 5 to 7 compared against rendered pages, covering the study 2a/2b/3 designs, the preregistered regression coefficients and confidence intervals, Box 1's nine acronym definitions, the Fig. 3 and Fig. 4/Fig. 5 captions, and the RQ3 trust and return-likelihood results. The Figure 3, Figure 4, and Figure 5 raster content was read from the extracted images and transcribed above.
 - **End checked:** PDF pages 9 to 11 compared against rendered pages, covering the Conclusions section, all 61 numbered references, the acknowledgments and author-contribution statement, the data/code/preregistration availability statement, the supplementary-materials listing, the submission and acceptance dates, both correction notices, and the page-11 editor's summary by Ekeoma Uzogara.
-- **Structure checked:** 11 PDF pages, all extracted. Section order verified: Research Article Summary; abstract; Method and results; RQ1; RQ2; Box 1; RQ3; Discussion; Methodological, theoretical, and practical advances; Limitations and future directions; Potential mechanisms for compounding risks; Policy implications; Conclusions; References and Notes (1-61); Acknowledgments; Supplementary Materials listing; correction notices; editor's summary. Figure inventory checked with PyMuPDF: Figs. 1, 2, 3, 4, and 5 are embedded rasters (pages 3, 4, 6, and two on page 7); all five captions are in the text layer. Reference count checked: 61 numbered entries, consistent with the 10 April 2026 correction's note that a duplicate reference was removed and citations renumbered.
+- **Structure checked:** 11 PDF pages, all extracted. Section order verified: Research Article Summary; abstract; Method and results; RQ1; RQ2; Box 1; RQ3; Discussion; Methodological, theoretical, and practical advances; Limitations and future directions; Potential mechanisms for compounding risks; Policy implications; Conclusions; References and Notes (1-61); Acknowledgments; Supplementary Materials listing; correction notices; editor's summary. Figure inventory checked with PyMuPDF: six text-bearing embedded rasters, namely the page-1 Research Article Summary figure and Figs. 1, 2, 3, 4, and 5 (pages 3, 4, 6, and two on page 7); the five numbered captions and the summary figure's caption are all in the text layer. Reference count checked: 61 numbered entries, consistent with the 10 April 2026 correction's note that a duplicate reference was removed and citations renumbered.
 - **Known omissions:** The separate supplementary-materials file (Materials and Methods; Supplementary Text; figs. S1 to S11; tables S1 to S23; references 62-99) is not preserved and could not be retrieved; the canonical Science page returns HTTP 403. The Dryad data/code/materials deposit and the OSF preregistrations were not retrieved. Figure 2D's bars carry no percentage labels, so only its model ordering is recoverable. The publisher's figure artwork is not preserved as image files here.
 
 ## Preserved attachments
 
 | Path | Role in the source | SHA-256 | Preservation / extraction notes |
 |---|---|---|---|
-| none | not applicable | not applicable | The source is a paywalled publisher-typeset PDF supplied as a local file at `/Users/mae/Downloads/science.aec8352.pdf`, SHA-256 `c5f55c331714574f3a6eecef4737d622457a5e671f4f1a47d4a02c02e2231d68`, 11 pages. Its complete text layer and all text carried inside its five figures are transcribed into this snapshot. Consistent with the library's practice of attaching only openly licensed source files, the publisher PDF and its raster figure artwork are not copied into this repository. |
+| none | not applicable | not applicable | The source is a paywalled publisher-typeset PDF supplied as a local file at `/Users/mae/Downloads/science.aec8352.pdf`, SHA-256 `c5f55c331714574f3a6eecef4737d622457a5e671f4f1a47d4a02c02e2231d68`, 11 pages. Its complete text layer and all text carried inside its six text-bearing rasters, namely the page-1 Research Article Summary figure and Figs. 1 to 5, are transcribed into this snapshot. Consistent with the library's practice of attaching only openly licensed source files, the publisher PDF and its raster figure artwork are not copied into this repository. |

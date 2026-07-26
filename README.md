@@ -328,6 +328,7 @@ dev/                               Development only (not installed)
 Per-source reference notes live in [`human-eyes/references/sources/`](human-eyes/references/sources/). Each card records URL, author/owner, publication date, extraction date, evidence tier, source summary, claims, matched rules, associated hypotheses, caveats, and follow-up questions. The deeper extractions for Wikipedia and Vollmer remain in `dev/research/`.
 
 **Peer-reviewed / academic empirical:**
+- [Cheng et al.: Sycophantic AI decreases prosocial intentions and promotes dependence (*Science*, March 2026)](https://doi.org/10.1126/science.aec8352) ([source card](human-eyes/references/sources/cheng-social-sycophancy.md))
 - [Geng and Trotta: Human-LLM Coevolution](https://aclanthology.org/2025.findings-acl.657/) ([source card](human-eyes/references/sources/geng-trotta-human-llm-coevolution.md))
 - [Jiang and Hyland: Engagement markers in ChatGPT-generated argumentative essays](https://journals.sagepub.com/doi/10.1177/07410883251328311) ([source card](human-eyes/references/sources/jiang-hyland-engagement-markers.md))
 - [Ju, Blix, and Williams: Domain Regeneration](https://aclanthology.org/2025.findings-acl.120/) ([source card](human-eyes/references/sources/ju-blix-williams-domain-regeneration.md))
@@ -369,7 +370,6 @@ Per-source reference notes live in [`human-eyes/references/sources/`](human-eyes
 - [Anthropic: Claude system-prompt release notes](https://platform.claude.com/docs/en/release-notes/system-prompts) ([source card](human-eyes/references/sources/anthropic-sonnet-prompts.md)) — complete first-party page preserved 2026-07-15 with 16 model headings, 28 dated prompts, and 24 instruction-level claims; fresh independent source-record review passed with no unresolved findings; no output or authorship inference
 - [OpenAI: GPT-4 System Card](https://cdn.openai.com/papers/gpt-4-system-card.pdf) ([source card](human-eyes/references/sources/openai-gpt-4-system-card.md))
 - [OpenAI: Sycophancy in GPT-4o rollback](https://openai.com/index/sycophancy-in-gpt-4o/) ([source card](human-eyes/references/sources/openai-sycophancy-rollback.md))
-- [Cheng et al.: Sycophantic AI decreases prosocial intentions and promotes dependence (*Science*, March 2026)](https://doi.org/10.1126/science.aec8352) ([source card](human-eyes/references/sources/cheng-social-sycophancy.md))
 
 **Journalism / reported cases:**
 - [Eve Fairbanks: The Biggest Tell That Something Was Written by AI](https://www.theatlantic.com/technology/2026/05/how-to-tell-ai-writing/687345/) ([source card](human-eyes/references/sources/fairbanks-atlantic-ai-writing.md))
