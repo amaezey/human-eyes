@@ -2430,7 +2430,7 @@ def check_word_length_average(text):
     """Flag prose whose mean word runs long (pattern 71)."""
     source = strip_front_matter(text)
     words = WORD_TOKEN_RE.findall(source)
-    minimum_words = threshold_value("word-length-average", "minimum_words", 300)
+    minimum_words = threshold_value("word-length-average", "minimum_words", 100)
     maximum_mean = threshold_value("word-length-average", "maximum_mean_characters", 4.80)
     if len(source.split()) < minimum_words or not words:
         return {

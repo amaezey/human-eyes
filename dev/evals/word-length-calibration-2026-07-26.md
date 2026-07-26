@@ -4,7 +4,7 @@ Record for DR-97: new check #71 `word-length-average`, and why it ships against 
 
 ## The measure
 
-The mean length in characters of every word in the piece. Letters and internal apostrophes count; Markdown punctuation, numerals, and symbols do not. Fails at 4.80 or above in prose of 300 words or more, at context-warning severity.
+The mean length in characters of every word in the piece. Letters and internal apostrophes count; Markdown punctuation, numerals, and symbols do not. Fails at 4.80 or above in prose of 100 words or more, at context-warning severity.
 
 It quotes nothing. There is no offending span, because the signal is the register of the whole draft. It reports a metric string instead, the same way #52 and #53 do.
 
@@ -20,6 +20,23 @@ That is the opposite direction to the one measured here, and the check ships on 
 - The effect they report is small, d = -0.182.
 
 This project's corpora are directly labelled human and generated, and four documents exist as a human original beside its AI rewrite. That is the stronger design for this question, so it decides it. The Sussman and Carter direction is recorded rather than dismissed: if a labelled social-media corpus is ever added here, this is the first check to re-measure.
+
+## The 100-word floor
+
+The check was built with the 300-word floor the rate checks carry, and that floor was wrong for this measure. Those checks count rare features and need volume before a per-1000-words figure means anything. A per-word average does not: every word contributes, so the mean is meaningful as soon as there is a paragraph.
+
+A truncation test was run first and answered the wrong question. Cutting long documents to their first N words and asking whether the slice reaches the same verdict as the whole measures how representative a slice is, not how the check behaves on a genuinely short draft. A 120-word draft is not a slice of anything.
+
+The corpora hold four documents under 300 words and the check reads all four correctly:
+
+| document | words | mean | verdict |
+|---|---|---|---|
+| human passthrough | 249 | 3.72 | clear |
+| generated cover letter | 208 | 5.92 | flag |
+| generated hotel description | 214 | 5.86 | flag |
+| generated email decline | 39 | 4.66 | clear |
+
+Four documents is close to no evidence, and there was no evidence for 300 either. The floor moved to 100, which keeps the 39-word email out, where one long word swings the average, and lets the two 200-word documents through.
 
 ## Corpus
 

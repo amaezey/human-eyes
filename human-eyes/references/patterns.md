@@ -542,11 +542,13 @@ Evidence: Wikipedia's *Signs of AI writing*, which names stiff or euphemistic ve
 
 ### 71. Word length average
 
-The check takes the mean length in characters of every word in the piece and fails at 4.80 or above, in prose of 300 words or more. Letters and internal apostrophes count; Markdown punctuation and numerals do not.
+The check takes the mean length in characters of every word in the piece and fails at 4.80 or above, in prose of 100 words or more. Letters and internal apostrophes count; Markdown punctuation and numerals do not.
 
 It reports a number and quotes nothing, because there is no offending span: the signal is the register of the whole draft. For the words to change, read the nominalisation and Latinate verb findings, which name them.
 
 Across the project corpora human prose runs a median 4.58 characters per word and generated prose 4.95. The gap looks small and separates sharply: at 4.80 the check flags 67% of generated documents and 13% of human ones, the second widest separation in the catalogue after sentence length variation.
+
+The floor is 100 words, not the 300 the other draft-wide rate checks use. Those count rare features and need volume before a per-1000-words figure means anything; a per-word average does not, because every word contributes. The corpora's short documents are read correctly below 300: a 208-word cover letter at 5.92 and a 214-word hotel description at 5.86 both flag, while a 249-word human passthrough at 3.72 stays clear. Under 100 words a single long word swings the average, so a 39-word email is skipped.
 
 Two controls were run before it shipped. Excluding every nineteenth-century document, which is where the shortest human word lengths sit, leaves the result unchanged. Four documents exist as a human original and its AI rewrite, and all four rise: 4.69 to 5.07, 4.81 to 5.50, 3.93 to 5.79, and 4.58 to 5.02.
 

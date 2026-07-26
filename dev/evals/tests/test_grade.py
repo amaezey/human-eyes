@@ -4532,14 +4532,30 @@ if _dr97_over["passed"] or not _dr97_under["passed"]:
 else:
     print("  ok: DR-97 word-length-average threshold sits at 4.80")
 
+# The floor is 100 words, not the 300 the rate checks use. A per-word average
+# needs no volume to be meaningful, and the corpora's short documents are read
+# correctly below 300: a 208-word cover letter at 5.92 and a 214-word hotel
+# description at 5.86 both flag, a 249-word human passthrough at 3.72 stays
+# clear. Under 100 one long word swings the average, so a 39-word email is
+# still skipped.
 _dr97_short_doc = ALL_CHECKS["word-length-average"](
     "The organisation's implementation methodology necessitated reconfiguration."
 )
 if not _dr97_short_doc["passed"]:
     FAILURES += 1
-    print("FAIL: DR-97 word-length-average should skip prose under 300 words")
+    print("FAIL: DR-97 word-length-average should skip prose under 100 words")
 else:
-    print("  ok: DR-97 word-length-average skips prose under 300 words")
+    print("  ok: DR-97 word-length-average skips prose under 100 words")
+
+_dr97_midlength = ALL_CHECKS["word-length-average"](
+    "The organisation's implementation methodology necessitated considerable "
+    "administrative reconfiguration throughout successive operational quarters. " * 12
+)
+if _dr97_midlength["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-97 word-length-average should read prose between 100 and 300 words")
+else:
+    print("  ok: DR-97 word-length-average reads prose between 100 and 300 words")
 
 _dr97_metric = ALL_CHECKS["word-length-average"](_dr97_long_words).get("metric")
 if not _dr97_metric:
