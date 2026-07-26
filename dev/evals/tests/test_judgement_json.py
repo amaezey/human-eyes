@@ -125,9 +125,9 @@ print("\n=== judgement.json pattern_ref values ===")
 # Pattern ids under the DR-158 category-letter scheme. `rewrite_stance_drift`
 # is the one record with no id: it reads a rewrite against its source document,
 # so it has no draft-level catalogue entry (membership rule, DR-158).
-# `performed_candour` -> G7 is preserved from the pre-DR-158 registry and is
-# believed wrong (H15 is the Performed candour entry); correcting it is its own
-# decision, not part of a renumbering.
+# `performed_candour` -> H15 was corrected under DR-167; it had pointed at the
+# Manufactured insight entry since before DR-158. The other five refs naming a
+# check-backed pattern were each checked against their record's prompt and left.
 EXPECTED_PATTERN_REFS = {
     "structural_monotony": "G13",
     "tonal_uniformity": "H3",
@@ -142,7 +142,7 @@ EXPECTED_PATTERN_REFS = {
     "semantic_redundancy": "H2",
     "underspecified_language": "H11",
     "context_leakage": "D1",
-    "performed_candour": "G7",
+    "performed_candour": "H15",
     "vacuous_connection": "E1",
     "genre_specific": "H10",
     "audience_knowledge_mismatch": "D6",

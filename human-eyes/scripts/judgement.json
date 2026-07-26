@@ -207,7 +207,7 @@
     },
     {
       "id": "performed_candour",
-      "pattern_ref": "G7",
+      "pattern_ref": "H15",
       "severity": "strong_warning",
       "prompt": "List sincerity announcements and authenticity boosters such as honest, real, actual, genuine, frankly, candidly, and truthfully when they perform candour instead of adding literal meaning. Quote the complete frame and explain why the claim can be stated directly. Preserve literal uses and quotations.",
       "answer_schema": {
