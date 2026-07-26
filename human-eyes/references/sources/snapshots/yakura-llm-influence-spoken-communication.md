@@ -14,11 +14,11 @@
 - **Version / revision:** arXiv v4, 65 pages (main paper, Methods, Appendix A, Appendix B, references, and Supplementary Materials with Figures S1-S20 and Tables S1-S7). Compared against v3 (submitted 2025-07-08) at the abstract and submission-history level only.
 - **Extraction method:** User-supplied local PDF, verified as the arXiv v4 artefact by its embedded arXiv page stamp, title, author list, and abstract against the arXiv Atom API record. Complete embedded text layer extracted from all 65 pages with Poppler `pdftotext -layout`; a second pass with plain `pdftotext` was taken for cross-checking. Structure and page count checked with `pdfinfo`; raster-image inventory checked with `pdfimages -list`. Figure panels whose labels are drawn as vector graphics rather than page text (Figure 1D, Figure 3A, Figure 3B) were rendered at high zoom with PyMuPDF and transcribed by direct visual reading; those transcriptions are recorded separately below and are marked as such.
 - **Full-text status:** complete
-- **Access and transformation notes:** The PDF has an embedded text layer throughout; no OCR was used. Poppler linearises the paper's single-column layout faithfully but cannot recover text that the figure generator emitted as vector paths, so the word labels inside Figure 1D, Figure 3A, and Figure 3B are absent from the extracted text below and are supplied instead in the `Figure transcriptions` section, read visually from high-zoom renders of the same pages. Figures S14, S15, and S16 carry a broken embedded font-encoding map: their axis labels extract as a uniform one-character-forward shift (`D P M P S G V M` for `colorful`, `U I F S N P T  C P U U M F` for `thermos bottle`). Those labels are the 18 synonym pairs that Supplementary Table S7 prints correctly, so no content is lost; the shifted letters are preserved verbatim below rather than silently corrected. The same three figures emit interleaved NUL bytes around those labels, which made the raw extraction unreadable to `file`, `grep`, and `git diff`, all of which treated it as binary. The NUL bytes carry no content and are stripped from this snapshot; every visible character, including the shifted letters, is preserved. Two raster images are embedded (page 47, the spontaneity-annotation web interface of Figure S8; page 52, the experiment interface of Figure S13); neither carries claim-bearing prose beyond its caption. The authoritative PDF is preserved as an attachment and remains authoritative for figure layout. The AsPredicted preregistration, the PodcastIndex feed database, the release materials referenced for the annotation manual and classifier metrics, and every cited work were not retrieved; this snapshot is bounded to the paper itself.
+- **Access and transformation notes:** The PDF has an embedded text layer throughout; no OCR was used. Poppler linearises the paper's single-column layout faithfully but cannot recover text that the figure generator emitted as vector paths, so the word labels inside Figure 1D, Figure 3A, and Figure 3B are absent from the extracted text below and are supplied instead in the `Figure transcriptions` section, read visually from high-zoom renders of the same pages. Figures S14, S15, and S16 carry a broken embedded font-encoding map: their axis labels extract as a uniform one-character-forward shift (`D P M P S G V M` for `colorful`, `U I F S N P T  C P U U M F` for `thermos bottle`). Those labels are the 18 synonym pairs that Supplementary Table S7 prints correctly, so no content is lost; the shifted letters are preserved verbatim below rather than silently corrected. The same broken subset maps punctuation and digits 31 code points below their intended glyph, so `space`, `-`, `.`, `/`, `0`, `1`, `2`, `5`, and `7` extract as control bytes (488 of them). Left raw, those made the extraction unreadable to `file`, `grep`, and `git diff`, all of which treated it as binary. Each is restored here to the glyph it stands for rather than deleted, so no glyph is lost; the letters are left as extracted, still one position forward of their intended letter. The one byte dropped is NUL, 2,337 occurrences of inter-character padding that decodes to another control code and stands for no glyph. Separately, the form feed that Poppler writes at each page boundary is replaced with an explicit `===== PDF page N =====` marker line, so the 65 page boundaries stay legible and countable in plain text. Two raster images are embedded (page 47, the spontaneity-annotation web interface of Figure S8; page 52, the experiment interface of Figure S13); neither carries claim-bearing prose beyond its caption. The authoritative PDF is preserved as an attachment and remains authoritative for figure layout. The AsPredicted preregistration, the PodcastIndex feed database, the release materials referenced for the annotation manual and classifier metrics, and every cited work were not retrieved; this snapshot is bounded to the paper itself.
 
 ## Full text
 
-The complete extracted text of all 65 pages follows, in page order, covering the abstract, main text, Methods, Acknowledgments, Appendix A, Appendix B, references, and the Supplementary Materials including all supplementary figure captions and all seven supplementary tables. Running headers and footers are retained as extracted.
+The complete extracted text of all 65 pages follows, in page order, separated by explicit `===== PDF page N =====` markers that replace Poppler's form feeds, covering the abstract, main text, Methods, Acknowledgments, Appendix A, Appendix B, references, and the Supplementary Materials including all supplementary figure captions and all seven supplementary tables. Running headers and footers are retained as extracted.
 
 ```text
                                          Empirical Evidence of Large Language Model’s Influence on
@@ -77,7 +77,10 @@ arXiv:2409.01754v4 [cs.CY] 16 Jul 2026
 
 
                                                                                                 1
-Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
+
+
+===== PDF page 2 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
 
 
 and the Internet each reshaped human culture in distinctive ways [6, 7, 8, 9]. Generative AI,
@@ -128,7 +131,10 @@ processes [29], producing an emergent linguistic profile shaped by statistical l
 ment, and alignment objectives [30, 31]. While rooted in human language, this profile exhibits
 distinctive characteristics that set it apart from organic human communication [32, 33], with a
 persistent preference for normative, socially desirable patterns [34, 35].
-Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
+
+
+===== PDF page 3 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
 
 
     At the lexical level, where word choice is itself a key aspect of cultural behavior, ChatGPT
@@ -171,7 +177,10 @@ human spoken communication). To restrict the analysis to episodes that genuinely
 neous communication, we trained a classifier to detect spontaneity from audio (Fig. 1B; ≈ 90%
 accuracy on held-out annotations; see also Spontaneity annotation and classification), retaining
 only the conversational and unscripted subset on which the analyses that follow are based.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                      Preprint
+
+
+===== PDF page 4 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                      Preprint
 
 
 A. Frequency transition of delve vs synthetic control                                                                                       D. Top words preferred by ChatGPT
@@ -232,7 +241,10 @@ shown for comparison and are not included in the reference. delve sits at or nea
 markedly attenuated preference with GPT-5. (E) Construction of a synthetic control: a convex
 combination of donor words optimized to match the treated word’s pre-treatment trajectory,
 illustrated for delve.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                             Preprint
+
+
+===== PDF page 5 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                             Preprint
 
 
 Relationship between ChatGPT’s word preferences and hu-
@@ -289,7 +301,10 @@ Technology podcasts (restricted to conversational, spontaneous speech; see Metho
 ing the release of ChatGPT (Fig. 1A) to ∼44% above its synthetic-control counterfactual over
 months 13–18 post-release (95% CI [+22%, +63%], in-space placebo p = 0.010; see Estimating
 causal influence of ChatGPT in Methods); the rejection holds under alternative donor-selection
-Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
+
+
+===== PDF page 6 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
 
 
 strategies (Supplementary Fig. S1). The result is not driven by a small number of high-usage
@@ -343,7 +358,10 @@ word regression at each. For 28 candidate change points whose 18-month post-wind
 ChatGPT, the mean top-1% slope βPost was flat (+0.0004 ± 0.003); it rose to +0.033 only once
 the window reached the actual launch and peaked at +0.042 in September 2023 (permutation
 p = 0.034; Supplementary Fig. S5).
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                       Preprint
+
+
+===== PDF page 7 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                       Preprint
 
 
  A. Changing trend of word usages upon ChatGPT release          B. Changes of word usages associated with
@@ -385,7 +403,10 @@ action alone is sufficient to produce lasting lexical change in individual speak
 we conducted a controlled experiment (N = 496; see Fig. 4 Top and Methods). The study was
 pre-registered under https://aspredicted.org/k38u44.pdf. In this study, participants played a
 chat-based picture selection game with an AI co-player, modeled after referential communication
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                           Preprint
+
+
+===== PDF page 8 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                           Preprint
 
 
                                                     Behavioral experiment with RCT (N=496)                                                                Results
@@ -451,7 +472,10 @@ consistent with durable lexical entrenchment rather than within-context repetiti
 a subsequent forced-choice task in which participants selected their preferred expression from
 the two variants, they chose the AI-introduced variant on 63% of trials (b = 0.13, 95% CI
 [0.11, 0.14], p < .001; Supplementary Fig. S16). This provides converging evidence of an explicit
-Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
+
+
+===== PDF page 9 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
 
 
 lexical preference shift. The uptake of AI-introduced variants held across three distinct lexical
@@ -502,7 +526,10 @@ is plausibly dampened, and evolved heuristics for source evaluation—such as pr
 prestige, and expertise [20, 62]—might find less purchase. Instead, an LLM’s lexical choices are
 read as articulate and authoritative, lending a word like delve the appearance of sophisticated
 expression, and it is this perceived value, in the words themselves, on which such variants are
-Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
+
+
+===== PDF page 10 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
 
 
 selected [63]. The consequence is that an algorithmic system may come to function as a cultural
@@ -554,7 +581,10 @@ with lower skill or with uncritical AI use, reshaping perceptions of credibility
     Several limitations qualify these results. The corpus is English-only and is limited to a self-
 selected, public-facing population of podcast hosts and their guests. The main analysis covers
 the first 18 months after ChatGPT’s release and treats OpenAI’s GPT models as the dominant
-Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
+
+
+===== PDF page 11 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
 
 
 driver; LLM deployment has since fragmented across models and providers, making attribution
@@ -604,7 +634,10 @@ at increasing conceptual distance: Education and Business, which overlap with Sc
 Technology in theme and audience, and Sports, a more distant and characteristically spontaneous
 domain. To place these targeted categories against the wider landscape, we additionally collected
 a broad snapshot of all remaining categories in the catalog.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
+
+
+===== PDF page 12 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
 
 
     We ran a first exploratory data collection, in which episodes were drawn from a database of
@@ -655,7 +688,10 @@ diarization with an audio-based classifier of spontaneity, trained against human
   1 PodcastIndex feed database: https://public.podcastindex.org/podcastindex_feeds.db.tgz
   2 PodcastIndex API: https://podcastindex-org.github.io/docs-api
   3 Apple Podcasts categories: https://podcasters.apple.com/support/1691-apple-podcasts-categories
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                 Preprint
+
+
+===== PDF page 13 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                 Preprint
 
 
 1–4 scale ranging from “clearly scripted” to “clearly spontaneous”. The annotation followed the
@@ -707,7 +743,10 @@ removing noise and highlighting relevant patterns. We followed a systematic proc
 um starting around May 2020, which we found difficult to attribute to an actual increase in speakers’ usage of
 the word. It is more plausible that YouTube switched to a transcription model that transcribes fillers verbatim,
 and thus, we conducted the transcription process to avoid a potential source of bias.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
+
+
+===== PDF page 14 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
 
 
      (e.g., running to run). Since raw stems are often non-words (e.g., delve stems to delv),
@@ -756,7 +795,10 @@ different GPT-family models, of which GPT-3.5-turbo, GPT-4, and GPT-4-turbo were
 duction models available at the time the GPT-score set was defined and used to compute the
 reference GPT score below. To check whether the same preferences persist in later models, we
 additionally evaluated GPT-4o and GPT-5 after that, while we did not include them in the
-Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
+
+
+===== PDF page 15 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
 
 
 reference score so that the set of treated words used in the downstream causal analysis remains
@@ -771,7 +813,7 @@ smoothing to mitigate zero-count issues:
                       pw =                                             .
                                         total documents + 1
 The log-odds transformation was applied to these smoothed probabilities:
-                                                       
+                                                  1     2
                                                      p
                                 log-odds (p) = ln         ,
                                                     1−p
@@ -807,7 +849,10 @@ unknown true distribution of ChatGPT’s usage across datasets (D), models (M ),
 where 1 denotes flat priors for each parameter. The joint distribution P (D, M, P ) was computed
 as:
                         P (D, M, P ) = P (D) · P (M | D) · P (P | D, M ) .
-Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
+
+
+===== PDF page 16 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
 
 
 For each of 1000 Monte Carlo samples from this prior, we marginalized the human and ChatGPT
@@ -860,7 +905,10 @@ same shock, and we restrict the donor pool to words that ChatGPT neither over- n
 (those with near-zero GPT score), removing the words most likely to carry the treatment (see
 Donor selection). We discuss the consequences of residual interference, and the interpretation of
 our results should it remain, in Discussion.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
+
+
+===== PDF page 17 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
 
 
 Donor selection
@@ -911,7 +959,10 @@ We assess the significance of the causal effect using the in-space placebo test 
 as refined by Ferman and Pinto [91]. For each word in the matching pool, we re-run the synthetic
 control procedure with that word in the role of the treated word, taking the remaining donors
 as the new pool, and compute the post- to pre-treatment ratio of mean squared prediction error
-Yakura, Lopez-Lopez, Brinkmann et al.                                                          Preprint
+
+
+===== PDF page 18 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                          Preprint
 
 
 (MSPE). The placebo pool size is bounded above by the size of the donor pool: for the Main
@@ -966,7 +1017,10 @@ every coefficient by its posterior mean and the 95% highest-density interval (HD
 against a permutation null (Fig. 3C). X is sampled on geometric grid from 100% to 0.5%; at
 each point we generate nperm = 1,000 permutations and report the 5th–95th percentile of the
 permuted slice mean.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
+
+
+===== PDF page 19 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
 
 
 Controlled referential communication experiment
@@ -1016,7 +1070,10 @@ who would try to identify it in a future iteration of the game. Each of the 9 sy
 was depicted once across the three trials.
 Between phases (3) and (4), participants answered an open-ended detection check: “Have you
 noticed anything about the language of the chatbot?”.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                    Preprint
+
+
+===== PDF page 20 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                    Preprint
 
 
     (4) Forced-Choice Task Participants were presented with nine images depicting the ob-
@@ -1065,7 +1122,10 @@ prompts we used (polish, improve, and clarify) yield closely similar LORs for ev
 word, with the clarify prompt consistently the mildest yet never reversing a preference.
     LOR magnitudes varied substantially across source corpora (Fig. 5B). Analysis of log-probability
 distributions (Supplementary Fig. S11) revealed that this variability stems primarily from base-
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                         Preprint
+
+
+===== PDF page 21 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                         Preprint
 
 
 
@@ -1141,7 +1201,10 @@ steps, since academic talks are predominantly prepared, monologic speech. Transc
 thetic control, and change-point analyses are otherwise identical.
     The headline matches the podcast result: the placebo test for delve yields p = 0.010 (Fig. 6A).
 The piecewise-linear regression extends the effect to other top GPT-preferred words, such as
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                Preprint
+
+
+===== PDF page 22 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                Preprint
 
 
 A. Changing trend of word usages upon ChatGPT release          B. Changes of word usages associated with
@@ -1181,7 +1244,10 @@ References
      doi: 10.1016/j.tics.2026.01.003.
 
  [4] Marshall McLuhan. Understanding Media: The Extensions of Man. McGraw-Hill, 1964.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
+
+
+===== PDF page 23 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
 
 
  [5] Joseph Henrich. The Secret of Our Success: How Culture Is Driving Human Evolution,
@@ -1229,7 +1295,10 @@ References
 [19] Joseph Henrich and Francisco J. Gil-White. The evolution of prestige: Freely conferred
      deference as a mechanism for enhancing the benefits of cultural transmission. Evolution and
      Human Behavior, 22(3):165–196, may 2001. doi: 10.1016/S1090-5138(00)00071-4.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
+
+
+===== PDF page 24 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
 
 
 [20] Rachel L. Kendal, Neeltje Boogert, Luke Rendell, Kevin N. Laland, Mike Webster, and
@@ -1278,7 +1347,10 @@ References
      tiano, Jan Leike, and Ryan Lowe. Training language models to follow instructions with
      human feedback. In Proceedings of the 35th Conference on Neural Information Processing
      Systems, pages 27730–27744, dec 2022.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
+
+
+===== PDF page 25 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
 
 
 [32] Alberto Muñoz Ortiz, Carlos Gómez-Rodríguez, and David Vilares. Contrasting linguistic
@@ -1324,7 +1396,10 @@ References
      and Bernhard Schölkopf. Causalcite: A causal formulation of paper citations. In Findings
      of the Association for Computational Linguistics: ACL 2024, pages 8395–8410, 2024. doi:
      10.18653/v1/2024.findings-acl.497.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
+
+
+===== PDF page 26 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
 
 
 [44] Mingmeng Geng, Caixi Chen, Yanru Wu, Yao Wan, Pan Zhou, and Dongping Chen. The
@@ -1368,7 +1443,10 @@ References
 [57] Jennifer M. Logg, Julia A. Minson, and Don A. Moore. Algorithm appreciation: People
      prefer algorithmic to human judgment. Organizational Behavior and Human Decision Pro-
      cesses, 151:90–103, mar 2019. doi: 10.1016/j.obhdp.2018.12.005.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                    Preprint
+
+
+===== PDF page 27 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                    Preprint
 
 
 [58] Sofia Eleni Spatharioti, David Rothschild, Daniel G Goldstein, and Jake M Hofman. Effects
@@ -1412,7 +1490,10 @@ References
 [71] Jacob Eisenstein, Brendan O’Connor, Noah A. Smith, and Eric P. Xing. Diffusion of lexical
      change in social media. PLoS ONE, 9(11):e113114, nov 2014. doi: 10.1371/journal.pone.
      0113114. URL https://doi.org/10.1371/journal.pone.0113114.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
+
+
+===== PDF page 28 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
 
 
 [72] Jean-Baptiste Michel, Yuan Kui Shen, Aviva P. Aiden, Adrian Veres, Matthew K. and The
@@ -1458,7 +1539,10 @@ References
      Sutskever. Robust speech recognition via large-scale weak supervision. In Proceedings of
      the 40th International Conference on Machine Learning, volume 202, pages 28492–28518,
      jul 2023.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                  Preprint
+
+
+===== PDF page 29 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                  Preprint
 
 
 [84] Shahar Elisha, Andrew McDowell, Mariano Beguerisse-Díaz, and Emmanouil Benetos. Clas-
@@ -1494,7 +1578,10 @@ References
 [96] Claudio Castellano, Santo Fortunato, and Vittorio Loreto. Statistical physics of social
      dynamics. Reviews of Modern Physics, 81(2):591–646, 2009. doi: 10.1103/revmodphys.81.
      591.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                    Preprint
+
+
+===== PDF page 30 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                    Preprint
 
 
                            Supplementary Materials
@@ -1519,7 +1606,10 @@ This PDF file includes:
 Materials and Methods
 Figures S1 to S17
 Tables S1 to S7
-Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
+
+
+===== PDF page 31 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
 
 
 Materials and Methods
@@ -1569,7 +1659,10 @@ we randomly sampled 2,000 episodes and extracted one 300-word excerpt from each.
   7 https://www.kaggle.com/datasets/wcukierski/enron-email-dataset
   8 https://www.kaggle.com/competitions/asap-aes
   9 https://www.mediawiki.org/wiki/API:Main_page
-Yakura, Lopez-Lopez, Brinkmann et al.                                                        Preprint
+
+
+===== PDF page 32 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                        Preprint
 
 
 Spontaneity annotation and classification
@@ -1618,7 +1711,10 @@ Audio-based spontaneity classifier
 We used the 399-episode annotated set to train an audio classifier in the same manner as Elisha
 et al. [84] so that it predicts spontaneity directly from each podcast’s middle window, allowing
 the spontaneity criterion to be applied to the full corpus without further manual labeling.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                        Preprint
+
+
+===== PDF page 33 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                        Preprint
 
 
 Feature extraction Each episode was resampled to 16 kHz mono and split into 25 contiguous
@@ -1669,7 +1765,10 @@ aggregation rules does not materially affect the downstream corpus.
 Word-sense audit
 The raw podcast counts tally every token whose stem matches a target word, irrespective of
 meaning. This over-states the signal of interest in two ways. The first is contamination by
-Yakura, Lopez-Lopez, Brinkmann et al.                                                        Preprint
+
+
+===== PDF page 34 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                        Preprint
 
 
 proper nouns, brands, and transcription artifacts that happen to share a stem. A count for
@@ -1717,7 +1816,10 @@ on this shared audited substrate, with a single control run repeated on the raw 
 to isolate the contribution of the audit itself.
  10 English Wiktionary: https://en.wiktionary.org
  11 Qwen3 instruction-tuned model: https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507
-Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
+
+
+===== PDF page 35 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
 
 
 Trends not linked to ChatGPT
@@ -1765,7 +1867,10 @@ are computed on the raw monthly series.
 In-time placebo: Change-point date sweep
 To assess whether the post-release acceleration is anchored in time to ChatGPT’s launch rather
 than to an arbitrary cut in the data window, we sweep the assumed change point across a
-Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
+
+
+===== PDF page 36 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                   Preprint
 
 
 monthly grid spanning the full observation window. At each candidate month c, we form a 24-
@@ -1814,7 +1919,10 @@ ten closest pre-treatment matches; it asks whether the SLSQP fit on a hundred-el
 exploits the flexibility the data does not warrant. Because the in-space placebo procedure draws
 targets from the same donor pool, C2’s ten-donor pool floors the empirical placebo p-value at
 1/(10 + 1) ≈ 0.091.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
+
+
+===== PDF page 37 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                      Preprint
 
 
 C3 — inverse-distance similarity weights. C3 keeps Main’s donor pool (L = 100) but
@@ -1862,7 +1970,10 @@ We determined the sample size with an a priori power analysis. Based on pilot da
 literature, we targeted a small-to-medium effect of d = 0.30. With two-tailed α = .05 and power
 = .80, the required N per cell was 88, for a total of N = 352 across the 4 between-subjects cells.
 We recruited above the required (N = 500), and after exclusions, the final sample was N = 496.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
+
+
+===== PDF page 38 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                     Preprint
 
 
 Synonym pair selection
@@ -1911,7 +2022,10 @@ were rejected with a prompt to re-record. For the Test Phase, the automatic tran
 displayed to the participant in an editable text area, together with audio playback. Participants
 were asked to correct any recognition errors and submit, ensuring that the primary outcome
 measure was scored from human-verified transcripts.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
+
+
+===== PDF page 39 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
 
 
 Scoring and statistical analysis. For each synonym pair, we pre-registered a coding scheme
@@ -1959,7 +2073,10 @@ control, a single committed speaker (zealot) occupies one network node with its 
 nections. After 100 generations without the zealot, the simulation continues for 300 generations
 with the zealot active. Results are averaged over 50 independent runs, each with a fresh network
 and initial state.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                 Preprint
+
+
+===== PDF page 40 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                 Preprint
 
 
 Supplementary Figures
@@ -2033,7 +2150,10 @@ four control specifications (see Methods and Supplementary Table S5). In-space p
 pC1 = 0.050, pC2 = 0.091 (floor), pC3 = 0.040, pC4 = 0.010 (compare pMain = 0.010). The main
 result is robust to changes in donor selection (C1, C2), weight aggregation (C3), and the counts
 substrate (C4).
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                      Preprint
+
+
+===== PDF page 41 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                      Preprint
 
 
                                              delve ( =+0.12)                   showcase ( =+0.08)                  groundbreaking ( =+0.09)              innovative ( =+0.04)                 boast ( =+0.11)
@@ -2199,7 +2319,10 @@ posterior smoother (solid; 95% HDI shaded) and the change-point fit of Equation 
 overlaid. Of the 36 words, 28 show a positive post-release slope and 13 are credibly so (95%
 HDI on βPost excludes zero). The twelve panels reproduced in Fig. 3A are the largest-magnitude
 credible subset.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                          Preprint
+
+
+===== PDF page 42 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                          Preprint
 
 
                                                                              C1: bare l2 matching                                                                                                                                         C2: SLSQP, L=10 donor pool
@@ -2329,7 +2452,10 @@ range, and the right inset the slice-mean βPost over nested top-X% slices again
 null. The twelve labeled words are Main’s top 12 by |95%-HDI bound on βPost |, plotted at each
 control’s own positions so the same exemplars can be tracked across specifications. The slice-
 mean exits the permutation null at the high-GPT-score tail under every control.
- Yakura, Lopez-Lopez, Brinkmann et al.                                                                                       Preprint
+
+
+===== PDF page 43 =====
+ Yakura, Lopez-Lopez, Brinkmann et al.                                                                                       Preprint
 
 
                                         concentration in top-X % GPT words            concentration in bottom-X % GPT words
@@ -2362,7 +2488,10 @@ Mean GPT, Post (slice)
  2× the upper bound of chance (+0.013). Right: the matching check on the words ChatGPT
  most strongly disfavors stays close to zero at every cut-off (at the bottom 1%: −0.002, chance
  range [−0.007, +0.014]).
-  Yakura, Lopez-Lopez, Brinkmann et al.                                                               Preprint
+
+
+===== PDF page 44 =====
+  Yakura, Lopez-Lopez, Brinkmann et al.                                                               Preprint
 
 
 
@@ -2394,7 +2523,10 @@ Mean GPT, Post (top 1%)
   bootstrap CI of the mean over words. Dashed red: true launch (2022-11-30). Mean β stays inside
   the null at every pre-GPT candidate and steps up only once the window includes the launch.
   Permutation p = 0.034.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                 Preprint
+
+
+===== PDF page 45 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                 Preprint
 
 
                    A Episodes per channel                                                         B Science & Technology
@@ -2423,7 +2555,10 @@ Science & Technology for all channels (solid) and after removing the ten channel
 delve usage (dashed); the dotted line marks the ChatGPT release. The post-release increase is
 essentially unchanged with and without those channels (fold ≈1.5 in both cases), so the trend is
 not driven by a few high-usage channels.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                Preprint
+
+
+===== PDF page 46 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                Preprint
 
 
                                          A. Score-effect GP fit, with vs without delve                                                                  B. Slice-mean effect vs permutation null
@@ -2470,7 +2605,10 @@ median shaded). The observed slice-mean is drawn for all words (solid) and with 
 over 36 words vs. 0.027 excluding delve, permutation p = 0.001 for both; top 2%: 0.025 over 71
 words vs. 0.024, p = 0.001 for both). The score–effect relationship therefore exceeds chance with
 and without delve.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                 Preprint
+
+
+===== PDF page 47 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                 Preprint
 
 
 
@@ -2480,7 +2618,10 @@ heard three 30-second clips sampled from the beginning, middle, and end of the e
 10-minute window (top row) and rated the episode on a four-point scale from clearly scripted to
 clearly spontaneous (bottom row). Coders were blind to the study hypothesis and to the purpose
 of the annotation task.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                 Preprint
+
+
+===== PDF page 48 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                 Preprint
 
 
                                           raw (no smoothing) (RMSPE/flat = 0.51)                     = 720 d ( 24 mo) (RMSPE/flat = 0.39)             = 1440 d ( 48 mo) (RMSPE/flat = 0.43)
@@ -2534,7 +2675,10 @@ noise; at ℓ = 1440 d (right), it underfits the low-frequency dynamics. ℓ = 7
 pipeline default) is chosen as a compromise. Smoothing enters only at donor selection and the
 synthetic control fit; all downstream change-point and placebo statistics are computed on the
 raw monthly series.
- Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                    Preprint
+
+
+===== PDF page 49 =====
+ Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                    Preprint
 
 
                                       prompted ( =+0.21 rank=0.98)            outperform ( =+0.23 rank=0.21)            invaluable ( =+0.20 rank=0.94)                     gpu ( =+0.16 rank=0.60)
@@ -2641,7 +2785,10 @@ synthetic (log10 freq)
  are ordered by the signed conservative bound on βPost (the 95% HDI limit nearest zero). Per-
  panel GPT-score percentile rank is annotated in the title. The shaded vertical band marks the
  period of analysis between ChatGPT’s launch and the launch of GPT-4o (free).
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                      Preprint
+
+
+===== PDF page 50 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                      Preprint
 
 
                                               delve                                         underscored                                    comprehend                                      bolster
@@ -2756,7 +2903,10 @@ human-authored text is shown in gray. Some LLM calls failed due to various reaso
 policy violations. Consequently, the corresponding human-authored texts were removed from
 the dataset, introducing slight variations in the associated probabilities, even though the source
 dataset remained identical.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                         Preprint
+
+
+===== PDF page 51 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                         Preprint
 
 
                                                  delve                                       underscored                                     comprehend                                        bolster
@@ -2842,7 +2992,10 @@ calculated the LOR of a word appearing in human-authored text compared to its ap
 a version revised by an LLM. Displayed here are the 19 words with the highest average LOR
 across all datasets, models, and prompts. The data are stratified by dataset and model, with
 error bars representing the standard error associated with the three prompts analyzed.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                 Preprint
+
+
+===== PDF page 52 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                 Preprint
 
 
 
@@ -2861,43 +3014,46 @@ looking at, then submitted a spoken description. The chatbot was covertly prompt
 its replies consistently used the AI-canonical variant for each target synonym pair (annotated
 on the right: e.g., vacuum flask rather than thermos bottle, multicolored rather than colorful, to
 repair rather than to fix).
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                                                         Preprint
 
 
-                                                                 DPMPSGVMNVMUJDPMPSFE   DSBDLFEGSBDUVSFE                     QMBJEDIFDLFSFE                SPVOEDJSDVMBS                         TIJOZHMPTTZ                       TQPUUFEEPUUFE
-                                                      
-                                                      
+===== PDF page 53 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                                                         Preprint
 
-"EKFDUJWF   1	VTFEWBSJBOU
 
-                                                      
-                                                      
-                                                      
+                                                                 DPMPSGVM / NVMUJDPMPSFE   DSBDLFE / GSBDUVSFE                     QMBJE / DIFDLFSFE                SPVOE / DJSDVMBS                         TIJOZ / HMPTTZ                       TQPUUFE / EPUUFE
+                                                      1.00
+                                                      0.75
+
+"EKFDUJWF   1	VTFE WBSJBOU
+
+                                                      0.50
+                                                      0.25
+                                                      0.00
                                                                       DPMPSGVM NVMUJDPMPSFE     DSBDLFE       GSBDUVSFE                     QMBJE     DIFDLFSFE              SPVOE            DJSDVMBS                  TIJOZ           HMPTTZ                  TQPUUFE          EPUUFE
-                                                                       CFBOJFLOJUIBU                DPVDITPGB                                    DVQNVH                           HJGUQSFTFOU              NFSSZHPSPVOEDBSPVTFMUIFSNPTCPUUMFWBDVVNGMBTL
-                                                      
-                                                      
+                                                                       CFBOJF / LOJU IBU                DPVDI / TPGB                                    DVQ / NVH                           HJGU / QSFTFOU              NFSSZ-HP-SPVOE / DBSPVTFMUIFSNPT CPUUMF / WBDVVN GMBTL
+                                                      1.00
+                                                      0.75
 
 
-                     1	VTFEWBSJBOU
+                     1	VTFE WBSJBOU
 
-/PVO                                              
-                                                      
-                                                      
-                                                                       CFBOJF         LOJUIBU         DPVDI               TPGB                           DVQ             NVH                       HJGU           QSFTFOU           NFSSZHPSPVOEDBSPVTFM           UIFSNPTCPUUMF
-                                                                                                                                                                                                                                                                                                                                                            WBDVVNGMBTL
-                                                                       UPDVUUPDIPQ              UPGJYUPSFQBJS                  UPIVHUPFNCSBDF    UPKVNQPWFSUPIPQPWFS      UPMPPLBUUPFYBNJOF          UPQVUVQUPJOTUBMM
-                                                      
-                                                      
+/PVO                                              0.50
+                                                      0.25
+                                                      0.00
+                                                                       CFBOJF         LOJU IBU         DPVDI               TPGB                           DVQ             NVH                       HJGU           QSFTFOU           NFSSZ-HP-SPVOEDBSPVTFM           UIFSNPT CPUUMF
+                                                                                                                                                                                                                                                                                                                                                            WBDVVN GMBTL
+                                                                       UP DVU / UP DIPQ              UP GJY / UP SFQBJS                  UP IVH / UP FNCSBDF    UP KVNQ PWFS / UP IPQ PWFS      UP MPPL BU / UP FYBNJOF          UP QVU VQ / UP JOTUBMM
+                                                      1.00
+                                                      0.75
 
 
-                     1	VTFEWBSJBOU
+                     1	VTFE WBSJBOU
 
-7FSC                                              
-                                                      
-                                                      
-                                                                       UPDVU         UPDIPQ            UPGJY        UPSFQBJS                  UPIVH    UPFNCSBDF       UPKVNQPWFSUPIPQPWFS            UPMPPLBU UPFYBNJOF             UPQVUVQ     UPJOTUBMM
-                                                                                                                                                               "*JOUSPEVDFEWBSJBOU                 "MUFSOBUJWFWBSJBOU
+7FSC                                              0.50
+                                                      0.25
+                                                      0.00
+                                                                       UP DVU         UP DIPQ            UP GJY        UP SFQBJS                  UP IVH    UP FNCSBDF       UP KVNQ PWFSUP IPQ PWFS            UP MPPL BU UP FYBNJOF             UP QVU VQ     UP JOTUBMM
+                                                                                                                                                               "*-JOUSPEVDFE WBSJBOU                 "MUFSOBUJWF WBSJBOU
 
 
 Figure S14: Per-word-pair usage rates in the Interaction Phase. Each panel shows one
@@ -2906,92 +3062,101 @@ square is the mean usage rate for participants whose the AI chatbot was instruct
 variant; the grey circle is the mean for participants whose the AI chatbot used the other variant.
 Small translucent dots show individual participant means; large markers show group means ±
 95% CI; dashed line at 0.5 indicates pair-internal chance level.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                                                         Preprint
 
 
-                                                                 DPMPSGVMNVMUJDPMPSFE   DSBDLFEGSBDUVSFE                     QMBJEDIFDLFSFE                SPVOEDJSDVMBS                         TIJOZHMPTTZ                       TQPUUFEEPUUFE
-                                                      
-                                                      
+===== PDF page 54 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                                                         Preprint
 
-"EKFDUJWF   1	VTFEWBSJBOU
 
-                                                      
-                                                      
-                                                      
+                                                                 DPMPSGVM / NVMUJDPMPSFE   DSBDLFE / GSBDUVSFE                     QMBJE / DIFDLFSFE                SPVOE / DJSDVMBS                         TIJOZ / HMPTTZ                       TQPUUFE / EPUUFE
+                                                      1.00
+                                                      0.75
+
+"EKFDUJWF   1	VTFE WBSJBOU
+
+                                                      0.50
+                                                      0.25
+                                                      0.00
                                                                       DPMPSGVM NVMUJDPMPSFE     DSBDLFE       GSBDUVSFE                     QMBJE     DIFDLFSFE              SPVOE            DJSDVMBS                  TIJOZ           HMPTTZ                  TQPUUFE          EPUUFE
-                                                                       CFBOJFLOJUIBU                DPVDITPGB                                    DVQNVH                           HJGUQSFTFOU              NFSSZHPSPVOEDBSPVTFMUIFSNPTCPUUMFWBDVVNGMBTL
-                                                      
-                                                      
+                                                                       CFBOJF / LOJU IBU                DPVDI / TPGB                                    DVQ / NVH                           HJGU / QSFTFOU              NFSSZ-HP-SPVOE / DBSPVTFMUIFSNPT CPUUMF / WBDVVN GMBTL
+                                                      1.00
+                                                      0.75
 
 
-                     1	VTFEWBSJBOU
+                     1	VTFE WBSJBOU
 
-/PVO                                              
-                                                      
-                                                      
-                                                                       CFBOJF         LOJUIBU         DPVDI               TPGB                           DVQ             NVH                       HJGU           QSFTFOU           NFSSZHPSPVOEDBSPVTFM           UIFSNPTCPUUMF
-                                                                                                                                                                                                                                                                                                                                                            WBDVVNGMBTL
-                                                                       UPDVUUPDIPQ              UPGJYUPSFQBJS                  UPIVHUPFNCSBDF    UPKVNQPWFSUPIPQPWFS      UPMPPLBUUPFYBNJOF          UPQVUVQUPJOTUBMM
-                                                      
-                                                      
+/PVO                                              0.50
+                                                      0.25
+                                                      0.00
+                                                                       CFBOJF         LOJU IBU         DPVDI               TPGB                           DVQ             NVH                       HJGU           QSFTFOU           NFSSZ-HP-SPVOEDBSPVTFM           UIFSNPT CPUUMF
+                                                                                                                                                                                                                                                                                                                                                            WBDVVN GMBTL
+                                                                       UP DVU / UP DIPQ              UP GJY / UP SFQBJS                  UP IVH / UP FNCSBDF    UP KVNQ PWFS / UP IPQ PWFS      UP MPPL BU / UP FYBNJOF          UP QVU VQ / UP JOTUBMM
+                                                      1.00
+                                                      0.75
 
 
-                     1	VTFEWBSJBOU
+                     1	VTFE WBSJBOU
 
-7FSC                                              
-                                                      
-                                                      
-                                                                       UPDVU         UPDIPQ            UPGJY        UPSFQBJS                  UPIVH    UPFNCSBDF       UPKVNQPWFSUPIPQPWFS            UPMPPLBU UPFYBNJOF             UPQVUVQ     UPJOTUBMM
-                                                                                                                                                               "*JOUSPEVDFEWBSJBOU                 "MUFSOBUJWFWBSJBOU
+7FSC                                              0.50
+                                                      0.25
+                                                      0.00
+                                                                       UP DVU         UP DIPQ            UP GJY        UP SFQBJS                  UP IVH    UP FNCSBDF       UP KVNQ PWFSUP IPQ PWFS            UP MPPL BU UP FYBNJOF             UP QVU VQ     UP JOTUBMM
+                                                                                                                                                               "*-JOUSPEVDFE WBSJBOU                 "MUFSOBUJWF WBSJBOU
 
 
 Figure S15: Per-word-pair usage rates in the Test Phase. Same layout as Supplementary
 Fig. S14, but for spoken descriptions of novel images not seen during the AI interaction. Small
 translucent dots show individual participant means; large markers show group means ± 95% CI.
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                                                           Preprint
 
 
-                                                                   DPMPSGVMNVMUJDPMPSFE   DSBDLFEGSBDUVSFE                     QMBJEDIFDLFSFE                SPVOEDJSDVMBS                         TIJOZHMPTTZ                       TQPUUFEEPUUFE
-                                                        
-                                                        
+===== PDF page 55 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                                                                                                                                                                                                                                           Preprint
 
-"EKFDUJWF   1	DIPTFWBSJBOU
 
-                                                        
-                                                        
-                                                        
+                                                                   DPMPSGVM / NVMUJDPMPSFE   DSBDLFE / GSBDUVSFE                     QMBJE / DIFDLFSFE                SPVOE / DJSDVMBS                         TIJOZ / HMPTTZ                       TQPUUFE / EPUUFE
+                                                        1.00
+                                                        0.75
+
+"EKFDUJWF   1	DIPTF WBSJBOU
+
+                                                        0.50
+                                                        0.25
+                                                        0.00
                                                                         DPMPSGVM NVMUJDPMPSFE     DSBDLFE       GSBDUVSFE                     QMBJE     DIFDLFSFE              SPVOE            DJSDVMBS                  TIJOZ           HMPTTZ                  TQPUUFE          EPUUFE
-                                                                         CFBOJFLOJUIBU                DPVDITPGB                                    DVQNVH                           HJGUQSFTFOU              NFSSZHPSPVOEDBSPVTFMUIFSNPTCPUUMFWBDVVNGMBTL
-                                                        
-                                                        
+                                                                         CFBOJF / LOJU IBU                DPVDI / TPGB                                    DVQ / NVH                           HJGU / QSFTFOU              NFSSZ-HP-SPVOE / DBSPVTFMUIFSNPT CPUUMF / WBDVVN GMBTL
+                                                        1.00
+                                                        0.75
 
 
-                     1	DIPTFWBSJBOU
+                     1	DIPTF WBSJBOU
 
-/PVO                                                
-                                                        
-                                                        
-                                                                         CFBOJF         LOJUIBU         DPVDI               TPGB                           DVQ             NVH                       HJGU           QSFTFOU           NFSSZHPSPVOEDBSPVTFM           UIFSNPTCPUUMF
-                                                                                                                                                                                                                                                                                                                                                              WBDVVNGMBTL
-                                                                         UPDVUUPDIPQ              UPGJYUPSFQBJS                  UPIVHUPFNCSBDF    UPKVNQPWFSUPIPQPWFS      UPMPPLBUUPFYBNJOF          UPQVUVQUPJOTUBMM
-                                                        
-                                                        
+/PVO                                                0.50
+                                                        0.25
+                                                        0.00
+                                                                         CFBOJF         LOJU IBU         DPVDI               TPGB                           DVQ             NVH                       HJGU           QSFTFOU           NFSSZ-HP-SPVOEDBSPVTFM           UIFSNPT CPUUMF
+                                                                                                                                                                                                                                                                                                                                                              WBDVVN GMBTL
+                                                                         UP DVU / UP DIPQ              UP GJY / UP SFQBJS                  UP IVH / UP FNCSBDF    UP KVNQ PWFS / UP IPQ PWFS      UP MPPL BU / UP FYBNJOF          UP QVU VQ / UP JOTUBMM
+                                                        1.00
+                                                        0.75
 
 
-                     1	DIPTFWBSJBOU
+                     1	DIPTF WBSJBOU
 
-7FSC                                                
-                                                        
-                                                        
-                                                                         UPDVU         UPDIPQ            UPGJY        UPSFQBJS                  UPIVH    UPFNCSBDF       UPKVNQPWFSUPIPQPWFS            UPMPPLBU UPFYBNJOF             UPQVUVQ     UPJOTUBMM
-                                                                                                                                                                 "*JOUSPEVDFEWBSJBOU                 "MUFSOBUJWFWBSJBOU
+7FSC                                                0.50
+                                                        0.25
+                                                        0.00
+                                                                         UP DVU         UP DIPQ            UP GJY        UP SFQBJS                  UP IVH    UP FNCSBDF       UP KVNQ PWFSUP IPQ PWFS            UP MPPL BU UP FYBNJOF             UP QVU VQ     UP JOTUBMM
+                                                                                                                                                                 "*-JOUSPEVDFE WBSJBOU                 "MUFSOBUJWF WBSJBOU
 
 
 Figure S16: Per-word-pair selection rates in the Forced-Choice Phase. Each panel shows
 one synonym pair. The orange square is the mean selection rate for participants whose chatbot
 was primed to use that variant. Small translucent dots show individual participant means; large
 markers show group means ± 95% CI; dashed line at 0.5 marks chance.
-  Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                          Preprint
+
+
+===== PDF page 56 =====
+  Yakura, Lopez-Lopez, Brinkmann et al.                                                                                                          Preprint
 
 
                                                              f = 0.5%                                                       f = 2%
@@ -3040,7 +3205,10 @@ Fraction adopting state 1
   hub zealot, mean restricted to speakers not directly connected to the hub (i.e., reached only via
   network spread); solid grey: random zealot, control with a single committed speaker at a random
   network node.
-Yakura, Lopez-Lopez, Brinkmann et al.                                             Preprint
+
+
+===== PDF page 57 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                             Preprint
 
 
      System prompt:
@@ -3072,7 +3240,10 @@ Fraction adopting state 1
 
 Figure S18: Prompt provided to gpt-3.5-turbo-0125 to pick the most plausible channel among
 query results from Youtube API.
-Yakura, Lopez-Lopez, Brinkmann et al.                                    Preprint
+
+
+===== PDF page 58 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                    Preprint
 
 
 Supplementary Tables
@@ -3086,7 +3257,10 @@ API snapshots queried.
                 GPT-4-turbo      gpt-4-turbo-2024-04-09   2024-04-09
                 GPT-4o           gpt-4o-2024-05-13        2024-05-13
                 GPT-5            gpt-5-2025-08-07         2025-08-07
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                        Preprint
+
+
+===== PDF page 59 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                        Preprint
 
 
 
@@ -3118,7 +3292,10 @@ prompt in every condition; it establishes the image-guessing task and instructs 
 answer honestly and use its own natural vocabulary. A vocabulary-rule layer was appended
 to this prompt at runtime to constrain the model to the covertly assigned synonym variant
 (Supplementary Fig. S20).
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                        Preprint
+
+
+===== PDF page 60 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                        Preprint
 
 
 
@@ -3179,7 +3356,10 @@ was appended to the base game prompt (Supplementary Fig. S19). For each target w
 gives a canonical form and the treatment description (what the image shows) with the control
 alternative (not shown); a final global layer applies all 18 synonym pairs. See Supplementary
 Methods for how the rule is applied; conditions were counterbalanced (Table S7).
-Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
+
+
+===== PDF page 61 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                       Preprint
 
 
 
@@ -3237,7 +3417,10 @@ twelve are the Fig. 3A panel words.
               spotlight                        0.0136             0.056           0.78
   Full S&T panel (all n = 3535 treated words): smoothed RMSPE median 0.0076 (IQR 0.0039–0.0134, max
   0.673); raw RMSPE median 0.0382 (IQR 0.0199–0.0649, max 0.689).
-Yakura, Lopez-Lopez, Brinkmann et al.                                                                     Preprint
+
+
+===== PDF page 62 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                                     Preprint
 
 
 
@@ -3275,7 +3458,10 @@ sided; the recent-6 p-value is two-sided.
   Business                  +31%       [+0%, +67%]       0.040       −30%           [−50%, +3%]         0.069
   All                       +9%       [−15%, +32%]       0.218       −35%           [−57%, −7%]         0.050
   Sports                    −7%       [−40%, +41%]       0.663       −38%          [−68%, +13%]         0.208
-Yakura, Lopez-Lopez, Brinkmann et al.                                                    Preprint
+
+
+===== PDF page 63 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                    Preprint
 
 
 
@@ -3301,7 +3487,10 @@ p = 0.010.
  Donor pool n                 100           100             10           100             100
  Donor weights           SLSQP simplex SLSQP simplex SLSQP simplex inverse distance SLSQP simplex
  delve placebo p             0.010         0.050      0.091 (floor)     0.040           0.010
-Yakura, Lopez-Lopez, Brinkmann et al.                                                 Preprint
+
+
+===== PDF page 64 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                 Preprint
 
 
 
@@ -3353,7 +3542,10 @@ reported having used an AI chatbot.
                        More than once a week                        152 (32.0%)
                        More than once a month                         43 (9.1%)
                        Not more than once a month                     28 (5.9%)
-Yakura, Lopez-Lopez, Brinkmann et al.                                                 Preprint
+
+
+===== PDF page 65 =====
+Yakura, Lopez-Lopez, Brinkmann et al.                                                 Preprint
 
 
 

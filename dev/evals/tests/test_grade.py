@@ -1880,6 +1880,8 @@ expected_checks = {
     "no-latinate-verb-rate",
     # DR-97: word length average, pattern 71.
     "word-length-average",
+    # DR-78: mixed-script confusables, pattern 72.
+    "no-mixed-script-words",
 }
 actual_checks = set(ALL_CHECKS)
 if actual_checks != expected_checks:
@@ -4569,6 +4571,38 @@ if _patterns_data["word-length-average"]["severity"] != "context_warning":
     print("FAIL: DR-97 word-length-average should be a context warning")
 else:
     print("  ok: DR-97 word-length-average is a context warning")
+
+# DR-78: mixed-script confusables, pattern 72. A Latin word carrying a Cyrillic
+# or Greek character that looks identical to a Latin one. One occurrence is a
+# hard fail. Only visually confusable characters count, so scientific notation
+# such as "\u0394H1" and "\u03b7j" stays clear.
+_dr78_homoglyph = "The report covers the two main find\u0456ngs and the r\u0435maining work."
+expect_fail("no-mixed-script-words", _dr78_homoglyph, "DR-78 Cyrillic confusables inside Latin words")
+
+_dr78_controls = (
+    "The enthalpy change \u0394H1 and the coefficient \u03b7j were reported in the appendix. "
+    "\u041e\u043d \u043f\u0438\u0441\u0430\u043b \u043f\u043e-\u0440\u0443\u0441\u0441\u043a\u0438. She replied in English. "
+    "\u03a4\u03bf \u03ba\u03b5\u03af\u03bc\u03b5\u03bd\u03bf \u03ae\u03c4\u03b1\u03bd \u03c3\u03b1\u03c6\u03ad\u03c2. "
+    "The caf\u00e9 was na\u00efve about \u0160koda and \u00c6r\u00f8."
+)
+expect_pass(
+    "no-mixed-script-words",
+    _dr78_controls,
+    "DR-78 scientific notation, whole-script passages, and accented Latin stay clear",
+)
+
+_dr78_result = ALL_CHECKS["no-mixed-script-words"](_dr78_homoglyph)
+if _dr78_result.get("matches") != ["find\u0456ngs", "r\u0435maining"]:
+    FAILURES += 1
+    print(f"FAIL: DR-78 should quote both offending words, got {_dr78_result.get('matches')}")
+else:
+    print("  ok: DR-78 quotes each offending word")
+
+if _patterns_data["no-mixed-script-words"]["severity"] != "hard_fail":
+    FAILURES += 1
+    print("FAIL: DR-78 no-mixed-script-words should be a hard fail")
+else:
+    print("  ok: DR-78 no-mixed-script-words is a hard fail")
 
 # --- Summary ---
 

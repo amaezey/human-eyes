@@ -2153,6 +2153,21 @@ NOMINALISATION_RE = re.compile(
     re.IGNORECASE,
 )
 
+# DR-78: Cyrillic and Greek characters that are visually identical to Latin
+# ones. A Latin word carrying one is a homoglyph substitution, which defeats
+# search, screen readers, and copy-paste whatever put it there. Characters that
+# merely belong to another script are not enough: scientific notation mixes
+# Greek and Latin legitimately ("\u0394H1", "\u03b7j"), so only confusables count.
+LATIN_LETTER_RE = re.compile(r"[A-Za-z]")
+CONFUSABLE_LETTERS = (
+    "\u0410\u0412\u0415\u041a\u041c\u041d\u041e\u0420\u0421\u0422\u0423\u0425"  # Cyrillic capitals A B E K M H O P C T Y X
+    "\u0430\u0435\u043e\u0440\u0441\u0443\u0445\u0456\u0458\u0455"  # Cyrillic small a e o p c y x i j s
+    "\u0391\u0392\u0395\u0396\u0397\u0399\u039a\u039c\u039d\u039f\u03a1\u03a4\u03a5\u03a7"  # Greek capitals
+    "\u03bf\u03c1\u03bd"  # Greek small omicron, rho, nu
+)
+CONFUSABLE_RE = re.compile("[" + CONFUSABLE_LETTERS + "]")
+WORD_UNICODE_RE = re.compile(r"\w+", re.UNICODE)
+
 # DR-97: word tokens for the mean-word-length measure. Letters and internal
 # apostrophes only, so Markdown punctuation and numerals do not distort the mean.
 WORD_TOKEN_RE = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)*")
@@ -2424,6 +2439,25 @@ def check_it_pronoun_rate(text):
         "no-it-pronoun-rate", text,
         lambda source: IT_PRONOUN_RE.findall(source), 18.0, "`it` pronoun(s)",
     )
+
+
+def check_mixed_script_words(text):
+    """Detect Latin words carrying confusable Cyrillic or Greek letters (pattern 72)."""
+    source = strip_front_matter(text)
+    matches = [
+        word for word in WORD_UNICODE_RE.findall(source)
+        if LATIN_LETTER_RE.search(word) and CONFUSABLE_RE.search(word)
+    ]
+    return {
+        "text": "no-mixed-script-words",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} word(s) mixing Latin with confusable "
+            f"Cyrillic or Greek letters: {matches[:5]}"
+            if matches else "No mixed-script words"
+        ),
+    }
 
 
 def check_word_length_average(text):
@@ -3798,6 +3832,7 @@ ALL_CHECKS = {
     "no-it-pronoun-rate": check_it_pronoun_rate,
     "no-latinate-verb-rate": check_latinate_verb_rate,
     "word-length-average": check_word_length_average,
+    "no-mixed-script-words": check_mixed_script_words,
     "no-superficial-ing": check_superficial_ing,
     "no-ghost-spectral-density": check_ghost_spectral,
     "no-quietness-obsession": check_quietness,

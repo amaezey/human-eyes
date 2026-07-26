@@ -699,6 +699,29 @@ Parentheses do not belong in human-eyes headings. They usually carry a vague qua
 
 **Detection:** Programmatic check `no-parenthetical-headings`. Body parentheses are outside this rule.
 
+
+### 72. Mixed-script words
+
+The check flags any word containing both a Latin letter and a Cyrillic or Greek letter that is visually identical to a Latin one. One word fails.
+
+Only confusable characters count. Cyrillic а е о р с у х і ј ѕ and their capitals, and Greek ο ρ ν and the capitals that mirror Latin letters. A Greek or Cyrillic character that looks like nothing in Latin is not a substitution, so scientific notation such as `ΔH1` and `ηj` stays clear, and so does a whole passage written in Greek or Cyrillic.
+
+The habit comes from adversarial rewriting: swapping a Latin `e` for a Cyrillic `е` leaves the word looking unchanged while defeating a string match. The tool has no way to know who did it, and does not need to. The word is broken either way: search will not find it, screen readers mispronounce it, and it propagates through every copy.
+
+Across the project corpora no document in either sample carries one. Three files in the evidence library do, two of them a single `Коrd` inside preserved source text and one a Kazakh passage where extraction mixed a Latin `i` into Cyrillic words.
+
+**Before:**
+> The rеport covers the two main findіngs.
+
+**After:**
+> The report covers the two main findings.
+
+Evidence: Creo and Ranganath's TELL, Appendix A, which presents a mixed-script homoglyph text and notes that its intent cannot be read off a human-versus-AI label.
+
+**Severity:** hard_fail · `no-mixed-script-words`
+
+**Detection:** Programmatic check `no-mixed-script-words`.
+
 ---
 
 ## Communication
