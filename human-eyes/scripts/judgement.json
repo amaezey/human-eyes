@@ -93,7 +93,7 @@
     },
     {
       "id": "even_jargon_distribution",
-      "pattern_ref": "B15",
+      "pattern_ref": "H18",
       "severity": "context_warning",
       "prompt": "Is technical vocabulary spread at a suspiciously similar density across sections with different topics or functions? Answer `jargon is not suspiciously uniform` when terminology is sparse, topic-driven, required by the genre, naturally distributed, or concentrated in knowledge-dense passages. Answer `jargon spreads suspiciously uniformly across the text` only when technical terms recur at a comparable and unnecessary density across otherwise different sections.",
       "answer_schema": {

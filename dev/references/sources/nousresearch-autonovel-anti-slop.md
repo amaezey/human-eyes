@@ -94,6 +94,7 @@ This practitioner guide supplies vocabulary lists, structural review prompts, re
 - The previous pre-contract card had no claim IDs, authoritative coverage table, user decisions, implementation statuses, or document-review result to preserve.
 - This update assigns C01 to C17 to materially unchanged source evidence and sets every recommendation to `pending` with implementation `not started`.
 - No previous product decision was inferred, no claim was treated as approved, and no checker, registry, test, hypothesis, guidance, or index was changed.
+- Cited 2026-07-27 via DR-171: C16's `same-length paragraphs` is now credited in the root README as evidence for G12 `paragraph-length-uniformity`, alongside Russell/Karpinska/Iyyer C18 and AI for Lifelong Learners C10. This is the card's first citation in the root README. C16 stays `pending` with implementation `not started`, because its recommendation asks for separate evaluation of the sentence, voice, personal-marker, topic-swap and surprise prompts, none of which this citation settles. C05 was considered and not cited: its length term is `equal-length sections`, not paragraphs.
 
 ## Project coverage
 

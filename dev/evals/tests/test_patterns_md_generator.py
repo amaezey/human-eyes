@@ -6,6 +6,7 @@ dev/tools/render_patterns_md.py. Catches drift between the YAML registry
 Run: python3 dev/evals/tests/test_patterns_md_generator.py
 """
 
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -65,6 +66,32 @@ if actual != UNCHECKED:
     print("      or an agent-judgement check. Removing one means it was resolved; update this set.")
     sys.exit(1)
 print(f"  ok: exactly {sorted(UNCHECKED)} are unchecked, awaiting a lane decision")
+
+# --- preamble count and TOC ranges must match the data (DR-158) ---
+# These were stored strings before DR-158 and went stale twice, then a third time
+# when H18 changed category. render() computes them now; this pins that.
+print()
+print("=== preamble count and TOC ranges ===")
+import collections
+_md = (ROOT / "human-eyes" / "references" / "patterns.md").read_text()
+_ids = re.findall(r"^### ([A-Z])(\d+)\. ", _md, re.M)
+_per_letter = collections.Counter(l for l, _n in _ids)
+_m = re.search(r"^(\d+) patterns\b", _md, re.M)
+if not _m:
+    print(f"FAIL: preamble has no count sentence")
+    sys.exit(1)
+if int(_m.group(1)) != len(_ids):
+    print(f"FAIL: preamble says {_m.group(1)} patterns; {len(_ids)} entries exist")
+    sys.exit(1)
+print(f"  ok: preamble count {len(_ids)} matches the entries")
+for _line in re.findall(r"^- \[([^\]]+) \(([A-Z])1(?:-[A-Z](\d+))?\)\]", _md, re.M):
+    _cat, _letter, _hi = _line
+    _want = _per_letter[_letter]
+    _got = int(_hi) if _hi else 1
+    if _got != _want:
+        print(f"FAIL: TOC says {_cat} runs to {_letter}{_got}; {_letter} has {_want} entries")
+        sys.exit(1)
+    print(f"  ok: {_cat} TOC range matches {_want} entries")
 
 print()
 print("========================================")

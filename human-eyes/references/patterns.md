@@ -7,13 +7,13 @@
 ## Contents
 
 - [Content patterns (A1-A7)](#content-patterns)
-- [Language and grammar (B1-B15)](#language-and-grammar)
+- [Language and grammar (B1-B14)](#language-and-grammar)
 - [Style (C1-C9)](#style)
 - [Communication (D1-D6)](#communication)
 - [Filler and hedging (E1-E9)](#filler-and-hedging)
 - [Sensory and atmospheric (F1-F3)](#sensory-and-atmospheric)
 - [Structural tells (G1-G13)](#structural-tells)
-- [Voice and register (H1-H17)](#voice-and-register)
+- [Voice and register (H1-H18)](#voice-and-register)
 - [Signal stacking (S1)](#signal-stacking)
 
 ---
@@ -603,33 +603,6 @@ Evidence: El Attar et al. name psycholinguistic features as a candidate area wit
 **Severity:** context_warning · `concreteness-average`
 
 **Detection:** Programmatic check `concreteness-average`.
-
-
-### B15. Even jargon distribution
-
-Technical vocabulary in real writing clumps. A writer reaches for precise terms in the part of a piece they have actually worked in, because that is where the plain words stop being accurate, and drops back to ordinary language everywhere else. The result is a lumpy surface: one section thick with domain terms, the neighbouring sections comparatively bare. Generated prose tends to hold register constant instead. Background, findings, and recommendations all come back carrying roughly the same weight of technical terminology, even though only one of them needed any.
-
-The cost is that the reader loses the map. Uneven density tells a reader which claims rest on first-hand knowledge and which are summary or scaffolding; flatten it and every claim arrives with the same apparent authority. Terms spread evenly are also usually doing less work. A word chosen because the passage demanded it reads differently from a word chosen because the surrounding paragraphs had one.
-
-**Before:**
-> **Database migration.** We executed a phased cutover with dual-write reconciliation and idempotent replay of the change stream.
->
-> **Hiring.** We instrumented the funnel with stage-level conversion telemetry and a calibrated rubric applied at each decision gate.
->
-> **The office move.** We sequenced the fit-out against a dependency graph and provisioned the network fabric ahead of the desk-allocation cycle.
-
-**After:**
-> **Database migration.** We cut over in two phases, dual-writing to both stores for nine days so we could replay the change stream idempotently whenever the new primary fell behind.
->
-> **Hiring.** We filled four of the six roles. Both open ones are senior, and both stalled at the final round.
->
-> **The office move.** We move on the 14th. Desks arrive the week before; the network is already in.
-
-Some genres hold terminology density constant for good reason. Reference documentation, API and protocol specifications, glossaries, standards, and controlled taxonomies describe the same technical surface in every section, so an even spread of domain terms is the correct shape rather than a defect. Prose written for a specialist readership that shares the vocabulary throughout can also run uniformly dense without anything being wrong. The record fires only where the density is both comparable across otherwise different sections and unnecessary to them. Uniform density is a prompt to read the passages and ask whether each subtopic actually called for its terms; it says nothing about who or what wrote the text, and it cannot support an authorship claim on its own.
-
-**Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
-
-**Detection:** Agent judgement `even_jargon_distribution` (scripts/judgement.json). No word list can settle it, because the question is not which terms appear but whether each section's subject required the terms it carries, a comparison between passages that depends on what those passages are about.
 
 ---
 
@@ -1687,6 +1660,33 @@ The record excludes changelogs, release notes, migration guides, deprecation not
 **Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
 
 **Detection:** Agent judgement `change_narration` (scripts/judgement.json). Whether a passage narrates change or states current behaviour depends on what the surrounding document is for, and the same sentence is correct in a release note and wrong in a docstring, so no phrase list separates the two.
+
+
+### H18. Even jargon distribution
+
+Technical vocabulary in real writing clumps. A writer reaches for precise terms in the part of a piece they have actually worked in, because that is where the plain words stop being accurate, and drops back to ordinary language everywhere else. The result is a lumpy surface: one section thick with domain terms, the neighbouring sections comparatively bare. Generated prose tends to hold register constant instead. Background, findings, and recommendations all come back carrying roughly the same weight of technical terminology, even though only one of them needed any.
+
+The cost is that the reader loses the map. Uneven density tells a reader which claims rest on first-hand knowledge and which are summary or scaffolding; flatten it and every claim arrives with the same apparent authority. Terms spread evenly are also usually doing less work. A word chosen because the passage demanded it reads differently from a word chosen because the surrounding paragraphs had one.
+
+**Before:**
+> **Database migration.** We executed a phased cutover with dual-write reconciliation and idempotent replay of the change stream.
+>
+> **Hiring.** We instrumented the funnel with stage-level conversion telemetry and a calibrated rubric applied at each decision gate.
+>
+> **The office move.** We sequenced the fit-out against a dependency graph and provisioned the network fabric ahead of the desk-allocation cycle.
+
+**After:**
+> **Database migration.** We cut over in two phases, dual-writing to both stores for nine days so we could replay the change stream idempotently whenever the new primary fell behind.
+>
+> **Hiring.** We filled four of the six roles. Both open ones are senior, and both stalled at the final round.
+>
+> **The office move.** We move on the 14th. Desks arrive the week before; the network is already in.
+
+Some genres hold terminology density constant for good reason. Reference documentation, API and protocol specifications, glossaries, standards, and controlled taxonomies describe the same technical surface in every section, so an even spread of domain terms is the correct shape rather than a defect. Prose written for a specialist readership that shares the vocabulary throughout can also run uniformly dense without anything being wrong. The record fires only where the density is both comparable across otherwise different sections and unnecessary to them. Uniform density is a prompt to read the passages and ask whether each subtopic actually called for its terms; it says nothing about who or what wrote the text, and it cannot support an authorship claim on its own.
+
+**Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
+
+**Detection:** Agent judgement `even_jargon_distribution` (scripts/judgement.json). No word list can settle it, because the question is not which terms appear but whether each section's subject required the terms it carries, a comparison between passages that depends on what those passages are about.
 
 ---
 

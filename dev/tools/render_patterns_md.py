@@ -342,7 +342,24 @@ def render():
 
     # Build sections. Preamble → Contents has NO `---` separator. All other
     # transitions get `---`.
-    preamble_and_toc = meta["preamble"] + f"\n\n## Contents\n\n{meta['toc_body']}"
+    # The count sentence and the category ranges are computed here, never stored.
+    # Storing them is what let them go stale twice before DR-158, and again the
+    # moment H18 moved category: a value written once is hand-maintained however
+    # it was first derived.
+    counts = []
+    for cat in CATEGORY_ORDER:
+        n = len(by_category[cat])
+        if n:
+            letter = by_category[cat][0]["number"][0]
+            counts.append((cat, letter, n))
+    total = sum(n for _c, _l, n in counts)
+    preamble = re.sub(r"^\d+ patterns\b", f"{total} patterns",
+                      meta["preamble"], count=1, flags=re.M)
+    toc_body = "\n".join(
+        f"- [{cat} ({letter}1-{letter}{n})](#{cat.lower().replace(' ', '-')})"
+        if n > 1 else f"- [{cat} ({letter}1)](#{cat.lower().replace(' ', '-')})"
+        for cat, letter, n in counts)
+    preamble_and_toc = preamble + f"\n\n## Contents\n\n{toc_body}"
     sections = [preamble_and_toc]
     sections.append(f"## Evidence hierarchy from the reference audit\n\n{meta['evidence_body']}")
 

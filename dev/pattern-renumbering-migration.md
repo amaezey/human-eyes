@@ -12,13 +12,13 @@ categories keep their names and order, and Signal stacking becomes a ninth:
 | letter | category | members |
 |---|---|---|
 | A | Content patterns | 7 |
-| B | Language and grammar | 15 |
+| B | Language and grammar | 14 |
 | C | Style | 9 |
 | D | Communication | 6 |
 | E | Filler and hedging | 9 |
 | F | Sensory and atmospheric | 3 |
 | G | Structural tells | 13 |
-| H | Voice and register | 17 |
+| H | Voice and register | 18 |
 | S | Signal stacking | 1 |
 
 The aggregate meta-check is `S1` in its own Signal stacking category. Mae superseded her earlier `#0`
@@ -93,7 +93,6 @@ entry; three had no number at all. Each is marked in the mapping below.
 | `B12` | 70 | Latinate verb rate | programmatic | `no-latinate-verb-rate` |  |
 | `B13` | 71 | Word length average | programmatic | `word-length-average` |  |
 | `B14` | 73 | Concreteness average | programmatic | `concreteness-average` |  |
-| `B15` | 55 | Even jargon distribution | agent judgement | `even_jargon_distribution` | README row + judgement record, no catalogue entry |
 
 ### Style
 
@@ -181,6 +180,7 @@ entry; three had no number at all. Each is marked in the mapping below.
 | `H15` | 56 | Performed candour and vulnerability | programmatic | `no-performed-candour` |  |
 | `H16` | 58 | Mechanical repeated paragraph starts | programmatic | `no-paragraph-anaphora` |  |
 | `H17` | — | Change narration | agent judgement | `change_narration` | judgement record, no number anywhere |
+| `H18` | 55 | Even jargon distribution | agent judgement | `even_jargon_distribution` | README row + judgement record, no catalogue entry; moved from Language and grammar to Voice and register 2026-07-27 under DR-172 |
 
 ### Signal stacking
 
@@ -197,7 +197,7 @@ Each step verifies before the next begins.
    `#NN`, no `pattern N`, no numeric reference of any kind in its 137 lines. The same cell's counts
    predate #65 to #73. Verify: no product file touched.
 
-2. **Author the seven new catalogue entries.** `A7`, `B15`, `D5`, `D6`, `G12`, `G13`, `H17`. Each
+2. **Author the seven new catalogue entries.** `A7`, `H18`, `D5`, `D6`, `G12`, `G13`, `H17`. Each
    needs the same shape every other entry carries, including a before/after. This is reader-facing
    prose and the only step in the migration that writes new product copy. Verify: the seven render,
    and `patterns.md` reaches 79 entries plus `#0`.
@@ -267,4 +267,4 @@ Landed. 80 entries, 5,453 references rewritten across 131 tracked files, full te
 
 Left as old labels on purpose: retired 6, 11 and 10a, which have no new id; `PR #N`, `Finding #N` and `survivor #N`, which are not pattern references; `#3382`, a GitHub issue; and a hex colour in `render_audit_html.py`. `docs/` is gitignored and untracked, so its `PR #5` and `survivor #2` references were never in scope.
 
-Six defects surfaced and were queued rather than fixed: DR-167 (`performed_candour` points at the wrong entry; six refs inert), DR-168 (B15's SAGE citation unsupported, and nothing in the library supports the row), DR-169 (`audience_knowledge_mismatch` shipped with no row, against a claim that runs the opposite way), DR-170 (`paragraph-length-uniformity` declares thresholds it never reads, and has no calibration record), DR-171 (H2's SAGE citation unsupported; 19 cards unlisted in the sources README), DR-172 (B15's category, and two categories with no preamble).
+Six defects surfaced and were queued rather than fixed: DR-167 (`performed_candour` points at the wrong entry; six refs inert), DR-168 (H18's SAGE citation unsupported, and nothing in the library supports the row), DR-169 (`audience_knowledge_mismatch` shipped with no row, against a claim that runs the opposite way), DR-170 (`paragraph-length-uniformity` declares thresholds it never reads, and has no calibration record), DR-171 (H2's SAGE citation unsupported; the sources index is complete apart from one deliberate retirement tombstone, correcting an unverified 19-card claim), DR-172 (H18's category, and two categories with no preamble).

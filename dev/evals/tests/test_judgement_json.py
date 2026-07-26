@@ -134,7 +134,7 @@ EXPECTED_PATTERN_REFS = {
     "faux_specificity": "H6",
     "neutrality_collapse": "H7",
     "rewrite_stance_drift": None,
-    "even_jargon_distribution": "B15",
+    "even_jargon_distribution": "H18",
     "forced_synesthesia": "F3",
     "generic_metaphors": "G2",
     "referential_clarity": "H3",

@@ -109,7 +109,6 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | B12 | Latinate verb rate | Wikipedia *Signs of AI writing* (stiff verb substitution); matched corpus measurement | regex | context_warning | 44 curated Latinate verbs per 1000 words in prose of 300+ words: generated prose runs a median 2.51 against 1.07 human; fails at 2.5 |
 | B13 | Word length average | Matched corpus measurement (Sussman and Carter report the opposite direction on unlabelled social posts and do not reproduce here) | regex | context_warning | Mean word length in prose of 100+ words: generated prose runs a median 4.95 characters against 4.58 human; fails at 4.80 |
 | B14 | Concreteness average | El Attar et al. (psycholinguistic feature area, no direction supplied); Brysbaert, Warriner and Kuperman concreteness norms; matched corpus measurement | regex | context_warning | Mean concreteness of content words on a 1-to-5 scale in prose of 100+ words: generated prose runs 2.820 against 2.972 human; fails at 2.915 |
-| B15 | Even jargon distribution | SAGE | agent | context_warning | Jargon spreads uniformly across the text instead of clumping where the writer knows things. |
 | | **Style** | | | | |
 | C1 | Boldface overuse | Wikipedia cleanup guide; Guo; Gmelius (email domain) | regex | context_warning | Mechanical bolding of terms that don't need emphasis |
 | C2 | Inline-header lists | Wikipedia cleanup guide; Guo and Shankar | regex | strong_warning | Bolded label + colon turning prose into slides |
@@ -153,11 +152,11 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | G9 | Sentence rhythm variance | Guo; Grammarly; Przystalski (stylometric feature family); GPTZero burstiness and NetusAI (detector/vendor feature family); AI Detectors, AI for Lifelong Learners, SEO Engine, and Rohrer; Phillips (complexity-flattening rationale); Ju, Blix, and Williams (domain syntax); matched-genre corpus measurement | regex | context_warning | A coarse rhythm metric for prose of 100+ words: sentence-length standard deviation of 9.0 or below. |
 | G10 | One-line sections under headings | blader/humanizer (removal rule) | regex | context_warning | A heading followed by a single-sentence paragraph, twice or more |
 | G11 | Symmetric list items | SEO Engine | regex | context_warning | Three or more items of matching length sharing an opening or closing word |
-| G12 | Paragraph length uniformity | Russell, Karpinska, and Iyyer (similar paragraph lengths in reader explanations); AI for Lifelong Learners (hyper-symmetry example) | regex | context_warning | Ten paragraphs all landing between 65 and 85 words |
+| G12 | Paragraph length uniformity | Russell, Karpinska, and Iyyer (similar paragraph lengths in reader explanations); AI for Lifelong Learners (hyper-symmetry example); NousResearch/autonovel ANTI-SLOP (same-length paragraphs on the detector checklist) | regex | context_warning | Ten paragraphs all landing between 65 and 85 words |
 | G13 | Structural monotony | Shankar and Guo; AI Detectors, SEO Engine, and SAGE | agent | context_warning | Every section follows the same arc: opener, supporting argument, micro-conclusion, repeat. |
 | | **Voice and register** | | | | |
 | H1 | Countdown negation | SAGE | regex | context_warning | "It wasn't X. It wasn't Y. It was Z." |
-| H2 | Per-paragraph miniature conclusions | Shankar; AI Detectors and SAGE; SEO Engine (repeated paragraph structure) | regex | context_warning | Every paragraph wraps up neatly |
+| H2 | Per-paragraph miniature conclusions | Shankar; AI Detectors; SEO Engine (repeated paragraph structure) | regex | context_warning | Every paragraph wraps up neatly |
 | H3 | Tonal uniformity / register lock | Abdulhai (paired stance, voice, lexical, grammatical, and emotional shift evidence); Hastewire (student writing); Guo; AI for Lifelong Learners; Vara (safe, polite, predictable chatbot voice); AI Detectors; SEO Engine and SAGE | agent | strong_warning | One register throughout, no human drift |
 | H4 | Vague 'this/that' starts | Shankar; Vollmer (synthesis) | regex | context_warning | "This highlights...", "This underscores...", "That speaks to..." |
 | H5 | Repeated 'This...' chains | Shankar via Vollmer; chain-form variant of H4 | regex | context_warning | Three or more consecutive sentences beginning with "This [verb]": "This shows... This suggests... This means..." |
@@ -173,6 +172,7 @@ Patterns are organised by category. Full before/after examples in `human-eyes/re
 | H15 | Performed candour and vulnerability | House style, requested by Mae; AISLOPOPEDIA, Blader, Rohrer and Copy Posse supply exact frames | regex | strong_warning | "Honestly?", "Real talk", "I need to be clear" |
 | H16 | Mechanical repeated paragraph starts | SAGE (peer-reviewer guidance) | regex | context_warning | Three or more consecutive paragraphs opening with the same word |
 | H17 | Change narration | blader/humanizer (Pattern 30, diff-anchored writing) | agent | context_warning | A docstring reading "now returns a list instead of a tuple" |
+| H18 | Even jargon distribution |   | agent | context_warning | Jargon spreads uniformly across the text instead of clumping where the writer knows things. |
 | | **Signal stacking** | | | | |
 | S1 | Signal stacking from stacked AI tells | Kobak et al. (corpus-level density logic); Juzek & Ward, Kousha & Thelwall, Nature, and GPTZero vocabulary (co-occurrence support); composite of components B3, D1, E4, E6, E8, G6, G7, H2, H13| regex | context_warning | Stacked weak signals reaching the threshold (e.g., "headings in prose, assistant residue, generic conclusion") |
 

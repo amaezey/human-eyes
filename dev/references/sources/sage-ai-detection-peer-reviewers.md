@@ -88,6 +88,7 @@ The prior and current substantive article bodies are unchanged at 768 words afte
 - C10 approved 2026-07-17 via DR-115 component 4: H16 `no-paragraph-anaphora` (context_warning) now flags three or more consecutive prose paragraphs opening with the same word, ignoring trivial openers; headings and list blocks are skipped and do not break a run. C13 rejected via component 5: generic or varied-but-repetitive headers stay undetected and G6 remains identical-label repetition only.
 - C03 approved 2026-07-19 via DR-15 option A: `Studies have shown` joined A5, while `This is an important area of research` and `More research is needed` joined E1.
 - C14 approved 2026-07-19 via DR-20A: H8 now recognises `Insert Table 1 here` and equivalent numbered publishing instructions as hard-fail residue.
+- Citation retired 2026-07-27 via DR-171: the root README credited SAGE for H2 `no-tidy-paragraph-endings`, which no claim on this card supports. C10 concerns identical paragraph starts and rigid paragraph patterns, and its own coverage cell already called paragraph-length uniformity adjacent but different. Shankar and AI Detectors both genuinely map H2 and remain cited. No claim status changed and no check changed. The separate DR-168 finding, that this card's C09 was credited for even jargon distribution while stating it is not covered, is recorded on that row.
 
 ## Project coverage
 
