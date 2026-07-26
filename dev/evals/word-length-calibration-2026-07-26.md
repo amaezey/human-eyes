@@ -1,12 +1,12 @@
 # Word length calibration (2026-07-26)
 
-Record for DR-97: new check #71 `word-length-average`, and why it ships against its source's stated direction.
+Record for DR-97: new check B13 `word-length-average`, and why it ships against its source's stated direction.
 
 ## The measure
 
 The mean length in characters of every word in the piece. Letters and internal apostrophes count; Markdown punctuation, numerals, and symbols do not. Fails at 4.80 or above in prose of 100 words or more, at context-warning severity.
 
-It quotes nothing. There is no offending span, because the signal is the register of the whole draft. It reports a metric string instead, the same way #52 and #53 do.
+It quotes nothing. There is no offending span, because the signal is the register of the whole draft. It reports a metric string instead, the same way G9 and B5 do.
 
 ## The source points the other way
 
@@ -66,7 +66,7 @@ chars per word   human                       generated
 |---|---|---|---|
 | **4.80** | **13%** | **67%** | **54** |
 
-That is the second widest separation in the catalogue, behind #52's 60 points and ahead of #65's 51 and #10's 47.
+That is the second widest separation in the catalogue, behind G9's 60 points and ahead of B7's 51 and B4's 47.
 
 ## Two controls
 
@@ -83,18 +83,18 @@ That is the second widest separation in the catalogue, behind #52's 60 points an
 
 Unanimous, though four pairs is a small number and cannot carry the result alone.
 
-## Overlap with #65
+## Overlap with B7
 
-Of the 30 generated documents this check flags, #65 `no-nominalisation-rate` already flags 27. Of the 8 human documents, #65 already flags 6. Nominalisations are long words, so the two measures move together.
+Of the 30 generated documents this check flags, B7 `no-nominalisation-rate` already flags 27. Of the 8 human documents, B7 already flags 6. Nominalisations are long words, so the two measures move together.
 
 Three arguments against adding it were raised and none survived:
 
-- **"It duplicates #65."** It flags 3 generated documents #65 misses, and it separates better, 54 points against 51.
-- **"It gives the writer nothing to act on."** Metric-only checks are explicitly supported: `test_phrase_capture_coverage.py` carries an allow-list for checks whose signal is a draft-wide number, and #52, #53 and #10 all sit in it. #52 is the strongest check in the catalogue and names no sentence.
-- **"Two correlated checks inflate signal stacking."** They do not. `overall-signal-stacking` runs off a fixed list of 13 checks and neither #65 nor #71 is on it.
+- **"It duplicates B7."** It flags 3 generated documents B7 misses, and it separates better, 54 points against 51.
+- **"It gives the writer nothing to act on."** Metric-only checks are explicitly supported: `test_phrase_capture_coverage.py` carries an allow-list for checks whose signal is a draft-wide number, and G9, B5 and B4 all sit in it. G9 is the strongest check in the catalogue and names no sentence.
+- **"Two correlated checks inflate signal stacking."** They do not. `overall-signal-stacking` runs off a fixed list of 13 checks and neither B7 nor B13 is on it.
 
 ## What the fixtures do and do not prove
 
 The failing fixture is council-report prose at 5.98 characters per word, inside the observed generated range, where four documents exceed 5.5. The passing fixture is plain narrative at 3.27.
 
-Neither sits near 4.80, so the threshold itself is pinned separately with words of controlled length: 400 five-letter words must fail and 400 four-letter words must pass. A fixture written to trip a check proves the code path runs and says nothing about whether the threshold sits where prose lives, which is how #52 shipped with a threshold below the entire observed range and never fired on a real document until DR-79A.
+Neither sits near 4.80, so the threshold itself is pinned separately with words of controlled length: 400 five-letter words must fail and 400 four-letter words must pass. A fixture written to trip a check proves the code path runs and says nothing about whether the threshold sits where prose lives, which is how G9 shipped with a threshold below the entire observed range and never fired on a real document until DR-79A.

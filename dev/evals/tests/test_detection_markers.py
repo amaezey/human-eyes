@@ -16,7 +16,7 @@ _spec = importlib.util.spec_from_file_location(
 _rpm = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_rpm)
 
-README_ROW_RE = re.compile(r"^\| (\d+[ab]?) \| [^|]+\| [^|]+\| (\w+) \|", re.M)
+README_ROW_RE = re.compile(r"^\| ([A-Z]\d+) \| [^|]+\| [^|]+\| (\w+) \|", re.M)
 
 
 def derived_short_form(number, slug, programmatic, judgement_by_number):
@@ -42,7 +42,7 @@ class DetectionMarkerTests(unittest.TestCase):
 
     def test_every_catalogue_entry_has_one_detection_line(self):
         text = _rpm.PATTERNS_MD.read_text()
-        for m in re.finditer(r"^### (\d+[ab]?)\.[^\n]*\n(.*?)(?=^### |^## |\Z)",
+        for m in re.finditer(r"^### ([A-Z]\d+)\.[^\n]*\n(.*?)(?=^### |^## |\Z)",
                              text, re.M | re.S):
             count = m.group(2).count("**Detection:**")
             self.assertEqual(1, count, f"entry {m.group(1)} has {count} Detection lines")

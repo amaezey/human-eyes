@@ -1,4 +1,4 @@
-# #31a unicode-flair threshold calibration, 2026-07-17
+# G4 unicode-flair threshold calibration, 2026-07-17
 
 Calibration record for DR-116 (Merrill/WaPo emoji prevalence, `merrill-wapo-chatgpt-clues:C02`). Decision: Mae approved running the calibration 2026-07-17; the proposal was an evaluation with matched genre controls, not a threshold change.
 

@@ -34,6 +34,7 @@ CATEGORY_ORDER = [
     "Sensory and atmospheric",
     "Structural tells",
     "Voice and register",
+    "Signal stacking",
 ]
 
 # Page-level content that lives in the generator (rarely changes; kept here
@@ -65,7 +66,6 @@ def parse_patterns_md(text):
         toc_body: str (just the body of ## Contents, no heading)
         evidence_body: str
         categories: dict[category_name, list[(heading_number, heading_text, body)]]
-        meta_check_body: str
     """
     # Identify section boundaries by H2.
     h2_split = re.split(r"(?m)^## (.+)$", text)
@@ -76,7 +76,6 @@ def parse_patterns_md(text):
 
     toc_body = None
     evidence_body = None
-    meta_check_body = None
     categories = {}
 
     for i in range(1, len(h2_split), 2):
@@ -88,8 +87,6 @@ def parse_patterns_md(text):
             toc_body = body
         elif title.startswith("Evidence hierarchy"):
             evidence_body = body
-        elif title.startswith("Signal stacking"):
-            meta_check_body = body
         elif title in CATEGORY_ORDER:
             categories[title] = parse_category_body(body)
         else:
@@ -100,7 +97,6 @@ def parse_patterns_md(text):
         "toc_body": toc_body,
         "evidence_body": evidence_body,
         "categories": categories,
-        "meta_check_body": meta_check_body,
     }
 
 
@@ -113,7 +109,7 @@ def parse_category_body(body):
     (preserves source idiosyncrasies — sub-letter entries are inconsistently
     spaced in the source).
     """
-    h3_split = re.split(r"(?m)^### (\d+[a-z]?)\. (.+)$", body)
+    h3_split = re.split(r"(?m)^### ([A-Z]\d+)\. (.+)$", body)
     # h3_split = [pre_h3_content, num1, title1, body1, num2, title2, body2, ...]
     preamble = h3_split[0].strip()
     entries = []
@@ -200,7 +196,6 @@ def enrich():
         "preamble": parsed["preamble"],
         "toc_body": parsed["toc_body"],
         "evidence_body": parsed["evidence_body"],
-        "meta_check_body": parsed["meta_check_body"],
     }
 
     extra_entries = []
@@ -253,20 +248,11 @@ def enrich():
     print(f"enriched {PATTERNS_JSON.relative_to(REPO_ROOT)}:")
     print(f"  {n_check} check records (added pattern_number, patterns_md_heading, patterns_md_body)")
     print(f"  {len(extra_entries)} extra entries (folded/manual)")
-    print(f"  _meta: preamble + toc_body + evidence_body + meta_check_body")
+    print(f"  _meta: preamble + toc_body + evidence_body")
 
 
 # Patterns whose behaviour lives inside another pattern's programmatic check.
-FOLDED_INTO = {"16": "no-unicode-flair", "21": "no-collaborative-artifacts"}
-# judgement.json records whose pattern_ref is missing; mapped here until the
-# registry carries the reference itself.
-JUDGEMENT_REF_FALLBACK = {
-    "structural_monotony": "54",
-    "even_jargon_distribution": "55",
-    "unprompted_caveats": "61",
-}
-
-
+FOLDED_INTO = {"C4": "no-unicode-flair", "D3": "no-collaborative-artifacts"}
 def _load_detection_registries():
     """Return (programmatic slugs, pattern_number -> [judgement record ids])."""
     import importlib.util
@@ -278,7 +264,7 @@ def _load_detection_registries():
         (REPO_ROOT / "human-eyes" / "scripts" / "judgement.json").read_text())
     by_number = {}
     for rec in judgement["records"]:
-        ref = rec["pattern_ref"] or JUDGEMENT_REF_FALLBACK.get(rec["id"])
+        ref = rec["pattern_ref"]
         if ref is not None:
             by_number.setdefault(str(ref), []).append(rec["id"])
     return set(grade.ALL_CHECKS), by_number
@@ -349,8 +335,8 @@ def render():
     # Sort each category by pattern_number — the original patterns.md order
     # uses numeric+letter suffix; sort by (numeric_prefix, letter_suffix).
     def sort_key(entry):
-        m = re.match(r"(\d+)([a-z]?)", entry["number"])
-        return (int(m.group(1)), m.group(2))
+        m = re.match(r"([A-Z])(\d+)$", entry["number"])
+        return (m.group(1), int(m.group(2)))
     for cat in by_category:
         by_category[cat].sort(key=sort_key)
 
@@ -380,8 +366,6 @@ def render():
                 separator = "\n" * (entry["leading_blanks"] + 1)
             cat_block += f"{separator}### {entry['number']}. {entry['heading']}\n\n{entry['body']}"
         sections.append(cat_block)
-
-    sections.append(f"## Signal stacking (meta-check)\n\n{meta['meta_check_body']}")
 
     return "\n\n---\n\n".join(sections).rstrip() + "\n"
 

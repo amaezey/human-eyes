@@ -48,11 +48,11 @@ AISLOPOPEDIA is a satirical living catalogue of 217 phrases and templates arrang
 
 ## Matched patterns / rules
 
-- #42 `no-manufactured-insight`, #56 `no-performed-candour`, #9 `no-negative-parallelisms`, #25 `no-staccato-sequences`, #51 `no-anaphora`, #1 `no-significance-inflation`, #4 `no-promotional-language`, and #31a `no-unicode-flair` recognize selected exact examples.
-- #22 `no-filler-phrases` recognizes only `It's worth noting that...` from the nine qualifier examples; #23a `no-false-concession-hedges` recognizes none of those isolated source forms.
-- #31 and #38 inspect actual list density and repeated section labels, not the six numbered-hook headlines.
-- #24 `no-generic-conclusions` and #32 `no-dramatic-transitions` do not recognize the isolated fake-philosophical closer set.
-- #43 `no-corporate-ai-speak` is phrase-scoped and does not recognize the source's bare verb list; #7 records some adjectives and verbs only as below-threshold vocabulary candidates.
+- G7 `no-manufactured-insight`, H15 `no-performed-candour`, B3 `no-negative-parallelisms`, E5 `no-staccato-sequences`, H14 `no-anaphora`, A1 `no-significance-inflation`, A4 `no-promotional-language`, and G4 `no-unicode-flair` recognize selected exact examples.
+- E1 `no-filler-phrases` recognizes only `It's worth noting that...` from the nine qualifier examples; E3 `no-false-concession-hedges` recognizes none of those isolated source forms.
+- G3 and G6 inspect actual list density and repeated section labels, not the six numbered-hook headlines.
+- E4 `no-generic-conclusions` and G5 `no-dramatic-transitions` do not recognize the isolated fake-philosophical closer set.
+- H11 `no-corporate-ai-speak` is phrase-scoped and does not recognize the source's bare verb list; B1 records some adjectives and verbs only as below-threshold vocabulary candidates.
 - The `formulaic_parallelism`, `underspecified_language`, `context_leakage`, `performed_candour`, and `genre_specific` assessment records can interpret symmetry, vague evaluation, absent-comment replies, authenticity performance, and marketing context after deterministic recognition.
 
 ## Associated hypotheses
@@ -81,22 +81,22 @@ The prior card named a snapshot but recorded no digest. The exact 15,854-byte on
 
 ## Decision history
 
-- 2026-07-19: Mae approved one consolidated programmatic routing for the remaining DR-135 product families. C08, C10, C11, C13, C14, C23-C26 extend existing regex checks; C09 required no change; and C12, C15-C17, C20-C22 are covered by new #62 `no-formulaic-social-posts`, which reports formula subtypes and fails on one complete matched frame. No agent-judgement mechanism was added.
-- 2026-07-19: Mae approved all eight previously uncovered C07 performed-vulnerability frames for programmatic #56, broadening its label to performed candour and vulnerability while retaining its existing severity and one-occurrence failure condition.
-- 2026-07-19: Mae approved split programmatic coverage for the six previously uncovered C06 dramatic-fragment forms: four exact fragment formulas in #25 and two performed-emphasis commands in #42. No new pattern was created.
-- 2026-07-19: Mae approved all six C05 numbered-list hook templates for programmatic #50, including plain paragraph and Markdown-heading openers, with its existing severity and one-occurrence failure condition.
-- 2026-07-18: Mae approved all nine C03 manufactured-urgency hooks for programmatic #42 with its existing severity and one-occurrence failure condition.
-- 2026-07-18: Mae approved all ten C02 false-exclusivity hooks for programmatic #42 with its existing severity and one-occurrence failure condition.
-- 2026-07-18: Mae approved all six previously uncovered C01 throat-clearer openers for programmatic #50. Together with the four forms already recognised by #42 or #56, all ten catalogue forms now produce deterministic findings.
-- 2026-07-18: Mae approved all four remaining C04 X-to-Y reversal shapes for programmatic #9. `Stop thinking... Start thinking`, `X isn't the future. Y is`, `X is dead. Y is what's next`, and `Forget X. Focus on Y` are implemented as exact structural regex branches with the existing #9 severity and one-occurrence failure condition.
+- 2026-07-19: Mae approved one consolidated programmatic routing for the remaining DR-135 product families. C08, C10, C11, C13, C14, C23-C26 extend existing regex checks; C09 required no change; and C12, C15-C17, C20-C22 are covered by new D4 `no-formulaic-social-posts`, which reports formula subtypes and fails on one complete matched frame. No agent-judgement mechanism was added.
+- 2026-07-19: Mae approved all eight previously uncovered C07 performed-vulnerability frames for programmatic H15, broadening its label to performed candour and vulnerability while retaining its existing severity and one-occurrence failure condition.
+- 2026-07-19: Mae approved split programmatic coverage for the six previously uncovered C06 dramatic-fragment forms: four exact fragment formulas in E5 and two performed-emphasis commands in G7. No new pattern was created.
+- 2026-07-19: Mae approved all six C05 numbered-list hook templates for programmatic E8, including plain paragraph and Markdown-heading openers, with its existing severity and one-occurrence failure condition.
+- 2026-07-18: Mae approved all nine C03 manufactured-urgency hooks for programmatic G7 with its existing severity and one-occurrence failure condition.
+- 2026-07-18: Mae approved all ten C02 false-exclusivity hooks for programmatic G7 with its existing severity and one-occurrence failure condition.
+- 2026-07-18: Mae approved all six previously uncovered C01 throat-clearer openers for programmatic E8. Together with the four forms already recognised by G7 or H15, all ten catalogue forms now produce deterministic findings.
+- 2026-07-18: Mae approved all four remaining C04 X-to-Y reversal shapes for programmatic B3. `Stop thinking... Start thinking`, `X isn't the future. Y is`, `X is dead. Y is what's next`, and `Forget X. Focus on Y` are implemented as exact structural regex branches with the existing B3 severity and one-occurrence failure condition.
 - The prior card used no claim IDs, user-decision states, implementation statuses, independent-review record, or snapshot digest. It proposed broad checker extensions but recorded no user approval and no completed product change. This update reopens the 26 families, self-score, and confession as C01-C28 with `pending` and `not started` states.
 - No prior recommendation is treated as implemented. The previous equal-weight score rejection remains a recommendation, not an approved decision.
-- C18 and C19 approved 2026-07-17: add the missed ⚡, ➡, and ♻ glyphs to #31a candidate recognition. Implemented in commit 13e235f. All other rows remain pending.
+- C18 and C19 approved 2026-07-17: add the missed ⚡, ➡, and ♻ glyphs to G4 candidate recognition. Implemented in commit 13e235f. All other rows remain pending.
 
 ## Prior-to-current comparison
 
 - **Added:** current-template metadata, reproducible first-party bundle route, stable deployment identifiers, verified archive history, 28 claim IDs, evidence/directness boundaries, live implementation results, canonical decisions, evaluation lines, and independent-review fields.
-- **Corrected:** the old “complete rendered-text capture” statement now names the shell/bundle route and exact structure. The old broad incorporation language is qualified as catalogue-derived pending evaluation. Current #7 vocabulary and #43 corporate-phrase behavior replaces stale mapping language.
+- **Corrected:** the old “complete rendered-text capture” statement now names the shell/bundle route and exact structure. The old broad incorporation language is qualified as catalogue-derived pending evaluation. Current B1 vocabulary and H11 corporate-phrase behavior replaces stale mapping language.
 - **Removed:** no substantive source text or example. Unsupported authorship, equal-weight scoring, threshold, origin, and causal-training implications are explicitly non-promoted.
 - **Unchanged:** all 282 defined content-object strings, including all 217 phrases, occur in the archived rendered capture; the live page's title, author metadata, ten-section structure, opening, middle groups, severity scale, confession, and footer remain substantively unchanged.
 
@@ -106,94 +106,94 @@ This is the authoritative review table. Focused results came from the live `huma
 
 | Source claim or example | Evidence assessment | Existing project coverage | Missing or challenged | Recommendation | User decision | Implementation status |
 |---|---|---|---|---|---|---|
-| C01: Ten throat-clearers stage a claim before stating it. | Direct catalogue judgment with ten exact examples. | fully covered: #42 recognises three manufactured-insight forms, #56 recognises `I'll be honest`, and DR-135B added the remaining six paragraph-opening structures to #50. | No remaining exact-form gap for this family. | Retain all ten programmatic findings across #42, #56, and #50. | approved | implemented |
-| C02: Ten false-exclusivity hooks simulate suppressed or insider information. | Direct catalogue judgment with ten exact examples. | fully covered: DR-135C added all ten hidden-, suppressed-, secrecy-, and insider-knowledge structures to programmatic #42. | No remaining exact-form gap for this family. | Retain all ten false-exclusivity hooks in #42 with its existing severity and failure condition. | approved | implemented |
-| C03: Nine urgency hooks create pressure around non-expiring information. | Direct catalogue judgment with nine exact examples. | fully covered: DR-135D added all nine urgency-hook structures to programmatic #42. | No remaining exact-form gap for this family. | Retain all nine manufactured-urgency hooks in #42 with its existing severity and failure condition. | approved | implemented |
-| C04: Ten binary-contrast templates stage an X-to-Y reversal. | Direct catalogue examples with ten exact structural forms. | fully covered: the current #9 matcher recognises all ten. Six forms were already live; DR-135A added the remaining stop/start, future-replacement, dead/next, and forget/focus structures. | No remaining exact-form gap for this family. | Retain all ten X-to-Y reversal shapes in programmatic #9 with its existing severity and failure condition. | approved | implemented |
-| C05: Six numbered-list hooks package lessons, mistakes, pillars, or frameworks. | Direct catalogue examples with six exact structural forms. | fully covered: DR-135E added all six numbered-hook structures to programmatic #50 for plain paragraph and Markdown-heading openers. | No remaining exact-form gap for this family; #31 and #38 remain separate list-density and scaffolding checks. | Retain all six numbered-list hook structures in #50 with its existing severity and failure condition. | approved | implemented |
-| C06: Nine dramatic fragments use short commands or chopped sentences for emphasis. | Direct catalogue examples with nine exact structural forms. | fully covered: #42 recognises `Let that sink in`, `Read that again`, `Sit with that for a second`, and the louder-for-the-back command; #25 recognises `This. Is. The. Future.` plus the four exact full-stop, period, tweet, and one-word formulas added by DR-135F. | No remaining exact-form gap for this family. | Retain the four performed-emphasis forms in #42 and the five fragmentation forms in #25 with their existing severities and failure conditions. | approved | implemented |
-| C07: Nine vulnerability or anticipated-backlash frames perform relatability. | Direct catalogue examples with nine exact structural forms. | fully covered: #56 already recognised `I'm going to be honest with you`; DR-135G added the other eight vulnerability and anticipated-backlash frames and broadened the pattern label to performed candour and vulnerability. | No remaining exact-form gap for this family. | Retain all nine performed-candour and vulnerability frames in #56 with its existing severity and failure condition. | approved | implemented |
-| C08: Ten false-agency clichés give data, markets, technology, industries, results, implications, or possibilities actor-like force. | Direct catalogue interpretation with ten exact examples. | fully covered: `The implications are staggering` remains in #1 and the other nine exact frames now fail #42. | No remaining exact-form gap for this family. | Retain the approved split programmatic routing across #1 and #42. | approved | implemented |
-| C09: Four escalation ladders build three short beats with rising force. | Direct catalogue examples. | fully covered: all four already fail #25; two also fail #51. | No product gap remained. | Close with no behaviour change. | approved | implemented |
-| C10: Eleven pivot phrases substitute a reveal for logical connection. | Direct catalogue examples. | fully covered: all eleven exact reveal-pivot frames now fail #42. | No remaining exact-form gap for this family. | Retain the reveal-pivot frames in #42. | approved | implemented |
-| C11: Nine qualifier sandwiches hedge before a claim. | Direct catalogue examples. | fully covered across #22 and #23a: filler transitions and caveat frames route to #22; concession structures route to #23a. | No remaining exact-form gap for this family. | Retain the approved split programmatic routing across #22 and #23a. | approved | implemented |
-| C12: Ten calls to action request comments, follows, reposts, shares, saves, tags, subscriptions, or link clicks. | Direct social-platform catalogue with ten exact examples. | fully covered: all ten complete engagement-request frames fail new #62. | No remaining exact-form gap for this family. | Retain the engagement-request subtype in #62. | approved | implemented |
-| C13: Nine philosophical closers use future, early-stage, genie, cat, or buckle-up formulas. | Direct catalogue examples. | fully covered: all nine exact closer frames now fail #24. | No remaining exact-form gap for this family. | Retain the closer formulas in #24. | approved | implemented |
-| C14: Eight mic-drop closers claim certainty or consequence. | Direct catalogue examples. | fully covered across #42 and #24: the two contrast/reveal forms remain in #42 and the remaining exact closer formulas now fail #24. | No remaining exact-form gap for this family. | Retain the approved split programmatic routing across #42 and #24. | approved | implemented |
-| C15: Eight agreement comments add affirmation without a reason. | Direct catalogue examples. | fully covered: all eight complete agreement-comment frames fail new #62. | No remaining exact-form gap for this family. | Retain the agreement-comment subtype in #62. | approved | implemented |
-| C16: Six engagement-farming comments invite replies or stage disagreement. | Direct catalogue examples. | fully covered: all six complete engagement-comment frames fail new #62. | No remaining exact-form gap for this family. | Retain the engagement-comment subtype in #62. | approved | implemented |
-| C17: Four credential-preface replies turn tenure, CEO access, team discussion, or speaking into theatre. | Direct catalogue examples. | fully covered: all four complete credential-preface frames fail new #62. | No remaining exact-form gap for this family. | Retain the credential-preface subtype in #62. | approved | implemented |
-| C18: Ten single emoji label the intended emotional category. | Direct catalogue mapping; no frequency, platform, or comparison data. | partly covered: #31a records 9 of 10 as candidates but each passes alone at the two-candidate threshold; ⚡ is missed. | Symbol recognition omits ⚡; one-symbol placement is not a document finding. | **test-adapt:** add ⚡ candidate recognition and test placement and clustering while retaining the aggregate and UI, quotation, and checklist controls. | approved | implemented |
-| C19: Six emoji bullet styles decorate list items. | Direct catalogue examples; list utility and platform context are unmeasured. | partly covered: #31a records 5 of 6 as candidates below threshold; ➡️ is missed. The separate CTA list also exposes missed ♻️. | Arrow and recycling forms are absent; variation selectors require explicit handling. | **test-adapt:** add ➡ and ♻ candidate recognition with variation-selector tests; keep actual list density and legitimate UI/checklist context separate. | approved | implemented |
-| C20: Five `I asked ChatGPT` wrappers package a prompt or experiment as content. | Direct catalogue examples. | fully covered: all five complete AI-experiment wrappers fail new #62. | No remaining exact-form gap for this family. | Retain the AI-wrapper subtype in #62. | approved | implemented |
-| C21: Five time-lapse brags compress an achievement into hours, days, or minutes. | Direct catalogue examples. | fully covered: all five complete time-compression frames fail new #62. | No remaining exact-form gap for this family. | Retain the time-compression subtype in #62. | approved | implemented |
-| C22: Five artificial-scarcity hooks claim exhaustive curation, reading, or analysis. | Direct catalogue examples. | fully covered: all five complete scarcity-hook frames fail new #62. | No remaining exact-form gap for this family. | Retain the scarcity-hook subtype in #62. | approved | implemented |
-| C23: Thirteen adverbs are labelled AI-like. | Direct catalogue list. | fully recognized by #7 as vocabulary candidates; the existing #7 clustering threshold is unchanged. | No remaining vocabulary-recognition gap for this family. | Retain all thirteen forms in #7's existing clustering mechanism. | approved | implemented |
-| C24: Eleven adjectives are described as vague intensifiers. | Direct catalogue list. | fully recognized across #7's vocabulary candidates and existing #4 promotional coverage; the #7 clustering threshold is unchanged. | No remaining vocabulary-recognition gap for this family. | Retain the forms in the existing #7/#4 programmatic routing. | approved | implemented |
-| C25: Ten corporate verbs are described as smart-sounding but empty. | Direct catalogue list. | fully recognized across #7's vocabulary candidates and #43's phrase-scoped corporate constructions; the #7 clustering threshold is unchanged. | No remaining vocabulary-recognition gap for this family. | Retain the forms in the existing #7/#43 programmatic routing. | approved | implemented |
-| C26: Ten fill-in-the-blank LinkedIn sentence templates stage reframes, replacements, prophecies, or comparisons. | Direct catalogue templates. | fully covered across #9, #42, #50, #1, and #62 according to each template's surface mechanism. | No remaining exact-template gap for this family. | Retain the approved split programmatic routing; use #62 for the time-compression template that does not fit an existing rhetorical rule. | approved | implemented |
+| C01: Ten throat-clearers stage a claim before stating it. | Direct catalogue judgment with ten exact examples. | fully covered: G7 recognises three manufactured-insight forms, H15 recognises `I'll be honest`, and DR-135B added the remaining six paragraph-opening structures to E8. | No remaining exact-form gap for this family. | Retain all ten programmatic findings across G7, H15, and E8. | approved | implemented |
+| C02: Ten false-exclusivity hooks simulate suppressed or insider information. | Direct catalogue judgment with ten exact examples. | fully covered: DR-135C added all ten hidden-, suppressed-, secrecy-, and insider-knowledge structures to programmatic G7. | No remaining exact-form gap for this family. | Retain all ten false-exclusivity hooks in G7 with its existing severity and failure condition. | approved | implemented |
+| C03: Nine urgency hooks create pressure around non-expiring information. | Direct catalogue judgment with nine exact examples. | fully covered: DR-135D added all nine urgency-hook structures to programmatic G7. | No remaining exact-form gap for this family. | Retain all nine manufactured-urgency hooks in G7 with its existing severity and failure condition. | approved | implemented |
+| C04: Ten binary-contrast templates stage an X-to-Y reversal. | Direct catalogue examples with ten exact structural forms. | fully covered: the current B3 matcher recognises all ten. Six forms were already live; DR-135A added the remaining stop/start, future-replacement, dead/next, and forget/focus structures. | No remaining exact-form gap for this family. | Retain all ten X-to-Y reversal shapes in programmatic B3 with its existing severity and failure condition. | approved | implemented |
+| C05: Six numbered-list hooks package lessons, mistakes, pillars, or frameworks. | Direct catalogue examples with six exact structural forms. | fully covered: DR-135E added all six numbered-hook structures to programmatic E8 for plain paragraph and Markdown-heading openers. | No remaining exact-form gap for this family; G3 and G6 remain separate list-density and scaffolding checks. | Retain all six numbered-list hook structures in E8 with its existing severity and failure condition. | approved | implemented |
+| C06: Nine dramatic fragments use short commands or chopped sentences for emphasis. | Direct catalogue examples with nine exact structural forms. | fully covered: G7 recognises `Let that sink in`, `Read that again`, `Sit with that for a second`, and the louder-for-the-back command; E5 recognises `This. Is. The. Future.` plus the four exact full-stop, period, tweet, and one-word formulas added by DR-135F. | No remaining exact-form gap for this family. | Retain the four performed-emphasis forms in G7 and the five fragmentation forms in E5 with their existing severities and failure conditions. | approved | implemented |
+| C07: Nine vulnerability or anticipated-backlash frames perform relatability. | Direct catalogue examples with nine exact structural forms. | fully covered: H15 already recognised `I'm going to be honest with you`; DR-135G added the other eight vulnerability and anticipated-backlash frames and broadened the pattern label to performed candour and vulnerability. | No remaining exact-form gap for this family. | Retain all nine performed-candour and vulnerability frames in H15 with its existing severity and failure condition. | approved | implemented |
+| C08: Ten false-agency clichés give data, markets, technology, industries, results, implications, or possibilities actor-like force. | Direct catalogue interpretation with ten exact examples. | fully covered: `The implications are staggering` remains in A1 and the other nine exact frames now fail G7. | No remaining exact-form gap for this family. | Retain the approved split programmatic routing across A1 and G7. | approved | implemented |
+| C09: Four escalation ladders build three short beats with rising force. | Direct catalogue examples. | fully covered: all four already fail E5; two also fail H14. | No product gap remained. | Close with no behaviour change. | approved | implemented |
+| C10: Eleven pivot phrases substitute a reveal for logical connection. | Direct catalogue examples. | fully covered: all eleven exact reveal-pivot frames now fail G7. | No remaining exact-form gap for this family. | Retain the reveal-pivot frames in G7. | approved | implemented |
+| C11: Nine qualifier sandwiches hedge before a claim. | Direct catalogue examples. | fully covered across E1 and E3: filler transitions and caveat frames route to E1; concession structures route to E3. | No remaining exact-form gap for this family. | Retain the approved split programmatic routing across E1 and E3. | approved | implemented |
+| C12: Ten calls to action request comments, follows, reposts, shares, saves, tags, subscriptions, or link clicks. | Direct social-platform catalogue with ten exact examples. | fully covered: all ten complete engagement-request frames fail new D4. | No remaining exact-form gap for this family. | Retain the engagement-request subtype in D4. | approved | implemented |
+| C13: Nine philosophical closers use future, early-stage, genie, cat, or buckle-up formulas. | Direct catalogue examples. | fully covered: all nine exact closer frames now fail E4. | No remaining exact-form gap for this family. | Retain the closer formulas in E4. | approved | implemented |
+| C14: Eight mic-drop closers claim certainty or consequence. | Direct catalogue examples. | fully covered across G7 and E4: the two contrast/reveal forms remain in G7 and the remaining exact closer formulas now fail E4. | No remaining exact-form gap for this family. | Retain the approved split programmatic routing across G7 and E4. | approved | implemented |
+| C15: Eight agreement comments add affirmation without a reason. | Direct catalogue examples. | fully covered: all eight complete agreement-comment frames fail new D4. | No remaining exact-form gap for this family. | Retain the agreement-comment subtype in D4. | approved | implemented |
+| C16: Six engagement-farming comments invite replies or stage disagreement. | Direct catalogue examples. | fully covered: all six complete engagement-comment frames fail new D4. | No remaining exact-form gap for this family. | Retain the engagement-comment subtype in D4. | approved | implemented |
+| C17: Four credential-preface replies turn tenure, CEO access, team discussion, or speaking into theatre. | Direct catalogue examples. | fully covered: all four complete credential-preface frames fail new D4. | No remaining exact-form gap for this family. | Retain the credential-preface subtype in D4. | approved | implemented |
+| C18: Ten single emoji label the intended emotional category. | Direct catalogue mapping; no frequency, platform, or comparison data. | partly covered: G4 records 9 of 10 as candidates but each passes alone at the two-candidate threshold; ⚡ is missed. | Symbol recognition omits ⚡; one-symbol placement is not a document finding. | **test-adapt:** add ⚡ candidate recognition and test placement and clustering while retaining the aggregate and UI, quotation, and checklist controls. | approved | implemented |
+| C19: Six emoji bullet styles decorate list items. | Direct catalogue examples; list utility and platform context are unmeasured. | partly covered: G4 records 5 of 6 as candidates below threshold; ➡️ is missed. The separate CTA list also exposes missed ♻️. | Arrow and recycling forms are absent; variation selectors require explicit handling. | **test-adapt:** add ➡ and ♻ candidate recognition with variation-selector tests; keep actual list density and legitimate UI/checklist context separate. | approved | implemented |
+| C20: Five `I asked ChatGPT` wrappers package a prompt or experiment as content. | Direct catalogue examples. | fully covered: all five complete AI-experiment wrappers fail new D4. | No remaining exact-form gap for this family. | Retain the AI-wrapper subtype in D4. | approved | implemented |
+| C21: Five time-lapse brags compress an achievement into hours, days, or minutes. | Direct catalogue examples. | fully covered: all five complete time-compression frames fail new D4. | No remaining exact-form gap for this family. | Retain the time-compression subtype in D4. | approved | implemented |
+| C22: Five artificial-scarcity hooks claim exhaustive curation, reading, or analysis. | Direct catalogue examples. | fully covered: all five complete scarcity-hook frames fail new D4. | No remaining exact-form gap for this family. | Retain the scarcity-hook subtype in D4. | approved | implemented |
+| C23: Thirteen adverbs are labelled AI-like. | Direct catalogue list. | fully recognized by B1 as vocabulary candidates; the existing B1 clustering threshold is unchanged. | No remaining vocabulary-recognition gap for this family. | Retain all thirteen forms in B1's existing clustering mechanism. | approved | implemented |
+| C24: Eleven adjectives are described as vague intensifiers. | Direct catalogue list. | fully recognized across B1's vocabulary candidates and existing A4 promotional coverage; the B1 clustering threshold is unchanged. | No remaining vocabulary-recognition gap for this family. | Retain the forms in the existing B1/A4 programmatic routing. | approved | implemented |
+| C25: Ten corporate verbs are described as smart-sounding but empty. | Direct catalogue list. | fully recognized across B1's vocabulary candidates and H11's phrase-scoped corporate constructions; the B1 clustering threshold is unchanged. | No remaining vocabulary-recognition gap for this family. | Retain the forms in the existing B1/H11 programmatic routing. | approved | implemented |
+| C26: Ten fill-in-the-blank LinkedIn sentence templates stage reframes, replacements, prophecies, or comparisons. | Direct catalogue templates. | fully covered across B3, G7, E8, A1, and D4 according to each template's surface mechanism. | No remaining exact-template gap for this family. | Retain the approved split programmatic routing; use D4 for the time-compression template that does not fit an existing rhetorical rule. | approved | implemented |
 | C27: The five-band self-score assigns equal weight to selected phrases and jokes that high counts mean the user is AI. | Direct interactive framing and satire; no calibration, weighting study, or error analysis. | challenges current product boundary if imported; human-eyes reports constructions and context and does not classify authorship. | Equal weights, count cutoffs, labels, and authorship implication are unsupported. | **do not adopt:** retain the score only as source context; do not implement or cite its thresholds as evidence. Rejected 2026-07-26 (DR-95): the five bands are a joke with invented thresholds, and their `a high count means you are an AI` reading is the authorship framing rule 1 places outside the product. Recorded as read and deliberately not used: no threshold or band from this score entered `patterns.json`, `grade.py`, or any evidence claim. The catalogue's phrase lists are unaffected. | rejected | not applicable |
 | C28: The confession says an AI wrote the catalogue, originated every phrase millions of times, learned shortcuts from billions of human words, and explains three phrases through response, conversation, and contrast effects. | Direct page self-description and author interpretation; no model identity, logs, prompt, corpus, source, experiment, or independent verification. | fully covered as a boundary by the source-record contract and process product boundary; no runtime check should treat the story as provenance proof. | The claims cannot support authorship, origin, frequency, training mechanism, or causal psychology. | **do not adopt:** record the confession as satire and unsupported interpretation only; require independent primary evidence for any causal or provenance claim. Rejected 2026-07-26 (DR-95): the confession is satire and author interpretation, with no measurement behind its authorship, origination-count, training, frequency, or causal claims about the three explained phrases. Recorded as read and deliberately not used: nothing from it supports provenance, prevalence, model attribution, or a causal mechanism, and any such claim would need independent primary evidence. The catalogue's phrase lists are unaffected. | rejected | not applicable |
 
 ## Recommendations
 
-- C01: retain all ten exact throat-clearer forms across programmatic #42, #56, and #50.
-- C02: retain all ten false-exclusivity hooks in programmatic #42.
-- C03: retain all nine manufactured-urgency hooks in programmatic #42.
-- C04: retain all ten exact X-to-Y reversal structures in programmatic #9.
-- C05: retain all six numbered-list hook structures in programmatic #50.
-- C06: retain the four performed-emphasis forms in #42 and five fragmentation forms in #25.
-- C07: retain all nine performed-candour and vulnerability frames in programmatic #56.
-- C08: retain the exact false-agency frames across programmatic #1 and #42.
-- C09: close with no behaviour change; all four escalation ladders already fail #25.
-- C10: retain all eleven reveal-pivot frames in programmatic #42.
-- C11: retain the qualifier frames across programmatic #22 and #23a.
-- C12: retain the engagement-request subtype in programmatic #62.
-- C13: retain the philosophical closer formulas in programmatic #24.
-- C14: retain the mic-drop closer formulas across programmatic #42 and #24.
-- C15: retain the agreement-comment subtype in programmatic #62.
-- C16: retain the engagement-comment subtype in programmatic #62.
-- C17: retain the credential-preface subtype in programmatic #62.
+- C01: retain all ten exact throat-clearer forms across programmatic G7, H15, and E8.
+- C02: retain all ten false-exclusivity hooks in programmatic G7.
+- C03: retain all nine manufactured-urgency hooks in programmatic G7.
+- C04: retain all ten exact X-to-Y reversal structures in programmatic B3.
+- C05: retain all six numbered-list hook structures in programmatic E8.
+- C06: retain the four performed-emphasis forms in G7 and five fragmentation forms in E5.
+- C07: retain all nine performed-candour and vulnerability frames in programmatic H15.
+- C08: retain the exact false-agency frames across programmatic A1 and G7.
+- C09: close with no behaviour change; all four escalation ladders already fail E5.
+- C10: retain all eleven reveal-pivot frames in programmatic G7.
+- C11: retain the qualifier frames across programmatic E1 and E3.
+- C12: retain the engagement-request subtype in programmatic D4.
+- C13: retain the philosophical closer formulas in programmatic E4.
+- C14: retain the mic-drop closer formulas across programmatic G7 and E4.
+- C15: retain the agreement-comment subtype in programmatic D4.
+- C16: retain the engagement-comment subtype in programmatic D4.
+- C17: retain the credential-preface subtype in programmatic D4.
 - C18: test-adapt ⚡ recognition while retaining aggregation and context gates.
 - C19: test-adapt ➡ and ♻ recognition with variation-selector fixtures.
-- C20: retain the AI-wrapper subtype in programmatic #62.
-- C21: retain the time-compression subtype in programmatic #62.
-- C22: retain the scarcity-hook subtype in programmatic #62.
-- C23: retain all thirteen adverbs in #7's existing clustering mechanism.
-- C24: retain the adjective forms across #7 and #4.
-- C25: retain the corporate-verb forms across #7 and #43.
-- C26: retain the template routing across #9, #42, #50, #1, and #62.
+- C20: retain the AI-wrapper subtype in programmatic D4.
+- C21: retain the time-compression subtype in programmatic D4.
+- C22: retain the scarcity-hook subtype in programmatic D4.
+- C23: retain all thirteen adverbs in B1's existing clustering mechanism.
+- C24: retain the adjective forms across B1 and A4.
+- C25: retain the corporate-verb forms across B1 and H11.
+- C26: retain the template routing across B3, G7, E8, A1, and D4.
 - C27: do not adopt the score, weights, cutoffs, or authorship labels.
 - C28: do not adopt the page's self-authorship, phrase-origin, training, frequency, or causal claims.
 
 ## Evaluation of approved changes
 
-- C01: passed - all ten catalogue forms now produce deterministic findings; focused `test_grade.py` coverage includes each of the six DR-135B additions to #50.
-- C02: passed - all ten catalogue forms now fail programmatic #42; focused `test_grade.py` coverage includes every DR-135C addition.
-- C03: passed - all nine catalogue forms now fail programmatic #42; focused `test_grade.py` coverage includes every DR-135D addition.
-- C04: passed - all ten catalogue forms now fail programmatic #9; focused `test_grade.py` coverage includes each of the four DR-135A additions.
-- C05: passed - all six catalogue structures now fail programmatic #50 as plain paragraph and Markdown-heading openers; focused `test_grade.py` coverage includes every DR-135E addition.
-- C06: passed - all nine catalogue forms now produce programmatic findings across #42 and #25; focused `test_grade.py` coverage includes every DR-135F addition.
-- C07: passed - all nine catalogue forms now fail programmatic #56; focused `test_grade.py` coverage includes every DR-135G addition.
-- C08: passed - all ten frames now produce findings across #1 and #42.
-- C09: passed - all four forms remain covered by #25; no behaviour change was needed.
-- C10: passed - all eleven reveal pivots now fail #42.
-- C11: passed - all nine qualifier frames now fail across #22 and #23a.
-- C12: passed - all ten engagement requests now fail #62.
-- C13: passed - all nine philosophical closers now fail #24.
-- C14: passed - all eight mic-drop closers now fail across #42 and #24.
-- C15: passed - all eight agreement comments now fail #62.
-- C16: passed - all six engagement comments now fail #62.
-- C17: passed - all four credential prefaces now fail #62.
+- C01: passed - all ten catalogue forms now produce deterministic findings; focused `test_grade.py` coverage includes each of the six DR-135B additions to E8.
+- C02: passed - all ten catalogue forms now fail programmatic G7; focused `test_grade.py` coverage includes every DR-135C addition.
+- C03: passed - all nine catalogue forms now fail programmatic G7; focused `test_grade.py` coverage includes every DR-135D addition.
+- C04: passed - all ten catalogue forms now fail programmatic B3; focused `test_grade.py` coverage includes each of the four DR-135A additions.
+- C05: passed - all six catalogue structures now fail programmatic E8 as plain paragraph and Markdown-heading openers; focused `test_grade.py` coverage includes every DR-135E addition.
+- C06: passed - all nine catalogue forms now produce programmatic findings across G7 and E5; focused `test_grade.py` coverage includes every DR-135F addition.
+- C07: passed - all nine catalogue forms now fail programmatic H15; focused `test_grade.py` coverage includes every DR-135G addition.
+- C08: passed - all ten frames now produce findings across A1 and G7.
+- C09: passed - all four forms remain covered by E5; no behaviour change was needed.
+- C10: passed - all eleven reveal pivots now fail G7.
+- C11: passed - all nine qualifier frames now fail across E1 and E3.
+- C12: passed - all ten engagement requests now fail D4.
+- C13: passed - all nine philosophical closers now fail E4.
+- C14: passed - all eight mic-drop closers now fail across G7 and E4.
+- C15: passed - all eight agreement comments now fail D4.
+- C16: passed - all six engagement comments now fail D4.
+- C17: passed - all four credential prefaces now fail D4.
 - C18: passed - ⚡ candidate recognition landed in commit 13e235f (`human-eyes/scripts/grade.py` plus regression tests in `dev/evals/tests/test_grade.py`); `python3 -m unittest dev.evals.tests.test_grade` passes on 2026-07-17.
 - C19: passed - ➡ and ♻ candidate recognition landed in commit 13e235f (`human-eyes/scripts/grade.py` plus regression tests in `dev/evals/tests/test_grade.py`); `python3 -m unittest dev.evals.tests.test_grade` passes on 2026-07-17.
-- C20: passed - all five AI-experiment wrappers now fail #62.
-- C21: passed - all five time-compression frames now fail #62.
-- C22: passed - all five scarcity hooks now fail #62.
-- C23: passed - all thirteen adverbs are recognized by #7.
-- C24: passed - all eleven adjectives are recognized across #7 and #4.
-- C25: passed - all ten verbs are recognized across #7 and #43.
-- C26: passed - all ten sentence templates produce findings across #9, #42, #50, #1, and #62.
+- C20: passed - all five AI-experiment wrappers now fail D4.
+- C21: passed - all five time-compression frames now fail D4.
+- C22: passed - all five scarcity hooks now fail D4.
+- C23: passed - all thirteen adverbs are recognized by B1.
+- C24: passed - all eleven adjectives are recognized across B1 and A4.
+- C25: passed - all ten verbs are recognized across B1 and H11.
+- C26: passed - all ten sentence templates produce findings across B3, G7, E8, A1, and D4.
 - C27: not applicable - rejected 2026-07-26 via DR-95; recorded as read and deliberately not used, no product change.
 - C28: not applicable - rejected 2026-07-26 via DR-95; recorded as read and deliberately not used, no product change.
 
@@ -201,5 +201,5 @@ This is the authoritative review table. Focused results came from the live `huma
 
 - **Review status:** passed
 - **Review method:** independent source-record reviewer: `/root/saboo_source_reviewer`, fresh, source-dedicated, and strictly read-only; five-lens review followed by a same-reviewer focused re-check of the four corrected areas
-- **Findings resolved:** four material findings resolved: deterministic registry count corrected from 52 to 50; `no-filler-phrases` mapping corrected from #23 to #22; content-object comparison corrected from 284 to 282 defined strings; direct HTML and accessed stylesheet provenance added, with current snapshot digest recomputed and synchronized
+- **Findings resolved:** four material findings resolved: deterministic registry count corrected from 52 to 50; `no-filler-phrases` mapping corrected from E2 to E1; content-object comparison corrected from 284 to 282 defined strings; direct HTML and accessed stylesheet provenance added, with current snapshot digest recomputed and synchronized
 - **Unresolved findings:** none

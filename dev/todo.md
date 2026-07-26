@@ -8,23 +8,15 @@ Each item carries enough detail to be picked up cold.
 
 ---
 
-## 0. FIRST: rebuild the pattern numbering scheme (DR-158)
+## 0. DONE: pattern numbering scheme rebuilt (DR-158)
 
-Approved 2026-07-26. Mae's own item; it was never part of the source review.
+Landed 2026-07-27. Category-letter scheme: A Content patterns, B Language and grammar, C Style, D Communication, E Filler and hedging, F Sensory and atmospheric, G Structural tells, H Voice and register, S Signal stacking. 80 entries, no gaps, no sub-letters, and a new pattern joins its category without renumbering anything.
 
-The scheme has drifted. Numbered patterns run past their own count with gaps, four sub-letter variants (23a, 31a, 35a, 35b) sit alongside plain numbers, and the aggregate meta-check `overall-signal-stacking` carries no number at all. The generated preamble's count sentence and category ranges have gone stale twice already.
+Mae superseded her own `#0` requirement on 2026-07-27 and gave the meta-check a letter instead, so it is S1.
 
-**Mae's requirements:**
+The old-to-new mapping and the membership rule live in `dev/pattern-renumbering-migration.md`; that file is the permanent decoder for pattern numbers in older commits.
 
-- no sub-letter variants
-- the meta-check listed as #0
-- numbers renumbered so they match the actual count
-- every pattern correctly categorised
-- a scheme that absorbs a new pattern without renumbering the rest — a category prefix (A1, B1) or category-major decimals (1.1)
-
-**This is not an in-place edit.** Pattern numbers are load-bearing in `human-eyes/scripts/patterns.json`, generated `patterns.md`, the root `README.md` table, `SKILL.md`, every source card's coverage claims, `dev/decision-register.md`, and the test suite. It needs a migration plan and an old-to-new mapping table produced first.
-
-**Two guards to check whenever a number moves**, both learned the hard way in DR-155 and DR-156: `UNCHECKED` in `test_patterns_md_generator.py`, and `_GROUP_A` in `test_grade.py`, which pins the numbers that must carry a Detection marker. Also check `_extra_entries` in `patterns.json` — manual catalogue entries carry a number and no `check_id`.
+Six defects found while doing it are queued as DR-167 to DR-172 and are Mae's to rule on. None was fixed silently.
 
 ---
 
@@ -32,21 +24,21 @@ The scheme has drifted. Numbered patterns run past their own count with gaps, fo
 
 Approved 2026-07-26. Mae's own item; also never part of the source review.
 
-DR-79 found #52 `sentence-length-variance` had never fired on any of the 108 corpus documents, because its inherited threshold of 4 sat below the entire observed range. Its test passed the whole time, because the fixture is prose hand-written to be flat at a value real writing never reaches.
+DR-79 found G9 `sentence-length-variance` had never fired on any of the 108 corpus documents, because its inherited threshold of 4 sat below the entire observed range. Its test passed the whole time, because the fixture is prose hand-written to be flat at a value real writing never reaches.
 
 **Method:** for each check, sweep its metric over both corpora, print the observed range, and ask whether the threshold sits inside it. 11 checks carry a calibration record under `dev/evals/`; the other 43 do not, 15 of them declaring a threshold in `CHECK_THRESHOLDS` and the rest carrying bare numeric literals.
 
 **A first smoke pass found 18 checks that never flag a generated document and 19 that flag more human documents than generated. That pass is an inventory, not a finding.** Three different causes produce those symptoms and they need opposite responses:
 
-1. A threshold outside the observed range is a defect. That is #52.
+1. A threshold outside the observed range is a defect. That is G9.
 2. A corpus holding no instance of the target is silent, not broken. DR-153's SWBST frame and DR-116's emoji rerun are both this.
-3. For any check firing on one occurrence, a share-of-documents comparison is length-biased. The human corpus averages 2,172 words per document against the generated corpus's 1,051, which is exactly how #25 was misreported as running backwards during DR-66. Rate checks are immune; one-occurrence checks are not.
+3. For any check firing on one occurrence, a share-of-documents comparison is length-biased. The human corpus averages 2,172 words per document against the generated corpus's 1,051, which is exactly how E5 was misreported as running backwards during DR-66. Rate checks are immune; one-occurrence checks are not.
 
 Separate the three before proposing anything, and bring each threshold to Mae as its own decision.
 
 ---
 
-## 1. Fiction branch of #41 (DR-23, DR-52 to DR-58)
+## 1. Fiction branch of H10 (DR-23, DR-52 to DR-58)
 
 Eight rows, seven of them the StoryScope paper, all extending `genre_specific`'s existing fiction branch in `human-eyes/scripts/judgement.json`.
 
@@ -69,7 +61,7 @@ Present as one consolidated decision, not eight. The DR-135 precedent applies: a
 
 ---
 
-## 2. Student and academic branches of #41 (DR-41, DR-131)
+## 2. Student and academic branches of H10 (DR-41, DR-131)
 
 Readable from the text and not currently covered:
 
@@ -78,7 +70,7 @@ Readable from the text and not currently covered:
 - incorrect or awkward technical-term use (academic branch)
 - data described as too clean: smooth trends, no noise, no error bars (academic branch)
 
-**Deterministic candidate, nothing catches it today.** Belcher's four named banal theses: hero's journey, tradition versus modernity, individual versus community, boundaries destabilised. Proposed home was a one-occurrence branch of #40 `no-rubric-echoing`, whose existing rubric branch needs three occurrences.
+**Deterministic candidate, nothing catches it today.** Belcher's four named banal theses: hero's journey, tradition versus modernity, individual versus community, boundaries destabilised. Proposed home was a one-occurrence branch of H9 `no-rubric-echoing`, whose existing rubric branch needs three occurrences.
 
 **Not buildable.** Checking a quotation against the assigned text needs the assigned text, which the tool does not have. Twisted basic facts need the outside world. Keystroke replay is not text.
 
@@ -88,7 +80,7 @@ Readable from the text and not currently covered:
 
 ---
 
-## 3. Journalism and #41 branch guidance (DR-27)
+## 3. Journalism and H10 branch guidance (DR-27)
 
 Journalism provenance prompts, engagement-marker pedagogy, and craft guidance for the existing `genre_specific` branches.
 
@@ -120,9 +112,4 @@ None of these changes the checker. They are about how this project runs its own 
 
 ---
 
-## 6. Mae's own queue items, still pending in the register
-
-These two are *not* approved and still need her ruling. Listed here only so they are visible alongside the rest.
-
-- **DR-164** — audit every check threshold against its observed distribution. Came out of DR-79 finding that #52 had never fired on any real document because its threshold sat below the entire observed range. Fourteen checks now carry a calibration record; the rest do not. A first smoke pass found 18 checks that never flag a generated document and 19 that flag more human documents than generated ones, but that pass is an inventory, not a finding: three different causes produce those symptoms and need opposite responses. Read DR-164's Change cell before acting on any of it.
-- **DR-158** — rebuild the pattern numbering scheme. No sub-letter variants, the aggregate meta-check listed as #0, numbers matching the real count, categories corrected, and a scheme that absorbs new patterns without renumbering. Numbers are load-bearing across `patterns.json`, generated `patterns.md`, the root README table, `SKILL.md`, every source card, the register, and the tests, so it needs a migration plan and an old-to-new mapping.
+Mae's own two items, DR-158 and DR-164, are items 0 and 0b above. Both were approved on 2026-07-26 with the instruction to build them. Nothing in this file is awaiting a ruling.

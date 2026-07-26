@@ -2,19 +2,19 @@
 
 <!-- This file is generated from `human-eyes/scripts/patterns.json`. Edit the JSON and regenerate via `python3 dev/tools/render_patterns_md.py --write`. -->
 
-62 patterns plus four sub-letter variants (23a, 31a, 35a, 35b) to detect and fix, plus one unnumbered aggregate meta-check (`overall-signal-stacking`). Organised by category. Each entry has words to watch, a brief description of the problem, and a before/after example. Group A and Group B entries also carry a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
+80 patterns to detect and fix, organised by category. Each identifier is a category letter and a position within that category, so a new pattern joins its category without renumbering anything else. Each entry has words to watch, a brief description of the problem, and a before/after example, and carries a **Detection** marker stating whether the pattern is enforced by a programmatic check, folded into another check, or left to manual / agent-judgement reading.
 
 ## Contents
 
-- [Content patterns (1-5, 12)](#content-patterns)
-- [Language and grammar (7-10, 53, 64-67)](#language-and-grammar)
-- [Style (13-18, 49, 57)](#style)
-- [Communication (19-21, 62)](#communication)
-- [Filler and hedging (22-25, 47-48, 50)](#filler-and-hedging)
-- [Sensory and atmospheric (26-28)](#sensory-and-atmospheric)
-- [Structural tells (29-32, 38, 42, 44, 52)](#structural-tells)
-- [Voice and register (33-37, 39-41, 43, 45-46, 51, 56)](#voice-and-register)
-- [Signal stacking (meta-check)](#signal-stacking-meta-check)
+- [Content patterns (A1-A7)](#content-patterns)
+- [Language and grammar (B1-B15)](#language-and-grammar)
+- [Style (C1-C9)](#style)
+- [Communication (D1-D6)](#communication)
+- [Filler and hedging (E1-E9)](#filler-and-hedging)
+- [Sensory and atmospheric (F1-F3)](#sensory-and-atmospheric)
+- [Structural tells (G1-G13)](#structural-tells)
+- [Voice and register (H1-H17)](#voice-and-register)
+- [Signal stacking (S1)](#signal-stacking)
 
 ---
 
@@ -50,7 +50,7 @@ Use source strength when deciding severity. The ruleset should surface clusters 
 
 ## Content patterns
 
-### 1. Significance inflation
+### A1. Significance inflation
 
 **Words to watch:** stands/serves as, is a testament/reminder, a vital/significant/crucial/pivotal/key role/moment, underscores/highlights its importance, underline/underscore/highlight/emphasise the importance/value/significance of, reflects broader, symbolizing its ongoing/enduring/lasting, setting the stage for, marking/shaping the, represents/marks a shift, key turning point, evolving landscape, indelible mark, deeply rooted, remarkably, strikingly, staggering/staggeringly, this work presents, presents/introduces a novel, a significant advancement
 
@@ -69,7 +69,7 @@ Inflates importance by claiming things "represent" or "contribute to" broader tr
 **Detection:** Programmatic check `no-significance-inflation`.
 
 
-### 2. Notability claims
+### A2. Notability claims
 
 **Words to watch:** independent coverage, local/regional/national media outlets, trade/industry/music/business/tech/specialist publications or outlets, profiled in, prominent/respected/major media outlets, written by a leading expert, active social media presence
 
@@ -86,7 +86,7 @@ Asserts notability by listing sources without context, as though the mention its
 **Detection:** Programmatic check `no-notability-claims`.
 
 
-### 3. Superficial -ing analyses
+### A3. Superficial -ing analyses
 
 **Words and structures to watch:** sentence-opening participial clauses; highlighting/underscoring/emphasizing..., ensuring..., reflecting/symbolizing..., contributing to..., cultivating/fostering..., encompassing..., showcasing..., creating..., enhancing..., facilitating..., shaping..., driving..., embodying...
 
@@ -103,7 +103,7 @@ Formulaic present-participle phrases at the start of sentences or tacked onto th
 **Detection:** Programmatic check `no-superficial-ing`.
 
 
-### 4. Promotional language
+### A4. Promotional language
 
 **Words to watch:** boasts a, vibrant, rich (figurative), profound, enhancing its, showcasing, exemplifies, commitment to, natural beauty, nestled, in the heart of, groundbreaking (figurative), renowned, breathtaking, must-visit, stunning
 
@@ -122,7 +122,7 @@ Reads like tourism marketing rather than description.
 **Detection:** Programmatic check `no-promotional-language`.
 
 
-### 5. Vague attributions
+### A5. Vague attributions
 
 **Words to watch:** Industry reports, Observers have cited, Experts argue, Some critics argue, several sources/publications (when few cited)
 
@@ -139,7 +139,7 @@ Attributes opinions to vague authorities without specific sources, creating illu
 **Detection:** Programmatic check `no-vague-attributions`.
 
 
-### 12. False ranges
+### A6. False ranges
 
 `From X to Y` constructions where X and Y are not on a meaningful scale, creating an illusion of breadth without communicating scope.
 
@@ -155,19 +155,36 @@ The check counts `from X to Y` pairs within a sentence and speaks when two or mo
 
 **Detection:** Programmatic check `no-false-ranges`.
 
+
+### A7. Internal consistency
+
+A document can be wrong about the outside world and still hold together. This entry covers the other failure, where the text will not survive being read against itself. One passage says every case was reviewed and a later one says a third were skipped. A percentage split adds to 107. A quotation is introduced as showing one thing and, read plainly, says something narrower. A figure arrives carrying two decimal places on a claim the surrounding text never evidenced.
+
+Generation is local. Each sentence is fitted to the sentences beside it and to what the register seems to call for, and nothing keeps a ledger of what earlier paragraphs already committed to. Precise numbers are the most exposed part: a slot that wants a figure gets one of roughly the right shape, and the shape carries the authority the absent source would have carried. So these contradictions cluster in long documents and in sections drafted or patched in separate passes, where the two halves sit far enough apart that neither writer nor reader trips over them.
+
+**Before:**
+> The pilot ran at three depots and every driver completed the new handover form. Take-up was uneven: at Dandenong about half the drivers never opened it. Of the handovers logged, 41% came in within the hour, 22% within the shift and 44% later, and the form has already saved the depots 312 driver-hours a month.
+
+**After:**
+> The pilot ran at three depots. Take-up was uneven: at Dandenong about half the drivers never opened the new handover form. The timing split we were sent (41% within the hour, 22% within the shift, 44% later) comes to 107%, so it needs checking before anyone quotes it. Whether the form saves handover time has not been measured.
+
+The record judges what the text settles and nothing further. It does not check whether a cited statute, standard, API or publication exists, because confirming that requires a lookup outside the document, and a claim that cannot be verified from the page is not thereby false. A fabricated authority reaches this entry only through the contradiction it creates inside the text, where the description the text gives of that authority does not support the conclusion drawn from it. An unfamiliar or surprising claim is not a finding, and neither is a figure the reader happens to doubt. Hedged, attributed and explicitly uncertain statements do not contradict anything either. Every finding carries both halves quoted; where only one half can be quoted, there is nothing to report.
+
+**Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
+
+**Detection:** Agent judgement `internal_consistency` (scripts/judgement.json). A contradiction lives in the relation between two passages that may sit paragraphs apart, and no string match reaches it.
+
 ---
 
 ## Language and grammar
 
-**Severity:** N/A · manual self-audit only (no programmatic check; pattern is described but not enforced)
-
-### 7. AI vocabulary words
+### B1. AI vocabulary words
 
 **High-frequency words:** Additionally, align with, crucial, delve, emphasizing, enduring, enhance, fostering, garner, highlight (verb), interplay, intricate/intricacies, key (adjective), landscape (abstract noun), pivotal, showcase, tapestry (abstract noun), testament, underscore (verb), valuable, vibrant, realm, harness, illuminate, facilitate, bolster, streamline, shed light on, revolutionize, innovative, cutting-edge, game-changing, transformative, seamless/seamlessly, genuinely, actually (as filler intensifier), land/lands/landed (as metaphor for "how something is received"), surface/surfaced (as metaphor for "appears in the discourse"), move/moves/the move (as meta-rhetoric about what writing or argument is doing), unspoken, hidden (when used to inflate significance of something ordinary), unparalleled, invaluable, bolstered, meticulous, versatile, significant, effectively, capabilities, advancements, elucidating, firstly, reliance, generalizability, nuance/nuances/nuancing, delving, unveil/unveils/unveiled/unveiling, heighten/heightens/heightened/heightening, amidst, camaraderie, palpable, fleeting, solace, unravel, cacophony, unease, reminder, commence, leverage, elevate, align, dive into, surpass, notable, despite, the efficacy of, the proposed method, empirical evaluations demonstrate, exited
 
 **AI transition phrases** (a whole category AI overuses): "that being said", "at its core", "to put it simply", "a key takeaway is", "from a broader perspective", "in today's fast-paced world", "as technology continues to evolve", "but here's..."
 
-These words and phrases appear far more frequently in post-2023 text than in human writing from earlier periods. They often cluster in the same paragraph, which is a strong tell. The programmatic #7 check fails at three occurrences in one paragraph. It also fails when two distinct Kousha-Thelwall families appear anywhere in the document, even across paragraphs: underscore, delve, showcase, unveil, intricate, meticulous, pivotal, heighten, nuance, bolster, foster, and interplay.
+These words and phrases appear far more frequently in post-2023 text than in human writing from earlier periods. They often cluster in the same paragraph, which is a strong tell. The programmatic B1 check fails at three occurrences in one paragraph. It also fails when two distinct Kousha-Thelwall families appear anywhere in the document, even across paragraphs: underscore, delve, showcase, unveil, intricate, meticulous, pivotal, heighten, nuance, bolster, foster, and interplay.
 
 **Soft scaffold phrases:** "One useful area...", "Another useful area...", "The main strength...", "The main risk...", "Good use usually comes down to..." These phrases are not flashy, which is why they survive rewrites. They mark a generated explainer that is arranging information into bland labelled blocks instead of writing from a real line of thought.
 
@@ -276,7 +293,7 @@ Full GPTZero phrase list used by the grader:
 99. today at a fast pace
 100. stand in stark contrast
 
-**Kobak excess vocabulary:** This check, #7, does not read the Kobak file at all; its clustering condition uses only the local AI-vocabulary list and the GPTZero phrases. Kobak terms reach a finding solely through the aggregate `overall-signal-stacking` meta-check. The grader also loads the full 900-row `kobak-excess-words.csv` file from Kobak et al.'s `llm-excess-vocab` repository. It is a multi-year annotated union: 900 unique excess words selected across 2013-2024 and annotated with selection year blinded, not the paper's 2024 marker set, which is 454 forms and 343 lemmas with 379 style words. Do not describe the live file as the 379 2024 markers. The file includes `style`, `content`, `content/style`, and `other` annotations. Provenance pinned 2026-07-26: it matches upstream `results/excess_words.csv` at repository commit `53db991`, a file last changed at `3345a2e` on 2025-02-12; the embedded copy is SHA-256 `f5786f3cc83f9578043aaecf2774c6200cb68b5e774afc3afe40af4eb0cf8285`. A refresh that moves off those identifiers is a new version, not the paper's. The aggregate signal-stacking check uses style-annotated terms as one vocabulary signal alongside the local AI-vocabulary list and all 100 GPTZero phrases. Kobak words do not fail text by themselves.
+**Kobak excess vocabulary:** This check, B1, does not read the Kobak file at all; its clustering condition uses only the local AI-vocabulary list and the GPTZero phrases. Kobak terms reach a finding solely through the aggregate `overall-signal-stacking` meta-check. The grader also loads the full 900-row `kobak-excess-words.csv` file from Kobak et al.'s `llm-excess-vocab` repository. It is a multi-year annotated union: 900 unique excess words selected across 2013-2024 and annotated with selection year blinded, not the paper's 2024 marker set, which is 454 forms and 343 lemmas with 379 style words. Do not describe the live file as the 379 2024 markers. The file includes `style`, `content`, `content/style`, and `other` annotations. Provenance pinned 2026-07-26: it matches upstream `results/excess_words.csv` at repository commit `53db991`, a file last changed at `3345a2e` on 2025-02-12; the embedded copy is SHA-256 `f5786f3cc83f9578043aaecf2774c6200cb68b5e774afc3afe40af4eb0cf8285`. A refresh that moves off those identifiers is a new version, not the paper's. The aggregate signal-stacking check uses style-annotated terms as one vocabulary signal alongside the local AI-vocabulary list and all 100 GPTZero phrases. Kobak words do not fail text by themselves.
 
 Current threshold: vocabulary signals contribute points to an overall score alongside structural signals such as manufactured insight, contrived reframes, paragraph uniformity, unrequested headings, soft scaffolding, and assistant residue; the aggregate trips at four points from any mix. The four-point aggregate is a project choice and comes from no figure in the paper, as are the Kobak profile's own trip points of 12 distinct terms at 20 per 1000 words for one point and 25 at 35 for two; none of those five numbers is calibrated and none is supported by Kobak. The paper's own reported quantities are corpus gaps, 13.5% and 0.069. What is taken from the paper is only its corpus-level logic: excess vocabulary is evidence in a pattern, not a standalone detector verdict, and no Kobak-derived finding identifies who wrote a document.
 
@@ -290,12 +307,12 @@ Current threshold: vocabulary signals contribute points to an overall score alon
 
 **Additional marketing-email phrase candidates:** "thoughtful strategy", "clear messaging", and "intentional design".
 
-**Severity:** strong_warning · `no-ai-vocabulary-clustering` (the soft-scaffold sub-bullet now also references `no-soft-scaffolding` — see #47)
+**Severity:** strong_warning · `no-ai-vocabulary-clustering` (the soft-scaffold sub-bullet also references `no-soft-scaffolding`, see E6)
 
 **Detection:** Programmatic check `no-ai-vocabulary-clustering`.
 
 
-### 8. Copula avoidance
+### B2. Copula avoidance
 
 **Words to watch:** serves as/stands as/marks/represents [a], boasts/features/offers [a]
 
@@ -312,7 +329,7 @@ Substitutes elaborate constructions for simple "is", "are", or "has".
 **Detection:** Programmatic check `no-copula-avoidance`.
 
 
-### 9. Negative parallelism
+### B3. Negative parallelism
 
 Negative parallelism includes "not X but Y", "not just X, Y", positive-then-negative reversals, comparative reframes, negation countdowns, and "X rather than Y". It remains the same signal when split across sentences, including "It's not X. It's Y.", "The target was never X. The target was Y.", negative clauses resumed by `it`, `they`, `he`, or `she`, and repeated negative clauses that turn affirmative.
 
@@ -369,7 +386,7 @@ Forms include:
 **Detection:** Programmatic check `no-negative-parallelisms`. Runs at Balanced and All. Matches within a sentence and across sentence boundaries. It also matches a negative clause followed by an `it`, `they`, `he`, or `she` resumption; punctuated `not X—but Y` frames using a comma, colon, semicolon, hyphen, en dash, or em dash; and every `rather than` frame. A repeated-negative reversal requires at least two negative clauses with the same explicit subject followed by an explicit or emphatic affirmative turn with that subject; the whole frame counts once. Each separate construction counts once. One occurrence contributes 2 signal-stacking points; two contribute 3; three or more contribute 4. Overlapping regex matches on the same source span are deduplicated.
 
 
-### 10. Rule of three
+### B4. Rule of three
 
 Three-part structures are recognised wherever they occur, including item lists, verb phrases, clauses, and quoted material. The check speaks only about how densely they run: it fails at 4.0 or more triads per 1000 words, in prose of 300 words or more.
 
@@ -388,7 +405,7 @@ A single triad says nothing. In a length-controlled comparison of the project co
 **Detection:** Programmatic check `no-forced-triads`. Candidate evidence records whether the matched span is inside quotation marks; quotation context does not suppress detection.
 
 
-### 53. Vocabulary diversity
+### B5. Vocabulary diversity
 
 A windowed lexical-diversity metric for prose of 150+ words: the mean type-token ratio over sliding 150-word windows. On the project's calibration corpus (dev/evals/ttr-calibration-2026-07-17.md), generated prose ran more lexically diverse than human prose in every length band, so unusually high windowed diversity is the flagged direction. The check flags at 0.71; values from 0.74 sit above the observed human range and the evidence says so.
 
@@ -405,7 +422,7 @@ A windowed lexical-diversity metric for prose of 150+ words: the mean type-token
 **Detection:** Programmatic check `vocabulary-diversity`.
 
 
-### 64. Mixed spelling conventions
+### B6. Mixed spelling conventions
 
 A model continuing a British-English document will often switch to American spellings partway through, leaving both in the same text. The mixture is the finding, not either convention on its own.
 
@@ -422,11 +439,11 @@ The check reads the word families that genuinely alternate: `-ise`/`-ize`, `-yse
 **Detection:** Programmatic check `no-mixed-spelling-conventions`.
 
 
-### 65. Nominalisation rate
+### B7. Nominalisation rate
 
 Nominalisations are nouns formed from verbs or adjectives: `development`, `robustness`, `implementation`, `effectiveness`. The check speaks only about how densely they run: it fails at 29.0 or more per 1000 words, in prose of 300 words or more.
 
-A single nominalisation says nothing. Across the project corpora human prose runs 21.8 nominalisations per 1000 words and generated prose 36.8. At the 29.0 threshold the check flags 70% of generated documents and 24% of human ones, matching the false-positive rate the #10 triad check already carries.
+A single nominalisation says nothing. Across the project corpora human prose runs 21.8 nominalisations per 1000 words and generated prose 36.8. At the 29.0 threshold the check flags 70% of generated documents and 24% of human ones, matching the false-positive rate the B4 triad check already carries.
 
 **Before:**
 > The implementation of the transformation required the development of a new specification, and the assessment of the requirements involved consideration of the limitations.
@@ -441,7 +458,7 @@ Evidence: Reinhart et al., PNAS, February 2025, measuring Douglas Biber's 66-fea
 **Detection:** Programmatic check `no-nominalisation-rate`.
 
 
-### 66. Subject `that` relative rate
+### B8. Subject `that` relative rate
 
 A `that` relative clause in subject position is the shape in `the dog that bit me`, where `that` is followed straight by the relative clause's verb. Object-position relatives, `the dog that I saw`, are a different construction and are not counted: they run the opposite way in the corpora. The check fails at 3.5 or more subject relatives per 1000 words, in prose of 300 words or more.
 
@@ -460,11 +477,11 @@ Evidence: Reinhart et al., PNAS, February 2025. Calibration in `dev/evals/biber-
 **Detection:** Programmatic check `no-that-relative-rate`.
 
 
-### 67. Present participial clause rate
+### B9. Present participial clause rate
 
 A present participial clause is an adverbial clause headed by an `-ing` verb, as in `Stuffing his mouth with cookies, Joe ran out the door`. Gerunds (`Walking is good for you`) and progressives (`She is walking`) are different constructions and are not counted. The check fails at 4.4 or more per 1000 words, in prose of 300 words or more.
 
-Across the project corpora human prose runs 3.9 participial clauses per 1000 words and generated prose 5.5. At the 4.4 threshold the check flags 70% of generated documents and 37% of human ones. That is the widest false-positive rate of any check in the catalogue, well above the 24% the #10 triad check carries.
+Across the project corpora human prose runs 3.9 participial clauses per 1000 words and generated prose 5.5. At the 4.4 threshold the check flags 70% of generated documents and 37% of human ones. That is the widest false-positive rate of any check in the catalogue, well above the 24% the B4 triad check carries.
 
 **Before:**
 > Leaning on the rail, she watched the boats, counting them as they passed.
@@ -479,11 +496,11 @@ Evidence: Reinhart et al., PNAS, February 2025. Calibration in `dev/evals/biber-
 **Detection:** Programmatic check `no-participial-clause-rate`.
 
 
-### 68. Passive voice rate
+### B10. Passive voice rate
 
 A passive verb is a form of `be` followed by a past participle: `was rejected`, `is being reviewed`, `had been checked`. The check speaks only about density: it fails at 5.0 or more per 1000 words, in prose of 300 words or more.
 
-Across the project corpora human prose runs 4.66 passive verbs per 1000 words and generated prose 6.47, a ratio of 1.39. By document median the gap is wider, 3.66 against 5.57. At the 5.0 threshold the check flags 57% of generated documents and 29% of human ones, close to the #66 subject-relative check.
+Across the project corpora human prose runs 4.66 passive verbs per 1000 words and generated prose 6.47, a ratio of 1.39. By document median the gap is wider, 3.66 against 5.57. At the 5.0 threshold the check flags 57% of generated documents and 29% of human ones, close to the B8 subject-relative check.
 
 **Before:**
 > The proposal was rejected and the minutes were circulated the following week. The figures had been checked twice before they were released.
@@ -498,7 +515,7 @@ Evidence: Xia, Stańczak, and Roth, EACL 2026, which names passive voice among t
 **Detection:** Programmatic check `no-passive-voice-rate`.
 
 
-### 69. `it` pronoun rate
+### B11. `it` pronoun rate
 
 The check counts the pronoun `it` and speaks only about density: it fails at 18.0 or more per 1000 words, in prose of 300 words or more. Possessive `its` is a determiner and is not counted.
 
@@ -519,7 +536,7 @@ Evidence: Xia, Stańczak, and Roth, EACL 2026, which names “It” pronoun freq
 **Detection:** Programmatic check `no-it-pronoun-rate`.
 
 
-### 70. Latinate verb rate
+### B12. Latinate verb rate
 
 The check counts 44 Latinate verbs that stand in for plain ones, among them `obtain`, `commence`, `ascertain`, `utilise`, `facilitate`, `necessitate`, and `procure`. It speaks only about density: it fails at 2.5 or more per 1000 words, in prose of 300 words or more.
 
@@ -540,7 +557,7 @@ Evidence: Wikipedia's *Signs of AI writing*, which names stiff or euphemistic ve
 **Detection:** Programmatic check `no-latinate-verb-rate`.
 
 
-### 71. Word length average
+### B13. Word length average
 
 The check takes the mean length in characters of every word in the piece and fails at 4.80 or above, in prose of 100 words or more. Letters and internal apostrophes count; Markdown punctuation and numerals do not.
 
@@ -565,7 +582,7 @@ Evidence: measurement on the project corpora. Sussman and Carter report average 
 **Detection:** Programmatic check `word-length-average`.
 
 
-### 73. Concreteness average
+### B14. Concreteness average
 
 The check looks up every word in Brysbaert, Warriner and Kuperman's concreteness norms, 39,954 English words rated from 1 (fully abstract, `justice`) to 5 (fully concrete, `hammer`) by human raters. It takes the mean across the draft's content words and fails at 2.915 or below, in prose of 100 words or more.
 
@@ -587,11 +604,38 @@ Evidence: El Attar et al. name psycholinguistic features as a candidate area wit
 
 **Detection:** Programmatic check `concreteness-average`.
 
+
+### B15. Even jargon distribution
+
+Technical vocabulary in real writing clumps. A writer reaches for precise terms in the part of a piece they have actually worked in, because that is where the plain words stop being accurate, and drops back to ordinary language everywhere else. The result is a lumpy surface: one section thick with domain terms, the neighbouring sections comparatively bare. Generated prose tends to hold register constant instead. Background, findings, and recommendations all come back carrying roughly the same weight of technical terminology, even though only one of them needed any.
+
+The cost is that the reader loses the map. Uneven density tells a reader which claims rest on first-hand knowledge and which are summary or scaffolding; flatten it and every claim arrives with the same apparent authority. Terms spread evenly are also usually doing less work. A word chosen because the passage demanded it reads differently from a word chosen because the surrounding paragraphs had one.
+
+**Before:**
+> **Database migration.** We executed a phased cutover with dual-write reconciliation and idempotent replay of the change stream.
+>
+> **Hiring.** We instrumented the funnel with stage-level conversion telemetry and a calibrated rubric applied at each decision gate.
+>
+> **The office move.** We sequenced the fit-out against a dependency graph and provisioned the network fabric ahead of the desk-allocation cycle.
+
+**After:**
+> **Database migration.** We cut over in two phases, dual-writing to both stores for nine days so we could replay the change stream idempotently whenever the new primary fell behind.
+>
+> **Hiring.** We filled four of the six roles. Both open ones are senior, and both stalled at the final round.
+>
+> **The office move.** We move on the 14th. Desks arrive the week before; the network is already in.
+
+Some genres hold terminology density constant for good reason. Reference documentation, API and protocol specifications, glossaries, standards, and controlled taxonomies describe the same technical surface in every section, so an even spread of domain terms is the correct shape rather than a defect. Prose written for a specialist readership that shares the vocabulary throughout can also run uniformly dense without anything being wrong. The record fires only where the density is both comparable across otherwise different sections and unnecessary to them. Uniform density is a prompt to read the passages and ask whether each subtopic actually called for its terms; it says nothing about who or what wrote the text, and it cannot support an authorship claim on its own.
+
+**Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
+
+**Detection:** Agent judgement `even_jargon_distribution` (scripts/judgement.json). No word list can settle it, because the question is not which terms appear but whether each section's subject required the terms it carries, a comparison between passages that depends on what those passages are about.
+
 ---
 
 ## Style
 
-### 13. Boldface overuse
+### C1. Boldface overuse
 
 Emphasises phrases in boldface mechanically, bolding things that do not need visual emphasis.
 
@@ -606,7 +650,7 @@ Emphasises phrases in boldface mechanically, bolding things that do not need vis
 **Detection:** Programmatic check `no-boldface-overuse`. Flags four or more bold spans in non-list, non-heading prose.
 
 
-### 14. Inline-header lists
+### C2. Inline-header lists
 
 List items start with bolded headers followed by colons, turning prose into a slide deck. The same structure can remain after pasted formatting loses its list markers and line breaks.
 
@@ -623,7 +667,7 @@ List items start with bolded headers followed by colons, turning prose into a sl
 **Detection:** Programmatic check `no-inline-header-lists`. Flags two or more bold-label-and-colon segments. Canonical list items count across lines; two or more unmarked segments count when they occur on the same input line. The colon may sit inside or immediately after the bold span; list markers include Markdown bullets, common Unicode bullets, `1.`, and `1)` numbering.
 
 
-### 15. Title case in headings
+### C3. Title case in headings
 
 Capitalising all main words in headings reads as formal to the point of stiffness. Conventional title case still leaves articles, prepositions, and conjunctions lowercase, so capitalising those is the machine variant, and it often turns up in a document that uses sentence case everywhere else.
 
@@ -640,7 +684,7 @@ The check reads headings of four or more words and looks for a capitalised minor
 **Detection:** Programmatic check `no-title-case-headings`.
 
 
-### 16. Emojis
+### C4. Emojis
 
 Decorating headings or bullet points with emojis is almost never appropriate in written content.
 
@@ -657,7 +701,7 @@ Decorating headings or bullet points with emojis is almost never appropriate in 
 **Detection:** Folded into the programmatic check `no-unicode-flair`.
 
 
-### 17. Curly quotation marks
+### C5. Curly quotation marks
 
 **Tolerance note:** Curly quotes are typography, not inherently AI writing. Normalise them in hard-mode plain output if requested. Preserve them in sourced excerpts, literary fixtures, publication text, or quoted material.
 
@@ -674,7 +718,7 @@ ChatGPT uses curly quotes instead of straight quotes.
 **Detection:** Programmatic check `no-curly-quotes`.
 
 
-### 18. Hyphenated compound modifier overuse
+### C6. Hyphenated compound modifier overuse
 
 **Words to watch when clustered:** third-party, cross-functional, client-facing, data-driven, decision-making, well-known, high-quality, real-time, long-term, end-to-end
 
@@ -691,7 +735,7 @@ Individual hyphenations are often correct, but AI stacks four or five in a singl
 **Detection:** Programmatic check `no-compound-modifier-density`. Flags three or more AI-stock hyphenated compounds in a single sentence, drawn from a watchlist of common offenders.
 
 
-### 49. Em dashes
+### C7. Em dashes
 
 ChatGPT and similar systems use the em dash (`—`) as default mid-sentence punctuation where most human writers would use a comma, a semicolon, a period, or a parenthetical pair of dashes. A single em dash reads naturally; routine em dashes in plain web prose are a strong 2026 AI-style fingerprint.
 
@@ -705,10 +749,10 @@ ChatGPT and similar systems use the em dash (`—`) as default mid-sentence punc
 
 **Severity:** strong_warning · `no-em-dashes`
 
-**Detection:** Programmatic check `no-em-dashes`. Counts U+2014 occurrences and fails on any. Distinct from #17 curly quotes (a typographic substitution at the quotation-mark level); this check targets the long-dash glyph as default mid-sentence punctuation.
+**Detection:** Programmatic check `no-em-dashes`. Counts U+2014 occurrences and fails on any. Distinct from C5 curly quotes (a typographic substitution at the quotation-mark level); this check targets the long-dash glyph as default mid-sentence punctuation.
 
 
-### 57. Parenthetical headings
+### C8. Parenthetical headings
 
 Parentheses do not belong in human-eyes headings. They usually carry a vague qualifier, private aside, or simulated doubt that should either be stated directly in the section or deleted.
 
@@ -723,7 +767,7 @@ Parentheses do not belong in human-eyes headings. They usually carry a vague qua
 **Detection:** Programmatic check `no-parenthetical-headings`. Body parentheses are outside this rule.
 
 
-### 72. Mixed-script words
+### C9. Mixed-script words
 
 The check flags any word containing both a Latin letter and a Cyrillic or Greek letter that is visually identical to a Latin one. One word fails.
 
@@ -749,7 +793,7 @@ Evidence: Creo and Ranganath's TELL, Appendix A, which presents a mixed-script h
 
 ## Communication
 
-### 19. Collaborative artifacts
+### D1. Collaborative artifacts
 
 **Words to watch:** I hope this helps, Of course!, Certainly!, You're absolutely right!, Would you like..., let me know, here is a...
 
@@ -766,7 +810,7 @@ Chatbot correspondence pasted directly into content without being cleaned up.
 **Detection:** Programmatic check `no-collaborative-artifacts`.
 
 
-### 20. Knowledge-cutoff disclaimers
+### D2. Knowledge-cutoff disclaimers
 
 **Words to watch:** as of [date], Up to my last training update, While specific details are limited/scarce..., based on available information...
 
@@ -783,7 +827,7 @@ AI disclaimers about incomplete information left in the text.
 **Detection:** Programmatic check `no-knowledge-cutoff-disclaimers`. Note that this does not fold into `no-collaborative-artifacts` — that check covers chat residue ("I hope this helps", "great question") but not training-update or limited-information hedges.
 
 
-### 21. Sycophantic/servile tone
+### D3. Sycophantic/servile tone
 
 Overly positive, people-pleasing language that performs agreement rather than engaging with substance.
 
@@ -798,7 +842,7 @@ Overly positive, people-pleasing language that performs agreement rather than en
 **Detection:** Folded into the programmatic check `no-collaborative-artifacts`. The headline sycophantic phrases ("you're absolutely right", "great question!", "what a thoughtful question/observation", "that's a brilliant observation") already live in the COLLABORATIVE_ARTIFACTS pattern set; no separate check.
 
 
-### 62. Formulaic social-post frames
+### D4. Formulaic social-post frames
 
 **Frames to watch:** engagement requests ("Drop your take below", "Agree or disagree?", "Save this for later"); empty agreement and bait comments ("This is gold", "Hot take:", "I'd add a #6"); credential prefaces ("As someone who's been doing this for 10 years"); AI-experiment wrappers ("I asked ChatGPT to... and the results shocked me"); time-compression brags ("From zero to launch in 48 hours"); and artificial scarcity hooks ("I spent 100+ hours so you don't have to").
 
@@ -814,11 +858,49 @@ These are complete reusable platform formulas, not isolated vocabulary. Rewrite 
 
 **Detection:** Programmatic check `no-formulaic-social-posts`. One complete regex-matched frame triggers a finding. Evidence reports the matched subtype: engagement request, agreement comment, engagement comment, credential preface, AI wrapper, time compression, or scarcity hook.
 
+
+### D5. Unprompted caveats
+
+An assistant asked for a stretch of prose will often add a passage limiting what that prose claims, even when nothing in the material raises a risk. It arrives as a sentence or a short paragraph about how results vary, how the approach may not suit every reader, or how the subject is more complicated than the piece can cover. Nothing in the text asked for it. The reader has no brief in hand and no question pending, so there is no way to see what the caveat is answering.
+
+The habit comes from how assistants are trained to behave in conversation. Qualified answers are rewarded, and an assistant that cannot see the stakes of a request will insure itself against the version of the request that was dangerous. In a chat reply the cost is a line the user skims past. In finished prose the passage stays on the page, where it breaks whatever the paragraph was building and gives the reader a reason to doubt the sentence before it. The words also go somewhere: to disclaiming a claim instead of developing it.
+
+**Before:**
+> The team moved the nightly export to 03:00 and cut the failure rate from eleven runs a month to one. Every environment differs, and what worked here carries no guarantee elsewhere; readers should weigh their own constraints before changing a schedule. The remaining failure was a timeout on the largest table, which now retries twice before giving up.
+
+**After:**
+> The team moved the nightly export to 03:00 and cut the failure rate from eleven runs a month to one. The remaining failure was a timeout on the largest table, which retries twice before giving up.
+
+Caveats are correct, and sometimes obligatory, where the genre asks for them: a research paper's limitations section, safety documentation, medical and legal writing, and any piece whose convention is to state what it does not cover. A caveat tied to a stated risk, an acknowledged limit, or a requirement in the source is legitimate and stays. Factual qualifications are never cut to reduce a tell, because a qualification with a real basis is part of the claim. What gets recorded here is the volunteered passage, and one occurrence is enough. The boundary against D2 is the shape of the hedge: D2 covers the specific dated or availability disclaimer about what the writer was able to find out, phrased as "as of my last update" or "while specific details are limited", which a regex can match on wording alone. An unprompted caveat can be worded any way at all, and what makes it one is that neither the genre nor the content called for it. A text can carry either without the other.
+
+**Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
+
+**Detection:** Agent judgement `unprompted_caveats` (scripts/judgement.json). Whether a caveat was warranted depends on the claim it attaches to and the conventions of the surrounding genre, so no phrase list can separate a volunteered disclaimer from a limitation the material requires.
+
+
+### D6. Audience knowledge mismatch
+
+A model has no picture of who will read what it produces. Without one, it writes for a reader who knows nothing: it defines terms on first use, restates the fundamentals, and works through the easy steps before arriving at the part that is actually hard. When the text has already said who it is for, that default lands wrong. A runbook addressed to the on-call rotation pauses to define latency. A methods section written for specialists explains what a control group is. A note to the finance team says what a balance sheet records.
+
+Wasted words are the smaller cost. Explaining fundamentals to people who hold them tells the reader that the writer never worked out who they were addressing, which weakens the parts of the text the reader did come for. The explanation also displaces effort: the sentences spent defining a term the audience uses daily are usually the sentences that should have gone to the difficult part, and the difficult part is where a knowledgeable reader was going to slow down.
+
+**Before:**
+> This runbook is for the on-call SRE rotation. Before covering the failover procedure, recall that latency is the time a request takes to travel from the client to the server and back, and that a percentile is a statistical measure indicating the value below which a given proportion of observations falls. With that established, a p99 latency above 400 ms should be treated as a paging condition.
+
+**After:**
+> This runbook is for the on-call SRE rotation. Page on p99 latency above 400 ms. Failover assumes the us-east-1 read replica has caught up, so check replication lag first: a failover onto a stale replica is what turned the two most recent incidents into long ones.
+
+The finding is conditional. It applies only where the text states or clearly implies its audience; where it does not, the answer is that the audience is not evident, and there is no finding. Do not infer an audience from the subject matter in order to have something to report. Mixed-audience documents are a real exception rather than a marginal one. A release note read by engineers and buyers, a paper whose introduction has to reach beyond its field, a handbook used by first-week and tenth-year staff: re-explaining a basic term in those is a decision about the widest reader rather than a mismatch.
+
+**Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
+
+**Detection:** Agent judgement `audience_knowledge_mismatch` (scripts/judgement.json). Judging whether an explanation undershoots its reader requires knowing who the text is for and what that reader already holds, and neither is visible to a surface pattern.
+
 ---
 
 ## Filler and hedging
 
-### 22. Filler phrases
+### E1. Filler phrases
 
 Common substitutions:
 - "In order to achieve this goal" -> "To achieve this"
@@ -841,7 +923,7 @@ Common substitutions:
 **Detection:** Programmatic check `no-filler-phrases`.
 
 
-### 23. Excessive hedging
+### E2. Excessive hedging
 
 Over-qualifying statements to the point where the sentence commits to nothing.
 
@@ -855,7 +937,7 @@ Over-qualifying statements to the point where the sentence commits to nothing.
 
 **Detection:** Programmatic check `no-excessive-hedging`.
 
-### 23a. False concession hedges
+### E3. False concession hedges
 
 **Words to watch:** "While critics argue..., supporters say...", "the truth lies somewhere in the middle", "both sides have valid points", "it depends on context" when used to avoid a claim.
 
@@ -874,7 +956,7 @@ AI often performs nuance by staging two generic positions and then landing in a 
 **Detection:** Programmatic check `no-false-concession-hedges`.
 
 
-### 24. Generic positive conclusions
+### E4. Generic positive conclusions
 
 Vague upbeat endings that could be appended to any article on any topic.
 
@@ -891,7 +973,7 @@ Vague upbeat endings that could be appended to any article on any topic.
 **Detection:** Programmatic check `no-generic-conclusions`.
 
 
-### 25. Staccato rhythm in extended contexts
+### E5. Staccato rhythm in extended contexts
 
 **Words to watch:** "Full stop.", "Period.", "That's it. That's the tweet.", "[One word]. That's the word.", "Too young. Too single.", "No family. No calls."
 
@@ -914,11 +996,11 @@ Prose whose sentences all sit in one short band produces no run, no repeated ope
 **Detection:** Programmatic check `no-staccato-sequences`.
 
 
-### 47. Soft scaffolding
+### E6. Soft scaffolding
 
 **Words to watch:** "One useful area...", "Another useful area...", "The main strength...", "The main risk...", "Good use usually comes down to...", "Comes down to giving/using/making...", "This can be helpful when...", "Especially useful when...", "In those cases,...", "With that distinction in mind,...", plus repeated report paragraph openers such as "A major priority was...", "Another area of work was...", "The committee also examined...", and "Throughout the reporting period..."
 
-Bland transition phrases from generated explainers and reports. They are not flashy, which is why they survive rewrites — they mark prose arranging information into balanced labelled blocks instead of writing from a real line of thought. Report openers are recognised only at paragraph starts, and the document remains clear until at least two scaffold candidates occur. A single necessary transition therefore remains below threshold. Distinct from #22 filler phrases (which are stock padding) and #34 tidy paragraph endings (which close paragraphs); soft scaffolding sits between sentences and paragraphs as connective tissue.
+Bland transition phrases from generated explainers and reports. They are not flashy, which is why they survive rewrites — they mark prose arranging information into balanced labelled blocks instead of writing from a real line of thought. Report openers are recognised only at paragraph starts, and the document remains clear until at least two scaffold candidates occur. A single necessary transition therefore remains below threshold. Distinct from E1 filler phrases (which are stock padding) and H2 tidy paragraph endings (which close paragraphs); soft scaffolding sits between sentences and paragraphs as connective tissue.
 
 **Before:**
 > One useful area is structuring feedback. Another useful area is timing it well. The main strength of these approaches is consistency. Good use usually comes down to giving the receiver enough context.
@@ -928,14 +1010,14 @@ Bland transition phrases from generated explainers and reports. They are not fla
 
 **Severity:** strong_warning · `no-soft-scaffolding`
 
-**Detection:** Programmatic check `no-soft-scaffolding`. The soft-scaffold phrase set is also referenced in pattern #7's preamble as part of AI vocabulary discussion, but it is enforced as its own check rather than folded into the vocabulary cluster.
+**Detection:** Programmatic check `no-soft-scaffolding`. The soft-scaffold phrase set is also referenced in pattern B1's preamble as part of AI vocabulary discussion, but it is enforced as its own check rather than folded into the vocabulary cluster.
 
 
-### 48. Dense negation
+### E7. Dense negation
 
 **Words to watch:** clusters of "is not", "are not", "was not", "were not", "does not", "do not", "isn't", "aren't", "wasn't", "weren't", "doesn't", "don't", "not merely", "not simply", "not just" — across longer prose, not in a single sentence.
 
-Distinct from #9 (contrived contrast in a single sentence) and #33 (countdown negation across two or three consecutive sentences). This is sustained negation density across a piece: a draft that defines itself by what it isn't, paragraph after paragraph. The check activates only on prose of 300+ words to avoid penalising short polemics where dense negation is the deliberate rhetorical move.
+Distinct from B3 (contrived contrast in a single sentence) and H1 (countdown negation across two or three consecutive sentences). This is sustained negation density across a piece: a draft that defines itself by what it isn't, paragraph after paragraph. The check activates only on prose of 300+ words to avoid penalising short polemics where dense negation is the deliberate rhetorical move.
 
 **Before:**
 > The model isn't trying to imitate writing. It isn't merely fitting a template. It isn't just generating tokens. It's not really thinking, but it's also not just predicting next word. The output isn't original, but it isn't copied either. The system isn't conscious, but it isn't a simple lookup either. None of this is what most people assume.
@@ -948,7 +1030,7 @@ Distinct from #9 (contrived contrast in a single sentence) and #33 (countdown ne
 **Detection:** Programmatic check `no-negation-density`. Triggers only on prose of 300+ words.
 
 
-### 50. Formulaic openers
+### E8. Formulaic openers
 
 **Words to watch:** "At its core,", "At a foundational/fundamental/practical level,", "Beyond this/that/[abstract noun],", "There is also a [\…] dimension/aspect/element,", "It is worth recognising/noting/mentioning,", "From a [\…] perspective/standpoint,", "On a [\…] level,", "In a broader/wider/larger/similar context/sense/vein,", "Perhaps most importantly/significantly/notably/crucially,", "What makes this particularly/especially/uniquely [\…]", "Here's what nobody's talking about:", "Let me be clear:", "Can we talk about [X] for a second?", "Let's talk about [X].", "We need to talk about [X].", "I need to say something about [X].", "[N] things I learned from [X]", "[N] mistakes I see everyone making", "[N] lessons from [X] nobody talks about", "The [N] pillars of [X]", "[N] things I wish I knew before [X]", "Here are [N] frameworks that changed how I think about [X]"
 
@@ -966,12 +1048,12 @@ Formulaic paragraph or headline openers that delay the claim, stage it as a disc
 
 **Severity:** strong_warning · `no-formulaic-openers`
 
-**Detection:** Programmatic check `no-formulaic-openers`. Anchored regex against the first line of each paragraph, with optional Markdown heading markers for numbered social-post hooks; flags any paragraph whose opener fits the formulaic-opener template. Distinct from #7 AI vocabulary words (which lists opener phrases as one sub-bullet under the broader vocabulary check) and from #47 soft scaffolding (which catches between-sentence connectives like "One useful area..." rather than paragraph-opening abstractions).
+**Detection:** Programmatic check `no-formulaic-openers`. Anchored regex against the first line of each paragraph, with optional Markdown heading markers for numbered social-post hooks; flags any paragraph whose opener fits the formulaic-opener template. Distinct from B1 AI vocabulary words (which lists opener phrases as one sub-bullet under the broader vocabulary check) and from E6 soft scaffolding (which catches between-sentence connectives like "One useful area..." rather than paragraph-opening abstractions).
 
 
-### 60. Modal qualifier stacks
+### E9. Modal qualifier stacks
 
-Several modal and frequency qualifiers inside one sentence until the claim loses commitment: "The change can potentially often improve results." Each qualifier alone is ordinary; the stack is the tell. Document-wide hedge density is #23's job; this check reads one sentence at a time.
+Several modal and frequency qualifiers inside one sentence until the claim loses commitment: "The change can potentially often improve results." Each qualifier alone is ordinary; the stack is the tell. Document-wide hedge density is E2's job; this check reads one sentence at a time.
 
 **Before:**
 > The new cache can potentially often reduce latency for most tenants.
@@ -981,7 +1063,7 @@ Several modal and frequency qualifiers inside one sentence until the claim loses
 
 **Severity:** context_warning · `no-modal-stacks`
 
-**Detection:** Programmatic check `no-modal-stacks`. Flags any sentence containing three or more bare modal or frequency qualifiers (can, could, may, might, potentially, possibly, often, sometimes, typically, usually, generally); capitalised May is excluded. Distinct from #23, which counts fixed hedge phrases across the whole text.
+**Detection:** Programmatic check `no-modal-stacks`. Flags any sentence containing three or more bare modal or frequency qualifiers (can, could, may, might, potentially, possibly, often, sometimes, typically, usually, generally); capitalised May is excluded. Distinct from E2, which counts fixed hedge phrases across the whole text.
 
 ---
 
@@ -989,7 +1071,7 @@ Several modal and frequency qualifiers inside one sentence until the claim loses
 
 These patterns are especially common in descriptive, creative, and reflective writing. AI reaches for sensory language but, having no physical experience, attaches it to abstractions.
 
-### 26. Ghost/spectral language
+### F1. Ghost/spectral language
 
 **Words to watch:** ghost(s), spectral, shadow(s), whisper(s), echo(es), phantom, haunting/haunted, lingering, remnant(s), trace(s) used atmospherically, unspoken, hidden (when inflating the significance of something ordinary)
 
@@ -1006,7 +1088,7 @@ AI defaults to spectral, ghostly, shadowy imagery for anything it wants to make 
 **Detection:** Programmatic check `no-ghost-spectral-density`.
 
 
-### 27. Quietness obsession
+### F2. Quietness obsession
 
 **Words to watch:** quiet/quietly, silent/silently, softly, hum/humming, stillness, gentle, hushed, murmur, settle/settled, tender
 
@@ -1025,7 +1107,7 @@ Adjacent manufactured-insight frames include "when no one noticed", "the shift n
 **Detection:** Programmatic check `no-quietness-obsession`.
 
 
-### 28. Forced synesthesia
+### F3. Forced synesthesia
 
 AI blends senses inappropriately to simulate literary depth: emotions get tastes, sounds get colours, abstract concepts get textures. This happens because the model has no physical experience, so its sensory vocabulary gravitates to immaterial subjects. Real synesthetic writing is specific and grounded ("a great plateful of blue water" works because Woolf had both stood before a view and sat down to a meal). AI synesthesia is unanchored.
 
@@ -1043,7 +1125,7 @@ AI blends senses inappropriately to simulate literary depth: emotions get tastes
 
 ## Structural tells
 
-### 29. Mid-sentence rhetorical questions
+### G1. Mid-sentence rhetorical questions
 
 A one-to-four-word fragment is punctuated as a question even though it does not begin with an interrogative word or question-forming auxiliary, then an answer or evaluation follows immediately: "And honestly? That's amazing.", "The result? It's remarkable.", "Best part? It actually works." The construction manufactures conversational emphasis through a terse setup-and-answer rhythm.
 
@@ -1058,7 +1140,7 @@ A one-to-four-word fragment is punctuated as a question even though it does not 
 **Detection:** Programmatic check `no-rhetorical-questions`. One complete fragment-question answer beat triggers the finding. The fragment contains at most four words; the immediate answer contains at most twelve.
 
 
-### 30. Generic/ungrounded metaphors
+### G2. Generic/ungrounded metaphors
 
 AI metaphors are plausible but specific to nobody. They gesture toward meaning without achieving it. Human metaphors draw from personal experience or shared cultural references. AI metaphors draw from the statistical middle.
 
@@ -1075,7 +1157,7 @@ When you spot a metaphor, ask: could anyone have written this, or does it come f
 **Detection:** Agent judgement `generic_metaphors` (scripts/judgement.json). Reserved for the agent-judgement registry (`human-eyes/scripts/judgement.json`) — judging metaphor groundedness is not regex-amenable.
 
 
-### 31. Excessive list-making
+### G3. Excessive list-making
 
 AI converts prose to bullet points when the content does not warrant it. This is driven by RLHF training: human raters reward structured-looking answers, so the model learns that bullets = quality. The result is text that looks organised but reads like a slide deck rather than writing.
 
@@ -1085,7 +1167,7 @@ When you encounter unnecessary bullet points or numbered lists, fold the content
 
 **Detection:** Programmatic check `no-excessive-lists`.
 
-### 31a. Unicode flair
+### G4. Unicode flair
 
 **Words/symbols to watch:** arrows, checkmarks, stars, ornamental bullets, emoji-style symbols, `×`, and stylized Unicode letter runs such as `𝗯𝗼𝗹𝗱` or `𝘪𝘵𝘢𝘭𝘪𝘤`. Ordinary Markdown bold and italics are not included.
 
@@ -1096,7 +1178,7 @@ Decorative Unicode can make prose read like a generated checklist or social post
 **Detection:** Programmatic check `no-unicode-flair`.
 
 
-### 32. Dramatic narrative transitions
+### G5. Dramatic narrative transitions
 
 **Words to watch:** "Something shifted.", "Everything changed.", "And then, everything clicked.", "That's when it hit me.", "And that made all the difference."
 
@@ -1112,7 +1194,7 @@ Standalone sentences that claim a narrative turning point without earning it. Th
 
 **Detection:** Programmatic check `no-dramatic-transitions`.
 
-### 38. Section scaffolding
+### G6. Section scaffolding
 
 **Structures to watch:** Identical short section labels repeated three or more times; a document whose first Markdown heading starts below level 2; a later heading that jumps more than one level deeper; or a thematic break (`---`, `***`, or `___`) immediately before a heading. YAML frontmatter delimiters are excluded.
 
@@ -1146,7 +1228,7 @@ These repeated or mechanically skipped structures can create a cookie-cutter tem
 **Detection:** Programmatic check `no-section-scaffolding`.
 
 
-### 42. Manufactured insight framing
+### G7. Manufactured insight framing
 
 **Words to watch:** "what's really", "the real answer", "here's what's really", "the real story is", "what's actually happening", "contrary to popular belief", "the uncomfortable truth", "what nobody is talking about", "what no one seems to realise", "what most people miss", "what (no one|nobody) noticed", "before anyone noticed", "without anyone noticing", "let that sink in", "read that again", "sit with that for a second", "I'll say it louder for the people in the back", "if you know, you know", "and that changes everything", "the real insight/challenge/takeaway/kicker/question", "a quiet/powerful/important/profound lesson", "sometimes the bravest/hardest/most important", "it/this/the experience taught me that", "what this/the failure taught me was", "the lesson I/we learned was", "X is the Y of Z", "X becomes a trap", "the language/currency/architecture of", "this isn't X. it's Y.", "that's not X. that's Y.", "the honest answer is", "here's the honest (answer|framing|truth)", "here's the (real) truth", "the real truth is", "if I'm being honest", "in all honesty", "to be (perfectly) honest,", "this is the part most people skip", "most people won't tell you this", "nobody's talking about this", "everyone's sleeping on this", "this flew under the radar", "I wasn't supposed to share this, but", "what they don't want you to know", "the thing nobody tells beginners", "the secret that [industry] doesn't want you to know", "I've been sitting on this for weeks", "Stop what you're doing", "Drop everything", "Read this before [X]", "If you haven't seen this yet", "You're going to want to bookmark this", "Save this before it gets taken down", "This changes everything", "This is bigger than people realise", "[X] just changed the game forever"
 
@@ -1162,12 +1244,12 @@ Performs revelation through phrasing — claims hidden depth or secret significa
 
 **Severity:** strong_warning · `no-manufactured-insight`
 
-**Hypothesis (performed candour):** The honesty/truth-framing phrases ("the honest answer is", "here's the real truth", "if I'm being honest") are folded into `no-manufactured-insight` rather than promoted to their own numbered entry. They share the same generative move as the rest of #42 (claiming significance through phrasing rather than earning it), so a single check captures the family. Promote to a sibling entry if either signal lands: the candour regex set grows materially beyond the current handful of phrases, or audit failures cluster on candour without co-occurring with the rest of #42's mechanisms. Until then, keep folded.
+**Hypothesis (performed candour):** The honesty/truth-framing phrases ("the honest answer is", "here's the real truth", "if I'm being honest") are folded into `no-manufactured-insight` rather than promoted to their own numbered entry. They share the same generative move as the rest of G7 (claiming significance through phrasing rather than earning it), so a single check captures the family. Promote to a sibling entry if either signal lands: the candour regex set grows materially beyond the current handful of phrases, or audit failures cluster on candour without co-occurring with the rest of G7's mechanisms. Until then, keep folded.
 
-**Detection:** Programmatic check `no-manufactured-insight`. It fails on any fixed manufactured-insight phrase or aphorism template, including `X is the Y of Z`, `X becomes a trap`, and `the language/currency/architecture of`. Closely related to #9 contrived contrast — manufactured insight framing is the *content* of the false reveal; #9 is the *syntactic shape*.
+**Detection:** Programmatic check `no-manufactured-insight`. It fails on any fixed manufactured-insight phrase or aphorism template, including `X is the Y of Z`, `X becomes a trap`, and `the language/currency/architecture of`. Closely related to B3 contrived contrast — manufactured insight framing is the *content* of the false reveal; B3 is the *syntactic shape*.
 
 
-### 44. Signposted conclusions
+### G8. Signposted conclusions
 
 **Words to watch:** "In summary,", "In conclusion,", "To summarise,", "To summarize,", "To conclude,", "To sum up,", "To wrap up,", section headings "Conclusion", "Final thoughts", "Key takeaways", "Summing up".
 
@@ -1186,7 +1268,7 @@ Explicit conclusion labels turn the ending into a generic summary. AI overuses t
 **Detection:** Programmatic check `no-signposted-conclusions`.
 
 
-### 52. Sentence length variance
+### G9. Sentence length variance
 
 A coarse rhythm metric for prose of 100+ words. Human writing varies sentence length naturally, mixing short punch sentences with longer connective passages. AI prose tends toward the centre of the distribution: most sentences land in a similar word count band, and the resulting cadence reads mechanical even when individual sentences are competent.
 
@@ -1202,10 +1284,10 @@ Across the project corpora the standard deviation of sentence word counts runs 1
 
 **Severity:** context_warning · `sentence-length-variance`
 
-**Detection:** Programmatic check `sentence-length-variance`. Computes the standard deviation of sentence word counts and fails when the SD is 9.0 or below. Skipped on prose under 100 words and 6 sentences. Distinct from #34 paragraph-length uniformity (which measures paragraph block sizes, not sentence-level rhythm) and from #25 staccato (which targets very short standalone sentences regardless of variance).
+**Detection:** Programmatic check `sentence-length-variance`. Computes the standard deviation of sentence word counts and fails when the SD is 9.0 or below. Skipped on prose under 100 words and 6 sentences. Distinct from H2 paragraph-length uniformity (which measures paragraph block sizes, not sentence-level rhythm) and from E5 staccato (which targets very short standalone sentences regardless of variance).
 
 
-### 59. One-line sections under headings
+### G10. One-line sections under headings
 
 A heading followed by a single generic sentence, repeated across the document. Humanizer tooling treats the sentence under the heading as removable padding, which makes the shape itself the tell: sections open with a filler line instead of content. One deliberate short section is fine; the check needs the shape twice.
 
@@ -1228,7 +1310,7 @@ A heading followed by a single generic sentence, repeated across the document. H
 **Detection:** Programmatic check `no-heading-one-liners`. Flags two or more headings each immediately followed by a paragraph consisting of a single sentence. Lists, blockquotes, and further headings do not count as the following paragraph.
 
 
-### 63. Symmetric list items
+### G11. Symmetric list items
 
 Generated lists tend to hold every item to the same length and the same frame, so the list reads as one template filled in three times rather than three separate things worth saying.
 
@@ -1248,17 +1330,75 @@ Both conditions must hold before the check says anything: the items run to a uni
 
 **Detection:** Programmatic check `no-symmetric-list-items`.
 
+
+### G12. Paragraph length uniformity
+
+Generated longform settles into blocks of the same size: ten paragraphs of 65 to 85 words, each making one balanced point. Human paragraphs carry uneven pressure. A paragraph runs to four sentences because it needed four, and the next one is a single line. When every block comes out the same size, the draft reads as a template being filled in, even where each individual paragraph is competently made.
+
+The check measures block size and nothing else. It counts the words in every prose paragraph of 25 words or more, then takes the coefficient of variation, standard deviation over the mean, across those counts. A coefficient below 0.18 fails, meaning the paragraphs all sit inside a narrow band; wide variation passes. No phrase carries the signal, so the finding reports the coefficient and the number of paragraphs it was measured over rather than quoting anything. In the passage below there is nothing to fix at sentence level; the shape is the tell.
+
+**Before:**
+> The pilot ran in three regions over eight weeks. Support tickets fell by about a fifth in each one. Teams reported that the new triage screen was easier to learn than the version it replaced.
+>
+> Training took longer than the schedule allowed. Most agents needed two sessions rather than one, and a handful asked for a third. The materials were rewritten twice before the second region started its rollout.
+>
+> Costs came in slightly over the original estimate. The overrun sat mostly in contractor hours during the first fortnight. Finance signed off on the variance once the ticket numbers from the pilot arrived.
+
+**After:**
+> The pilot ran in three regions over eight weeks and support tickets fell by about a fifth in each one, which was the result the business case had asked for. The part nobody had budgeted for was training: most agents needed two sessions rather than one, a handful asked for a third, and the materials were rewritten twice before the second region even started.
+>
+> Costs ran over.
+>
+> The overrun sat almost entirely in contractor hours during the first fortnight, and Finance signed off on the variance once the pilot ticket numbers arrived.
+
+Paragraphs shorter than 25 words are excluded from the measurement entirely, and a draft with fewer than seven of these substantial paragraphs is skipped without a verdict, so short pieces and anything built mostly from brief blocks never reach the test. Uniform blocks are also the correct form in several genres: reference and encyclopaedia entries, API and parameter documentation, FAQ answers, release notes, catalogue descriptions, and briefing formats that give each item equal space by design. High variation is never flagged, and the check says nothing about what the paragraphs contain or the order they come in.
+
+**Severity:** context_warning · `paragraph-length-uniformity`
+
+**Detection:** Programmatic check `paragraph-length-uniformity`. Distinct from G9 sentence length variance, which measures rhythm inside sentences rather than the size of the blocks they sit in, and from H2, which reads how paragraphs end rather than how long they run.
+
+
+### G13. Structural monotony
+
+Generated longform tends to settle on one rhetorical arc and then run it in every section: an opening claim, a supporting argument or example, a small conclusion, and on to the next heading for the same three moves. Each section reads competently on its own. Read end to end, the piece feels like one section reproduced under different headings, and the reader stops attending to shape because shape has stopped carrying information.
+
+The cost is that the layout no longer says anything about the content. A section reporting a measurement and a section conceding that the measurement is unreliable want different shapes; when both arrive in the same order, the reader cannot tell from the form which kind of section they are in, and the writing loses its ability to mark emphasis by changing form.
+
+**Before:**
+> ## Onboarding
+>
+> Onboarding is where we lose most new accounts. Users who finish setup in their first session retain at roughly twice the rate of users who abandon it, and our setup flow runs to nine screens. Cutting it down is the change worth making first.
+>
+> ## Billing
+>
+> Billing is what fills the support queue. Failed-payment tickets are about a third of everything support handles, and the email we send does not name the card that was declined. Rewriting that email is the change worth making first.
+
+**After:**
+> ## Onboarding
+>
+> Users who finish setup in their first session retain at roughly twice the rate of users who abandon it. Our nine-screen setup flow is where the abandonment happens, and cutting it to three is the change worth making first.
+>
+> ## Billing
+>
+> Failed-payment tickets are about a third of the support queue. Naming the declined card in the email would fix part of that. What we cannot tell yet is how many of those tickets are expired cards and how many are insufficient funds, and the two cases need different emails, so the rewrite waits on a week of tagged tickets.
+
+A repeated arc is correct in plenty of documents. Reference entries should run the same way every time so a reader can skip to the part they want, and the same holds for structured reports with a fixed remit, incident write-ups, and templated documentation where the template is the product. The boundary against the neighbouring findings is one of scale: H2 works inside a single paragraph, on final sentences that tidy that paragraph up, and G6 works on the visible furniture, heading levels and repeated section labels. This entry works on the sequence of rhetorical moves a whole section makes, which can repeat under headings worded quite differently and in paragraphs that end untidily. If the finding is about closing sentences, it belongs to H2; if it is about heading depth or a label such as "How to make this work:" recurring, it belongs to G6. A consistent arc is also what disciplined writing and an enforced house style produce, so treat this as a note about the reading experience and never as evidence about who or what wrote the piece.
+
+**Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
+
+**Detection:** Agent judgement `structural_monotony` (scripts/judgement.json). A regex can match a word or a punctuation shape but cannot see that two passages perform the same sequence of moves, because the arc is carried by meaning rather than by any string the two sections have in common.
+
 ---
 
 ## Voice and register
 
 These patterns concern what AI **removes** from writing — stance, personality, specificity — rather than what it adds. LLMs systematically strip argumentative commitment and deplete personal voice even in minimal edits.
 
-### 33. Countdown negation
+### H1. Countdown negation
 
 **Words to watch:** "It wasn't X. It wasn't Y. It was Z.", "This isn't about... This isn't about... This is about..."
 
-A multi-sentence rhetorical arc where AI negates two or more things before revealing the actual point, creating false suspense. Distinct from negative parallelism (#9), which is "not X; it's Y" in a single sentence. This is a sustained dramatic build.
+A multi-sentence rhetorical arc where AI negates two or more things before revealing the actual point, creating false suspense. Distinct from negative parallelism (B3), which is "not X; it's Y" in a single sentence. This is a sustained dramatic build.
 
 **Before:**
 > It wasn't the algorithm. It wasn't the data. It wasn't the compute budget. It was the prompt. Three words, chosen carefully, changed everything.
@@ -1277,7 +1417,7 @@ A multi-sentence rhetorical arc where AI negates two or more things before revea
 **Detection:** Programmatic check `no-countdown-negation`.
 
 
-### 34. Per-paragraph miniature conclusions
+### H2. Per-paragraph miniature conclusions
 
 Every paragraph wraps up with a tidy summary sentence that transitions perfectly to the next. Humans digress, leave threads hanging, circle back later. AI's paragraph-level tidiness is itself a tell.
 
@@ -1295,14 +1435,12 @@ When you spot a paragraph where the final sentence restates the paragraph's poin
 
 Watch for endings such as "That is why...", "The takeaway is...", "The result is...", "In the end,...", "Ultimately,...", and "With that distinction in mind...". The deterministic candidate surface also recognises compact interpretive closures such as "The selection was already an interpretation" and balanced semicolon closures whose two halves each contain their own subject and linking verb. Literal states and subordinate fragments are controls. Quoted occurrences remain candidates and are marked as quoted. One can be legitimate. Three or more usually means the piece is landing every paragraph the same way.
 
-Also check paragraph size. AI-generated longform often settles into near-identical blocks: ten paragraphs of 65-85 words, each making one balanced point. Human paragraphs usually show uneven pressure; some are short, some wander, some carry a scene or example longer than expected.
-
-**Severity:** context_warning · `no-tidy-paragraph-endings` and context_warning · `paragraph-length-uniformity` (this pattern covers two related checks)
+**Severity:** context_warning · `no-tidy-paragraph-endings`
 
 **Detection:** Programmatic check `no-tidy-paragraph-endings`.
 
 
-### 35. Tonal uniformity / register lock
+### H3. Tonal uniformity / register lock
 
 AI picks a register — professional-casual, academic-accessible, warm-but-authoritative — and never breaks from it. Human writers drift between registers: they start formal, get colloquial, make a joke that does not quite land, recover. The consistency is the tell, not any particular register.
 
@@ -1320,7 +1458,7 @@ In reviews and criticism, tonal uniformity often appears as bland evaluative bal
 
 **Detection:** Agent judgement `tonal_uniformity`, `referential_clarity` (scripts/judgement.json). Reserved for the agent-judgement registry (`human-eyes/scripts/judgement.json`) — register lock is not regex-amenable.
 
-### 35a. Orphaned demonstratives
+### H4. Orphaned demonstratives
 
 **Words to watch:** "This highlights...", "This underscores...", "This demonstrates...", "That speaks to...", "These point to..."
 
@@ -1332,14 +1470,14 @@ The problem is not the word "this"; it is the vague subject. If "this" points to
 **After:**
 > The missed deadline exposed a communication gap between product and engineering.
 
-**Severity:** context_warning · `no-orphaned-demonstratives` (the related sentence-start chain check lives at #35b)
+**Severity:** context_warning · `no-orphaned-demonstratives` (the related sentence-start chain check lives at H5)
 
 **Detection:** Programmatic check `no-orphaned-demonstratives`.
 
 
-### 35b. Repeated 'This …' chains
+### H5. Repeated 'This …' chains
 
-Three or more consecutive sentences in a paragraph that begin with "This [verb]" — typically "This shows…", "This means…", "This highlights…", "This underscores…". Distinct from #35a orphaned demonstratives, which catches a single vague-subject `this` sentence; #35b is the chain pattern, where a paragraph keeps using `This` as the subject placeholder sentence after sentence.
+Three or more consecutive sentences in a paragraph that begin with "This [verb]" — typically "This shows…", "This means…", "This highlights…", "This underscores…". Distinct from H4 orphaned demonstratives, which catches a single vague-subject `this` sentence; H5 is the chain pattern, where a paragraph keeps using `This` as the subject placeholder sentence after sentence.
 
 **Before:**
 > The framework launched in March. This brought consolidation. This reduced operational cost. This freed engineering time. This let the team focus on the next initiative.
@@ -1349,10 +1487,10 @@ Three or more consecutive sentences in a paragraph that begin with "This [verb]"
 
 **Severity:** context_warning · `no-this-chains`
 
-**Detection:** Programmatic check `no-this-chains`. Walks each paragraph and flags 3+ consecutive sentences matching `^this\s+(?!is)\w+`. Distinct from #35a orphaned demonstratives (single-sentence vague-subject `this`); #35b is the multi-sentence chain pattern within a paragraph.
+**Detection:** Programmatic check `no-this-chains`. Walks each paragraph and flags 3+ consecutive sentences matching `^this\s+(?!is)\w+`. Distinct from H4 orphaned demonstratives (single-sentence vague-subject `this`); H5 is the multi-sentence chain pattern within a paragraph.
 
 
-### 36. Faux specificity
+### H6. Faux specificity
 
 AI provides examples that feel specific without actually being specific. "The way your coffee smells before you even take a sip" or "how the light hits your kitchen table in the morning" — plausible, relatable, grounded in nobody's actual experience. AI constructs these from genre conventions rather than lived experience.
 
@@ -1371,9 +1509,9 @@ When you spot a "specific" detail, ask: could anyone have written this, or does 
 **Detection:** Agent judgement `faux_specificity` (scripts/judgement.json). Reserved for the agent-judgement registry (`human-eyes/scripts/judgement.json`) — distinguishing genuine specificity from genre-convention filler is not regex-amenable.
 
 
-### 37. Neutrality collapse
+### H7. Neutrality collapse
 
-LLMs systematically strip argumentative stance, defaulting to balanced treatment of everything. "There are compelling arguments on both sides" where the original had a clear position. Distinct from generic positive conclusions (#24) — this is about the **removal** of opinion, not the addition of optimism.
+LLMs systematically strip argumentative stance, defaulting to balanced treatment of everything. "There are compelling arguments on both sides" where the original had a clear position. Distinct from generic positive conclusions (E4) — this is about the **removal** of opinion, not the addition of optimism.
 
 LLM use sharply increases the share of essays that remain neutral, and LLMs frequently change the writer's conclusions even when instructed to only fix grammar.
 
@@ -1390,9 +1528,9 @@ When rewriting, compare your rewrite's conclusions to the input's conclusions. I
 
 **Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
 
-**Detection:** Agent judgement `neutrality_collapse` (scripts/judgement.json). Reserved for the agent-judgement registry (`human-eyes/scripts/judgement.json`). The surface false-balance phrasing piece is partly covered by `check_false_concession` (#23a); expanding regex coverage of stance erasure is out of scope here.
+**Detection:** Agent judgement `neutrality_collapse` (scripts/judgement.json). Reserved for the agent-judgement registry (`human-eyes/scripts/judgement.json`). The surface false-balance phrasing piece is partly covered by `check_false_concession` (E3); expanding regex coverage of stance erasure is out of scope here.
 
-### 39. Template and placeholder residue
+### H8. Template and placeholder residue
 
 **Words and structures to watch:** `{client_name}`, `[Company Name]`, `[insert date]`, `<source>`, "Hi {name}", `Insert Table 1 here`, `turn0search0`, private-use citation wrappers, `_generated-reference-identifier_`, `contentReference`, `oaicite`, `oai_citation`, source-name `+1` suffixes, `[attached_file:1]`, `[web:1]`, Grok citation-card markup, `【85†L261-269】`, `[cite: 3, 12]`, `attributableIndex`, and `:::writing{...}`.
 
@@ -1402,7 +1540,7 @@ These are unfinished template, publishing, citation, or rendering residues. Repl
 
 **Detection:** Programmatic check `no-placeholder-residue`.
 
-### 40. Rubric echoing
+### H9. Rubric echoing
 
 **Words to watch:** "the author creates a tone", "I can tell because", "this quote shows that", "according to the rubric", "meets the criteria".
 
@@ -1412,7 +1550,7 @@ Common in AI-generated student essays. It mirrors assignment language instead of
 
 **Detection:** Programmatic check `no-rubric-echoing`.
 
-### 41. Genre-specific manual checks
+### H10. Genre-specific manual checks
 
 These are not reliable enough for hard regex treatment yet, but they should be part of the self-audit:
 
@@ -1428,7 +1566,7 @@ These are not reliable enough for hard regex treatment yet, but they should be p
 **Detection:** Agent judgement `genre_specific` (scripts/judgement.json). Reserved for the agent-judgement registry (`human-eyes/scripts/judgement.json`) as a polymorphic genre slot — the agent first detects genre (academic, student essay, poetry, fiction, journalism, marketing/email, or default), then runs the matching watchlist.
 
 
-### 43. Corporate AI-speak
+### H11. Corporate AI-speak
 
 **Words to watch:** "delivering impact", "measurable outcomes", "deliverable outcomes", "scalable, production-grade", "pragmatic approach", "drives outcomes", "cross-functional", "end-to-end (development|delivery|solution)", "translate requirements into outcomes/deliverables/solutions", "stakeholder (alignment|engagement|management)", "actionable insights", "leverage (my|our|the) experience/expertise".
 
@@ -1445,11 +1583,11 @@ Generic LinkedIn-AI corporate register. Hides specific work behind operational a
 **Detection:** Programmatic check `no-corporate-ai-speak`.
 
 
-### 45. Nonliteral land/surface phrasing
+### H12. Nonliteral land/surface phrasing
 
 **Words to watch:** "the argument lands", "the idea lands", "your point lands", "where my draft landed", "lands with the reader/audience/team/stakeholders", "lands in the rubric/scale/category", "surfaces in the conversation/discussion/debate/work/writing", "what surfaces", "what surfaced", and nonliteral navigation constructions such as a manual becoming "a map out of the wilderness", a framework providing "a roadmap through uncertainty", or a guide becoming "a compass through the maze".
 
-Treats abstract ideas as physical objects that land or surface, or turns informational objects into maps and compasses through figurative terrain. Detection surfaces the construction for contextual review; it does not decide that a grounded metaphor is artificial or must be removed. Literal maps, compasses, wildernesses, and product roadmaps remain outside the match. Distinct from #30 generic metaphors, which requires agent assessment of whether figurative language is plausible-but-unanchored.
+Treats abstract ideas as physical objects that land or surface, or turns informational objects into maps and compasses through figurative terrain. Detection surfaces the construction for contextual review; it does not decide that a grounded metaphor is artificial or must be removed. Literal maps, compasses, wildernesses, and product roadmaps remain outside the match. Distinct from G2 generic metaphors, which requires agent assessment of whether figurative language is plausible-but-unanchored.
 
 **Before:**
 > The argument lands somewhere between cautious optimism and quiet despair. What surfaces in the discussion is a recognition that no clean answer exists.
@@ -1462,7 +1600,7 @@ Treats abstract ideas as physical objects that land or surface, or turns informa
 **Detection:** Programmatic check `no-nonliteral-land-surface`.
 
 
-### 46. Bland critical template
+### H13. Bland critical template
 
 **Words to watch:** "the kind of contemporary novel/film/book/album/show/essay that", "doing several familiar things at once", "what makes it more than", "emotional range", "field of sympathy", "moral strengths", "earns (much of) its weight", "ambitious in an old-fashioned way", "social texture", "slow revelation of", "difficult to dismiss".
 
@@ -1476,10 +1614,10 @@ Generated literary, film, or review criticism that sounds balanced but generic. 
 
 **Severity:** strong_warning · `no-bland-critical-template`
 
-**Detection:** Programmatic check `no-bland-critical-template`. Closely related to #35 tonal uniformity in reviews and criticism — the tonal-uniformity entry mentions the same evaluative phrases ("emotional range", "field of sympathy", "moral strength") as a register signal; this check enforces them at phrase level.
+**Detection:** Programmatic check `no-bland-critical-template`. Closely related to H3 tonal uniformity in reviews and criticism — the tonal-uniformity entry mentions the same evaluative phrases ("emotional range", "field of sympathy", "moral strength") as a register signal; this check enforces them at phrase level.
 
 
-### 51. Mechanical repeated sentence starts
+### H14. Mechanical repeated sentence starts
 
 Three or more consecutive sentences whose first word matches — "The X… The Y… The Z…", "We did… We saw… We learned…", "It was… It was… It was…". Anaphora is a real rhetorical device when it earns its weight (Lincoln, Churchill, Baldwin), but AI reaches for it as a default rhythm pattern when it has run out of structural ideas. The tell is repetition without escalation: three sentences starting the same way that do not build, contrast, or accumulate force.
 
@@ -1493,10 +1631,10 @@ Three or more consecutive sentences whose first word matches — "The X… The Y
 
 **Severity:** context_warning · `no-anaphora`
 
-**Detection:** Programmatic check `no-anaphora`. Flags three or more consecutive sentences whose first word matches case-insensitively, ignoring trivial starts ("I", "A", "The", "It", "It's"). Distinct from #25 staccato rhythm (which fires on short standalone sentences regardless of opener) and from #35a orphaned demonstratives (vague-subject `this` in a single sentence) and #35b `This …` chains (paragraph-level repetition of `This` as subject).
+**Detection:** Programmatic check `no-anaphora`. Flags three or more consecutive sentences whose first word matches case-insensitively, ignoring trivial starts ("I", "A", "The", "It", "It's"). Distinct from E5 staccato rhythm (which fires on short standalone sentences regardless of opener) and from H4 orphaned demonstratives (vague-subject `this` in a single sentence) and H5 `This …` chains (paragraph-level repetition of `This` as subject).
 
 
-### 56. Performed candour and vulnerability
+### H15. Performed candour and vulnerability
 
 **Frames to watch:** Honestly,; To be honest; The honest answer; Frankly,; Candidly,; Truthfully,; In all honesty; "I wasn't going to post this, but"; "This is scary to share"; "Hot take incoming (don't hate me)"; "Unpopular opinion"; "I know I'll get hate for this, but"; "I've never said this publicly before"; "This might ruffle some feathers"; "I might lose followers for this, but".
 
@@ -1513,9 +1651,9 @@ These phrases announce sincerity, vulnerability, or anticipated backlash before 
 **Detection:** Programmatic check `no-performed-candour`. The `performed_candour` semantic record reviews contextual uses of honest, real, actual, and genuine.
 
 
-### 58. Mechanical repeated paragraph starts
+### H16. Mechanical repeated paragraph starts
 
-The paragraph-level sibling of #51: three or more consecutive paragraphs whose first word matches. Peer-reviewer guidance flags identical paragraph starts and rigid paragraph patterns as overly uniform structure. As with sentence-level anaphora, deliberate rhetorical patterning exists; the tell is repetition without escalation.
+The paragraph-level sibling of H14: three or more consecutive paragraphs whose first word matches. Peer-reviewer guidance flags identical paragraph starts and rigid paragraph patterns as overly uniform structure. As with sentence-level anaphora, deliberate rhetorical patterning exists; the tell is repetition without escalation.
 
 **Before:**
 > Customers want faster onboarding and clearer pricing pages.
@@ -1529,29 +1667,48 @@ The paragraph-level sibling of #51: three or more consecutive paragraphs whose f
 
 **Severity:** context_warning · `no-paragraph-anaphora`
 
-**Detection:** Programmatic check `no-paragraph-anaphora`. Flags three or more consecutive prose paragraphs whose first word matches case-insensitively, ignoring trivial starts ("I", "A", "The", "It", "It's"). Headings, list blocks, and blockquotes are not paragraphs and do not break a run. Distinct from #51, which works on consecutive sentences.
+**Detection:** Programmatic check `no-paragraph-anaphora`. Flags three or more consecutive prose paragraphs whose first word matches case-insensitively, ignoring trivial starts ("I", "A", "The", "It", "It's"). Headings, list blocks, and blockquotes are not paragraphs and do not break a run. Distinct from H14, which works on consecutive sentences.
+
+
+### H17. Change narration
+
+Documentation and code comments are read in the present tense, by someone holding only the current version of the file. A passage that reports what changed spends the reader's attention on a state they cannot see and leaves the state in front of them undescribed. A comment reading "now returns a list instead of a tuple" asks the reader to reconstruct the tuple before they can understand the list; "returns a list of matched spans" tells them what they came for.
+
+An assistant editing a file writes this way because the diff is the most vivid thing in its working context. It has just held both versions of the line, so the difference between them feels like the fact worth recording, and writing the difference down reads as an account of the work performed. The reader inherits the file without the edit history that made the sentence feel informative. Change narration also expires: after two more revisions the "now" points at a version that no longer exists, and the comment describes a transition between two states the code has already left behind.
+
+**Before:**
+> Updated: this now returns a list rather than a tuple, and offsets are no longer 1-based. Callers that unpacked two values will need adjusting.
+
+**After:**
+> Returns a list of matched spans as `(start, end)` pairs, with zero-based offsets.
+
+The record excludes changelogs, release notes, migration guides, deprecation notices, historical analysis, and any other writing whose purpose is to compare versions. Those genres exist to narrate change and are correct to do so; a release note that described only current behaviour would have failed at its job. What the flag covers is text whose job is to describe the thing as it stands, such as API documentation, README behaviour descriptions, docstrings and inline comments, where a sentence about the previous version displaces the description a reader needs.
+
+**Severity:** N/A · agent-judgement (registered in `human-eyes/scripts/judgement.json`)
+
+**Detection:** Agent judgement `change_narration` (scripts/judgement.json). Whether a passage narrates change or states current behaviour depends on what the surrounding document is for, and the same sentence is correct in a release note and wrong in a docstring, so no phrase list separates the two.
 
 ---
 
-## Signal stacking (meta-check)
+## Signal stacking
 
-The grader also runs one meta-check that does not correspond to a single AI tell.
+### S1. Signal stacking from stacked AI tells
 
 `overall-signal-stacking` rolls up several weak/medium signals into a single signal-stacking score. The component checks are:
 
-- manufactured insight framing (#42)
-- contrived contrast / negative parallelism (#9)
-- formulaic openers (#50)
-- soft scaffolding (#47)
-- section scaffolding (#38)
-- tidy paragraph endings (in #34)
-- paragraph length uniformity (in #34)
+- manufactured insight framing (G7)
+- contrived contrast / negative parallelism (B3)
+- formulaic openers (E8)
+- soft scaffolding (E6)
+- section scaffolding (G6)
+- tidy paragraph endings (in H2)
+- paragraph length uniformity (G12)
 - markdown headings in prose
-- excessive lists (#31)
-- assistant residue / collaborative artifacts (#19)
-- generic conclusions (#24)
-- bland critical template (#46)
-- false concession (#23a)
+- excessive lists (G3)
+- assistant residue / collaborative artifacts (D1)
+- generic conclusions (E4)
+- bland critical template (H13)
+- false concession (E3)
 
 Plus Kobak et al. excess-vocabulary evidence (style-annotated terms from the `kobak-excess-words.csv` reference file).
 
@@ -1559,5 +1716,4 @@ The check fires when the weighted score crosses the threshold of four points. Vo
 
 **Severity:** context_warning · `overall-signal-stacking`
 
-
-**Detection:** Programmatic meta-check `overall-signal-stacking`. Not numbered as a single AI tell; rolls up the components above. The check exposes its component breakdown and Kobak vocabulary profile in its evidence so the writer can read which signals contributed.
+**Detection:** Programmatic check `overall-signal-stacking`. It carries no before/after and no words to watch, because it has no surface of its own: it rolls up the components above. The check exposes its component breakdown and Kobak vocabulary profile in its evidence so the writer can read which signals contributed.

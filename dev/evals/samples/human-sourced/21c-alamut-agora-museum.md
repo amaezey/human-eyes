@@ -28,11 +28,11 @@
 Info Tech of Ancient Athenian Democracy
 By Julian Dibbell
 
-1) [Introduction](#1)
-2) [The Technology of Allotment](#2)
-3) [The Technology of Identification](#3)
-4) [The Technology of Deliberation and Decision](#4)
-5) [The Technology of Decree](#5)
+1) [Introduction](A1)
+2) [The Technology of Allotment](A2)
+3) [The Technology of Identification](A3)
+4) [The Technology of Deliberation and Decision](A4)
+5) [The Technology of Decree](A5)
 
 ---
 

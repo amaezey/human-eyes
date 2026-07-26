@@ -1,10 +1,10 @@
 # Triad density calibration (2026-07-25)
 
-Record for DR-19G: the direction and threshold of pattern #10, and the retirement of #10a.
+Record for DR-19G: the direction and threshold of pattern B4, and the retirement of #10a.
 
 ## The question
 
-#10 `no-forced-triads` failed on any single three-part construction. #10a `no-triad-density` failed at four or more triads in prose of 300+ words. Both called the same extractor, `extract_triad_candidates`, so #10a's condition was a strict subset of #10's and could never fail without #10 having already failed. The density check never changed a verdict.
+B4 `no-forced-triads` failed on any single three-part construction. #10a `no-triad-density` failed at four or more triads in prose of 300+ words. Both called the same extractor, `extract_triad_candidates`, so #10a's condition was a strict subset of B4's and could never fail without B4 having already failed. The density check never changed a verdict.
 
 The Wikipedia cleanup guide (C15) says an isolated triad is not overuse and asks that recognition and verdict stay separate. That framing was tested rather than adopted.
 
@@ -21,7 +21,7 @@ The Wikipedia cleanup guide (C15) says an isolated triad is not overuse and asks
 | at least 3 triads | 82% | 79% |
 | at least 4 triads | 71% | 74% |
 
-At every count, human and generated prose are indistinguishable. #10's one-triad verdict flagged 95% of human documents. #10a's four-triad threshold was cleared by 71% of them, because a long document accumulates triads whatever wrote it.
+At every count, human and generated prose are indistinguishable. B4's one-triad verdict flagged 95% of human documents. #10a's four-triad threshold was cleared by 71% of them, because a long document accumulates triads whatever wrote it.
 
 ## Rate does separate them
 
@@ -39,7 +39,7 @@ Median triads per 1000 words: **2.68 human, 5.33 AI**. Roughly double.
 
 ## Ruling
 
-Mae approved consolidating both checks into one, measured as a rate, at **4.0 per 1000 words** in prose of **300 words or more**. #10 keeps its context-warning severity. #10a is retired.
+Mae approved consolidating both checks into one, measured as a rate, at **4.0 per 1000 words** in prose of **300 words or more**. B4 keeps its context-warning severity. #10a is retired.
 
 The 300-word floor is inherited from the retired #10a. It has no effect on these figures, since every document in both corpora exceeds it; it stops the check speaking about texts too short to measure a rate.
 

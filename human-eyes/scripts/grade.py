@@ -71,7 +71,7 @@ AI_VOCABULARY = [
 # high-ratio phrases, in source order. `_assert_gptzero_payload_frozen` below
 # rejects any edit to its length, and test_grade.py's DR-126C block compares it
 # row by row against the preserved client JSON. New clustering candidates belong
-# in AI_VOCABULARY above; both lists feed the same #7 matcher, so an addition
+# in AI_VOCABULARY above; both lists feed the same B1 matcher, so an addition
 # here still changes detection and still passes every behaviour test, which is
 # exactly how DR-71 nearly shipped three phrases into a preserved record.
 # Treat these as tentative clustering signals, not single-phrase proof.
@@ -364,7 +364,7 @@ AI_VOCABULARY_REGEX = [
 ]
 
 # Exact term families from Kousha and Thelwall's Table 1. These support the
-# document-wide distinct-family rule; they do not replace the broader #7 list.
+# document-wide distinct-family rule; they do not replace the broader B1 list.
 KOUSHA_THELWALL_TERM_FAMILY_REGEX = (
     ("underscore", r"\bunderscor(?:e|es|ed|ing)\b"),
     ("delve", r"\bdelv(?:e|es|ed|ing)\b"),
