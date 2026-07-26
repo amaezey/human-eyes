@@ -213,11 +213,28 @@ Four things worth carrying forward.
 
 **Quote something, even for a document-level metric.** `test_phrase_capture_coverage.py` requires every flagged check to expose either quoted phrases or a metric string. The mean branch has no offending span, and the tempting fix was to allow-list #25, which would have exempted its quoting branches too. It quotes up to five sentences sitting within three words of the mean instead.
 
+DR-164 is queued: audit every check threshold against its observed distribution. It came out of the #52 find and it is Mae's own queue item, not a source decision. 11 checks now carry a calibration record; 43 do not. A first smoke pass found 18 checks that never flag a generated document and 19 that flag more human documents than generated ones, but **that pass is an inventory and not a finding**, because three different causes produce those symptoms and need opposite responses. Read DR-164's Change cell before acting on any of it.
+
 ## What is next
 
-The fixed order now resumes at DR-102, the last row the re-screen marked as able to add a programmatic check: deterministic wikitext markup faults, genre-bound to Wikipedia input. After that, DR-21's stiff-substitution word list is the remaining programmatic question, then the agent-judgement rows. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
+DR-102 is next in the fixed order: deterministic wikitext markup faults, genre-bound to Wikipedia input. It is one of only two rows left that the re-screen marked as able to add a programmatic check; the other is DR-21's stiff-substitution word list, which is only a question of which further words join #7's existing Latinate family. After those two, the programmatic tier is exhausted and the queue moves to the 15 agent-judgement rows.
 
 One thing raised and not yet ruled: #25 flags 58% of the human corpus after DR-79B, up from 53% before it. That rate predates this work and no register row questions it.
+
+## Position after the 2026-07-26 session, second half
+
+170 rows, 93 decided, 7 waiting on Mae's POS tagger, 70 pending. The pending rows break down as:
+
+| count | kind |
+|---|---|
+| 28 | nothing matchable in the source |
+| 16 | documentation, citation, and label fixes |
+| 15 | agent-judgement branches |
+| 8 | evaluation methodology and Mae's own queue items (DR-158, DR-164, DR-160 to DR-163, DR-84, DR-97) |
+| 2 | programmatic (DR-102, DR-21) |
+| 1 | blocked on ingesting two sources (DR-28) |
+
+Recount rather than quoting those figures; they move with every closure. `python3 dev/tools/reconcile_register.py` must exit 0, and the split comes from reading the Decision column.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Counts move with every closure, so recount rather than quoting a figure from this file: `python3 dev/tools/reconcile_register.py` must exit 0, and the decided/pending split comes from reading the Decision column. Three rows carry `pos-dependent-pattern` (POS-01, POS-02, DR-144) and wait on Mae's tagger.
 
