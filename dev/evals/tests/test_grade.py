@@ -4604,6 +4604,57 @@ if _patterns_data["no-mixed-script-words"]["severity"] != "hard_fail":
 else:
     print("  ok: DR-78 no-mixed-script-words is a hard fail")
 
+# DR-165: Yakura et al. GPT-preferred vocabulary. Twenty-six words added as #7
+# clustering candidates, so none fires alone. `swift` was excluded because
+# `_find_ai_words` lowercases before matching and cannot tell the adjective from
+# `Taylor Swift`, `Apple Swift`, or the SWIFT acronym.
+_dr165_added = [
+    "comprehend", "boasts", "inquiry", "pinpoint", "surpassed", "swiftly",
+    "lessen", "scrutinized", "discerning", "necessitated", "alongside",
+    "hinges", "groundwork", "escalating", "inaugural", "affirmed", "portrayed",
+    "catering", "reliant", "spotlight", "craft", "creation", "notice",
+    "impressive", "thorough", "akin",
+]
+_dr165_found = _grade._find_ai_words(" ".join(_dr165_added))
+_dr165_missing = [_w for _w in _dr165_added if _w not in _dr165_found]
+if _dr165_missing:
+    FAILURES += 1
+    print(f"FAIL: DR-165 not recognised as AI vocabulary candidates: {_dr165_missing}")
+else:
+    print(f"  ok: DR-165 all {len(_dr165_added)} Yakura candidates are recognised")
+
+if "swift" in _grade.AI_VOCABULARY:
+    FAILURES += 1
+    print("FAIL: DR-165 `swift` was excluded and must not be in AI_VOCABULARY")
+else:
+    print("  ok: DR-165 `swift` stays out of the vocabulary list")
+
+# Six of the twenty-six are substrings of ordinary words. `akin` alone appears
+# inside making, taking, speaking and breaking 164 times across the corpora, so
+# these must match on word boundaries and not as bare substrings.
+_dr165_hosts = (
+    "The aircraft crew showed craftsmanship. Recreational noticeably unimpressive "
+    "thoroughly making taking speaking breaking undertaking spacecraft."
+)
+_dr165_leaks = [w for w in _grade._find_ai_words(_dr165_hosts.lower())
+                if w in {"craft", "creation", "notice", "impressive", "thorough", "akin"}]
+if _dr165_leaks:
+    FAILURES += 1
+    print(f"FAIL: DR-165 boundary-sensitive candidates leaked into host words: {_dr165_leaks}")
+else:
+    print("  ok: DR-165 boundary-sensitive candidates do not match inside host words")
+
+_dr165_bounded = _grade._find_ai_words(
+    "a craft of creation, notice the impressive and thorough work, akin to it"
+)
+_dr165_unbounded = [_w for _w in ("craft", "creation", "notice", "impressive", "thorough", "akin")
+                    if _w not in _dr165_bounded]
+if _dr165_unbounded:
+    FAILURES += 1
+    print(f"FAIL: DR-165 should still match as whole words: {_dr165_unbounded}")
+else:
+    print("  ok: DR-165 boundary-sensitive candidates still match as whole words")
+
 # --- Summary ---
 
 print(f"\n{'='*40}")

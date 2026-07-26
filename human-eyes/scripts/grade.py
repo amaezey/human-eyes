@@ -61,6 +61,18 @@ AI_VOCABULARY = [
     # twelve interwar British detective novels and zero times in the source
     # passages.
     "exited",
+    # DR-165: Yakura et al. GPT-preferred vocabulary, measured on written human
+    # prose against its model-edited counterpart. Clustering candidates only, so
+    # none fires alone. `swift` is deliberately absent: _find_ai_words lowercases
+    # before matching and cannot tell the adjective from `Taylor Swift`, `Apple
+    # Swift`, or the SWIFT acronym. Six further entries (craft, creation, notice,
+    # impressive, thorough, akin) need word boundaries and live in
+    # AI_VOCABULARY_REGEX instead; `akin` alone appears inside making, taking and
+    # speaking 164 times across the project corpora.
+    "comprehend", "boasts", "inquiry", "pinpoint", "surpassed", "swiftly",
+    "lessen", "scrutinized", "discerning", "necessitated", "alongside",
+    "hinges", "groundwork", "escalating", "inaugural", "affirmed", "portrayed",
+    "catering", "reliant", "spotlight",
 ]
 
 # FROZEN PAYLOAD - DO NOT ADD PHRASES HERE.
@@ -256,6 +268,8 @@ AI_VOCABULARY_REGEX = [
         r"intentional design|defining feature|powerful tools|straightforward|"
         r"refine|differentiate|scalable solution)\b"
     ),
+    # DR-165: Yakura candidates that are substrings of ordinary words.
+    r"\b(?:craft|creation|notice|impressive|thorough|akin)\b",
     r"aligns? with\b",
     r"aligned with\b",
     r"aligning with\b",
