@@ -4660,6 +4660,90 @@ if _dr165_unbounded:
 else:
     print("  ok: DR-165 boundary-sensitive candidates still match as whole words")
 
+# DR-165A: DR-165 approved each word on a corpus count taken over its inflection
+# family, but added most of them as a single surface form. Substring entries
+# caught some inflections by accident and the word-bounded entries caught none,
+# so six families matched less than the measurement they were approved on. Every
+# family is now explicit and word-bounded.
+_dr165a_families = {
+    "comprehend": ["comprehend", "comprehends", "comprehended", "comprehending"],
+    "boast": ["boast", "boasts", "boasted", "boasting"],
+    "inquiry": ["inquiry", "inquiries"],
+    "pinpoint": ["pinpoint", "pinpoints", "pinpointed", "pinpointing"],
+    "surpass": ["surpass", "surpasses", "surpassed", "surpassing"],
+    "swiftly": ["swiftly"],
+    "lessen": ["lessen", "lessens", "lessened", "lessening"],
+    "scrutinize": ["scrutinize", "scrutinizes", "scrutinized", "scrutinizing"],
+    "discern": ["discern", "discerns", "discerned", "discerning"],
+    "necessitate": ["necessitate", "necessitates", "necessitated", "necessitating"],
+    "alongside": ["alongside"],
+    "hinge": ["hinge", "hinges", "hinged", "hinging"],
+    "groundwork": ["groundwork"],
+    "escalate": ["escalate", "escalates", "escalated", "escalating"],
+    "inaugural": ["inaugural"],
+    "affirm": ["affirm", "affirms", "affirmed", "affirming"],
+    "portray": ["portray", "portrays", "portrayed", "portraying"],
+    "cater": ["cater", "caters", "catered", "catering"],
+    "reliant": ["reliant"],
+    "spotlight": ["spotlight", "spotlights", "spotlighted", "spotlighting"],
+    "craft": ["craft", "crafts", "crafted", "crafting"],
+    "creation": ["creation", "creations"],
+    "notice": ["notice", "notices", "noticed", "noticing"],
+    "impressive": ["impressive"],
+    "thorough": ["thorough"],
+    "akin": ["akin"],
+    # Mae 2026-07-26: added on the project-corpus measurement, which runs
+    # `clarity` 3.7x and `polish` 3.6x more often in generated prose than human.
+    # `readable` runs 3.0x on one occurrence each way.
+    "clarity": ["clarity"],
+    "polish": ["polish", "polishes", "polished", "polishing"],
+    "readable": ["readable"],
+}
+_dr165a_unmatched = []
+for _stem, _forms in _dr165a_families.items():
+    for _form in _forms:
+        if not _grade._find_ai_words(_form):
+            _dr165a_unmatched.append(_form)
+if _dr165a_unmatched:
+    FAILURES += 1
+    print(f"FAIL: DR-165A inflected forms not recognised: {_dr165a_unmatched}")
+else:
+    print(
+        f"  ok: DR-165A all {sum(len(v) for v in _dr165a_families.values())} inflected "
+        f"forms across {len(_dr165a_families)} families are recognised"
+    )
+
+# Widening to families must not widen into host words. Each of these contains a
+# family member as a substring and must stay clear.
+_dr165a_hosts = (
+    "The aircraft crew showed craftsmanship at the spacecraft handicraft fair. "
+    "Recreational procreation noticeably unimpressive thoroughly unreadable. "
+    "Making taking speaking breaking undertaking. Caterpillar cathedral. "
+    "Comprehension discernible affirmation portrayal escalation lessons "
+    "hinged? No: unhinged. Inquiryless spotlighting is fine but polishable "
+    "and clarification are not entries."
+)
+_dr165a_expected_clear = {
+    "craft", "crafts", "creation", "notice", "impressive", "thorough", "akin",
+    "cater", "caters", "comprehend", "discern", "affirm", "portray", "escalate",
+    "lessen", "inquiry", "readable", "polish", "clarity",
+}
+_dr165a_leaks = sorted(
+    set(_grade._find_ai_words(_dr165a_hosts.lower())) & _dr165a_expected_clear
+)
+if _dr165a_leaks:
+    FAILURES += 1
+    print(f"FAIL: DR-165A families leaked into host words: {_dr165a_leaks}")
+else:
+    print("  ok: DR-165A families do not match inside host words")
+
+# `swift` stays excluded, and widening `swiftly` must not reintroduce it.
+if _grade._find_ai_words("taylor swift wrote about the swift banking network"):
+    FAILURES += 1
+    print("FAIL: DR-165A `swift` must stay unmatched; the matcher lowercases first")
+else:
+    print("  ok: DR-165A `swift` stays unmatched in brand and acronym contexts")
+
 # DR-84: concreteness rate, pattern 73. Mean concreteness of a draft's words on
 # Brysbaert's 1-to-5 scale, where 1 is fully abstract and 5 fully concrete.
 # Fails at 2.458 or below in prose of 100 words or more. Draft-wide metric, so it

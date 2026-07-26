@@ -61,18 +61,9 @@ AI_VOCABULARY = [
     # twelve interwar British detective novels and zero times in the source
     # passages.
     "exited",
-    # DR-165: Yakura et al. GPT-preferred vocabulary, measured on written human
-    # prose against its model-edited counterpart. Clustering candidates only, so
-    # none fires alone. `swift` is deliberately absent: _find_ai_words lowercases
-    # before matching and cannot tell the adjective from `Taylor Swift`, `Apple
-    # Swift`, or the SWIFT acronym. Six further entries (craft, creation, notice,
-    # impressive, thorough, akin) need word boundaries and live in
-    # AI_VOCABULARY_REGEX instead; `akin` alone appears inside making, taking and
-    # speaking 164 times across the project corpora.
-    "comprehend", "boasts", "inquiry", "pinpoint", "surpassed", "swiftly",
-    "lessen", "scrutinized", "discerning", "necessitated", "alongside",
-    "hinges", "groundwork", "escalating", "inaugural", "affirmed", "portrayed",
-    "catering", "reliant", "spotlight",
+    # DR-165: Yakura et al. GPT-preferred vocabulary lives in
+    # AI_VOCABULARY_REGEX as one word-bounded inflection family per word. See
+    # DR-165A there for why none of it belongs in this substring-matched list.
 ]
 
 # FROZEN PAYLOAD - DO NOT ADD PHRASES HERE.
@@ -308,8 +299,40 @@ AI_VOCABULARY_REGEX = [
         r"intentional design|defining feature|powerful tools|straightforward|"
         r"refine|differentiate|scalable solution)\b"
     ),
-    # DR-165: Yakura candidates that are substrings of ordinary words.
-    r"\b(?:craft|creation|notice|impressive|thorough|akin)\b",
+    # DR-165: Yakura et al. GPT-preferred vocabulary, measured on written human
+    # prose against its model-edited counterpart. Clustering candidates only, so
+    # none fires alone.
+    #
+    # DR-165A: every word is approved on a corpus count taken over its
+    # inflection family, so every word matches its family here. The first pass
+    # put most of these in the substring-matched AI_VOCABULARY, which caught
+    # some inflections by accident and none of the rest, and matched inside
+    # host words such as `Inquiryless`. Word boundaries are load-bearing:
+    # `akin` alone sits inside making, taking and speaking 164 times across the
+    # project corpora. Families are inflection-only, never derivational, so
+    # `craftsmanship`, `comprehension`, `discernible`, `escalation` and
+    # `unreadable` stay clear.
+    #
+    # `swift` is deliberately absent. `_find_ai_words` lowercases before
+    # matching, so no pattern here can tell the adjective from `Taylor Swift`,
+    # `Apple Swift`, or the SWIFT banking acronym. `polish` carries the same
+    # collision with the nationality and was added anyway on Mae's ruling; the
+    # project corpora contain no nationality use.
+    (
+        r"\b(?:comprehend(?:s|ed|ing)?|boast(?:s|ed|ing)?|inquir(?:y|ies)|"
+        r"pinpoint(?:s|ed|ing)?|surpass(?:es|ed|ing)?|swiftly|"
+        r"lessen(?:s|ed|ing)?|scrutiniz(?:e|es|ed|ing)|discern(?:s|ed|ing)?|"
+        r"necessitat(?:e|es|ed|ing)|alongside|hing(?:e|es|ed|ing)|groundwork|"
+        r"escalat(?:e|es|ed|ing)|inaugural|affirm(?:s|ed|ing)?|"
+        r"portray(?:s|ed|ing)?|cater(?:s|ed|ing)?|reliant|"
+        r"spotlight(?:s|ed|ing)?|craft(?:s|ed|ing)?|creations?|"
+        r"notic(?:e|es|ed|ing)|impressive|thorough|akin|"
+        # Mae 2026-07-26: added on the project-corpus measurement, which runs
+        # `clarity` 3.7x and `polish` 3.6x more often per 1000 words in
+        # generated prose than human. `readable` runs 3.0x on one occurrence
+        # each way.
+        r"clarity|polish(?:es|ed|ing)?|readable)\b"
+    ),
     r"aligns? with\b",
     r"aligned with\b",
     r"aligning with\b",
