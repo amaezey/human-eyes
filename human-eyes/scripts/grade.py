@@ -3213,7 +3213,7 @@ def check_paragraph_uniformity(text):
     cv = stdev(lengths) / avg if avg else 0
     flagged = cv < 0.18
     metric = (
-        f"paragraph length variation {cv:.2f} across {len(lengths)} paragraphs (target above 0.18)"
+        f"paragraph length variation {cv:.2f} across {len(lengths)} paragraphs (target: >=0.18)"
         if flagged else None
     )
     return {
