@@ -89,6 +89,8 @@ EXPECTED_IDS = [
     "unprompted_caveats",
     # DR-121, approved 2026-07-18
     "change_narration",
+    # DR-76, approved 2026-07-26
+    "internal_consistency",
 ]
 actual_ids = [r.get("id") for r in records]
 if actual_ids != EXPECTED_IDS:
@@ -139,6 +141,7 @@ EXPECTED_PATTERN_REFS = {
     "genre_specific": 41,
     "unprompted_caveats": None,
     "change_narration": None,
+    "internal_consistency": None,
 }
 for record in records:
     rid = record.get("id")

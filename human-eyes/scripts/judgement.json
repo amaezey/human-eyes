@@ -391,6 +391,20 @@
         ]
       },
       "flagged_when": "non_empty"
+    },
+    {
+      "id": "internal_consistency",
+      "pattern_ref": null,
+      "severity": "strong_warning",
+      "prompt": "List places where the text contradicts itself or its own evidence. Cover four kinds: two statements that cannot both be true; a precise figure or statistic that the surrounding text does not support or that conflicts with other figures given; a quotation glossed as meaning something it does not say; and arithmetic that does not add up, including percentages that exceed their whole. Quote both halves of each contradiction. Judge only what the text itself establishes. Do not report a claim as false because you cannot verify it against the outside world, and do not check whether a cited statute, standard, API, or publication exists; a cited authority belongs here only when the text's own description of it contradicts the conclusion drawn from it. Hedged, attributed, or explicitly uncertain statements are not contradictions.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "contradiction",
+          "both_halves_quoted"
+        ]
+      },
+      "flagged_when": "non_empty"
     }
   ]
 }
