@@ -195,9 +195,15 @@ Two things worth carrying from it.
 
 **A relaxed regex needs its own control sweep, not just its target case.** Each of the three #9 relaxations was verified against paired minimal cases, and the corpora still turned up two over-matches the pairs could not have shown: an adverbial bridge spanning a rhetorical question across a paragraph break, and a subordinated negative clause swallowing a comma-joined main clause so an unrelated later pronoun read as the turn. The bridge is now restricted to a declarative break on the same line, and the subordinator path takes a comma-free predicate. Diff the match lists before and after, and read the additions.
 
+DR-153 is rejected. Shankar prescribes the Somebody-Wanted-But-So-Then frame as good craft and hands it to a model as a rewrite instruction; he reports no unprompted machine production of it and gives no frequency claim. A matcher verified against his own example returns zero hits in the generated corpus and one in the human corpus, and that one is a writing-advice article recommending the technique. His example passes every check in the live registry. Nothing was built and `formulaic_parallelism` was not extended.
+
+The reusable point: a source recommending a construction is not the same as a source reporting one. Rule 1 makes a practitioner phrase list sufficient evidence for a watch-list addition, and that still holds, but it assumes the practitioner is naming a habit rather than teaching a technique. Read which one the source is doing before treating its list as a candidate list.
+
+Note also that the corpora hold no technical decision narrative, engineering writeup, or design doc. Any future row whose claim is bound to that register cannot be settled by a corpus measurement until such a corpus exists, and a zero from the current sample must be reported as silent rather than null.
+
 ## What is next
 
-The fixed order now resumes at DR-153. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
+The fixed order now resumes at DR-79 and DR-102, the last two rows the re-screen marked as able to add a programmatic check. DR-79 is parser-dependent; DR-102 is deterministic wikitext markup faults, genre-bound to Wikipedia input. After those, DR-21's stiff-substitution word list is the remaining programmatic question, then the agent-judgement rows. DR-158, Mae's pattern-numbering rebuild, is queued and unstarted.
 
 The register was normalised 2026-07-18 (commit 8e99aab): one seven-column layout, statuses clean, link-closures visible, truncations repaired, "How to read this file" header canonical. Counts move with every closure, so recount rather than quoting a figure from this file: `python3 dev/tools/reconcile_register.py` must exit 0, and the decided/pending split comes from reading the Decision column. Three rows carry `pos-dependent-pattern` (POS-01, POS-02, DR-144) and wait on Mae's tagger.
 
