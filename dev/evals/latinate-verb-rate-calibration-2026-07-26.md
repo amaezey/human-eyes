@@ -22,7 +22,15 @@ Forty-four verbs, grouped in `grade.py` by inflection so the pattern matches ver
 
 Nouns and adjectives built on the same stems are not matched: `information`, `assistant`, `department`, `residents`, `alternative`, `requirement`, `construction`, `executive`, `transmission`. A unit test pins this.
 
-Words dropped during construction because they are ordinary nouns as often as verbs, and the counter cannot tell which it is reading: `aid`, `request`, `permit`, `increase`, `decrease`, `conduct`, `produce`, `author`, `consider`, `dwell`, `attempt`.
+Eleven further candidates are excluded: `aid`, `request`, `permit`, `increase`, `decrease`, `conduct`, `produce`, `author`, `consider`, `dwell`, `attempt`. They were first set aside on the judgement that each is an ordinary noun as often as a verb, which is not a reason on its own. Measured afterwards:
+
+| list | human median | generated median | ratio | best separation |
+|---|---|---|---|---|
+| the 44 that shipped | 1.07 | 2.51 | 2.35x | 38 points at 2.0 or 2.5 |
+| the 11 alone | 0.78 | 0.75 | 0.96x | 12 points |
+| all 55 together | 2.07 | 4.26 | 2.06x | 38 points at 4.0 |
+
+The eleven run marginally more often in human prose than generated, and adding them buys no separation, only a higher threshold and more matches to read. The exclusion holds on the measurement rather than on the judgement that prompted it.
 
 ## Corpus
 
