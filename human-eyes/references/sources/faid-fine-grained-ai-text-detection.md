@@ -91,6 +91,7 @@ Not applicable: initial ingestion.
 
 ## Decision history
 
+- DR-70, DR-72, DR-73 rejected 2026-07-26: detector accuracy under human editing, not a writing pattern; detector accuracy before and after test-time adaptation, not a writing pattern; attributing text to a model family is authorship, which the product refuses. No checker, registry, or test change was made.
 - C08 approved 2026-07-25 via DR-71. The Figure 5 academic Gemini trigrams are now programmatic, split by shape: four novelty and impact openers added to #1 `no-significance-inflation`, and three phrases that could stand alone in honest academic prose added as #7 clustering candidates so they never fire alone. Mae was told the paper supplies no matched human frequency and that its prompts requested novelty and significance; neither changed the ruling, and rule 1 does not require a matched control for a watch-list addition. No severity or threshold changed. All other rows remain pending.
 
 ## Project coverage

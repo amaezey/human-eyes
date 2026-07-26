@@ -84,6 +84,7 @@ The pre-contract snapshot had no digest recorded in its card or manifest. Its ex
 
 ## Decision history
 
+- C03, C32, C38 rejected 2026-07-26 via DR-51: model-personality impressions with no versions or samples. No checker, registry, or test change was made.
 - The prior card contained no user-decision or implementation-status table, so there are no approved or rejected decisions to carry forward.
 - The previous #39 placeholder-residue mapping is retired: the source names prompts left in text and apology or guardrail macros, not unfilled template placeholders.
 - The previous #34 mapping is narrowed: `Ultimately` plus prompt restatement is not the same claim as repeated tidy paragraph endings, although the live tidy-ending check can catch some paragraph-final `Ultimately` candidates.
@@ -122,7 +123,7 @@ The result reported `coverage_mode: surface_only`, `audit_status: incomplete`, a
 |---|---|---|---|---|---|---|
 | C01: Individual phrases are not hard-and-fast rules; sentence or paragraph position, abundance, clusters, and context matter. | Direct practitioner guidance with explicit human-look-alike caution; no measured threshold or comparison sample. | `overall-signal-stacking`, #7 density, #10 density, H3, H9, H12, and the product boundary are partly covered. | Several live checks still fail on any match and the source cannot establish the right thresholds. | Record as calibration and report-language evidence; require stronger matched controls before changing thresholds. | pending | not started |
 | C02: Prompting changes style, different LLMs have different defaults, and a model may fall back to or mix its preferred style with an emulated one. | Direct author interpretation from experience; no prompts, versions, outputs, dates, or measurements. | H24, H25, source metadata conventions, and `dev/TESTING.md` provenance requirements fully cover the research need. | No source-specific version data exists. | Record only as a reason to version evidence; do not create a generic check. | pending | not started |
-| C03: ChatGPT is casual, friendly, and sycophantic, while Claude has more sincerity. | Unmeasured model-family impression; model versions and comparison criteria are absent. | Folded #21 covers sycophantic residue generically; H25 tracks model-family separation. | The Claude comparison and cross-model attribution are unsupported, stale-prone, and outside the live checks. | Do not promote the model comparison; retain it as source-scoped anecdote pending direct versioned evidence. | pending | not started |
+| C03: ChatGPT is casual, friendly, and sycophantic, while Claude has more sincerity. | Unmeasured model-family impression; model versions and comparison criteria are absent. | Folded #21 covers sycophantic residue generically; H25 tracks model-family separation. | The Claude comparison and cross-model attribution are unsupported, stale-prone, and outside the live checks. | Do not promote the model comparison; retain it as source-scoped anecdote pending direct versioned evidence. | rejected | not applicable |
 | C04: Universal openers such as "In today's fast-paced world" and "In an ever-evolving landscape" are frequent ChatGPT defaults that avoid specifics. | Direct practitioner examples; frequency is asserted without data and humans can use them. | `no-filler-phrases`, `no-formulaic-openers`, #7 vocabulary, and #1 cover the exact examples. | `In an ever-evolving landscape` routes through the existing significance/vocabulary checks rather than a duplicate opener pattern. | Retain both exact variants through their existing programmatic routes. | approved | implemented |
 | C05: "It is important to note" is low-information filler; the article also says multiple detection services rank it highly. | Mixed directness: the phrase and filler diagnosis are direct practitioner evidence; the ranking assertion is inherited indirect evidence with no named service, result, method, or link, so it remains unresolved. | `no-filler-phrases` fully covers the exact phrase in code and focused execution. | The direct editorial example supports only the mapping; the indirect ranking claim cannot support prevalence, threshold, or severity without upstream review. | Take no product action; retain the direct filler mapping and keep the multiple-service ranking indirect and unresolved until its upstream evidence is identified. | pending | not started |
 | C06: "At its core" and "At the heart of the matter" are filler used to shift from definition to explanation. | Direct practitioner examples; no measured comparison. | A focused probe shows `no-formulaic-openers` catches paragraph-initial "At its core"; `no-ai-vocabulary-clustering` (#7) and `no-filler-phrases` (#22) do not. | "At the heart of the matter" is absent, and the catalogue's #7 placement of "At its core" overstates executable #7 coverage. | Evaluate the missing variant against legitimate uses and reconcile the documented #7/#50 mapping before any phrase expansion. | approved | implemented |
@@ -151,19 +152,19 @@ The result reported `coverage_mode: surface_only`, `audit_status: incomplete`, a
 | C29: Whether AI assistance matters depends on audience, genre, goals, and stakes; intimate forms may carry different expectations from SEO copy. | Direct author opinion with explicit counterexamples and personal values, not empirical evidence. | Product boundary, #41, H8, H12, and process preservation partly cover genre and user intent. | The project does not currently ask a dedicated stakes or disclosure question and should not impose the author's moral preference. | Record as user-intent and genre guidance; do not encode a morality or disclosure rule from this source. | pending | not started |
 | C30: Public model tells age quickly and newer models may reduce yesterday's quirks. | Direct practitioner caution; no longitudinal data. | H24, H25, source metadata conventions, and `dev/TESTING.md` provenance requirements fully cover evidence drift. | The source supplies no dates or versioned examples beyond publication. | Take no product action; use it to justify dated, versioned source mappings. | pending | not started |
 | C31: Humans can sound robotic, and some boilerplate contexts such as resumes may make AI and human output similarly generic. | Direct practitioner caution and opinion; no comparison sample. | H3, H9, H12, the cluster stance, and product boundary fully cover look-alikes and non-authorship framing. | The resume-specific equivalence claim is unmeasured. | Retain the caution but do not claim equivalence or detector performance. | pending | not started |
-| C32: Authenticity can improve through concrete anecdotes, sensory detail, opinionated statements, and deeper prompting. | Direct writing advice; no evaluation and a serious fabrication risk if details are not supplied. | `faux_specificity`, H8, and process voice guidance partly support concrete detail, but the closed-source rules prohibit adding unsupported facts, experience, emotion, or opinion. | The source's advice challenges current behaviour if read as permission to invent authenticity. | Keep the project's stricter rule: use writer-supplied detail or ask for it; never fabricate it to evade detection. | pending | not started |
+| C32: Authenticity can improve through concrete anecdotes, sensory detail, opinionated statements, and deeper prompting. | Direct writing advice; no evaluation and a serious fabrication risk if details are not supplied. | `faux_specificity`, H8, and process voice guidance partly support concrete detail, but the closed-source rules prohibit adding unsupported facts, experience, emotion, or opinion. | The source's advice challenges current behaviour if read as permission to invent authenticity. | Keep the project's stricter rule: use writer-supplied detail or ask for it; never fabricate it to evade detection. | rejected | not applicable |
 | C33: Sycophantic or overly agreeable output should be removed when it does not fit. | Direct practitioner advice and model-specific impression; no measured rate. | Folded #21 in `no-collaborative-artifacts`, `neutrality_collapse`, and OpenAI-backed project evidence fully cover headline fake agreement. | Broader agreeable tone remains semantic rather than regex-complete. | Take no product action; retain as practitioner support subordinate to stronger direct evidence. | pending | not started |
 | C34: Writers should give models the writing context and audience and consider that audience before using an LLM. | Direct rhetoric and prompting advice; no evaluation. | H8 and `human-eyes/references/process.md` partly cover audience, genre, brief fidelity, and intent. | The process guide does not currently state this source's pre-use audience question explicitly. | Consider adding non-product editorial guidance after independent review, with the closed-brief boundary intact. | pending | not started |
 | C35: Reading generated text aloud can reveal whether it sounds like the writer, means what they intend, and flows naturally. | Direct practitioner and general editing advice; no study or outcome measure. | Process validation and preservation compare meaning and findings, but read-aloud review is not named. | A useful low-risk editorial step is absent; accessibility and non-audio alternatives should remain possible. | Consider optional read-aloud or text-to-speech review guidance; no deterministic check is warranted. | rejected | not applicable |
 | C36: Humans used em dashes first and deliberate em-dash use should not be avoided merely to look human. | Direct practitioner counterexample and author practice; no corpus measurement. | #49 acknowledges legitimate use and root documentation names this source as caution, but live `no-em-dashes` still flags any U+2014 as a strong warning and All requires removal. | This challenges current behaviour: the caveat and implementation are not fully aligned, and the source cannot settle the policy alone. | Preserve as explicit counterevidence and run matched, genre-aware punctuation evaluation before retaining or revising fail-on-any behaviour. | rejected | not applicable |
 | C37: The useful question is often whether assistance matters in context, not whether a text can be attributed to AI; using an LLM is not inherently immoral. | Direct author position, not empirical evidence. | Product boundary, H3, #41, and process guidance fully cover non-authorship framing and user context. | The project should not turn the author's moral view into a rule. | Take no product action; retain as source-scoped framing support. | pending | not started |
-| C38: The article says most cues appear consistently in empirical studies or practitioner and vendor cheat sheets. | Indirect, unattributed evidence claim; no studies, vendors, links, methods, or results are supplied. | Other directly reviewed source cards may support individual cues, but this article itself supplies no traceable upstream evidence. | The claim cannot back thresholds, severity, or promotion until each upstream source is identified and reviewed. | Mark indirect and unresolved; identify and ingest upstream sources separately before using this assertion. | pending | not started |
+| C38: The article says most cues appear consistently in empirical studies or practitioner and vendor cheat sheets. | Indirect, unattributed evidence claim; no studies, vendors, links, methods, or results are supplied. | Other directly reviewed source cards may support individual cues, but this article itself supplies no traceable upstream evidence. | The claim cannot back thresholds, severity, or promotion until each upstream source is identified and reviewed. | Mark indirect and unresolved; identify and ingest upstream sources separately before using this assertion. | rejected | not applicable |
 
 ## Recommendations
 
 - C01: Record as calibration evidence and require stronger matched controls before changing thresholds.
 - C02: Record only as a reason to version evidence; do not create a generic check.
-- C03: Do not promote the ChatGPT-versus-Claude comparison without direct versioned evidence.
+- C03: Rejected 2026-07-26 via DR-51; model-personality impressions with no versions or samples.
 - C04: Retain both exact opener variants through their existing programmatic routes.
 - C05: Take no product action; retain the exact direct filler mapping while keeping the multiple-service ranking indirect and unresolved.
 - C06: Evaluate "At the heart of the matter" against legitimate uses and reconcile the documented #7/#50 mapping before expansion.
@@ -192,19 +193,19 @@ The result reported `coverage_mode: surface_only`, `audit_status: incomplete`, a
 - C29: Record audience, stakes, and intent without encoding a morality or disclosure rule.
 - C30: Take no product action; use the claim to justify dated, versioned mappings.
 - C31: Retain the human-look-alike caution without claiming resume equivalence.
-- C32: Keep the project's closed-source rule and never invent authenticity cues.
+- C32: Rejected 2026-07-26 via DR-51; model-personality impressions with no versions or samples.
 - C33: Take no product action; retain subordinate practitioner support for sycophancy review.
 - C34: Consider explicit audience guidance only with the closed-brief boundary intact.
 - C35: Consider optional read-aloud or text-to-speech review guidance.
 - C36: Preserve as counterevidence and run matched genre-aware punctuation evaluation before changing #49.
 - C37: Take no product action; retain context-first, non-authorship framing.
-- C38: Identify and ingest upstream sources separately before relying on the article's evidence assertion.
+- C38: Rejected 2026-07-26 via DR-51; model-personality impressions with no versions or samples.
 
 ## Evaluation of approved changes
 
 - C01: not applicable - pending recommendation; no product change implemented.
 - C02: not applicable - pending recommendation; no product change implemented.
-- C03: not applicable - pending recommendation; no product change implemented.
+- C03: not applicable - rejected 2026-07-26 via DR-51; no product change implemented.
 - C04: passed - DR-16 confirms `In an ever-evolving landscape` already fails #1 and retains the existing coverage without a duplicate rule.
 - C05: not applicable - pending recommendation; no product change implemented.
 - C06: passed - commit 9c7f3b8 added "At its core" and "At the heart of the matter" to #22; direct invocation of `check_filler_phrases` flagged both on 2026-07-17.
@@ -233,13 +234,13 @@ The result reported `coverage_mode: surface_only`, `audit_status: incomplete`, a
 - C29: not applicable - pending recommendation; no product change implemented.
 - C30: not applicable - pending recommendation; no product change implemented.
 - C31: not applicable - pending recommendation; no product change implemented.
-- C32: not applicable - pending recommendation; no product change implemented.
+- C32: not applicable - rejected 2026-07-26 via DR-51; no product change implemented.
 - C33: not applicable - pending recommendation; no product change implemented.
 - C34: not applicable - pending recommendation; no product change implemented.
 - C35: not applicable - rejected 2026-07-18 via DR-121, closing DR-49; read-aloud review is a writer-process instruction and no detector change was made.
 - C36: not applicable - rejected 2026-07-17; #49 remains fail-on-any as a deliberate stance and no product change was made.
 - C37: not applicable - pending recommendation; no product change implemented.
-- C38: not applicable - pending recommendation; no product change implemented.
+- C38: not applicable - rejected 2026-07-26 via DR-51; no product change implemented.
 
 ## Document review
 

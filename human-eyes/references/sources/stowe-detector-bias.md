@@ -92,6 +92,7 @@ Not applicable: initial ingestion.
 
 ## Decision history
 
+- DR-60, DR-61 rejected 2026-07-26: detector fairness evaluation, not a writing pattern; the paper reports detector harm to particular groups and supplies no demographic writing-tell list. No checker, registry, or test change was made.
 - None: initial review.
 
 ## Project coverage

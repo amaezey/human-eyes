@@ -86,6 +86,7 @@ Not applicable: initial ingestion.
 
 ## Decision history
 
+- DR-83 rejected 2026-07-26: feature ablation inside a detector robustness lane. No checker, registry, or test change was made.
 - DR-82 closed 2026-07-26: #53 now measures mean type-token ratio over sliding 150-word windows and flags unusually high values, so the direction this claim challenges was already reversed by DR-06. Verified against the live checker; no check changed.
 
 - 2026-07-17: Mae approved and implemented the #53 direction flip: windowed 150-word lexical diversity flagging high values, two-tier (0.71 flag, 0.74 above-observed-human-range note), commit b199a6d.

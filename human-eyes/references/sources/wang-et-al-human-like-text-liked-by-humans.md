@@ -90,6 +90,7 @@ This ACL 2026 long paper tests an upper bound on human recognition of machine-ge
 
 ## Decision history
 
+- DR-62, DR-63, DR-64, DR-68 rejected 2026-07-26: detector calibration across languages and domains, and no comparison corpus exists; an adversarial prompting protocol for testing a detector, not a check; a distinction between resembling human writing and being preferred by readers, with no form to match; a detector robustness matrix, not a writing pattern. No checker, registry, or test change was made.
 - None: initial review.
 
 ## Project coverage

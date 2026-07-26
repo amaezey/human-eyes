@@ -85,6 +85,7 @@ Not applicable: initial ingestion.
 
 ## Decision history
 
+- DR-80, DR-81 rejected 2026-07-26: needs a second model to rewrite the text and compare, and is framed as attribution; a detector robustness matrix, not a writing pattern. No checker, registry, or test change was made.
 - 2026-07-26: C02 approved and C03 rejected via DR-79. The paper names six static features and supplies a direction for none of them, so every direction was measured on the project corpora. Type-token ratio was already #53. Sentence-length spread exposed a dead check: #52's inherited standard-deviation threshold of 4 sat below the entire observed range, the flattest document in either corpus reaching 4.4, so it had never fired on any of the 108 documents, while the measure separates them at a median 12.3 human against 7.6 generated. Mae approved retuning it to 9.0, which flags 72% of generated documents and 11% of human ones. She also approved folding mean sentence length into #25 at 15.0 words in prose of 300 words or more, generated prose averaging 13.9 words per sentence against 17.7 human. Noun ratio, verb ratio, average dependency depth, and average dependency distance were re-queued as POS-03 to POS-06 against her tagger; the dependency pair needs a parser rather than a tagger alone, and none of the four has a defensible surface proxy. The 128 syntax-semantic n-gram features are learned model inputs and cannot be enumerated from the publication. The rewrite-rigidity vector was rejected as not a text pattern.
 
 None: initial review.

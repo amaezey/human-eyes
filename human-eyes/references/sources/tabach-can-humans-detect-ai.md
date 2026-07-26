@@ -83,6 +83,7 @@ Not applicable: initial ingestion.
 
 ## Decision history
 
+- DR-86 rejected 2026-07-26: the result concerns what judges believed after being warned, not the text; the surface measures returned nulls. No checker, registry, or test change was made.
 - None: initial review.
 
 ## Project coverage

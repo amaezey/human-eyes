@@ -122,6 +122,7 @@ This is the authoritative review table. Every recommendation remains pending and
 
 ## Recommendations
 
+- DR-74, DR-75, DR-77 rejected 2026-07-26: how to evaluate a detector's explanation, not a check on the text; how a report influences the reader who acts on it, and the paper tests no fix; a gate on the project's own report wording, not on the text under audit. No checker, registry, or test change was made.
 - C01: Record TELL as architecture and report-design support for evidence-first, user-decided review. Do not add classification.
 - C02: Keep benchmark metrics as versioned detector background. Do not import scores or thresholds.
 - C03: Consider a separate report-quality evaluation using concreteness, falsifiability, coherence, plausibility, grounding, factual correctness, concise sufficiency, judge disagreement, and human review.

@@ -111,6 +111,7 @@ This is the authoritative review table. Every recommendation remains pending, an
 
 ## Recommendations
 
+- DR-67, DR-68 rejected 2026-07-26: hidden model states, visible only by running two models over the text; a detector robustness matrix, not a writing pattern. No checker, registry, or test change was made.
 - C01: Record the architecture only. Do not add hidden-state or probability-based product logic without a separate product-boundary decision and replication.
 - C02: Preserve the latent-feature versus visible-pattern distinction. Do not treat catalogue candidates as proxies for exonic tokens.
 - C03: Keep reported detector metrics as background. Directly review and reproduce the code artefact before any adoption decision.

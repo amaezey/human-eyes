@@ -92,6 +92,7 @@ StoryScope is a large parallel-corpus study of whether long-form human and model
 
 ## Decision history
 
+- DR-90, DR-91 rejected 2026-07-26: extraction-pipeline sensitivity behind the StoryScope features; it constrains fiction work rather than adding a check; length and topic robustness behind the StoryScope features. No checker, registry, or test change was made.
 - The reviewed source revision remains arXiv v4. The 2026-07-17 refresh adds a version-pinned authoritative PDF attachment, explicit DOI and alternate-route provenance, archive-before-replace history, and rendered beginning/middle/end verification. The full substantive text and C01-C12 evidence meanings are unchanged, so their existing user decisions and implementation statuses are retained. C13-C15 are new claims for assistance provenance, pipeline ablations, and length/topic confound checks; each starts `pending` / `not started`.
 - No claim was removed or superseded in this update.
 

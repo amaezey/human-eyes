@@ -84,6 +84,7 @@ Not applicable: initial ingestion.
 
 ## Decision history
 
+- DR-65, DR-68, DR-72, DR-81, DR-83 rejected 2026-07-26: a detector robustness matrix, not a writing pattern; a detector robustness matrix, not a writing pattern; detector accuracy before and after test-time adaptation, not a writing pattern; a detector robustness matrix, not a writing pattern; feature ablation inside a detector robustness lane. No checker, registry, or test change was made.
 - 2026-07-26 (DR-66): all four named linguistic features were measured on the project corpora, because the paper reports correlations between detector accuracy and feature-gap shifts rather than any human-versus-AI direction. Passive voice became programmatic #68, the `it` pronoun programmatic #69, and the short-sentence rate a new branch of #25. Past tense got no check. C04, C09, and C11 are ruled.
 - 2026-07-26 (DR-66 orphan sweep): C05, C06, C08, and C10 carried no register row and were queued as DR-160, DR-161, DR-162, and DR-163. C01, C02, and C03 sit under pending DR-65 and DR-83. C07 and C12 are record-only limitations with nothing to rule.
 
