@@ -35,7 +35,7 @@ But if your message doesn’t fit in a 280-character tweet, it can be smarter to
 
 But how?
 
-Let me show you the 3-pronged writing strategy of a A1 New York Times bestseller, so you can apply the same strategy to get people to listen to you.
+Let me show you the 3-pronged writing strategy of a #1 New York Times bestseller, so you can apply the same strategy to get people to listen to you.
 
 In his book How to Be an Antiracist , Ibram X. Kendi engages readers with personal stories. This is from his first chapter:
 

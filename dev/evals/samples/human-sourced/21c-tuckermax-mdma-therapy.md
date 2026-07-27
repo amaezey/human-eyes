@@ -801,6 +801,6 @@ Therapy
 
 ·[545 following](/@tuckermax/following?source=post_page---post_author_info--41ffe5f15971---------------------------------------)
 
-Co-founder of Scribe ([www.scribewriting.com](http://www.scribewriting.com)), Author of four NY Times A1 best sellers \[contact: [tucker@scribemedia.com](mailto:tucker@scribemedia.com)\]
+Co-founder of Scribe ([www.scribewriting.com](http://www.scribewriting.com)), Author of four NY Times #1 best sellers \[contact: [tucker@scribemedia.com](mailto:tucker@scribemedia.com)\]
 
 ## Responses (83)[

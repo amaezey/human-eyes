@@ -265,6 +265,27 @@ not to a renumbering.
 
 Landed. 80 entries, 5,453 references rewritten across 131 tracked files, full test loop green, `render_patterns_md.py --check` clean, `reconcile_register.py` at 0, every source card still passing `validate_source.py` apart from the four non-cards and two documented exceptions that already failed.
 
+### Sweep false positives, found in review
+
+Three classes of `#N` are not pattern references, and the deny-list missed two of
+them. Anyone repeating a sweep needs all three:
+
+- **`#N` meaning "number one".** `NY Times #1 best sellers` became `NY Times A1
+  best sellers` in the human corpus. The guard tested for `ranked #` and correctly
+  found none, because the phrasing here is `Times #1`. Testing for the wrong
+  phrasing and reading the zero as safety is the failure, not the missing word.
+- **Markdown anchor links.** `[Introduction](#1)` became `[Introduction](A1)`,
+  breaking five links in one corpus sample.
+- **`PR #N`, `Finding #N`, `survivor #N`.** These the deny-list did catch.
+
+**Corpus samples, preserved agent audits and comparison artifacts are measurement
+data, not documentation, and must never be swept.** `dev/evals/samples/`,
+`dev/evals/preserved-agent-audits-*` and `dev/evals/three-version-*.json` were
+reverted for that reason, the same reason `dev/skill-workspace/skill-snapshot/`
+was excluded. Editing them changes the baseline every calibration is measured
+against. The DR-168 measurement was re-run on the restored files and returned
+identical figures, so nothing recorded there depended on the corruption.
+
 Left as old labels on purpose: retired 6, 11 and 10a, which have no new id; `PR #N`, `Finding #N` and `survivor #N`, which are not pattern references; `#3382`, a GitHub issue; and a hex colour in `render_audit_html.py`. `docs/` is gitignored and untracked, so its `PR #5` and `survivor #2` references were never in scope.
 
 Six defects surfaced and were queued rather than fixed: DR-167 (`performed_candour` points at the wrong entry; six refs inert), DR-168 (H18's SAGE citation unsupported; H18 since retired after measurement), DR-169 (`audience_knowledge_mismatch` shipped with no row, against a claim that runs the opposite way), DR-170 (`paragraph-length-uniformity` declares thresholds it never reads, and has no calibration record), DR-171 (H2's SAGE citation unsupported; the sources index is complete apart from one deliberate retirement tombstone, correcting an unverified 19-card claim), DR-172 (H18's category, and two categories with no preamble).

@@ -1,7 +1,7 @@
 ---
 {
   "id": "21c-enchanting-marketing-example-22-the-1-storytelling-format-to-spruce-up-drab-writing",
-  "title": "The A1 Storytelling Format to Spruce Up Drab Writing",
+  "title": "The #1 Storytelling Format to Spruce Up Drab Writing",
   "author": "Enchanting Marketing",
   "year": 2020,
   "period": "21st",
