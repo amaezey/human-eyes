@@ -20,92 +20,29 @@ Six defects found while doing it are queued as DR-167 to DR-172 and are Mae's to
 
 ---
 
-## 0a. FIRST: rebuild the cut-off verification test so it tests the real property (DR-170)
+## 0a. DONE: cut-off verification test rebuilt so it tests the real property (DR-170)
 
-Approved 2026-07-27, option a. Do this before 0b: DR-164 sweeps every cut-off, and it
-should not be built on top of a guard that cannot fail.
+Landed 2026-07-27 in `16d1706`; record closed 2026-07-28. The test mutates each declared
+number in an in-memory copy of `CHECK_THRESHOLDS`, re-runs the check across the
+153-document corpus, and requires some document's flag/clear outcome to move with it. A
+declared key nothing reads now fails rather than dropping out of verification silently.
 
-### What is wrong
+Measuring that way found seven declared numbers no check read, across five checks rather
+than the three the corrected premise recorded. All seven are wired through
+`threshold_value`, so one mechanism covers all 28 declared cut-offs. One of them,
+`no-staccato-sequences.minimum_repeated_opener_run`, was a structural assumption rather
+than a literal; honouring it as a run length moved the evidence string on 38 corpus
+documents and the match list on 13. That is a shipped-output change and is called out in
+DR-170's row rather than absorbed.
 
-`dev/evals/tests/test_threshold_declarations.py` was written to catch a check
-reporting one cut-off while enforcing another. `CHECK_THRESHOLDS` in
-`human-eyes/scripts/grade.py` is attached to every result as `result["threshold"]`
-at `grade.py:4096`, so the declared number reaches the audit report a reader sees.
+Verified by mutation on 2026-07-28: the suite passes unmutated, and each of the five holes
+that defeated the first version now fails it. `UNVERIFIABLE` is empty, so the original
+fifth mutation has no target; its successor falsifies a `BOUNDARY_UNWITNESSED` pin, and
+that fails too.
 
-The test was built on the claim that only two checks read that table and the other
-seventeen carry literals. **That claim is false.** Sixteen checks read the declared
-value through `threshold_value(check_id, key, default)` at `grade.py:2176`. The
-original search looked for `CHECK_THRESHOLDS.get("` with a quoted check name and so
-never saw the generic helper. For those sixteen the test compares the table against
-itself and cannot fail.
-
-Only three checks can genuinely diverge, and two of those are pinned in the test's
-own `UNVERIFIABLE` set.
-
-### Four holes, each proven by mutation
-
-Reproduce these before you start; if any no longer reproduces, say so rather than
-assuming the note is stale.
-
-| mutation | current result |
-|---|---|
-| add a check id that does not exist to `UNVERIFIABLE` | passes |
-| rename a key inside a `CHECK_THRESHOLDS` entry (e.g. `minimum_candidates` to `minimum_hits`) | that check silently drops out of verification; passes |
-| add an extra key to a threshold dict | same silent drop; passes |
-| move a statistic cut-off from `0.18` to `0.184` | the rounding tolerance forgives it; passes. `0.19` correctly fails |
-| make a pinned check flag every document, contradicting its stated pin reason | passes, and prints the false reason as fact |
-
-### What to build
-
-Assert the property directly: **the declared value is the value that governs
-behaviour.** For each of the 19 declared cut-offs, mutate the declared number in a
-copy of the threshold table, run the check over corpus documents that sit either
-side of it, and assert the flag/clear outcome moves with the declaration. A check
-that ignores its declaration will not move, and that is the failure.
-
-Constraints that make or break it:
-
-- **Mutate a copy, never the file.** `grade.py` is loaded by import in the test;
-  monkeypatch `grade.CHECK_THRESHOLDS` in memory and restore it. Never write to
-  `human-eyes/scripts/grade.py` from a test.
-- **Every declared key must be reached, not just the first.** The silent-drop holes
-  above exist because the test keyed on a dict shape (`set(spec) == {"minimum_candidates"}`)
-  and skipped anything else. Iterate the keys the table actually declares and fail
-  on a key no check consumes, rather than skipping it.
-- **`UNVERIFIABLE` must be validated, not trusted.** Every id in it must exist in
-  `grade.ALL_CHECKS`, and its stated reason must be checked where checkable: a pin
-  saying "no document flags it" must fail if a document flags it.
-- **Keep the DR-79 lesson.** Where the corpus genuinely cannot straddle a cut-off,
-  report it and fail if the unverifiable set grows without a reason. Silence must
-  not read as agreement.
-- Drop the evidence-string count fallback and the display-rounding tolerance if the
-  mutation approach removes the need for them. They exist only because the current
-  design reads numbers out of human-readable strings.
-
-### Verify the test itself
-
-A guard that cannot fail is what produced this item, so prove it fires before
-trusting a pass. Re-run all five mutations in the table above and confirm each one
-now fails, and confirm the suite passes unmutated. State each result.
-
-Two checks (`no-inline-header-lists`, `no-rubric-echoing`) are pinned only because
-no corpus document flags them. `test_grade.py` already proves both fire on
-synthetic text, so one or two targeted samples under `dev/evals/samples/` would
-unpin them. That is optional and separate; do not add samples to make a mutation
-pass.
-
-### Do not touch
-
-`dev/evals/samples/`, `dev/evals/preserved-agent-audits-*`,
-`dev/evals/three-version-*.json` and `dev/skill-workspace/skill-snapshot/` are
-measurement baselines. Editing them moves what every calibration is measured
-against, and the DR-158 sweep already had to revert seven such files.
-
-### Also correct
-
-DR-170's register row and the commit message of `7fca3c1` both state the false
-premise. Correct the row when you close this; the commit message stays as history
-and the row should say so.
+Not done, and still optional: samples under `dev/evals/samples/` that would let
+`no-inline-header-lists` and `no-rubric-echoing` be witnessed by the corpus instead of
+pinned. Whether each cut-off is set *well*, rather than merely wired, is 0b's question.
 
 ---
 
