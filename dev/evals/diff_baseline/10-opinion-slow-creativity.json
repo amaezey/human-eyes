@@ -1,29 +1,30 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 11
+      "flagged": 19
     },
     "programmatic": {
       "by_category": {
-        "Filler and hedging": 2,
-        "Language and grammar": 4,
+        "Content patterns": 1,
+        "Filler and hedging": 3,
+        "Language and grammar": 9,
         "Signal stacking": 1,
-        "Structural tells": 2,
+        "Structural tells": 3,
         "Style": 1,
         "Voice and register": 1
       },
       "by_severity": {
-        "context_warning": 9,
+        "context_warning": 16,
         "hard_fail": 0,
-        "strong_warning": 2
+        "strong_warning": 3
       },
       "signal_stacking": {
         "components": [
           "manufactured insight framing",
-          "contrived contrast framing",
+          "negative parallelism",
           "paragraph length uniformity"
         ],
-        "score": 6,
+        "score": 8,
         "threshold": 4,
         "triggered": true,
         "vocabulary_points": 0
@@ -99,12 +100,12 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Max AI words per paragraph: 1 (2 total in text)",
+            "raw_evidence": "Max AI words per paragraph: 1 (9 total in text)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Max AI words per paragraph: 1 (2 total in text)",
+          "evidence": "Max AI words per paragraph: 1 (9 total in text)",
           "evidence_role": "vocabulary_cluster",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -172,7 +173,7 @@
       "category": "Signal stacking",
       "evidence": {
         "counts": {
-          "score": 6,
+          "score": 8,
           "threshold": 4
         },
         "locations": [],
@@ -183,25 +184,30 @@
           "candidate_count": 0,
           "candidates": [],
           "component_count": 3,
+          "component_points": {
+            "manufactured_insight": 2,
+            "negative_parallelism": 4,
+            "paragraph_uniformity": 2
+          },
           "component_signals": [
             "manufactured insight framing",
-            "contrived contrast framing",
+            "negative parallelism",
             "paragraph length uniformity"
           ],
           "components": [
             "manufactured insight framing",
-            "contrived contrast framing",
+            "negative parallelism",
             "paragraph length uniformity"
           ],
           "context_gate": {
             "applied": false,
             "effective_threshold": 4,
-            "raw_evidence": "Overall signal stacking 6/4 from [manufactured insight framing, contrived contrast framing, paragraph length uniformity]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=11 distinct/11.3/1000, sample=['need', 'reveals', 'conditions', 'lies', 'necessity', 'remains', 'research', 'revealing', 'streamlined', 'substantial']",
+            "raw_evidence": "Overall signal stacking 8/4 from [manufactured insight framing, negative parallelism, paragraph length uniformity]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=11 distinct/11.3/1000, sample=['need', 'reveals', 'conditions', 'lies', 'necessity', 'remains', 'research', 'revealing', 'streamlined', 'substantial']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Overall signal stacking 6/4 from [manufactured insight framing, contrived contrast framing, paragraph length uniformity]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=11 distinct/11.3/1000, sample=['need', 'reveals', 'conditions', 'lies', 'necessity', 'remains', 'research', 'revealing', 'streamlined', 'substantial']",
+          "evidence": "Overall signal stacking 8/4 from [manufactured insight framing, negative parallelism, paragraph length uniformity]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=11 distinct/11.3/1000, sample=['need', 'reveals', 'conditions', 'lies', 'necessity', 'remains', 'research', 'revealing', 'streamlined', 'substantial']",
           "evidence_role": "signal_stacking",
           "evidence_type": "aggregate",
           "failure_modes": [
@@ -209,7 +215,7 @@
             "frictionless_structure"
           ],
           "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict.",
-          "score": 6,
+          "score": 8,
           "severity": "context_warning",
           "threshold": 4,
           "threshold_met": true,
@@ -250,37 +256,45 @@
         "locations": [],
         "metric": null,
         "quoted_phrases": [
-          "the uncomfortable truth"
+          "the uncomfortable truth",
+          "this is the part of creativity"
         ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 1,
+          "candidate_count": 2,
           "candidates": [
             {
               "end": 2279,
               "quoted": false,
               "start": 2256,
               "text": "the uncomfortable truth"
+            },
+            {
+              "end": 6602,
+              "quoted": false,
+              "start": 6572,
+              "text": "this is the part of creativity"
             }
           ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 1: ['the uncomfortable truth']",
+            "raw_evidence": "Found 2: ['the uncomfortable truth', 'this is the part of creativity']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 1: ['the uncomfortable truth']",
+          "evidence": "Found 2: ['the uncomfortable truth', 'this is the part of creativity']",
           "evidence_role": "rhetorical_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice.",
-          "match_count": 1,
+          "match_count": 2,
           "matches": [
-            "the uncomfortable truth"
+            "the uncomfortable truth",
+            "this is the part of creativity"
           ],
           "severity": "strong_warning",
           "spans": [
@@ -289,6 +303,12 @@
               "quoted": false,
               "start": 2256,
               "text": "the uncomfortable truth"
+            },
+            {
+              "end": 6602,
+              "quoted": false,
+              "start": 6572,
+              "text": "this is the part of creativity"
             }
           ],
           "threshold": null,
@@ -328,7 +348,7 @@
             "voice_erasure",
             "generic_abstraction"
           ],
-          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+          "guidance": "Remove the candour or vulnerability announcement and state the claim directly. Preserve literal uses and quoted source text.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -346,6 +366,50 @@
       "status": "clear"
     },
     {
+      "category": "Communication",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No formulaic social-post frames",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No formulaic social-post frames",
+          "evidence_role": "platform_formula",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Remove the stock frame and state the actual request, experience, result, or constraint directly.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "subtypes": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-formulaic-social-posts",
+      "severity": "strong_warning",
+      "status": "clear"
+    },
+    {
       "category": "Filler and hedging",
       "evidence": {
         "counts": {},
@@ -354,11 +418,89 @@
         "quoted_phrases": [
           "Deadlines are real.",
           "Money is real.",
-          "Attention is scarce."
+          "Attention is scarce.",
+          "Content must be regular. Content must be optimised.",
+          "It can absorb doubt. It can admit complexity.",
+          "I was making soup.",
+          "They browned at the edges before they had properly softened.",
+          "That is the problem with speed.",
+          "It often produces something acceptable enough to pass.",
+          "It rarely produces something with depth.",
+          "An idea needs time to gather contradiction around it.",
+          "To work slowly is not to work lazily.",
+          "The fast worker is presumed to be disciplined, responsive, valuable.",
+          "The slow worker must explain herself.",
+          "Content must be regular.",
+          "Content must be optimised.",
+          "Content does not ripen; it is published.",
+          "Tools have become astonishingly efficient.",
+          "We plainly can.",
+          "In my own work, the answer is often yes.",
+          "Speed rewards the phrase nearest to hand.",
+          "It favours fluency over accuracy and polish over discovery.",
+          "Slowness, by contrast, is where embarrassment begins.",
+          "That is one reason we avoid it.",
+          "Slowness exposes borrowed conviction.",
+          "It shows where an argument is gesturing instead of thinking.",
+          "This is why slowness is not merely an aesthetic preference.",
+          "It is an ethical practice.",
+          "It can absorb doubt.",
+          "It can admit complexity.",
+          "The demand for speed is often defended as pragmatism.",
+          "This is true, but it is also incomplete.",
+          "Some work must be fast.",
+          "Speed can be appropriate.",
+          "There is a difference between urgency and momentum.",
+          "Momentum can sustain work over time.",
+          "Urgency consumes it.",
+          "Urgency says: extract whatever is available now.",
+          "The personal essay, in particular, has suffered from this.",
+          "Slowness matters here because experience is not insight.",
+          "These are not romantic luxuries.",
+          "They are part of the work.",
+          "A notebook full of fragments does not look productive.",
+          "Neither does silence.",
+          "A rushed work tends to obey its maker too quickly.",
+          "A slower work begins to make demands of its own.",
+          "It refuses the first ending.",
+          "It asks for a different form.",
+          "It is closer to cultivation than manufacture.",
+          "To defend slowness is also to defend taste.",
+          "It develops through exposure, attention and revision.",
+          "We no longer ask whether the work is good.",
+          "We ask whether it is ready.",
+          "But ready and good are not the same thing.",
+          "Ready means it can leave us.",
+          "Good means it can survive leaving us.",
+          "Slower work is not guaranteed to be better.",
+          "There is plenty of dull, overworked art.",
+          "Time alone does not confer depth.",
+          "A sentence can be laboured into lifelessness.",
+          "Slowness can become avoidance, just as speed can become compulsion.",
+          "The point is not to worship delay.",
+          "Some need months of composting.",
+          "Some need to be drafted quickly and revised slowly.",
+          "Creative maturity lies partly in learning the difference.",
+          "I have begun to distrust work that arrives too cleanly.",
+          "Not always, but often.",
+          "The work has not been interrupted by a better thought.",
+          "It has not had to give up its cleverness.",
+          "It has not been made strange to itself.",
+          "Speed gives us more of the present.",
+          "Slowness gives us a chance to argue with it.",
+          "The onions, I have learned, need lower heat.",
+          "You can hurry them, and you will still get dinner.",
+          "But you will not get the same soup.",
+          "Creative work is like that.",
+          "The difference is not always visible at first.",
+          "It was an ordinary soup, the kind that begins with onions softening in oil.",
+          "I had chopped them badly, because I was thinking about something else.",
+          "Creative work is not soup, but it is also not unrelated to soup.",
+          "A sentence needs time to reveal whether it is alive or merely polished."
         ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 3,
+          "candidate_count": 81,
           "candidates": [
             {
               "end": 3877,
@@ -377,19 +519,491 @@
               "quoted": false,
               "start": 3893,
               "text": "Attention is scarce."
+            },
+            {
+              "end": 1814,
+              "quoted": false,
+              "start": 1763,
+              "text": "Content must be regular. Content must be optimised."
+            },
+            {
+              "end": 3733,
+              "quoted": false,
+              "start": 3688,
+              "text": "It can absorb doubt. It can admit complexity."
+            },
+            {
+              "end": 132,
+              "quoted": false,
+              "start": 114,
+              "text": "I was making soup."
+            },
+            {
+              "end": 521,
+              "quoted": false,
+              "start": 461,
+              "text": "They browned at the edges before they had properly softened."
+            },
+            {
+              "end": 645,
+              "quoted": false,
+              "start": 614,
+              "text": "That is the problem with speed."
+            },
+            {
+              "end": 700,
+              "quoted": false,
+              "start": 646,
+              "text": "It often produces something acceptable enough to pass."
+            },
+            {
+              "end": 741,
+              "quoted": false,
+              "start": 701,
+              "text": "It rarely produces something with depth."
+            },
+            {
+              "end": 1032,
+              "quoted": false,
+              "start": 979,
+              "text": "An idea needs time to gather contradiction around it."
+            },
+            {
+              "end": 1206,
+              "quoted": false,
+              "start": 1169,
+              "text": "To work slowly is not to work lazily."
+            },
+            {
+              "end": 1427,
+              "quoted": false,
+              "start": 1359,
+              "text": "The fast worker is presumed to be disciplined, responsive, valuable."
+            },
+            {
+              "end": 1465,
+              "quoted": false,
+              "start": 1428,
+              "text": "The slow worker must explain herself."
+            },
+            {
+              "end": 1787,
+              "quoted": false,
+              "start": 1763,
+              "text": "Content must be regular."
+            },
+            {
+              "end": 1814,
+              "quoted": false,
+              "start": 1788,
+              "text": "Content must be optimised."
+            },
+            {
+              "end": 1936,
+              "quoted": false,
+              "start": 1896,
+              "text": "Content does not ripen; it is published."
+            },
+            {
+              "end": 2374,
+              "quoted": false,
+              "start": 2332,
+              "text": "Tools have become astonishingly efficient."
+            },
+            {
+              "end": 2566,
+              "quoted": false,
+              "start": 2551,
+              "text": "We plainly can."
+            },
+            {
+              "end": 2679,
+              "quoted": false,
+              "start": 2639,
+              "text": "In my own work, the answer is often yes."
+            },
+            {
+              "end": 2948,
+              "quoted": false,
+              "start": 2907,
+              "text": "Speed rewards the phrase nearest to hand."
+            },
+            {
+              "end": 3070,
+              "quoted": false,
+              "start": 3011,
+              "text": "It favours fluency over accuracy and polish over discovery."
+            },
+            {
+              "end": 3125,
+              "quoted": false,
+              "start": 3072,
+              "text": "Slowness, by contrast, is where embarrassment begins."
+            },
+            {
+              "end": 3157,
+              "quoted": false,
+              "start": 3126,
+              "text": "That is one reason we avoid it."
+            },
+            {
+              "end": 3390,
+              "quoted": false,
+              "start": 3353,
+              "text": "Slowness exposes borrowed conviction."
+            },
+            {
+              "end": 3451,
+              "quoted": false,
+              "start": 3391,
+              "text": "It shows where an argument is gesturing instead of thinking."
+            },
+            {
+              "end": 3581,
+              "quoted": false,
+              "start": 3522,
+              "text": "This is why slowness is not merely an aesthetic preference."
+            },
+            {
+              "end": 3608,
+              "quoted": false,
+              "start": 3582,
+              "text": "It is an ethical practice."
+            },
+            {
+              "end": 3708,
+              "quoted": false,
+              "start": 3688,
+              "text": "It can absorb doubt."
+            },
+            {
+              "end": 3733,
+              "quoted": false,
+              "start": 3709,
+              "text": "It can admit complexity."
+            },
+            {
+              "end": 3857,
+              "quoted": false,
+              "start": 3804,
+              "text": "The demand for speed is often defended as pragmatism."
+            },
+            {
+              "end": 4027,
+              "quoted": false,
+              "start": 3987,
+              "text": "This is true, but it is also incomplete."
+            },
+            {
+              "end": 4260,
+              "quoted": false,
+              "start": 4237,
+              "text": "Some work must be fast."
+            },
+            {
+              "end": 4403,
+              "quoted": false,
+              "start": 4378,
+              "text": "Speed can be appropriate."
+            },
+            {
+              "end": 4682,
+              "quoted": false,
+              "start": 4631,
+              "text": "There is a difference between urgency and momentum."
+            },
+            {
+              "end": 4719,
+              "quoted": false,
+              "start": 4683,
+              "text": "Momentum can sustain work over time."
+            },
+            {
+              "end": 4740,
+              "quoted": false,
+              "start": 4720,
+              "text": "Urgency consumes it."
+            },
+            {
+              "end": 4853,
+              "quoted": false,
+              "start": 4805,
+              "text": "Urgency says: extract whatever is available now."
+            },
+            {
+              "end": 5197,
+              "quoted": false,
+              "start": 5139,
+              "text": "The personal essay, in particular, has suffered from this."
+            },
+            {
+              "end": 5495,
+              "quoted": false,
+              "start": 5439,
+              "text": "Slowness matters here because experience is not insight."
+            },
+            {
+              "end": 5936,
+              "quoted": false,
+              "start": 5904,
+              "text": "These are not romantic luxuries."
+            },
+            {
+              "end": 5963,
+              "quoted": false,
+              "start": 5937,
+              "text": "They are part of the work."
+            },
+            {
+              "end": 6091,
+              "quoted": false,
+              "start": 6037,
+              "text": "A notebook full of fragments does not look productive."
+            },
+            {
+              "end": 6113,
+              "quoted": false,
+              "start": 6092,
+              "text": "Neither does silence."
+            },
+            {
+              "end": 6324,
+              "quoted": false,
+              "start": 6274,
+              "text": "A rushed work tends to obey its maker too quickly."
+            },
+            {
+              "end": 6373,
+              "quoted": false,
+              "start": 6325,
+              "text": "A slower work begins to make demands of its own."
+            },
+            {
+              "end": 6402,
+              "quoted": false,
+              "start": 6374,
+              "text": "It refuses the first ending."
+            },
+            {
+              "end": 6432,
+              "quoted": false,
+              "start": 6403,
+              "text": "It asks for a different form."
+            },
+            {
+              "end": 6971,
+              "quoted": false,
+              "start": 6926,
+              "text": "It is closer to cultivation than manufacture."
+            },
+            {
+              "end": 7016,
+              "quoted": false,
+              "start": 6973,
+              "text": "To defend slowness is also to defend taste."
+            },
+            {
+              "end": 7145,
+              "quoted": false,
+              "start": 7092,
+              "text": "It develops through exposure, attention and revision."
+            },
+            {
+              "end": 7275,
+              "quoted": false,
+              "start": 7233,
+              "text": "We no longer ask whether the work is good."
+            },
+            {
+              "end": 7303,
+              "quoted": false,
+              "start": 7276,
+              "text": "We ask whether it is ready."
+            },
+            {
+              "end": 7346,
+              "quoted": false,
+              "start": 7304,
+              "text": "But ready and good are not the same thing."
+            },
+            {
+              "end": 7375,
+              "quoted": false,
+              "start": 7347,
+              "text": "Ready means it can leave us."
+            },
+            {
+              "end": 7413,
+              "quoted": false,
+              "start": 7376,
+              "text": "Good means it can survive leaving us."
+            },
+            {
+              "end": 7458,
+              "quoted": false,
+              "start": 7415,
+              "text": "Slower work is not guaranteed to be better."
+            },
+            {
+              "end": 7499,
+              "quoted": false,
+              "start": 7459,
+              "text": "There is plenty of dull, overworked art."
+            },
+            {
+              "end": 7533,
+              "quoted": false,
+              "start": 7500,
+              "text": "Time alone does not confer depth."
+            },
+            {
+              "end": 7579,
+              "quoted": false,
+              "start": 7534,
+              "text": "A sentence can be laboured into lifelessness."
+            },
+            {
+              "end": 7722,
+              "quoted": false,
+              "start": 7655,
+              "text": "Slowness can become avoidance, just as speed can become compulsion."
+            },
+            {
+              "end": 7757,
+              "quoted": false,
+              "start": 7723,
+              "text": "The point is not to worship delay."
+            },
+            {
+              "end": 8003,
+              "quoted": false,
+              "start": 7972,
+              "text": "Some need months of composting."
+            },
+            {
+              "end": 8055,
+              "quoted": false,
+              "start": 8004,
+              "text": "Some need to be drafted quickly and revised slowly."
+            },
+            {
+              "end": 8180,
+              "quoted": false,
+              "start": 8123,
+              "text": "Creative maturity lies partly in learning the difference."
+            },
+            {
+              "end": 8237,
+              "quoted": false,
+              "start": 8182,
+              "text": "I have begun to distrust work that arrives too cleanly."
+            },
+            {
+              "end": 8260,
+              "quoted": false,
+              "start": 8238,
+              "text": "Not always, but often."
+            },
+            {
+              "end": 8409,
+              "quoted": false,
+              "start": 8355,
+              "text": "The work has not been interrupted by a better thought."
+            },
+            {
+              "end": 8451,
+              "quoted": false,
+              "start": 8410,
+              "text": "It has not had to give up its cleverness."
+            },
+            {
+              "end": 8491,
+              "quoted": false,
+              "start": 8452,
+              "text": "It has not been made strange to itself."
+            },
+            {
+              "end": 9038,
+              "quoted": false,
+              "start": 9003,
+              "text": "Speed gives us more of the present."
+            },
+            {
+              "end": 9083,
+              "quoted": false,
+              "start": 9039,
+              "text": "Slowness gives us a chance to argue with it."
+            },
+            {
+              "end": 9129,
+              "quoted": false,
+              "start": 9085,
+              "text": "The onions, I have learned, need lower heat."
+            },
+            {
+              "end": 9253,
+              "quoted": false,
+              "start": 9203,
+              "text": "You can hurry them, and you will still get dinner."
+            },
+            {
+              "end": 9289,
+              "quoted": false,
+              "start": 9254,
+              "text": "But you will not get the same soup."
+            },
+            {
+              "end": 9317,
+              "quoted": false,
+              "start": 9290,
+              "text": "Creative work is like that."
+            },
+            {
+              "end": 9364,
+              "quoted": false,
+              "start": 9318,
+              "text": "The difference is not always visible at first."
+            },
+            {
+              "end": 209,
+              "quoted": false,
+              "start": 134,
+              "text": "It was an ordinary soup, the kind that begins with onions softening in oil."
+            },
+            {
+              "end": 280,
+              "quoted": false,
+              "start": 210,
+              "text": "I had chopped them badly, because I was thinking about something else."
+            },
+            {
+              "end": 807,
+              "quoted": false,
+              "start": 743,
+              "text": "Creative work is not soup, but it is also not unrelated to soup."
+            },
+            {
+              "end": 978,
+              "quoted": false,
+              "start": 907,
+              "text": "A sentence needs time to reveal whether it is alive or merely polished."
             }
           ],
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_run": 3
+              "maximum_mean_sentence_words": 15.0,
+              "maximum_short_rate_per_1000": 30.0,
+              "minimum_repeated_opener_run": 2,
+              "minimum_run": 3,
+              "rate_minimum_words": 300
             },
-            "raw_evidence": "Found sequence of 3 consecutive short sentences",
+            "raw_evidence": "Found sequence of 3 consecutive short sentences; short-fragment run(s) sharing an opener: ['Content must be regular. Content must be optimised.', 'It can absorb doubt. It can admit complexity.']; 75 sentences of ten words or fewer at 47.2 per 1000 words; mean sentence length 11.2 words (target: 15 or more)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found sequence of 3 consecutive short sentences",
+          "evidence": "Found sequence of 3 consecutive short sentences; short-fragment run(s) sharing an opener: ['Content must be regular. Content must be optimised.', 'It can absorb doubt. It can admit complexity.']; 75 sentences of ten words or fewer at 47.2 per 1000 words; mean sentence length 11.2 words (target: 15 or more)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -397,11 +1011,89 @@
             "frictionless_structure"
           ],
           "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
-          "match_count": 3,
+          "match_count": 81,
           "matches": [
             "Deadlines are real.",
             "Money is real.",
-            "Attention is scarce."
+            "Attention is scarce.",
+            "Content must be regular. Content must be optimised.",
+            "It can absorb doubt. It can admit complexity.",
+            "I was making soup.",
+            "They browned at the edges before they had properly softened.",
+            "That is the problem with speed.",
+            "It often produces something acceptable enough to pass.",
+            "It rarely produces something with depth.",
+            "An idea needs time to gather contradiction around it.",
+            "To work slowly is not to work lazily.",
+            "The fast worker is presumed to be disciplined, responsive, valuable.",
+            "The slow worker must explain herself.",
+            "Content must be regular.",
+            "Content must be optimised.",
+            "Content does not ripen; it is published.",
+            "Tools have become astonishingly efficient.",
+            "We plainly can.",
+            "In my own work, the answer is often yes.",
+            "Speed rewards the phrase nearest to hand.",
+            "It favours fluency over accuracy and polish over discovery.",
+            "Slowness, by contrast, is where embarrassment begins.",
+            "That is one reason we avoid it.",
+            "Slowness exposes borrowed conviction.",
+            "It shows where an argument is gesturing instead of thinking.",
+            "This is why slowness is not merely an aesthetic preference.",
+            "It is an ethical practice.",
+            "It can absorb doubt.",
+            "It can admit complexity.",
+            "The demand for speed is often defended as pragmatism.",
+            "This is true, but it is also incomplete.",
+            "Some work must be fast.",
+            "Speed can be appropriate.",
+            "There is a difference between urgency and momentum.",
+            "Momentum can sustain work over time.",
+            "Urgency consumes it.",
+            "Urgency says: extract whatever is available now.",
+            "The personal essay, in particular, has suffered from this.",
+            "Slowness matters here because experience is not insight.",
+            "These are not romantic luxuries.",
+            "They are part of the work.",
+            "A notebook full of fragments does not look productive.",
+            "Neither does silence.",
+            "A rushed work tends to obey its maker too quickly.",
+            "A slower work begins to make demands of its own.",
+            "It refuses the first ending.",
+            "It asks for a different form.",
+            "It is closer to cultivation than manufacture.",
+            "To defend slowness is also to defend taste.",
+            "It develops through exposure, attention and revision.",
+            "We no longer ask whether the work is good.",
+            "We ask whether it is ready.",
+            "But ready and good are not the same thing.",
+            "Ready means it can leave us.",
+            "Good means it can survive leaving us.",
+            "Slower work is not guaranteed to be better.",
+            "There is plenty of dull, overworked art.",
+            "Time alone does not confer depth.",
+            "A sentence can be laboured into lifelessness.",
+            "Slowness can become avoidance, just as speed can become compulsion.",
+            "The point is not to worship delay.",
+            "Some need months of composting.",
+            "Some need to be drafted quickly and revised slowly.",
+            "Creative maturity lies partly in learning the difference.",
+            "I have begun to distrust work that arrives too cleanly.",
+            "Not always, but often.",
+            "The work has not been interrupted by a better thought.",
+            "It has not had to give up its cleverness.",
+            "It has not been made strange to itself.",
+            "Speed gives us more of the present.",
+            "Slowness gives us a chance to argue with it.",
+            "The onions, I have learned, need lower heat.",
+            "You can hurry them, and you will still get dinner.",
+            "But you will not get the same soup.",
+            "Creative work is like that.",
+            "The difference is not always visible at first.",
+            "It was an ordinary soup, the kind that begins with onions softening in oil.",
+            "I had chopped them badly, because I was thinking about something else.",
+            "Creative work is not soup, but it is also not unrelated to soup.",
+            "A sentence needs time to reveal whether it is alive or merely polished."
           ],
           "severity": "context_warning",
           "spans": [
@@ -422,10 +1114,482 @@
               "quoted": false,
               "start": 3893,
               "text": "Attention is scarce."
+            },
+            {
+              "end": 1814,
+              "quoted": false,
+              "start": 1763,
+              "text": "Content must be regular. Content must be optimised."
+            },
+            {
+              "end": 3733,
+              "quoted": false,
+              "start": 3688,
+              "text": "It can absorb doubt. It can admit complexity."
+            },
+            {
+              "end": 132,
+              "quoted": false,
+              "start": 114,
+              "text": "I was making soup."
+            },
+            {
+              "end": 521,
+              "quoted": false,
+              "start": 461,
+              "text": "They browned at the edges before they had properly softened."
+            },
+            {
+              "end": 645,
+              "quoted": false,
+              "start": 614,
+              "text": "That is the problem with speed."
+            },
+            {
+              "end": 700,
+              "quoted": false,
+              "start": 646,
+              "text": "It often produces something acceptable enough to pass."
+            },
+            {
+              "end": 741,
+              "quoted": false,
+              "start": 701,
+              "text": "It rarely produces something with depth."
+            },
+            {
+              "end": 1032,
+              "quoted": false,
+              "start": 979,
+              "text": "An idea needs time to gather contradiction around it."
+            },
+            {
+              "end": 1206,
+              "quoted": false,
+              "start": 1169,
+              "text": "To work slowly is not to work lazily."
+            },
+            {
+              "end": 1427,
+              "quoted": false,
+              "start": 1359,
+              "text": "The fast worker is presumed to be disciplined, responsive, valuable."
+            },
+            {
+              "end": 1465,
+              "quoted": false,
+              "start": 1428,
+              "text": "The slow worker must explain herself."
+            },
+            {
+              "end": 1787,
+              "quoted": false,
+              "start": 1763,
+              "text": "Content must be regular."
+            },
+            {
+              "end": 1814,
+              "quoted": false,
+              "start": 1788,
+              "text": "Content must be optimised."
+            },
+            {
+              "end": 1936,
+              "quoted": false,
+              "start": 1896,
+              "text": "Content does not ripen; it is published."
+            },
+            {
+              "end": 2374,
+              "quoted": false,
+              "start": 2332,
+              "text": "Tools have become astonishingly efficient."
+            },
+            {
+              "end": 2566,
+              "quoted": false,
+              "start": 2551,
+              "text": "We plainly can."
+            },
+            {
+              "end": 2679,
+              "quoted": false,
+              "start": 2639,
+              "text": "In my own work, the answer is often yes."
+            },
+            {
+              "end": 2948,
+              "quoted": false,
+              "start": 2907,
+              "text": "Speed rewards the phrase nearest to hand."
+            },
+            {
+              "end": 3070,
+              "quoted": false,
+              "start": 3011,
+              "text": "It favours fluency over accuracy and polish over discovery."
+            },
+            {
+              "end": 3125,
+              "quoted": false,
+              "start": 3072,
+              "text": "Slowness, by contrast, is where embarrassment begins."
+            },
+            {
+              "end": 3157,
+              "quoted": false,
+              "start": 3126,
+              "text": "That is one reason we avoid it."
+            },
+            {
+              "end": 3390,
+              "quoted": false,
+              "start": 3353,
+              "text": "Slowness exposes borrowed conviction."
+            },
+            {
+              "end": 3451,
+              "quoted": false,
+              "start": 3391,
+              "text": "It shows where an argument is gesturing instead of thinking."
+            },
+            {
+              "end": 3581,
+              "quoted": false,
+              "start": 3522,
+              "text": "This is why slowness is not merely an aesthetic preference."
+            },
+            {
+              "end": 3608,
+              "quoted": false,
+              "start": 3582,
+              "text": "It is an ethical practice."
+            },
+            {
+              "end": 3708,
+              "quoted": false,
+              "start": 3688,
+              "text": "It can absorb doubt."
+            },
+            {
+              "end": 3733,
+              "quoted": false,
+              "start": 3709,
+              "text": "It can admit complexity."
+            },
+            {
+              "end": 3857,
+              "quoted": false,
+              "start": 3804,
+              "text": "The demand for speed is often defended as pragmatism."
+            },
+            {
+              "end": 4027,
+              "quoted": false,
+              "start": 3987,
+              "text": "This is true, but it is also incomplete."
+            },
+            {
+              "end": 4260,
+              "quoted": false,
+              "start": 4237,
+              "text": "Some work must be fast."
+            },
+            {
+              "end": 4403,
+              "quoted": false,
+              "start": 4378,
+              "text": "Speed can be appropriate."
+            },
+            {
+              "end": 4682,
+              "quoted": false,
+              "start": 4631,
+              "text": "There is a difference between urgency and momentum."
+            },
+            {
+              "end": 4719,
+              "quoted": false,
+              "start": 4683,
+              "text": "Momentum can sustain work over time."
+            },
+            {
+              "end": 4740,
+              "quoted": false,
+              "start": 4720,
+              "text": "Urgency consumes it."
+            },
+            {
+              "end": 4853,
+              "quoted": false,
+              "start": 4805,
+              "text": "Urgency says: extract whatever is available now."
+            },
+            {
+              "end": 5197,
+              "quoted": false,
+              "start": 5139,
+              "text": "The personal essay, in particular, has suffered from this."
+            },
+            {
+              "end": 5495,
+              "quoted": false,
+              "start": 5439,
+              "text": "Slowness matters here because experience is not insight."
+            },
+            {
+              "end": 5936,
+              "quoted": false,
+              "start": 5904,
+              "text": "These are not romantic luxuries."
+            },
+            {
+              "end": 5963,
+              "quoted": false,
+              "start": 5937,
+              "text": "They are part of the work."
+            },
+            {
+              "end": 6091,
+              "quoted": false,
+              "start": 6037,
+              "text": "A notebook full of fragments does not look productive."
+            },
+            {
+              "end": 6113,
+              "quoted": false,
+              "start": 6092,
+              "text": "Neither does silence."
+            },
+            {
+              "end": 6324,
+              "quoted": false,
+              "start": 6274,
+              "text": "A rushed work tends to obey its maker too quickly."
+            },
+            {
+              "end": 6373,
+              "quoted": false,
+              "start": 6325,
+              "text": "A slower work begins to make demands of its own."
+            },
+            {
+              "end": 6402,
+              "quoted": false,
+              "start": 6374,
+              "text": "It refuses the first ending."
+            },
+            {
+              "end": 6432,
+              "quoted": false,
+              "start": 6403,
+              "text": "It asks for a different form."
+            },
+            {
+              "end": 6971,
+              "quoted": false,
+              "start": 6926,
+              "text": "It is closer to cultivation than manufacture."
+            },
+            {
+              "end": 7016,
+              "quoted": false,
+              "start": 6973,
+              "text": "To defend slowness is also to defend taste."
+            },
+            {
+              "end": 7145,
+              "quoted": false,
+              "start": 7092,
+              "text": "It develops through exposure, attention and revision."
+            },
+            {
+              "end": 7275,
+              "quoted": false,
+              "start": 7233,
+              "text": "We no longer ask whether the work is good."
+            },
+            {
+              "end": 7303,
+              "quoted": false,
+              "start": 7276,
+              "text": "We ask whether it is ready."
+            },
+            {
+              "end": 7346,
+              "quoted": false,
+              "start": 7304,
+              "text": "But ready and good are not the same thing."
+            },
+            {
+              "end": 7375,
+              "quoted": false,
+              "start": 7347,
+              "text": "Ready means it can leave us."
+            },
+            {
+              "end": 7413,
+              "quoted": false,
+              "start": 7376,
+              "text": "Good means it can survive leaving us."
+            },
+            {
+              "end": 7458,
+              "quoted": false,
+              "start": 7415,
+              "text": "Slower work is not guaranteed to be better."
+            },
+            {
+              "end": 7499,
+              "quoted": false,
+              "start": 7459,
+              "text": "There is plenty of dull, overworked art."
+            },
+            {
+              "end": 7533,
+              "quoted": false,
+              "start": 7500,
+              "text": "Time alone does not confer depth."
+            },
+            {
+              "end": 7579,
+              "quoted": false,
+              "start": 7534,
+              "text": "A sentence can be laboured into lifelessness."
+            },
+            {
+              "end": 7722,
+              "quoted": false,
+              "start": 7655,
+              "text": "Slowness can become avoidance, just as speed can become compulsion."
+            },
+            {
+              "end": 7757,
+              "quoted": false,
+              "start": 7723,
+              "text": "The point is not to worship delay."
+            },
+            {
+              "end": 8003,
+              "quoted": false,
+              "start": 7972,
+              "text": "Some need months of composting."
+            },
+            {
+              "end": 8055,
+              "quoted": false,
+              "start": 8004,
+              "text": "Some need to be drafted quickly and revised slowly."
+            },
+            {
+              "end": 8180,
+              "quoted": false,
+              "start": 8123,
+              "text": "Creative maturity lies partly in learning the difference."
+            },
+            {
+              "end": 8237,
+              "quoted": false,
+              "start": 8182,
+              "text": "I have begun to distrust work that arrives too cleanly."
+            },
+            {
+              "end": 8260,
+              "quoted": false,
+              "start": 8238,
+              "text": "Not always, but often."
+            },
+            {
+              "end": 8409,
+              "quoted": false,
+              "start": 8355,
+              "text": "The work has not been interrupted by a better thought."
+            },
+            {
+              "end": 8451,
+              "quoted": false,
+              "start": 8410,
+              "text": "It has not had to give up its cleverness."
+            },
+            {
+              "end": 8491,
+              "quoted": false,
+              "start": 8452,
+              "text": "It has not been made strange to itself."
+            },
+            {
+              "end": 9038,
+              "quoted": false,
+              "start": 9003,
+              "text": "Speed gives us more of the present."
+            },
+            {
+              "end": 9083,
+              "quoted": false,
+              "start": 9039,
+              "text": "Slowness gives us a chance to argue with it."
+            },
+            {
+              "end": 9129,
+              "quoted": false,
+              "start": 9085,
+              "text": "The onions, I have learned, need lower heat."
+            },
+            {
+              "end": 9253,
+              "quoted": false,
+              "start": 9203,
+              "text": "You can hurry them, and you will still get dinner."
+            },
+            {
+              "end": 9289,
+              "quoted": false,
+              "start": 9254,
+              "text": "But you will not get the same soup."
+            },
+            {
+              "end": 9317,
+              "quoted": false,
+              "start": 9290,
+              "text": "Creative work is like that."
+            },
+            {
+              "end": 9364,
+              "quoted": false,
+              "start": 9318,
+              "text": "The difference is not always visible at first."
+            },
+            {
+              "end": 209,
+              "quoted": false,
+              "start": 134,
+              "text": "It was an ordinary soup, the kind that begins with onions softening in oil."
+            },
+            {
+              "end": 280,
+              "quoted": false,
+              "start": 210,
+              "text": "I had chopped them badly, because I was thinking about something else."
+            },
+            {
+              "end": 807,
+              "quoted": false,
+              "start": 743,
+              "text": "Creative work is not soup, but it is also not unrelated to soup."
+            },
+            {
+              "end": 978,
+              "quoted": false,
+              "start": 907,
+              "text": "A sentence needs time to reveal whether it is alive or merely polished."
             }
           ],
           "threshold": {
-            "minimum_run": 3
+            "maximum_mean_sentence_words": 15.0,
+            "maximum_short_rate_per_1000": 30.0,
+            "minimum_repeated_opener_run": 2,
+            "minimum_run": 3,
+            "rate_minimum_words": 300
           },
           "threshold_met": true
         }
@@ -540,6 +1704,258 @@
       "id": "no-anaphora",
       "severity": "context_warning",
       "status": "flagged"
+    },
+    {
+      "category": "Voice and register",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max paragraph-opener run: 1",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Max paragraph-opener run: 1",
+          "evidence_role": "rhythm_signal",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "guidance": "Fix mechanical repetition across paragraph openings; recommend preserving deliberate rhetorical patterning.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1590,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "id": "no-paragraph-anaphora",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "One-line sections under headings: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "One-line sections under headings: 0",
+          "evidence_role": "repeated_template",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix by developing or folding one-line sections into prose; recommend preserving a single deliberate short section used for emphasis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1590,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-heading-one-liners",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No title case headings",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No title case headings",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix headings that capitalise minor words; match whatever heading style the rest of the document uses.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-title-case-headings",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed spelling conventions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed spelling conventions",
+          "evidence_role": "lexical_distribution",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix the mixture by settling on one convention; preserve whichever one the document and its audience already use.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-mixed-spelling-conventions",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No stacked from-to ranges",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No stacked from-to ranges",
+          "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "guidance": "Fix stacked from-to pairs by naming what the passage actually covers; keep single ranges.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "id": "no-false-ranges",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Filler and hedging",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No modal qualifier stacks",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No modal qualifier stacks",
+          "evidence_role": "stance_erasure",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "guidance": "Fix stacked qualifiers by keeping the one the claim needs; recommend preserving qualifiers tied to a stated basis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1590,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "id": "no-modal-stacks",
+      "severity": "context_warning",
+      "status": "clear"
     },
     {
       "category": "Communication",
@@ -660,21 +2076,23 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "sentence length variation 6.0 across 142 sentences (target above 9)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Sentence length stdev: 6.0 (target: >4)",
+            "effective_threshold": {
+              "minimum_stdev": 9.0
+            },
+            "raw_evidence": "Sentence length stdev: 6.0 (target: >9)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Sentence length stdev: 6.0 (target: >4)",
+          "evidence": "Sentence length stdev: 6.0 (target: >9)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -682,11 +2100,14 @@
             "genre_misfit"
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
-          "metric_value": 0,
+          "metric": "sentence length variation 6.0 across 142 sentences (target above 9)",
+          "metric_value": "sentence length variation 6.0 across 142 sentences (target above 9)",
           "sample_size": 1590,
           "severity": "context_warning",
-          "threshold": null,
-          "threshold_met": false
+          "threshold": {
+            "minimum_stdev": 9.0
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -695,7 +2116,7 @@
       ],
       "id": "sentence-length-variance",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Content patterns",
@@ -788,45 +2209,283 @@
         "locations": [],
         "metric": null,
         "quoted_phrases": [
-          "not only through activity, but"
+          "Creative work is not soup, but it is also not unrelated to soup. It depends",
+          "not only through activity, but through waiting",
+          "To work slowly is not to work lazily. It is",
+          "Content does not ripen; it is",
+          "Its success is measured by circulation, not by what it does to the person who made it or the person who encounters it months",
+          "not                              but                                   \n\nThe uncomfortable truth is that creative work can now be made very quickly",
+          "This is why slowness is not merely an aesthetic preference. It is",
+          "The argument for slower creative work is not an argument against deadlines, discipline or publication. It is",
+          "But speed should be a chosen condition, not the permanent climate of creative life",
+          "These are not romantic luxuries. They are",
+          "that the central image is not central at all. It exposes",
+          "But the core act of making meaning cannot be treated as a logistics problem. It is",
+          ". Taste is not simply preference; it is",
+          "The point is not to worship delay. The point is",
+          "not                              but                                          Some pieces need the voltage of immediacy",
+          "Not always, but often",
+          "The work has not been interrupted by a better thought. It has",
+          "The difference is not always visible at first. It arrives"
         ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 1,
+          "candidate_count": 18,
           "candidates": [
             {
-              "end": 1151,
+              "end": 818,
+              "quoted": false,
+              "start": 743,
+              "text": "Creative work is not soup, but it is also not unrelated to soup. It depends"
+            },
+            {
+              "end": 1167,
               "quoted": false,
               "start": 1121,
-              "text": "not only through activity, but"
+              "text": "not only through activity, but through waiting"
+            },
+            {
+              "end": 1212,
+              "quoted": false,
+              "start": 1169,
+              "text": "To work slowly is not to work lazily. It is"
+            },
+            {
+              "end": 1925,
+              "quoted": false,
+              "start": 1896,
+              "text": "Content does not ripen; it is"
+            },
+            {
+              "end": 2061,
+              "quoted": false,
+              "start": 1937,
+              "text": "Its success is measured by circulation, not by what it does to the person who made it or the person who encounters it months"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "not                              but                                   \n\nThe uncomfortable truth is that creative work can now be made very quickly"
+            },
+            {
+              "end": 3587,
+              "quoted": false,
+              "start": 3522,
+              "text": "This is why slowness is not merely an aesthetic preference. It is"
+            },
+            {
+              "end": 4136,
+              "quoted": false,
+              "start": 4028,
+              "text": "The argument for slower creative work is not an argument against deadlines, discipline or publication. It is"
+            },
+            {
+              "end": 4555,
+              "quoted": false,
+              "start": 4473,
+              "text": "But speed should be a chosen condition, not the permanent climate of creative life"
+            },
+            {
+              "end": 5945,
+              "quoted": false,
+              "start": 5904,
+              "text": "These are not romantic luxuries. They are"
+            },
+            {
+              "end": 6500,
+              "quoted": false,
+              "start": 6444,
+              "text": "that the central image is not central at all. It exposes"
+            },
+            {
+              "end": 6931,
+              "quoted": false,
+              "start": 6849,
+              "text": "But the core act of making meaning cannot be treated as a logistics problem. It is"
+            },
+            {
+              "end": 7054,
+              "quoted": false,
+              "start": 7015,
+              "text": ". Taste is not simply preference; it is"
+            },
+            {
+              "end": 7770,
+              "quoted": false,
+              "start": 7723,
+              "text": "The point is not to worship delay. The point is"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "not                              but                                          Some pieces need the voltage of immediacy"
+            },
+            {
+              "end": 8259,
+              "quoted": false,
+              "start": 8238,
+              "text": "Not always, but often"
+            },
+            {
+              "end": 8416,
+              "quoted": false,
+              "start": 8355,
+              "text": "The work has not been interrupted by a better thought. It has"
+            },
+            {
+              "end": 9375,
+              "quoted": false,
+              "start": 9318,
+              "text": "The difference is not always visible at first. It arrives"
             }
           ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 1 contrived contrast/reframe pattern(s)",
+            "raw_evidence": "Found 18 negative-parallelism occurrence(s)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 1 contrived contrast/reframe pattern(s)",
+          "evidence": "Found 18 negative-parallelism occurrence(s)",
           "evidence_role": "rhetorical_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
-          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced.",
-          "match_count": 1,
+          "guidance": "Surface every matched construction at Balanced and All, including matches split across two sentences, negative clauses resumed by it/they/he/she, punctuated not-X-but-Y forms, and each rather-than frame. Report the form and occurrence count without suppressing matches based on inferred intention. Repeated occurrences add progressively more signal-stacking evidence.",
+          "match_count": 18,
           "matches": [
-            "not only through activity, but"
+            "Creative work is not soup, but it is also not unrelated to soup. It depends",
+            "not only through activity, but through waiting",
+            "To work slowly is not to work lazily. It is",
+            "Content does not ripen; it is",
+            "Its success is measured by circulation, not by what it does to the person who made it or the person who encounters it months",
+            "not                              but                                   \n\nThe uncomfortable truth is that creative work can now be made very quickly",
+            "This is why slowness is not merely an aesthetic preference. It is",
+            "The argument for slower creative work is not an argument against deadlines, discipline or publication. It is",
+            "But speed should be a chosen condition, not the permanent climate of creative life",
+            "These are not romantic luxuries. They are",
+            "that the central image is not central at all. It exposes",
+            "But the core act of making meaning cannot be treated as a logistics problem. It is",
+            ". Taste is not simply preference; it is",
+            "The point is not to worship delay. The point is",
+            "not                              but                                          Some pieces need the voltage of immediacy",
+            "Not always, but often",
+            "The work has not been interrupted by a better thought. It has",
+            "The difference is not always visible at first. It arrives"
           ],
           "severity": "strong_warning",
           "spans": [
             {
-              "end": 1151,
+              "end": 818,
+              "quoted": false,
+              "start": 743,
+              "text": "Creative work is not soup, but it is also not unrelated to soup. It depends"
+            },
+            {
+              "end": 1167,
               "quoted": false,
               "start": 1121,
-              "text": "not only through activity, but"
+              "text": "not only through activity, but through waiting"
+            },
+            {
+              "end": 1212,
+              "quoted": false,
+              "start": 1169,
+              "text": "To work slowly is not to work lazily. It is"
+            },
+            {
+              "end": 1925,
+              "quoted": false,
+              "start": 1896,
+              "text": "Content does not ripen; it is"
+            },
+            {
+              "end": 2061,
+              "quoted": false,
+              "start": 1937,
+              "text": "Its success is measured by circulation, not by what it does to the person who made it or the person who encounters it months"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "not                              but                                   \n\nThe uncomfortable truth is that creative work can now be made very quickly"
+            },
+            {
+              "end": 3587,
+              "quoted": false,
+              "start": 3522,
+              "text": "This is why slowness is not merely an aesthetic preference. It is"
+            },
+            {
+              "end": 4136,
+              "quoted": false,
+              "start": 4028,
+              "text": "The argument for slower creative work is not an argument against deadlines, discipline or publication. It is"
+            },
+            {
+              "end": 4555,
+              "quoted": false,
+              "start": 4473,
+              "text": "But speed should be a chosen condition, not the permanent climate of creative life"
+            },
+            {
+              "end": 5945,
+              "quoted": false,
+              "start": 5904,
+              "text": "These are not romantic luxuries. They are"
+            },
+            {
+              "end": 6500,
+              "quoted": false,
+              "start": 6444,
+              "text": "that the central image is not central at all. It exposes"
+            },
+            {
+              "end": 6931,
+              "quoted": false,
+              "start": 6849,
+              "text": "But the core act of making meaning cannot be treated as a logistics problem. It is"
+            },
+            {
+              "end": 7054,
+              "quoted": false,
+              "start": 7015,
+              "text": ". Taste is not simply preference; it is"
+            },
+            {
+              "end": 7770,
+              "quoted": false,
+              "start": 7723,
+              "text": "The point is not to worship delay. The point is"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "not                              but                                          Some pieces need the voltage of immediacy"
+            },
+            {
+              "end": 8259,
+              "quoted": false,
+              "start": 8238,
+              "text": "Not always, but often"
+            },
+            {
+              "end": 8416,
+              "quoted": false,
+              "start": 8355,
+              "text": "The work has not been interrupted by a better thought. It has"
+            },
+            {
+              "end": 9375,
+              "quoted": false,
+              "start": 9318,
+              "text": "The difference is not always visible at first. It arrives"
             }
           ],
           "threshold": null,
@@ -952,6 +2611,7 @@
           ],
           "guidance": "Fix at every depth unless quoted from source text.",
           "match_count": 0,
+          "matches": [],
           "severity": "hard_fail",
           "spans": [],
           "threshold": null,
@@ -1032,7 +2692,7 @@
           "failure_modes": [
             "provenance_residue"
           ],
-          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue.",
+          "guidance": "Fix at every depth; replace or remove unfilled placeholders, publishing instructions, and platform markup.",
           "match_count": 0,
           "matches": [],
           "severity": "hard_fail",
@@ -1204,20 +2864,23 @@
           ],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Found 7 triad(s): ['heat, patience and the willingness', 'audiences, metrics and clients', 'templated, scheduled and distributed', 'deadlines, discipline or publication', 'force, clarity and purpose', 'discipline, suspicion and grace', 'exposure, attention and revision']",
+            "effective_threshold": {
+              "maximum_rate_per_1000": 4.0,
+              "minimum_words": 300
+            },
+            "raw_evidence": "Found 7 triad(s) at 4.4 per 1000 words: ['heat, patience and the willingness', 'audiences, metrics and clients', 'templated, scheduled and distributed', 'deadlines, discipline or publication', 'force, clarity and purpose', 'discipline, suspicion and grace', 'exposure, attention and revision']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 7 triad(s): ['heat, patience and the willingness', 'audiences, metrics and clients', 'templated, scheduled and distributed', 'deadlines, discipline or publication', 'force, clarity and purpose', 'discipline, suspicion and grace', 'exposure, attention and revision']",
+          "evidence": "Found 7 triad(s) at 4.4 per 1000 words: ['heat, patience and the willingness', 'audiences, metrics and clients', 'templated, scheduled and distributed', 'deadlines, discipline or publication', 'force, clarity and purpose', 'discipline, suspicion and grace', 'exposure, attention and revision']",
           "evidence_role": "list_rhythm",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+          "guidance": "Thin out decorative or interchangeable triads until the rate drops. Preserve meaningful lists, quotations, and deliberate rhetoric.",
           "match_count": 7,
           "matches": [
             "heat, patience and the willingness",
@@ -1273,7 +2936,10 @@
               "text": "exposure, attention and revision"
             }
           ],
-          "threshold": null,
+          "threshold": {
+            "maximum_rate_per_1000": 4.0,
+            "minimum_words": 300
+          },
           "threshold_met": true
         }
       },
@@ -1286,7 +2952,2893 @@
       "status": "flagged"
     },
     {
-      "category": "Content patterns",
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "attention",
+          "attention",
+          "patience",
+          "willingness",
+          "sentence",
+          "contradiction",
+          "activity",
+          "quality",
+          "competence",
+          "audiences",
+          "circulation",
+          "production",
+          "visibility",
+          "question",
+          "question",
+          "Slowness",
+          "embarrassment",
+          "Slowness",
+          "conviction",
+          "argument",
+          "sentence",
+          "slowness",
+          "preference",
+          "opportunities",
+          "reality",
+          "complexity",
+          "Attention",
+          "argument",
+          "argument",
+          "publication",
+          "argument",
+          "communication",
+          "dignity",
+          "necessity",
+          "clarity",
+          "condition",
+          "difference",
+          "extraction",
+          "attention",
+          "experience",
+          "identity",
+          "experience",
+          "Slowness",
+          "experience",
+          "irritation",
+          "fragments",
+          "productivity",
+          "argument",
+          "creativity",
+          "Administration",
+          "transcription",
+          "management",
+          "cultivation",
+          "slowness",
+          "preference",
+          "capacity",
+          "difference",
+          "attention",
+          "sentence",
+          "lifelessness",
+          "refinement",
+          "judgement",
+          "Slowness",
+          "avoidance",
+          "duration",
+          "condition",
+          "question",
+          "maturity",
+          "difference",
+          "Cleanliness",
+          "cleverness",
+          "evidence",
+          "density",
+          "slowness",
+          "reflection",
+          "conditions",
+          "Slowness",
+          "sweetness",
+          "difference"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 79,
+          "candidates": [
+            {
+              "end": 93,
+              "quoted": false,
+              "start": 84,
+              "text": "attention"
+            },
+            {
+              "end": 368,
+              "quoted": false,
+              "start": 359,
+              "text": "attention"
+            },
+            {
+              "end": 844,
+              "quoted": false,
+              "start": 836,
+              "text": "patience"
+            },
+            {
+              "end": 864,
+              "quoted": false,
+              "start": 853,
+              "text": "willingness"
+            },
+            {
+              "end": 917,
+              "quoted": false,
+              "start": 909,
+              "text": "sentence"
+            },
+            {
+              "end": 1021,
+              "quoted": false,
+              "start": 1008,
+              "text": "contradiction"
+            },
+            {
+              "end": 1146,
+              "quoted": false,
+              "start": 1138,
+              "text": "activity"
+            },
+            {
+              "end": 1357,
+              "quoted": false,
+              "start": 1350,
+              "text": "quality"
+            },
+            {
+              "end": 1505,
+              "quoted": false,
+              "start": 1495,
+              "text": "competence"
+            },
+            {
+              "end": 1873,
+              "quoted": false,
+              "start": 1864,
+              "text": "audiences"
+            },
+            {
+              "end": 1975,
+              "quoted": false,
+              "start": 1964,
+              "text": "circulation"
+            },
+            {
+              "end": 2125,
+              "quoted": false,
+              "start": 2115,
+              "text": "production"
+            },
+            {
+              "end": 2173,
+              "quoted": false,
+              "start": 2163,
+              "text": "visibility"
+            },
+            {
+              "end": 2503,
+              "quoted": false,
+              "start": 2495,
+              "text": "question"
+            },
+            {
+              "end": 2592,
+              "quoted": false,
+              "start": 2584,
+              "text": "question"
+            },
+            {
+              "end": 3080,
+              "quoted": false,
+              "start": 3072,
+              "text": "Slowness"
+            },
+            {
+              "end": 3117,
+              "quoted": false,
+              "start": 3104,
+              "text": "embarrassment"
+            },
+            {
+              "end": 3361,
+              "quoted": false,
+              "start": 3353,
+              "text": "Slowness"
+            },
+            {
+              "end": 3389,
+              "quoted": false,
+              "start": 3379,
+              "text": "conviction"
+            },
+            {
+              "end": 3417,
+              "quoted": false,
+              "start": 3409,
+              "text": "argument"
+            },
+            {
+              "end": 3475,
+              "quoted": false,
+              "start": 3467,
+              "text": "sentence"
+            },
+            {
+              "end": 3542,
+              "quoted": false,
+              "start": 3534,
+              "text": "slowness"
+            },
+            {
+              "end": 3580,
+              "quoted": false,
+              "start": 3570,
+              "text": "preference"
+            },
+            {
+              "end": 3653,
+              "quoted": false,
+              "start": 3640,
+              "text": "opportunities"
+            },
+            {
+              "end": 3686,
+              "quoted": false,
+              "start": 3679,
+              "text": "reality"
+            },
+            {
+              "end": 3732,
+              "quoted": false,
+              "start": 3722,
+              "text": "complexity"
+            },
+            {
+              "end": 3902,
+              "quoted": false,
+              "start": 3893,
+              "text": "Attention"
+            },
+            {
+              "end": 4040,
+              "quoted": false,
+              "start": 4032,
+              "text": "argument"
+            },
+            {
+              "end": 4084,
+              "quoted": false,
+              "start": 4076,
+              "text": "argument"
+            },
+            {
+              "end": 4129,
+              "quoted": false,
+              "start": 4118,
+              "text": "publication"
+            },
+            {
+              "end": 4148,
+              "quoted": false,
+              "start": 4140,
+              "text": "argument"
+            },
+            {
+              "end": 4332,
+              "quoted": false,
+              "start": 4319,
+              "text": "communication"
+            },
+            {
+              "end": 4362,
+              "quoted": false,
+              "start": 4355,
+              "text": "dignity"
+            },
+            {
+              "end": 4376,
+              "quoted": false,
+              "start": 4367,
+              "text": "necessity"
+            },
+            {
+              "end": 4459,
+              "quoted": false,
+              "start": 4452,
+              "text": "clarity"
+            },
+            {
+              "end": 4511,
+              "quoted": false,
+              "start": 4502,
+              "text": "condition"
+            },
+            {
+              "end": 4652,
+              "quoted": false,
+              "start": 4642,
+              "text": "difference"
+            },
+            {
+              "end": 4908,
+              "quoted": false,
+              "start": 4898,
+              "text": "extraction"
+            },
+            {
+              "end": 4924,
+              "quoted": false,
+              "start": 4915,
+              "text": "attention"
+            },
+            {
+              "end": 4950,
+              "quoted": false,
+              "start": 4940,
+              "text": "experience"
+            },
+            {
+              "end": 4991,
+              "quoted": false,
+              "start": 4983,
+              "text": "identity"
+            },
+            {
+              "end": 5282,
+              "quoted": false,
+              "start": 5272,
+              "text": "experience"
+            },
+            {
+              "end": 5447,
+              "quoted": false,
+              "start": 5439,
+              "text": "Slowness"
+            },
+            {
+              "end": 5479,
+              "quoted": false,
+              "start": 5469,
+              "text": "experience"
+            },
+            {
+              "end": 5857,
+              "quoted": false,
+              "start": 5847,
+              "text": "irritation"
+            },
+            {
+              "end": 6065,
+              "quoted": false,
+              "start": 6056,
+              "text": "fragments"
+            },
+            {
+              "end": 6215,
+              "quoted": false,
+              "start": 6203,
+              "text": "productivity"
+            },
+            {
+              "end": 6527,
+              "quoted": false,
+              "start": 6519,
+              "text": "argument"
+            },
+            {
+              "end": 6602,
+              "quoted": false,
+              "start": 6592,
+              "text": "creativity"
+            },
+            {
+              "end": 6743,
+              "quoted": false,
+              "start": 6729,
+              "text": "Administration"
+            },
+            {
+              "end": 6787,
+              "quoted": false,
+              "start": 6774,
+              "text": "transcription"
+            },
+            {
+              "end": 6808,
+              "quoted": false,
+              "start": 6798,
+              "text": "management"
+            },
+            {
+              "end": 6953,
+              "quoted": false,
+              "start": 6942,
+              "text": "cultivation"
+            },
+            {
+              "end": 6991,
+              "quoted": false,
+              "start": 6983,
+              "text": "slowness"
+            },
+            {
+              "end": 7047,
+              "quoted": false,
+              "start": 7037,
+              "text": "preference"
+            },
+            {
+              "end": 7067,
+              "quoted": false,
+              "start": 7059,
+              "text": "capacity"
+            },
+            {
+              "end": 7090,
+              "quoted": false,
+              "start": 7080,
+              "text": "difference"
+            },
+            {
+              "end": 7131,
+              "quoted": false,
+              "start": 7122,
+              "text": "attention"
+            },
+            {
+              "end": 7544,
+              "quoted": false,
+              "start": 7536,
+              "text": "sentence"
+            },
+            {
+              "end": 7578,
+              "quoted": false,
+              "start": 7566,
+              "text": "lifelessness"
+            },
+            {
+              "end": 7612,
+              "quoted": false,
+              "start": 7602,
+              "text": "refinement"
+            },
+            {
+              "end": 7653,
+              "quoted": false,
+              "start": 7644,
+              "text": "judgement"
+            },
+            {
+              "end": 7663,
+              "quoted": false,
+              "start": 7655,
+              "text": "Slowness"
+            },
+            {
+              "end": 7684,
+              "quoted": false,
+              "start": 7675,
+              "text": "avoidance"
+            },
+            {
+              "end": 7790,
+              "quoted": false,
+              "start": 7782,
+              "text": "duration"
+            },
+            {
+              "end": 7825,
+              "quoted": false,
+              "start": 7816,
+              "text": "condition"
+            },
+            {
+              "end": 7847,
+              "quoted": false,
+              "start": 7839,
+              "text": "question"
+            },
+            {
+              "end": 8140,
+              "quoted": false,
+              "start": 8132,
+              "text": "maturity"
+            },
+            {
+              "end": 8179,
+              "quoted": false,
+              "start": 8169,
+              "text": "difference"
+            },
+            {
+              "end": 8272,
+              "quoted": false,
+              "start": 8261,
+              "text": "Cleanliness"
+            },
+            {
+              "end": 8450,
+              "quoted": false,
+              "start": 8440,
+              "text": "cleverness"
+            },
+            {
+              "end": 8583,
+              "quoted": false,
+              "start": 8575,
+              "text": "evidence"
+            },
+            {
+              "end": 8627,
+              "quoted": false,
+              "start": 8620,
+              "text": "density"
+            },
+            {
+              "end": 8728,
+              "quoted": false,
+              "start": 8720,
+              "text": "slowness"
+            },
+            {
+              "end": 8966,
+              "quoted": false,
+              "start": 8956,
+              "text": "reflection"
+            },
+            {
+              "end": 8984,
+              "quoted": false,
+              "start": 8974,
+              "text": "conditions"
+            },
+            {
+              "end": 9047,
+              "quoted": false,
+              "start": 9039,
+              "text": "Slowness"
+            },
+            {
+              "end": 9171,
+              "quoted": false,
+              "start": 9162,
+              "text": "sweetness"
+            },
+            {
+              "end": 9332,
+              "quoted": false,
+              "start": 9322,
+              "text": "difference"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 79 nominalisation(s) at 49.7 per 1000 words: ['attention', 'attention', 'patience', 'willingness', 'sentence', 'contradiction', 'activity', 'quality', 'competence', 'audiences', 'circulation', 'production']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 79 nominalisation(s) at 49.7 per 1000 words: ['attention', 'attention', 'patience', 'willingness', 'sentence', 'contradiction', 'activity', 'quality', 'competence', 'audiences', 'circulation', 'production']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
+          "match_count": 79,
+          "matches": [
+            "attention",
+            "attention",
+            "patience",
+            "willingness",
+            "sentence",
+            "contradiction",
+            "activity",
+            "quality",
+            "competence",
+            "audiences",
+            "circulation",
+            "production",
+            "visibility",
+            "question",
+            "question",
+            "Slowness",
+            "embarrassment",
+            "Slowness",
+            "conviction",
+            "argument",
+            "sentence",
+            "slowness",
+            "preference",
+            "opportunities",
+            "reality",
+            "complexity",
+            "Attention",
+            "argument",
+            "argument",
+            "publication",
+            "argument",
+            "communication",
+            "dignity",
+            "necessity",
+            "clarity",
+            "condition",
+            "difference",
+            "extraction",
+            "attention",
+            "experience",
+            "identity",
+            "experience",
+            "Slowness",
+            "experience",
+            "irritation",
+            "fragments",
+            "productivity",
+            "argument",
+            "creativity",
+            "Administration",
+            "transcription",
+            "management",
+            "cultivation",
+            "slowness",
+            "preference",
+            "capacity",
+            "difference",
+            "attention",
+            "sentence",
+            "lifelessness",
+            "refinement",
+            "judgement",
+            "Slowness",
+            "avoidance",
+            "duration",
+            "condition",
+            "question",
+            "maturity",
+            "difference",
+            "Cleanliness",
+            "cleverness",
+            "evidence",
+            "density",
+            "slowness",
+            "reflection",
+            "conditions",
+            "Slowness",
+            "sweetness",
+            "difference"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 93,
+              "quoted": false,
+              "start": 84,
+              "text": "attention"
+            },
+            {
+              "end": 368,
+              "quoted": false,
+              "start": 359,
+              "text": "attention"
+            },
+            {
+              "end": 844,
+              "quoted": false,
+              "start": 836,
+              "text": "patience"
+            },
+            {
+              "end": 864,
+              "quoted": false,
+              "start": 853,
+              "text": "willingness"
+            },
+            {
+              "end": 917,
+              "quoted": false,
+              "start": 909,
+              "text": "sentence"
+            },
+            {
+              "end": 1021,
+              "quoted": false,
+              "start": 1008,
+              "text": "contradiction"
+            },
+            {
+              "end": 1146,
+              "quoted": false,
+              "start": 1138,
+              "text": "activity"
+            },
+            {
+              "end": 1357,
+              "quoted": false,
+              "start": 1350,
+              "text": "quality"
+            },
+            {
+              "end": 1505,
+              "quoted": false,
+              "start": 1495,
+              "text": "competence"
+            },
+            {
+              "end": 1873,
+              "quoted": false,
+              "start": 1864,
+              "text": "audiences"
+            },
+            {
+              "end": 1975,
+              "quoted": false,
+              "start": 1964,
+              "text": "circulation"
+            },
+            {
+              "end": 2125,
+              "quoted": false,
+              "start": 2115,
+              "text": "production"
+            },
+            {
+              "end": 2173,
+              "quoted": false,
+              "start": 2163,
+              "text": "visibility"
+            },
+            {
+              "end": 2503,
+              "quoted": false,
+              "start": 2495,
+              "text": "question"
+            },
+            {
+              "end": 2592,
+              "quoted": false,
+              "start": 2584,
+              "text": "question"
+            },
+            {
+              "end": 3080,
+              "quoted": false,
+              "start": 3072,
+              "text": "Slowness"
+            },
+            {
+              "end": 3117,
+              "quoted": false,
+              "start": 3104,
+              "text": "embarrassment"
+            },
+            {
+              "end": 3361,
+              "quoted": false,
+              "start": 3353,
+              "text": "Slowness"
+            },
+            {
+              "end": 3389,
+              "quoted": false,
+              "start": 3379,
+              "text": "conviction"
+            },
+            {
+              "end": 3417,
+              "quoted": false,
+              "start": 3409,
+              "text": "argument"
+            },
+            {
+              "end": 3475,
+              "quoted": false,
+              "start": 3467,
+              "text": "sentence"
+            },
+            {
+              "end": 3542,
+              "quoted": false,
+              "start": 3534,
+              "text": "slowness"
+            },
+            {
+              "end": 3580,
+              "quoted": false,
+              "start": 3570,
+              "text": "preference"
+            },
+            {
+              "end": 3653,
+              "quoted": false,
+              "start": 3640,
+              "text": "opportunities"
+            },
+            {
+              "end": 3686,
+              "quoted": false,
+              "start": 3679,
+              "text": "reality"
+            },
+            {
+              "end": 3732,
+              "quoted": false,
+              "start": 3722,
+              "text": "complexity"
+            },
+            {
+              "end": 3902,
+              "quoted": false,
+              "start": 3893,
+              "text": "Attention"
+            },
+            {
+              "end": 4040,
+              "quoted": false,
+              "start": 4032,
+              "text": "argument"
+            },
+            {
+              "end": 4084,
+              "quoted": false,
+              "start": 4076,
+              "text": "argument"
+            },
+            {
+              "end": 4129,
+              "quoted": false,
+              "start": 4118,
+              "text": "publication"
+            },
+            {
+              "end": 4148,
+              "quoted": false,
+              "start": 4140,
+              "text": "argument"
+            },
+            {
+              "end": 4332,
+              "quoted": false,
+              "start": 4319,
+              "text": "communication"
+            },
+            {
+              "end": 4362,
+              "quoted": false,
+              "start": 4355,
+              "text": "dignity"
+            },
+            {
+              "end": 4376,
+              "quoted": false,
+              "start": 4367,
+              "text": "necessity"
+            },
+            {
+              "end": 4459,
+              "quoted": false,
+              "start": 4452,
+              "text": "clarity"
+            },
+            {
+              "end": 4511,
+              "quoted": false,
+              "start": 4502,
+              "text": "condition"
+            },
+            {
+              "end": 4652,
+              "quoted": false,
+              "start": 4642,
+              "text": "difference"
+            },
+            {
+              "end": 4908,
+              "quoted": false,
+              "start": 4898,
+              "text": "extraction"
+            },
+            {
+              "end": 4924,
+              "quoted": false,
+              "start": 4915,
+              "text": "attention"
+            },
+            {
+              "end": 4950,
+              "quoted": false,
+              "start": 4940,
+              "text": "experience"
+            },
+            {
+              "end": 4991,
+              "quoted": false,
+              "start": 4983,
+              "text": "identity"
+            },
+            {
+              "end": 5282,
+              "quoted": false,
+              "start": 5272,
+              "text": "experience"
+            },
+            {
+              "end": 5447,
+              "quoted": false,
+              "start": 5439,
+              "text": "Slowness"
+            },
+            {
+              "end": 5479,
+              "quoted": false,
+              "start": 5469,
+              "text": "experience"
+            },
+            {
+              "end": 5857,
+              "quoted": false,
+              "start": 5847,
+              "text": "irritation"
+            },
+            {
+              "end": 6065,
+              "quoted": false,
+              "start": 6056,
+              "text": "fragments"
+            },
+            {
+              "end": 6215,
+              "quoted": false,
+              "start": 6203,
+              "text": "productivity"
+            },
+            {
+              "end": 6527,
+              "quoted": false,
+              "start": 6519,
+              "text": "argument"
+            },
+            {
+              "end": 6602,
+              "quoted": false,
+              "start": 6592,
+              "text": "creativity"
+            },
+            {
+              "end": 6743,
+              "quoted": false,
+              "start": 6729,
+              "text": "Administration"
+            },
+            {
+              "end": 6787,
+              "quoted": false,
+              "start": 6774,
+              "text": "transcription"
+            },
+            {
+              "end": 6808,
+              "quoted": false,
+              "start": 6798,
+              "text": "management"
+            },
+            {
+              "end": 6953,
+              "quoted": false,
+              "start": 6942,
+              "text": "cultivation"
+            },
+            {
+              "end": 6991,
+              "quoted": false,
+              "start": 6983,
+              "text": "slowness"
+            },
+            {
+              "end": 7047,
+              "quoted": false,
+              "start": 7037,
+              "text": "preference"
+            },
+            {
+              "end": 7067,
+              "quoted": false,
+              "start": 7059,
+              "text": "capacity"
+            },
+            {
+              "end": 7090,
+              "quoted": false,
+              "start": 7080,
+              "text": "difference"
+            },
+            {
+              "end": 7131,
+              "quoted": false,
+              "start": 7122,
+              "text": "attention"
+            },
+            {
+              "end": 7544,
+              "quoted": false,
+              "start": 7536,
+              "text": "sentence"
+            },
+            {
+              "end": 7578,
+              "quoted": false,
+              "start": 7566,
+              "text": "lifelessness"
+            },
+            {
+              "end": 7612,
+              "quoted": false,
+              "start": 7602,
+              "text": "refinement"
+            },
+            {
+              "end": 7653,
+              "quoted": false,
+              "start": 7644,
+              "text": "judgement"
+            },
+            {
+              "end": 7663,
+              "quoted": false,
+              "start": 7655,
+              "text": "Slowness"
+            },
+            {
+              "end": 7684,
+              "quoted": false,
+              "start": 7675,
+              "text": "avoidance"
+            },
+            {
+              "end": 7790,
+              "quoted": false,
+              "start": 7782,
+              "text": "duration"
+            },
+            {
+              "end": 7825,
+              "quoted": false,
+              "start": 7816,
+              "text": "condition"
+            },
+            {
+              "end": 7847,
+              "quoted": false,
+              "start": 7839,
+              "text": "question"
+            },
+            {
+              "end": 8140,
+              "quoted": false,
+              "start": 8132,
+              "text": "maturity"
+            },
+            {
+              "end": 8179,
+              "quoted": false,
+              "start": 8169,
+              "text": "difference"
+            },
+            {
+              "end": 8272,
+              "quoted": false,
+              "start": 8261,
+              "text": "Cleanliness"
+            },
+            {
+              "end": 8450,
+              "quoted": false,
+              "start": 8440,
+              "text": "cleverness"
+            },
+            {
+              "end": 8583,
+              "quoted": false,
+              "start": 8575,
+              "text": "evidence"
+            },
+            {
+              "end": 8627,
+              "quoted": false,
+              "start": 8620,
+              "text": "density"
+            },
+            {
+              "end": 8728,
+              "quoted": false,
+              "start": 8720,
+              "text": "slowness"
+            },
+            {
+              "end": 8966,
+              "quoted": false,
+              "start": 8956,
+              "text": "reflection"
+            },
+            {
+              "end": 8984,
+              "quoted": false,
+              "start": 8974,
+              "text": "conditions"
+            },
+            {
+              "end": 9047,
+              "quoted": false,
+              "start": 9039,
+              "text": "Slowness"
+            },
+            {
+              "end": 9171,
+              "quoted": false,
+              "start": 9162,
+              "text": "sweetness"
+            },
+            {
+              "end": 9332,
+              "quoted": false,
+              "start": 9322,
+              "text": "difference"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-nominalisation-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "kind that begins",
+          "impulse that produced",
+          "culture that treats",
+          "pace that would",
+          "sentence that sounds",
+          "shape that makes",
+          "work that feels",
+          "work that can",
+          "work that arrives",
+          "age that prizes",
+          "work that is",
+          "conditions that produced"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 12,
+          "candidates": [
+            {
+              "end": 179,
+              "quoted": false,
+              "start": 163,
+              "text": "kind that begins"
+            },
+            {
+              "end": 1294,
+              "quoted": false,
+              "start": 1273,
+              "text": "impulse that produced"
+            },
+            {
+              "end": 1332,
+              "quoted": false,
+              "start": 1313,
+              "text": "culture that treats"
+            },
+            {
+              "end": 2465,
+              "quoted": false,
+              "start": 2450,
+              "text": "pace that would"
+            },
+            {
+              "end": 3487,
+              "quoted": false,
+              "start": 3467,
+              "text": "sentence that sounds"
+            },
+            {
+              "end": 3773,
+              "quoted": false,
+              "start": 3757,
+              "text": "shape that makes"
+            },
+            {
+              "end": 5076,
+              "quoted": false,
+              "start": 5061,
+              "text": "work that feels"
+            },
+            {
+              "end": 6701,
+              "quoted": false,
+              "start": 6688,
+              "text": "work that can"
+            },
+            {
+              "end": 8224,
+              "quoted": false,
+              "start": 8207,
+              "text": "work that arrives"
+            },
+            {
+              "end": 8804,
+              "quoted": false,
+              "start": 8789,
+              "text": "age that prizes"
+            },
+            {
+              "end": 8942,
+              "quoted": false,
+              "start": 8930,
+              "text": "work that is"
+            },
+            {
+              "end": 8998,
+              "quoted": false,
+              "start": 8974,
+              "text": "conditions that produced"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 12 subject relative(s) at 7.5 per 1000 words: ['kind that begins', 'impulse that produced', 'culture that treats', 'pace that would', 'sentence that sounds', 'shape that makes', 'work that feels', 'work that can', 'work that arrives', 'age that prizes', 'work that is', 'conditions that produced']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 12 subject relative(s) at 7.5 per 1000 words: ['kind that begins', 'impulse that produced', 'culture that treats', 'pace that would', 'sentence that sounds', 'shape that makes', 'work that feels', 'work that can', 'work that arrives', 'age that prizes', 'work that is', 'conditions that produced']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
+          "match_count": 12,
+          "matches": [
+            "kind that begins",
+            "impulse that produced",
+            "culture that treats",
+            "pace that would",
+            "sentence that sounds",
+            "shape that makes",
+            "work that feels",
+            "work that can",
+            "work that arrives",
+            "age that prizes",
+            "work that is",
+            "conditions that produced"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 179,
+              "quoted": false,
+              "start": 163,
+              "text": "kind that begins"
+            },
+            {
+              "end": 1294,
+              "quoted": false,
+              "start": 1273,
+              "text": "impulse that produced"
+            },
+            {
+              "end": 1332,
+              "quoted": false,
+              "start": 1313,
+              "text": "culture that treats"
+            },
+            {
+              "end": 2465,
+              "quoted": false,
+              "start": 2450,
+              "text": "pace that would"
+            },
+            {
+              "end": 3487,
+              "quoted": false,
+              "start": 3467,
+              "text": "sentence that sounds"
+            },
+            {
+              "end": 3773,
+              "quoted": false,
+              "start": 3757,
+              "text": "shape that makes"
+            },
+            {
+              "end": 5076,
+              "quoted": false,
+              "start": 5061,
+              "text": "work that feels"
+            },
+            {
+              "end": 6701,
+              "quoted": false,
+              "start": 6688,
+              "text": "work that can"
+            },
+            {
+              "end": 8224,
+              "quoted": false,
+              "start": 8207,
+              "text": "work that arrives"
+            },
+            {
+              "end": 8804,
+              "quoted": false,
+              "start": 8789,
+              "text": "age that prizes"
+            },
+            {
+              "end": 8942,
+              "quoted": false,
+              "start": 8930,
+              "text": "work that is"
+            },
+            {
+              "end": 8998,
+              "quoted": false,
+              "start": 8974,
+              "text": "conditions that produced"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-that-relative-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "Meaning",
+          "Walking",
+          "revealing",
+          "turning",
+          "staring",
+          "abandoning",
+          "noticing",
+          "changing",
+          "formatting",
+          "waiting"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 10,
+          "candidates": [
+            {
+              "end": 5561,
+              "quoted": false,
+              "start": 5554,
+              "text": "Meaning"
+            },
+            {
+              "end": 5760,
+              "quoted": false,
+              "start": 5753,
+              "text": "Walking"
+            },
+            {
+              "end": 5116,
+              "quoted": false,
+              "start": 5107,
+              "text": "revealing"
+            },
+            {
+              "end": 5381,
+              "quoted": false,
+              "start": 5374,
+              "text": "turning"
+            },
+            {
+              "end": 5799,
+              "quoted": false,
+              "start": 5792,
+              "text": "staring"
+            },
+            {
+              "end": 5824,
+              "quoted": false,
+              "start": 5814,
+              "text": "abandoning"
+            },
+            {
+              "end": 5846,
+              "quoted": false,
+              "start": 5838,
+              "text": "noticing"
+            },
+            {
+              "end": 5867,
+              "quoted": false,
+              "start": 5859,
+              "text": "changing"
+            },
+            {
+              "end": 6755,
+              "quoted": false,
+              "start": 6745,
+              "text": "formatting"
+            },
+            {
+              "end": 1167,
+              "quoted": false,
+              "start": 1160,
+              "text": "waiting"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 10 participial clause(s) at 6.3 per 1000 words: ['Meaning', 'Walking', 'revealing', 'turning', 'staring', 'abandoning', 'noticing', 'changing', 'formatting', 'waiting']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 10 participial clause(s) at 6.3 per 1000 words: ['Meaning', 'Walking', 'revealing', 'turning', 'staring', 'abandoning', 'noticing', 'changing', 'formatting', 'waiting']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
+          "match_count": 10,
+          "matches": [
+            "Meaning",
+            "Walking",
+            "revealing",
+            "turning",
+            "staring",
+            "abandoning",
+            "noticing",
+            "changing",
+            "formatting",
+            "waiting"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 5561,
+              "quoted": false,
+              "start": 5554,
+              "text": "Meaning"
+            },
+            {
+              "end": 5760,
+              "quoted": false,
+              "start": 5753,
+              "text": "Walking"
+            },
+            {
+              "end": 5116,
+              "quoted": false,
+              "start": 5107,
+              "text": "revealing"
+            },
+            {
+              "end": 5381,
+              "quoted": false,
+              "start": 5374,
+              "text": "turning"
+            },
+            {
+              "end": 5799,
+              "quoted": false,
+              "start": 5792,
+              "text": "staring"
+            },
+            {
+              "end": 5824,
+              "quoted": false,
+              "start": 5814,
+              "text": "abandoning"
+            },
+            {
+              "end": 5846,
+              "quoted": false,
+              "start": 5838,
+              "text": "noticing"
+            },
+            {
+              "end": 5867,
+              "quoted": false,
+              "start": 5859,
+              "text": "changing"
+            },
+            {
+              "end": 6755,
+              "quoted": false,
+              "start": 6745,
+              "text": "formatting"
+            },
+            {
+              "end": 1167,
+              "quoted": false,
+              "start": 1160,
+              "text": "waiting"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-participial-clause-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "are made",
+          "is presumed",
+          "be disciplined",
+          "be optimised",
+          "is published",
+          "is measured",
+          "be shipped",
+          "be made",
+          "be generated",
+          "been said",
+          "is made",
+          "is built",
+          "been understood",
+          "is produced",
+          "be made",
+          "being damaged",
+          "be streamlined",
+          "be treated",
+          "is guaranteed",
+          "be laboured",
+          "be done",
+          "be drafted",
+          "be abandoned",
+          "been interrupted",
+          "been made",
+          "is added"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 26,
+          "candidates": [
+            {
+              "end": 1120,
+              "quoted": false,
+              "start": 1112,
+              "text": "are made"
+            },
+            {
+              "end": 1386,
+              "quoted": false,
+              "start": 1375,
+              "text": "is presumed"
+            },
+            {
+              "end": 1404,
+              "quoted": false,
+              "start": 1390,
+              "text": "be disciplined"
+            },
+            {
+              "end": 1813,
+              "quoted": false,
+              "start": 1801,
+              "text": "be optimised"
+            },
+            {
+              "end": 1935,
+              "quoted": false,
+              "start": 1923,
+              "text": "is published"
+            },
+            {
+              "end": 1960,
+              "quoted": false,
+              "start": 1949,
+              "text": "is measured"
+            },
+            {
+              "end": 2240,
+              "quoted": true,
+              "start": 2230,
+              "text": "be shipped"
+            },
+            {
+              "end": 2317,
+              "quoted": false,
+              "start": 2310,
+              "text": "be made"
+            },
+            {
+              "end": 2398,
+              "quoted": false,
+              "start": 2386,
+              "text": "be generated"
+            },
+            {
+              "end": 2890,
+              "quoted": false,
+              "start": 2881,
+              "text": "been said"
+            },
+            {
+              "end": 4234,
+              "quoted": false,
+              "start": 4227,
+              "text": "is made"
+            },
+            {
+              "end": 4894,
+              "quoted": false,
+              "start": 4886,
+              "text": "is built"
+            },
+            {
+              "end": 5437,
+              "quoted": false,
+              "start": 5422,
+              "text": "been understood"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "is produced"
+            },
+            {
+              "end": 6622,
+              "quoted": false,
+              "start": 6615,
+              "text": "be made"
+            },
+            {
+              "end": 6654,
+              "quoted": false,
+              "start": 6641,
+              "text": "being damaged"
+            },
+            {
+              "end": 6727,
+              "quoted": false,
+              "start": 6713,
+              "text": "be streamlined"
+            },
+            {
+              "end": 6901,
+              "quoted": false,
+              "start": 6891,
+              "text": "be treated"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "is guaranteed"
+            },
+            {
+              "end": 7560,
+              "quoted": false,
+              "start": 7549,
+              "text": "be laboured"
+            },
+            {
+              "end": 7881,
+              "quoted": true,
+              "start": 7874,
+              "text": "be done"
+            },
+            {
+              "end": 8027,
+              "quoted": false,
+              "start": 8017,
+              "text": "be drafted"
+            },
+            {
+              "end": 8081,
+              "quoted": false,
+              "start": 8069,
+              "text": "be abandoned"
+            },
+            {
+              "end": 8388,
+              "quoted": false,
+              "start": 8372,
+              "text": "been interrupted"
+            },
+            {
+              "end": 8472,
+              "quoted": false,
+              "start": 8463,
+              "text": "been made"
+            },
+            {
+              "end": 9201,
+              "quoted": false,
+              "start": 9193,
+              "text": "is added"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 26 passive verb(s) at 16.4 per 1000 words: ['are made', 'is presumed', 'be disciplined', 'be optimised', 'is published', 'is measured', 'be shipped', 'be made', 'be generated', 'been said', 'is made', 'is built']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 26 passive verb(s) at 16.4 per 1000 words: ['are made', 'is presumed', 'be disciplined', 'be optimised', 'is published', 'is measured', 'be shipped', 'be made', 'be generated', 'been said', 'is made', 'is built']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
+          "match_count": 26,
+          "matches": [
+            "are made",
+            "is presumed",
+            "be disciplined",
+            "be optimised",
+            "is published",
+            "is measured",
+            "be shipped",
+            "be made",
+            "be generated",
+            "been said",
+            "is made",
+            "is built",
+            "been understood",
+            "is produced",
+            "be made",
+            "being damaged",
+            "be streamlined",
+            "be treated",
+            "is guaranteed",
+            "be laboured",
+            "be done",
+            "be drafted",
+            "be abandoned",
+            "been interrupted",
+            "been made",
+            "is added"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 1120,
+              "quoted": false,
+              "start": 1112,
+              "text": "are made"
+            },
+            {
+              "end": 1386,
+              "quoted": false,
+              "start": 1375,
+              "text": "is presumed"
+            },
+            {
+              "end": 1404,
+              "quoted": false,
+              "start": 1390,
+              "text": "be disciplined"
+            },
+            {
+              "end": 1813,
+              "quoted": false,
+              "start": 1801,
+              "text": "be optimised"
+            },
+            {
+              "end": 1935,
+              "quoted": false,
+              "start": 1923,
+              "text": "is published"
+            },
+            {
+              "end": 1960,
+              "quoted": false,
+              "start": 1949,
+              "text": "is measured"
+            },
+            {
+              "end": 2240,
+              "quoted": true,
+              "start": 2230,
+              "text": "be shipped"
+            },
+            {
+              "end": 2317,
+              "quoted": false,
+              "start": 2310,
+              "text": "be made"
+            },
+            {
+              "end": 2398,
+              "quoted": false,
+              "start": 2386,
+              "text": "be generated"
+            },
+            {
+              "end": 2890,
+              "quoted": false,
+              "start": 2881,
+              "text": "been said"
+            },
+            {
+              "end": 4234,
+              "quoted": false,
+              "start": 4227,
+              "text": "is made"
+            },
+            {
+              "end": 4894,
+              "quoted": false,
+              "start": 4886,
+              "text": "is built"
+            },
+            {
+              "end": 5437,
+              "quoted": false,
+              "start": 5422,
+              "text": "been understood"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "is produced"
+            },
+            {
+              "end": 6622,
+              "quoted": false,
+              "start": 6615,
+              "text": "be made"
+            },
+            {
+              "end": 6654,
+              "quoted": false,
+              "start": 6641,
+              "text": "being damaged"
+            },
+            {
+              "end": 6727,
+              "quoted": false,
+              "start": 6713,
+              "text": "be streamlined"
+            },
+            {
+              "end": 6901,
+              "quoted": false,
+              "start": 6891,
+              "text": "be treated"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "is guaranteed"
+            },
+            {
+              "end": 7560,
+              "quoted": false,
+              "start": 7549,
+              "text": "be laboured"
+            },
+            {
+              "end": 7881,
+              "quoted": true,
+              "start": 7874,
+              "text": "be done"
+            },
+            {
+              "end": 8027,
+              "quoted": false,
+              "start": 8017,
+              "text": "be drafted"
+            },
+            {
+              "end": 8081,
+              "quoted": false,
+              "start": 8069,
+              "text": "be abandoned"
+            },
+            {
+              "end": 8388,
+              "quoted": false,
+              "start": 8372,
+              "text": "been interrupted"
+            },
+            {
+              "end": 8472,
+              "quoted": false,
+              "start": 8463,
+              "text": "been made"
+            },
+            {
+              "end": 9201,
+              "quoted": false,
+              "start": 9193,
+              "text": "is added"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-passive-voice-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "It",
+          "It",
+          "It",
+          "it",
+          "It",
+          "it",
+          "it",
+          "It",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "It",
+          "It",
+          "It",
+          "it",
+          "it",
+          "It",
+          "It",
+          "It",
+          "it",
+          "It",
+          "It",
+          "It",
+          "it",
+          "It",
+          "It",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "It",
+          "It",
+          "It",
+          "It",
+          "It",
+          "it",
+          "It",
+          "it",
+          "It",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "It",
+          "It",
+          "It",
+          "it",
+          "it",
+          "It"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 55,
+          "candidates": [
+            {
+              "end": 136,
+              "quoted": false,
+              "start": 134,
+              "text": "It"
+            },
+            {
+              "end": 183,
+              "quoted": false,
+              "start": 181,
+              "text": "It"
+            },
+            {
+              "end": 637,
+              "quoted": false,
+              "start": 635,
+              "text": "It"
+            },
+            {
+              "end": 648,
+              "quoted": false,
+              "start": 646,
+              "text": "it"
+            },
+            {
+              "end": 703,
+              "quoted": false,
+              "start": 701,
+              "text": "It"
+            },
+            {
+              "end": 733,
+              "quoted": false,
+              "start": 731,
+              "text": "it"
+            },
+            {
+              "end": 776,
+              "quoted": false,
+              "start": 774,
+              "text": "it"
+            },
+            {
+              "end": 810,
+              "quoted": false,
+              "start": 808,
+              "text": "It"
+            },
+            {
+              "end": 949,
+              "quoted": false,
+              "start": 947,
+              "text": "it"
+            },
+            {
+              "end": 1031,
+              "quoted": false,
+              "start": 1029,
+              "text": "it"
+            },
+            {
+              "end": 1145,
+              "quoted": false,
+              "start": 1143,
+              "text": "it"
+            },
+            {
+              "end": 1164,
+              "quoted": false,
+              "start": 1162,
+              "text": "it"
+            },
+            {
+              "end": 1209,
+              "quoted": false,
+              "start": 1207,
+              "text": "it"
+            },
+            {
+              "end": 1297,
+              "quoted": false,
+              "start": 1295,
+              "text": "it"
+            },
+            {
+              "end": 1356,
+              "quoted": false,
+              "start": 1354,
+              "text": "It"
+            },
+            {
+              "end": 1659,
+              "quoted": false,
+              "start": 1657,
+              "text": "It"
+            },
+            {
+              "end": 1922,
+              "quoted": false,
+              "start": 1920,
+              "text": "It"
+            },
+            {
+              "end": 1939,
+              "quoted": false,
+              "start": 1937,
+              "text": "it"
+            },
+            {
+              "end": 1991,
+              "quoted": false,
+              "start": 1989,
+              "text": "it"
+            },
+            {
+              "end": 2022,
+              "quoted": false,
+              "start": 2020,
+              "text": "It"
+            },
+            {
+              "end": 2054,
+              "quoted": false,
+              "start": 2052,
+              "text": "It"
+            },
+            {
+              "end": 2129,
+              "quoted": false,
+              "start": 2127,
+              "text": "It"
+            },
+            {
+              "end": 2161,
+              "quoted": false,
+              "start": 2159,
+              "text": "it"
+            },
+            {
+              "end": 2172,
+              "quoted": false,
+              "start": 2170,
+              "text": "It"
+            },
+            {
+              "end": 2177,
+              "quoted": false,
+              "start": 2175,
+              "text": "It"
+            },
+            {
+              "end": 2404,
+              "quoted": false,
+              "start": 2402,
+              "text": "It"
+            },
+            {
+              "end": 2794,
+              "quoted": false,
+              "start": 2792,
+              "text": "it"
+            },
+            {
+              "end": 2951,
+              "quoted": false,
+              "start": 2949,
+              "text": "It"
+            },
+            {
+              "end": 3005,
+              "quoted": false,
+              "start": 3003,
+              "text": "It"
+            },
+            {
+              "end": 3013,
+              "quoted": false,
+              "start": 3011,
+              "text": "it"
+            },
+            {
+              "end": 3156,
+              "quoted": false,
+              "start": 3154,
+              "text": "it"
+            },
+            {
+              "end": 3164,
+              "quoted": false,
+              "start": 3162,
+              "text": "it"
+            },
+            {
+              "end": 3168,
+              "quoted": false,
+              "start": 3166,
+              "text": "it"
+            },
+            {
+              "end": 3241,
+              "quoted": false,
+              "start": 3239,
+              "text": "it"
+            },
+            {
+              "end": 3393,
+              "quoted": false,
+              "start": 3391,
+              "text": "it"
+            },
+            {
+              "end": 3454,
+              "quoted": false,
+              "start": 3452,
+              "text": "It"
+            },
+            {
+              "end": 3516,
+              "quoted": false,
+              "start": 3514,
+              "text": "It"
+            },
+            {
+              "end": 3584,
+              "quoted": false,
+              "start": 3582,
+              "text": "It"
+            },
+            {
+              "end": 3630,
+              "quoted": false,
+              "start": 3628,
+              "text": "It"
+            },
+            {
+              "end": 3650,
+              "quoted": false,
+              "start": 3648,
+              "text": "It"
+            },
+            {
+              "end": 3685,
+              "quoted": false,
+              "start": 3683,
+              "text": "it"
+            },
+            {
+              "end": 3690,
+              "quoted": false,
+              "start": 3688,
+              "text": "It"
+            },
+            {
+              "end": 3711,
+              "quoted": false,
+              "start": 3709,
+              "text": "it"
+            },
+            {
+              "end": 3721,
+              "quoted": false,
+              "start": 3719,
+              "text": "It"
+            },
+            {
+              "end": 3731,
+              "quoted": false,
+              "start": 3729,
+              "text": "it"
+            },
+            {
+              "end": 3736,
+              "quoted": false,
+              "start": 3734,
+              "text": "it"
+            },
+            {
+              "end": 4007,
+              "quoted": false,
+              "start": 4005,
+              "text": "it"
+            },
+            {
+              "end": 4133,
+              "quoted": false,
+              "start": 4131,
+              "text": "it"
+            },
+            {
+              "end": 4361,
+              "quoted": false,
+              "start": 4359,
+              "text": "it"
+            },
+            {
+              "end": 4375,
+              "quoted": false,
+              "start": 4373,
+              "text": "It"
+            },
+            {
+              "end": 4406,
+              "quoted": false,
+              "start": 4404,
+              "text": "It"
+            },
+            {
+              "end": 4436,
+              "quoted": false,
+              "start": 4434,
+              "text": "It"
+            },
+            {
+              "end": 4458,
+              "quoted": false,
+              "start": 4456,
+              "text": "it"
+            },
+            {
+              "end": 4508,
+              "quoted": false,
+              "start": 4506,
+              "text": "it"
+            },
+            {
+              "end": 4739,
+              "quoted": false,
+              "start": 4737,
+              "text": "It"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 55 `it` pronoun(s) at 34.6 per 1000 words: ['It', 'It', 'It', 'it', 'It', 'it', 'it', 'It', 'it', 'it', 'it', 'it']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 55 `it` pronoun(s) at 34.6 per 1000 words: ['It', 'It', 'It', 'it', 'It', 'it', 'it', 'It', 'it', 'it', 'it', 'it']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
+          "match_count": 55,
+          "matches": [
+            "It",
+            "It",
+            "It",
+            "it",
+            "It",
+            "it",
+            "it",
+            "It",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "It",
+            "It",
+            "It",
+            "it",
+            "it",
+            "It",
+            "It",
+            "It",
+            "it",
+            "It",
+            "It",
+            "It",
+            "it",
+            "It",
+            "It",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "It",
+            "It",
+            "It",
+            "It",
+            "It",
+            "it",
+            "It",
+            "it",
+            "It",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "It",
+            "It",
+            "It",
+            "it",
+            "it",
+            "It"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 136,
+              "quoted": false,
+              "start": 134,
+              "text": "It"
+            },
+            {
+              "end": 183,
+              "quoted": false,
+              "start": 181,
+              "text": "It"
+            },
+            {
+              "end": 637,
+              "quoted": false,
+              "start": 635,
+              "text": "It"
+            },
+            {
+              "end": 648,
+              "quoted": false,
+              "start": 646,
+              "text": "it"
+            },
+            {
+              "end": 703,
+              "quoted": false,
+              "start": 701,
+              "text": "It"
+            },
+            {
+              "end": 733,
+              "quoted": false,
+              "start": 731,
+              "text": "it"
+            },
+            {
+              "end": 776,
+              "quoted": false,
+              "start": 774,
+              "text": "it"
+            },
+            {
+              "end": 810,
+              "quoted": false,
+              "start": 808,
+              "text": "It"
+            },
+            {
+              "end": 949,
+              "quoted": false,
+              "start": 947,
+              "text": "it"
+            },
+            {
+              "end": 1031,
+              "quoted": false,
+              "start": 1029,
+              "text": "it"
+            },
+            {
+              "end": 1145,
+              "quoted": false,
+              "start": 1143,
+              "text": "it"
+            },
+            {
+              "end": 1164,
+              "quoted": false,
+              "start": 1162,
+              "text": "it"
+            },
+            {
+              "end": 1209,
+              "quoted": false,
+              "start": 1207,
+              "text": "it"
+            },
+            {
+              "end": 1297,
+              "quoted": false,
+              "start": 1295,
+              "text": "it"
+            },
+            {
+              "end": 1356,
+              "quoted": false,
+              "start": 1354,
+              "text": "It"
+            },
+            {
+              "end": 1659,
+              "quoted": false,
+              "start": 1657,
+              "text": "It"
+            },
+            {
+              "end": 1922,
+              "quoted": false,
+              "start": 1920,
+              "text": "It"
+            },
+            {
+              "end": 1939,
+              "quoted": false,
+              "start": 1937,
+              "text": "it"
+            },
+            {
+              "end": 1991,
+              "quoted": false,
+              "start": 1989,
+              "text": "it"
+            },
+            {
+              "end": 2022,
+              "quoted": false,
+              "start": 2020,
+              "text": "It"
+            },
+            {
+              "end": 2054,
+              "quoted": false,
+              "start": 2052,
+              "text": "It"
+            },
+            {
+              "end": 2129,
+              "quoted": false,
+              "start": 2127,
+              "text": "It"
+            },
+            {
+              "end": 2161,
+              "quoted": false,
+              "start": 2159,
+              "text": "it"
+            },
+            {
+              "end": 2172,
+              "quoted": false,
+              "start": 2170,
+              "text": "It"
+            },
+            {
+              "end": 2177,
+              "quoted": false,
+              "start": 2175,
+              "text": "It"
+            },
+            {
+              "end": 2404,
+              "quoted": false,
+              "start": 2402,
+              "text": "It"
+            },
+            {
+              "end": 2794,
+              "quoted": false,
+              "start": 2792,
+              "text": "it"
+            },
+            {
+              "end": 2951,
+              "quoted": false,
+              "start": 2949,
+              "text": "It"
+            },
+            {
+              "end": 3005,
+              "quoted": false,
+              "start": 3003,
+              "text": "It"
+            },
+            {
+              "end": 3013,
+              "quoted": false,
+              "start": 3011,
+              "text": "it"
+            },
+            {
+              "end": 3156,
+              "quoted": false,
+              "start": 3154,
+              "text": "it"
+            },
+            {
+              "end": 3164,
+              "quoted": false,
+              "start": 3162,
+              "text": "it"
+            },
+            {
+              "end": 3168,
+              "quoted": false,
+              "start": 3166,
+              "text": "it"
+            },
+            {
+              "end": 3241,
+              "quoted": false,
+              "start": 3239,
+              "text": "it"
+            },
+            {
+              "end": 3393,
+              "quoted": false,
+              "start": 3391,
+              "text": "it"
+            },
+            {
+              "end": 3454,
+              "quoted": false,
+              "start": 3452,
+              "text": "It"
+            },
+            {
+              "end": 3516,
+              "quoted": false,
+              "start": 3514,
+              "text": "It"
+            },
+            {
+              "end": 3584,
+              "quoted": false,
+              "start": 3582,
+              "text": "It"
+            },
+            {
+              "end": 3630,
+              "quoted": false,
+              "start": 3628,
+              "text": "It"
+            },
+            {
+              "end": 3650,
+              "quoted": false,
+              "start": 3648,
+              "text": "It"
+            },
+            {
+              "end": 3685,
+              "quoted": false,
+              "start": 3683,
+              "text": "it"
+            },
+            {
+              "end": 3690,
+              "quoted": false,
+              "start": 3688,
+              "text": "It"
+            },
+            {
+              "end": 3711,
+              "quoted": false,
+              "start": 3709,
+              "text": "it"
+            },
+            {
+              "end": 3721,
+              "quoted": false,
+              "start": 3719,
+              "text": "It"
+            },
+            {
+              "end": 3731,
+              "quoted": false,
+              "start": 3729,
+              "text": "it"
+            },
+            {
+              "end": 3736,
+              "quoted": false,
+              "start": 3734,
+              "text": "it"
+            },
+            {
+              "end": 4007,
+              "quoted": false,
+              "start": 4005,
+              "text": "it"
+            },
+            {
+              "end": 4133,
+              "quoted": false,
+              "start": 4131,
+              "text": "it"
+            },
+            {
+              "end": 4361,
+              "quoted": false,
+              "start": 4359,
+              "text": "it"
+            },
+            {
+              "end": 4375,
+              "quoted": false,
+              "start": 4373,
+              "text": "It"
+            },
+            {
+              "end": 4406,
+              "quoted": false,
+              "start": 4404,
+              "text": "It"
+            },
+            {
+              "end": 4436,
+              "quoted": false,
+              "start": 4434,
+              "text": "It"
+            },
+            {
+              "end": 4458,
+              "quoted": false,
+              "start": 4456,
+              "text": "it"
+            },
+            {
+              "end": 4508,
+              "quoted": false,
+              "start": 4506,
+              "text": "it"
+            },
+            {
+              "end": 4739,
+              "quoted": false,
+              "start": 4737,
+              "text": "It"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-it-pronoun-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "encounters",
+          "generated",
+          "requires",
+          "requires"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 4,
+          "candidates": [
+            {
+              "end": 2051,
+              "quoted": false,
+              "start": 2041,
+              "text": "encounters"
+            },
+            {
+              "end": 2398,
+              "quoted": false,
+              "start": 2389,
+              "text": "generated"
+            },
+            {
+              "end": 3213,
+              "quoted": false,
+              "start": 3205,
+              "text": "requires"
+            },
+            {
+              "end": 6272,
+              "quoted": false,
+              "start": 6264,
+              "text": "requires"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 4 Latinate verb(s) at 2.5 per 1000 words: ['encounters', 'generated', 'requires', 'requires']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 4 Latinate verb(s) at 2.5 per 1000 words: ['encounters', 'generated', 'requires', 'requires']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
+          "match_count": 4,
+          "matches": [
+            "encounters",
+            "generated",
+            "requires",
+            "requires"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 2051,
+              "quoted": false,
+              "start": 2041,
+              "text": "encounters"
+            },
+            {
+              "end": 2398,
+              "quoted": false,
+              "start": 2389,
+              "text": "generated"
+            },
+            {
+              "end": 3213,
+              "quoted": false,
+              "start": 3205,
+              "text": "requires"
+            },
+            {
+              "end": 6272,
+              "quoted": false,
+              "start": 6264,
+              "text": "requires"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "no-latinate-verb-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
       "evidence": {
         "counts": {},
         "locations": [],
@@ -1299,24 +5851,183 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No superficial -ing phrases",
+            "raw_evidence": "Mean word length 4.75 characters across 1591 words (target: <4.8)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No superficial -ing phrases",
+          "evidence": "Mean word length 4.75 characters across 1591 words (target: <4.8)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Look for the shorter word that does the same job. `necessitated` becomes `needed`, `demonstrated substantial improvement` becomes `got better`. The measure is draft-wide, so it points at register rather than at one sentence.",
+          "metric": null,
+          "metric_value": 0,
+          "sample_size": 1590,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "word-length-average",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed-script words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed-script words",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "guidance": "Retype the flagged word in plain Latin characters. If a passage is genuinely in Russian, Greek, Kazakh, or another Cyrillic or Greek script, write the whole word in that script rather than mixing.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "id": "no-mixed-script-words",
+      "severity": "hard_fail",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "mean concreteness 2.64 of 5 across 684 content words (target above 2.915)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean concreteness 2.64 of 5 across 684 content words (target: >2.915)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean concreteness 2.64 of 5 across 684 content words (target: >2.915)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "guidance": "Name the thing. `The framework provides a basis for the approach` becomes `the rota tells people when to turn up`. Abstraction is right where the subject really is abstract; the measure is draft-wide, so read it as register rather than as one sentence.",
+          "metric": "mean concreteness 2.64 of 5 across 684 content words (target above 2.915)",
+          "metric_value": "mean concreteness 2.64 of 5 across 684 content words (target above 2.915)",
+          "sample_size": 1590,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "id": "concreteness-average",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "Meaning arrives later",
+          "Walking"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 2,
+          "candidates": [
+            {
+              "end": 5575,
+              "quoted": false,
+              "start": 5554,
+              "text": "Meaning arrives later"
+            },
+            {
+              "end": 5760,
+              "quoted": false,
+              "start": 5753,
+              "text": "Walking"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 2 tacked-on -ing phrase(s)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 2 tacked-on -ing phrase(s)",
           "evidence_role": "analysis_substitution",
           "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
-          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
-          "match_count": 0,
-          "matches": [],
+          "guidance": "Rewrite formulaic participial clauses when a direct sentence or precise causal statement is clearer.",
+          "match_count": 2,
+          "matches": [
+            "Meaning arrives later",
+            "Walking"
+          ],
           "severity": "strong_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 5575,
+              "quoted": false,
+              "start": 5554,
+              "text": "Meaning arrives later"
+            },
+            {
+              "end": 5760,
+              "quoted": false,
+              "start": 5753,
+              "text": "Walking"
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1324,7 +6035,7 @@
       ],
       "id": "no-superficial-ing",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Sensory and atmospheric",
@@ -1354,6 +6065,7 @@
           ],
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -1425,27 +6137,27 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 2
+              "minimum_candidates": 1
             },
-            "raw_evidence": "Rhetorical questions: 0",
+            "raw_evidence": "Fragment-question answer beats: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Rhetorical questions: 0",
+          "evidence": "Fragment-question answer beats: 0",
           "evidence_role": "rhetorical_template",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument.",
+          "guidance": "Rewrite the fragment and its answer as one direct statement.",
           "match_count": 0,
           "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 2
+            "minimum_candidates": 1
           },
           "threshold_met": false
         }
@@ -1506,6 +6218,53 @@
         "genre_misfit"
       ],
       "id": "no-excessive-lists",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_deviation": 2,
+              "minimum_items": 3
+            },
+            "raw_evidence": "No symmetric list items",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No symmetric list items",
+          "evidence_role": "listification",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix template-shaped list items; preserve specifications, comparison tables, and reference entries where uniformity carries meaning.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "maximum_deviation": 2,
+            "minimum_items": 3
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-symmetric-list-items",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -1584,6 +6343,7 @@
           ],
           "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -1817,12 +6577,33 @@
         "locations": [],
         "metric": null,
         "quoted_phrases": [
+          "it depends",
+          "tend to",
+          "tends to",
           "is not guaranteed"
         ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 1,
+          "candidate_count": 4,
           "candidates": [
+            {
+              "end": 818,
+              "quoted": false,
+              "start": 808,
+              "text": "it depends"
+            },
+            {
+              "end": 2706,
+              "quoted": false,
+              "start": 2699,
+              "text": "tend to"
+            },
+            {
+              "end": 6296,
+              "quoted": false,
+              "start": 6288,
+              "text": "tends to"
+            },
             {
               "end": 7444,
               "quoted": false,
@@ -1835,24 +6616,45 @@
             "effective_threshold": {
               "minimum_candidates": 3
             },
-            "raw_evidence": "Hedging constructions: 1",
+            "raw_evidence": "Found 4 hedging constructions: ['it depends', 'tend to', 'tends to', 'is not guaranteed']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Hedging constructions: 1",
+          "evidence": "Found 4 hedging constructions: ['it depends', 'tend to', 'tends to', 'is not guaranteed']",
           "evidence_role": "stance_erasure",
           "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure"
           ],
           "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty.",
-          "match_count": 1,
+          "match_count": 4,
           "matches": [
+            "it depends",
+            "tend to",
+            "tends to",
             "is not guaranteed"
           ],
           "severity": "context_warning",
           "spans": [
+            {
+              "end": 818,
+              "quoted": false,
+              "start": 808,
+              "text": "it depends"
+            },
+            {
+              "end": 2706,
+              "quoted": false,
+              "start": 2699,
+              "text": "tend to"
+            },
+            {
+              "end": 6296,
+              "quoted": false,
+              "start": 6288,
+              "text": "tends to"
+            },
             {
               "end": 7444,
               "quoted": false,
@@ -1863,7 +6665,7 @@
           "threshold": {
             "minimum_candidates": 3
           },
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1871,7 +6673,7 @@
       ],
       "id": "no-excessive-hedging",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Voice and register",
@@ -2126,7 +6928,7 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": "paragraph length variation 0.18 across 21 paragraphs (target above 0.18)",
+        "metric": "paragraph length variation 0.18 across 21 paragraphs (target: >=0.18)",
         "quoted_phrases": [],
         "raw": {
           "aggregate_finding": true,
@@ -2150,8 +6952,8 @@
             "frictionless_structure"
           ],
           "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template.",
-          "metric": "paragraph length variation 0.18 across 21 paragraphs (target above 0.18)",
-          "metric_value": "paragraph length variation 0.18 across 21 paragraphs (target above 0.18)",
+          "metric": "paragraph length variation 0.18 across 21 paragraphs (target: >=0.18)",
+          "metric_value": "paragraph length variation 0.18 across 21 paragraphs (target: >=0.18)",
           "sample_size": 1590,
           "severity": "context_warning",
           "threshold": {
@@ -2263,6 +7065,7 @@
           ],
           "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": {
@@ -2309,6 +7112,7 @@
           ],
           "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
@@ -2330,21 +7134,21 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": "type-token ratio 0.39 (621 unique of 1589 words, target above 0.40)",
+        "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": true,
+          "aggregate_finding": false,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Type-token ratio: 0.391 (621 unique / 1589 total, target: >0.40)",
+            "raw_evidence": "Windowed type-token ratio: 0.661 (58 windows of 150 words, flag at 0.71)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Type-token ratio: 0.391 (621 unique / 1589 total, target: >0.40)",
+          "evidence": "Windowed type-token ratio: 0.661 (58 windows of 150 words, flag at 0.71)",
           "evidence_role": "lexical_distribution",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -2352,12 +7156,12 @@
             "genre_misfit"
           ],
           "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately.",
-          "metric": "type-token ratio 0.39 (621 unique of 1589 words, target above 0.40)",
-          "metric_value": "type-token ratio 0.39 (621 unique of 1589 words, target above 0.40)",
+          "metric": null,
+          "metric_value": 0,
           "sample_size": 1590,
           "severity": "context_warning",
           "threshold": null,
-          "threshold_met": true
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -2366,158 +7170,7 @@
       ],
       "id": "vocabulary-diversity",
       "severity": "context_warning",
-      "status": "flagged"
-    },
-    {
-      "category": "Language and grammar",
-      "evidence": {
-        "counts": {},
-        "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "heat, patience and the willingness",
-          "audiences, metrics and clients",
-          "templated, scheduled and distributed",
-          "deadlines, discipline or publication",
-          "force, clarity and purpose",
-          "discipline, suspicion and grace",
-          "exposure, attention and revision"
-        ],
-        "raw": {
-          "aggregate_finding": false,
-          "candidate_count": 7,
-          "candidates": [
-            {
-              "end": 864,
-              "quoted": false,
-              "start": 830,
-              "text": "heat, patience and the willingness"
-            },
-            {
-              "end": 1894,
-              "quoted": false,
-              "start": 1864,
-              "text": "audiences, metrics and clients"
-            },
-            {
-              "end": 2444,
-              "quoted": false,
-              "start": 2408,
-              "text": "templated, scheduled and distributed"
-            },
-            {
-              "end": 4129,
-              "quoted": false,
-              "start": 4093,
-              "text": "deadlines, discipline or publication"
-            },
-            {
-              "end": 4471,
-              "quoted": false,
-              "start": 4445,
-              "text": "force, clarity and purpose"
-            },
-            {
-              "end": 5319,
-              "quoted": false,
-              "start": 5288,
-              "text": "discipline, suspicion and grace"
-            },
-            {
-              "end": 7144,
-              "quoted": false,
-              "start": 7112,
-              "text": "exposure, attention and revision"
-            }
-          ],
-          "context_gate": {
-            "applied": false,
-            "effective_threshold": {
-              "minimum_candidates": 4,
-              "minimum_words": 300
-            },
-            "raw_evidence": "Found 7 triad(s): ['heat, patience and the willingness', 'audiences, metrics and clients', 'templated, scheduled and distributed', 'deadlines, discipline or publication', 'force, clarity and purpose', 'discipline, suspicion and grace', 'exposure, attention and revision']",
-            "suppression_reason": null
-          },
-          "context_reason": null,
-          "context_suppressed": false,
-          "evidence": "Found 7 triad(s): ['heat, patience and the willingness', 'audiences, metrics and clients', 'templated, scheduled and distributed', 'deadlines, discipline or publication', 'force, clarity and purpose', 'discipline, suspicion and grace', 'exposure, attention and revision']",
-          "evidence_role": "list_rhythm",
-          "evidence_type": "lexical",
-          "failure_modes": [
-            "frictionless_structure",
-            "genre_misfit"
-          ],
-          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-          "match_count": 7,
-          "matches": [
-            "heat, patience and the willingness",
-            "audiences, metrics and clients",
-            "templated, scheduled and distributed",
-            "deadlines, discipline or publication",
-            "force, clarity and purpose",
-            "discipline, suspicion and grace",
-            "exposure, attention and revision"
-          ],
-          "severity": "context_warning",
-          "spans": [
-            {
-              "end": 864,
-              "quoted": false,
-              "start": 830,
-              "text": "heat, patience and the willingness"
-            },
-            {
-              "end": 1894,
-              "quoted": false,
-              "start": 1864,
-              "text": "audiences, metrics and clients"
-            },
-            {
-              "end": 2444,
-              "quoted": false,
-              "start": 2408,
-              "text": "templated, scheduled and distributed"
-            },
-            {
-              "end": 4129,
-              "quoted": false,
-              "start": 4093,
-              "text": "deadlines, discipline or publication"
-            },
-            {
-              "end": 4471,
-              "quoted": false,
-              "start": 4445,
-              "text": "force, clarity and purpose"
-            },
-            {
-              "end": 5319,
-              "quoted": false,
-              "start": 5288,
-              "text": "discipline, suspicion and grace"
-            },
-            {
-              "end": 7144,
-              "quoted": false,
-              "start": 7112,
-              "text": "exposure, attention and revision"
-            }
-          ],
-          "threshold": {
-            "minimum_candidates": 4,
-            "minimum_words": 300
-          },
-          "threshold_met": true
-        }
-      },
-      "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
-      ],
-      "id": "no-triad-density",
-      "severity": "context_warning",
-      "status": "flagged"
+      "status": "clear"
     },
     {
       "category": "Structural tells",
@@ -2587,6 +7240,7 @@
           ],
           "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": null,
@@ -2705,12 +7359,12 @@
             "effective_threshold": {
               "minimum_candidates": 2
             },
-            "raw_evidence": "List items with bolded headers: 0",
+            "raw_evidence": "Bold-label segments: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "List items with bolded headers: 0",
+          "evidence": "Bold-label segments: 0",
           "evidence_role": "list_template",
           "evidence_type": "lexical",
           "failure_modes": [

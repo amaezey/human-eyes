@@ -1,28 +1,31 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 6
+      "flagged": 14
     },
     "programmatic": {
       "by_category": {
         "Filler and hedging": 2,
-        "Language and grammar": 2,
-        "Style": 1,
+        "Language and grammar": 7,
+        "Signal stacking": 1,
+        "Structural tells": 1,
+        "Style": 2,
         "Voice and register": 1
       },
       "by_severity": {
-        "context_warning": 6,
+        "context_warning": 14,
         "hard_fail": 0,
         "strong_warning": 0
       },
       "signal_stacking": {
         "components": [
-          "contrived contrast framing"
+          "manufactured insight framing",
+          "negative parallelism"
         ],
-        "score": 2,
+        "score": 7,
         "threshold": 4,
-        "triggered": false,
-        "vocabulary_points": 0
+        "triggered": true,
+        "vocabulary_points": 1
       }
     },
     "semantic": {
@@ -168,32 +171,38 @@
       "category": "Signal stacking",
       "evidence": {
         "counts": {
-          "score": 2,
+          "score": 7,
           "threshold": 4
         },
         "locations": [],
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
-          "component_count": 1,
+          "component_count": 2,
+          "component_points": {
+            "manufactured_insight": 2,
+            "negative_parallelism": 4
+          },
           "component_signals": [
-            "contrived contrast framing"
+            "manufactured insight framing",
+            "negative parallelism"
           ],
           "components": [
-            "contrived contrast framing"
+            "manufactured insight framing",
+            "negative parallelism"
           ],
           "context_gate": {
             "applied": false,
             "effective_threshold": 4,
-            "raw_evidence": "Overall signal stacking 2/4 from [contrived contrast framing]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.0/1000",
+            "raw_evidence": "Overall signal stacking 7/4 from [manufactured insight framing, negative parallelism]; vocab=1 point(s), worst_generic=2, gptzero=[], kobak=10 distinct/8.0/1000, sample=['lies', 'need', 'offers', 'deeper', 'harness', 'insights', 'precise', 'research', 'seeks', 'valuable']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Overall signal stacking 2/4 from [contrived contrast framing]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.0/1000",
+          "evidence": "Overall signal stacking 7/4 from [manufactured insight framing, negative parallelism]; vocab=1 point(s), worst_generic=2, gptzero=[], kobak=10 distinct/8.0/1000, sample=['lies', 'need', 'offers', 'deeper', 'harness', 'insights', 'precise', 'research', 'seeks', 'valuable']",
           "evidence_role": "signal_stacking",
           "evidence_type": "aggregate",
           "failure_modes": [
@@ -201,10 +210,10 @@
             "frictionless_structure"
           ],
           "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict.",
-          "score": 2,
+          "score": 7,
           "severity": "context_warning",
           "threshold": 4,
-          "threshold_met": false,
+          "threshold_met": true,
           "vocabulary_signal_stacking": {
             "gptzero_matches": [],
             "kobak_style_density": 8.009858287122611,
@@ -221,9 +230,11 @@
               "seeks",
               "valuable"
             ],
-            "points": 0,
-            "reasons": [],
-            "worst_generic": 1
+            "points": 1,
+            "reasons": [
+              "generic_cluster=2"
+            ],
+            "worst_generic": 2
           }
         }
       },
@@ -233,7 +244,7 @@
       ],
       "id": "overall-signal-stacking",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Structural tells",
@@ -302,7 +313,7 @@
             "voice_erasure",
             "generic_abstraction"
           ],
-          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+          "guidance": "Remove the candour or vulnerability announcement and state the claim directly. Preserve literal uses and quoted source text.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -320,6 +331,50 @@
       "status": "clear"
     },
     {
+      "category": "Communication",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No formulaic social-post frames",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No formulaic social-post frames",
+          "evidence_role": "platform_formula",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Remove the stock frame and state the actual request, experience, result, or constraint directly.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "subtypes": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-formulaic-social-posts",
+      "severity": "strong_warning",
+      "status": "clear"
+    },
+    {
       "category": "Filler and hedging",
       "evidence": {
         "counts": {},
@@ -329,11 +384,90 @@
           "They sit down to dinner.",
           "He has a drink.",
           "He says something ordinary.",
-          "Then he is dead."
+          "Then he is dead.",
+          "Do not edit repository files. Do not save files.",
+          "He has a drink. He says something ordinary.",
+          "She seeks the timeline. She wants the medical explanation. She reads the records.",
+          "She knows what to do. She calls the right people. She signs forms. She keeps functioning.",
+          "You are running an evaluation of a local writing skill.",
+          "Do not edit repository files.",
+          "Do not save files.",
+          "Return only the final user-facing output for the task.",
+          "Do not mention this evaluation harness.",
+          "Task prompt: Audit this draft for AI tells.",
+          "That is why it deserves to be reread every decade.",
+          "Didion does not stage grief as an emotional revelation.",
+          "She stages it as administrative shock.",
+          "There is no warning, no moral preparation, no cinematic pause.",
+          "That precision matters.",
+          "She seeks the timeline.",
+          "She wants the medical explanation.",
+          "She reads the records.",
+          "This is one reason the book rewards rereading.",
+          "In early adulthood, Didion\u2019s forensic attention can look like strength.",
+          "She knows what to do.",
+          "She calls the right people.",
+          "She signs forms.",
+          "She keeps functioning.",
+          "A decade later, the same composure reads differently.",
+          "The title\u2019s \u201cmagical thinking\u201d is not ornamental.",
+          "Didion knows John is dead.",
+          "She has seen the body.",
+          "She has received the medical facts.",
+          "It is not an extravagant delusion.",
+          "It is domestic, practical, almost reasonable.",
+          "A living man needs shoes.",
+          "That scene lands differently across a life.",
+          "At twenty-five, it may seem like an elegant symbol.",
+          "Grief does not always announce itself as despair.",
+          "The dead remain embedded in systems designed for the living.",
+          "She does not turn grief into moral improvement.",
+          "She is not interested in uplift.",
+          "She is interested in what the mind does under pressure.",
+          "Didion offers something more austere and more useful.",
+          "She shows grief as repetitive, self-interrupting, intellectually humiliating.",
+          "She catches herself bargaining with reality.",
+          "The \u201cvortex effect\u201d is central to this.",
+          "These are not decorative flashbacks.",
+          "A place is not just a place.",
+          "The first time, the reader may focus on the death.",
+          "His absence is therefore not only emotional.",
+          "It is cognitive.",
+          "The person who helped her verify reality is gone.",
+          "That is one of the book\u2019s sharpest insights.",
+          "Grief is not only missing someone.",
+          "It is losing a witness.",
+          "This is why the book is so exacting about memory.",
+          "Hospitals occupy much of its emotional terrain.",
+          "The medical scenes are not merely background.",
+          "They expose the limits of expertise.",
+          "They can explain mechanisms, not meanings.",
+          "They can describe risk, not guarantee outcome.",
+          "Didion\u2019s style is inseparable from this argument.",
+          "Her sentences are clean but not simple.",
+          "There is also a harder reason to reread it.",
+          "Each decade brings the reader closer to the book\u2019s facts.",
+          "Parents age.",
+          "Partners become mortal in less theoretical ways.",
+          "Friends die.",
+          "Children become vulnerable adults.",
+          "The body becomes less obedient.",
+          "Didion\u2019s book waits for the reader at each threshold.",
+          "She does not speak for everyone.",
+          "She speaks exactly enough that others can recognise themselves.",
+          "At one age, the unforgettable image is the shoes.",
+          "At another, it is the dinner table.",
+          "Didion\u2019s achievement is not that she makes grief intelligible.",
+          "She shows why it resists intelligence.",
+          "She shows the bargain failing.",
+          "Then she keeps looking.",
+          "```",
+          "But its deeper achievement is that it changes shape as the reader ages.",
+          "Read in one decade, it is a devastating account of bereavement."
         ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 4,
+          "candidate_count": 83,
           "candidates": [
             {
               "end": 1791,
@@ -358,19 +492,497 @@
               "quoted": false,
               "start": 1836,
               "text": "Then he is dead."
+            },
+            {
+              "end": 257,
+              "quoted": false,
+              "start": 209,
+              "text": "Do not edit repository files. Do not save files."
+            },
+            {
+              "end": 1835,
+              "quoted": false,
+              "start": 1792,
+              "text": "He has a drink. He says something ordinary."
+            },
+            {
+              "end": 2325,
+              "quoted": false,
+              "start": 2244,
+              "text": "She seeks the timeline. She wants the medical explanation. She reads the records."
+            },
+            {
+              "end": 2694,
+              "quoted": false,
+              "start": 2605,
+              "text": "She knows what to do. She calls the right people. She signs forms. She keeps functioning."
+            },
+            {
+              "end": 55,
+              "quoted": false,
+              "start": 0,
+              "text": "You are running an evaluation of a local writing skill."
+            },
+            {
+              "end": 238,
+              "quoted": false,
+              "start": 209,
+              "text": "Do not edit repository files."
+            },
+            {
+              "end": 257,
+              "quoted": false,
+              "start": 239,
+              "text": "Do not save files."
+            },
+            {
+              "end": 312,
+              "quoted": false,
+              "start": 258,
+              "text": "Return only the final user-facing output for the task."
+            },
+            {
+              "end": 352,
+              "quoted": false,
+              "start": 313,
+              "text": "Do not mention this evaluation harness."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "Task prompt: Audit this draft for AI tells."
+            },
+            {
+              "end": 1385,
+              "quoted": false,
+              "start": 1335,
+              "text": "That is why it deserves to be reread every decade."
+            },
+            {
+              "end": 1607,
+              "quoted": false,
+              "start": 1552,
+              "text": "Didion does not stage grief as an emotional revelation."
+            },
+            {
+              "end": 1646,
+              "quoted": false,
+              "start": 1608,
+              "text": "She stages it as administrative shock."
+            },
+            {
+              "end": 1966,
+              "quoted": false,
+              "start": 1904,
+              "text": "There is no warning, no moral preparation, no cinematic pause."
+            },
+            {
+              "end": 2078,
+              "quoted": false,
+              "start": 2055,
+              "text": "That precision matters."
+            },
+            {
+              "end": 2267,
+              "quoted": false,
+              "start": 2244,
+              "text": "She seeks the timeline."
+            },
+            {
+              "end": 2302,
+              "quoted": false,
+              "start": 2268,
+              "text": "She wants the medical explanation."
+            },
+            {
+              "end": 2325,
+              "quoted": false,
+              "start": 2303,
+              "text": "She reads the records."
+            },
+            {
+              "end": 2532,
+              "quoted": false,
+              "start": 2486,
+              "text": "This is one reason the book rewards rereading."
+            },
+            {
+              "end": 2604,
+              "quoted": false,
+              "start": 2533,
+              "text": "In early adulthood, Didion\u2019s forensic attention can look like strength."
+            },
+            {
+              "end": 2626,
+              "quoted": false,
+              "start": 2605,
+              "text": "She knows what to do."
+            },
+            {
+              "end": 2654,
+              "quoted": false,
+              "start": 2627,
+              "text": "She calls the right people."
+            },
+            {
+              "end": 2671,
+              "quoted": false,
+              "start": 2655,
+              "text": "She signs forms."
+            },
+            {
+              "end": 2694,
+              "quoted": false,
+              "start": 2672,
+              "text": "She keeps functioning."
+            },
+            {
+              "end": 2748,
+              "quoted": false,
+              "start": 2695,
+              "text": "A decade later, the same composure reads differently."
+            },
+            {
+              "end": 2970,
+              "quoted": false,
+              "start": 2921,
+              "text": "The title\u2019s \u201cmagical thinking\u201d is not ornamental."
+            },
+            {
+              "end": 3077,
+              "quoted": false,
+              "start": 3051,
+              "text": "Didion knows John is dead."
+            },
+            {
+              "end": 3100,
+              "quoted": false,
+              "start": 3078,
+              "text": "She has seen the body."
+            },
+            {
+              "end": 3136,
+              "quoted": false,
+              "start": 3101,
+              "text": "She has received the medical facts."
+            },
+            {
+              "end": 3331,
+              "quoted": false,
+              "start": 3297,
+              "text": "It is not an extravagant delusion."
+            },
+            {
+              "end": 3377,
+              "quoted": false,
+              "start": 3332,
+              "text": "It is domestic, practical, almost reasonable."
+            },
+            {
+              "end": 3403,
+              "quoted": false,
+              "start": 3378,
+              "text": "A living man needs shoes."
+            },
+            {
+              "end": 3552,
+              "quoted": false,
+              "start": 3509,
+              "text": "That scene lands differently across a life."
+            },
+            {
+              "end": 3604,
+              "quoted": false,
+              "start": 3553,
+              "text": "At twenty-five, it may seem like an elegant symbol."
+            },
+            {
+              "end": 3757,
+              "quoted": false,
+              "start": 3708,
+              "text": "Grief does not always announce itself as despair."
+            },
+            {
+              "end": 3945,
+              "quoted": false,
+              "start": 3885,
+              "text": "The dead remain embedded in systems designed for the living."
+            },
+            {
+              "end": 4080,
+              "quoted": false,
+              "start": 4033,
+              "text": "She does not turn grief into moral improvement."
+            },
+            {
+              "end": 4257,
+              "quoted": false,
+              "start": 4225,
+              "text": "She is not interested in uplift."
+            },
+            {
+              "end": 4313,
+              "quoted": false,
+              "start": 4258,
+              "text": "She is interested in what the mind does under pressure."
+            },
+            {
+              "end": 4620,
+              "quoted": false,
+              "start": 4567,
+              "text": "Didion offers something more austere and more useful."
+            },
+            {
+              "end": 4698,
+              "quoted": false,
+              "start": 4621,
+              "text": "She shows grief as repetitive, self-interrupting, intellectually humiliating."
+            },
+            {
+              "end": 4814,
+              "quoted": false,
+              "start": 4770,
+              "text": "She catches herself bargaining with reality."
+            },
+            {
+              "end": 4996,
+              "quoted": false,
+              "start": 4957,
+              "text": "The \u201cvortex effect\u201d is central to this."
+            },
+            {
+              "end": 5215,
+              "quoted": false,
+              "start": 5179,
+              "text": "These are not decorative flashbacks."
+            },
+            {
+              "end": 5342,
+              "quoted": false,
+              "start": 5314,
+              "text": "A place is not just a place."
+            },
+            {
+              "end": 5577,
+              "quoted": false,
+              "start": 5527,
+              "text": "The first time, the reader may focus on the death."
+            },
+            {
+              "end": 5852,
+              "quoted": false,
+              "start": 5808,
+              "text": "His absence is therefore not only emotional."
+            },
+            {
+              "end": 5869,
+              "quoted": false,
+              "start": 5853,
+              "text": "It is cognitive."
+            },
+            {
+              "end": 5919,
+              "quoted": false,
+              "start": 5870,
+              "text": "The person who helped her verify reality is gone."
+            },
+            {
+              "end": 5965,
+              "quoted": false,
+              "start": 5921,
+              "text": "That is one of the book\u2019s sharpest insights."
+            },
+            {
+              "end": 6000,
+              "quoted": false,
+              "start": 5966,
+              "text": "Grief is not only missing someone."
+            },
+            {
+              "end": 6024,
+              "quoted": false,
+              "start": 6001,
+              "text": "It is losing a witness."
+            },
+            {
+              "end": 6280,
+              "quoted": false,
+              "start": 6231,
+              "text": "This is why the book is so exacting about memory."
+            },
+            {
+              "end": 6497,
+              "quoted": false,
+              "start": 6450,
+              "text": "Hospitals occupy much of its emotional terrain."
+            },
+            {
+              "end": 6912,
+              "quoted": false,
+              "start": 6867,
+              "text": "The medical scenes are not merely background."
+            },
+            {
+              "end": 6949,
+              "quoted": false,
+              "start": 6913,
+              "text": "They expose the limits of expertise."
+            },
+            {
+              "end": 7085,
+              "quoted": false,
+              "start": 7043,
+              "text": "They can explain mechanisms, not meanings."
+            },
+            {
+              "end": 7132,
+              "quoted": false,
+              "start": 7086,
+              "text": "They can describe risk, not guarantee outcome."
+            },
+            {
+              "end": 7514,
+              "quoted": false,
+              "start": 7465,
+              "text": "Didion\u2019s style is inseparable from this argument."
+            },
+            {
+              "end": 7554,
+              "quoted": false,
+              "start": 7515,
+              "text": "Her sentences are clean but not simple."
+            },
+            {
+              "end": 8028,
+              "quoted": false,
+              "start": 7985,
+              "text": "There is also a harder reason to reread it."
+            },
+            {
+              "end": 8086,
+              "quoted": false,
+              "start": 8029,
+              "text": "Each decade brings the reader closer to the book\u2019s facts."
+            },
+            {
+              "end": 8099,
+              "quoted": false,
+              "start": 8087,
+              "text": "Parents age."
+            },
+            {
+              "end": 8148,
+              "quoted": false,
+              "start": 8100,
+              "text": "Partners become mortal in less theoretical ways."
+            },
+            {
+              "end": 8161,
+              "quoted": false,
+              "start": 8149,
+              "text": "Friends die."
+            },
+            {
+              "end": 8196,
+              "quoted": false,
+              "start": 8162,
+              "text": "Children become vulnerable adults."
+            },
+            {
+              "end": 8228,
+              "quoted": false,
+              "start": 8197,
+              "text": "The body becomes less obedient."
+            },
+            {
+              "end": 8444,
+              "quoted": false,
+              "start": 8391,
+              "text": "Didion\u2019s book waits for the reader at each threshold."
+            },
+            {
+              "end": 8881,
+              "quoted": false,
+              "start": 8849,
+              "text": "She does not speak for everyone."
+            },
+            {
+              "end": 8945,
+              "quoted": false,
+              "start": 8882,
+              "text": "She speaks exactly enough that others can recognise themselves."
+            },
+            {
+              "end": 9123,
+              "quoted": false,
+              "start": 9074,
+              "text": "At one age, the unforgettable image is the shoes."
+            },
+            {
+              "end": 9159,
+              "quoted": false,
+              "start": 9124,
+              "text": "At another, it is the dinner table."
+            },
+            {
+              "end": 9405,
+              "quoted": false,
+              "start": 9343,
+              "text": "Didion\u2019s achievement is not that she makes grief intelligible."
+            },
+            {
+              "end": 9444,
+              "quoted": false,
+              "start": 9406,
+              "text": "She shows why it resists intelligence."
+            },
+            {
+              "end": 9584,
+              "quoted": false,
+              "start": 9554,
+              "text": "She shows the bargain failing."
+            },
+            {
+              "end": 9608,
+              "quoted": false,
+              "start": 9585,
+              "text": "Then she keeps looking."
+            },
+            {
+              "end": 9954,
+              "quoted": false,
+              "start": 9951,
+              "text": "```"
+            },
+            {
+              "end": 1042,
+              "quoted": false,
+              "start": 971,
+              "text": "But its deeper achievement is that it changes shape as the reader ages."
+            },
+            {
+              "end": 1106,
+              "quoted": false,
+              "start": 1043,
+              "text": "Read in one decade, it is a devastating account of bereavement."
             }
           ],
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_run": 3
+              "maximum_mean_sentence_words": 15.0,
+              "maximum_short_rate_per_1000": 30.0,
+              "minimum_repeated_opener_run": 2,
+              "minimum_run": 3,
+              "rate_minimum_words": 300
             },
-            "raw_evidence": "Found sequence of 4 consecutive short sentences",
+            "raw_evidence": "Found sequence of 4 consecutive short sentences; short-fragment run(s) sharing an opener: ['Do not edit repository files. Do not save files.', 'He has a drink. He says something ordinary.', 'She seeks the timeline. She wants the medical explanation. She reads the records.', 'She knows what to do. She calls the right people. She signs forms. She keeps functioning.']; 77 sentences of ten words or fewer at 48.3 per 1000 words; mean sentence length 11.3 words (target: 15 or more)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found sequence of 4 consecutive short sentences",
+          "evidence": "Found sequence of 4 consecutive short sentences; short-fragment run(s) sharing an opener: ['Do not edit repository files. Do not save files.', 'He has a drink. He says something ordinary.', 'She seeks the timeline. She wants the medical explanation. She reads the records.', 'She knows what to do. She calls the right people. She signs forms. She keeps functioning.']; 77 sentences of ten words or fewer at 48.3 per 1000 words; mean sentence length 11.3 words (target: 15 or more)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -378,12 +990,91 @@
             "frictionless_structure"
           ],
           "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
-          "match_count": 4,
+          "match_count": 83,
           "matches": [
             "They sit down to dinner.",
             "He has a drink.",
             "He says something ordinary.",
-            "Then he is dead."
+            "Then he is dead.",
+            "Do not edit repository files. Do not save files.",
+            "He has a drink. He says something ordinary.",
+            "She seeks the timeline. She wants the medical explanation. She reads the records.",
+            "She knows what to do. She calls the right people. She signs forms. She keeps functioning.",
+            "You are running an evaluation of a local writing skill.",
+            "Do not edit repository files.",
+            "Do not save files.",
+            "Return only the final user-facing output for the task.",
+            "Do not mention this evaluation harness.",
+            "Task prompt: Audit this draft for AI tells.",
+            "That is why it deserves to be reread every decade.",
+            "Didion does not stage grief as an emotional revelation.",
+            "She stages it as administrative shock.",
+            "There is no warning, no moral preparation, no cinematic pause.",
+            "That precision matters.",
+            "She seeks the timeline.",
+            "She wants the medical explanation.",
+            "She reads the records.",
+            "This is one reason the book rewards rereading.",
+            "In early adulthood, Didion\u2019s forensic attention can look like strength.",
+            "She knows what to do.",
+            "She calls the right people.",
+            "She signs forms.",
+            "She keeps functioning.",
+            "A decade later, the same composure reads differently.",
+            "The title\u2019s \u201cmagical thinking\u201d is not ornamental.",
+            "Didion knows John is dead.",
+            "She has seen the body.",
+            "She has received the medical facts.",
+            "It is not an extravagant delusion.",
+            "It is domestic, practical, almost reasonable.",
+            "A living man needs shoes.",
+            "That scene lands differently across a life.",
+            "At twenty-five, it may seem like an elegant symbol.",
+            "Grief does not always announce itself as despair.",
+            "The dead remain embedded in systems designed for the living.",
+            "She does not turn grief into moral improvement.",
+            "She is not interested in uplift.",
+            "She is interested in what the mind does under pressure.",
+            "Didion offers something more austere and more useful.",
+            "She shows grief as repetitive, self-interrupting, intellectually humiliating.",
+            "She catches herself bargaining with reality.",
+            "The \u201cvortex effect\u201d is central to this.",
+            "These are not decorative flashbacks.",
+            "A place is not just a place.",
+            "The first time, the reader may focus on the death.",
+            "His absence is therefore not only emotional.",
+            "It is cognitive.",
+            "The person who helped her verify reality is gone.",
+            "That is one of the book\u2019s sharpest insights.",
+            "Grief is not only missing someone.",
+            "It is losing a witness.",
+            "This is why the book is so exacting about memory.",
+            "Hospitals occupy much of its emotional terrain.",
+            "The medical scenes are not merely background.",
+            "They expose the limits of expertise.",
+            "They can explain mechanisms, not meanings.",
+            "They can describe risk, not guarantee outcome.",
+            "Didion\u2019s style is inseparable from this argument.",
+            "Her sentences are clean but not simple.",
+            "There is also a harder reason to reread it.",
+            "Each decade brings the reader closer to the book\u2019s facts.",
+            "Parents age.",
+            "Partners become mortal in less theoretical ways.",
+            "Friends die.",
+            "Children become vulnerable adults.",
+            "The body becomes less obedient.",
+            "Didion\u2019s book waits for the reader at each threshold.",
+            "She does not speak for everyone.",
+            "She speaks exactly enough that others can recognise themselves.",
+            "At one age, the unforgettable image is the shoes.",
+            "At another, it is the dinner table.",
+            "Didion\u2019s achievement is not that she makes grief intelligible.",
+            "She shows why it resists intelligence.",
+            "She shows the bargain failing.",
+            "Then she keeps looking.",
+            "```",
+            "But its deeper achievement is that it changes shape as the reader ages.",
+            "Read in one decade, it is a devastating account of bereavement."
           ],
           "severity": "context_warning",
           "spans": [
@@ -410,10 +1101,488 @@
               "quoted": false,
               "start": 1836,
               "text": "Then he is dead."
+            },
+            {
+              "end": 257,
+              "quoted": false,
+              "start": 209,
+              "text": "Do not edit repository files. Do not save files."
+            },
+            {
+              "end": 1835,
+              "quoted": false,
+              "start": 1792,
+              "text": "He has a drink. He says something ordinary."
+            },
+            {
+              "end": 2325,
+              "quoted": false,
+              "start": 2244,
+              "text": "She seeks the timeline. She wants the medical explanation. She reads the records."
+            },
+            {
+              "end": 2694,
+              "quoted": false,
+              "start": 2605,
+              "text": "She knows what to do. She calls the right people. She signs forms. She keeps functioning."
+            },
+            {
+              "end": 55,
+              "quoted": false,
+              "start": 0,
+              "text": "You are running an evaluation of a local writing skill."
+            },
+            {
+              "end": 238,
+              "quoted": false,
+              "start": 209,
+              "text": "Do not edit repository files."
+            },
+            {
+              "end": 257,
+              "quoted": false,
+              "start": 239,
+              "text": "Do not save files."
+            },
+            {
+              "end": 312,
+              "quoted": false,
+              "start": 258,
+              "text": "Return only the final user-facing output for the task."
+            },
+            {
+              "end": 352,
+              "quoted": false,
+              "start": 313,
+              "text": "Do not mention this evaluation harness."
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "Task prompt: Audit this draft for AI tells."
+            },
+            {
+              "end": 1385,
+              "quoted": false,
+              "start": 1335,
+              "text": "That is why it deserves to be reread every decade."
+            },
+            {
+              "end": 1607,
+              "quoted": false,
+              "start": 1552,
+              "text": "Didion does not stage grief as an emotional revelation."
+            },
+            {
+              "end": 1646,
+              "quoted": false,
+              "start": 1608,
+              "text": "She stages it as administrative shock."
+            },
+            {
+              "end": 1966,
+              "quoted": false,
+              "start": 1904,
+              "text": "There is no warning, no moral preparation, no cinematic pause."
+            },
+            {
+              "end": 2078,
+              "quoted": false,
+              "start": 2055,
+              "text": "That precision matters."
+            },
+            {
+              "end": 2267,
+              "quoted": false,
+              "start": 2244,
+              "text": "She seeks the timeline."
+            },
+            {
+              "end": 2302,
+              "quoted": false,
+              "start": 2268,
+              "text": "She wants the medical explanation."
+            },
+            {
+              "end": 2325,
+              "quoted": false,
+              "start": 2303,
+              "text": "She reads the records."
+            },
+            {
+              "end": 2532,
+              "quoted": false,
+              "start": 2486,
+              "text": "This is one reason the book rewards rereading."
+            },
+            {
+              "end": 2604,
+              "quoted": false,
+              "start": 2533,
+              "text": "In early adulthood, Didion\u2019s forensic attention can look like strength."
+            },
+            {
+              "end": 2626,
+              "quoted": false,
+              "start": 2605,
+              "text": "She knows what to do."
+            },
+            {
+              "end": 2654,
+              "quoted": false,
+              "start": 2627,
+              "text": "She calls the right people."
+            },
+            {
+              "end": 2671,
+              "quoted": false,
+              "start": 2655,
+              "text": "She signs forms."
+            },
+            {
+              "end": 2694,
+              "quoted": false,
+              "start": 2672,
+              "text": "She keeps functioning."
+            },
+            {
+              "end": 2748,
+              "quoted": false,
+              "start": 2695,
+              "text": "A decade later, the same composure reads differently."
+            },
+            {
+              "end": 2970,
+              "quoted": false,
+              "start": 2921,
+              "text": "The title\u2019s \u201cmagical thinking\u201d is not ornamental."
+            },
+            {
+              "end": 3077,
+              "quoted": false,
+              "start": 3051,
+              "text": "Didion knows John is dead."
+            },
+            {
+              "end": 3100,
+              "quoted": false,
+              "start": 3078,
+              "text": "She has seen the body."
+            },
+            {
+              "end": 3136,
+              "quoted": false,
+              "start": 3101,
+              "text": "She has received the medical facts."
+            },
+            {
+              "end": 3331,
+              "quoted": false,
+              "start": 3297,
+              "text": "It is not an extravagant delusion."
+            },
+            {
+              "end": 3377,
+              "quoted": false,
+              "start": 3332,
+              "text": "It is domestic, practical, almost reasonable."
+            },
+            {
+              "end": 3403,
+              "quoted": false,
+              "start": 3378,
+              "text": "A living man needs shoes."
+            },
+            {
+              "end": 3552,
+              "quoted": false,
+              "start": 3509,
+              "text": "That scene lands differently across a life."
+            },
+            {
+              "end": 3604,
+              "quoted": false,
+              "start": 3553,
+              "text": "At twenty-five, it may seem like an elegant symbol."
+            },
+            {
+              "end": 3757,
+              "quoted": false,
+              "start": 3708,
+              "text": "Grief does not always announce itself as despair."
+            },
+            {
+              "end": 3945,
+              "quoted": false,
+              "start": 3885,
+              "text": "The dead remain embedded in systems designed for the living."
+            },
+            {
+              "end": 4080,
+              "quoted": false,
+              "start": 4033,
+              "text": "She does not turn grief into moral improvement."
+            },
+            {
+              "end": 4257,
+              "quoted": false,
+              "start": 4225,
+              "text": "She is not interested in uplift."
+            },
+            {
+              "end": 4313,
+              "quoted": false,
+              "start": 4258,
+              "text": "She is interested in what the mind does under pressure."
+            },
+            {
+              "end": 4620,
+              "quoted": false,
+              "start": 4567,
+              "text": "Didion offers something more austere and more useful."
+            },
+            {
+              "end": 4698,
+              "quoted": false,
+              "start": 4621,
+              "text": "She shows grief as repetitive, self-interrupting, intellectually humiliating."
+            },
+            {
+              "end": 4814,
+              "quoted": false,
+              "start": 4770,
+              "text": "She catches herself bargaining with reality."
+            },
+            {
+              "end": 4996,
+              "quoted": false,
+              "start": 4957,
+              "text": "The \u201cvortex effect\u201d is central to this."
+            },
+            {
+              "end": 5215,
+              "quoted": false,
+              "start": 5179,
+              "text": "These are not decorative flashbacks."
+            },
+            {
+              "end": 5342,
+              "quoted": false,
+              "start": 5314,
+              "text": "A place is not just a place."
+            },
+            {
+              "end": 5577,
+              "quoted": false,
+              "start": 5527,
+              "text": "The first time, the reader may focus on the death."
+            },
+            {
+              "end": 5852,
+              "quoted": false,
+              "start": 5808,
+              "text": "His absence is therefore not only emotional."
+            },
+            {
+              "end": 5869,
+              "quoted": false,
+              "start": 5853,
+              "text": "It is cognitive."
+            },
+            {
+              "end": 5919,
+              "quoted": false,
+              "start": 5870,
+              "text": "The person who helped her verify reality is gone."
+            },
+            {
+              "end": 5965,
+              "quoted": false,
+              "start": 5921,
+              "text": "That is one of the book\u2019s sharpest insights."
+            },
+            {
+              "end": 6000,
+              "quoted": false,
+              "start": 5966,
+              "text": "Grief is not only missing someone."
+            },
+            {
+              "end": 6024,
+              "quoted": false,
+              "start": 6001,
+              "text": "It is losing a witness."
+            },
+            {
+              "end": 6280,
+              "quoted": false,
+              "start": 6231,
+              "text": "This is why the book is so exacting about memory."
+            },
+            {
+              "end": 6497,
+              "quoted": false,
+              "start": 6450,
+              "text": "Hospitals occupy much of its emotional terrain."
+            },
+            {
+              "end": 6912,
+              "quoted": false,
+              "start": 6867,
+              "text": "The medical scenes are not merely background."
+            },
+            {
+              "end": 6949,
+              "quoted": false,
+              "start": 6913,
+              "text": "They expose the limits of expertise."
+            },
+            {
+              "end": 7085,
+              "quoted": false,
+              "start": 7043,
+              "text": "They can explain mechanisms, not meanings."
+            },
+            {
+              "end": 7132,
+              "quoted": false,
+              "start": 7086,
+              "text": "They can describe risk, not guarantee outcome."
+            },
+            {
+              "end": 7514,
+              "quoted": false,
+              "start": 7465,
+              "text": "Didion\u2019s style is inseparable from this argument."
+            },
+            {
+              "end": 7554,
+              "quoted": false,
+              "start": 7515,
+              "text": "Her sentences are clean but not simple."
+            },
+            {
+              "end": 8028,
+              "quoted": false,
+              "start": 7985,
+              "text": "There is also a harder reason to reread it."
+            },
+            {
+              "end": 8086,
+              "quoted": false,
+              "start": 8029,
+              "text": "Each decade brings the reader closer to the book\u2019s facts."
+            },
+            {
+              "end": 8099,
+              "quoted": false,
+              "start": 8087,
+              "text": "Parents age."
+            },
+            {
+              "end": 8148,
+              "quoted": false,
+              "start": 8100,
+              "text": "Partners become mortal in less theoretical ways."
+            },
+            {
+              "end": 8161,
+              "quoted": false,
+              "start": 8149,
+              "text": "Friends die."
+            },
+            {
+              "end": 8196,
+              "quoted": false,
+              "start": 8162,
+              "text": "Children become vulnerable adults."
+            },
+            {
+              "end": 8228,
+              "quoted": false,
+              "start": 8197,
+              "text": "The body becomes less obedient."
+            },
+            {
+              "end": 8444,
+              "quoted": false,
+              "start": 8391,
+              "text": "Didion\u2019s book waits for the reader at each threshold."
+            },
+            {
+              "end": 8881,
+              "quoted": false,
+              "start": 8849,
+              "text": "She does not speak for everyone."
+            },
+            {
+              "end": 8945,
+              "quoted": false,
+              "start": 8882,
+              "text": "She speaks exactly enough that others can recognise themselves."
+            },
+            {
+              "end": 9123,
+              "quoted": false,
+              "start": 9074,
+              "text": "At one age, the unforgettable image is the shoes."
+            },
+            {
+              "end": 9159,
+              "quoted": false,
+              "start": 9124,
+              "text": "At another, it is the dinner table."
+            },
+            {
+              "end": 9405,
+              "quoted": false,
+              "start": 9343,
+              "text": "Didion\u2019s achievement is not that she makes grief intelligible."
+            },
+            {
+              "end": 9444,
+              "quoted": false,
+              "start": 9406,
+              "text": "She shows why it resists intelligence."
+            },
+            {
+              "end": 9584,
+              "quoted": false,
+              "start": 9554,
+              "text": "She shows the bargain failing."
+            },
+            {
+              "end": 9608,
+              "quoted": false,
+              "start": 9585,
+              "text": "Then she keeps looking."
+            },
+            {
+              "end": 9954,
+              "quoted": false,
+              "start": 9951,
+              "text": "```"
+            },
+            {
+              "end": 1042,
+              "quoted": false,
+              "start": 971,
+              "text": "But its deeper achievement is that it changes shape as the reader ages."
+            },
+            {
+              "end": 1106,
+              "quoted": false,
+              "start": 1043,
+              "text": "Read in one decade, it is a devastating account of bereavement."
             }
           ],
           "threshold": {
-            "minimum_run": 3
+            "maximum_mean_sentence_words": 15.0,
+            "maximum_short_rate_per_1000": 30.0,
+            "minimum_repeated_opener_run": 2,
+            "minimum_run": 3,
+            "rate_minimum_words": 300
           },
           "threshold_met": true
         }
@@ -556,6 +1725,276 @@
       "id": "no-anaphora",
       "severity": "context_warning",
       "status": "flagged"
+    },
+    {
+      "category": "Voice and register",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max paragraph-opener run: 1",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Max paragraph-opener run: 1",
+          "evidence_role": "rhythm_signal",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "guidance": "Fix mechanical repetition across paragraph openings; recommend preserving deliberate rhetorical patterning.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "id": "no-paragraph-anaphora",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "One-line sections under headings: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "One-line sections under headings: 0",
+          "evidence_role": "repeated_template",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix by developing or folding one-line sections into prose; recommend preserving a single deliberate short section used for emphasis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-heading-one-liners",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "Why The year of magical thinking should be reread every decade"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 581,
+              "quoted": false,
+              "start": 519,
+              "text": "Why The year of magical thinking should be reread every decade"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 1 heading(s) capitalising minor words: ['Why The year of magical thinking should be reread every decade']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 1 heading(s) capitalising minor words: ['Why The year of magical thinking should be reread every decade']",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix headings that capitalise minor words; match whatever heading style the rest of the document uses.",
+          "match_count": 1,
+          "matches": [
+            "Why The year of magical thinking should be reread every decade"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 581,
+              "quoted": false,
+              "start": 519,
+              "text": "Why The year of magical thinking should be reread every decade"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-title-case-headings",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed spelling conventions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed spelling conventions",
+          "evidence_role": "lexical_distribution",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix the mixture by settling on one convention; preserve whichever one the document and its audience already use.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-mixed-spelling-conventions",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No stacked from-to ranges",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No stacked from-to ranges",
+          "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "guidance": "Fix stacked from-to pairs by naming what the passage actually covers; keep single ranges.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "id": "no-false-ranges",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Filler and hedging",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No modal qualifier stacks",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No modal qualifier stacks",
+          "evidence_role": "stance_erasure",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "guidance": "Fix stacked qualifiers by keeping the one the claim needs; recommend preserving qualifiers tied to a stated basis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "id": "no-modal-stacks",
+      "severity": "context_warning",
+      "status": "clear"
     },
     {
       "category": "Communication",
@@ -900,21 +2339,23 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "sentence length variation 7.0 across 140 sentences (target above 9)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Sentence length stdev: 7.0 (target: >4)",
+            "effective_threshold": {
+              "minimum_stdev": 9.0
+            },
+            "raw_evidence": "Sentence length stdev: 7.0 (target: >9)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Sentence length stdev: 7.0 (target: >4)",
+          "evidence": "Sentence length stdev: 7.0 (target: >9)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -922,11 +2363,14 @@
             "genre_misfit"
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
-          "metric_value": 0,
+          "metric": "sentence length variation 7.0 across 140 sentences (target above 9)",
+          "metric_value": "sentence length variation 7.0 across 140 sentences (target above 9)",
           "sample_size": 1638,
           "severity": "context_warning",
-          "threshold": null,
-          "threshold_met": false
+          "threshold": {
+            "minimum_stdev": 9.0
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -935,7 +2379,7 @@
       ],
       "id": "sentence-length-variance",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Content patterns",
@@ -1035,18 +2479,18 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "raw_evidence": "No negative parallelisms",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No negative parallelisms or contrived reframes",
+          "evidence": "No negative parallelisms",
           "evidence_role": "rhetorical_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
-          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced.",
+          "guidance": "Surface every matched construction at Balanced and All, including matches split across two sentences, negative clauses resumed by it/they/he/she, punctuated not-X-but-Y forms, and each rather-than frame. Report the form and occurrence count without suppressing matches based on inferred intention. Repeated occurrences add progressively more signal-stacking evidence.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -1174,6 +2618,7 @@
           ],
           "guidance": "Fix at every depth unless quoted from source text.",
           "match_count": 0,
+          "matches": [],
           "severity": "hard_fail",
           "spans": [],
           "threshold": null,
@@ -1254,7 +2699,7 @@
           "failure_modes": [
             "provenance_residue"
           ],
-          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue.",
+          "guidance": "Fix at every depth; replace or remove unfilled placeholders, publishing instructions, and platform markup.",
           "match_count": 0,
           "matches": [],
           "severity": "hard_fail",
@@ -1426,20 +2871,23 @@
           ],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Found 7 triad(s): ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
+            "effective_threshold": {
+              "maximum_rate_per_1000": 4.0,
+              "minimum_words": 300
+            },
+            "raw_evidence": "Found 7 triad(s) at 4.4 per 1000 words: ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 7 triad(s): ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
+          "evidence": "Found 7 triad(s) at 4.4 per 1000 words: ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
           "evidence_role": "list_rhythm",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+          "guidance": "Thin out decorative or interchangeable triads until the rate drops. Preserve meaningful lists, quotations, and deliberate rhetoric.",
           "match_count": 7,
           "matches": [
             "medical language, social performance, and the collapse",
@@ -1495,7 +2943,10 @@
               "text": "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
             }
           ],
-          "threshold": null,
+          "threshold": {
+            "maximum_rate_per_1000": 4.0,
+            "minimum_words": 300
+          },
           "threshold_met": true
         }
       },
@@ -1504,6 +2955,1829 @@
         "genre_misfit"
       ],
       "id": "no-forced-triads",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "evaluation",
+          "Documents",
+          "evaluation",
+          "Documents",
+          "evidence",
+          "performance",
+          "achievement",
+          "bereavement",
+          "competence",
+          "sentence",
+          "revelation",
+          "apartment",
+          "preparation",
+          "instrument",
+          "ambulance",
+          "explanation",
+          "sequence",
+          "sequence",
+          "reality",
+          "attention",
+          "implications",
+          "management",
+          "hesitation",
+          "importance",
+          "improvement",
+          "consolation",
+          "obligation",
+          "vulnerability",
+          "reality",
+          "reference",
+          "conversation",
+          "reality",
+          "formation",
+          "institutions",
+          "disability",
+          "argument",
+          "sentences",
+          "repetitions",
+          "transitions",
+          "experience",
+          "achievement",
+          "evidence",
+          "insurance",
+          "durability",
+          "universality",
+          "consciousness",
+          "unreliability",
+          "achievement",
+          "intelligence",
+          "calibration"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 50,
+          "candidates": [
+            {
+              "end": 29,
+              "quoted": false,
+              "start": 19,
+              "text": "evaluation"
+            },
+            {
+              "end": 95,
+              "quoted": false,
+              "start": 86,
+              "text": "Documents"
+            },
+            {
+              "end": 343,
+              "quoted": false,
+              "start": 333,
+              "text": "evaluation"
+            },
+            {
+              "end": 439,
+              "quoted": false,
+              "start": 430,
+              "text": "Documents"
+            },
+            {
+              "end": 732,
+              "quoted": false,
+              "start": 724,
+              "text": "evidence"
+            },
+            {
+              "end": 797,
+              "quoted": false,
+              "start": 786,
+              "text": "performance"
+            },
+            {
+              "end": 997,
+              "quoted": false,
+              "start": 986,
+              "text": "achievement"
+            },
+            {
+              "end": 1105,
+              "quoted": false,
+              "start": 1094,
+              "text": "bereavement"
+            },
+            {
+              "end": 1270,
+              "quoted": false,
+              "start": 1260,
+              "text": "competence"
+            },
+            {
+              "end": 1498,
+              "quoted": false,
+              "start": 1490,
+              "text": "sentence"
+            },
+            {
+              "end": 1606,
+              "quoted": false,
+              "start": 1596,
+              "text": "revelation"
+            },
+            {
+              "end": 1765,
+              "quoted": false,
+              "start": 1756,
+              "text": "apartment"
+            },
+            {
+              "end": 1945,
+              "quoted": false,
+              "start": 1934,
+              "text": "preparation"
+            },
+            {
+              "end": 2035,
+              "quoted": false,
+              "start": 2025,
+              "text": "instrument"
+            },
+            {
+              "end": 2138,
+              "quoted": false,
+              "start": 2129,
+              "text": "ambulance"
+            },
+            {
+              "end": 2301,
+              "quoted": false,
+              "start": 2290,
+              "text": "explanation"
+            },
+            {
+              "end": 2383,
+              "quoted": false,
+              "start": 2375,
+              "text": "sequence"
+            },
+            {
+              "end": 2397,
+              "quoted": false,
+              "start": 2389,
+              "text": "sequence"
+            },
+            {
+              "end": 2450,
+              "quoted": false,
+              "start": 2443,
+              "text": "reality"
+            },
+            {
+              "end": 2580,
+              "quoted": false,
+              "start": 2571,
+              "text": "attention"
+            },
+            {
+              "end": 3469,
+              "quoted": false,
+              "start": 3457,
+              "text": "implications"
+            },
+            {
+              "end": 3506,
+              "quoted": false,
+              "start": 3496,
+              "text": "management"
+            },
+            {
+              "end": 3798,
+              "quoted": false,
+              "start": 3788,
+              "text": "hesitation"
+            },
+            {
+              "end": 3981,
+              "quoted": false,
+              "start": 3971,
+              "text": "importance"
+            },
+            {
+              "end": 4079,
+              "quoted": false,
+              "start": 4068,
+              "text": "improvement"
+            },
+            {
+              "end": 4198,
+              "quoted": false,
+              "start": 4187,
+              "text": "consolation"
+            },
+            {
+              "end": 4223,
+              "quoted": false,
+              "start": 4213,
+              "text": "obligation"
+            },
+            {
+              "end": 4528,
+              "quoted": false,
+              "start": 4515,
+              "text": "vulnerability"
+            },
+            {
+              "end": 4813,
+              "quoted": false,
+              "start": 4806,
+              "text": "reality"
+            },
+            {
+              "end": 5698,
+              "quoted": false,
+              "start": 5689,
+              "text": "reference"
+            },
+            {
+              "end": 5806,
+              "quoted": false,
+              "start": 5794,
+              "text": "conversation"
+            },
+            {
+              "end": 5910,
+              "quoted": false,
+              "start": 5903,
+              "text": "reality"
+            },
+            {
+              "end": 6064,
+              "quoted": false,
+              "start": 6055,
+              "text": "formation"
+            },
+            {
+              "end": 6448,
+              "quoted": false,
+              "start": 6436,
+              "text": "institutions"
+            },
+            {
+              "end": 7229,
+              "quoted": false,
+              "start": 7219,
+              "text": "disability"
+            },
+            {
+              "end": 7513,
+              "quoted": false,
+              "start": 7505,
+              "text": "argument"
+            },
+            {
+              "end": 7528,
+              "quoted": false,
+              "start": 7519,
+              "text": "sentences"
+            },
+            {
+              "end": 7570,
+              "quoted": false,
+              "start": 7559,
+              "text": "repetitions"
+            },
+            {
+              "end": 7602,
+              "quoted": false,
+              "start": 7591,
+              "text": "transitions"
+            },
+            {
+              "end": 7623,
+              "quoted": false,
+              "start": 7613,
+              "text": "experience"
+            },
+            {
+              "end": 7938,
+              "quoted": false,
+              "start": 7927,
+              "text": "achievement"
+            },
+            {
+              "end": 7982,
+              "quoted": false,
+              "start": 7974,
+              "text": "evidence"
+            },
+            {
+              "end": 8374,
+              "quoted": false,
+              "start": 8365,
+              "text": "insurance"
+            },
+            {
+              "end": 8708,
+              "quoted": false,
+              "start": 8698,
+              "text": "durability"
+            },
+            {
+              "end": 8736,
+              "quoted": false,
+              "start": 8724,
+              "text": "universality"
+            },
+            {
+              "end": 8826,
+              "quoted": false,
+              "start": 8813,
+              "text": "consciousness"
+            },
+            {
+              "end": 9244,
+              "quoted": false,
+              "start": 9231,
+              "text": "unreliability"
+            },
+            {
+              "end": 9363,
+              "quoted": false,
+              "start": 9352,
+              "text": "achievement"
+            },
+            {
+              "end": 9443,
+              "quoted": false,
+              "start": 9431,
+              "text": "intelligence"
+            },
+            {
+              "end": 9774,
+              "quoted": false,
+              "start": 9763,
+              "text": "calibration"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 50 nominalisation(s) at 31.4 per 1000 words: ['evaluation', 'Documents', 'evaluation', 'Documents', 'evidence', 'performance', 'achievement', 'bereavement', 'competence', 'sentence', 'revelation', 'apartment']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 50 nominalisation(s) at 31.4 per 1000 words: ['evaluation', 'Documents', 'evaluation', 'Documents', 'evidence', 'performance', 'achievement', 'bereavement', 'competence', 'sentence', 'revelation', 'apartment']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
+          "match_count": 50,
+          "matches": [
+            "evaluation",
+            "Documents",
+            "evaluation",
+            "Documents",
+            "evidence",
+            "performance",
+            "achievement",
+            "bereavement",
+            "competence",
+            "sentence",
+            "revelation",
+            "apartment",
+            "preparation",
+            "instrument",
+            "ambulance",
+            "explanation",
+            "sequence",
+            "sequence",
+            "reality",
+            "attention",
+            "implications",
+            "management",
+            "hesitation",
+            "importance",
+            "improvement",
+            "consolation",
+            "obligation",
+            "vulnerability",
+            "reality",
+            "reference",
+            "conversation",
+            "reality",
+            "formation",
+            "institutions",
+            "disability",
+            "argument",
+            "sentences",
+            "repetitions",
+            "transitions",
+            "experience",
+            "achievement",
+            "evidence",
+            "insurance",
+            "durability",
+            "universality",
+            "consciousness",
+            "unreliability",
+            "achievement",
+            "intelligence",
+            "calibration"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 29,
+              "quoted": false,
+              "start": 19,
+              "text": "evaluation"
+            },
+            {
+              "end": 95,
+              "quoted": false,
+              "start": 86,
+              "text": "Documents"
+            },
+            {
+              "end": 343,
+              "quoted": false,
+              "start": 333,
+              "text": "evaluation"
+            },
+            {
+              "end": 439,
+              "quoted": false,
+              "start": 430,
+              "text": "Documents"
+            },
+            {
+              "end": 732,
+              "quoted": false,
+              "start": 724,
+              "text": "evidence"
+            },
+            {
+              "end": 797,
+              "quoted": false,
+              "start": 786,
+              "text": "performance"
+            },
+            {
+              "end": 997,
+              "quoted": false,
+              "start": 986,
+              "text": "achievement"
+            },
+            {
+              "end": 1105,
+              "quoted": false,
+              "start": 1094,
+              "text": "bereavement"
+            },
+            {
+              "end": 1270,
+              "quoted": false,
+              "start": 1260,
+              "text": "competence"
+            },
+            {
+              "end": 1498,
+              "quoted": false,
+              "start": 1490,
+              "text": "sentence"
+            },
+            {
+              "end": 1606,
+              "quoted": false,
+              "start": 1596,
+              "text": "revelation"
+            },
+            {
+              "end": 1765,
+              "quoted": false,
+              "start": 1756,
+              "text": "apartment"
+            },
+            {
+              "end": 1945,
+              "quoted": false,
+              "start": 1934,
+              "text": "preparation"
+            },
+            {
+              "end": 2035,
+              "quoted": false,
+              "start": 2025,
+              "text": "instrument"
+            },
+            {
+              "end": 2138,
+              "quoted": false,
+              "start": 2129,
+              "text": "ambulance"
+            },
+            {
+              "end": 2301,
+              "quoted": false,
+              "start": 2290,
+              "text": "explanation"
+            },
+            {
+              "end": 2383,
+              "quoted": false,
+              "start": 2375,
+              "text": "sequence"
+            },
+            {
+              "end": 2397,
+              "quoted": false,
+              "start": 2389,
+              "text": "sequence"
+            },
+            {
+              "end": 2450,
+              "quoted": false,
+              "start": 2443,
+              "text": "reality"
+            },
+            {
+              "end": 2580,
+              "quoted": false,
+              "start": 2571,
+              "text": "attention"
+            },
+            {
+              "end": 3469,
+              "quoted": false,
+              "start": 3457,
+              "text": "implications"
+            },
+            {
+              "end": 3506,
+              "quoted": false,
+              "start": 3496,
+              "text": "management"
+            },
+            {
+              "end": 3798,
+              "quoted": false,
+              "start": 3788,
+              "text": "hesitation"
+            },
+            {
+              "end": 3981,
+              "quoted": false,
+              "start": 3971,
+              "text": "importance"
+            },
+            {
+              "end": 4079,
+              "quoted": false,
+              "start": 4068,
+              "text": "improvement"
+            },
+            {
+              "end": 4198,
+              "quoted": false,
+              "start": 4187,
+              "text": "consolation"
+            },
+            {
+              "end": 4223,
+              "quoted": false,
+              "start": 4213,
+              "text": "obligation"
+            },
+            {
+              "end": 4528,
+              "quoted": false,
+              "start": 4515,
+              "text": "vulnerability"
+            },
+            {
+              "end": 4813,
+              "quoted": false,
+              "start": 4806,
+              "text": "reality"
+            },
+            {
+              "end": 5698,
+              "quoted": false,
+              "start": 5689,
+              "text": "reference"
+            },
+            {
+              "end": 5806,
+              "quoted": false,
+              "start": 5794,
+              "text": "conversation"
+            },
+            {
+              "end": 5910,
+              "quoted": false,
+              "start": 5903,
+              "text": "reality"
+            },
+            {
+              "end": 6064,
+              "quoted": false,
+              "start": 6055,
+              "text": "formation"
+            },
+            {
+              "end": 6448,
+              "quoted": false,
+              "start": 6436,
+              "text": "institutions"
+            },
+            {
+              "end": 7229,
+              "quoted": false,
+              "start": 7219,
+              "text": "disability"
+            },
+            {
+              "end": 7513,
+              "quoted": false,
+              "start": 7505,
+              "text": "argument"
+            },
+            {
+              "end": 7528,
+              "quoted": false,
+              "start": 7519,
+              "text": "sentences"
+            },
+            {
+              "end": 7570,
+              "quoted": false,
+              "start": 7559,
+              "text": "repetitions"
+            },
+            {
+              "end": 7602,
+              "quoted": false,
+              "start": 7591,
+              "text": "transitions"
+            },
+            {
+              "end": 7623,
+              "quoted": false,
+              "start": 7613,
+              "text": "experience"
+            },
+            {
+              "end": 7938,
+              "quoted": false,
+              "start": 7927,
+              "text": "achievement"
+            },
+            {
+              "end": 7982,
+              "quoted": false,
+              "start": 7974,
+              "text": "evidence"
+            },
+            {
+              "end": 8374,
+              "quoted": false,
+              "start": 8365,
+              "text": "insurance"
+            },
+            {
+              "end": 8708,
+              "quoted": false,
+              "start": 8698,
+              "text": "durability"
+            },
+            {
+              "end": 8736,
+              "quoted": false,
+              "start": 8724,
+              "text": "universality"
+            },
+            {
+              "end": 8826,
+              "quoted": false,
+              "start": 8813,
+              "text": "consciousness"
+            },
+            {
+              "end": 9244,
+              "quoted": false,
+              "start": 9231,
+              "text": "unreliability"
+            },
+            {
+              "end": 9363,
+              "quoted": false,
+              "start": 9352,
+              "text": "achievement"
+            },
+            {
+              "end": 9443,
+              "quoted": false,
+              "start": 9431,
+              "text": "intelligence"
+            },
+            {
+              "end": 9774,
+              "quoted": false,
+              "start": 9763,
+              "text": "calibration"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-nominalisation-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "style that feels",
+          "enough that others"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 2,
+          "candidates": [
+            {
+              "end": 7762,
+              "quoted": false,
+              "start": 7746,
+              "text": "style that feels"
+            },
+            {
+              "end": 8919,
+              "quoted": false,
+              "start": 8901,
+              "text": "enough that others"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "subject relative(s): 2 at 1.3 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "subject relative(s): 2 at 1.3 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
+          "match_count": 2,
+          "matches": [
+            "style that feels",
+            "enough that others"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 7762,
+              "quoted": false,
+              "start": 7746,
+              "text": "style that feels"
+            },
+            {
+              "end": 8919,
+              "quoted": false,
+              "start": 8901,
+              "text": "enough that others"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-that-relative-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "working",
+          "ageing",
+          "visiting",
+          "refusing",
+          "failing",
+          "documenting"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 6,
+          "candidates": [
+            {
+              "end": 5116,
+              "quoted": false,
+              "start": 5109,
+              "text": "working"
+            },
+            {
+              "end": 7192,
+              "quoted": false,
+              "start": 7186,
+              "text": "ageing"
+            },
+            {
+              "end": 1691,
+              "quoted": false,
+              "start": 1683,
+              "text": "visiting"
+            },
+            {
+              "end": 3452,
+              "quoted": false,
+              "start": 3444,
+              "text": "refusing"
+            },
+            {
+              "end": 7440,
+              "quoted": false,
+              "start": 7433,
+              "text": "failing"
+            },
+            {
+              "end": 7701,
+              "quoted": false,
+              "start": 7690,
+              "text": "documenting"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "participial clause(s): 6 at 3.8 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "participial clause(s): 6 at 3.8 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
+          "match_count": 6,
+          "matches": [
+            "working",
+            "ageing",
+            "visiting",
+            "refusing",
+            "failing",
+            "documenting"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 5116,
+              "quoted": false,
+              "start": 5109,
+              "text": "working"
+            },
+            {
+              "end": 7192,
+              "quoted": false,
+              "start": 7186,
+              "text": "ageing"
+            },
+            {
+              "end": 1691,
+              "quoted": false,
+              "start": 1683,
+              "text": "visiting"
+            },
+            {
+              "end": 3452,
+              "quoted": false,
+              "start": 3444,
+              "text": "refusing"
+            },
+            {
+              "end": 7440,
+              "quoted": false,
+              "start": 7433,
+              "text": "failing"
+            },
+            {
+              "end": 7701,
+              "quoted": false,
+              "start": 7690,
+              "text": "documenting"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-participial-clause-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "be governed",
+          "be ordered",
+          "is gone",
+          "is situated",
+          "be left",
+          "be returned",
+          "been lost",
+          "be controlled"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 8,
+          "candidates": [
+            {
+              "end": 2474,
+              "quoted": false,
+              "start": 2463,
+              "text": "be governed"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "be ordered"
+            },
+            {
+              "end": 5918,
+              "quoted": false,
+              "start": 5911,
+              "text": "is gone"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "is situated"
+            },
+            {
+              "end": 9649,
+              "quoted": false,
+              "start": 9642,
+              "text": "be left"
+            },
+            {
+              "end": 9733,
+              "quoted": false,
+              "start": 9722,
+              "text": "be returned"
+            },
+            {
+              "end": 9845,
+              "quoted": false,
+              "start": 9836,
+              "text": "been lost"
+            },
+            {
+              "end": 9899,
+              "quoted": false,
+              "start": 9886,
+              "text": "be controlled"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 8 passive verb(s) at 5.0 per 1000 words: ['be governed', 'be ordered', 'is gone', 'is situated', 'be left', 'be returned', 'been lost', 'be controlled']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 8 passive verb(s) at 5.0 per 1000 words: ['be governed', 'be ordered', 'is gone', 'is situated', 'be left', 'be returned', 'been lost', 'be controlled']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
+          "match_count": 8,
+          "matches": [
+            "be governed",
+            "be ordered",
+            "is gone",
+            "is situated",
+            "be left",
+            "be returned",
+            "been lost",
+            "be controlled"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 2474,
+              "quoted": false,
+              "start": 2463,
+              "text": "be governed"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "be ordered"
+            },
+            {
+              "end": 5918,
+              "quoted": false,
+              "start": 5911,
+              "text": "is gone"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "is situated"
+            },
+            {
+              "end": 9649,
+              "quoted": false,
+              "start": 9642,
+              "text": "be left"
+            },
+            {
+              "end": 9733,
+              "quoted": false,
+              "start": 9722,
+              "text": "be returned"
+            },
+            {
+              "end": 9845,
+              "quoted": false,
+              "start": 9836,
+              "text": "been lost"
+            },
+            {
+              "end": 9899,
+              "quoted": false,
+              "start": 9886,
+              "text": "be controlled"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-passive-voice-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "It",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "It",
+          "It",
+          "it",
+          "It",
+          "It",
+          "it",
+          "it",
+          "It",
+          "it",
+          "it",
+          "It",
+          "It",
+          "it",
+          "it",
+          "it",
+          "It",
+          "It",
+          "it",
+          "It",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "It",
+          "it"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 34,
+          "candidates": [
+            {
+              "end": 45,
+              "quoted": false,
+              "start": 43,
+              "text": "It"
+            },
+            {
+              "end": 220,
+              "quoted": false,
+              "start": 218,
+              "text": "it"
+            },
+            {
+              "end": 228,
+              "quoted": false,
+              "start": 226,
+              "text": "it"
+            },
+            {
+              "end": 372,
+              "quoted": false,
+              "start": 370,
+              "text": "it"
+            },
+            {
+              "end": 702,
+              "quoted": false,
+              "start": 700,
+              "text": "it"
+            },
+            {
+              "end": 836,
+              "quoted": false,
+              "start": 834,
+              "text": "it"
+            },
+            {
+              "end": 977,
+              "quoted": false,
+              "start": 975,
+              "text": "it"
+            },
+            {
+              "end": 1008,
+              "quoted": false,
+              "start": 1006,
+              "text": "It"
+            },
+            {
+              "end": 1065,
+              "quoted": false,
+              "start": 1063,
+              "text": "It"
+            },
+            {
+              "end": 1126,
+              "quoted": false,
+              "start": 1124,
+              "text": "it"
+            },
+            {
+              "end": 1214,
+              "quoted": false,
+              "start": 1212,
+              "text": "It"
+            },
+            {
+              "end": 1252,
+              "quoted": false,
+              "start": 1250,
+              "text": "It"
+            },
+            {
+              "end": 1349,
+              "quoted": false,
+              "start": 1347,
+              "text": "it"
+            },
+            {
+              "end": 1400,
+              "quoted": false,
+              "start": 1398,
+              "text": "it"
+            },
+            {
+              "end": 1486,
+              "quoted": false,
+              "start": 1484,
+              "text": "It"
+            },
+            {
+              "end": 1621,
+              "quoted": false,
+              "start": 1619,
+              "text": "it"
+            },
+            {
+              "end": 1688,
+              "quoted": false,
+              "start": 1686,
+              "text": "it"
+            },
+            {
+              "end": 1710,
+              "quoted": false,
+              "start": 1708,
+              "text": "It"
+            },
+            {
+              "end": 1775,
+              "quoted": false,
+              "start": 1773,
+              "text": "It"
+            },
+            {
+              "end": 1887,
+              "quoted": false,
+              "start": 1885,
+              "text": "it"
+            },
+            {
+              "end": 2150,
+              "quoted": false,
+              "start": 2148,
+              "text": "it"
+            },
+            {
+              "end": 2449,
+              "quoted": false,
+              "start": 2447,
+              "text": "it"
+            },
+            {
+              "end": 2751,
+              "quoted": false,
+              "start": 2749,
+              "text": "It"
+            },
+            {
+              "end": 2823,
+              "quoted": false,
+              "start": 2821,
+              "text": "It"
+            },
+            {
+              "end": 2928,
+              "quoted": false,
+              "start": 2926,
+              "text": "it"
+            },
+            {
+              "end": 2973,
+              "quoted": false,
+              "start": 2971,
+              "text": "It"
+            },
+            {
+              "end": 3264,
+              "quoted": false,
+              "start": 3262,
+              "text": "it"
+            },
+            {
+              "end": 3299,
+              "quoted": false,
+              "start": 3297,
+              "text": "it"
+            },
+            {
+              "end": 3334,
+              "quoted": false,
+              "start": 3332,
+              "text": "it"
+            },
+            {
+              "end": 3455,
+              "quoted": false,
+              "start": 3453,
+              "text": "it"
+            },
+            {
+              "end": 3571,
+              "quoted": false,
+              "start": 3569,
+              "text": "it"
+            },
+            {
+              "end": 3658,
+              "quoted": false,
+              "start": 3656,
+              "text": "it"
+            },
+            {
+              "end": 3741,
+              "quoted": false,
+              "start": 3739,
+              "text": "It"
+            },
+            {
+              "end": 3760,
+              "quoted": false,
+              "start": 3758,
+              "text": "it"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 34 `it` pronoun(s) at 21.3 per 1000 words: ['It', 'it', 'it', 'it', 'it', 'it', 'it', 'It', 'It', 'it', 'It', 'It']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 34 `it` pronoun(s) at 21.3 per 1000 words: ['It', 'it', 'it', 'it', 'it', 'it', 'it', 'It', 'It', 'it', 'It', 'It']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
+          "match_count": 34,
+          "matches": [
+            "It",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "It",
+            "It",
+            "it",
+            "It",
+            "It",
+            "it",
+            "it",
+            "It",
+            "it",
+            "it",
+            "It",
+            "It",
+            "it",
+            "it",
+            "it",
+            "It",
+            "It",
+            "it",
+            "It",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "It",
+            "it"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 45,
+              "quoted": false,
+              "start": 43,
+              "text": "It"
+            },
+            {
+              "end": 220,
+              "quoted": false,
+              "start": 218,
+              "text": "it"
+            },
+            {
+              "end": 228,
+              "quoted": false,
+              "start": 226,
+              "text": "it"
+            },
+            {
+              "end": 372,
+              "quoted": false,
+              "start": 370,
+              "text": "it"
+            },
+            {
+              "end": 702,
+              "quoted": false,
+              "start": 700,
+              "text": "it"
+            },
+            {
+              "end": 836,
+              "quoted": false,
+              "start": 834,
+              "text": "it"
+            },
+            {
+              "end": 977,
+              "quoted": false,
+              "start": 975,
+              "text": "it"
+            },
+            {
+              "end": 1008,
+              "quoted": false,
+              "start": 1006,
+              "text": "It"
+            },
+            {
+              "end": 1065,
+              "quoted": false,
+              "start": 1063,
+              "text": "It"
+            },
+            {
+              "end": 1126,
+              "quoted": false,
+              "start": 1124,
+              "text": "it"
+            },
+            {
+              "end": 1214,
+              "quoted": false,
+              "start": 1212,
+              "text": "It"
+            },
+            {
+              "end": 1252,
+              "quoted": false,
+              "start": 1250,
+              "text": "It"
+            },
+            {
+              "end": 1349,
+              "quoted": false,
+              "start": 1347,
+              "text": "it"
+            },
+            {
+              "end": 1400,
+              "quoted": false,
+              "start": 1398,
+              "text": "it"
+            },
+            {
+              "end": 1486,
+              "quoted": false,
+              "start": 1484,
+              "text": "It"
+            },
+            {
+              "end": 1621,
+              "quoted": false,
+              "start": 1619,
+              "text": "it"
+            },
+            {
+              "end": 1688,
+              "quoted": false,
+              "start": 1686,
+              "text": "it"
+            },
+            {
+              "end": 1710,
+              "quoted": false,
+              "start": 1708,
+              "text": "It"
+            },
+            {
+              "end": 1775,
+              "quoted": false,
+              "start": 1773,
+              "text": "It"
+            },
+            {
+              "end": 1887,
+              "quoted": false,
+              "start": 1885,
+              "text": "it"
+            },
+            {
+              "end": 2150,
+              "quoted": false,
+              "start": 2148,
+              "text": "it"
+            },
+            {
+              "end": 2449,
+              "quoted": false,
+              "start": 2447,
+              "text": "it"
+            },
+            {
+              "end": 2751,
+              "quoted": false,
+              "start": 2749,
+              "text": "It"
+            },
+            {
+              "end": 2823,
+              "quoted": false,
+              "start": 2821,
+              "text": "It"
+            },
+            {
+              "end": 2928,
+              "quoted": false,
+              "start": 2926,
+              "text": "it"
+            },
+            {
+              "end": 2973,
+              "quoted": false,
+              "start": 2971,
+              "text": "It"
+            },
+            {
+              "end": 3264,
+              "quoted": false,
+              "start": 3262,
+              "text": "it"
+            },
+            {
+              "end": 3299,
+              "quoted": false,
+              "start": 3297,
+              "text": "it"
+            },
+            {
+              "end": 3334,
+              "quoted": false,
+              "start": 3332,
+              "text": "it"
+            },
+            {
+              "end": 3455,
+              "quoted": false,
+              "start": 3453,
+              "text": "it"
+            },
+            {
+              "end": 3571,
+              "quoted": false,
+              "start": 3569,
+              "text": "it"
+            },
+            {
+              "end": 3658,
+              "quoted": false,
+              "start": 3656,
+              "text": "it"
+            },
+            {
+              "end": 3741,
+              "quoted": false,
+              "start": 3739,
+              "text": "It"
+            },
+            {
+              "end": 3760,
+              "quoted": false,
+              "start": 3758,
+              "text": "it"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-it-pronoun-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "generated"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 478,
+              "quoted": false,
+              "start": 469,
+              "text": "generated"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Latinate verb(s): 1 at 0.6 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Latinate verb(s): 1 at 0.6 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
+          "match_count": 1,
+          "matches": [
+            "generated"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 478,
+              "quoted": false,
+              "start": 469,
+              "text": "generated"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "no-latinate-verb-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "mean word length 4.89 characters across 1636 words (target below 4.8)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean word length 4.89 characters across 1636 words (target: <4.8)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean word length 4.89 characters across 1636 words (target: <4.8)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Look for the shorter word that does the same job. `necessitated` becomes `needed`, `demonstrated substantial improvement` becomes `got better`. The measure is draft-wide, so it points at register rather than at one sentence.",
+          "metric": "mean word length 4.89 characters across 1636 words (target below 4.8)",
+          "metric_value": "mean word length 4.89 characters across 1636 words (target below 4.8)",
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "word-length-average",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed-script words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed-script words",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "guidance": "Retype the flagged word in plain Latin characters. If a passage is genuinely in Russian, Greek, Kazakh, or another Cyrillic or Greek script, write the whole word in that script rather than mixing.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "id": "no-mixed-script-words",
+      "severity": "hard_fail",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "mean concreteness 2.82 of 5 across 671 content words (target above 2.915)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean concreteness 2.82 of 5 across 671 content words (target: >2.915)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean concreteness 2.82 of 5 across 671 content words (target: >2.915)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "guidance": "Name the thing. `The framework provides a basis for the approach` becomes `the rota tells people when to turn up`. Abstraction is right where the subject really is abstract; the measure is draft-wide, so read it as register rather than as one sentence.",
+          "metric": "mean concreteness 2.82 of 5 across 671 content words (target above 2.915)",
+          "metric_value": "mean concreteness 2.82 of 5 across 671 content words (target above 2.915)",
+          "sample_size": 1638,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "id": "concreteness-average",
       "severity": "context_warning",
       "status": "flagged"
     },
@@ -1532,7 +4806,7 @@
           "failure_modes": [
             "generic_abstraction"
           ],
-          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
+          "guidance": "Rewrite formulaic participial clauses when a direct sentence or precise causal statement is clearer.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -1576,6 +4850,7 @@
           ],
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -1647,27 +4922,27 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 2
+              "minimum_candidates": 1
             },
-            "raw_evidence": "Rhetorical questions: 0",
+            "raw_evidence": "Fragment-question answer beats: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Rhetorical questions: 0",
+          "evidence": "Fragment-question answer beats: 0",
           "evidence_role": "rhetorical_template",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument.",
+          "guidance": "Rewrite the fragment and its answer as one direct statement.",
           "match_count": 0,
           "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 2
+            "minimum_candidates": 1
           },
           "threshold_met": false
         }
@@ -1728,6 +5003,53 @@
         "genre_misfit"
       ],
       "id": "no-excessive-lists",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_deviation": 2,
+              "minimum_items": 3
+            },
+            "raw_evidence": "No symmetric list items",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No symmetric list items",
+          "evidence_role": "listification",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix template-shaped list items; preserve specifications, comparison tables, and reference entries where uniformity carries meaning.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "maximum_deviation": 2,
+            "minimum_items": 3
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-symmetric-list-items",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -1806,6 +5128,7 @@
           ],
           "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -2449,6 +5772,7 @@
           ],
           "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": {
@@ -2495,6 +5819,7 @@
           ],
           "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
@@ -2516,21 +5841,21 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "windowed type-token ratio 0.718 (150-word windows, flag at 0.71)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Type-token ratio: 0.419 (666 unique / 1591 total, target: >0.40)",
+            "raw_evidence": "Windowed type-token ratio: 0.718 (58 windows of 150 words, flag at 0.71)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Type-token ratio: 0.419 (666 unique / 1591 total, target: >0.40)",
+          "evidence": "Windowed type-token ratio: 0.718 (58 windows of 150 words, flag at 0.71)",
           "evidence_role": "lexical_distribution",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -2538,12 +5863,12 @@
             "genre_misfit"
           ],
           "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately.",
-          "metric": null,
-          "metric_value": 0,
+          "metric": "windowed type-token ratio 0.718 (150-word windows, flag at 0.71)",
+          "metric_value": "windowed type-token ratio 0.718 (150-word windows, flag at 0.71)",
           "sample_size": 1638,
           "severity": "context_warning",
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -2551,157 +5876,6 @@
         "genre_misfit"
       ],
       "id": "vocabulary-diversity",
-      "severity": "context_warning",
-      "status": "clear"
-    },
-    {
-      "category": "Language and grammar",
-      "evidence": {
-        "counts": {},
-        "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "medical language, social performance, and the collapse",
-          "in hospital, Didion and Dunne return",
-          "her wiser, kinder, or more authentic",
-          "specialist language, medical uncertainty and bureaucratic routines",
-          "particular class world, in the medical and literary culture",
-          "manners, memory and routine",
-          "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
-        ],
-        "raw": {
-          "aggregate_finding": false,
-          "candidate_count": 7,
-          "candidates": [
-            {
-              "end": 815,
-              "quoted": false,
-              "start": 761,
-              "text": "medical language, social performance, and the collapse"
-            },
-            {
-              "end": 1737,
-              "quoted": false,
-              "start": 1701,
-              "text": "in hospital, Didion and Dunne return"
-            },
-            {
-              "end": 4146,
-              "quoted": false,
-              "start": 4110,
-              "text": "her wiser, kinder, or more authentic"
-            },
-            {
-              "end": 6637,
-              "quoted": false,
-              "start": 6571,
-              "text": "specialist language, medical uncertainty and bureaucratic routines"
-            },
-            {
-              "end": 8673,
-              "quoted": false,
-              "start": 8614,
-              "text": "particular class world, in the medical and literary culture"
-            },
-            {
-              "end": 9552,
-              "quoted": false,
-              "start": 9525,
-              "text": "manners, memory and routine"
-            },
-            {
-              "end": 9948,
-              "quoted": false,
-              "start": 9847,
-              "text": "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
-            }
-          ],
-          "context_gate": {
-            "applied": false,
-            "effective_threshold": {
-              "minimum_candidates": 4,
-              "minimum_words": 300
-            },
-            "raw_evidence": "Found 7 triad(s): ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
-            "suppression_reason": null
-          },
-          "context_reason": null,
-          "context_suppressed": false,
-          "evidence": "Found 7 triad(s): ['medical language, social performance, and the collapse', 'in hospital, Didion and Dunne return', 'her wiser, kinder, or more authentic', 'specialist language, medical uncertainty and bureaucratic routines', 'particular class world, in the medical and literary culture', 'manners, memory and routine', 'what is now feared, what can no longer be controlled, and what forms of magical thinking still remain']",
-          "evidence_role": "list_rhythm",
-          "evidence_type": "lexical",
-          "failure_modes": [
-            "frictionless_structure",
-            "genre_misfit"
-          ],
-          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-          "match_count": 7,
-          "matches": [
-            "medical language, social performance, and the collapse",
-            "in hospital, Didion and Dunne return",
-            "her wiser, kinder, or more authentic",
-            "specialist language, medical uncertainty and bureaucratic routines",
-            "particular class world, in the medical and literary culture",
-            "manners, memory and routine",
-            "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
-          ],
-          "severity": "context_warning",
-          "spans": [
-            {
-              "end": 815,
-              "quoted": false,
-              "start": 761,
-              "text": "medical language, social performance, and the collapse"
-            },
-            {
-              "end": 1737,
-              "quoted": false,
-              "start": 1701,
-              "text": "in hospital, Didion and Dunne return"
-            },
-            {
-              "end": 4146,
-              "quoted": false,
-              "start": 4110,
-              "text": "her wiser, kinder, or more authentic"
-            },
-            {
-              "end": 6637,
-              "quoted": false,
-              "start": 6571,
-              "text": "specialist language, medical uncertainty and bureaucratic routines"
-            },
-            {
-              "end": 8673,
-              "quoted": false,
-              "start": 8614,
-              "text": "particular class world, in the medical and literary culture"
-            },
-            {
-              "end": 9552,
-              "quoted": false,
-              "start": 9525,
-              "text": "manners, memory and routine"
-            },
-            {
-              "end": 9948,
-              "quoted": false,
-              "start": 9847,
-              "text": "what is now feared, what can no longer be controlled, and what forms of magical thinking still remain"
-            }
-          ],
-          "threshold": {
-            "minimum_candidates": 4,
-            "minimum_words": 300
-          },
-          "threshold_met": true
-        }
-      },
-      "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
-      ],
-      "id": "no-triad-density",
       "severity": "context_warning",
       "status": "flagged"
     },
@@ -2773,6 +5947,7 @@
           ],
           "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": null,
@@ -2891,12 +6066,12 @@
             "effective_threshold": {
               "minimum_candidates": 2
             },
-            "raw_evidence": "List items with bolded headers: 0",
+            "raw_evidence": "Bold-label segments: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "List items with bolded headers: 0",
+          "evidence": "Bold-label segments: 0",
           "evidence_role": "list_template",
           "evidence_type": "lexical",
           "failure_modes": [

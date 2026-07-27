@@ -1,20 +1,28 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 0
+      "flagged": 7
     },
     "programmatic": {
-      "by_category": {},
+      "by_category": {
+        "Filler and hedging": 2,
+        "Language and grammar": 2,
+        "Signal stacking": 1,
+        "Structural tells": 2
+      },
       "by_severity": {
-        "context_warning": 0,
-        "hard_fail": 0,
-        "strong_warning": 0
+        "context_warning": 5,
+        "hard_fail": 1,
+        "strong_warning": 1
       },
       "signal_stacking": {
-        "components": [],
-        "score": 0,
+        "components": [
+          "manufactured insight framing",
+          "generic conclusion endings"
+        ],
+        "score": 4,
         "threshold": 4,
-        "triggered": false,
+        "triggered": true,
         "vocabulary_points": 0
       }
     },
@@ -88,12 +96,12 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Max AI words per paragraph: 0 (0 total in text)",
+            "raw_evidence": "Max AI words per paragraph: 1 (2 total in text)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Max AI words per paragraph: 0 (0 total in text)",
+          "evidence": "Max AI words per paragraph: 1 (2 total in text)",
           "evidence_role": "vocabulary_cluster",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -161,28 +169,38 @@
       "category": "Signal stacking",
       "evidence": {
         "counts": {
-          "score": 0,
+          "score": 4,
           "threshold": 4
         },
         "locations": [],
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
-          "component_count": 0,
-          "component_signals": [],
-          "components": [],
+          "component_count": 2,
+          "component_points": {
+            "generic_conclusions": 2,
+            "manufactured_insight": 2
+          },
+          "component_signals": [
+            "manufactured insight framing",
+            "generic conclusion endings"
+          ],
+          "components": [
+            "manufactured insight framing",
+            "generic conclusion endings"
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": 4,
-            "raw_evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=0, gptzero=[], kobak=5 distinct/4.2/1000",
+            "raw_evidence": "Overall signal stacking 4/4 from [manufactured insight framing, generic conclusion endings]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=5 distinct/4.2/1000, sample=['address', 'faces', 'outlines', 'using', 'within']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=0, gptzero=[], kobak=5 distinct/4.2/1000",
+          "evidence": "Overall signal stacking 4/4 from [manufactured insight framing, generic conclusion endings]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=5 distinct/4.2/1000, sample=['address', 'faces', 'outlines', 'using', 'within']",
           "evidence_role": "signal_stacking",
           "evidence_type": "aggregate",
           "failure_modes": [
@@ -190,10 +208,10 @@
             "frictionless_structure"
           ],
           "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict.",
-          "score": 0,
+          "score": 4,
           "severity": "context_warning",
           "threshold": 4,
-          "threshold_met": false,
+          "threshold_met": true,
           "vocabulary_signal_stacking": {
             "gptzero_matches": [],
             "kobak_style_density": 4.233700254022015,
@@ -207,7 +225,7 @@
             ],
             "points": 0,
             "reasons": [],
-            "worst_generic": 0
+            "worst_generic": 1
           }
         }
       },
@@ -217,7 +235,7 @@
       ],
       "id": "overall-signal-stacking",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Structural tells",
@@ -225,32 +243,50 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "but ringing strangers about household repairs is the sort of task"
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 4856,
+              "quoted": false,
+              "start": 4791,
+              "text": "but ringing strangers about household repairs is the sort of task"
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No manufactured insight phrases",
+            "raw_evidence": "Found 1: ['but ringing strangers about household repairs is the sort of task']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No manufactured insight phrases",
+          "evidence": "Found 1: ['but ringing strangers about household repairs is the sort of task']",
           "evidence_role": "rhetorical_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice.",
-          "match_count": 0,
-          "matches": [],
+          "match_count": 1,
+          "matches": [
+            "but ringing strangers about household repairs is the sort of task"
+          ],
           "severity": "strong_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 4856,
+              "quoted": false,
+              "start": 4791,
+              "text": "but ringing strangers about household repairs is the sort of task"
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -258,7 +294,7 @@
       ],
       "id": "no-manufactured-insight",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Voice and register",
@@ -286,7 +322,7 @@
             "voice_erasure",
             "generic_abstraction"
           ],
-          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+          "guidance": "Remove the candour or vulnerability announcement and state the claim directly. Preserve literal uses and quoted source text.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -304,7 +340,7 @@
       "status": "clear"
     },
     {
-      "category": "Filler and hedging",
+      "category": "Communication",
       "evidence": {
         "counts": {},
         "locations": [],
@@ -316,15 +352,72 @@
           "candidates": [],
           "context_gate": {
             "applied": false,
-            "effective_threshold": {
-              "minimum_run": 3
-            },
-            "raw_evidence": "Max consecutive short sentences: 2",
+            "effective_threshold": null,
+            "raw_evidence": "No formulaic social-post frames",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Max consecutive short sentences: 2",
+          "evidence": "No formulaic social-post frames",
+          "evidence_role": "platform_formula",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Remove the stock frame and state the actual request, experience, result, or constraint directly.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "subtypes": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-formulaic-social-posts",
+      "severity": "strong_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Filler and hedging",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "The hooks. The chipped plate."
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 5663,
+              "quoted": false,
+              "start": 5634,
+              "text": "The hooks. The chipped plate."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_mean_sentence_words": 15.0,
+              "maximum_short_rate_per_1000": 30.0,
+              "minimum_repeated_opener_run": 2,
+              "minimum_run": 3,
+              "rate_minimum_words": 300
+            },
+            "raw_evidence": "Found short-fragment run(s) sharing an opener: ['The hooks. The chipped plate.']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found short-fragment run(s) sharing an opener: ['The hooks. The chipped plate.']",
           "evidence_role": "rhythm_signal",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -332,14 +425,27 @@
             "frictionless_structure"
           ],
           "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
-          "match_count": 0,
-          "matches": [],
+          "match_count": 1,
+          "matches": [
+            "The hooks. The chipped plate."
+          ],
           "severity": "context_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 5663,
+              "quoted": false,
+              "start": 5634,
+              "text": "The hooks. The chipped plate."
+            }
+          ],
           "threshold": {
-            "minimum_run": 3
+            "maximum_mean_sentence_words": 15.0,
+            "maximum_short_rate_per_1000": 30.0,
+            "minimum_repeated_opener_run": 2,
+            "minimum_run": 3,
+            "rate_minimum_words": 300
           },
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -348,7 +454,7 @@
       ],
       "id": "no-staccato-sequences",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Voice and register",
@@ -390,6 +496,258 @@
         "frictionless_structure"
       ],
       "id": "no-anaphora",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Voice and register",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max paragraph-opener run: 1",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Max paragraph-opener run: 1",
+          "evidence_role": "rhythm_signal",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "guidance": "Fix mechanical repetition across paragraph openings; recommend preserving deliberate rhetorical patterning.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1184,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "id": "no-paragraph-anaphora",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "One-line sections under headings: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "One-line sections under headings: 0",
+          "evidence_role": "repeated_template",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix by developing or folding one-line sections into prose; recommend preserving a single deliberate short section used for emphasis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1184,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-heading-one-liners",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No title case headings",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No title case headings",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix headings that capitalise minor words; match whatever heading style the rest of the document uses.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-title-case-headings",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed spelling conventions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed spelling conventions",
+          "evidence_role": "lexical_distribution",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix the mixture by settling on one convention; preserve whichever one the document and its audience already use.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-mixed-spelling-conventions",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No stacked from-to ranges",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No stacked from-to ranges",
+          "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "guidance": "Fix stacked from-to pairs by naming what the passage actually covers; keep single ranges.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "id": "no-false-ranges",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Filler and hedging",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No modal qualifier stacks",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No modal qualifier stacks",
+          "evidence_role": "stance_erasure",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "guidance": "Fix stacked qualifiers by keeping the one the claim needs; recommend preserving qualifiers tied to a stated basis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1184,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "id": "no-modal-stacks",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -480,21 +838,23 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "sentence length variation 8.8 across 75 sentences (target above 9)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Sentence length stdev: 8.8 (target: >4)",
+            "effective_threshold": {
+              "minimum_stdev": 9.0
+            },
+            "raw_evidence": "Sentence length stdev: 8.8 (target: >9)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Sentence length stdev: 8.8 (target: >4)",
+          "evidence": "Sentence length stdev: 8.8 (target: >9)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -502,11 +862,14 @@
             "genre_misfit"
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
-          "metric_value": 0,
+          "metric": "sentence length variation 8.8 across 75 sentences (target above 9)",
+          "metric_value": "sentence length variation 8.8 across 75 sentences (target above 9)",
           "sample_size": 1184,
           "severity": "context_warning",
-          "threshold": null,
-          "threshold_met": false
+          "threshold": {
+            "minimum_stdev": 9.0
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -515,7 +878,7 @@
       ],
       "id": "sentence-length-variance",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Content patterns",
@@ -615,18 +978,18 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "raw_evidence": "No negative parallelisms",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No negative parallelisms or contrived reframes",
+          "evidence": "No negative parallelisms",
           "evidence_role": "rhetorical_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
-          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced.",
+          "guidance": "Surface every matched construction at Balanced and All, including matches split across two sentences, negative clauses resumed by it/they/he/she, punctuated not-X-but-Y forms, and each rather-than frame. Report the form and occurrence count without suppressing matches based on inferred intention. Repeated occurrences add progressively more signal-stacking evidence.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -732,20 +1095,29 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "think about that"
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 3451,
+              "quoted": false,
+              "start": 3435,
+              "text": "think about that"
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No generic conclusions",
+            "raw_evidence": "Found 1: ['think about that']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No generic conclusions",
+          "evidence": "Found 1: ['think about that']",
           "evidence_role": "generic_closure",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -753,11 +1125,21 @@
             "synthetic_significance"
           ],
           "guidance": "Fix at every depth unless quoted from source text.",
-          "match_count": 0,
+          "match_count": 1,
+          "matches": [
+            "think about that"
+          ],
           "severity": "hard_fail",
-          "spans": [],
+          "spans": [
+            {
+              "end": 3451,
+              "quoted": false,
+              "start": 3435,
+              "text": "think about that"
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -766,7 +1148,7 @@
       ],
       "id": "no-generic-conclusions",
       "severity": "hard_fail",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Filler and hedging",
@@ -834,7 +1216,7 @@
           "failure_modes": [
             "provenance_residue"
           ],
-          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue.",
+          "guidance": "Fix at every depth; replace or remove unfilled placeholders, publishing instructions, and platform markup.",
           "match_count": 0,
           "matches": [],
           "severity": "hard_fail",
@@ -955,20 +1337,1088 @@
           "candidates": [],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "No forced triads",
+            "effective_threshold": {
+              "maximum_rate_per_1000": 4.0,
+              "minimum_words": 300
+            },
+            "raw_evidence": "Triads: 0 at 0.0 per 1000 words",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No forced triads",
+          "evidence": "Triads: 0 at 0.0 per 1000 words",
           "evidence_role": "list_rhythm",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+          "guidance": "Thin out decorative or interchangeable triads until the rate drops. Preserve meaningful lists, quotations, and deliberate rhetoric.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "maximum_rate_per_1000": 4.0,
+            "minimum_words": 300
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-forced-triads",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "induction",
+          "experiment",
+          "disagreement",
+          "vibration",
+          "sentence"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 5,
+          "candidates": [
+            {
+              "end": 1626,
+              "quoted": false,
+              "start": 1617,
+              "text": "induction"
+            },
+            {
+              "end": 1789,
+              "quoted": false,
+              "start": 1779,
+              "text": "experiment"
+            },
+            {
+              "end": 2460,
+              "quoted": false,
+              "start": 2448,
+              "text": "disagreement"
+            },
+            {
+              "end": 4519,
+              "quoted": false,
+              "start": 4510,
+              "text": "vibration"
+            },
+            {
+              "end": 4637,
+              "quoted": false,
+              "start": 4629,
+              "text": "sentence"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "nominalisation(s): 5 at 4.2 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "nominalisation(s): 5 at 4.2 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
+          "match_count": 5,
+          "matches": [
+            "induction",
+            "experiment",
+            "disagreement",
+            "vibration",
+            "sentence"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 1626,
+              "quoted": false,
+              "start": 1617,
+              "text": "induction"
+            },
+            {
+              "end": 1789,
+              "quoted": false,
+              "start": 1779,
+              "text": "experiment"
+            },
+            {
+              "end": 2460,
+              "quoted": false,
+              "start": 2448,
+              "text": "disagreement"
+            },
+            {
+              "end": 4519,
+              "quoted": false,
+              "start": 4510,
+              "text": "vibration"
+            },
+            {
+              "end": 4637,
+              "quoted": false,
+              "start": 4629,
+              "text": "sentence"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-nominalisation-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "whether that was",
+          "window that faced",
+          "bottom that fits",
+          "flat that has",
+          "kind that builds",
+          "vibration that travels"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 6,
+          "candidates": [
+            {
+              "end": 437,
+              "quoted": false,
+              "start": 421,
+              "text": "whether that was"
+            },
+            {
+              "end": 589,
+              "quoted": false,
+              "start": 572,
+              "text": "window that faced"
+            },
+            {
+              "end": 1612,
+              "quoted": false,
+              "start": 1596,
+              "text": "bottom that fits"
+            },
+            {
+              "end": 2301,
+              "quoted": false,
+              "start": 2288,
+              "text": "flat that has"
+            },
+            {
+              "end": 4486,
+              "quoted": false,
+              "start": 4470,
+              "text": "kind that builds"
+            },
+            {
+              "end": 4532,
+              "quoted": false,
+              "start": 4510,
+              "text": "vibration that travels"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 6 subject relative(s) at 5.1 per 1000 words: ['whether that was', 'window that faced', 'bottom that fits', 'flat that has', 'kind that builds', 'vibration that travels']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 6 subject relative(s) at 5.1 per 1000 words: ['whether that was', 'window that faced', 'bottom that fits', 'flat that has', 'kind that builds', 'vibration that travels']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
+          "match_count": 6,
+          "matches": [
+            "whether that was",
+            "window that faced",
+            "bottom that fits",
+            "flat that has",
+            "kind that builds",
+            "vibration that travels"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 437,
+              "quoted": false,
+              "start": 421,
+              "text": "whether that was"
+            },
+            {
+              "end": 589,
+              "quoted": false,
+              "start": 572,
+              "text": "window that faced"
+            },
+            {
+              "end": 1612,
+              "quoted": false,
+              "start": 1596,
+              "text": "bottom that fits"
+            },
+            {
+              "end": 2301,
+              "quoted": false,
+              "start": 2288,
+              "text": "flat that has"
+            },
+            {
+              "end": 4486,
+              "quoted": false,
+              "start": 4470,
+              "text": "kind that builds"
+            },
+            {
+              "end": 4532,
+              "quoted": false,
+              "start": 4510,
+              "text": "vibration that travels"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-that-relative-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "sitting",
+          "leaving",
+          "admitting",
+          "waiting"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 4,
+          "candidates": [
+            {
+              "end": 5868,
+              "quoted": false,
+              "start": 5861,
+              "text": "sitting"
+            },
+            {
+              "end": 4965,
+              "quoted": false,
+              "start": 4958,
+              "text": "leaving"
+            },
+            {
+              "end": 5538,
+              "quoted": false,
+              "start": 5529,
+              "text": "admitting"
+            },
+            {
+              "end": 5926,
+              "quoted": false,
+              "start": 5919,
+              "text": "waiting"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "participial clause(s): 4 at 3.4 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "participial clause(s): 4 at 3.4 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
+          "match_count": 4,
+          "matches": [
+            "sitting",
+            "leaving",
+            "admitting",
+            "waiting"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 5868,
+              "quoted": false,
+              "start": 5861,
+              "text": "sitting"
+            },
+            {
+              "end": 4965,
+              "quoted": false,
+              "start": 4958,
+              "text": "leaving"
+            },
+            {
+              "end": 5538,
+              "quoted": false,
+              "start": 5529,
+              "text": "admitting"
+            },
+            {
+              "end": 5926,
+              "quoted": false,
+              "start": 5919,
+              "text": "waiting"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-participial-clause-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "was gone",
+          "been joined",
+          "is gone",
+          "was sold",
+          "be finished"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 5,
+          "candidates": [
+            {
+              "end": 1025,
+              "quoted": false,
+              "start": 1017,
+              "text": "was gone"
+            },
+            {
+              "end": 2398,
+              "quoted": false,
+              "start": 2387,
+              "text": "been joined"
+            },
+            {
+              "end": 3389,
+              "quoted": false,
+              "start": 3382,
+              "text": "is gone"
+            },
+            {
+              "end": 3413,
+              "quoted": false,
+              "start": 3405,
+              "text": "was sold"
+            },
+            {
+              "end": 5026,
+              "quoted": false,
+              "start": 5015,
+              "text": "be finished"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "passive verb(s): 5 at 4.2 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "passive verb(s): 5 at 4.2 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
+          "match_count": 5,
+          "matches": [
+            "was gone",
+            "been joined",
+            "is gone",
+            "was sold",
+            "be finished"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 1025,
+              "quoted": false,
+              "start": 1017,
+              "text": "was gone"
+            },
+            {
+              "end": 2398,
+              "quoted": false,
+              "start": 2387,
+              "text": "been joined"
+            },
+            {
+              "end": 3389,
+              "quoted": false,
+              "start": 3382,
+              "text": "is gone"
+            },
+            {
+              "end": 3413,
+              "quoted": false,
+              "start": 3405,
+              "text": "was sold"
+            },
+            {
+              "end": 5026,
+              "quoted": false,
+              "start": 5015,
+              "text": "be finished"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-passive-voice-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "it",
+          "It",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "It",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "It",
+          "It",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "it",
+          "It",
+          "it"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 36,
+          "candidates": [
+            {
+              "end": 38,
+              "quoted": false,
+              "start": 36,
+              "text": "it"
+            },
+            {
+              "end": 77,
+              "quoted": false,
+              "start": 75,
+              "text": "It"
+            },
+            {
+              "end": 96,
+              "quoted": false,
+              "start": 94,
+              "text": "it"
+            },
+            {
+              "end": 222,
+              "quoted": false,
+              "start": 220,
+              "text": "it"
+            },
+            {
+              "end": 311,
+              "quoted": false,
+              "start": 309,
+              "text": "it"
+            },
+            {
+              "end": 496,
+              "quoted": false,
+              "start": 494,
+              "text": "it"
+            },
+            {
+              "end": 536,
+              "quoted": false,
+              "start": 534,
+              "text": "it"
+            },
+            {
+              "end": 561,
+              "quoted": false,
+              "start": 559,
+              "text": "it"
+            },
+            {
+              "end": 615,
+              "quoted": false,
+              "start": 613,
+              "text": "it"
+            },
+            {
+              "end": 691,
+              "quoted": false,
+              "start": 689,
+              "text": "It"
+            },
+            {
+              "end": 701,
+              "quoted": false,
+              "start": 699,
+              "text": "it"
+            },
+            {
+              "end": 771,
+              "quoted": false,
+              "start": 769,
+              "text": "it"
+            },
+            {
+              "end": 883,
+              "quoted": false,
+              "start": 881,
+              "text": "it"
+            },
+            {
+              "end": 889,
+              "quoted": false,
+              "start": 887,
+              "text": "it"
+            },
+            {
+              "end": 903,
+              "quoted": false,
+              "start": 901,
+              "text": "it"
+            },
+            {
+              "end": 970,
+              "quoted": false,
+              "start": 968,
+              "text": "it"
+            },
+            {
+              "end": 1083,
+              "quoted": false,
+              "start": 1081,
+              "text": "it"
+            },
+            {
+              "end": 1139,
+              "quoted": false,
+              "start": 1137,
+              "text": "it"
+            },
+            {
+              "end": 1171,
+              "quoted": false,
+              "start": 1169,
+              "text": "it"
+            },
+            {
+              "end": 1175,
+              "quoted": false,
+              "start": 1173,
+              "text": "It"
+            },
+            {
+              "end": 1258,
+              "quoted": false,
+              "start": 1256,
+              "text": "It"
+            },
+            {
+              "end": 1294,
+              "quoted": false,
+              "start": 1292,
+              "text": "it"
+            },
+            {
+              "end": 1587,
+              "quoted": false,
+              "start": 1585,
+              "text": "it"
+            },
+            {
+              "end": 1611,
+              "quoted": false,
+              "start": 1609,
+              "text": "it"
+            },
+            {
+              "end": 1680,
+              "quoted": false,
+              "start": 1678,
+              "text": "it"
+            },
+            {
+              "end": 1754,
+              "quoted": false,
+              "start": 1752,
+              "text": "it"
+            },
+            {
+              "end": 1832,
+              "quoted": false,
+              "start": 1830,
+              "text": "it"
+            },
+            {
+              "end": 1933,
+              "quoted": false,
+              "start": 1931,
+              "text": "it"
+            },
+            {
+              "end": 2068,
+              "quoted": false,
+              "start": 2066,
+              "text": "it"
+            },
+            {
+              "end": 2130,
+              "quoted": false,
+              "start": 2128,
+              "text": "it"
+            },
+            {
+              "end": 2173,
+              "quoted": false,
+              "start": 2171,
+              "text": "it"
+            },
+            {
+              "end": 2314,
+              "quoted": false,
+              "start": 2312,
+              "text": "it"
+            },
+            {
+              "end": 2352,
+              "quoted": false,
+              "start": 2350,
+              "text": "it"
+            },
+            {
+              "end": 2363,
+              "quoted": false,
+              "start": 2361,
+              "text": "it"
+            },
+            {
+              "end": 2497,
+              "quoted": false,
+              "start": 2495,
+              "text": "It"
+            },
+            {
+              "end": 2503,
+              "quoted": false,
+              "start": 2501,
+              "text": "it"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 36 `it` pronoun(s) at 30.6 per 1000 words: ['it', 'It', 'it', 'it', 'it', 'it', 'it', 'it', 'it', 'It', 'it', 'it']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 36 `it` pronoun(s) at 30.6 per 1000 words: ['it', 'It', 'it', 'it', 'it', 'it', 'it', 'it', 'it', 'It', 'it', 'it']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
+          "match_count": 36,
+          "matches": [
+            "it",
+            "It",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "It",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "It",
+            "It",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "it",
+            "It",
+            "it"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 38,
+              "quoted": false,
+              "start": 36,
+              "text": "it"
+            },
+            {
+              "end": 77,
+              "quoted": false,
+              "start": 75,
+              "text": "It"
+            },
+            {
+              "end": 96,
+              "quoted": false,
+              "start": 94,
+              "text": "it"
+            },
+            {
+              "end": 222,
+              "quoted": false,
+              "start": 220,
+              "text": "it"
+            },
+            {
+              "end": 311,
+              "quoted": false,
+              "start": 309,
+              "text": "it"
+            },
+            {
+              "end": 496,
+              "quoted": false,
+              "start": 494,
+              "text": "it"
+            },
+            {
+              "end": 536,
+              "quoted": false,
+              "start": 534,
+              "text": "it"
+            },
+            {
+              "end": 561,
+              "quoted": false,
+              "start": 559,
+              "text": "it"
+            },
+            {
+              "end": 615,
+              "quoted": false,
+              "start": 613,
+              "text": "it"
+            },
+            {
+              "end": 691,
+              "quoted": false,
+              "start": 689,
+              "text": "It"
+            },
+            {
+              "end": 701,
+              "quoted": false,
+              "start": 699,
+              "text": "it"
+            },
+            {
+              "end": 771,
+              "quoted": false,
+              "start": 769,
+              "text": "it"
+            },
+            {
+              "end": 883,
+              "quoted": false,
+              "start": 881,
+              "text": "it"
+            },
+            {
+              "end": 889,
+              "quoted": false,
+              "start": 887,
+              "text": "it"
+            },
+            {
+              "end": 903,
+              "quoted": false,
+              "start": 901,
+              "text": "it"
+            },
+            {
+              "end": 970,
+              "quoted": false,
+              "start": 968,
+              "text": "it"
+            },
+            {
+              "end": 1083,
+              "quoted": false,
+              "start": 1081,
+              "text": "it"
+            },
+            {
+              "end": 1139,
+              "quoted": false,
+              "start": 1137,
+              "text": "it"
+            },
+            {
+              "end": 1171,
+              "quoted": false,
+              "start": 1169,
+              "text": "it"
+            },
+            {
+              "end": 1175,
+              "quoted": false,
+              "start": 1173,
+              "text": "It"
+            },
+            {
+              "end": 1258,
+              "quoted": false,
+              "start": 1256,
+              "text": "It"
+            },
+            {
+              "end": 1294,
+              "quoted": false,
+              "start": 1292,
+              "text": "it"
+            },
+            {
+              "end": 1587,
+              "quoted": false,
+              "start": 1585,
+              "text": "it"
+            },
+            {
+              "end": 1611,
+              "quoted": false,
+              "start": 1609,
+              "text": "it"
+            },
+            {
+              "end": 1680,
+              "quoted": false,
+              "start": 1678,
+              "text": "it"
+            },
+            {
+              "end": 1754,
+              "quoted": false,
+              "start": 1752,
+              "text": "it"
+            },
+            {
+              "end": 1832,
+              "quoted": false,
+              "start": 1830,
+              "text": "it"
+            },
+            {
+              "end": 1933,
+              "quoted": false,
+              "start": 1931,
+              "text": "it"
+            },
+            {
+              "end": 2068,
+              "quoted": false,
+              "start": 2066,
+              "text": "it"
+            },
+            {
+              "end": 2130,
+              "quoted": false,
+              "start": 2128,
+              "text": "it"
+            },
+            {
+              "end": 2173,
+              "quoted": false,
+              "start": 2171,
+              "text": "it"
+            },
+            {
+              "end": 2314,
+              "quoted": false,
+              "start": 2312,
+              "text": "it"
+            },
+            {
+              "end": 2352,
+              "quoted": false,
+              "start": 2350,
+              "text": "it"
+            },
+            {
+              "end": 2363,
+              "quoted": false,
+              "start": 2361,
+              "text": "it"
+            },
+            {
+              "end": 2497,
+              "quoted": false,
+              "start": 2495,
+              "text": "It"
+            },
+            {
+              "end": 2503,
+              "quoted": false,
+              "start": 2501,
+              "text": "it"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-it-pronoun-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Latinate verb(s): 0 at 0.0 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Latinate verb(s): 0 at 0.0 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
           "match_count": 0,
           "matches": [],
           "severity": "context_warning",
@@ -978,10 +2428,137 @@
         }
       },
       "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
+        "generic_abstraction",
+        "frictionless_structure"
       ],
-      "id": "no-forced-triads",
+      "id": "no-latinate-verb-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean word length 4.05 characters across 1178 words (target: <4.8)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean word length 4.05 characters across 1178 words (target: <4.8)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Look for the shorter word that does the same job. `necessitated` becomes `needed`, `demonstrated substantial improvement` becomes `got better`. The measure is draft-wide, so it points at register rather than at one sentence.",
+          "metric": null,
+          "metric_value": 0,
+          "sample_size": 1184,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "word-length-average",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed-script words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed-script words",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "guidance": "Retype the flagged word in plain Latin characters. If a passage is genuinely in Russian, Greek, Kazakh, or another Cyrillic or Greek script, write the whole word in that script rather than mixing.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "id": "no-mixed-script-words",
+      "severity": "hard_fail",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean concreteness 3.46 of 5 across 431 content words (target: >2.915)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean concreteness 3.46 of 5 across 431 content words (target: >2.915)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "guidance": "Name the thing. `The framework provides a basis for the approach` becomes `the rota tells people when to turn up`. Abstraction is right where the subject really is abstract; the measure is draft-wide, so read it as register rather than as one sentence.",
+          "metric": null,
+          "metric_value": 0,
+          "sample_size": 1184,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "id": "concreteness-average",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -1010,7 +2587,7 @@
           "failure_modes": [
             "generic_abstraction"
           ],
-          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
+          "guidance": "Rewrite formulaic participial clauses when a direct sentence or precise causal statement is clearer.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -1054,6 +2631,7 @@
           ],
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -1125,27 +2703,27 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 2
+              "minimum_candidates": 1
             },
-            "raw_evidence": "Rhetorical questions: 0",
+            "raw_evidence": "Fragment-question answer beats: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Rhetorical questions: 0",
+          "evidence": "Fragment-question answer beats: 0",
           "evidence_role": "rhetorical_template",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument.",
+          "guidance": "Rewrite the fragment and its answer as one direct statement.",
           "match_count": 0,
           "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 2
+            "minimum_candidates": 1
           },
           "threshold_met": false
         }
@@ -1206,6 +2784,53 @@
         "genre_misfit"
       ],
       "id": "no-excessive-lists",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_deviation": 2,
+              "minimum_items": 3
+            },
+            "raw_evidence": "No symmetric list items",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No symmetric list items",
+          "evidence_role": "listification",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix template-shaped list items; preserve specifications, comparison tables, and reference entries where uniformity carries meaning.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "maximum_deviation": 2,
+            "minimum_items": 3
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-symmetric-list-items",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -1284,6 +2909,7 @@
           ],
           "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -1764,6 +3390,7 @@
           ],
           "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": {
@@ -1810,6 +3437,7 @@
           ],
           "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
@@ -1840,12 +3468,12 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Type-token ratio: 0.402 (473 unique / 1176 total, target: >0.40)",
+            "raw_evidence": "Windowed type-token ratio: 0.633 (42 windows of 150 words, flag at 0.71)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Type-token ratio: 0.402 (473 unique / 1176 total, target: >0.40)",
+          "evidence": "Windowed type-token ratio: 0.633 (42 windows of 150 words, flag at 0.71)",
           "evidence_role": "lexical_distribution",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -1866,55 +3494,6 @@
         "genre_misfit"
       ],
       "id": "vocabulary-diversity",
-      "severity": "context_warning",
-      "status": "clear"
-    },
-    {
-      "category": "Language and grammar",
-      "evidence": {
-        "counts": {},
-        "locations": [],
-        "metric": null,
-        "quoted_phrases": [],
-        "raw": {
-          "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
-          "context_gate": {
-            "applied": false,
-            "effective_threshold": {
-              "minimum_candidates": 4,
-              "minimum_words": 300
-            },
-            "raw_evidence": "Triads: 0",
-            "suppression_reason": null
-          },
-          "context_reason": null,
-          "context_suppressed": false,
-          "evidence": "Triads: 0",
-          "evidence_role": "list_rhythm",
-          "evidence_type": "lexical",
-          "failure_modes": [
-            "frictionless_structure",
-            "genre_misfit"
-          ],
-          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-          "match_count": 0,
-          "matches": [],
-          "severity": "context_warning",
-          "spans": [],
-          "threshold": {
-            "minimum_candidates": 4,
-            "minimum_words": 300
-          },
-          "threshold_met": false
-        }
-      },
-      "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
-      ],
-      "id": "no-triad-density",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -1986,6 +3565,7 @@
           ],
           "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": null,
@@ -2104,12 +3684,12 @@
             "effective_threshold": {
               "minimum_candidates": 2
             },
-            "raw_evidence": "List items with bolded headers: 0",
+            "raw_evidence": "Bold-label segments: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "List items with bolded headers: 0",
+          "evidence": "Bold-label segments: 0",
           "evidence_role": "list_template",
           "evidence_type": "lexical",
           "failure_modes": [

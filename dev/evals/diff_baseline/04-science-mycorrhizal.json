@@ -1,25 +1,30 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 5
+      "flagged": 16
     },
     "programmatic": {
       "by_category": {
+        "Content patterns": 3,
         "Filler and hedging": 1,
-        "Language and grammar": 3,
+        "Language and grammar": 9,
+        "Signal stacking": 1,
+        "Structural tells": 1,
         "Style": 1
       },
       "by_severity": {
-        "context_warning": 4,
+        "context_warning": 11,
         "hard_fail": 0,
-        "strong_warning": 1
+        "strong_warning": 5
       },
       "signal_stacking": {
-        "components": [],
-        "score": 0,
+        "components": [
+          "negative parallelism"
+        ],
+        "score": 5,
         "threshold": 4,
-        "triggered": false,
-        "vocabulary_points": 0
+        "triggered": true,
+        "vocabulary_points": 1
       }
     },
     "semantic": {
@@ -84,20 +89,24 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "explore",
+          "effectively",
+          "versatile"
+        ],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Max AI words per paragraph: 1 (3 total in text)",
+            "raw_evidence": "Worst paragraph has 3 AI words: ['explore', 'effectively', 'versatile'] (8 total in text)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Max AI words per paragraph: 1 (3 total in text)",
+          "evidence": "Worst paragraph has 3 AI words: ['explore', 'effectively', 'versatile'] (8 total in text)",
           "evidence_role": "vocabulary_cluster",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -108,7 +117,7 @@
           "severity": "strong_warning",
           "spans": [],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -116,7 +125,7 @@
       ],
       "id": "no-ai-vocabulary-clustering",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Voice and register",
@@ -165,28 +174,35 @@
       "category": "Signal stacking",
       "evidence": {
         "counts": {
-          "score": 0,
+          "score": 5,
           "threshold": 4
         },
         "locations": [],
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
-          "component_count": 0,
-          "component_signals": [],
-          "components": [],
+          "component_count": 1,
+          "component_points": {
+            "negative_parallelism": 4
+          },
+          "component_signals": [
+            "negative parallelism"
+          ],
+          "components": [
+            "negative parallelism"
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": 4,
-            "raw_evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.9/1000",
+            "raw_evidence": "Overall signal stacking 5/4 from [negative parallelism]; vocab=1 point(s), worst_generic=3, gptzero=[], kobak=10 distinct/8.9/1000, sample=['conditions', 'effectively', 'hold', 'impressive', 'individuals', 'intricate', 'remains', 'research', 'shaping', 'substantial']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=10 distinct/8.9/1000",
+          "evidence": "Overall signal stacking 5/4 from [negative parallelism]; vocab=1 point(s), worst_generic=3, gptzero=[], kobak=10 distinct/8.9/1000, sample=['conditions', 'effectively', 'hold', 'impressive', 'individuals', 'intricate', 'remains', 'research', 'shaping', 'substantial']",
           "evidence_role": "signal_stacking",
           "evidence_type": "aggregate",
           "failure_modes": [
@@ -194,10 +210,10 @@
             "frictionless_structure"
           ],
           "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict.",
-          "score": 0,
+          "score": 5,
           "severity": "context_warning",
           "threshold": 4,
-          "threshold_met": false,
+          "threshold_met": true,
           "vocabulary_signal_stacking": {
             "gptzero_matches": [],
             "kobak_style_density": 8.922880815806247,
@@ -214,9 +230,11 @@
               "shaping",
               "substantial"
             ],
-            "points": 0,
-            "reasons": [],
-            "worst_generic": 1
+            "points": 1,
+            "reasons": [
+              "generic_cluster=3"
+            ],
+            "worst_generic": 3
           }
         }
       },
@@ -226,7 +244,7 @@
       ],
       "id": "overall-signal-stacking",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Structural tells",
@@ -295,7 +313,7 @@
             "voice_erasure",
             "generic_abstraction"
           ],
-          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+          "guidance": "Remove the candour or vulnerability announcement and state the claim directly. Preserve literal uses and quoted source text.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -313,6 +331,50 @@
       "status": "clear"
     },
     {
+      "category": "Communication",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No formulaic social-post frames",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No formulaic social-post frames",
+          "evidence_role": "platform_formula",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Remove the stock frame and state the actual request, experience, result, or constraint directly.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "subtypes": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-formulaic-social-posts",
+      "severity": "strong_warning",
+      "status": "clear"
+    },
+    {
       "category": "Filler and hedging",
       "evidence": {
         "counts": {},
@@ -326,7 +388,11 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_run": 3
+              "maximum_mean_sentence_words": 15.0,
+              "maximum_short_rate_per_1000": 30.0,
+              "minimum_repeated_opener_run": 2,
+              "minimum_run": 3,
+              "rate_minimum_words": 300
             },
             "raw_evidence": "Max consecutive short sentences: 1",
             "suppression_reason": null
@@ -346,7 +412,11 @@
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_run": 3
+            "maximum_mean_sentence_words": 15.0,
+            "maximum_short_rate_per_1000": 30.0,
+            "minimum_repeated_opener_run": 2,
+            "minimum_run": 3,
+            "rate_minimum_words": 300
           },
           "threshold_met": false
         }
@@ -399,6 +469,276 @@
         "frictionless_structure"
       ],
       "id": "no-anaphora",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Voice and register",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max paragraph-opener run: 1",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Max paragraph-opener run: 1",
+          "evidence_role": "rhythm_signal",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "guidance": "Fix mechanical repetition across paragraph openings; recommend preserving deliberate rhetorical patterning.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "id": "no-paragraph-anaphora",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "One-line sections under headings: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "One-line sections under headings: 0",
+          "evidence_role": "repeated_template",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix by developing or folding one-line sections into prose; recommend preserving a single deliberate short section used for emphasis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-heading-one-liners",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No title case headings",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No title case headings",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix headings that capitalise minor words; match whatever heading style the rest of the document uses.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-title-case-headings",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed spelling conventions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed spelling conventions",
+          "evidence_role": "lexical_distribution",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix the mixture by settling on one convention; preserve whichever one the document and its audience already use.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-mixed-spelling-conventions",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "The architecture differs, but the underlying bargain is similar: carbon flows from plant to fungus; soil-derived resources flow from fungus to plant."
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 2021,
+              "quoted": false,
+              "start": 1872,
+              "text": "The architecture differs, but the underlying bargain is similar: carbon flows from plant to fungus; soil-derived resources flow from fungus to plant."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 1 sentence(s) stacking 2 or more from-to pairs: ['The architecture differs, but the underlying bargain is similar: carbon flows from plant to fungus; soil-derived resources flow from fungus to plant.']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 1 sentence(s) stacking 2 or more from-to pairs: ['The architecture differs, but the underlying bargain is similar: carbon flows from plant to fungus; soil-derived resources flow from fungus to plant.']",
+          "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "guidance": "Fix stacked from-to pairs by naming what the passage actually covers; keep single ranges.",
+          "match_count": 1,
+          "matches": [
+            "The architecture differs, but the underlying bargain is similar: carbon flows from plant to fungus; soil-derived resources flow from fungus to plant."
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 2021,
+              "quoted": false,
+              "start": 1872,
+              "text": "The architecture differs, but the underlying bargain is similar: carbon flows from plant to fungus; soil-derived resources flow from fungus to plant."
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "id": "no-false-ranges",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Filler and hedging",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No modal qualifier stacks",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No modal qualifier stacks",
+          "evidence_role": "stance_erasure",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "guidance": "Fix stacked qualifiers by keeping the one the claim needs; recommend preserving qualifiers tied to a stated basis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "id": "no-modal-stacks",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -605,21 +945,23 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "sentence length variation 8.2 across 96 sentences (target above 9)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Sentence length stdev: 8.2 (target: >4)",
+            "effective_threshold": {
+              "minimum_stdev": 9.0
+            },
+            "raw_evidence": "Sentence length stdev: 8.2 (target: >9)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Sentence length stdev: 8.2 (target: >4)",
+          "evidence": "Sentence length stdev: 8.2 (target: >9)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -627,11 +969,14 @@
             "genre_misfit"
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
-          "metric_value": 0,
+          "metric": "sentence length variation 8.2 across 96 sentences (target above 9)",
+          "metric_value": "sentence length variation 8.2 across 96 sentences (target above 9)",
           "sample_size": 1593,
           "severity": "context_warning",
-          "threshold": null,
-          "threshold_met": false
+          "threshold": {
+            "minimum_stdev": 9.0
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -640,7 +985,7 @@
       ],
       "id": "sentence-length-variance",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Content patterns",
@@ -732,32 +1077,176 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "These fungi are not decoration on tree roots. They are",
+          "A common mycorrhizal network is not just                    . It means",
+          "That does not make the networks imaginary. It means",
+          "Forest life is not a morality play about generosity. It is",
+          "But mycorrhizal fungi do not simply                in a straightforward way. They receive",
+          "The trees may allocate a large share of photosynthetic carbon below ground because nutrients, not light",
+          "Seedlings do not enter a neutral underground world. They germinate",
+          "That does not mean protecting fungi is a simple climate solution. It means",
+          "rather than",
+          "A forest is not just a collection of trees. It is"
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 10,
+          "candidates": [
+            {
+              "end": 462,
+              "quoted": false,
+              "start": 408,
+              "text": "These fungi are not decoration on tree roots. They are"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "A common mycorrhizal network is not just                    . It means"
+            },
+            {
+              "end": 3788,
+              "quoted": false,
+              "start": 3737,
+              "text": "That does not make the networks imaginary. It means"
+            },
+            {
+              "end": 5159,
+              "quoted": false,
+              "start": 5101,
+              "text": "Forest life is not a morality play about generosity. It is"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "But mycorrhizal fungi do not simply                in a straightforward way. They receive"
+            },
+            {
+              "end": 7583,
+              "quoted": false,
+              "start": 7480,
+              "text": "The trees may allocate a large share of photosynthetic carbon below ground because nutrients, not light"
+            },
+            {
+              "end": 8258,
+              "quoted": false,
+              "start": 8192,
+              "text": "Seedlings do not enter a neutral underground world. They germinate"
+            },
+            {
+              "end": 9203,
+              "quoted": false,
+              "start": 9129,
+              "text": "That does not mean protecting fungi is a simple climate solution. It means"
+            },
+            {
+              "end": 9995,
+              "quoted": false,
+              "start": 9984,
+              "text": "rather than"
+            },
+            {
+              "end": 10200,
+              "quoted": false,
+              "start": 10151,
+              "text": "A forest is not just a collection of trees. It is"
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "raw_evidence": "Found 10 negative-parallelism occurrence(s)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No negative parallelisms or contrived reframes",
+          "evidence": "Found 10 negative-parallelism occurrence(s)",
           "evidence_role": "rhetorical_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
-          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced.",
-          "match_count": 0,
-          "matches": [],
+          "guidance": "Surface every matched construction at Balanced and All, including matches split across two sentences, negative clauses resumed by it/they/he/she, punctuated not-X-but-Y forms, and each rather-than frame. Report the form and occurrence count without suppressing matches based on inferred intention. Repeated occurrences add progressively more signal-stacking evidence.",
+          "match_count": 10,
+          "matches": [
+            "These fungi are not decoration on tree roots. They are",
+            "A common mycorrhizal network is not just                    . It means",
+            "That does not make the networks imaginary. It means",
+            "Forest life is not a morality play about generosity. It is",
+            "But mycorrhizal fungi do not simply                in a straightforward way. They receive",
+            "The trees may allocate a large share of photosynthetic carbon below ground because nutrients, not light",
+            "Seedlings do not enter a neutral underground world. They germinate",
+            "That does not mean protecting fungi is a simple climate solution. It means",
+            "rather than",
+            "A forest is not just a collection of trees. It is"
+          ],
           "severity": "strong_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 462,
+              "quoted": false,
+              "start": 408,
+              "text": "These fungi are not decoration on tree roots. They are"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "A common mycorrhizal network is not just                    . It means"
+            },
+            {
+              "end": 3788,
+              "quoted": false,
+              "start": 3737,
+              "text": "That does not make the networks imaginary. It means"
+            },
+            {
+              "end": 5159,
+              "quoted": false,
+              "start": 5101,
+              "text": "Forest life is not a morality play about generosity. It is"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "But mycorrhizal fungi do not simply                in a straightforward way. They receive"
+            },
+            {
+              "end": 7583,
+              "quoted": false,
+              "start": 7480,
+              "text": "The trees may allocate a large share of photosynthetic carbon below ground because nutrients, not light"
+            },
+            {
+              "end": 8258,
+              "quoted": false,
+              "start": 8192,
+              "text": "Seedlings do not enter a neutral underground world. They germinate"
+            },
+            {
+              "end": 9203,
+              "quoted": false,
+              "start": 9129,
+              "text": "That does not mean protecting fungi is a simple climate solution. It means"
+            },
+            {
+              "end": 9995,
+              "quoted": false,
+              "start": 9984,
+              "text": "rather than"
+            },
+            {
+              "end": 10200,
+              "quoted": false,
+              "start": 10151,
+              "text": "A forest is not just a collection of trees. It is"
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -765,7 +1254,7 @@
       ],
       "id": "no-negative-parallelisms",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Language and grammar",
@@ -897,6 +1386,7 @@
           ],
           "guidance": "Fix at every depth unless quoted from source text.",
           "match_count": 0,
+          "matches": [],
           "severity": "hard_fail",
           "spans": [],
           "threshold": null,
@@ -977,7 +1467,7 @@
           "failure_modes": [
             "provenance_residue"
           ],
-          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue.",
+          "guidance": "Fix at every depth; replace or remove unfilled placeholders, publishing instructions, and platform markup.",
           "match_count": 0,
           "matches": [],
           "severity": "hard_fail",
@@ -1212,20 +1702,23 @@
           ],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Found 16 triad(s): ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
+            "effective_threshold": {
+              "maximum_rate_per_1000": 4.0,
+              "minimum_words": 300
+            },
+            "raw_evidence": "Found 16 triad(s) at 10.2 per 1000 words: ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 16 triad(s): ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
+          "evidence": "Found 16 triad(s) at 10.2 per 1000 words: ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
           "evidence_role": "list_rhythm",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+          "guidance": "Thin out decorative or interchangeable triads until the rate drops. Preserve meaningful lists, quotations, and deliberate rhetoric.",
           "match_count": 16,
           "matches": [
             "recover, compete and store carbon",
@@ -1344,7 +1837,10 @@
               "text": "patchy, changing and difficult"
             }
           ],
-          "threshold": null,
+          "threshold": {
+            "maximum_rate_per_1000": 4.0,
+            "minimum_words": 300
+          },
           "threshold_met": true
         }
       },
@@ -1357,7 +1853,1578 @@
       "status": "flagged"
     },
     {
-      "category": "Content patterns",
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "filaments",
+          "decoration",
+          "association",
+          "filaments",
+          "filament",
+          "identity",
+          "conditions",
+          "conditions",
+          "connection",
+          "connections",
+          "Evolution",
+          "performance",
+          "evidence",
+          "experiments",
+          "movement",
+          "conditions",
+          "experiment",
+          "evidence",
+          "competition",
+          "morality",
+          "generosity",
+          "communication",
+          "experiments",
+          "conversation",
+          "evidence",
+          "intention",
+          "environment",
+          "selection",
+          "conditions",
+          "distances",
+          "decomposition",
+          "community",
+          "composition",
+          "directions",
+          "conditions",
+          "regeneration",
+          "disturbance",
+          "community",
+          "community",
+          "influence",
+          "conservation",
+          "productivity",
+          "richness",
+          "biodiversity",
+          "solution",
+          "biodiversity",
+          "competition",
+          "influence",
+          "establishment",
+          "collection",
+          "community"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 51,
+          "candidates": [
+            {
+              "end": 340,
+              "quoted": false,
+              "start": 331,
+              "text": "filaments"
+            },
+            {
+              "end": 438,
+              "quoted": false,
+              "start": 428,
+              "text": "decoration"
+            },
+            {
+              "end": 626,
+              "quoted": false,
+              "start": 615,
+              "text": "association"
+            },
+            {
+              "end": 727,
+              "quoted": false,
+              "start": 718,
+              "text": "filaments"
+            },
+            {
+              "end": 1356,
+              "quoted": false,
+              "start": 1348,
+              "text": "filament"
+            },
+            {
+              "end": 2443,
+              "quoted": false,
+              "start": 2435,
+              "text": "identity"
+            },
+            {
+              "end": 2460,
+              "quoted": false,
+              "start": 2450,
+              "text": "conditions"
+            },
+            {
+              "end": 2702,
+              "quoted": false,
+              "start": 2692,
+              "text": "conditions"
+            },
+            {
+              "end": 2968,
+              "quoted": false,
+              "start": 2958,
+              "text": "connection"
+            },
+            {
+              "end": 3026,
+              "quoted": false,
+              "start": 3015,
+              "text": "connections"
+            },
+            {
+              "end": 3449,
+              "quoted": false,
+              "start": 3440,
+              "text": "Evolution"
+            },
+            {
+              "end": 3620,
+              "quoted": false,
+              "start": 3609,
+              "text": "performance"
+            },
+            {
+              "end": 3734,
+              "quoted": false,
+              "start": 3726,
+              "text": "evidence"
+            },
+            {
+              "end": 3878,
+              "quoted": false,
+              "start": 3867,
+              "text": "experiments"
+            },
+            {
+              "end": 4061,
+              "quoted": false,
+              "start": 4053,
+              "text": "movement"
+            },
+            {
+              "end": 4232,
+              "quoted": false,
+              "start": 4222,
+              "text": "conditions"
+            },
+            {
+              "end": 4258,
+              "quoted": false,
+              "start": 4248,
+              "text": "experiment"
+            },
+            {
+              "end": 4800,
+              "quoted": false,
+              "start": 4792,
+              "text": "evidence"
+            },
+            {
+              "end": 5066,
+              "quoted": false,
+              "start": 5055,
+              "text": "competition"
+            },
+            {
+              "end": 5130,
+              "quoted": false,
+              "start": 5122,
+              "text": "morality"
+            },
+            {
+              "end": 5152,
+              "quoted": false,
+              "start": 5142,
+              "text": "generosity"
+            },
+            {
+              "end": 5220,
+              "quoted": true,
+              "start": 5207,
+              "text": "communication"
+            },
+            {
+              "end": 5443,
+              "quoted": false,
+              "start": 5432,
+              "text": "experiments"
+            },
+            {
+              "end": 5706,
+              "quoted": false,
+              "start": 5694,
+              "text": "conversation"
+            },
+            {
+              "end": 5747,
+              "quoted": false,
+              "start": 5739,
+              "text": "evidence"
+            },
+            {
+              "end": 5760,
+              "quoted": false,
+              "start": 5751,
+              "text": "intention"
+            },
+            {
+              "end": 5906,
+              "quoted": false,
+              "start": 5895,
+              "text": "environment"
+            },
+            {
+              "end": 6102,
+              "quoted": false,
+              "start": 6093,
+              "text": "selection"
+            },
+            {
+              "end": 6273,
+              "quoted": false,
+              "start": 6263,
+              "text": "conditions"
+            },
+            {
+              "end": 6748,
+              "quoted": false,
+              "start": 6739,
+              "text": "distances"
+            },
+            {
+              "end": 7137,
+              "quoted": false,
+              "start": 7124,
+              "text": "decomposition"
+            },
+            {
+              "end": 7258,
+              "quoted": false,
+              "start": 7249,
+              "text": "community"
+            },
+            {
+              "end": 7270,
+              "quoted": false,
+              "start": 7259,
+              "text": "composition"
+            },
+            {
+              "end": 7407,
+              "quoted": false,
+              "start": 7397,
+              "text": "directions"
+            },
+            {
+              "end": 8093,
+              "quoted": false,
+              "start": 8083,
+              "text": "conditions"
+            },
+            {
+              "end": 8172,
+              "quoted": false,
+              "start": 8160,
+              "text": "regeneration"
+            },
+            {
+              "end": 8190,
+              "quoted": false,
+              "start": 8179,
+              "text": "disturbance"
+            },
+            {
+              "end": 8492,
+              "quoted": false,
+              "start": 8483,
+              "text": "community"
+            },
+            {
+              "end": 8683,
+              "quoted": false,
+              "start": 8674,
+              "text": "community"
+            },
+            {
+              "end": 8697,
+              "quoted": false,
+              "start": 8688,
+              "text": "influence"
+            },
+            {
+              "end": 8799,
+              "quoted": false,
+              "start": 8787,
+              "text": "conservation"
+            },
+            {
+              "end": 8853,
+              "quoted": false,
+              "start": 8841,
+              "text": "productivity"
+            },
+            {
+              "end": 8976,
+              "quoted": false,
+              "start": 8968,
+              "text": "richness"
+            },
+            {
+              "end": 9071,
+              "quoted": false,
+              "start": 9059,
+              "text": "biodiversity"
+            },
+            {
+              "end": 9193,
+              "quoted": false,
+              "start": 9185,
+              "text": "solution"
+            },
+            {
+              "end": 9256,
+              "quoted": false,
+              "start": 9244,
+              "text": "biodiversity"
+            },
+            {
+              "end": 9653,
+              "quoted": false,
+              "start": 9642,
+              "text": "competition"
+            },
+            {
+              "end": 9664,
+              "quoted": false,
+              "start": 9655,
+              "text": "influence"
+            },
+            {
+              "end": 9687,
+              "quoted": false,
+              "start": 9674,
+              "text": "establishment"
+            },
+            {
+              "end": 10184,
+              "quoted": false,
+              "start": 10174,
+              "text": "collection"
+            },
+            {
+              "end": 10220,
+              "quoted": false,
+              "start": 10211,
+              "text": "community"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 51 nominalisation(s) at 32.4 per 1000 words: ['filaments', 'decoration', 'association', 'filaments', 'filament', 'identity', 'conditions', 'conditions', 'connection', 'connections', 'Evolution', 'performance']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 51 nominalisation(s) at 32.4 per 1000 words: ['filaments', 'decoration', 'association', 'filaments', 'filament', 'identity', 'conditions', 'conditions', 'connection', 'connections', 'Evolution', 'performance']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
+          "match_count": 51,
+          "matches": [
+            "filaments",
+            "decoration",
+            "association",
+            "filaments",
+            "filament",
+            "identity",
+            "conditions",
+            "conditions",
+            "connection",
+            "connections",
+            "Evolution",
+            "performance",
+            "evidence",
+            "experiments",
+            "movement",
+            "conditions",
+            "experiment",
+            "evidence",
+            "competition",
+            "morality",
+            "generosity",
+            "communication",
+            "experiments",
+            "conversation",
+            "evidence",
+            "intention",
+            "environment",
+            "selection",
+            "conditions",
+            "distances",
+            "decomposition",
+            "community",
+            "composition",
+            "directions",
+            "conditions",
+            "regeneration",
+            "disturbance",
+            "community",
+            "community",
+            "influence",
+            "conservation",
+            "productivity",
+            "richness",
+            "biodiversity",
+            "solution",
+            "biodiversity",
+            "competition",
+            "influence",
+            "establishment",
+            "collection",
+            "community"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 340,
+              "quoted": false,
+              "start": 331,
+              "text": "filaments"
+            },
+            {
+              "end": 438,
+              "quoted": false,
+              "start": 428,
+              "text": "decoration"
+            },
+            {
+              "end": 626,
+              "quoted": false,
+              "start": 615,
+              "text": "association"
+            },
+            {
+              "end": 727,
+              "quoted": false,
+              "start": 718,
+              "text": "filaments"
+            },
+            {
+              "end": 1356,
+              "quoted": false,
+              "start": 1348,
+              "text": "filament"
+            },
+            {
+              "end": 2443,
+              "quoted": false,
+              "start": 2435,
+              "text": "identity"
+            },
+            {
+              "end": 2460,
+              "quoted": false,
+              "start": 2450,
+              "text": "conditions"
+            },
+            {
+              "end": 2702,
+              "quoted": false,
+              "start": 2692,
+              "text": "conditions"
+            },
+            {
+              "end": 2968,
+              "quoted": false,
+              "start": 2958,
+              "text": "connection"
+            },
+            {
+              "end": 3026,
+              "quoted": false,
+              "start": 3015,
+              "text": "connections"
+            },
+            {
+              "end": 3449,
+              "quoted": false,
+              "start": 3440,
+              "text": "Evolution"
+            },
+            {
+              "end": 3620,
+              "quoted": false,
+              "start": 3609,
+              "text": "performance"
+            },
+            {
+              "end": 3734,
+              "quoted": false,
+              "start": 3726,
+              "text": "evidence"
+            },
+            {
+              "end": 3878,
+              "quoted": false,
+              "start": 3867,
+              "text": "experiments"
+            },
+            {
+              "end": 4061,
+              "quoted": false,
+              "start": 4053,
+              "text": "movement"
+            },
+            {
+              "end": 4232,
+              "quoted": false,
+              "start": 4222,
+              "text": "conditions"
+            },
+            {
+              "end": 4258,
+              "quoted": false,
+              "start": 4248,
+              "text": "experiment"
+            },
+            {
+              "end": 4800,
+              "quoted": false,
+              "start": 4792,
+              "text": "evidence"
+            },
+            {
+              "end": 5066,
+              "quoted": false,
+              "start": 5055,
+              "text": "competition"
+            },
+            {
+              "end": 5130,
+              "quoted": false,
+              "start": 5122,
+              "text": "morality"
+            },
+            {
+              "end": 5152,
+              "quoted": false,
+              "start": 5142,
+              "text": "generosity"
+            },
+            {
+              "end": 5220,
+              "quoted": true,
+              "start": 5207,
+              "text": "communication"
+            },
+            {
+              "end": 5443,
+              "quoted": false,
+              "start": 5432,
+              "text": "experiments"
+            },
+            {
+              "end": 5706,
+              "quoted": false,
+              "start": 5694,
+              "text": "conversation"
+            },
+            {
+              "end": 5747,
+              "quoted": false,
+              "start": 5739,
+              "text": "evidence"
+            },
+            {
+              "end": 5760,
+              "quoted": false,
+              "start": 5751,
+              "text": "intention"
+            },
+            {
+              "end": 5906,
+              "quoted": false,
+              "start": 5895,
+              "text": "environment"
+            },
+            {
+              "end": 6102,
+              "quoted": false,
+              "start": 6093,
+              "text": "selection"
+            },
+            {
+              "end": 6273,
+              "quoted": false,
+              "start": 6263,
+              "text": "conditions"
+            },
+            {
+              "end": 6748,
+              "quoted": false,
+              "start": 6739,
+              "text": "distances"
+            },
+            {
+              "end": 7137,
+              "quoted": false,
+              "start": 7124,
+              "text": "decomposition"
+            },
+            {
+              "end": 7258,
+              "quoted": false,
+              "start": 7249,
+              "text": "community"
+            },
+            {
+              "end": 7270,
+              "quoted": false,
+              "start": 7259,
+              "text": "composition"
+            },
+            {
+              "end": 7407,
+              "quoted": false,
+              "start": 7397,
+              "text": "directions"
+            },
+            {
+              "end": 8093,
+              "quoted": false,
+              "start": 8083,
+              "text": "conditions"
+            },
+            {
+              "end": 8172,
+              "quoted": false,
+              "start": 8160,
+              "text": "regeneration"
+            },
+            {
+              "end": 8190,
+              "quoted": false,
+              "start": 8179,
+              "text": "disturbance"
+            },
+            {
+              "end": 8492,
+              "quoted": false,
+              "start": 8483,
+              "text": "community"
+            },
+            {
+              "end": 8683,
+              "quoted": false,
+              "start": 8674,
+              "text": "community"
+            },
+            {
+              "end": 8697,
+              "quoted": false,
+              "start": 8688,
+              "text": "influence"
+            },
+            {
+              "end": 8799,
+              "quoted": false,
+              "start": 8787,
+              "text": "conservation"
+            },
+            {
+              "end": 8853,
+              "quoted": false,
+              "start": 8841,
+              "text": "productivity"
+            },
+            {
+              "end": 8976,
+              "quoted": false,
+              "start": 8968,
+              "text": "richness"
+            },
+            {
+              "end": 9071,
+              "quoted": false,
+              "start": 9059,
+              "text": "biodiversity"
+            },
+            {
+              "end": 9193,
+              "quoted": false,
+              "start": 9185,
+              "text": "solution"
+            },
+            {
+              "end": 9256,
+              "quoted": false,
+              "start": 9244,
+              "text": "biodiversity"
+            },
+            {
+              "end": 9653,
+              "quoted": false,
+              "start": 9642,
+              "text": "competition"
+            },
+            {
+              "end": 9664,
+              "quoted": false,
+              "start": 9655,
+              "text": "influence"
+            },
+            {
+              "end": 9687,
+              "quoted": false,
+              "start": 9674,
+              "text": "establishment"
+            },
+            {
+              "end": 10184,
+              "quoted": false,
+              "start": 10174,
+              "text": "collection"
+            },
+            {
+              "end": 10220,
+              "quoted": false,
+              "start": 10211,
+              "text": "community"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-nominalisation-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "fungus that helps",
+          "network that appears",
+          "policy that ignores"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 3,
+          "candidates": [
+            {
+              "end": 6435,
+              "quoted": false,
+              "start": 6418,
+              "text": "fungus that helps"
+            },
+            {
+              "end": 6513,
+              "quoted": false,
+              "start": 6493,
+              "text": "network that appears"
+            },
+            {
+              "end": 9230,
+              "quoted": false,
+              "start": 9211,
+              "text": "policy that ignores"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "subject relative(s): 3 at 1.9 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "subject relative(s): 3 at 1.9 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
+          "match_count": 3,
+          "matches": [
+            "fungus that helps",
+            "network that appears",
+            "policy that ignores"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 6435,
+              "quoted": false,
+              "start": 6418,
+              "text": "fungus that helps"
+            },
+            {
+              "end": 6513,
+              "quoted": false,
+              "start": 6493,
+              "text": "network that appears"
+            },
+            {
+              "end": 9230,
+              "quoted": false,
+              "start": 9211,
+              "text": "policy that ignores"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-that-relative-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "Working",
+          "depending",
+          "existing",
+          "shaping",
+          "changing"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 5,
+          "candidates": [
+            {
+              "end": 3942,
+              "quoted": false,
+              "start": 3935,
+              "text": "Working"
+            },
+            {
+              "end": 2424,
+              "quoted": false,
+              "start": 2415,
+              "text": "depending"
+            },
+            {
+              "end": 8367,
+              "quoted": false,
+              "start": 8359,
+              "text": "existing"
+            },
+            {
+              "end": 8542,
+              "quoted": false,
+              "start": 8535,
+              "text": "shaping"
+            },
+            {
+              "end": 10042,
+              "quoted": false,
+              "start": 10034,
+              "text": "changing"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "participial clause(s): 5 at 3.2 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "participial clause(s): 5 at 3.2 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
+          "match_count": 5,
+          "matches": [
+            "Working",
+            "depending",
+            "existing",
+            "shaping",
+            "changing"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 3942,
+              "quoted": false,
+              "start": 3935,
+              "text": "Working"
+            },
+            {
+              "end": 2424,
+              "quoted": false,
+              "start": 2415,
+              "text": "depending"
+            },
+            {
+              "end": 8367,
+              "quoted": false,
+              "start": 8359,
+              "text": "existing"
+            },
+            {
+              "end": 8542,
+              "quoted": false,
+              "start": 8535,
+              "text": "shaping"
+            },
+            {
+              "end": 10042,
+              "quoted": false,
+              "start": 10034,
+              "text": "changing"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-participial-clause-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "are threaded",
+          "is held",
+          "was published",
+          "being connected",
+          "are attacked",
+          "are damaged",
+          "was reported",
+          "be treated",
+          "is removed"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 9,
+          "candidates": [
+            {
+              "end": 310,
+              "quoted": false,
+              "start": 298,
+              "text": "are threaded"
+            },
+            {
+              "end": 2499,
+              "quoted": false,
+              "start": 2492,
+              "text": "is held"
+            },
+            {
+              "end": 3892,
+              "quoted": false,
+              "start": 3879,
+              "text": "was published"
+            },
+            {
+              "end": 4927,
+              "quoted": false,
+              "start": 4912,
+              "text": "being connected"
+            },
+            {
+              "end": 5333,
+              "quoted": false,
+              "start": 5321,
+              "text": "are attacked"
+            },
+            {
+              "end": 5398,
+              "quoted": false,
+              "start": 5387,
+              "text": "are damaged"
+            },
+            {
+              "end": 5563,
+              "quoted": false,
+              "start": 5551,
+              "text": "was reported"
+            },
+            {
+              "end": 6020,
+              "quoted": false,
+              "start": 6010,
+              "text": "be treated"
+            },
+            {
+              "end": 8015,
+              "quoted": false,
+              "start": 8005,
+              "text": "is removed"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 9 passive verb(s) at 5.7 per 1000 words: ['are threaded', 'is held', 'was published', 'being connected', 'are attacked', 'are damaged', 'was reported', 'be treated', 'is removed']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 9 passive verb(s) at 5.7 per 1000 words: ['are threaded', 'is held', 'was published', 'being connected', 'are attacked', 'are damaged', 'was reported', 'be treated', 'is removed']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
+          "match_count": 9,
+          "matches": [
+            "are threaded",
+            "is held",
+            "was published",
+            "being connected",
+            "are attacked",
+            "are damaged",
+            "was reported",
+            "be treated",
+            "is removed"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 310,
+              "quoted": false,
+              "start": 298,
+              "text": "are threaded"
+            },
+            {
+              "end": 2499,
+              "quoted": false,
+              "start": 2492,
+              "text": "is held"
+            },
+            {
+              "end": 3892,
+              "quoted": false,
+              "start": 3879,
+              "text": "was published"
+            },
+            {
+              "end": 4927,
+              "quoted": false,
+              "start": 4912,
+              "text": "being connected"
+            },
+            {
+              "end": 5333,
+              "quoted": false,
+              "start": 5321,
+              "text": "are attacked"
+            },
+            {
+              "end": 5398,
+              "quoted": false,
+              "start": 5387,
+              "text": "are damaged"
+            },
+            {
+              "end": 5563,
+              "quoted": false,
+              "start": 5551,
+              "text": "was reported"
+            },
+            {
+              "end": 6020,
+              "quoted": false,
+              "start": 6010,
+              "text": "be treated"
+            },
+            {
+              "end": 8015,
+              "quoted": false,
+              "start": 8005,
+              "text": "is removed"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-passive-voice-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "it",
+          "it",
+          "It",
+          "It",
+          "it",
+          "It",
+          "It",
+          "it",
+          "it",
+          "It",
+          "it",
+          "It",
+          "It"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 13,
+          "candidates": [
+            {
+              "end": 72,
+              "quoted": false,
+              "start": 70,
+              "text": "it"
+            },
+            {
+              "end": 281,
+              "quoted": false,
+              "start": 279,
+              "text": "it"
+            },
+            {
+              "end": 322,
+              "quoted": false,
+              "start": 320,
+              "text": "It"
+            },
+            {
+              "end": 900,
+              "quoted": false,
+              "start": 898,
+              "text": "It"
+            },
+            {
+              "end": 1018,
+              "quoted": false,
+              "start": 1016,
+              "text": "it"
+            },
+            {
+              "end": 1037,
+              "quoted": false,
+              "start": 1035,
+              "text": "It"
+            },
+            {
+              "end": 1266,
+              "quoted": false,
+              "start": 1264,
+              "text": "It"
+            },
+            {
+              "end": 1337,
+              "quoted": false,
+              "start": 1335,
+              "text": "it"
+            },
+            {
+              "end": 1453,
+              "quoted": false,
+              "start": 1451,
+              "text": "it"
+            },
+            {
+              "end": 1882,
+              "quoted": false,
+              "start": 1880,
+              "text": "It"
+            },
+            {
+              "end": 2293,
+              "quoted": false,
+              "start": 2291,
+              "text": "it"
+            },
+            {
+              "end": 2380,
+              "quoted": false,
+              "start": 2378,
+              "text": "It"
+            },
+            {
+              "end": 2442,
+              "quoted": false,
+              "start": 2440,
+              "text": "It"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "`it` pronoun(s): 13 at 8.3 per 1000 words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "`it` pronoun(s): 13 at 8.3 per 1000 words",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
+          "match_count": 13,
+          "matches": [
+            "it",
+            "it",
+            "It",
+            "It",
+            "it",
+            "It",
+            "It",
+            "it",
+            "it",
+            "It",
+            "it",
+            "It",
+            "It"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 72,
+              "quoted": false,
+              "start": 70,
+              "text": "it"
+            },
+            {
+              "end": 281,
+              "quoted": false,
+              "start": 279,
+              "text": "it"
+            },
+            {
+              "end": 322,
+              "quoted": false,
+              "start": 320,
+              "text": "It"
+            },
+            {
+              "end": 900,
+              "quoted": false,
+              "start": 898,
+              "text": "It"
+            },
+            {
+              "end": 1018,
+              "quoted": false,
+              "start": 1016,
+              "text": "it"
+            },
+            {
+              "end": 1037,
+              "quoted": false,
+              "start": 1035,
+              "text": "It"
+            },
+            {
+              "end": 1266,
+              "quoted": false,
+              "start": 1264,
+              "text": "It"
+            },
+            {
+              "end": 1337,
+              "quoted": false,
+              "start": 1335,
+              "text": "it"
+            },
+            {
+              "end": 1453,
+              "quoted": false,
+              "start": 1451,
+              "text": "it"
+            },
+            {
+              "end": 1882,
+              "quoted": false,
+              "start": 1880,
+              "text": "It"
+            },
+            {
+              "end": 2293,
+              "quoted": false,
+              "start": 2291,
+              "text": "it"
+            },
+            {
+              "end": 2380,
+              "quoted": false,
+              "start": 2378,
+              "text": "It"
+            },
+            {
+              "end": 2442,
+              "quoted": false,
+              "start": 2440,
+              "text": "It"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-it-pronoun-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "acquire",
+          "provide",
+          "demonstrate",
+          "alter",
+          "alter",
+          "acquire",
+          "acquire",
+          "alter"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 8,
+          "candidates": [
+            {
+              "end": 859,
+              "quoted": false,
+              "start": 852,
+              "text": "acquire"
+            },
+            {
+              "end": 2159,
+              "quoted": false,
+              "start": 2152,
+              "text": "provide"
+            },
+            {
+              "end": 3819,
+              "quoted": false,
+              "start": 3808,
+              "text": "demonstrate"
+            },
+            {
+              "end": 5349,
+              "quoted": false,
+              "start": 5344,
+              "text": "alter"
+            },
+            {
+              "end": 5881,
+              "quoted": false,
+              "start": 5876,
+              "text": "alter"
+            },
+            {
+              "end": 6113,
+              "quoted": false,
+              "start": 6106,
+              "text": "acquire"
+            },
+            {
+              "end": 9624,
+              "quoted": false,
+              "start": 9617,
+              "text": "acquire"
+            },
+            {
+              "end": 9641,
+              "quoted": false,
+              "start": 9636,
+              "text": "alter"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 8 Latinate verb(s) at 5.1 per 1000 words: ['acquire', 'provide', 'demonstrate', 'alter', 'alter', 'acquire', 'acquire', 'alter']",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 8 Latinate verb(s) at 5.1 per 1000 words: ['acquire', 'provide', 'demonstrate', 'alter', 'alter', 'acquire', 'acquire', 'alter']",
+          "evidence_role": "register_rate",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
+          "match_count": 8,
+          "matches": [
+            "acquire",
+            "provide",
+            "demonstrate",
+            "alter",
+            "alter",
+            "acquire",
+            "acquire",
+            "alter"
+          ],
+          "severity": "context_warning",
+          "spans": [
+            {
+              "end": 859,
+              "quoted": false,
+              "start": 852,
+              "text": "acquire"
+            },
+            {
+              "end": 2159,
+              "quoted": false,
+              "start": 2152,
+              "text": "provide"
+            },
+            {
+              "end": 3819,
+              "quoted": false,
+              "start": 3808,
+              "text": "demonstrate"
+            },
+            {
+              "end": 5349,
+              "quoted": false,
+              "start": 5344,
+              "text": "alter"
+            },
+            {
+              "end": 5881,
+              "quoted": false,
+              "start": 5876,
+              "text": "alter"
+            },
+            {
+              "end": 6113,
+              "quoted": false,
+              "start": 6106,
+              "text": "acquire"
+            },
+            {
+              "end": 9624,
+              "quoted": false,
+              "start": 9617,
+              "text": "acquire"
+            },
+            {
+              "end": 9641,
+              "quoted": false,
+              "start": 9636,
+              "text": "alter"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "no-latinate-verb-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "mean word length 5.35 characters across 1589 words (target below 4.8)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean word length 5.35 characters across 1589 words (target: <4.8)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean word length 5.35 characters across 1589 words (target: <4.8)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Look for the shorter word that does the same job. `necessitated` becomes `needed`, `demonstrated substantial improvement` becomes `got better`. The measure is draft-wide, so it points at register rather than at one sentence.",
+          "metric": "mean word length 5.35 characters across 1589 words (target below 4.8)",
+          "metric_value": "mean word length 5.35 characters across 1589 words (target below 4.8)",
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "word-length-average",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Style",
       "evidence": {
         "counts": {},
         "locations": [],
@@ -1370,35 +3437,35 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No superficial -ing phrases",
+            "raw_evidence": "No mixed-script words",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No superficial -ing phrases",
-          "evidence_role": "analysis_substitution",
+          "evidence": "No mixed-script words",
+          "evidence_role": "typographic_signal",
           "evidence_type": "lexical",
           "failure_modes": [
-            "generic_abstraction"
+            "provenance_residue"
           ],
-          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
+          "guidance": "Retype the flagged word in plain Latin characters. If a passage is genuinely in Russian, Greek, Kazakh, or another Cyrillic or Greek script, write the whole word in that script rather than mixing.",
           "match_count": 0,
           "matches": [],
-          "severity": "strong_warning",
+          "severity": "hard_fail",
           "spans": [],
           "threshold": null,
           "threshold_met": false
         }
       },
       "failure_modes": [
-        "generic_abstraction"
+        "provenance_residue"
       ],
-      "id": "no-superficial-ing",
-      "severity": "strong_warning",
+      "id": "no-mixed-script-words",
+      "severity": "hard_fail",
       "status": "clear"
     },
     {
-      "category": "Sensory and atmospheric",
+      "category": "Language and grammar",
       "evidence": {
         "counts": {},
         "locations": [],
@@ -1408,6 +3475,131 @@
           "aggregate_finding": false,
           "candidate_count": 0,
           "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean concreteness 3.27 of 5 across 700 content words (target: >2.915)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean concreteness 3.27 of 5 across 700 content words (target: >2.915)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "guidance": "Name the thing. `The framework provides a basis for the approach` becomes `the rota tells people when to turn up`. Abstraction is right where the subject really is abstract; the measure is draft-wide, so read it as register rather than as one sentence.",
+          "metric": null,
+          "metric_value": 0,
+          "sample_size": 1593,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "id": "concreteness-average",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          ", shaping which seedlings survive.",
+          "Working with paper birch and Douglas-fir seedlings in British Columbia"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 2,
+          "candidates": [
+            {
+              "end": 8567,
+              "quoted": false,
+              "start": 8533,
+              "text": ", shaping which seedlings survive."
+            },
+            {
+              "end": 4005,
+              "quoted": false,
+              "start": 3935,
+              "text": "Working with paper birch and Douglas-fir seedlings in British Columbia"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 2 tacked-on -ing phrase(s)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 2 tacked-on -ing phrase(s)",
+          "evidence_role": "analysis_substitution",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "guidance": "Rewrite formulaic participial clauses when a direct sentence or precise causal statement is clearer.",
+          "match_count": 2,
+          "matches": [
+            ", shaping which seedlings survive.",
+            "Working with paper birch and Douglas-fir seedlings in British Columbia"
+          ],
+          "severity": "strong_warning",
+          "spans": [
+            {
+              "end": 8567,
+              "quoted": false,
+              "start": 8533,
+              "text": ", shaping which seedlings survive."
+            },
+            {
+              "end": 4005,
+              "quoted": false,
+              "start": 3935,
+              "text": "Working with paper birch and Douglas-fir seedlings in British Columbia"
+            }
+          ],
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "id": "no-superficial-ing",
+      "severity": "strong_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Sensory and atmospheric",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "hidden"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 9870,
+              "quoted": false,
+              "start": 9864,
+              "text": "hidden"
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
@@ -1424,9 +3616,19 @@
             "genre_misfit"
           ],
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
-          "match_count": 0,
+          "match_count": 1,
+          "matches": [
+            "hidden"
+          ],
           "severity": "context_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 9870,
+              "quoted": false,
+              "start": 9864,
+              "text": "hidden"
+            }
+          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -1496,27 +3698,27 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 2
+              "minimum_candidates": 1
             },
-            "raw_evidence": "Rhetorical questions: 0",
+            "raw_evidence": "Fragment-question answer beats: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Rhetorical questions: 0",
+          "evidence": "Fragment-question answer beats: 0",
           "evidence_role": "rhetorical_template",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument.",
+          "guidance": "Rewrite the fragment and its answer as one direct statement.",
           "match_count": 0,
           "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 2
+            "minimum_candidates": 1
           },
           "threshold_met": false
         }
@@ -1577,6 +3779,53 @@
         "genre_misfit"
       ],
       "id": "no-excessive-lists",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_deviation": 2,
+              "minimum_items": 3
+            },
+            "raw_evidence": "No symmetric list items",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No symmetric list items",
+          "evidence_role": "listification",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix template-shaped list items; preserve specifications, comparison tables, and reference entries where uniformity carries meaning.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "maximum_deviation": 2,
+            "minimum_items": 3
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-symmetric-list-items",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -1655,6 +3904,7 @@
           ],
           "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -2298,6 +4548,7 @@
           ],
           "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": {
@@ -2344,6 +4595,7 @@
           ],
           "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
@@ -2365,21 +4617,21 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "windowed type-token ratio 0.725 (150-word windows, flag at 0.71)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Type-token ratio: 0.410 (643 unique / 1567 total, target: >0.40)",
+            "raw_evidence": "Windowed type-token ratio: 0.725 (57 windows of 150 words, flag at 0.71)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Type-token ratio: 0.410 (643 unique / 1567 total, target: >0.40)",
+          "evidence": "Windowed type-token ratio: 0.725 (57 windows of 150 words, flag at 0.71)",
           "evidence_role": "lexical_distribution",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -2387,12 +4639,12 @@
             "genre_misfit"
           ],
           "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately.",
-          "metric": null,
-          "metric_value": 0,
+          "metric": "windowed type-token ratio 0.725 (150-word windows, flag at 0.71)",
+          "metric_value": "windowed type-token ratio 0.725 (150-word windows, flag at 0.71)",
           "sample_size": 1593,
           "severity": "context_warning",
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -2400,283 +4652,6 @@
         "genre_misfit"
       ],
       "id": "vocabulary-diversity",
-      "severity": "context_warning",
-      "status": "clear"
-    },
-    {
-      "category": "Language and grammar",
-      "evidence": {
-        "counts": {},
-        "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "recover, compete and store carbon",
-          "and nitrogen, and often water and trace elements",
-          "into smaller pores, cross tiny gaps, and spread",
-          "what they can provide, where they forage, and how much carbon they demand",
-          "fungal identity, soil conditions and the form",
-          "mycorrhizal networks improves, harms or has no effect",
-          "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage",
-          "of intention, language or conscious warning",
-          "is alive, metabolically active and under selection",
-          "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change",
-          "into the soil, and use enzymes and organic acids",
-          "roots, bacteria and decaying organic matter",
-          "in plant productivity, nutrient cycling and soil carbon dynamics",
-          "are real, ancient and ecologically consequential",
-          "marketplace, digestive system and battleground",
-          "patchy, changing and difficult"
-        ],
-        "raw": {
-          "aggregate_finding": false,
-          "candidate_count": 16,
-          "candidates": [
-            {
-              "end": 522,
-              "quoted": false,
-              "start": 489,
-              "text": "recover, compete and store carbon"
-            },
-            {
-              "end": 941,
-              "quoted": false,
-              "start": 893,
-              "text": "and nitrogen, and often water and trace elements"
-            },
-            {
-              "end": 1413,
-              "quoted": false,
-              "start": 1366,
-              "text": "into smaller pores, cross tiny gaps, and spread"
-            },
-            {
-              "end": 2211,
-              "quoted": false,
-              "start": 2138,
-              "text": "what they can provide, where they forage, and how much carbon they demand"
-            },
-            {
-              "end": 2473,
-              "quoted": false,
-              "start": 2428,
-              "text": "fungal identity, soil conditions and the form"
-            },
-            {
-              "end": 4882,
-              "quoted": false,
-              "start": 4829,
-              "text": "mycorrhizal networks improves, harms or has no effect"
-            },
-            {
-              "end": 5099,
-              "quoted": false,
-              "start": 5002,
-              "text": "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage"
-            },
-            {
-              "end": 5791,
-              "quoted": false,
-              "start": 5748,
-              "text": "of intention, language or conscious warning"
-            },
-            {
-              "end": 6102,
-              "quoted": false,
-              "start": 6052,
-              "text": "is alive, metabolically active and under selection"
-            },
-            {
-              "end": 6280,
-              "quoted": false,
-              "start": 6139,
-              "text": "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change"
-            },
-            {
-              "end": 7729,
-              "quoted": false,
-              "start": 7681,
-              "text": "into the soil, and use enzymes and organic acids"
-            },
-            {
-              "end": 8339,
-              "quoted": false,
-              "start": 8296,
-              "text": "roots, bacteria and decaying organic matter"
-            },
-            {
-              "end": 8896,
-              "quoted": false,
-              "start": 8832,
-              "text": "in plant productivity, nutrient cycling and soil carbon dynamics"
-            },
-            {
-              "end": 9599,
-              "quoted": false,
-              "start": 9551,
-              "text": "are real, ancient and ecologically consequential"
-            },
-            {
-              "end": 9947,
-              "quoted": false,
-              "start": 9901,
-              "text": "marketplace, digestive system and battleground"
-            },
-            {
-              "end": 10056,
-              "quoted": false,
-              "start": 10026,
-              "text": "patchy, changing and difficult"
-            }
-          ],
-          "context_gate": {
-            "applied": false,
-            "effective_threshold": {
-              "minimum_candidates": 4,
-              "minimum_words": 300
-            },
-            "raw_evidence": "Found 16 triad(s): ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
-            "suppression_reason": null
-          },
-          "context_reason": null,
-          "context_suppressed": false,
-          "evidence": "Found 16 triad(s): ['recover, compete and store carbon', 'and nitrogen, and often water and trace elements', 'into smaller pores, cross tiny gaps, and spread', 'what they can provide, where they forage, and how much carbon they demand', 'fungal identity, soil conditions and the form', 'mycorrhizal networks improves, harms or has no effect', 'may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage', 'of intention, language or conscious warning', 'is alive, metabolically active and under selection', 'may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change', 'into the soil, and use enzymes and organic acids', 'roots, bacteria and decaying organic matter', 'in plant productivity, nutrient cycling and soil carbon dynamics', 'are real, ancient and ecologically consequential', 'marketplace, digestive system and battleground', 'patchy, changing and difficult']",
-          "evidence_role": "list_rhythm",
-          "evidence_type": "lexical",
-          "failure_modes": [
-            "frictionless_structure",
-            "genre_misfit"
-          ],
-          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-          "match_count": 16,
-          "matches": [
-            "recover, compete and store carbon",
-            "and nitrogen, and often water and trace elements",
-            "into smaller pores, cross tiny gaps, and spread",
-            "what they can provide, where they forage, and how much carbon they demand",
-            "fungal identity, soil conditions and the form",
-            "mycorrhizal networks improves, harms or has no effect",
-            "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage",
-            "of intention, language or conscious warning",
-            "is alive, metabolically active and under selection",
-            "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change",
-            "into the soil, and use enzymes and organic acids",
-            "roots, bacteria and decaying organic matter",
-            "in plant productivity, nutrient cycling and soil carbon dynamics",
-            "are real, ancient and ecologically consequential",
-            "marketplace, digestive system and battleground",
-            "patchy, changing and difficult"
-          ],
-          "severity": "context_warning",
-          "spans": [
-            {
-              "end": 522,
-              "quoted": false,
-              "start": 489,
-              "text": "recover, compete and store carbon"
-            },
-            {
-              "end": 941,
-              "quoted": false,
-              "start": 893,
-              "text": "and nitrogen, and often water and trace elements"
-            },
-            {
-              "end": 1413,
-              "quoted": false,
-              "start": 1366,
-              "text": "into smaller pores, cross tiny gaps, and spread"
-            },
-            {
-              "end": 2211,
-              "quoted": false,
-              "start": 2138,
-              "text": "what they can provide, where they forage, and how much carbon they demand"
-            },
-            {
-              "end": 2473,
-              "quoted": false,
-              "start": 2428,
-              "text": "fungal identity, soil conditions and the form"
-            },
-            {
-              "end": 4882,
-              "quoted": false,
-              "start": 4829,
-              "text": "mycorrhizal networks improves, harms or has no effect"
-            },
-            {
-              "end": 5099,
-              "quoted": false,
-              "start": 5002,
-              "text": "may lose carbon to fungi, face stronger below-ground competition, or gain no measurable advantage"
-            },
-            {
-              "end": 5791,
-              "quoted": false,
-              "start": 5748,
-              "text": "of intention, language or conscious warning"
-            },
-            {
-              "end": 6102,
-              "quoted": false,
-              "start": 6052,
-              "text": "is alive, metabolically active and under selection"
-            },
-            {
-              "end": 6280,
-              "quoted": false,
-              "start": 6139,
-              "text": "may allocate nutrients towards hosts that supply more carbon, proliferate in nutrient-rich patches, or reduce exchange when conditions change"
-            },
-            {
-              "end": 7729,
-              "quoted": false,
-              "start": 7681,
-              "text": "into the soil, and use enzymes and organic acids"
-            },
-            {
-              "end": 8339,
-              "quoted": false,
-              "start": 8296,
-              "text": "roots, bacteria and decaying organic matter"
-            },
-            {
-              "end": 8896,
-              "quoted": false,
-              "start": 8832,
-              "text": "in plant productivity, nutrient cycling and soil carbon dynamics"
-            },
-            {
-              "end": 9599,
-              "quoted": false,
-              "start": 9551,
-              "text": "are real, ancient and ecologically consequential"
-            },
-            {
-              "end": 9947,
-              "quoted": false,
-              "start": 9901,
-              "text": "marketplace, digestive system and battleground"
-            },
-            {
-              "end": 10056,
-              "quoted": false,
-              "start": 10026,
-              "text": "patchy, changing and difficult"
-            }
-          ],
-          "threshold": {
-            "minimum_candidates": 4,
-            "minimum_words": 300
-          },
-          "threshold_met": true
-        }
-      },
-      "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
-      ],
-      "id": "no-triad-density",
       "severity": "context_warning",
       "status": "flagged"
     },
@@ -2748,6 +4723,7 @@
           ],
           "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": null,
@@ -2768,20 +4744,29 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "research has found"
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 7220,
+              "quoted": false,
+              "start": 7202,
+              "text": "research has found"
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No vague attributions",
+            "raw_evidence": "Found 1 vague attribution(s): ['research has found']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No vague attributions",
+          "evidence": "Found 1 vague attribution(s): ['research has found']",
           "evidence_role": "attribution_vagueness",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -2789,12 +4774,21 @@
             "generic_abstraction"
           ],
           "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote.",
-          "match_count": 0,
-          "matches": [],
+          "match_count": 1,
+          "matches": [
+            "research has found"
+          ],
           "severity": "strong_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 7220,
+              "quoted": false,
+              "start": 7202,
+              "text": "research has found"
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -2803,7 +4797,7 @@
       ],
       "id": "no-vague-attributions",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Style",
@@ -2866,12 +4860,12 @@
             "effective_threshold": {
               "minimum_candidates": 2
             },
-            "raw_evidence": "List items with bolded headers: 0",
+            "raw_evidence": "Bold-label segments: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "List items with bolded headers: 0",
+          "evidence": "Bold-label segments: 0",
           "evidence_role": "list_template",
           "evidence_type": "lexical",
           "failure_modes": [
