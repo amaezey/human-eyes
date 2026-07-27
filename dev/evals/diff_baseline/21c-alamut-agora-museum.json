@@ -8111,24 +8111,24 @@
         "locations": [],
         "metric": null,
         "quoted_phrases": [
-          "remnant",
-          "lingering"
+          "lingering",
+          "remnant"
         ],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 2,
           "candidates": [
             {
-              "end": 7336,
-              "quoted": false,
-              "start": 7329,
-              "text": "remnant"
-            },
-            {
               "end": 18346,
               "quoted": false,
               "start": 18337,
               "text": "lingering"
+            },
+            {
+              "end": 7336,
+              "quoted": false,
+              "start": 7329,
+              "text": "remnant"
             }
           ],
           "context_gate": {
@@ -8149,22 +8149,22 @@
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
           "match_count": 2,
           "matches": [
-            "remnant",
-            "lingering"
+            "lingering",
+            "remnant"
           ],
           "severity": "context_warning",
           "spans": [
-            {
-              "end": 7336,
-              "quoted": false,
-              "start": 7329,
-              "text": "remnant"
-            },
             {
               "end": 18346,
               "quoted": false,
               "start": 18337,
               "text": "lingering"
+            },
+            {
+              "end": 7336,
+              "quoted": false,
+              "start": 7329,
+              "text": "remnant"
             }
           ],
           "threshold": null,
@@ -8633,11 +8633,20 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "This was participatory democracy on a large scale and a broad base: every citizen (i.e., every free adult male) was a member of the Assembly that debated and voted on all matters of policy; every citizen could be expected at some point in his life to be called up for a year of service on the Council of 500 that drew up the measures the Assembly voted on; juries were made up of 200 citizens at a time; and prosecutors were pretty much anybody who felt exercised enough to bring suit on behalf of the People."
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 2948,
+              "quoted": false,
+              "start": 2439,
+              "text": "This was participatory democracy on a large scale and a broad base: every citizen (i.e., every free adult male) was a member of the Assembly that debated and voted on all matters of policy; every citizen could be expected at some point in his life to be called up for a year of service on the Council of 500 that drew up the measures the Assembly voted on; juries were made up of 200 citizens at a time; and prosecutors were pretty much anybody who felt exercised enough to bring suit on behalf of the People."
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
@@ -8654,7 +8663,10 @@
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
-          "metric_value": 0,
+          "matches": [
+            "This was participatory democracy on a large scale and a broad base: every citizen (i.e., every free adult male) was a member of the Assembly that debated and voted on all matters of policy; every citizen could be expected at some point in his life to be called up for a year of service on the Council of 500 that drew up the measures the Assembly voted on; juries were made up of 200 citizens at a time; and prosecutors were pretty much anybody who felt exercised enough to bring suit on behalf of the People."
+          ],
+          "metric_value": 1,
           "sample_size": 7343,
           "severity": "context_warning",
           "threshold": null,

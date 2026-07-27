@@ -6534,11 +6534,20 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "This logic has always been present in industrial life, but it has intensified in creative work because creative work is now so often forced to behave like content."
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 1761,
+              "quoted": false,
+              "start": 1598,
+              "text": "This logic has always been present in industrial life, but it has intensified in creative work because creative work is now so often forced to behave like content."
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
@@ -6555,7 +6564,10 @@
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
-          "metric_value": 0,
+          "matches": [
+            "This logic has always been present in industrial life, but it has intensified in creative work because creative work is now so often forced to behave like content."
+          ],
+          "metric_value": 1,
           "sample_size": 1590,
           "severity": "context_warning",
           "threshold": null,

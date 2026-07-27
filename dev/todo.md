@@ -127,6 +127,132 @@ Separate the three before proposing anything, and bring each threshold to Mae as
 
 ---
 
+## 0c. Quote evidence from the draft, not from the masked copy
+
+Found 2026-07-27 while rebuilding the cut-off test. Mae's own item. Not yet a register row.
+
+### What a reader sees
+
+`21c-nyt-opinionator-i-know-what-you-think-of-me.md` contains:
+
+> Tim Kreider is the author of "We Learn Nothing," a collection of essays and cartoons
+
+`no-manufactured-insight` flags it and quotes it back as:
+
+> `tim kreider is the author of                     a collection of essays`
+
+The book title has become 21 spaces and the capitals are gone. The evidence is
+the one part of an audit a writer checks against their own page, and this is not
+their sentence.
+
+### Cause
+
+One cause, two symptoms. `_wrap_check` (`grade.py:4087`) runs lexical checks over
+a masked copy: `mask_non_prose` blanks quotations, code and front matter so
+patterns cannot match inside them. `_mask_non_prose_patterns` (`grade.py:927`)
+overwrites those characters with spaces **in place**, so the masked copy is the
+same length as the draft and every offset still lines up.
+
+The checks then return their matches as strings cut from that masked copy.
+`_candidate_records` (`grade.py:958`) receives the original text and tries to
+find each string in it with `folded_text.find(value.casefold())`. For a match
+that spans a masked region the string no longer exists in the draft, so:
+
+- the quoted phrase keeps the blanks and the lowercasing, and
+- the lookup fails, leaving `start` and `end` as `None`.
+
+Some checks lowercase as well — `count_pattern_matches` (`grade.py:862`) runs
+`re.findall` over `text.lower()` — so casing is lost even where nothing is masked.
+
+### Measured over the 153 sample documents
+
+| symptom | count |
+|---|---|
+| flagged phrases containing a masked hole | 66, across 7 checks |
+| worst offenders | `no-curly-quotes` 37, `no-negative-parallelisms` 18, `no-anaphora` 4 |
+| candidates with no locatable offset | 750+, led by `no-curly-quotes` 517 and `no-staccato-sequences` 87 |
+
+### The fix, and why it is one place not thirty
+
+Because masking preserves length and position, the offsets found in the masked
+copy are valid offsets into the draft. So the shared wrapper can recut every
+match from the original text rather than each check being taught to do it.
+
+Two shapes, and the choice between them is the decision:
+
+- **Recut in `_candidate_records`.** When the verbatim lookup fails, rebuild the
+  search as a pattern that treats each run of two or more spaces as "anything",
+  locate the span, and take `original_text[start:end]` as the phrase. Contained,
+  no check signatures change, but it is a reconstruction and can mislocate a
+  phrase that repeats.
+- **Have checks return spans.** Checks would return `(start, end)` alongside or
+  instead of strings, and the wrapper cuts from the draft. Exact, and it also
+  fixes the `None` offsets properly, but it touches every lexical check.
+
+Do not fix this check by check. `no-manufactured-insight` is the example, not the
+bug.
+
+### Before starting
+
+`start`/`end` are currently computed and read by nothing — `_evidence_envelope`
+emits `"locations": []` with the comment that location tracking is not wired
+through. Decide whether this work also wires locations through or deliberately
+leaves them unread, and say which.
+
+### Verify
+
+Re-quote all 153 documents and assert every quoted phrase appears verbatim in the
+draft it came from. `test_phrase_capture_coverage.py` already asserts a version of
+this and carries an allow-list for phrases that are legitimately composed
+(`no-heading-one-liners` joins a heading to the line under it) plus a pin naming
+this defect. Both should shrink as this lands; the pin should be removed.
+
+---
+
+## 0d. Decide what rate checks should quote
+
+Found 2026-07-27, same pass. Mae's own item. Not yet a register row.
+
+### What a reader sees
+
+`no-it-pronoun-rate` reports a rate — 36 pronouns at 30.6 per 1000 words — and
+then quotes **267 separate entries**: `"It", "it", "it", "it", …`. The finding is
+the density; the list of every occurrence adds nothing to it and buries it.
+
+Normal reports are protected by `LAYER_1_PHRASE_CAP = 3` in
+`_format_quoted_phrases` (`grade.py:5350`), which shows three and appends
+`(+N more)`. `--full-report` mode deliberately has no cap and renders all 267.
+
+### Measured over the 153 sample documents
+
+| check | longest quote list |
+|---|---|
+| `no-it-pronoun-rate` | 267 |
+| `no-nominalisation-rate` | 185 |
+| `no-passive-voice-rate` | 97 |
+
+15 checks exceed 12 phrases on at least one document.
+
+### The question
+
+A rate check's evidence is the number. What should it quote — nothing, a bounded
+sample, or every hit for a reader who asked for everything? The three answers give
+three different products and this is a judgement about the report, not a defect
+with a correct answer.
+
+`no-ghost-spectral-density` was deduplicated on 2026-07-27 so it prints `"hidden"`
+rather than `"hidden", "hidden", "hidden"`, and its true count is carried
+separately in `candidate_count`. That is a precedent for one answer, not a ruling:
+it was done to undo a regression introduced the same day, and was not extended to
+any other check.
+
+Whatever is chosen, `candidate_count` must keep carrying the real count — it is
+read by `run_regex_catalogue_audit.py`, summed by `run_three_version_comparison.py`,
+asserted across `test_regex_robustness.py`, and used by the cut-off test to check
+that a declared threshold is the enforced one.
+
+---
+
 ## 1. Fiction branch of H10 (DR-23, DR-52 to DR-58)
 
 Eight rows, seven of them the StoryScope paper, all extending `genre_specific`'s existing fiction branch in `human-eyes/scripts/judgement.json`.

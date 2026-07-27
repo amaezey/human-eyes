@@ -73,19 +73,11 @@ def ok(msg):
 # has verified against behaviour.
 # ---------------------------------------------------------------------------
 
-# Checks exempt from the evidence-free-finding assertion, with the reason. A pin
-# here is validated below: it must still be needed, or it fails as stale.
-EVIDENCE_FREE_PINS = {
-    "no-ai-vocabulary-clustering": (
-        "two branches can flag it, and DR-126B deliberately gives structured "
-        "matches to only one. The document-family branch carries verbatim "
-        "occurrences in source order and casing; the worst-paragraph branch "
-        "measures a lowercased paragraph, so it has no source-cased spans to "
-        "offer and falls back to evidence parsing. test_grade.py pins both "
-        "halves of that contract. Whether the paragraph branch should carry "
-        "spans is a DR-126B question, not a threshold one."
-    ),
-}
+# Whether a flagged finding reaches a reader with something to look at is not a
+# threshold question, and it already has a test: test_phrase_capture_coverage.py
+# gates exactly that, and additionally checks the captured phrases occur in the
+# input. A second copy lived here briefly; it was removed rather than kept in
+# parallel, and that test's corpus was widened instead.
 
 # Cut-offs no mutation can reach, keyed by (check id, key). Empty: every declared
 # key is read by its check. A key landing here must carry a reason, and the
@@ -296,30 +288,9 @@ def check_every_key_covered(consumed):
         ok(f"every one of the {len(declared)} declared cut-offs is read by its check")
 
 
-def check_pins(baseline):
+def check_pins():
     """Pins must name real checks and their stated reasons must hold."""
     print("\n=== pins: does each stated reason still hold? ===")
-    for cid, why in sorted(EVIDENCE_FREE_PINS.items()):
-        if cid not in grade.ALL_CHECKS:
-            fail(f"evidence-free pin names '{cid}', which is not a registered check. "
-                 f"A pin on a check that does not exist verifies nothing.")
-            continue
-        # Validated against the corpus, not a synthetic probe: a probe that
-        # happens to match nothing would confirm any pin put in front of it. A
-        # pin earns its place only while the check still flags with no spans.
-        blind = sum(1 for r in baseline.get(cid, [])
-                    if r is not None and r.get("threshold_met")
-                    and r.get("evidence_type") == "lexical"
-                    and not r.get("candidate_count"))
-        if not blind:
-            fail(f"{cid}: pinned as flagging without spans, but every flag it "
-                 f"raises on the corpus now carries candidates. Remove the pin "
-                 f"and let the evidence assertion cover it.")
-        else:
-            ok(f"{cid}: still flags without spans on {blind} document(s) — {why}")
-    if not EVIDENCE_FREE_PINS:
-        ok("no check is exempt from the evidence assertion")
-
     declared = {(cid, key) for cid, key, _v in declared_keys()}
     for (cid, key), why in sorted(UNVERIFIABLE.items()):
         label = f"{cid}.{key or '(value)'}"
@@ -335,31 +306,6 @@ def check_pins(baseline):
         ok("no cut-off is pinned as unverifiable")
 
 
-def check_no_evidence_free_findings(texts, baseline):
-    """No lexical check may report a finding a reader cannot point at.
-
-    Scoped to every registered check, not only those declaring a cut-off: the
-    property a reader cares about is that a lexical finding carries its spans,
-    and a check with no threshold entry can violate that just as easily.
-    """
-    print("\n=== evidence: does any cut-off flag a document with nothing to show? ===")
-    offenders = {}
-    for cid in sorted(grade.ALL_CHECKS):
-        if cid in EVIDENCE_FREE_PINS:
-            continue
-        for (path, _text), result in zip(texts, baseline[cid]):
-            if result is None or result.get("evidence_type") != "lexical":
-                continue
-            if result.get("threshold_met") and not result.get("candidate_count"):
-                offenders.setdefault(cid, []).append(path.name)
-    for cid, docs in sorted(offenders.items()):
-        fail(f"{cid}: flagged {len(docs)} document(s) while reporting no candidates, "
-             f"e.g. {docs[:3]}. The report names a cut-off and shows a reader nothing "
-             f"that met it.")
-    if not offenders:
-        ok("every lexical cut-off that flagged had candidates to show for it")
-
-
 def main():
     documents = corpus_documents()
     plain = [text for _p, text in documents]
@@ -367,16 +313,14 @@ def main():
     print(f"declared cut-offs: {len({cid for cid, _k, _v in declared})} checks, "
           f"{len(declared)} numbers   corpus documents: {len(documents)}")
 
-    # Every check, not only the declaring ones: the evidence assertion covers
-    # all lexical checks, and a check that declares nothing can still flag with
-    # nothing to show.
-    baseline = {cid: baseline_results(cid, plain) for cid in sorted(grade.ALL_CHECKS)}
+    baseline = {cid: baseline_results(cid, plain)
+                for cid in sorted({cid for cid, _k, _v in declared})
+                if cid in grade.ALL_CHECKS}
 
     consumed = check_route_a(plain, baseline)
     check_every_key_covered(consumed)
     check_boundary_correspondence(baseline, documents)
-    check_pins(baseline)
-    check_no_evidence_free_findings(documents, baseline)
+    check_pins()
 
     print()
     if FAILURES:

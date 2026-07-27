@@ -5316,11 +5316,20 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "This was the turf; there was the path."
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 6173,
+              "quoted": false,
+              "start": 6135,
+              "text": "This was the turf; there was the path."
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
@@ -5337,7 +5346,10 @@
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
-          "metric_value": 0,
+          "matches": [
+            "This was the turf; there was the path."
+          ],
+          "metric_value": 1,
           "sample_size": 3593,
           "severity": "context_warning",
           "threshold": null,

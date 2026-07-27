@@ -6922,11 +6922,20 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "This has changed how I think about attention."
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 9069,
+              "quoted": false,
+              "start": 9024,
+              "text": "This has changed how I think about attention."
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
@@ -6943,7 +6952,10 @@
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
-          "metric_value": 0,
+          "matches": [
+            "This has changed how I think about attention."
+          ],
+          "metric_value": 1,
           "sample_size": 1786,
           "severity": "context_warning",
           "threshold": null,

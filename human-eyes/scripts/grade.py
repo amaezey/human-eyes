@@ -2699,9 +2699,11 @@ def check_ghost_spectral(text):
     return {
         "text": "no-ghost-spectral-density",
         "passed": count < 3,
-        # Every hit, not the deduplicated `found`, so the candidate count the
-        # report carries matches the count the evidence states.
-        "matches": hits,
+        # The report quotes the distinct words; repeating "hidden" three times
+        # tells a reader nothing the count does not. The count still governs, so
+        # it is carried separately rather than inferred from the quoted list.
+        "matches": found,
+        "candidate_count": count,
         "evidence": (
             f"Found {count} ghost/spectral words: {found}"
             if count >= 3
@@ -3100,18 +3102,24 @@ def check_this_chains(text):
     """Detect 3+ consecutive sentences starting with 'This [verb]'."""
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     worst_run = 0
+    worst_sentences = []
     for para in paragraphs:
         sentences = split_sentences(para)
-        current_run = 0
+        current = []
         for s in sentences:
             if re.match(r'^this\s+(?!is\b)\w+', s.strip().lower()):
-                current_run += 1
-                worst_run = max(worst_run, current_run)
+                current.append(s.strip())
+                if len(current) > worst_run:
+                    worst_run = len(current)
+                    worst_sentences = list(current)
             else:
-                current_run = 0
+                current = []
     return {
         "text": "no-this-chains",
         "passed": worst_run < 3,
+        # The run itself, so the report can quote it. Without this the flagged
+        # line named the pattern and showed a reader nothing to look at.
+        "matches": worst_sentences,
         "evidence": (
             f"Found {worst_run} consecutive 'This [verb]' sentences"
             if worst_run >= 3
@@ -3133,11 +3141,14 @@ def check_countdown_negation(text):
     """
     # Branch 1: existing countdown-then-reveal pattern (do not change)
     pattern = r'(?:(?:it|this|that) (?:wasn\'t|isn\'t|was not|is not) [^.?!]+[.]\s*){2,}(?:it|this|that) (?:was|is) [^.?!]+[.]'
-    matches = re.findall(pattern, text.lower())
+    # Read case-insensitively rather than off a lowercased copy so the sequence
+    # can be quoted back in the author's own casing. Same pattern, same matches.
+    matches = [m.group(0) for m in re.finditer(pattern, text, re.IGNORECASE)]
     if matches:
         return {
             "text": "no-countdown-negation",
             "passed": False,
+            "matches": matches,
             "evidence": f"Found {len(matches)} countdown negation sequence(s)",
         }
 
@@ -3146,7 +3157,8 @@ def check_countdown_negation(text):
     subjects = ("you", "we", "they", "people")
     sentences = split_sentences(text)
     max_run = 0
-    current_run = 0
+    longest = []
+    current = []
     current_subject = None
     for s in sentences:
         s_lower = s.strip().lower()
@@ -3156,19 +3168,23 @@ def check_countdown_negation(text):
                 matched_subject = subj
                 break
         if matched_subject and matched_subject == current_subject:
-            current_run += 1
-            max_run = max(max_run, current_run)
+            current.append(s.strip())
         elif matched_subject:
             current_subject = matched_subject
-            current_run = 1
+            current = [s.strip()]
         else:
             current_subject = None
-            current_run = 0
+            current = []
+        if len(current) > max_run:
+            max_run = len(current)
+            longest = list(current)
 
     if max_run >= 3:
         return {
             "text": "no-countdown-negation",
             "passed": False,
+            # The run, so the finding is quotable rather than a bare count.
+            "matches": longest,
             "evidence": f"Found {max_run} consecutive same-subject negation sentences",
         }
 

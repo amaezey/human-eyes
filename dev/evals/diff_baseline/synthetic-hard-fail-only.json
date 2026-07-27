@@ -2800,6 +2800,7 @@
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
+          "matches": [],
           "metric_value": 0,
           "sample_size": 509,
           "severity": "context_warning",

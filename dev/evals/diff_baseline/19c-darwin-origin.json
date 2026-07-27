@@ -4635,11 +4635,20 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "This Abstract, which I now publish, must necessarily be imperfect."
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 2375,
+              "quoted": false,
+              "start": 2309,
+              "text": "This Abstract, which I now publish, must necessarily be imperfect."
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
@@ -4656,7 +4665,10 @@
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
-          "metric_value": 0,
+          "matches": [
+            "This Abstract, which I now publish, must necessarily be imperfect."
+          ],
+          "metric_value": 1,
           "sample_size": 1755,
           "severity": "context_warning",
           "threshold": null,
