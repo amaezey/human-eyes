@@ -26,7 +26,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** open
 
-**Source:** Internal ideation, worth-revisiting A2.
+**Source:** Internal ideation, worth-revisiting #2.
 
 **Statement:** Input is two pieces of prose; output is divergence on register-distance dimensions ("Doc B sits 1.4σ further from human-cluster than Doc A on these dimensions"). Single-document audit becomes a degenerate case where the second input is the human-corpus centroid.
 
@@ -136,7 +136,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** contradicted by rule 1; do not build. Look-alike disambiguation blocks are exactly the machinery that rule forbids. Kept for its record of the register-bias finding only.
 
-**Source:** Internal ideation, worth-revisiting A1. External: Stanford HAI / TOEFL bias finding on register features misread as authorship.
+**Source:** Internal ideation, worth-revisiting #1. External: Stanford HAI / TOEFL bias finding on register features misread as authorship.
 
 **Statement:** Every pattern carries a "looks like, but isn't" block. For example, manufactured-insight: "vs legitimate epistemic hedging in academic prose; vs quoted material with attribution". The block disambiguates the pattern from genre-typical look-alikes the writer might actually be doing.
 
@@ -151,7 +151,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** open
 
-**Source:** Internal ideation, worth-revisiting A3. External: ASRS (Aviation Safety Reporting System) non-punitive intake design.
+**Source:** Internal ideation, worth-revisiting #3. External: ASRS (Aviation Safety Reporting System) non-punitive intake design.
 
 **Statement:** An opt-in `human-eyes report-fp` flow captures false positives the user encountered, with a non-punitive covenant (the report does not change the user's audit history). Reports grow the corpus from real authoring rather than synthetic generation.
 
@@ -228,7 +228,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** open
 
-**Source:** Internal ideation, rejection D3 ("overkill at N=5; revisit at N≥50").
+**Source:** Internal ideation, rejection #21 ("overkill at N=5; revisit at N≥50").
 
 **Statement:** Move the corpus to a separate repo or git submodule consumed by human-eyes via SHA pin. Corpus growth becomes its own discipline with its own review surface. The skill repo tracks a corpus_sha rather than corpus contents.
 
@@ -244,7 +244,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** open
 
-**Source:** Internal ideation, rejection E1 ("premature; needs golden set first"). External: Promptfoo and Anthropic eval guidance on judge variance.
+**Source:** Internal ideation, rejection #22 ("premature; needs golden set first"). External: Promptfoo and Anthropic eval guidance on judge variance.
 
 **Statement:** Run each eval through more than one judge model (or the same model with varied seeds). Surface judge disagreement as a first-class signal rather than averaging it away. Cases where judges disagree route to human review.
 
@@ -260,7 +260,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** open
 
-**Source:** Internal ideation, rejection D1 ("strong but premature").
+**Source:** Internal ideation, rejection #19 ("strong but premature").
 
 **Statement:** Maintain a hand-labelled golden set of around 30 samples covering the most contested patterns. Any change to grade.py or its thresholds must reproduce the golden-set labels within a tolerance before it ships. Acts as a regression gate.
 
@@ -276,7 +276,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** open
 
-**Source:** Internal ideation, rejection E2.
+**Source:** Internal ideation, rejection #23.
 
 **Statement:** Compute a length-normalised mean discrimination metric across the catalogue, with bootstrap CI. A grader release does not ship unless the metric is at least flat against the prior version on the corpus.
 
