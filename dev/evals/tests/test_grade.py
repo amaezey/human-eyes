@@ -289,7 +289,7 @@ expect_fail("no-manufactured-insight",
 aphorism_result = ALL_CHECKS["no-manufactured-insight"](
     "Symmetry is the language of trust."
 )
-if aphorism_result.get("matches") != ["symmetry is the language of trust"]:
+if aphorism_result.get("matches") != ["Symmetry is the language of trust"]:
     FAILURES += 1
     print(
         "FAIL: DR-124 overlapping aphorism regexes should keep the longest occurrence, "

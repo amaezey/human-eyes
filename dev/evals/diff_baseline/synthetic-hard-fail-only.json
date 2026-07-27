@@ -1166,7 +1166,7 @@
         "metric": null,
         "quoted_phrases": [
           "the future looks bright",
-          "overall, this"
+          "Overall, this"
         ],
         "raw": {
           "aggregate_finding": false,
@@ -1182,7 +1182,7 @@
               "end": 2358,
               "quoted": false,
               "start": 2345,
-              "text": "overall, this"
+              "text": "Overall, this"
             }
           ],
           "context_gate": {
@@ -1204,7 +1204,7 @@
           "match_count": 2,
           "matches": [
             "the future looks bright",
-            "overall, this"
+            "Overall, this"
           ],
           "severity": "hard_fail",
           "spans": [
@@ -1218,7 +1218,7 @@
               "end": 2358,
               "quoted": false,
               "start": 2345,
-              "text": "overall, this"
+              "text": "Overall, this"
             }
           ],
           "threshold": null,
@@ -1281,9 +1281,9 @@
         "locations": [],
         "metric": null,
         "quoted_phrases": [
-          "[insert topic]",
-          "[insert quote from source]",
-          "[additional context to be inserted here]"
+          "[INSERT TOPIC]",
+          "[INSERT QUOTE FROM SOURCE]",
+          "[ADDITIONAL CONTEXT TO BE INSERTED HERE]"
         ],
         "raw": {
           "aggregate_finding": false,
@@ -1293,19 +1293,19 @@
               "end": 64,
               "quoted": false,
               "start": 50,
-              "text": "[insert topic]"
+              "text": "[INSERT TOPIC]"
             },
             {
               "end": 847,
               "quoted": false,
               "start": 821,
-              "text": "[insert quote from source]"
+              "text": "[INSERT QUOTE FROM SOURCE]"
             },
             {
               "end": 1486,
               "quoted": false,
               "start": 1446,
-              "text": "[additional context to be inserted here]"
+              "text": "[ADDITIONAL CONTEXT TO BE INSERTED HERE]"
             }
           ],
           "context_gate": {
@@ -1325,9 +1325,9 @@
           "guidance": "Fix at every depth; replace or remove unfilled placeholders, publishing instructions, and platform markup.",
           "match_count": 3,
           "matches": [
-            "[insert topic]",
-            "[insert quote from source]",
-            "[additional context to be inserted here]"
+            "[INSERT TOPIC]",
+            "[INSERT QUOTE FROM SOURCE]",
+            "[ADDITIONAL CONTEXT TO BE INSERTED HERE]"
           ],
           "severity": "hard_fail",
           "spans": [
@@ -1335,19 +1335,19 @@
               "end": 64,
               "quoted": false,
               "start": 50,
-              "text": "[insert topic]"
+              "text": "[INSERT TOPIC]"
             },
             {
               "end": 847,
               "quoted": false,
               "start": 821,
-              "text": "[insert quote from source]"
+              "text": "[INSERT QUOTE FROM SOURCE]"
             },
             {
               "end": 1486,
               "quoted": false,
               "start": 1446,
-              "text": "[additional context to be inserted here]"
+              "text": "[ADDITIONAL CONTEXT TO BE INSERTED HERE]"
             }
           ],
           "threshold": null,
@@ -1539,120 +1539,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "adjustments",
-          "experience",
-          "importance",
-          "connections",
-          "significance",
-          "connections"
-        ],
+        "metric": "6 nominalisation(s) at 11.8 per 1000 words (flag at 29.0)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 6,
-          "candidates": [
-            {
-              "end": 129,
-              "quoted": false,
-              "start": 118,
-              "text": "adjustments"
-            },
-            {
-              "end": 2010,
-              "quoted": false,
-              "start": 2000,
-              "text": "experience"
-            },
-            {
-              "end": 2035,
-              "quoted": false,
-              "start": 2025,
-              "text": "importance"
-            },
-            {
-              "end": 2112,
-              "quoted": false,
-              "start": 2101,
-              "text": "connections"
-            },
-            {
-              "end": 2315,
-              "quoted": false,
-              "start": 2303,
-              "text": "significance"
-            },
-            {
-              "end": 2440,
-              "quoted": false,
-              "start": 2429,
-              "text": "connections"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "nominalisation(s): 6 at 11.8 per 1000 words",
+            "raw_evidence": "6 nominalisation(s) at 11.8 per 1000 words (flag at 29.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "nominalisation(s): 6 at 11.8 per 1000 words",
+          "evidence": "6 nominalisation(s) at 11.8 per 1000 words (flag at 29.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
-          "match_count": 6,
-          "matches": [
-            "adjustments",
-            "experience",
-            "importance",
-            "connections",
-            "significance",
-            "connections"
-          ],
+          "metric": "6 nominalisation(s) at 11.8 per 1000 words (flag at 29.0)",
+          "metric_value": "6 nominalisation(s) at 11.8 per 1000 words (flag at 29.0)",
+          "sample_size": 509,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 129,
-              "quoted": false,
-              "start": 118,
-              "text": "adjustments"
-            },
-            {
-              "end": 2010,
-              "quoted": false,
-              "start": 2000,
-              "text": "experience"
-            },
-            {
-              "end": 2035,
-              "quoted": false,
-              "start": 2025,
-              "text": "importance"
-            },
-            {
-              "end": 2112,
-              "quoted": false,
-              "start": 2101,
-              "text": "connections"
-            },
-            {
-              "end": 2315,
-              "quoted": false,
-              "start": 2303,
-              "text": "significance"
-            },
-            {
-              "end": 2440,
-              "quoted": false,
-              "start": 2429,
-              "text": "connections"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -1670,78 +1582,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "window that faced",
-          "leaves that came",
-          "lemons that were"
-        ],
+        "metric": "3 subject relative(s) at 5.9 per 1000 words (flag at 3.5)",
+        "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 3,
-          "candidates": [
-            {
-              "end": 189,
-              "quoted": false,
-              "start": 172,
-              "text": "window that faced"
-            },
-            {
-              "end": 384,
-              "quoted": false,
-              "start": 368,
-              "text": "leaves that came"
-            },
-            {
-              "end": 1611,
-              "quoted": false,
-              "start": 1595,
-              "text": "lemons that were"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 3 subject relative(s) at 5.9 per 1000 words: ['window that faced', 'leaves that came', 'lemons that were']",
+            "raw_evidence": "3 subject relative(s) at 5.9 per 1000 words (flag at 3.5)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 3 subject relative(s) at 5.9 per 1000 words: ['window that faced', 'leaves that came', 'lemons that were']",
+          "evidence": "3 subject relative(s) at 5.9 per 1000 words (flag at 3.5)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
-          "match_count": 3,
-          "matches": [
-            "window that faced",
-            "leaves that came",
-            "lemons that were"
-          ],
+          "metric": "3 subject relative(s) at 5.9 per 1000 words (flag at 3.5)",
+          "metric_value": "3 subject relative(s) at 5.9 per 1000 words (flag at 3.5)",
+          "sample_size": 509,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 189,
-              "quoted": false,
-              "start": 172,
-              "text": "window that faced"
-            },
-            {
-              "end": 384,
-              "quoted": false,
-              "start": 368,
-              "text": "leaves that came"
-            },
-            {
-              "end": 1611,
-              "quoted": false,
-              "start": 1595,
-              "text": "lemons that were"
-            }
-          ],
           "threshold": null,
           "threshold_met": true
         }
@@ -1759,64 +1625,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "watching",
-          "depending"
-        ],
+        "metric": "2 participial clause(s) at 3.9 per 1000 words (flag at 4.4)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 2,
-          "candidates": [
-            {
-              "end": 282,
-              "quoted": false,
-              "start": 274,
-              "text": "watching"
-            },
-            {
-              "end": 603,
-              "quoted": false,
-              "start": 594,
-              "text": "depending"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "participial clause(s): 2 at 3.9 per 1000 words",
+            "raw_evidence": "2 participial clause(s) at 3.9 per 1000 words (flag at 4.4)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "participial clause(s): 2 at 3.9 per 1000 words",
+          "evidence": "2 participial clause(s) at 3.9 per 1000 words (flag at 4.4)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
-          "match_count": 2,
-          "matches": [
-            "watching",
-            "depending"
-          ],
+          "metric": "2 participial clause(s) at 3.9 per 1000 words (flag at 4.4)",
+          "metric_value": "2 participial clause(s) at 3.9 per 1000 words (flag at 4.4)",
+          "sample_size": 509,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 282,
-              "quoted": false,
-              "start": 274,
-              "text": "watching"
-            },
-            {
-              "end": 603,
-              "quoted": false,
-              "start": 594,
-              "text": "depending"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -1834,50 +1668,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "be inserted"
-        ],
+        "metric": "1 passive verb(s) at 2.0 per 1000 words (flag at 5.0)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 1,
-          "candidates": [
-            {
-              "end": 1480,
-              "quoted": false,
-              "start": 1469,
-              "text": "be inserted"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "passive verb(s): 1 at 2.0 per 1000 words",
+            "raw_evidence": "1 passive verb(s) at 2.0 per 1000 words (flag at 5.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "passive verb(s): 1 at 2.0 per 1000 words",
+          "evidence": "1 passive verb(s) at 2.0 per 1000 words (flag at 5.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
-          "match_count": 1,
-          "matches": [
-            "be inserted"
-          ],
+          "metric": "1 passive verb(s) at 2.0 per 1000 words (flag at 5.0)",
+          "metric_value": "1 passive verb(s) at 2.0 per 1000 words (flag at 5.0)",
+          "sample_size": 509,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 1480,
-              "quoted": false,
-              "start": 1469,
-              "text": "be inserted"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -1895,134 +1711,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "it",
-          "It",
-          "It",
-          "it",
-          "it",
-          "It",
-          "it"
-        ],
+        "metric": "7 `it` pronoun(s) at 13.8 per 1000 words (flag at 18.0)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 7,
-          "candidates": [
-            {
-              "end": 36,
-              "quoted": false,
-              "start": 34,
-              "text": "it"
-            },
-            {
-              "end": 161,
-              "quoted": false,
-              "start": 159,
-              "text": "It"
-            },
-            {
-              "end": 617,
-              "quoted": false,
-              "start": 615,
-              "text": "It"
-            },
-            {
-              "end": 663,
-              "quoted": false,
-              "start": 661,
-              "text": "it"
-            },
-            {
-              "end": 739,
-              "quoted": false,
-              "start": 737,
-              "text": "it"
-            },
-            {
-              "end": 755,
-              "quoted": false,
-              "start": 753,
-              "text": "It"
-            },
-            {
-              "end": 1231,
-              "quoted": false,
-              "start": 1229,
-              "text": "it"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "`it` pronoun(s): 7 at 13.8 per 1000 words",
+            "raw_evidence": "7 `it` pronoun(s) at 13.8 per 1000 words (flag at 18.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "`it` pronoun(s): 7 at 13.8 per 1000 words",
+          "evidence": "7 `it` pronoun(s) at 13.8 per 1000 words (flag at 18.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
-          "match_count": 7,
-          "matches": [
-            "it",
-            "It",
-            "It",
-            "it",
-            "it",
-            "It",
-            "it"
-          ],
+          "metric": "7 `it` pronoun(s) at 13.8 per 1000 words (flag at 18.0)",
+          "metric_value": "7 `it` pronoun(s) at 13.8 per 1000 words (flag at 18.0)",
+          "sample_size": 509,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 36,
-              "quoted": false,
-              "start": 34,
-              "text": "it"
-            },
-            {
-              "end": 161,
-              "quoted": false,
-              "start": 159,
-              "text": "It"
-            },
-            {
-              "end": 617,
-              "quoted": false,
-              "start": 615,
-              "text": "It"
-            },
-            {
-              "end": 663,
-              "quoted": false,
-              "start": 661,
-              "text": "it"
-            },
-            {
-              "end": 739,
-              "quoted": false,
-              "start": 737,
-              "text": "it"
-            },
-            {
-              "end": 755,
-              "quoted": false,
-              "start": 753,
-              "text": "It"
-            },
-            {
-              "end": 1231,
-              "quoted": false,
-              "start": 1229,
-              "text": "it"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -2040,50 +1754,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "identified"
-        ],
+        "metric": "1 Latinate verb(s) at 2.0 per 1000 words (flag at 2.5)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 1,
-          "candidates": [
-            {
-              "end": 527,
-              "quoted": false,
-              "start": 517,
-              "text": "identified"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Latinate verb(s): 1 at 2.0 per 1000 words",
+            "raw_evidence": "1 Latinate verb(s) at 2.0 per 1000 words (flag at 2.5)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Latinate verb(s): 1 at 2.0 per 1000 words",
+          "evidence": "1 Latinate verb(s) at 2.0 per 1000 words (flag at 2.5)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "generic_abstraction",
             "frictionless_structure"
           ],
           "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
-          "match_count": 1,
-          "matches": [
-            "identified"
-          ],
+          "metric": "1 Latinate verb(s) at 2.0 per 1000 words (flag at 2.5)",
+          "metric_value": "1 Latinate verb(s) at 2.0 per 1000 words (flag at 2.5)",
+          "sample_size": 509,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 527,
-              "quoted": false,
-              "start": 517,
-              "text": "identified"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }

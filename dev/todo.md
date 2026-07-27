@@ -127,129 +127,133 @@ Separate the three before proposing anything, and bring each threshold to Mae as
 
 ---
 
-## 0c. Quote evidence from the draft, not from the masked copy
+## 0c. DONE: quote evidence from the draft, not from the masked copy
 
-Found 2026-07-27 while rebuilding the cut-off test. Mae's own item. Not yet a register row.
+Found 2026-07-27 while rebuilding the cut-off test. Built 2026-07-27. Mae's own
+item. Not a register row.
 
-### What a reader sees
+### What the item claimed, and what was true
 
-`21c-nyt-opinionator-i-know-what-you-think-of-me.md` contains:
+The item named masking as the cause: lexical checks read a copy of the draft in
+which quotations and machine-readable spans are blanked to spaces, so a match
+spanning one came back with a hole in it. That is real, and it is 66 of the 1,918
+bad quotes across the 153 corpus documents. It is not the main cause. Measured:
 
-> Tim Kreider is the author of "We Learn Nothing," a collection of essays and cartoons
+| cause | count | worst offenders |
+|---|---|---|
+| the check lowercased its match | 1,086 | `no-it-pronoun-rate` 929, `no-manufactured-insight` 47 |
+| the check joined lines or collapsed whitespace | 622 | `no-curly-quotes` 477, `no-staccato-sequences` 84 |
+| the match spanned a masked span | 66 | `no-curly-quotes` 37, `no-negative-parallelisms` 18 |
+| composed from two spans on purpose | 144 | `no-passive-voice-rate` 118, `no-heading-one-liners` 26 |
 
-`no-manufactured-insight` flags it and quotes it back as:
+The 1,086 needed a second look. Most were `no-it-pronoun-rate` handing back bare
+pronouns, and those strings were already the writer's own — only the offset
+computed for them pointed at the wrong occurrence of the same word. Counting a
+wrong offset as a wrong quote overstated the defect. The strings that genuinely
+were not on the writer's page numbered 797.
 
-> `tim kreider is the author of                     a collection of essays`
+The item also named the wrong place to fix it. `_evidence_envelope` builds
+`quoted_phrases` from `_extract_quoted_phrases`, which reads `matches` — not
+`candidates`. Recutting inside `_candidate_records`, as the item proposed, would
+have corrected the candidate records and left the audit a reader sees identical.
 
-The book title has become 21 spaces and the capitals are gone. The evidence is
-the one part of an audit a writer checks against their own page, and this is not
-their sentence.
+### What was built
 
-### Cause
+The first of the item's two shapes, moved to the right place.
+`recut_matches_from_draft` (`grade.py:958`) sits in `_wrap_check` and rewrites
+`matches` before anything reads them. A match already found in the draft is left
+alone. Anything else is relocated with a pattern that ignores case, matches any
+whitespace where the check left one space, and matches exactly *n* characters
+where it left a run of *n* blanks — masking preserves length, so that span is
+exact rather than a guess. The located text is then cut from the draft.
 
-One cause, two symptoms. `_wrap_check` (`grade.py:4087`) runs lexical checks over
-a masked copy: `mask_non_prose` blanks quotations, code and front matter so
-patterns cannot match inside them. `_mask_non_prose_patterns` (`grade.py:927`)
-overwrites those characters with spaces **in place**, so the masked copy is the
-same length as the draft and every offset still lines up.
+The second shape — teaching some thirty checks to return spans — was not built.
+It is exact where this is a relocation, but it costs a differential test per
+check, and it would not fix the 144 composed phrases either.
 
-The checks then return their matches as strings cut from that masked copy.
-`_candidate_records` (`grade.py:958`) receives the original text and tries to
-find each string in it with `folded_text.find(value.casefold())`. For a match
-that spans a masked region the string no longer exists in the draft, so:
+Mae's three decisions, 2026-07-27:
 
-- the quoted phrase keeps the blanks and the lowercasing, and
-- the lookup fails, leaving `start` and `end` as `None`.
+- **Whitespace collapses for display.** A restored quote carries the writer's
+  words and capitals but not their line breaks, so a paragraph-length quote still
+  renders on one line.
+- **Positions are not published.** The recut works out where every quote sits,
+  but nothing reads a location, so `_evidence_envelope` still emits
+  `"locations": []` — now with a comment saying that is deliberate.
+- **Repeated boilerplate takes the first match.** Six quotes are word-for-word
+  repeats within one document, so the quote is right either way and only the
+  unpublished offset could name the wrong copy.
 
-Some checks lowercase as well — `count_pattern_matches` (`grade.py:862`) runs
-`re.findall` over `text.lower()` — so casing is lost even where nothing is masked.
+### Result
 
-### Measured over the 153 sample documents
+19,962 of 20,106 quoted phrases now carry the writer's own words and capitals.
+The remaining 144 are `no-passive-voice-rate` and `no-heading-one-liners`, which
+compose a phrase from two spans by design and were already allow-listed.
 
-| symptom | count |
-|---|---|
-| flagged phrases containing a masked hole | 66, across 7 checks |
-| worst offenders | `no-curly-quotes` 37, `no-negative-parallelisms` 18, `no-anaphora` 4 |
-| candidates with no locatable offset | 750+, led by `no-curly-quotes` 517 and `no-staccato-sequences` 87 |
+`test_phrase_capture_coverage.py` was the gate and it was weak in two ways that
+hid all of this: it lowercased both sides before comparing, and it passed a check
+that produced one true quote among thirty mangled ones. It is now case-sensitive
+and checks every phrase. Run against the old grader it reports 79 failures;
+against the new one, none. The masked-span pin is removed.
 
-### The fix, and why it is one place not thirty
+One thing is knowingly left. Many checks build their `evidence` string inside
+themselves, before the wrapper can reach the matches, so `raw["evidence"]` in the
+machine contract can still read back the pre-recut text. No reader sees it — the
+rendered block quotes `quoted_phrases` only — and fixing it means editing each
+check, which is the shape that was not built.
 
-Because masking preserves length and position, the offsets found in the masked
-copy are valid offsets into the draft. So the shared wrapper can recut every
-match from the original text rather than each check being taught to do it.
+## 0d. DONE: rate checks report the rate and quote nothing
 
-Two shapes, and the choice between them is the decision:
+Found 2026-07-27, same pass as 0c. Built 2026-07-28. Mae's own item. Not a
+register row.
 
-- **Recut in `_candidate_records`.** When the verbatim lookup fails, rebuild the
-  search as a pattern that treats each run of two or more spaces as "anything",
-  locate the span, and take `original_text[start:end]` as the phrase. Contained,
-  no check signatures change, but it is a reconstruction and can mislocate a
-  phrase that repeats.
-- **Have checks return spans.** Checks would return `(start, end)` alongside or
-  instead of strings, and the wrapper cuts from the draft. Exact, and it also
-  fixes the `None` offsets properly, but it touches every lexical check.
+### What a reader saw
 
-Do not fix this check by check. `no-manufactured-insight` is the example, not the
-bug.
+`no-it-pronoun-rate` counted 34 uses of `it`, worked out that this was 21.3 per
+1000 words against a limit of 18, and then showed the reader:
 
-### Before starting
+> ⚠ It-pronoun rate: `"It", "it", "it" (+31 more)`
 
-`start`/`end` are currently computed and read by nothing — `_evidence_envelope`
-emits `"locations": []` with the comment that location tracking is not wired
-through. Decide whether this work also wires locations through or deliberately
-leaves them unread, and say which.
+The rate — the whole finding — appeared nowhere. On the worst document the list
+ran to 267 entries, and `--full-report` has no cap, so it rendered all 267.
 
-### Verify
+### Mae's decision, 2026-07-28
 
-Re-quote all 153 documents and assert every quoted phrase appears verbatim in the
-draft it came from. `test_phrase_capture_coverage.py` already asserts a version of
-this and carries an allow-list for phrases that are legitimately composed
-(`no-heading-one-liners` joins a heading to the line under it) plus a pin naming
-this defect. Both should shrink as this lands; the pin should be removed.
+Rate only, naming the word or feature being counted. The same line now reads:
 
----
+> ⚠ It-pronoun rate: 34 `it` pronoun(s) at 21.3 per 1000 words (flag at 18.0)
 
-## 0d. Decide what rate checks should quote
+### Scope
 
-Found 2026-07-27, same pass. Mae's own item. Not yet a register row.
+The six Biber and Xia feature-rate checks, patterns B7 to B12:
+`no-nominalisation-rate`, `no-that-relative-rate`, `no-participial-clause-rate`,
+`no-passive-voice-rate`, `no-it-pronoun-rate`, `no-latinate-verb-rate`. They share
+one function, `_biber_rate_check` (`grade.py:2479`), so this is one edit.
 
-### What a reader sees
+Four other checks state a rate and were deliberately left quoting:
+`no-forced-triads`, `no-staccato-sequences`, `no-negation-density` and
+`no-quietness-obsession`. Their quotes are sentences or multi-word phrases a
+reader can find on the page — `'medical language, social performance, and the
+collapse'` — not a bare word repeated. The complaint was never list length; it was
+that the list said nothing. Where it still says something it stays.
 
-`no-it-pronoun-rate` reports a rate — 36 pronouns at 30.6 per 1000 words — and
-then quotes **267 separate entries**: `"It", "it", "it", "it", …`. The finding is
-the density; the list of every occurrence adds nothing to it and buries it.
+### What changed with it
 
-Normal reports are protected by `LAYER_1_PHRASE_CAP = 3` in
-`_format_quoted_phrases` (`grade.py:5350`), which shows three and appends
-`(+N more)`. `--full-report` mode deliberately has no cap and renders all 267.
+- `candidate_count` still carries the true count, as the item required. It is read
+  by `run_regex_catalogue_audit.py`, summed by `run_three_version_comparison.py`,
+  asserted across `test_regex_robustness.py`, and used by the cut-off test.
+- The six moved into `STATISTICAL_CHECKS`. They had been classed `lexical`, which
+  described them until they stopped carrying phrases. That set is read nowhere but
+  the wrapper, so the move is contained.
+- `aggregate_finding` flips to true on 34 baseline records. The field means "this
+  record has no spans", which is now the case for them.
+- `no-passive-voice-rate` leaves the composed-phrase allow-list in
+  `test_phrase_capture_coverage.py`. It was there because it quoted `"be ordered"`
+  for "be carefully ordered", a phrase not on the writer's page; it no longer
+  quotes at all. That removes 118 of the 144 quotes item 0c could not repair.
+  `no-heading-one-liners` and its 26 are the only ones left.
 
-### Measured over the 153 sample documents
-
-| check | longest quote list |
-|---|---|
-| `no-it-pronoun-rate` | 267 |
-| `no-nominalisation-rate` | 185 |
-| `no-passive-voice-rate` | 97 |
-
-15 checks exceed 12 phrases on at least one document.
-
-### The question
-
-A rate check's evidence is the number. What should it quote — nothing, a bounded
-sample, or every hit for a reader who asked for everything? The three answers give
-three different products and this is a judgement about the report, not a defect
-with a correct answer.
-
-`no-ghost-spectral-density` was deduplicated on 2026-07-27 so it prints `"hidden"`
-rather than `"hidden", "hidden", "hidden"`, and its true count is carried
-separately in `candidate_count`. That is a precedent for one answer, not a ruling:
-it was done to undo a regression introduced the same day, and was not extended to
-any other check.
-
-Whatever is chosen, `candidate_count` must keep carrying the real count — it is
-read by `run_regex_catalogue_audit.py`, summed by `run_three_version_comparison.py`,
-asserted across `test_regex_robustness.py`, and used by the cut-off test to check
-that a declared threshold is the enforced one.
+No document changed outcome. Across the 11 pinned baselines the only fields that
+moved were the evidence shape of those six checks.
 
 ---
 

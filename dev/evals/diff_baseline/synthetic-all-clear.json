@@ -1378,106 +1378,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "induction",
-          "experiment",
-          "disagreement",
-          "vibration",
-          "sentence"
-        ],
+        "metric": "5 nominalisation(s) at 4.2 per 1000 words (flag at 29.0)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 5,
-          "candidates": [
-            {
-              "end": 1626,
-              "quoted": false,
-              "start": 1617,
-              "text": "induction"
-            },
-            {
-              "end": 1789,
-              "quoted": false,
-              "start": 1779,
-              "text": "experiment"
-            },
-            {
-              "end": 2460,
-              "quoted": false,
-              "start": 2448,
-              "text": "disagreement"
-            },
-            {
-              "end": 4519,
-              "quoted": false,
-              "start": 4510,
-              "text": "vibration"
-            },
-            {
-              "end": 4637,
-              "quoted": false,
-              "start": 4629,
-              "text": "sentence"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "nominalisation(s): 5 at 4.2 per 1000 words",
+            "raw_evidence": "5 nominalisation(s) at 4.2 per 1000 words (flag at 29.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "nominalisation(s): 5 at 4.2 per 1000 words",
+          "evidence": "5 nominalisation(s) at 4.2 per 1000 words (flag at 29.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
-          "match_count": 5,
-          "matches": [
-            "induction",
-            "experiment",
-            "disagreement",
-            "vibration",
-            "sentence"
-          ],
+          "metric": "5 nominalisation(s) at 4.2 per 1000 words (flag at 29.0)",
+          "metric_value": "5 nominalisation(s) at 4.2 per 1000 words (flag at 29.0)",
+          "sample_size": 1184,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 1626,
-              "quoted": false,
-              "start": 1617,
-              "text": "induction"
-            },
-            {
-              "end": 1789,
-              "quoted": false,
-              "start": 1779,
-              "text": "experiment"
-            },
-            {
-              "end": 2460,
-              "quoted": false,
-              "start": 2448,
-              "text": "disagreement"
-            },
-            {
-              "end": 4519,
-              "quoted": false,
-              "start": 4510,
-              "text": "vibration"
-            },
-            {
-              "end": 4637,
-              "quoted": false,
-              "start": 4629,
-              "text": "sentence"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -1495,120 +1421,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "whether that was",
-          "window that faced",
-          "bottom that fits",
-          "flat that has",
-          "kind that builds",
-          "vibration that travels"
-        ],
+        "metric": "6 subject relative(s) at 5.1 per 1000 words (flag at 3.5)",
+        "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 6,
-          "candidates": [
-            {
-              "end": 437,
-              "quoted": false,
-              "start": 421,
-              "text": "whether that was"
-            },
-            {
-              "end": 589,
-              "quoted": false,
-              "start": 572,
-              "text": "window that faced"
-            },
-            {
-              "end": 1612,
-              "quoted": false,
-              "start": 1596,
-              "text": "bottom that fits"
-            },
-            {
-              "end": 2301,
-              "quoted": false,
-              "start": 2288,
-              "text": "flat that has"
-            },
-            {
-              "end": 4486,
-              "quoted": false,
-              "start": 4470,
-              "text": "kind that builds"
-            },
-            {
-              "end": 4532,
-              "quoted": false,
-              "start": 4510,
-              "text": "vibration that travels"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 6 subject relative(s) at 5.1 per 1000 words: ['whether that was', 'window that faced', 'bottom that fits', 'flat that has', 'kind that builds', 'vibration that travels']",
+            "raw_evidence": "6 subject relative(s) at 5.1 per 1000 words (flag at 3.5)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 6 subject relative(s) at 5.1 per 1000 words: ['whether that was', 'window that faced', 'bottom that fits', 'flat that has', 'kind that builds', 'vibration that travels']",
+          "evidence": "6 subject relative(s) at 5.1 per 1000 words (flag at 3.5)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
-          "match_count": 6,
-          "matches": [
-            "whether that was",
-            "window that faced",
-            "bottom that fits",
-            "flat that has",
-            "kind that builds",
-            "vibration that travels"
-          ],
+          "metric": "6 subject relative(s) at 5.1 per 1000 words (flag at 3.5)",
+          "metric_value": "6 subject relative(s) at 5.1 per 1000 words (flag at 3.5)",
+          "sample_size": 1184,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 437,
-              "quoted": false,
-              "start": 421,
-              "text": "whether that was"
-            },
-            {
-              "end": 589,
-              "quoted": false,
-              "start": 572,
-              "text": "window that faced"
-            },
-            {
-              "end": 1612,
-              "quoted": false,
-              "start": 1596,
-              "text": "bottom that fits"
-            },
-            {
-              "end": 2301,
-              "quoted": false,
-              "start": 2288,
-              "text": "flat that has"
-            },
-            {
-              "end": 4486,
-              "quoted": false,
-              "start": 4470,
-              "text": "kind that builds"
-            },
-            {
-              "end": 4532,
-              "quoted": false,
-              "start": 4510,
-              "text": "vibration that travels"
-            }
-          ],
           "threshold": null,
           "threshold_met": true
         }
@@ -1626,92 +1464,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "sitting",
-          "leaving",
-          "admitting",
-          "waiting"
-        ],
+        "metric": "4 participial clause(s) at 3.4 per 1000 words (flag at 4.4)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 4,
-          "candidates": [
-            {
-              "end": 5868,
-              "quoted": false,
-              "start": 5861,
-              "text": "sitting"
-            },
-            {
-              "end": 4965,
-              "quoted": false,
-              "start": 4958,
-              "text": "leaving"
-            },
-            {
-              "end": 5538,
-              "quoted": false,
-              "start": 5529,
-              "text": "admitting"
-            },
-            {
-              "end": 5926,
-              "quoted": false,
-              "start": 5919,
-              "text": "waiting"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "participial clause(s): 4 at 3.4 per 1000 words",
+            "raw_evidence": "4 participial clause(s) at 3.4 per 1000 words (flag at 4.4)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "participial clause(s): 4 at 3.4 per 1000 words",
+          "evidence": "4 participial clause(s) at 3.4 per 1000 words (flag at 4.4)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
-          "match_count": 4,
-          "matches": [
-            "sitting",
-            "leaving",
-            "admitting",
-            "waiting"
-          ],
+          "metric": "4 participial clause(s) at 3.4 per 1000 words (flag at 4.4)",
+          "metric_value": "4 participial clause(s) at 3.4 per 1000 words (flag at 4.4)",
+          "sample_size": 1184,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 5868,
-              "quoted": false,
-              "start": 5861,
-              "text": "sitting"
-            },
-            {
-              "end": 4965,
-              "quoted": false,
-              "start": 4958,
-              "text": "leaving"
-            },
-            {
-              "end": 5538,
-              "quoted": false,
-              "start": 5529,
-              "text": "admitting"
-            },
-            {
-              "end": 5926,
-              "quoted": false,
-              "start": 5919,
-              "text": "waiting"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -1729,106 +1507,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "was gone",
-          "been joined",
-          "is gone",
-          "was sold",
-          "be finished"
-        ],
+        "metric": "5 passive verb(s) at 4.2 per 1000 words (flag at 5.0)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 5,
-          "candidates": [
-            {
-              "end": 1025,
-              "quoted": false,
-              "start": 1017,
-              "text": "was gone"
-            },
-            {
-              "end": 2398,
-              "quoted": false,
-              "start": 2387,
-              "text": "been joined"
-            },
-            {
-              "end": 3389,
-              "quoted": false,
-              "start": 3382,
-              "text": "is gone"
-            },
-            {
-              "end": 3413,
-              "quoted": false,
-              "start": 3405,
-              "text": "was sold"
-            },
-            {
-              "end": 5026,
-              "quoted": false,
-              "start": 5015,
-              "text": "be finished"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "passive verb(s): 5 at 4.2 per 1000 words",
+            "raw_evidence": "5 passive verb(s) at 4.2 per 1000 words (flag at 5.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "passive verb(s): 5 at 4.2 per 1000 words",
+          "evidence": "5 passive verb(s) at 4.2 per 1000 words (flag at 5.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
-          "match_count": 5,
-          "matches": [
-            "was gone",
-            "been joined",
-            "is gone",
-            "was sold",
-            "be finished"
-          ],
+          "metric": "5 passive verb(s) at 4.2 per 1000 words (flag at 5.0)",
+          "metric_value": "5 passive verb(s) at 4.2 per 1000 words (flag at 5.0)",
+          "sample_size": 1184,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 1025,
-              "quoted": false,
-              "start": 1017,
-              "text": "was gone"
-            },
-            {
-              "end": 2398,
-              "quoted": false,
-              "start": 2387,
-              "text": "been joined"
-            },
-            {
-              "end": 3389,
-              "quoted": false,
-              "start": 3382,
-              "text": "is gone"
-            },
-            {
-              "end": 3413,
-              "quoted": false,
-              "start": 3405,
-              "text": "was sold"
-            },
-            {
-              "end": 5026,
-              "quoted": false,
-              "start": 5015,
-              "text": "be finished"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -1846,540 +1550,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "it",
-          "It",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "It",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "It",
-          "It",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "it",
-          "It",
-          "it"
-        ],
+        "metric": "36 `it` pronoun(s) at 30.6 per 1000 words (flag at 18.0)",
+        "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 36,
-          "candidates": [
-            {
-              "end": 38,
-              "quoted": false,
-              "start": 36,
-              "text": "it"
-            },
-            {
-              "end": 77,
-              "quoted": false,
-              "start": 75,
-              "text": "It"
-            },
-            {
-              "end": 96,
-              "quoted": false,
-              "start": 94,
-              "text": "it"
-            },
-            {
-              "end": 222,
-              "quoted": false,
-              "start": 220,
-              "text": "it"
-            },
-            {
-              "end": 311,
-              "quoted": false,
-              "start": 309,
-              "text": "it"
-            },
-            {
-              "end": 496,
-              "quoted": false,
-              "start": 494,
-              "text": "it"
-            },
-            {
-              "end": 536,
-              "quoted": false,
-              "start": 534,
-              "text": "it"
-            },
-            {
-              "end": 561,
-              "quoted": false,
-              "start": 559,
-              "text": "it"
-            },
-            {
-              "end": 615,
-              "quoted": false,
-              "start": 613,
-              "text": "it"
-            },
-            {
-              "end": 691,
-              "quoted": false,
-              "start": 689,
-              "text": "It"
-            },
-            {
-              "end": 701,
-              "quoted": false,
-              "start": 699,
-              "text": "it"
-            },
-            {
-              "end": 771,
-              "quoted": false,
-              "start": 769,
-              "text": "it"
-            },
-            {
-              "end": 883,
-              "quoted": false,
-              "start": 881,
-              "text": "it"
-            },
-            {
-              "end": 889,
-              "quoted": false,
-              "start": 887,
-              "text": "it"
-            },
-            {
-              "end": 903,
-              "quoted": false,
-              "start": 901,
-              "text": "it"
-            },
-            {
-              "end": 970,
-              "quoted": false,
-              "start": 968,
-              "text": "it"
-            },
-            {
-              "end": 1083,
-              "quoted": false,
-              "start": 1081,
-              "text": "it"
-            },
-            {
-              "end": 1139,
-              "quoted": false,
-              "start": 1137,
-              "text": "it"
-            },
-            {
-              "end": 1171,
-              "quoted": false,
-              "start": 1169,
-              "text": "it"
-            },
-            {
-              "end": 1175,
-              "quoted": false,
-              "start": 1173,
-              "text": "It"
-            },
-            {
-              "end": 1258,
-              "quoted": false,
-              "start": 1256,
-              "text": "It"
-            },
-            {
-              "end": 1294,
-              "quoted": false,
-              "start": 1292,
-              "text": "it"
-            },
-            {
-              "end": 1587,
-              "quoted": false,
-              "start": 1585,
-              "text": "it"
-            },
-            {
-              "end": 1611,
-              "quoted": false,
-              "start": 1609,
-              "text": "it"
-            },
-            {
-              "end": 1680,
-              "quoted": false,
-              "start": 1678,
-              "text": "it"
-            },
-            {
-              "end": 1754,
-              "quoted": false,
-              "start": 1752,
-              "text": "it"
-            },
-            {
-              "end": 1832,
-              "quoted": false,
-              "start": 1830,
-              "text": "it"
-            },
-            {
-              "end": 1933,
-              "quoted": false,
-              "start": 1931,
-              "text": "it"
-            },
-            {
-              "end": 2068,
-              "quoted": false,
-              "start": 2066,
-              "text": "it"
-            },
-            {
-              "end": 2130,
-              "quoted": false,
-              "start": 2128,
-              "text": "it"
-            },
-            {
-              "end": 2173,
-              "quoted": false,
-              "start": 2171,
-              "text": "it"
-            },
-            {
-              "end": 2314,
-              "quoted": false,
-              "start": 2312,
-              "text": "it"
-            },
-            {
-              "end": 2352,
-              "quoted": false,
-              "start": 2350,
-              "text": "it"
-            },
-            {
-              "end": 2363,
-              "quoted": false,
-              "start": 2361,
-              "text": "it"
-            },
-            {
-              "end": 2497,
-              "quoted": false,
-              "start": 2495,
-              "text": "It"
-            },
-            {
-              "end": 2503,
-              "quoted": false,
-              "start": 2501,
-              "text": "it"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 36 `it` pronoun(s) at 30.6 per 1000 words: ['it', 'It', 'it', 'it', 'it', 'it', 'it', 'it', 'it', 'It', 'it', 'it']",
+            "raw_evidence": "36 `it` pronoun(s) at 30.6 per 1000 words (flag at 18.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 36 `it` pronoun(s) at 30.6 per 1000 words: ['it', 'It', 'it', 'it', 'it', 'it', 'it', 'it', 'it', 'It', 'it', 'it']",
+          "evidence": "36 `it` pronoun(s) at 30.6 per 1000 words (flag at 18.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
-          "match_count": 36,
-          "matches": [
-            "it",
-            "It",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "It",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "It",
-            "It",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "it",
-            "It",
-            "it"
-          ],
+          "metric": "36 `it` pronoun(s) at 30.6 per 1000 words (flag at 18.0)",
+          "metric_value": "36 `it` pronoun(s) at 30.6 per 1000 words (flag at 18.0)",
+          "sample_size": 1184,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 38,
-              "quoted": false,
-              "start": 36,
-              "text": "it"
-            },
-            {
-              "end": 77,
-              "quoted": false,
-              "start": 75,
-              "text": "It"
-            },
-            {
-              "end": 96,
-              "quoted": false,
-              "start": 94,
-              "text": "it"
-            },
-            {
-              "end": 222,
-              "quoted": false,
-              "start": 220,
-              "text": "it"
-            },
-            {
-              "end": 311,
-              "quoted": false,
-              "start": 309,
-              "text": "it"
-            },
-            {
-              "end": 496,
-              "quoted": false,
-              "start": 494,
-              "text": "it"
-            },
-            {
-              "end": 536,
-              "quoted": false,
-              "start": 534,
-              "text": "it"
-            },
-            {
-              "end": 561,
-              "quoted": false,
-              "start": 559,
-              "text": "it"
-            },
-            {
-              "end": 615,
-              "quoted": false,
-              "start": 613,
-              "text": "it"
-            },
-            {
-              "end": 691,
-              "quoted": false,
-              "start": 689,
-              "text": "It"
-            },
-            {
-              "end": 701,
-              "quoted": false,
-              "start": 699,
-              "text": "it"
-            },
-            {
-              "end": 771,
-              "quoted": false,
-              "start": 769,
-              "text": "it"
-            },
-            {
-              "end": 883,
-              "quoted": false,
-              "start": 881,
-              "text": "it"
-            },
-            {
-              "end": 889,
-              "quoted": false,
-              "start": 887,
-              "text": "it"
-            },
-            {
-              "end": 903,
-              "quoted": false,
-              "start": 901,
-              "text": "it"
-            },
-            {
-              "end": 970,
-              "quoted": false,
-              "start": 968,
-              "text": "it"
-            },
-            {
-              "end": 1083,
-              "quoted": false,
-              "start": 1081,
-              "text": "it"
-            },
-            {
-              "end": 1139,
-              "quoted": false,
-              "start": 1137,
-              "text": "it"
-            },
-            {
-              "end": 1171,
-              "quoted": false,
-              "start": 1169,
-              "text": "it"
-            },
-            {
-              "end": 1175,
-              "quoted": false,
-              "start": 1173,
-              "text": "It"
-            },
-            {
-              "end": 1258,
-              "quoted": false,
-              "start": 1256,
-              "text": "It"
-            },
-            {
-              "end": 1294,
-              "quoted": false,
-              "start": 1292,
-              "text": "it"
-            },
-            {
-              "end": 1587,
-              "quoted": false,
-              "start": 1585,
-              "text": "it"
-            },
-            {
-              "end": 1611,
-              "quoted": false,
-              "start": 1609,
-              "text": "it"
-            },
-            {
-              "end": 1680,
-              "quoted": false,
-              "start": 1678,
-              "text": "it"
-            },
-            {
-              "end": 1754,
-              "quoted": false,
-              "start": 1752,
-              "text": "it"
-            },
-            {
-              "end": 1832,
-              "quoted": false,
-              "start": 1830,
-              "text": "it"
-            },
-            {
-              "end": 1933,
-              "quoted": false,
-              "start": 1931,
-              "text": "it"
-            },
-            {
-              "end": 2068,
-              "quoted": false,
-              "start": 2066,
-              "text": "it"
-            },
-            {
-              "end": 2130,
-              "quoted": false,
-              "start": 2128,
-              "text": "it"
-            },
-            {
-              "end": 2173,
-              "quoted": false,
-              "start": 2171,
-              "text": "it"
-            },
-            {
-              "end": 2314,
-              "quoted": false,
-              "start": 2312,
-              "text": "it"
-            },
-            {
-              "end": 2352,
-              "quoted": false,
-              "start": 2350,
-              "text": "it"
-            },
-            {
-              "end": 2363,
-              "quoted": false,
-              "start": 2361,
-              "text": "it"
-            },
-            {
-              "end": 2497,
-              "quoted": false,
-              "start": 2495,
-              "text": "It"
-            },
-            {
-              "end": 2503,
-              "quoted": false,
-              "start": 2501,
-              "text": "it"
-            }
-          ],
           "threshold": null,
           "threshold_met": true
         }
@@ -2397,7 +1593,7 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "0 Latinate verb(s) at 0.0 per 1000 words (flag at 2.5)",
         "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
@@ -2406,23 +1602,23 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Latinate verb(s): 0 at 0.0 per 1000 words",
+            "raw_evidence": "0 Latinate verb(s) at 0.0 per 1000 words (flag at 2.5)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Latinate verb(s): 0 at 0.0 per 1000 words",
+          "evidence": "0 Latinate verb(s) at 0.0 per 1000 words (flag at 2.5)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "generic_abstraction",
             "frictionless_structure"
           ],
           "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
-          "match_count": 0,
-          "matches": [],
+          "metric": "0 Latinate verb(s) at 0.0 per 1000 words (flag at 2.5)",
+          "metric_value": "0 Latinate verb(s) at 0.0 per 1000 words (flag at 2.5)",
+          "sample_size": 1184,
           "severity": "context_warning",
-          "spans": [],
           "threshold": null,
           "threshold_met": false
         }

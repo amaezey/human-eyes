@@ -49,6 +49,15 @@ METRIC_ONLY_CHECKS = {
     "sentence-length-variance",
     "word-length-average",
     "concreteness-average",
+    # The Biber and Xia feature-rate checks (B7 to B12). Their finding is the
+    # density, so they report it and quote nothing; listing every hit repeated
+    # one word up to 267 times and buried the rate.
+    "no-nominalisation-rate",
+    "no-that-relative-rate",
+    "no-participial-clause-rate",
+    "no-passive-voice-rate",
+    "no-it-pronoun-rate",
+    "no-latinate-verb-rate",
 }
 
 # Checks whose signal is genuinely structural — no single phrase or
@@ -62,26 +71,6 @@ COMPOSED_PHRASE_CHECKS = {
     # Renders "<heading>: <the one line under it>" — the pairing is the finding,
     # and neither half alone shows it.
     "no-heading-one-liners",
-    # Renders the auxiliary and the participle as one span, so "were also asked"
-    # is quoted as "were asked". The construction is the finding, not the words
-    # between it.
-    "no-passive-voice-rate",
-}
-
-# Known defect, named rather than waived quietly (DR-79). Lexical checks read a
-# masked copy of the draft in which quoted and machine-readable spans are blanked
-# to spaces, and they return matches cut from that copy. Where a match straddles
-# a blanked span the quoted phrase carries a run of spaces that is not in the
-# draft, so the report shows the reader prose with a hole in it. The fix is to
-# recut every lexical match from the source text using the offsets that
-# `_candidate_records` already computes; that is a change to the shared wrapper,
-# not to this check, and it is not this test's to make.
-MASKED_SPAN_ARTEFACT = {
-    "no-manufactured-insight": (
-        "quotes 'tim kreider is the author of<20 spaces>a collection of essays' "
-        "on 21c-nyt-opinionator-i-know-what-you-think-of-me.md, where the gap is "
-        "a masked span rather than the author's whitespace"
-    ),
 }
 
 # Meta checks that the renderer suppresses entirely — they don't surface
@@ -103,15 +92,18 @@ def ok(msg: str) -> None:
 
 
 def normalise(s: str) -> str:
+    """Collapse whitespace only. Case is left alone on purpose: a quote that
+    lowercases the writer's sentence is not their sentence, and folding case
+    here is what let that go unseen across the whole corpus. Line breaks are
+    forgiven because a restored paragraph is rendered on one line."""
     import re
-    return re.sub(r"\s+", " ", s.lower()).strip()
+    return re.sub(r"\s+", " ", s).strip()
 
 
 print(f"=== phrase-capture coverage across {len(SAMPLES)} corpus samples ===\n")
 
 flagged_seen: dict[str, list[str]] = {}
 checks_without_phrases: dict[str, list[str]] = {}
-artefact_seen: dict[str, list[str]] = {}
 
 for sample in SAMPLES:
     text = sample.read_text(encoding="utf-8")
@@ -140,14 +132,14 @@ for sample in SAMPLES:
             continue
         if cid in COMPOSED_PHRASE_CHECKS:
             continue
-        # Verify at least one captured phrase substring-matches the input.
-        if not any(normalise(p) in norm_text for p in phrases):
-            if cid in MASKED_SPAN_ARTEFACT:
-                artefact_seen.setdefault(cid, []).append(sample.name)
-                continue
+        # Every captured phrase must be the writer's own words, not just one of
+        # them. Checking only the first match let a check quote one real
+        # sentence and thirty mangled ones and still pass.
+        stray = [p for p in phrases if normalise(p) not in norm_text]
+        if stray:
             fail(
-                f"{cid} flagged on {sample.name}: phrases captured but none "
-                f"substring-match input. First phrase: {phrases[0][:80]!r}"
+                f"{cid} flagged on {sample.name}: {len(stray)} of {len(phrases)} "
+                f"phrase(s) are not in the draft. First: {stray[0][:80]!r}"
             )
 
 if checks_without_phrases:
@@ -157,17 +149,6 @@ if checks_without_phrases:
             f"(e.g. {samples[0]}). Either add phrase capture, or add to "
             f"METRIC_ONLY_CHECKS / STRUCTURAL_NO_PHRASE allow-list."
         )
-
-# A pin only holds while it is still needed. One that stops firing is stale and
-# fails, so the list cannot quietly outlive the defect it describes.
-for cid, why in sorted(MASKED_SPAN_ARTEFACT.items()):
-    if cid not in artefact_seen:
-        fail(
-            f"{cid} is pinned as quoting a masked span, but no sample shows it now. "
-            f"Remove the pin. Stated reason was: {why}"
-        )
-    else:
-        print(f"  pinned defect: {cid} on {len(artefact_seen[cid])} sample(s) — {why}")
 
 if not FAILURES:
     print(f"\n{len(flagged_seen)} distinct check IDs flagged across the corpus; all carry phrases or metrics or are allow-listed.")

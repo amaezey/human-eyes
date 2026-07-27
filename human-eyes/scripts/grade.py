@@ -955,6 +955,83 @@ def mask_non_prose_preserving_quotes(text):
     return _mask_non_prose_patterns(text, MACHINE_READABLE_PATTERNS)
 
 
+WHITESPACE_RUN_RE = re.compile(r"\s+")
+
+
+def _draft_search_pattern(value):
+    """Build a pattern that finds a check's match back in the draft.
+
+    Two transformations stand between a match and the page it came from.
+    Lexical checks read a masked copy in which quotations and machine-readable
+    spans are blanked to spaces of the same length, so a match spanning one
+    carries a run of blanks; and several checks join lines or lowercase before
+    returning, so paragraph breaks arrive as single spaces and capitals are
+    gone. A run of two or more blanks therefore matches exactly that many
+    characters, single whitespace matches any whitespace, and case is ignored.
+    """
+    parts = []
+    for part in re.split(r"(\s+)", value):
+        if not part:
+            continue
+        if part.strip():
+            parts.append(re.escape(part))
+        elif len(part) == 1:
+            parts.append(r"\s+")
+        else:
+            parts.append(r"[\s\S]{%d}" % len(part))
+    return "".join(parts)
+
+
+def _locate_in_draft(value, original_text, cursor=0):
+    """Find one check match in the draft, searching forward from `cursor`."""
+    if not value.strip():
+        return None
+    try:
+        pattern = re.compile(_draft_search_pattern(value), re.IGNORECASE)
+    except re.error:
+        return None
+    return pattern.search(original_text, cursor) or pattern.search(original_text)
+
+
+def recut_matches_from_draft(result, original_text):
+    """Restore every match to the writer's own words before anything reads it.
+
+    Evidence is the one part of an audit a writer checks against their own
+    page, so a quote carrying blanks where a quotation was, or stripped of its
+    capitals, is worse than no quote at all. Matches that are already a slice
+    of the draft are left untouched; the rest are relocated and recut from the
+    source. Whitespace in a recut match is collapsed so a restored paragraph
+    still renders on one line — the words and capitals are the writer's, the
+    line breaks are not. A match no search can place (checks that compose a
+    phrase from two spans, such as `no-heading-one-liners`) is left as it is.
+    """
+    matches = result.get("matches")
+    if not isinstance(matches, list) or not matches:
+        return result
+    cursor = 0
+    recut = []
+    for value in matches:
+        if not isinstance(value, str) or not value:
+            recut.append(value)
+            continue
+        verbatim = original_text.find(value, cursor)
+        if verbatim < 0 and value in original_text:
+            verbatim = original_text.find(value)
+        if verbatim >= 0:
+            cursor = verbatim + len(value)
+            recut.append(value)
+            continue
+        located = _locate_in_draft(value, original_text, cursor)
+        if located is None:
+            recut.append(value)
+            continue
+        cursor = located.end()
+        recut.append(WHITESPACE_RUN_RE.sub(" ", located.group(0)))
+    result = dict(result)
+    result["matches"] = recut
+    return result
+
+
 def _candidate_records(result, original_text):
     """Return a stable candidate schema from a check's verbatim matches."""
     candidates = []
@@ -2409,21 +2486,24 @@ def _biber_rate_check(check_id, text, extract, default_rate, label):
     maximum_rate = threshold_value(check_id, "maximum_rate_per_1000", default_rate)
     eligible = len(words) >= minimum_words
     rate = count / len(words) * 1000 if words else 0.0
+    # The finding is the density, so the density is what a reader is shown.
+    # These checks used to hand back every hit, which meant a draft using `it`
+    # 267 times was quoted `"It", "it", "it" (+264 more)` — a list that repeats
+    # one word the writer already knows and buries the rate that is the point.
+    # The count is kept in `candidate_count`, which the sweeps and the cut-off
+    # test read.
+    metric = f"{count} {label} at {rate:.1f} per 1000 words (flag at {maximum_rate})"
     if not eligible:
-        evidence = (
+        metric = (
             f"{label}: {count}; below minimum length "
             f"({len(words)}/{minimum_words} words)"
         )
-    elif rate >= maximum_rate:
-        evidence = f"Found {count} {label} at {rate:.1f} per 1000 words: {matches[:12]}"
-    else:
-        evidence = f"{label}: {count} at {rate:.1f} per 1000 words"
     return {
         "text": check_id,
         "passed": not eligible or rate < maximum_rate,
         "candidate_count": count,
-        "matches": matches,
-        "evidence": evidence,
+        "metric": metric,
+        "evidence": metric,
     }
 
 
@@ -4066,6 +4146,11 @@ STATISTICAL_CHECKS = {
     "paragraph-length-uniformity", "vocabulary-diversity",
     "no-section-scaffolding", "no-compound-modifier-density",
     "no-paragraph-anaphora", "no-heading-one-liners", "no-modal-stacks",
+    # The Biber and Xia feature-rate checks (B7 to B12). They report a density
+    # and no longer carry a phrase list, so `lexical` stopped describing them.
+    "no-nominalisation-rate", "no-that-relative-rate",
+    "no-participial-clause-rate", "no-passive-voice-rate",
+    "no-it-pronoun-rate", "no-latinate-verb-rate",
 }
 
 AGGREGATE_CHECKS = {"overall-signal-stacking"}
@@ -4152,7 +4237,7 @@ def _wrap_check(check_id, check):
             check_text = mask_non_prose(text)
         else:
             check_text = text
-        result = enrich_check_result(check(check_text), text)
+        result = enrich_check_result(recut_matches_from_draft(check(check_text), text), text)
         result["threshold"] = CHECK_THRESHOLDS.get(check_id)
         if check_id in AGGREGATE_CHECKS:
             result["evidence_type"] = "aggregate"
@@ -4338,7 +4423,10 @@ def _evidence_envelope(result):
     return {
         "quoted_phrases": _extract_quoted_phrases(result),
         "metric": metric if isinstance(metric, str) and metric else None,
-        "locations": [],  # location tracking not yet wired through the checks
+        # Deliberately empty. `recut_matches_from_draft` works out where every
+        # quote sits in the draft, but nothing reads a location, so publishing
+        # one would be contract surface with no consumer.
+        "locations": [],
         "counts": _extract_counts(result),
         "raw": raw,
     }

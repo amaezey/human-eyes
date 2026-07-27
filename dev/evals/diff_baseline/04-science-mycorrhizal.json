@@ -1079,10 +1079,10 @@
         "metric": null,
         "quoted_phrases": [
           "These fungi are not decoration on tree roots. They are",
-          "A common mycorrhizal network is not just                    . It means",
+          "A common mycorrhizal network is not just \u201cfungi in the soil\u201d. It means",
           "That does not make the networks imaginary. It means",
           "Forest life is not a morality play about generosity. It is",
-          "But mycorrhizal fungi do not simply                in a straightforward way. They receive",
+          "But mycorrhizal fungi do not simply \u201cstore carbon\u201d in a straightforward way. They receive",
           "The trees may allocate a large share of photosynthetic carbon below ground because nutrients, not light",
           "Seedlings do not enter a neutral underground world. They germinate",
           "That does not mean protecting fungi is a simple climate solution. It means",
@@ -1100,10 +1100,10 @@
               "text": "These fungi are not decoration on tree roots. They are"
             },
             {
-              "end": null,
+              "end": 2939,
               "quoted": false,
-              "start": null,
-              "text": "A common mycorrhizal network is not just                    . It means"
+              "start": 2869,
+              "text": "A common mycorrhizal network is not just \u201cfungi in the soil\u201d. It means"
             },
             {
               "end": 3788,
@@ -1118,10 +1118,10 @@
               "text": "Forest life is not a morality play about generosity. It is"
             },
             {
-              "end": null,
+              "end": 7007,
               "quoted": false,
-              "start": null,
-              "text": "But mycorrhizal fungi do not simply                in a straightforward way. They receive"
+              "start": 6918,
+              "text": "But mycorrhizal fungi do not simply \u201cstore carbon\u201d in a straightforward way. They receive"
             },
             {
               "end": 7583,
@@ -1172,10 +1172,10 @@
           "match_count": 10,
           "matches": [
             "These fungi are not decoration on tree roots. They are",
-            "A common mycorrhizal network is not just                    . It means",
+            "A common mycorrhizal network is not just \u201cfungi in the soil\u201d. It means",
             "That does not make the networks imaginary. It means",
             "Forest life is not a morality play about generosity. It is",
-            "But mycorrhizal fungi do not simply                in a straightforward way. They receive",
+            "But mycorrhizal fungi do not simply \u201cstore carbon\u201d in a straightforward way. They receive",
             "The trees may allocate a large share of photosynthetic carbon below ground because nutrients, not light",
             "Seedlings do not enter a neutral underground world. They germinate",
             "That does not mean protecting fungi is a simple climate solution. It means",
@@ -1191,10 +1191,10 @@
               "text": "These fungi are not decoration on tree roots. They are"
             },
             {
-              "end": null,
+              "end": 2939,
               "quoted": false,
-              "start": null,
-              "text": "A common mycorrhizal network is not just                    . It means"
+              "start": 2869,
+              "text": "A common mycorrhizal network is not just \u201cfungi in the soil\u201d. It means"
             },
             {
               "end": 3788,
@@ -1209,10 +1209,10 @@
               "text": "Forest life is not a morality play about generosity. It is"
             },
             {
-              "end": null,
+              "end": 7007,
               "quoted": false,
-              "start": null,
-              "text": "But mycorrhizal fungi do not simply                in a straightforward way. They receive"
+              "start": 6918,
+              "text": "But mycorrhizal fungi do not simply \u201cstore carbon\u201d in a straightforward way. They receive"
             },
             {
               "end": 7583,
@@ -1857,750 +1857,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "filaments",
-          "decoration",
-          "association",
-          "filaments",
-          "filament",
-          "identity",
-          "conditions",
-          "conditions",
-          "connection",
-          "connections",
-          "Evolution",
-          "performance",
-          "evidence",
-          "experiments",
-          "movement",
-          "conditions",
-          "experiment",
-          "evidence",
-          "competition",
-          "morality",
-          "generosity",
-          "communication",
-          "experiments",
-          "conversation",
-          "evidence",
-          "intention",
-          "environment",
-          "selection",
-          "conditions",
-          "distances",
-          "decomposition",
-          "community",
-          "composition",
-          "directions",
-          "conditions",
-          "regeneration",
-          "disturbance",
-          "community",
-          "community",
-          "influence",
-          "conservation",
-          "productivity",
-          "richness",
-          "biodiversity",
-          "solution",
-          "biodiversity",
-          "competition",
-          "influence",
-          "establishment",
-          "collection",
-          "community"
-        ],
+        "metric": "51 nominalisation(s) at 32.4 per 1000 words (flag at 29.0)",
+        "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 51,
-          "candidates": [
-            {
-              "end": 340,
-              "quoted": false,
-              "start": 331,
-              "text": "filaments"
-            },
-            {
-              "end": 438,
-              "quoted": false,
-              "start": 428,
-              "text": "decoration"
-            },
-            {
-              "end": 626,
-              "quoted": false,
-              "start": 615,
-              "text": "association"
-            },
-            {
-              "end": 727,
-              "quoted": false,
-              "start": 718,
-              "text": "filaments"
-            },
-            {
-              "end": 1356,
-              "quoted": false,
-              "start": 1348,
-              "text": "filament"
-            },
-            {
-              "end": 2443,
-              "quoted": false,
-              "start": 2435,
-              "text": "identity"
-            },
-            {
-              "end": 2460,
-              "quoted": false,
-              "start": 2450,
-              "text": "conditions"
-            },
-            {
-              "end": 2702,
-              "quoted": false,
-              "start": 2692,
-              "text": "conditions"
-            },
-            {
-              "end": 2968,
-              "quoted": false,
-              "start": 2958,
-              "text": "connection"
-            },
-            {
-              "end": 3026,
-              "quoted": false,
-              "start": 3015,
-              "text": "connections"
-            },
-            {
-              "end": 3449,
-              "quoted": false,
-              "start": 3440,
-              "text": "Evolution"
-            },
-            {
-              "end": 3620,
-              "quoted": false,
-              "start": 3609,
-              "text": "performance"
-            },
-            {
-              "end": 3734,
-              "quoted": false,
-              "start": 3726,
-              "text": "evidence"
-            },
-            {
-              "end": 3878,
-              "quoted": false,
-              "start": 3867,
-              "text": "experiments"
-            },
-            {
-              "end": 4061,
-              "quoted": false,
-              "start": 4053,
-              "text": "movement"
-            },
-            {
-              "end": 4232,
-              "quoted": false,
-              "start": 4222,
-              "text": "conditions"
-            },
-            {
-              "end": 4258,
-              "quoted": false,
-              "start": 4248,
-              "text": "experiment"
-            },
-            {
-              "end": 4800,
-              "quoted": false,
-              "start": 4792,
-              "text": "evidence"
-            },
-            {
-              "end": 5066,
-              "quoted": false,
-              "start": 5055,
-              "text": "competition"
-            },
-            {
-              "end": 5130,
-              "quoted": false,
-              "start": 5122,
-              "text": "morality"
-            },
-            {
-              "end": 5152,
-              "quoted": false,
-              "start": 5142,
-              "text": "generosity"
-            },
-            {
-              "end": 5220,
-              "quoted": true,
-              "start": 5207,
-              "text": "communication"
-            },
-            {
-              "end": 5443,
-              "quoted": false,
-              "start": 5432,
-              "text": "experiments"
-            },
-            {
-              "end": 5706,
-              "quoted": false,
-              "start": 5694,
-              "text": "conversation"
-            },
-            {
-              "end": 5747,
-              "quoted": false,
-              "start": 5739,
-              "text": "evidence"
-            },
-            {
-              "end": 5760,
-              "quoted": false,
-              "start": 5751,
-              "text": "intention"
-            },
-            {
-              "end": 5906,
-              "quoted": false,
-              "start": 5895,
-              "text": "environment"
-            },
-            {
-              "end": 6102,
-              "quoted": false,
-              "start": 6093,
-              "text": "selection"
-            },
-            {
-              "end": 6273,
-              "quoted": false,
-              "start": 6263,
-              "text": "conditions"
-            },
-            {
-              "end": 6748,
-              "quoted": false,
-              "start": 6739,
-              "text": "distances"
-            },
-            {
-              "end": 7137,
-              "quoted": false,
-              "start": 7124,
-              "text": "decomposition"
-            },
-            {
-              "end": 7258,
-              "quoted": false,
-              "start": 7249,
-              "text": "community"
-            },
-            {
-              "end": 7270,
-              "quoted": false,
-              "start": 7259,
-              "text": "composition"
-            },
-            {
-              "end": 7407,
-              "quoted": false,
-              "start": 7397,
-              "text": "directions"
-            },
-            {
-              "end": 8093,
-              "quoted": false,
-              "start": 8083,
-              "text": "conditions"
-            },
-            {
-              "end": 8172,
-              "quoted": false,
-              "start": 8160,
-              "text": "regeneration"
-            },
-            {
-              "end": 8190,
-              "quoted": false,
-              "start": 8179,
-              "text": "disturbance"
-            },
-            {
-              "end": 8492,
-              "quoted": false,
-              "start": 8483,
-              "text": "community"
-            },
-            {
-              "end": 8683,
-              "quoted": false,
-              "start": 8674,
-              "text": "community"
-            },
-            {
-              "end": 8697,
-              "quoted": false,
-              "start": 8688,
-              "text": "influence"
-            },
-            {
-              "end": 8799,
-              "quoted": false,
-              "start": 8787,
-              "text": "conservation"
-            },
-            {
-              "end": 8853,
-              "quoted": false,
-              "start": 8841,
-              "text": "productivity"
-            },
-            {
-              "end": 8976,
-              "quoted": false,
-              "start": 8968,
-              "text": "richness"
-            },
-            {
-              "end": 9071,
-              "quoted": false,
-              "start": 9059,
-              "text": "biodiversity"
-            },
-            {
-              "end": 9193,
-              "quoted": false,
-              "start": 9185,
-              "text": "solution"
-            },
-            {
-              "end": 9256,
-              "quoted": false,
-              "start": 9244,
-              "text": "biodiversity"
-            },
-            {
-              "end": 9653,
-              "quoted": false,
-              "start": 9642,
-              "text": "competition"
-            },
-            {
-              "end": 9664,
-              "quoted": false,
-              "start": 9655,
-              "text": "influence"
-            },
-            {
-              "end": 9687,
-              "quoted": false,
-              "start": 9674,
-              "text": "establishment"
-            },
-            {
-              "end": 10184,
-              "quoted": false,
-              "start": 10174,
-              "text": "collection"
-            },
-            {
-              "end": 10220,
-              "quoted": false,
-              "start": 10211,
-              "text": "community"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 51 nominalisation(s) at 32.4 per 1000 words: ['filaments', 'decoration', 'association', 'filaments', 'filament', 'identity', 'conditions', 'conditions', 'connection', 'connections', 'Evolution', 'performance']",
+            "raw_evidence": "51 nominalisation(s) at 32.4 per 1000 words (flag at 29.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 51 nominalisation(s) at 32.4 per 1000 words: ['filaments', 'decoration', 'association', 'filaments', 'filament', 'identity', 'conditions', 'conditions', 'connection', 'connections', 'Evolution', 'performance']",
+          "evidence": "51 nominalisation(s) at 32.4 per 1000 words (flag at 29.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
-          "match_count": 51,
-          "matches": [
-            "filaments",
-            "decoration",
-            "association",
-            "filaments",
-            "filament",
-            "identity",
-            "conditions",
-            "conditions",
-            "connection",
-            "connections",
-            "Evolution",
-            "performance",
-            "evidence",
-            "experiments",
-            "movement",
-            "conditions",
-            "experiment",
-            "evidence",
-            "competition",
-            "morality",
-            "generosity",
-            "communication",
-            "experiments",
-            "conversation",
-            "evidence",
-            "intention",
-            "environment",
-            "selection",
-            "conditions",
-            "distances",
-            "decomposition",
-            "community",
-            "composition",
-            "directions",
-            "conditions",
-            "regeneration",
-            "disturbance",
-            "community",
-            "community",
-            "influence",
-            "conservation",
-            "productivity",
-            "richness",
-            "biodiversity",
-            "solution",
-            "biodiversity",
-            "competition",
-            "influence",
-            "establishment",
-            "collection",
-            "community"
-          ],
+          "metric": "51 nominalisation(s) at 32.4 per 1000 words (flag at 29.0)",
+          "metric_value": "51 nominalisation(s) at 32.4 per 1000 words (flag at 29.0)",
+          "sample_size": 1593,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 340,
-              "quoted": false,
-              "start": 331,
-              "text": "filaments"
-            },
-            {
-              "end": 438,
-              "quoted": false,
-              "start": 428,
-              "text": "decoration"
-            },
-            {
-              "end": 626,
-              "quoted": false,
-              "start": 615,
-              "text": "association"
-            },
-            {
-              "end": 727,
-              "quoted": false,
-              "start": 718,
-              "text": "filaments"
-            },
-            {
-              "end": 1356,
-              "quoted": false,
-              "start": 1348,
-              "text": "filament"
-            },
-            {
-              "end": 2443,
-              "quoted": false,
-              "start": 2435,
-              "text": "identity"
-            },
-            {
-              "end": 2460,
-              "quoted": false,
-              "start": 2450,
-              "text": "conditions"
-            },
-            {
-              "end": 2702,
-              "quoted": false,
-              "start": 2692,
-              "text": "conditions"
-            },
-            {
-              "end": 2968,
-              "quoted": false,
-              "start": 2958,
-              "text": "connection"
-            },
-            {
-              "end": 3026,
-              "quoted": false,
-              "start": 3015,
-              "text": "connections"
-            },
-            {
-              "end": 3449,
-              "quoted": false,
-              "start": 3440,
-              "text": "Evolution"
-            },
-            {
-              "end": 3620,
-              "quoted": false,
-              "start": 3609,
-              "text": "performance"
-            },
-            {
-              "end": 3734,
-              "quoted": false,
-              "start": 3726,
-              "text": "evidence"
-            },
-            {
-              "end": 3878,
-              "quoted": false,
-              "start": 3867,
-              "text": "experiments"
-            },
-            {
-              "end": 4061,
-              "quoted": false,
-              "start": 4053,
-              "text": "movement"
-            },
-            {
-              "end": 4232,
-              "quoted": false,
-              "start": 4222,
-              "text": "conditions"
-            },
-            {
-              "end": 4258,
-              "quoted": false,
-              "start": 4248,
-              "text": "experiment"
-            },
-            {
-              "end": 4800,
-              "quoted": false,
-              "start": 4792,
-              "text": "evidence"
-            },
-            {
-              "end": 5066,
-              "quoted": false,
-              "start": 5055,
-              "text": "competition"
-            },
-            {
-              "end": 5130,
-              "quoted": false,
-              "start": 5122,
-              "text": "morality"
-            },
-            {
-              "end": 5152,
-              "quoted": false,
-              "start": 5142,
-              "text": "generosity"
-            },
-            {
-              "end": 5220,
-              "quoted": true,
-              "start": 5207,
-              "text": "communication"
-            },
-            {
-              "end": 5443,
-              "quoted": false,
-              "start": 5432,
-              "text": "experiments"
-            },
-            {
-              "end": 5706,
-              "quoted": false,
-              "start": 5694,
-              "text": "conversation"
-            },
-            {
-              "end": 5747,
-              "quoted": false,
-              "start": 5739,
-              "text": "evidence"
-            },
-            {
-              "end": 5760,
-              "quoted": false,
-              "start": 5751,
-              "text": "intention"
-            },
-            {
-              "end": 5906,
-              "quoted": false,
-              "start": 5895,
-              "text": "environment"
-            },
-            {
-              "end": 6102,
-              "quoted": false,
-              "start": 6093,
-              "text": "selection"
-            },
-            {
-              "end": 6273,
-              "quoted": false,
-              "start": 6263,
-              "text": "conditions"
-            },
-            {
-              "end": 6748,
-              "quoted": false,
-              "start": 6739,
-              "text": "distances"
-            },
-            {
-              "end": 7137,
-              "quoted": false,
-              "start": 7124,
-              "text": "decomposition"
-            },
-            {
-              "end": 7258,
-              "quoted": false,
-              "start": 7249,
-              "text": "community"
-            },
-            {
-              "end": 7270,
-              "quoted": false,
-              "start": 7259,
-              "text": "composition"
-            },
-            {
-              "end": 7407,
-              "quoted": false,
-              "start": 7397,
-              "text": "directions"
-            },
-            {
-              "end": 8093,
-              "quoted": false,
-              "start": 8083,
-              "text": "conditions"
-            },
-            {
-              "end": 8172,
-              "quoted": false,
-              "start": 8160,
-              "text": "regeneration"
-            },
-            {
-              "end": 8190,
-              "quoted": false,
-              "start": 8179,
-              "text": "disturbance"
-            },
-            {
-              "end": 8492,
-              "quoted": false,
-              "start": 8483,
-              "text": "community"
-            },
-            {
-              "end": 8683,
-              "quoted": false,
-              "start": 8674,
-              "text": "community"
-            },
-            {
-              "end": 8697,
-              "quoted": false,
-              "start": 8688,
-              "text": "influence"
-            },
-            {
-              "end": 8799,
-              "quoted": false,
-              "start": 8787,
-              "text": "conservation"
-            },
-            {
-              "end": 8853,
-              "quoted": false,
-              "start": 8841,
-              "text": "productivity"
-            },
-            {
-              "end": 8976,
-              "quoted": false,
-              "start": 8968,
-              "text": "richness"
-            },
-            {
-              "end": 9071,
-              "quoted": false,
-              "start": 9059,
-              "text": "biodiversity"
-            },
-            {
-              "end": 9193,
-              "quoted": false,
-              "start": 9185,
-              "text": "solution"
-            },
-            {
-              "end": 9256,
-              "quoted": false,
-              "start": 9244,
-              "text": "biodiversity"
-            },
-            {
-              "end": 9653,
-              "quoted": false,
-              "start": 9642,
-              "text": "competition"
-            },
-            {
-              "end": 9664,
-              "quoted": false,
-              "start": 9655,
-              "text": "influence"
-            },
-            {
-              "end": 9687,
-              "quoted": false,
-              "start": 9674,
-              "text": "establishment"
-            },
-            {
-              "end": 10184,
-              "quoted": false,
-              "start": 10174,
-              "text": "collection"
-            },
-            {
-              "end": 10220,
-              "quoted": false,
-              "start": 10211,
-              "text": "community"
-            }
-          ],
           "threshold": null,
           "threshold_met": true
         }
@@ -2618,78 +1900,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "fungus that helps",
-          "network that appears",
-          "policy that ignores"
-        ],
+        "metric": "3 subject relative(s) at 1.9 per 1000 words (flag at 3.5)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 3,
-          "candidates": [
-            {
-              "end": 6435,
-              "quoted": false,
-              "start": 6418,
-              "text": "fungus that helps"
-            },
-            {
-              "end": 6513,
-              "quoted": false,
-              "start": 6493,
-              "text": "network that appears"
-            },
-            {
-              "end": 9230,
-              "quoted": false,
-              "start": 9211,
-              "text": "policy that ignores"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "subject relative(s): 3 at 1.9 per 1000 words",
+            "raw_evidence": "3 subject relative(s) at 1.9 per 1000 words (flag at 3.5)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "subject relative(s): 3 at 1.9 per 1000 words",
+          "evidence": "3 subject relative(s) at 1.9 per 1000 words (flag at 3.5)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
-          "match_count": 3,
-          "matches": [
-            "fungus that helps",
-            "network that appears",
-            "policy that ignores"
-          ],
+          "metric": "3 subject relative(s) at 1.9 per 1000 words (flag at 3.5)",
+          "metric_value": "3 subject relative(s) at 1.9 per 1000 words (flag at 3.5)",
+          "sample_size": 1593,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 6435,
-              "quoted": false,
-              "start": 6418,
-              "text": "fungus that helps"
-            },
-            {
-              "end": 6513,
-              "quoted": false,
-              "start": 6493,
-              "text": "network that appears"
-            },
-            {
-              "end": 9230,
-              "quoted": false,
-              "start": 9211,
-              "text": "policy that ignores"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -2707,106 +1943,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "Working",
-          "depending",
-          "existing",
-          "shaping",
-          "changing"
-        ],
+        "metric": "5 participial clause(s) at 3.2 per 1000 words (flag at 4.4)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 5,
-          "candidates": [
-            {
-              "end": 3942,
-              "quoted": false,
-              "start": 3935,
-              "text": "Working"
-            },
-            {
-              "end": 2424,
-              "quoted": false,
-              "start": 2415,
-              "text": "depending"
-            },
-            {
-              "end": 8367,
-              "quoted": false,
-              "start": 8359,
-              "text": "existing"
-            },
-            {
-              "end": 8542,
-              "quoted": false,
-              "start": 8535,
-              "text": "shaping"
-            },
-            {
-              "end": 10042,
-              "quoted": false,
-              "start": 10034,
-              "text": "changing"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "participial clause(s): 5 at 3.2 per 1000 words",
+            "raw_evidence": "5 participial clause(s) at 3.2 per 1000 words (flag at 4.4)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "participial clause(s): 5 at 3.2 per 1000 words",
+          "evidence": "5 participial clause(s) at 3.2 per 1000 words (flag at 4.4)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
-          "match_count": 5,
-          "matches": [
-            "Working",
-            "depending",
-            "existing",
-            "shaping",
-            "changing"
-          ],
+          "metric": "5 participial clause(s) at 3.2 per 1000 words (flag at 4.4)",
+          "metric_value": "5 participial clause(s) at 3.2 per 1000 words (flag at 4.4)",
+          "sample_size": 1593,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 3942,
-              "quoted": false,
-              "start": 3935,
-              "text": "Working"
-            },
-            {
-              "end": 2424,
-              "quoted": false,
-              "start": 2415,
-              "text": "depending"
-            },
-            {
-              "end": 8367,
-              "quoted": false,
-              "start": 8359,
-              "text": "existing"
-            },
-            {
-              "end": 8542,
-              "quoted": false,
-              "start": 8535,
-              "text": "shaping"
-            },
-            {
-              "end": 10042,
-              "quoted": false,
-              "start": 10034,
-              "text": "changing"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -2824,162 +1986,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "are threaded",
-          "is held",
-          "was published",
-          "being connected",
-          "are attacked",
-          "are damaged",
-          "was reported",
-          "be treated",
-          "is removed"
-        ],
+        "metric": "9 passive verb(s) at 5.7 per 1000 words (flag at 5.0)",
+        "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 9,
-          "candidates": [
-            {
-              "end": 310,
-              "quoted": false,
-              "start": 298,
-              "text": "are threaded"
-            },
-            {
-              "end": 2499,
-              "quoted": false,
-              "start": 2492,
-              "text": "is held"
-            },
-            {
-              "end": 3892,
-              "quoted": false,
-              "start": 3879,
-              "text": "was published"
-            },
-            {
-              "end": 4927,
-              "quoted": false,
-              "start": 4912,
-              "text": "being connected"
-            },
-            {
-              "end": 5333,
-              "quoted": false,
-              "start": 5321,
-              "text": "are attacked"
-            },
-            {
-              "end": 5398,
-              "quoted": false,
-              "start": 5387,
-              "text": "are damaged"
-            },
-            {
-              "end": 5563,
-              "quoted": false,
-              "start": 5551,
-              "text": "was reported"
-            },
-            {
-              "end": 6020,
-              "quoted": false,
-              "start": 6010,
-              "text": "be treated"
-            },
-            {
-              "end": 8015,
-              "quoted": false,
-              "start": 8005,
-              "text": "is removed"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 9 passive verb(s) at 5.7 per 1000 words: ['are threaded', 'is held', 'was published', 'being connected', 'are attacked', 'are damaged', 'was reported', 'be treated', 'is removed']",
+            "raw_evidence": "9 passive verb(s) at 5.7 per 1000 words (flag at 5.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 9 passive verb(s) at 5.7 per 1000 words: ['are threaded', 'is held', 'was published', 'being connected', 'are attacked', 'are damaged', 'was reported', 'be treated', 'is removed']",
+          "evidence": "9 passive verb(s) at 5.7 per 1000 words (flag at 5.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
-          "match_count": 9,
-          "matches": [
-            "are threaded",
-            "is held",
-            "was published",
-            "being connected",
-            "are attacked",
-            "are damaged",
-            "was reported",
-            "be treated",
-            "is removed"
-          ],
+          "metric": "9 passive verb(s) at 5.7 per 1000 words (flag at 5.0)",
+          "metric_value": "9 passive verb(s) at 5.7 per 1000 words (flag at 5.0)",
+          "sample_size": 1593,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 310,
-              "quoted": false,
-              "start": 298,
-              "text": "are threaded"
-            },
-            {
-              "end": 2499,
-              "quoted": false,
-              "start": 2492,
-              "text": "is held"
-            },
-            {
-              "end": 3892,
-              "quoted": false,
-              "start": 3879,
-              "text": "was published"
-            },
-            {
-              "end": 4927,
-              "quoted": false,
-              "start": 4912,
-              "text": "being connected"
-            },
-            {
-              "end": 5333,
-              "quoted": false,
-              "start": 5321,
-              "text": "are attacked"
-            },
-            {
-              "end": 5398,
-              "quoted": false,
-              "start": 5387,
-              "text": "are damaged"
-            },
-            {
-              "end": 5563,
-              "quoted": false,
-              "start": 5551,
-              "text": "was reported"
-            },
-            {
-              "end": 6020,
-              "quoted": false,
-              "start": 6010,
-              "text": "be treated"
-            },
-            {
-              "end": 8015,
-              "quoted": false,
-              "start": 8005,
-              "text": "is removed"
-            }
-          ],
           "threshold": null,
           "threshold_met": true
         }
@@ -2997,218 +2029,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "it",
-          "it",
-          "It",
-          "It",
-          "it",
-          "It",
-          "It",
-          "it",
-          "it",
-          "It",
-          "it",
-          "It",
-          "It"
-        ],
+        "metric": "13 `it` pronoun(s) at 8.3 per 1000 words (flag at 18.0)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 13,
-          "candidates": [
-            {
-              "end": 72,
-              "quoted": false,
-              "start": 70,
-              "text": "it"
-            },
-            {
-              "end": 281,
-              "quoted": false,
-              "start": 279,
-              "text": "it"
-            },
-            {
-              "end": 322,
-              "quoted": false,
-              "start": 320,
-              "text": "It"
-            },
-            {
-              "end": 900,
-              "quoted": false,
-              "start": 898,
-              "text": "It"
-            },
-            {
-              "end": 1018,
-              "quoted": false,
-              "start": 1016,
-              "text": "it"
-            },
-            {
-              "end": 1037,
-              "quoted": false,
-              "start": 1035,
-              "text": "It"
-            },
-            {
-              "end": 1266,
-              "quoted": false,
-              "start": 1264,
-              "text": "It"
-            },
-            {
-              "end": 1337,
-              "quoted": false,
-              "start": 1335,
-              "text": "it"
-            },
-            {
-              "end": 1453,
-              "quoted": false,
-              "start": 1451,
-              "text": "it"
-            },
-            {
-              "end": 1882,
-              "quoted": false,
-              "start": 1880,
-              "text": "It"
-            },
-            {
-              "end": 2293,
-              "quoted": false,
-              "start": 2291,
-              "text": "it"
-            },
-            {
-              "end": 2380,
-              "quoted": false,
-              "start": 2378,
-              "text": "It"
-            },
-            {
-              "end": 2442,
-              "quoted": false,
-              "start": 2440,
-              "text": "It"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "`it` pronoun(s): 13 at 8.3 per 1000 words",
+            "raw_evidence": "13 `it` pronoun(s) at 8.3 per 1000 words (flag at 18.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "`it` pronoun(s): 13 at 8.3 per 1000 words",
+          "evidence": "13 `it` pronoun(s) at 8.3 per 1000 words (flag at 18.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
-          "match_count": 13,
-          "matches": [
-            "it",
-            "it",
-            "It",
-            "It",
-            "it",
-            "It",
-            "It",
-            "it",
-            "it",
-            "It",
-            "it",
-            "It",
-            "It"
-          ],
+          "metric": "13 `it` pronoun(s) at 8.3 per 1000 words (flag at 18.0)",
+          "metric_value": "13 `it` pronoun(s) at 8.3 per 1000 words (flag at 18.0)",
+          "sample_size": 1593,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 72,
-              "quoted": false,
-              "start": 70,
-              "text": "it"
-            },
-            {
-              "end": 281,
-              "quoted": false,
-              "start": 279,
-              "text": "it"
-            },
-            {
-              "end": 322,
-              "quoted": false,
-              "start": 320,
-              "text": "It"
-            },
-            {
-              "end": 900,
-              "quoted": false,
-              "start": 898,
-              "text": "It"
-            },
-            {
-              "end": 1018,
-              "quoted": false,
-              "start": 1016,
-              "text": "it"
-            },
-            {
-              "end": 1037,
-              "quoted": false,
-              "start": 1035,
-              "text": "It"
-            },
-            {
-              "end": 1266,
-              "quoted": false,
-              "start": 1264,
-              "text": "It"
-            },
-            {
-              "end": 1337,
-              "quoted": false,
-              "start": 1335,
-              "text": "it"
-            },
-            {
-              "end": 1453,
-              "quoted": false,
-              "start": 1451,
-              "text": "it"
-            },
-            {
-              "end": 1882,
-              "quoted": false,
-              "start": 1880,
-              "text": "It"
-            },
-            {
-              "end": 2293,
-              "quoted": false,
-              "start": 2291,
-              "text": "it"
-            },
-            {
-              "end": 2380,
-              "quoted": false,
-              "start": 2378,
-              "text": "It"
-            },
-            {
-              "end": 2442,
-              "quoted": false,
-              "start": 2440,
-              "text": "It"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -3226,148 +2072,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "acquire",
-          "provide",
-          "demonstrate",
-          "alter",
-          "alter",
-          "acquire",
-          "acquire",
-          "alter"
-        ],
+        "metric": "8 Latinate verb(s) at 5.1 per 1000 words (flag at 2.5)",
+        "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 8,
-          "candidates": [
-            {
-              "end": 859,
-              "quoted": false,
-              "start": 852,
-              "text": "acquire"
-            },
-            {
-              "end": 2159,
-              "quoted": false,
-              "start": 2152,
-              "text": "provide"
-            },
-            {
-              "end": 3819,
-              "quoted": false,
-              "start": 3808,
-              "text": "demonstrate"
-            },
-            {
-              "end": 5349,
-              "quoted": false,
-              "start": 5344,
-              "text": "alter"
-            },
-            {
-              "end": 5881,
-              "quoted": false,
-              "start": 5876,
-              "text": "alter"
-            },
-            {
-              "end": 6113,
-              "quoted": false,
-              "start": 6106,
-              "text": "acquire"
-            },
-            {
-              "end": 9624,
-              "quoted": false,
-              "start": 9617,
-              "text": "acquire"
-            },
-            {
-              "end": 9641,
-              "quoted": false,
-              "start": 9636,
-              "text": "alter"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 8 Latinate verb(s) at 5.1 per 1000 words: ['acquire', 'provide', 'demonstrate', 'alter', 'alter', 'acquire', 'acquire', 'alter']",
+            "raw_evidence": "8 Latinate verb(s) at 5.1 per 1000 words (flag at 2.5)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 8 Latinate verb(s) at 5.1 per 1000 words: ['acquire', 'provide', 'demonstrate', 'alter', 'alter', 'acquire', 'acquire', 'alter']",
+          "evidence": "8 Latinate verb(s) at 5.1 per 1000 words (flag at 2.5)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "generic_abstraction",
             "frictionless_structure"
           ],
           "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
-          "match_count": 8,
-          "matches": [
-            "acquire",
-            "provide",
-            "demonstrate",
-            "alter",
-            "alter",
-            "acquire",
-            "acquire",
-            "alter"
-          ],
+          "metric": "8 Latinate verb(s) at 5.1 per 1000 words (flag at 2.5)",
+          "metric_value": "8 Latinate verb(s) at 5.1 per 1000 words (flag at 2.5)",
+          "sample_size": 1593,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 859,
-              "quoted": false,
-              "start": 852,
-              "text": "acquire"
-            },
-            {
-              "end": 2159,
-              "quoted": false,
-              "start": 2152,
-              "text": "provide"
-            },
-            {
-              "end": 3819,
-              "quoted": false,
-              "start": 3808,
-              "text": "demonstrate"
-            },
-            {
-              "end": 5349,
-              "quoted": false,
-              "start": 5344,
-              "text": "alter"
-            },
-            {
-              "end": 5881,
-              "quoted": false,
-              "start": 5876,
-              "text": "alter"
-            },
-            {
-              "end": 6113,
-              "quoted": false,
-              "start": 6106,
-              "text": "acquire"
-            },
-            {
-              "end": 9624,
-              "quoted": false,
-              "start": 9617,
-              "text": "acquire"
-            },
-            {
-              "end": 9641,
-              "quoted": false,
-              "start": 9636,
-              "text": "alter"
-            }
-          ],
           "threshold": null,
           "threshold_met": true
         }

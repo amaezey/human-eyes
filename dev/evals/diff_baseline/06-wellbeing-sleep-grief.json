@@ -1792,7 +1792,7 @@
         "quoted_phrases": [
           "That matters because sleep is not just a pause from consciousness. It is",
           "it does not simply make us tired. It can",
-          "not                                   but                                        \n\nThat might mean lowering the stakes",
+          "not \u201cHow do I force myself to sleep?\u201d but \u201cHow do I make the night less hostile?\u201d That might mean lowering the stakes",
           "The goal is not to win against grief. It is",
           "not because it solves anything, but because it gives the mind somewhere to put the loop",
           "Staying awake does not keep the person closer. It only",
@@ -1821,7 +1821,7 @@
               "end": null,
               "quoted": false,
               "start": null,
-              "text": "not                                   but                                        \n\nThat might mean lowering the stakes"
+              "text": "not \u201cHow do I force myself to sleep?\u201d but \u201cHow do I make the night less hostile?\u201d That might mean lowering the stakes"
             },
             {
               "end": 3090,
@@ -1885,7 +1885,7 @@
           "matches": [
             "That matters because sleep is not just a pause from consciousness. It is",
             "it does not simply make us tired. It can",
-            "not                                   but                                        \n\nThat might mean lowering the stakes",
+            "not \u201cHow do I force myself to sleep?\u201d but \u201cHow do I make the night less hostile?\u201d That might mean lowering the stakes",
             "The goal is not to win against grief. It is",
             "not because it solves anything, but because it gives the mind somewhere to put the loop",
             "Staying awake does not keep the person closer. It only",
@@ -1912,7 +1912,7 @@
               "end": null,
               "quoted": false,
               "start": null,
-              "text": "not                                   but                                        \n\nThat might mean lowering the stakes"
+              "text": "not \u201cHow do I force myself to sleep?\u201d but \u201cHow do I make the night less hostile?\u201d That might mean lowering the stakes"
             },
             {
               "end": 3090,
@@ -2369,624 +2369,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "bereavement",
-          "disturbance",
-          "prevalence",
-          "bereavement",
-          "disturbance",
-          "consciousness",
-          "regulation",
-          "attention",
-          "function",
-          "capacity",
-          "wakefulness",
-          "inability",
-          "conversation",
-          "loneliness",
-          "sentence",
-          "quality",
-          "management",
-          "question",
-          "difference",
-          "movement",
-          "tenderness",
-          "Rumination",
-          "question",
-          "ordinariness",
-          "Wellness",
-          "connection",
-          "bereavement",
-          "limitation",
-          "directions",
-          "abandonment",
-          "vigilance",
-          "exhaustion",
-          "devotion",
-          "condition",
-          "tearfulness",
-          "treatment",
-          "inability",
-          "function",
-          "attention",
-          "weakness",
-          "movement",
-          "achievement"
-        ],
+        "metric": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
+        "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 42,
-          "candidates": [
-            {
-              "end": 550,
-              "quoted": false,
-              "start": 539,
-              "text": "bereavement"
-            },
-            {
-              "end": 572,
-              "quoted": false,
-              "start": 561,
-              "text": "disturbance"
-            },
-            {
-              "end": 636,
-              "quoted": false,
-              "start": 626,
-              "text": "prevalence"
-            },
-            {
-              "end": 672,
-              "quoted": false,
-              "start": 661,
-              "text": "bereavement"
-            },
-            {
-              "end": 789,
-              "quoted": false,
-              "start": 778,
-              "text": "disturbance"
-            },
-            {
-              "end": 961,
-              "quoted": false,
-              "start": 948,
-              "text": "consciousness"
-            },
-            {
-              "end": 1039,
-              "quoted": false,
-              "start": 1029,
-              "text": "regulation"
-            },
-            {
-              "end": 1050,
-              "quoted": false,
-              "start": 1041,
-              "text": "attention"
-            },
-            {
-              "end": 1067,
-              "quoted": false,
-              "start": 1059,
-              "text": "function"
-            },
-            {
-              "end": 1091,
-              "quoted": false,
-              "start": 1083,
-              "text": "capacity"
-            },
-            {
-              "end": 1480,
-              "quoted": false,
-              "start": 1469,
-              "text": "wakefulness"
-            },
-            {
-              "end": 1519,
-              "quoted": false,
-              "start": 1510,
-              "text": "inability"
-            },
-            {
-              "end": 1589,
-              "quoted": false,
-              "start": 1577,
-              "text": "conversation"
-            },
-            {
-              "end": 1829,
-              "quoted": false,
-              "start": 1819,
-              "text": "loneliness"
-            },
-            {
-              "end": 2133,
-              "quoted": false,
-              "start": 2125,
-              "text": "sentence"
-            },
-            {
-              "end": 2433,
-              "quoted": false,
-              "start": 2426,
-              "text": "quality"
-            },
-            {
-              "end": 2474,
-              "quoted": false,
-              "start": 2464,
-              "text": "management"
-            },
-            {
-              "end": 2667,
-              "quoted": false,
-              "start": 2659,
-              "text": "question"
-            },
-            {
-              "end": 3201,
-              "quoted": false,
-              "start": 3191,
-              "text": "difference"
-            },
-            {
-              "end": 3320,
-              "quoted": false,
-              "start": 3312,
-              "text": "movement"
-            },
-            {
-              "end": 3367,
-              "quoted": false,
-              "start": 3357,
-              "text": "tenderness"
-            },
-            {
-              "end": 3379,
-              "quoted": false,
-              "start": 3369,
-              "text": "Rumination"
-            },
-            {
-              "end": 3440,
-              "quoted": false,
-              "start": 3432,
-              "text": "question"
-            },
-            {
-              "end": 3815,
-              "quoted": false,
-              "start": 3803,
-              "text": "ordinariness"
-            },
-            {
-              "end": 4058,
-              "quoted": false,
-              "start": 4050,
-              "text": "Wellness"
-            },
-            {
-              "end": 4312,
-              "quoted": false,
-              "start": 4302,
-              "text": "connection"
-            },
-            {
-              "end": 4332,
-              "quoted": false,
-              "start": 4321,
-              "text": "bereavement"
-            },
-            {
-              "end": 4463,
-              "quoted": false,
-              "start": 4453,
-              "text": "limitation"
-            },
-            {
-              "end": 4640,
-              "quoted": false,
-              "start": 4630,
-              "text": "directions"
-            },
-            {
-              "end": 4971,
-              "quoted": false,
-              "start": 4960,
-              "text": "abandonment"
-            },
-            {
-              "end": 4988,
-              "quoted": false,
-              "start": 4979,
-              "text": "vigilance"
-            },
-            {
-              "end": 5024,
-              "quoted": false,
-              "start": 5014,
-              "text": "exhaustion"
-            },
-            {
-              "end": 5040,
-              "quoted": false,
-              "start": 5032,
-              "text": "devotion"
-            },
-            {
-              "end": 5191,
-              "quoted": false,
-              "start": 5182,
-              "text": "condition"
-            },
-            {
-              "end": 5267,
-              "quoted": false,
-              "start": 5256,
-              "text": "tearfulness"
-            },
-            {
-              "end": 5323,
-              "quoted": false,
-              "start": 5314,
-              "text": "treatment"
-            },
-            {
-              "end": 5566,
-              "quoted": false,
-              "start": 5557,
-              "text": "inability"
-            },
-            {
-              "end": 5578,
-              "quoted": false,
-              "start": 5570,
-              "text": "function"
-            },
-            {
-              "end": 5611,
-              "quoted": false,
-              "start": 5602,
-              "text": "attention"
-            },
-            {
-              "end": 5633,
-              "quoted": false,
-              "start": 5625,
-              "text": "weakness"
-            },
-            {
-              "end": 6036,
-              "quoted": false,
-              "start": 6028,
-              "text": "movement"
-            },
-            {
-              "end": 6188,
-              "quoted": false,
-              "start": 6177,
-              "text": "achievement"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 42 nominalisation(s) at 36.5 per 1000 words: ['bereavement', 'disturbance', 'prevalence', 'bereavement', 'disturbance', 'consciousness', 'regulation', 'attention', 'function', 'capacity', 'wakefulness', 'inability']",
+            "raw_evidence": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 42 nominalisation(s) at 36.5 per 1000 words: ['bereavement', 'disturbance', 'prevalence', 'bereavement', 'disturbance', 'consciousness', 'regulation', 'attention', 'function', 'capacity', 'wakefulness', 'inability']",
+          "evidence": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
-          "match_count": 42,
-          "matches": [
-            "bereavement",
-            "disturbance",
-            "prevalence",
-            "bereavement",
-            "disturbance",
-            "consciousness",
-            "regulation",
-            "attention",
-            "function",
-            "capacity",
-            "wakefulness",
-            "inability",
-            "conversation",
-            "loneliness",
-            "sentence",
-            "quality",
-            "management",
-            "question",
-            "difference",
-            "movement",
-            "tenderness",
-            "Rumination",
-            "question",
-            "ordinariness",
-            "Wellness",
-            "connection",
-            "bereavement",
-            "limitation",
-            "directions",
-            "abandonment",
-            "vigilance",
-            "exhaustion",
-            "devotion",
-            "condition",
-            "tearfulness",
-            "treatment",
-            "inability",
-            "function",
-            "attention",
-            "weakness",
-            "movement",
-            "achievement"
-          ],
+          "metric": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
+          "metric_value": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
+          "sample_size": 1151,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 550,
-              "quoted": false,
-              "start": 539,
-              "text": "bereavement"
-            },
-            {
-              "end": 572,
-              "quoted": false,
-              "start": 561,
-              "text": "disturbance"
-            },
-            {
-              "end": 636,
-              "quoted": false,
-              "start": 626,
-              "text": "prevalence"
-            },
-            {
-              "end": 672,
-              "quoted": false,
-              "start": 661,
-              "text": "bereavement"
-            },
-            {
-              "end": 789,
-              "quoted": false,
-              "start": 778,
-              "text": "disturbance"
-            },
-            {
-              "end": 961,
-              "quoted": false,
-              "start": 948,
-              "text": "consciousness"
-            },
-            {
-              "end": 1039,
-              "quoted": false,
-              "start": 1029,
-              "text": "regulation"
-            },
-            {
-              "end": 1050,
-              "quoted": false,
-              "start": 1041,
-              "text": "attention"
-            },
-            {
-              "end": 1067,
-              "quoted": false,
-              "start": 1059,
-              "text": "function"
-            },
-            {
-              "end": 1091,
-              "quoted": false,
-              "start": 1083,
-              "text": "capacity"
-            },
-            {
-              "end": 1480,
-              "quoted": false,
-              "start": 1469,
-              "text": "wakefulness"
-            },
-            {
-              "end": 1519,
-              "quoted": false,
-              "start": 1510,
-              "text": "inability"
-            },
-            {
-              "end": 1589,
-              "quoted": false,
-              "start": 1577,
-              "text": "conversation"
-            },
-            {
-              "end": 1829,
-              "quoted": false,
-              "start": 1819,
-              "text": "loneliness"
-            },
-            {
-              "end": 2133,
-              "quoted": false,
-              "start": 2125,
-              "text": "sentence"
-            },
-            {
-              "end": 2433,
-              "quoted": false,
-              "start": 2426,
-              "text": "quality"
-            },
-            {
-              "end": 2474,
-              "quoted": false,
-              "start": 2464,
-              "text": "management"
-            },
-            {
-              "end": 2667,
-              "quoted": false,
-              "start": 2659,
-              "text": "question"
-            },
-            {
-              "end": 3201,
-              "quoted": false,
-              "start": 3191,
-              "text": "difference"
-            },
-            {
-              "end": 3320,
-              "quoted": false,
-              "start": 3312,
-              "text": "movement"
-            },
-            {
-              "end": 3367,
-              "quoted": false,
-              "start": 3357,
-              "text": "tenderness"
-            },
-            {
-              "end": 3379,
-              "quoted": false,
-              "start": 3369,
-              "text": "Rumination"
-            },
-            {
-              "end": 3440,
-              "quoted": false,
-              "start": 3432,
-              "text": "question"
-            },
-            {
-              "end": 3815,
-              "quoted": false,
-              "start": 3803,
-              "text": "ordinariness"
-            },
-            {
-              "end": 4058,
-              "quoted": false,
-              "start": 4050,
-              "text": "Wellness"
-            },
-            {
-              "end": 4312,
-              "quoted": false,
-              "start": 4302,
-              "text": "connection"
-            },
-            {
-              "end": 4332,
-              "quoted": false,
-              "start": 4321,
-              "text": "bereavement"
-            },
-            {
-              "end": 4463,
-              "quoted": false,
-              "start": 4453,
-              "text": "limitation"
-            },
-            {
-              "end": 4640,
-              "quoted": false,
-              "start": 4630,
-              "text": "directions"
-            },
-            {
-              "end": 4971,
-              "quoted": false,
-              "start": 4960,
-              "text": "abandonment"
-            },
-            {
-              "end": 4988,
-              "quoted": false,
-              "start": 4979,
-              "text": "vigilance"
-            },
-            {
-              "end": 5024,
-              "quoted": false,
-              "start": 5014,
-              "text": "exhaustion"
-            },
-            {
-              "end": 5040,
-              "quoted": false,
-              "start": 5032,
-              "text": "devotion"
-            },
-            {
-              "end": 5191,
-              "quoted": false,
-              "start": 5182,
-              "text": "condition"
-            },
-            {
-              "end": 5267,
-              "quoted": false,
-              "start": 5256,
-              "text": "tearfulness"
-            },
-            {
-              "end": 5323,
-              "quoted": false,
-              "start": 5314,
-              "text": "treatment"
-            },
-            {
-              "end": 5566,
-              "quoted": false,
-              "start": 5557,
-              "text": "inability"
-            },
-            {
-              "end": 5578,
-              "quoted": false,
-              "start": 5570,
-              "text": "function"
-            },
-            {
-              "end": 5611,
-              "quoted": false,
-              "start": 5602,
-              "text": "attention"
-            },
-            {
-              "end": 5633,
-              "quoted": false,
-              "start": 5625,
-              "text": "weakness"
-            },
-            {
-              "end": 6036,
-              "quoted": false,
-              "start": 6028,
-              "text": "movement"
-            },
-            {
-              "end": 6188,
-              "quoted": false,
-              "start": 6177,
-              "text": "achievement"
-            }
-          ],
           "threshold": null,
           "threshold_met": true
         }
@@ -3004,78 +2412,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "process that affects",
-          "panic that says",
-          "grief that remains"
-        ],
+        "metric": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 3,
-          "candidates": [
-            {
-              "end": 1010,
-              "quoted": false,
-              "start": 990,
-              "text": "process that affects"
-            },
-            {
-              "end": 3130,
-              "quoted": false,
-              "start": 3115,
-              "text": "panic that says"
-            },
-            {
-              "end": 5382,
-              "quoted": false,
-              "start": 5364,
-              "text": "grief that remains"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "subject relative(s): 3 at 2.6 per 1000 words",
+            "raw_evidence": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "subject relative(s): 3 at 2.6 per 1000 words",
+          "evidence": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
-          "match_count": 3,
-          "matches": [
-            "process that affects",
-            "panic that says",
-            "grief that remains"
-          ],
+          "metric": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
+          "metric_value": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
+          "sample_size": 1151,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 1010,
-              "quoted": false,
-              "start": 990,
-              "text": "process that affects"
-            },
-            {
-              "end": 3130,
-              "quoted": false,
-              "start": 3115,
-              "text": "panic that says"
-            },
-            {
-              "end": 5382,
-              "quoted": false,
-              "start": 5364,
-              "text": "grief that remains"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -3093,120 +2455,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "Lying",
-          "Remembering",
-          "listening",
-          "moving",
-          "preventing",
-          "turning"
-        ],
+        "metric": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
+        "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 6,
-          "candidates": [
-            {
-              "end": 2839,
-              "quoted": false,
-              "start": 2834,
-              "text": "Lying"
-            },
-            {
-              "end": 3221,
-              "quoted": false,
-              "start": 3210,
-              "text": "Remembering"
-            },
-            {
-              "end": 2889,
-              "quoted": false,
-              "start": 2880,
-              "text": "listening"
-            },
-            {
-              "end": 2919,
-              "quoted": false,
-              "start": 2913,
-              "text": "moving"
-            },
-            {
-              "end": 5426,
-              "quoted": false,
-              "start": 5416,
-              "text": "preventing"
-            },
-            {
-              "end": 2975,
-              "quoted": false,
-              "start": 2968,
-              "text": "turning"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 6 participial clause(s) at 5.2 per 1000 words: ['Lying', 'Remembering', 'listening', 'moving', 'preventing', 'turning']",
+            "raw_evidence": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 6 participial clause(s) at 5.2 per 1000 words: ['Lying', 'Remembering', 'listening', 'moving', 'preventing', 'turning']",
+          "evidence": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
-          "match_count": 6,
-          "matches": [
-            "Lying",
-            "Remembering",
-            "listening",
-            "moving",
-            "preventing",
-            "turning"
-          ],
+          "metric": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
+          "metric_value": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
+          "sample_size": 1151,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 2839,
-              "quoted": false,
-              "start": 2834,
-              "text": "Lying"
-            },
-            {
-              "end": 3221,
-              "quoted": false,
-              "start": 3210,
-              "text": "Remembering"
-            },
-            {
-              "end": 2889,
-              "quoted": false,
-              "start": 2880,
-              "text": "listening"
-            },
-            {
-              "end": 2919,
-              "quoted": false,
-              "start": 2913,
-              "text": "moving"
-            },
-            {
-              "end": 5426,
-              "quoted": false,
-              "start": 5416,
-              "text": "preventing"
-            },
-            {
-              "end": 2975,
-              "quoted": false,
-              "start": 2968,
-              "text": "turning"
-            }
-          ],
           "threshold": null,
           "threshold_met": true
         }
@@ -3224,92 +2498,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "are linked",
-          "be held",
-          "is caused",
-          "be dealt"
-        ],
+        "metric": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 4,
-          "candidates": [
-            {
-              "end": null,
-              "quoted": false,
-              "start": null,
-              "text": "are linked"
-            },
-            {
-              "end": 1911,
-              "quoted": false,
-              "start": 1904,
-              "text": "be held"
-            },
-            {
-              "end": null,
-              "quoted": false,
-              "start": null,
-              "text": "is caused"
-            },
-            {
-              "end": 3682,
-              "quoted": false,
-              "start": 3674,
-              "text": "be dealt"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "passive verb(s): 4 at 3.5 per 1000 words",
+            "raw_evidence": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "passive verb(s): 4 at 3.5 per 1000 words",
+          "evidence": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
           "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
-          "match_count": 4,
-          "matches": [
-            "are linked",
-            "be held",
-            "is caused",
-            "be dealt"
-          ],
+          "metric": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
+          "metric_value": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
+          "sample_size": 1151,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": null,
-              "quoted": false,
-              "start": null,
-              "text": "are linked"
-            },
-            {
-              "end": 1911,
-              "quoted": false,
-              "start": 1904,
-              "text": "be held"
-            },
-            {
-              "end": null,
-              "quoted": false,
-              "start": null,
-              "text": "is caused"
-            },
-            {
-              "end": 3682,
-              "quoted": false,
-              "start": 3674,
-              "text": "be dealt"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
@@ -3327,400 +2541,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "It",
-          "it",
-          "It",
-          "It",
-          "it",
-          "It",
-          "it",
-          "it",
-          "It",
-          "It",
-          "it",
-          "It",
-          "it",
-          "it",
-          "It",
-          "It",
-          "it",
-          "it",
-          "it",
-          "it",
-          "It",
-          "It",
-          "it",
-          "It",
-          "it",
-          "It"
-        ],
+        "metric": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
+        "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 26,
-          "candidates": [
-            {
-              "end": 44,
-              "quoted": false,
-              "start": 42,
-              "text": "It"
-            },
-            {
-              "end": 59,
-              "quoted": false,
-              "start": 57,
-              "text": "it"
-            },
-            {
-              "end": 96,
-              "quoted": false,
-              "start": 94,
-              "text": "It"
-            },
-            {
-              "end": 342,
-              "quoted": false,
-              "start": 340,
-              "text": "It"
-            },
-            {
-              "end": 463,
-              "quoted": false,
-              "start": 461,
-              "text": "it"
-            },
-            {
-              "end": 677,
-              "quoted": false,
-              "start": 675,
-              "text": "It"
-            },
-            {
-              "end": 714,
-              "quoted": false,
-              "start": 712,
-              "text": "it"
-            },
-            {
-              "end": 744,
-              "quoted": false,
-              "start": 742,
-              "text": "it"
-            },
-            {
-              "end": 965,
-              "quoted": false,
-              "start": 963,
-              "text": "It"
-            },
-            {
-              "end": 1090,
-              "quoted": false,
-              "start": 1088,
-              "text": "It"
-            },
-            {
-              "end": 1135,
-              "quoted": false,
-              "start": 1133,
-              "text": "it"
-            },
-            {
-              "end": 1169,
-              "quoted": false,
-              "start": 1167,
-              "text": "It"
-            },
-            {
-              "end": 1204,
-              "quoted": false,
-              "start": 1202,
-              "text": "it"
-            },
-            {
-              "end": 1277,
-              "quoted": false,
-              "start": 1275,
-              "text": "it"
-            },
-            {
-              "end": 1449,
-              "quoted": false,
-              "start": 1447,
-              "text": "It"
-            },
-            {
-              "end": 1502,
-              "quoted": false,
-              "start": 1500,
-              "text": "It"
-            },
-            {
-              "end": 1518,
-              "quoted": false,
-              "start": 1516,
-              "text": "it"
-            },
-            {
-              "end": 1601,
-              "quoted": false,
-              "start": 1599,
-              "text": "it"
-            },
-            {
-              "end": 2123,
-              "quoted": false,
-              "start": 2121,
-              "text": "it"
-            },
-            {
-              "end": 2147,
-              "quoted": false,
-              "start": 2145,
-              "text": "it"
-            },
-            {
-              "end": 2157,
-              "quoted": false,
-              "start": 2155,
-              "text": "It"
-            },
-            {
-              "end": 2213,
-              "quoted": true,
-              "start": 2211,
-              "text": "It"
-            },
-            {
-              "end": 2234,
-              "quoted": false,
-              "start": 2232,
-              "text": "it"
-            },
-            {
-              "end": 2432,
-              "quoted": false,
-              "start": 2430,
-              "text": "It"
-            },
-            {
-              "end": 2478,
-              "quoted": false,
-              "start": 2476,
-              "text": "it"
-            },
-            {
-              "end": 2645,
-              "quoted": false,
-              "start": 2643,
-              "text": "It"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Found 26 `it` pronoun(s) at 22.6 per 1000 words: ['It', 'it', 'It', 'It', 'it', 'It', 'it', 'it', 'It', 'It', 'it', 'It']",
+            "raw_evidence": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 26 `it` pronoun(s) at 22.6 per 1000 words: ['It', 'it', 'It', 'It', 'it', 'It', 'it', 'it', 'It', 'It', 'it', 'It']",
+          "evidence": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure",
             "generic_abstraction"
           ],
           "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
-          "match_count": 26,
-          "matches": [
-            "It",
-            "it",
-            "It",
-            "It",
-            "it",
-            "It",
-            "it",
-            "it",
-            "It",
-            "It",
-            "it",
-            "It",
-            "it",
-            "it",
-            "It",
-            "It",
-            "it",
-            "it",
-            "it",
-            "it",
-            "It",
-            "It",
-            "it",
-            "It",
-            "it",
-            "It"
-          ],
+          "metric": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
+          "metric_value": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
+          "sample_size": 1151,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 44,
-              "quoted": false,
-              "start": 42,
-              "text": "It"
-            },
-            {
-              "end": 59,
-              "quoted": false,
-              "start": 57,
-              "text": "it"
-            },
-            {
-              "end": 96,
-              "quoted": false,
-              "start": 94,
-              "text": "It"
-            },
-            {
-              "end": 342,
-              "quoted": false,
-              "start": 340,
-              "text": "It"
-            },
-            {
-              "end": 463,
-              "quoted": false,
-              "start": 461,
-              "text": "it"
-            },
-            {
-              "end": 677,
-              "quoted": false,
-              "start": 675,
-              "text": "It"
-            },
-            {
-              "end": 714,
-              "quoted": false,
-              "start": 712,
-              "text": "it"
-            },
-            {
-              "end": 744,
-              "quoted": false,
-              "start": 742,
-              "text": "it"
-            },
-            {
-              "end": 965,
-              "quoted": false,
-              "start": 963,
-              "text": "It"
-            },
-            {
-              "end": 1090,
-              "quoted": false,
-              "start": 1088,
-              "text": "It"
-            },
-            {
-              "end": 1135,
-              "quoted": false,
-              "start": 1133,
-              "text": "it"
-            },
-            {
-              "end": 1169,
-              "quoted": false,
-              "start": 1167,
-              "text": "It"
-            },
-            {
-              "end": 1204,
-              "quoted": false,
-              "start": 1202,
-              "text": "it"
-            },
-            {
-              "end": 1277,
-              "quoted": false,
-              "start": 1275,
-              "text": "it"
-            },
-            {
-              "end": 1449,
-              "quoted": false,
-              "start": 1447,
-              "text": "It"
-            },
-            {
-              "end": 1502,
-              "quoted": false,
-              "start": 1500,
-              "text": "It"
-            },
-            {
-              "end": 1518,
-              "quoted": false,
-              "start": 1516,
-              "text": "it"
-            },
-            {
-              "end": 1601,
-              "quoted": false,
-              "start": 1599,
-              "text": "it"
-            },
-            {
-              "end": 2123,
-              "quoted": false,
-              "start": 2121,
-              "text": "it"
-            },
-            {
-              "end": 2147,
-              "quoted": false,
-              "start": 2145,
-              "text": "it"
-            },
-            {
-              "end": 2157,
-              "quoted": false,
-              "start": 2155,
-              "text": "It"
-            },
-            {
-              "end": 2213,
-              "quoted": true,
-              "start": 2211,
-              "text": "It"
-            },
-            {
-              "end": 2234,
-              "quoted": false,
-              "start": 2232,
-              "text": "it"
-            },
-            {
-              "end": 2432,
-              "quoted": false,
-              "start": 2430,
-              "text": "It"
-            },
-            {
-              "end": 2478,
-              "quoted": false,
-              "start": 2476,
-              "text": "it"
-            },
-            {
-              "end": 2645,
-              "quoted": false,
-              "start": 2643,
-              "text": "It"
-            }
-          ],
           "threshold": null,
           "threshold_met": true
         }
@@ -3738,64 +2584,32 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "requires",
-          "require"
-        ],
+        "metric": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
+        "quoted_phrases": [],
         "raw": {
           "aggregate_finding": false,
           "candidate_count": 2,
-          "candidates": [
-            {
-              "end": 2614,
-              "quoted": false,
-              "start": 2606,
-              "text": "requires"
-            },
-            {
-              "end": 5304,
-              "quoted": false,
-              "start": 5297,
-              "text": "require"
-            }
-          ],
+          "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Latinate verb(s): 2 at 1.7 per 1000 words",
+            "raw_evidence": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Latinate verb(s): 2 at 1.7 per 1000 words",
+          "evidence": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
           "evidence_role": "register_rate",
-          "evidence_type": "lexical",
+          "evidence_type": "statistical",
           "failure_modes": [
             "generic_abstraction",
             "frictionless_structure"
           ],
           "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
-          "match_count": 2,
-          "matches": [
-            "requires",
-            "require"
-          ],
+          "metric": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
+          "metric_value": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
+          "sample_size": 1151,
           "severity": "context_warning",
-          "spans": [
-            {
-              "end": 2614,
-              "quoted": false,
-              "start": 2606,
-              "text": "requires"
-            },
-            {
-              "end": 5304,
-              "quoted": false,
-              "start": 5297,
-              "text": "require"
-            }
-          ],
           "threshold": null,
           "threshold_met": false
         }
