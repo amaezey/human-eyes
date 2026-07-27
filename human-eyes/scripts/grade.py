@@ -1187,6 +1187,10 @@ def check_ai_vocabulary(text):
         "passed": max_count < 3 and not document_pair,
         "evidence": evidence,
     }
+    # Only the document-family branch carries structured matches. DR-126B fixed
+    # that deliberately: `worst_words` comes from a lowercased paragraph, so it
+    # cannot supply the source casing and order the structured evidence contract
+    # requires, and the paragraph branch falls back to evidence parsing instead.
     if document_pair:
         result["matches"] = document_matches
     return result
@@ -1347,12 +1351,15 @@ def check_overall_signal_stacking(text):
             component_points[name] = points
             components.append(component_labels[name])
 
-    failed = score >= 4
+    # The declared value is a bare count, not a keyed dict, so it is read
+    # directly rather than through threshold_value.
+    minimum_score = CHECK_THRESHOLDS.get("overall-signal-stacking", 4)
+    failed = score >= minimum_score
     return {
         "text": "overall-signal-stacking",
         "passed": not failed,
         "score": score,
-        "threshold": 4,
+        "threshold": minimum_score,
         "components": components,
         "component_points": component_points,
         "vocabulary_signal_stacking": {
@@ -1365,7 +1372,7 @@ def check_overall_signal_stacking(text):
             "kobak_style_sample": vocab["kobak"]["style_sample"],
         },
         "evidence": (
-            f"Overall signal stacking {score}/4 from [{', '.join(components)}]; "
+            f"Overall signal stacking {score}/{minimum_score} from [{', '.join(components)}]; "
             f"vocab={vocab['points']} point(s), "
             f"worst_generic={vocab['worst_generic']}, "
             f"gptzero={vocab['gptzero_matches']}, "
@@ -1374,7 +1381,7 @@ def check_overall_signal_stacking(text):
             f"sample={vocab['kobak']['style_sample']}"
             if failed
             else (
-                f"Overall signal stacking {score}/4 from [{', '.join(components)}]; "
+                f"Overall signal stacking {score}/{minimum_score} from [{', '.join(components)}]; "
                 f"vocab={vocab['points']} point(s), "
                 f"worst_generic={vocab['worst_generic']}, "
                 f"gptzero={vocab['gptzero_matches']}, "
@@ -1460,6 +1467,7 @@ def check_staccato(text):
             r"(?:^|(?<=[.!?])\s+|(?<=\n)\s*)[a-z][\w'’\-]*\.\s+that['’]s the word[.!?]?",
         ])
     ]
+    minimum_run = threshold_value("no-staccato-sequences", "minimum_run", 3)
     max_run = 0
     current_run = 0
     longest_run_end = -1
@@ -1475,20 +1483,32 @@ def check_staccato(text):
                 longest_run_end = i
         else:
             current_run = 0
-    repeated_opening_pairs = []
-    for previous, current in zip(sentences, sentences[1:]):
-        previous_words = previous.split()
-        current_words = current.split()
-        if len(previous_words) >= 6 or len(current_words) >= 6:
+    # Runs of consecutive short sentences that all open on the same word. The
+    # declared minimum is a run length, so a run of three is reported once as a
+    # run rather than as two overlapping pairs.
+    minimum_opener_run = threshold_value(
+        "no-staccato-sequences", "minimum_repeated_opener_run", 2
+    )
+    repeated_opening_runs = []
+    current_opener_run = []
+
+    def close_opener_run():
+        if len(current_opener_run) >= minimum_opener_run:
+            repeated_opening_runs.append(
+                " ".join(sentence.strip() for _opener, sentence in current_opener_run)
+            )
+
+    for sentence in sentences:
+        opener = None
+        if len(sentence.split()) < 6:
+            match = re.search(r"[^\W_]+(?:['’\-][^\W_]+)*", sentence, re.UNICODE)
+            opener = match.group(0).casefold() if match else None
+        if opener is not None and current_opener_run and opener == current_opener_run[0][0]:
+            current_opener_run.append((opener, sentence))
             continue
-        previous_opener = re.search(r"[^\W_]+(?:['’\-][^\W_]+)*", previous, re.UNICODE)
-        current_opener = re.search(r"[^\W_]+(?:['’\-][^\W_]+)*", current, re.UNICODE)
-        if (
-            previous_opener
-            and current_opener
-            and previous_opener.group(0).casefold() == current_opener.group(0).casefold()
-        ):
-            repeated_opening_pairs.append(f"{previous.strip()} {current.strip()}")
+        close_opener_run()
+        current_opener_run = [(opener, sentence)] if opener is not None else []
+    close_opener_run()
     # Rate branch (DR-66): short sentences spread through a document rather than
     # bunched into a run. Ten words or fewer is the Desaire threshold the Xia
     # paper measures, and prose paragraphs are used so headings do not count.
@@ -1535,23 +1555,23 @@ def check_staccato(text):
         ][:5]
 
     matches = []
-    if max_run >= 3 and longest_run_end >= 0:
+    if max_run >= minimum_run and longest_run_end >= 0:
         run_start = longest_run_end - max_run + 1
         matches = [s.strip() for s in sentences[run_start:longest_run_end + 1] if s.strip()]
-    matches.extend(repeated_opening_pairs)
+    matches.extend(repeated_opening_runs)
     matches.extend(formula_matches)
     if rate_failed:
         matches.extend(short_sentences)
     matches.extend(band_sentences)
     matches = list(dict.fromkeys(matches))
     evidence = []
-    if max_run >= 3:
+    if max_run >= minimum_run:
         evidence.append(f"sequence of {max_run} consecutive short sentences")
     if formula_matches:
         evidence.append(f"exact dramatic-fragment formula(s): {formula_matches}")
-    if repeated_opening_pairs:
+    if repeated_opening_runs:
         evidence.append(
-            f"adjacent short-fragment pair(s) sharing an opener: {repeated_opening_pairs}"
+            f"short-fragment run(s) sharing an opener: {repeated_opening_runs}"
         )
     if rate_failed:
         evidence.append(
@@ -1566,9 +1586,9 @@ def check_staccato(text):
     return {
         "text": "no-staccato-sequences",
         "passed": (
-            max_run < 3
+            max_run < minimum_run
             and not formula_matches
-            and not repeated_opening_pairs
+            and not repeated_opening_runs
             and not rate_failed
             and not mean_failed
         ),
@@ -2022,6 +2042,7 @@ def check_generic_conclusions(text):
     return {
         "text": "no-generic-conclusions",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No generic conclusions",
     }
 
@@ -2678,6 +2699,9 @@ def check_ghost_spectral(text):
     return {
         "text": "no-ghost-spectral-density",
         "passed": count < 3,
+        # Every hit, not the deduplicated `found`, so the candidate count the
+        # report carries matches the count the evidence states.
+        "matches": hits,
         "evidence": (
             f"Found {count} ghost/spectral words: {found}"
             if count >= 3
@@ -2790,7 +2814,10 @@ def check_list_density(text):
     threshold = CHECK_THRESHOLDS.get("no-excessive-lists", {})
     minimum_items = threshold.get("minimum_items", 8)
     minimum_blocks = threshold.get("minimum_blocks", 2)
-    flagged = ratio >= 0.3 or (bullet_lines >= minimum_items and list_blocks >= minimum_blocks)
+    minimum_line_ratio = threshold.get("minimum_line_ratio", 0.3)
+    flagged = ratio >= minimum_line_ratio or (
+        bullet_lines >= minimum_items and list_blocks >= minimum_blocks
+    )
     return {
         "text": "no-excessive-lists",
         "passed": not flagged,
@@ -2909,6 +2936,7 @@ def check_dramatic_transitions(text):
     return {
         "text": "no-dramatic-transitions",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count}: {matches}"
             if count > 0
@@ -3203,17 +3231,25 @@ def check_paragraph_uniformity(text):
         words = re.findall(r"\b\w+\b", para)
         if len(words) >= 25:
             lengths.append(len(words))
-    if len(lengths) < 7:
+    minimum_paragraphs = threshold_value(
+        "paragraph-length-uniformity", "minimum_paragraphs", 7
+    )
+    if len(lengths) < minimum_paragraphs:
         return {
             "text": "paragraph-length-uniformity",
             "passed": True,
-            "evidence": f"Skipped: {len(lengths)} substantial paragraphs, need 7+",
+            "evidence": (
+                f"Skipped: {len(lengths)} substantial paragraphs, "
+                f"need {minimum_paragraphs}+"
+            ),
         }
     avg = sum(lengths) / len(lengths)
     cv = stdev(lengths) / avg if avg else 0
-    flagged = cv < 0.18
+    maximum_cv = threshold_value("paragraph-length-uniformity", "maximum_cv", 0.18)
+    flagged = cv < maximum_cv
     metric = (
-        f"paragraph length variation {cv:.2f} across {len(lengths)} paragraphs (target: >=0.18)"
+        f"paragraph length variation {cv:.2f} across {len(lengths)} paragraphs "
+        f"(target: >={maximum_cv:g})"
         if flagged else None
     )
     return {
@@ -3221,7 +3257,8 @@ def check_paragraph_uniformity(text):
         "passed": not flagged,
         "metric": metric,
         "evidence": (
-            f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs (target: >=0.18)"
+            f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs "
+            f"(target: >={maximum_cv:g})"
             if flagged
             else f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs"
         ),
@@ -3308,6 +3345,7 @@ def check_bland_critical_template(text):
     return {
         "text": "no-bland-critical-template",
         "passed": count < threshold_value("no-bland-critical-template", "minimum_candidates", 3),
+        "matches": matches,
         "evidence": (
             f"Found {count} bland critical template phrase(s): {matches[:6]}"
             if count >= 3
@@ -3322,6 +3360,7 @@ def check_rubric_echoing(text):
     return {
         "text": "no-rubric-echoing",
         "passed": count < threshold_value("no-rubric-echoing", "minimum_candidates", 3),
+        "matches": matches,
         "evidence": (
             f"Found {count} rubric echo phrase(s): {matches[:5]}"
             if count >= 3
@@ -3751,6 +3790,7 @@ def check_notability_claims(text):
     return {
         "text": "no-notability-claims",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} notability claim(s): {matches[:3]}"
             if count > 0
@@ -3859,18 +3899,22 @@ def check_compound_modifier_density(text):
     """Detect three or more hyphenated compound modifiers in a single sentence (pattern C6)."""
     sentences = re.split(r"(?<=[.!?])\s+", text)
     flagged = []
+    minimum_per_sentence = threshold_value(
+        "no-compound-modifier-density", "minimum_per_sentence", 3
+    )
     for sent in sentences:
         sent_lower = sent.lower()
         if "-" not in sent_lower:
             continue
         per_sentence = COMPOUND_MODIFIER_RE.findall(sent_lower)
-        if len(per_sentence) >= 3:
+        if len(per_sentence) >= minimum_per_sentence:
             flagged.append(per_sentence)
     return {
         "text": "no-compound-modifier-density",
         "passed": len(flagged) == 0,
         "evidence": (
-            f"Found {len(flagged)} sentence(s) with 3+ AI compound modifiers: {flagged[:2]}"
+            f"Found {len(flagged)} sentence(s) with {minimum_per_sentence}+ "
+            f"AI compound modifiers: {flagged[:2]}"
             if flagged
             else "No dense compound-modifier sentences"
         ),

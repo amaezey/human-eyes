@@ -1,32 +1,57 @@
 #!/usr/bin/env python3
-"""Every declared cut-off must be the one the check actually enforces (DR-170).
+"""Every declared cut-off must be the number that governs behaviour (DR-170).
 
 `CHECK_THRESHOLDS` in grade.py is attached to each result as `result["threshold"]`
-and reaches the audit report, but only `no-excessive-lists` and
-`no-heading-one-liners` read it when deciding whether to flag. The other 17
-checks carry the number as a literal in their own body, so a report can name a
-cut-off the check is not using and nothing would notice.
+and reaches the audit report, so a reader is told which cut-off produced a
+finding. This test exists to stop that number drifting away from the one the
+check enforces.
 
-This test does not read those literals. It sweeps the sample corpus, records
-where each check actually flips from clear to flagged, and compares that
-observed flip point against the declared number. A contradiction fails.
+The first version compared the table against itself. It assumed only two checks
+read the table and the rest carried literals, so for the sixteen checks that read
+their value through `threshold_value(check_id, key, default)` it asserted nothing
+at all, and it could not fail.
 
-Where the corpus does not happen to supply documents either side of a cut-off,
-the check is reported UNVERIFIED rather than passing quietly: DR-79 found #52
-firing on nothing while its test passed, and silence must not read as agreement.
-The unverifiable set is pinned below, so a check joining it fails this test.
+It now tests the property directly. For each declared number, mutate it in an
+in-memory copy of the table, re-run the check across the corpus, and require that
+some document's flag/clear outcome moves. If nothing moves, the check is not
+reading its declaration: the report names one number, the check enforces another,
+and the two can diverge without notice.
+
+A declared key that no check reads fails rather than being skipped. Renaming a
+key inside a threshold entry, or adding one, used to drop that check out of
+verification silently; now it is reported, because the check falls back to its
+own default and the orphaned key moves nothing.
+
+Seven numbers used to be unreachable this way, because their checks carried the
+value as a literal while the table declared it for the report only. Rather than
+verify those by a second mechanism, the checks were wired through
+`threshold_value` so one mechanism covers all of them. The wiring was
+behaviour-preserving: across 66 checks and 153 corpus documents no flag or clear
+outcome changed.
+
+Pins are validated, not trusted. Every pinned id must exist in `grade.ALL_CHECKS`
+and its stated reason must be checked wherever the reason is checkable, so a pin
+cannot assert something false and print it as fact. DR-79's lesson holds: a
+cut-off this suite cannot verify is named out loud, and silence never reads as
+agreement.
+
+This test asks whether a cut-off is wired, not whether it is set well. Whether
+each boundary sits sensibly inside the range real prose produces is DR-164's
+question, measured against the corpus.
 """
-import ast
+import copy
 import importlib.util
-import json
 import pathlib
-import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
 spec = importlib.util.spec_from_file_location("grade", ROOT / "human-eyes/scripts/grade.py")
 grade = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(grade)
+
+# The authoritative table, captured before any mutation so every probe restores
+# to a known state. grade.py is never written to; only this in-memory copy moves.
+BASELINE = copy.deepcopy(grade.CHECK_THRESHOLDS)
 
 FAILURES = 0
 
@@ -41,161 +66,317 @@ def ok(msg):
     print(f"  ok: {msg}")
 
 
-# Checks whose flip point this corpus cannot pin, with the reason. A check may
-# only be here because the corpus lacks documents either side of its cut-off, or
-# because the cut-off is one of several gates and no document isolates it.
-# Adding to this set is a decision: it means one more reported number nobody has
-# verified against behaviour.
-UNVERIFIABLE = {
-    "overall-signal-stacking": "aggregate over other checks; its 4 is a count of "
-                               "component findings, not a candidate count",
-    "no-staccato-sequences": "five interacting gates; no corpus document isolates one",
-    "no-excessive-lists": "three interacting gates, and it is one of the two checks "
-                          "that already reads the declared value",
-    "no-symmetric-list-items": "minimum_items and maximum_deviation apply together",
-    "no-forced-triads": "rate per 1000 words behind a 300-word floor",
-    "no-compound-modifier-density": "per-sentence gate, not a document-level count",
-    "no-inline-header-lists": "no document in the sample corpus flags it, so the "
-                              "cut-off has no observed flip point",
-    "no-rubric-echoing": "no document in the sample corpus flags it, so the cut-off "
-                         "has no observed flip point",
+# ---------------------------------------------------------------------------
+# Pins. A cut-off may only be here because neither route can reach it. Each
+# reason is checked below, so a pin that stops being true fails this test.
+# Adding to either dict is a decision: it means one more reported number nobody
+# has verified against behaviour.
+# ---------------------------------------------------------------------------
+
+# Checks exempt from the evidence-free-finding assertion, with the reason. A pin
+# here is validated below: it must still be needed, or it fails as stale.
+EVIDENCE_FREE_PINS = {
+    "no-ai-vocabulary-clustering": (
+        "two branches can flag it, and DR-126B deliberately gives structured "
+        "matches to only one. The document-family branch carries verbatim "
+        "occurrences in source order and casing; the worst-paragraph branch "
+        "measures a lowercased paragraph, so it has no source-cased spans to "
+        "offer and falls back to evidence parsing. test_grade.py pins both "
+        "halves of that contract. Whether the paragraph branch should carry "
+        "spans is a DR-126B question, not a threshold one."
+    ),
 }
 
+# Cut-offs no mutation can reach, keyed by (check id, key). Empty: every declared
+# key is read by its check. A key landing here must carry a reason, and the
+# reason is checked below.
+UNVERIFIABLE = {}
 
-def declared_thresholds():
-    src = (ROOT / "human-eyes/scripts/grade.py").read_text()
-    block = re.search(r"CHECK_THRESHOLDS = (\{.*?\n\})\n", src, re.S).group(1)
-    return ast.literal_eval(block)
+
+def declared_keys():
+    """(check_id, key, value) for every declared cut-off. key is None for scalars."""
+    for cid, spec_ in sorted(BASELINE.items()):
+        if isinstance(spec_, dict):
+            for key, value in sorted(spec_.items()):
+                yield cid, key, value
+        else:
+            yield cid, None, spec_
 
 
 def corpus_documents():
-    docs = []
     base = ROOT / "dev/evals/samples"
+    docs = []
     for p in sorted(base.rglob("*")):
         if p.suffix in (".md", ".txt") and p.is_file():
-            docs.append(p)
+            try:
+                docs.append((p, p.read_text()))
+            except Exception:
+                continue
     return docs
 
 
-def sweep(docs, thresholds):
-    """check id -> list of (candidate_count, flagged) over every document."""
-    observed = {cid: [] for cid in thresholds}
-    for p in docs:
+class CheckRaised(Exception):
+    """A check raised. Never silently treated as an outcome."""
+
+
+def run_check(cid, text):
+    try:
+        return grade.ALL_CHECKS[cid](text)
+    except Exception as exc:
+        raise CheckRaised(f"{cid} raised {type(exc).__name__}: {exc}") from exc
+
+
+def flagged(result):
+    return None if result is None else bool(result.get("threshold_met"))
+
+
+def baseline_results(cid, texts):
+    """Every result for one check under the declared table, computed once and reused."""
+    results = []
+    for text in texts:
         try:
-            text = p.read_text()
-        except Exception:
-            continue
-        for cid in thresholds:
-            fn = grade.ALL_CHECKS.get(cid)
-            if fn is None:
-                continue
-            try:
-                raw = grade.annotate_result(fn(text))
-            except Exception:
-                continue
-            if raw.get("context_suppressed"):
-                continue
-            observed[cid].append((candidate_count(raw), bool(raw.get("threshold_met"))))
-    return observed
+            results.append(run_check(cid, text))
+        except CheckRaised as exc:
+            fail(f"{cid}: raised on an unmutated corpus document — {exc}")
+            results.append(None)
+    return results
 
 
-def candidate_count(raw):
-    """The check's real candidate count.
+def moves_any_document(cid, key, probe, texts, base):
+    """Does replacing one declared number change any document's outcome?
 
-    `annotate_result` defaults `candidate_count` to `len(candidates)`, so a check
-    that populates neither `candidates` nor `matches` reports 0 while naming its
-    hits in the evidence string. Read the evidence in that case rather than
-    trusting the zero.
+    Stops at the first document that moves. A consumed cut-off usually moves one
+    within a handful of documents; only a decorative one pays for the full sweep.
     """
-    n = raw.get("candidate_count")
-    if n:
-        return n
-    m = re.search(r"\bFound (\d+)\b", str(raw.get("evidence", "")))
-    return int(m.group(1)) if m else n
+    table = copy.deepcopy(BASELINE)
+    if key is None:
+        table[cid] = probe
+    else:
+        table[cid][key] = probe
+    grade.CHECK_THRESHOLDS = table
+    try:
+        for text, was in zip(texts, base):
+            # A check that crashes under mutation has not demonstrated that it
+            # reads the declaration; it has demonstrated a bug. Never count it
+            # as movement.
+            if flagged(run_check(cid, text)) != was:
+                return True
+        return False
+    except CheckRaised as exc:
+        fail(f"{cid}.{key or '(value)'}: moving the declared number to {probe:g} "
+             f"made the check crash — {exc}")
+        return False
+    finally:
+        grade.CHECK_THRESHOLDS = BASELINE
+
+
+# ---------------------------------------------------------------------------
+# Assertions
+# ---------------------------------------------------------------------------
+
+def check_route_a(texts, baseline):
+    """Declared numbers the check reads: moving one must move the corpus."""
+    consumed = set()
+    print("\n=== Route A: does moving the declared number move the corpus? ===")
+    for cid, key, value in declared_keys():
+        if cid not in grade.ALL_CHECKS:
+            fail(f"{cid}: declares a cut-off but is not a registered check")
+            continue
+        base = [flagged(r) for r in baseline[cid]]
+        probes = (0, 10 ** 6) if isinstance(value, int) else (0.0, 1e6)
+        hit = next((p for p in probes if moves_any_document(cid, key, p, texts, base)), None)
+        if hit is not None:
+            consumed.add((cid, key))
+            ok(f"{cid}.{key or '(value)'} = {value!r} governs behaviour "
+               f"(moving it to {hit:g} changes the corpus)")
+    return consumed
+
+
+# A declared key paired with the result field that should govern it. Where both
+# are present the exact boundary can be asserted, not merely its consumption.
+GOVERNING_METRIC = {
+    "minimum_candidates": "candidate_count",
+    None: "score",
+}
+
+# Boundaries no corpus document sits either side of. The exact-predicate
+# assertion still runs for these, but with no document at the cut-off itself an
+# off-by-one in the comparison would be invisible, so the correspondence is
+# weaker than it looks. Named rather than passed over (DR-79): a cut-off joining
+# this set fails until someone states why the corpus cannot witness it.
+BOUNDARY_UNWITNESSED = {
+    ("no-bland-critical-template", "minimum_candidates"):
+        "no document holds 2 or 3 of these phrases; the one that flags holds 11",
+    ("no-boldface-overuse", "minimum_candidates"):
+        "documents cluster at 3 and below or 5 and above, never at 4",
+    ("no-heading-one-liners", "minimum_candidates"):
+        "no document holds exactly 1, so the clear side of the cut-off is empty",
+    ("no-inline-header-lists", "minimum_candidates"):
+        "no corpus document holds one of these at all",
+    ("no-rubric-echoing", "minimum_candidates"):
+        "no corpus document holds one of these at all",
+    ("no-soft-scaffolding", "minimum_candidates"):
+        "documents hold 1 or fewer, or 6 or more, never 2 to 5",
+}
+
+
+def check_boundary_correspondence(baseline, texts):
+    """Where the check exposes its metric, the declared number must BE the boundary.
+
+    Route A proves a declared number is read. It does not prove the check uses it
+    unchanged: a check enforcing `declared + 5`, or flipping the comparison, still
+    moves when the declaration moves and still passes Route A. Where a check
+    exposes the metric its decision turns on, that gap closes — the flag must
+    equal the predicate stated in terms of the declaration.
+
+    Keys with no exposed metric (multi-gate and statistical cut-offs) are named
+    below rather than passed over, so the limit of this assertion is visible.
+    """
+    print("\n=== boundary: is the declared number the boundary itself? ===")
+    unchecked = []
+    for cid, key, value in declared_keys():
+        field = GOVERNING_METRIC.get(key)
+        if field is None:
+            unchecked.append((cid, key))
+            continue
+        wrong, seen, metrics = [], 0, []
+        for (path, _text), result in zip(texts, baseline[cid]):
+            if result is None or result.get("context_suppressed"):
+                continue
+            metric = result.get(field)
+            if metric is None:
+                continue
+            seen += 1
+            metrics.append(metric)
+            if bool(result.get("threshold_met")) != (metric >= value):
+                wrong.append((path.name, metric, bool(result.get("threshold_met"))))
+        witnessed = any(m == value for m in metrics) and any(m == value - 1 for m in metrics)
+        pin = BOUNDARY_UNWITNESSED.get((cid, key))
+        if witnessed and pin:
+            fail(f"{cid}.{key or '(value)'} is pinned as unwitnessed, but the corpus "
+                 f"now holds documents at {value!r} and {value - 1!r}. Remove the pin: "
+                 f"the boundary is verifiable.")
+        elif not witnessed and not pin:
+            fail(f"{cid}.{key or '(value)'}: no document sits at {value!r} and none at "
+                 f"{value - 1!r}, so an off-by-one in this comparison would not show. "
+                 f"Give the corpus a document either side, or pin it with a reason.")
+
+        if not seen:
+            unchecked.append((cid, key))
+        elif wrong:
+            fail(f"{cid}.{key or '(value)'}: the report declares {value!r}, but the "
+                 f"check does not flag exactly when {field} reaches it — "
+                 f"{len(wrong)} document(s) disagree, e.g. {wrong[:3]} "
+                 f"(document, {field}, flagged). The declared number is read but "
+                 f"is not the boundary being enforced.")
+        else:
+            note = "" if witnessed else " (no document sits at the cut-off itself)"
+            ok(f"{cid}.{key or '(value)'} = {value!r} is exactly where {field} "
+               f"flips the flag, across {seen} documents{note}")
+    for cid, key in unchecked:
+        print(f"  consumption only: {cid}.{key or '(value)'} — no single exposed "
+              f"metric governs it, so Route A is the whole assurance")
+
+
+def check_every_key_covered(consumed):
+    """A declared key no check reads is reported, never skipped."""
+    print("\n=== coverage: is every declared cut-off read by its check? ===")
+    declared = {(cid, key) for cid, key, _v in declared_keys()}
+    orphans = sorted(declared - consumed)
+    reported = False
+    for cid, key in orphans:
+        if (cid, key) in UNVERIFIABLE:
+            continue
+        reported = True
+        fail(f"{cid}.{key or '(value)'} is declared and reaches the audit report, but "
+             f"no check reads it. Either nothing consumes this key, or it was renamed "
+             f"and the check silently fell back to its own default. Wire it through "
+             f"threshold_value, or pin it with a reason.")
+    if not reported:
+        ok(f"every one of the {len(declared)} declared cut-offs is read by its check")
+
+
+def check_pins(baseline):
+    """Pins must name real checks and their stated reasons must hold."""
+    print("\n=== pins: does each stated reason still hold? ===")
+    for cid, why in sorted(EVIDENCE_FREE_PINS.items()):
+        if cid not in grade.ALL_CHECKS:
+            fail(f"evidence-free pin names '{cid}', which is not a registered check. "
+                 f"A pin on a check that does not exist verifies nothing.")
+            continue
+        # Validated against the corpus, not a synthetic probe: a probe that
+        # happens to match nothing would confirm any pin put in front of it. A
+        # pin earns its place only while the check still flags with no spans.
+        blind = sum(1 for r in baseline.get(cid, [])
+                    if r is not None and r.get("threshold_met")
+                    and r.get("evidence_type") == "lexical"
+                    and not r.get("candidate_count"))
+        if not blind:
+            fail(f"{cid}: pinned as flagging without spans, but every flag it "
+                 f"raises on the corpus now carries candidates. Remove the pin "
+                 f"and let the evidence assertion cover it.")
+        else:
+            ok(f"{cid}: still flags without spans on {blind} document(s) — {why}")
+    if not EVIDENCE_FREE_PINS:
+        ok("no check is exempt from the evidence assertion")
+
+    declared = {(cid, key) for cid, key, _v in declared_keys()}
+    for (cid, key), why in sorted(UNVERIFIABLE.items()):
+        label = f"{cid}.{key or '(value)'}"
+        if cid not in grade.ALL_CHECKS:
+            fail(f"unverifiable pin names '{cid}', which is not a registered check. "
+                 f"A pin on a check that does not exist verifies nothing.")
+        elif (cid, key) not in declared:
+            fail(f"unverifiable pin names {label}, which is not a declared cut-off. "
+                 f"Remove the stale pin.")
+        else:
+            print(f"  pinned: {label} — {why}")
+    if not UNVERIFIABLE:
+        ok("no cut-off is pinned as unverifiable")
+
+
+def check_no_evidence_free_findings(texts, baseline):
+    """No lexical check may report a finding a reader cannot point at.
+
+    Scoped to every registered check, not only those declaring a cut-off: the
+    property a reader cares about is that a lexical finding carries its spans,
+    and a check with no threshold entry can violate that just as easily.
+    """
+    print("\n=== evidence: does any cut-off flag a document with nothing to show? ===")
+    offenders = {}
+    for cid in sorted(grade.ALL_CHECKS):
+        if cid in EVIDENCE_FREE_PINS:
+            continue
+        for (path, _text), result in zip(texts, baseline[cid]):
+            if result is None or result.get("evidence_type") != "lexical":
+                continue
+            if result.get("threshold_met") and not result.get("candidate_count"):
+                offenders.setdefault(cid, []).append(path.name)
+    for cid, docs in sorted(offenders.items()):
+        fail(f"{cid}: flagged {len(docs)} document(s) while reporting no candidates, "
+             f"e.g. {docs[:3]}. The report names a cut-off and shows a reader nothing "
+             f"that met it.")
+    if not offenders:
+        ok("every lexical cut-off that flagged had candidates to show for it")
 
 
 def main():
-    thresholds = declared_thresholds()
-    docs = corpus_documents()
-    print(f"declared cut-offs: {len(thresholds)}   corpus documents: {len(docs)}")
+    documents = corpus_documents()
+    plain = [text for _p, text in documents]
+    declared = list(declared_keys())
+    print(f"declared cut-offs: {len({cid for cid, _k, _v in declared})} checks, "
+          f"{len(declared)} numbers   corpus documents: {len(documents)}")
 
-    observed = sweep(docs, thresholds)
+    # Every check, not only the declaring ones: the evidence assertion covers
+    # all lexical checks, and a check that declares nothing can still flag with
+    # nothing to show.
+    baseline = {cid: baseline_results(cid, plain) for cid in sorted(grade.ALL_CHECKS)}
 
-    print("\n=== count cut-offs: does the check flip where the report says? ===")
-    unverified = {}
-    for cid, spec_ in sorted(thresholds.items()):
-        if cid in UNVERIFIABLE:
-            continue
-        if not (isinstance(spec_, dict) and set(spec_) == {"minimum_candidates"}):
-            continue
-        want = spec_["minimum_candidates"]
-        pairs = [(c, f) for c, f in observed[cid] if isinstance(c, int)]
-        flagged = [c for c, f in pairs if f]
-        clear = [c for c, f in pairs if not f]
-        if not flagged or not clear:
-            unverified[cid] = (f"corpus gives only {'flagged' if flagged else 'clear'} "
-                               f"results ({len(pairs)} documents)")
-            continue
-        # Separation, not adjacency: the corpus need not contain exactly `want`
-        # and `want - 1`, only no document on the wrong side of the line.
-        clear_at_or_above = [c for c in clear if c >= want]
-        flagged_below = [c for c in flagged if c < want]
-        if clear_at_or_above or flagged_below:
-            fail(f"{cid}: report declares {want}, but "
-                 f"{len(clear_at_or_above)} document(s) with {want}+ candidates were clear "
-                 f"and {len(flagged_below)} with fewer were flagged "
-                 f"(clear up to {max(clear)}, flagged from {min(flagged)})")
-        else:
-            ok(f"{cid}: declared {want} separates all {len(pairs)} documents "
-               f"(clear up to {max(clear)}, flagged from {min(flagged)})")
-
-    print("\n=== statistic cut-offs ===")
-    for cid, key, direction in (("paragraph-length-uniformity", "maximum_cv", "below"),
-                                ("sentence-length-variance", "minimum_stdev", "below")):
-        want = thresholds[cid][key]
-        seen = []
-        for p in docs:
-            try:
-                raw = grade.annotate_result(grade.ALL_CHECKS[cid](p.read_text()))
-            except Exception:
-                continue
-            if raw.get("context_suppressed"):
-                continue
-            ev = str(raw.get("evidence", ""))
-            m = re.search(r"(?:CV|stdev|std ?dev|deviation|SD)\D*([0-9]+(?:\.[0-9]+)?)",
-                          ev, re.I)
-            if m:
-                # The evidence string is rounded for display, so allow half a
-                # unit of the printed precision when comparing against the
-                # declared cut-off. Without this a value printed as 0.18 but
-                # really 0.1758 reads as a contradiction that is not one.
-                digits = len((m.group(1).split(".") + [""])[1])
-                tol = 0.5 * (10 ** -digits) if digits else 0.5
-                seen.append((float(m.group(1)), tol, bool(raw.get("threshold_met"))))
-        flagged = [v for v, _t, f in seen if f]
-        clear = [v for v, _t, f in seen if not f]
-        if not flagged or not clear:
-            unverified[cid] = f"corpus never straddles {want} ({len(seen)} measured)"
-            continue
-        wrong = [(v, f) for v, tol, f in seen
-                 if (f and v - tol >= want) or (not f and v + tol < want)]
-        if wrong:
-            fail(f"{cid}: declared {want} does not separate flagged from clear even "
-                 f"allowing for display rounding; e.g. {wrong[:3]} "
-                 f"(value, flagged)")
-        else:
-            ok(f"{cid}: declared {want} separates all {len(seen)} measured documents "
-               f"(flagged up to {max(flagged)}, clear from {min(clear)})")
-
-    print("\n=== unverified by this corpus ===")
-    for cid, why in sorted(UNVERIFIABLE.items()):
-        print(f"  pinned: {cid} — {why}")
-    for cid, why in sorted(unverified.items()):
-        print(f"  UNVERIFIED: {cid} — {why}")
-    new = set(unverified) - set(UNVERIFIABLE)
-    if new:
-        fail(f"these cut-offs became unverifiable and are not pinned: {sorted(new)}. "
-             f"Either give the corpus a document either side, or pin them with a reason.")
+    consumed = check_route_a(plain, baseline)
+    check_every_key_covered(consumed)
+    check_boundary_correspondence(baseline, documents)
+    check_pins(baseline)
+    check_no_evidence_free_findings(documents, baseline)
 
     print()
     if FAILURES:
