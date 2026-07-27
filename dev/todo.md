@@ -2,29 +2,110 @@
 
 Work Mae approved and queued rather than building. Every item's decision is already recorded in `dev/decision-register.md`; nothing here is a pending decision, and no new decision belongs in this file. The register stays the one decision surface.
 
-Items 0 and 0b are Mae's own project items and were never part of the source review. Everything below them came out of it.
+Items 0, 0a and 0b are Mae's own project items and were never part of the source review. Everything below them came out of it.
 
 Each item carries enough detail to be picked up cold.
 
 ---
 
-## 0. FIRST: rebuild the pattern numbering scheme (DR-158)
+## 0. DONE: pattern numbering scheme rebuilt (DR-158)
 
-Approved 2026-07-26. Mae's own item; it was never part of the source review.
+Landed 2026-07-27. Category-letter scheme: A Content patterns, B Language and grammar, C Style, D Communication, E Filler and hedging, F Sensory and atmospheric, G Structural tells, H Voice and register, S Signal stacking. 80 entries, no gaps, no sub-letters, and a new pattern joins its category without renumbering anything.
 
-The scheme has drifted. Numbered patterns run past their own count with gaps, four sub-letter variants (23a, 31a, 35a, 35b) sit alongside plain numbers, and the aggregate meta-check `overall-signal-stacking` carries no number at all. The generated preamble's count sentence and category ranges have gone stale twice already.
+Mae superseded her own `#0` requirement on 2026-07-27 and gave the meta-check a letter instead, so it is S1.
 
-**Mae's requirements:**
+The old-to-new mapping and the membership rule live in `dev/pattern-renumbering-migration.md`; that file is the permanent decoder for pattern numbers in older commits.
 
-- no sub-letter variants
-- the meta-check listed as #0
-- numbers renumbered so they match the actual count
-- every pattern correctly categorised
-- a scheme that absorbs a new pattern without renumbering the rest — a category prefix (A1, B1) or category-major decimals (1.1)
+Six defects found while doing it are queued as DR-167 to DR-172 and are Mae's to rule on. None was fixed silently.
 
-**This is not an in-place edit.** Pattern numbers are load-bearing in `human-eyes/scripts/patterns.json`, generated `patterns.md`, the root `README.md` table, `SKILL.md`, every source card's coverage claims, `dev/decision-register.md`, and the test suite. It needs a migration plan and an old-to-new mapping table produced first.
+---
 
-**Two guards to check whenever a number moves**, both learned the hard way in DR-155 and DR-156: `UNCHECKED` in `test_patterns_md_generator.py`, and `_GROUP_A` in `test_grade.py`, which pins the numbers that must carry a Detection marker. Also check `_extra_entries` in `patterns.json` — manual catalogue entries carry a number and no `check_id`.
+## 0a. FIRST: rebuild the cut-off verification test so it tests the real property (DR-170)
+
+Approved 2026-07-27, option a. Do this before 0b: DR-164 sweeps every cut-off, and it
+should not be built on top of a guard that cannot fail.
+
+### What is wrong
+
+`dev/evals/tests/test_threshold_declarations.py` was written to catch a check
+reporting one cut-off while enforcing another. `CHECK_THRESHOLDS` in
+`human-eyes/scripts/grade.py` is attached to every result as `result["threshold"]`
+at `grade.py:4096`, so the declared number reaches the audit report a reader sees.
+
+The test was built on the claim that only two checks read that table and the other
+seventeen carry literals. **That claim is false.** Sixteen checks read the declared
+value through `threshold_value(check_id, key, default)` at `grade.py:2176`. The
+original search looked for `CHECK_THRESHOLDS.get("` with a quoted check name and so
+never saw the generic helper. For those sixteen the test compares the table against
+itself and cannot fail.
+
+Only three checks can genuinely diverge, and two of those are pinned in the test's
+own `UNVERIFIABLE` set.
+
+### Four holes, each proven by mutation
+
+Reproduce these before you start; if any no longer reproduces, say so rather than
+assuming the note is stale.
+
+| mutation | current result |
+|---|---|
+| add a check id that does not exist to `UNVERIFIABLE` | passes |
+| rename a key inside a `CHECK_THRESHOLDS` entry (e.g. `minimum_candidates` to `minimum_hits`) | that check silently drops out of verification; passes |
+| add an extra key to a threshold dict | same silent drop; passes |
+| move a statistic cut-off from `0.18` to `0.184` | the rounding tolerance forgives it; passes. `0.19` correctly fails |
+| make a pinned check flag every document, contradicting its stated pin reason | passes, and prints the false reason as fact |
+
+### What to build
+
+Assert the property directly: **the declared value is the value that governs
+behaviour.** For each of the 19 declared cut-offs, mutate the declared number in a
+copy of the threshold table, run the check over corpus documents that sit either
+side of it, and assert the flag/clear outcome moves with the declaration. A check
+that ignores its declaration will not move, and that is the failure.
+
+Constraints that make or break it:
+
+- **Mutate a copy, never the file.** `grade.py` is loaded by import in the test;
+  monkeypatch `grade.CHECK_THRESHOLDS` in memory and restore it. Never write to
+  `human-eyes/scripts/grade.py` from a test.
+- **Every declared key must be reached, not just the first.** The silent-drop holes
+  above exist because the test keyed on a dict shape (`set(spec) == {"minimum_candidates"}`)
+  and skipped anything else. Iterate the keys the table actually declares and fail
+  on a key no check consumes, rather than skipping it.
+- **`UNVERIFIABLE` must be validated, not trusted.** Every id in it must exist in
+  `grade.ALL_CHECKS`, and its stated reason must be checked where checkable: a pin
+  saying "no document flags it" must fail if a document flags it.
+- **Keep the DR-79 lesson.** Where the corpus genuinely cannot straddle a cut-off,
+  report it and fail if the unverifiable set grows without a reason. Silence must
+  not read as agreement.
+- Drop the evidence-string count fallback and the display-rounding tolerance if the
+  mutation approach removes the need for them. They exist only because the current
+  design reads numbers out of human-readable strings.
+
+### Verify the test itself
+
+A guard that cannot fail is what produced this item, so prove it fires before
+trusting a pass. Re-run all five mutations in the table above and confirm each one
+now fails, and confirm the suite passes unmutated. State each result.
+
+Two checks (`no-inline-header-lists`, `no-rubric-echoing`) are pinned only because
+no corpus document flags them. `test_grade.py` already proves both fire on
+synthetic text, so one or two targeted samples under `dev/evals/samples/` would
+unpin them. That is optional and separate; do not add samples to make a mutation
+pass.
+
+### Do not touch
+
+`dev/evals/samples/`, `dev/evals/preserved-agent-audits-*`,
+`dev/evals/three-version-*.json` and `dev/skill-workspace/skill-snapshot/` are
+measurement baselines. Editing them moves what every calibration is measured
+against, and the DR-158 sweep already had to revert seven such files.
+
+### Also correct
+
+DR-170's register row and the commit message of `7fca3c1` both state the false
+premise. Correct the row when you close this; the commit message stays as history
+and the row should say so.
 
 ---
 
@@ -32,21 +113,151 @@ The scheme has drifted. Numbered patterns run past their own count with gaps, fo
 
 Approved 2026-07-26. Mae's own item; also never part of the source review.
 
-DR-79 found #52 `sentence-length-variance` had never fired on any of the 108 corpus documents, because its inherited threshold of 4 sat below the entire observed range. Its test passed the whole time, because the fixture is prose hand-written to be flat at a value real writing never reaches.
+DR-79 found G9 `sentence-length-variance` had never fired on any of the 108 corpus documents, because its inherited threshold of 4 sat below the entire observed range. Its test passed the whole time, because the fixture is prose hand-written to be flat at a value real writing never reaches.
 
-**Method:** for each check, sweep its metric over both corpora, print the observed range, and ask whether the threshold sits inside it. 11 checks carry a calibration record under `dev/evals/`; the other 43 do not, 15 of them declaring a threshold in `CHECK_THRESHOLDS` and the rest carrying bare numeric literals.
+**Method:** for each check, sweep its metric over both corpora, print the observed range, and ask whether the threshold sits inside it. 11 checks carry a calibration record under `dev/evals/`; the rest do not. Corrected 2026-07-27: 19 checks declare a cut-off in `CHECK_THRESHOLDS` and 16 of them read it through `threshold_value(check_id, key, default)` at `grade.py:2176`, so the declared value is usually the enforced one. Only three carry a literal that could diverge. Item 0a settles how that is verified; do it first.
 
 **A first smoke pass found 18 checks that never flag a generated document and 19 that flag more human documents than generated. That pass is an inventory, not a finding.** Three different causes produce those symptoms and they need opposite responses:
 
-1. A threshold outside the observed range is a defect. That is #52.
+1. A threshold outside the observed range is a defect. That is G9.
 2. A corpus holding no instance of the target is silent, not broken. DR-153's SWBST frame and DR-116's emoji rerun are both this.
-3. For any check firing on one occurrence, a share-of-documents comparison is length-biased. The human corpus averages 2,172 words per document against the generated corpus's 1,051, which is exactly how #25 was misreported as running backwards during DR-66. Rate checks are immune; one-occurrence checks are not.
+3. For any check firing on one occurrence, a share-of-documents comparison is length-biased. The human corpus averages 2,172 words per document against the generated corpus's 1,051, which is exactly how E5 was misreported as running backwards during DR-66. Rate checks are immune; one-occurrence checks are not.
 
 Separate the three before proposing anything, and bring each threshold to Mae as its own decision.
 
 ---
 
-## 1. Fiction branch of #41 (DR-23, DR-52 to DR-58)
+## 0c. DONE: quote evidence from the draft, not from the masked copy
+
+Found 2026-07-27 while rebuilding the cut-off test. Built 2026-07-27. Mae's own
+item. Not a register row.
+
+### What the item claimed, and what was true
+
+The item named masking as the cause: lexical checks read a copy of the draft in
+which quotations and machine-readable spans are blanked to spaces, so a match
+spanning one came back with a hole in it. That is real, and it is 66 of the 1,918
+bad quotes across the 153 corpus documents. It is not the main cause. Measured:
+
+| cause | count | worst offenders |
+|---|---|---|
+| the check lowercased its match | 1,086 | `no-it-pronoun-rate` 929, `no-manufactured-insight` 47 |
+| the check joined lines or collapsed whitespace | 622 | `no-curly-quotes` 477, `no-staccato-sequences` 84 |
+| the match spanned a masked span | 66 | `no-curly-quotes` 37, `no-negative-parallelisms` 18 |
+| composed from two spans on purpose | 144 | `no-passive-voice-rate` 118, `no-heading-one-liners` 26 |
+
+The 1,086 needed a second look. Most were `no-it-pronoun-rate` handing back bare
+pronouns, and those strings were already the writer's own — only the offset
+computed for them pointed at the wrong occurrence of the same word. Counting a
+wrong offset as a wrong quote overstated the defect. The strings that genuinely
+were not on the writer's page numbered 797.
+
+The item also named the wrong place to fix it. `_evidence_envelope` builds
+`quoted_phrases` from `_extract_quoted_phrases`, which reads `matches` — not
+`candidates`. Recutting inside `_candidate_records`, as the item proposed, would
+have corrected the candidate records and left the audit a reader sees identical.
+
+### What was built
+
+The first of the item's two shapes, moved to the right place.
+`recut_matches_from_draft` (`grade.py:958`) sits in `_wrap_check` and rewrites
+`matches` before anything reads them. A match already found in the draft is left
+alone. Anything else is relocated with a pattern that ignores case, matches any
+whitespace where the check left one space, and matches exactly *n* characters
+where it left a run of *n* blanks — masking preserves length, so that span is
+exact rather than a guess. The located text is then cut from the draft.
+
+The second shape — teaching some thirty checks to return spans — was not built.
+It is exact where this is a relocation, but it costs a differential test per
+check, and it would not fix the 144 composed phrases either.
+
+Mae's three decisions, 2026-07-27:
+
+- **Whitespace collapses for display.** A restored quote carries the writer's
+  words and capitals but not their line breaks, so a paragraph-length quote still
+  renders on one line.
+- **Positions are not published.** The recut works out where every quote sits,
+  but nothing reads a location, so `_evidence_envelope` still emits
+  `"locations": []` — now with a comment saying that is deliberate.
+- **Repeated boilerplate takes the first match.** Six quotes are word-for-word
+  repeats within one document, so the quote is right either way and only the
+  unpublished offset could name the wrong copy.
+
+### Result
+
+19,962 of 20,106 quoted phrases now carry the writer's own words and capitals.
+The remaining 144 are `no-passive-voice-rate` and `no-heading-one-liners`, which
+compose a phrase from two spans by design and were already allow-listed.
+
+`test_phrase_capture_coverage.py` was the gate and it was weak in two ways that
+hid all of this: it lowercased both sides before comparing, and it passed a check
+that produced one true quote among thirty mangled ones. It is now case-sensitive
+and checks every phrase. Run against the old grader it reports 79 failures;
+against the new one, none. The masked-span pin is removed.
+
+One thing is knowingly left. Many checks build their `evidence` string inside
+themselves, before the wrapper can reach the matches, so `raw["evidence"]` in the
+machine contract can still read back the pre-recut text. No reader sees it — the
+rendered block quotes `quoted_phrases` only — and fixing it means editing each
+check, which is the shape that was not built.
+
+## 0d. DONE: rate checks report the rate and quote nothing
+
+Found 2026-07-27, same pass as 0c. Built 2026-07-28. Mae's own item. Not a
+register row.
+
+### What a reader saw
+
+`no-it-pronoun-rate` counted 34 uses of `it`, worked out that this was 21.3 per
+1000 words against a limit of 18, and then showed the reader:
+
+> ⚠ It-pronoun rate: `"It", "it", "it" (+31 more)`
+
+The rate — the whole finding — appeared nowhere. On the worst document the list
+ran to 267 entries, and `--full-report` has no cap, so it rendered all 267.
+
+### Mae's decision, 2026-07-28
+
+Rate only, naming the word or feature being counted. The same line now reads:
+
+> ⚠ It-pronoun rate: 34 `it` pronoun(s) at 21.3 per 1000 words (flag at 18.0)
+
+### Scope
+
+The six Biber and Xia feature-rate checks, patterns B7 to B12:
+`no-nominalisation-rate`, `no-that-relative-rate`, `no-participial-clause-rate`,
+`no-passive-voice-rate`, `no-it-pronoun-rate`, `no-latinate-verb-rate`. They share
+one function, `_biber_rate_check` (`grade.py:2479`), so this is one edit.
+
+Four other checks state a rate and were deliberately left quoting:
+`no-forced-triads`, `no-staccato-sequences`, `no-negation-density` and
+`no-quietness-obsession`. Their quotes are sentences or multi-word phrases a
+reader can find on the page — `'medical language, social performance, and the
+collapse'` — not a bare word repeated. The complaint was never list length; it was
+that the list said nothing. Where it still says something it stays.
+
+### What changed with it
+
+- `candidate_count` still carries the true count, as the item required. It is read
+  by `run_regex_catalogue_audit.py`, summed by `run_three_version_comparison.py`,
+  asserted across `test_regex_robustness.py`, and used by the cut-off test.
+- The six moved into `STATISTICAL_CHECKS`. They had been classed `lexical`, which
+  described them until they stopped carrying phrases. That set is read nowhere but
+  the wrapper, so the move is contained.
+- `aggregate_finding` flips to true on 34 baseline records. The field means "this
+  record has no spans", which is now the case for them.
+- `no-passive-voice-rate` leaves the composed-phrase allow-list in
+  `test_phrase_capture_coverage.py`. It was there because it quoted `"be ordered"`
+  for "be carefully ordered", a phrase not on the writer's page; it no longer
+  quotes at all. That removes 118 of the 144 quotes item 0c could not repair.
+  `no-heading-one-liners` and its 26 are the only ones left.
+
+No document changed outcome. Across the 11 pinned baselines the only fields that
+moved were the evidence shape of those six checks.
+
+---
+
+## 1. Fiction branch of H10 (DR-23, DR-52 to DR-58)
 
 Eight rows, seven of them the StoryScope paper, all extending `genre_specific`'s existing fiction branch in `human-eyes/scripts/judgement.json`.
 
@@ -69,7 +280,7 @@ Present as one consolidated decision, not eight. The DR-135 precedent applies: a
 
 ---
 
-## 2. Student and academic branches of #41 (DR-41, DR-131)
+## 2. Student and academic branches of H10 (DR-41, DR-131)
 
 Readable from the text and not currently covered:
 
@@ -78,7 +289,7 @@ Readable from the text and not currently covered:
 - incorrect or awkward technical-term use (academic branch)
 - data described as too clean: smooth trends, no noise, no error bars (academic branch)
 
-**Deterministic candidate, nothing catches it today.** Belcher's four named banal theses: hero's journey, tradition versus modernity, individual versus community, boundaries destabilised. Proposed home was a one-occurrence branch of #40 `no-rubric-echoing`, whose existing rubric branch needs three occurrences.
+**Deterministic candidate, nothing catches it today.** Belcher's four named banal theses: hero's journey, tradition versus modernity, individual versus community, boundaries destabilised. Proposed home was a one-occurrence branch of H9 `no-rubric-echoing`, whose existing rubric branch needs three occurrences.
 
 **Not buildable.** Checking a quotation against the assigned text needs the assigned text, which the tool does not have. Twisted basic facts need the outside world. Keystroke replay is not text.
 
@@ -88,7 +299,7 @@ Readable from the text and not currently covered:
 
 ---
 
-## 3. Journalism and #41 branch guidance (DR-27)
+## 3. Journalism and H10 branch guidance (DR-27)
 
 Journalism provenance prompts, engagement-marker pedagogy, and craft guidance for the existing `genre_specific` branches.
 
@@ -120,9 +331,4 @@ None of these changes the checker. They are about how this project runs its own 
 
 ---
 
-## 6. Mae's own queue items, still pending in the register
-
-These two are *not* approved and still need her ruling. Listed here only so they are visible alongside the rest.
-
-- **DR-164** — audit every check threshold against its observed distribution. Came out of DR-79 finding that #52 had never fired on any real document because its threshold sat below the entire observed range. Fourteen checks now carry a calibration record; the rest do not. A first smoke pass found 18 checks that never flag a generated document and 19 that flag more human documents than generated ones, but that pass is an inventory, not a finding: three different causes produce those symptoms and need opposite responses. Read DR-164's Change cell before acting on any of it.
-- **DR-158** — rebuild the pattern numbering scheme. No sub-letter variants, the aggregate meta-check listed as #0, numbers matching the real count, categories corrected, and a scheme that absorbs new patterns without renumbering. Numbers are load-bearing across `patterns.json`, generated `patterns.md`, the root README table, `SKILL.md`, every source card, the register, and the tests, so it needs a migration plan and an old-to-new mapping.
+Mae's own two items, DR-158 and DR-164, are items 0 and 0b above. Both were approved on 2026-07-26 with the instruction to build them. Nothing in this file is awaiting a ruling.

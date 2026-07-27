@@ -72,7 +72,6 @@ EXPECTED_IDS = [
     "faux_specificity",
     "neutrality_collapse",
     "rewrite_stance_drift",
-    "even_jargon_distribution",
     "forced_synesthesia",
     "generic_metaphors",
     "referential_clarity",
@@ -122,26 +121,32 @@ for record in records:
 # --- pattern_ref values ---
 
 print("\n=== judgement.json pattern_ref values ===")
+# Pattern ids under the DR-158 category-letter scheme. `rewrite_stance_drift`
+# is the one record with no id: it reads a rewrite against its source document,
+# so it has no draft-level catalogue entry (membership rule, DR-158).
+# `performed_candour` -> H15 was corrected under DR-167; it had pointed at the
+# Manufactured insight entry since before DR-158. The other five refs naming a
+# check-backed pattern were each checked against their record's prompt and left.
 EXPECTED_PATTERN_REFS = {
-    "structural_monotony": None,
-    "tonal_uniformity": 35,
-    "faux_specificity": 36,
-    "neutrality_collapse": 37,
+    "structural_monotony": "G13",
+    "tonal_uniformity": "H3",
+    "faux_specificity": "H6",
+    "neutrality_collapse": "H7",
     "rewrite_stance_drift": None,
-    "even_jargon_distribution": None,
-    "forced_synesthesia": 28,
-    "generic_metaphors": 30,
-    "referential_clarity": 35,
-    "formulaic_parallelism": 10,
-    "semantic_redundancy": 34,
-    "underspecified_language": 43,
-    "context_leakage": 19,
-    "performed_candour": 42,
-    "vacuous_connection": 22,
-    "genre_specific": 41,
-    "unprompted_caveats": None,
-    "change_narration": None,
-    "internal_consistency": None,
+    "forced_synesthesia": "F3",
+    "generic_metaphors": "G2",
+    "referential_clarity": "H3",
+    "formulaic_parallelism": "B4",
+    "semantic_redundancy": "H2",
+    "underspecified_language": "H11",
+    "context_leakage": "D1",
+    "performed_candour": "H15",
+    "vacuous_connection": "E1",
+    "genre_specific": "H10",
+    "audience_knowledge_mismatch": "D6",
+    "unprompted_caveats": "D5",
+    "change_narration": "H17",
+    "internal_consistency": "A7",
 }
 for record in records:
     rid = record.get("id")
@@ -157,26 +162,6 @@ for record in records:
 
 print("\n=== judgement.json targeted semantic contracts ===")
 records_by_id = {record.get("id"): record for record in records}
-
-jargon_record = records_by_id.get("even_jargon_distribution", {})
-jargon_values = jargon_record.get("answer_schema", {}).get("values")
-expected_jargon_values = [
-    "jargon is not suspiciously uniform",
-    "jargon spreads suspiciously uniformly across the text",
-]
-if jargon_record.get("answer_schema", {}).get("type") != "state":
-    fail("even_jargon_distribution should use a two-state answer schema")
-elif jargon_values != expected_jargon_values:
-    fail(
-        "even_jargon_distribution should expose one non-flagged state and one "
-        f"flagged state; got {jargon_values!r}"
-    )
-else:
-    ok("even_jargon_distribution does not classify harmless non-flagged distributions")
-if jargon_record.get("flagged_when") != [expected_jargon_values[1]]:
-    fail("even_jargon_distribution should flag only suspiciously uniform distribution")
-else:
-    ok("even_jargon_distribution keeps harmless distributions non-flagged")
 
 metaphor_prompt = records_by_id.get("generic_metaphors", {}).get("prompt", "")
 required_metaphor_guidance = (
@@ -247,10 +232,10 @@ else:
 caveats = records_by_id.get("unprompted_caveats")
 if not caveats:
     fail("unprompted_caveats record missing (DR-119)")
-elif caveats.get("pattern_ref") is not None or not caveats.get("flagged_when"):
-    fail("unprompted_caveats record misconfigured (pattern_ref None per agent-only convention; #61 maps via the render fallback)")
+elif caveats.get("pattern_ref") != "D5" or not caveats.get("flagged_when"):
+    fail("unprompted_caveats record misconfigured (pattern_ref must be D5; it carries its own catalogue entry since DR-158)")
 else:
-    ok("unprompted_caveats record present as #61")
+    ok("unprompted_caveats record present as D5")
 
 change_narration = records_by_id.get("change_narration", {})
 change_prompt = change_narration.get("prompt", "").lower()

@@ -1,25 +1,30 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 5
+      "flagged": 12
     },
     "programmatic": {
       "by_category": {
+        "Content patterns": 1,
         "Filler and hedging": 2,
-        "Language and grammar": 1,
+        "Language and grammar": 5,
+        "Signal stacking": 1,
+        "Structural tells": 1,
         "Style": 1,
         "Voice and register": 1
       },
       "by_severity": {
-        "context_warning": 5,
+        "context_warning": 10,
         "hard_fail": 0,
-        "strong_warning": 0
+        "strong_warning": 2
       },
       "signal_stacking": {
-        "components": [],
-        "score": 0,
+        "components": [
+          "negative parallelism"
+        ],
+        "score": 4,
         "threshold": 4,
-        "triggered": false,
+        "triggered": true,
         "vocabulary_points": 0
       }
     },
@@ -93,12 +98,12 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Max AI words per paragraph: 0 (0 total in text)",
+            "raw_evidence": "Max AI words per paragraph: 1 (2 total in text)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Max AI words per paragraph: 0 (0 total in text)",
+          "evidence": "Max AI words per paragraph: 1 (2 total in text)",
           "evidence_role": "vocabulary_cluster",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -166,28 +171,35 @@
       "category": "Signal stacking",
       "evidence": {
         "counts": {
-          "score": 0,
+          "score": 4,
           "threshold": 4
         },
         "locations": [],
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
-          "component_count": 0,
-          "component_signals": [],
-          "components": [],
+          "component_count": 1,
+          "component_points": {
+            "negative_parallelism": 4
+          },
+          "component_signals": [
+            "negative parallelism"
+          ],
+          "components": [
+            "negative parallelism"
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": 4,
-            "raw_evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=0, gptzero=[], kobak=9 distinct/9.6/1000",
+            "raw_evidence": "Overall signal stacking 4/4 from [negative parallelism]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=9 distinct/9.6/1000, sample=['need', 'research', 'approach', 'disrupts', 'initially', 'linked', 'particularly', 'persist', 'remains']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=0, gptzero=[], kobak=9 distinct/9.6/1000",
+          "evidence": "Overall signal stacking 4/4 from [negative parallelism]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=9 distinct/9.6/1000, sample=['need', 'research', 'approach', 'disrupts', 'initially', 'linked', 'particularly', 'persist', 'remains']",
           "evidence_role": "signal_stacking",
           "evidence_type": "aggregate",
           "failure_modes": [
@@ -195,10 +207,10 @@
             "frictionless_structure"
           ],
           "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict.",
-          "score": 0,
+          "score": 4,
           "severity": "context_warning",
           "threshold": 4,
-          "threshold_met": false,
+          "threshold_met": true,
           "vocabulary_signal_stacking": {
             "gptzero_matches": [],
             "kobak_style_density": 9.598603839441536,
@@ -216,7 +228,7 @@
             ],
             "points": 0,
             "reasons": [],
-            "worst_generic": 0
+            "worst_generic": 1
           }
         }
       },
@@ -226,7 +238,7 @@
       ],
       "id": "overall-signal-stacking",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Structural tells",
@@ -295,7 +307,7 @@
             "voice_erasure",
             "generic_abstraction"
           ],
-          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+          "guidance": "Remove the candour or vulnerability announcement and state the claim directly. Preserve literal uses and quoted source text.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -313,6 +325,50 @@
       "status": "clear"
     },
     {
+      "category": "Communication",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No formulaic social-post frames",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No formulaic social-post frames",
+          "evidence_role": "platform_formula",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Remove the stock frame and state the actual request, experience, result, or constraint directly.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "subtypes": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-formulaic-social-posts",
+      "severity": "strong_warning",
+      "status": "clear"
+    },
+    {
       "category": "Filler and hedging",
       "evidence": {
         "counts": {},
@@ -321,11 +377,60 @@
         "quoted_phrases": [
           "Everything becomes harder to metabolise.",
           "Small decisions feel punitive.",
-          "Social contact becomes more effortful."
+          "Social contact becomes more effortful.",
+          "Not disappears. Not resolves neatly.",
+          "Grief has its own clock.",
+          "This is one of the crueller parts of grief.",
+          "It can change the texture of grief itself.",
+          "After a death, insomnia is not always dramatic.",
+          "Sometimes it is a clean, brutal wakefulness at 3 am.",
+          "Sometimes sleep comes easily but breaks apart before dawn.",
+          "At night, the scaffolding comes down.",
+          "It begins its inventory.",
+          "But grief is not poor time management.",
+          "If sleep does not come, rest still counts.",
+          "The goal is not to win against grief.",
+          "Rumination loops.",
+          "It prosecutes.",
+          "Dreams add another layer.",
+          "They are in the kitchen.",
+          "They are wearing the old jumper.",
+          "They have not died after all.",
+          "Wellness culture often wants to interpret every dream as healing.",
+          "Some dreams are not healing.",
+          "The research field is still developing.",
+          "That limitation is important.",
+          "It means we should be careful about neat claims.",
+          "The relationship can move in both directions.",
+          "The first full night can feel almost disloyal.",
+          "There is a strange guilt in waking rested.",
+          "But exhaustion is not devotion.",
+          "Staying awake does not keep the person closer.",
+          "It only keeps the body in distress.",
+          "For others, sleep problems persist and become their own condition.",
+          "That is when support matters.",
+          "This is not weakness.",
+          "It is a health issue sitting inside a human loss.",
+          "Keep the room cool and dark.",
+          "Be careful with late caffeine.",
+          "Tell someone if nights are becoming frightening.",
+          "Grief already gives people enough to feel guilty about.",
+          "The aim is not perfect sleep.",
+          "Not disappears.",
+          "Not resolves neatly.",
+          "But changes.",
+          "The bed becomes less like a witness stand.",
+          "The dark becomes less accusatory.",
+          "The first thought on waking is not always the loss.",
+          "Later, there may be mornings when memory returns gently.",
+          "Sleep does not cure grief.",
+          "That matters because sleep is not just a pause from consciousness.",
+          "When grief disrupts sleep, it does not simply make us tired.",
+          "The ordinary world can seem too bright, too fast, too indifferent."
         ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 3,
+          "candidate_count": 52,
           "candidates": [
             {
               "end": 1250,
@@ -344,19 +449,317 @@
               "quoted": false,
               "start": 1282,
               "text": "Social contact becomes more effortful."
+            },
+            {
+              "end": 6445,
+              "quoted": false,
+              "start": 6409,
+              "text": "Not disappears. Not resolves neatly."
+            },
+            {
+              "end": 56,
+              "quoted": false,
+              "start": 32,
+              "text": "Grief has its own clock."
+            },
+            {
+              "end": 397,
+              "quoted": false,
+              "start": 354,
+              "text": "This is one of the crueller parts of grief."
+            },
+            {
+              "end": 1209,
+              "quoted": false,
+              "start": 1167,
+              "text": "It can change the texture of grief itself."
+            },
+            {
+              "end": 1436,
+              "quoted": false,
+              "start": 1389,
+              "text": "After a death, insomnia is not always dramatic."
+            },
+            {
+              "end": 1489,
+              "quoted": false,
+              "start": 1437,
+              "text": "Sometimes it is a clean, brutal wakefulness at 3 am."
+            },
+            {
+              "end": 1728,
+              "quoted": false,
+              "start": 1670,
+              "text": "Sometimes sleep comes easily but breaks apart before dawn."
+            },
+            {
+              "end": 2079,
+              "quoted": false,
+              "start": 2042,
+              "text": "At night, the scaffolding comes down."
+            },
+            {
+              "end": 2169,
+              "quoted": false,
+              "start": 2145,
+              "text": "It begins its inventory."
+            },
+            {
+              "end": 2475,
+              "quoted": false,
+              "start": 2437,
+              "text": "But grief is not poor time management."
+            },
+            {
+              "end": 2833,
+              "quoted": false,
+              "start": 2791,
+              "text": "If sleep does not come, rest still counts."
+            },
+            {
+              "end": 3084,
+              "quoted": false,
+              "start": 3047,
+              "text": "The goal is not to win against grief."
+            },
+            {
+              "end": 3386,
+              "quoted": false,
+              "start": 3369,
+              "text": "Rumination loops."
+            },
+            {
+              "end": 3401,
+              "quoted": false,
+              "start": 3387,
+              "text": "It prosecutes."
+            },
+            {
+              "end": 3726,
+              "quoted": false,
+              "start": 3701,
+              "text": "Dreams add another layer."
+            },
+            {
+              "end": 3841,
+              "quoted": false,
+              "start": 3817,
+              "text": "They are in the kitchen."
+            },
+            {
+              "end": 3874,
+              "quoted": false,
+              "start": 3842,
+              "text": "They are wearing the old jumper."
+            },
+            {
+              "end": 3904,
+              "quoted": false,
+              "start": 3875,
+              "text": "They have not died after all."
+            },
+            {
+              "end": 4115,
+              "quoted": false,
+              "start": 4050,
+              "text": "Wellness culture often wants to interpret every dream as healing."
+            },
+            {
+              "end": 4144,
+              "quoted": false,
+              "start": 4116,
+              "text": "Some dreams are not healing."
+            },
+            {
+              "end": 4258,
+              "quoted": false,
+              "start": 4219,
+              "text": "The research field is still developing."
+            },
+            {
+              "end": 4477,
+              "quoted": false,
+              "start": 4448,
+              "text": "That limitation is important."
+            },
+            {
+              "end": 4526,
+              "quoted": false,
+              "start": 4478,
+              "text": "It means we should be careful about neat claims."
+            },
+            {
+              "end": 4641,
+              "quoted": false,
+              "start": 4596,
+              "text": "The relationship can move in both directions."
+            },
+            {
+              "end": 4886,
+              "quoted": false,
+              "start": 4840,
+              "text": "The first full night can feel almost disloyal."
+            },
+            {
+              "end": 4929,
+              "quoted": false,
+              "start": 4887,
+              "text": "There is a strange guilt in waking rested."
+            },
+            {
+              "end": 5041,
+              "quoted": false,
+              "start": 5010,
+              "text": "But exhaustion is not devotion."
+            },
+            {
+              "end": 5088,
+              "quoted": false,
+              "start": 5042,
+              "text": "Staying awake does not keep the person closer."
+            },
+            {
+              "end": 5124,
+              "quoted": false,
+              "start": 5089,
+              "text": "It only keeps the body in distress."
+            },
+            {
+              "end": 5192,
+              "quoted": false,
+              "start": 5126,
+              "text": "For others, sleep problems persist and become their own condition."
+            },
+            {
+              "end": 5222,
+              "quoted": false,
+              "start": 5193,
+              "text": "That is when support matters."
+            },
+            {
+              "end": 5634,
+              "quoted": false,
+              "start": 5613,
+              "text": "This is not weakness."
+            },
+            {
+              "end": 5684,
+              "quoted": false,
+              "start": 5635,
+              "text": "It is a health issue sitting inside a human loss."
+            },
+            {
+              "end": 5807,
+              "quoted": false,
+              "start": 5779,
+              "text": "Keep the room cool and dark."
+            },
+            {
+              "end": 5929,
+              "quoted": false,
+              "start": 5899,
+              "text": "Be careful with late caffeine."
+            },
+            {
+              "end": 6124,
+              "quoted": false,
+              "start": 6076,
+              "text": "Tell someone if nights are becoming frightening."
+            },
+            {
+              "end": 6245,
+              "quoted": false,
+              "start": 6190,
+              "text": "Grief already gives people enough to feel guilty about."
+            },
+            {
+              "end": 6275,
+              "quoted": false,
+              "start": 6246,
+              "text": "The aim is not perfect sleep."
+            },
+            {
+              "end": 6424,
+              "quoted": false,
+              "start": 6409,
+              "text": "Not disappears."
+            },
+            {
+              "end": 6445,
+              "quoted": false,
+              "start": 6425,
+              "text": "Not resolves neatly."
+            },
+            {
+              "end": 6458,
+              "quoted": false,
+              "start": 6446,
+              "text": "But changes."
+            },
+            {
+              "end": 6501,
+              "quoted": false,
+              "start": 6459,
+              "text": "The bed becomes less like a witness stand."
+            },
+            {
+              "end": 6535,
+              "quoted": false,
+              "start": 6502,
+              "text": "The dark becomes less accusatory."
+            },
+            {
+              "end": 6587,
+              "quoted": false,
+              "start": 6536,
+              "text": "The first thought on waking is not always the loss."
+            },
+            {
+              "end": 6707,
+              "quoted": false,
+              "start": 6651,
+              "text": "Later, there may be mornings when memory returns gently."
+            },
+            {
+              "end": 6735,
+              "quoted": false,
+              "start": 6709,
+              "text": "Sleep does not cure grief."
+            },
+            {
+              "end": 962,
+              "quoted": false,
+              "start": 896,
+              "text": "That matters because sleep is not just a pause from consciousness."
+            },
+            {
+              "end": 1166,
+              "quoted": false,
+              "start": 1106,
+              "text": "When grief disrupts sleep, it does not simply make us tired."
+            },
+            {
+              "end": 1387,
+              "quoted": false,
+              "start": 1321,
+              "text": "The ordinary world can seem too bright, too fast, too indifferent."
             }
           ],
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_run": 3
+              "maximum_mean_sentence_words": 15.0,
+              "maximum_short_rate_per_1000": 30.0,
+              "minimum_repeated_opener_run": 2,
+              "minimum_run": 3,
+              "rate_minimum_words": 300
             },
-            "raw_evidence": "Found sequence of 3 consecutive short sentences",
+            "raw_evidence": "Found sequence of 3 consecutive short sentences; short-fragment run(s) sharing an opener: ['Not disappears. Not resolves neatly.']; 48 sentences of ten words or fewer at 41.7 per 1000 words; mean sentence length 11.8 words (target: 15 or more)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found sequence of 3 consecutive short sentences",
+          "evidence": "Found sequence of 3 consecutive short sentences; short-fragment run(s) sharing an opener: ['Not disappears. Not resolves neatly.']; 48 sentences of ten words or fewer at 41.7 per 1000 words; mean sentence length 11.8 words (target: 15 or more)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -364,11 +767,60 @@
             "frictionless_structure"
           ],
           "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
-          "match_count": 3,
+          "match_count": 52,
           "matches": [
             "Everything becomes harder to metabolise.",
             "Small decisions feel punitive.",
-            "Social contact becomes more effortful."
+            "Social contact becomes more effortful.",
+            "Not disappears. Not resolves neatly.",
+            "Grief has its own clock.",
+            "This is one of the crueller parts of grief.",
+            "It can change the texture of grief itself.",
+            "After a death, insomnia is not always dramatic.",
+            "Sometimes it is a clean, brutal wakefulness at 3 am.",
+            "Sometimes sleep comes easily but breaks apart before dawn.",
+            "At night, the scaffolding comes down.",
+            "It begins its inventory.",
+            "But grief is not poor time management.",
+            "If sleep does not come, rest still counts.",
+            "The goal is not to win against grief.",
+            "Rumination loops.",
+            "It prosecutes.",
+            "Dreams add another layer.",
+            "They are in the kitchen.",
+            "They are wearing the old jumper.",
+            "They have not died after all.",
+            "Wellness culture often wants to interpret every dream as healing.",
+            "Some dreams are not healing.",
+            "The research field is still developing.",
+            "That limitation is important.",
+            "It means we should be careful about neat claims.",
+            "The relationship can move in both directions.",
+            "The first full night can feel almost disloyal.",
+            "There is a strange guilt in waking rested.",
+            "But exhaustion is not devotion.",
+            "Staying awake does not keep the person closer.",
+            "It only keeps the body in distress.",
+            "For others, sleep problems persist and become their own condition.",
+            "That is when support matters.",
+            "This is not weakness.",
+            "It is a health issue sitting inside a human loss.",
+            "Keep the room cool and dark.",
+            "Be careful with late caffeine.",
+            "Tell someone if nights are becoming frightening.",
+            "Grief already gives people enough to feel guilty about.",
+            "The aim is not perfect sleep.",
+            "Not disappears.",
+            "Not resolves neatly.",
+            "But changes.",
+            "The bed becomes less like a witness stand.",
+            "The dark becomes less accusatory.",
+            "The first thought on waking is not always the loss.",
+            "Later, there may be mornings when memory returns gently.",
+            "Sleep does not cure grief.",
+            "That matters because sleep is not just a pause from consciousness.",
+            "When grief disrupts sleep, it does not simply make us tired.",
+            "The ordinary world can seem too bright, too fast, too indifferent."
           ],
           "severity": "context_warning",
           "spans": [
@@ -389,10 +841,308 @@
               "quoted": false,
               "start": 1282,
               "text": "Social contact becomes more effortful."
+            },
+            {
+              "end": 6445,
+              "quoted": false,
+              "start": 6409,
+              "text": "Not disappears. Not resolves neatly."
+            },
+            {
+              "end": 56,
+              "quoted": false,
+              "start": 32,
+              "text": "Grief has its own clock."
+            },
+            {
+              "end": 397,
+              "quoted": false,
+              "start": 354,
+              "text": "This is one of the crueller parts of grief."
+            },
+            {
+              "end": 1209,
+              "quoted": false,
+              "start": 1167,
+              "text": "It can change the texture of grief itself."
+            },
+            {
+              "end": 1436,
+              "quoted": false,
+              "start": 1389,
+              "text": "After a death, insomnia is not always dramatic."
+            },
+            {
+              "end": 1489,
+              "quoted": false,
+              "start": 1437,
+              "text": "Sometimes it is a clean, brutal wakefulness at 3 am."
+            },
+            {
+              "end": 1728,
+              "quoted": false,
+              "start": 1670,
+              "text": "Sometimes sleep comes easily but breaks apart before dawn."
+            },
+            {
+              "end": 2079,
+              "quoted": false,
+              "start": 2042,
+              "text": "At night, the scaffolding comes down."
+            },
+            {
+              "end": 2169,
+              "quoted": false,
+              "start": 2145,
+              "text": "It begins its inventory."
+            },
+            {
+              "end": 2475,
+              "quoted": false,
+              "start": 2437,
+              "text": "But grief is not poor time management."
+            },
+            {
+              "end": 2833,
+              "quoted": false,
+              "start": 2791,
+              "text": "If sleep does not come, rest still counts."
+            },
+            {
+              "end": 3084,
+              "quoted": false,
+              "start": 3047,
+              "text": "The goal is not to win against grief."
+            },
+            {
+              "end": 3386,
+              "quoted": false,
+              "start": 3369,
+              "text": "Rumination loops."
+            },
+            {
+              "end": 3401,
+              "quoted": false,
+              "start": 3387,
+              "text": "It prosecutes."
+            },
+            {
+              "end": 3726,
+              "quoted": false,
+              "start": 3701,
+              "text": "Dreams add another layer."
+            },
+            {
+              "end": 3841,
+              "quoted": false,
+              "start": 3817,
+              "text": "They are in the kitchen."
+            },
+            {
+              "end": 3874,
+              "quoted": false,
+              "start": 3842,
+              "text": "They are wearing the old jumper."
+            },
+            {
+              "end": 3904,
+              "quoted": false,
+              "start": 3875,
+              "text": "They have not died after all."
+            },
+            {
+              "end": 4115,
+              "quoted": false,
+              "start": 4050,
+              "text": "Wellness culture often wants to interpret every dream as healing."
+            },
+            {
+              "end": 4144,
+              "quoted": false,
+              "start": 4116,
+              "text": "Some dreams are not healing."
+            },
+            {
+              "end": 4258,
+              "quoted": false,
+              "start": 4219,
+              "text": "The research field is still developing."
+            },
+            {
+              "end": 4477,
+              "quoted": false,
+              "start": 4448,
+              "text": "That limitation is important."
+            },
+            {
+              "end": 4526,
+              "quoted": false,
+              "start": 4478,
+              "text": "It means we should be careful about neat claims."
+            },
+            {
+              "end": 4641,
+              "quoted": false,
+              "start": 4596,
+              "text": "The relationship can move in both directions."
+            },
+            {
+              "end": 4886,
+              "quoted": false,
+              "start": 4840,
+              "text": "The first full night can feel almost disloyal."
+            },
+            {
+              "end": 4929,
+              "quoted": false,
+              "start": 4887,
+              "text": "There is a strange guilt in waking rested."
+            },
+            {
+              "end": 5041,
+              "quoted": false,
+              "start": 5010,
+              "text": "But exhaustion is not devotion."
+            },
+            {
+              "end": 5088,
+              "quoted": false,
+              "start": 5042,
+              "text": "Staying awake does not keep the person closer."
+            },
+            {
+              "end": 5124,
+              "quoted": false,
+              "start": 5089,
+              "text": "It only keeps the body in distress."
+            },
+            {
+              "end": 5192,
+              "quoted": false,
+              "start": 5126,
+              "text": "For others, sleep problems persist and become their own condition."
+            },
+            {
+              "end": 5222,
+              "quoted": false,
+              "start": 5193,
+              "text": "That is when support matters."
+            },
+            {
+              "end": 5634,
+              "quoted": false,
+              "start": 5613,
+              "text": "This is not weakness."
+            },
+            {
+              "end": 5684,
+              "quoted": false,
+              "start": 5635,
+              "text": "It is a health issue sitting inside a human loss."
+            },
+            {
+              "end": 5807,
+              "quoted": false,
+              "start": 5779,
+              "text": "Keep the room cool and dark."
+            },
+            {
+              "end": 5929,
+              "quoted": false,
+              "start": 5899,
+              "text": "Be careful with late caffeine."
+            },
+            {
+              "end": 6124,
+              "quoted": false,
+              "start": 6076,
+              "text": "Tell someone if nights are becoming frightening."
+            },
+            {
+              "end": 6245,
+              "quoted": false,
+              "start": 6190,
+              "text": "Grief already gives people enough to feel guilty about."
+            },
+            {
+              "end": 6275,
+              "quoted": false,
+              "start": 6246,
+              "text": "The aim is not perfect sleep."
+            },
+            {
+              "end": 6424,
+              "quoted": false,
+              "start": 6409,
+              "text": "Not disappears."
+            },
+            {
+              "end": 6445,
+              "quoted": false,
+              "start": 6425,
+              "text": "Not resolves neatly."
+            },
+            {
+              "end": 6458,
+              "quoted": false,
+              "start": 6446,
+              "text": "But changes."
+            },
+            {
+              "end": 6501,
+              "quoted": false,
+              "start": 6459,
+              "text": "The bed becomes less like a witness stand."
+            },
+            {
+              "end": 6535,
+              "quoted": false,
+              "start": 6502,
+              "text": "The dark becomes less accusatory."
+            },
+            {
+              "end": 6587,
+              "quoted": false,
+              "start": 6536,
+              "text": "The first thought on waking is not always the loss."
+            },
+            {
+              "end": 6707,
+              "quoted": false,
+              "start": 6651,
+              "text": "Later, there may be mornings when memory returns gently."
+            },
+            {
+              "end": 6735,
+              "quoted": false,
+              "start": 6709,
+              "text": "Sleep does not cure grief."
+            },
+            {
+              "end": 962,
+              "quoted": false,
+              "start": 896,
+              "text": "That matters because sleep is not just a pause from consciousness."
+            },
+            {
+              "end": 1166,
+              "quoted": false,
+              "start": 1106,
+              "text": "When grief disrupts sleep, it does not simply make us tired."
+            },
+            {
+              "end": 1387,
+              "quoted": false,
+              "start": 1321,
+              "text": "The ordinary world can seem too bright, too fast, too indifferent."
             }
           ],
           "threshold": {
-            "minimum_run": 3
+            "maximum_mean_sentence_words": 15.0,
+            "maximum_short_rate_per_1000": 30.0,
+            "minimum_repeated_opener_run": 2,
+            "minimum_run": 3,
+            "rate_minimum_words": 300
           },
           "threshold_met": true
         }
@@ -507,6 +1257,258 @@
       "id": "no-anaphora",
       "severity": "context_warning",
       "status": "flagged"
+    },
+    {
+      "category": "Voice and register",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max paragraph-opener run: 2",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Max paragraph-opener run: 2",
+          "evidence_role": "rhythm_signal",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "guidance": "Fix mechanical repetition across paragraph openings; recommend preserving deliberate rhetorical patterning.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "id": "no-paragraph-anaphora",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "One-line sections under headings: 0",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "One-line sections under headings: 0",
+          "evidence_role": "repeated_template",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix by developing or folding one-line sections into prose; recommend preserving a single deliberate short section used for emphasis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-heading-one-liners",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No title case headings",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No title case headings",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix headings that capitalise minor words; match whatever heading style the rest of the document uses.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-title-case-headings",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed spelling conventions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed spelling conventions",
+          "evidence_role": "lexical_distribution",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix the mixture by settling on one convention; preserve whichever one the document and its audience already use.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-mixed-spelling-conventions",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No stacked from-to ranges",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No stacked from-to ranges",
+          "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "guidance": "Fix stacked from-to pairs by naming what the passage actually covers; keep single ranges.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "id": "no-false-ranges",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Filler and hedging",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No modal qualifier stacks",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No modal qualifier stacks",
+          "evidence_role": "stance_erasure",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "guidance": "Fix stacked qualifiers by keeping the one the claim needs; recommend preserving qualifiers tied to a stated basis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "id": "no-modal-stacks",
+      "severity": "context_warning",
+      "status": "clear"
     },
     {
       "category": "Communication",
@@ -655,21 +1657,23 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "sentence length variation 7.5 across 97 sentences (target above 9)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Sentence length stdev: 7.5 (target: >4)",
+            "effective_threshold": {
+              "minimum_stdev": 9.0
+            },
+            "raw_evidence": "Sentence length stdev: 7.5 (target: >9)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Sentence length stdev: 7.5 (target: >4)",
+          "evidence": "Sentence length stdev: 7.5 (target: >9)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -677,11 +1681,14 @@
             "genre_misfit"
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
-          "metric_value": 0,
+          "metric": "sentence length variation 7.5 across 97 sentences (target above 9)",
+          "metric_value": "sentence length variation 7.5 across 97 sentences (target above 9)",
           "sample_size": 1151,
           "severity": "context_warning",
-          "threshold": null,
-          "threshold_met": false
+          "threshold": {
+            "minimum_stdev": 9.0
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -690,7 +1697,7 @@
       ],
       "id": "sentence-length-variance",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Content patterns",
@@ -782,32 +1789,176 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "That matters because sleep is not just a pause from consciousness. It is",
+          "it does not simply make us tired. It can",
+          "not \u201cHow do I force myself to sleep?\u201d but \u201cHow do I make the night less hostile?\u201d That might mean lowering the stakes",
+          "The goal is not to win against grief. It is",
+          "not because it solves anything, but because it gives the mind somewhere to put the loop",
+          "Staying awake does not keep the person closer. It only",
+          "This is not weakness. It is",
+          "not as a command, but as a signal to the body",
+          "The aim is not perfect sleep. The aim is",
+          "Sleep does not cure grief. It gives"
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 10,
+          "candidates": [
+            {
+              "end": 968,
+              "quoted": false,
+              "start": 896,
+              "text": "That matters because sleep is not just a pause from consciousness. It is"
+            },
+            {
+              "end": 1173,
+              "quoted": false,
+              "start": 1133,
+              "text": "it does not simply make us tired. It can"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "not \u201cHow do I force myself to sleep?\u201d but \u201cHow do I make the night less hostile?\u201d That might mean lowering the stakes"
+            },
+            {
+              "end": 3090,
+              "quoted": false,
+              "start": 3047,
+              "text": "The goal is not to win against grief. It is"
+            },
+            {
+              "end": 3582,
+              "quoted": false,
+              "start": 3495,
+              "text": "not because it solves anything, but because it gives the mind somewhere to put the loop"
+            },
+            {
+              "end": 5096,
+              "quoted": false,
+              "start": 5042,
+              "text": "Staying awake does not keep the person closer. It only"
+            },
+            {
+              "end": 5640,
+              "quoted": false,
+              "start": 5613,
+              "text": "This is not weakness. It is"
+            },
+            {
+              "end": 5990,
+              "quoted": false,
+              "start": 5945,
+              "text": "not as a command, but as a signal to the body"
+            },
+            {
+              "end": 6286,
+              "quoted": false,
+              "start": 6246,
+              "text": "The aim is not perfect sleep. The aim is"
+            },
+            {
+              "end": 6744,
+              "quoted": false,
+              "start": 6709,
+              "text": "Sleep does not cure grief. It gives"
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "raw_evidence": "Found 10 negative-parallelism occurrence(s)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No negative parallelisms or contrived reframes",
+          "evidence": "Found 10 negative-parallelism occurrence(s)",
           "evidence_role": "rhetorical_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
-          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced.",
-          "match_count": 0,
-          "matches": [],
+          "guidance": "Surface every matched construction at Balanced and All, including matches split across two sentences, negative clauses resumed by it/they/he/she, punctuated not-X-but-Y forms, and each rather-than frame. Report the form and occurrence count without suppressing matches based on inferred intention. Repeated occurrences add progressively more signal-stacking evidence.",
+          "match_count": 10,
+          "matches": [
+            "That matters because sleep is not just a pause from consciousness. It is",
+            "it does not simply make us tired. It can",
+            "not \u201cHow do I force myself to sleep?\u201d but \u201cHow do I make the night less hostile?\u201d That might mean lowering the stakes",
+            "The goal is not to win against grief. It is",
+            "not because it solves anything, but because it gives the mind somewhere to put the loop",
+            "Staying awake does not keep the person closer. It only",
+            "This is not weakness. It is",
+            "not as a command, but as a signal to the body",
+            "The aim is not perfect sleep. The aim is",
+            "Sleep does not cure grief. It gives"
+          ],
           "severity": "strong_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 968,
+              "quoted": false,
+              "start": 896,
+              "text": "That matters because sleep is not just a pause from consciousness. It is"
+            },
+            {
+              "end": 1173,
+              "quoted": false,
+              "start": 1133,
+              "text": "it does not simply make us tired. It can"
+            },
+            {
+              "end": null,
+              "quoted": false,
+              "start": null,
+              "text": "not \u201cHow do I force myself to sleep?\u201d but \u201cHow do I make the night less hostile?\u201d That might mean lowering the stakes"
+            },
+            {
+              "end": 3090,
+              "quoted": false,
+              "start": 3047,
+              "text": "The goal is not to win against grief. It is"
+            },
+            {
+              "end": 3582,
+              "quoted": false,
+              "start": 3495,
+              "text": "not because it solves anything, but because it gives the mind somewhere to put the loop"
+            },
+            {
+              "end": 5096,
+              "quoted": false,
+              "start": 5042,
+              "text": "Staying awake does not keep the person closer. It only"
+            },
+            {
+              "end": 5640,
+              "quoted": false,
+              "start": 5613,
+              "text": "This is not weakness. It is"
+            },
+            {
+              "end": 5990,
+              "quoted": false,
+              "start": 5945,
+              "text": "not as a command, but as a signal to the body"
+            },
+            {
+              "end": 6286,
+              "quoted": false,
+              "start": 6246,
+              "text": "The aim is not perfect sleep. The aim is"
+            },
+            {
+              "end": 6744,
+              "quoted": false,
+              "start": 6709,
+              "text": "Sleep does not cure grief. It gives"
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -815,7 +1966,7 @@
       ],
       "id": "no-negative-parallelisms",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Language and grammar",
@@ -929,6 +2080,7 @@
           ],
           "guidance": "Fix at every depth unless quoted from source text.",
           "match_count": 0,
+          "matches": [],
           "severity": "hard_fail",
           "spans": [],
           "threshold": null,
@@ -1009,7 +2161,7 @@
           "failure_modes": [
             "provenance_residue"
           ],
-          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue.",
+          "guidance": "Fix at every depth; replace or remove unfilled placeholders, publishing instructions, and platform markup.",
           "match_count": 0,
           "matches": [],
           "severity": "hard_fail",
@@ -1153,20 +2305,23 @@
           ],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Found 3 triad(s): ['less caffeine, a dark room and no phone', 'can include sadness, tearfulness and insomnia, and it may not require clinical treatment', 'anxiety, intrusive thoughts or inability']",
+            "effective_threshold": {
+              "maximum_rate_per_1000": 4.0,
+              "minimum_words": 300
+            },
+            "raw_evidence": "Triads: 3 at 2.6 per 1000 words",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 3 triad(s): ['less caffeine, a dark room and no phone', 'can include sadness, tearfulness and insomnia, and it may not require clinical treatment', 'anxiety, intrusive thoughts or inability']",
+          "evidence": "Triads: 3 at 2.6 per 1000 words",
           "evidence_role": "list_rhythm",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+          "guidance": "Thin out decorative or interchangeable triads until the rate drops. Preserve meaningful lists, quotations, and deliberate rhetoric.",
           "match_count": 3,
           "matches": [
             "less caffeine, a dark room and no phone",
@@ -1194,8 +2349,11 @@
               "text": "anxiety, intrusive thoughts or inability"
             }
           ],
-          "threshold": null,
-          "threshold_met": true
+          "threshold": {
+            "maximum_rate_per_1000": 4.0,
+            "minimum_words": 300
+          },
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -1204,10 +2362,268 @@
       ],
       "id": "no-forced-triads",
       "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 42,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
+          "metric": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
+          "metric_value": "42 nominalisation(s) at 36.5 per 1000 words (flag at 29.0)",
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-nominalisation-rate",
+      "severity": "context_warning",
       "status": "flagged"
     },
     {
-      "category": "Content patterns",
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 3,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
+          "metric": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
+          "metric_value": "3 subject relative(s) at 2.6 per 1000 words (flag at 3.5)",
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-that-relative-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 6,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
+          "metric": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
+          "metric_value": "6 participial clause(s) at 5.2 per 1000 words (flag at 4.4)",
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-participial-clause-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 4,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
+          "metric": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
+          "metric_value": "4 passive verb(s) at 3.5 per 1000 words (flag at 5.0)",
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-passive-voice-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 26,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
+          "metric": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
+          "metric_value": "26 `it` pronoun(s) at 22.6 per 1000 words (flag at 18.0)",
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-it-pronoun-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 2,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
+          "metric": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
+          "metric_value": "2 Latinate verb(s) at 1.7 per 1000 words (flag at 2.5)",
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "no-latinate-verb-rate",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
       "evidence": {
         "counts": {},
         "locations": [],
@@ -1220,24 +2636,169 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No superficial -ing phrases",
+            "raw_evidence": "Mean word length 4.78 characters across 1146 words (target: <4.8)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No superficial -ing phrases",
+          "evidence": "Mean word length 4.78 characters across 1146 words (target: <4.8)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Look for the shorter word that does the same job. `necessitated` becomes `needed`, `demonstrated substantial improvement` becomes `got better`. The measure is draft-wide, so it points at register rather than at one sentence.",
+          "metric": null,
+          "metric_value": 0,
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "word-length-average",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed-script words",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed-script words",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "guidance": "Retype the flagged word in plain Latin characters. If a passage is genuinely in Russian, Greek, Kazakh, or another Cyrillic or Greek script, write the whole word in that script rather than mixing.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "id": "no-mixed-script-words",
+      "severity": "hard_fail",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean concreteness 2.94 of 5 across 548 content words (target: >2.915)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean concreteness 2.94 of 5 across 548 content words (target: >2.915)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "guidance": "Name the thing. `The framework provides a basis for the approach` becomes `the rota tells people when to turn up`. Abstraction is right where the subject really is abstract; the measure is draft-wide, so read it as register rather than as one sentence.",
+          "metric": null,
+          "metric_value": 0,
+          "sample_size": 1151,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "id": "concreteness-average",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          "Lying in the dark with one hand on the chest"
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 2878,
+              "quoted": false,
+              "start": 2834,
+              "text": "Lying in the dark with one hand on the chest"
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 1 tacked-on -ing phrase(s)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 1 tacked-on -ing phrase(s)",
           "evidence_role": "analysis_substitution",
           "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
-          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
-          "match_count": 0,
-          "matches": [],
+          "guidance": "Rewrite formulaic participial clauses when a direct sentence or precise causal statement is clearer.",
+          "match_count": 1,
+          "matches": [
+            "Lying in the dark with one hand on the chest"
+          ],
           "severity": "strong_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 2878,
+              "quoted": false,
+              "start": 2834,
+              "text": "Lying in the dark with one hand on the chest"
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1245,7 +2806,7 @@
       ],
       "id": "no-superficial-ing",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Sensory and atmospheric",
@@ -1275,6 +2836,7 @@
           ],
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -1303,12 +2865,12 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Quietness words: 2",
+            "raw_evidence": "Quietness words: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Quietness words: 2",
+          "evidence": "Quietness words: 0",
           "evidence_role": "atmospheric_cliche",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -1346,27 +2908,27 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 2
+              "minimum_candidates": 1
             },
-            "raw_evidence": "Rhetorical questions: 0",
+            "raw_evidence": "Fragment-question answer beats: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Rhetorical questions: 0",
+          "evidence": "Fragment-question answer beats: 0",
           "evidence_role": "rhetorical_template",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument.",
+          "guidance": "Rewrite the fragment and its answer as one direct statement.",
           "match_count": 0,
           "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 2
+            "minimum_candidates": 1
           },
           "threshold_met": false
         }
@@ -1427,6 +2989,53 @@
         "genre_misfit"
       ],
       "id": "no-excessive-lists",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_deviation": 2,
+              "minimum_items": 3
+            },
+            "raw_evidence": "No symmetric list items",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No symmetric list items",
+          "evidence_role": "listification",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix template-shaped list items; preserve specifications, comparison tables, and reference entries where uniformity carries meaning.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "maximum_deviation": 2,
+            "minimum_items": 3
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-symmetric-list-items",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -1505,6 +3114,7 @@
           ],
           "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -1716,6 +3326,7 @@
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
+          "matches": [],
           "metric_value": 0,
           "sample_size": 1151,
           "severity": "context_warning",
@@ -2134,6 +3745,7 @@
           ],
           "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": {
@@ -2180,6 +3792,7 @@
           ],
           "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
@@ -2201,21 +3814,21 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "windowed type-token ratio 0.715 (150-word windows, flag at 0.71)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Type-token ratio: 0.444 (508 unique / 1145 total, target: >0.40)",
+            "raw_evidence": "Windowed type-token ratio: 0.715 (40 windows of 150 words, flag at 0.71)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Type-token ratio: 0.444 (508 unique / 1145 total, target: >0.40)",
+          "evidence": "Windowed type-token ratio: 0.715 (40 windows of 150 words, flag at 0.71)",
           "evidence_role": "lexical_distribution",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -2223,12 +3836,12 @@
             "genre_misfit"
           ],
           "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately.",
-          "metric": null,
-          "metric_value": 0,
+          "metric": "windowed type-token ratio 0.715 (150-word windows, flag at 0.71)",
+          "metric_value": "windowed type-token ratio 0.715 (150-word windows, flag at 0.71)",
           "sample_size": 1151,
           "severity": "context_warning",
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -2237,102 +3850,7 @@
       ],
       "id": "vocabulary-diversity",
       "severity": "context_warning",
-      "status": "clear"
-    },
-    {
-      "category": "Language and grammar",
-      "evidence": {
-        "counts": {},
-        "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "less caffeine, a dark room and no phone",
-          "can include sadness, tearfulness and insomnia, and it may not require clinical treatment",
-          "anxiety, intrusive thoughts or inability"
-        ],
-        "raw": {
-          "aggregate_finding": false,
-          "candidate_count": 3,
-          "candidates": [
-            {
-              "end": 2309,
-              "quoted": false,
-              "start": 2270,
-              "text": "less caffeine, a dark room and no phone"
-            },
-            {
-              "end": 5323,
-              "quoted": false,
-              "start": 5235,
-              "text": "can include sadness, tearfulness and insomnia, and it may not require clinical treatment"
-            },
-            {
-              "end": 5566,
-              "quoted": false,
-              "start": 5526,
-              "text": "anxiety, intrusive thoughts or inability"
-            }
-          ],
-          "context_gate": {
-            "applied": false,
-            "effective_threshold": {
-              "minimum_candidates": 4,
-              "minimum_words": 300
-            },
-            "raw_evidence": "Triads: 3",
-            "suppression_reason": null
-          },
-          "context_reason": null,
-          "context_suppressed": false,
-          "evidence": "Triads: 3",
-          "evidence_role": "list_rhythm",
-          "evidence_type": "lexical",
-          "failure_modes": [
-            "frictionless_structure",
-            "genre_misfit"
-          ],
-          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-          "match_count": 3,
-          "matches": [
-            "less caffeine, a dark room and no phone",
-            "can include sadness, tearfulness and insomnia, and it may not require clinical treatment",
-            "anxiety, intrusive thoughts or inability"
-          ],
-          "severity": "context_warning",
-          "spans": [
-            {
-              "end": 2309,
-              "quoted": false,
-              "start": 2270,
-              "text": "less caffeine, a dark room and no phone"
-            },
-            {
-              "end": 5323,
-              "quoted": false,
-              "start": 5235,
-              "text": "can include sadness, tearfulness and insomnia, and it may not require clinical treatment"
-            },
-            {
-              "end": 5566,
-              "quoted": false,
-              "start": 5526,
-              "text": "anxiety, intrusive thoughts or inability"
-            }
-          ],
-          "threshold": {
-            "minimum_candidates": 4,
-            "minimum_words": 300
-          },
-          "threshold_met": false
-        }
-      },
-      "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
-      ],
-      "id": "no-triad-density",
-      "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Structural tells",
@@ -2402,6 +3920,7 @@
           ],
           "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": null,
@@ -2520,12 +4039,12 @@
             "effective_threshold": {
               "minimum_candidates": 2
             },
-            "raw_evidence": "List items with bolded headers: 0",
+            "raw_evidence": "Bold-label segments: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "List items with bolded headers: 0",
+          "evidence": "Bold-label segments: 0",
           "evidence_role": "list_template",
           "evidence_type": "lexical",
           "failure_modes": [

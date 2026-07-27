@@ -1,25 +1,31 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 7
+      "flagged": 18
     },
     "programmatic": {
       "by_category": {
+        "Content patterns": 1,
         "Filler and hedging": 2,
-        "Language and grammar": 3,
+        "Language and grammar": 10,
+        "Signal stacking": 1,
+        "Structural tells": 2,
         "Style": 1,
         "Voice and register": 1
       },
       "by_severity": {
-        "context_warning": 7,
+        "context_warning": 15,
         "hard_fail": 0,
-        "strong_warning": 0
+        "strong_warning": 3
       },
       "signal_stacking": {
-        "components": [],
-        "score": 0,
+        "components": [
+          "manufactured insight framing",
+          "negative parallelism"
+        ],
+        "score": 6,
         "threshold": 4,
-        "triggered": false,
+        "triggered": true,
         "vocabulary_points": 0
       }
     },
@@ -93,12 +99,12 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Max AI words per paragraph: 1 (1 total in text)",
+            "raw_evidence": "Max AI words per paragraph: 1 (4 total in text)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Max AI words per paragraph: 1 (1 total in text)",
+          "evidence": "Max AI words per paragraph: 1 (4 total in text)",
           "evidence_role": "vocabulary_cluster",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -166,28 +172,38 @@
       "category": "Signal stacking",
       "evidence": {
         "counts": {
-          "score": 0,
+          "score": 6,
           "threshold": 4
         },
         "locations": [],
         "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
-          "component_count": 0,
-          "component_signals": [],
-          "components": [],
+          "component_count": 2,
+          "component_points": {
+            "manufactured_insight": 2,
+            "negative_parallelism": 4
+          },
+          "component_signals": [
+            "manufactured insight framing",
+            "negative parallelism"
+          ],
+          "components": [
+            "manufactured insight framing",
+            "negative parallelism"
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": 4,
-            "raw_evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=12 distinct/9.0/1000",
+            "raw_evidence": "Overall signal stacking 6/4 from [manufactured insight framing, negative parallelism]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=12 distinct/9.0/1000, sample=['using', 'need', 'overwhelmed', 'approach', 'challenge', 'conditions', 'impressive', 'maintaining', 'precise', 'preserving']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Overall signal stacking 0/4 from []; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=12 distinct/9.0/1000",
+          "evidence": "Overall signal stacking 6/4 from [manufactured insight framing, negative parallelism]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=12 distinct/9.0/1000, sample=['using', 'need', 'overwhelmed', 'approach', 'challenge', 'conditions', 'impressive', 'maintaining', 'precise', 'preserving']",
           "evidence_role": "signal_stacking",
           "evidence_type": "aggregate",
           "failure_modes": [
@@ -195,10 +211,10 @@
             "frictionless_structure"
           ],
           "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict.",
-          "score": 0,
+          "score": 6,
           "severity": "context_warning",
           "threshold": 4,
-          "threshold_met": false,
+          "threshold_met": true,
           "vocabulary_signal_stacking": {
             "gptzero_matches": [],
             "kobak_style_density": 8.98876404494382,
@@ -227,7 +243,7 @@
       ],
       "id": "overall-signal-stacking",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Structural tells",
@@ -235,32 +251,50 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "That is the trick of productivity"
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 1011,
+              "quoted": false,
+              "start": 978,
+              "text": "That is the trick of productivity"
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No manufactured insight phrases",
+            "raw_evidence": "Found 1: ['that is the trick of productivity']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No manufactured insight phrases",
+          "evidence": "Found 1: ['that is the trick of productivity']",
           "evidence_role": "rhetorical_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
           "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice.",
-          "match_count": 0,
-          "matches": [],
+          "match_count": 1,
+          "matches": [
+            "That is the trick of productivity"
+          ],
           "severity": "strong_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 1011,
+              "quoted": false,
+              "start": 978,
+              "text": "That is the trick of productivity"
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -268,7 +302,7 @@
       ],
       "id": "no-manufactured-insight",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Voice and register",
@@ -296,7 +330,7 @@
             "voice_erasure",
             "generic_abstraction"
           ],
-          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text.",
+          "guidance": "Remove the candour or vulnerability announcement and state the claim directly. Preserve literal uses and quoted source text.",
           "match_count": 0,
           "matches": [],
           "severity": "strong_warning",
@@ -310,6 +344,50 @@
         "generic_abstraction"
       ],
       "id": "no-performed-candour",
+      "severity": "strong_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Communication",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No formulaic social-post frames",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No formulaic social-post frames",
+          "evidence_role": "platform_formula",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Remove the stock frame and state the actual request, experience, result, or constraint directly.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "strong_warning",
+          "spans": [],
+          "subtypes": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-formulaic-social-posts",
       "severity": "strong_warning",
       "status": "clear"
     },
@@ -334,11 +412,145 @@
           "Automations.",
           "Dashboards.",
           "Apps that promised simplicity.",
-          "Apps that promised depth."
+          "Apps that promised depth.",
+          "Apps that promised simplicity. Apps that promised depth.",
+          "You make categories. You tag things. You build a dashboard.",
+          "The automation breaks. The tags proliferate.",
+          "Capture the task. Capture the idea. Capture the meeting note. Capture the article. Capture the insight.",
+          "A note still needs synthesis. A list still needs priority.",
+          "The list is cleaner. The board is aligned. The note has metadata. The project has a template.",
+          "The urgent thing became irrelevant. The small thing became political. The neat sequence collapsed.",
+          "Not ideal. Not maximally productive.",
+          "I save less. I finish less. I trust skimming more.",
+          "It makes waste visible. It also makes rest legitimate.",
+          "Tasks lived in too many places.",
+          "Notes were scattered.",
+          "For a while, each new tool worked.",
+          "You are not yet maintaining the system.",
+          "You make categories.",
+          "You tag things.",
+          "You build a dashboard.",
+          "Then reality resumes.",
+          "The task manager fills with stale intentions.",
+          "The dashboard becomes another surface to check.",
+          "The automation breaks.",
+          "The tags proliferate.",
+          "Some are very good.",
+          "Most productivity apps are built around capture.",
+          "Capture the task.",
+          "Capture the idea.",
+          "Capture the meeting note.",
+          "Capture the article.",
+          "Capture the insight.",
+          "Capture everything, because storage is cheap and forgetting feels irresponsible.",
+          "But capture is not the same as commitment.",
+          "A captured task still needs a decision.",
+          "A saved article still needs time.",
+          "A note still needs synthesis.",
+          "A list still needs priority.",
+          "The app does not remove that claim.",
+          "It just makes it look orderly.",
+          "There is a particular relief in writing something down.",
+          "It feels like moving it out of the mind.",
+          "But if the thing matters, it returns.",
+          "I do not mean this as a universal rule.",
+          "Some work genuinely requires rigorous tracking.",
+          "I kept preserving things to avoid having to choose.",
+          "This is not a moral failing.",
+          "It is a design pattern.",
+          "Apps have interfaces.",
+          "Interfaces invite interaction.",
+          "These actions feel constructive because they are concrete.",
+          "They produce visible change.",
+          "The list is cleaner.",
+          "The board is aligned.",
+          "The note has metadata.",
+          "The project has a template.",
+          "Meanwhile, the hard thing remains untouched.",
+          "Writing the difficult email.",
+          "Reading the dense document.",
+          "Making the decision.",
+          "Having the conversation.",
+          "Starting the draft.",
+          "Closing the loop.",
+          "I was not procrastinating in the usual sense.",
+          "I was doing something adjacent to useful.",
+          "That made it harder to challenge.",
+          "By Thursday, the context has changed.",
+          "The meeting moved.",
+          "Someone sent new information.",
+          "The urgent thing became irrelevant.",
+          "The small thing became political.",
+          "The neat sequence collapsed.",
+          "Productivity apps tend to treat this as a planning issue.",
+          "Build better workflows.",
+          "Add dependencies.",
+          "Use recurring reviews.",
+          "Reprioritise.",
+          "Sometimes that helps.",
+          "The problem is that the plan was a fiction.",
+          "Useful, perhaps, but still a fiction.",
+          "A weekly plan can create orientation.",
+          "It cannot eliminate volatility.",
+          "Eventually, that reconciliation became its own workload.",
+          "A completed task disappears.",
+          "An overdue task glows.",
+          "This is rational from a software perspective.",
+          "Systems need to show what still requires action.",
+          "That distinction matters.",
+          "A to-do list can be endless because possibility is endless.",
+          "Capacity is not.",
+          "The app may help you survive the chaos.",
+          "It may not help you question it.",
+          "That is not a reason to reject tools altogether.",
+          "I do not try to capture every idea.",
+          "I do not build dashboards for my life.",
+          "I let some things be forgotten.",
+          "The last part is harder than it sounds.",
+          "There is also fear.",
+          "Fear that forgetting means losing value.",
+          "Fear that an uncaptured idea will prove important later.",
+          "Fear that an untracked task will expose you as careless.",
+          "But memory has its own filtering function.",
+          "So does recurrence.",
+          "Not always.",
+          "My current approach is deliberately plain.",
+          "Not ideal.",
+          "Not maximally productive.",
+          "Complete.",
+          "Usually the answer is one to three things.",
+          "Sometimes it is one difficult thing and several minor obligations.",
+          "I write those things down.",
+          "\u201cLater\u201d is not a magic category anymore.",
+          "It has to earn its place.",
+          "For reading and ideas, I have become more ruthless.",
+          "I save less.",
+          "I finish less.",
+          "I trust skimming more.",
+          "Not every useful article needs to become a note.",
+          "Not every note needs to become an insight.",
+          "Not every insight needs to be operationalised.",
+          "This has changed how I think about attention.",
+          "I see it as something to spend.",
+          "That framing is less glamorous, but more practical.",
+          "Spending attention implies trade-offs.",
+          "It makes waste visible.",
+          "It also makes rest legitimate.",
+          "You cannot spend continuously without depletion.",
+          "No app can negotiate that physics on your behalf.",
+          "The cost is that the system is not elegant.",
+          "It does not scale infinitely.",
+          "It does not produce satisfying analytics.",
+          "But that is also the point.",
+          "A good tool should support judgement, not replace it.",
+          "I needed less infrastructure and more refusal.",
+          "Less capture and more choice.",
+          "That is harder to package as software.",
+          "It is also why it works."
         ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 15,
+          "candidate_count": 149,
           "candidates": [
             {
               "end": 517,
@@ -429,19 +641,827 @@
               "quoted": false,
               "start": 756,
               "text": "Apps that promised depth."
+            },
+            {
+              "end": 781,
+              "quoted": false,
+              "start": 725,
+              "text": "Apps that promised simplicity. Apps that promised depth."
+            },
+            {
+              "end": 1239,
+              "quoted": false,
+              "start": 1180,
+              "text": "You make categories. You tag things. You build a dashboard."
+            },
+            {
+              "end": 1869,
+              "quoted": false,
+              "start": 1825,
+              "text": "The automation breaks. The tags proliferate."
+            },
+            {
+              "end": 2363,
+              "quoted": false,
+              "start": 2260,
+              "text": "Capture the task. Capture the idea. Capture the meeting note. Capture the article. Capture the insight."
+            },
+            {
+              "end": 2694,
+              "quoted": false,
+              "start": 2636,
+              "text": "A note still needs synthesis. A list still needs priority."
+            },
+            {
+              "end": 3871,
+              "quoted": false,
+              "start": 3778,
+              "text": "The list is cleaner. The board is aligned. The note has metadata. The project has a template."
+            },
+            {
+              "end": 4954,
+              "quoted": false,
+              "start": 4856,
+              "text": "The urgent thing became irrelevant. The small thing became political. The neat sequence collapsed."
+            },
+            {
+              "end": 8296,
+              "quoted": false,
+              "start": 8260,
+              "text": "Not ideal. Not maximally productive."
+            },
+            {
+              "end": 8883,
+              "quoted": false,
+              "start": 8833,
+              "text": "I save less. I finish less. I trust skimming more."
+            },
+            {
+              "end": 9309,
+              "quoted": false,
+              "start": 9255,
+              "text": "It makes waste visible. It also makes rest legitimate."
+            },
+            {
+              "end": 297,
+              "quoted": false,
+              "start": 266,
+              "text": "Tasks lived in too many places."
+            },
+            {
+              "end": 319,
+              "quoted": false,
+              "start": 298,
+              "text": "Notes were scattered."
+            },
+            {
+              "end": 977,
+              "quoted": false,
+              "start": 943,
+              "text": "For a while, each new tool worked."
+            },
+            {
+              "end": 1104,
+              "quoted": false,
+              "start": 1065,
+              "text": "You are not yet maintaining the system."
+            },
+            {
+              "end": 1200,
+              "quoted": false,
+              "start": 1180,
+              "text": "You make categories."
+            },
+            {
+              "end": 1216,
+              "quoted": false,
+              "start": 1201,
+              "text": "You tag things."
+            },
+            {
+              "end": 1239,
+              "quoted": false,
+              "start": 1217,
+              "text": "You build a dashboard."
+            },
+            {
+              "end": 1569,
+              "quoted": false,
+              "start": 1548,
+              "text": "Then reality resumes."
+            },
+            {
+              "end": 1616,
+              "quoted": false,
+              "start": 1571,
+              "text": "The task manager fills with stale intentions."
+            },
+            {
+              "end": 1824,
+              "quoted": false,
+              "start": 1777,
+              "text": "The dashboard becomes another surface to check."
+            },
+            {
+              "end": 1847,
+              "quoted": false,
+              "start": 1825,
+              "text": "The automation breaks."
+            },
+            {
+              "end": 1869,
+              "quoted": false,
+              "start": 1848,
+              "text": "The tags proliferate."
+            },
+            {
+              "end": 2073,
+              "quoted": false,
+              "start": 2054,
+              "text": "Some are very good."
+            },
+            {
+              "end": 2259,
+              "quoted": false,
+              "start": 2211,
+              "text": "Most productivity apps are built around capture."
+            },
+            {
+              "end": 2277,
+              "quoted": false,
+              "start": 2260,
+              "text": "Capture the task."
+            },
+            {
+              "end": 2295,
+              "quoted": false,
+              "start": 2278,
+              "text": "Capture the idea."
+            },
+            {
+              "end": 2321,
+              "quoted": false,
+              "start": 2296,
+              "text": "Capture the meeting note."
+            },
+            {
+              "end": 2342,
+              "quoted": false,
+              "start": 2322,
+              "text": "Capture the article."
+            },
+            {
+              "end": 2363,
+              "quoted": false,
+              "start": 2343,
+              "text": "Capture the insight."
+            },
+            {
+              "end": 2516,
+              "quoted": false,
+              "start": 2436,
+              "text": "Capture everything, because storage is cheap and forgetting feels irresponsible."
+            },
+            {
+              "end": 2560,
+              "quoted": false,
+              "start": 2518,
+              "text": "But capture is not the same as commitment."
+            },
+            {
+              "end": 2601,
+              "quoted": false,
+              "start": 2562,
+              "text": "A captured task still needs a decision."
+            },
+            {
+              "end": 2635,
+              "quoted": false,
+              "start": 2602,
+              "text": "A saved article still needs time."
+            },
+            {
+              "end": 2665,
+              "quoted": false,
+              "start": 2636,
+              "text": "A note still needs synthesis."
+            },
+            {
+              "end": 2694,
+              "quoted": false,
+              "start": 2666,
+              "text": "A list still needs priority."
+            },
+            {
+              "end": 2797,
+              "quoted": false,
+              "start": 2762,
+              "text": "The app does not remove that claim."
+            },
+            {
+              "end": 2828,
+              "quoted": false,
+              "start": 2798,
+              "text": "It just makes it look orderly."
+            },
+            {
+              "end": 3070,
+              "quoted": false,
+              "start": 3015,
+              "text": "There is a particular relief in writing something down."
+            },
+            {
+              "end": 3111,
+              "quoted": false,
+              "start": 3071,
+              "text": "It feels like moving it out of the mind."
+            },
+            {
+              "end": 3149,
+              "quoted": false,
+              "start": 3112,
+              "text": "But if the thing matters, it returns."
+            },
+            {
+              "end": 3246,
+              "quoted": false,
+              "start": 3207,
+              "text": "I do not mean this as a universal rule."
+            },
+            {
+              "end": 3294,
+              "quoted": false,
+              "start": 3247,
+              "text": "Some work genuinely requires rigorous tracking."
+            },
+            {
+              "end": 3413,
+              "quoted": false,
+              "start": 3362,
+              "text": "I kept preserving things to avoid having to choose."
+            },
+            {
+              "end": 3521,
+              "quoted": false,
+              "start": 3493,
+              "text": "This is not a moral failing."
+            },
+            {
+              "end": 3545,
+              "quoted": false,
+              "start": 3522,
+              "text": "It is a design pattern."
+            },
+            {
+              "end": 3567,
+              "quoted": false,
+              "start": 3546,
+              "text": "Apps have interfaces."
+            },
+            {
+              "end": 3598,
+              "quoted": false,
+              "start": 3568,
+              "text": "Interfaces invite interaction."
+            },
+            {
+              "end": 3748,
+              "quoted": false,
+              "start": 3690,
+              "text": "These actions feel constructive because they are concrete."
+            },
+            {
+              "end": 3777,
+              "quoted": false,
+              "start": 3749,
+              "text": "They produce visible change."
+            },
+            {
+              "end": 3798,
+              "quoted": false,
+              "start": 3778,
+              "text": "The list is cleaner."
+            },
+            {
+              "end": 3820,
+              "quoted": false,
+              "start": 3799,
+              "text": "The board is aligned."
+            },
+            {
+              "end": 3843,
+              "quoted": false,
+              "start": 3821,
+              "text": "The note has metadata."
+            },
+            {
+              "end": 3871,
+              "quoted": false,
+              "start": 3844,
+              "text": "The project has a template."
+            },
+            {
+              "end": 3917,
+              "quoted": false,
+              "start": 3873,
+              "text": "Meanwhile, the hard thing remains untouched."
+            },
+            {
+              "end": 3947,
+              "quoted": false,
+              "start": 3919,
+              "text": "Writing the difficult email."
+            },
+            {
+              "end": 3975,
+              "quoted": false,
+              "start": 3948,
+              "text": "Reading the dense document."
+            },
+            {
+              "end": 3996,
+              "quoted": false,
+              "start": 3976,
+              "text": "Making the decision."
+            },
+            {
+              "end": 4021,
+              "quoted": false,
+              "start": 3997,
+              "text": "Having the conversation."
+            },
+            {
+              "end": 4041,
+              "quoted": false,
+              "start": 4022,
+              "text": "Starting the draft."
+            },
+            {
+              "end": 4059,
+              "quoted": false,
+              "start": 4042,
+              "text": "Closing the loop."
+            },
+            {
+              "end": 4301,
+              "quoted": false,
+              "start": 4256,
+              "text": "I was not procrastinating in the usual sense."
+            },
+            {
+              "end": 4343,
+              "quoted": false,
+              "start": 4302,
+              "text": "I was doing something adjacent to useful."
+            },
+            {
+              "end": 4377,
+              "quoted": false,
+              "start": 4344,
+              "text": "That made it harder to challenge."
+            },
+            {
+              "end": 4806,
+              "quoted": false,
+              "start": 4769,
+              "text": "By Thursday, the context has changed."
+            },
+            {
+              "end": 4825,
+              "quoted": false,
+              "start": 4807,
+              "text": "The meeting moved."
+            },
+            {
+              "end": 4855,
+              "quoted": false,
+              "start": 4826,
+              "text": "Someone sent new information."
+            },
+            {
+              "end": 4891,
+              "quoted": false,
+              "start": 4856,
+              "text": "The urgent thing became irrelevant."
+            },
+            {
+              "end": 4925,
+              "quoted": false,
+              "start": 4892,
+              "text": "The small thing became political."
+            },
+            {
+              "end": 4954,
+              "quoted": false,
+              "start": 4926,
+              "text": "The neat sequence collapsed."
+            },
+            {
+              "end": 5013,
+              "quoted": false,
+              "start": 4956,
+              "text": "Productivity apps tend to treat this as a planning issue."
+            },
+            {
+              "end": 5037,
+              "quoted": false,
+              "start": 5014,
+              "text": "Build better workflows."
+            },
+            {
+              "end": 5055,
+              "quoted": false,
+              "start": 5038,
+              "text": "Add dependencies."
+            },
+            {
+              "end": 5078,
+              "quoted": false,
+              "start": 5056,
+              "text": "Use recurring reviews."
+            },
+            {
+              "end": 5092,
+              "quoted": false,
+              "start": 5079,
+              "text": "Reprioritise."
+            },
+            {
+              "end": 5115,
+              "quoted": false,
+              "start": 5094,
+              "text": "Sometimes that helps."
+            },
+            {
+              "end": 5221,
+              "quoted": false,
+              "start": 5178,
+              "text": "The problem is that the plan was a fiction."
+            },
+            {
+              "end": 5259,
+              "quoted": false,
+              "start": 5222,
+              "text": "Useful, perhaps, but still a fiction."
+            },
+            {
+              "end": 5298,
+              "quoted": false,
+              "start": 5261,
+              "text": "A weekly plan can create orientation."
+            },
+            {
+              "end": 5330,
+              "quoted": false,
+              "start": 5299,
+              "text": "It cannot eliminate volatility."
+            },
+            {
+              "end": 5576,
+              "quoted": false,
+              "start": 5520,
+              "text": "Eventually, that reconciliation became its own workload."
+            },
+            {
+              "end": 5716,
+              "quoted": false,
+              "start": 5688,
+              "text": "A completed task disappears."
+            },
+            {
+              "end": 5739,
+              "quoted": false,
+              "start": 5717,
+              "text": "An overdue task glows."
+            },
+            {
+              "end": 5786,
+              "quoted": false,
+              "start": 5741,
+              "text": "This is rational from a software perspective."
+            },
+            {
+              "end": 5835,
+              "quoted": false,
+              "start": 5787,
+              "text": "Systems need to show what still requires action."
+            },
+            {
+              "end": 6192,
+              "quoted": false,
+              "start": 6167,
+              "text": "That distinction matters."
+            },
+            {
+              "end": 6253,
+              "quoted": false,
+              "start": 6194,
+              "text": "A to-do list can be endless because possibility is endless."
+            },
+            {
+              "end": 6270,
+              "quoted": false,
+              "start": 6254,
+              "text": "Capacity is not."
+            },
+            {
+              "end": 6982,
+              "quoted": false,
+              "start": 6943,
+              "text": "The app may help you survive the chaos."
+            },
+            {
+              "end": 7015,
+              "quoted": false,
+              "start": 6983,
+              "text": "It may not help you question it."
+            },
+            {
+              "end": 7065,
+              "quoted": false,
+              "start": 7017,
+              "text": "That is not a reason to reject tools altogether."
+            },
+            {
+              "end": 7488,
+              "quoted": false,
+              "start": 7453,
+              "text": "I do not try to capture every idea."
+            },
+            {
+              "end": 7527,
+              "quoted": false,
+              "start": 7489,
+              "text": "I do not build dashboards for my life."
+            },
+            {
+              "end": 7616,
+              "quoted": false,
+              "start": 7585,
+              "text": "I let some things be forgotten."
+            },
+            {
+              "end": 7657,
+              "quoted": false,
+              "start": 7618,
+              "text": "The last part is harder than it sounds."
+            },
+            {
+              "end": 7753,
+              "quoted": false,
+              "start": 7734,
+              "text": "There is also fear."
+            },
+            {
+              "end": 7794,
+              "quoted": false,
+              "start": 7754,
+              "text": "Fear that forgetting means losing value."
+            },
+            {
+              "end": 7851,
+              "quoted": false,
+              "start": 7795,
+              "text": "Fear that an uncaptured idea will prove important later."
+            },
+            {
+              "end": 7908,
+              "quoted": false,
+              "start": 7852,
+              "text": "Fear that an untracked task will expose you as careless."
+            },
+            {
+              "end": 7952,
+              "quoted": false,
+              "start": 7910,
+              "text": "But memory has its own filtering function."
+            },
+            {
+              "end": 7972,
+              "quoted": false,
+              "start": 7953,
+              "text": "So does recurrence."
+            },
+            {
+              "end": 8080,
+              "quoted": false,
+              "start": 8069,
+              "text": "Not always."
+            },
+            {
+              "end": 8191,
+              "quoted": false,
+              "start": 8149,
+              "text": "My current approach is deliberately plain."
+            },
+            {
+              "end": 8270,
+              "quoted": false,
+              "start": 8260,
+              "text": "Not ideal."
+            },
+            {
+              "end": 8296,
+              "quoted": false,
+              "start": 8271,
+              "text": "Not maximally productive."
+            },
+            {
+              "end": 8306,
+              "quoted": false,
+              "start": 8297,
+              "text": "Complete."
+            },
+            {
+              "end": 8349,
+              "quoted": false,
+              "start": 8307,
+              "text": "Usually the answer is one to three things."
+            },
+            {
+              "end": 8416,
+              "quoted": false,
+              "start": 8350,
+              "text": "Sometimes it is one difficult thing and several minor obligations."
+            },
+            {
+              "end": 8538,
+              "quoted": false,
+              "start": 8512,
+              "text": "I write those things down."
+            },
+            {
+              "end": 8655,
+              "quoted": false,
+              "start": 8615,
+              "text": "\u201cLater\u201d is not a magic category anymore."
+            },
+            {
+              "end": 8681,
+              "quoted": false,
+              "start": 8656,
+              "text": "It has to earn its place."
+            },
+            {
+              "end": 8832,
+              "quoted": false,
+              "start": 8781,
+              "text": "For reading and ideas, I have become more ruthless."
+            },
+            {
+              "end": 8845,
+              "quoted": false,
+              "start": 8833,
+              "text": "I save less."
+            },
+            {
+              "end": 8860,
+              "quoted": false,
+              "start": 8846,
+              "text": "I finish less."
+            },
+            {
+              "end": 8883,
+              "quoted": false,
+              "start": 8861,
+              "text": "I trust skimming more."
+            },
+            {
+              "end": 8932,
+              "quoted": false,
+              "start": 8884,
+              "text": "Not every useful article needs to become a note."
+            },
+            {
+              "end": 8975,
+              "quoted": false,
+              "start": 8933,
+              "text": "Not every note needs to become an insight."
+            },
+            {
+              "end": 9022,
+              "quoted": false,
+              "start": 8976,
+              "text": "Not every insight needs to be operationalised."
+            },
+            {
+              "end": 9069,
+              "quoted": false,
+              "start": 9024,
+              "text": "This has changed how I think about attention."
+            },
+            {
+              "end": 9162,
+              "quoted": false,
+              "start": 9131,
+              "text": "I see it as something to spend."
+            },
+            {
+              "end": 9215,
+              "quoted": false,
+              "start": 9164,
+              "text": "That framing is less glamorous, but more practical."
+            },
+            {
+              "end": 9254,
+              "quoted": false,
+              "start": 9216,
+              "text": "Spending attention implies trade-offs."
+            },
+            {
+              "end": 9278,
+              "quoted": false,
+              "start": 9255,
+              "text": "It makes waste visible."
+            },
+            {
+              "end": 9309,
+              "quoted": false,
+              "start": 9279,
+              "text": "It also makes rest legitimate."
+            },
+            {
+              "end": 9358,
+              "quoted": false,
+              "start": 9310,
+              "text": "You cannot spend continuously without depletion."
+            },
+            {
+              "end": 9408,
+              "quoted": false,
+              "start": 9359,
+              "text": "No app can negotiate that physics on your behalf."
+            },
+            {
+              "end": 9889,
+              "quoted": false,
+              "start": 9846,
+              "text": "The cost is that the system is not elegant."
+            },
+            {
+              "end": 9919,
+              "quoted": false,
+              "start": 9890,
+              "text": "It does not scale infinitely."
+            },
+            {
+              "end": 9961,
+              "quoted": false,
+              "start": 9920,
+              "text": "It does not produce satisfying analytics."
+            },
+            {
+              "end": 10068,
+              "quoted": false,
+              "start": 10041,
+              "text": "But that is also the point."
+            },
+            {
+              "end": 10123,
+              "quoted": false,
+              "start": 10070,
+              "text": "A good tool should support judgement, not replace it."
+            },
+            {
+              "end": 10542,
+              "quoted": false,
+              "start": 10496,
+              "text": "I needed less infrastructure and more refusal."
+            },
+            {
+              "end": 10572,
+              "quoted": false,
+              "start": 10543,
+              "text": "Less capture and more choice."
+            },
+            {
+              "end": 10676,
+              "quoted": false,
+              "start": 10638,
+              "text": "That is harder to package as software."
+            },
+            {
+              "end": 10701,
+              "quoted": false,
+              "start": 10677,
+              "text": "It is also why it works."
             }
           ],
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_run": 3
+              "maximum_mean_sentence_words": 15.0,
+              "maximum_short_rate_per_1000": 30.0,
+              "minimum_repeated_opener_run": 2,
+              "minimum_run": 3,
+              "rate_minimum_words": 300
             },
-            "raw_evidence": "Found sequence of 15 consecutive short sentences",
+            "raw_evidence": "Found sequence of 15 consecutive short sentences; short-fragment run(s) sharing an opener: ['Apps that promised simplicity. Apps that promised depth.', 'You make categories. You tag things. You build a dashboard.', 'The automation breaks. The tags proliferate.', 'Capture the task. Capture the idea. Capture the meeting note. Capture the article. Capture the insight.', 'A note still needs synthesis. A list still needs priority.', 'The list is cleaner. The board is aligned. The note has metadata. The project has a template.', 'The urgent thing became irrelevant. The small thing became political. The neat sequence collapsed.', 'Not ideal. Not maximally productive.', 'I save less. I finish less. I trust skimming more.', 'It makes waste visible. It also makes rest legitimate.']; 139 sentences of ten words or fewer at 78.1 per 1000 words; mean sentence length 8.6 words (target: 15 or more)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found sequence of 15 consecutive short sentences",
+          "evidence": "Found sequence of 15 consecutive short sentences; short-fragment run(s) sharing an opener: ['Apps that promised simplicity. Apps that promised depth.', 'You make categories. You tag things. You build a dashboard.', 'The automation breaks. The tags proliferate.', 'Capture the task. Capture the idea. Capture the meeting note. Capture the article. Capture the insight.', 'A note still needs synthesis. A list still needs priority.', 'The list is cleaner. The board is aligned. The note has metadata. The project has a template.', 'The urgent thing became irrelevant. The small thing became political. The neat sequence collapsed.', 'Not ideal. Not maximally productive.', 'I save less. I finish less. I trust skimming more.', 'It makes waste visible. It also makes rest legitimate.']; 139 sentences of ten words or fewer at 78.1 per 1000 words; mean sentence length 8.6 words (target: 15 or more)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -449,7 +1469,7 @@
             "frictionless_structure"
           ],
           "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm.",
-          "match_count": 15,
+          "match_count": 149,
           "matches": [
             "So I tried apps.",
             "Task managers.",
@@ -465,7 +1485,141 @@
             "Automations.",
             "Dashboards.",
             "Apps that promised simplicity.",
-            "Apps that promised depth."
+            "Apps that promised depth.",
+            "Apps that promised simplicity. Apps that promised depth.",
+            "You make categories. You tag things. You build a dashboard.",
+            "The automation breaks. The tags proliferate.",
+            "Capture the task. Capture the idea. Capture the meeting note. Capture the article. Capture the insight.",
+            "A note still needs synthesis. A list still needs priority.",
+            "The list is cleaner. The board is aligned. The note has metadata. The project has a template.",
+            "The urgent thing became irrelevant. The small thing became political. The neat sequence collapsed.",
+            "Not ideal. Not maximally productive.",
+            "I save less. I finish less. I trust skimming more.",
+            "It makes waste visible. It also makes rest legitimate.",
+            "Tasks lived in too many places.",
+            "Notes were scattered.",
+            "For a while, each new tool worked.",
+            "You are not yet maintaining the system.",
+            "You make categories.",
+            "You tag things.",
+            "You build a dashboard.",
+            "Then reality resumes.",
+            "The task manager fills with stale intentions.",
+            "The dashboard becomes another surface to check.",
+            "The automation breaks.",
+            "The tags proliferate.",
+            "Some are very good.",
+            "Most productivity apps are built around capture.",
+            "Capture the task.",
+            "Capture the idea.",
+            "Capture the meeting note.",
+            "Capture the article.",
+            "Capture the insight.",
+            "Capture everything, because storage is cheap and forgetting feels irresponsible.",
+            "But capture is not the same as commitment.",
+            "A captured task still needs a decision.",
+            "A saved article still needs time.",
+            "A note still needs synthesis.",
+            "A list still needs priority.",
+            "The app does not remove that claim.",
+            "It just makes it look orderly.",
+            "There is a particular relief in writing something down.",
+            "It feels like moving it out of the mind.",
+            "But if the thing matters, it returns.",
+            "I do not mean this as a universal rule.",
+            "Some work genuinely requires rigorous tracking.",
+            "I kept preserving things to avoid having to choose.",
+            "This is not a moral failing.",
+            "It is a design pattern.",
+            "Apps have interfaces.",
+            "Interfaces invite interaction.",
+            "These actions feel constructive because they are concrete.",
+            "They produce visible change.",
+            "The list is cleaner.",
+            "The board is aligned.",
+            "The note has metadata.",
+            "The project has a template.",
+            "Meanwhile, the hard thing remains untouched.",
+            "Writing the difficult email.",
+            "Reading the dense document.",
+            "Making the decision.",
+            "Having the conversation.",
+            "Starting the draft.",
+            "Closing the loop.",
+            "I was not procrastinating in the usual sense.",
+            "I was doing something adjacent to useful.",
+            "That made it harder to challenge.",
+            "By Thursday, the context has changed.",
+            "The meeting moved.",
+            "Someone sent new information.",
+            "The urgent thing became irrelevant.",
+            "The small thing became political.",
+            "The neat sequence collapsed.",
+            "Productivity apps tend to treat this as a planning issue.",
+            "Build better workflows.",
+            "Add dependencies.",
+            "Use recurring reviews.",
+            "Reprioritise.",
+            "Sometimes that helps.",
+            "The problem is that the plan was a fiction.",
+            "Useful, perhaps, but still a fiction.",
+            "A weekly plan can create orientation.",
+            "It cannot eliminate volatility.",
+            "Eventually, that reconciliation became its own workload.",
+            "A completed task disappears.",
+            "An overdue task glows.",
+            "This is rational from a software perspective.",
+            "Systems need to show what still requires action.",
+            "That distinction matters.",
+            "A to-do list can be endless because possibility is endless.",
+            "Capacity is not.",
+            "The app may help you survive the chaos.",
+            "It may not help you question it.",
+            "That is not a reason to reject tools altogether.",
+            "I do not try to capture every idea.",
+            "I do not build dashboards for my life.",
+            "I let some things be forgotten.",
+            "The last part is harder than it sounds.",
+            "There is also fear.",
+            "Fear that forgetting means losing value.",
+            "Fear that an uncaptured idea will prove important later.",
+            "Fear that an untracked task will expose you as careless.",
+            "But memory has its own filtering function.",
+            "So does recurrence.",
+            "Not always.",
+            "My current approach is deliberately plain.",
+            "Not ideal.",
+            "Not maximally productive.",
+            "Complete.",
+            "Usually the answer is one to three things.",
+            "Sometimes it is one difficult thing and several minor obligations.",
+            "I write those things down.",
+            "\u201cLater\u201d is not a magic category anymore.",
+            "It has to earn its place.",
+            "For reading and ideas, I have become more ruthless.",
+            "I save less.",
+            "I finish less.",
+            "I trust skimming more.",
+            "Not every useful article needs to become a note.",
+            "Not every note needs to become an insight.",
+            "Not every insight needs to be operationalised.",
+            "This has changed how I think about attention.",
+            "I see it as something to spend.",
+            "That framing is less glamorous, but more practical.",
+            "Spending attention implies trade-offs.",
+            "It makes waste visible.",
+            "It also makes rest legitimate.",
+            "You cannot spend continuously without depletion.",
+            "No app can negotiate that physics on your behalf.",
+            "The cost is that the system is not elegant.",
+            "It does not scale infinitely.",
+            "It does not produce satisfying analytics.",
+            "But that is also the point.",
+            "A good tool should support judgement, not replace it.",
+            "I needed less infrastructure and more refusal.",
+            "Less capture and more choice.",
+            "That is harder to package as software.",
+            "It is also why it works."
           ],
           "severity": "context_warning",
           "spans": [
@@ -558,10 +1712,818 @@
               "quoted": false,
               "start": 756,
               "text": "Apps that promised depth."
+            },
+            {
+              "end": 781,
+              "quoted": false,
+              "start": 725,
+              "text": "Apps that promised simplicity. Apps that promised depth."
+            },
+            {
+              "end": 1239,
+              "quoted": false,
+              "start": 1180,
+              "text": "You make categories. You tag things. You build a dashboard."
+            },
+            {
+              "end": 1869,
+              "quoted": false,
+              "start": 1825,
+              "text": "The automation breaks. The tags proliferate."
+            },
+            {
+              "end": 2363,
+              "quoted": false,
+              "start": 2260,
+              "text": "Capture the task. Capture the idea. Capture the meeting note. Capture the article. Capture the insight."
+            },
+            {
+              "end": 2694,
+              "quoted": false,
+              "start": 2636,
+              "text": "A note still needs synthesis. A list still needs priority."
+            },
+            {
+              "end": 3871,
+              "quoted": false,
+              "start": 3778,
+              "text": "The list is cleaner. The board is aligned. The note has metadata. The project has a template."
+            },
+            {
+              "end": 4954,
+              "quoted": false,
+              "start": 4856,
+              "text": "The urgent thing became irrelevant. The small thing became political. The neat sequence collapsed."
+            },
+            {
+              "end": 8296,
+              "quoted": false,
+              "start": 8260,
+              "text": "Not ideal. Not maximally productive."
+            },
+            {
+              "end": 8883,
+              "quoted": false,
+              "start": 8833,
+              "text": "I save less. I finish less. I trust skimming more."
+            },
+            {
+              "end": 9309,
+              "quoted": false,
+              "start": 9255,
+              "text": "It makes waste visible. It also makes rest legitimate."
+            },
+            {
+              "end": 297,
+              "quoted": false,
+              "start": 266,
+              "text": "Tasks lived in too many places."
+            },
+            {
+              "end": 319,
+              "quoted": false,
+              "start": 298,
+              "text": "Notes were scattered."
+            },
+            {
+              "end": 977,
+              "quoted": false,
+              "start": 943,
+              "text": "For a while, each new tool worked."
+            },
+            {
+              "end": 1104,
+              "quoted": false,
+              "start": 1065,
+              "text": "You are not yet maintaining the system."
+            },
+            {
+              "end": 1200,
+              "quoted": false,
+              "start": 1180,
+              "text": "You make categories."
+            },
+            {
+              "end": 1216,
+              "quoted": false,
+              "start": 1201,
+              "text": "You tag things."
+            },
+            {
+              "end": 1239,
+              "quoted": false,
+              "start": 1217,
+              "text": "You build a dashboard."
+            },
+            {
+              "end": 1569,
+              "quoted": false,
+              "start": 1548,
+              "text": "Then reality resumes."
+            },
+            {
+              "end": 1616,
+              "quoted": false,
+              "start": 1571,
+              "text": "The task manager fills with stale intentions."
+            },
+            {
+              "end": 1824,
+              "quoted": false,
+              "start": 1777,
+              "text": "The dashboard becomes another surface to check."
+            },
+            {
+              "end": 1847,
+              "quoted": false,
+              "start": 1825,
+              "text": "The automation breaks."
+            },
+            {
+              "end": 1869,
+              "quoted": false,
+              "start": 1848,
+              "text": "The tags proliferate."
+            },
+            {
+              "end": 2073,
+              "quoted": false,
+              "start": 2054,
+              "text": "Some are very good."
+            },
+            {
+              "end": 2259,
+              "quoted": false,
+              "start": 2211,
+              "text": "Most productivity apps are built around capture."
+            },
+            {
+              "end": 2277,
+              "quoted": false,
+              "start": 2260,
+              "text": "Capture the task."
+            },
+            {
+              "end": 2295,
+              "quoted": false,
+              "start": 2278,
+              "text": "Capture the idea."
+            },
+            {
+              "end": 2321,
+              "quoted": false,
+              "start": 2296,
+              "text": "Capture the meeting note."
+            },
+            {
+              "end": 2342,
+              "quoted": false,
+              "start": 2322,
+              "text": "Capture the article."
+            },
+            {
+              "end": 2363,
+              "quoted": false,
+              "start": 2343,
+              "text": "Capture the insight."
+            },
+            {
+              "end": 2516,
+              "quoted": false,
+              "start": 2436,
+              "text": "Capture everything, because storage is cheap and forgetting feels irresponsible."
+            },
+            {
+              "end": 2560,
+              "quoted": false,
+              "start": 2518,
+              "text": "But capture is not the same as commitment."
+            },
+            {
+              "end": 2601,
+              "quoted": false,
+              "start": 2562,
+              "text": "A captured task still needs a decision."
+            },
+            {
+              "end": 2635,
+              "quoted": false,
+              "start": 2602,
+              "text": "A saved article still needs time."
+            },
+            {
+              "end": 2665,
+              "quoted": false,
+              "start": 2636,
+              "text": "A note still needs synthesis."
+            },
+            {
+              "end": 2694,
+              "quoted": false,
+              "start": 2666,
+              "text": "A list still needs priority."
+            },
+            {
+              "end": 2797,
+              "quoted": false,
+              "start": 2762,
+              "text": "The app does not remove that claim."
+            },
+            {
+              "end": 2828,
+              "quoted": false,
+              "start": 2798,
+              "text": "It just makes it look orderly."
+            },
+            {
+              "end": 3070,
+              "quoted": false,
+              "start": 3015,
+              "text": "There is a particular relief in writing something down."
+            },
+            {
+              "end": 3111,
+              "quoted": false,
+              "start": 3071,
+              "text": "It feels like moving it out of the mind."
+            },
+            {
+              "end": 3149,
+              "quoted": false,
+              "start": 3112,
+              "text": "But if the thing matters, it returns."
+            },
+            {
+              "end": 3246,
+              "quoted": false,
+              "start": 3207,
+              "text": "I do not mean this as a universal rule."
+            },
+            {
+              "end": 3294,
+              "quoted": false,
+              "start": 3247,
+              "text": "Some work genuinely requires rigorous tracking."
+            },
+            {
+              "end": 3413,
+              "quoted": false,
+              "start": 3362,
+              "text": "I kept preserving things to avoid having to choose."
+            },
+            {
+              "end": 3521,
+              "quoted": false,
+              "start": 3493,
+              "text": "This is not a moral failing."
+            },
+            {
+              "end": 3545,
+              "quoted": false,
+              "start": 3522,
+              "text": "It is a design pattern."
+            },
+            {
+              "end": 3567,
+              "quoted": false,
+              "start": 3546,
+              "text": "Apps have interfaces."
+            },
+            {
+              "end": 3598,
+              "quoted": false,
+              "start": 3568,
+              "text": "Interfaces invite interaction."
+            },
+            {
+              "end": 3748,
+              "quoted": false,
+              "start": 3690,
+              "text": "These actions feel constructive because they are concrete."
+            },
+            {
+              "end": 3777,
+              "quoted": false,
+              "start": 3749,
+              "text": "They produce visible change."
+            },
+            {
+              "end": 3798,
+              "quoted": false,
+              "start": 3778,
+              "text": "The list is cleaner."
+            },
+            {
+              "end": 3820,
+              "quoted": false,
+              "start": 3799,
+              "text": "The board is aligned."
+            },
+            {
+              "end": 3843,
+              "quoted": false,
+              "start": 3821,
+              "text": "The note has metadata."
+            },
+            {
+              "end": 3871,
+              "quoted": false,
+              "start": 3844,
+              "text": "The project has a template."
+            },
+            {
+              "end": 3917,
+              "quoted": false,
+              "start": 3873,
+              "text": "Meanwhile, the hard thing remains untouched."
+            },
+            {
+              "end": 3947,
+              "quoted": false,
+              "start": 3919,
+              "text": "Writing the difficult email."
+            },
+            {
+              "end": 3975,
+              "quoted": false,
+              "start": 3948,
+              "text": "Reading the dense document."
+            },
+            {
+              "end": 3996,
+              "quoted": false,
+              "start": 3976,
+              "text": "Making the decision."
+            },
+            {
+              "end": 4021,
+              "quoted": false,
+              "start": 3997,
+              "text": "Having the conversation."
+            },
+            {
+              "end": 4041,
+              "quoted": false,
+              "start": 4022,
+              "text": "Starting the draft."
+            },
+            {
+              "end": 4059,
+              "quoted": false,
+              "start": 4042,
+              "text": "Closing the loop."
+            },
+            {
+              "end": 4301,
+              "quoted": false,
+              "start": 4256,
+              "text": "I was not procrastinating in the usual sense."
+            },
+            {
+              "end": 4343,
+              "quoted": false,
+              "start": 4302,
+              "text": "I was doing something adjacent to useful."
+            },
+            {
+              "end": 4377,
+              "quoted": false,
+              "start": 4344,
+              "text": "That made it harder to challenge."
+            },
+            {
+              "end": 4806,
+              "quoted": false,
+              "start": 4769,
+              "text": "By Thursday, the context has changed."
+            },
+            {
+              "end": 4825,
+              "quoted": false,
+              "start": 4807,
+              "text": "The meeting moved."
+            },
+            {
+              "end": 4855,
+              "quoted": false,
+              "start": 4826,
+              "text": "Someone sent new information."
+            },
+            {
+              "end": 4891,
+              "quoted": false,
+              "start": 4856,
+              "text": "The urgent thing became irrelevant."
+            },
+            {
+              "end": 4925,
+              "quoted": false,
+              "start": 4892,
+              "text": "The small thing became political."
+            },
+            {
+              "end": 4954,
+              "quoted": false,
+              "start": 4926,
+              "text": "The neat sequence collapsed."
+            },
+            {
+              "end": 5013,
+              "quoted": false,
+              "start": 4956,
+              "text": "Productivity apps tend to treat this as a planning issue."
+            },
+            {
+              "end": 5037,
+              "quoted": false,
+              "start": 5014,
+              "text": "Build better workflows."
+            },
+            {
+              "end": 5055,
+              "quoted": false,
+              "start": 5038,
+              "text": "Add dependencies."
+            },
+            {
+              "end": 5078,
+              "quoted": false,
+              "start": 5056,
+              "text": "Use recurring reviews."
+            },
+            {
+              "end": 5092,
+              "quoted": false,
+              "start": 5079,
+              "text": "Reprioritise."
+            },
+            {
+              "end": 5115,
+              "quoted": false,
+              "start": 5094,
+              "text": "Sometimes that helps."
+            },
+            {
+              "end": 5221,
+              "quoted": false,
+              "start": 5178,
+              "text": "The problem is that the plan was a fiction."
+            },
+            {
+              "end": 5259,
+              "quoted": false,
+              "start": 5222,
+              "text": "Useful, perhaps, but still a fiction."
+            },
+            {
+              "end": 5298,
+              "quoted": false,
+              "start": 5261,
+              "text": "A weekly plan can create orientation."
+            },
+            {
+              "end": 5330,
+              "quoted": false,
+              "start": 5299,
+              "text": "It cannot eliminate volatility."
+            },
+            {
+              "end": 5576,
+              "quoted": false,
+              "start": 5520,
+              "text": "Eventually, that reconciliation became its own workload."
+            },
+            {
+              "end": 5716,
+              "quoted": false,
+              "start": 5688,
+              "text": "A completed task disappears."
+            },
+            {
+              "end": 5739,
+              "quoted": false,
+              "start": 5717,
+              "text": "An overdue task glows."
+            },
+            {
+              "end": 5786,
+              "quoted": false,
+              "start": 5741,
+              "text": "This is rational from a software perspective."
+            },
+            {
+              "end": 5835,
+              "quoted": false,
+              "start": 5787,
+              "text": "Systems need to show what still requires action."
+            },
+            {
+              "end": 6192,
+              "quoted": false,
+              "start": 6167,
+              "text": "That distinction matters."
+            },
+            {
+              "end": 6253,
+              "quoted": false,
+              "start": 6194,
+              "text": "A to-do list can be endless because possibility is endless."
+            },
+            {
+              "end": 6270,
+              "quoted": false,
+              "start": 6254,
+              "text": "Capacity is not."
+            },
+            {
+              "end": 6982,
+              "quoted": false,
+              "start": 6943,
+              "text": "The app may help you survive the chaos."
+            },
+            {
+              "end": 7015,
+              "quoted": false,
+              "start": 6983,
+              "text": "It may not help you question it."
+            },
+            {
+              "end": 7065,
+              "quoted": false,
+              "start": 7017,
+              "text": "That is not a reason to reject tools altogether."
+            },
+            {
+              "end": 7488,
+              "quoted": false,
+              "start": 7453,
+              "text": "I do not try to capture every idea."
+            },
+            {
+              "end": 7527,
+              "quoted": false,
+              "start": 7489,
+              "text": "I do not build dashboards for my life."
+            },
+            {
+              "end": 7616,
+              "quoted": false,
+              "start": 7585,
+              "text": "I let some things be forgotten."
+            },
+            {
+              "end": 7657,
+              "quoted": false,
+              "start": 7618,
+              "text": "The last part is harder than it sounds."
+            },
+            {
+              "end": 7753,
+              "quoted": false,
+              "start": 7734,
+              "text": "There is also fear."
+            },
+            {
+              "end": 7794,
+              "quoted": false,
+              "start": 7754,
+              "text": "Fear that forgetting means losing value."
+            },
+            {
+              "end": 7851,
+              "quoted": false,
+              "start": 7795,
+              "text": "Fear that an uncaptured idea will prove important later."
+            },
+            {
+              "end": 7908,
+              "quoted": false,
+              "start": 7852,
+              "text": "Fear that an untracked task will expose you as careless."
+            },
+            {
+              "end": 7952,
+              "quoted": false,
+              "start": 7910,
+              "text": "But memory has its own filtering function."
+            },
+            {
+              "end": 7972,
+              "quoted": false,
+              "start": 7953,
+              "text": "So does recurrence."
+            },
+            {
+              "end": 8080,
+              "quoted": false,
+              "start": 8069,
+              "text": "Not always."
+            },
+            {
+              "end": 8191,
+              "quoted": false,
+              "start": 8149,
+              "text": "My current approach is deliberately plain."
+            },
+            {
+              "end": 8270,
+              "quoted": false,
+              "start": 8260,
+              "text": "Not ideal."
+            },
+            {
+              "end": 8296,
+              "quoted": false,
+              "start": 8271,
+              "text": "Not maximally productive."
+            },
+            {
+              "end": 8306,
+              "quoted": false,
+              "start": 8297,
+              "text": "Complete."
+            },
+            {
+              "end": 8349,
+              "quoted": false,
+              "start": 8307,
+              "text": "Usually the answer is one to three things."
+            },
+            {
+              "end": 8416,
+              "quoted": false,
+              "start": 8350,
+              "text": "Sometimes it is one difficult thing and several minor obligations."
+            },
+            {
+              "end": 8538,
+              "quoted": false,
+              "start": 8512,
+              "text": "I write those things down."
+            },
+            {
+              "end": 8655,
+              "quoted": false,
+              "start": 8615,
+              "text": "\u201cLater\u201d is not a magic category anymore."
+            },
+            {
+              "end": 8681,
+              "quoted": false,
+              "start": 8656,
+              "text": "It has to earn its place."
+            },
+            {
+              "end": 8832,
+              "quoted": false,
+              "start": 8781,
+              "text": "For reading and ideas, I have become more ruthless."
+            },
+            {
+              "end": 8845,
+              "quoted": false,
+              "start": 8833,
+              "text": "I save less."
+            },
+            {
+              "end": 8860,
+              "quoted": false,
+              "start": 8846,
+              "text": "I finish less."
+            },
+            {
+              "end": 8883,
+              "quoted": false,
+              "start": 8861,
+              "text": "I trust skimming more."
+            },
+            {
+              "end": 8932,
+              "quoted": false,
+              "start": 8884,
+              "text": "Not every useful article needs to become a note."
+            },
+            {
+              "end": 8975,
+              "quoted": false,
+              "start": 8933,
+              "text": "Not every note needs to become an insight."
+            },
+            {
+              "end": 9022,
+              "quoted": false,
+              "start": 8976,
+              "text": "Not every insight needs to be operationalised."
+            },
+            {
+              "end": 9069,
+              "quoted": false,
+              "start": 9024,
+              "text": "This has changed how I think about attention."
+            },
+            {
+              "end": 9162,
+              "quoted": false,
+              "start": 9131,
+              "text": "I see it as something to spend."
+            },
+            {
+              "end": 9215,
+              "quoted": false,
+              "start": 9164,
+              "text": "That framing is less glamorous, but more practical."
+            },
+            {
+              "end": 9254,
+              "quoted": false,
+              "start": 9216,
+              "text": "Spending attention implies trade-offs."
+            },
+            {
+              "end": 9278,
+              "quoted": false,
+              "start": 9255,
+              "text": "It makes waste visible."
+            },
+            {
+              "end": 9309,
+              "quoted": false,
+              "start": 9279,
+              "text": "It also makes rest legitimate."
+            },
+            {
+              "end": 9358,
+              "quoted": false,
+              "start": 9310,
+              "text": "You cannot spend continuously without depletion."
+            },
+            {
+              "end": 9408,
+              "quoted": false,
+              "start": 9359,
+              "text": "No app can negotiate that physics on your behalf."
+            },
+            {
+              "end": 9889,
+              "quoted": false,
+              "start": 9846,
+              "text": "The cost is that the system is not elegant."
+            },
+            {
+              "end": 9919,
+              "quoted": false,
+              "start": 9890,
+              "text": "It does not scale infinitely."
+            },
+            {
+              "end": 9961,
+              "quoted": false,
+              "start": 9920,
+              "text": "It does not produce satisfying analytics."
+            },
+            {
+              "end": 10068,
+              "quoted": false,
+              "start": 10041,
+              "text": "But that is also the point."
+            },
+            {
+              "end": 10123,
+              "quoted": false,
+              "start": 10070,
+              "text": "A good tool should support judgement, not replace it."
+            },
+            {
+              "end": 10542,
+              "quoted": false,
+              "start": 10496,
+              "text": "I needed less infrastructure and more refusal."
+            },
+            {
+              "end": 10572,
+              "quoted": false,
+              "start": 10543,
+              "text": "Less capture and more choice."
+            },
+            {
+              "end": 10676,
+              "quoted": false,
+              "start": 10638,
+              "text": "That is harder to package as software."
+            },
+            {
+              "end": 10701,
+              "quoted": false,
+              "start": 10677,
+              "text": "It is also why it works."
             }
           ],
           "threshold": {
-            "minimum_run": 3
+            "maximum_mean_sentence_words": 15.0,
+            "maximum_short_rate_per_1000": 30.0,
+            "minimum_repeated_opener_run": 2,
+            "minimum_run": 3,
+            "rate_minimum_words": 300
           },
           "threshold_met": true
         }
@@ -720,6 +2682,258 @@
       "status": "flagged"
     },
     {
+      "category": "Voice and register",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Max paragraph-opener run: 1",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Max paragraph-opener run: 1",
+          "evidence_role": "rhythm_signal",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "guidance": "Fix mechanical repetition across paragraph openings; recommend preserving deliberate rhetorical patterning.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "id": "no-paragraph-anaphora",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            },
+            "raw_evidence": "One-line sections under headings: 1",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "One-line sections under headings: 1",
+          "evidence_role": "repeated_template",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix by developing or folding one-line sections into prose; recommend preserving a single deliberate short section used for emphasis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-heading-one-liners",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Style",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No title case headings",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No title case headings",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix headings that capitalise minor words; match whatever heading style the rest of the document uses.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-title-case-headings",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No mixed spelling conventions",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No mixed spelling conventions",
+          "evidence_role": "lexical_distribution",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "guidance": "Fix the mixture by settling on one convention; preserve whichever one the document and its audience already use.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "id": "no-mixed-spelling-conventions",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No stacked from-to ranges",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No stacked from-to ranges",
+          "evidence_role": "rhetorical_pattern",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "guidance": "Fix stacked from-to pairs by naming what the passage actually covers; keep single ranges.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "id": "no-false-ranges",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Filler and hedging",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "No modal qualifier stacks",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No modal qualifier stacks",
+          "evidence_role": "stance_erasure",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "guidance": "Fix stacked qualifiers by keeping the one the claim needs; recommend preserving qualifiers tied to a stated basis.",
+          "matches": [],
+          "metric_value": 0,
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "id": "no-modal-stacks",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
       "category": "Communication",
       "evidence": {
         "counts": {},
@@ -838,21 +3052,23 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "sentence length variation 5.8 across 207 sentences (target above 9)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Sentence length stdev: 5.8 (target: >4)",
+            "effective_threshold": {
+              "minimum_stdev": 9.0
+            },
+            "raw_evidence": "Sentence length stdev: 5.8 (target: >9)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Sentence length stdev: 5.8 (target: >4)",
+          "evidence": "Sentence length stdev: 5.8 (target: >9)",
           "evidence_role": "rhythm_signal",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -860,11 +3076,14 @@
             "genre_misfit"
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
-          "metric_value": 0,
+          "metric": "sentence length variation 5.8 across 207 sentences (target above 9)",
+          "metric_value": "sentence length variation 5.8 across 207 sentences (target above 9)",
           "sample_size": 1786,
           "severity": "context_warning",
-          "threshold": null,
-          "threshold_met": false
+          "threshold": {
+            "minimum_stdev": 9.0
+          },
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -873,7 +3092,7 @@
       ],
       "id": "sentence-length-variance",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Content patterns",
@@ -965,32 +3184,204 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "You are not yet maintaining the system. You are",
+          "The app does not remove that claim. It just",
+          "The second observation was that productivity apps reward tidying, not doing",
+          "This is not a moral failing. It is",
+          "the problem is not that the plan needs maintenance. The problem is",
+          "The list was never empty because the list was not a measure of effort. It was",
+          "rather than",
+          "That is not a reason to reject tools altogether. It is",
+          "I keep notes where they are useful, not where they satisfy an architecture",
+          "not organisation but overcommitment",
+          "It does not produce satisfying analytics. It depends",
+          "A good tool should support judgement, not replace it"
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 12,
+          "candidates": [
+            {
+              "end": 1112,
+              "quoted": false,
+              "start": 1065,
+              "text": "You are not yet maintaining the system. You are"
+            },
+            {
+              "end": 2805,
+              "quoted": false,
+              "start": 2762,
+              "text": "The app does not remove that claim. It just"
+            },
+            {
+              "end": 3490,
+              "quoted": false,
+              "start": 3415,
+              "text": "The second observation was that productivity apps reward tidying, not doing"
+            },
+            {
+              "end": 3527,
+              "quoted": false,
+              "start": 3493,
+              "text": "This is not a moral failing. It is"
+            },
+            {
+              "end": 5192,
+              "quoted": false,
+              "start": 5126,
+              "text": "the problem is not that the plan needs maintenance. The problem is"
+            },
+            {
+              "end": 6079,
+              "quoted": false,
+              "start": 6002,
+              "text": "The list was never empty because the list was not a measure of effort. It was"
+            },
+            {
+              "end": 6423,
+              "quoted": false,
+              "start": 6412,
+              "text": "rather than"
+            },
+            {
+              "end": 7071,
+              "quoted": false,
+              "start": 7017,
+              "text": "That is not a reason to reject tools altogether. It is"
+            },
+            {
+              "end": 7451,
+              "quoted": false,
+              "start": 7377,
+              "text": "I keep notes where they are useful, not where they satisfy an architecture"
+            },
+            {
+              "end": 9775,
+              "quoted": false,
+              "start": 9740,
+              "text": "not organisation but overcommitment"
+            },
+            {
+              "end": 9972,
+              "quoted": false,
+              "start": 9920,
+              "text": "It does not produce satisfying analytics. It depends"
+            },
+            {
+              "end": 10122,
+              "quoted": false,
+              "start": 10070,
+              "text": "A good tool should support judgement, not replace it"
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No negative parallelisms or contrived reframes",
+            "raw_evidence": "Found 12 negative-parallelism occurrence(s)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No negative parallelisms or contrived reframes",
+          "evidence": "Found 12 negative-parallelism occurrence(s)",
           "evidence_role": "rhetorical_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
             "synthetic_significance"
           ],
-          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced.",
-          "match_count": 0,
-          "matches": [],
+          "guidance": "Surface every matched construction at Balanced and All, including matches split across two sentences, negative clauses resumed by it/they/he/she, punctuated not-X-but-Y forms, and each rather-than frame. Report the form and occurrence count without suppressing matches based on inferred intention. Repeated occurrences add progressively more signal-stacking evidence.",
+          "match_count": 12,
+          "matches": [
+            "You are not yet maintaining the system. You are",
+            "The app does not remove that claim. It just",
+            "The second observation was that productivity apps reward tidying, not doing",
+            "This is not a moral failing. It is",
+            "the problem is not that the plan needs maintenance. The problem is",
+            "The list was never empty because the list was not a measure of effort. It was",
+            "rather than",
+            "That is not a reason to reject tools altogether. It is",
+            "I keep notes where they are useful, not where they satisfy an architecture",
+            "not organisation but overcommitment",
+            "It does not produce satisfying analytics. It depends",
+            "A good tool should support judgement, not replace it"
+          ],
           "severity": "strong_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 1112,
+              "quoted": false,
+              "start": 1065,
+              "text": "You are not yet maintaining the system. You are"
+            },
+            {
+              "end": 2805,
+              "quoted": false,
+              "start": 2762,
+              "text": "The app does not remove that claim. It just"
+            },
+            {
+              "end": 3490,
+              "quoted": false,
+              "start": 3415,
+              "text": "The second observation was that productivity apps reward tidying, not doing"
+            },
+            {
+              "end": 3527,
+              "quoted": false,
+              "start": 3493,
+              "text": "This is not a moral failing. It is"
+            },
+            {
+              "end": 5192,
+              "quoted": false,
+              "start": 5126,
+              "text": "the problem is not that the plan needs maintenance. The problem is"
+            },
+            {
+              "end": 6079,
+              "quoted": false,
+              "start": 6002,
+              "text": "The list was never empty because the list was not a measure of effort. It was"
+            },
+            {
+              "end": 6423,
+              "quoted": false,
+              "start": 6412,
+              "text": "rather than"
+            },
+            {
+              "end": 7071,
+              "quoted": false,
+              "start": 7017,
+              "text": "That is not a reason to reject tools altogether. It is"
+            },
+            {
+              "end": 7451,
+              "quoted": false,
+              "start": 7377,
+              "text": "I keep notes where they are useful, not where they satisfy an architecture"
+            },
+            {
+              "end": 9775,
+              "quoted": false,
+              "start": 9740,
+              "text": "not organisation but overcommitment"
+            },
+            {
+              "end": 9972,
+              "quoted": false,
+              "start": 9920,
+              "text": "It does not produce satisfying analytics. It depends"
+            },
+            {
+              "end": 10122,
+              "quoted": false,
+              "start": 10070,
+              "text": "A good tool should support judgement, not replace it"
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -998,7 +3389,7 @@
       ],
       "id": "no-negative-parallelisms",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Language and grammar",
@@ -1112,6 +3503,7 @@
           ],
           "guidance": "Fix at every depth unless quoted from source text.",
           "match_count": 0,
+          "matches": [],
           "severity": "hard_fail",
           "spans": [],
           "threshold": null,
@@ -1192,7 +3584,7 @@
           "failure_modes": [
             "provenance_residue"
           ],
-          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue.",
+          "guidance": "Fix at every depth; replace or remove unfilled placeholders, publishing instructions, and platform markup.",
           "match_count": 0,
           "matches": [],
           "severity": "hard_fail",
@@ -1371,20 +3763,23 @@
           ],
           "context_gate": {
             "applied": false,
-            "effective_threshold": null,
-            "raw_evidence": "Found 8 triad(s): ['tabs, notifications and vague dread', 'archive, review and reframe', 'requested, deferred or worried about', 'often workload, priority and boundary problems', 'conversation, discomfort or need', 'today, later or nowhere', 'tagged, dated and deferred', 'what to abandon, what to renegotiate, or what kind of day I was actually capable of having']",
+            "effective_threshold": {
+              "maximum_rate_per_1000": 4.0,
+              "minimum_words": 300
+            },
+            "raw_evidence": "Found 8 triad(s) at 4.5 per 1000 words: ['tabs, notifications and vague dread', 'archive, review and reframe', 'requested, deferred or worried about', 'often workload, priority and boundary problems', 'conversation, discomfort or need', 'today, later or nowhere', 'tagged, dated and deferred', 'what to abandon, what to renegotiate, or what kind of day I was actually capable of having']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 8 triad(s): ['tabs, notifications and vague dread', 'archive, review and reframe', 'requested, deferred or worried about', 'often workload, priority and boundary problems', 'conversation, discomfort or need', 'today, later or nowhere', 'tagged, dated and deferred', 'what to abandon, what to renegotiate, or what kind of day I was actually capable of having']",
+          "evidence": "Found 8 triad(s) at 4.5 per 1000 words: ['tabs, notifications and vague dread', 'archive, review and reframe', 'requested, deferred or worried about', 'often workload, priority and boundary problems', 'conversation, discomfort or need', 'today, later or nowhere', 'tagged, dated and deferred', 'what to abandon, what to renegotiate, or what kind of day I was actually capable of having']",
           "evidence_role": "list_rhythm",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads.",
+          "guidance": "Thin out decorative or interchangeable triads until the rate drops. Preserve meaningful lists, quotations, and deliberate rhetoric.",
           "match_count": 8,
           "matches": [
             "tabs, notifications and vague dread",
@@ -1447,7 +3842,10 @@
               "text": "what to abandon, what to renegotiate, or what kind of day I was actually capable of having"
             }
           ],
-          "threshold": null,
+          "threshold": {
+            "maximum_rate_per_1000": 4.0,
+            "minimum_words": 300
+          },
           "threshold_met": true
         }
       },
@@ -1460,7 +3858,308 @@
       "status": "flagged"
     },
     {
-      "category": "Content patterns",
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "67 nominalisation(s) at 37.7 per 1000 words (flag at 29.0)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 67,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "67 nominalisation(s) at 37.7 per 1000 words (flag at 29.0)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "67 nominalisation(s) at 37.7 per 1000 words (flag at 29.0)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Turn the action back into a verb. `the implementation of the transformation` becomes `we changed it`. Preserve terms of art.",
+          "metric": "67 nominalisation(s) at 37.7 per 1000 words (flag at 29.0)",
+          "metric_value": "67 nominalisation(s) at 37.7 per 1000 words (flag at 29.0)",
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-nominalisation-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "11 subject relative(s) at 6.2 per 1000 words (flag at 3.5)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 11,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "11 subject relative(s) at 6.2 per 1000 words (flag at 3.5)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "11 subject relative(s) at 6.2 per 1000 words (flag at 3.5)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Cut the relative clause or rejoin it to the main sentence. `The report that describes the failure was withdrawn` becomes `The failure report was withdrawn`.",
+          "metric": "11 subject relative(s) at 6.2 per 1000 words (flag at 3.5)",
+          "metric_value": "11 subject relative(s) at 6.2 per 1000 words (flag at 3.5)",
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-that-relative-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "8 participial clause(s) at 4.5 per 1000 words (flag at 4.4)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 8,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "8 participial clause(s) at 4.5 per 1000 words (flag at 4.4)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "8 participial clause(s) at 4.5 per 1000 words (flag at 4.4)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Give the clause its own verb and subject, or cut it. Two or three across a page read as varied; one every other sentence reads as a tic.",
+          "metric": "8 participial clause(s) at 4.5 per 1000 words (flag at 4.4)",
+          "metric_value": "8 participial clause(s) at 4.5 per 1000 words (flag at 4.4)",
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-participial-clause-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "15 passive verb(s) at 8.4 per 1000 words (flag at 5.0)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 15,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "15 passive verb(s) at 8.4 per 1000 words (flag at 5.0)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "15 passive verb(s) at 8.4 per 1000 words (flag at 5.0)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "guidance": "Put the actor back in the subject position. `The proposal was rejected` becomes `The committee rejected the proposal`. Keep the passive where the actor is genuinely unknown or beside the point.",
+          "metric": "15 passive verb(s) at 8.4 per 1000 words (flag at 5.0)",
+          "metric_value": "15 passive verb(s) at 8.4 per 1000 words (flag at 5.0)",
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "id": "no-passive-voice-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "44 `it` pronoun(s) at 24.7 per 1000 words (flag at 18.0)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 44,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "44 `it` pronoun(s) at 24.7 per 1000 words (flag at 18.0)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "44 `it` pronoun(s) at 24.7 per 1000 words (flag at 18.0)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "guidance": "Name the thing. `It is worth noting that the costs rose` becomes `The costs rose`. Where `it` points back at something, check the reader can still tell what.",
+          "metric": "44 `it` pronoun(s) at 24.7 per 1000 words (flag at 18.0)",
+          "metric_value": "44 `it` pronoun(s) at 24.7 per 1000 words (flag at 18.0)",
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "id": "no-it-pronoun-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "5 Latinate verb(s) at 2.8 per 1000 words (flag at 2.5)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 5,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "5 Latinate verb(s) at 2.8 per 1000 words (flag at 2.5)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "5 Latinate verb(s) at 2.8 per 1000 words (flag at 2.5)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Swap the stiff verb for the plain one. `Obtain the records` becomes `get the records`; `the work commenced` becomes `the work started`. Keep the Latinate verb where it is the precise word, not the formal one.",
+          "metric": "5 Latinate verb(s) at 2.8 per 1000 words (flag at 2.5)",
+          "metric_value": "5 Latinate verb(s) at 2.8 per 1000 words (flag at 2.5)",
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "no-latinate-verb-rate",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "mean word length 4.80 characters across 1786 words (target below 4.8)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean word length 4.80 characters across 1786 words (target: <4.8)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean word length 4.80 characters across 1786 words (target: <4.8)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "guidance": "Look for the shorter word that does the same job. `necessitated` becomes `needed`, `demonstrated substantial improvement` becomes `got better`. The measure is draft-wide, so it points at register rather than at one sentence.",
+          "metric": "mean word length 4.80 characters across 1786 words (target below 4.8)",
+          "metric_value": "mean word length 4.80 characters across 1786 words (target below 4.8)",
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "id": "word-length-average",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Style",
       "evidence": {
         "counts": {},
         "locations": [],
@@ -1473,24 +4172,126 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "No superficial -ing phrases",
+            "raw_evidence": "No mixed-script words",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "No superficial -ing phrases",
+          "evidence": "No mixed-script words",
+          "evidence_role": "typographic_signal",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "guidance": "Retype the flagged word in plain Latin characters. If a passage is genuinely in Russian, Greek, Kazakh, or another Cyrillic or Greek script, write the whole word in that script rather than mixing.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "hard_fail",
+          "spans": [],
+          "threshold": null,
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "id": "no-mixed-script-words",
+      "severity": "hard_fail",
+      "status": "clear"
+    },
+    {
+      "category": "Language and grammar",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": "mean concreteness 2.74 of 5 across 772 content words (target above 2.915)",
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": true,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Mean concreteness 2.74 of 5 across 772 content words (target: >2.915)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Mean concreteness 2.74 of 5 across 772 content words (target: >2.915)",
+          "evidence_role": "register_rate",
+          "evidence_type": "statistical",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "guidance": "Name the thing. `The framework provides a basis for the approach` becomes `the rota tells people when to turn up`. Abstraction is right where the subject really is abstract; the measure is draft-wide, so read it as register rather than as one sentence.",
+          "metric": "mean concreteness 2.74 of 5 across 772 content words (target above 2.915)",
+          "metric_value": "mean concreteness 2.74 of 5 across 772 content words (target above 2.915)",
+          "sample_size": 1786,
+          "severity": "context_warning",
+          "threshold": null,
+          "threshold_met": true
+        }
+      },
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "id": "concreteness-average",
+      "severity": "context_warning",
+      "status": "flagged"
+    },
+    {
+      "category": "Content patterns",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [
+          ", driving, scrolling, sitting in meetings, half-listening to myself promise something I knew I would forget unless I captured it immediately."
+        ],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 499,
+              "quoted": false,
+              "start": 358,
+              "text": ", driving, scrolling, sitting in meetings, half-listening to myself promise something I knew I would forget unless I captured it immediately."
+            }
+          ],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": null,
+            "raw_evidence": "Found 1 tacked-on -ing phrase(s)",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "Found 1 tacked-on -ing phrase(s)",
           "evidence_role": "analysis_substitution",
           "evidence_type": "lexical",
           "failure_modes": [
             "generic_abstraction"
           ],
-          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning.",
-          "match_count": 0,
-          "matches": [],
+          "guidance": "Rewrite formulaic participial clauses when a direct sentence or precise causal statement is clearer.",
+          "match_count": 1,
+          "matches": [
+            ", driving, scrolling, sitting in meetings, half-listening to myself promise something I knew I would forget unless I captured it immediately."
+          ],
           "severity": "strong_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 499,
+              "quoted": false,
+              "start": 358,
+              "text": ", driving, scrolling, sitting in meetings, half-listening to myself promise something I knew I would forget unless I captured it immediately."
+            }
+          ],
           "threshold": null,
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -1498,7 +4299,7 @@
       ],
       "id": "no-superficial-ing",
       "severity": "strong_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Sensory and atmospheric",
@@ -1528,6 +4329,7 @@
           ],
           "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -1556,12 +4358,12 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Quietness words: 2",
+            "raw_evidence": "Quietness words: 1",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Quietness words: 2",
+          "evidence": "Quietness words: 1",
           "evidence_role": "atmospheric_cliche",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -1599,27 +4401,27 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 2
+              "minimum_candidates": 1
             },
-            "raw_evidence": "Rhetorical questions: 0",
+            "raw_evidence": "Fragment-question answer beats: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Rhetorical questions: 0",
+          "evidence": "Fragment-question answer beats: 0",
           "evidence_role": "rhetorical_template",
           "evidence_type": "lexical",
           "failure_modes": [
             "frictionless_structure",
             "genre_misfit"
           ],
-          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument.",
+          "guidance": "Rewrite the fragment and its answer as one direct statement.",
           "match_count": 0,
           "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 2
+            "minimum_candidates": 1
           },
           "threshold_met": false
         }
@@ -1680,6 +4482,53 @@
         "genre_misfit"
       ],
       "id": "no-excessive-lists",
+      "severity": "context_warning",
+      "status": "clear"
+    },
+    {
+      "category": "Structural tells",
+      "evidence": {
+        "counts": {},
+        "locations": [],
+        "metric": null,
+        "quoted_phrases": [],
+        "raw": {
+          "aggregate_finding": false,
+          "candidate_count": 0,
+          "candidates": [],
+          "context_gate": {
+            "applied": false,
+            "effective_threshold": {
+              "maximum_deviation": 2,
+              "minimum_items": 3
+            },
+            "raw_evidence": "No symmetric list items",
+            "suppression_reason": null
+          },
+          "context_reason": null,
+          "context_suppressed": false,
+          "evidence": "No symmetric list items",
+          "evidence_role": "listification",
+          "evidence_type": "lexical",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "guidance": "Fix template-shaped list items; preserve specifications, comparison tables, and reference entries where uniformity carries meaning.",
+          "match_count": 0,
+          "matches": [],
+          "severity": "context_warning",
+          "spans": [],
+          "threshold": {
+            "maximum_deviation": 2,
+            "minimum_items": 3
+          },
+          "threshold_met": false
+        }
+      },
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "id": "no-symmetric-list-items",
       "severity": "context_warning",
       "status": "clear"
     },
@@ -1758,6 +4607,7 @@
           ],
           "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": null,
@@ -1948,11 +4798,20 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "This has changed how I think about attention."
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 1,
+          "candidates": [
+            {
+              "end": 9069,
+              "quoted": false,
+              "start": 9024,
+              "text": "This has changed how I think about attention."
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
@@ -1969,7 +4828,10 @@
             "voice_erasure"
           ],
           "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate.",
-          "metric_value": 0,
+          "matches": [
+            "This has changed how I think about attention."
+          ],
+          "metric_value": 1,
           "sample_size": 1786,
           "severity": "context_warning",
           "threshold": null,
@@ -1990,32 +4852,64 @@
         "counts": {},
         "locations": [],
         "metric": null,
-        "quoted_phrases": [],
+        "quoted_phrases": [
+          "tend to",
+          "It depends"
+        ],
         "raw": {
           "aggregate_finding": false,
-          "candidate_count": 0,
-          "candidates": [],
+          "candidate_count": 2,
+          "candidates": [
+            {
+              "end": 4981,
+              "quoted": false,
+              "start": 4974,
+              "text": "tend to"
+            },
+            {
+              "end": 9972,
+              "quoted": false,
+              "start": 9962,
+              "text": "It depends"
+            }
+          ],
           "context_gate": {
             "applied": false,
             "effective_threshold": {
               "minimum_candidates": 3
             },
-            "raw_evidence": "Hedging constructions: 0",
+            "raw_evidence": "Hedging constructions: 2",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Hedging constructions: 0",
+          "evidence": "Hedging constructions: 2",
           "evidence_role": "stance_erasure",
           "evidence_type": "lexical",
           "failure_modes": [
             "voice_erasure"
           ],
           "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty.",
-          "match_count": 0,
-          "matches": [],
+          "match_count": 2,
+          "matches": [
+            "tend to",
+            "It depends"
+          ],
           "severity": "context_warning",
-          "spans": [],
+          "spans": [
+            {
+              "end": 4981,
+              "quoted": false,
+              "start": 4974,
+              "text": "tend to"
+            },
+            {
+              "end": 9972,
+              "quoted": false,
+              "start": 9962,
+              "text": "It depends"
+            }
+          ],
           "threshold": {
             "minimum_candidates": 3
           },
@@ -2425,6 +5319,7 @@
           ],
           "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": {
@@ -2471,6 +5366,7 @@
           ],
           "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric.",
           "match_count": 0,
+          "matches": [],
           "severity": "context_warning",
           "spans": [],
           "threshold": {
@@ -2492,21 +5388,21 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": "type-token ratio 0.39 (689 unique of 1778 words, target above 0.40)",
+        "metric": null,
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": true,
+          "aggregate_finding": false,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": null,
-            "raw_evidence": "Type-token ratio: 0.388 (689 unique / 1778 total, target: >0.40)",
+            "raw_evidence": "Windowed type-token ratio: 0.688 (66 windows of 150 words, flag at 0.71)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Type-token ratio: 0.388 (689 unique / 1778 total, target: >0.40)",
+          "evidence": "Windowed type-token ratio: 0.688 (66 windows of 150 words, flag at 0.71)",
           "evidence_role": "lexical_distribution",
           "evidence_type": "statistical",
           "failure_modes": [
@@ -2514,12 +5410,12 @@
             "genre_misfit"
           ],
           "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately.",
-          "metric": "type-token ratio 0.39 (689 unique of 1778 words, target above 0.40)",
-          "metric_value": "type-token ratio 0.39 (689 unique of 1778 words, target above 0.40)",
+          "metric": null,
+          "metric_value": 0,
           "sample_size": 1786,
           "severity": "context_warning",
           "threshold": null,
-          "threshold_met": true
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -2528,172 +5424,7 @@
       ],
       "id": "vocabulary-diversity",
       "severity": "context_warning",
-      "status": "flagged"
-    },
-    {
-      "category": "Language and grammar",
-      "evidence": {
-        "counts": {},
-        "locations": [],
-        "metric": null,
-        "quoted_phrases": [
-          "tabs, notifications and vague dread",
-          "archive, review and reframe",
-          "requested, deferred or worried about",
-          "often workload, priority and boundary problems",
-          "conversation, discomfort or need",
-          "today, later or nowhere",
-          "tagged, dated and deferred",
-          "what to abandon, what to renegotiate, or what kind of day I was actually capable of having"
-        ],
-        "raw": {
-          "aggregate_finding": false,
-          "candidate_count": 8,
-          "candidates": [
-            {
-              "end": 940,
-              "quoted": false,
-              "start": 905,
-              "text": "tabs, notifications and vague dread"
-            },
-            {
-              "end": 3688,
-              "quoted": false,
-              "start": 3661,
-              "text": "archive, review and reframe"
-            },
-            {
-              "end": 6164,
-              "quoted": false,
-              "start": 6128,
-              "text": "requested, deferred or worried about"
-            },
-            {
-              "end": 6601,
-              "quoted": false,
-              "start": 6555,
-              "text": "often workload, priority and boundary problems"
-            },
-            {
-              "end": 8067,
-              "quoted": false,
-              "start": 8035,
-              "text": "conversation, discomfort or need"
-            },
-            {
-              "end": 8613,
-              "quoted": false,
-              "start": 8590,
-              "text": "today, later or nowhere"
-            },
-            {
-              "end": 10282,
-              "quoted": false,
-              "start": 10256,
-              "text": "tagged, dated and deferred"
-            },
-            {
-              "end": 10412,
-              "quoted": false,
-              "start": 10322,
-              "text": "what to abandon, what to renegotiate, or what kind of day I was actually capable of having"
-            }
-          ],
-          "context_gate": {
-            "applied": false,
-            "effective_threshold": {
-              "minimum_candidates": 4,
-              "minimum_words": 300
-            },
-            "raw_evidence": "Found 8 triad(s): ['tabs, notifications and vague dread', 'archive, review and reframe', 'requested, deferred or worried about', 'often workload, priority and boundary problems', 'conversation, discomfort or need', 'today, later or nowhere', 'tagged, dated and deferred', 'what to abandon, what to renegotiate, or what kind of day I was actually capable of having']",
-            "suppression_reason": null
-          },
-          "context_reason": null,
-          "context_suppressed": false,
-          "evidence": "Found 8 triad(s): ['tabs, notifications and vague dread', 'archive, review and reframe', 'requested, deferred or worried about', 'often workload, priority and boundary problems', 'conversation, discomfort or need', 'today, later or nowhere', 'tagged, dated and deferred', 'what to abandon, what to renegotiate, or what kind of day I was actually capable of having']",
-          "evidence_role": "list_rhythm",
-          "evidence_type": "lexical",
-          "failure_modes": [
-            "frictionless_structure",
-            "genre_misfit"
-          ],
-          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical.",
-          "match_count": 8,
-          "matches": [
-            "tabs, notifications and vague dread",
-            "archive, review and reframe",
-            "requested, deferred or worried about",
-            "often workload, priority and boundary problems",
-            "conversation, discomfort or need",
-            "today, later or nowhere",
-            "tagged, dated and deferred",
-            "what to abandon, what to renegotiate, or what kind of day I was actually capable of having"
-          ],
-          "severity": "context_warning",
-          "spans": [
-            {
-              "end": 940,
-              "quoted": false,
-              "start": 905,
-              "text": "tabs, notifications and vague dread"
-            },
-            {
-              "end": 3688,
-              "quoted": false,
-              "start": 3661,
-              "text": "archive, review and reframe"
-            },
-            {
-              "end": 6164,
-              "quoted": false,
-              "start": 6128,
-              "text": "requested, deferred or worried about"
-            },
-            {
-              "end": 6601,
-              "quoted": false,
-              "start": 6555,
-              "text": "often workload, priority and boundary problems"
-            },
-            {
-              "end": 8067,
-              "quoted": false,
-              "start": 8035,
-              "text": "conversation, discomfort or need"
-            },
-            {
-              "end": 8613,
-              "quoted": false,
-              "start": 8590,
-              "text": "today, later or nowhere"
-            },
-            {
-              "end": 10282,
-              "quoted": false,
-              "start": 10256,
-              "text": "tagged, dated and deferred"
-            },
-            {
-              "end": 10412,
-              "quoted": false,
-              "start": 10322,
-              "text": "what to abandon, what to renegotiate, or what kind of day I was actually capable of having"
-            }
-          ],
-          "threshold": {
-            "minimum_candidates": 4,
-            "minimum_words": 300
-          },
-          "threshold_met": true
-        }
-      },
-      "failure_modes": [
-        "frictionless_structure",
-        "genre_misfit"
-      ],
-      "id": "no-triad-density",
-      "severity": "context_warning",
-      "status": "flagged"
+      "status": "clear"
     },
     {
       "category": "Structural tells",
@@ -2763,6 +5494,7 @@
           ],
           "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing.",
           "match_count": 0,
+          "matches": [],
           "severity": "strong_warning",
           "spans": [],
           "threshold": null,
@@ -2881,12 +5613,12 @@
             "effective_threshold": {
               "minimum_candidates": 2
             },
-            "raw_evidence": "List items with bolded headers: 0",
+            "raw_evidence": "Bold-label segments: 0",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "List items with bolded headers: 0",
+          "evidence": "Bold-label segments: 0",
           "evidence_role": "list_template",
           "evidence_type": "lexical",
           "failure_modes": [

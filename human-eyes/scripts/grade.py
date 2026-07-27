@@ -71,7 +71,7 @@ AI_VOCABULARY = [
 # high-ratio phrases, in source order. `_assert_gptzero_payload_frozen` below
 # rejects any edit to its length, and test_grade.py's DR-126C block compares it
 # row by row against the preserved client JSON. New clustering candidates belong
-# in AI_VOCABULARY above; both lists feed the same #7 matcher, so an addition
+# in AI_VOCABULARY above; both lists feed the same B1 matcher, so an addition
 # here still changes detection and still passes every behaviour test, which is
 # exactly how DR-71 nearly shipped three phrases into a preserved record.
 # Treat these as tentative clustering signals, not single-phrase proof.
@@ -364,7 +364,7 @@ AI_VOCABULARY_REGEX = [
 ]
 
 # Exact term families from Kousha and Thelwall's Table 1. These support the
-# document-wide distinct-family rule; they do not replace the broader #7 list.
+# document-wide distinct-family rule; they do not replace the broader B1 list.
 KOUSHA_THELWALL_TERM_FAMILY_REGEX = (
     ("underscore", r"\bunderscor(?:e|es|ed|ing)\b"),
     ("delve", r"\bdelv(?:e|es|ed|ing)\b"),
@@ -955,6 +955,83 @@ def mask_non_prose_preserving_quotes(text):
     return _mask_non_prose_patterns(text, MACHINE_READABLE_PATTERNS)
 
 
+WHITESPACE_RUN_RE = re.compile(r"\s+")
+
+
+def _draft_search_pattern(value):
+    """Build a pattern that finds a check's match back in the draft.
+
+    Two transformations stand between a match and the page it came from.
+    Lexical checks read a masked copy in which quotations and machine-readable
+    spans are blanked to spaces of the same length, so a match spanning one
+    carries a run of blanks; and several checks join lines or lowercase before
+    returning, so paragraph breaks arrive as single spaces and capitals are
+    gone. A run of two or more blanks therefore matches exactly that many
+    characters, single whitespace matches any whitespace, and case is ignored.
+    """
+    parts = []
+    for part in re.split(r"(\s+)", value):
+        if not part:
+            continue
+        if part.strip():
+            parts.append(re.escape(part))
+        elif len(part) == 1:
+            parts.append(r"\s+")
+        else:
+            parts.append(r"[\s\S]{%d}" % len(part))
+    return "".join(parts)
+
+
+def _locate_in_draft(value, original_text, cursor=0):
+    """Find one check match in the draft, searching forward from `cursor`."""
+    if not value.strip():
+        return None
+    try:
+        pattern = re.compile(_draft_search_pattern(value), re.IGNORECASE)
+    except re.error:
+        return None
+    return pattern.search(original_text, cursor) or pattern.search(original_text)
+
+
+def recut_matches_from_draft(result, original_text):
+    """Restore every match to the writer's own words before anything reads it.
+
+    Evidence is the one part of an audit a writer checks against their own
+    page, so a quote carrying blanks where a quotation was, or stripped of its
+    capitals, is worse than no quote at all. Matches that are already a slice
+    of the draft are left untouched; the rest are relocated and recut from the
+    source. Whitespace in a recut match is collapsed so a restored paragraph
+    still renders on one line — the words and capitals are the writer's, the
+    line breaks are not. A match no search can place (checks that compose a
+    phrase from two spans, such as `no-heading-one-liners`) is left as it is.
+    """
+    matches = result.get("matches")
+    if not isinstance(matches, list) or not matches:
+        return result
+    cursor = 0
+    recut = []
+    for value in matches:
+        if not isinstance(value, str) or not value:
+            recut.append(value)
+            continue
+        verbatim = original_text.find(value, cursor)
+        if verbatim < 0 and value in original_text:
+            verbatim = original_text.find(value)
+        if verbatim >= 0:
+            cursor = verbatim + len(value)
+            recut.append(value)
+            continue
+        located = _locate_in_draft(value, original_text, cursor)
+        if located is None:
+            recut.append(value)
+            continue
+        cursor = located.end()
+        recut.append(WHITESPACE_RUN_RE.sub(" ", located.group(0)))
+    result = dict(result)
+    result["matches"] = recut
+    return result
+
+
 def _candidate_records(result, original_text):
     """Return a stable candidate schema from a check's verbatim matches."""
     candidates = []
@@ -1187,6 +1264,10 @@ def check_ai_vocabulary(text):
         "passed": max_count < 3 and not document_pair,
         "evidence": evidence,
     }
+    # Only the document-family branch carries structured matches. DR-126B fixed
+    # that deliberately: `worst_words` comes from a lowercased paragraph, so it
+    # cannot supply the source casing and order the structured evidence contract
+    # requires, and the paragraph branch falls back to evidence parsing instead.
     if document_pair:
         result["matches"] = document_matches
     return result
@@ -1347,12 +1428,15 @@ def check_overall_signal_stacking(text):
             component_points[name] = points
             components.append(component_labels[name])
 
-    failed = score >= 4
+    # The declared value is a bare count, not a keyed dict, so it is read
+    # directly rather than through threshold_value.
+    minimum_score = CHECK_THRESHOLDS.get("overall-signal-stacking", 4)
+    failed = score >= minimum_score
     return {
         "text": "overall-signal-stacking",
         "passed": not failed,
         "score": score,
-        "threshold": 4,
+        "threshold": minimum_score,
         "components": components,
         "component_points": component_points,
         "vocabulary_signal_stacking": {
@@ -1365,7 +1449,7 @@ def check_overall_signal_stacking(text):
             "kobak_style_sample": vocab["kobak"]["style_sample"],
         },
         "evidence": (
-            f"Overall signal stacking {score}/4 from [{', '.join(components)}]; "
+            f"Overall signal stacking {score}/{minimum_score} from [{', '.join(components)}]; "
             f"vocab={vocab['points']} point(s), "
             f"worst_generic={vocab['worst_generic']}, "
             f"gptzero={vocab['gptzero_matches']}, "
@@ -1374,7 +1458,7 @@ def check_overall_signal_stacking(text):
             f"sample={vocab['kobak']['style_sample']}"
             if failed
             else (
-                f"Overall signal stacking {score}/4 from [{', '.join(components)}]; "
+                f"Overall signal stacking {score}/{minimum_score} from [{', '.join(components)}]; "
                 f"vocab={vocab['points']} point(s), "
                 f"worst_generic={vocab['worst_generic']}, "
                 f"gptzero={vocab['gptzero_matches']}, "
@@ -1460,6 +1544,7 @@ def check_staccato(text):
             r"(?:^|(?<=[.!?])\s+|(?<=\n)\s*)[a-z][\w'’\-]*\.\s+that['’]s the word[.!?]?",
         ])
     ]
+    minimum_run = threshold_value("no-staccato-sequences", "minimum_run", 3)
     max_run = 0
     current_run = 0
     longest_run_end = -1
@@ -1475,20 +1560,32 @@ def check_staccato(text):
                 longest_run_end = i
         else:
             current_run = 0
-    repeated_opening_pairs = []
-    for previous, current in zip(sentences, sentences[1:]):
-        previous_words = previous.split()
-        current_words = current.split()
-        if len(previous_words) >= 6 or len(current_words) >= 6:
+    # Runs of consecutive short sentences that all open on the same word. The
+    # declared minimum is a run length, so a run of three is reported once as a
+    # run rather than as two overlapping pairs.
+    minimum_opener_run = threshold_value(
+        "no-staccato-sequences", "minimum_repeated_opener_run", 2
+    )
+    repeated_opening_runs = []
+    current_opener_run = []
+
+    def close_opener_run():
+        if len(current_opener_run) >= minimum_opener_run:
+            repeated_opening_runs.append(
+                " ".join(sentence.strip() for _opener, sentence in current_opener_run)
+            )
+
+    for sentence in sentences:
+        opener = None
+        if len(sentence.split()) < 6:
+            match = re.search(r"[^\W_]+(?:['’\-][^\W_]+)*", sentence, re.UNICODE)
+            opener = match.group(0).casefold() if match else None
+        if opener is not None and current_opener_run and opener == current_opener_run[0][0]:
+            current_opener_run.append((opener, sentence))
             continue
-        previous_opener = re.search(r"[^\W_]+(?:['’\-][^\W_]+)*", previous, re.UNICODE)
-        current_opener = re.search(r"[^\W_]+(?:['’\-][^\W_]+)*", current, re.UNICODE)
-        if (
-            previous_opener
-            and current_opener
-            and previous_opener.group(0).casefold() == current_opener.group(0).casefold()
-        ):
-            repeated_opening_pairs.append(f"{previous.strip()} {current.strip()}")
+        close_opener_run()
+        current_opener_run = [(opener, sentence)] if opener is not None else []
+    close_opener_run()
     # Rate branch (DR-66): short sentences spread through a document rather than
     # bunched into a run. Ten words or fewer is the Desaire threshold the Xia
     # paper measures, and prose paragraphs are used so headings do not count.
@@ -1535,23 +1632,23 @@ def check_staccato(text):
         ][:5]
 
     matches = []
-    if max_run >= 3 and longest_run_end >= 0:
+    if max_run >= minimum_run and longest_run_end >= 0:
         run_start = longest_run_end - max_run + 1
         matches = [s.strip() for s in sentences[run_start:longest_run_end + 1] if s.strip()]
-    matches.extend(repeated_opening_pairs)
+    matches.extend(repeated_opening_runs)
     matches.extend(formula_matches)
     if rate_failed:
         matches.extend(short_sentences)
     matches.extend(band_sentences)
     matches = list(dict.fromkeys(matches))
     evidence = []
-    if max_run >= 3:
+    if max_run >= minimum_run:
         evidence.append(f"sequence of {max_run} consecutive short sentences")
     if formula_matches:
         evidence.append(f"exact dramatic-fragment formula(s): {formula_matches}")
-    if repeated_opening_pairs:
+    if repeated_opening_runs:
         evidence.append(
-            f"adjacent short-fragment pair(s) sharing an opener: {repeated_opening_pairs}"
+            f"short-fragment run(s) sharing an opener: {repeated_opening_runs}"
         )
     if rate_failed:
         evidence.append(
@@ -1566,9 +1663,9 @@ def check_staccato(text):
     return {
         "text": "no-staccato-sequences",
         "passed": (
-            max_run < 3
+            max_run < minimum_run
             and not formula_matches
-            and not repeated_opening_pairs
+            and not repeated_opening_runs
             and not rate_failed
             and not mean_failed
         ),
@@ -1623,7 +1720,7 @@ def check_anaphora(text):
 
 
 def check_paragraph_anaphora(text):
-    """Detect 3+ consecutive prose paragraphs opening with the same word (pattern 58)."""
+    """Detect 3+ consecutive prose paragraphs opening with the same word (pattern H16)."""
     blocks = [b.strip() for b in text.split('\n\n') if b.strip()]
     openers = []
     for block in blocks:
@@ -2022,6 +2119,7 @@ def check_generic_conclusions(text):
     return {
         "text": "no-generic-conclusions",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No generic conclusions",
     }
 
@@ -2180,7 +2278,7 @@ def threshold_value(check_id, key, default):
 
 
 def check_rule_of_three(text):
-    """Flag a high rate of three-part constructions (pattern 10).
+    """Flag a high rate of three-part constructions (pattern B4).
 
     Counting triads does not separate generated from human prose: 95% of the
     human corpus and 100% of the generated corpus contain at least one, and a
@@ -2388,26 +2486,29 @@ def _biber_rate_check(check_id, text, extract, default_rate, label):
     maximum_rate = threshold_value(check_id, "maximum_rate_per_1000", default_rate)
     eligible = len(words) >= minimum_words
     rate = count / len(words) * 1000 if words else 0.0
+    # The finding is the density, so the density is what a reader is shown.
+    # These checks used to hand back every hit, which meant a draft using `it`
+    # 267 times was quoted `"It", "it", "it" (+264 more)` — a list that repeats
+    # one word the writer already knows and buries the rate that is the point.
+    # The count is kept in `candidate_count`, which the sweeps and the cut-off
+    # test read.
+    metric = f"{count} {label} at {rate:.1f} per 1000 words (flag at {maximum_rate})"
     if not eligible:
-        evidence = (
+        metric = (
             f"{label}: {count}; below minimum length "
             f"({len(words)}/{minimum_words} words)"
         )
-    elif rate >= maximum_rate:
-        evidence = f"Found {count} {label} at {rate:.1f} per 1000 words: {matches[:12]}"
-    else:
-        evidence = f"{label}: {count} at {rate:.1f} per 1000 words"
     return {
         "text": check_id,
         "passed": not eligible or rate < maximum_rate,
         "candidate_count": count,
-        "matches": matches,
-        "evidence": evidence,
+        "metric": metric,
+        "evidence": metric,
     }
 
 
 def check_nominalisation_rate(text):
-    """Flag a high rate of nominalisations (pattern 65)."""
+    """Flag a high rate of nominalisations (pattern B7)."""
     return _biber_rate_check(
         "no-nominalisation-rate", text,
         lambda s: NOMINALISATION_RE.findall(s), 29.0, "nominalisation(s)",
@@ -2415,7 +2516,7 @@ def check_nominalisation_rate(text):
 
 
 def check_that_relative_rate(text):
-    """Flag a high rate of subject-position `that` relative clauses (pattern 66)."""
+    """Flag a high rate of subject-position `that` relative clauses (pattern B8)."""
     return _biber_rate_check(
         "no-that-relative-rate", text,
         lambda s: THAT_SUBJECT_RELATIVE_RE.findall(s), 3.5, "subject relative(s)",
@@ -2423,7 +2524,7 @@ def check_that_relative_rate(text):
 
 
 def check_participial_clause_rate(text):
-    """Flag a high rate of present participial clauses (pattern 67)."""
+    """Flag a high rate of present participial clauses (pattern B9)."""
     return _biber_rate_check(
         "no-participial-clause-rate", text,
         extract_participial_clauses, 4.4, "participial clause(s)",
@@ -2503,7 +2604,7 @@ IT_PRONOUN_RE = re.compile(r"\bit\b", re.IGNORECASE)
 
 
 def check_passive_voice_rate(text):
-    """Flag a high rate of passive-voice verbs (pattern 68)."""
+    """Flag a high rate of passive-voice verbs (pattern B10)."""
     return _biber_rate_check(
         "no-passive-voice-rate", text,
         extract_passive_verbs, 5.0, "passive verb(s)",
@@ -2511,7 +2612,7 @@ def check_passive_voice_rate(text):
 
 
 def check_it_pronoun_rate(text):
-    """Flag a high rate of the `it` pronoun (pattern 69)."""
+    """Flag a high rate of the `it` pronoun (pattern B11)."""
     return _biber_rate_check(
         "no-it-pronoun-rate", text,
         lambda source: IT_PRONOUN_RE.findall(source), 18.0, "`it` pronoun(s)",
@@ -2519,7 +2620,7 @@ def check_it_pronoun_rate(text):
 
 
 def check_mixed_script_words(text):
-    """Detect Latin words carrying confusable Cyrillic or Greek letters (pattern 72)."""
+    """Detect Latin words carrying confusable Cyrillic or Greek letters (pattern C9)."""
     source = strip_front_matter(text)
     matches = [
         word for word in WORD_UNICODE_RE.findall(source)
@@ -2538,7 +2639,7 @@ def check_mixed_script_words(text):
 
 
 def check_concreteness_average(text):
-    """Flag prose whose words run abstract rather than concrete (pattern 73)."""
+    """Flag prose whose words run abstract rather than concrete (pattern B14)."""
     source = strip_front_matter(text)
     minimum_words = threshold_value("concreteness-average", "minimum_words", 100)
     maximum_mean = threshold_value("concreteness-average", "maximum_mean_concreteness", 2.915)
@@ -2574,7 +2675,7 @@ def check_concreteness_average(text):
 
 
 def check_word_length_average(text):
-    """Flag prose whose mean word runs long (pattern 71)."""
+    """Flag prose whose mean word runs long (pattern B13)."""
     source = strip_front_matter(text)
     words = WORD_TOKEN_RE.findall(source)
     minimum_words = threshold_value("word-length-average", "minimum_words", 100)
@@ -2606,7 +2707,7 @@ def check_word_length_average(text):
 
 
 def check_latinate_verb_rate(text):
-    """Flag a high rate of Latinate verbs used for plain ones (pattern 70)."""
+    """Flag a high rate of Latinate verbs used for plain ones (pattern B12)."""
     return _biber_rate_check(
         "no-latinate-verb-rate", text,
         lambda source: LATINATE_VERB_RE.findall(source), 2.5, "Latinate verb(s)",
@@ -2614,7 +2715,7 @@ def check_latinate_verb_rate(text):
 
 
 def check_superficial_ing(text):
-    """Detect overused opening and tacked-on participial clauses (pattern 3)."""
+    """Detect overused opening and tacked-on participial clauses (pattern A3)."""
     source = strip_front_matter(text)
     trailing_pattern = (
         r',\s+(?:highlighting|underscoring|emphasizing|reflecting|symbolizing|'
@@ -2666,7 +2767,7 @@ def check_superficial_ing(text):
 
 
 def check_ghost_spectral(text):
-    """Detect ghost/spectral language density (pattern 26)."""
+    """Detect ghost/spectral language density (pattern F1)."""
     words = ["ghost", "ghosts", "spectral", "shadow", "shadows", "whisper",
              "whispers", "echo", "echoes", "phantom", "haunting", "haunted",
              "lingering", "remnant", "remnants", "unspoken", "hidden"]
@@ -2678,6 +2779,11 @@ def check_ghost_spectral(text):
     return {
         "text": "no-ghost-spectral-density",
         "passed": count < 3,
+        # The report quotes the distinct words; repeating "hidden" three times
+        # tells a reader nothing the count does not. The count still governs, so
+        # it is carried separately rather than inferred from the quoted list.
+        "matches": found,
+        "candidate_count": count,
         "evidence": (
             f"Found {count} ghost/spectral words: {found}"
             if count >= 3
@@ -2687,7 +2793,7 @@ def check_ghost_spectral(text):
 
 
 def check_quietness(text):
-    """Detect quietness obsession density (pattern 27)."""
+    """Detect quietness obsession density (pattern F2)."""
     words = ["quiet", "quietly", "silent", "silently", "soft", "softly", "stillness",
              "hushed", "murmur", "hum", "humming", "gentle", "tender", "settle", "settled"]
     text_lower = text.lower()
@@ -2770,7 +2876,7 @@ def check_rhetorical_questions(text):
 
 
 def check_list_density(text):
-    """Detect excessive list-making (pattern 31)."""
+    """Detect excessive list-making (pattern G3)."""
     lines = text.strip().split('\n')
     item_pattern = re.compile(r'\s*(?:[-*]|\d+\.)\s')
     item_lines = [line.strip() for line in lines if item_pattern.match(line)]
@@ -2790,7 +2896,10 @@ def check_list_density(text):
     threshold = CHECK_THRESHOLDS.get("no-excessive-lists", {})
     minimum_items = threshold.get("minimum_items", 8)
     minimum_blocks = threshold.get("minimum_blocks", 2)
-    flagged = ratio >= 0.3 or (bullet_lines >= minimum_items and list_blocks >= minimum_blocks)
+    minimum_line_ratio = threshold.get("minimum_line_ratio", 0.3)
+    flagged = ratio >= minimum_line_ratio or (
+        bullet_lines >= minimum_items and list_blocks >= minimum_blocks
+    )
     return {
         "text": "no-excessive-lists",
         "passed": not flagged,
@@ -2829,7 +2938,7 @@ def list_item_edge_token(item, index):
 
 
 def check_symmetric_list_items(text):
-    """Detect list items sharing both a uniform length and an edge token (pattern 63).
+    """Detect list items sharing both a uniform length and an edge token (pattern G11).
 
     Symmetry needs both conditions. A list whose items merely run to the same
     length, or merely share an opening or closing word, is left alone; only the
@@ -2870,7 +2979,7 @@ def check_symmetric_list_items(text):
 def check_unicode_flair(text):
     """Detect decorative Unicode symbols and emoji shortcodes (patterns 31a + 16).
 
-    Folds pattern 16 (Emojis) into this check: covers symbol glyphs, the
+    Folds pattern C4 (Emojis) into this check: covers symbol glyphs, the
     broader emoji ranges, and ``:shortcode:`` forms (``:rocket:``, ``:bulb:``)
     that cluster in headings or bullet points.
     """
@@ -2898,7 +3007,7 @@ def check_unicode_flair(text):
 
 
 def check_dramatic_transitions(text):
-    """Detect dramatic narrative transitions (pattern 32)."""
+    """Detect dramatic narrative transitions (pattern G5)."""
     patterns = [
         r"something shifted", r"everything changed", r"everything clicked",
         r"that's when it hit me", r"and that made all the difference",
@@ -2909,6 +3018,7 @@ def check_dramatic_transitions(text):
     return {
         "text": "no-dramatic-transitions",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count}: {matches}"
             if count > 0
@@ -3072,18 +3182,24 @@ def check_this_chains(text):
     """Detect 3+ consecutive sentences starting with 'This [verb]'."""
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     worst_run = 0
+    worst_sentences = []
     for para in paragraphs:
         sentences = split_sentences(para)
-        current_run = 0
+        current = []
         for s in sentences:
             if re.match(r'^this\s+(?!is\b)\w+', s.strip().lower()):
-                current_run += 1
-                worst_run = max(worst_run, current_run)
+                current.append(s.strip())
+                if len(current) > worst_run:
+                    worst_run = len(current)
+                    worst_sentences = list(current)
             else:
-                current_run = 0
+                current = []
     return {
         "text": "no-this-chains",
         "passed": worst_run < 3,
+        # The run itself, so the report can quote it. Without this the flagged
+        # line named the pattern and showed a reader nothing to look at.
+        "matches": worst_sentences,
         "evidence": (
             f"Found {worst_run} consecutive 'This [verb]' sentences"
             if worst_run >= 3
@@ -3105,11 +3221,14 @@ def check_countdown_negation(text):
     """
     # Branch 1: existing countdown-then-reveal pattern (do not change)
     pattern = r'(?:(?:it|this|that) (?:wasn\'t|isn\'t|was not|is not) [^.?!]+[.]\s*){2,}(?:it|this|that) (?:was|is) [^.?!]+[.]'
-    matches = re.findall(pattern, text.lower())
+    # Read case-insensitively rather than off a lowercased copy so the sequence
+    # can be quoted back in the author's own casing. Same pattern, same matches.
+    matches = [m.group(0) for m in re.finditer(pattern, text, re.IGNORECASE)]
     if matches:
         return {
             "text": "no-countdown-negation",
             "passed": False,
+            "matches": matches,
             "evidence": f"Found {len(matches)} countdown negation sequence(s)",
         }
 
@@ -3118,7 +3237,8 @@ def check_countdown_negation(text):
     subjects = ("you", "we", "they", "people")
     sentences = split_sentences(text)
     max_run = 0
-    current_run = 0
+    longest = []
+    current = []
     current_subject = None
     for s in sentences:
         s_lower = s.strip().lower()
@@ -3128,19 +3248,23 @@ def check_countdown_negation(text):
                 matched_subject = subj
                 break
         if matched_subject and matched_subject == current_subject:
-            current_run += 1
-            max_run = max(max_run, current_run)
+            current.append(s.strip())
         elif matched_subject:
             current_subject = matched_subject
-            current_run = 1
+            current = [s.strip()]
         else:
             current_subject = None
-            current_run = 0
+            current = []
+        if len(current) > max_run:
+            max_run = len(current)
+            longest = list(current)
 
     if max_run >= 3:
         return {
             "text": "no-countdown-negation",
             "passed": False,
+            # The run, so the finding is quotable rather than a bare count.
+            "matches": longest,
             "evidence": f"Found {max_run} consecutive same-subject negation sentences",
         }
 
@@ -3203,17 +3327,25 @@ def check_paragraph_uniformity(text):
         words = re.findall(r"\b\w+\b", para)
         if len(words) >= 25:
             lengths.append(len(words))
-    if len(lengths) < 7:
+    minimum_paragraphs = threshold_value(
+        "paragraph-length-uniformity", "minimum_paragraphs", 7
+    )
+    if len(lengths) < minimum_paragraphs:
         return {
             "text": "paragraph-length-uniformity",
             "passed": True,
-            "evidence": f"Skipped: {len(lengths)} substantial paragraphs, need 7+",
+            "evidence": (
+                f"Skipped: {len(lengths)} substantial paragraphs, "
+                f"need {minimum_paragraphs}+"
+            ),
         }
     avg = sum(lengths) / len(lengths)
     cv = stdev(lengths) / avg if avg else 0
-    flagged = cv < 0.18
+    maximum_cv = threshold_value("paragraph-length-uniformity", "maximum_cv", 0.18)
+    flagged = cv < maximum_cv
     metric = (
-        f"paragraph length variation {cv:.2f} across {len(lengths)} paragraphs (target above 0.18)"
+        f"paragraph length variation {cv:.2f} across {len(lengths)} paragraphs "
+        f"(target: >={maximum_cv:g})"
         if flagged else None
     )
     return {
@@ -3221,7 +3353,8 @@ def check_paragraph_uniformity(text):
         "passed": not flagged,
         "metric": metric,
         "evidence": (
-            f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs (target: >=0.18)"
+            f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs "
+            f"(target: >={maximum_cv:g})"
             if flagged
             else f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs"
         ),
@@ -3308,6 +3441,7 @@ def check_bland_critical_template(text):
     return {
         "text": "no-bland-critical-template",
         "passed": count < threshold_value("no-bland-critical-template", "minimum_candidates", 3),
+        "matches": matches,
         "evidence": (
             f"Found {count} bland critical template phrase(s): {matches[:6]}"
             if count >= 3
@@ -3322,6 +3456,7 @@ def check_rubric_echoing(text):
     return {
         "text": "no-rubric-echoing",
         "passed": count < threshold_value("no-rubric-echoing", "minimum_candidates", 3),
+        "matches": matches,
         "evidence": (
             f"Found {count} rubric echo phrase(s): {matches[:5]}"
             if count >= 3
@@ -3331,7 +3466,7 @@ def check_rubric_echoing(text):
 
 
 def check_type_token_ratio(text):
-    """Flag unusually high windowed lexical diversity (pattern 53).
+    """Flag unusually high windowed lexical diversity (pattern B5).
 
     Direction and thresholds set by Mae 2026-07-17 from the eval-corpus
     calibration (dev/evals/ttr-calibration-2026-07-17.md): generated prose
@@ -3402,7 +3537,7 @@ HEDGING_PATTERNS = [
 
 
 def check_section_scaffolding(text):
-    """Detect repeated labels and mechanical heading structure (pattern 38)."""
+    """Detect repeated labels and mechanical heading structure (pattern G6)."""
     lines = strip_front_matter(text).split('\n')
     heading_pattern = re.compile(r"^\s*(#{1,6})\s+\S")
     thematic_break_pattern = re.compile(r"^\s*(?:-{3,}|\*{3,}|_{3,})\s*$")
@@ -3484,7 +3619,7 @@ MODAL_QUALIFIERS = {
 
 
 def check_modal_stacks(text):
-    """Detect sentences stacking 3+ bare modal/frequency qualifiers (pattern 60)."""
+    """Detect sentences stacking 3+ bare modal/frequency qualifiers (pattern E9)."""
     sentences = split_sentences(text)
     matches = []
     for sentence in sentences:
@@ -3506,7 +3641,7 @@ def check_modal_stacks(text):
 
 
 def check_heading_one_liners(text):
-    """Detect headings followed by a one-sentence paragraph (pattern 59)."""
+    """Detect headings followed by a one-sentence paragraph (pattern G10)."""
     thresholds = CHECK_THRESHOLDS.get("no-heading-one-liners", {})
     minimum = thresholds.get("minimum_candidates", 2)
     blocks = [b.strip() for b in text.split('\n\n') if b.strip()]
@@ -3608,7 +3743,7 @@ AMERICAN_SPELLINGS = _spelling_patterns(american=True)
 
 
 def check_mixed_spelling_conventions(text):
-    """Detect British and American spellings of the same families in one text (pattern 64).
+    """Detect British and American spellings of the same families in one text (pattern B6).
 
     Either convention used consistently is fine.  The finding is the mixture,
     which is what appears when generated text is pasted into a document written
@@ -3636,7 +3771,7 @@ FALSE_RANGE_PAIR = re.compile(
 
 
 def check_false_ranges(text):
-    """Detect stacked `from X to Y` pairs inside one sentence (pattern 12).
+    """Detect stacked `from X to Y` pairs inside one sentence (pattern A6).
 
     A single pair is ordinary English and runs slightly more often in human
     prose than generated (0.61 against 0.48 per 1000 words in the project
@@ -3669,7 +3804,7 @@ TITLE_CASE_MINOR_WORDS = {
 
 
 def check_title_case_headings(text):
-    """Detect headings that capitalise minor words (pattern 64).
+    """Detect headings that capitalise minor words (pattern B6).
 
     Conventional title case leaves articles, prepositions, and conjunctions
     lowercase inside a heading.  Capitalising them is the machine variant, so
@@ -3746,11 +3881,12 @@ NOTABILITY_CLAIMS = [
 
 
 def check_notability_claims(text):
-    """Detect notability claims that list authorities without context (pattern 2)."""
+    """Detect notability claims that list authorities without context (pattern A2)."""
     count, matches = count_pattern_matches(text, NOTABILITY_CLAIMS)
     return {
         "text": "no-notability-claims",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} notability claim(s): {matches[:3]}"
             if count > 0
@@ -3773,7 +3909,7 @@ VAGUE_ATTRIBUTIONS = [
 
 
 def check_vague_attributions(text):
-    """Detect vague-authority attributions without named sources (pattern 5)."""
+    """Detect vague-authority attributions without named sources (pattern A5)."""
     count, matches = count_pattern_matches(text, VAGUE_ATTRIBUTIONS)
     return {
         "text": "no-vague-attributions",
@@ -3788,7 +3924,7 @@ def check_vague_attributions(text):
 
 
 def check_boldface_overuse(text):
-    """Detect mechanical boldface emphasis in prose (pattern 13)."""
+    """Detect mechanical boldface emphasis in prose (pattern C1)."""
     bold_pattern = re.compile(r"\*\*[^*\n]{1,80}\*\*")
     list_or_heading = re.compile(r"^\s*(?:[-*+•]|\d+\.|#{1,6})\s+")
     total = 0
@@ -3812,7 +3948,7 @@ def check_boldface_overuse(text):
 
 
 def check_inline_header_lists(text):
-    """Detect list items that start with a bolded header and colon (pattern 14)."""
+    """Detect list items that start with a bolded header and colon (pattern C2)."""
     list_prefix = re.compile(
         r"^\s*(?:[-*+•◦▪▫‣⁃●○]|\d+[.)])\s+"
     )
@@ -3856,21 +3992,25 @@ COMPOUND_MODIFIER_RE = re.compile("|".join(COMPOUND_MODIFIERS))
 
 
 def check_compound_modifier_density(text):
-    """Detect three or more hyphenated compound modifiers in a single sentence (pattern 18)."""
+    """Detect three or more hyphenated compound modifiers in a single sentence (pattern C6)."""
     sentences = re.split(r"(?<=[.!?])\s+", text)
     flagged = []
+    minimum_per_sentence = threshold_value(
+        "no-compound-modifier-density", "minimum_per_sentence", 3
+    )
     for sent in sentences:
         sent_lower = sent.lower()
         if "-" not in sent_lower:
             continue
         per_sentence = COMPOUND_MODIFIER_RE.findall(sent_lower)
-        if len(per_sentence) >= 3:
+        if len(per_sentence) >= minimum_per_sentence:
             flagged.append(per_sentence)
     return {
         "text": "no-compound-modifier-density",
         "passed": len(flagged) == 0,
         "evidence": (
-            f"Found {len(flagged)} sentence(s) with 3+ AI compound modifiers: {flagged[:2]}"
+            f"Found {len(flagged)} sentence(s) with {minimum_per_sentence}+ "
+            f"AI compound modifiers: {flagged[:2]}"
             if flagged
             else "No dense compound-modifier sentences"
         ),
@@ -3892,7 +4032,7 @@ KNOWLEDGE_CUTOFF_DISCLAIMERS = [
 
 
 def check_knowledge_cutoff_disclaimers(text):
-    """Detect AI knowledge-cutoff or training-update disclaimers (pattern 20)."""
+    """Detect AI knowledge-cutoff or training-update disclaimers (pattern D2)."""
     count, matches = count_pattern_matches(text, KNOWLEDGE_CUTOFF_DISCLAIMERS)
     return {
         "text": "no-knowledge-cutoff-disclaimers",
@@ -4006,6 +4146,11 @@ STATISTICAL_CHECKS = {
     "paragraph-length-uniformity", "vocabulary-diversity",
     "no-section-scaffolding", "no-compound-modifier-density",
     "no-paragraph-anaphora", "no-heading-one-liners", "no-modal-stacks",
+    # The Biber and Xia feature-rate checks (B7 to B12). They report a density
+    # and no longer carry a phrase list, so `lexical` stopped describing them.
+    "no-nominalisation-rate", "no-that-relative-rate",
+    "no-participial-clause-rate", "no-passive-voice-rate",
+    "no-it-pronoun-rate", "no-latinate-verb-rate",
 }
 
 AGGREGATE_CHECKS = {"overall-signal-stacking"}
@@ -4092,7 +4237,7 @@ def _wrap_check(check_id, check):
             check_text = mask_non_prose(text)
         else:
             check_text = text
-        result = enrich_check_result(check(check_text), text)
+        result = enrich_check_result(recut_matches_from_draft(check(check_text), text), text)
         result["threshold"] = CHECK_THRESHOLDS.get(check_id)
         if check_id in AGGREGATE_CHECKS:
             result["evidence_type"] = "aggregate"
@@ -4278,7 +4423,10 @@ def _evidence_envelope(result):
     return {
         "quoted_phrases": _extract_quoted_phrases(result),
         "metric": metric if isinstance(metric, str) and metric else None,
-        "locations": [],  # location tracking not yet wired through the checks
+        # Deliberately empty. `recut_matches_from_draft` works out where every
+        # quote sits in the draft, but nothing reads a location, so publishing
+        # one would be contract surface with no consumer.
+        "locations": [],
         "counts": _extract_counts(result),
         "raw": raw,
     }

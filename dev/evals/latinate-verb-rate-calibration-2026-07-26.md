@@ -1,12 +1,12 @@
 # Latinate verb rate calibration (2026-07-26)
 
-Record for DR-21: new check #70 `no-latinate-verb-rate`, and why the source's own word list could not be used directly.
+Record for DR-21: new check B12 `no-latinate-verb-rate`, and why the source's own word list could not be used directly.
 
 ## The source
 
 Wikipedia's *Signs of AI writing*, claim C13: "Plain verbs may be replaced by stiff or euphemistic synonyms such as `authored`, `relocated`, `utilized`, `attempted`, and `passed away`." The page is an uncited editor inventory. It supplies five words, no counts, no sample, no model set, and no comparison data.
 
-All five were already ruled before this row reached its final component. DR-21B rejected `authored`, `relocated`, `attempted`, and `passed away` as #7 clustering candidates: the project corpora contain none of the four in the generated samples, while `passed away` occurs once in the human ones. `utilized` was already matched through #7's existing `utilize` stem.
+All five were already ruled before this row reached its final component. DR-21B rejected `authored`, `relocated`, `attempted`, and `passed away` as B1 clustering candidates: the project corpora contain none of the four in the generated samples, while `passed away` occurs once in the human ones. `utilized` was already matched through B1's existing `utilize` stem.
 
 So nothing the source supplies was left to add. The list below is the project's, built from the habit the source names rather than from its examples.
 
@@ -58,27 +58,27 @@ Against the rate checks already shipped, measured the same way on the same corpo
 
 | check | human | generated | separation |
 |---|---|---|---|
-| #52 sentence variance | 11% | 72% | 60 |
-| #10 triads | 23% | 70% | 47 |
-| #65 nominalisation | 27% | 70% | 42 |
-| **#70 Latinate verbs** | **15%** | **52%** | **38** |
-| #67 participial | 37% | 70% | 32 |
-| #69 `it` pronoun | 18% | 50% | 32 |
-| #66 subject `that` relative | 27% | 54% | 27 |
-| #68 passive voice | 29% | 57% | 27 |
+| G9 sentence variance | 11% | 72% | 60 |
+| B4 triads | 23% | 70% | 47 |
+| B7 nominalisation | 27% | 70% | 42 |
+| **B12 Latinate verbs** | **15%** | **52%** | **38** |
+| B9 participial | 37% | 70% | 32 |
+| B11 `it` pronoun | 18% | 50% | 32 |
+| B8 subject `that` relative | 27% | 54% | 27 |
+| B10 passive voice | 29% | 57% | 27 |
 
 Mid-table on separation, second lowest on the human flag rate.
 
 ## Three routes were measured, not one
 
-**As #7 clustering candidates.** The individual words are worthless to #7. Adding the twelve that separate best moves #7 from 10% of human documents and 7% of generated ones to 16% and 17%, which is no discrimination at all. #7 fires from occurrence counts in a paragraph, and single occurrences of common verbs like `require` and `provide` are everywhere in both corpora.
+**As B1 clustering candidates.** The individual words are worthless to B1. Adding the twelve that separate best moves B1 from 10% of human documents and 7% of generated ones to 16% and 17%, which is no discrimination at all. B1 fires from occurrence counts in a paragraph, and single occurrences of common verbs like `require` and `provide` are everywhere in both corpora.
 
-**Folded into #65 as one count.** Nominalisations plus Latinate verbs under one threshold reaches 53 points of separation at 33.0, better than either alone. It was rejected on structure rather than on the number: #65 matches six word *endings* and grows on its own as English does, while this list is curated and grows only when someone adds a word. Putting them under one threshold means a hand-edit to the list silently moves the behaviour of a morphological rule.
+**Folded into B7 as one count.** Nominalisations plus Latinate verbs under one threshold reaches 53 points of separation at 33.0, better than either alone. It was rejected on structure rather than on the number: B7 matches six word *endings* and grows on its own as English does, while this list is curated and grows only when someone adds a word. Putting them under one threshold means a hand-edit to the list silently moves the behaviour of a morphological rule.
 
 **As its own check.** What shipped.
 
 ## Two mistakes worth recording
 
-**The overlap test used earlier was invalid.** The first pass rejected this check because it flagged few documents that #65 did not already flag. Running the entire live registry over both corpora shows all 108 documents already fail something, so "documents nothing else catches" is zero for every check in the catalogue. It cannot discriminate between a good check and a bad one and must not be used again.
+**The overlap test used earlier was invalid.** The first pass rejected this check because it flagged few documents that B7 did not already flag. Running the entire live registry over both corpora shows all 108 documents already fail something, so "documents nothing else catches" is zero for every check in the catalogue. It cannot discriminate between a good check and a bad one and must not be used again.
 
 **The first regex undercounted.** A rough matcher built as `stem + (e?s|e?d|ing|ies|ied|ying)?` misses the `-ing` forms of drop-e verbs, so `providing`, `generating`, `facilitating`, `identified`, and `transmitted` never matched. It reported 10% human and 50% generated; the correct matcher reports 15% and 52%. Numbers taken from a throwaway regex were quoted to Mae before the real one existed. Build the matcher the check will actually use, then measure.

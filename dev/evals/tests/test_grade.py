@@ -289,7 +289,7 @@ expect_fail("no-manufactured-insight",
 aphorism_result = ALL_CHECKS["no-manufactured-insight"](
     "Symmetry is the language of trust."
 )
-if aphorism_result.get("matches") != ["symmetry is the language of trust"]:
+if aphorism_result.get("matches") != ["Symmetry is the language of trust"]:
     FAILURES += 1
     print(
         "FAIL: DR-124 overlapping aphorism regexes should keep the longest occurrence, "
@@ -470,7 +470,7 @@ expect_pass("sentence-length-variance",
     "Thanks for the invite. I can't make Tuesday but could do Thursday afternoon.",
     "short-form text skipped (under 100 words, under 6 sentences)")
 
-# DR-79B: #25 gains a mean-sentence-length branch at 15 words, in prose of 300
+# DR-79B: E5 gains a mean-sentence-length branch at 15 words, in prose of 300
 # words or more. Sentences here are uniformly mid-length, so no run, repeated
 # opener, formula, or ten-word-or-fewer rate fires; only the mean does.
 _flat_mid_length = (
@@ -685,11 +685,11 @@ for phrase in _dr137_source_structures:
     if result.get("passed") or result.get("candidate_count") != 1:
         FAILURES += 1
         print(
-            "FAIL: DR-137 source structure should return one #9 candidate; "
+            "FAIL: DR-137 source structure should return one B3 candidate; "
             f"got {result} for {phrase}"
         )
     else:
-        print(f"  ok: DR-137 source structure returns one #9 candidate: {phrase}")
+        print(f"  ok: DR-137 source structure returns one B3 candidate: {phrase}")
 for separator in (",", ":", ";", "-", "–", "—"):
     expect_fail(
         "no-negative-parallelisms",
@@ -1009,7 +1009,7 @@ print("\n=== no-forced-triads ===")
 
 
 def expect_triad(text, reason, recognized=True):
-    """Assert extractor coverage. #10 judges the rate, not any single triad."""
+    """Assert extractor coverage. B4 judges the rate, not any single triad."""
     global FAILURES
     found = bool(_grade.extract_triad_candidates(text))
     if found != recognized:
@@ -1458,7 +1458,7 @@ expect_fail("no-ai-vocabulary-clustering",
     "'unparalleled' + 'invaluable' + 'meticulous' = 3 new AI vocab items")
 
 
-# --- no-forced-triads density (#10) ---
+# --- no-forced-triads density (B4) ---
 
 print("\n=== no-forced-triads density ===")
 
@@ -1711,16 +1711,16 @@ expect_pass("no-unicode-flair",
 print("\n=== group-a-resolution-markers ===")
 import re as _re_meta
 _patterns_md = (ROOT / "human-eyes" / "references" / "patterns.md").read_text()
-_pattern_sections = _re_meta.split(r"(?=^### \d+[a-z]?\.\s)", _patterns_md, flags=_re_meta.MULTILINE)
+_pattern_sections = _re_meta.split(r"(?=^### [A-Z]\d+\.\s)", _patterns_md, flags=_re_meta.MULTILINE)
 # #6 and #11 were removed from the catalogue by DR-155 and DR-156: each carried a
 # pattern number with no check behind it, which the two-detector-type rule forbids.
-_GROUP_A = [2, 5, 12, 13, 14, 15, 16, 18, 20, 21, 28, 30, 35, 36, 37, 41]
+_GROUP_A = ["A2", "A5", "A6", "C1", "C2", "C3", "C4", "C6", "D2", "D3", "F3", "G2", "H3", "H6", "H7", "H10"]
 _resolution_seen = {}
 for _sec in _pattern_sections:
-    _h = _re_meta.match(r"^### (\d+)([a-z])?\.\s", _sec)
-    if not _h or _h.group(2):
+    _h = _re_meta.match(r"^### ([A-Z]\d+)\.\s", _sec)
+    if not _h:
         continue
-    _resolution_seen[int(_h.group(1))] = "**Detection:**" in _sec
+    _resolution_seen[_h.group(1)] = "**Detection:**" in _sec
 for _n in _GROUP_A:
     if not _resolution_seen.get(_n):
         FAILURES += 1
@@ -2645,10 +2645,10 @@ for check_name in ALL_CHECKS:
         "no-nominalisation-rate",
         "no-that-relative-rate",
         # DR-66: the same principle. This piece runs 8.4 passive verbs per 1000
-        # words, inside the 29% of human prose #68 flags by design.
+        # words, inside the 29% of human prose B10 flags by design.
         "no-passive-voice-rate",
         # DR-79A: the same principle again. This piece's sentence-length spread
-        # is 7.56 across 36 sentences, inside the 11% of human prose #52 flags
+        # is 7.56 across 36 sentences, inside the 11% of human prose G9 flags
         # at its calibrated threshold of 9.
         "sentence-length-variance",
     }:
@@ -2671,10 +2671,10 @@ for check_name in ALL_CHECKS:
         # 1000 words, inside the 27% of human prose the check flags by design.
         "no-that-relative-rate",
         # DR-66: this piece runs 25.6 `it` pronouns per 1000 words, inside the
-        # 18% of human prose #69 flags by design.
+        # 18% of human prose B11 flags by design.
         "no-it-pronoun-rate",
         # DR-84: this piece averages 2.845 concreteness across its content
-        # words, inside the 29% of human prose #73 flags by design.
+        # words, inside the 29% of human prose B14 flags by design.
         "concreteness-average",
         "no-negative-parallelisms",
         "overall-signal-stacking",
@@ -3008,22 +3008,22 @@ else:
 
 print("\n=== hygiene-pass regressions ===")
 
-# #26: singular+plural list entries must not double-count one occurrence.
+# F1: singular+plural list entries must not double-count one occurrence.
 expect_pass("no-ghost-spectral-density",
     "The echoes faded across the valley before dawn. The whispers stopped.",
-    "#26: two spectral words must count as 2, not 4")
+    "F1: two spectral words must count as 2, not 4")
 
-# #7: a repeated word must count once per occurrence, not once per entry.
+# B1: a repeated word must count once per occurrence, not once per entry.
 expect_fail("no-ai-vocabulary-clustering",
     "We delve into the data. We delve into the code. We delve into the tests.",
-    "#7: 'delve' three times in one paragraph is a cluster of 3")
+    "B1: 'delve' three times in one paragraph is a cluster of 3")
 
-# #7: nested entries (word inside a longer phrase) must count one span once.
+# B1: nested entries (word inside a longer phrase) must count one span once.
 expect_pass("no-ai-vocabulary-clustering",
     "They offer a valuable insight and provide a valuable insight.",
-    "#7: two phrases containing two nested words must count as 2, not 4")
+    "B1: two phrases containing two nested words must count as 2, not 4")
 
-# #52: documented eligibility skips prose under 100 words or under 6 sentences.
+# G9: documented eligibility skips prose under 100 words or under 6 sentences.
 expect_pass("sentence-length-variance",
     ("The committee reviewed every submission that arrived before the posted "
      "deadline and sorted all of them into three separate piles organised by "
@@ -3034,56 +3034,56 @@ expect_pass("sentence-length-variance",
      "circulated to the whole committee two days before the meeting. All the "
      "members arrived at the meeting having read the document and voted on "
      "every entry in one long session that ran for roughly four hours."),
-    "#52: 100+ words but only 4 sentences must be skipped, not scored")
+    "G9: 100+ words but only 4 sentences must be skipped, not scored")
 
-# #27: singular+inflected list entries must not double-count one occurrence.
+# F2: singular+inflected list entries must not double-count one occurrence.
 expect_pass("no-quietness-obsession",
     "The quietly confident team settled in for the afternoon meeting.",
-    "#27: two quietness words must count as 2, not 4")
+    "F2: two quietness words must count as 2, not 4")
 
-# #27: documented words hum/humming, soft, and settle must be counted.
+# F2: documented words hum/humming, soft, and settle must be counted.
 expect_fail("no-quietness-obsession",
     "The hum of the fans went soft. A low hum settled over the room as "
     "things settle into stillness.",
-    "#27: six documented quietness words including hum and soft")
+    "F2: six documented quietness words including hum and soft")
 
-# #27: 'hum' must not match inside unrelated words like 'human'.
+# F2: 'hum' must not match inside unrelated words like 'human'.
 expect_pass("no-quietness-obsession",
     "Every human on the humid subcontinent heard the announcement clearly.",
-    "#27: human/humid must not count as hum")
+    "F2: human/humid must not count as hum")
 
-# #31a: lightning bolt, rightwards arrow, and recycling glyphs are candidates.
+# G4: lightning bolt, rightwards arrow, and recycling glyphs are candidates.
 expect_fail("no-unicode-flair",
     "Ship fast ⚡ iterate ➡ recycle wins ♻",
-    "#31a: three decorative glyphs missed by the prior character class")
+    "G4: three decorative glyphs missed by the prior character class")
 
 # --- 2026-07-17 defect-sweep family-1 regressions ---
 # Documented phrases the runtime never fired on. Approved as additions.
 
 print("\n=== defect-sweep family-1 regressions ===")
 
-# #21 documents the excellent-point family as its own example.
+# D3 documents the excellent-point family as its own example.
 expect_fail("no-collaborative-artifacts",
     "Excellent point! That framing works much better.",
-    "family-1: excellent-point praise is a documented #21 artifact")
+    "family-1: excellent-point praise is a documented D3 artifact")
 expect_fail("no-collaborative-artifacts",
     "You raise an excellent point about the deadline.",
     "family-1: raised-excellent-point variant")
 
-# #19/#21 document the ASCII form; curly apostrophes must match too.
+# D1/D3 document the ASCII form; curly apostrophes must match too.
 expect_fail("no-collaborative-artifacts",
     "You’re absolutely right about that.",
     "family-1: curly-apostrophe you're absolutely right")
 
-# #42 documents 'here's the thing'; curly apostrophe must match too.
+# G7 documents 'here's the thing'; curly apostrophe must match too.
 expect_fail("no-manufactured-insight",
     "But here’s the thing about all of it.",
     "family-1: curly-apostrophe here's the thing")
 
-# Family 1: documented filler transitions must fire on #22.
+# Family 1: documented filler transitions must fire on E1.
 expect_fail("no-filler-phrases",
     "In today’s fast-paced world, teams move quickly.",
-    "family-1: README's own #22 example, curly apostrophe")
+    "family-1: README's own E1 example, curly apostrophe")
 expect_fail("no-filler-phrases",
     "That being said, the plan still works as designed.",
     "family-1: Grammarly transition 'That being said'")
@@ -3094,7 +3094,7 @@ expect_fail("no-filler-phrases",
     "As technology continues to evolve, our tooling adapts.",
     "family-1: Guo transition 'As technology continues to evolve'")
 
-# Family 1: documented qualifiers count toward #23 density; singles stay clear.
+# Family 1: documented qualifiers count toward E2 density; singles stay clear.
 expect_fail("no-excessive-hedging",
     "Generally speaking, results vary. Arguably, they typically improve to some extent.",
     "family-1: four stacked documented qualifiers")
@@ -3102,7 +3102,7 @@ expect_pass("no-excessive-hedging",
     "Typically, the build finishes in about ten minutes.",
     "family-1: one qualifier alone must not flag")
 
-# Family 1: #9 comma-form two-clause contrastive negation (Stockton C01).
+# Family 1: B3 comma-form two-clause contrastive negation (Stockton C01).
 expect_fail("no-negative-parallelisms",
     "We're not just building a product, we're creating an experience.",
     "family-1: comma-form not-just contrast with repeated subject")
@@ -3117,15 +3117,15 @@ expect_pass("no-negative-parallelisms",
     "The grant covers more than just travel.",
     "family-1 control: more-than-just as ordinary quantification")
 
-# #9 bare-noun subject resuming with a deictic (Stockton example shape).
+# B3 bare-noun subject resuming with a deictic (Stockton example shape).
 expect_fail("no-negative-parallelisms",
     "AI isn’t just evolving—it’s accelerating!",
-    "#9: bare-noun subject with deictic resumption")
+    "B3: bare-noun subject with deictic resumption")
 
 # Single-clause contrast stand-ins feed stacking only (Mae, 2026-07-17).
 expect_pass("no-negative-parallelisms",
     "The grant covers more than just travel.",
-    "single-clause form must not fail #9 directly")
+    "single-clause form must not fail B3 directly")
 expect_pass("overall-signal-stacking",
     "At its core, the summary works. I hope this helps!",
     "three stacked points stay under the threshold")
@@ -3133,35 +3133,35 @@ expect_fail("overall-signal-stacking",
     "At its core, the summary works. I hope this helps! The offer goes beyond the price.",
     "single-clause contrast stand-in tips stacking to four")
 
-# --- #53 flip: windowed lexical diversity, flag high (Mae, 2026-07-17) ---
+# --- B5 flip: windowed lexical diversity, flag high (Mae, 2026-07-17) ---
 
-print("\n=== #53 windowed diversity regressions ===")
+print("\n=== B5 windowed diversity regressions ===")
 
 # High-diversity text (every word unique) must flag.
 _unique_words = " ".join(f"w{chr(97+i%26)}{chr(97+(i//26)%26)}{chr(97+(i//676)%26)}q" for i in range(200))
 expect_fail("vocabulary-diversity", _unique_words,
-    "#53: maximal windowed diversity is the AI direction")
+    "B5: maximal windowed diversity is the AI direction")
 
 # Repetitive long text must stay clear (old rule would have flagged it).
 _repetitive = ("The strategy emphasises customer outcomes and the strategy "
                "emphasises operational efficiency for the team. ") * 20
 expect_pass("vocabulary-diversity", _repetitive,
-    "#53: heavy repetition is no longer the flagged direction")
+    "B5: heavy repetition is no longer the flagged direction")
 
 # Under 150 words stays skipped.
 expect_pass("vocabulary-diversity", "Short note. " * 30,
-    "#53: sub-window text skipped")
+    "B5: sub-window text skipped")
 
 # Two-tier evidence: >=0.74 states the human-range tier.
 _r = ALL_CHECKS["vocabulary-diversity"](_unique_words)
 if "above the observed human range" not in _r["evidence"]:
     FAILURES += 1
-    print(f"FAIL: #53 upper tier missing from evidence: {_r['evidence']}")
+    print(f"FAIL: B5 upper tier missing from evidence: {_r['evidence']}")
 else:
-    print("  ok: #53 upper-tier evidence present at extreme diversity")
+    print("  ok: B5 upper-tier evidence present at extreme diversity")
 
-# --- DR-113: #19 pasted-chat residue families (Mae, 2026-07-17) ---
-print("\n=== DR-113 #19 residue families ===")
+# --- DR-113: D1 pasted-chat residue families (Mae, 2026-07-17) ---
+print("\n=== DR-113 D1 residue families ===")
 expect_fail("no-collaborative-artifacts",
     "I'm sorry, but I can't help with that request.",
     "DR-113: apology-led refusal")
@@ -3182,7 +3182,7 @@ expect_pass("no-collaborative-artifacts",
     "DR-113 control: 'certainty' must not match Certainly")
 
 # --- DR-114 components 1-2: platform residue and possessive bracket labels ---
-print("\n=== DR-114 #39 additions ===")
+print("\n=== DR-114 H8 additions ===")
 expect_fail("no-placeholder-residue",
     "The market outlook remains positive citeturn0search2 according to analysts.",
     "DR-114: ChatGPT citeturn token")
@@ -3244,8 +3244,8 @@ expect_pass("no-heading-one-liners",
     "## Security\n\n- token rotation\n- audit logging",
     "DR-115 control: a list under a heading is not a one-line paragraph")
 
-# --- DR-150: #23 hedging watch-list expansion ---
-print("\n=== DR-150 #23 additions ===")
+# --- DR-150: E2 hedging watch-list expansion ---
+print("\n=== DR-150 E2 additions ===")
 expect_fail("no-excessive-hedging",
     "Results may vary depending on the configuration you start from. "
     "In most cases the defaults are fine for small teams. "
@@ -3264,7 +3264,7 @@ expect_pass("no-excessive-hedging",
     "The alerting has paged twice this quarter.",
     "DR-150 control: two hedges stay under the threshold")
 
-# --- DR-118: modal stacks (#60), can-potentially (#23), intensifiers (#7) ---
+# --- DR-118: modal stacks (E9), can-potentially (E2), intensifiers (B1) ---
 print("\n=== DR-118 additions ===")
 expect_fail("no-modal-stacks",
     "The new cache can potentially often reduce latency for most tenants.",
@@ -3277,7 +3277,7 @@ expect_pass("no-modal-stacks",
     "DR-118 control: capitalised May and non-adverb typical do not count")
 expect_fail("no-excessive-hedging",
     "This can potentially improve results. It tends to help. Generally speaking, it works.",
-    "DR-118: can potentially joins the #23 density list")
+    "DR-118: can potentially joins the E2 density list")
 expect_fail("no-ai-vocabulary-clustering",
     "The change profoundly reshaped the team. It significantly altered planning and fundamentally moved the roadmap.",
     "DR-118: three AI-leaning intensifiers cluster in one paragraph")
@@ -3285,8 +3285,8 @@ expect_pass("no-ai-vocabulary-clustering",
     "The change profoundly reshaped the team.\n\nPlanning shifted the next quarter.\n\nThe roadmap moved a month later.",
     "DR-118 control: one intensifier per paragraph stays clear")
 
-# --- DR-119: #22 generalisations and #24 peppy-ending shape ---
-print("\n=== DR-119 #22/#24 additions ===")
+# --- DR-119: E1 generalisations and E4 peppy-ending shape ---
+print("\n=== DR-119 E1/E4 additions ===")
 expect_fail("no-filler-phrases",
     "It's important to remember that the queue drains overnight. "
     "As AI continues to evolve, the key takeaway is that at the heart of this debate "
@@ -3305,8 +3305,8 @@ expect_pass("no-generic-conclusions",
     "Give it a try today! The trial takes three minutes and needs no card details.",
     "DR-119 control: exclamation mid-document stays clear")
 
-# --- DR-125: #7 vocabulary watch-list expansions ---
-print("\n=== DR-125 #7 vocabulary expansions ===")
+# --- DR-125: B1 vocabulary watch-list expansions ---
+print("\n=== DR-125 B1 vocabulary expansions ===")
 DR125_AI_VOCABULARY = [
     "versatile", "significant", "effectively", "capabilities",
     "advancements", "elucidating", "firstly", "reliance",
@@ -3322,17 +3322,17 @@ for word in DR125_AI_VOCABULARY:
     matches = _grade._find_ai_words(word)
     if matches != [word]:
         FAILURES += 1
-        print(f"FAIL: DR-125 #7 should recognize {word!r} exactly once; got {matches}")
+        print(f"FAIL: DR-125 B1 should recognize {word!r} exactly once; got {matches}")
     else:
-        print(f"  ok: DR-125 #7 recognizes {word!r} exactly once")
+        print(f"  ok: DR-125 B1 recognizes {word!r} exactly once")
 
 for word in ["realign", "despiteful", "capability"]:
     matches = _grade._find_ai_words(word)
     if matches:
         FAILURES += 1
-        print(f"FAIL: DR-125 #7 exact-boundary control {word!r} matched {matches}")
+        print(f"FAIL: DR-125 B1 exact-boundary control {word!r} matched {matches}")
     else:
-        print(f"  ok: DR-125 #7 exact-boundary control leaves {word!r} clear")
+        print(f"  ok: DR-125 B1 exact-boundary control leaves {word!r} clear")
 
 expect_fail("no-ai-vocabulary-clustering",
     "The response was versatile, significant, and worked effectively.",
@@ -3341,8 +3341,8 @@ expect_pass("no-ai-vocabulary-clustering",
     "The response was versatile.\n\nThe result was significant.\n\nThe method worked effectively.",
     "DR-125 control: approved signals in separate paragraphs stay clear")
 
-# --- DR-126B: #7 document-wide Kousha-Thelwall term pairs ---
-print("\n=== DR-126B #7 document-wide term pairs ===")
+# --- DR-126B: B1 document-wide Kousha-Thelwall term pairs ---
+print("\n=== DR-126B B1 document-wide term pairs ===")
 DR126_KOUSHA_TERM_PAIRS = [
     ("delve", "underscore"),
     ("delving", "showcases"),
@@ -3355,7 +3355,7 @@ DR126_KOUSHA_TERM_PAIRS = [
 for first, second in DR126_KOUSHA_TERM_PAIRS:
     expect_fail("no-ai-vocabulary-clustering",
         f"The first section uses {first}.\n\nThe final section uses {second}.",
-        f"DR-126B: distinct document-wide families {first!r} and {second!r} fail #7")
+        f"DR-126B: distinct document-wide families {first!r} and {second!r} fail B1")
 
 dr126_evidence = ALL_CHECKS["no-ai-vocabulary-clustering"](
     "The report will delve into the method.\n\nThe conclusion underscores the result."
@@ -3375,7 +3375,7 @@ dr126_same_paragraph_phrases = _grade._evidence_envelope(
 )["quoted_phrases"]
 if dr126_same_paragraph["passed"]:
     FAILURES += 1
-    print("FAIL: DR-126B exactly two distinct families in one paragraph should fail #7")
+    print("FAIL: DR-126B exactly two distinct families in one paragraph should fail B1")
 elif dr126_same_paragraph_phrases != ["FOSTER", "Delve"]:
     FAILURES += 1
     print(
@@ -3394,7 +3394,7 @@ dr126_combined = ALL_CHECKS["no-ai-vocabulary-clustering"](
 dr126_combined_phrases = _grade._evidence_envelope(dr126_combined)["quoted_phrases"]
 if dr126_combined["passed"]:
     FAILURES += 1
-    print("FAIL: DR-126B combined paragraph and document-family failure should fail #7")
+    print("FAIL: DR-126B combined paragraph and document-family failure should fail B1")
 elif "Worst paragraph has 3 AI words" not in dr126_combined["evidence"]:
     FAILURES += 1
     print(
@@ -3457,7 +3457,7 @@ if dr126_source_phrases != list(_grade.GPTZERO_AI_PHRASES):
         "payload after apostrophe normalization."
     )
     print(
-        "      This list is frozen. New #7 clustering candidates go in "
+        "      This list is frozen. New B1 clustering candidates go in "
         "AI_VOCABULARY (grade.py), not here."
     )
     print(f"  Source rows: {len(dr126_source_phrases)}")
@@ -3593,16 +3593,16 @@ DR135_SOCIAL_POST_FORMULAS = [
 ]
 for phrase in DR135_SOCIAL_POST_FORMULAS:
     expect_fail("no-formulaic-social-posts", phrase,
-        f"DR-135H #62 formulaic social-post frame: {phrase}")
+        f"DR-135H D4 formulaic social-post frame: {phrase}")
 
 dr135_subtype_result = ALL_CHECKS["no-formulaic-social-posts"](
     "I asked ChatGPT to draft the post and the results shocked me. Save this for later."
 )
 if dr135_subtype_result.get("subtypes") != ["ai_wrapper", "engagement_request"]:
     FAILURES += 1
-    print(f"FAIL: DR-135H #62 should report matched subtypes; got {dr135_subtype_result.get('subtypes')}")
+    print(f"FAIL: DR-135H D4 should report matched subtypes; got {dr135_subtype_result.get('subtypes')}")
 else:
-    print("  ok: DR-135H #62 reports matched social-post subtypes")
+    print("  ok: DR-135H D4 reports matched social-post subtypes")
 
 DR135_VOCABULARY_ADDITIONS = [
     "literally", "incredibly", "essentially", "arguably", "undeniably",
@@ -3614,9 +3614,9 @@ for phrase in DR135_VOCABULARY_ADDITIONS:
     matches = _grade._find_ai_words(phrase)
     if matches != [phrase]:
         FAILURES += 1
-        print(f"FAIL: DR-135H #7 should recognize {phrase!r} exactly once; got {matches}")
+        print(f"FAIL: DR-135H B1 should recognize {phrase!r} exactly once; got {matches}")
     else:
-        print(f"  ok: DR-135H #7 recognizes {phrase!r} exactly once")
+        print(f"  ok: DR-135H B1 recognizes {phrase!r} exactly once")
 
 # --- DR-132A: approved marketing-email regex routes ---
 print("\n=== DR-132A marketing-email regex routes ===")
@@ -3630,19 +3630,19 @@ for phrase in (
     "This is unprecedented.",
 ):
     expect_fail("no-promotional-language", phrase,
-        f"DR-132A #4 hype formula: {phrase}")
+        f"DR-132A A4 hype formula: {phrase}")
 
 for phrase in ("thoughtful strategy", "clear messaging", "intentional design"):
     matches = _grade._find_ai_words(phrase)
     if matches != [phrase]:
         FAILURES += 1
-        print(f"FAIL: DR-132A #7 should recognize {phrase!r} exactly once; got {matches}")
+        print(f"FAIL: DR-132A B1 should recognize {phrase!r} exactly once; got {matches}")
     else:
-        print(f"  ok: DR-132A #7 recognizes {phrase!r} exactly once")
+        print(f"  ok: DR-132A B1 recognizes {phrase!r} exactly once")
 expect_fail(
     "no-ai-vocabulary-clustering",
     "Your thoughtful strategy needs clear messaging and intentional design.",
-    "DR-132A #7 clusters the three approved adjective-noun phrases",
+    "DR-132A B1 clusters the three approved adjective-noun phrases",
 )
 
 for phrase in (
@@ -3650,21 +3650,21 @@ for phrase in (
     "Are you tired of rewriting reports by hand? Look no further than Acme.",
 ):
     expect_fail("no-formulaic-openers", phrase,
-        f"DR-132A #50 email opener: {phrase}")
+        f"DR-132A E8 email opener: {phrase}")
 
 # --- DR-133A: approved promotional and conclusion variants ---
 print("\n=== DR-133A promotional and conclusion variants ===")
 
 for check_id, phrase, label in (
-    ("no-significance-inflation", "This underscores its importance.", "#1 significance frame"),
-    ("no-significance-inflation", "The policy left an enduring legacy.", "#1 enduring legacy"),
-    ("no-promotional-language", "The town has a rich cultural heritage.", "#4 promotional phrase"),
-    ("no-filler-phrases", "It's important to note the date.", "#22 contracted editorial phrase"),
-    ("no-filler-phrases", "It’s important to note the date.", "#22 smart-apostrophe editorial phrase"),
-    ("no-filler-phrases", "No discussion would be complete without the archive.", "#22 editorial phrase"),
-    ("no-notability-claims", "She was cited in NYT, BBC, FT, and The Hindu.", "#2 outlet-list shape"),
-    ("no-generic-conclusions", "Despite these challenges, the town continues to thrive.", "#24 challenge-ending formula"),
-    ("no-vague-attributions", "Studies show that the approach works.", "#5 bare attribution"),
+    ("no-significance-inflation", "This underscores its importance.", "A1 significance frame"),
+    ("no-significance-inflation", "The policy left an enduring legacy.", "A1 enduring legacy"),
+    ("no-promotional-language", "The town has a rich cultural heritage.", "A4 promotional phrase"),
+    ("no-filler-phrases", "It's important to note the date.", "E1 contracted editorial phrase"),
+    ("no-filler-phrases", "It’s important to note the date.", "E1 smart-apostrophe editorial phrase"),
+    ("no-filler-phrases", "No discussion would be complete without the archive.", "E1 editorial phrase"),
+    ("no-notability-claims", "She was cited in NYT, BBC, FT, and The Hindu.", "A2 outlet-list shape"),
+    ("no-generic-conclusions", "Despite these challenges, the town continues to thrive.", "E4 challenge-ending formula"),
+    ("no-vague-attributions", "Studies show that the approach works.", "A5 bare attribution"),
 ):
     expect_fail(check_id, phrase, f"DR-133A {label}: {phrase}")
 
@@ -3672,16 +3672,16 @@ for phrase in ("defining feature", "powerful tools"):
     matches = _grade._find_ai_words(phrase)
     if matches != [phrase]:
         FAILURES += 1
-        print(f"FAIL: DR-133A #7 should recognize {phrase!r} exactly once; got {matches}")
+        print(f"FAIL: DR-133A B1 should recognize {phrase!r} exactly once; got {matches}")
     else:
-        print(f"  ok: DR-133A #7 recognizes {phrase!r} exactly once")
+        print(f"  ok: DR-133A B1 recognizes {phrase!r} exactly once")
 expect_fail(
     "no-ai-vocabulary-clustering",
     "Its defining feature is a suite of powerful tools and clear messaging.",
-    "DR-133A #7 clusters the two editorial phrases with an existing candidate",
+    "DR-133A B1 clusters the two editorial phrases with an existing candidate",
 )
 
-# --- DR-134B: exact transition and candour additions; #44 unchanged ---
+# --- DR-134B: exact transition and candour additions; G8 unchanged ---
 print("\n=== DR-134B exact transition and candour additions ===")
 
 for phrase in (
@@ -3695,7 +3695,7 @@ for phrase in (
     "I hope you are well. The release is ready.",
 ):
     expect_fail("no-formulaic-openers", phrase,
-        f"DR-134B #50 exact opener: {phrase}")
+        f"DR-134B E8 exact opener: {phrase}")
 
 for phrase in (
     "Honestly? The estimate is wrong.",
@@ -3704,24 +3704,24 @@ for phrase in (
     "I need to be clear: the estimate is wrong.",
 ):
     expect_fail("no-performed-candour", phrase,
-        f"DR-134B #56 exact candour frame: {phrase}")
+        f"DR-134B H15 exact candour frame: {phrase}")
 
 straightforward_matches = _grade._find_ai_words("straightforward")
 if straightforward_matches != ["straightforward"]:
     FAILURES += 1
-    print(f"FAIL: DR-134B #7 should recognize 'straightforward' exactly once; got {straightforward_matches}")
+    print(f"FAIL: DR-134B B1 should recognize 'straightforward' exactly once; got {straightforward_matches}")
 else:
-    print("  ok: DR-134B #7 recognizes 'straightforward' exactly once")
+    print("  ok: DR-134B B1 recognizes 'straightforward' exactly once")
 expect_fail(
     "no-ai-vocabulary-clustering",
     "The straightforward plan is genuinely effective and undeniably clear.",
-    "DR-134B #7 clusters straightforward with two existing candidates",
+    "DR-134B B1 clusters straightforward with two existing candidates",
 )
 
 expect_fail(
     "no-signposted-conclusions",
     "In summary, LLMs cannot reliably distinguish assumed knowledge from material that needs explanation, so a writer must fill the gap.",
-    "DR-134B leaves the rejected #44 content-bearing control unchanged",
+    "DR-134B leaves the rejected G8 content-bearing control unchanged",
 )
 
 # --- DR-15A: remaining vague-attribution and research-boilerplate forms ---
@@ -3735,14 +3735,14 @@ for phrase in (
     "Studies have shown benefits.",
 ):
     expect_fail("no-vague-attributions", phrase,
-        f"DR-15A #5 exact attribution: {phrase}")
+        f"DR-15A A5 exact attribution: {phrase}")
 
 for phrase in (
     "This is an important area of research.",
     "More research is needed.",
 ):
     expect_fail("no-filler-phrases", phrase,
-        f"DR-15A #22 exact research formula: {phrase}")
+        f"DR-15A E1 exact research formula: {phrase}")
 
 # --- DR-16A: remaining exact phrase variants through existing checks ---
 print("\n=== DR-16A remaining exact phrase variants ===")
@@ -3753,19 +3753,19 @@ dr16_vocab = _grade._find_ai_words(
 for phrase in ("refine", "differentiate", "scalable solution"):
     if phrase not in dr16_vocab:
         FAILURES += 1
-        print(f"FAIL: DR-16A #7 should recognize {phrase!r}; got {dr16_vocab}")
+        print(f"FAIL: DR-16A B1 should recognize {phrase!r}; got {dr16_vocab}")
     else:
-        print(f"  ok: DR-16A #7 recognizes {phrase!r}")
+        print(f"  ok: DR-16A B1 recognizes {phrase!r}")
 expect_fail(
     "no-ai-vocabulary-clustering",
     "Refine the plan, differentiate the offer, and build a scalable solution.",
-    "DR-16A #7 clusters the three remaining vocabulary forms",
+    "DR-16A B1 clusters the three remaining vocabulary forms",
 )
 
 expect_fail(
     "no-excessive-hedging",
     "Arguably, it could be said that the result is potentially useful.",
-    "DR-16A #23 counts the two missing hedges with an existing candidate",
+    "DR-16A E2 counts the two missing hedges with an existing candidate",
 )
 
 for phrase in (
@@ -3774,12 +3774,12 @@ for phrase in (
     "Let’s unpack this.",
 ):
     expect_fail("no-formulaic-openers", phrase,
-        f"DR-16A #50 exact opener: {phrase}")
+        f"DR-16A E8 exact opener: {phrase}")
 
 expect_fail(
     "no-manufactured-insight",
     "Sit with that for a moment.",
-    "DR-16A #42 exact performed-knowingness phrase",
+    "DR-16A G7 exact performed-knowingness phrase",
 )
 
 for phrase in (
@@ -3792,7 +3792,7 @@ for phrase in (
     "Dive deep into the proposal.",
 ):
     expect_fail("no-filler-phrases", phrase,
-        f"DR-16A #22 exact filler frame: {phrase}")
+        f"DR-16A E1 exact filler frame: {phrase}")
 
 for phrase in (
     "Ultimately, the choice is yours.",
@@ -3809,9 +3809,9 @@ for phrase in (
     "Aristotle’s legacy is a testament to his influence.",
 ):
     expect_fail("no-generic-conclusions", phrase,
-        f"DR-16A #24 exact ending formula: {phrase}")
+        f"DR-16A E4 exact ending formula: {phrase}")
 
-# --- DR-19E: symmetric list items (#63) ---
+# --- DR-19E: symmetric list items (G11) ---
 print("\n=== DR-19E symmetric list items ===")
 
 DR19E_LEAD = (
@@ -3885,11 +3885,11 @@ else:
 
 if _patterns_data["no-symmetric-list-items"]["severity"] != "context_warning":
     FAILURES += 1
-    print("FAIL: DR-19E #63 should be a context warning")
+    print("FAIL: DR-19E G11 should be a context warning")
 else:
-    print("  ok: DR-19E #63 carries context_warning severity")
+    print("  ok: DR-19E G11 carries context_warning severity")
 
-# --- DR-19G: triad density replaces the one-triad verdict (#10) ---
+# --- DR-19G: triad density replaces the one-triad verdict (B4) ---
 print("\n=== DR-19G triad density ===")
 
 DR19G_FILLER = "The team reviewed the plan carefully and at length again today. "
@@ -3932,11 +3932,11 @@ else:
 
 if _patterns_data["no-forced-triads"]["severity"] != "context_warning":
     FAILURES += 1
-    print("FAIL: DR-19G #10 should stay a context warning")
+    print("FAIL: DR-19G B4 should stay a context warning")
 else:
-    print("  ok: DR-19G #10 keeps context_warning severity")
+    print("  ok: DR-19G B4 keeps context_warning severity")
 
-# --- DR-21E: plan-announcement signposting (#47) ---
+# --- DR-21E: plan-announcement signposting (E6) ---
 print("\n=== DR-21E plan-announcement signposting ===")
 
 # Vollmer's own sequence: two announcements clear the aggregate threshold.
@@ -3951,7 +3951,7 @@ expect_fail("no-soft-scaffolding",
     "up with the two recommendations the committee accepted.",
     "DR-21E let's and I'll variants")
 
-# One announcement stays below #47's two-candidate threshold.
+# One announcement stays below E6's two-candidate threshold.
 expect_pass("no-soft-scaffolding",
     "First, we'll look at the origins of the policy. The department drafted it "
     "in 1998 after two failed attempts at a national scheme.",
@@ -3968,7 +3968,7 @@ expect_pass("no-soft-scaffolding",
     "will examine the funding papers after that.",
     "DR-21E plan verbs without an ordinal opener")
 
-# --- DR-21F: sales endings and reader address in news copy (#24) ---
+# --- DR-21F: sales endings and reader address in news copy (E4) ---
 print("\n=== DR-21F news sales endings ===")
 
 expect_fail("no-generic-conclusions",
@@ -3996,7 +3996,7 @@ expect_pass("no-generic-conclusions",
     "their own funds.",
     "DR-21F ordinary keeping-watch wording")
 
-# --- DR-21G: title case headings in surprising places (#64) ---
+# --- DR-21G: title case headings in surprising places (B6) ---
 print("\n=== DR-21G title case headings ===")
 
 expect_fail("no-title-case-headings",
@@ -4035,11 +4035,11 @@ expect_pass("no-title-case-headings",
 
 if _patterns_data["no-title-case-headings"]["severity"] != "context_warning":
     FAILURES += 1
-    print("FAIL: DR-21G #15 should be a context warning")
+    print("FAIL: DR-21G C3 should be a context warning")
 else:
-    print("  ok: DR-21G #15 is a context warning")
+    print("  ok: DR-21G C3 is a context warning")
 
-# --- DR-136B: mixed British and American spelling (#64) ---
+# --- DR-136B: mixed British and American spelling (B6) ---
 print("\n=== DR-136B mixed spelling conventions ===")
 
 expect_fail("no-mixed-spelling-conventions",
@@ -4140,11 +4140,11 @@ else:
 
 if _patterns_data["no-mixed-spelling-conventions"]["severity"] != "context_warning":
     FAILURES += 1
-    print("FAIL: DR-136B #64 should be a context warning")
+    print("FAIL: DR-136B B6 should be a context warning")
 else:
-    print("  ok: DR-136B #64 is a context warning")
+    print("  ok: DR-136B B6 is a context warning")
 
-# --- DR-157: false ranges (#12) ---
+# --- DR-157: false ranges (A6) ---
 print("\n=== DR-157 false ranges ===")
 
 # The catalogue's own example, and the shape it describes.
@@ -4192,13 +4192,13 @@ else:
 
 if _patterns_data["no-false-ranges"]["severity"] != "context_warning":
     FAILURES += 1
-    print("FAIL: DR-157 #12 should be a context warning")
+    print("FAIL: DR-157 A6 should be a context warning")
 else:
-    print("  ok: DR-157 #12 is a context warning")
+    print("  ok: DR-157 A6 is a context warning")
 
 print("\n=== DR-71 FAID academic Gemini trigrams ===")
 
-# Figure 5's novelty and impact openers fire #1 on one match.
+# Figure 5's novelty and impact openers fire A1 on one match.
 expect_fail("no-significance-inflation",
     "This work presents a scheduling layer that sits between the client and the "
     "shard map.",
@@ -4217,11 +4217,11 @@ expect_fail("no-significance-inflation",
     "DR-71 a significant advancement")
 
 # The three that could stand alone in honest academic prose only count toward
-# #7's existing clustering threshold; one of them on its own stays clear.
+# B1's existing clustering threshold; one of them on its own stays clear.
 expect_pass("no-ai-vocabulary-clustering",
     "The efficacy of the method was measured against three production workloads "
     "over six weeks, and the raw traces are published alongside the paper.",
-    "DR-71 one clustering candidate alone does not fail #7")
+    "DR-71 one clustering candidate alone does not fail B1")
 
 expect_fail("no-ai-vocabulary-clustering",
     "The efficacy of the proposed method was measured over six weeks. Empirical "
@@ -4236,16 +4236,16 @@ for _phrase, _label in [
 ]:
     if _grade._find_ai_words(_phrase) != [_phrase]:
         FAILURES += 1
-        print(f"FAIL: {_label} should be an #7 clustering candidate")
+        print(f"FAIL: {_label} should be an B1 clustering candidate")
     else:
-        print(f"  ok: {_label} is an #7 clustering candidate")
+        print(f"  ok: {_label} is an B1 clustering candidate")
 
-# The four openers keep #1's existing severity; nothing about the check changes.
+# The four openers keep A1's existing severity; nothing about the check changes.
 if _patterns_data["no-significance-inflation"]["severity"] != "context_warning":
     FAILURES += 1
-    print("FAIL: DR-71 #1 should still be a context warning")
+    print("FAIL: DR-71 A1 should still be a context warning")
 else:
-    print("  ok: DR-71 #1 keeps its context-warning severity")
+    print("  ok: DR-71 A1 keeps its context-warning severity")
 
 print("\n=== DR-159 Biber rate checks (Reinhart) ===")
 
@@ -4321,19 +4321,19 @@ print("\n=== DR-87A exited ===")
 
 # Suvanto et al.: `exited` occurs 61 times across GPT-4.1 rewrites of twelve
 # 1920s-30s British detective novels and zero times in the source passages.
-# Added as an #7 clustering candidate, so it never fails on its own.
+# Added as an B1 clustering candidate, so it never fails on its own.
 if _grade._find_ai_words("exited") != ["exited"]:
     FAILURES += 1
-    print("FAIL: DR-87A `exited` should be an #7 clustering candidate")
+    print("FAIL: DR-87A `exited` should be an B1 clustering candidate")
 else:
-    print("  ok: DR-87A `exited` is an #7 clustering candidate")
+    print("  ok: DR-87A `exited` is an B1 clustering candidate")
 
 expect_pass("no-ai-vocabulary-clustering",
     "He exited the drawing room without another word, and the inspector followed "
     "him into the hall a moment later.",
-    "DR-87A `exited` alone does not fail #7")
+    "DR-87A `exited` alone does not fail B1")
 
-print("\n=== DR-66 passive voice, 'it' rate, and the #25 short-sentence rate ===")
+print("\n=== DR-66 passive voice, 'it' rate, and the E5 short-sentence rate ===")
 
 # Passive voice: be-form plus past participle, per the paper's definition
 # ("the frequency of verbs in passive voice"). Fails at 5.0 per 1000 words in
@@ -4383,7 +4383,7 @@ _dr66_it_pass = (
 ) * 6
 expect_pass("no-it-pronoun-rate", _dr66_it_pass, "DR-66 sparse 'it' and possessive 'its' stay clear")
 
-# #25 gains a rate branch: short sentences of ten words or fewer at 30.0 or more
+# E5 gains a rate branch: short sentences of ten words or fewer at 30.0 or more
 # per 1000 words. Short sentences are interleaved with long ones here, so
 # neither the three-in-a-row run nor the repeated-opener pair can fire.
 _dr66_staccato_rate = (
@@ -4394,7 +4394,7 @@ _dr66_staccato_rate = (
     "asked for an extension that the chair was unwilling to grant without a written "
     "case. Everyone knew how that would end. "
 ) * 7
-expect_fail("no-staccato-sequences", _dr66_staccato_rate, "DR-66 #25 short-sentence rate branch")
+expect_fail("no-staccato-sequences", _dr66_staccato_rate, "DR-66 E5 short-sentence rate branch")
 
 _dr66_staccato_rate_pass = (
     "The tender closed on Friday afternoon and officers spent the weekend reading "
@@ -4406,7 +4406,7 @@ _dr66_staccato_rate_pass = (
 expect_pass(
     "no-staccato-sequences",
     _dr66_staccato_rate_pass,
-    "DR-66 long-sentence prose does not trip the #25 rate branch",
+    "DR-66 long-sentence prose does not trip the E5 rate branch",
 )
 
 # The same interleaving as the failing fixture, but under 300 words, so the
@@ -4421,11 +4421,11 @@ _dr66_staccato_short_doc = (
 expect_pass(
     "no-staccato-sequences",
     _dr66_staccato_short_doc,
-    "DR-66 the #25 rate branch skips prose under 300 words",
+    "DR-66 the E5 rate branch skips prose under 300 words",
 )
 
 # Both new checks are rate checks with the same 300-word gate and severity as
-# the #10 and DR-159 family.
+# the B4 and DR-159 family.
 for _cid in ("no-passive-voice-rate", "no-it-pronoun-rate"):
     _short = ALL_CHECKS[_cid]("It was rejected by the committee and it was filed.")
     if not _short["passed"]:
@@ -4449,7 +4449,7 @@ else:
 
 # DR-21: Latinate verb rate, pattern 70. Fails at 2.5 per 1000 words in prose
 # of 300 words or more. The list is 44 curated verbs; there is no suffix that
-# marks them, so unlike #65 it cannot grow on its own.
+# marks them, so unlike B7 it cannot grow on its own.
 _dr21_latinate_fail = (
     "The department will initiate a review and obtain the records it requires. "
     "Officers must ascertain whether the contractor can facilitate the transfer "
@@ -4605,7 +4605,7 @@ if _patterns_data["no-mixed-script-words"]["severity"] != "hard_fail":
 else:
     print("  ok: DR-78 no-mixed-script-words is a hard fail")
 
-# DR-165: Yakura et al. GPT-preferred vocabulary. Twenty-six words added as #7
+# DR-165: Yakura et al. GPT-preferred vocabulary. Twenty-six words added as B1
 # clustering candidates, so none fires alone. `swift` was excluded because
 # `_find_ai_words` lowercases before matching and cannot tell the adjective from
 # `Taylor Swift`, `Apple Swift`, or the SWIFT acronym.

@@ -16,7 +16,7 @@ Covers:
 - _judgement_label mechanical transform (unchanged)
 - agent-flagged state / list / composite shapes inline in default mode (R7)
 - severity glyph mirroring auto-detected (x / ! / ?) on agent-flagged items
-- 8 items in registry order in the full-report agent-assessed coverage table
+- 7 items in registry order in the full-report agent-assessed coverage table
 - composite-clear with no findings renders detected genre without old
   "watchlist coverage pending" wording
 - default mode emits no `**Agent-judgement reading**` parallel block
@@ -63,7 +63,6 @@ def all_clear_judgement():
         {"id": "tonal_uniformity", "status": "clear", "answer": "register breaks at least once", "evidence": {}},
         {"id": "faux_specificity", "status": "clear", "answer": [], "evidence": {}},
         {"id": "neutrality_collapse", "status": "clear", "answer": "takes a position", "evidence": {}},
-        {"id": "even_jargon_distribution", "status": "clear", "answer": "jargon is not suspiciously uniform", "evidence": {}},
         {"id": "forced_synesthesia", "status": "clear", "answer": [], "evidence": {}},
         {"id": "generic_metaphors", "status": "clear", "answer": [], "evidence": {}},
         {"id": "referential_clarity", "status": "clear", "answer": [], "evidence": {}},
@@ -114,7 +113,6 @@ for item_id, expected in [
     ("tonal_uniformity", "Tonal uniformity"),
     ("faux_specificity", "Faux specificity"),
     ("neutrality_collapse", "Neutrality collapse"),
-    ("even_jargon_distribution", "Even jargon distribution"),
     ("forced_synesthesia", "Forced synesthesia"),
     ("generic_metaphors", "Generic metaphors"),
     ("genre_specific", "Genre specific"),
@@ -262,8 +260,8 @@ agg_render = with_patched_judgement(
 )
 if "Auto-detected: 0 of " not in agg_render:
     fail(f"counts line should show 'Auto-detected: 0 of N flagged'; got:\n{agg_render}")
-elif "Agent-assessed: 3 of 15 flagged" not in agg_render:
-    fail(f"counts line should show 'Agent-assessed: 3 of 15 flagged'; got:\n{agg_render}")
+elif "Agent-assessed: 3 of 14 flagged" not in agg_render:
+    fail(f"counts line should show 'Agent-assessed: 3 of 14 flagged'; got:\n{agg_render}")
 elif "Severity: 0 hard fail · 3 strong warning · 0 context warning" not in agg_render:
     fail(f"severity line should aggregate the 3 agent strong_warning items; got:\n{agg_render}")
 else:
@@ -282,8 +280,8 @@ if not both_clear_render.startswith("**Audit summary**\n"):
     fail(f"both-clear default render should still emit the **Audit summary** heading (R9, no collapse); got:\n{both_clear_render}")
 elif "Auto-detected: 0 of " not in both_clear_render:
     fail(f"both-clear counts line should show 'Auto-detected: 0 of N flagged'; got:\n{both_clear_render}")
-elif "Agent-assessed: 0 of 15 flagged" not in both_clear_render:
-    fail(f"both-clear counts line should show 'Agent-assessed: 0 of 15 flagged'; got:\n{both_clear_render}")
+elif "Agent-assessed: 0 of 14 flagged" not in both_clear_render:
+    fail(f"both-clear counts line should show 'Agent-assessed: 0 of 14 flagged'; got:\n{both_clear_render}")
 elif "Severity: 0 hard fail · 0 strong warning · 0 context warning" not in both_clear_render:
     fail(f"both-clear severity line should be all-zero; got:\n{both_clear_render}")
 elif "**Agent-judgement reading" in both_clear_render:
@@ -331,7 +329,6 @@ EXPECTED_ROW_ORDER = [
     "Tonal uniformity",
     "Faux specificity",
     "Neutrality collapse",
-    "Even jargon distribution",
     "Forced synesthesia",
     "Generic metaphors",
     "Referential clarity",

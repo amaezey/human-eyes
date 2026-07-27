@@ -8,7 +8,7 @@
 
 ## Why this matters for the skill
 
-Vollmer's essay was the source review that drove the 2026-04-27 expansion of `human-eyes/references/patterns.md` and `human-eyes/grade.py` (commit `9ce1cec`). It is the conduit for several patterns currently in the catalogue (#23a False concession, #31a Unicode flair, #35a Orphaned demonstratives, #39 Template/placeholder residue, #40 Rubric echoing). It is also a literature synthesis: most of its patterns trace back to 5–7 core empirical sources (Kobak, GPTZero, Clarke, Shankar, Chiang, Wikipedia) plus specialist studies for domain-specific tells (Walsh for poetry, Waltzer for student writing, Jiang & Hyland for academic).
+Vollmer's essay was the source review that drove the 2026-04-27 expansion of `human-eyes/references/patterns.md` and `human-eyes/grade.py` (commit `9ce1cec`). It is the conduit for several patterns currently in the catalogue (E3 False concession, G4 Unicode flair, H4 Orphaned demonstratives, H8 Template/placeholder residue, H9 Rubric echoing). It is also a literature synthesis: most of its patterns trace back to 5–7 core empirical sources (Kobak, GPTZero, Clarke, Shankar, Chiang, Wikipedia) plus specialist studies for domain-specific tells (Walsh for poetry, Waltzer for student writing, Jiang & Hyland for academic).
 
 For evidence-map purposes, Vollmer attribution should follow the upstream-first principle: where Vollmer cites Smith for X, attribute X to Smith with Vollmer as conduit. Where Vollmer presents an observation as his own (synthesis, taxonomy, or no external source), attribute to Vollmer directly.
 
@@ -92,7 +92,7 @@ Grouped by source type. Each entry gives Vollmer's citation in full bibliographi
 - **GPTZero.** gptzero.me/news/perplexity-and-burstiness-what-is-it/. **Vollmer attributes:** burstiness and perplexity as detection signals (II.9, VIII); commercial detector backbone.
 - **OpenAI.** April 2025 sycophancy rollback blog post; OpenAI Community Forum complaints about closing-ritual phrases; AI classifier retired July 2023 (26% accuracy on AI text, 9% false positives on human text); GPT-5.1 em-dash suppression. **Vollmer attributes:** sycophancy (IV.21); closing rituals (I.6); em-dashes (V.26); detector retirement (IX).
 - **Gmelius.** gmelius.com/blog/can-customers-tell-an-email-is-written-using-generative-ai. **Vollmer attributes:** email/business tells (VI.F) — formulaic openings, unedited placeholders, three-sentence paragraphs, missing colons/semicolons. **Direct-source correction (2026-07-15):** the reviewed Gmelius article names formulaic greetings, placeholders, one 30-50-word comma-joined sentence example, and absent colons/semicolons; three-sentence paragraphs, generic assistant closers, and paragraph tricolons are Vollmer's synthesis, not Gmelius evidence.
-- **Bynder** (2024 vendor press release). **Vollmer attributes:** 55% of U.S. consumers correctly identify AI marketing (VI.F). **Direct-source correction (2026-07-15):** retain this only as an author-reported consumer-perception and marketing-stakes result; the undisclosed stimuli and rationales provide no #41 watchlist support.
+- **Bynder** (2024 vendor press release). **Vollmer attributes:** 55% of U.S. consumers correctly identify AI marketing (VI.F). **Direct-source correction (2026-07-15):** retain this only as an author-reported consumer-perception and marketing-stakes result; the undisclosed stimuli and rationales provide no H10 watchlist support.
 - **Pangram, Copyleaks, ZeroGPT, Originality.AI, Writer.** Commercial detector backbone built on burstiness metric. **Vollmer attributes:** detector landscape (VIII, IX).
 - **NetusAI.** netus.ai/blog/stylometry-explained-how-ai-detectors-fingerprint-your-writing. **Vollmer attributes:** stylometric fingerprinting (VIII); humanizer tool category (IX).
 - **Turnitin.** **Vollmer attributes:** author-comparison baselines as forensic method (VIII).
@@ -132,15 +132,15 @@ These are Vollmer's synthesis or independent observations, not sourced from else
 
 The 2026-04-27 Codex session that produced commit `9ce1cec` ran a "Gaps Worth Adding" pass against Vollmer. Items that became numbered patterns:
 
-- **Item 1 (Orphaned demonstratives, citing Shankar via Vollmer)** → #35a in `human-eyes/references/patterns.md`. Catalogue currently cites Shankar; Vollmer is the conduit.
-- **Item 2 (False concession / both-sides hedge, citing Chiang via Vollmer)** → #23a. Catalogue currently cites Wikipedia + Abdulhai mechanism; Vollmer is the conduit and Chiang is the upstream.
+- **Item 1 (Orphaned demonstratives, citing Shankar via Vollmer)** → H4 in `human-eyes/references/patterns.md`. Catalogue currently cites Shankar; Vollmer is the conduit.
+- **Item 2 (False concession / both-sides hedge, citing Chiang via Vollmer)** → E3. Catalogue currently cites Wikipedia + Abdulhai mechanism; Vollmer is the conduit and Chiang is the upstream.
 - **Item 3 (Closing ritual phrases)** → folded into existing `no-signposted-conclusions` and possibly drove `no-soft-scaffolding` (one of the Group B undocumented checks).
-- **Item 4 (Unicode flair, citing Wikipedia via Vollmer)** → #31a. Catalogue currently cites Guo + Wikipedia + Corpus.
-- **Item 5 (Placeholders, citing Gmelius via Vollmer)** → #39 (already corrected in U1b).
-- **Item 6 (Citation oddities)** → folded into manual-only #41 plus reference to Bailey/Plagiarism Today.
-- **Item 7 (Rubric echoing, Vollmer's own observation)** → #40 (already corrected in U1b).
-- **Item 8 (Poetry, citing Walsh)** → folded into #41.
-- **Item 9 (Fiction, citing Clarke)** → folded into #41.
+- **Item 4 (Unicode flair, citing Wikipedia via Vollmer)** → G4. Catalogue currently cites Guo + Wikipedia + Corpus.
+- **Item 5 (Placeholders, citing Gmelius via Vollmer)** → H8 (already corrected in U1b).
+- **Item 6 (Citation oddities)** → folded into manual-only H10 plus reference to Bailey/Plagiarism Today.
+- **Item 7 (Rubric echoing, Vollmer's own observation)** → H9 (already corrected in U1b).
+- **Item 8 (Poetry, citing Walsh)** → folded into H10.
+- **Item 9 (Fiction, citing Clarke)** → folded into H10.
 - **Item 10 (Model-specific fingerprints)** → reference-only mention; may relate to Group B's `no-bland-critical-template`.
 
 ---
@@ -149,17 +149,17 @@ The 2026-04-27 Codex session that produced commit `9ce1cec` ran a "Gaps Worth Ad
 
 Patterns that should gain Vollmer attribution (or correct Vollmer-via-X chain):
 
-- **#23a False concession hedges** — currently cites Wikipedia + Abdulhai. Should add Chiang ("ChatGPT Is a Blurry JPEG of the Web", *New Yorker* 2023) as upstream via Vollmer. The reviewed Stockton part 1 does not support false concession.
-- **#31a Unicode flair** — currently cites Guo + Wikipedia + Corpus. Wikipedia is editor consensus on this; Vollmer is the conduit.
-- **#35a Orphaned demonstratives** — currently cites Shankar. Should note Vollmer as conduit (Shankar via Vollmer's review) since that's how Shankar got into the catalogue.
-- **#9 Contrived contrast** — currently cites Russell + Merrill + Kriss + Guo + Wikipedia + Corpus. Vollmer adds Stockton's part-one article/video as practitioner examples; Stockton supplies no controlled frequency or authorship evidence.
-- **#5 Vague attributions** — Vara is the strongest single source per Vollmer and not currently in the evidence map.
-- **#39 Placeholder residue / #41 marketing-email review** — Gmelius via Vollmer supports placeholder residue and bounded marketing-email review; the direct 2026-07-15 review found it does not support #19's live collaborative-artifact regex. #19 currently cites Wikipedia + OpenAI + Guo + Caroll and keeps that basis.
-- **#21 Sycophantic tone** — already cites OpenAI; Vollmer adds Live Science as confirming coverage.
+- **E3 False concession hedges** — currently cites Wikipedia + Abdulhai. Should add Chiang ("ChatGPT Is a Blurry JPEG of the Web", *New Yorker* 2023) as upstream via Vollmer. The reviewed Stockton part 1 does not support false concession.
+- **G4 Unicode flair** — currently cites Guo + Wikipedia + Corpus. Wikipedia is editor consensus on this; Vollmer is the conduit.
+- **H4 Orphaned demonstratives** — currently cites Shankar. Should note Vollmer as conduit (Shankar via Vollmer's review) since that's how Shankar got into the catalogue.
+- **B3 Contrived contrast** — currently cites Russell + Merrill + Kriss + Guo + Wikipedia + Corpus. Vollmer adds Stockton's part-one article/video as practitioner examples; Stockton supplies no controlled frequency or authorship evidence.
+- **A5 Vague attributions** — Vara is the strongest single source per Vollmer and not currently in the evidence map.
+- **H8 Placeholder residue / H10 marketing-email review** — Gmelius via Vollmer supports placeholder residue and bounded marketing-email review; the direct 2026-07-15 review found it does not support D1's live collaborative-artifact regex. D1 currently cites Wikipedia + OpenAI + Guo + Caroll and keeps that basis.
+- **D3 Sycophantic tone** — already cites OpenAI; Vollmer adds Live Science as confirming coverage.
 - **Em-dashes density grader check** — already cites Merrill + Edwards + Kriss; Vollmer adds Csutoras (Medium), Bailey (Plagiarism Today), Phillips (Ringer dissent), Earthworm Express (distribution-not-presence).
-- **#41 Genre-specific manual checks** — should cite Walsh (poetry) directly; use Aranya (Poetly) only as weak process-trace and revision-context support, not surface-tell, threshold, or authorship evidence; Germain (Medium fiction); Dhillon et al. (arxiv 2510.13939); Hastewire (student writing). Do not use Bynder as watchlist support; its direct review limits it to consumer-perception and marketing-stakes context.
+- **H10 Genre-specific manual checks** — should cite Walsh (poetry) directly; use Aranya (Poetly) only as weak process-trace and revision-context support, not surface-tell, threshold, or authorship evidence; Germain (Medium fiction); Dhillon et al. (arxiv 2510.13939); Hastewire (student writing). Do not use Bynder as watchlist support; its direct review limits it to consumer-perception and marketing-stakes context.
 
-Source-gap status: this file partially closes Known Issues #2 of the evidence map for these previously-uncovered sources: Shankar (now grounded via Vollmer's citation chain), Walsh/Preus/Gronski (Walsh is now grounded via the Walsh paper directly), Clarkesworld (Clarke is now grounded via Vollmer's editorial attribution), Futurism (Vollmer's coverage of CNET/Sports Illustrated), Stanford HAI (Liang et al. 2023 now grounded). Still no per-source files for Stanford HAI specifically, GPTZero (Vollmer cites their docs but doesn't synthesise), OpenAI sycophancy rollback as a primary event.
+Source-gap status: this file partially closes Known Issues A2 of the evidence map for these previously-uncovered sources: Shankar (now grounded via Vollmer's citation chain), Walsh/Preus/Gronski (Walsh is now grounded via the Walsh paper directly), Clarkesworld (Clarke is now grounded via Vollmer's editorial attribution), Futurism (Vollmer's coverage of CNET/Sports Illustrated), Stanford HAI (Liang et al. 2023 now grounded). Still no per-source files for Stanford HAI specifically, GPTZero (Vollmer cites their docs but doesn't synthesise), OpenAI sycophancy rollback as a primary event.
 
 ---
 

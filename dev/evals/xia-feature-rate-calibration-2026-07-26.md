@@ -1,7 +1,7 @@
 # Xia feature rate calibration (2026-07-26)
 
-Record for DR-66: two new rate checks, #68 `no-passive-voice-rate` and #69
-`no-it-pronoun-rate`, a rate branch added to #25 `no-staccato-sequences`, and
+Record for DR-66: two new rate checks, B10 `no-passive-voice-rate` and B11
+`no-it-pronoun-rate`, a rate branch added to E5 `no-staccato-sequences`, and
 the decision not to build a past-tense check.
 
 ## The source
@@ -89,13 +89,13 @@ dropping list lines, so the gap is not a lists artefact.
 
 | check | threshold | AI flagged | human flagged |
 |---|---|---|---|
-| #68 passive voice | 5.0 per 1000 | 57% | 29% |
-| #69 `it` pronoun | 18.0 per 1000 | 50% | 18% |
-| #25 short-sentence branch | 30.0 per 1000 | 48% | 21% |
+| B10 passive voice | 5.0 per 1000 | 57% | 29% |
+| B11 `it` pronoun | 18.0 per 1000 | 50% | 18% |
+| E5 short-sentence branch | 30.0 per 1000 | 48% | 21% |
 
-Minimum length is 300 words for all three, matching #10 and #65 to #67. For
-reference the catalogue already carries #10 at 66%/24%, #65 at 70%/24%, #66 at
-52%/27%, and #67 at 70%/37%. #69's 18% is the narrowest human flag rate of the
+Minimum length is 300 words for all three, matching B4 and B7 to B9. For
+reference the catalogue already carries B4 at 66%/24%, B7 at 70%/24%, B8 at
+52%/27%, and B9 at 70%/37%. B11's 18% is the narrowest human flag rate of the
 rate family.
 
 ## Passive voice: why the null control did not refute it
@@ -114,17 +114,17 @@ control split the feature rather than refuting it.
 
 A ratio alone cannot distinguish an artefact from a finding. Read the matches.
 
-## Short sentences: folded into #25 rather than numbered
+## Short sentences: folded into E5 rather than numbered
 
-The rate separates cleanly at 48% against 21%, but #25 `no-staccato-sequences`
+The rate separates cleanly at 48% against 21%, but E5 `no-staccato-sequences`
 already flagged 15 of the 22 generated documents the rate branch would catch,
 through its consecutive-run and repeated-opener branches. Mae chose to widen
-#25 rather than create a pattern number for territory an existing check already
+E5 rather than create a pattern number for territory an existing check already
 half-covered. The branch adds 7 generated findings and 2 human ones.
 
 ### A comparison that does not work for one-occurrence checks
 
-#25's two older branches appeared to run backwards: before this change the check
+E5's two older branches appeared to run backwards: before this change the check
 flagged 39% of generated documents against 50% of human ones. That reading was
 wrong, and the reason is worth keeping.
 
@@ -134,13 +134,13 @@ document against the generated corpus's 1,051, so it gets roughly twice the
 chances to contain a single qualifying occurrence. Measured as a rate per 1000
 words, both branches run the right way:
 
-| #25 branch | human /1k | AI /1k | ratio |
+| E5 branch | human /1k | AI /1k | ratio |
 |---|---|---|---|
 | runs of 3+ short sentences | 0.49 | 0.89 | 1.82x |
 | repeated-opener pairs | 0.48 | 1.20 | 2.50x |
 
 Truncating every document to its first 1000 words holds the direction: 1.38x and
-1.83x. #25 separates the corpora. Nothing about it needs changing.
+1.83x. E5 separates the corpora. Nothing about it needs changing.
 
 Any future flag-share figure quoted for a one-occurrence check across these two
 corpora carries the same bias. Rate checks are not affected, because the

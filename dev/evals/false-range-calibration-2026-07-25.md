@@ -1,4 +1,4 @@
-# False ranges (#12): corpus calibration, 2026-07-25
+# False ranges (A6): corpus calibration, 2026-07-25
 
 Measured before building the check, to decide whether the stacked `from X to Y`
 shape separates the corpora or whether the pattern needs meaning the grader
@@ -37,7 +37,7 @@ per 1000 words is the comparable figure.
 
 ## Decision
 
-DR-157, approved by Mae 2026-07-25. Catalogue entry #12 becomes programmatic
+DR-157, approved by Mae 2026-07-25. Catalogue entry A6 becomes programmatic
 `no-false-ranges` at context warning: one sentence stacking two or more pairs
 produces a finding. The semantic reading, whether a single pair's endpoints sit
 on a shared scale, was not adopted.

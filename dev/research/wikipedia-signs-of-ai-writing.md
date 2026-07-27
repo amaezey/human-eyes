@@ -82,7 +82,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations:** `chronicle` (Belcher, Chronicle of Higher Education), `Juzek` (delve / lexical overrepresentation), `sun` (Sun et al., LLM idiosyncrasies).
 
-**Maps to evidence map:** #1 Significance inflation.
+**Maps to evidence map:** A1 Significance inflation.
 
 ---
 
@@ -97,7 +97,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 - `vibrant`, `interplay`, `enduring` → Reinhart, Kobak
 - General overuse claim → Juzek, Kobak, Reinhart, Kousha, geng, Kriss
 
-**Maps to evidence map:** #7 AI vocabulary words and phrases. The corpus claim that "delve frequency rose ~2,700% in PubMed abstracts 2022-2024" originates from Kriss/NYT but echoes Kobak's biomedical analysis.
+**Maps to evidence map:** B1 AI vocabulary words and phrases. The corpus claim that "delve frequency rose ~2,700% in PubMed abstracts 2022-2024" originates from Kriss/NYT but echoes Kobak's biomedical analysis.
 
 ---
 
@@ -107,7 +107,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations:** `geng2` (Geng & Trotta — documented over 10% decrease in usage of "is"/"are" in academic writing in 2023).
 
-**Maps to evidence map:** H24 register-specific vocabulary density; Geng and Trotta support declining aggregate `is`/`are` frequency, not the live #8 replacement constructions.
+**Maps to evidence map:** H24 register-specific vocabulary density; Geng and Trotta support declining aggregate `is`/`are` frequency, not the live B2 replacement constructions.
 
 ---
 
@@ -117,7 +117,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations:** `Russell`, `merrill`, and Hollis Robbins, "How to Tell if Something is AI Written." The original extraction's “reference [15] untraceable” note was an extraction error; the reference was present in the baseline snapshot.
 
-**Maps to evidence map:** #9 Contrived contrast / negative parallelism.
+**Maps to evidence map:** B3 Contrived contrast / negative parallelism.
 
 ---
 
@@ -127,7 +127,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations:** `Russell`, `Kriss`.
 
-**Maps to evidence map:** #10 Rule of three.
+**Maps to evidence map:** B4 Rule of three.
 
 ---
 
@@ -147,7 +147,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations:** `Russell`.
 
-**Maps to evidence map:** #15 Title case in headings.
+**Maps to evidence map:** C3 Title case in headings.
 
 ---
 
@@ -167,7 +167,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations:** `Reinhart` (PNAS — grammatical and rhetorical style variation), `chronicle`.
 
-**Maps to evidence map:** #3 Superficial -ing analyses.
+**Maps to evidence map:** A3 Superficial -ing analyses.
 
 ---
 
@@ -187,7 +187,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations:** None — Wikipedia editor consensus only.
 
-**Maps to evidence map:** #5 Vague attributions.
+**Maps to evidence map:** A5 Vague attributions.
 
 ---
 
@@ -207,7 +207,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations in the current revision:** Rettberg's practitioner account supports promotional genre glitches without promotional intent. Sussman and Carter compare sentiment in political tweets from 2020 and 2024 and report a shift toward more positive, less neutral language. Wikipedia uses the latter in a sentence contrasting older and newer LLM positivity; preserve both the observation and the narrower design of the cited study.
 
-**Maps to evidence map:** #4 Promotional language.
+**Maps to evidence map:** A4 Promotional language.
 
 ---
 
@@ -217,7 +217,7 @@ Each row maps a Wikipedia-described pattern to (a) what Wikipedia says, (b) the 
 
 **Upstream citations:** None — Wikipedia editor consensus only.
 
-**Maps to evidence map:** #2 Notability claims.
+**Maps to evidence map:** A2 Notability claims.
 
 ---
 
@@ -246,7 +246,7 @@ These are described in the article but not backed by an external source:
 - Pronounced shift in writing style
 - Age of text relative to ChatGPT launch
 
-For evidence-map entries that map to these (e.g., #19 Collaborative artifacts, #17 Curly quotes, #13 Boldface overuse, #16 Emojis, #20 Knowledge-cutoff disclaimers), the citation should read "Wikipedia 'Signs of AI writing' (editor consensus, no upstream source)" — this is more honest than implying Wikipedia is itself the primary source.
+For evidence-map entries that map to these (e.g., D1 Collaborative artifacts, C5 Curly quotes, C1 Boldface overuse, C4 Emojis, D2 Knowledge-cutoff disclaimers), the citation should read "Wikipedia 'Signs of AI writing' (editor consensus, no upstream source)" — this is more honest than implying Wikipedia is itself the primary source.
 
 ---
 
@@ -258,7 +258,7 @@ For each entry in the per-pattern evidence map that cites Wikipedia:
 2. **If Wikipedia is editor consensus on that pattern**, mark explicitly: `Wikipedia "Signs of AI writing" (editor consensus, no upstream source for this claim)`.
 3. **Wikipedia stays as a source** — it is genuinely a load-bearing catalogue, even when its claims are unsourced (the WikiProject AI Cleanup project is a real signal).
 
-Source-gap status: this file partially closes Known Issues #2 of the evidence map for these previously-uncovered sources: Kobak, Juzek/Ward, Stanford HAI (still no per-source file specifically for HAI but Reinhart's PNAS work is now grounded), GPTZero (still no per-source file). Remaining gaps: GPTZero, Shankar, OpenAI sycophancy rollback, Walsh/Preus/Gronski, Clarkesworld, Futurism — these are not Wikipedia-cited and need their own per-source files or honest acknowledgement.
+Source-gap status: this file partially closes Known Issues A2 of the evidence map for these previously-uncovered sources: Kobak, Juzek/Ward, Stanford HAI (still no per-source file specifically for HAI but Reinhart's PNAS work is now grounded), GPTZero (still no per-source file). Remaining gaps: GPTZero, Shankar, OpenAI sycophancy rollback, Walsh/Preus/Gronski, Clarkesworld, Futurism — these are not Wikipedia-cited and need their own per-source files or honest acknowledgement.
 
 ---
 
@@ -308,32 +308,32 @@ The disposition labels below describe what the project should do. They are not s
 
 | Changed or new observation | Existing human-eyes location | Impact | Next project action |
 |---|---|---|---|
-| `X rather than Y` | #9 / `no-negative-parallelisms` | **Extends a check.** The family is already recognised, but simple one-off reversals can escape the current regex. | Add the form to #9, add fixtures, and extend candidate extraction. |
-| Spaced `word — word` em dashes | #49 / `no-em-dashes` | **Strengthens and sharpens a check.** All em dashes already fire; the typographic misuse is not identified separately. | Record spacing style in evidence and make the advice name the misuse. |
-| Direct `is`/`has` versus `serves as`, `boasts`, `features` | #8 / `no-copula-avoidance` | **Strengthens a check.** | Add Huang and the human-syntax contrast to #8's source explanation and fixtures. |
-| `wrote`/`authored`, `moved`/`relocated`, `used`/`utilized`, `tried`/`attempted`, `died`/`passed away` | Adjacent to #8, #11, #35, #43 | **New candidate family.** Current checks do not name inflated/euphemistic verb substitution directly. | Catalogue paired substitutions and test whether they belong under #8 or a sibling lexical-formality advisory. |
+| `X rather than Y` | B3 / `no-negative-parallelisms` | **Extends a check.** The family is already recognised, but simple one-off reversals can escape the current regex. | Add the form to B3, add fixtures, and extend candidate extraction. |
+| Spaced `word — word` em dashes | C7 / `no-em-dashes` | **Strengthens and sharpens a check.** All em dashes already fire; the typographic misuse is not identified separately. | Record spacing style in evidence and make the advice name the misuse. |
+| Direct `is`/`has` versus `serves as`, `boasts`, `features` | B2 / `no-copula-avoidance` | **Strengthens a check.** | Add Huang and the human-syntax contrast to B2's source explanation and fixtures. |
+| `wrote`/`authored`, `moved`/`relocated`, `used`/`utilized`, `tried`/`attempted`, `died`/`passed away` | Adjacent to B2, #11, H3, H11 | **New candidate family.** Current checks do not name inflated/euphemistic verb substitution directly. | Catalogue paired substitutions and test whether they belong under B2 or a sibling lexical-formality advisory. |
 | Definitive claims (`is the only`, `was the first`, `one of the best`) as comparatively human | `neutrality_collapse`; `underspecified_language` | **Strengthens an assessment and adds a useful tension.** Direct commitment can be human-like even when an unsupported superlative is still bad writing. | Add direct commitment to the neutrality prompt; retain factual/support review separately. |
-| Isolated `very`, `perhaps`, `tends to` as comparatively human | #23 / `no-excessive-hedging` | **Challenges overbroad interpretation.** | Keep the density/evasiveness check, add human controls, and stop treating isolated hedges as directional evidence by themselves. |
-| `in order to` and other isolated wordy constructions as comparatively human | #22 / `no-filler-phrases` | **Directly challenges a current check.** `in order to` currently causes a strong warning. | Separate concision advice from AI-style evidence and re-run matched examples before retaining its current severity. |
-| GPT-4, GPT-4o, and GPT-5 vocabulary eras | #7; H24/H25 | **Extends the vocabulary model.** | Store era/model metadata and report clusters against the relevant profile rather than one timeless list. |
-| Grok: `causal`, `empirical`, `correlate`, continuing `underscore`; `X rather than Y` | #7/#9; H25 | **Adds model-specific vocabulary and syntax.** | Add a Grok profile, exact examples, and a model-family source tag. Do not discard model-specific evidence as out of scope. |
-| Increased lexical diversity in some GPT/Gemini Wikipedia-style generation and revisions | #53; H7 | **Challenges a check and proposed gate.** | Re-test corrected TTR/MTLD by length, task, register, and model. Do not assume low diversity is the only AI direction. |
-| Semantic groups changing together | #7; H24 | **Extends clustering.** | Use Galpin to test semantic-family clusters rather than only literal word lists. |
-| Promotional genre appearing during neutral rewrites | #4 / `no-promotional-language`; #41 | **Strengthens a check and genre assessment.** | Add Rettberg; include genre mismatch as an agent-assessed cue. |
-| More positive and less neutral language in the 2024 political-tweet comparison | #4; #37 | **Adds an aggregate measurement direction.** | Add Sussman/Carter and test sentiment/neutrality shifts in matched corpora. Preserve that Wikipedia applies the result to an older/newer-model comparison that the study did not directly run. |
-| `trade publications` and source-type enumeration in notability claims | #2 / `no-notability-claims` | **Extends a check.** | Add the phrase and the “listing what kind of sources they are” structure to #2's fixtures. |
-| Broader `debates`, `discussions`, and hedged preambles before importance claims | #1; #23a | **Extends existing checks.** | Add examples such as “though limited, contributes to the broader history” and “has generated debate” to significance/false-concession fixtures. |
-| `enhancing` added to superficial-analysis words | #3 / `no-superficial-ing` | **Extends a check.** | Add the exact participial form and control examples. |
-| Emoji-led headings and bullets | #16 / `no-unicode-flair` | **Strengthens an existing check.** | Correct the old source map and connect Merrill/Geng. |
+| Isolated `very`, `perhaps`, `tends to` as comparatively human | E2 / `no-excessive-hedging` | **Challenges overbroad interpretation.** | Keep the density/evasiveness check, add human controls, and stop treating isolated hedges as directional evidence by themselves. |
+| `in order to` and other isolated wordy constructions as comparatively human | E1 / `no-filler-phrases` | **Directly challenges a current check.** `in order to` currently causes a strong warning. | Separate concision advice from AI-style evidence and re-run matched examples before retaining its current severity. |
+| GPT-4, GPT-4o, and GPT-5 vocabulary eras | B1; H24/H25 | **Extends the vocabulary model.** | Store era/model metadata and report clusters against the relevant profile rather than one timeless list. |
+| Grok: `causal`, `empirical`, `correlate`, continuing `underscore`; `X rather than Y` | B1/B3; H25 | **Adds model-specific vocabulary and syntax.** | Add a Grok profile, exact examples, and a model-family source tag. Do not discard model-specific evidence as out of scope. |
+| Increased lexical diversity in some GPT/Gemini Wikipedia-style generation and revisions | B5; H7 | **Challenges a check and proposed gate.** | Re-test corrected TTR/MTLD by length, task, register, and model. Do not assume low diversity is the only AI direction. |
+| Semantic groups changing together | B1; H24 | **Extends clustering.** | Use Galpin to test semantic-family clusters rather than only literal word lists. |
+| Promotional genre appearing during neutral rewrites | A4 / `no-promotional-language`; H10 | **Strengthens a check and genre assessment.** | Add Rettberg; include genre mismatch as an agent-assessed cue. |
+| More positive and less neutral language in the 2024 political-tweet comparison | A4; H7 | **Adds an aggregate measurement direction.** | Add Sussman/Carter and test sentiment/neutrality shifts in matched corpora. Preserve that Wikipedia applies the result to an older/newer-model comparison that the study did not directly run. |
+| `trade publications` and source-type enumeration in notability claims | A2 / `no-notability-claims` | **Extends a check.** | Add the phrase and the “listing what kind of sources they are” structure to A2's fixtures. |
+| Broader `debates`, `discussions`, and hedged preambles before importance claims | A1; E3 | **Extends existing checks.** | Add examples such as “though limited, contributes to the broader history” and “has generated debate” to significance/false-concession fixtures. |
+| `enhancing` added to superficial-analysis words | A3 / `no-superficial-ing` | **Extends a check.** | Add the exact participial form and control examples. |
+| Emoji-led headings and bullets | C4 / `no-unicode-flair` | **Strengthens an existing check.** | Correct the old source map and connect Merrill/Geng. |
 | Cultural education that encourages avoiding repetition | #11; H9/H12 | **Refines a check.** | Add a cultural/register look-alike and retain the observation as context during assessment. |
 | Human language converging with LLM-associated vocabulary | H24/H25 and reporting stance | **Changes interpretation over time.** | Date sources and examples; distinguish AI-shaped language from proof of AI authorship. |
 | Human and detector performance studies | Evaluation/reporting | **Changes confidence language, not surface checks.** | Add the studies to judge calibration, genre context, and detector-comparison notes. |
-| Canned AI comments | #19, #38, #13/#14/#16/#17, #9/#10; #41 | **Adds a genre-specific composite.** | Add a discussion/comment branch to #41 or a dedicated agent assessment. Use stacked observations, not one magic phrase. |
-| Canned user pages | #38, #14, #16, #19; #41 | **Adds a structural/profile composite.** | Add a user-page/profile branch and fixtures for repeated heading sequences and invitations. |
-| Generated citation and wrapper artefacts | #39 is incomplete | **Adds a high-confidence deterministic family.** | Expand #39 or add `generated-markup-residue` with literal patterns and model provenance. |
-| Exhaustive policy-echoing edit summaries | #19/#40/#41 | **Adds metadata/genre residue.** | Add edit summaries to the discussion/admin genre watchlist; detect pasted preambles and policy recitals where present. |
+| Canned AI comments | D1, G6, C1/C2/C4/C5, B3/B4; H10 | **Adds a genre-specific composite.** | Add a discussion/comment branch to H10 or a dedicated agent assessment. Use stacked observations, not one magic phrase. |
+| Canned user pages | G6, C2, C4, D1; H10 | **Adds a structural/profile composite.** | Add a user-page/profile branch and fixtures for repeated heading sequences and invitations. |
+| Generated citation and wrapper artefacts | H8 is incomplete | **Adds a high-confidence deterministic family.** | Expand H8 or add `generated-markup-residue` with literal patterns and model provenance. |
+| Exhaustive policy-echoing edit summaries | D1/H9/H10 | **Adds metadata/genre residue.** | Add edit summaries to the discussion/admin genre watchlist; detect pasted preambles and policy recitals where present. |
 | Permissions gaming through bulk benign AI edits | No prose-only equivalent | **Adds behavioural/provenance context.** | Preserve in a future workflow/provenance branch; do not force it into a sentence-level regex. |
-| Didactic disclaimers narrowed to November 2022–2024 | #20 / historical indicators | **Refines time scope.** | Date the pattern and avoid applying the historical form to pre-ChatGPT text. |
+| Didactic disclaimers narrowed to November 2022–2024 | D2 / historical indicators | **Refines time scope.** | Date the pattern and avoid applying the historical form to pre-ChatGPT text. |
 
 ### Comment and user-profile catalogue recovered from the moved material
 
@@ -373,10 +373,10 @@ These should become literal regression fixtures because they are direct interfac
 #### Huang et al.: Wikipedia in the Era of LLMs
 
 - Adds direct Wikipedia evidence rather than relying only on academic abstracts or generated examples.
-- Supports the rise of `Additionally` and `crucial` and strengthens #7.
-- Shows reduced `to be`/copular use in LLM processing; this supports H24's decreasing-frequency evaluation but does not validate #8's replacement-construction regex.
+- Supports the rise of `Additionally` and `crucial` and strengthens B1.
+- Shows reduced `to be`/copular use in LLM processing; this supports H24's decreasing-frequency evaluation but does not validate B2's replacement-construction regex.
 - Reports changes in noun rate, long-word rate, sentence length, parse depth, clause rate, pronoun rate, and corrected type-token ratio. This supports H22/H23 and provides new feature candidates.
-- Shows that lexical diversity can increase under LLM revision/generation and vary by model. This challenges #53's one-directional low-TTR claim.
+- Shows that lexical diversity can increase under LLM revision/generation and vary by model. This challenges B5's one-directional low-TTR claim.
 - Uses multiple model/task conditions, which directly supports H25's model-family metadata.
 
 #### Cheng et al. and Fiedler/Döpke
@@ -394,9 +394,9 @@ These should become literal regression fixtures because they are direct interfac
 
 #### Rettberg and Sussman/Carter
 
-- Rettberg supplies a concrete mechanism for #4: the model inserts the wrong promotional genre even when the user is not trying to advertise.
+- Rettberg supplies a concrete mechanism for A4: the model inserts the wrong promotional genre even when the user is not trying to advertise.
 - Sussman/Carter supply aggregate sentiment movement: the 2024 comparison is more positive and less neutral than the 2020 comparison.
-- The direct project follow-up is to strengthen #4's source map and test sentiment/neutrality shifts, while recording exactly what comparison each source made.
+- The direct project follow-up is to strengthen A4's source map and test sentiment/neutrality shifts, while recording exactly what comparison each source made.
 
 #### Dik et al.
 
@@ -417,5 +417,5 @@ These should become literal regression fixtures because they are direct interfac
 2. **Existing-check extensions:** add simple `X rather than Y`; classify em-dash spacing; add notability/source-type and significance/debate fixtures.
 3. **Vocabulary architecture:** add GPT-era and Grok profiles with model/version/register dates rather than extending one flat list without metadata.
 4. **Agent assessment:** add direct/definitive commitment to neutrality collapse and add discussion/user-profile genre handling.
-5. **Challenges requiring re-test:** #22 `in order to`, #23 isolated hedges, and #53 low lexical diversity.
+5. **Challenges requiring re-test:** E1 `in order to`, E2 isolated hedges, and B5 low lexical diversity.
 6. **Source additions:** create individual cards for every newly cited source so later project decisions can see the sample, register, model, and exact observation without reopening this history audit.

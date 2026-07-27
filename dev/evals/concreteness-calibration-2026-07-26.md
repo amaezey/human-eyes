@@ -1,6 +1,6 @@
 # Concreteness calibration (2026-07-26)
 
-Record for DR-84: new check #73 `concreteness-average`, and the data file it needs.
+Record for DR-84: new check B14 `concreteness-average`, and the data file it needs.
 
 ## The measure
 
@@ -25,7 +25,7 @@ Excluding them both widens the separation and makes the number mean what it clai
 
 ## Result
 
-At 2.915 the check flags 67% of generated documents and 29% of human ones. That places it between #71 word length (54 points) and #70 Latinate verbs (38 points) in the catalogue.
+At 2.915 the check flags 67% of generated documents and 29% of human ones. That places it between B13 word length (54 points) and B12 Latinate verbs (38 points) in the catalogue.
 
 ## Two controls
 
@@ -35,11 +35,11 @@ At 2.915 the check flags 67% of generated documents and 29% of human ones. That 
 
 ## Overlap, and why it was built anyway
 
-Of the 28 generated documents the all-words version flagged, #71 word length already flagged 23, and #71 plus #65 together left one document that nothing else caught.
+Of the 28 generated documents the all-words version flagged, B13 word length already flagged 23, and B13 plus B7 together left one document that nothing else caught.
 
 Overlap was raised as an objection and rejected, correctly. There is no project rule against two checks firing on the same document, and abstractness and word length are not the same finding even though they correlate. A character count tells a writer their words are long. This tells them their words name categories instead of things, which is the direction a rewrite needs.
 
-The same faulty reasoning had been applied twice earlier in the same session, against #70 and against this check.
+The same faulty reasoning had been applied twice earlier in the same session, against B12 and against this check.
 
 ## Performance
 
@@ -54,4 +54,4 @@ Measured over the 108 corpus documents:
 
 ## What is not covered
 
-DR-84's two other feature areas close with this row. Morphology was measured earlier the same day and its best measure shipped as #71 word length; the rest (syllables per word, derivational suffix density, `-ed`/`-ing` density) measure the same signal more weakly. Information-theoretic features need a language model to compute how predictable each word is, which the product does not run. That is the same blocker that closed DR-99.
+DR-84's two other feature areas close with this row. Morphology was measured earlier the same day and its best measure shipped as B13 word length; the rest (syllables per word, derivational suffix density, `-ed`/`-ing` density) measure the same signal more weakly. Information-theoretic features need a language model to compute how predictable each word is, which the product does not run. That is the same blocker that closed DR-99.

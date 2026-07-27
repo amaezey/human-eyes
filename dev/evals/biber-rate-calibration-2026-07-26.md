@@ -1,6 +1,6 @@
 # Biber feature rate calibration (2026-07-26)
 
-Record for DR-159: three new rate checks, #65 `no-nominalisation-rate`, #66 `no-that-relative-rate`, and #67 `no-participial-clause-rate`, and the decision not to build a fourth.
+Record for DR-159: three new rate checks, B7 `no-nominalisation-rate`, B8 `no-that-relative-rate`, and B9 `no-participial-clause-rate`, and the decision not to build a fourth.
 
 ## The source
 
@@ -47,13 +47,13 @@ Control: `that` relatives in **object** position run 0.56x, the opposite directi
 
 | check | threshold | AI flagged | human flagged |
 |---|---|---|---|
-| #65 nominalisations | 29.0 per 1000 | 70% | 24% |
-| #66 subject relatives | 3.5 per 1000 | 52% | 27% |
-| #67 participial clauses | 4.4 per 1000 | 70% | 37% |
+| B7 nominalisations | 29.0 per 1000 | 70% | 24% |
+| B8 subject relatives | 3.5 per 1000 | 52% | 27% |
+| B9 participial clauses | 4.4 per 1000 | 70% | 37% |
 
-Minimum length is 300 words for all three, matching #10. Raising it to 500 or 600 improves separation, but 500 also happens to exclude the two human fixtures in `test_grade.py` that these checks flag, so it was rejected as fitting the instrument to the fixtures.
+Minimum length is 300 words for all three, matching B4. Raising it to 500 or 600 improves separation, but 500 also happens to exclude the two human fixtures in `test_grade.py` that these checks flag, so it was rejected as fitting the instrument to the fixtures.
 
-For reference #10 `no-forced-triads` sits at 66% AI and 24% human. #65 matches that precedent. #67's 37% is the widest human flag rate in the catalogue.
+For reference B4 `no-forced-triads` sits at 66% AI and 24% human. B7 matches that precedent. B9's 37% is the widest human flag rate in the catalogue.
 
 ## Consequence for the human fixtures
 
@@ -63,7 +63,7 @@ Two human reference documents in the test suite now trip these checks: the 476-w
 
 Measured properly the feature runs **0.85x**, more common in human writing than generated. The project corpora do not reproduce the paper's 1.9x. No check was built.
 
-An earlier measurement of three-item lists (`X, Y, and Z`) returned 1.81x and was briefly mistaken for this feature. A three-item list is a tricolon, which #10 already measures, so that figure was rediscovering an existing check rather than finding a new one.
+An earlier measurement of three-item lists (`X, Y, and Z`) returned 1.81x and was briefly mistaken for this feature. A three-item list is a tricolon, which B4 already measures, so that figure was rediscovering an existing check rather than finding a new one.
 
 ## Two mistakes worth not repeating
 

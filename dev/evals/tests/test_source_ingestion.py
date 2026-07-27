@@ -94,7 +94,7 @@ The source compares measured writing patterns and supplies direct evidence.
 
 ## Matched patterns / rules
 
-- #7 AI vocabulary words and phrases
+- B1 AI vocabulary words and phrases
 
 ## Associated hypotheses
 

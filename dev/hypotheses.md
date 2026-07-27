@@ -338,7 +338,7 @@ The two assignments most plausibly wrong:
 **Test:**
 - Collect examples where reviewers call out wrong subject, low information density, or fluency without understanding.
 - Compare human and AI samples in the matched corpus for sentence-level information density and subject choice.
-- Decide whether the useful output is a new agent-judgement item, a #41 student-writing watchlist item, or rewrite-only guidance.
+- Decide whether the useful output is a new agent-judgement item, a H10 student-writing watchlist item, or rewrite-only guidance.
 
 **Impact:** Adds a higher-level quality check that catches polished emptiness without relying on surface vocabulary.
 
@@ -352,7 +352,7 @@ The two assignments most plausibly wrong:
 
 **Test:**
 - Add measurements for clause shape, phrase-length tails, and sentence-pattern diversity on the matched corpus.
-- Compare those metrics against current #52 sentence-rhythm variance.
+- Compare those metrics against current G9 sentence-rhythm variance.
 - Check whether long-tail measures separate AI from human prose within register better than the current variance check.
 
 **Impact:** Refines the structural-metric family and may reduce overreliance on crude sentence-length signals.
@@ -363,14 +363,14 @@ The two assignments most plausibly wrong:
 
 **Source:** External source card: Reinhart et al.
 
-**Statement:** Live #3's closed comma-led trailing-lexeme matcher is only adjacent to Reinhart's parser-derived present-participial-clause measure. Reinhart's paired aggregate results instead make nominalizations, source-named "that" clauses as subject, phrasal coordination, model-specific reversals, and register controls candidates for evaluation, with no safe document-level threshold.
+**Statement:** Live A3's closed comma-led trailing-lexeme matcher is only adjacent to Reinhart's parser-derived present-participial-clause measure. Reinhart's paired aggregate results instead make nominalizations, source-named "that" clauses as subject, phrasal coordination, model-specific reversals, and register controls candidates for evaluation, with no safe document-level threshold.
 
 **Test:**
 - Reproduce selected Reinhart features on the released matched data, preserving model/register controls, the Table S4/S5-S6 inventory mismatch, and parser dependence.
 - Measure them on current human and AI samples.
 - Decide whether any feature is strong enough for a programmatic advisory check, or whether the evidence should stay in academic-register notes.
 
-**Impact:** Prevents #3 from carrying more evidence than it actually supports and opens a better grammar-feature path.
+**Impact:** Prevents A3 from carrying more evidence than it actually supports and opens a better grammar-feature path.
 
 ## 24. Register-specific vocabulary density
 
@@ -385,7 +385,7 @@ The two assignments most plausibly wrong:
 - Compute vocabulary density by register and by source list.
 - Check whether any word list remains useful once public-tell drift and register are accounted for.
 
-**Impact:** Makes #7 less brittle and reduces stale-blacklist behaviour.
+**Impact:** Makes B1 less brittle and reduces stale-blacklist behaviour.
 
 ## 25. Model-family versus generic-AI residue
 
@@ -408,12 +408,12 @@ The two assignments most plausibly wrong:
 
 **Source:** No current direct-source support; the Stockton mapping came from an uncaptured later post, and the reviewed Vollmer record contains no vague-change-intro example. Reopen after separate full-text evidence is ingested.
 
-**Statement:** B2B/corporate openers like "something changed" may be a separate rhetorical pattern from contrastive negation and manufactured insight. They deserve separate tracking before being folded into #9 or #50.
+**Statement:** B2B/corporate openers like "something changed" may be a separate rhetorical pattern from contrastive negation and manufactured insight. They deserve separate tracking before being folded into B3 or E8.
 
 **Test:**
 - Collect examples of vague-change openers from source cards and corpus samples.
-- Compare overlap with #9 contrived contrast and #50 formulaic openers.
-- Decide whether this is a new advisory pattern, a #50 phrase expansion, or a register-specific look-alike note.
+- Compare overlap with B3 contrived contrast and E8 formulaic openers.
+- Decide whether this is a new advisory pattern, a E8 phrase expansion, or a register-specific look-alike note.
 
 **Impact:** Keeps corporate-register pattern expansion precise instead of hiding distinct cues inside broad existing rules.
 
@@ -427,7 +427,7 @@ The two assignments most plausibly wrong:
 
 **Test:**
 - Collect ending sentences flagged as false profundity or aphoristic closure.
-- Compare with current #24 generic positive conclusions, #44 signposted conclusions, and #47 soft scaffolding.
+- Compare with current E4 generic positive conclusions, G8 signposted conclusions, and E6 soft scaffolding.
 - Decide whether there is a distinct user-facing pattern or only look-alike guidance for existing conclusion checks.
 
 **Impact:** Improves endings guidance without overclaiming practitioner sources as hard evidence.
