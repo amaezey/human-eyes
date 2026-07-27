@@ -2,7 +2,7 @@
 
 Work Mae approved and queued rather than building. Every item's decision is already recorded in `dev/decision-register.md`; nothing here is a pending decision, and no new decision belongs in this file. The register stays the one decision surface.
 
-Items 0 and 0b are Mae's own project items and were never part of the source review. Everything below them came out of it.
+Items 0, 0a and 0b are Mae's own project items and were never part of the source review. Everything below them came out of it.
 
 Each item carries enough detail to be picked up cold.
 
@@ -20,13 +20,102 @@ Six defects found while doing it are queued as DR-167 to DR-172 and are Mae's to
 
 ---
 
+## 0a. FIRST: rebuild the cut-off verification test so it tests the real property (DR-170)
+
+Approved 2026-07-27, option a. Do this before 0b: DR-164 sweeps every cut-off, and it
+should not be built on top of a guard that cannot fail.
+
+### What is wrong
+
+`dev/evals/tests/test_threshold_declarations.py` was written to catch a check
+reporting one cut-off while enforcing another. `CHECK_THRESHOLDS` in
+`human-eyes/scripts/grade.py` is attached to every result as `result["threshold"]`
+at `grade.py:4096`, so the declared number reaches the audit report a reader sees.
+
+The test was built on the claim that only two checks read that table and the other
+seventeen carry literals. **That claim is false.** Sixteen checks read the declared
+value through `threshold_value(check_id, key, default)` at `grade.py:2176`. The
+original search looked for `CHECK_THRESHOLDS.get("` with a quoted check name and so
+never saw the generic helper. For those sixteen the test compares the table against
+itself and cannot fail.
+
+Only three checks can genuinely diverge, and two of those are pinned in the test's
+own `UNVERIFIABLE` set.
+
+### Four holes, each proven by mutation
+
+Reproduce these before you start; if any no longer reproduces, say so rather than
+assuming the note is stale.
+
+| mutation | current result |
+|---|---|
+| add a check id that does not exist to `UNVERIFIABLE` | passes |
+| rename a key inside a `CHECK_THRESHOLDS` entry (e.g. `minimum_candidates` to `minimum_hits`) | that check silently drops out of verification; passes |
+| add an extra key to a threshold dict | same silent drop; passes |
+| move a statistic cut-off from `0.18` to `0.184` | the rounding tolerance forgives it; passes. `0.19` correctly fails |
+| make a pinned check flag every document, contradicting its stated pin reason | passes, and prints the false reason as fact |
+
+### What to build
+
+Assert the property directly: **the declared value is the value that governs
+behaviour.** For each of the 19 declared cut-offs, mutate the declared number in a
+copy of the threshold table, run the check over corpus documents that sit either
+side of it, and assert the flag/clear outcome moves with the declaration. A check
+that ignores its declaration will not move, and that is the failure.
+
+Constraints that make or break it:
+
+- **Mutate a copy, never the file.** `grade.py` is loaded by import in the test;
+  monkeypatch `grade.CHECK_THRESHOLDS` in memory and restore it. Never write to
+  `human-eyes/scripts/grade.py` from a test.
+- **Every declared key must be reached, not just the first.** The silent-drop holes
+  above exist because the test keyed on a dict shape (`set(spec) == {"minimum_candidates"}`)
+  and skipped anything else. Iterate the keys the table actually declares and fail
+  on a key no check consumes, rather than skipping it.
+- **`UNVERIFIABLE` must be validated, not trusted.** Every id in it must exist in
+  `grade.ALL_CHECKS`, and its stated reason must be checked where checkable: a pin
+  saying "no document flags it" must fail if a document flags it.
+- **Keep the DR-79 lesson.** Where the corpus genuinely cannot straddle a cut-off,
+  report it and fail if the unverifiable set grows without a reason. Silence must
+  not read as agreement.
+- Drop the evidence-string count fallback and the display-rounding tolerance if the
+  mutation approach removes the need for them. They exist only because the current
+  design reads numbers out of human-readable strings.
+
+### Verify the test itself
+
+A guard that cannot fail is what produced this item, so prove it fires before
+trusting a pass. Re-run all five mutations in the table above and confirm each one
+now fails, and confirm the suite passes unmutated. State each result.
+
+Two checks (`no-inline-header-lists`, `no-rubric-echoing`) are pinned only because
+no corpus document flags them. `test_grade.py` already proves both fire on
+synthetic text, so one or two targeted samples under `dev/evals/samples/` would
+unpin them. That is optional and separate; do not add samples to make a mutation
+pass.
+
+### Do not touch
+
+`dev/evals/samples/`, `dev/evals/preserved-agent-audits-*`,
+`dev/evals/three-version-*.json` and `dev/skill-workspace/skill-snapshot/` are
+measurement baselines. Editing them moves what every calibration is measured
+against, and the DR-158 sweep already had to revert seven such files.
+
+### Also correct
+
+DR-170's register row and the commit message of `7fca3c1` both state the false
+premise. Correct the row when you close this; the commit message stays as history
+and the row should say so.
+
+---
+
 ## 0b. Audit every check threshold against its observed distribution (DR-164)
 
 Approved 2026-07-26. Mae's own item; also never part of the source review.
 
 DR-79 found G9 `sentence-length-variance` had never fired on any of the 108 corpus documents, because its inherited threshold of 4 sat below the entire observed range. Its test passed the whole time, because the fixture is prose hand-written to be flat at a value real writing never reaches.
 
-**Method:** for each check, sweep its metric over both corpora, print the observed range, and ask whether the threshold sits inside it. 11 checks carry a calibration record under `dev/evals/`; the other 43 do not, 15 of them declaring a threshold in `CHECK_THRESHOLDS` and the rest carrying bare numeric literals.
+**Method:** for each check, sweep its metric over both corpora, print the observed range, and ask whether the threshold sits inside it. 11 checks carry a calibration record under `dev/evals/`; the rest do not. Corrected 2026-07-27: 19 checks declare a cut-off in `CHECK_THRESHOLDS` and 16 of them read it through `threshold_value(check_id, key, default)` at `grade.py:2176`, so the declared value is usually the enforced one. Only three carry a literal that could diverge. Item 0a settles how that is verified; do it first.
 
 **A first smoke pass found 18 checks that never flag a generated document and 19 that flag more human documents than generated. That pass is an inventory, not a finding.** Three different causes produce those symptoms and they need opposite responses:
 
