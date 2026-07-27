@@ -1623,7 +1623,7 @@ def check_anaphora(text):
 
 
 def check_paragraph_anaphora(text):
-    """Detect 3+ consecutive prose paragraphs opening with the same word (pattern 58)."""
+    """Detect 3+ consecutive prose paragraphs opening with the same word (pattern H16)."""
     blocks = [b.strip() for b in text.split('\n\n') if b.strip()]
     openers = []
     for block in blocks:
@@ -2180,7 +2180,7 @@ def threshold_value(check_id, key, default):
 
 
 def check_rule_of_three(text):
-    """Flag a high rate of three-part constructions (pattern 10).
+    """Flag a high rate of three-part constructions (pattern B4).
 
     Counting triads does not separate generated from human prose: 95% of the
     human corpus and 100% of the generated corpus contain at least one, and a
@@ -2407,7 +2407,7 @@ def _biber_rate_check(check_id, text, extract, default_rate, label):
 
 
 def check_nominalisation_rate(text):
-    """Flag a high rate of nominalisations (pattern 65)."""
+    """Flag a high rate of nominalisations (pattern B7)."""
     return _biber_rate_check(
         "no-nominalisation-rate", text,
         lambda s: NOMINALISATION_RE.findall(s), 29.0, "nominalisation(s)",
@@ -2415,7 +2415,7 @@ def check_nominalisation_rate(text):
 
 
 def check_that_relative_rate(text):
-    """Flag a high rate of subject-position `that` relative clauses (pattern 66)."""
+    """Flag a high rate of subject-position `that` relative clauses (pattern B8)."""
     return _biber_rate_check(
         "no-that-relative-rate", text,
         lambda s: THAT_SUBJECT_RELATIVE_RE.findall(s), 3.5, "subject relative(s)",
@@ -2423,7 +2423,7 @@ def check_that_relative_rate(text):
 
 
 def check_participial_clause_rate(text):
-    """Flag a high rate of present participial clauses (pattern 67)."""
+    """Flag a high rate of present participial clauses (pattern B9)."""
     return _biber_rate_check(
         "no-participial-clause-rate", text,
         extract_participial_clauses, 4.4, "participial clause(s)",
@@ -2503,7 +2503,7 @@ IT_PRONOUN_RE = re.compile(r"\bit\b", re.IGNORECASE)
 
 
 def check_passive_voice_rate(text):
-    """Flag a high rate of passive-voice verbs (pattern 68)."""
+    """Flag a high rate of passive-voice verbs (pattern B10)."""
     return _biber_rate_check(
         "no-passive-voice-rate", text,
         extract_passive_verbs, 5.0, "passive verb(s)",
@@ -2511,7 +2511,7 @@ def check_passive_voice_rate(text):
 
 
 def check_it_pronoun_rate(text):
-    """Flag a high rate of the `it` pronoun (pattern 69)."""
+    """Flag a high rate of the `it` pronoun (pattern B11)."""
     return _biber_rate_check(
         "no-it-pronoun-rate", text,
         lambda source: IT_PRONOUN_RE.findall(source), 18.0, "`it` pronoun(s)",
@@ -2519,7 +2519,7 @@ def check_it_pronoun_rate(text):
 
 
 def check_mixed_script_words(text):
-    """Detect Latin words carrying confusable Cyrillic or Greek letters (pattern 72)."""
+    """Detect Latin words carrying confusable Cyrillic or Greek letters (pattern C9)."""
     source = strip_front_matter(text)
     matches = [
         word for word in WORD_UNICODE_RE.findall(source)
@@ -2538,7 +2538,7 @@ def check_mixed_script_words(text):
 
 
 def check_concreteness_average(text):
-    """Flag prose whose words run abstract rather than concrete (pattern 73)."""
+    """Flag prose whose words run abstract rather than concrete (pattern B14)."""
     source = strip_front_matter(text)
     minimum_words = threshold_value("concreteness-average", "minimum_words", 100)
     maximum_mean = threshold_value("concreteness-average", "maximum_mean_concreteness", 2.915)
@@ -2574,7 +2574,7 @@ def check_concreteness_average(text):
 
 
 def check_word_length_average(text):
-    """Flag prose whose mean word runs long (pattern 71)."""
+    """Flag prose whose mean word runs long (pattern B13)."""
     source = strip_front_matter(text)
     words = WORD_TOKEN_RE.findall(source)
     minimum_words = threshold_value("word-length-average", "minimum_words", 100)
@@ -2606,7 +2606,7 @@ def check_word_length_average(text):
 
 
 def check_latinate_verb_rate(text):
-    """Flag a high rate of Latinate verbs used for plain ones (pattern 70)."""
+    """Flag a high rate of Latinate verbs used for plain ones (pattern B12)."""
     return _biber_rate_check(
         "no-latinate-verb-rate", text,
         lambda source: LATINATE_VERB_RE.findall(source), 2.5, "Latinate verb(s)",
@@ -2614,7 +2614,7 @@ def check_latinate_verb_rate(text):
 
 
 def check_superficial_ing(text):
-    """Detect overused opening and tacked-on participial clauses (pattern 3)."""
+    """Detect overused opening and tacked-on participial clauses (pattern A3)."""
     source = strip_front_matter(text)
     trailing_pattern = (
         r',\s+(?:highlighting|underscoring|emphasizing|reflecting|symbolizing|'
@@ -2666,7 +2666,7 @@ def check_superficial_ing(text):
 
 
 def check_ghost_spectral(text):
-    """Detect ghost/spectral language density (pattern 26)."""
+    """Detect ghost/spectral language density (pattern F1)."""
     words = ["ghost", "ghosts", "spectral", "shadow", "shadows", "whisper",
              "whispers", "echo", "echoes", "phantom", "haunting", "haunted",
              "lingering", "remnant", "remnants", "unspoken", "hidden"]
@@ -2687,7 +2687,7 @@ def check_ghost_spectral(text):
 
 
 def check_quietness(text):
-    """Detect quietness obsession density (pattern 27)."""
+    """Detect quietness obsession density (pattern F2)."""
     words = ["quiet", "quietly", "silent", "silently", "soft", "softly", "stillness",
              "hushed", "murmur", "hum", "humming", "gentle", "tender", "settle", "settled"]
     text_lower = text.lower()
@@ -2770,7 +2770,7 @@ def check_rhetorical_questions(text):
 
 
 def check_list_density(text):
-    """Detect excessive list-making (pattern 31)."""
+    """Detect excessive list-making (pattern G3)."""
     lines = text.strip().split('\n')
     item_pattern = re.compile(r'\s*(?:[-*]|\d+\.)\s')
     item_lines = [line.strip() for line in lines if item_pattern.match(line)]
@@ -2829,7 +2829,7 @@ def list_item_edge_token(item, index):
 
 
 def check_symmetric_list_items(text):
-    """Detect list items sharing both a uniform length and an edge token (pattern 63).
+    """Detect list items sharing both a uniform length and an edge token (pattern G11).
 
     Symmetry needs both conditions. A list whose items merely run to the same
     length, or merely share an opening or closing word, is left alone; only the
@@ -2870,7 +2870,7 @@ def check_symmetric_list_items(text):
 def check_unicode_flair(text):
     """Detect decorative Unicode symbols and emoji shortcodes (patterns 31a + 16).
 
-    Folds pattern 16 (Emojis) into this check: covers symbol glyphs, the
+    Folds pattern C4 (Emojis) into this check: covers symbol glyphs, the
     broader emoji ranges, and ``:shortcode:`` forms (``:rocket:``, ``:bulb:``)
     that cluster in headings or bullet points.
     """
@@ -2898,7 +2898,7 @@ def check_unicode_flair(text):
 
 
 def check_dramatic_transitions(text):
-    """Detect dramatic narrative transitions (pattern 32)."""
+    """Detect dramatic narrative transitions (pattern G5)."""
     patterns = [
         r"something shifted", r"everything changed", r"everything clicked",
         r"that's when it hit me", r"and that made all the difference",
@@ -3331,7 +3331,7 @@ def check_rubric_echoing(text):
 
 
 def check_type_token_ratio(text):
-    """Flag unusually high windowed lexical diversity (pattern 53).
+    """Flag unusually high windowed lexical diversity (pattern B5).
 
     Direction and thresholds set by Mae 2026-07-17 from the eval-corpus
     calibration (dev/evals/ttr-calibration-2026-07-17.md): generated prose
@@ -3402,7 +3402,7 @@ HEDGING_PATTERNS = [
 
 
 def check_section_scaffolding(text):
-    """Detect repeated labels and mechanical heading structure (pattern 38)."""
+    """Detect repeated labels and mechanical heading structure (pattern G6)."""
     lines = strip_front_matter(text).split('\n')
     heading_pattern = re.compile(r"^\s*(#{1,6})\s+\S")
     thematic_break_pattern = re.compile(r"^\s*(?:-{3,}|\*{3,}|_{3,})\s*$")
@@ -3484,7 +3484,7 @@ MODAL_QUALIFIERS = {
 
 
 def check_modal_stacks(text):
-    """Detect sentences stacking 3+ bare modal/frequency qualifiers (pattern 60)."""
+    """Detect sentences stacking 3+ bare modal/frequency qualifiers (pattern E9)."""
     sentences = split_sentences(text)
     matches = []
     for sentence in sentences:
@@ -3506,7 +3506,7 @@ def check_modal_stacks(text):
 
 
 def check_heading_one_liners(text):
-    """Detect headings followed by a one-sentence paragraph (pattern 59)."""
+    """Detect headings followed by a one-sentence paragraph (pattern G10)."""
     thresholds = CHECK_THRESHOLDS.get("no-heading-one-liners", {})
     minimum = thresholds.get("minimum_candidates", 2)
     blocks = [b.strip() for b in text.split('\n\n') if b.strip()]
@@ -3608,7 +3608,7 @@ AMERICAN_SPELLINGS = _spelling_patterns(american=True)
 
 
 def check_mixed_spelling_conventions(text):
-    """Detect British and American spellings of the same families in one text (pattern 64).
+    """Detect British and American spellings of the same families in one text (pattern B6).
 
     Either convention used consistently is fine.  The finding is the mixture,
     which is what appears when generated text is pasted into a document written
@@ -3636,7 +3636,7 @@ FALSE_RANGE_PAIR = re.compile(
 
 
 def check_false_ranges(text):
-    """Detect stacked `from X to Y` pairs inside one sentence (pattern 12).
+    """Detect stacked `from X to Y` pairs inside one sentence (pattern A6).
 
     A single pair is ordinary English and runs slightly more often in human
     prose than generated (0.61 against 0.48 per 1000 words in the project
@@ -3669,7 +3669,7 @@ TITLE_CASE_MINOR_WORDS = {
 
 
 def check_title_case_headings(text):
-    """Detect headings that capitalise minor words (pattern 64).
+    """Detect headings that capitalise minor words (pattern B6).
 
     Conventional title case leaves articles, prepositions, and conjunctions
     lowercase inside a heading.  Capitalising them is the machine variant, so
@@ -3746,7 +3746,7 @@ NOTABILITY_CLAIMS = [
 
 
 def check_notability_claims(text):
-    """Detect notability claims that list authorities without context (pattern 2)."""
+    """Detect notability claims that list authorities without context (pattern A2)."""
     count, matches = count_pattern_matches(text, NOTABILITY_CLAIMS)
     return {
         "text": "no-notability-claims",
@@ -3773,7 +3773,7 @@ VAGUE_ATTRIBUTIONS = [
 
 
 def check_vague_attributions(text):
-    """Detect vague-authority attributions without named sources (pattern 5)."""
+    """Detect vague-authority attributions without named sources (pattern A5)."""
     count, matches = count_pattern_matches(text, VAGUE_ATTRIBUTIONS)
     return {
         "text": "no-vague-attributions",
@@ -3788,7 +3788,7 @@ def check_vague_attributions(text):
 
 
 def check_boldface_overuse(text):
-    """Detect mechanical boldface emphasis in prose (pattern 13)."""
+    """Detect mechanical boldface emphasis in prose (pattern C1)."""
     bold_pattern = re.compile(r"\*\*[^*\n]{1,80}\*\*")
     list_or_heading = re.compile(r"^\s*(?:[-*+•]|\d+\.|#{1,6})\s+")
     total = 0
@@ -3812,7 +3812,7 @@ def check_boldface_overuse(text):
 
 
 def check_inline_header_lists(text):
-    """Detect list items that start with a bolded header and colon (pattern 14)."""
+    """Detect list items that start with a bolded header and colon (pattern C2)."""
     list_prefix = re.compile(
         r"^\s*(?:[-*+•◦▪▫‣⁃●○]|\d+[.)])\s+"
     )
@@ -3856,7 +3856,7 @@ COMPOUND_MODIFIER_RE = re.compile("|".join(COMPOUND_MODIFIERS))
 
 
 def check_compound_modifier_density(text):
-    """Detect three or more hyphenated compound modifiers in a single sentence (pattern 18)."""
+    """Detect three or more hyphenated compound modifiers in a single sentence (pattern C6)."""
     sentences = re.split(r"(?<=[.!?])\s+", text)
     flagged = []
     for sent in sentences:
@@ -3892,7 +3892,7 @@ KNOWLEDGE_CUTOFF_DISCLAIMERS = [
 
 
 def check_knowledge_cutoff_disclaimers(text):
-    """Detect AI knowledge-cutoff or training-update disclaimers (pattern 20)."""
+    """Detect AI knowledge-cutoff or training-update disclaimers (pattern D2)."""
     count, matches = count_pattern_matches(text, KNOWLEDGE_CUTOFF_DISCLAIMERS)
     return {
         "text": "no-knowledge-cutoff-disclaimers",

@@ -93,6 +93,7 @@ The prior snapshot's bytes match commit `f28a370`; no digest was recorded in the
 - C21's broader positive-tone question remains pending. It was stamped rejected on 2026-07-25 under a DR-21H label Mae never ruled; the agent inferred the rejection from a clarifying question. That stamp is withdrawn and the question returns to Mae. `judgement.json` is unchanged either way.
 - C03 approved 2026-07-25 via DR-139 (closing DR-13): the old H8 grammar-cleanliness mapping is retired. Live H8 is platform and placeholder residue, and no product file maps this claim to it.
 - C21's broader positive-tone question rejected 2026-07-25 by Mae, in both forms: no agent-judgement record and no programmatic emotion-word counting. The approved A4 motivational formulas stand.
+- C22 approved 2026-07-27 via DR-169: ruled the source of record for the live `audience_knowledge_mismatch` agent-judgement record and its D6 catalogue entry. The record shipped on 2026-07-17 against Shankar C09, which describes the opposite failure, and with no register row at all. The prompt, the D6 entry and the README row are unchanged; only the provenance moved.
 
 ## Project coverage
 

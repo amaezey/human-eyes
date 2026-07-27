@@ -193,7 +193,7 @@ x Assistant residue: "let me know if"
 ! Contrived contrast: "are not clear about the purpose, the reader probably will not"
 ? Mechanical repeated sentence starts: "If you need a reply, say so.", "If you need approval, say what is being approved.", "If no action is needed, say that too."
 ? Headings in prose: "# How to Write Better Emails", "# How to Write Better Emails"
-? Paragraph length uniformity: paragraph length variation 0.13 across 13 paragraphs (target above 0.18)
+? Paragraph length uniformity: paragraph length variation 0.13 across 13 paragraphs (target: >=0.18)
 ? Triad density: "people communicate at work, school, and in everyday administration", "email can save time, reduce confusion, and make it more likely", "confirming details, sending a document, or following up on a" (+6 more)
 
 **Agent-assessed**

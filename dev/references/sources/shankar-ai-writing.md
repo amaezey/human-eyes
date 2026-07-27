@@ -102,6 +102,7 @@ The previous card and manifest recorded no SHA-256, so there was no declared dig
 - C17 decided 2026-07-17: C7 remains fail-on-any (deliberate stance); the proposed density/threshold reconsideration is declined and no product change follows.
 - C10 rejected 2026-07-18 via DR-121: no terminology-verification judgement was added. Calling a term invented requires external domain evidence, which the text-only Audit does not possess; the closed-source factual boundary remains unchanged.
 - C13 rejected 2026-07-19 via DR-134 option B: G8 remains occurrence-based for its listed conclusion signposts. No content-bearing gate was added.
+- C09 rejected 2026-07-27 via DR-173: explaining too little to a stated audience is outside what human-eyes covers, because rule 1 limits the product to habits AI overuses and a model with no picture of its reader errs the other way. No detector in either lane and no genre-branch guidance. The same closure withdrew the 2026-07-17 note crediting C09 with `audience_knowledge_mismatch` (DR-169); that record asks the opposite question and is now sourced to SEO Engine C22.
 
 ## Project coverage
 

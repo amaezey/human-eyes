@@ -42,8 +42,15 @@ class DetectionMarkerTests(unittest.TestCase):
 
     def test_every_catalogue_entry_has_one_detection_line(self):
         text = _rpm.PATTERNS_MD.read_text()
-        for m in re.finditer(r"^### ([A-Z]\d+)\.[^\n]*\n(.*?)(?=^### |^## |\Z)",
-                             text, re.M | re.S):
+        entries = list(re.finditer(r"^### ([A-Z]\d+)\.[^\n]*\n(.*?)(?=^### |^## |\Z)",
+                                   text, re.M | re.S))
+        # Floor first: a heading-regex change that matches nothing would
+        # otherwise skip the loop body and report a silent pass. That is the
+        # DR-79 failure class, and the sibling test below already guards it.
+        self.assertGreater(len(entries), 40,
+                           "catalogue heading pattern matched almost nothing -- "
+                           "the regex is stale, not the catalogue")
+        for m in entries:
             count = m.group(2).count("**Detection:**")
             self.assertEqual(1, count, f"entry {m.group(1)} has {count} Detection lines")
 

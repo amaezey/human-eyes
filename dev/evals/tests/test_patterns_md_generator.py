@@ -75,7 +75,6 @@ print("=== preamble count and TOC ranges ===")
 import collections
 _md = (ROOT / "human-eyes" / "references" / "patterns.md").read_text()
 _ids = re.findall(r"^### ([A-Z])(\d+)\. ", _md, re.M)
-_per_letter = collections.Counter(l for l, _n in _ids)
 _m = re.search(r"^(\d+) patterns\b", _md, re.M)
 if not _m:
     print(f"FAIL: preamble has no count sentence")
@@ -84,14 +83,25 @@ if int(_m.group(1)) != len(_ids):
     print(f"FAIL: preamble says {_m.group(1)} patterns; {len(_ids)} entries exist")
     sys.exit(1)
 print(f"  ok: preamble count {len(_ids)} matches the entries")
-for _line in re.findall(r"^- \[([^\]]+) \(([A-Z])1(?:-[A-Z](\d+))?\)\]", _md, re.M):
-    _cat, _letter, _hi = _line
-    _want = _per_letter[_letter]
-    _got = int(_hi) if _hi else 1
-    if _got != _want:
-        print(f"FAIL: TOC says {_cat} runs to {_letter}{_got}; {_letter} has {_want} entries")
+# Compare against the highest id present, not the entry count: a category is not
+# guaranteed gapless, and counting would pass a range that hides its top entry.
+_max_pos = {}
+_min_pos = {}
+for _l, _n in _ids:
+    _n = int(_n)
+    _max_pos[_l] = max(_max_pos.get(_l, 0), _n)
+    _min_pos[_l] = min(_min_pos.get(_l, 10**9), _n)
+_toc_lines = re.findall(r"^- \[([^\]]+) \(([A-Z])(\d+)(?:-[A-Z](\d+))?\)\]", _md, re.M)
+if len(_toc_lines) != len(_max_pos):
+    print(f"FAIL: TOC lists {len(_toc_lines)} categories; {len(_max_pos)} letters have entries")
+    sys.exit(1)
+for _cat, _letter, _lo, _hi in _toc_lines:
+    _got_hi = int(_hi) if _hi else int(_lo)
+    if int(_lo) != _min_pos[_letter] or _got_hi != _max_pos[_letter]:
+        print(f"FAIL: TOC says {_cat} runs {_letter}{_lo}-{_letter}{_got_hi}; "
+              f"entries run {_letter}{_min_pos[_letter]}-{_letter}{_max_pos[_letter]}")
         sys.exit(1)
-    print(f"  ok: {_cat} TOC range matches {_want} entries")
+    print(f"  ok: {_cat} TOC range matches entries {_letter}{_min_pos[_letter]}-{_letter}{_max_pos[_letter]}")
 
 print()
 print("========================================")

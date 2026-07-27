@@ -194,7 +194,6 @@ def enrich():
     enriched = {}
     enriched["_meta"] = {
         "preamble": parsed["preamble"],
-        "toc_body": parsed["toc_body"],
         "evidence_body": parsed["evidence_body"],
     }
 
@@ -346,19 +345,26 @@ def render():
     # Storing them is what let them go stale twice before DR-158, and again the
     # moment H18 moved category: a value written once is hand-maintained however
     # it was first derived.
+    # Endpoints come from the ids actually present, never from the count. A
+    # category is not guaranteed gapless: retiring an entry from the middle
+    # leaves the highest id above the entry count, and using the count would
+    # silently drop the top entry from its own declared range.
     counts = []
+    total = 0
     for cat in CATEGORY_ORDER:
-        n = len(by_category[cat])
-        if n:
-            letter = by_category[cat][0]["number"][0]
-            counts.append((cat, letter, n))
-    total = sum(n for _c, _l, n in counts)
+        entries = by_category[cat]
+        if not entries:
+            continue
+        positions = sorted(int(e["number"][1:]) for e in entries)
+        letter = entries[0]["number"][0]
+        counts.append((cat, letter, positions[0], positions[-1]))
+        total += len(entries)
     preamble = re.sub(r"^\d+ patterns\b", f"{total} patterns",
                       meta["preamble"], count=1, flags=re.M)
     toc_body = "\n".join(
-        f"- [{cat} ({letter}1-{letter}{n})](#{cat.lower().replace(' ', '-')})"
-        if n > 1 else f"- [{cat} ({letter}1)](#{cat.lower().replace(' ', '-')})"
-        for cat, letter, n in counts)
+        f"- [{cat} ({letter}{lo}-{letter}{hi})](#{cat.lower().replace(' ', '-')})"
+        if hi != lo else f"- [{cat} ({letter}{lo})](#{cat.lower().replace(' ', '-')})"
+        for cat, letter, lo, hi in counts)
     preamble_and_toc = preamble + f"\n\n## Contents\n\n{toc_body}"
     sections = [preamble_and_toc]
     sections.append(f"## Evidence hierarchy from the reference audit\n\n{meta['evidence_body']}")
