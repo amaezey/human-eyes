@@ -1819,6 +1819,9 @@ def check_sentence_variance(text):
     return {
         "text": "sentence-length-variance",
         "passed": not flagged,
+        # The number the decision turns on, exposed so it can be measured against
+        # the declared cut-off. `metric` below is the reader-facing string.
+        "metric_number": sd,
         "metric": (
             f"sentence length variation {sd:.1f} across {len(sentences)} "
             f"sentences (target above {minimum_sd:g})"
@@ -3351,6 +3354,9 @@ def check_paragraph_uniformity(text):
     return {
         "text": "paragraph-length-uniformity",
         "passed": not flagged,
+        # The number the decision turns on, exposed so it can be measured against
+        # the declared cut-off. `metric` is the reader-facing string.
+        "metric_number": cv,
         "metric": metric,
         "evidence": (
             f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs "
