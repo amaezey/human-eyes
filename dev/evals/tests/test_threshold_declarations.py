@@ -211,10 +211,6 @@ BOUNDARY_UNWITNESSED = {
         "no document holds 2 or 3 of these phrases; the one that flags holds 11",
     ("no-heading-one-liners", "minimum_candidates"):
         "no document holds exactly 1, so the clear side of the cut-off is empty",
-    ("no-inline-header-lists", "minimum_candidates"):
-        "no corpus document holds one of these at all",
-    ("no-rubric-echoing", "minimum_candidates"):
-        "no corpus document holds one of these at all",
     ("no-soft-scaffolding", "minimum_candidates"):
         "documents hold 1 or fewer, or 6 or more, never 2 to 5",
 }
