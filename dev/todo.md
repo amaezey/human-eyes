@@ -61,13 +61,11 @@ The three causes were separated before anything was proposed:
 - Cause 3, length-biased comparison: two checks, `no-boldface-overuse` and
   `no-tidy-paragraph-endings`, now measured by count and rate together.
 
-Still open, and smaller than the question this item opened: 16 of the 19 thresholded
-checks carry inherited numbers with no calibration record arguing the value. Sitting
-inside the range is not the same as sitting at the right point in it.
-
-Also open, recorded and not acted on: three checks fire on human prose and never on
-generated. Whether a pattern belongs in the catalogue is a source-evidence question and
-Mae's to rule on, not a threshold sweep's.
+Two things this item surfaced and did not close are open in the register, where
+decisions live: **DR-174** (three checks fire on human prose and never on generated)
+and **DR-175** (sixteen of nineteen thresholds run on inherited numbers with no
+calibration record). Both are Mae's to rule on; neither is queued work, and nothing
+here proposes a change.
 
 ---
 
