@@ -46,21 +46,28 @@ pinned. Whether each cut-off is set *well*, rather than merely wired, is 0b's qu
 
 ---
 
-## 0b. Audit every check threshold against its observed distribution (DR-164)
+## 0b. DONE: every check threshold audited against its observed distribution (DR-164)
 
-Approved 2026-07-26. Mae's own item; also never part of the source review.
+Landed 2026-07-28. Record: `dev/evals/threshold-distribution-audit-2026-07-28.md`.
 
-DR-79 found G9 `sentence-length-variance` had never fired on any of the 108 corpus documents, because its inherited threshold of 4 sat below the entire observed range. Its test passed the whole time, because the fixture is prose hand-written to be flat at a value real writing never reaches.
+**No threshold sits outside its observed range.** No G9 case exists outside G9. That is
+the question this item asked, and it is answered.
 
-**Method:** for each check, sweep its metric over both corpora, print the observed range, and ask whether the threshold sits inside it. 11 checks carry a calibration record under `dev/evals/`; the rest do not. Corrected 2026-07-27: 19 checks declare a cut-off in `CHECK_THRESHOLDS` and 16 of them read it through `threshold_value(check_id, key, default)` at `grade.py:2176`, so the declared value is usually the enforced one. Only three carry a literal that could diverge. Item 0a settles how that is verified; do it first.
+The three causes were separated before anything was proposed:
 
-**A first smoke pass found 18 checks that never flag a generated document and 19 that flag more human documents than generated. That pass is an inventory, not a finding.** Three different causes produce those symptoms and they need opposite responses:
+- Cause 1, threshold outside the range: none found.
+- Cause 2, corpus holds no instance: four checks. Probe documents added under
+  `samples/synthetic/`, outside the calibration split.
+- Cause 3, length-biased comparison: two checks, `no-boldface-overuse` and
+  `no-tidy-paragraph-endings`, now measured by count and rate together.
 
-1. A threshold outside the observed range is a defect. That is G9.
-2. A corpus holding no instance of the target is silent, not broken. DR-153's SWBST frame and DR-116's emoji rerun are both this.
-3. For any check firing on one occurrence, a share-of-documents comparison is length-biased. The human corpus averages 2,172 words per document against the generated corpus's 1,051, which is exactly how E5 was misreported as running backwards during DR-66. Rate checks are immune; one-occurrence checks are not.
+Still open, and smaller than the question this item opened: 16 of the 19 thresholded
+checks carry inherited numbers with no calibration record arguing the value. Sitting
+inside the range is not the same as sitting at the right point in it.
 
-Separate the three before proposing anything, and bring each threshold to Mae as its own decision.
+Also open, recorded and not acted on: three checks fire on human prose and never on
+generated. Whether a pattern belongs in the catalogue is a source-evidence question and
+Mae's to rule on, not a threshold sweep's.
 
 ---
 
