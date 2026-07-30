@@ -249,13 +249,14 @@ assert not promotion_result["passed"]
 assert promotion_result["candidate_count"] >= 3
 
 # Compact interpretive paragraph closures are recognised structurally.  Two
-# candidates remain visible below the existing three-ending document threshold.
+# candidates in a short document clear the 1-candidate, 0.5-per-1000 gate, so the
+# assertion below is about recognition rather than about the verdict.
 tidy_structural = (
     "The editors omitted the longer work. The selection was already an interpretation.\n\n"
     "The translators polished the syntax. Difficulty became refinement; irony could sound sincere."
 )
 tidy_result = grade.ALL_CHECKS["no-tidy-paragraph-endings"](tidy_structural)
-assert tidy_result["passed"]
+assert not tidy_result["passed"]
 assert_equal(tidy_result["candidate_count"], 2, "structural tidy-ending candidates")
 assert_equal(
     grade.ALL_CHECKS["no-tidy-paragraph-endings"](tidy_structural.swapcase())["candidate_count"],

@@ -1,7 +1,7 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 14
+      "flagged": 13
     },
     "programmatic": {
       "by_category": {
@@ -11,11 +11,11 @@
         "Language and grammar": 3,
         "Signal stacking": 1,
         "Structural tells": 2,
-        "Style": 2,
+        "Style": 1,
         "Voice and register": 1
       },
       "by_severity": {
-        "context_warning": 9,
+        "context_warning": 8,
         "hard_fail": 1,
         "strong_warning": 4
       },
@@ -1126,6 +1126,7 @@
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
           "metric": null,
+          "metric_number": 18.344380511636594,
           "metric_value": 0,
           "sample_size": 7343,
           "severity": "context_warning",
@@ -2912,7 +2913,7 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 3
+              "minimum_candidates": 2
             },
             "raw_evidence": "Found 5 hedging constructions: ['in general,', 'typically', 'some cases', 'in general,', 'in general.']",
             "suppression_reason": null
@@ -2968,7 +2969,7 @@
             }
           ],
           "threshold": {
-            "minimum_candidates": 3
+            "minimum_candidates": 2
           },
           "threshold_met": true
         }
@@ -3079,7 +3080,7 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "maximum_cv": 0.18,
+              "maximum_cv": 0.26,
               "minimum_paragraphs": 7
             },
             "raw_evidence": "Paragraph length CV: 0.37 across 104 paragraphs",
@@ -3095,11 +3096,12 @@
           ],
           "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template.",
           "metric": null,
+          "metric_number": 0.36916838174268857,
           "metric_value": 0,
           "sample_size": 7343,
           "severity": "context_warning",
           "threshold": {
-            "maximum_cv": 0.18,
+            "maximum_cv": 0.26,
             "minimum_paragraphs": 7
           },
           "threshold_met": false
@@ -3126,14 +3128,15 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 3
+              "maximum_rate_per_1000": 0.5,
+              "minimum_candidates": 1
             },
-            "raw_evidence": "Tidy paragraph endings: 0",
+            "raw_evidence": "Tidy paragraph endings: 0 (0.0 per 1000 words)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Tidy paragraph endings: 0",
+          "evidence": "Tidy paragraph endings: 0 (0.0 per 1000 words)",
           "evidence_role": "paragraph_closure",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -3143,10 +3146,12 @@
           "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn.",
           "match_count": 0,
           "matches": [],
+          "metric_number": 0.0,
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 3
+            "maximum_rate_per_1000": 0.5,
+            "minimum_candidates": 1
           },
           "threshold_met": false
         }
@@ -3485,14 +3490,15 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
+              "maximum_rate_per_1000": 2.0,
               "minimum_candidates": 4
             },
-            "raw_evidence": "Found 5 bold span(s) in prose: ['**Part One: Introduction**', '**Part Two: The Technology of Allotment**', '**Part Three: The Technology of Identification**', '**Part Four: The Technology of Deliberation and Decision**', '**Part Five: The Technology of Decree**']",
+            "raw_evidence": "Bold spans in prose: 5 (0.7 per 1000 words)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Found 5 bold span(s) in prose: ['**Part One: Introduction**', '**Part Two: The Technology of Allotment**', '**Part Three: The Technology of Identification**', '**Part Four: The Technology of Deliberation and Decision**', '**Part Five: The Technology of Decree**']",
+          "evidence": "Bold spans in prose: 5 (0.7 per 1000 words)",
           "evidence_role": "emphasis_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -3507,6 +3513,7 @@
             "**Part Four: The Technology of Deliberation and Decision**",
             "**Part Five: The Technology of Decree**"
           ],
+          "metric_number": 0.6809206046574969,
           "severity": "context_warning",
           "spans": [
             {
@@ -3541,9 +3548,10 @@
             }
           ],
           "threshold": {
+            "maximum_rate_per_1000": 2.0,
             "minimum_candidates": 4
           },
-          "threshold_met": true
+          "threshold_met": false
         }
       },
       "failure_modes": [
@@ -3551,7 +3559,7 @@
       ],
       "id": "no-boldface-overuse",
       "severity": "context_warning",
-      "status": "flagged"
+      "status": "clear"
     },
     {
       "category": "Style",

@@ -2364,6 +2364,7 @@
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
           "metric": "sentence length variation 7.0 across 140 sentences (target above 9)",
+          "metric_number": 6.96609023449956,
           "metric_value": "sentence length variation 7.0 across 140 sentences (target above 9)",
           "sample_size": 1638,
           "severity": "context_warning",
@@ -3932,7 +3933,7 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 3
+              "minimum_candidates": 2
             },
             "raw_evidence": "Hedging constructions: 0",
             "suppression_reason": null
@@ -3951,7 +3952,7 @@
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 3
+            "minimum_candidates": 2
           },
           "threshold_met": false
         }
@@ -4225,7 +4226,7 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "maximum_cv": 0.18,
+              "maximum_cv": 0.26,
               "minimum_paragraphs": 7
             },
             "raw_evidence": "Paragraph length CV: 0.26 across 20 paragraphs",
@@ -4241,11 +4242,12 @@
           ],
           "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template.",
           "metric": null,
+          "metric_number": 0.26019200416905347,
           "metric_value": 0,
           "sample_size": 1638,
           "severity": "context_warning",
           "threshold": {
-            "maximum_cv": 0.18,
+            "maximum_cv": 0.26,
             "minimum_paragraphs": 7
           },
           "threshold_met": false
@@ -4272,14 +4274,15 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 3
+              "maximum_rate_per_1000": 0.5,
+              "minimum_candidates": 1
             },
-            "raw_evidence": "Tidy paragraph endings: 0",
+            "raw_evidence": "Tidy paragraph endings: 0 (0.0 per 1000 words)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Tidy paragraph endings: 0",
+          "evidence": "Tidy paragraph endings: 0 (0.0 per 1000 words)",
           "evidence_role": "paragraph_closure",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -4289,10 +4292,12 @@
           "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn.",
           "match_count": 0,
           "matches": [],
+          "metric_number": 0.0,
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 3
+            "maximum_rate_per_1000": 0.5,
+            "minimum_candidates": 1
           },
           "threshold_met": false
         }
@@ -4582,14 +4587,15 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
+              "maximum_rate_per_1000": 2.0,
               "minimum_candidates": 4
             },
-            "raw_evidence": "Bold spans in prose: 0",
+            "raw_evidence": "Bold spans in prose: 0 (0.0 per 1000 words)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Bold spans in prose: 0",
+          "evidence": "Bold spans in prose: 0 (0.0 per 1000 words)",
           "evidence_role": "emphasis_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -4598,9 +4604,11 @@
           "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers.",
           "match_count": 0,
           "matches": [],
+          "metric_number": 0.0,
           "severity": "context_warning",
           "spans": [],
           "threshold": {
+            "maximum_rate_per_1000": 2.0,
             "minimum_candidates": 4
           },
           "threshold_met": false

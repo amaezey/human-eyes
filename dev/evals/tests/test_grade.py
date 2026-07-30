@@ -1285,9 +1285,9 @@ expect_fail("no-excessive-hedging",
 expect_pass("no-excessive-hedging",
     "The bridge was built in 1937. It cost twelve million dollars. Construction took four years.",
     "no hedging")
-expect_pass("no-excessive-hedging",
+expect_fail("no-excessive-hedging",
     "Cooking is often framed as a chore. The value is increasingly recognised. But most people just want dinner.",
-    "2 hedging constructions (under threshold)")
+    "2 hedging constructions, the DR-175 cut-off")
 
 
 # --- no-countdown-negation ---
@@ -1382,7 +1382,9 @@ _two_structural_endings = ALL_CHECKS["no-tidy-paragraph-endings"](
     "The translators selected only the short lyrics. The selection was already an interpretation.\n\n"
     "The syntax was regularised and the irony softened. Difficulty became refinement; irony could sound sincere."
 )
-assert _two_structural_endings["passed"]
+# Two candidates in a 40-word document sit above the 1-candidate, 0.5-per-1000 gate,
+# so recognition and the document verdict now agree here.
+assert not _two_structural_endings["passed"]
 assert _two_structural_endings["candidate_count"] == 2
 
 _literal_and_subordinate_controls = ALL_CHECKS["no-tidy-paragraph-endings"](
@@ -2651,6 +2653,17 @@ for check_name in ALL_CHECKS:
         # is 7.56 across 36 sentences, inside the 11% of human prose G9 flags
         # at its calibrated threshold of 9.
         "sentence-length-variance",
+        # DR-175: this piece runs paragraphs of 58, 77, 65, 49, 81, 43, 45 and 58
+        # words, a coefficient of variation of 0.239, inside the 17% of human
+        # prose the check flags at its calibrated 0.26. Mae ruled that band a
+        # correct catch whoever wrote it.
+        "paragraph-length-uniformity",
+        # DR-175: the roll-up consequence of the line above. Paragraph
+        # uniformity plus the negative parallelism this piece already contains
+        # put it at 5 against a gate of 4. The overall verdict is excluded here
+        # only because a component it sums is; no other human passthrough
+        # fixture excludes it.
+        "overall-signal-stacking",
     }:
         continue
     expect_pass(check_name, opinion_text, f"human opinion piece ({check_name})")
@@ -3259,10 +3272,10 @@ expect_pass("no-excessive-hedging",
     "Results may vary between regions. The benchmark covers the four largest tenants "
     "and the deploy finished inside the window.",
     "DR-150 control: a single hedge stays under the threshold")
-expect_pass("no-excessive-hedging",
+expect_fail("no-excessive-hedging",
     "As a rule the exports finish overnight. In general, the queue clears by morning. "
     "The alerting has paged twice this quarter.",
-    "DR-150 control: two hedges stay under the threshold")
+    "DR-150 control: two hedges now reach the DR-175 cut-off")
 
 # --- DR-118: modal stacks (E9), can-potentially (E2), intensifiers (B1) ---
 print("\n=== DR-118 additions ===")

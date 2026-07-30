@@ -1,7 +1,7 @@
 {
   "aggregates": {
     "combined": {
-      "flagged": 12
+      "flagged": 13
     },
     "programmatic": {
       "by_category": {
@@ -9,20 +9,21 @@
         "Filler and hedging": 2,
         "Language and grammar": 5,
         "Signal stacking": 1,
-        "Structural tells": 1,
+        "Structural tells": 2,
         "Style": 1,
         "Voice and register": 1
       },
       "by_severity": {
-        "context_warning": 10,
+        "context_warning": 11,
         "hard_fail": 0,
         "strong_warning": 2
       },
       "signal_stacking": {
         "components": [
-          "negative parallelism"
+          "negative parallelism",
+          "paragraph length uniformity"
         ],
-        "score": 4,
+        "score": 6,
         "threshold": 4,
         "triggered": true,
         "vocabulary_points": 0
@@ -171,7 +172,7 @@
       "category": "Signal stacking",
       "evidence": {
         "counts": {
-          "score": 4,
+          "score": 6,
           "threshold": 4
         },
         "locations": [],
@@ -181,25 +182,28 @@
           "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
-          "component_count": 1,
+          "component_count": 2,
           "component_points": {
-            "negative_parallelism": 4
+            "negative_parallelism": 4,
+            "paragraph_uniformity": 2
           },
           "component_signals": [
-            "negative parallelism"
+            "negative parallelism",
+            "paragraph length uniformity"
           ],
           "components": [
-            "negative parallelism"
+            "negative parallelism",
+            "paragraph length uniformity"
           ],
           "context_gate": {
             "applied": false,
             "effective_threshold": 4,
-            "raw_evidence": "Overall signal stacking 4/4 from [negative parallelism]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=9 distinct/9.6/1000, sample=['need', 'research', 'approach', 'disrupts', 'initially', 'linked', 'particularly', 'persist', 'remains']",
+            "raw_evidence": "Overall signal stacking 6/4 from [negative parallelism, paragraph length uniformity]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=9 distinct/9.6/1000, sample=['need', 'research', 'approach', 'disrupts', 'initially', 'linked', 'particularly', 'persist', 'remains']",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Overall signal stacking 4/4 from [negative parallelism]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=9 distinct/9.6/1000, sample=['need', 'research', 'approach', 'disrupts', 'initially', 'linked', 'particularly', 'persist', 'remains']",
+          "evidence": "Overall signal stacking 6/4 from [negative parallelism, paragraph length uniformity]; vocab=0 point(s), worst_generic=1, gptzero=[], kobak=9 distinct/9.6/1000, sample=['need', 'research', 'approach', 'disrupts', 'initially', 'linked', 'particularly', 'persist', 'remains']",
           "evidence_role": "signal_stacking",
           "evidence_type": "aggregate",
           "failure_modes": [
@@ -207,7 +211,7 @@
             "frictionless_structure"
           ],
           "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict.",
-          "score": 4,
+          "score": 6,
           "severity": "context_warning",
           "threshold": 4,
           "threshold_met": true,
@@ -1682,6 +1686,7 @@
           ],
           "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms.",
           "metric": "sentence length variation 7.5 across 97 sentences (target above 9)",
+          "metric_number": 7.4609953685841655,
           "metric_value": "sentence length variation 7.5 across 97 sentences (target above 9)",
           "sample_size": 1151,
           "severity": "context_warning",
@@ -3365,7 +3370,7 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 3
+              "minimum_candidates": 2
             },
             "raw_evidence": "Hedging constructions: 1",
             "suppression_reason": null
@@ -3393,7 +3398,7 @@
             }
           ],
           "threshold": {
-            "minimum_candidates": 3
+            "minimum_candidates": 2
           },
           "threshold_met": false
         }
@@ -3626,39 +3631,40 @@
       "evidence": {
         "counts": {},
         "locations": [],
-        "metric": null,
+        "metric": "paragraph length variation 0.25 across 16 paragraphs (target: >=0.26)",
         "quoted_phrases": [],
         "raw": {
-          "aggregate_finding": false,
+          "aggregate_finding": true,
           "candidate_count": 0,
           "candidates": [],
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "maximum_cv": 0.18,
+              "maximum_cv": 0.26,
               "minimum_paragraphs": 7
             },
-            "raw_evidence": "Paragraph length CV: 0.25 across 16 paragraphs",
+            "raw_evidence": "Paragraph length CV: 0.25 across 16 paragraphs (target: >=0.26)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Paragraph length CV: 0.25 across 16 paragraphs",
+          "evidence": "Paragraph length CV: 0.25 across 16 paragraphs (target: >=0.26)",
           "evidence_role": "layout_rhythm",
           "evidence_type": "statistical",
           "failure_modes": [
             "frictionless_structure"
           ],
           "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template.",
-          "metric": null,
-          "metric_value": 0,
+          "metric": "paragraph length variation 0.25 across 16 paragraphs (target: >=0.26)",
+          "metric_number": 0.25438864013273366,
+          "metric_value": "paragraph length variation 0.25 across 16 paragraphs (target: >=0.26)",
           "sample_size": 1151,
           "severity": "context_warning",
           "threshold": {
-            "maximum_cv": 0.18,
+            "maximum_cv": 0.26,
             "minimum_paragraphs": 7
           },
-          "threshold_met": false
+          "threshold_met": true
         }
       },
       "failure_modes": [
@@ -3666,7 +3672,7 @@
       ],
       "id": "paragraph-length-uniformity",
       "severity": "context_warning",
-      "status": "clear"
+      "status": "flagged"
     },
     {
       "category": "Voice and register",
@@ -3682,14 +3688,15 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
-              "minimum_candidates": 3
+              "maximum_rate_per_1000": 0.5,
+              "minimum_candidates": 1
             },
-            "raw_evidence": "Tidy paragraph endings: 0",
+            "raw_evidence": "Tidy paragraph endings: 0 (0.0 per 1000 words)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Tidy paragraph endings: 0",
+          "evidence": "Tidy paragraph endings: 0 (0.0 per 1000 words)",
           "evidence_role": "paragraph_closure",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -3699,10 +3706,12 @@
           "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn.",
           "match_count": 0,
           "matches": [],
+          "metric_number": 0.0,
           "severity": "context_warning",
           "spans": [],
           "threshold": {
-            "minimum_candidates": 3
+            "maximum_rate_per_1000": 0.5,
+            "minimum_candidates": 1
           },
           "threshold_met": false
         }
@@ -3992,14 +4001,15 @@
           "context_gate": {
             "applied": false,
             "effective_threshold": {
+              "maximum_rate_per_1000": 2.0,
               "minimum_candidates": 4
             },
-            "raw_evidence": "Bold spans in prose: 0",
+            "raw_evidence": "Bold spans in prose: 0 (0.0 per 1000 words)",
             "suppression_reason": null
           },
           "context_reason": null,
           "context_suppressed": false,
-          "evidence": "Bold spans in prose: 0",
+          "evidence": "Bold spans in prose: 0 (0.0 per 1000 words)",
           "evidence_role": "emphasis_pattern",
           "evidence_type": "lexical",
           "failure_modes": [
@@ -4008,9 +4018,11 @@
           "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers.",
           "match_count": 0,
           "matches": [],
+          "metric_number": 0.0,
           "severity": "context_warning",
           "spans": [],
           "threshold": {
+            "maximum_rate_per_1000": 2.0,
             "minimum_candidates": 4
           },
           "threshold_met": false

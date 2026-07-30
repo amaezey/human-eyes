@@ -3344,7 +3344,7 @@ def check_paragraph_uniformity(text):
         }
     avg = sum(lengths) / len(lengths)
     cv = stdev(lengths) / avg if avg else 0
-    maximum_cv = threshold_value("paragraph-length-uniformity", "maximum_cv", 0.18)
+    maximum_cv = threshold_value("paragraph-length-uniformity", "maximum_cv", 0.26)
     flagged = cv < maximum_cv
     metric = (
         f"paragraph length variation {cv:.2f} across {len(lengths)} paragraphs "
@@ -3433,8 +3433,8 @@ def check_tidy_paragraph_endings(text):
     # because human documents here average 2.2 times the length. As a rate the
     # direction corrects: 9% generated against 6% human at 1.0 per 1000.
     words = len(re.findall(r"\b\w+\b", text))
-    minimum_candidates = threshold_value("no-tidy-paragraph-endings", "minimum_candidates", 3)
-    maximum_rate = threshold_value("no-tidy-paragraph-endings", "maximum_rate_per_1000", 1.0)
+    minimum_candidates = threshold_value("no-tidy-paragraph-endings", "minimum_candidates", 1)
+    maximum_rate = threshold_value("no-tidy-paragraph-endings", "maximum_rate_per_1000", 0.5)
     rate = len(endings) / words * 1000 if words else 0.0
     flagged = len(endings) >= minimum_candidates and rate >= maximum_rate
     return {
@@ -3870,7 +3870,7 @@ def check_hedging_density(text):
     # Three distinct hedges in one short passage already form a stacked signal.
     return {
         "text": "no-excessive-hedging",
-        "passed": total_matches < threshold_value("no-excessive-hedging", "minimum_candidates", 3),
+        "passed": total_matches < threshold_value("no-excessive-hedging", "minimum_candidates", 2),
         "matches": all_found,
         "evidence": (
             f"Found {total_matches} hedging constructions: {all_found[:5]}"
@@ -4198,9 +4198,9 @@ CHECK_THRESHOLDS = {
     "no-excessive-lists": {"minimum_items": 8, "minimum_blocks": 2, "minimum_line_ratio": 0.3},
     "no-symmetric-list-items": {"minimum_items": 3, "maximum_deviation": 2},
     "no-unicode-flair": {"minimum_candidates": 2},
-    "no-excessive-hedging": {"minimum_candidates": 3},
-    "paragraph-length-uniformity": {"minimum_paragraphs": 7, "maximum_cv": 0.18},
-    "no-tidy-paragraph-endings": {"minimum_candidates": 3, "maximum_rate_per_1000": 1.0},
+    "no-excessive-hedging": {"minimum_candidates": 2},
+    "paragraph-length-uniformity": {"minimum_paragraphs": 7, "maximum_cv": 0.26},
+    "no-tidy-paragraph-endings": {"minimum_candidates": 1, "maximum_rate_per_1000": 0.5},
     "no-bland-critical-template": {"minimum_candidates": 3},
     "no-rubric-echoing": {"minimum_candidates": 3},
     "no-forced-triads": {"minimum_words": 300, "maximum_rate_per_1000": 4.0},

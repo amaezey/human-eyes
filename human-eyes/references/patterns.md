@@ -1308,7 +1308,7 @@ Both conditions must hold before the check says anything: the items run to a uni
 
 Generated longform settles into blocks of the same size: ten paragraphs of 65 to 85 words, each making one balanced point. Human paragraphs carry uneven pressure. A paragraph runs to four sentences because it needed four, and the next one is a single line. When every block comes out the same size, the draft reads as a template being filled in, even where each individual paragraph is competently made.
 
-The check measures block size and nothing else. It counts the words in every prose paragraph of 25 words or more, then takes the coefficient of variation, standard deviation over the mean, across those counts. A coefficient below 0.18 fails, meaning the paragraphs all sit inside a narrow band; wide variation passes. No phrase carries the signal, so the finding reports the coefficient and the number of paragraphs it was measured over rather than quoting anything. In the passage below there is nothing to fix at sentence level; the shape is the tell.
+The check measures block size and nothing else. It counts the words in every prose paragraph of 25 words or more, then takes the coefficient of variation, standard deviation over the mean, across those counts. A coefficient below 0.26 fails, meaning the paragraphs all sit inside a narrow band; wide variation passes. No phrase carries the signal, so the finding reports the coefficient and the number of paragraphs it was measured over rather than quoting anything. In the passage below there is nothing to fix at sentence level; the shape is the tell.
 
 **Before:**
 > The pilot ran in three regions over eight weeks. Support tickets fell by about a fifth in each one. Teams reported that the new triage screen was easier to learn than the version it replaced.
@@ -1406,7 +1406,7 @@ Every paragraph wraps up with a tidy summary sentence that transitions perfectly
 
 When you spot a paragraph where the final sentence restates the paragraph's point or transitions smoothly to the next topic, consider cutting it or replacing it with something that leaves a thread open.
 
-Watch for endings such as "That is why...", "The takeaway is...", "The result is...", "In the end,...", "Ultimately,...", and "With that distinction in mind...". The deterministic candidate surface also recognises compact interpretive closures such as "The selection was already an interpretation" and balanced semicolon closures whose two halves each contain their own subject and linking verb. Literal states and subordinate fragments are controls. Quoted occurrences remain candidates and are marked as quoted. One can be legitimate. Three or more usually means the piece is landing every paragraph the same way.
+Watch for endings such as "That is why...", "The takeaway is...", "The result is...", "In the end,...", "Ultimately,...", and "With that distinction in mind...". The deterministic candidate surface also recognises compact interpretive closures such as "The selection was already an interpretation" and balanced semicolon closures whose two halves each contain their own subject and linking verb. Literal states and subordinate fragments are controls. Quoted occurrences remain candidates and are marked as quoted. One can be legitimate. One every 2,000 words usually means the piece closes every paragraph the same way.
 
 **Severity:** context_warning · `no-tidy-paragraph-endings`
 
