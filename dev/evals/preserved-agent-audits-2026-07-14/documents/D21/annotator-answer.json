@@ -1,0 +1,143 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "clear",
+      "answer": "sections vary",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "crowded kitchen, familiar arguments, too much dessert, and the same group photograph on the back steps",
+          "why_unspecific": "These images read as generic holiday-gathering conventions (any family's kitchen, any argument, any dessert, any photograph) rather than named, dated, or sensorily particular details tied to this specific family."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "proof that distance had not loosened our place in the family",
+          "why_generic": "The loosening/grip metaphor for familial closeness is a conventional figure that doesn't specify what concrete behaviors or relationships would demonstrate 'looseness' versus firmness."
+        },
+        {
+          "phrase": "Traditions can hold a family together",
+          "why_generic": "The 'holding together' metaphor for tradition is a stock figure that doesn't specify the mechanism by which a specific tradition binds this specific family."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "should not prevent us from responding to what we know",
+          "why_unclear": "'what we know' has no clear antecedent in the text — it's never specified what particular knowledge (about cost, climate, family need) is being responded to."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "We will travel less often, stay longer when we do, and use trains where they are practical.",
+          "why_formulaic": "A tricolon of parallel clauses that substitutes rhythmic balance for concrete detail on frequency, duration, or which routes are practical."
+        },
+        {
+          "phrase": "for our relatives, for our budget, and for a climate that every future family gathering will depend on",
+          "why_formulaic": "A balanced three-part 'for X' list that closes the piece on symmetry rather than adding new information beyond what was already stated."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I hope this change becomes another form of care: for our relatives, for our budget, and for a climate that every future family gathering will depend on.",
+          "what_it_repeats": "Restates the three reasons already given earlier in the piece — family connection/love, the cost of four tickets and two flights, and the environmental cost of flying — without adding new content."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "surprisingly emotional",
+          "missing_criterion": "Does not specify which emotions were felt or why they were surprising."
+        },
+        {
+          "phrase": "familiar arguments",
+          "missing_criterion": "Does not specify what the arguments were about or between whom."
+        },
+        {
+          "phrase": "less willing to ignore the environmental cost",
+          "missing_criterion": "Does not specify the actual environmental cost (emissions figures, comparison basis) being weighed."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

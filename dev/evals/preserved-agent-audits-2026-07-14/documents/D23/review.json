@@ -1,0 +1,151 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document does appear to vary its functions across background, proposal details, questions, and logistics, but the annotator supplied no evidence showing the section-level arc across multiple parts of the document.",
+      "evidence": [
+        "At present, the support available to them varies between teams.",
+        "Under the proposed model, participants will have:",
+        "We are particularly interested in your views on the following questions:",
+        "Please send comments by Friday, 12 September."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "A consistent professional register is plausible, but the annotator gave no evidence demonstrating that the register holds across the opening, operational details, and closing.",
+      "evidence": [
+        "We are preparing to launch a three-month pilot program designed to give our volunteer technical specialists more consistent support.",
+        "The pilot is intended to test a more reliable approach without adding unnecessary administration.",
+        "Thank you for helping us shape a program that is useful in practice."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clear judgment may be right because the email is mostly concrete and operational, but the annotator provided no evidence showing they checked the whole document for filler pseudo-specificity.",
+      "evidence": [
+        "The pilot will begin on 6 October and run until 19 December.",
+        "Please send comments by Friday, 12 September.",
+        "one named staff contact for operational questions;"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document does take a position in favor of piloting the support program while inviting feedback, but the annotator offered no evidence for that stance.",
+      "evidence": [
+        "We are preparing to launch a three-month pilot program designed to give our volunteer technical specialists more consistent support.",
+        "The pilot is intended to test a more reliable approach without adding unnecessary administration.",
+        "Thank you for helping us shape a program that is useful in practice."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "misclassified",
+      "rationale": "The annotator's chosen category is materially off. The technical terms are limited and appear naturally where the subject requires them, not as a distinct clump proving special expertise.",
+      "evidence": [
+        "Our specialists provide essential help across system setup, troubleshooting, data management, event technology, and digital accessibility.",
+        "a shared library of current guides, checklists, and escalation paths;",
+        "a simple process for requesting equipment, access, or specialist advice;"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "insufficient_evidence",
+      "rationale": "No forced cross-modal metaphors are apparent, but the annotator supplied no evidence that they checked the full document rather than assuming absence.",
+      "evidence": [
+        "The pilot is intended to test a more reliable approach without adding unnecessary administration.",
+        "What guidance or resources should be included in the shared library first?"
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "overcall",
+      "rationale": "The flagged phrase is a routine idiom in a closing thank-you, but it does not create the kind of empty metaphorical fog this registry targets. The sentence still communicates a concrete request for input on program design.",
+      "evidence": [
+        "Thank you for helping us shape a program that is useful in practice."
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The pronouns and definite descriptions seem recoverable, but the annotator gave no evidence showing they checked across the document for vague referents or repetitive definite-noun cadence.",
+      "evidence": [
+        "At present, the support available to them varies between teams.",
+        "The pilot is intended to test a more reliable approach without adding unnecessary administration.",
+        "We will review it at the halfway point and again at the end, using participant feedback, response times, unresolved request numbers, and volunteer retention as indicators."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document does not obviously rely on slogan-like symmetry, but the annotator gave no evidence showing they evaluated the lists and question set for empty parallel form.",
+      "evidence": [
+        "Some volunteers have clear contacts and well-documented procedures, while others rely on informal knowledge or spend considerable time finding the right person to answer a question.",
+        "1. Which support problems take the most time or cause the most frustration now?",
+        "Brief comments are welcome; you do not need to answer every question."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "insufficient_evidence",
+      "rationale": "There is no clear local repetition severe enough to flag, but the annotator supplied no evidence showing they checked for repeated claims between the proposal, questions, and closing.",
+      "evidence": [
+        "Before we finalise the arrangements, we would appreciate feedback from volunteers, coordinators, and staff who work with the technical team.",
+        "We are particularly interested in your views on the following questions:",
+        "After the feedback period closes, we will publish a summary of the main themes and explain any changes made to the pilot design."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The annotator correctly identifies several evaluative modifiers that do not state their comparison basis or operational criterion. Those phrases rely on implied standards rather than naming what counts as consistent, reliable, simple, short, or considerable.",
+      "evidence": [
+        "more consistent support",
+        "a more reliable approach",
+        "considerable time",
+        "a simple process",
+        "a short onboarding checklist"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document reads as self-contained, but the annotator provided no evidence showing they checked for answer-shaped or defensive language requiring an absent conversation.",
+      "evidence": [
+        "Before we finalise the arrangements, we would appreciate feedback from volunteers, coordinators, and staff who work with the technical team.",
+        "Could any part of the pilot create extra work, confusion, or access barriers?"
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "insufficient_evidence",
+      "rationale": "No obvious candour-booster language appears, but the annotator offered no evidence showing they reviewed the document for frames like honest, frankly, or genuinely.",
+      "evidence": [
+        "Brief comments are welcome; you do not need to answer every question.",
+        "If you would prefer your feedback to be considered without attribution, please use the anonymous option in the form."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "insufficient_evidence",
+      "rationale": "The connectors mostly state clear relationships, but the annotator gave no evidence showing they checked transitions and coordinated clauses throughout the document.",
+      "evidence": [
+        "Some volunteers have clear contacts and well-documented procedures, while others rely on informal knowledge or spend considerable time finding the right person to answer a question.",
+        "After the feedback period closes, we will publish a summary of the main themes and explain any changes made to the pilot design."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "insufficient_evidence",
+      "rationale": "Treating this as `default` is plausible, since it is an internal feedback-request email rather than one of the listed genres, but the annotator supplied no evidence for the genre decision or for the absence of genre-specific findings.",
+      "evidence": [
+        "Subject: Feedback requested: pilot support program for volunteer technical specialists",
+        "Hello everyone,",
+        "Please send comments by Friday, 12 September. You can reply to this email, add feedback to the pilot form, or speak directly with your team coordinator."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+Perform a complete agent-assessed Audit of the document below.
+
+Rules:
+1. Read the whole document before answering. Do not guess who wrote it and do not classify authorship.
+2. Apply every registry record exactly as written and return exactly one answer per record in registry order.
+3. The document is raw Markdown. Every quoted list-item phrase must be a byte-for-byte substring of that raw Markdown, including capitalization, punctuation, and any Markdown delimiters. Prefer spans without links or emphasis markup; if markup is unavoidable, copy it exactly. Never quote the rendered form of a Markdown link.
+4. Base whole-document state or distribution judgments on multiple parts of the document when enough material exists. One sentence alone cannot prove a whole-document state.
+5. For list judgments, report every material instance you can support, not just the first. An empty list means you inspected the whole document and found none.
+6. Treat genre-appropriate consistency, repetition, terminology, formatting, and rhetoric in context. A construction is not defective merely because it is detectable.
+7. The `evidence` array must always be empty; the current native contract uses exact phrase fields inside list answers for source evidence. Status must be mechanically consistent with flagged_when. Do not add commentary outside the JSON object.
+
+REGISTRY:
+{
+  "schema_version": "1",
+  "records": [
+    {
+      "id": "structural_monotony",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Do sections repeat the same rhetorical arc, such as problem → evidence → anecdote → advice or hook → claim → evidence → close? Name repeated arcs even when the headings and subject matter differ.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "sections vary",
+          "some sections share a shape",
+          "every section follows the same arc"
+        ]
+      },
+      "flagged_when": [
+        "some sections share a shape",
+        "every section follows the same arc"
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "Does the whole text sit in one register (formal, academic-accessible, warm-but-authoritative), or does the writer drift between registers — formal to colloquial, careful to loose, sincere to wry? Tonal uniformity is the consistency itself, not any particular register.",
+      "answer_schema": {
+        "type": "state",
+        "values": [
+          "register holds without breaks",
+          "register breaks at least once",
+          "register shifts deliberately"
+        ]
+      },
+      "flagged_when": [
+        "register holds without breaks"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "pattern_ref": 36,
+      "severity": "strong_warning",
+      "prompt": "Are the \"specific\" examples actually specific (someone's lived detail with names, dates, places, sensory grounding), or genre-convention filler that anyone could have written (\"the smell of coffee on a Sunday morning\", \"the way light hits the kitchen table\")? List specific phrases that perform specificity without achieving it.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_unspecific"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "neutrality_collapse",
+      "pattern_ref": 37,
+      "severity": "strong_warning",
+      "prompt": "Does the text commit to a position, or default to \"balanced\" treatment of everything? Look for \"there are compelling arguments on both sides\" framing where the original had a clear stance. Surface false-balance phrasing is partly covered by `no-false-concession-hedges` (#23a); this item flags the broader stance erasure.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "takes a position",
+          "hedges its position",
+          "flattens to balanced framing"
+        ]
+      },
+      "flagged_when": [
+        "hedges its position",
+        "flattens to balanced framing"
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Is technical vocabulary clumped (the writer is in the weeds where they actually know things, plain prose elsewhere) or spread evenly across the piece (suspicious — humans don't distribute jargon uniformly)?",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "jargon clumps where the writer knows things",
+          "jargon spreads naturally",
+          "jargon spreads uniformly across the text"
+        ]
+      },
+      "flagged_when": [
+        "jargon spreads uniformly across the text"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "pattern_ref": 28,
+      "severity": "context_warning",
+      "prompt": "Are there forced cross-modal metaphors — emotions get tastes, sounds get colours, abstract concepts get textures — that don't earn their grounding? Real synesthetic writing is specific and grounded (\"a great plateful of blue water\" — Woolf had stood before a view and sat down to a meal). AI synesthesia is unanchored. List specific phrases that map senses unjustifiably.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_forced"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "generic_metaphors",
+      "pattern_ref": 30,
+      "severity": "strong_warning",
+      "prompt": "Are the metaphors plausible-but-anyone's, or detached from a concrete referent, property, or experience? List the exact metaphor and explain what concrete meaning it fails to supply.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_generic"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "referential_clarity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "List vague this, that, it, these, those, and vague nouns such as moves when the antecedent is not identifiable. Also list unsupported first-use definite descriptions such as the gap, and separately identify passages whose repeated the + noun cadence is excessive even though each referent can be recovered. Quote the phrase and name the missing or over-repeated referent.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unclear"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "pattern_ref": 10,
+      "severity": "context_warning",
+      "prompt": "List counted slogans, balanced bicolons, repeated syntactic skeletons, or cross-sentence correction scripts whose symmetry substitutes for information. Quote the complete construction and explain what the parallel form fails to say.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_formulaic"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "semantic_redundancy",
+      "pattern_ref": 34,
+      "severity": "strong_warning",
+      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "what_it_repeats"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "underspecified_language",
+      "pattern_ref": 43,
+      "severity": "strong_warning",
+      "prompt": "List evaluative adjectives, comparisons, superlatives, modifier stacks, nominalisations, and metaphors that do not name the relevant property or comparison basis. Common examples include steady, rougher, cold, sharp, and load-bearing. Quote the phrase and state the missing criterion, property, actor, or action.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_criterion"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "context_leakage",
+      "pattern_ref": 19,
+      "severity": "strong_warning",
+      "prompt": "List prose that answers, concedes to, corrects, or defends against a chat comment or critique absent from the document. Quote the answer-shaped language and name the missing conversational context required to understand it.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_context"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "performed_candour",
+      "pattern_ref": 42,
+      "severity": "strong_warning",
+      "prompt": "List sincerity announcements and authenticity boosters such as honest, real, actual, genuine, frankly, candidly, and truthfully when they perform candour instead of adding literal meaning. Quote the complete frame and explain why the claim can be stated directly. Preserve literal uses and quotations.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unnecessary"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "vacuous_connection",
+      "pattern_ref": 22,
+      "severity": "context_warning",
+      "prompt": "List connectors and coordinated clauses that imply a logical relationship without stating one. Quote the connection and name the missing causal, temporal, contrastive, or evidential relationship.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_relationship"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "genre_specific",
+      "pattern_ref": 41,
+      "severity": "context_warning",
+      "prompt": "First detect the genre of the text (academic, student_essay, poetry, fiction, journalism, marketing_email, or default if none of these fit). Then run the genre's watchlist below. Report `Genre detected: <genre>.` plus either watchlist findings or \"No genre-specific findings.\"",
+      "answer_schema": {
+        "type": "composite",
+        "fields": {
+          "genre_detected": {
+            "type": "state",
+            "values": [
+              "academic",
+              "student_essay",
+              "poetry",
+              "fiction",
+              "journalism",
+              "marketing_email",
+              "default"
+            ]
+          },
+          "watchlist_findings": {
+            "type": "list",
+            "items": [
+              "phrase",
+              "why_flagged"
+            ]
+          }
+        }
+      },
+      "flagged_when": "non_empty_findings",
+      "sub_records": {
+        "academic": {
+          "description": "Verify citations, DOIs, dates, journals, reference order, figure/data consistency, and whether cited works actually support the claim. Plausible citation format is not evidence. In argumentative academic prose, also watch for depleted engagement markers such as missing questions, reader address, personal asides, or stance-bearing commentary.",
+          "watchlist": [
+            "fake, broken, or irrelevant citations",
+            "wrong DOI, journal, date, figure, or data reference",
+            "citation exists but does not support the claim",
+            "argumentative essay with depleted questions, reader engagement, or stance markers",
+            "polished academic surface masking weak evidence or generic argument"
+          ]
+        },
+        "student_essay": {
+          "description": "Watch for rubric language echoing back, banal thesis claims, weak or missing evidence, student-level mismatch, abrupt tone or complexity shifts, surface polish masking weak argument, draft-history gaps, and loss of the student's own interpretive agency.",
+          "watchlist": [
+            "rubric language echoed as analysis",
+            "banal thesis or derivative argument",
+            "claim unsupported by quoted evidence or draft history",
+            "abrupt tone, complexity, or vocabulary shift from known student baseline",
+            "surface polish masking weak reasoning"
+          ]
+        },
+        "poetry": {
+          "description": "Watch for default quatrains, unrequested rhyme, first-person plural overuse, mood-word accumulation, form compliance without pressure, process traces that look too neat, and revisions that do not deepen the poem.",
+          "watchlist": [
+            "default quatrains or regular stanzas without a reason",
+            "unrequested rhyme or high rhyme density",
+            "first-person plural clustering",
+            "mood-word accumulation without concrete perception",
+            "form compliance without surprise, breakage, or revision depth"
+          ]
+        },
+        "fiction": {
+          "description": "Watch for flattened dialogue, \"as-you-know\" exposition, weak voice differentiation, parenthetical stage directions, locked POV with no pressure, scene pacing that never surprises, over-resolved endings, and generic fidelity to a target style without the source author's stranger choices.",
+          "watchlist": [
+            "dialogue voices not differentiated by rhythm, diction, or speech act",
+            "\"as-you-know\" exposition or role-explaining dialogue",
+            "scene pacing with no pressure, interruption, or surprise",
+            "over-resolved ending",
+            "style imitation that preserves surface but misses the source's oddities"
+          ]
+        },
+        "journalism": {
+          "description": "Watch for unsupported claims, vague sourcing, fake or disappearing bylines, synthetic headshots, broken links, wrong dates, unverifiable quotes, undisclosed vendor or affiliate provenance, and article facts that cannot be traced to named sources.",
+          "watchlist": [
+            "claim lacks a named source or verifiable link",
+            "byline, author bio, or headshot cannot be verified",
+            "broken link, wrong date, wrong organisation, or unverifiable quote",
+            "affiliate/product-review claim with unclear provenance",
+            "generated or third-party content not disclosed"
+          ]
+        },
+        "marketing_email": {
+          "description": "Watch for placeholders, generic subject lines, fake personalisation, weak domain understanding, exaggerated transformation claims, empty hype verbs, over-warm openings, unsupported business jargon, and action lists dressed up with symbols.",
+          "watchlist": [
+            "generic subject line or fake personalisation",
+            "placeholder residue or undeleted template slot",
+            "weak domain understanding hidden behind jargon",
+            "exaggerated transformation claim or empty hype verb",
+            "action list dressed up with symbols instead of useful specifics"
+          ]
+        },
+        "default": {
+          "description": "No genre-specific watchlist applies. The agent reports \"Genre detected: default. No genre-specific findings.\" and moves on.",
+          "watchlist": []
+        }
+      }
+    }
+  ]
+}
+
+
+DOCUMENT:
+<document>
+An Open Letter to the Country I Chose
+
+Dear neighbours,
+
+I have lived here long enough to know the back roads, complain about the weather with conviction, and recognise half the faces at the Saturday market. I know which bus is usually late and which bakery sells out before noon. My children learned to ride their bikes on this street. I have voted in council elections, planted trees beside the oval, and stood in the school hall selling raffle tickets beside people whose grandparents were born here.
+
+This is my adopted country, but “adopted” does not mean temporary or borrowed. It describes a decision I made and have kept making: to build a life here, accept responsibilities here, and care about what happens beyond my own front gate.
+
+That is why I cannot stay quiet about the way some of our neighbours are being treated.
+
+Over the past year, I have watched a family nearby become the target of complaints that others on our street never seem to attract. Their bins are photographed if they remain on the kerb for an extra hour. Their visitors are described as suspicious. Their children are blamed for noise even when several households are outside. When they renovated their porch, people demanded to know whether every permit was in order. Similar work on another house was greeted with compliments.
+
+None of these incidents looks enormous on its own. That is partly how unfairness survives. It arrives as a raised eyebrow, an anonymous report, a rule enforced for one person and overlooked for another. Anyone who objects is told they are imagining a pattern. Yet those who live inside the pattern feel its weight every day.
+
+I know the hesitation that comes with speaking about this. As an immigrant, I have sometimes wondered whether gratitude requires silence. I was welcomed here. I found work, friendship, and safety. Should I not simply be thankful?
+
+But gratitude and criticism are not opposites. If I care for this country, I must care when its promises are applied unevenly. Belonging cannot depend on pretending that everything is fair. In fact, the freedom to question what happens in our community is one of the reasons I chose to make my home here.
+
+For years, I confused good citizenship with being agreeable. I attended community events, paid my taxes, volunteered when asked, and tried not to make anyone uncomfortable. Those things matter, but they are not the whole of civic life. Participation also means asking who is missing from the meeting, who is being spoken about rather than spoken with, and whose concerns are dismissed before they are heard.
+
+Recently, I began attending council sessions. At first I sat near the back and said nothing. The procedures were unfamiliar, the language formal, and the confident regulars seemed to know one another. Then an issue arose about access to a public space used by several migrant families. I submitted a question. My hands shook when I read it aloud, but I read it.
+
+Nothing changed immediately. There was no dramatic apology or unanimous vote. What changed was that the record now included a perspective that would otherwise have been absent. Other residents approached me afterward. One had noticed the same unequal treatment. Another disagreed with me but wanted to understand. A third asked how to submit a question of her own.
+
+That small experience corrected something in me. Civic participation is not reserved for experts, lifelong residents, or the loudest voice in the room. It belongs to all of us. We do not have to wait until we feel completely certain or fully accepted before taking part.
+
+So I am asking my fellow residents to look closely at what is happening around us. Before making a complaint, ask whether you would respond the same way if another neighbour did the same thing. When rumours circulate, speak to the person concerned rather than adding another layer of suspicion. If a meeting affects people who are not present, help make the invitation clearer, the time more accessible, or the atmosphere less hostile. Learn how local decisions are made. Write to a representative. Attend one council session. Support someone who is nervous about speaking.
+
+I am also asking our institutions to do more than celebrate diversity in speeches and photographs. Fair treatment requires transparent processes, consistent enforcement, accessible information, and serious attention to patterns in complaints. It requires listening before defensiveness takes over.
+
+I do not write this because I have lost faith in my adopted country. I write because my faith has matured. I no longer think belonging is a gift that can be withdrawn whenever I become inconvenient. It is a relationship, sustained by contribution, honesty, and mutual care.
+
+This country became mine through ordinary acts: work, friendship, mourning, celebration, voting, helping, and being helped. I want it to be a place where my neighbours can claim the same belonging without enduring a daily test of whether they deserve it.
+
+With hope and determination,
+
+A neighbour and fellow citizen
+
+</document>

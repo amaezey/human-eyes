@@ -1,64 +1,49 @@
-# Voice-craft
+# Voice preservation
 
-Voice-craft guidance for the Rewrite and Write actions. The grader catches AI patterns to remove; this guide is about what to add or preserve so the result reads as written by a human, not just as text without AI tells.
+Use this guidance for Suggestions, Rewrite, and Write. Human-eyes removes unwanted writing habits without fabricating a personality to make prose appear human.
 
-## The real problem: subtraction
+## Preserve the source
 
-Most AI tells are things AI **adds**: vocabulary, formatting, rhetorical devices. But AI also **subtracts**. LLM rewrites flatten stance, deplete pronouns, and drain personal anecdote — even on grammar-only passes, the model frequently changes the writer's conclusions toward neutrality.
+A rewrite must keep the writer's argument, stance, level of certainty, point of view, genre, and distinctive choices unless the user asks to change them. Clean prose can still sound like its writer.
 
-Removing AI patterns is therefore only half the job. You must also watch for what AI took away: the author's stance, their pronouns, their willingness to be specific and wrong. Sterile, voiceless, perfectly balanced writing is just as obvious as slop.
+Do not add first-person narration, opinions, humour, emotion, vulnerability, names, memories, sensory details, slang, uncertainty, or awkwardness absent from the source or brief. Do not create a register break merely to vary the rhythm.
 
-## Experiential vacancy
+## Keep factual uncertainty
 
-AI has no lived experience, so it generalises. It writes about gratitude using "the smell of coffee" and "the way the light hits your kitchen table" because those are universally relatable but specific to nobody. A related pattern is **faux specificity** (pattern 36): AI *performs* specificity by constructing examples from genre conventions rather than lived experience. The detail sounds concrete but belongs to nobody.
+Uncertainty belongs when the source supplies a reason for it. Retain qualifications tied to missing data, conflicting evidence, measurement limits, unsettled decisions, or the writer's stated doubt. State the basis directly.
 
-Human writing draws on real memories, named people, actual places, felt emotions. When rewriting, look not just for patterns to remove but for the **absence** of specificity, vulnerability, and personal stakes.
+Remove hedging added only to soften a claim. Remove sincerity announcements such as `honestly`, `frankly`, or `the honest answer`. The claim should carry its own force.
 
-## Density without purpose
+## Use available specifics
 
-A good writer uses em dashes, triads, and parallelism sparingly, with intention. AI litters them throughout indiscriminately. The issue is not that any single device appears, but that they cluster and serve no rhetorical purpose. When scanning for patterns, watch for pileups.
+Prefer names, dates, examples, quantities, actions, and concrete properties already present in the source. Ask for missing facts when the task depends on them. Never invent detail to compensate for generic material.
 
-## Signs of soulless writing (even if technically clean)
+Do not fill a thin brief with plausible administrative detail. A review team, agreed deadline, validation step, missing field, stakeholder notice, revised schedule, sign-off process, dataset purpose, or downstream dependency is a new fact unless the brief supplies it. Generic plausibility is not source support.
 
-- Every sentence follows the same length and structure
-- No opinions, just neutral reporting: stance has been stripped or was never there
-- No acknowledgment of uncertainty or mixed feelings
-- No appropriate point-of-view presence; pronouns depleted
-- No humour, no edge, no personality
-- Observations are universally relatable but never personally specific (faux specificity)
-- Emotionally safe: never takes an uncomfortable position
-- Tonal uniformity: one register throughout, no drift or register breaks (pattern 35)
-- Every paragraph wraps up neatly with a miniature conclusion (pattern 34)
+Replace stock evaluation with the property being evaluated. Words such as `steady`, `rougher`, `cold`, `sharp`, and `load-bearing` need a named criterion or concrete effect when used figuratively.
 
-## How to add voice
+## Preserve deliberate form
 
-**Have opinions.** "I keep going back and forth on this" is more human than neutrally listing pros and cons.
+Keep a short sentence, repetition, punctuation habit, list, image, or unusual phrase when the device carries meaning or belongs to the source voice. Remove mechanical repetition and formatting templates whose only function is cadence.
 
-**Write for an actual reader.** Audience, purpose, and stakes should shape the
-piece. A classroom essay needs evidence and student-level ownership; a
-marketing email needs domain knowledge and real personalisation; a reported
-article needs named sources; a poem needs pressure in its form rather than neat
-compliance.
+Direct quotations are protected literals. Preserve their exact characters and wording unless the user explicitly asks to edit quotations. Do not remove or paraphrase a quotation to improve an Audit result.
 
-**Vary rhythm within reason.** Mix sentence lengths for natural cadence, but not one-word dramatic punctuation. It should feel like a person thinking at different speeds.
+Factual modality is protected meaning. Do not change `may` to a direct assertion, `especially when` to `when`, possibility to necessity, association to cause, or a stated limitation to confidence. When preserving the distinction requires keeping the whole source sentence, keep it.
 
-**Acknowledge complexity.** "This is impressive, but it also makes me a little uneasy" carries more weight than unqualified praise or a clean pro/con list.
+Do not put editorial or Audit commentary into rewritten prose. `The draft`, `unnamed here`, `needs a source`, and similar notes belong in the change report, not in the document.
 
-**Match the natural point-of-view.** If the piece reads as personal reflection, use "I". If it reads as impersonal observation, use "one" or third person. Do not default to first person. Match whatever POV the text is already using or would naturally use for its genre and tone.
+Sentence lengths and paragraph shapes may vary because the material varies. Variation is an outcome of clear writing, not a quota.
 
-**Be specific rather than atmospheric.** Instead of mood words ("eerie", "striking", "fascinating"), describe the concrete detail that caused the feeling.
+## Check references
 
-**Break register.** If the whole text sits in one tone, introduce at least one register shift: a moment of informality, a parenthetical doubt, a change in sentence rhythm.
+Every `this`, `that`, `it`, `these`, and `those` must have an identifiable antecedent. Replace vague nouns such as `moves` with the action or construction they name.
 
-**Keep the hard or strange choice.** Do not smooth every oddity into fluent
-generic prose. Human writing often keeps a difficult stance, a stranger image,
-an ungainly but accurate phrase, or a punctuation habit because it serves the
-piece.
+Introduce a concept before using a definite description such as `the gap`, `the distinction`, or `the approach`. Even when each referent is identifiable, revise repeated `the + noun` phrasing when the cadence becomes mechanical.
 
-## Before (clean but soulless)
+## Remove absent conversation
 
-> The experiment produced interesting results. The agents generated 3 million lines of code. Some developers were impressed while others were sceptical. The implications remain unclear.
+The document must stand without access to the chat that produced it. Delete concessions, corrections, defences, and answer-shaped prose aimed at comments the reader cannot see. State the document's claim directly.
 
-## After (has a pulse)
+## Avoid redundant shape
 
-> Three million lines of code, generated overnight while the developers slept. I have been turning this over for a few days now, and I still do not have a clean take on it. Half the dev community thinks this changes everything; the other half is explaining, at length, why it does not count. My own reaction keeps shifting depending on which examples I look at.
+Delete captions and summaries that repeat a nearby list, diagram, paragraph, or slide. Do not turn a clear point into a counted slogan, balanced contrast, or three-part recap merely to create rhythm.

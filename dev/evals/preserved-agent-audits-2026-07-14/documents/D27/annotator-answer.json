@@ -1,0 +1,137 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "gaps in the funding pathway",
+          "why_generic": "The 'pathway' metaphor for the funding process is conventional bureaucratic language that doesn't specify what the actual gap is, where in the process it occurs, or which type of venture it affects."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "businesses, researchers and public institutions",
+          "why_formulaic": "A three-item enumeration used to gesture at comprehensiveness without specifying which businesses, researchers, or institutions, or how their roles differ."
+        },
+        {
+          "phrase": "productivity, employment, competitiveness and community wellbeing",
+          "why_formulaic": "A four-item list of desirable outcomes stated as a checklist rather than explaining how the body's work connects to any one of them specifically."
+        },
+        {
+          "phrase": "automation, data analytics, artificial intelligence and advanced manufacturing",
+          "why_formulaic": "A catalogue of technology buzzwords listed together without differentiating their distinct effects on industries or the specific evidence behind each."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "the body will build on this work by refining its advice on research translation, technology adoption, workforce capability and investment",
+          "what_it_repeats": "Restates the four thematic sections already covered in the document (research-industry links, technological change/skills, finance for innovation) without adding new information."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "high-quality research",
+          "missing_criterion": "No metric or standard given for what makes the research high-quality (citations, rankings, outcomes, etc.)."
+        },
+        {
+          "phrase": "significant strengths",
+          "missing_criterion": "No basis given for what counts as 'significant' or how these regional strengths are measured or compared."
+        },
+        {
+          "phrase": "demonstrable results",
+          "missing_criterion": "No specification of what would count as a demonstrable result or how results are measured/evaluated."
+        },
+        {
+          "phrase": "genuine market failures",
+          "missing_criterion": "No criterion given for distinguishing a 'genuine' market failure from other funding gaps or ordinary commercial risk."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

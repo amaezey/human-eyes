@@ -72,13 +72,8 @@ else:
 
 print("\n=== representative output (synthetic-hard-fail-only) ===")
 
-import subprocess
 sample = ROOT / "dev/evals/samples/synthetic/synthetic-hard-fail-only.md"
-result = subprocess.run(
-    ["python3", str(HUMAN_EYES / "scripts" / "grade.py"), "--format", "json", str(sample)],
-    capture_output=True, text=True, check=True,
-)
-contract = json.loads(result.stdout)["human_report"]
+contract = human_report(grade.grade_file(sample))
 
 
 # --- top-level shape ---

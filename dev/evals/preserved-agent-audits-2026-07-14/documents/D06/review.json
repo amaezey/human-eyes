@@ -1,0 +1,156 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "misclassified",
+      "rationale": "The numbered pattern sections do repeat a similar movement from claim to workshop example to takeaway, but the whole document does not. Later sections shift to summaries, constraints, and reflection, so \"every section follows the same arc\" is too strong.",
+      "evidence": [
+        "In the workshop, this showed up in small things:",
+        "What we took away is that “culture” isn’t a backdrop.",
+        "In the session, we mapped who currently holds care in our own group.",
+        "The steward/stewardee framing gives you a lightweight mechanism to distribute that load.",
+        "We left with a few concrete shifts:",
+        "A few constraints are worth naming.",
+        "What stayed with me most is the framing of decentralisation as a design problem, not a personality trait."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "supported",
+      "rationale": "The register stays consistently reflective, organised, and explanatory from opening to close without a clear break into another mode.",
+      "evidence": [
+        "What I got instead was a set of organising instincts",
+        "The practical shift is to treat norms like infrastructure: visible, versioned, and easy to reference.",
+        "What stayed with me most is the framing of decentralisation as a design problem, not a personality trait."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "The cited details sound concrete but remain generic workshop and organisational language rather than anchored lived particulars.",
+      "evidence": [
+        "rounds where everyone spoke early, norms that prioritised listening over performance",
+        "weekly check-ins, monthly retros, quarterly planning",
+        "We tested this by sketching a basic cadence for our group."
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "supported",
+      "rationale": "The piece argues for a clear view of decentralised organising rather than flattening into balanced treatment.",
+      "evidence": [
+        "decentralisation doesn’t happen by default. It’s designed, practised, and maintained.",
+        "The key is discipline.",
+        "That’s the loop these patterns are trying to sustain."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "misclassified",
+      "rationale": "The terminology does not look uniformly spread, but the document also does not show a clear contrast between jargon-heavy \"expert\" pockets and plain prose elsewhere. \"Jargon spreads naturally\" fits better than \"jargon clumps where the writer knows things.\"",
+      "evidence": [
+        "Systematically distribute care labour (stewards and stewardees)",
+        "Make decisions asynchronously",
+        "Agree how you use tech (the “holy trinity”: realtime / async / static)",
+        "Use rhythm to cut information overload"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "supported",
+      "rationale": "The document does not rely on cross-modal metaphor of the kind this check targets.",
+      "evidence": [
+        "It felt engineered, not accidental.",
+        "The overlaps and gaps were obvious.",
+        "By the end, it felt operational."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The listed phrases are plausible stock metaphors that do not add much concrete meaning.",
+      "evidence": [
+        "fills the gap",
+        "It gave us a set of levers.",
+        "It created “edges” around work",
+        "hierarchy loosens"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "Pronouns and definite descriptions are generally recoverable from nearby context, and no serious referential haze stands out.",
+      "evidence": [
+        "That line stuck.",
+        "This pattern was less comfortable, which is probably the point.",
+        "That’s what builds ownership and keeps the system adaptable."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The closing chain uses repeated conditional symmetry as a slogan-like structure rather than fully developing the causal links.",
+      "evidence": [
+        "If people feel they belong, they act. If they act, work distributes. If work distributes, hierarchy loosens."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "overcall",
+      "rationale": "The closing sentence echoes the opening idea, but it reframes it through a new contrast with personality and hiring rather than merely repeating nearby content.",
+      "evidence": [
+        "decentralisation doesn’t happen by default. It’s designed, practised, and maintained.",
+        "What stayed with me most is the framing of decentralisation as a design problem, not a personality trait.",
+        "You don’t get it by hiring the right people or declaring flatness."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "These phrases use evaluative or comparative language without naming a clear basis of comparison or criterion.",
+      "evidence": [
+        "a more considered outcome",
+        "a lightweight mechanism",
+        "a rough rhythm",
+        "with less hesitation"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "insufficient_evidence",
+      "rationale": "The first phrase may anticipate an objection, but the other cited lines can be read as ordinary qualification and synthesis within the document itself rather than replies to missing chat context.",
+      "evidence": [
+        "None of this is dramatic. That’s the point.",
+        "Not perfectly, but more often, and with less hesitation.",
+        "The facilitators didn’t present these as problems to solve once. They’re conditions to manage continuously."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "The document does not lean on sincerity boosters like \"honestly\" or \"frankly\" as a substitute for substance.",
+      "evidence": [
+        "What stayed with me most is the framing of decentralisation as a design problem, not a personality trait.",
+        "A few constraints are worth naming."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "overcall",
+      "rationale": "The sentence states a plausible relationship: legitimising care as work matters for sustaining it. It may be compressed, but the connection is not vacuous or missing altogether.",
+      "evidence": [
+        "It also legitimises care as work, which matters if you want it to be sustained."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "This reflective workshop essay does not clearly fit the listed special genres, and no genre-specific watchlist findings are required.",
+      "evidence": [
+        "I walked into the session expecting a tools demo.",
+        "Below are the eight patterns as they were taught, with what landed for me in the room and how we’ve started to apply them.",
+        "Closing reflection"
+      ]
+    }
+  ]
+}

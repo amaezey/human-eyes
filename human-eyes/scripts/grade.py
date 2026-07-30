@@ -3,7 +3,10 @@
 
 import csv
 import ast
+from bisect import bisect_left
 from datetime import datetime, timezone
+from functools import lru_cache
+import hashlib
 import json
 import re
 import sys
@@ -46,11 +49,33 @@ AI_VOCABULARY = [
     "optimize", "empower", "navigate", "unpack", "explore", "embrace",
     "unlock", "commendable", "paramount", "unwavering", "alignment",
     "resonate", "compelling",
+    # DR-118 (2026-07-17): intensifiers with the highest measured
+    # generated-vs-human rate in the corpus sweep; human-leaning intensifiers
+    # (truly, deeply) deliberately excluded.
+    "profoundly", "significantly", "fundamentally",
+    # DR-71: FAID Figure 5 academic Gemini trigrams that could stand alone in
+    # ordinary academic prose, so they only count toward the clustering threshold.
+    "the efficacy of", "the proposed method",
+    "empirical evaluations demonstrate",
+    # DR-87A: Suvanto et al. counted `exited` 61 times across GPT-4.1 rewrites of
+    # twelve interwar British detective novels and zero times in the source
+    # passages.
+    "exited",
+    # DR-165: Yakura et al. GPT-preferred vocabulary lives in
+    # AI_VOCABULARY_REGEX as one word-bounded inflection family per word. See
+    # DR-165A there for why none of it belongs in this substring-matched list.
 ]
 
-# GPTZero's April 2026 public AI Vocabulary table exposes 100 high-ratio
-# phrases. Treat them as tentative clustering signals, not single-phrase proof.
-GPTZERO_AI_PHRASES = [
+# FROZEN PAYLOAD - DO NOT ADD PHRASES HERE.
+# This is a verbatim copy of GPTZero's AI Vocabulary client payload: exactly 100
+# high-ratio phrases, in source order. `_assert_gptzero_payload_frozen` below
+# rejects any edit to its length, and test_grade.py's DR-126C block compares it
+# row by row against the preserved client JSON. New clustering candidates belong
+# in AI_VOCABULARY above; both lists feed the same B1 matcher, so an addition
+# here still changes detection and still passes every behaviour test, which is
+# exactly how DR-71 nearly shipped three phrases into a preserved record.
+# Treat these as tentative clustering signals, not single-phrase proof.
+GPTZERO_AI_PHRASES = (
     "provide a valuable insight",
     "left an indelible mark",
     "a stark reminder",
@@ -151,9 +176,29 @@ GPTZERO_AI_PHRASES = [
     "make accessible",
     "today at a fast pace",
     "stand in stark contrast",
-]
+)
+
+
+def _assert_gptzero_payload_frozen():
+    """Fail at import if the frozen GPTZero payload has been edited.
+
+    The row count is the cheap half of the guard; test_grade.py's DR-126C block
+    holds the exact contents against the preserved client JSON.
+    """
+    if len(GPTZERO_AI_PHRASES) != 100:
+        raise RuntimeError(
+            f"GPTZERO_AI_PHRASES is a frozen 100-row GPTZero payload but now has "
+            f"{len(GPTZERO_AI_PHRASES)} rows. Add new clustering candidates to "
+            f"AI_VOCABULARY instead."
+        )
+
+
+_assert_gptzero_payload_frozen()
 
 KOBAK_EXCESS_WORDS_PATH = "kobak-excess-words.csv"
+# DR-84: Brysbaert, Warriner and Kuperman concreteness norms, 39,954 English
+# lemmas rated 1 (fully abstract) to 5 (fully concrete) by human raters.
+CONCRETENESS_WORDS_PATH = "brysbaert-concreteness.csv"
 KOBAK_IGNORED_STYLE_POS = {"preposition", "pronoun", "pronoun/adverb", "particle"}
 KOBAK_IGNORED_STYLE_WORDS = {"were", "based", "background", "like", "this", "their", "these"}
 BIOMEDICAL_DOMAIN_TERMS = {
@@ -188,6 +233,43 @@ def _load_kobak_excess_vocab():
         return rows
 
 
+
+def _load_concreteness_norms():
+    """Load Brysbaert et al. concreteness ratings from the skill data file."""
+    path = Path(__file__).resolve().parent.parent / "references" / CONCRETENESS_WORDS_PATH
+    if not path.exists():
+        return {}
+    norms = {}
+    with path.open(newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            word = row.get("word", "").strip().lower()
+            score = row.get("concreteness", "").strip()
+            if word and score:
+                try:
+                    norms[word] = float(score)
+                except ValueError:
+                    continue
+    return norms
+
+
+CONCRETENESS_NORMS = _load_concreteness_norms()
+CONCRETENESS_TOKEN_RE = re.compile(r"[a-z']+")
+# Function words are rated as maximally abstract by the norms ("the" 1.43,
+# "a" 1.46, "because" 1.22) and swamp the mean, so the measure would track
+# function-word density rather than whether the writer names things. Excluding
+# them widens the separation on the project corpora from 32 to 38 points.
+CONCRETENESS_STOPWORDS = frozenset("""
+a an the and or but if so as because though although while of to in on at by for
+with from into over under this that these those it its is are was were be been
+being am do does did done has have had having will would can could shall should
+may might must not no nor than then there here when where how why what which who
+whom whose all any both each few more most other some such only own same too very
+just also about after again against before below between during further once out
+off up down i you he she we they me him her us them my your his their our mine
+yours hers ours theirs one two three first second next last another
+""".split())
+
+
 KOBAK_EXCESS_VOCAB = _load_kobak_excess_vocab()
 KOBAK_STYLE_WORDS = {
     row["word"]
@@ -202,9 +284,55 @@ KOBAK_CONTENT_WORDS = {
     if "content" in row["type"]
 }
 
-# Multi-word phrases where the first word may be inflected (e.g. "align with" ->
-# "aligns with", "aligned with"). Checked via regex, not substring.
+# Exact-boundary, inflected, and context-sensitive vocabulary patterns.
 AI_VOCABULARY_REGEX = [
+    (
+        r"\b(?:versatile|significant|effectively|capabilities|advancements|"
+        r"elucidating|firstly|reliance|generalizability|amidst|camaraderie|"
+        r"palpable|fleeting|solace|unravel|cacophony|unease|reminder|commence|"
+        r"leverage|elevate|align|surpass|notable|despite|nuanc(?:e|es|ing)|"
+        r"delving|unveil(?:s|ed|ing)?|heighten(?:s|ed|ing)?|dive into|"
+        r"literally|incredibly|essentially|arguably|undeniably|remarkably|"
+        r"interestingly|notably|particularly|ultimately|groundbreaking|"
+        r"revolutionary|next-level|world-class|double down|spearhead|"
+        r"supercharge|reimagine|synergize|thoughtful strategy|clear messaging|"
+        r"intentional design|defining feature|powerful tools|straightforward|"
+        r"refine|differentiate|scalable solution)\b"
+    ),
+    # DR-165: Yakura et al. GPT-preferred vocabulary, measured on written human
+    # prose against its model-edited counterpart. Clustering candidates only, so
+    # none fires alone.
+    #
+    # DR-165A: every word is approved on a corpus count taken over its
+    # inflection family, so every word matches its family here. The first pass
+    # put most of these in the substring-matched AI_VOCABULARY, which caught
+    # some inflections by accident and none of the rest, and matched inside
+    # host words such as `Inquiryless`. Word boundaries are load-bearing:
+    # `akin` alone sits inside making, taking and speaking 164 times across the
+    # project corpora. Families are inflection-only, never derivational, so
+    # `craftsmanship`, `comprehension`, `discernible`, `escalation` and
+    # `unreadable` stay clear.
+    #
+    # `swift` is deliberately absent. `_find_ai_words` lowercases before
+    # matching, so no pattern here can tell the adjective from `Taylor Swift`,
+    # `Apple Swift`, or the SWIFT banking acronym. `polish` carries the same
+    # collision with the nationality and was added anyway on the ruling; the
+    # project corpora contain no nationality use.
+    (
+        r"\b(?:comprehend(?:s|ed|ing)?|boast(?:s|ed|ing)?|inquir(?:y|ies)|"
+        r"pinpoint(?:s|ed|ing)?|surpass(?:es|ed|ing)?|swiftly|"
+        r"lessen(?:s|ed|ing)?|scrutiniz(?:e|es|ed|ing)|discern(?:s|ed|ing)?|"
+        r"necessitat(?:e|es|ed|ing)|alongside|hing(?:e|es|ed|ing)|groundwork|"
+        r"escalat(?:e|es|ed|ing)|inaugural|affirm(?:s|ed|ing)?|"
+        r"portray(?:s|ed|ing)?|cater(?:s|ed|ing)?|reliant|"
+        r"spotlight(?:s|ed|ing)?|craft(?:s|ed|ing)?|creations?|"
+        r"notic(?:e|es|ed|ing)|impressive|thorough|akin|"
+        # 2026-07-26: added on the project-corpus measurement, which runs
+        # `clarity` 3.7x and `polish` 3.6x more often per 1000 words in
+        # generated prose than human. `readable` runs 3.0x on one occurrence
+        # each way.
+        r"clarity|polish(?:es|ed|ing)?|readable)\b"
+    ),
     r"aligns? with\b",
     r"aligned with\b",
     r"aligning with\b",
@@ -235,6 +363,23 @@ AI_VOCABULARY_REGEX = [
     r"\bwatch(?:ing)? (?:the writer|the author|him|her|them) make (?:a|this|that) move\b",
 ]
 
+# Exact term families from Kousha and Thelwall's Table 1. These support the
+# document-wide distinct-family rule; they do not replace the broader B1 list.
+KOUSHA_THELWALL_TERM_FAMILY_REGEX = (
+    ("underscore", r"\bunderscor(?:e|es|ed|ing)\b"),
+    ("delve", r"\bdelv(?:e|es|ed|ing)\b"),
+    ("showcase", r"\bshowcas(?:e|es|ed|ing)\b"),
+    ("unveil", r"\bunveil(?:s|ed|ing)?\b"),
+    ("intricate", r"\bintricat(?:e|es|ed|ing)\b"),
+    ("meticulous", r"\bmeticulous(?:ly)?\b"),
+    ("pivotal", r"\bpivotal\b"),
+    ("heighten", r"\bheighten(?:s|ed|ing)?\b"),
+    ("nuance", r"\bnuanc(?:e|es|ed)\b"),
+    ("bolster", r"\bbolster(?:s|ed|ing)?\b"),
+    ("foster", r"\bfoster(?:s|ed|ing)?\b"),
+    ("interplay", r"\binterplay(?:s|ed|ing)?\b"),
+)
+
 NONLITERAL_LAND_SURFACE = [
     r"\b(?:argument|claim|point|idea|thinking|analysis|story|piece|draft|sentence|paragraph|message|feedback|critique|comment|line|joke|scene|ending)\s+lands?\b",
     r"\b(?:argument|claim|point|idea|thinking|analysis|story|piece|draft|sentence|paragraph|message|feedback|critique|comment|line|joke|scene|ending)\s+landed\b",
@@ -246,6 +391,14 @@ NONLITERAL_LAND_SURFACE = [
     r"\bsurfaced in (?:the|a|our|their) (?:conversation|discussion|debate|work|writing|text|story|essay|analysis|response|draft|argument)\b",
     r"\bwhat surfaces?\b",
     r"\bwhat surfaced\b",
+    (
+        r"\b(?:manual|guide|framework|plan|document|strategy|process|method|model|"
+        r"idea|argument|story|book|essay|tool|system)\b[^.!?\n]{0,80}\b"
+        r"(?:as if (?:it|they) (?:were|was)|as|became|becomes|served as|serves as|"
+        r"provides?|offers?)\s+(?:a\s+)?(?:map|compass|roadmap)\s+"
+        r"(?:through|out of|across)\s+(?:the\s+)?(?:[a-z-]+\s+){0,2}"
+        r"(?:wilderness|maze|terrain|landscape|uncertainty|complexity|confusion)\b"
+    ),
 ]
 
 # Broad set: catches both the obvious ("let that sink in") and the subtler
@@ -262,16 +415,52 @@ MANUFACTURED_INSIGHT = [
     r"what (?:no one|nobody) noticed", r"the shift (?:no one|nobody) noticed",
     r"when (?:no one|nobody) noticed", r"while (?:no one|nobody) noticed",
     r"before anyone noticed", r"without anyone noticing",
+    # DR-135C: source-defined false-exclusivity hooks.
+    r"this is the part most people skip",
+    r"most people (?:won['’]t|will not) tell you this",
+    r"nobody['’]s talking about this",
+    r"everyone['’]s sleeping on this",
+    r"this flew under the radar",
+    r"i wasn['’]t supposed to share this,? but",
+    r"what they don['’]t want you to know",
+    r"the thing nobody tells beginners",
+    r"the secret that [^.!?\n]{1,80} (?:doesn['’]t|does not) want you to know",
+    r"i['’]ve been sitting on this for weeks",
+    # DR-135D: source-defined manufactured-urgency hooks.
+    r"stop what you['’]re doing",
+    r"drop everything",
+    r"read this before [^.!?\n]{1,80}",
+    r"if you haven['’]t seen this yet",
+    r"you['’]re going to want to bookmark this",
+    r"save this before it gets taken down",
+    r"this changes everything",
+    r"this is bigger than people reali[sz]e",
+    r"\b[\w][^.!?\n]{0,79} just changed the game forever",
     # Performed knowingness
     r"let that sink in", r"read that again", r"if you know,? you know",
+    r"sit with that for (?:a second|a moment)",
+    r"i['’]ll say it louder for the people in the back",
     r"and that changes everything", r"which tells you everything",
-    r"and that's the point", r"and honestly\??",
+    r"and that's the point",
     # Pseudo-profundity
     r"quietly revolutionary", r"quietly becoming", r"the quiet part",
     # Formulaic depth framing
     r"what's strange is", r"what's interesting is", r"what's remarkable is",
     r"the reason is straightforward", r"the reason is simple",
-    r"here's the thing:?", r"here's why:?", r"but here's",
+    r"here['’]s the thing:?", r"here['’]s why:?", r"but here['’]s",
+    # DR-135H: false-agency, reveal-pivot, escalation, and sentence-template
+    # formulas routed to the existing manufactured-insight check.
+    r"the data speaks for itself", r"the market has spoken",
+    r"the numbers don['’]t lie", r"this technology wants to",
+    r"ai is coming for your [^.!?\n]{1,80}",
+    r"the industry is waking up to", r"the results were eye-opening",
+    r"this opens up a world of", r"the possibilities are endless",
+    r"and here['’]s the kicker", r"but that['’]s not even the best part",
+    r"wait,? it gets better", r"and that['’]s just the beginning",
+    r"but wait,? there['’]s more", r"the plot thickens",
+    r"(?:^|[.!?]\s+)enter\s*:\s*[^.!?\n]{1,80}",
+    r"\b[^.!?\n]{1,80} is the new [^.!?\n]{1,80}",
+    r"\b(?:your|the|this|that|our|my) [^.!?\n]{1,80} is only as good as (?:your|the|this|that|our|my) [^.!?\n]{1,80}",
     # "The real X?" rhetorical revelation
     r"the real (?:insight|challenge|takeaway|kicker|question)\??",
     # Performed revelation closings
@@ -281,22 +470,111 @@ MANUFACTURED_INSIGHT = [
     # Contrived contrast as insight
     r"this isn't [\w\s]+\. it's ",
     r"that's not [\w\s]+\. that's ",
-    # Performed candour / honesty framing
-    # (Folded into manufactured insight for now — see #42 Hypothesis note in patterns.md
-    # for the promotion criteria if this cluster grows.)
-    r"the honest answer is",
-    r"here's the honest (?:answer|framing|truth|version|take|story)",
-    r"here's the (?:real )?truth\b",
-    r"the real truth is",
-    r"if i'm being honest",
-    r"in all honesty",
-    r"to be (?:perfectly )?honest,",
+    # Explicit lesson/revelation frames. Concrete instruction such as
+    # "the manual taught me how to..." stays outside this family.
+    r"\b(?:it|this|that|(?:this|that|the) (?:experience|moment|process|project|failure|mistake|work)) taught me that\b",
+    r"\bwhat (?:this|that|(?:this|that|the) (?:experience|moment|process|project|failure|mistake|work)) taught me was\b",
+    r"\bthe lesson (?:i|we) learned was\b",
+    r"\b[\w'’-]+(?:\s+[\w'’-]+){0,5}\s+is the [\w'’-]+(?:\s+[\w'’-]+){0,3}\s+of\s+[\w'’-]+",
+    r"\b[\w'’-]+(?:\s+[\w'’-]+){0,5}\s+becomes? a trap\b",
+    r"\bthe (?:language|currency|architecture) of\b",
 ]
+
+PERFORMED_CANDOUR = [
+    r"\b(?:honestly|frankly|candidly|truthfully)\s*[,;:]",
+    r"\bhonestly\?",
+    r"\breal talk(?:[.!?:]|$)",
+    r"\bto be (?:perfectly |completely |entirely )?honest\b",
+    r"\bif (?:i am|i'm|we are|we're) (?:being )?honest\b",
+    r"\bin all honesty\b",
+    r"\b(?:the|my) honest (?:answer|truth|version|take|view|assessment)(?:\s+is|\s*:)?",
+    r"\bhere's the honest (?:answer|framing|truth|version|take|story)\b",
+    r"\bhere's the (?:real|actual) truth\b",
+    r"\bthe (?:real|actual) truth is\b",
+    r"\blet me be honest\b",
+    r"\bi(?:'ll| will) be honest\b",
+    r"\blet(?:'s| us) be real\b",
+    r"\bi aim to be direct\b",
+    r"\bi need to be clear\b",
+    # DR-135G: source-defined performed-vulnerability frames.
+    r"\bi wasn['’]t going to post this,? but\b",
+    r"\bthis is scary to share\b",
+    r"\bhot take incoming\s*\(don['’]t hate me\)\s*:?",
+    r"\bunpopular opinion\s*:",
+    r"\bi know i['’]ll get hate for this,? but\b",
+    r"\bi['’]ve never said this publicly before\b",
+    r"\bthis might ruffle some feathers\b",
+    r"\bi might lose followers for this,? but\b",
+]
+
+FORMULAIC_SOCIAL_POST_PATTERNS = {
+    "engagement_request": [
+        r"what do you think\?\s*drop your take below",
+        r"agree or disagree\?\s*let me know",
+        r"what would you add to this list\?",
+        r"follow for more [^.!?\n]{1,80} content",
+        r"repost if this resonated",
+        r"share this with someone who needs to see it",
+        r"save this for later",
+        r"tag someone who needs to hear this",
+        r"if this helped,? you['’]ll love my newsletter",
+        r"link in comments",
+    ],
+    "agreement_comment": [
+        r"this is gold", r"saving this for later",
+        r"more people need to see this", r"this resonates deeply",
+        r"couldn['’]t agree more", r"so well articulated",
+        r"you nailed it", r"this is spot on",
+    ],
+    "engagement_comment": [
+        r"i['’]d add a #?\d+ to this list",
+        r"(?:^|[.!?]\s+)counterpoint\s*:",
+        r"(?:^|[.!?]\s+)hot take\s*:",
+        r"(?:^|[.!?]\s+)this,? but also\b",
+        r"respectfully disagree on point \d+",
+        r"as someone who [^.!?\n]{1,80},? i can confirm",
+    ],
+    "credential_preface": [
+        r"as someone who['’]s been doing this for \d+ years,? i can confirm",
+        r"i literally just had this conversation with my [^.!?\n]{1,40} (?:today|yesterday)",
+        r"my team and i were just discussing this",
+        r"funny,? i was just speaking about this at [^.!?\n]{1,80}",
+    ],
+    "ai_wrapper": [
+        r"i asked chatgpt to [^.!?\n]{1,100} and the results shocked me",
+        r"i gave claude my [^.!?\n]{1,80} and\b",
+        r"i fed my [^.!?\n]{1,80} to [^.!?\n]{1,40} and here['’]s what happened",
+        r"i replaced [^.!?\n]{1,80} with ai for a week",
+        r"day 1 of using ai to [^.!?\n]{1,80}",
+    ],
+    "time_compression": [
+        r"i built this in \d+(?:\+)? (?:minutes?|hours?|days?|weeks?) with [^.!?\n]{1,80}",
+        r"from zero to [^.!?\n]{1,80} in \d+(?:\+)? (?:minutes?|hours?|days?|weeks?)",
+        r"went from idea to launch in (?:a|one) (?:day|weekend|week)",
+        r"what used to take \d+(?:\+)? (?:minutes?|hours?|days?|weeks?|months?|years?) now takes \d+(?:\+)? (?:minutes?|hours?|days?|weeks?)",
+        r"built my first [^.!?\n]{1,80} in a single (?:afternoon|day|weekend|week)",
+        r"[^.!?\n]{1,80} did in [^.!?\n]{1,40} what used to take [^.!?\n]{1,40}",
+    ],
+    "scarcity_hook": [
+        r"i curated the top [^.!?\n]{1,80}",
+        r"the ultimate list of [^.!?\n]{1,80}",
+        r"i spent \d+\+? hours so you don['’]t have to",
+        r"i read \d+\+? [^.!?\n]{1,80}\.\s*here['’]s the summary",
+        r"i analy[sz]ed \d[\d,]*\+? [^.!?\n]{1,80}\.\s*here['’]s what i found",
+    ],
+}
 
 COLLABORATIVE_ARTIFACTS = [
     r"\bi hope this helps", r"\bgreat question", r"\bhere is a\b",
     r"\bwould you like (?:me|us) to\b", r"\bcertainly!",
-    r"\byou're absolutely right",
+    r"\byou['’]re absolutely right",
+    r"\bexcellent point\b",
+    # DR-113 residue families (2026-07-17)
+    r"\bi['’]m sorry,? but i can['’]t\b",
+    r"\bas an ai(?: language model| assistant| model)?\b",
+    r"(?:^|[.!?]\s+)certainly,",
+    r"\bwant me to\b[^.?!\n]{0,60}\?",
+    r"\bhere['’]s a detailed breakdown\b",
     r"\bwhat a thoughtful (?:question|observation)\b",
     r"\bthat's a brilliant observation\b",
     r"\bi'd be happy to help\b", r"\blet me explain\b",
@@ -311,31 +589,83 @@ COLLABORATIVE_ARTIFACTS = [
 PROMOTIONAL = [
     "breathtaking", "stunning", "nestled", "profound",
     "showcasing", "exemplifies", "must-visit", "groundbreaking",
-    "renowned",
+    "renowned", "game-changer", "unlock your true potential",
+    "unstoppable", "cutting-edge", "unprecedented", "rich cultural heritage",
+]
+
+PROMOTIONAL_PATTERNS = [
+    r"\bone of the best\b(?!-)",
+    r"\bthere are so many possibilities\b",
+    r"\b(?:every|each)\s+(?:challenge|obstacle|setback|problem|difficulty)\s+(?:is|becomes?)\s+(?:an?\s+)?(?:opportunity|lesson|chance)\b",
+    r"\b(?:every|each)\s+(?:problem|challenge|setback|difficulty)\s+has\s+(?:a\s+)?silver\s+lining\b",
+    r"\bfaster and more responsive\b",
+    r"\bquicker (?:page )?load(?:ing|s?)\b",
+    r"\buses? (?:memory|resources?) more efficiently\b",
+    r"\b(?:produce[sd]?|deliver(?:s|ed)?) smoother (?:scrolling|performance|playback)\b",
+    r"\bbecomes? usable sooner\b",
 ]
 
 SIGNIFICANCE_INFLATION = [
     "pivotal", "crucial", "vital role", "testament",
     "evolving landscape", "indelible mark", "key turning point",
     "deeply rooted", "setting the stage", "remarkably",
-    "strikingly", "staggering",
+    "strikingly", "staggering", "enduring legacy",
+    # DR-71: FAID Figure 5 novelty and impact openers recurring across three
+    # Gemini variants on arXiv-style prompts.
+    "this work presents", "presents a novel", "introduces a novel",
+    "a significant advancement",
+]
+
+SIGNIFICANCE_EMPHASIS_FRAMES = [
+    r"\b(?:underline|underlines|underlined|underscore|underscores|underscored|"
+    r"highlight|highlights|highlighted|emphasise|emphasises|emphasised|"
+    r"emphasize|emphasizes|emphasized) the (?:importance|value|significance) of\b",
+    r"\bunderscor(?:e|es|ed|ing) its importance\b",
+    r"\bif you['’]re still [^.!?\n]{1,100},? you['’]re already behind\b",
+    r"\b(?:generate[sd]?|prompt(?:s|ed)?|spark(?:s|ed)?|shape[sd]?|fuel(?:s|ed|led)?)\s+(?:(?:broader|emerging|ongoing)\s+)?(?:policy\s+)?(?:debates?|discussions?|reflection|questions?)\s+(?:about|around|on)\b",
+    r"\bcontribut(?:e|es|ed|ing)\s+to\s+(?:the\s+)?broader\s+(?:history|story|discussion|understanding)\b",
+    r"\b(?:enduring\s+(?:influence|impacts?|relevance)|lasting\s+(?:legacy|influence|impacts?|relevance)|ongoing\s+(?:legacy|influence|impacts?|relevance))\b",
 ]
 
 COPULA_AVOIDANCE = [
     r"serves? as\b", r"stands? as\b", r"functions? as\b",
+    r"operates? as\b",
     r"marks? a\b", r"represents? a\b",
     r"boasts?\b", r"features\b(?! film| movie| documentary)",
+    r"offers? (?:a|an|the)\b", r"maintains (?:a|an|the)\b",
+    r"ventured into politics as (?:a |the )?candidate\b",
+    r"began (?:his|her|their|its) career as\b",
 ]
 
 FILLER_PHRASES = [
     r"in order to\b", r"due to the fact that",
-    r"at this point in time", r"it is important to note",
-    r"it is worth noting", r"it is worth (?:recognising|mentioning|emphasising|highlighting|acknowledging)",
-    r"it should be noted",
-    r"has the ability to", r"in the event that",
+    r"at this point in time",
+    r"it(?: is|['’]s) important to (?:note|remember|understand|recognise|recognize|keep in mind)",
+    r"no discussion would be complete without\b",
+    r"(?:it is\s+)?worth\s+(?:noting|knowing(?:\s+about)?|recognising|recognizing|mentioning|emphasising|emphasizing|highlighting|acknowledging)\b",
+    r"it (?:should|must) (?:also )?be noted",
+    r"ha(?:s|ve) the ability to", r"in the event that",
     r"on the whole", r"at the end of the day",
     r"when all is said and done", r"the fact of the matter",
     r"is often framed as\b", r"is often (?:seen|viewed|regarded|described|characterized) as\b",
+    # Documented transitions the check previously never fired on
+    # (Grammarly C04/C05, Guo C13, AI for Lifelong Learners C06/C07).
+    r"in today['’]s fast-paced world", r"as \w+(?: \w+)? continues? to evolve",
+    r"that being said", r"to put it simply", r"\bkey takeaways?\b",
+    r"at its core\b", r"at the heart of\b",
+    r"from a broader perspective", r"through this lens",
+    r"this underscores the importance of",
+    r"\bthat said,", r"\bto be clear,", r"\bwith the caveat that\b",
+    r"\bthis is an important area of research\b",
+    r"\bmore research is needed\b",
+    # DR-16A: source-defined filler frames routed through the existing check.
+    r"\bnavigating the complexities of\b",
+    r"\ba deeper understanding of\b",
+    r"\bwhen it comes to\b",
+    r"\bin the realm of\b",
+    r"\ba nuanced (?:take|understanding) (?:on|of)\b",
+    r"\bdelve into the intricacies of\b",
+    r"\bdive deep into\b",
 ]
 
 GENERIC_CONCLUSIONS = [
@@ -346,7 +676,36 @@ GENERIC_CONCLUSIONS = [
     r"\boverall,\s+(?:this|the|these|it)\b",
     r"\bremember,\s+when\b",
     r"\bas we navigate\b",
-    r"\bthe journey (?:doesn't|does not) end here\b",
+    r"\bthe journey (?:doesn['’]t|does not) end here\b",
+    r"\bthe question isn['’]t whether,? but when\b",
+    r"\bwe['’]re still early\b",
+    r"\bthe best time to start was yesterday\.\s*the second best time is now\b",
+    r"\bthis is just the beginning\b",
+    r"\bthe genie is out of the bottle\b",
+    r"\bthe cat is out of the bag\b",
+    r"\bbuckle up\b", r"\bwelcome to the future\b",
+    r"\band we['’]re just getting started\b", r"\bthink about that\b",
+    r"\bthis is the new normal\b",
+    r"\b(?:act|plan) accordingly\b",
+    r"\badjust (?:your|the|our|my) [^.!?\n]{1,60} accordingly\b",
+    r"\b[^.!?\n]{1,80} will never be the same\b",
+    r"\bdespite\b[^.!?\n]{0,160}\bchallenges?\b[^.!?\n]{0,160}\bcontinues? to thrive\b",
+    # DR-16A: source-defined generic wrap-up, praise, and sales endings.
+    r"\bultimately,",
+    r"\b(?:his|her|its|their|\w+[’']s) legacy endures\b",
+    r"\bremains an icon of\b",
+    r"\blegacy will (?:undoubtedly )?endure for generations to come\b",
+    r"\blegacy continues to live on\b",
+    r"\bcontinue to inspire and captivate\b",
+    r"\bpositive sign for (?:the|a|its|their) [^.!?\n]{1,60}future prospects\b",
+    r"\bwell-positioned to meet\b",
+    r"\bdon['’]t miss your chance to\b",
+    r"\bremains hopeful that\b",
+    r"\blegacy is a testament to\b",
+    # DR-21F: sales endings and reader address in generated news copy.
+    r"\bwhether you(?:['’]re| are)\b[^.!?\n]{1,120}\bor (?:simply |just )?(?:someone|somebody|anyone)\b",
+    r"\bwe can expect to see even more\b",
+    r"\bcertainly worth keeping an eye on\b",
 ]
 
 SOFT_SCAFFOLD_PHRASES = [
@@ -360,6 +719,19 @@ SOFT_SCAFFOLD_PHRASES = [
     r"\bespecially (?:helpful|useful|valuable|effective) when\b",
     r"\bin those cases,\b",
     r"\bwith (?:that|this) distinction in mind\b",
+    # DR-21E: the text announcing its own plan before making it.
+    r"\b(?:first|second|third|fourth|next|then|finally|lastly),?\s+(?:we|i)(?:['’]ll| will)\s+"
+    r"(?:look at|examine|explore|discuss|cover|consider|turn to|conclude|wrap up|review|unpack|break down)\b",
+    r"\b(?:first|second|third|fourth|next|then|finally|lastly),?\s+let['’]s\s+"
+    r"(?:look at|examine|explore|discuss|cover|consider|turn to|conclude|wrap up|review|unpack|break down)\b",
+]
+
+REPORT_SCAFFOLD_OPENERS = [
+    r"^(?:a|another) (?:major |key |important )?(?:priority|area|theme|focus)(?: of work)? (?:was|is)\b",
+    r"^the (?:body|organisation|organization|team|committee|agency) also (?:considered|examined|reviewed|focused on)\b",
+    r"^(?:regional|international|community|industry) participation remained\b",
+    r"^throughout the (?:year|reporting period|period),",
+    r"^in \d{4}(?:[-–]\d{2,4})?,\s+(?:the (?:body|organisation|organization|team|committee|agency)|we) will\b",
 ]
 
 BLAND_CRITICAL_TEMPLATE = [
@@ -391,12 +763,45 @@ TIDY_PARAGRAPH_ENDINGS = [
     r"\bwithout becoming\b",
 ]
 
+# Structural paragraph closures that do not need a stock summary label.  Keep
+# this deliberately narrower than a general copular-sentence detector: the
+# complement must name an abstract interpretation, or both sides of a compact
+# semicolon construction must be independent clauses with their own linking
+# verb.  Individual candidates remain below the document-level threshold.
+TIDY_ABSTRACT_COMPLEMENT = (
+    r"(?:[a-z-]+(?:tion|sion|ment|ness|ity|ance|ence|ship|ism)|"
+    r"argument|choice|reading|claim|lesson|thesis|verdict|metaphor|symbol|"
+    r"myth|fiction|proof|warning|refinement)"
+)
+TIDY_ABSTRACT_CLOSURE = re.compile(
+    rf"^(?:the|this|that|it|these|those)(?:\s+[a-z’'-]+){{0,4}}\s+"
+    rf"(?:is|are|was|were|became|becomes|remained|remains)\s+"
+    rf"(?:already\s+|itself\s+|themselves\s+|in itself\s+|in themselves\s+)"
+    rf"(?:an?\s+|the\s+)?(?:[a-z-]+\s+){{0,2}}{TIDY_ABSTRACT_COMPLEMENT}\b",
+    re.IGNORECASE,
+)
+TIDY_BALANCED_LINKING_VERB = re.compile(
+    r"\b(?:is|are|was|were|becomes?|became|remains?|remained|seems?|seemed|"
+    r"means?|meant|marks?|marked|(?:could|can|may|might)?\s*(?:sounds?|feels?|looks?))\b",
+    re.IGNORECASE,
+)
+TIDY_SUBORDINATORS = {
+    "if", "when", "because", "while", "although", "unless", "where", "after", "before",
+}
+
 FALSE_CONCESSION_PATTERNS = [
     r"\bwhile (?:critics|skeptics|some) (?:argue|say|claim|contend)\b.{0,160}\b(?:supporters|proponents|others) (?:argue|say|claim|maintain|counter)\b",
     r"\b(?:supporters|proponents) (?:argue|say|claim|maintain)\b.{0,160}\bwhile (?:critics|skeptics|others) (?:argue|say|claim|contend)\b",
     r"\bthe truth,?\s+as is often the case,?\s+lies somewhere in between\b",
     r"\bthe truth (?:lies|is) somewhere in (?:the )?middle\b",
     r"\bwhile this may vary\b.{0,120}\b(?:generally speaking|in most cases|it is worth noting)\b",
+    r"\bon (?:the )?one hand\b.{0,180}\bon the other(?: hand)?\b",
+    r"\bon the other(?: hand)?\b.{0,180}\bon (?:the )?one hand\b",
+    r"\bto be fair,",
+    r"\b(?:now,?\s*)?i['’]m not saying [^.!?\n]{1,100},? but\b",
+    r"\bdon['’]t get me wrong,",
+    r"\bthis isn['’]t to say that\b",
+    r"\bgranted,? [^.!?\n]{1,100},? but\b",
 ]
 
 ORPHANED_DEMONSTRATIVE_VERBS = [
@@ -411,6 +816,27 @@ PLACEHOLDER_PATTERNS = [
     r"<(?:client|company|name|title|date|source|citation)[^>]{0,40}>",
     r"\bhi\s+\{[^}]+\}",
     r"\bdear\s+\[(?:name|client|recipient)[^\]]*\]",
+    # DR-114 components 1-2 (2026-07-17): ChatGPT paste artifacts and
+    # possessive bracket labels.
+    r"citeturn\d+\w*",
+    r"contentreference\[oaicite:[^\]]*\]?",
+    r"utm_source=chatgpt\.com",
+    r"\[(?:subject|recipient|sender|user|customer|author)['’]s?\s[^\]]{0,40}\]",
+    # DR-20A: publishing instructions and platform citation/rendering residue.
+    r"\binsert\s+(?:table|figure|chart|diagram|appendix)\s+\d+\s+here\b",
+    r"\bturn\d+(?:search|image|news|file)\d+\b",
+    r"[\ue000-\uf8ff]+",
+    r"_generated-reference-identifier_",
+    r"(?<![a-z])\d+(?:search|image|news|file)\d+\b",
+    r"\b(?:oaicite|oai_citation)\b",
+    r"\b[a-z][a-z0-9_.-]{1,30}\+\d+\b",
+    r"\[(?:attached_file|web):\d+\]",
+    r"<grok[-_]card\b[^>]{0,200}>",
+    r"\bgrok_render_citation_card_json\b",
+    r"【\d+†l\d+(?:-\d+)?】",
+    r"\[cite:\s*\d+(?:\s*,\s*\d+)*\]",
+    r"\battributableindex\b",
+    r":::\s*writing(?:\{[^}\n]{0,200}\})?",
 ]
 
 RUBRIC_ECHO_PATTERNS = [
@@ -446,6 +872,35 @@ def count_pattern_matches(text, patterns):
     return total, matches
 
 
+def _collapse_overlapping_matches(candidates):
+    """Keep the longest candidate from every group of overlapping spans."""
+    kept = []
+    kept_starts = []
+    for candidate in sorted(
+        candidates,
+        key=lambda item: (-(item[1] - item[0]), item[0]),
+    ):
+        start, end, _ = candidate
+        index = bisect_left(kept_starts, start)
+        overlaps_previous = index > 0 and kept[index - 1][1] > start
+        overlaps_next = index < len(kept) and kept[index][0] < end
+        if overlaps_previous or overlaps_next:
+            continue
+        kept.insert(index, candidate)
+        kept_starts.insert(index, start)
+    return kept
+
+
+def nonoverlapping_pattern_matches(text, patterns):
+    """Return regex matches with overlapping candidates collapsed to the longest."""
+    candidates = [
+        (match.start(), match.end(), match.group(0).lower())
+        for pattern in patterns
+        for match in re.finditer(pattern, text, flags=re.IGNORECASE)
+    ]
+    return [match for _, _, match in _collapse_overlapping_matches(candidates)]
+
+
 def normalize_for_regex(text):
     """Normalize punctuation variants that agents use to dodge phrase checks."""
     return (
@@ -457,6 +912,171 @@ def normalize_for_regex(text):
         .replace("\u2014", " - ")
         .replace("\u2013", " - ")
     )
+
+
+MACHINE_READABLE_PATTERNS = tuple(re.compile(pattern, re.IGNORECASE | re.DOTALL) for pattern in (
+    r"```[^`]*```",
+    r"~~~[^~]*~~~",
+    r"`[^`\n]+`",
+    r"https?://[^\s)>\]]+",
+))
+QUOTED_PROSE_PATTERNS = (re.compile(r'["“][^"”\n]*["”]', re.IGNORECASE | re.DOTALL),)
+NON_PROSE_PATTERNS = MACHINE_READABLE_PATTERNS + QUOTED_PROSE_PATTERNS
+
+
+def _mask_non_prose_patterns(text, patterns):
+    chars = list(text)
+
+    def blank(start, end):
+        for index in range(start, end):
+            if chars[index] not in "\r\n":
+                chars[index] = " "
+
+    if text.startswith("---\n"):
+        closing = text.find("\n---", 4)
+        if closing >= 0:
+            blank(0, closing + 4)
+
+    for pattern in patterns:
+        for match in pattern.finditer(text):
+            blank(match.start(), match.end())
+    return "".join(chars)
+
+
+@lru_cache(maxsize=8)
+def mask_non_prose(text):
+    """Mask quoted and machine-readable spans while preserving offsets."""
+    return _mask_non_prose_patterns(text, NON_PROSE_PATTERNS)
+
+
+@lru_cache(maxsize=8)
+def mask_non_prose_preserving_quotes(text):
+    """Mask machine-readable spans while retaining attributable quoted prose."""
+    return _mask_non_prose_patterns(text, MACHINE_READABLE_PATTERNS)
+
+
+WHITESPACE_RUN_RE = re.compile(r"\s+")
+
+
+def _draft_search_pattern(value):
+    """Build a pattern that finds a check's match back in the draft.
+
+    Two transformations stand between a match and the page it came from.
+    Lexical checks read a masked copy in which quotations and machine-readable
+    spans are blanked to spaces of the same length, so a match spanning one
+    carries a run of blanks; and several checks join lines or lowercase before
+    returning, so paragraph breaks arrive as single spaces and capitals are
+    gone. A run of two or more blanks therefore matches exactly that many
+    characters, single whitespace matches any whitespace, and case is ignored.
+    """
+    parts = []
+    for part in re.split(r"(\s+)", value):
+        if not part:
+            continue
+        if part.strip():
+            parts.append(re.escape(part))
+        elif len(part) == 1:
+            parts.append(r"\s+")
+        else:
+            parts.append(r"[\s\S]{%d}" % len(part))
+    return "".join(parts)
+
+
+def _locate_in_draft(value, original_text, cursor=0):
+    """Find one check match in the draft, searching forward from `cursor`."""
+    if not value.strip():
+        return None
+    try:
+        pattern = re.compile(_draft_search_pattern(value), re.IGNORECASE)
+    except re.error:
+        return None
+    return pattern.search(original_text, cursor) or pattern.search(original_text)
+
+
+def recut_matches_from_draft(result, original_text):
+    """Restore every match to the writer's own words before anything reads it.
+
+    Evidence is the one part of an audit a writer checks against their own
+    page, so a quote carrying blanks where a quotation was, or stripped of its
+    capitals, is worse than no quote at all. Matches that are already a slice
+    of the draft are left untouched; the rest are relocated and recut from the
+    source. Whitespace in a recut match is collapsed so a restored paragraph
+    still renders on one line — the words and capitals are the writer's, the
+    line breaks are not. A match no search can place (checks that compose a
+    phrase from two spans, such as `no-heading-one-liners`) is left as it is.
+    """
+    matches = result.get("matches")
+    if not isinstance(matches, list) or not matches:
+        return result
+    cursor = 0
+    recut = []
+    for value in matches:
+        if not isinstance(value, str) or not value:
+            recut.append(value)
+            continue
+        verbatim = original_text.find(value, cursor)
+        if verbatim < 0 and value in original_text:
+            verbatim = original_text.find(value)
+        if verbatim >= 0:
+            cursor = verbatim + len(value)
+            recut.append(value)
+            continue
+        located = _locate_in_draft(value, original_text, cursor)
+        if located is None:
+            recut.append(value)
+            continue
+        cursor = located.end()
+        recut.append(WHITESPACE_RUN_RE.sub(" ", located.group(0)))
+    result = dict(result)
+    result["matches"] = recut
+    return result
+
+
+def _candidate_records(result, original_text):
+    """Return a stable candidate schema from a check's verbatim matches."""
+    candidates = []
+    cursor = 0
+    folded_text = original_text.casefold()
+    quoted_spans = [
+        (match.start(), match.end())
+        for pattern in NON_PROSE_PATTERNS
+        for match in pattern.finditer(original_text)
+        if original_text[match.start():match.end()].startswith(('"', '“'))
+    ]
+    for value in result.get("matches", []) or []:
+        if not isinstance(value, str) or not value:
+            continue
+        start = folded_text.find(value.casefold(), cursor)
+        if start < 0:
+            start = folded_text.find(value.casefold())
+        end = start + len(value) if start >= 0 else None
+        quoted = bool(
+            start >= 0 and end is not None
+            and any(quote_start <= start and end <= quote_end for quote_start, quote_end in quoted_spans)
+        )
+        candidates.append({
+            "text": value,
+            "start": start if start >= 0 else None,
+            "end": end,
+            "quoted": quoted,
+        })
+        if end is not None:
+            cursor = end
+    return candidates
+
+
+def enrich_check_result(result, original_text):
+    """Add recognition metadata without changing legacy pass/fail fields."""
+    enriched = dict(result)
+    candidates = _candidate_records(enriched, original_text)
+    enriched["candidates"] = candidates
+    enriched["candidate_count"] = enriched.get("candidate_count", len(candidates))
+    enriched["aggregate_finding"] = not enriched["passed"] and not candidates
+    enriched["threshold_met"] = not enriched["passed"]
+    enriched.setdefault("threshold", None)
+    enriched.setdefault("context_suppressed", False)
+    enriched.setdefault("context_reason", None)
+    return enriched
 
 
 def word_counts(text):
@@ -517,14 +1137,49 @@ def check_em_dashes(text):
 
 
 def _find_ai_words(text_lower):
-    """Find AI vocabulary in text, including inflected multi-word phrases."""
+    """Find AI vocabulary in text, including inflected multi-word phrases.
+
+    Counts one entry per occurrence: repeats each count, and overlapping hits
+    resolve to the longest entry so nested phrases are not double-counted.
+    """
     normalized = normalize_for_regex(text_lower)
-    found = [w for w in AI_VOCABULARY if w in normalized]
-    found.extend([w for w in GPTZERO_AI_PHRASES if w in normalized])
+    spans = []
+    for entry in [*AI_VOCABULARY, *GPTZERO_AI_PHRASES]:
+        for m in re.finditer(re.escape(entry), normalized):
+            spans.append((m.start(), m.end(), entry))
     for pat in AI_VOCABULARY_REGEX:
-        if re.search(pat, normalized):
-            found.append(re.search(pat, normalized).group())
+        for m in re.finditer(pat, normalized):
+            spans.append((m.start(), m.end(), m.group()))
+    spans.sort(key=lambda s: (s[0], s[0] - s[1]))
+    found = []
+    last_end = -1
+    for start, end, matched in spans:
+        if start >= last_end:
+            found.append(matched)
+            last_end = end
     return found
+
+
+def _kousha_thelwall_term_pair_evidence(text):
+    """Return exact occurrences when at least two source families match."""
+    matched_patterns = [
+        (family, pattern)
+        for family, pattern in KOUSHA_THELWALL_TERM_FAMILY_REGEX
+        if re.search(pattern, text, flags=re.IGNORECASE)
+    ]
+    if len(matched_patterns) < 2:
+        return {}, []
+
+    matched_families = {}
+    source_order_occurrences = []
+    for family, pattern in matched_patterns:
+        matches = list(re.finditer(pattern, text, flags=re.IGNORECASE))
+        matched_families[family] = [match.group() for match in matches]
+        source_order_occurrences.extend(
+            (match.start(), match.group()) for match in matches
+        )
+    source_order_occurrences.sort(key=lambda occurrence: occurrence[0])
+    return matched_families, [match for _, match in source_order_occurrences]
 
 
 def vocabulary_signal_stacking_profile(text):
@@ -590,15 +1245,32 @@ def check_ai_vocabulary(text):
     # Also report total count across the whole text
     text_lower = text.lower()
     total = len(_find_ai_words(text_lower))
-    return {
+    document_families, document_matches = _kousha_thelwall_term_pair_evidence(text)
+    document_pair = len(document_families) >= 2
+    family_evidence = ", ".join(
+        f"{family}={occurrences}"
+        for family, occurrences in document_families.items()
+    )
+    if max_count >= 3:
+        evidence = f"Worst paragraph has {max_count} AI words: {worst_words} ({total} total in text)"
+        if document_pair:
+            evidence += f"; document-wide term families: {family_evidence}"
+    elif document_pair:
+        evidence = f"Document-wide term families: {family_evidence} ({total} total AI words in text)"
+    else:
+        evidence = f"Max AI words per paragraph: {max_count} ({total} total in text)"
+    result = {
         "text": "no-ai-vocabulary-clustering",
-        "passed": max_count < 3,
-        "evidence": (
-            f"Worst paragraph has {max_count} AI words: {worst_words} ({total} total in text)"
-            if max_count >= 3
-            else f"Max AI words per paragraph: {max_count} ({total} total in text)"
-        ),
+        "passed": max_count < 3 and not document_pair,
+        "evidence": evidence,
     }
+    # Only the document-family branch carries structured matches. DR-126B fixed
+    # that deliberately: `worst_words` comes from a lowercased paragraph, so it
+    # cannot supply the source casing and order the structured evidence contract
+    # requires, and the paragraph branch falls back to evidence parsing instead.
+    if document_pair:
+        result["matches"] = document_matches
+    return result
 
 
 def check_nonliteral_land_surface(text):
@@ -609,6 +1281,7 @@ def check_nonliteral_land_surface(text):
     return {
         "text": "no-nonliteral-land-surface",
         "passed": len(matches) == 0,
+        "matches": matches,
         "evidence": (
             f"Found {len(matches)} nonliteral land/surface construction(s): {matches[:5]}"
             if matches
@@ -661,9 +1334,33 @@ def kobak_excess_profile(text):
     }
 
 
+def check_single_clause_contrast(text):
+    """Single-clause contrast stand-ins from Stockton's prompt variants.
+
+    Deliberately not a standalone check: "more than just" and "goes beyond"
+    are ordinary in isolation, so they only feed the signal-stacking
+    aggregate at low weight (ruling of 2026-07-17).
+    """
+    patterns = [
+        r"\b(?:is|are|was|were|['’]s)\s+more than just\b",
+        r"\bgoes beyond\b",
+    ]
+    count, matches = count_pattern_matches(text, patterns)
+    return {
+        "text": "single-clause-contrast",
+        "passed": count == 0,
+        "matches": matches,
+        "evidence": (
+            f"Found {count}: {matches}" if count
+            else "No single-clause contrast stand-ins"
+        ),
+    }
+
+
 def check_overall_signal_stacking(text):
     """Aggregate multiple weak/medium signals instead of overreacting to one list."""
     checks = {
+        "single_clause_contrast": check_single_clause_contrast(text),
         "manufactured_insight": check_manufactured_insight(text),
         "negative_parallelism": check_negative_parallelisms(text),
         "formulaic_openers": check_formulaic_openers(text),
@@ -671,7 +1368,6 @@ def check_overall_signal_stacking(text):
         "section_scaffolding": check_section_scaffolding(text),
         "tidy_endings": check_tidy_paragraph_endings(text),
         "paragraph_uniformity": check_paragraph_uniformity(text),
-        "markdown_headings": check_markdown_headings(text),
         "excessive_lists": check_list_density(text),
         "collaborative_artifacts": check_collaborative_artifacts(text),
         "generic_conclusions": check_generic_conclusions(text),
@@ -679,6 +1375,7 @@ def check_overall_signal_stacking(text):
         "false_concession": check_false_concession(text),
     }
     weights = {
+        "single_clause_contrast": 1,
         "manufactured_insight": 2,
         "negative_parallelism": 2,
         "formulaic_openers": 1,
@@ -686,7 +1383,6 @@ def check_overall_signal_stacking(text):
         "section_scaffolding": 1,
         "tidy_endings": 1,
         "paragraph_uniformity": 2,
-        "markdown_headings": 2,
         "excessive_lists": 1,
         "collaborative_artifacts": 2,
         "generic_conclusions": 2,
@@ -694,14 +1390,14 @@ def check_overall_signal_stacking(text):
         "false_concession": 1,
     }
     component_labels = {
+        "single_clause_contrast": "single-clause contrast stand-ins",
         "manufactured_insight": "manufactured insight framing",
-        "negative_parallelism": "contrived contrast framing",
+        "negative_parallelism": "negative parallelism",
         "formulaic_openers": "formulaic openings",
         "soft_scaffolding": "soft scaffolding",
         "section_scaffolding": "section scaffolding",
         "tidy_endings": "tidy paragraph endings",
         "paragraph_uniformity": "paragraph length uniformity",
-        "markdown_headings": "headings in prose",
         "excessive_lists": "excessive lists",
         "collaborative_artifacts": "assistant residue",
         "generic_conclusions": "generic conclusion endings",
@@ -715,18 +1411,34 @@ def check_overall_signal_stacking(text):
     vocab = vocabulary_signal_stacking_profile(text)
     score = vocab["points"]
     components = []
+    component_points = {}
     for name, result in checks.items():
         if not result["passed"]:
-            score += weights[name]
+            points = weights[name]
+            if name == "negative_parallelism":
+                occurrence_count = result.get(
+                    "candidate_count",
+                    len(result.get("matches", [])),
+                )
+                # One occurrence is already a relatively strong signal. Each
+                # additional occurrence increases the evidence until this
+                # component alone reaches the aggregate threshold.
+                points = min(4, max(1, occurrence_count) + 1)
+            score += points
+            component_points[name] = points
             components.append(component_labels[name])
 
-    failed = score >= 4
+    # The declared value is a bare count, not a keyed dict, so it is read
+    # directly rather than through threshold_value.
+    minimum_score = CHECK_THRESHOLDS.get("overall-signal-stacking", 4)
+    failed = score >= minimum_score
     return {
         "text": "overall-signal-stacking",
         "passed": not failed,
         "score": score,
-        "threshold": 4,
+        "threshold": minimum_score,
         "components": components,
+        "component_points": component_points,
         "vocabulary_signal_stacking": {
             "points": vocab["points"],
             "reasons": vocab["reasons"],
@@ -737,7 +1449,7 @@ def check_overall_signal_stacking(text):
             "kobak_style_sample": vocab["kobak"]["style_sample"],
         },
         "evidence": (
-            f"Overall signal stacking {score}/4 from [{', '.join(components)}]; "
+            f"Overall signal stacking {score}/{minimum_score} from [{', '.join(components)}]; "
             f"vocab={vocab['points']} point(s), "
             f"worst_generic={vocab['worst_generic']}, "
             f"gptzero={vocab['gptzero_matches']}, "
@@ -746,7 +1458,7 @@ def check_overall_signal_stacking(text):
             f"sample={vocab['kobak']['style_sample']}"
             if failed
             else (
-                f"Overall signal stacking {score}/4 from [{', '.join(components)}]; "
+                f"Overall signal stacking {score}/{minimum_score} from [{', '.join(components)}]; "
                 f"vocab={vocab['points']} point(s), "
                 f"worst_generic={vocab['worst_generic']}, "
                 f"gptzero={vocab['gptzero_matches']}, "
@@ -758,16 +1470,81 @@ def check_overall_signal_stacking(text):
 
 
 def check_manufactured_insight(text):
-    count, matches = count_pattern_matches(text, MANUFACTURED_INSIGHT)
+    matches = nonoverlapping_pattern_matches(text, MANUFACTURED_INSIGHT)
+    count = len(matches)
     return {
         "text": "no-manufactured-insight",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No manufactured insight phrases",
+    }
+
+
+def _mask_double_quoted_text(text):
+    """Blank quoted source text while preserving character positions."""
+    chars = list(text)
+    for match in re.finditer(r'["“][^"”\n]*["”]', text):
+        for index in range(match.start(), match.end()):
+            if chars[index] not in "\r\n":
+                chars[index] = " "
+    return "".join(chars)
+
+
+def check_performed_candour(text):
+    masked = _mask_double_quoted_text(text)
+    matches = []
+    for pattern in PERFORMED_CANDOUR:
+        for match in re.finditer(pattern, masked, flags=re.IGNORECASE):
+            matches.append(text[match.start():match.end()])
+    return {
+        "text": "no-performed-candour",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": f"Found {len(matches)} performed-candour frame(s): {matches}" if matches else "No performed-candour frames",
+    }
+
+
+def check_formulaic_social_posts(text):
+    candidates = []
+    for subtype, patterns in FORMULAIC_SOCIAL_POST_PATTERNS.items():
+        for pattern in patterns:
+            for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+                candidates.append((match.start(), match.end(), match.group(0), subtype))
+
+    accepted = []
+    for start, end, match_text, subtype in sorted(candidates):
+        if accepted and start < accepted[-1][1]:
+            continue
+        accepted.append((start, end, match_text, subtype))
+
+    matches = [match_text for _, _, match_text, _ in accepted]
+    subtypes = sorted({subtype for _, _, _, subtype in accepted})
+    return {
+        "text": "no-formulaic-social-posts",
+        "passed": not matches,
+        "matches": matches,
+        "subtypes": subtypes,
+        "evidence": (
+            f"Found {len(matches)} formulaic social-post frame(s) "
+            f"across {', '.join(subtypes)}: {matches}"
+            if matches
+            else "No formulaic social-post frames"
+        ),
     }
 
 
 def check_staccato(text):
     sentences = split_sentences(text)
+    formula_matches = [
+        match.strip()
+        for match in nonoverlapping_pattern_matches(text, [
+            r"(?:^|(?<=[.!?])\s+|(?<=\n)\s*)full stop[.!?](?=\s|$)",
+            r"(?:^|(?<=[.!?])\s+|(?<=\n)\s*)period[.!?](?=\s|$)",
+            r"that['’]s it\.\s+that['’]s the tweet[.!?]?",
+            r"(?:^|(?<=[.!?])\s+|(?<=\n)\s*)[a-z][\w'’\-]*\.\s+that['’]s the word[.!?]?",
+        ])
+    ]
+    minimum_run = threshold_value("no-staccato-sequences", "minimum_run", 3)
     max_run = 0
     current_run = 0
     longest_run_end = -1
@@ -783,17 +1560,119 @@ def check_staccato(text):
                 longest_run_end = i
         else:
             current_run = 0
+    # Runs of consecutive short sentences that all open on the same word. The
+    # declared minimum is a run length, so a run of three is reported once as a
+    # run rather than as two overlapping pairs.
+    minimum_opener_run = threshold_value(
+        "no-staccato-sequences", "minimum_repeated_opener_run", 2
+    )
+    repeated_opening_runs = []
+    current_opener_run = []
+
+    def close_opener_run():
+        if len(current_opener_run) >= minimum_opener_run:
+            repeated_opening_runs.append(
+                " ".join(sentence.strip() for _opener, sentence in current_opener_run)
+            )
+
+    for sentence in sentences:
+        opener = None
+        if len(sentence.split()) < 6:
+            match = re.search(r"[^\W_]+(?:['’\-][^\W_]+)*", sentence, re.UNICODE)
+            opener = match.group(0).casefold() if match else None
+        if opener is not None and current_opener_run and opener == current_opener_run[0][0]:
+            current_opener_run.append((opener, sentence))
+            continue
+        close_opener_run()
+        current_opener_run = [(opener, sentence)] if opener is not None else []
+    close_opener_run()
+    # Rate branch (DR-66): short sentences spread through a document rather than
+    # bunched into a run. Ten words or fewer is the Desaire threshold the Xia
+    # paper measures, and prose paragraphs are used so headings do not count.
+    prose = " ".join(prose_paragraphs(text))
+    prose_words = len(strip_front_matter(text).split())
+    short_sentences = [
+        sentence.strip()
+        for sentence in split_sentences(prose)
+        if len(sentence.split()) <= 10
+    ]
+    short_sentence_count = len(short_sentences)
+    minimum_words = threshold_value("no-staccato-sequences", "rate_minimum_words", 300)
+    maximum_rate = threshold_value(
+        "no-staccato-sequences", "maximum_short_rate_per_1000", 30.0
+    )
+    short_rate = short_sentence_count / prose_words * 1000 if prose_words else 0.0
+    rate_failed = prose_words >= minimum_words and short_rate >= maximum_rate
+    # Mean branch (DR-79B): prose whose sentences all sit in one short band
+    # never produces a run, a repeated opener, or enough ten-word sentences to
+    # trip the rate, but its average still separates the corpora at 13.9 words
+    # against 17.7. Calibrated in
+    # dev/evals/sentence-variance-calibration-2026-07-26.md.
+    maximum_mean = threshold_value(
+        "no-staccato-sequences", "maximum_mean_sentence_words", 15.0
+    )
+    prose_sentences = [s for s in split_sentences(prose) if s.strip()]
+    mean_sentence_words = (
+        sum(len(s.split()) for s in prose_sentences) / len(prose_sentences)
+        if prose_sentences else 0.0
+    )
+    mean_failed = (
+        prose_words >= minimum_words
+        and bool(prose_sentences)
+        and mean_sentence_words < maximum_mean
+    )
+    # The finding is the document's average, but the reader still needs
+    # something to look at, so quote a bounded sample of the sentences sitting
+    # in the band rather than reporting a bare number.
+    band_sentences = []
+    if mean_failed:
+        band_sentences = [
+            s.strip() for s in prose_sentences
+            if abs(len(s.split()) - mean_sentence_words) <= 3
+        ][:5]
+
     matches = []
-    if max_run >= 3 and longest_run_end >= 0:
+    if max_run >= minimum_run and longest_run_end >= 0:
         run_start = longest_run_end - max_run + 1
         matches = [s.strip() for s in sentences[run_start:longest_run_end + 1] if s.strip()]
+    matches.extend(repeated_opening_runs)
+    matches.extend(formula_matches)
+    if rate_failed:
+        matches.extend(short_sentences)
+    matches.extend(band_sentences)
+    matches = list(dict.fromkeys(matches))
+    evidence = []
+    if max_run >= minimum_run:
+        evidence.append(f"sequence of {max_run} consecutive short sentences")
+    if formula_matches:
+        evidence.append(f"exact dramatic-fragment formula(s): {formula_matches}")
+    if repeated_opening_runs:
+        evidence.append(
+            f"short-fragment run(s) sharing an opener: {repeated_opening_runs}"
+        )
+    if rate_failed:
+        evidence.append(
+            f"{short_sentence_count} sentences of ten words or fewer at "
+            f"{short_rate:.1f} per 1000 words"
+        )
+    if mean_failed:
+        evidence.append(
+            f"mean sentence length {mean_sentence_words:.1f} words "
+            f"(target: {maximum_mean:g} or more)"
+        )
     return {
         "text": "no-staccato-sequences",
-        "passed": max_run < 3,
+        "passed": (
+            max_run < minimum_run
+            and not formula_matches
+            and not repeated_opening_runs
+            and not rate_failed
+            and not mean_failed
+        ),
         "matches": matches,
         "evidence": (
-            f"Found sequence of {max_run} consecutive short sentences"
-            if max_run >= 3
+            f"Found {'; '.join(evidence)}"
+            if evidence
             else f"Max consecutive short sentences: {max_run}"
         ),
     }
@@ -840,11 +1719,58 @@ def check_anaphora(text):
     }
 
 
+def check_paragraph_anaphora(text):
+    """Detect 3+ consecutive prose paragraphs opening with the same word (pattern H16)."""
+    blocks = [b.strip() for b in text.split('\n\n') if b.strip()]
+    openers = []
+    for block in blocks:
+        first_line = block.split('\n', 1)[0].lstrip()
+        # Headings, list items, and blockquotes are not prose paragraphs.
+        if re.match(r'^(#{1,6}\s|[-*+]\s|\d+[.)]\s|>)', first_line):
+            continue
+        words = block.split()
+        if not words:
+            continue
+        word = words[0].strip('*_`"\'().,;:!?').lower()
+        if word:
+            openers.append((word, first_line))
+    max_run = 1
+    current_run = 1
+    worst_word = ""
+    longest_run_end = 0
+    for i in range(1, len(openers)):
+        prev_word = openers[i - 1][0]
+        curr_word = openers[i][0]
+        if prev_word == curr_word and prev_word not in ("i", "a", "the", "it's", "it"):
+            current_run += 1
+            if current_run > max_run:
+                max_run = current_run
+                worst_word = curr_word
+                longest_run_end = i
+        else:
+            current_run = 1
+    matches = []
+    if max_run >= 3:
+        run_start = longest_run_end - max_run + 1
+        matches = [line[:80] for _, line in openers[run_start:longest_run_end + 1]]
+    return {
+        "text": "no-paragraph-anaphora",
+        "passed": max_run < 3,
+        "matches": matches,
+        "evidence": (
+            f"Found {max_run} consecutive paragraphs opening with '{worst_word}'"
+            if max_run >= 3
+            else f"Max paragraph-opener run: {max_run}"
+        ),
+    }
+
+
 def check_collaborative_artifacts(text):
     count, matches = count_pattern_matches(text, COLLABORATIVE_ARTIFACTS)
     return {
         "text": "no-collaborative-artifacts",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found: {matches}" if count > 0 else "No collaborative artifacts",
     }
 
@@ -873,34 +1799,47 @@ def check_curly_quotes(text):
 def check_sentence_variance(text):
     sentences = split_sentences(text)
     word_count = len(text.split())
-    # Skip for short-form text where low variance is expected, not an AI tell
-    if len(sentences) < 6 and word_count < 100:
+    # Documented eligibility: skip prose under 100 words or under 6 sentences,
+    # where low variance is expected rather than an AI tell.
+    if len(sentences) < 6 or word_count < 100:
         return {
             "text": "sentence-length-variance",
             "passed": True,
             "evidence": f"Skipped: short text ({word_count} words, {len(sentences)} sentences)",
         }
-    if len(sentences) < 3:
-        return {
-            "text": "sentence-length-variance",
-            "passed": False,
-            "evidence": "Too few sentences to measure variance",
-        }
     lengths = [len(s.split()) for s in sentences]
     sd = stdev(lengths)
+    # DR-79A: the inherited threshold of 4 sat below the entire observed range
+    # (the flattest document in either corpus reaches 4.4), so the check never
+    # fired on real prose. Calibrated to 9 against the project corpora: 72% of
+    # generated documents and 11% of human ones. See
+    # dev/evals/sentence-variance-calibration-2026-07-26.md.
+    minimum_sd = threshold_value("sentence-length-variance", "minimum_stdev", 9.0)
+    flagged = sd <= minimum_sd
     return {
         "text": "sentence-length-variance",
-        "passed": sd > 4,
-        "evidence": f"Sentence length stdev: {sd:.1f} (target: >4)",
+        "passed": not flagged,
+        # The number the decision turns on, exposed so it can be measured against
+        # the declared cut-off. `metric` below is the reader-facing string.
+        "metric_number": sd,
+        "metric": (
+            f"sentence length variation {sd:.1f} across {len(sentences)} "
+            f"sentences (target above {minimum_sd:g})"
+            if flagged else None
+        ),
+        "evidence": f"Sentence length stdev: {sd:.1f} (target: >{minimum_sd:g})",
     }
 
 
 def check_promotional(text):
     text_lower = text.lower()
     found = [w for w in PROMOTIONAL if w in text_lower]
+    for pattern in PROMOTIONAL_PATTERNS:
+        found.extend(match.group(0) for match in re.finditer(pattern, text, re.IGNORECASE))
     return {
         "text": "no-promotional-language",
         "passed": len(found) == 0,
+        "matches": found,
         "evidence": f"Found: {found}" if found else "No promotional language",
     }
 
@@ -908,9 +1847,12 @@ def check_promotional(text):
 def check_significance_inflation(text):
     text_lower = text.lower()
     found = [w for w in SIGNIFICANCE_INFLATION if w in text_lower]
+    for pattern in SIGNIFICANCE_EMPHASIS_FRAMES:
+        found.extend(match.group(0) for match in re.finditer(pattern, text, re.IGNORECASE))
     return {
         "text": "no-significance-inflation",
         "passed": len(found) == 0,
+        "matches": found,
         "evidence": f"Found: {found}" if found else "No significance inflation",
     }
 
@@ -935,8 +1877,112 @@ def check_negative_parallelisms(text):
     )
     pron = rf"(?:it{apo}s|that{apo}s|this is|it is|that is|it was|that was|this was|it becomes?|that becomes?|this becomes?)"
     sep = rf"[;:,{dash[1:-1]}]"  # punctuation break that can split clauses
+    deictic = r"(?:it|this|that)"
+    deictic_positive = rf"{deictic}(?:{apo}s|\s+(?:is|was|becomes?))"
+    deictic_negative = rf"{deictic}(?:{apo}s\s+(?:not|never)|\s+(?:is|was)\s+(?:not|never)|\s+(?:isn{apo}t|wasn{apo}t|isnt|wasnt))"
+    nonparallel_predicate_opening = (
+        r"(?:hard|difficult|easy|unusual|possible|impossible|clear|obvious)\s+"
+        r"(?:to|for)\b|until\b|going\s+to\b"
+    )
+    negative_predicate = rf"(?!\s*(?:{nonparallel_predicate_opening}))[^;:.!?\n]{{1,120}}"
+    noun_resume_predicate = (
+        rf"(?!\s*(?:{nonparallel_predicate_opening}|"
+        rf"[A-Za-z][\w’'-]*(?:ing|ed)\b|paid\b))[^;:.!?\n]{{1,120}}"
+    )
+    negative_aux = (
+        rf"(?:(?:is|are|was|were|do|does|did|should|would|could|will|can|must)\s+"
+        rf"(?:not|never)|(?:isn|aren|wasn|weren|don|doesn|didn|shouldn|wouldn|"
+        rf"couldn|won|can|mustn){apo}t|cannot|need\s+not)"
+    )
+    positive_verb = (
+        rf"(?!(?:(?:is|are|was|were|do|does|did|should|would|could|will|can|must)"
+        rf"\s+(?:not|never)|(?:isn|aren|wasn|weren|don|doesn|didn|shouldn|"
+        rf"wouldn|couldn|won|can|mustn){apo}t)\b)"
+        r"(?:is|are|was|were|do|does|did|should|would|could|will|can|must|"
+        r"[A-Za-z][\w’'-]*)"
+    )
+    structural_sep = rf"(?:{sep}|[.!?])\s*"
+    noun_subject = (
+        r"(?P<np_subject>(?:the|her|his|our|your|their|good|customer)\s+"
+        r"[A-Za-z][\w’'-]*(?:\s+[A-Za-z][\w’'-]*){0,2})"
+    )
+    reversal_subject = (
+        r"(?P<reversal_subject>[A-Za-z][\w’'-]*"
+        r"(?:\s+[A-Za-z][\w’'-]*){0,3}?)"
+    )
+    reversal_negative_aux = (
+        rf"(?:(?:am|is|are|was|were|do|does|did|have|has|had|may|might|can|"
+        rf"could|will|would|shall|should|must|need)\s+(?:not|never)|"
+        rf"(?:ain|isn|aren|wasn|weren|don|doesn|didn|haven|hasn|hadn|mightn|"
+        rf"can|couldn|won|wouldn|shan|shouldn|mustn|needn){apo}t|cannot|never)"
+    )
+    reversal_connector = (
+        r"(?:but|yet|however|still|nevertheless|nonetheless|even\s+so|"
+        r"that\s+said|instead|in\s+contrast|on\s+the\s+other\s+hand)"
+    )
+    reversal_clause_boundary = r"[;.!?]\s*[\"'”’*_`)\]]*\s*"
+    repeated_negative_reversal = (
+        rf"(?:^|(?<=[.!?;]))\s*[\"'“‘*_`(\[]*"
+        rf"{reversal_subject}\s+{reversal_negative_aux}\s+[^;.!?\n]{{1,120}}"
+        rf"{reversal_clause_boundary}"
+        rf"(?:(?P=reversal_subject)\s+{reversal_negative_aux}\s+"
+        rf"[^;.!?\n]{{1,120}}{reversal_clause_boundary})+"
+        rf"(?:"
+        rf"{reversal_connector}\s*,?\s*(?P=reversal_subject)\s+"
+        rf"(?!{reversal_negative_aux}\b)[^;.!?\n]{{1,120}}"
+        rf"|(?P=reversal_subject)\s+(?:do|does|did)\s+(?!not\b)"
+        rf"[^;.!?\n]{{1,120}}"
+        rf"|what\s+(?P=reversal_subject)\s+(?:(?:do|does|did)\s+)?"
+        rf"have\s+is\s+[^;.!?\n]{{1,120}}"
+        rf")(?:[;.!?]|$)"
+    )
+    resumptive_subject = (
+        r"(?!i\b|we\b|you\b|he\b|she\b|they\b|it\b)"
+        r"[A-Za-z][\w’'-]*(?:\s+[A-Za-z][\w’'-]*){0,11}?"
+    )
+    # DR-25A: the reversal survives three decorations that used to break the
+    # word-run regexes. A comma parenthetical inside the subject, a
+    # subordinator in front of the negative clause, and an adverbial phrase
+    # before the affirmative turn all leave the construction itself intact.
+    subject_parenthetical = r"(?:,\s+[^,;.!?\n]{1,40},)?"
+    # The adverbial bridge only spans a declarative break on the same line: a
+    # question is not the first half of a reversal, and a paragraph break means
+    # the two clauses are not the same move.
+    resumption_lead = r"[A-Za-z][\w’'-]*(?:[ \t]+[A-Za-z][\w’'-]*){0,4},[ \t]+"
+    bridge = rf"(?:{structural_sep}|(?:{sep}|[.!])[ \t]*{resumption_lead})"
+    resumption_start = r"(?:^|(?<=[.!?])|(?<=\n))\s*[\"'“‘*_`(\[]*"
+    resumptive_negative = (
+        rf"{resumption_start}{resumptive_subject}{subject_parenthetical}\s+"
+        rf"{reversal_negative_aux}\s+"
+        rf"{negative_predicate}{bridge}"
+        rf"(?:it|they|he|she)(?:{apo}s|{apo}re|\s+{positive_verb})\b"
+    )
+    # A subordinator gives the negative clause a second entry point. Its
+    # predicate excludes commas so the clause cannot swallow a comma-joined
+    # main clause and treat an unrelated later pronoun as the affirmative turn.
+    subordinated_negative = (
+        r"\b(?:that|because|when|while|since|although|though)\s+"
+        rf"{resumptive_subject}{subject_parenthetical}\s+"
+        rf"{reversal_negative_aux}\s+"
+        rf"[^,;:.!?\n]{{1,80}}{bridge}"
+        rf"(?:it|they|he|she)(?:{apo}s|{apo}re|\s+{positive_verb})\b"
+    )
 
     hard_patterns = [
+        # DR-19B: repeated same-subject negative clauses followed by an
+        # explicit or emphatic affirmative reversal. The complete frame is
+        # one candidate regardless of how many negative clauses it contains.
+        repeated_negative_reversal,
+        # DR-135A: source-defined X-to-Y reversal templates used in social
+        # posts. These are the same structural move as the existing negative-
+        # positive family even when the first clause uses an imperative or a
+        # replacement/death frame instead of the word "not".
+        r"\bstop\s+thinking\s+of\s+it\s+as\s+[^.!?\n]{1,80}[.!?]\s+start\s+thinking\s+of\s+it\s+as\s+[^.!?\n]{1,80}",
+        rf"(?:^|(?<=[.!?]))\s*[^.!?\n]{{1,80}}\s+(?:isn{apo}t|is\s+not)\s+the\s+future[.!?]\s+[^.!?\n]{{1,80}}\s+is(?:[.!?]|$)",
+        rf"(?:^|(?<=[.!?]))\s*[^.!?\n]{{1,80}}\s+is\s+dead[.!?]\s+[^.!?\n]{{1,80}}\s+is\s+what{apo}s\s+next(?:[.!?]|$)",
+        r"\bforget\s+[^.!?\n]{1,80}[.!?]\s+focus\s+on\s+[^.!?\n]{1,80}",
+        r"\bi stopped [^.!?\n]{1,80} and started [^.!?\n]{1,80}",
+        r"\b(?P<dr135_subject>[A-Za-z][\w’'-]*(?:\s+[A-Za-z][\w’'-]*){0,2}?)\s+that\s+[^.!?\n]{1,80}\s+will thrive[.!?]\s+(?P=dr135_subject)\s+that don['’]t will be left behind",
         rf"\bnot\s+(?:just|only|merely|simply|about|a matter of|a question of|a story of)\b.{{0,120}}\bbut(?: also)?\b",
         rf"\b(?:isn{apo}t|is not|wasn{apo}t|was not|aren{apo}t|are not|isnt|wasnt|arent)\s+(?:just|only|merely|simply|about|a matter of|a question of|a story of)\b.{{0,120}}\bbut(?: also)?\b",
         rf"\bnot\s+so\s+much\b.{{0,120}}\bas\b",
@@ -949,6 +1995,51 @@ def check_negative_parallelisms(text):
         r"\bno\s+[^.!?\n]{1,50}[.!?]\s+no\s+[^.!?\n]{1,50}[.!?]\s+just\s+",
         r"\bnot\s+[^.!?\n]{1,50}[.!?]\s+not\s+[^.!?\n]{1,50}[.!?]\s+just\s+",
         r"\b(?:you might think|at first glance|on the surface|it may seem)\b.{0,120}\b(?:but|yet|actually|in reality)\b",
+        # The same negative-positive frame can span a punctuation break or a
+        # sentence boundary. Detect both; sentence boundaries are not a reason
+        # to discard the signal.
+        rf"\b{deictic_negative}\b{negative_predicate}{sep}\s*(?:but\s+)?{deictic_positive}\b",
+        rf"\b{deictic_negative}\b{negative_predicate}[.!?]\s*{deictic_positive}\b",
+        # Repeated subjects and immediate pronoun resumptions cover the wider
+        # negative-positive family without requiring the payload to be an
+        # abstract noun. The structure is the signal; the regex does not judge
+        # whether the writer's use is justified.
+        rf"\b{noun_subject}\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?P=np_subject)\s+{positive_verb}\b",
+        rf"\b{noun_subject}\s+{negative_aux}\s+{noun_resume_predicate}{structural_sep}(?:it|he|she|they)(?:{apo}s|{apo}re|\s+{positive_verb})\b",
+        rf"\bwe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:we{apo}re|we\s+{positive_verb})\b",
+        # Bare-noun subjects resuming with a deictic: "AI isn't just
+        # evolving—it's accelerating!" (Stockton displayed example shape).
+        rf"(?:^|[.!?]\s+)([A-Za-z][\w'’-]*)\s+{negative_aux}\s+(?:just|only|merely|simply)\s+{negative_predicate}{structural_sep}(?:it|this|that)(?:{apo}s|\s+{positive_verb})\b",
+        # Contracted-copula negation: "we're not just X, we're Y" and the
+        # you/they/it/this/that equivalents (Stockton comma form).
+        rf"\b(we|you|they){apo}re\s+not\s+{negative_predicate}{structural_sep}(?:\1{apo}re|\1\s+{positive_verb})\b",
+        rf"\b(it|this|that){apo}s\s+not\s+{negative_predicate}{structural_sep}(?:\1{apo}s|\1\s+{positive_verb})\b",
+        rf"\bthey\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:they{apo}re|they\s+{positive_verb})\b",
+        rf"\byou\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:you{apo}re|you\s+{positive_verb})\b",
+        rf"\bshe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:she{apo}s|she\s+{positive_verb})\b",
+        rf"\bhe\s+{negative_aux}\s+{negative_predicate}{structural_sep}(?:he{apo}s|he\s+{positive_verb})\b",
+        rf"\b(?:it|this|that)\s+{negative_aux}\s+{negative_predicate}{bridge}(?:it|this|that)(?:{apo}s|\s+{positive_verb})\b",
+        # General parallel complements and coordinated negative-positive
+        # clauses that do not depend on a fixed subject vocabulary.
+        resumptive_negative,
+        subordinated_negative,
+        r"\bnot\s+(?!until\b)[^,;.!?\n]{1,80}\s+but\s+(?:also\s+)?[^,;.!?\n]{1,80}",
+        rf"\bnot\s+(?!until\b)[^,;:.!?\n]{{1,80}}\s*(?:[,;:]|{dash})\s*but\s+[^,;:.!?\n]{{1,100}}",
+        r"(?:^|(?<=[;.!?]))\s*[^,;.!?\n]{1,100},\s*not\s+(?!until\b)[^,;.!?\n]{1,80}",
+        r"\brather\s+than\b",
+        r"\bto\s+[^;.!?\n]{1,80}\s+is\s+not\s+to\s+[^;.!?\n]{1,80}[;.!?]\s*to\s+[^;.!?\n]{1,80}\s+is\s+to\b",
+        # Comma-separated countdown negation is the same construction as its
+        # sentence-separated form already covered above.
+        r"\bno\s+[^,;.!?\n]{1,50}(?:\s*[,;]\s*no\s+[^,;.!?\n]{1,50})+\s*[,;]\s*just\s+[^.!?\n]{1,80}",
+        rf"\b(?:there\s+(?:is|was)\s+)?no\s+[^.!?\n]{{1,60}}\s+(?:and|,)\s*no\s+[^.!?\n]{{1,60}}{sep}\s*(?:just|only|simply)\s+[^.!?\n]{{1,80}}",
+        rf"\bnot\s+[^,;.!?\n]{{1,50}},\s*not\s+[^,;.!?\n]{{1,50}},\s*(?:just|only|simply)\s+[^.!?\n]{{1,80}}",
+        r"\bmore\s+[^,;.!?\n]{1,60}\s+than\s+[^,;.!?\n]{1,60},\s*less\s+[^,;.!?\n]{1,60}\s+than\s+[^,;.!?\n]{1,60}",
+        # Parallel complements and clauses, including positive-then-negative
+        # and infinitive forms.
+        r"\b(?:is|are|was|were)\s+(?:not|never)\b[^.!?\n]{1,100},\s*but\s+(?!\b(?:the|a|an)\s+\w+\s+(?:is|was|are|were)\b)[^.!?\n]{1,100}",
+        r"\b(?:is|are|was|were|becomes?)\s+[^,;.!?\n]{1,80},\s*not\s+(?!only\b)[^,;.!?\n]{1,80}",
+        r"\bto\s+[^,;.!?\n]{1,100},\s*not\s+to\s+[^,;.!?\n]{1,100}",
+        r"\bnot\s+that\b[^.!?\n]{1,120},\s*but\s+that\b[^.!?\n]{1,120}",
     ]
 
     abstract_reframe_patterns = [
@@ -958,28 +2049,45 @@ def check_negative_parallelisms(text):
         rf"\b(?:actually|in reality|the real (?:point|story|question|issue|challenge) is)\b[^.!?\n]{{0,120}}\b{abstract}\b",
     ]
 
-    verbatim = []
+    candidates = []
     for pat in hard_patterns + abstract_reframe_patterns:
         for m in re.finditer(pat, text, flags=re.IGNORECASE | re.DOTALL):
-            verbatim.append(re.sub(r"\s+", " ", m.group(0)).strip())
+            candidates.append((m.start(), m.end(), m.group(0).strip()))
+
+    accepted = _collapse_overlapping_matches(candidates)
+    verbatim = [match for _, _, match in accepted]
     count = len(verbatim)
     return {
         "text": "no-negative-parallelisms",
         "passed": count == 0,
         "matches": verbatim,
+        "candidate_count": count,
         "evidence": (
-            f"Found {count} contrived contrast/reframe pattern(s)"
+            f"Found {count} negative-parallelism occurrence(s)"
             if count > 0
-            else "No negative parallelisms or contrived reframes"
+            else "No negative parallelisms"
         ),
     }
 
 
 def check_copula_avoidance(text):
     count, matches = count_pattern_matches(text, COPULA_AVOIDANCE)
+    paragraphs = prose_paragraphs(text)
+    if paragraphs:
+        first_sentences = split_sentences(paragraphs[0])
+        if first_sentences:
+            lead_match = re.match(
+                r"^((?:The (?:term|phrase|name|concept|expression|designation)|"
+                r"[A-Z][\w-]*(?:\s+[A-Z][\w-]*){0,4})\s+refers? to\b)",
+                first_sentences[0],
+            )
+            if lead_match:
+                count += 1
+                matches.append(lead_match.group(1))
     return {
         "text": "no-copula-avoidance",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No copula avoidance",
     }
 
@@ -989,15 +2097,32 @@ def check_filler_phrases(text):
     return {
         "text": "no-filler-phrases",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No filler phrases",
     }
 
 
 def check_generic_conclusions(text):
     count, matches = count_pattern_matches(text, GENERIC_CONCLUSIONS)
+    # DR-119: peppy call-to-action ending — the document's final sentence is
+    # short, imperative-formed, and exclamation-terminated.
+    sentences = [s.strip() for s in split_sentences(text) if s.strip()]
+    if sentences:
+        final = sentences[-1]
+        words = re.findall(r"[A-Za-z']+", final)
+        subject_openers = {
+            "i", "we", "you", "it", "this", "that", "these", "those",
+            "the", "a", "an", "there", "what", "how", "my", "our",
+            "your", "he", "she", "they",
+        }
+        if (final.endswith("!") and words and len(words) <= 8
+                and words[0].lower() not in subject_openers):
+            count += 1
+            matches = list(matches) + [final]
     return {
         "text": "no-generic-conclusions",
         "passed": count == 0,
+        "matches": matches,
         "evidence": f"Found {count}: {matches}" if count > 0 else "No generic conclusions",
     }
 
@@ -1008,6 +2133,7 @@ def check_false_concession(text):
     return {
         "text": "no-false-concession-hedges",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} false concession pattern(s): {matches[:3]}"
             if count > 0
@@ -1022,6 +2148,7 @@ def check_placeholder_residue(text):
     return {
         "text": "no-placeholder-residue",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} placeholder(s): {matches[:5]}"
             if count > 0
@@ -1033,9 +2160,17 @@ def check_placeholder_residue(text):
 def check_soft_scaffolding(text):
     """Detect bland transition scaffolding from generated explainers."""
     count, matches = count_pattern_matches(text, SOFT_SCAFFOLD_PHRASES)
+    for paragraph in prose_paragraphs(text):
+        for pattern in REPORT_SCAFFOLD_OPENERS:
+            match = re.match(pattern, paragraph, flags=re.IGNORECASE)
+            if match:
+                matches.append(match.group(0))
+                count += 1
+                break
     return {
         "text": "no-soft-scaffolding",
-        "passed": count < 2,
+        "passed": count < threshold_value("no-soft-scaffolding", "minimum_candidates", 2),
+        "matches": matches,
         "evidence": (
             f"Found {count} soft scaffold phrase(s): {matches[:6]}"
             if count >= 2
@@ -1054,7 +2189,8 @@ def check_orphaned_demonstratives(text):
     count, matches = count_pattern_matches(text, [pattern])
     return {
         "text": "no-orphaned-demonstratives",
-        "passed": count < 3,
+        "passed": count < threshold_value("no-orphaned-demonstratives", "minimum_candidates", 3),
+        "matches": matches,
         "evidence": (
             f"Found {count} vague demonstrative subject(s): {matches[:6]}"
             if count >= 3
@@ -1063,34 +2199,559 @@ def check_orphaned_demonstratives(text):
     }
 
 
+TRIAD_STOPWORD = r"(?:and|or|but|for|to|of|in|on|at|by|as|with|without|from|through|throughout|depending)"
+TRIAD_ITEM = rf"[A-Za-z][\w'-]*(?:\s+(?!{TRIAD_STOPWORD}\b)[A-Za-z][\w'-]*){{0,2}}"
+TRIAD_THIRD_ITEM = rf"[A-Za-z][\w'-]*(?:\s+(?!{TRIAD_STOPWORD}\b)[A-Za-z][\w'-]*){{0,2}}?"
+TRIAD_RE = re.compile(
+    rf"\b({TRIAD_ITEM}),\s+({TRIAD_ITEM}),?\s+(?:and|or)\s+({TRIAD_THIRD_ITEM})\b"
+    rf"(?=\s+{TRIAD_STOPWORD}\b|[.!?;:\n\"”]|$)",
+    re.IGNORECASE,
+)
+
+# Additional grammatical forms that the compact item matcher cannot express.
+# These stay narrow so incidental parentheticals are not counted as triads.
+TRIAD_EXTENDED_RES = (
+    re.compile(
+        r"\bnot\s+[^,;.!?\n]{1,40},\s+but\s+[^,;.!?\n]{1,40},?\s+"
+        r"and\s+[^,;.!?\n]{1,60}(?=[.!?;:\n\"”'’—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(?:when|how|what|where|who|why|whether)\b[^,;.!?\n]{1,60},\s+"
+        r"(?:when|how|what|where|who|why|whether)\b[^,;.!?\n]{1,60},?\s+"
+        r"(?:and|or)\s+(?:when|how|what|where|who|why|whether)\b[^,;.!?\n]{1,60}"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b[A-Za-z][\w'-]*ing(?:\s+[^,;.!?\n]{0,45})?,\s+"
+        r"[A-Za-z][\w'-]*ing(?:\s+[^,;.!?\n]{0,45})?,?\s+"
+        r"(?:and|or)\s+[A-Za-z][\w'-]*ing(?:\s+[^,;.!?\n]{0,45})?"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b[^,;.!?\n]{1,80},\s+which\s+[^,;.!?\n]{1,60}\s+"
+        r"(?:and|or)\s+(?:less\s+|more\s+)?[A-Za-z][\w'-]*"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(?:will|can|could|should|would|may|might|must)\s+"
+        r"[A-Za-z][\w'-]*(?:\s+[^,;.!?\n]{0,50})?,\s+"
+        r"(?!(?:and|or|but|which|who|that|where|when|what|how|why)\b)"
+        r"[A-Za-z][\w'-]*(?:\s+[^,;.!?\n]{0,50})?,?\s+"
+        r"(?:and|or)\s+[A-Za-z][\w'-]*(?:\s+[^,;.!?\n]{0,70})?"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(for|to|with|by|from|through|without)\s+[^,;.!?\n]{1,60},\s+"
+        r"\1\s+[^,;.!?\n]{1,60},?\s+(?:and|or)\s+\1\s+[^,;.!?\n]{1,80}"
+        r"(?=[.!?;:\n—–]|$)", re.IGNORECASE,
+    ),
+)
+
+
+def extract_triad_candidates(text):
+    """Return verbatim three-part item, phrase, and clause coordinations."""
+    spans = []
+    for match in TRIAD_RE.finditer(text):
+        items = [item.split() for item in match.groups()]
+        # The regex can enter the sentence up to two words before the first
+        # list item. Balance that capture against the later items so evidence
+        # starts at the coordination itself, not its lead-in.
+        original_starts = [words[0].casefold() for words in items]
+        parallel_to = len(set(original_starts)) == 1 and original_starts[0] == "to"
+        if not parallel_to:
+            first_limit = max(len(items[1]), len(items[2]))
+            items[0] = items[0][-first_limit:]
+        first_item = " ".join(items[0])
+        first_offset = match.group(1).rfind(first_item)
+        start = match.start(1) + first_offset
+        spans.append((start, match.end(), text[start:match.end()]))
+    for pattern in TRIAD_EXTENDED_RES:
+        for match in pattern.finditer(text):
+            start, end = match.span()
+            if any(not (end <= old_start or start >= old_end) for old_start, old_end, _ in spans):
+                continue
+            spans.append((start, end, match.group(0).strip()))
+    return [value for _, _, value in sorted(spans)]
+
+
+def threshold_value(check_id, key, default):
+    """Read a named threshold from the authoritative threshold catalogue."""
+    value = CHECK_THRESHOLDS.get(check_id, {})
+    return value.get(key, default) if isinstance(value, dict) else default
+
+
 def check_rule_of_three(text):
-    """Detect forced triads: 'X, Y, and Z' patterns that cluster heavily."""
-    # Find all "A, B, and C" patterns where all three are abstract nouns
-    # Suffixes: -ing, -tion, -sion, -ment, -ness, -ity, -ity, -nce, -ncy, -cy, -ism, -ity
-    _abs = r'\b\w+(?:ing|tion|sion|ment|ness|ity|ence|ance|ency|ancy|cy|ism)\b'
-    pattern = rf'({_abs}), ({_abs}),? and ({_abs})'
-    # Match against original text (with IGNORECASE) so emitted phrases are the verbatim
-    # input span — needed for grader's every-flag-block-contains-input-substring check.
-    matches = list(re.finditer(pattern, text, flags=re.IGNORECASE))
+    """Flag a high rate of three-part constructions (pattern B4).
+
+    Counting triads does not separate generated from human prose: 95% of the
+    human corpus and 100% of the generated corpus contain at least one, and a
+    raw count of four is cleared by 71% of human texts because long documents
+    accumulate triads whatever their source. The rate does separate them, so
+    the check measures triads per 1000 words against the length-controlled
+    calibration in dev/evals/triad-density-calibration-2026-07-25.md.
+    """
+    words = text.split()
+    matches = extract_triad_candidates(text)
     count = len(matches)
+    minimum_words = threshold_value("no-forced-triads", "minimum_words", 300)
+    maximum_rate = threshold_value("no-forced-triads", "maximum_rate_per_1000", 4.0)
+    eligible = len(words) >= minimum_words
+    rate = count / len(words) * 1000 if words else 0.0
     return {
         "text": "no-forced-triads",
-        "passed": count == 0,
+        "passed": not eligible or rate < maximum_rate,
+        "candidate_count": count,
+        "matches": matches,
         "evidence": (
-            f"Found {count} abstract triad(s): {[m.group(0) for m in matches]}"
-            if count > 0
-            else "No forced triads"
+            f"Found {count} triad(s) at {rate:.1f} per 1000 words: {matches}"
+            if eligible and rate >= maximum_rate
+            else (
+                f"Triads: {count}; below minimum length "
+                f"({len(words)}/{minimum_words} words)"
+                if not eligible
+                else f"Triads: {count} at {rate:.1f} per 1000 words"
+            )
         ),
     }
 
 
+# --- Reinhart/Biber rate checks (DR-159) ---
+#
+# Reinhart et al. (PNAS, Feb 2025) measured 66 Biber features over paired
+# human/LLM text and found instruction-tuned models overuse a noun-heavy
+# cluster. Three of those features are recoverable from surface form without a
+# parser and reproduce on this project's corpora; thresholds come from
+# dev/evals/biber-rate-calibration-2026-07-26.md. Phrasal coordination, the
+# paper's fourth headline feature, is deliberately absent: it runs the other way
+# here, so no check was built for it.
+
+# Nouns formed from verbs or adjectives, per Biber: "development", "robustness".
+NOMINALISATION_RE = re.compile(
+    r"\b\w{4,}(?:tion|tions|ment|ments|ness|ity|ities|ance|ances|ence|ences)\b",
+    re.IGNORECASE,
+)
+
+# DR-78: Cyrillic and Greek characters that are visually identical to Latin
+# ones. A Latin word carrying one is a homoglyph substitution, which defeats
+# search, screen readers, and copy-paste whatever put it there. Characters that
+# merely belong to another script are not enough: scientific notation mixes
+# Greek and Latin legitimately ("\u0394H1", "\u03b7j"), so only confusables count.
+LATIN_LETTER_RE = re.compile(r"[A-Za-z]")
+CONFUSABLE_LETTERS = (
+    "\u0410\u0412\u0415\u041a\u041c\u041d\u041e\u0420\u0421\u0422\u0423\u0425"  # Cyrillic capitals A B E K M H O P C T Y X
+    "\u0430\u0435\u043e\u0440\u0441\u0443\u0445\u0456\u0458\u0455"  # Cyrillic small a e o p c y x i j s
+    "\u0391\u0392\u0395\u0396\u0397\u0399\u039a\u039c\u039d\u039f\u03a1\u03a4\u03a5\u03a7"  # Greek capitals
+    "\u03bf\u03c1\u03bd"  # Greek small omicron, rho, nu
+)
+CONFUSABLE_RE = re.compile("[" + CONFUSABLE_LETTERS + "]")
+WORD_UNICODE_RE = re.compile(r"\w+", re.UNICODE)
+
+# DR-97: word tokens for the mean-word-length measure. Letters and internal
+# apostrophes only, so Markdown punctuation and numerals do not distort the mean.
+WORD_TOKEN_RE = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)*")
+
+# DR-21: Latinate verbs used where a plain verb would do ("obtain" for "get",
+# "commence" for "start"). Unlike the nominalisations above there is no suffix
+# that marks them, so this is a curated list and grows only by hand. The stems
+# are grouped by inflection so the pattern matches verb forms and not the nouns
+# and adjectives built on the same stems ("information", "assistant",
+# "department", "residents", "alternative").
+_LATINATE_DROP_E = (
+    "initiat", "terminat", "demonstrat", "indicat", "illustrat", "acquir",
+    "procur", "purchas", "requir", "necessitat", "generat", "resid", "inquir",
+    "provid", "contemplat", "determin", "execut", "disseminat", "observ",
+    "ceas", "discontinu", "utiliz", "utilis", "facilitat", "commenc", "relocat",
+)
+_LATINATE_PLAIN = (
+    "assist", "obtain", "construct", "inhabit", "inform", "maintain", "retain",
+    "ascertain", "encounter", "alter", "depart",
+)
+_LATINATE_SIBILANT = ("furnish", "diminish")
+_LATINATE_Y = ("notif", "identif", "modif", "rectif")
+_LATINATE_DOUBLING = ("transmit",)
+LATINATE_VERB_RE = re.compile(
+    r"\b(?:"
+    + "|".join(stem + r"(?:e|es|ed|ing)" for stem in _LATINATE_DROP_E)
+    + "|" + "|".join(stem + r"(?:s|ed|ing)?" for stem in _LATINATE_PLAIN)
+    + "|" + "|".join(stem + r"(?:es|ed|ing)?" for stem in _LATINATE_SIBILANT)
+    + "|" + "|".join(stem + r"(?:y|ies|ied|ying)" for stem in _LATINATE_Y)
+    + "|" + "|".join(stem + r"(?:s|ted|ting)?" for stem in _LATINATE_DOUBLING)
+    + r")\b",
+    re.IGNORECASE,
+)
+
+# "That" relative clauses in SUBJECT position ("the dog that bit me"), where
+# `that` is followed directly by the relative clause's verb. Object-position
+# relatives ("the dog that I saw") are a separate Biber feature and run the
+# opposite way in the corpora, so they are excluded by the negative lookahead.
+# Verb forms that can head a relative clause. Irregular pasts are listed
+# explicitly because the defining example is "the dog that bit me".
+_REL_IRREGULAR = (
+    r"bit|ran|won|led|took|made|gave|came|went|saw|got|had|held|kept|left|lost|"
+    r"met|paid|put|read|said|sat|sold|sent|set|shot|shut|spent|stood|struck|"
+    r"swept|taught|told|threw|wore|wrote|drove|fell|felt|found|grew|knew|"
+    r"brought|built|bought|caught|chose|cut|dealt|drew|broke"
+)
+_REL_VERB = (
+    rf"(?:{_REL_IRREGULAR}|is|are|was|were|has|have|does|do|can|could|will|"
+    r"would|may|might|must|\w+ed|\w+es|\w+s)"
+)
+# A following pronoun or determiner means object position ("the dog that I
+# saw"), which is a separate Biber feature running the opposite way here.
+_REL_NOT_SUBJECT = (
+    r"(?:i|you|he|she|it|we|they|the|a|an|this|these|those|his|her|its|their|our|your)"
+)
+# A preceding word from this set means a `that` complement clause ("I know that
+# sounds odd") or a demonstrative ("though that helps"). Biber counts `that`
+# verb and adjective complements as their own features. The list holds only
+# forms that are almost never a head noun, so ambiguous noun/verb words such as
+# "report" or "claim" still count as relative heads.
+_REL_COMPLEMENT_HEAD = (
+    r"know|knows|knew|think|thinks|thought|say|says|said|believe|believes|"
+    r"believed|realise|realised|realize|realized|argue|argues|argued|admit|"
+    r"admits|admitted|agree|agrees|agreed|imagine|imagines|imagined|assume|"
+    r"assumes|assumed|expect|expects|expected|seem|seems|seemed|appear|appears|"
+    r"appeared|suppose|supposes|supposed|reckon|reckons|glad|sure|certain|"
+    r"clear|aware|afraid|confident|convinced|obvious|so|now|given|though|"
+    r"although|is|was|are|were|be|been|mean|means|meant|found|find|finds|feel|"
+    r"feels|felt|hope|hopes|hoped|see|sees|saw|notice|notices|noticed|"
+    r"remember|remembers|remembered"
+)
+THAT_SUBJECT_RELATIVE_RE = re.compile(
+    rf"\b(?!(?:{_REL_COMPLEMENT_HEAD})\b)\w+\s+that\s+"
+    rf"(?!{_REL_NOT_SUBJECT}\b)(?:{_REL_VERB})\b",
+    re.IGNORECASE,
+)
+
+# Present participial clauses used adverbially, per Biber's example "Stuffing his
+# mouth with cookies, Joe ran out the door". Gerunds are a separate feature and
+# progressives are not participial clauses at all, so both are excluded.
+_PARTICIPIAL_AUX = (
+    r"(?:am|is|are|was|were|be|been|being|keeps?|kept|starts?|started|stops?|"
+    r"stopped|continues?|continued)"
+)
+_PARTICIPIAL_PROGRESSIVE_RE = re.compile(
+    rf"\b{_PARTICIPIAL_AUX}\s+(?:\w+ly\s+)?[a-z]+ing\b", re.IGNORECASE
+)
+_PARTICIPIAL_INITIAL_RE = re.compile(
+    r"(?:^|(?<=[.!?]\s))\s*([A-Za-z]+ing)\b[^.!?\n]{3,90}?,",
+    re.MULTILINE | re.IGNORECASE,
+)
+_PARTICIPIAL_MEDIAL_RE = re.compile(r"[,;]\s+([a-z]+ing)\b", re.IGNORECASE)
+_PARTICIPIAL_SUBORD_RE = re.compile(
+    r"\b(?:while|when|before|after|since|by|through|without|despite|besides|upon)"
+    r"\s+([a-z]+ing)\b",
+    re.IGNORECASE,
+)
+# -ing tokens that are ordinary nouns, adjectives, or prepositions. Listed
+# explicitly so a miss is visible rather than silently folded into the rate.
+PARTICIPIAL_STOPWORDS = {
+    "during", "something", "nothing", "everything", "anything", "morning",
+    "evening", "building", "buildings", "ceiling", "king", "thing", "things",
+    "ring", "spring", "string", "wing", "sibling", "siblings", "being",
+    "willing", "outstanding", "interesting", "exciting", "according",
+    "regarding", "concerning", "including", "notwithstanding", "upcoming",
+    "ongoing", "following", "surrounding", "engineering", "marketing",
+    "training", "meeting", "meetings", "learning", "writing", "reading",
+    "understanding", "feeling", "feelings", "finding", "findings", "beginning",
+    "ending", "warning", "offering", "opening", "setting", "settings",
+    "holding", "holdings", "housing", "clothing", "funding", "spending",
+    "wedding", "painting", "drawing", "recording", "screening", "briefing",
+    "hearing", "landing", "booking", "savings", "earnings", "proceedings",
+    "surroundings", "belongings",
+}
+
+
+def extract_participial_clauses(text):
+    """Return adverbial present-participial clause heads (Biber's definition)."""
+    without_progressives = _PARTICIPIAL_PROGRESSIVE_RE.sub(" ", text)
+    found = []
+    for pattern in (
+        _PARTICIPIAL_INITIAL_RE,
+        _PARTICIPIAL_MEDIAL_RE,
+        _PARTICIPIAL_SUBORD_RE,
+    ):
+        found.extend(
+            match
+            for match in pattern.findall(without_progressives)
+            if match.lower() not in PARTICIPIAL_STOPWORDS
+        )
+    return found
+
+
+def _biber_rate_check(check_id, text, extract, default_rate, label):
+    """Shared body for the Reinhart and Xia feature-rate checks."""
+    source = strip_front_matter(text)
+    words = source.split()
+    matches = extract(source)
+    count = len(matches)
+    minimum_words = threshold_value(check_id, "minimum_words", 300)
+    maximum_rate = threshold_value(check_id, "maximum_rate_per_1000", default_rate)
+    eligible = len(words) >= minimum_words
+    rate = count / len(words) * 1000 if words else 0.0
+    # The finding is the density, so the density is what a reader is shown.
+    # These checks used to hand back every hit, which meant a draft using `it`
+    # 267 times was quoted `"It", "it", "it" (+264 more)` — a list that repeats
+    # one word the writer already knows and buries the rate that is the point.
+    # The count is kept in `candidate_count`, which the sweeps and the cut-off
+    # test read.
+    metric = f"{count} {label} at {rate:.1f} per 1000 words (flag at {maximum_rate})"
+    if not eligible:
+        metric = (
+            f"{label}: {count}; below minimum length "
+            f"({len(words)}/{minimum_words} words)"
+        )
+    return {
+        "text": check_id,
+        "passed": not eligible or rate < maximum_rate,
+        "candidate_count": count,
+        "metric": metric,
+        "evidence": metric,
+    }
+
+
+def check_nominalisation_rate(text):
+    """Flag a high rate of nominalisations (pattern B7)."""
+    return _biber_rate_check(
+        "no-nominalisation-rate", text,
+        lambda s: NOMINALISATION_RE.findall(s), 29.0, "nominalisation(s)",
+    )
+
+
+def check_that_relative_rate(text):
+    """Flag a high rate of subject-position `that` relative clauses (pattern B8)."""
+    return _biber_rate_check(
+        "no-that-relative-rate", text,
+        lambda s: THAT_SUBJECT_RELATIVE_RE.findall(s), 3.5, "subject relative(s)",
+    )
+
+
+def check_participial_clause_rate(text):
+    """Flag a high rate of present participial clauses (pattern B9)."""
+    return _biber_rate_check(
+        "no-participial-clause-rate", text,
+        extract_participial_clauses, 4.4, "participial clause(s)",
+    )
+
+
+# Irregular past participles, for the passive head. Regular participles are
+# recognised by their -ed ending, so only the irregular forms need listing.
+IRREGULAR_PARTICIPLES = frozenset({
+    "arisen", "awoken", "beaten", "become", "begun", "bent", "bet", "bitten",
+    "bled", "blown", "born", "borne", "bought", "bound", "bred", "broken",
+    "brought", "built", "burnt", "burst", "cast", "caught", "chosen", "clung",
+    "come", "cost", "crept", "cut", "dealt", "dug", "done", "drawn", "driven",
+    "drunk", "dwelt", "eaten", "fallen", "fed", "felt", "fled", "flown",
+    "flung", "forbidden", "forgiven", "forgotten", "fought", "found", "frozen",
+    "given", "gone", "got", "gotten", "grown", "heard", "held", "hidden",
+    "hit", "hung", "hurt", "kept", "knelt", "known", "laid", "lain", "led",
+    "leant", "leapt", "learnt", "left", "lent", "let", "lit", "lost", "made",
+    "meant", "met", "paid", "put", "quit", "read", "ridden", "risen", "run",
+    "rung", "said", "sat", "seen", "sent", "set", "sewn", "shaken", "shed",
+    "shone", "shot", "shown", "shrunk", "shut", "slept", "slid", "slung",
+    "smelt", "sold", "sought", "sown", "spat", "sped", "spent", "spilt",
+    "split", "spoilt", "spoken", "spread", "sprung", "spun", "stolen", "stood",
+    "struck", "stuck", "stung", "stunk", "sung", "sunk", "sworn", "swept",
+    "swum", "swung", "taken", "taught", "thought", "thrown", "thrust", "told",
+    "torn", "trodden", "understood", "upset", "withdrawn", "woken", "won",
+    "worn", "wound", "woven", "written", "wept",
+})
+
+BE_FORMS = frozenset({"am", "is", "are", "was", "were", "be", "been", "being"})
+
+# Deverbal adjectives that follow a be-form without forming a passive: "the
+# model is based on the data", "she is interested in the outcome".
+PASSIVE_ADJECTIVE_EXCLUSIONS = frozenset({
+    "based", "limited", "related", "detailed", "advanced", "mixed", "used",
+    "supposed", "complicated", "sophisticated", "dedicated", "concerned",
+    "interested", "excited", "tired", "worried", "surprised", "pleased",
+    "known", "called", "aged", "united", "armed", "crowded", "educated",
+    "experienced", "qualified", "skilled", "talented", "gifted", "unexpected",
+    "unprecedented", "alleged", "beloved", "sacred", "wicked", "naked",
+    "embedded", "entrenched", "engaged", "involved", "committed", "focused",
+    "determined", "motivated", "informed", "prepared", "willing", "unwilling",
+    "needed", "wanted",
+})
+
+PASSIVE_INTERVENING = frozenset({"not", "also", "already", "being"})
+
+_PASSIVE_WORD_RE = re.compile(r"[A-Za-z][A-Za-z'’-]*")
+
+
+def extract_passive_verbs(text):
+    """Return one entry per verb in the passive voice (be-form + participle)."""
+    words = _PASSIVE_WORD_RE.findall(text)
+    found = []
+    index = 0
+    while index < len(words):
+        head = words[index].lower()
+        if head in BE_FORMS:
+            step = 1
+            candidate = words[index + 1].lower() if index + 1 < len(words) else ""
+            if candidate.endswith("ly") or candidate in PASSIVE_INTERVENING:
+                step = 2
+                candidate = words[index + 2].lower() if index + 2 < len(words) else ""
+            is_participle = (
+                candidate in IRREGULAR_PARTICIPLES
+                or (candidate.endswith("ed") and len(candidate) > 3)
+            )
+            if is_participle and candidate not in PASSIVE_ADJECTIVE_EXCLUSIONS:
+                found.append(f"{head} {candidate}")
+                index += 1 + step
+                continue
+        index += 1
+    return found
+
+
+IT_PRONOUN_RE = re.compile(r"\bit\b", re.IGNORECASE)
+
+
+def check_passive_voice_rate(text):
+    """Flag a high rate of passive-voice verbs (pattern B10)."""
+    return _biber_rate_check(
+        "no-passive-voice-rate", text,
+        extract_passive_verbs, 5.0, "passive verb(s)",
+    )
+
+
+def check_it_pronoun_rate(text):
+    """Flag a high rate of the `it` pronoun (pattern B11)."""
+    return _biber_rate_check(
+        "no-it-pronoun-rate", text,
+        lambda source: IT_PRONOUN_RE.findall(source), 18.0, "`it` pronoun(s)",
+    )
+
+
+def check_mixed_script_words(text):
+    """Detect Latin words carrying confusable Cyrillic or Greek letters (pattern C9)."""
+    source = strip_front_matter(text)
+    matches = [
+        word for word in WORD_UNICODE_RE.findall(source)
+        if LATIN_LETTER_RE.search(word) and CONFUSABLE_RE.search(word)
+    ]
+    return {
+        "text": "no-mixed-script-words",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} word(s) mixing Latin with confusable "
+            f"Cyrillic or Greek letters: {matches[:5]}"
+            if matches else "No mixed-script words"
+        ),
+    }
+
+
+def check_concreteness_average(text):
+    """Flag prose whose words run abstract rather than concrete (pattern B14)."""
+    source = strip_front_matter(text)
+    minimum_words = threshold_value("concreteness-average", "minimum_words", 100)
+    maximum_mean = threshold_value("concreteness-average", "maximum_mean_concreteness", 2.915)
+    scored = [
+        CONCRETENESS_NORMS[word]
+        for word in CONCRETENESS_TOKEN_RE.findall(source.lower())
+        if word in CONCRETENESS_NORMS and word not in CONCRETENESS_STOPWORDS
+    ]
+    if len(source.split()) < minimum_words or not scored:
+        return {
+            "text": "concreteness-average",
+            "passed": True,
+            "evidence": (
+                f"Mean concreteness: below minimum length "
+                f"({len(source.split())}/{minimum_words} words)"
+            ),
+        }
+    mean = sum(scored) / len(scored)
+    flagged = mean <= maximum_mean
+    return {
+        "text": "concreteness-average",
+        "passed": not flagged,
+        "metric": (
+            f"mean concreteness {mean:.2f} of 5 across {len(scored)} content words "
+            f"(target above {maximum_mean:g})"
+            if flagged else None
+        ),
+        "evidence": (
+            f"Mean concreteness {mean:.2f} of 5 across {len(scored)} content words "
+            f"(target: >{maximum_mean:g})"
+        ),
+    }
+
+
+def check_word_length_average(text):
+    """Flag prose whose mean word runs long (pattern B13)."""
+    source = strip_front_matter(text)
+    words = WORD_TOKEN_RE.findall(source)
+    minimum_words = threshold_value("word-length-average", "minimum_words", 100)
+    maximum_mean = threshold_value("word-length-average", "maximum_mean_characters", 4.80)
+    if len(source.split()) < minimum_words or not words:
+        return {
+            "text": "word-length-average",
+            "passed": True,
+            "evidence": (
+                f"Mean word length: below minimum length "
+                f"({len(source.split())}/{minimum_words} words)"
+            ),
+        }
+    mean = sum(len(w) for w in words) / len(words)
+    flagged = mean >= maximum_mean
+    return {
+        "text": "word-length-average",
+        "passed": not flagged,
+        "metric": (
+            f"mean word length {mean:.2f} characters across {len(words)} words "
+            f"(target below {maximum_mean:g})"
+            if flagged else None
+        ),
+        "evidence": (
+            f"Mean word length {mean:.2f} characters across {len(words)} words "
+            f"(target: <{maximum_mean:g})"
+        ),
+    }
+
+
+def check_latinate_verb_rate(text):
+    """Flag a high rate of Latinate verbs used for plain ones (pattern B12)."""
+    return _biber_rate_check(
+        "no-latinate-verb-rate", text,
+        lambda source: LATINATE_VERB_RE.findall(source), 2.5, "Latinate verb(s)",
+    )
+
+
 def check_superficial_ing(text):
-    """Detect sentences ending with tacked-on -ing phrases (pattern 3)."""
-    pattern = r',\s+(?:highlighting|underscoring|emphasizing|reflecting|symbolizing|contributing to|cultivating|fostering|encompassing|showcasing|ensuring|demonstrating|illustrating|reinforcing|signaling|representing)\b[^.]*\.'
+    """Detect overused opening and tacked-on participial clauses (pattern A3)."""
+    source = strip_front_matter(text)
+    trailing_pattern = (
+        r',\s+(?:highlighting|underscoring|emphasizing|reflecting|symbolizing|'
+        r'contributing to|cultivating|fostering|encompassing|showcasing|ensuring|'
+        r'demonstrating|illustrating|reinforcing|signaling|representing|creating|'
+        r'enhancing|facilitating|shaping|driving|embodying)\b[^.]*\.'
+    )
+    opening_pattern = re.compile(
+        r"(?:^|(?<=[.!?])\s+|\n+)"
+        r"(?P<clause>"
+        r"(?!(?:According|During)\b)"
+        r"(?![^.!?\n,]{0,80}\b(?:is|are|was|were|has|have|had|means?|meant|"
+        r"felt|feels?|depends?|should|would|could|can|will|must|came|comes?|"
+        r"do|does|did)\b[^.!?\n,]*,)"
+        r"[a-z]+ing\b[^.!?\n,\"“”'’]{0,80}"
+        r"),\s+"
+        r"(?!(?:and|but|or|nor|for|so|yet|even|not|because|while|although|"
+        r"though)\b)"
+        r"(?=(?:I|we|you|he|she|it|they|this|that|these|those|the|a|an|"
+        r"[a-z][a-z-]*)\b)",
+        flags=re.IGNORECASE | re.MULTILINE,
+    )
     verbatim = []
     seen = set()
-    for m in re.finditer(pattern, text, flags=re.IGNORECASE):
+
+    for m in re.finditer(trailing_pattern, source, flags=re.IGNORECASE):
         span = re.sub(r"\s+", " ", m.group(0)).strip()
+        key = span.lower()
+        if key not in seen:
+            seen.add(key)
+            verbatim.append(span)
+    for m in opening_pattern.finditer(source):
+        span = re.sub(r"\s+", " ", m.group("clause")).strip()
         key = span.lower()
         if key not in seen:
             seen.add(key)
@@ -1109,16 +2770,23 @@ def check_superficial_ing(text):
 
 
 def check_ghost_spectral(text):
-    """Detect ghost/spectral language density (pattern 26)."""
+    """Detect ghost/spectral language density (pattern F1)."""
     words = ["ghost", "ghosts", "spectral", "shadow", "shadows", "whisper",
              "whispers", "echo", "echoes", "phantom", "haunting", "haunted",
              "lingering", "remnant", "remnants", "unspoken", "hidden"]
-    text_lower = text.lower()
-    found = [w for w in words if w in text_lower]
-    count = sum(text_lower.count(w) for w in found)
+    # Token match so one "echoes" cannot count for both "echo" and "echoes".
+    word_re = re.compile(r"\b(?:" + "|".join(words) + r")\b")
+    hits = word_re.findall(text.lower())
+    found = sorted(set(hits))
+    count = len(hits)
     return {
         "text": "no-ghost-spectral-density",
         "passed": count < 3,
+        # The report quotes the distinct words; repeating "hidden" three times
+        # tells a reader nothing the count does not. The count still governs, so
+        # it is carried separately rather than inferred from the quoted list.
+        "matches": found,
+        "candidate_count": count,
         "evidence": (
             f"Found {count} ghost/spectral words: {found}"
             if count >= 3
@@ -1128,11 +2796,13 @@ def check_ghost_spectral(text):
 
 
 def check_quietness(text):
-    """Detect quietness obsession density (pattern 27)."""
-    words = ["quiet", "quietly", "silent", "silently", "softly", "stillness", "hushed",
-             "murmur", "gentle", "tender", "settled"]
+    """Detect quietness obsession density (pattern F2)."""
+    words = ["quiet", "quietly", "silent", "silently", "soft", "softly", "stillness",
+             "hushed", "murmur", "hum", "humming", "gentle", "tender", "settle", "settled"]
     text_lower = text.lower()
-    count = sum(text_lower.count(w) for w in words)
+    # Token match so inflected pairs cannot double-count and "hum" cannot
+    # match inside "human"; list follows the documented words-to-watch.
+    count = len(re.findall(r"\b(?:" + "|".join(words) + r")\b", text_lower))
     word_count = len(text_lower.split())
     density = count / max(word_count, 1) * 1000
     flagged = count >= 4
@@ -1159,35 +2829,152 @@ def check_quietness(text):
 
 
 def check_rhetorical_questions(text):
-    """Detect mid-sentence rhetorical questions (pattern 29)."""
-    # Pattern: short question (under 8 words) followed by a declarative answer
-    pattern = r'[.!]\s+([^.?!]{3,50}\?)\s+(?:It\'?s?|They\'re|You|We|The|This|That|And)\b'
-    matches = re.findall(pattern, text)
+    """Detect terse non-question fragments followed by immediate answers."""
+    pattern = re.compile(
+        r"(?:^|[.!]\s+)"
+        r"(?P<prompt>[A-Za-z][A-Za-z'’\-]*"
+        r"(?:[ \t]+[A-Za-z][A-Za-z'’\-]*){0,3})"
+        r"\?[ \t\r\n]+"
+        r"(?P<answer>[A-Za-z0-9][^?!\n]{0,99}(?:[.!]|$))",
+        flags=re.MULTILINE,
+    )
+    interrogative_starters = {
+        "who", "whom", "whose", "what", "when", "where", "why", "how", "which",
+        "am", "is", "are", "was", "were", "do", "does", "did", "can", "could",
+        "would", "should", "will", "have", "has", "had", "may", "might", "must",
+        "shall", "ain't", "aren't", "can't", "couldn't", "didn't", "doesn't",
+        "don't", "hasn't", "haven't", "isn't", "wasn't", "weren't", "won't",
+        "wouldn't",
+    }
+    matches = []
+    for match in pattern.finditer(text):
+        prompt = match.group("prompt")
+        prompt_words = prompt.lower().replace("’", "'").split()
+        if prompt_words[0] in {"and", "but", "so"}:
+            prompt_words = prompt_words[1:]
+        if not prompt_words:
+            continue
+        first_word = prompt_words[0]
+        first_base = first_word.split("'", 1)[0]
+        if first_word in interrogative_starters or first_base in interrogative_starters:
+            continue
+
+        answer = match.group("answer").strip()
+        answer_words = re.findall(r"[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*", answer)
+        if not 1 <= len(answer_words) <= 12:
+            continue
+        matches.append(f"{prompt}? {answer}")
+
     count = len(matches)
     return {
         "text": "no-rhetorical-questions",
-        "passed": count < 2,
+        "passed": count < threshold_value("no-rhetorical-questions", "minimum_candidates", 1),
+        "matches": matches,
         "evidence": (
-            f"Found {count} mid-sentence rhetorical question(s): {matches[:3]}"
-            if count >= 2
-            else f"Rhetorical questions: {count}"
+            f"Found {count} fragment-question answer beat(s): {matches[:3]}"
+            if count
+            else "Fragment-question answer beats: 0"
         ),
     }
 
 
 def check_list_density(text):
-    """Detect excessive list-making (pattern 31)."""
+    """Detect excessive list-making (pattern G3)."""
     lines = text.strip().split('\n')
-    bullet_lines = sum(1 for line in lines if re.match(r'\s*[-*]\s', line) or re.match(r'\s*\d+\.\s', line))
+    item_pattern = re.compile(r'\s*(?:[-*]|\d+\.)\s')
+    item_lines = [line.strip() for line in lines if item_pattern.match(line)]
+    bullet_lines = len(item_lines)
+    list_blocks = 0
+    inside_block = False
+    for line in lines:
+        is_item = bool(item_pattern.match(line))
+        if is_item and not inside_block:
+            list_blocks += 1
+        if is_item:
+            inside_block = True
+        elif line.strip():
+            inside_block = False
     total_lines = max(len(lines), 1)
     ratio = bullet_lines / total_lines
+    threshold = CHECK_THRESHOLDS.get("no-excessive-lists", {})
+    minimum_items = threshold.get("minimum_items", 8)
+    minimum_blocks = threshold.get("minimum_blocks", 2)
+    minimum_line_ratio = threshold.get("minimum_line_ratio", 0.3)
+    flagged = ratio >= minimum_line_ratio or (
+        bullet_lines >= minimum_items and list_blocks >= minimum_blocks
+    )
     return {
         "text": "no-excessive-lists",
-        "passed": ratio < 0.3,
+        "passed": not flagged,
+        "matches": item_lines,
         "evidence": (
-            f"List ratio: {ratio:.0%} ({bullet_lines}/{total_lines} lines are bullets)"
-            if ratio >= 0.3
-            else f"List ratio: {ratio:.0%}"
+            f"List items: {bullet_lines} across {list_blocks} block(s); "
+            f"line ratio: {ratio:.0%} ({bullet_lines}/{total_lines})"
+        ),
+    }
+
+
+LIST_ITEM_PREFIX_RE = re.compile(r"^\s*(?:[-*+•◦▪▫‣⁃●○]|\d+[.)])\s+")
+
+
+def list_item_blocks(text):
+    """Group runs of list-item lines into blocks of their item text."""
+    blocks = []
+    current = []
+    for line in text.split("\n"):
+        match = LIST_ITEM_PREFIX_RE.match(line)
+        if match:
+            current.append(line[match.end():].strip())
+        elif line.strip():
+            if current:
+                blocks.append(current)
+            current = []
+    if current:
+        blocks.append(current)
+    return blocks
+
+
+def list_item_edge_token(item, index):
+    """Return an item's casefolded first or last word, punctuation removed."""
+    words = re.findall(r"[\w'’-]+", item)
+    return words[index].casefold() if words else ""
+
+
+def check_symmetric_list_items(text):
+    """Detect list items sharing both a uniform length and an edge token (pattern G11).
+
+    Symmetry needs both conditions. A list whose items merely run to the same
+    length, or merely share an opening or closing word, is left alone; only the
+    combination reads as the generated 'X for Y teams' template.
+    """
+    minimum_items = threshold_value("no-symmetric-list-items", "minimum_items", 3)
+    maximum_deviation = threshold_value(
+        "no-symmetric-list-items", "maximum_deviation", 2
+    )
+    matches = []
+    for block in list_item_blocks(text):
+        if len(block) < minimum_items:
+            continue
+        counts = sorted(len(item.split()) for item in block)
+        median = counts[len(counts) // 2]
+        if any(abs(count - median) > maximum_deviation for count in counts):
+            continue
+        openings = {list_item_edge_token(item, 0) for item in block}
+        endings = {list_item_edge_token(item, -1) for item in block}
+        shared = (len(openings) == 1 and "" not in openings) or (
+            len(endings) == 1 and "" not in endings
+        )
+        if shared:
+            matches.extend(block)
+    return {
+        "text": "no-symmetric-list-items",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} list item(s) of uniform length "
+            f"sharing an edge word: {matches}"
+            if matches
+            else "No symmetric list items"
         ),
     }
 
@@ -1195,23 +2982,25 @@ def check_list_density(text):
 def check_unicode_flair(text):
     """Detect decorative Unicode symbols and emoji shortcodes (patterns 31a + 16).
 
-    Folds pattern 16 (Emojis) into this check: covers symbol glyphs, the
+    Folds pattern C4 (Emojis) into this check: covers symbol glyphs, the
     broader emoji ranges, and ``:shortcode:`` forms (``:rocket:``, ``:bulb:``)
     that cluster in headings or bullet points.
     """
     symbols = re.findall(
-        r"[✓✔✕✖★☆◆◇→⇒➜➤•●○◦※✨⭐✅❌🔥🚀]"
+        r"[✓✔✕✖×★☆◆◇→⇒➜➤•●○◦※✨⭐✅❌🔥🚀⚡➡♻]"
         r"|[\U0001F300-\U0001F9FF\U0001FA00-\U0001FAFF]",
         text,
     )
+    styled_runs = re.findall(r"[\U0001D400-\U0001D7FF]+", text)
     shortcodes = re.findall(
         r"(?<![A-Za-z0-9]):[a-z][a-z0-9_]{2,}:(?![A-Za-z0-9])",
         text,
     )
-    findings = symbols + shortcodes
+    findings = symbols + styled_runs + shortcodes
     return {
         "text": "no-unicode-flair",
-        "passed": len(findings) < 2,
+        "passed": len(findings) < threshold_value("no-unicode-flair", "minimum_candidates", 2),
+        "matches": findings,
         "evidence": (
             f"Found {len(findings)} decorative symbol(s)/shortcode(s): {findings[:8]}"
             if len(findings) >= 2
@@ -1221,7 +3010,7 @@ def check_unicode_flair(text):
 
 
 def check_dramatic_transitions(text):
-    """Detect dramatic narrative transitions (pattern 32)."""
+    """Detect dramatic narrative transitions (pattern G5)."""
     patterns = [
         r"something shifted", r"everything changed", r"everything clicked",
         r"that's when it hit me", r"and that made all the difference",
@@ -1232,6 +3021,7 @@ def check_dramatic_transitions(text):
     return {
         "text": "no-dramatic-transitions",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count}: {matches}"
             if count > 0
@@ -1253,6 +3043,37 @@ def check_formulaic_openers(text):
         r"^in (?:a|the) (?:broader|wider|larger|similar) (?:context|sense|vein)[,:]",
         r"^perhaps (?:most )?(?:importantly|significantly|notably|crucially)[,:]",
         r"^what (?:is|makes) (?:this|it) (?:particularly|especially|uniquely) \w+",
+        r"^in today(?:'s|’s) (?:fast[- ]paced|rapidly changing) world\b",
+        # DR-134B: exact transition, signposting, and email openers.
+        r"^(?:furthermore|moreover|additionally|in addition|on the other hand)\b[,:]?",
+        r"^let['’]s dive in\b",
+        r"^here['’]s what you need to know\b",
+        r"^i hope you are well\b",
+        # DR-16A: remaining exact transition and explainer openers.
+        r"^therefore\b[,:]?",
+        r"^let['’]s (?:break it down|unpack this)\b",
+        # DR-135B: source-defined social-post throat-clearers not already
+        # covered by manufactured-insight or performed-candour checks.
+        r"^here['’]s what nobody['’]s talking about\b",
+        r"^let me be clear\b",
+        r"^can we talk about .{1,80} for a second\?",
+        r"^let['’]s talk about\b",
+        r"^we need to talk about\b",
+        r"^i need to say something about\b",
+        # DR-135E: source-defined numbered social-post hooks. Optional
+        # Markdown heading markers keep the same opener logic for headlines.
+        r"^(?:#{1,6}\s*)?\d+ things i learned from [^:\n]{1,80}:?\s*$",
+        r"^(?:#{1,6}\s*)?\d+ mistakes i see everyone making:?\s*$",
+        r"^(?:#{1,6}\s*)?\d+ lessons from [^:\n]{1,80} nobody talks about:?\s*$",
+        r"^(?:#{1,6}\s*)?the \d+ pillars of [^:\n]{1,80}:?\s*$",
+        r"^(?:#{1,6}\s*)?\d+ things i wish i knew before [^:\n]{1,80}:?\s*$",
+        r"^(?:#{1,6}\s*)?here are \d+ frameworks that changed how i think about [^:\n]{1,80}:?\s*$",
+        # DR-135H: time-stamped social-post opener templates.
+        r"^in \d{4},? [^.!?\n]{1,80} won['’]t be optional[.!?]\s+it['’]ll be table stakes[.!?]?\s*$",
+        r"^the [^.!?\n]{1,40} of \d{4} will look nothing like the [^.!?\n]{1,40} of \d{4}[.!?]?\s*$",
+        # DR-132A: source-defined marketing-email greeting and hype opener.
+        r"^i hope this email finds you well\b",
+        r"^are you tired of [^?\n]{1,120}\?\s+look no further than\b",
     ]
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     found = []
@@ -1267,6 +3088,7 @@ def check_formulaic_openers(text):
     return {
         "text": "no-formulaic-openers",
         "passed": len(found) == 0,
+        "matches": found,
         "evidence": (
             f"Found {len(found)} formulaic opener(s): {found}"
             if found
@@ -1296,6 +3118,7 @@ def check_signposted_conclusions(text):
     return {
         "text": "no-signposted-conclusions",
         "passed": len(found) == 0,
+        "matches": found,
         "evidence": (
             f"Found {len(found)}: {found}"
             if found
@@ -1304,44 +3127,24 @@ def check_signposted_conclusions(text):
     }
 
 
-def check_markdown_headings(text):
-    """Detect markdown heading structure in prose (AI essays use ## sections)."""
-    headings = []
-    for match in re.finditer(r'^#{1,3}\s+.+', strip_front_matter(text), re.MULTILINE):
-        heading = match.group()
-        # Extracted source metadata often arrives as linked publication labels.
-        # Keep detecting article/essay section scaffolding, but do not punish
-        # archive chrome such as "### [Issue 194, Fall 2010](...)".
-        if re.match(r'^#{1,3}\s+\[[^\]]+\]\([^)]+\)\s*$', heading):
-            continue
-        headings.append(heading)
-
-    lines = strip_front_matter(text).splitlines()
-    first_nonblank = next((idx for idx, line in enumerate(lines) if line.strip()), None)
-    if first_nonblank is not None and first_nonblank + 1 < len(lines):
-        title = lines[first_nonblank].strip()
-        followed_by_blank = not lines[first_nonblank + 1].strip()
-        words = re.findall(r"[A-Za-z][A-Za-z'-]*", title)
-        significant = [w for w in words if w.lower() not in {"a", "an", "and", "as", "at", "by", "for", "in", "of", "on", "or", "the", "to", "with"}]
-        title_case_words = sum(1 for w in significant if w[0].isupper())
-        looks_like_plain_title = (
-            followed_by_blank
-            and 3 <= len(words) <= 12
-            and len(title) <= 90
-            and not re.search(r"[.!?]$", title)
-            and not title.startswith(("[", "{", "("))
-            and title_case_words >= max(2, len(significant) - 1)
-        )
-        if looks_like_plain_title:
-            headings.append(title)
+def check_parenthetical_headings(text):
+    """Fail parentheses in ATX and setext headings, without scanning body prose."""
+    source = strip_front_matter(text)
+    matches = []
+    for match in re.finditer(r"^ {0,3}#{1,6}\s+[^\n]*\([^\n()]+\)[^\n]*$", source, re.MULTILINE):
+        matches.append(match.group(0))
+    lines = source.splitlines()
+    for index in range(len(lines) - 1):
+        if re.match(r"^ {0,3}(?:=+|-+)\s*$", lines[index + 1]) and re.search(
+            r"\([^\n()]+\)", lines[index]
+        ):
+            matches.append(lines[index])
+    matches = list(dict.fromkeys(matches))
     return {
-        "text": "no-markdown-headings",
-        "passed": len(headings) == 0,
-        "evidence": (
-            f"Found {len(headings)} heading(s): {[h[:50] for h in headings[:5]]}"
-            if headings
-            else "No headings"
-        ),
+        "text": "no-parenthetical-headings",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": f"Found {len(matches)} parenthetical heading(s): {matches}" if matches else "No parenthetical headings",
     }
 
 
@@ -1360,11 +3163,16 @@ def check_corporate_ai_speak(text):
         r"stakeholder (?:alignment|engagement|management)\b",
         r"actionable insights?\b",
         r"leverage[sd]? (?:my |our |the )?\w+ (?:experience|expertise)\b",
+        r"\bcircle back\b",
+        r"\bleverage(?:s|d|ing)? (?:a |the )?(?:cross[- ]team )?synerg(?:y|ies)\b",
+        r"\bmove the needle\b",
+        r"\b(?:align|alignment) on (?:next steps|deliverables|priorities|outcomes)\b",
     ]
     count, matches = count_pattern_matches(text, patterns)
     return {
         "text": "no-corporate-ai-speak",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count}: {matches}"
             if count > 0
@@ -1377,18 +3185,24 @@ def check_this_chains(text):
     """Detect 3+ consecutive sentences starting with 'This [verb]'."""
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     worst_run = 0
+    worst_sentences = []
     for para in paragraphs:
         sentences = split_sentences(para)
-        current_run = 0
+        current = []
         for s in sentences:
             if re.match(r'^this\s+(?!is\b)\w+', s.strip().lower()):
-                current_run += 1
-                worst_run = max(worst_run, current_run)
+                current.append(s.strip())
+                if len(current) > worst_run:
+                    worst_run = len(current)
+                    worst_sentences = list(current)
             else:
-                current_run = 0
+                current = []
     return {
         "text": "no-this-chains",
         "passed": worst_run < 3,
+        # The run itself, so the report can quote it. Without this the flagged
+        # line named the pattern and showed a reader nothing to look at.
+        "matches": worst_sentences,
         "evidence": (
             f"Found {worst_run} consecutive 'This [verb]' sentences"
             if worst_run >= 3
@@ -1410,11 +3224,14 @@ def check_countdown_negation(text):
     """
     # Branch 1: existing countdown-then-reveal pattern (do not change)
     pattern = r'(?:(?:it|this|that) (?:wasn\'t|isn\'t|was not|is not) [^.?!]+[.]\s*){2,}(?:it|this|that) (?:was|is) [^.?!]+[.]'
-    matches = re.findall(pattern, text.lower())
+    # Read case-insensitively rather than off a lowercased copy so the sequence
+    # can be quoted back in the author's own casing. Same pattern, same matches.
+    matches = [m.group(0) for m in re.finditer(pattern, text, re.IGNORECASE)]
     if matches:
         return {
             "text": "no-countdown-negation",
             "passed": False,
+            "matches": matches,
             "evidence": f"Found {len(matches)} countdown negation sequence(s)",
         }
 
@@ -1423,7 +3240,8 @@ def check_countdown_negation(text):
     subjects = ("you", "we", "they", "people")
     sentences = split_sentences(text)
     max_run = 0
-    current_run = 0
+    longest = []
+    current = []
     current_subject = None
     for s in sentences:
         s_lower = s.strip().lower()
@@ -1433,19 +3251,23 @@ def check_countdown_negation(text):
                 matched_subject = subj
                 break
         if matched_subject and matched_subject == current_subject:
-            current_run += 1
-            max_run = max(max_run, current_run)
+            current.append(s.strip())
         elif matched_subject:
             current_subject = matched_subject
-            current_run = 1
+            current = [s.strip()]
         else:
             current_subject = None
-            current_run = 0
+            current = []
+        if len(current) > max_run:
+            max_run = len(current)
+            longest = list(current)
 
     if max_run >= 3:
         return {
             "text": "no-countdown-negation",
             "passed": False,
+            # The run, so the finding is quotable rather than a bare count.
+            "matches": longest,
             "evidence": f"Found {max_run} consecutive same-subject negation sentences",
         }
 
@@ -1508,29 +3330,83 @@ def check_paragraph_uniformity(text):
         words = re.findall(r"\b\w+\b", para)
         if len(words) >= 25:
             lengths.append(len(words))
-    if len(lengths) < 7:
+    minimum_paragraphs = threshold_value(
+        "paragraph-length-uniformity", "minimum_paragraphs", 7
+    )
+    if len(lengths) < minimum_paragraphs:
         return {
             "text": "paragraph-length-uniformity",
             "passed": True,
-            "evidence": f"Skipped: {len(lengths)} substantial paragraphs, need 7+",
+            "evidence": (
+                f"Skipped: {len(lengths)} substantial paragraphs, "
+                f"need {minimum_paragraphs}+"
+            ),
         }
     avg = sum(lengths) / len(lengths)
     cv = stdev(lengths) / avg if avg else 0
-    flagged = cv < 0.18
+    maximum_cv = threshold_value("paragraph-length-uniformity", "maximum_cv", 0.26)
+    flagged = cv < maximum_cv
     metric = (
-        f"paragraph length variation {cv:.2f} across {len(lengths)} paragraphs (target above 0.18)"
+        f"paragraph length variation {cv:.2f} across {len(lengths)} paragraphs "
+        f"(target: >={maximum_cv:g})"
         if flagged else None
     )
     return {
         "text": "paragraph-length-uniformity",
         "passed": not flagged,
+        # The number the decision turns on, exposed so it can be measured against
+        # the declared cut-off. `metric` is the reader-facing string.
+        "metric_number": cv,
         "metric": metric,
         "evidence": (
-            f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs (target: >=0.18)"
+            f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs "
+            f"(target: >={maximum_cv:g})"
             if flagged
             else f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs"
         ),
     }
+
+
+def _is_tidy_structural_core(sentence):
+    words = re.findall(r"\b[\w’'-]+\b", sentence)
+    if 4 <= len(words) <= 14 and TIDY_ABSTRACT_CLOSURE.search(sentence):
+        return True
+
+    if ";" not in sentence or not 4 <= len(words) <= 18:
+        return False
+    halves = sentence.rstrip(".!?").split(";")
+    if len(halves) != 2:
+        return False
+    for half in halves:
+        half_words = re.findall(r"\b[\w’'-]+\b", half)
+        if not 2 <= len(half_words) <= 8:
+            return False
+        linking_verb = TIDY_BALANCED_LINKING_VERB.search(half)
+        if linking_verb is None:
+            return False
+        subject_words = re.findall(r"\b[\w’'-]+\b", half[:linking_verb.start()])
+        if not 1 <= len(subject_words) <= 5:
+            return False
+        if {word.casefold() for word in subject_words} & TIDY_SUBORDINATORS:
+            return False
+    return True
+
+
+def tidy_structural_ending_matches(sentence):
+    """Return exact compact closures, including closures inside quotations."""
+    matches = []
+    if _is_tidy_structural_core(sentence):
+        matches.append(sentence.strip())
+    for quoted in re.findall(r'[“"]([^”"]+)[”"]', sentence):
+        candidate = quoted.strip()
+        if _is_tidy_structural_core(candidate) and candidate not in matches:
+            matches.append(candidate)
+    return matches
+
+
+def is_tidy_structural_ending(sentence):
+    """Recognise compact interpretive closures without judging their authorship."""
+    return bool(tidy_structural_ending_matches(sentence))
 
 
 def check_tidy_paragraph_endings(text):
@@ -1541,18 +3417,36 @@ def check_tidy_paragraph_endings(text):
         sentences = split_sentences(para)
         if not sentences:
             continue
-        last = sentences[-1].lower()
+        last_sentence = sentences[-1]
+        last = last_sentence.lower()
+        structural_matches = tidy_structural_ending_matches(last_sentence)
+        matched_stock_pattern = False
         for pat in TIDY_PARAGRAPH_ENDINGS:
             if re.search(pat, last):
-                endings.append(sentences[-1][:90])
+                matched_stock_pattern = True
                 break
+        if structural_matches:
+            endings.extend(structural_matches)
+        elif matched_stock_pattern:
+            endings.append(last_sentence[:90])
+    # Counted raw, this flagged 2% of human documents and 0% of generated ones only
+    # because human documents here average 2.2 times the length. As a rate the
+    # direction corrects: 9% generated against 6% human at 1.0 per 1000.
+    words = len(re.findall(r"\b\w+\b", text))
+    minimum_candidates = threshold_value("no-tidy-paragraph-endings", "minimum_candidates", 1)
+    maximum_rate = threshold_value("no-tidy-paragraph-endings", "maximum_rate_per_1000", 0.5)
+    rate = len(endings) / words * 1000 if words else 0.0
+    flagged = len(endings) >= minimum_candidates and rate >= maximum_rate
     return {
         "text": "no-tidy-paragraph-endings",
-        "passed": len(endings) < 3,
+        "passed": not flagged,
+        "matches": endings,
+        "metric_number": rate,
         "evidence": (
-            f"Found {len(endings)} tidy paragraph ending(s): {endings[:5]}"
-            if len(endings) >= 3
-            else f"Tidy paragraph endings: {len(endings)}"
+            f"Found {len(endings)} tidy paragraph ending(s), {rate:.1f} per 1000 words "
+            f"(target: <{maximum_rate:g}): {endings[:5]}"
+            if flagged
+            else f"Tidy paragraph endings: {len(endings)} ({rate:.1f} per 1000 words)"
         ),
     }
 
@@ -1562,7 +3456,8 @@ def check_bland_critical_template(text):
     count, matches = count_pattern_matches(text, BLAND_CRITICAL_TEMPLATE)
     return {
         "text": "no-bland-critical-template",
-        "passed": count < 3,
+        "passed": count < threshold_value("no-bland-critical-template", "minimum_candidates", 3),
+        "matches": matches,
         "evidence": (
             f"Found {count} bland critical template phrase(s): {matches[:6]}"
             if count >= 3
@@ -1576,7 +3471,8 @@ def check_rubric_echoing(text):
     count, matches = count_pattern_matches(text, RUBRIC_ECHO_PATTERNS)
     return {
         "text": "no-rubric-echoing",
-        "passed": count < 3,
+        "passed": count < threshold_value("no-rubric-echoing", "minimum_candidates", 3),
+        "matches": matches,
         "evidence": (
             f"Found {count} rubric echo phrase(s): {matches[:5]}"
             if count >= 3
@@ -1585,57 +3481,47 @@ def check_rubric_echoing(text):
     }
 
 
-def check_triad_density(text):
-    """Detect high density of three-item lists ('X, Y, and/or Z') regardless of word type."""
-    words = text.split()
-    if len(words) < 300:
-        return {
-            "text": "no-triad-density",
-            "passed": True,
-            "evidence": f"Skipped: short text ({len(words)} words, need 300+)",
-        }
-    # Each item: 1-4 words (handles "peer learning", "decision-making structures")
-    _item = r'\w+(?:[- ]\w+){0,3}'
-    pattern = rf'({_item}),\s+({_item}),?\s+(?:and|or)\s+({_item})'
-    # Match against original text (with IGNORECASE) so emitted phrases are the verbatim
-    # input span — needed for grader's every-flag-block-contains-input-substring check.
-    matches = list(re.finditer(pattern, text, flags=re.IGNORECASE))
-    count = len(matches)
-    match_strs = [m.group(0) for m in matches]
-    return {
-        "text": "no-triad-density",
-        "passed": count < 4,
-        "evidence": (
-            f"Found {count} triad(s): {match_strs}"
-            if count >= 4
-            else f"Triads: {count}"
-        ),
-    }
-
-
 def check_type_token_ratio(text):
-    """Detect low vocabulary diversity via type-token ratio."""
+    """Flag unusually high windowed lexical diversity (pattern B5).
+
+    Direction and thresholds set 2026-07-17 from the eval-corpus
+    calibration (dev/evals/ttr-calibration-2026-07-17.md): generated prose
+    ran more lexically diverse than human prose in every length band, so
+    the check scores the mean type-token ratio over sliding 150-word
+    windows (length-neutral) and flags at 0.71, with 0.74 marking the top
+    of the observed human range.
+    """
+    window, step, flag_at, upper_tier = 150, 25, 0.71, 0.74
     clean = re.sub(r'[^a-zA-Z\s]', '', text.lower())
     words = clean.split()
-    if len(words) < 150:
+    if len(words) < window:
         return {
             "text": "vocabulary-diversity",
             "passed": True,
-            "evidence": f"Skipped: short text ({len(words)} words, need 150+)",
+            "evidence": f"Skipped: short text ({len(words)} words, need {window}+)",
         }
-    unique = len(set(words))
-    ratio = unique / len(words)
-    flagged = ratio <= 0.40
-    metric = f"type-token ratio {ratio:.2f} ({unique} unique of {len(words)} words, target above 0.40)"
+    ratios = [len(set(words[i:i + window])) / window
+              for i in range(0, len(words) - window + 1, step)]
+    mattr = sum(ratios) / len(ratios)
+    flagged = mattr >= flag_at
+    tier = " — above the observed human range" if mattr >= upper_tier else ""
+    metric = (f"windowed type-token ratio {mattr:.3f} "
+              f"({window}-word windows, flag at {flag_at:.2f}){tier}")
     return {
         "text": "vocabulary-diversity",
         "passed": not flagged,
         "metric": metric if flagged else None,
-        "evidence": f"Type-token ratio: {ratio:.3f} ({unique} unique / {len(words)} total, target: >0.40)",
+        "evidence": f"Windowed type-token ratio: {mattr:.3f} "
+                    f"({len(ratios)} window{'s' if len(ratios) != 1 else ''} of {window} words, "
+                    f"flag at {flag_at:.2f}){tier}",
     }
 
 
 HEDGING_PATTERNS = [
+    # Documented qualifiers previously absent from the density count
+    # (Grammarly C05); the minimum-candidates threshold guards single uses.
+    r"\bgenerally speaking\b", r"\bbroadly speaking\b", r"\bto some extent\b",
+    r"\barguably\b", r"\btends? to\b", r"\btypically\b",
     r"\bis (?:often|frequently|widely|commonly|generally|typically) (?:framed|seen|viewed|regarded|considered|described|understood|presented|perceived|characterized|characterised)\b",
     r"\bis (?:increasingly|often) (?:measured|prioritised|prioritized|recognized|recognised|valued|questioned)\b",
     r"\bis (?:contingent|predicated|dependent) on\b",
@@ -1643,16 +3529,58 @@ HEDGING_PATTERNS = [
     r"\bis (?:difficult|hard|impossible) to (?:overstate|ignore|deny|dismiss|overlook)\b",
     r"\bremains (?:to be seen|unclear|uncertain|an open question)\b",
     r"\bit (?:could|might|may) be argued\b",
+    r"\bit could be said\b",
     r"\bis not (?:guaranteed|without)\b",
     r"\bis (?:overstated|understated|underestimated|overestimated)\b",
     r"\bis less about\b.*\bmore about\b",
     r"\ba common (?:assumption|misconception|objection|criticism) is\b",
+    r"\bpotentially\b",
+    r"\bmay possibly\b",
+    r"\bmight conceivably\b",
+    r"\b(?:some|certain) (?:people|residents|users|cases|areas|contexts)\b",
+    # DR-150 additions (2026-07-17): reflexive qualifiers previously
+    # invisible to the density count.
+    r"\bmay vary\b",
+    # DR-118 addition (2026-07-17): the AIDetectors hedge frame missing
+    # from the list ("could potentially" was present, "can potentially" was not).
+    r"\bcan potentially\b",
+    r"\bin most cases\b",
+    r"\bit depends\b",
+    r"\bin general[,.]",
+    r"\bas a rule\b",
+    r"\bmore often than not\b",
 ]
 
 
 def check_section_scaffolding(text):
-    """Detect repeated identical subheadings across sections (pattern 38)."""
-    lines = text.split('\n')
+    """Detect repeated labels and mechanical heading structure (pattern G6)."""
+    lines = strip_front_matter(text).split('\n')
+    heading_pattern = re.compile(r"^\s*(#{1,6})\s+\S")
+    thematic_break_pattern = re.compile(r"^\s*(?:-{3,}|\*{3,}|_{3,})\s*$")
+    headings = []
+    structural_matches = []
+    for line_number, line in enumerate(lines):
+        heading = heading_pattern.match(line)
+        if not heading:
+            continue
+        level = len(heading.group(1))
+        headings.append((line_number, level, line.strip()))
+
+        previous_line = line_number - 1
+        while previous_line >= 0 and not lines[previous_line].strip():
+            previous_line -= 1
+        if (previous_line >= 0
+                and thematic_break_pattern.fullmatch(lines[previous_line])):
+            structural_matches.append(
+                "\n".join(lines[previous_line:line_number + 1])
+            )
+
+    if headings and headings[0][1] > 2:
+        structural_matches.append(headings[0][2])
+    for previous, current in zip(headings, headings[1:]):
+        if current[1] > previous[1] + 1:
+            structural_matches.append(current[2])
+
     counts = {}
     for line in lines:
         stripped = line.strip()
@@ -1667,28 +3595,263 @@ def check_section_scaffolding(text):
             counts[normalised] = counts.get(normalised, 0) + 1
     # Flag if any normalised line appears 3+ times
     repeated = {label: n for label, n in counts.items() if n >= 3}
-    if repeated:
-        worst = max(repeated, key=repeated.get)
-        # Re-find the verbatim label in the original text (case preserved).
+    if repeated or structural_matches:
         verbatim = []
-        seen = set()
-        for label_lc in sorted(repeated, key=lambda k: -repeated[k]):
-            for line in lines:
-                stripped = re.sub(r'^#+\s*', '', line.strip()).strip()
-                if stripped.lower() == label_lc and stripped not in seen:
-                    seen.add(stripped)
-                    verbatim.append(stripped)
-                    break
+        if repeated:
+            worst = max(repeated, key=repeated.get)
+            # Re-find the verbatim label in the original text (case preserved).
+            seen = set()
+            for label_lc in sorted(repeated, key=lambda k: -repeated[k]):
+                for line in lines:
+                    stripped = re.sub(r'^#+\s*', '', line.strip()).strip()
+                    if stripped.lower() == label_lc and stripped not in seen:
+                        seen.add(stripped)
+                        verbatim.append(stripped)
+                        break
+        evidence_parts = []
+        if repeated:
+            evidence_parts.append(f"'{worst}' repeated {repeated[worst]} times")
+        if structural_matches:
+            evidence_parts.append(
+                f"{len(structural_matches)} heading-structure issue(s)"
+            )
         return {
             "text": "no-section-scaffolding",
             "passed": False,
-            "matches": verbatim,
-            "evidence": f"'{worst}' repeated {repeated[worst]} times",
+            "matches": verbatim + structural_matches,
+            "evidence": "; ".join(evidence_parts),
         }
     return {
         "text": "no-section-scaffolding",
         "passed": True,
         "evidence": "No repeated section labels",
+    }
+
+
+MODAL_QUALIFIERS = {
+    "can", "could", "might", "potentially", "possibly",
+    "often", "sometimes", "typically", "usually", "generally",
+}
+
+
+def check_modal_stacks(text):
+    """Detect sentences stacking 3+ bare modal/frequency qualifiers (pattern E9)."""
+    sentences = split_sentences(text)
+    matches = []
+    for sentence in sentences:
+        words = re.findall(r"[A-Za-z']+", sentence)
+        # "may" counts only in lowercase so the month stays out.
+        hits = [w for w in words if w.lower() in MODAL_QUALIFIERS or w == "may"]
+        if len(hits) >= 3:
+            matches.append(sentence.strip()[:100])
+    return {
+        "text": "no-modal-stacks",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} sentence(s) stacking 3+ modal/frequency qualifiers"
+            if matches
+            else "No modal qualifier stacks"
+        ),
+    }
+
+
+def check_heading_one_liners(text):
+    """Detect headings followed by a one-sentence paragraph (pattern G10)."""
+    thresholds = CHECK_THRESHOLDS.get("no-heading-one-liners", {})
+    minimum = thresholds.get("minimum_candidates", 2)
+    blocks = [b.strip() for b in text.split('\n\n') if b.strip()]
+    matches = []
+    for i, block in enumerate(blocks[:-1]):
+        if '\n' in block or not re.match(r'^#{1,6}\s+\S', block):
+            continue
+        following = blocks[i + 1]
+        first_line = following.split('\n', 1)[0].lstrip()
+        if re.match(r'^(#{1,6}\s|[-*+]\s|\d+[.)]\s|>)', first_line):
+            continue
+        if '\n' in following:
+            continue
+        if len(split_sentences(following)) == 1:
+            heading = re.sub(r'^#+\s*', '', block)
+            matches.append(f"{heading}: {following}"[:120])
+    passed = len(matches) < minimum
+    return {
+        "text": "no-heading-one-liners",
+        "passed": passed,
+        "matches": [] if passed else matches,
+        "evidence": (
+            f"Found {len(matches)} heading(s) each followed by a one-sentence paragraph"
+            if not passed
+            else f"One-line sections under headings: {len(matches)}"
+        ),
+    }
+
+
+# British and American spelling families that genuinely alternate.  Words whose
+# American form is also an ordinary British word with its own sense (tyre/tire,
+# kerb/curb, cheque/check, draught/draft, licence/license, practise/practice,
+# storey/story, programme/program, judgement/judgment, learnt/learned) are left
+# out: counting them would manufacture a mixture that is not there.
+_ISE_STEMS = (
+    "apolog", "author", "categor", "character", "civil", "colon", "critic",
+    "emphas", "familiar", "formal", "general", "harmon", "hospital", "ideal",
+    "industrial", "initial", "legitim", "local", "maxim", "memor", "minim",
+    "mobil", "modern", "normal", "optim", "organ", "penal", "personal",
+    "priorit", "public", "rational", "real", "recogn", "revolution", "social",
+    "special", "stabil", "standard", "steril", "summar", "symbol", "sympath",
+    "theor", "util", "visual",
+)
+_OUR_STEMS = (
+    "arm", "behavi", "cand", "clam", "col", "demean", "endeav", "fav", "flav",
+    "harb", "hon", "hum", "lab", "neighb", "od", "parl", "rig", "rum", "savi",
+    "splend", "tum", "val", "vap", "vig",
+)
+_RE_STEMS = (
+    "calib", "cent", "fib", "lust", "meag", "scept", "somb", "spect", "theat",
+    "lit",
+)
+_OGUE_STEMS = ("anal", "catal", "dial", "epil", "monol", "prol")
+_DOUBLE_L_STEMS = (
+    "cancel", "counsel", "equal", "fuel", "initial", "jewel", "label", "level",
+    "marvel", "model", "rival", "signal", "total", "travel",
+)
+_AE_OE_PAIRS = (
+    ("anaem", "anem"), ("anaesthe", "anesthe"), ("diarrhoe", "diarrhe"),
+    ("encyclopaed", "encycloped"), ("foet", "fet"), ("gynaecolog", "gynecolog"),
+    ("haemo", "hemo"), ("leukaem", "leukem"), ("oesophag", "esophag"),
+    ("orthopaed", "orthoped"), ("palaeo", "paleo"), ("paediatr", "pediatr"),
+    ("manoeuvr", "maneuver"),
+)
+_SPELLING_ONE_OFFS = (
+    ("grey", "gray"), ("aluminium", "aluminum"), ("sulphur", "sulfur"),
+    ("pyjamas", "pajamas"), ("moustache", "mustache"), ("cosy", "cozy"),
+    ("sceptic", "skeptic"), ("defence", "defense"), ("offence", "offense"),
+    ("pretence", "pretense"), ("plough", "plow"), ("smoulder", "smolder"),
+    ("mould", "mold"), ("artefact", "artifact"),
+)
+
+
+def _spelling_patterns(american):
+    """Build one convention's regex list; `american` picks the spelling side."""
+    joined = lambda stems: "|".join(stems)
+    ise = "iz" if american else "is"
+    yse = "yz" if american else "ys"
+    our = "or" if american else "our"
+    reer = "er" if american else "re"
+    ogue = "og" if american else "ogue"
+    doubled = "" if american else "l"
+    patterns = [
+        rf"\b(?:{joined(_ISE_STEMS)}){ise}(?:e|es|ed|ing|er|ers|ation|ations|ational)\b",
+        rf"\b(?:anal|catal|paral){yse}(?:e|ed|ing|er|ers)\b",
+        rf"\b(?:{joined(_OUR_STEMS)}){our}(?:|s|ed|ing|ful|fully|less|able|ably|ite|ites)\b",
+        rf"\b(?:{joined(_RE_STEMS)}){reer}(?:|s|d|ed|ing)\b",
+        rf"\b(?:{joined(_OGUE_STEMS)}){ogue}(?:|s)\b",
+        rf"\b(?:{joined(_DOUBLE_L_STEMS)}){doubled}(?:ed|ing|er|ers|ous)\b",
+    ]
+    patterns += [rf"\b{a if american else b}\w*\b" for b, a in _AE_OE_PAIRS]
+    patterns += [rf"\b{a if american else b}(?:s|al|ally|ism|ical)?\b"
+                 for b, a in _SPELLING_ONE_OFFS]
+    return patterns
+
+
+BRITISH_SPELLINGS = _spelling_patterns(american=False)
+AMERICAN_SPELLINGS = _spelling_patterns(american=True)
+
+
+def check_mixed_spelling_conventions(text):
+    """Detect British and American spellings of the same families in one text (pattern B6).
+
+    Either convention used consistently is fine.  The finding is the mixture,
+    which is what appears when generated text is pasted into a document written
+    the other way.
+    """
+    british_count, british = count_pattern_matches(text, BRITISH_SPELLINGS)
+    american_count, american = count_pattern_matches(text, AMERICAN_SPELLINGS)
+    mixed = british_count > 0 and american_count > 0
+    return {
+        "text": "no-mixed-spelling-conventions",
+        "passed": not mixed,
+        "matches": british + american if mixed else [],
+        "evidence": (
+            f"Found both conventions: British {sorted(set(british))} "
+            f"and American {sorted(set(american))}"
+            if mixed
+            else "No mixed spelling conventions"
+        ),
+    }
+
+
+FALSE_RANGE_PAIR = re.compile(
+    r"\bfrom\b\s+(?:[^,.;:!?]{1,70}?)\s+\bto\b", re.IGNORECASE
+)
+
+
+def check_false_ranges(text):
+    """Detect stacked `from X to Y` pairs inside one sentence (pattern A6).
+
+    A single pair is ordinary English and runs slightly more often in human
+    prose than generated (0.61 against 0.48 per 1000 words in the project
+    corpora).  Stacking two or more in one sentence is what skews generated:
+    0.069 against 0.014 per 1000 words, about five times the rate.
+    """
+    matches = []
+    for sentence in split_sentences(text):
+        pairs = FALSE_RANGE_PAIR.findall(sentence)
+        if len(pairs) >= 2:
+            matches.append(sentence[:160])
+    return {
+        "text": "no-false-ranges",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} sentence(s) stacking 2 or more from-to "
+            f"pairs: {matches}"
+            if matches
+            else "No stacked from-to ranges"
+        ),
+    }
+
+
+TITLE_CASE_MINOR_WORDS = {
+    "a", "an", "the", "and", "or", "but", "nor", "for", "so", "yet",
+    "as", "at", "by", "in", "into", "of", "on", "over", "per", "than",
+    "that", "to", "up", "via", "with", "from", "if",
+}
+
+
+def check_title_case_headings(text):
+    """Detect headings that capitalise minor words (pattern B6).
+
+    Conventional title case leaves articles, prepositions, and conjunctions
+    lowercase inside a heading.  Capitalising them is the machine variant, so
+    the check looks for a capitalised minor word between the first and last
+    words.  A word opening a subtitle after a colon is left alone.
+    """
+    matches = []
+    for line in text.split("\n"):
+        heading = re.match(r"^\s*#{1,6}\s+(\S.*)$", line)
+        if not heading:
+            continue
+        title = heading.group(1).strip()
+        words = title.split()
+        if len(words) < 4:
+            continue
+        for index, word in enumerate(words[1:-1], start=1):
+            if words[index - 1].endswith(":"):
+                continue
+            bare = re.sub(r"[^\w'’-]", "", word)
+            if bare[:1].isupper() and bare.casefold() in TITLE_CASE_MINOR_WORDS:
+                matches.append(title)
+                break
+    return {
+        "text": "no-title-case-headings",
+        "passed": not matches,
+        "matches": matches,
+        "evidence": (
+            f"Found {len(matches)} heading(s) capitalising minor words: {matches}"
+            if matches
+            else "No title case headings"
+        ),
     }
 
 
@@ -1704,13 +3867,14 @@ def check_hedging_density(text):
             if found:
                 total_matches += len(found)
                 all_found.extend(found)
-    # Flag at 4+ hedging constructions across the whole text
+    # Three distinct hedges in one short passage already form a stacked signal.
     return {
         "text": "no-excessive-hedging",
-        "passed": total_matches < 4,
+        "passed": total_matches < threshold_value("no-excessive-hedging", "minimum_candidates", 2),
+        "matches": all_found,
         "evidence": (
             f"Found {total_matches} hedging constructions: {all_found[:5]}"
-            if total_matches >= 4
+            if total_matches >= 3
             else f"Hedging constructions: {total_matches}"
         ),
     }
@@ -1725,15 +3889,20 @@ NOTABILITY_CLAIMS = [
     r"\b(?:over|more than) [\d,]+\+? (?:followers?|subscribers?|fans?)\b",
     r"\b(?:cited|featured|covered|profiled) (?:in|by) (?:multiple|numerous|several) (?:major )?(?:outlets?|publications?|media)\b",
     r"\bgained (?:significant|widespread|notable) (?:media )?attention\b",
+    r"\bcited in [^,.;:\n]{1,40},\s*[^,.;:\n]{1,40},\s*(?:[^,.;:\n]{1,40},\s*)?(?:and|&) [^.;:\n]{1,60}",
+    r"\b(?:trade|industry|music|business|tech(?:nology)?|specialist|professional|toy industry) (?:outlets?|publications?)\b",
+    r"\bprofiled in\b",
+    r"\b(?:prominent|respected|major) (?:news )?media outlets?\b",
 ]
 
 
 def check_notability_claims(text):
-    """Detect notability claims that list authorities without context (pattern 2)."""
+    """Detect notability claims that list authorities without context (pattern A2)."""
     count, matches = count_pattern_matches(text, NOTABILITY_CLAIMS)
     return {
         "text": "no-notability-claims",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} notability claim(s): {matches[:3]}"
             if count > 0
@@ -1743,22 +3912,25 @@ def check_notability_claims(text):
 
 
 VAGUE_ATTRIBUTIONS = [
-    r"\bindustry reports? (?:say|state|claim|note|suggest|indicate|highlight|reveal|show|find)\b",
+    r"\bindustry reports?(?: (?:say|state|claim|note|suggest|indicate|highlight|reveal|show|find))?\b",
     r"\bobservers? (?:have )?(?:cited|noted|argued|claimed|suggested|pointed out)\b",
     r"\bexperts? (?:argue|believe|say|note|suggest|claim|indicate|warn|caution|agree)\b",
     r"\b(?:some|many|several|various|certain|a number of) (?:critics?|analysts?|scholars?|researchers?|commentators?|observers?) (?:argue|believe|say|note|suggest|claim|warn|cite|point out)\b",
-    r"\bseveral (?:sources?|publications?|outlets?|reports?) (?:have )?(?:cited|noted|reported|claimed|confirmed)\b",
+    r"\bseveral (?:sources?|publications?|outlets?|reports?)(?: (?:have )?(?:cited|noted|reported|claimed|confirmed))?\b",
     r"\bit is (?:widely |often |frequently |commonly |generally )?(?:believed|argued|claimed|noted|reported|understood|accepted|acknowledged|recognised|recognized)\b",
-    r"\b(?:research|studies) (?:has|have)? ?(?:shown|demonstrated|indicated|suggested|found) that\b",
+    r"\b(?:research|studies) (?:has|have)? ?(?:shown|demonstrated|indicated|suggested|found)(?: that)?\b",
+    r"\bstudies show(?: that)?\b",
+    r"\bdata proves\b",
 ]
 
 
 def check_vague_attributions(text):
-    """Detect vague-authority attributions without named sources (pattern 5)."""
+    """Detect vague-authority attributions without named sources (pattern A5)."""
     count, matches = count_pattern_matches(text, VAGUE_ATTRIBUTIONS)
     return {
         "text": "no-vague-attributions",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} vague attribution(s): {matches[:3]}"
             if count > 0
@@ -1768,7 +3940,7 @@ def check_vague_attributions(text):
 
 
 def check_boldface_overuse(text):
-    """Detect mechanical boldface emphasis in prose (pattern 13)."""
+    """Detect mechanical boldface emphasis in prose (pattern C1)."""
     bold_pattern = re.compile(r"\*\*[^*\n]{1,80}\*\*")
     list_or_heading = re.compile(r"^\s*(?:[-*+•]|\d+\.|#{1,6})\s+")
     total = 0
@@ -1779,31 +3951,51 @@ def check_boldface_overuse(text):
         for m in bold_pattern.findall(line):
             total += 1
             matches.append(m)
+    # A raw count is length-biased: a 4,000-word document reaches four bold spans
+    # more readily than a 1,000-word one whatever wrote it, which is how this check
+    # came to flag 8% of human documents against 2% of generated ones. Measured as a
+    # rate the direction corrects. 2.0 per 1000 is four spans at the corpus median
+    # length, so the cut-off is unchanged for a typical document.
+    words = len(re.findall(r"\b\w+\b", text))
+    minimum_candidates = threshold_value("no-boldface-overuse", "minimum_candidates", 4)
+    maximum_rate = threshold_value("no-boldface-overuse", "maximum_rate_per_1000", 2.0)
+    rate = total / words * 1000 if words else 0.0
+    flagged = total >= minimum_candidates and rate >= maximum_rate
     return {
         "text": "no-boldface-overuse",
-        "passed": total < 4,
+        "passed": not flagged,
+        "matches": matches,
+        "metric_number": rate,
         "evidence": (
-            f"Found {total} bold span(s) in prose: {matches[:5]}"
-            if total >= 4
-            else f"Bold spans in prose: {total}"
+            f"Found {total} bold span(s) in prose, {rate:.1f} per 1000 words "
+            f"(target: <{maximum_rate:g}): {matches[:5]}"
+            if flagged
+            else f"Bold spans in prose: {total} ({rate:.1f} per 1000 words)"
         ),
     }
 
 
 def check_inline_header_lists(text):
-    """Detect list items that start with a bolded header and colon (pattern 14)."""
-    header_in_list = re.compile(
-        r"^\s*(?:[-*+•]|\d+\.)\s+\*\*[^*\n]{1,60}:\*\*",
-        re.MULTILINE,
+    """Detect list items that start with a bolded header and colon (pattern C2)."""
+    list_prefix = re.compile(
+        r"^\s*(?:[-*+•◦▪▫‣⁃●○]|\d+[.)])\s+"
     )
-    matches = header_in_list.findall(text)
+    bold_label = re.compile(r"\*\*[^*\n]{1,60}?(?::\*\*|\*\*:)")
+    matches = []
+    for line in text.splitlines():
+        labels = bold_label.findall(line)
+        if len(labels) >= 2:
+            matches.extend(labels)
+        elif labels and list_prefix.match(line):
+            matches.append(labels[0])
     return {
         "text": "no-inline-header-lists",
-        "passed": len(matches) < 2,
+        "passed": len(matches) < threshold_value("no-inline-header-lists", "minimum_candidates", 2),
+        "matches": matches,
         "evidence": (
-            f"Found {len(matches)} list item(s) with bolded headers"
+            f"Found {len(matches)} bold-label segment(s)"
             if len(matches) >= 2
-            else f"List items with bolded headers: {len(matches)}"
+            else f"Bold-label segments: {len(matches)}"
         ),
     }
 
@@ -1828,21 +4020,25 @@ COMPOUND_MODIFIER_RE = re.compile("|".join(COMPOUND_MODIFIERS))
 
 
 def check_compound_modifier_density(text):
-    """Detect three or more hyphenated compound modifiers in a single sentence (pattern 18)."""
+    """Detect three or more hyphenated compound modifiers in a single sentence (pattern C6)."""
     sentences = re.split(r"(?<=[.!?])\s+", text)
     flagged = []
+    minimum_per_sentence = threshold_value(
+        "no-compound-modifier-density", "minimum_per_sentence", 3
+    )
     for sent in sentences:
         sent_lower = sent.lower()
         if "-" not in sent_lower:
             continue
         per_sentence = COMPOUND_MODIFIER_RE.findall(sent_lower)
-        if len(per_sentence) >= 3:
+        if len(per_sentence) >= minimum_per_sentence:
             flagged.append(per_sentence)
     return {
         "text": "no-compound-modifier-density",
         "passed": len(flagged) == 0,
         "evidence": (
-            f"Found {len(flagged)} sentence(s) with 3+ AI compound modifiers: {flagged[:2]}"
+            f"Found {len(flagged)} sentence(s) with {minimum_per_sentence}+ "
+            f"AI compound modifiers: {flagged[:2]}"
             if flagged
             else "No dense compound-modifier sentences"
         ),
@@ -1864,11 +4060,12 @@ KNOWLEDGE_CUTOFF_DISCLAIMERS = [
 
 
 def check_knowledge_cutoff_disclaimers(text):
-    """Detect AI knowledge-cutoff or training-update disclaimers (pattern 20)."""
+    """Detect AI knowledge-cutoff or training-update disclaimers (pattern D2)."""
     count, matches = count_pattern_matches(text, KNOWLEDGE_CUTOFF_DISCLAIMERS)
     return {
         "text": "no-knowledge-cutoff-disclaimers",
         "passed": count == 0,
+        "matches": matches,
         "evidence": (
             f"Found {count} knowledge-cutoff disclaimer(s): {matches[:3]}"
             if count > 0
@@ -1885,8 +4082,16 @@ ALL_CHECKS = {
     "no-nonliteral-land-surface": check_nonliteral_land_surface,
     "overall-signal-stacking": check_overall_signal_stacking,
     "no-manufactured-insight": check_manufactured_insight,
+    "no-performed-candour": check_performed_candour,
+    "no-formulaic-social-posts": check_formulaic_social_posts,
     "no-staccato-sequences": check_staccato,
     "no-anaphora": check_anaphora,
+    "no-paragraph-anaphora": check_paragraph_anaphora,
+    "no-heading-one-liners": check_heading_one_liners,
+    "no-title-case-headings": check_title_case_headings,
+    "no-mixed-spelling-conventions": check_mixed_spelling_conventions,
+    "no-false-ranges": check_false_ranges,
+    "no-modal-stacks": check_modal_stacks,
     "no-collaborative-artifacts": check_collaborative_artifacts,
     "no-curly-quotes": check_curly_quotes,
     "sentence-length-variance": check_sentence_variance,
@@ -1901,16 +4106,26 @@ ALL_CHECKS = {
     "no-soft-scaffolding": check_soft_scaffolding,
     "no-orphaned-demonstratives": check_orphaned_demonstratives,
     "no-forced-triads": check_rule_of_three,
+    "no-nominalisation-rate": check_nominalisation_rate,
+    "no-that-relative-rate": check_that_relative_rate,
+    "no-participial-clause-rate": check_participial_clause_rate,
+    "no-passive-voice-rate": check_passive_voice_rate,
+    "no-it-pronoun-rate": check_it_pronoun_rate,
+    "no-latinate-verb-rate": check_latinate_verb_rate,
+    "word-length-average": check_word_length_average,
+    "no-mixed-script-words": check_mixed_script_words,
+    "concreteness-average": check_concreteness_average,
     "no-superficial-ing": check_superficial_ing,
     "no-ghost-spectral-density": check_ghost_spectral,
     "no-quietness-obsession": check_quietness,
     "no-rhetorical-questions": check_rhetorical_questions,
     "no-excessive-lists": check_list_density,
+    "no-symmetric-list-items": check_symmetric_list_items,
     "no-unicode-flair": check_unicode_flair,
     "no-dramatic-transitions": check_dramatic_transitions,
     "no-formulaic-openers": check_formulaic_openers,
     "no-signposted-conclusions": check_signposted_conclusions,
-    "no-markdown-headings": check_markdown_headings,
+    "no-parenthetical-headings": check_parenthetical_headings,
     "no-corporate-ai-speak": check_corporate_ai_speak,
     "no-this-chains": check_this_chains,
     "no-excessive-hedging": check_hedging_density,
@@ -1921,7 +4136,6 @@ ALL_CHECKS = {
     "no-bland-critical-template": check_bland_critical_template,
     "no-rubric-echoing": check_rubric_echoing,
     "vocabulary-diversity": check_type_token_ratio,
-    "no-triad-density": check_triad_density,
     "no-section-scaffolding": check_section_scaffolding,
     "no-notability-claims": check_notability_claims,
     "no-vague-attributions": check_vague_attributions,
@@ -1930,6 +4144,160 @@ ALL_CHECKS = {
     "no-compound-modifier-density": check_compound_modifier_density,
     "no-knowledge-cutoff-disclaimers": check_knowledge_cutoff_disclaimers,
 }
+
+
+LEXICAL_CHECKS = {
+    "no-ai-vocabulary-clustering", "no-nonliteral-land-surface",
+    "no-manufactured-insight", "no-performed-candour",
+    "no-formulaic-social-posts",
+    "no-collaborative-artifacts", "no-promotional-language",
+    "no-significance-inflation", "no-negative-parallelisms",
+    "no-copula-avoidance", "no-filler-phrases", "no-generic-conclusions",
+    "no-false-concession-hedges", "no-soft-scaffolding",
+    "no-orphaned-demonstratives", "no-superficial-ing",
+    "no-ghost-spectral-density", "no-quietness-obsession",
+    "no-dramatic-transitions", "no-formulaic-openers",
+    "no-corporate-ai-speak", "no-excessive-hedging",
+    "no-tidy-paragraph-endings", "no-bland-critical-template",
+    "no-rubric-echoing", "no-notability-claims", "no-vague-attributions",
+    "no-compound-modifier-density", "no-knowledge-cutoff-disclaimers",
+}
+
+# These lexical checks intentionally recognise constructions inside attributed
+# or inline quotations.  Candidate records retain `quoted: true` so the report
+# can distinguish occurrence from authorship.
+QUOTE_AWARE_LEXICAL_CHECKS = {"no-tidy-paragraph-endings"}
+
+STATISTICAL_CHECKS = {
+    "sentence-length-variance", "word-length-average", "concreteness-average", "no-excessive-lists", "no-this-chains",
+    "no-countdown-negation", "no-negation-density",
+    "paragraph-length-uniformity", "vocabulary-diversity",
+    "no-section-scaffolding", "no-compound-modifier-density",
+    "no-paragraph-anaphora", "no-heading-one-liners", "no-modal-stacks",
+    # The Biber and Xia feature-rate checks (B7 to B12). They report a density
+    # and no longer carry a phrase list, so `lexical` stopped describing them.
+    "no-nominalisation-rate", "no-that-relative-rate",
+    "no-participial-clause-rate", "no-passive-voice-rate",
+    "no-it-pronoun-rate", "no-latinate-verb-rate",
+}
+
+AGGREGATE_CHECKS = {"overall-signal-stacking"}
+
+CHECK_THRESHOLDS = {
+    "overall-signal-stacking": 4,
+    "no-staccato-sequences": {
+        "minimum_run": 3,
+        "minimum_repeated_opener_run": 2,
+        "rate_minimum_words": 300,
+        "maximum_short_rate_per_1000": 30.0,
+        "maximum_mean_sentence_words": 15.0,
+    },
+    "no-soft-scaffolding": {"minimum_candidates": 2},
+    "no-orphaned-demonstratives": {"minimum_candidates": 3},
+    "no-rhetorical-questions": {"minimum_candidates": 1},
+    "no-excessive-lists": {"minimum_items": 8, "minimum_blocks": 2, "minimum_line_ratio": 0.3},
+    "no-symmetric-list-items": {"minimum_items": 3, "maximum_deviation": 2},
+    "no-unicode-flair": {"minimum_candidates": 2},
+    "no-excessive-hedging": {"minimum_candidates": 2},
+    "paragraph-length-uniformity": {"minimum_paragraphs": 7, "maximum_cv": 0.26},
+    "no-tidy-paragraph-endings": {"minimum_candidates": 1, "maximum_rate_per_1000": 0.5},
+    "no-bland-critical-template": {"minimum_candidates": 3},
+    "no-rubric-echoing": {"minimum_candidates": 3},
+    "no-forced-triads": {"minimum_words": 300, "maximum_rate_per_1000": 4.0},
+    "no-boldface-overuse": {"minimum_candidates": 4, "maximum_rate_per_1000": 2.0},
+    "no-inline-header-lists": {"minimum_candidates": 2},
+    "no-heading-one-liners": {"minimum_candidates": 2},
+    "no-compound-modifier-density": {"minimum_per_sentence": 3},
+    "sentence-length-variance": {"minimum_stdev": 9.0},
+}
+
+
+CONTEXT_GATED_CHECKS = {
+    "recipe": {"no-excessive-lists", "no-signposted-conclusions"},
+    "technical_documentation": {"no-excessive-lists", "no-signposted-conclusions"},
+    "academic": {"no-excessive-hedging"},
+    "formal_report": {"no-em-dashes", "no-signposted-conclusions"},
+    "dialogue_or_fiction": {"no-em-dashes", "no-anaphora"},
+}
+
+
+@lru_cache(maxsize=8)
+def infer_prose_context(text):
+    """Infer only high-confidence genre contexts used for false-positive gates."""
+    lower = text.casefold()
+    contexts = set()
+    if re.search(r"(?m)^#{1,6}\s+ingredients\s*$", lower) and re.search(
+        r"(?m)^#{1,6}\s+(?:method|directions|instructions)\s*$", lower
+    ):
+        contexts.add("recipe")
+    if ("`" in text or "http" in lower or "api" in lower) and re.search(
+        r"(?m)^#{1,6}\s+", text
+    ):
+        contexts.add("technical_documentation")
+    if re.search(r"\b(?:sample size|statistical power|confidence interval|limitations?)\b", lower):
+        contexts.add("academic")
+    if re.search(r"\b(?:year over year|quarter|revenue|operating margin)\b", lower):
+        contexts.add("formal_report")
+    if re.search(r"(?m)^[A-Z][A-Z ]+:\s", text):
+        contexts.add("dialogue_or_fiction")
+    return frozenset(contexts)
+
+
+def apply_context_gate(check_id, result, original_text):
+    """Suppress narrow, genre-licensed look-alikes after recognition."""
+    contexts = infer_prose_context(original_text)
+    reasons = sorted(context for context in contexts if check_id in CONTEXT_GATED_CHECKS.get(context, set()))
+    if not reasons or result["passed"]:
+        return result
+    result = dict(result)
+    result["passed"] = True
+    result["threshold_met"] = False
+    result["context_suppressed"] = True
+    result["context_reason"] = ", ".join(reasons)
+    return result
+
+
+def _wrap_check(check_id, check):
+    def wrapped(text):
+        if check_id in QUOTE_AWARE_LEXICAL_CHECKS:
+            check_text = mask_non_prose_preserving_quotes(text)
+        elif check_id in LEXICAL_CHECKS:
+            check_text = mask_non_prose(text)
+        else:
+            check_text = text
+        result = enrich_check_result(recut_matches_from_draft(check(check_text), text), text)
+        result["threshold"] = CHECK_THRESHOLDS.get(check_id)
+        if check_id in AGGREGATE_CHECKS:
+            result["evidence_type"] = "aggregate"
+            result["component_signals"] = result.get("components", [])
+            result["component_count"] = len(result["component_signals"])
+        elif check_id in STATISTICAL_CHECKS:
+            result["evidence_type"] = "statistical"
+            result["metric_value"] = (
+                result.get("metric")
+                if result.get("metric") is not None
+                else result.get("candidate_count")
+            )
+            result["sample_size"] = len(re.findall(r"\b\w+\b", check_text))
+        else:
+            result["evidence_type"] = "lexical"
+            result["spans"] = result["candidates"]
+            result["match_count"] = result["candidate_count"]
+        gated = apply_context_gate(check_id, result, text)
+        gated["context_gate"] = {
+            "applied": bool(gated.get("context_suppressed")),
+            "raw_evidence": result.get("evidence"),
+            "suppression_reason": gated.get("context_reason"),
+            "effective_threshold": gated.get("threshold"),
+        }
+        return gated
+
+    wrapped.__name__ = check.__name__
+    wrapped.__doc__ = check.__doc__
+    return wrapped
+
+
+ALL_CHECKS = {check_id: _wrap_check(check_id, check) for check_id, check in ALL_CHECKS.items()}
 
 
 # CHECK_REPORT_TEXT, CHECK_WHY_IT_MATTERS, CHECK_METADATA were migrated
@@ -2012,7 +4380,7 @@ def friendly_evidence(result):
     if not isinstance(samples, list):
         return evidence
     prefix = evidence[:list_match.start()].strip()
-    if result["text"] == "no-triad-density":
+    if result["text"] == "no-forced-triads":
         shown = samples[:3]
         sample_text = ", ".join(f'"{sample}"' for sample in shown)
         suffix = "" if len(samples) <= 3 else f", plus {len(samples) - 3} more"
@@ -2083,7 +4451,10 @@ def _evidence_envelope(result):
     return {
         "quoted_phrases": _extract_quoted_phrases(result),
         "metric": metric if isinstance(metric, str) and metric else None,
-        "locations": [],  # location tracking not yet wired through the checks
+        # Deliberately empty. `recut_matches_from_draft` works out where every
+        # quote sits in the draft, but nothing reads a location, so publishing
+        # one would be contract surface with no consumer.
+        "locations": [],
         "counts": _extract_counts(result),
         "raw": raw,
     }
@@ -2131,6 +4502,472 @@ class JudgementOverlayError(ValueError):
     malformed JSON, or fails contract validation. main() catches this and
     prints the message + exit(1); tests catch it to assert error messages.
     """
+
+
+class AuditWorkBundleError(ValueError):
+    """Raised when a private audit-work bundle is missing, stale, or malformed."""
+
+
+def _canonical_json(value):
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+
+def _sha256_bytes(value):
+    return hashlib.sha256(value).hexdigest()
+
+
+def _sha256_json(value):
+    return _sha256_bytes(_canonical_json(value).encode("utf-8"))
+
+
+def markdown_segments(text):
+    """Return stable Markdown blocks using UTF-8 byte offsets."""
+    lines = text.splitlines(keepends=True)
+    segments = []
+    offsets = []
+    cursor = 0
+    for line in lines:
+        raw = line.encode("utf-8")
+        offsets.append((cursor, cursor + len(raw)))
+        cursor += len(raw)
+
+    def add_segment(segment_type, start_index, end_index):
+        start = offsets[start_index][0]
+        end = offsets[end_index][1]
+        segments.append({
+            "id": f"{segment_type}:{start}:{end}",
+            "type": segment_type,
+            "start_byte": start,
+            "end_byte": end,
+        })
+
+    index = 0
+    while index < len(lines):
+        stripped = lines[index].strip()
+        if not stripped:
+            index += 1
+            continue
+        if re.match(r"^ {0,3}#{1,6}(?:\s|$)", lines[index]):
+            add_segment("heading", index, index)
+            index += 1
+            continue
+        if (
+            index + 1 < len(lines)
+            and re.match(r"^ {0,3}(?:=+|-+)\s*$", lines[index + 1])
+            and stripped
+        ):
+            add_segment("heading", index, index + 1)
+            index += 2
+            continue
+        if re.match(r"^\s*(?:[-+*]|\d+[.)])\s+", lines[index]):
+            end = index
+            while end + 1 < len(lines) and re.match(
+                r"^\s*(?:[-+*]|\d+[.)])\s+", lines[end + 1]
+            ):
+                end += 1
+            add_segment("list_block", index, end)
+            index = end + 1
+            continue
+        end = index
+        while end + 1 < len(lines):
+            next_line = lines[end + 1]
+            if not next_line.strip():
+                break
+            if re.match(r"^ {0,3}#{1,6}(?:\s|$)", next_line):
+                break
+            if re.match(r"^\s*(?:[-+*]|\d+[.)])\s+", next_line):
+                break
+            if end + 2 < len(lines) and re.match(
+                r"^ {0,3}(?:=+|-+)\s*$", lines[end + 2]
+            ):
+                break
+            end += 1
+        add_segment("paragraph", index, end)
+        index = end + 1
+    return segments
+
+
+STRUCTURE_SEGMENT_TYPES = {"heading", "paragraph", "list_block", "slide_title", "caption"}
+
+
+def _utf8_boundaries(text):
+    boundaries = {0}
+    cursor = 0
+    for char in text:
+        cursor += len(char.encode("utf-8"))
+        boundaries.add(cursor)
+    return boundaries
+
+
+def load_structure_manifest(path, text):
+    """Load caller-supplied structure spans and generate trusted segment IDs."""
+    manifest_path = Path(path)
+    if not manifest_path.exists():
+        raise AuditWorkBundleError(f"structure-manifest path does not exist: {path}")
+    try:
+        data = json.loads(manifest_path.read_text())
+    except json.JSONDecodeError as exc:
+        raise AuditWorkBundleError(f"invalid JSON in structure manifest {path}: {exc}") from exc
+    if not isinstance(data, dict) or set(data) != {"segments"}:
+        raise AuditWorkBundleError("structure manifest must contain only a segments array")
+    if not isinstance(data["segments"], list):
+        raise AuditWorkBundleError("structure manifest segments must be a list")
+    boundaries = _utf8_boundaries(text)
+    total_bytes = len(text.encode("utf-8"))
+    segments = []
+    for index, item in enumerate(data["segments"]):
+        required = {"type", "start_byte", "end_byte"}
+        if not isinstance(item, dict) or set(item) != required:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} must contain exactly {sorted(required)}"
+            )
+        segment_type = item["type"]
+        start = item["start_byte"]
+        end = item["end_byte"]
+        if segment_type not in STRUCTURE_SEGMENT_TYPES:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} has invalid type {segment_type!r}"
+            )
+        if not isinstance(start, int) or isinstance(start, bool) or not isinstance(end, int) or isinstance(end, bool):
+            raise AuditWorkBundleError(f"structure manifest segment {index} offsets must be integers")
+        if start < 0 or end <= start or end > total_bytes:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} offsets {start}:{end} are out of range"
+            )
+        if start not in boundaries or end not in boundaries:
+            raise AuditWorkBundleError(
+                f"structure manifest segment {index} offset is not on a UTF-8 boundary"
+            )
+        segments.append({
+            "id": f"{segment_type}:{start}:{end}",
+            "type": segment_type,
+            "start_byte": start,
+            "end_byte": end,
+        })
+    segments.sort(key=lambda item: (item["start_byte"], item["end_byte"], item["type"]))
+    for previous, current in zip(segments, segments[1:]):
+        if current["start_byte"] < previous["end_byte"]:
+            raise AuditWorkBundleError(
+                f"structure manifest segments overlap at {current['start_byte']}"
+            )
+    if len({segment["id"] for segment in segments}) != len(segments):
+        raise AuditWorkBundleError("structure manifest contains duplicate segments")
+    return segments
+
+
+def _bundle_bindings(text, segments):
+    registry = registries.load_judgement()
+    return {
+        "content_sha256": _sha256_bytes(text.encode("utf-8")),
+        "registry_sha256": _sha256_json(registry),
+        "structure_sha256": _sha256_json(segments),
+    }
+
+
+def _byte_offset(text, char_offset):
+    return len(text[:char_offset].encode("utf-8"))
+
+
+def _candidate_segment_id(segments, start_byte, end_byte):
+    for segment in segments:
+        if segment["start_byte"] <= start_byte and end_byte <= segment["end_byte"]:
+            return segment["id"]
+    return None
+
+
+def harvest_semantic_candidates(text, segments):
+    """Collect non-failing spans that focus, but never replace, semantic reading."""
+    candidates = []
+    seen = set()
+
+    def add(match, kind, owner):
+        start_byte = _byte_offset(text, match.start())
+        end_byte = _byte_offset(text, match.end())
+        value = match.group(0)
+        key = (start_byte, end_byte, owner, kind)
+        if key in seen:
+            return
+        seen.add(key)
+        candidates.append({
+            "kind": kind,
+            "text": value,
+            "start_byte": start_byte,
+            "end_byte": end_byte,
+            "line": text.count("\n", 0, match.start()) + 1,
+            "segment_id": _candidate_segment_id(segments, start_byte, end_byte),
+            "semantic_owner": owner,
+        })
+
+    slogan = re.compile(
+        r"(?im)^(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
+        r"[a-z][\w'-]*(?:\s+[a-z][\w'-]*)?,\s+"
+        r"(?:one|two|three|four|five|six|seven|eight|nine|ten|many|few|\d+)\s+"
+        r"[a-z][\w'-]*(?:\s+[a-z][\w'-]*)?[.!]?$"
+    )
+    for match in slogan.finditer(text):
+        add(match, "counted_slogan", "formulaic_parallelism")
+
+    correction = re.compile(
+        r"(?is)\b[^.!?\n]{1,70}\b(?:does not|doesn't|is not|isn't)\b[^.!?\n]{1,70}[.!?]\s+"
+        r"[^.!?\n]{1,35}\b(?:does|is)\b[^.!?\n]{0,70}[.!?]"
+    )
+    for match in correction.finditer(text):
+        add(match, "cross_sentence_correction", "formulaic_parallelism")
+
+    two_beat = re.compile(
+        r"(?m)(?:^|(?<=[.!?])\s+)[A-Z][^.!?\n]{0,38}[.!?]\s+"
+        r"[A-Z][^.!?\n]{0,38}[.!?]"
+    )
+    for match in two_beat.finditer(text):
+        if all(len(part.split()) <= 6 for part in re.split(r"[.!?]", match.group(0)) if part.strip()):
+            add(match, "two_beat_short_run", "formulaic_parallelism")
+
+    for match in re.finditer(r"\b(?:this|that|it|these|those)\b", text, re.IGNORECASE):
+        add(match, "possible_vague_reference", "referential_clarity")
+    for match in re.finditer(r"\bthe\s+[A-Za-z][\w'-]*", text, re.IGNORECASE):
+        add(match, "definite_description", "referential_clarity")
+
+    recap = re.compile(
+        r"(?im)^[^\n.!?]{0,35}\bwhere\b[^\n.!?]{0,70},\s*\bwhy\b[^\n.!?]{0,70},\s*"
+        r"(?:and\s+)?\bhow\b[^\n.!?]{0,90}[.!?]?$"
+    )
+    for match in recap.finditer(text):
+        add(match, "summarising_tricolon", "semantic_redundancy")
+
+    triad = re.compile(
+        r"(?im)^[^\n]{0,80}\b[^,\n]{1,30},\s+[^,\n]{1,30},\s+(?:and|or)\s+[^,\n.!?]{1,35}[.!?]?$"
+    )
+    for match in triad.finditer(text):
+        add(match, "short_form_triad", "semantic_redundancy")
+
+    return candidates
+
+
+def build_audit_work_bundle(text, results, candidates=None, segments=None):
+    """Create the private artifact passed from deterministic to semantic review."""
+    segments = list(segments) if segments is not None else markdown_segments(text)
+    programmatic = human_report(results)["programmatic_checks"]
+    available_types = {segment["type"] for segment in segments}
+    limitations = []
+    if "slide_title" not in available_types:
+        limitations.append("slide_title structure unavailable without a structure manifest")
+    if "caption" not in available_types:
+        limitations.append("caption structure unavailable without a structure manifest")
+    return {
+        "schema_version": "1",
+        "bindings": _bundle_bindings(text, segments),
+        "segments": segments,
+        "programmatic_checks": programmatic,
+        "semantic_candidates": (
+            list(candidates)
+            if candidates is not None
+            else harvest_semantic_candidates(text, segments)
+        ),
+        "semantic_answers": [],
+        "limitations": limitations,
+    }
+
+
+def _semantic_status(record, answer):
+    schema_type = record["answer_schema"]["type"]
+    if schema_type in {"state", "trichotomy"}:
+        return "flagged" if answer in record["flagged_when"] else "clear"
+    if schema_type == "list":
+        return "flagged" if answer else "clear"
+    if schema_type == "composite":
+        return "flagged" if answer.get("watchlist_findings") else "clear"
+    raise AuditWorkBundleError(f"semantic id {record['id']!r}: unsupported answer schema")
+
+
+def _validate_list_answer(item_id, answer, field_names, text):
+    if not isinstance(answer, list):
+        raise AuditWorkBundleError(f"semantic id {item_id!r}: answer must be a list")
+    for index, item in enumerate(answer):
+        if not isinstance(item, dict) or set(item) != set(field_names):
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: list item {index} must contain {field_names}"
+            )
+        phrase = item[field_names[0]]
+        if not isinstance(phrase, str) or phrase not in text:
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: evidence phrase {phrase!r} is not in the input"
+            )
+
+
+def _validate_semantic_answer(record, item, text):
+    item_id = record["id"]
+    allowed = {"id", "status", "answer", "evidence"}
+    if set(item) != allowed:
+        raise AuditWorkBundleError(
+            f"semantic id {item_id!r}: fields must be exactly {sorted(allowed)}"
+        )
+    if item["status"] not in {"clear", "flagged"}:
+        raise AuditWorkBundleError(
+            f"semantic id {item_id!r}: invalid status {item['status']!r}"
+        )
+    if not isinstance(item["evidence"], list):
+        raise AuditWorkBundleError(f"semantic id {item_id!r}: evidence must be a list")
+    for phrase in item["evidence"]:
+        if not isinstance(phrase, str) or phrase not in text:
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: evidence phrase {phrase!r} is not in the input"
+            )
+
+    schema = record["answer_schema"]
+    schema_type = schema["type"]
+    answer = item["answer"]
+    if schema_type in {"state", "trichotomy"}:
+        if answer not in schema["values"]:
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: invalid answer {answer!r}"
+            )
+    elif schema_type == "list":
+        _validate_list_answer(item_id, answer, schema["items"], text)
+    elif schema_type == "composite":
+        fields = schema["fields"]
+        if not isinstance(answer, dict) or set(answer) != set(fields):
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: composite answer must contain {sorted(fields)}"
+            )
+        genre = answer["genre_detected"]
+        if genre not in fields["genre_detected"]["values"]:
+            raise AuditWorkBundleError(
+                f"semantic id {item_id!r}: invalid genre {genre!r}"
+            )
+        _validate_list_answer(
+            item_id,
+            answer["watchlist_findings"],
+            fields["watchlist_findings"]["items"],
+            text,
+        )
+    expected = _semantic_status(record, answer)
+    if item["status"] != expected:
+        raise AuditWorkBundleError(
+            f"semantic id {item_id!r}: status {item['status']!r} contradicts answer; expected {expected!r}"
+        )
+
+
+def validate_audit_work_bundle(text, bundle):
+    """Validate exact semantic coverage and reject stale work."""
+    if not isinstance(bundle, dict) or bundle.get("schema_version") != "1":
+        raise AuditWorkBundleError("audit-work bundle schema_version must be '1'")
+    required = {
+        "schema_version", "bindings", "segments", "programmatic_checks",
+        "semantic_candidates", "semantic_answers", "limitations",
+    }
+    if set(bundle) != required:
+        raise AuditWorkBundleError(
+            f"audit-work bundle fields must be exactly {sorted(required)}"
+        )
+    if not isinstance(bundle["segments"], list):
+        raise AuditWorkBundleError("segments must be a list")
+    boundaries = _utf8_boundaries(text)
+    segment_ids = []
+    for index, segment in enumerate(bundle["segments"]):
+        required_segment = {"id", "type", "start_byte", "end_byte"}
+        if not isinstance(segment, dict) or set(segment) != required_segment:
+            raise AuditWorkBundleError(
+                f"segment {index} must contain exactly {sorted(required_segment)}"
+            )
+        start = segment["start_byte"]
+        end = segment["end_byte"]
+        segment_type = segment["type"]
+        expected_id = f"{segment_type}:{start}:{end}"
+        if segment_type not in STRUCTURE_SEGMENT_TYPES:
+            raise AuditWorkBundleError(f"segment {index} has invalid type {segment_type!r}")
+        if start not in boundaries or end not in boundaries or end <= start:
+            raise AuditWorkBundleError(f"segment {index} has invalid UTF-8 offsets {start}:{end}")
+        if segment["id"] != expected_id:
+            raise AuditWorkBundleError(
+                f"segment {index} id {segment['id']!r} should be {expected_id!r}"
+            )
+        segment_ids.append(segment["id"])
+    if len(set(segment_ids)) != len(segment_ids):
+        raise AuditWorkBundleError("segments contain duplicate ids")
+    expected_bindings = _bundle_bindings(text, bundle["segments"])
+    for key, expected in expected_bindings.items():
+        if bundle["bindings"].get(key) != expected:
+            label = key.replace("_sha256", "").replace("_", " ")
+            raise AuditWorkBundleError(f"{label} binding does not match the reviewed input")
+
+    current_results = [annotate_result(check(text)) for check in ALL_CHECKS.values()]
+    current_programmatic = human_report(current_results)["programmatic_checks"]
+    if bundle["programmatic_checks"] != current_programmatic:
+        raise AuditWorkBundleError("programmatic checks do not match the reviewed input")
+
+    records = registries.load_judgement()["records"]
+    expected_ids = [record["id"] for record in records]
+    answers = bundle["semantic_answers"]
+    if not isinstance(answers, list):
+        raise AuditWorkBundleError("semantic_answers must be a list")
+    supplied_ids = [item.get("id") if isinstance(item, dict) else None for item in answers]
+    duplicates = sorted({item_id for item_id in supplied_ids if supplied_ids.count(item_id) > 1})
+    if duplicates:
+        raise AuditWorkBundleError(f"duplicate semantic id(s): {duplicates}")
+    unknown = sorted(set(supplied_ids) - set(expected_ids), key=str)
+    if unknown:
+        raise AuditWorkBundleError(f"unknown semantic id(s): {unknown}")
+    missing = sorted(set(expected_ids) - set(supplied_ids))
+    if missing:
+        raise AuditWorkBundleError(f"missing semantic id(s): {missing}")
+    by_id = {item["id"]: item for item in answers}
+    cleaned = []
+    for record in records:
+        item = by_id[record["id"]]
+        _validate_semantic_answer(record, item, text)
+        cleaned.append({
+            **item,
+            "severity": record["severity"],
+        })
+    validated = dict(bundle)
+    validated["semantic_answers"] = cleaned
+    return validated
+
+
+def audit_report_v2(results, validated_bundle=None, coverage_mode="full"):
+    """Build the authoritative public audit-format v2 report."""
+    if coverage_mode not in {"full", "surface_only"}:
+        raise ValueError("coverage_mode must be 'full' or 'surface_only'")
+    if coverage_mode == "full" and validated_bundle is None:
+        raise AuditWorkBundleError("complete Audit requires a validated audit-work bundle")
+    semantic = [] if validated_bundle is None else validated_bundle["semantic_answers"]
+    programmatic = human_report(results)["programmatic_checks"]
+    programmatic_aggregates = _aggregates(results)
+    semantic_flagged = [item for item in semantic if item["status"] == "flagged"]
+    return {
+        "schema_version": "2",
+        "coverage_mode": coverage_mode,
+        "audit_status": "complete" if coverage_mode == "full" else "incomplete",
+        "programmatic_checks": programmatic,
+        "semantic_findings": semantic,
+        "aggregates": {
+            "programmatic": programmatic_aggregates,
+            "semantic": {
+                "total": len(semantic),
+                "flagged": len(semantic_flagged),
+                "clear": len(semantic) - len(semantic_flagged),
+            },
+            "combined": {
+                "flagged": sum(1 for item in programmatic if item["status"] == "flagged")
+                + len(semantic_flagged),
+            },
+        },
+        "limitations": (
+            [
+                "semantic reading was not run",
+                "slide_title structure unavailable without a structure manifest",
+                "caption structure unavailable without a structure manifest",
+            ]
+            if validated_bundle is None
+            else list(validated_bundle["limitations"])
+        ),
+        "metadata": {
+            "schema_version": "2",
+            "grader_version": GRADER_VERSION,
+            "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "run_id": str(uuid.uuid4()),
+        },
+    }
 
 
 _JUDGEMENT_OVERLAY_REQUIRED_ITEM_FIELDS = {"id", "status", "answer", "evidence"}
@@ -3498,89 +6335,140 @@ def regrade(text, depth="balanced"):
 
 
 USAGE = (
-    "Usage: grade.py [--format json|markdown] [--depth balanced|all] "
-    "[--full-report] [--judgement-file <path>] <file> [assertion1,assertion2,...]"
+    "Usage:\n"
+    "  grade.py preflight <file> --work-bundle <path> [--structure-manifest <path>]\n"
+    "  grade.py audit <file> --work-bundle <path> [--format json|markdown] "
+    "[--depth balanced|all] [--full-report]\n"
+    "  grade.py audit <file> --surface-only [--format json|markdown] "
+    "[--depth balanced|all]"
 )
 
 
-def main():
-    args = sys.argv[1:]
-    output_format = "json"
-    depth = "all"
-    mode = "default"
-    judgement_file = None
+def _pop_option(args, name, default=None):
+    if name not in args:
+        return default
+    index = args.index(name)
+    if index + 1 >= len(args):
+        raise ValueError(f"{name} requires a value")
+    value = args[index + 1]
+    del args[index:index + 2]
+    return value
 
-    if "--format" in args:
-        index = args.index("--format")
-        try:
-            output_format = args[index + 1]
-        except IndexError:
-            print(USAGE)
-            sys.exit(1)
-        del args[index:index + 2]
 
-    if "--depth" in args:
-        index = args.index("--depth")
-        try:
-            depth = args[index + 1].lower()
-        except IndexError:
-            print(USAGE)
-            sys.exit(1)
-        del args[index:index + 2]
+def _format_surface_only(results, depth):
+    contract = human_report(results)
+    programmatic = contract["programmatic_checks"]
+    visible = [item for item in programmatic if item["id"] != SIGNAL_STACKING_META_CHECK]
+    summary = _format_summary_block(
+        registries.string_for("templates.surface_scan_heading"),
+        contract["aggregates"]["signal_stacking"],
+        visible,
+        [],
+    )
+    findings = _format_auto_detected_block(visible, depth, "default")
+    limitation = registries.string_for("templates.surface_scan_limitation")
+    return "\n\n".join([summary, findings, limitation])
 
+
+def main(argv=None):
+    args = list(sys.argv[1:] if argv is None else argv)
+    if not args:
+        print(USAGE, file=sys.stderr)
+        return 2
+    if "--judgement-file" in args or args[0] not in {"preflight", "audit"}:
+        print(
+            "Legacy grader invocation is no longer accepted. Run `grade.py preflight "
+            "<file> --work-bundle <path>`, complete semantic_answers, then run "
+            "`grade.py audit <file> --work-bundle <path>`. For deterministic development "
+            "output, run `grade.py audit <file> --surface-only`.",
+            file=sys.stderr,
+        )
+        return 2
+
+    command = args.pop(0)
+    try:
+        work_path = _pop_option(args, "--work-bundle")
+        structure_path = _pop_option(args, "--structure-manifest")
+        output_format = _pop_option(args, "--format", "json")
+        depth = _pop_option(args, "--depth", "all").lower()
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    surface_only = "--surface-only" in args
+    if surface_only:
+        args.remove("--surface-only")
+    mode = "full_report" if "--full-report" in args else "default"
     if "--full-report" in args:
-        mode = "full_report"
         args.remove("--full-report")
-
-    if "--judgement-file" in args:
-        index = args.index("--judgement-file")
-        try:
-            judgement_file = args[index + 1]
-        except IndexError:
-            print(USAGE)
-            sys.exit(1)
-        del args[index:index + 2]
-
-    if output_format not in {"json", "markdown"} or depth not in DEPTHS or not args:
-        print(USAGE)
-        sys.exit(1)
-
-    agent_judgement_items = None
-    if judgement_file is not None:
-        try:
-            agent_judgement_items = load_agent_judgement_overlay(judgement_file)
-        except JudgementOverlayError as exc:
-            print(f"--judgement-file: {exc}", file=sys.stderr)
-            sys.exit(1)
+    if output_format not in {"json", "markdown"} or depth not in DEPTHS:
+        print(USAGE, file=sys.stderr)
+        return 2
+    if len(args) != 1:
+        print(USAGE, file=sys.stderr)
+        return 2
 
     filepath = args[0]
-    assertions = args[1].split(",") if len(args) > 1 else None
+    source_path = Path(filepath)
+    if not source_path.exists():
+        print(f"input path does not exist: {filepath}", file=sys.stderr)
+        return 1
+    text = source_path.read_text()
+    results = grade_file(filepath)
 
-    results = grade_file(filepath, assertions)
+    if command == "preflight":
+        if surface_only or not work_path:
+            print("preflight requires --work-bundle and does not accept --surface-only", file=sys.stderr)
+            return 2
+        inferred_segments = markdown_segments(text)
+        if structure_path:
+            external_segments = load_structure_manifest(structure_path, text)
+            segments = external_segments + inferred_segments
+        else:
+            segments = inferred_segments
+        bundle = build_audit_work_bundle(text, results, segments=segments)
+        Path(work_path).write_text(json.dumps(bundle, indent=2) + "\n")
+        return 0
 
-    summary = score_summary(results)
+    if structure_path:
+        print("--structure-manifest is accepted by preflight only", file=sys.stderr)
+        return 2
+    if surface_only and work_path:
+        print("audit accepts either --surface-only or --work-bundle, not both", file=sys.stderr)
+        return 2
+    if not surface_only and not work_path:
+        print("complete Audit requires --work-bundle; use --surface-only explicitly for a surface scan", file=sys.stderr)
+        return 1
 
-    if output_format == "markdown":
+    try:
+        if surface_only:
+            bundle = None
+            report = audit_report_v2(results, None, coverage_mode="surface_only")
+        else:
+            try:
+                raw_bundle = json.loads(Path(work_path).read_text())
+            except FileNotFoundError:
+                raise AuditWorkBundleError(f"work-bundle path does not exist: {work_path}")
+            except json.JSONDecodeError as exc:
+                raise AuditWorkBundleError(f"invalid JSON in work bundle {work_path}: {exc}") from exc
+            bundle = validate_audit_work_bundle(text, raw_bundle)
+            report = audit_report_v2(results, bundle, coverage_mode="full")
+    except AuditWorkBundleError as exc:
+        print(f"audit-work bundle: {exc}", file=sys.stderr)
+        return 1
+
+    if output_format == "json":
+        print(json.dumps(report, indent=2))
+    elif surface_only:
+        print(_format_surface_only(results, depth))
+    else:
         print(format_two_layer(
-            results, depth=depth, mode=mode,
-            agent_judgement_items=agent_judgement_items,
+            results,
+            depth=depth,
+            mode=mode,
+            agent_judgement_items=bundle["semantic_answers"],
         ))
-        return
-
-    output = {
-        "file": filepath,
-        "pass_rate": summary["pass_rate"],
-        "failures_by_severity": summary["failures_by_severity"],
-        "score_summary": summary,
-        "human_report": human_report(results, agent_judgement_items=agent_judgement_items),
-        "triggered_checks": triggered_checks(results),
-        "failure_mode_results": failure_mode_results(results),
-        "depth_results": depth_results(results),
-        "expectations": results,
-    }
-
-    print(json.dumps(output, indent=2))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

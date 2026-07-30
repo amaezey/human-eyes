@@ -1,0 +1,43 @@
+{
+  "slot": "03",
+  "status": "pass",
+  "title": "Horopito",
+  "url": "https://www.tbray.org/ongoing/When/201x/2019/12/31/Horopito",
+  "author": "Tim Bray",
+  "published": "2019-12-31",
+  "genre": "personal blog or newsletter",
+  "subtype": "single-author personal weblog entry",
+  "retrieved_at": "2026-07-12",
+  "selection": {
+    "start": "Horopito",
+    "end": "I may never pull that transcontinental trigger again.",
+    "coherent_consecutive_passage": true,
+    "intrinsic_structure_preserved": [
+      "authentic entry title followed by three consecutive first-person weblog paragraphs",
+      "conversational fragments and rhetorical question",
+      "personal family and travel context"
+    ]
+  },
+  "removals": [
+    "page navigation",
+    "all photographs, captions, and photo-dependent travelogue material after the approved endpoint",
+    "comments status, update timestamp, publication taxonomy, author disclosure, and site footer"
+  ],
+  "word_count": 248,
+  "sha256": "efe9a9abcbd39d91fa464adc9db6a8f1620600c66ed9f5bf4f852c326f19fea6",
+  "contamination": {
+    "checked": true,
+    "known_overlap": false,
+    "scope": "working tree plus every commit reachable from every git ref/history, excluding prohibited AI-output directories from content inspection",
+    "commands": [
+      "git grep -F -n opening and ending distinctive phrases with this acquired file and AI-output directories excluded",
+      "git log --all --oneline -S for the same opening and ending distinctive phrases",
+      "git grep and git-history searches for title, URL fragment, and author before acquisition"
+    ],
+    "results": [
+      "distinctive-phrase working-tree searches returned no other match",
+      "distinctive-phrase all-history searches returned no commit",
+      "title, URL-fragment, and author searches returned no prior corpus occurrence"
+    ]
+  }
+}

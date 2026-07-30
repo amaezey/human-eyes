@@ -173,12 +173,30 @@ expect_fail("no-nonliteral-land-surface",
 expect_fail("no-nonliteral-land-surface",
     "The joke lands with the audience because the setup is familiar.",
     "nonliteral lands with audience")
+expect_fail("no-nonliteral-land-surface",
+    "I kept the manual open beside me as if it were a map out of the wilderness.",
+    "nonliteral manual as map out of wilderness")
+expect_fail("no-nonliteral-land-surface",
+    "The framework provides a roadmap through regulatory uncertainty.",
+    "nonliteral framework as roadmap through uncertainty")
+expect_fail("no-nonliteral-land-surface",
+    "The guide became a compass through the administrative maze.",
+    "nonliteral guide as compass through maze")
 expect_pass("no-nonliteral-land-surface",
     "The plane landed safely on the island, and the table surface was scratched.",
     "literal landed and physical surface")
 expect_pass("no-nonliteral-land-surface",
     "The paper landed on the desk and slid under the notebook.",
     "literal paper landed on desk")
+expect_pass("no-nonliteral-land-surface",
+    "The map showed a route through the wilderness, and the compass pointed north.",
+    "literal navigation through wilderness")
+expect_pass("no-nonliteral-land-surface",
+    "The manual included a map of the national park.",
+    "manual containing a literal map")
+expect_pass("no-nonliteral-land-surface",
+    "The product roadmap lists three scheduled releases.",
+    "literal planning roadmap")
 
 
 # --- overall-signal-stacking ---
@@ -239,26 +257,121 @@ expect_fail("no-manufactured-insight",
     "The shift nobody noticed was already underway.",
     "shift nobody noticed framing")
 expect_fail("no-manufactured-insight",
+    "It taught me that not knowing was not a verdict.",
+    "explicit it-taught-me lesson frame")
+expect_fail("no-manufactured-insight",
+    "This experience taught me that preparation matters.",
+    "explicit experience-taught-me lesson frame")
+expect_fail("no-manufactured-insight",
+    "What the failure taught me was that the review came too late.",
+    "explicit what-this-taught-me lesson frame")
+expect_fail("no-manufactured-insight",
+    "The lesson I learned was to ask before changing the corpus.",
+    "explicit lesson-learned frame")
+expect_fail("no-manufactured-insight",
+    "Symmetry is the language of trust.",
+    "DR-124 aphorism formula: X is the Y of Z")
+expect_fail("no-manufactured-insight",
+    "Efficiency becomes a trap when teams forget the goal.",
+    "DR-124 aphorism formula: X becomes a trap")
+expect_fail("no-manufactured-insight",
+    "Trust is the currency of leadership.",
+    "DR-124 aphorism formula: the currency of")
+expect_fail("no-manufactured-insight",
+    "The architecture of belonging shapes the campaign.",
+    "DR-124 aphorism formula: the architecture of")
+expect_fail("no-manufactured-insight",
+    "Teams speak in the language of continuous improvement.",
+    "DR-124 aphorism formula: standalone the language of")
+expect_fail("no-manufactured-insight",
+    "Routine can become a trap.",
+    "DR-124 aphorism formula: X become a trap")
+aphorism_result = ALL_CHECKS["no-manufactured-insight"](
+    "Symmetry is the language of trust."
+)
+if aphorism_result.get("matches") != ["Symmetry is the language of trust"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-124 overlapping aphorism regexes should keep the longest occurrence, "
+        f"got {aphorism_result.get('matches', [])}"
+    )
+else:
+    print("  ok: DR-124 overlapping aphorism regexes keep the longest occurrence")
+for phrase in (
+    "This is the part most people skip.",
+    "Most people won't tell you this.",
+    "Nobody's talking about this.",
+    "Everyone's sleeping on this.",
+    "This flew under the radar.",
+    "I wasn't supposed to share this, but here it is.",
+    "What they don't want you to know:",
+    "The thing nobody tells beginners:",
+    "The secret that advertising doesn't want you to know:",
+    "I've been sitting on this for weeks.",
+):
+    expect_fail("no-manufactured-insight", phrase,
+        f"DR-135C false-exclusivity hook: {phrase}")
+for phrase in (
+    "Stop what you're doing.",
+    "Drop everything.",
+    "Read this before your next meeting.",
+    "If you haven't seen this yet...",
+    "You're going to want to bookmark this.",
+    "Save this before it gets taken down.",
+    "This changes everything.",
+    "This is bigger than people realize.",
+    "Email just changed the game forever.",
+):
+    expect_fail("no-manufactured-insight", phrase,
+        f"DR-135D manufactured-urgency hook: {phrase}")
+for phrase in (
+    "Sit with that for a second.",
+    "I'll say it louder for the people in the back.",
+):
+    expect_fail("no-manufactured-insight", phrase,
+        f"DR-135F performed-emphasis frame: {phrase}")
+expect_fail("no-performed-candour",
     "The honest answer is that the data was incomplete from the start.",
     "performed candour — 'the honest answer is'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "Here's the honest framing: the project missed every milestone.",
     "performed candour — 'here's the honest framing'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "Here's the real truth — most teams skip retros entirely.",
     "performed candour — 'here's the real truth'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "If I'm being honest, the proposal needs more work.",
     "performed candour — 'if I'm being honest'")
-expect_fail("no-manufactured-insight",
+expect_fail("no-performed-candour",
     "In all honesty, the migration plan has too many unknowns.",
     "performed candour — 'in all honesty'")
+for phrase in (
+    "I wasn't going to post this, but here it is.",
+    "This is scary to share.",
+    "Hot take incoming (don't hate me):",
+    "Unpopular opinion:",
+    "I know I'll get hate for this, but the plan is wrong.",
+    "I've never said this publicly before.",
+    "This might ruffle some feathers.",
+    "I might lose followers for this, but the deadline matters.",
+):
+    expect_fail("no-performed-candour", phrase,
+        f"DR-135G performed-vulnerability frame: {phrase}")
 expect_pass("no-manufactured-insight",
     "The manual was updated in 2024 to reflect new safety standards.",
     "plain factual statement")
 expect_pass("no-manufactured-insight",
     "We strive to be honest about our limitations and update the docs as we learn.",
     "'to be honest' without leading comma — not the AI tell")
+expect_pass("no-manufactured-insight",
+    "The teacher taught me algebra.",
+    "literal instruction")
+expect_pass("no-manufactured-insight",
+    "The manual taught me how to replace the battery.",
+    "concrete procedural learning")
+expect_pass("no-manufactured-insight",
+    "The course taught me three statistical methods.",
+    "concrete course content")
 
 
 # --- no-staccato-sequences ---
@@ -270,6 +383,24 @@ expect_fail("no-staccato-sequences",
 expect_pass("no-staccato-sequences",
     "The library was built in 1923 and has served the community ever since.",
     "one long sentence")
+for phrase in (
+    "Too young. Too single.",
+    "The agency told her she was too young. Too single. Too inexperienced.",
+    "No family. No calls.",
+):
+    expect_fail("no-staccato-sequences", phrase,
+        f"DR-19A repeated short-fragment opener pair: {phrase}")
+expect_pass("no-staccato-sequences",
+    "Too young. Still uncertain.",
+    "two short fragments with different opening words")
+for phrase in (
+    "Full stop.",
+    "Period.",
+    "That's it. That's the tweet.",
+    "Trust. That's the word.",
+):
+    expect_fail("no-staccato-sequences", phrase,
+        f"DR-135F exact dramatic-fragment formula: {phrase}")
 
 
 # --- no-anaphora ---
@@ -339,6 +470,71 @@ expect_pass("sentence-length-variance",
     "Thanks for the invite. I can't make Tuesday but could do Thursday afternoon.",
     "short-form text skipped (under 100 words, under 6 sentences)")
 
+# DR-79B: E5 gains a mean-sentence-length branch at 15 words, in prose of 300
+# words or more. Sentences here are uniformly mid-length, so no run, repeated
+# opener, formula, or ten-word-or-fewer rate fires; only the mean does.
+_flat_mid_length = (
+    "The committee reviewed the revised funding proposal at its ordinary meeting on Tuesday afternoon. "
+    "Members asked detailed questions about the delivery timeline and the projected costs over three years. "
+    "The chair confirmed that the capital grant had been secured in early March this year. "
+    "Several members raised concerns about how the public consultation arrangements had been organised locally. "
+    "Officers agreed to publish the full set of written responses at some point next month. "
+    "A final vote on the proposal was deferred until the next ordinary council meeting. "
+    "Residents across the affected wards will be notified as soon as a date is fixed. "
+    "All supporting papers for the item remain available on the council website until then. "
+    "A second report on the same subject is expected before the summer recess begins. "
+    "The committee will meet again in the autumn to consider that report in detail. "
+    "Officers have already started drafting the supporting technical annexes for the second report. "
+    "The chair thanked all attending members for sitting through an unusually long evening session. "
+    "Minutes of the meeting were circulated to every attendee on the following working morning. "
+    "Two members submitted written corrections to those minutes within the agreed seven day window. "
+    "The corrected minutes were later approved without any further discussion at the following meeting. "
+    "Budget monitoring reports will follow exactly the same publication schedule as in previous years. "
+    "The finance officer confirmed the reporting dates for the coming financial year in writing. "
+    "No member present objected to the proposed schedule of committee meetings for next year. "
+    "The chair formally closed the meeting shortly after four o'clock in the afternoon. "
+    "Light refreshments had been provided in the adjoining committee room an hour beforehand. "
+    "Each future agenda will be published fourteen clear days before the meeting it covers. "
+    "Members were reminded to declare any relevant financial interests well in advance of business. "
+    "The clerk will circulate the standing declaration form to all members again shortly. "
+    "Late declarations must be made verbally at the very start of the meeting business. "
+    "The deputy chair will take the next meeting because of a diary clash. "
+    "Apologies for absence had been received from two members before the meeting began."
+)
+expect_fail("no-staccato-sequences", _flat_mid_length,
+    "DR-79B mean sentence length below 15 in prose of 300+ words")
+
+# DR-79A: the old threshold of 4 sat underneath the whole observed range, so
+# the check never fired on real prose. At 9 it separates the corpora. These two
+# fixtures bracket the new boundary; both were inert under the old threshold.
+_narrow_band = (
+    "The council met on Tuesday to review the proposal. Members asked about "
+    "the budget and the timeline for delivery. The chair explained that "
+    "funding had been secured in March. Several members raised concerns about "
+    "the consultation process. Officers agreed to publish the responses next "
+    "month. The vote was deferred until the next ordinary meeting. Residents "
+    "will be notified once a date has been fixed. The papers remain available "
+    "on the council website for now. A second report is expected before the "
+    "summer recess begins. The committee will meet again in the autumn to "
+    "review it. Officers have already begun drafting the supporting annexes. "
+    "The chair thanked everyone for attending the long session."
+)
+expect_fail("sentence-length-variance", _narrow_band,
+    "DR-79A sentences clustered in one length band (SD between 4 and 9)")
+_varied_band = (
+    "The council met. Members asked about the budget, the timeline for "
+    "delivery, the consultation process that had run over the winter, and "
+    "whether the funding secured in March would still cover the revised "
+    "scope of works now that three contractors had withdrawn. The chair "
+    "explained. Officers agreed to publish every response received during "
+    "the consultation period alongside a summary of the themes raised, and "
+    "to circulate that document to all members a fortnight before the next "
+    "ordinary meeting so that nobody would arrive unprepared. It was "
+    "deferred. Residents will be notified."
+)
+expect_pass("sentence-length-variance", _varied_band,
+    "DR-79A genuinely varied sentence lengths stay clear at the new threshold")
+
 
 # --- no-promotional-language ---
 
@@ -346,6 +542,30 @@ print("\n=== no-promotional-language ===")
 expect_fail("no-promotional-language",
     "The stunning views and vibrant culture make this a must-visit destination.",
     "stunning + vibrant + must-visit")
+expect_fail("no-promotional-language",
+    "The editor called it one of the best options available.",
+    "DR-100 exact one-of-the-best promotional formula")
+expect_fail("no-promotional-language",
+    "There are so many possibilities for the project.",
+    "DR-100 exact so-many-possibilities promotional formula")
+for phrase in (
+    "Every challenge is an opportunity.",
+    "Each setback becomes a lesson.",
+    "Every difficulty is a chance.",
+    "Every problem has a silver lining.",
+    "Each challenge has a silver lining.",
+):
+    expect_fail("no-promotional-language", phrase,
+        f"DR-21D motivational-poster formula: {phrase}")
+expect_pass("no-promotional-language",
+    "It is one of the best-known examples in the archive.",
+    "hyphenated best-known phrase is not the approved formula")
+expect_pass("no-promotional-language",
+    "The team treated the challenge as an opportunity to revise the plan.",
+    "ordinary challenge and opportunity wording outside the formula")
+expect_pass("no-promotional-language",
+    "The report describes the silver lining around the storm cloud.",
+    "literal silver-lining discussion outside the formula")
 expect_pass("no-promotional-language",
     "The hotel is on a quiet street near the old quarter.",
     "neutral description")
@@ -357,9 +577,36 @@ print("\n=== no-significance-inflation ===")
 expect_fail("no-significance-inflation",
     "This marked a pivotal moment in the evolving landscape of regional policy.",
     "pivotal + evolving landscape")
+expect_fail("no-significance-inflation",
+    "The findings underline the value of regular primary-care relationships.",
+    "underline the value of")
+expect_fail("no-significance-inflation",
+    "The report underscores the importance of local knowledge.",
+    "underscores the importance of")
+expect_fail("no-significance-inflation",
+    "The results highlight the significance of the timing.",
+    "highlight the significance of")
+expect_fail("no-significance-inflation",
+    "The review emphasises the importance of clear ownership.",
+    "British emphasises the importance of")
+for phrase in (
+    "The phenomenon generated debate about authenticity and consent.",
+    "These works shaped emerging policy discussions about ownership.",
+    "The project contributes to the broader history of aviation.",
+    "The studies demonstrate ongoing relevance and lasting influence.",
+    "The policy had enduring impacts on the region.",
+):
+    expect_fail("no-significance-inflation", phrase,
+        f"DR-22A significance formula: {phrase}")
 expect_pass("no-significance-inflation",
     "The policy was introduced in 2019 and applied to three regions.",
     "plain factual")
+expect_pass("no-significance-inflation",
+    "Underline the heading and highlight the affected row.",
+    "literal document-formatting instructions")
+expect_pass("no-significance-inflation",
+    "The report uses underlining for new terms.",
+    "literal typographic description")
 
 
 # --- no-negative-parallelisms ---
@@ -395,24 +642,212 @@ expect_fail("no-negative-parallelisms",
 expect_fail("no-negative-parallelisms",
     "It isn't merely a song; it's a statement.",
     "contraction plus merely variant")
-expect_pass("no-negative-parallelisms",
+expect_fail("no-negative-parallelisms",
+    "It's not delivery. It's DiGiorno.",
+    "canonical contraction split across two sentences")
+expect_fail("no-negative-parallelisms",
+    "The target was never a man. The target was the truth.",
+    "repeated-subject negative parallelism across two sentences")
+expect_fail("no-negative-parallelisms",
+    "This isn't a feature. It is a relationship.",
+    "deictic-pronoun negative parallelism across two sentences")
+expect_fail("no-negative-parallelisms",
+    "No bag, no things, no armor, just me.",
+    "comma-separated no-X no-Y just-Z")
+expect_fail("no-negative-parallelisms",
+    "The fault is not in our stars, but in ourselves.",
+    "not-X but-Y parallel contrast")
+expect_fail("no-negative-parallelisms",
+    "I come to bury Caesar, not to praise him.",
+    "affirmative-negative infinitive parallelism")
+expect_fail("no-negative-parallelisms",
+    "Stop thinking of it as a tool. Start thinking of it as a partner.",
+    "stop-X start-Y reversal")
+expect_fail("no-negative-parallelisms",
+    "Email isn't the future. Messaging is.",
+    "X-is-not-the-future Y-is reversal")
+expect_fail("no-negative-parallelisms",
+    "SEO is dead. Community is what's next.",
+    "X-is-dead Y-is-next reversal")
+expect_fail("no-negative-parallelisms",
+    "Forget reach. Focus on retention.",
+    "forget-X focus-on-Y reversal")
+_dr137_source_structures = (
+    "Credit card fraud isn’t just evolving—it’s accelerating!",
+    "The teams who will thrive now aren’t just using AI for speed. They’re combining it with judgment.",
+    "Atlas didn’t shrug. He drilled.",
+    "*AI doesn’t eliminate labor; it redistributes it.*",
+    "Not performative updates—but real transparency that restores confidence.",
+    "The strategy prioritizes empirical consolidation rather than ideological purity.",
+)
+for phrase in _dr137_source_structures:
+    result = ALL_CHECKS["no-negative-parallelisms"](phrase)
+    if result.get("passed") or result.get("candidate_count") != 1:
+        FAILURES += 1
+        print(
+            "FAIL: DR-137 source structure should return one B3 candidate; "
+            f"got {result} for {phrase}"
+        )
+    else:
+        print(f"  ok: DR-137 source structure returns one B3 candidate: {phrase}")
+for separator in (",", ":", ";", "-", "–", "—"):
+    expect_fail(
+        "no-negative-parallelisms",
+        f"Not performative updates{separator} but real transparency.",
+        f"DR-137 not-X-but-Y separator variant: {separator}",
+    )
+_two_rather_than_frames = ALL_CHECKS["no-negative-parallelisms"](
+    "Choose evidence rather than polish. Prefer specifics rather than slogans."
+)
+if _two_rather_than_frames.get("candidate_count") != 2:
+    FAILURES += 1
+    print(
+        "FAIL: DR-137 should count each rather-than frame; "
+        f"got {_two_rather_than_frames}"
+    )
+else:
+    print("  ok: DR-137 counts each rather-than frame")
+_repeated_negative_reversals = (
+    "I may not have a husband. I may not have money. But I have love.",
+    "I cannot promise speed. I may not guarantee certainty. Yet I can deliver a tested result.",
+    "The team did not win the contract. The team never received the endorsement. "
+    "But the team changed the market.",
+)
+for phrase in _repeated_negative_reversals:
+    expect_fail("no-negative-parallelisms", phrase,
+        f"DR-19B repeated negative-to-affirmative reversal: {phrase}")
+_negative_reversal_prefix = "I may not have a husband. I may not have money. "
+for affirmative_turn in (
+    "However, I have love.",
+    "Still, I have love.",
+    "Nevertheless, I have love.",
+    "Nonetheless, I have love.",
+    "Even so, I have love.",
+    "That said, I have love.",
+    "Instead, I have love.",
+    "In contrast, I have love.",
+    "On the other hand, I have love.",
+    "I do have love.",
+    "What I have is love.",
+    "What I do have is love.",
+):
+    expect_fail(
+        "no-negative-parallelisms",
+        _negative_reversal_prefix + affirmative_turn,
+        f"DR-19B affirmative reversal variant: {affirmative_turn}",
+    )
+_source_reversal = ALL_CHECKS["no-negative-parallelisms"](
+    _repeated_negative_reversals[0]
+)
+if (
+    _source_reversal.get("candidate_count") != 1
+    or not _source_reversal.get("matches")
+    or "But I have love" not in _source_reversal["matches"][0]
+):
+    FAILURES += 1
+    print(
+        "FAIL: DR-19B should return the complete negative-to-affirmative frame "
+        f"as one candidate; got {_source_reversal}"
+    )
+else:
+    print("  ok: DR-19B returns the complete reversal as one candidate")
+for phrase in (
+    "I may not have a husband. But I have love.",
+    "I may not have a husband. I may not have money. But she has love.",
+    "I may not have a husband. I may not have money. I have love.",
+):
+    expect_pass("no-negative-parallelisms", phrase,
+        f"DR-19B incomplete reversal frame: {phrase}")
+expect_fail("no-negative-parallelisms",
     "The building was not damaged in the fire. It was inspected the following day.",
-    "factual negation, not a reframing move")
-expect_pass("no-negative-parallelisms",
+    "negative clause followed by an it-resumption")
+expect_fail("no-negative-parallelisms",
     "It's not the best display in its class, but it's good enough for professional work.",
-    "ordinary product comparison")
-expect_pass("no-negative-parallelisms",
+    "same-subject negative-positive comparison")
+expect_fail("no-negative-parallelisms",
     "The laptop is powerful, not cheap.",
-    "plain concrete contrast")
-expect_pass("no-negative-parallelisms",
+    "positive-negative adjectival parallelism")
+expect_fail("no-negative-parallelisms",
     "It was not raining, but the road was still wet.",
-    "ordinary causal contrast")
+    "not-X-but-Y structure")
 expect_pass("no-negative-parallelisms",
     "This is more expensive than the older model.",
     "ordinary price comparison")
 expect_pass("no-negative-parallelisms",
     "The issue was not reported until Monday.",
     "plain factual negation")
+
+# DR-25A: the reversal frame survives three decorations that previously broke
+# the matcher. Each pair below is the bare frame (already caught) followed by
+# the decorated form that must now be caught too.
+expect_fail("no-negative-parallelisms",
+    "The Moon landing, in this context, is not a moment of transcendence "
+    "in the usual sense. It is quieter, more ambiguous.",
+    "DR-25A comma parenthetical inside the negative clause's subject")
+expect_fail("no-negative-parallelisms",
+    "It has reminded me that design judgement is not a private talent. "
+    "It is a practice formed through examples.",
+    "DR-25A negative clause embedded under a subordinator")
+expect_fail("no-negative-parallelisms",
+    "That is not a lesser outcome. In many organisations, that is the work "
+    "nobody has been able to do.",
+    "DR-25A adverbial opener before the affirmative turn")
+expect_pass("no-negative-parallelisms",
+    "The council, meeting on Tuesday, did not publish the report. "
+    "Residents waited another week.",
+    "DR-25A parenthetical subject with no resumption")
+expect_pass("no-negative-parallelisms",
+    "She said that the road was not closed. Traffic moved slowly all morning.",
+    "DR-25A subordinated negation with no resumption")
+expect_pass("no-negative-parallelisms",
+    "That is not a lesser outcome. In many organisations, budgets decide "
+    "which work happens.",
+    "DR-25A adverbial opener with no repeated subject")
+expect_pass("no-negative-parallelisms",
+    "What if the heat does not bother the camels?\n\nAs humans, it is hard "
+    "to imagine that.",
+    "DR-25A adverbial bridge does not span a question or a paragraph break")
+
+_overlapping_negative_parallelism = ALL_CHECKS["no-negative-parallelisms"](
+    "To leave the earth was not merely to extend human capability but to trespass into a forbidden domain."
+)
+if _overlapping_negative_parallelism.get("candidate_count") != 1:
+    FAILURES += 1
+    print(
+        "FAIL: overlapping negative-parallelism regexes should yield one occurrence; "
+        f"got {_overlapping_negative_parallelism}"
+    )
+else:
+    print("  ok: overlapping negative-parallelism regexes yield one occurrence")
+
+_one_negative_parallelism = ALL_CHECKS["overall-signal-stacking"](
+    "The target was never a man. The target was the truth."
+)
+_two_negative_parallelisms = ALL_CHECKS["overall-signal-stacking"](
+    "The target was never a man. The target was the truth. "
+    "The result was not a delay. The result was a reset."
+)
+_three_negative_parallelisms = ALL_CHECKS["overall-signal-stacking"](
+    "The target was never a man. The target was the truth. "
+    "The result was not a delay. The result was a reset. "
+    "The outcome was not a loss. The outcome was a lesson."
+)
+_negative_parallelism_scores = [
+    _one_negative_parallelism.get("score"),
+    _two_negative_parallelisms.get("score"),
+    _three_negative_parallelisms.get("score"),
+]
+if _negative_parallelism_scores != [2, 3, 4]:
+    FAILURES += 1
+    print(
+        "FAIL: repeated negative parallelism should increase stacking evidence "
+        f"from 2 to 3 to 4 points; got {_negative_parallelism_scores}"
+    )
+elif _one_negative_parallelism["passed"] is not True or _three_negative_parallelisms["passed"] is not False:
+    FAILURES += 1
+    print("FAIL: one occurrence should remain a signal while three occurrences trigger stacking")
+else:
+    print("  ok: repeated negative parallelism increases stacking evidence")
 
 
 # --- no-copula-avoidance ---
@@ -436,6 +871,30 @@ expect_pass("no-copula-avoidance",
 expect_fail("no-copula-avoidance",
     "The gallery features four separate spaces.",
     "verb 'features' as copula avoidance")
+expect_fail("no-copula-avoidance",
+    "The frontier operates as a unifying thread.",
+    "DR-18A operates as")
+expect_fail("no-copula-avoidance",
+    "The film offers a different entry point.",
+    "DR-18A offers plus article")
+expect_fail("no-copula-avoidance",
+    "The organisation maintains a strong digital presence.",
+    "DR-18A third-person maintains plus article")
+expect_pass("no-copula-avoidance",
+    "Maintain a visible list of open questions.",
+    "DR-18A imperative maintain is not a copula substitute")
+expect_fail("no-copula-avoidance",
+    "Widgetry refers to the practice of making widgets.",
+    "DR-18A lead-opening refers to")
+expect_pass("no-copula-avoidance",
+    "The guide discusses what Brown refers to as the second phase.",
+    "DR-18A embedded refers to is not the lead formula")
+expect_fail("no-copula-avoidance",
+    "She ventured into politics as a candidate in 2018.",
+    "DR-18A elaborate candidate substitute")
+expect_fail("no-copula-avoidance",
+    "He began his career as a teacher.",
+    "DR-18A elaborate career substitute")
 
 
 # --- no-filler-phrases ---
@@ -483,9 +942,34 @@ print("\n=== no-placeholder-residue ===")
 expect_fail("no-placeholder-residue",
     "Hi {client_name}, thanks for meeting with [Company Name] on [insert date].",
     "unfilled placeholders")
+for residue in (
+    "Insert Table 1 here",
+    "turn0search0",
+    "turn0image4",
+    "turn0news2",
+    "turn1file0",
+    "0",
+    "_generated-reference-identifier_",
+    '<ref name="0search12">',
+    "oai_citation:0",
+    "Wikipedia+1",
+    "[attached_file:1]",
+    "[web:1]",
+    '<grok-card data-id="e8ff4f">',
+    'grok_render_citation_card_json={"cardIds":["3bb883"]}',
+    "【85†L261-269】",
+    "[cite: 3, 12, 13]",
+    '({"attribution":{"attributableIndex":"1009-1"}})',
+    ':::writing{variant="document" id="51724"}',
+):
+    expect_fail("no-placeholder-residue", residue,
+        f"DR-20A platform or publishing residue: {residue}")
 expect_pass("no-placeholder-residue",
     "Hi Mara, thanks for meeting with Northline on Tuesday.",
     "filled-in email")
+expect_pass("no-placeholder-residue",
+    "The web team attached the file after checking x + 1 examples.",
+    "ordinary words and spaced arithmetic are not platform residue")
 
 
 # --- no-soft-scaffolding ---
@@ -494,9 +978,18 @@ print("\n=== no-soft-scaffolding ===")
 expect_fail("no-soft-scaffolding",
     "One useful area is explanation. Another useful area is test writing. The main risk is over-trusting the output.",
     "generated explainer scaffolding")
+expect_fail("no-soft-scaffolding",
+    "A major priority was research translation.\n\nAnother area of work was patient capital.\n\nThe committee also examined regional access.",
+    "repeated report paragraph scaffolding")
 expect_pass("no-soft-scaffolding",
     "The tool explains unfamiliar modules and can draft tests when the project already has clear examples.",
     "direct explanation without scaffold labels")
+expect_pass("no-soft-scaffolding",
+    "A major priority was research translation. The report then gives the three funding decisions made in June.",
+    "single necessary report transition stays below threshold")
+expect_pass("no-soft-scaffolding",
+    "The minutes record that another area of work was patient capital.",
+    "report phrase inside a sentence is not a paragraph opener")
 
 
 # --- no-orphaned-demonstratives ---
@@ -513,15 +1006,34 @@ expect_pass("no-orphaned-demonstratives",
 # --- no-forced-triads ---
 
 print("\n=== no-forced-triads ===")
-expect_fail("no-forced-triads",
-    "It supports equity, participation, and resilience.",
+
+
+def expect_triad(text, reason, recognized=True):
+    """Assert extractor coverage. B4 judges the rate, not any single triad."""
+    global FAILURES
+    found = bool(_grade.extract_triad_candidates(text))
+    if found != recognized:
+        FAILURES += 1
+        verb = "recognize" if recognized else "ignore"
+        print(f"FAIL: extract_triad_candidates should {verb}: {reason}")
+    else:
+        print(f"  ok: extract_triad_candidates correctly handles: {reason}")
+
+
+expect_triad("It supports equity, participation, and resilience.",
     "equity doesn't match but participation (-tion) and resilience (-ence) do")
-expect_fail("no-forced-triads",
-    "The program builds curation, classification, and neutrality.",
+expect_triad("The program builds curation, classification, and neutrality.",
     "all three match -tion/-ity")
-expect_pass("no-forced-triads",
-    "The store sells apples, bread, and milk.",
-    "concrete nouns, not abstract")
+expect_triad("The store sells apples, bread, and milk.",
+    "concrete triad is still a triad")
+expect_triad("They know when to engage, how to respond, and when a decision closes.",
+    "parallel clause triad")
+expect_triad("They have to risk receiving, admitting limits, or letting someone else do it.",
+    "parallel verb-phrase triad")
+expect_triad("Pleasure softens my edges, which makes service kinder and less controlling.",
+    "three-part rhetorical coordination")
+expect_triad("She answers quickly, smooths things over, and then wonders why life feels tight.",
+    "narrative sequence rather than a parallel triad", recognized=False)
 
 
 # --- no-superficial-ing ---
@@ -533,6 +1045,39 @@ expect_fail("no-superficial-ing",
 expect_pass("no-superficial-ing",
     "The temple uses blue and gold. According to the architect, these reference local flora.",
     "no tacked-on -ing")
+
+for _verb, _tail in (
+    ("creating", "a generic sense of importance"),
+    ("enhancing", "its significance"),
+    ("facilitating", "regional development"),
+    ("shaping", "the wider conversation"),
+    ("driving", "a commitment to change"),
+    ("embodying", "the spirit of unity"),
+):
+    expect_fail(
+        "no-superficial-ing",
+        f"The project expanded rapidly, {_verb} {_tail}.",
+        f"DR-18B trailing {_verb} clause",
+    )
+
+expect_fail("no-superficial-ing",
+    "Drawing on earlier research, the report proposes a new model.",
+    "DR-18B sentence-opening participial clause")
+expect_fail("no-superficial-ing",
+    "Recognising the unresolved problem, I sought advice.",
+    "DR-18B sentence-opening participial clause before first person")
+expect_pass("no-superficial-ing",
+    "Writing this essay was difficult, but I finished it.",
+    "DR-18B gerund subject is not an opening participial clause")
+expect_pass("no-superficial-ing",
+    "According to the report, the rate increased.",
+    "DR-18B According opener is excluded")
+expect_pass("no-superficial-ing",
+    "During the review, the team found an error.",
+    "DR-18B During opener is excluded")
+expect_pass("no-superficial-ing",
+    "Consulting work should support a decision, even if it takes time.",
+    "DR-18B noun modifier with finite verb is excluded")
 
 
 # --- no-ghost-spectral-density ---
@@ -564,8 +1109,29 @@ expect_pass("no-quietness-obsession",
 
 print("\n=== no-rhetorical-questions ===")
 expect_fail("no-rhetorical-questions",
-    "The data is clear. But what about cost? The answer is simple. But what about time? The answer is complicated.",
-    "2 rhetorical questions with declarative answers")
+    "You made a strong point. And honestly? That's amazing.",
+    "DR-21C source-shaped non-question fragment and emphatic answer")
+expect_fail("no-rhetorical-questions",
+    "The result? It’s remarkable.",
+    "DR-21C noun-fragment beat with smart-apostrophe answer")
+expect_fail("no-rhetorical-questions",
+    "Best part? It actually works.",
+    "DR-21C bare noun-fragment beat")
+expect_fail("no-rhetorical-questions",
+    "The problem? That's only the beginning.",
+    "DR-21C noun-fragment beat with direct evaluation")
+expect_pass("no-rhetorical-questions",
+    "What makes the advert persuasive? The repeated product name keeps the claim memorable. Why carry on? This question remains unresolved.",
+    "ordinary interrogative questions are not the approved fragment beat")
+expect_pass("no-rhetorical-questions",
+    "What's next? That's explained in the final section. What’s missing? It is listed in the appendix.",
+    "contracted interrogative starters are not the approved fragment beat")
+expect_pass("no-rhetorical-questions",
+    "## Can We Fix This?\n\nThe team can fix it by replacing the broken parser.",
+    "question-form Markdown heading")
+expect_pass("no-rhetorical-questions",
+    "She asked, \"Why, how can I, dear?\" Then she closed the door.",
+    "literary dialogue")
 expect_pass("no-rhetorical-questions",
     "The project was completed on time and under budget.",
     "no questions at all")
@@ -588,6 +1154,18 @@ print("\n=== no-unicode-flair ===")
 expect_fail("no-unicode-flair",
     "Next steps → draft the plan ✓ review the risks ★ ship the update.",
     "decorative Unicode symbols")
+expect_fail("no-unicode-flair",
+    "Use 𝗯𝗼𝗹𝗱 for the title and 𝘪𝘵𝘢𝘭𝘪𝘤 for the subtitle.",
+    "two contiguous stylized-Unicode runs")
+expect_fail("no-unicode-flair",
+    "Use 𝗯𝗼𝗹𝗱 for the title and practise 5 minutes × day.",
+    "one stylized-Unicode run plus a multiplication sign")
+expect_pass("no-unicode-flair",
+    "Use 𝗯𝗼𝗹𝗱 for the title.",
+    "one stylized word counts as one candidate, not one per letter")
+expect_pass("no-unicode-flair",
+    "Use **bold** for the title and *italic* for the subtitle.",
+    "ordinary Markdown bold and italics are not Unicode flair")
 expect_pass("no-unicode-flair",
     "Next steps: draft the plan, review the risks, and ship the update.",
     "plain punctuation")
@@ -619,6 +1197,35 @@ expect_fail("no-formulaic-openers",
 expect_fail("no-formulaic-openers",
     "From a governance perspective, libraries support democratic participation.",
     "from a X perspective")
+expect_fail("no-formulaic-openers",
+    "Here's what nobody's talking about: the renewal deadline.",
+    "nobody-is-talking throat-clearer")
+expect_fail("no-formulaic-openers",
+    "Let me be clear: the renewal deadline is Friday.",
+    "let-me-be-clear throat-clearer")
+expect_fail("no-formulaic-openers",
+    "Can we talk about the renewal deadline for a second?",
+    "can-we-talk throat-clearer")
+expect_fail("no-formulaic-openers",
+    "Let's talk about the renewal deadline.",
+    "lets-talk throat-clearer")
+expect_fail("no-formulaic-openers",
+    "We need to talk about the renewal deadline.",
+    "we-need-to-talk throat-clearer")
+expect_fail("no-formulaic-openers",
+    "I need to say something about the renewal deadline.",
+    "i-need-to-say throat-clearer")
+for hook in (
+    "5 things I learned from running a studio:",
+    "3 mistakes I see everyone making:",
+    "7 lessons from launching a product nobody talks about:",
+    "The 3 pillars of incident response:",
+    "10 things I wish I knew before managing a team:",
+    "Here are 6 frameworks that changed how I think about planning:",
+):
+    for heading_prefix in ("", "## "):
+        expect_fail("no-formulaic-openers", heading_prefix + hook,
+            f"DR-135E numbered-hook opener: {heading_prefix + hook}")
 expect_pass("no-formulaic-openers",
     "Libraries provide access to information.\n\nThey also serve communities.",
     "plain direct openers")
@@ -639,23 +1246,6 @@ expect_fail("no-signposted-conclusions",
 expect_pass("no-signposted-conclusions",
     "The evidence points in one direction. I doubt this will change.",
     "natural ending without signpost")
-
-
-# --- no-markdown-headings ---
-
-print("\n=== no-markdown-headings ===")
-expect_fail("no-markdown-headings",
-    "# The Importance of Libraries\n\n## Access to Information\n\nLibraries provide free access.",
-    "H1 + H2 headings")
-expect_fail("no-markdown-headings",
-    "Why Feedback Matters in Learning\n\nFeedback is easy to mistake for marking.",
-    "plain title heading")
-expect_pass("no-markdown-headings",
-    "Libraries provide free access to information. They also host community events.",
-    "plain prose, no headings")
-expect_pass("no-markdown-headings",
-    "### [Issue 194, Fall 2010](https://example.com/back-issues/194)\n\nThe essay begins here.",
-    "linked archive metadata heading is ignored")
 
 
 # --- no-corporate-ai-speak ---
@@ -695,9 +1285,9 @@ expect_fail("no-excessive-hedging",
 expect_pass("no-excessive-hedging",
     "The bridge was built in 1937. It cost twelve million dollars. Construction took four years.",
     "no hedging")
-expect_pass("no-excessive-hedging",
+expect_fail("no-excessive-hedging",
     "Cooking is often framed as a chore. The value is increasingly recognised. But most people just want dinner.",
-    "2 hedging constructions (under threshold)")
+    "2 hedging constructions, the DR-175 cut-off")
 
 
 # --- no-countdown-negation ---
@@ -782,6 +1372,33 @@ expect_fail("no-tidy-paragraph-endings",
 expect_pass("no-tidy-paragraph-endings",
     "The team missed the deadline after the API changed.\n\nThe data was incomplete, so the analyst reran the survey.\n\nThe user flow confused people on the payment screen.",
     "specific endings without tidy summary labels")
+expect_fail("no-tidy-paragraph-endings",
+    "The translators selected only the short lyrics. The selection was already an interpretation.\n\n"
+    "The syntax was regularised and the irony softened. Difficulty became refinement; irony could sound sincere.\n\n"
+    "The practices did not erase inequality. These practices were not romantic solutions; they were ways of living within it.",
+    "three compact structural paragraph closures")
+
+_two_structural_endings = ALL_CHECKS["no-tidy-paragraph-endings"](
+    "The translators selected only the short lyrics. The selection was already an interpretation.\n\n"
+    "The syntax was regularised and the irony softened. Difficulty became refinement; irony could sound sincere."
+)
+# Two candidates in a 40-word document sit above the 1-candidate, 0.5-per-1000 gate,
+# so recognition and the document verdict now agree here.
+assert not _two_structural_endings["passed"]
+assert _two_structural_endings["candidate_count"] == 2
+
+_literal_and_subordinate_controls = ALL_CHECKS["no-tidy-paragraph-endings"](
+    "The archivist arrived before lunch. The manuscript was already on the desk.\n\n"
+    "I chose a loaf tin if I felt cautious; a tray if I felt brave."
+)
+assert _literal_and_subordinate_controls["passed"]
+assert _literal_and_subordinate_controls["candidate_count"] == 0
+
+_quoted_structural_ending = ALL_CHECKS["no-tidy-paragraph-endings"](
+    'The critic called the ending reductive: “The selection was already an interpretation.”'
+)
+assert _quoted_structural_ending["candidate_count"] == 1
+assert _quoted_structural_ending["candidates"][0]["quoted"] is True
 
 
 # --- no-bland-critical-template ---
@@ -812,10 +1429,14 @@ print("\n=== vocabulary-diversity ===")
 expect_pass("vocabulary-diversity",
     "Short text with only a few words.",
     "short text skipped (under 150 words)")
-expect_fail("vocabulary-diversity",
-    " ".join(["the system is very good and the system is very effective and the system is very reliable"] * 20),
-    "extremely repetitive text with low TTR")
+# Direction flipped 2026-07-17: high windowed diversity is the AI
+# direction, so repetition is no longer flagged by this check.
 expect_pass("vocabulary-diversity",
+    " ".join(["the system is very good and the system is very effective and the system is very reliable"] * 20),
+    "extremely repetitive text with low TTR (clear under flipped direction)")
+# Flipped 2026-07-17: this fixture was engineered for maximal diversity and
+# now sits above the observed human range, so it flags.
+expect_fail("vocabulary-diversity",
     "The cathedral was built between 1163 and 1345 on the Ile de la Cite in Paris. "
     "Its flying buttresses were among the first in Gothic architecture, allowing thinner walls "
     "and larger stained glass windows. During the French Revolution, much of the religious imagery "
@@ -828,7 +1449,7 @@ expect_pass("vocabulary-diversity",
     "decades, revealing the original pale colour beneath centuries of pollution. Historians debate "
     "whether the restoration should preserve Viollet-le-Duc's additions or return to an earlier "
     "medieval form. The cathedral reopened in December 2024 after five years of intensive work.",
-    "varied human prose with diverse vocabulary")
+    "engineered maximal-diversity fixture (0.773, above the observed human range)")
 
 
 # --- new vocabulary items ---
@@ -839,9 +1460,9 @@ expect_fail("no-ai-vocabulary-clustering",
     "'unparalleled' + 'invaluable' + 'meticulous' = 3 new AI vocab items")
 
 
-# --- no-triad-density ---
+# --- no-forced-triads density (B4) ---
 
-print("\n=== no-triad-density ===")
+print("\n=== no-forced-triads density ===")
 
 # Build a 400+ word text with 5 triads
 _triad_heavy = (
@@ -852,33 +1473,33 @@ _triad_heavy = (
     "The pace was fast, slow, and steady throughout the quarter. "
     + "This is filler text to reach the word count threshold. " * 30
 )
-expect_fail("no-triad-density",
+expect_fail("no-forced-triads",
     _triad_heavy,
-    "5 triads in 400+ words")
+    "5 triads in 400+ words is above 4.0 per 1000")
 
 # 1 triad in 400+ words should pass
 _triad_light = (
     "The team needed apples, bananas, and oranges for the project. "
     + "This is filler text to reach the word count threshold. " * 30
 )
-expect_pass("no-triad-density",
+expect_pass("no-forced-triads",
     _triad_light,
-    "only 1 triad in 400+ words")
+    "1 triad in 400+ words is below 4.0 per 1000")
 
 # Short text with 5 triads should skip (pass)
 _triad_short = (
     "Apples, bananas, and oranges. Cats, dogs, and birds. "
     "Red, blue, and green. Small, medium, or large. Fast, slow, and steady."
 )
-expect_pass("no-triad-density",
+expect_pass("no-forced-triads",
     _triad_short,
     "short text (under 300 words) with 5 triads should skip")
 
 # Empty/minimal text should pass
-expect_pass("no-triad-density",
+expect_pass("no-forced-triads",
     "",
     "empty text")
-expect_pass("no-triad-density",
+expect_pass("no-forced-triads",
     "A single sentence.",
     "minimal text")
 
@@ -901,6 +1522,21 @@ expect_pass("no-section-scaffolding",
 expect_fail("no-section-scaffolding",
     "### How to apply:\nContent.\n\n### How to apply:\nContent.\n\nHow to apply:\nContent.",
     "markdown heading stripped, matches plain version")
+expect_fail("no-section-scaffolding",
+    "### First section\nContent.",
+    "first Markdown heading starts below level 2")
+expect_fail("no-section-scaffolding",
+    "## Parent section\nContent.\n\n#### Skipped child level\nMore content.",
+    "later Markdown heading skips a level")
+expect_fail("no-section-scaffolding",
+    "## First section\nContent.\n\n----\n\n## Second section\nMore content.",
+    "thematic break immediately precedes a Markdown heading")
+expect_pass("no-section-scaffolding",
+    "## Parent section\nContent.\n\n### Child section\nMore content.\n\n## Next section\nDone.",
+    "heading hierarchy changes one level at a time")
+expect_pass("no-section-scaffolding",
+    "---\ntitle: Example document\n---\n# Example document\nContent.",
+    "YAML frontmatter delimiter before a title is not a thematic break")
 
 
 # --- no-notability-claims (pattern 2) ---
@@ -915,6 +1551,14 @@ expect_fail("no-notability-claims",
 expect_fail("no-notability-claims",
     "The artist's work has received independent coverage from regional media outlets across the country.",
     "independent coverage + regional media outlets")
+for phrase in (
+    "The company was covered in trade publications.",
+    "The artist was profiled in Vogue.",
+    "The launch appeared in music and tech outlets.",
+    "Her insights appeared in other prominent media outlets.",
+):
+    expect_fail("no-notability-claims", phrase,
+        f"DR-22A notability formula: {phrase}")
 expect_pass("no-notability-claims",
     "In a 2024 New York Times interview, she argued that AI regulation should focus on outcomes rather than methods.",
     "named source + specific date and claim")
@@ -975,6 +1619,21 @@ expect_fail("no-inline-header-lists",
 expect_fail("no-inline-header-lists",
     "1. **First step:** Do this thing.\n2. **Second step:** Do that thing.",
     "two bolded-header numbered items")
+expect_fail("no-inline-header-lists",
+    "- **First step**: Do this thing.\n- **Second step**: Do that thing.",
+    "colon appears after the closing bold marker")
+expect_fail("no-inline-header-lists",
+    "1) **First step:** Do this thing.\n2) **Second step:** Do that thing.",
+    "numbered items use a closing parenthesis")
+expect_fail("no-inline-header-lists",
+    "‣ **First step:** Do this thing.\n◦ **Second step:** Do that thing.",
+    "items use Unicode bullet markers")
+expect_fail("no-inline-header-lists",
+    "- **Time: Cost:** Compare both.\n- **Risk: Impact:** Compare both.",
+    "existing labels may contain an internal colon")
+expect_fail("no-inline-header-lists",
+    "**Speed:** Fast. **Cost:** Low.",
+    "two bold-label segments on one input line")
 expect_pass("no-inline-header-lists",
     "The update improves the interface, speeds up load times through optimised algorithms, and adds end-to-end encryption.",
     "patterns.md After — flowing prose")
@@ -984,6 +1643,9 @@ expect_pass("no-inline-header-lists",
 expect_pass("no-inline-header-lists",
     "- **One bolded header:** definition only",
     "single bolded-header item — under threshold of 2")
+expect_pass("no-inline-header-lists",
+    "**Speed:** Fast.\n**Cost:** Low.",
+    "one unmarked bold-label segment per input line")
 
 
 # --- no-compound-modifier-density (pattern 18) ---
@@ -1051,14 +1713,16 @@ expect_pass("no-unicode-flair",
 print("\n=== group-a-resolution-markers ===")
 import re as _re_meta
 _patterns_md = (ROOT / "human-eyes" / "references" / "patterns.md").read_text()
-_pattern_sections = _re_meta.split(r"(?=^### \d+[a-z]?\.\s)", _patterns_md, flags=_re_meta.MULTILINE)
-_GROUP_A = [2, 5, 11, 12, 13, 14, 15, 16, 18, 20, 21, 28, 30, 35, 36, 37, 41]
+_pattern_sections = _re_meta.split(r"(?=^### [A-Z]\d+\.\s)", _patterns_md, flags=_re_meta.MULTILINE)
+# #6 and #11 were removed from the catalogue by DR-155 and DR-156: each carried a
+# pattern number with no check behind it, which the two-detector-type rule forbids.
+_GROUP_A = ["A2", "A5", "A6", "C1", "C2", "C3", "C4", "C6", "D2", "D3", "F3", "G2", "H3", "H6", "H7", "H10"]
 _resolution_seen = {}
 for _sec in _pattern_sections:
-    _h = _re_meta.match(r"^### (\d+)([a-z])?\.\s", _sec)
-    if not _h or _h.group(2):
+    _h = _re_meta.match(r"^### ([A-Z]\d+)\.\s", _sec)
+    if not _h:
         continue
-    _resolution_seen[int(_h.group(1))] = "**Detection:**" in _sec
+    _resolution_seen[_h.group(1)] = "**Detection:**" in _sec
 for _n in _GROUP_A:
     if not _resolution_seen.get(_n):
         FAILURES += 1
@@ -1072,6 +1736,8 @@ for _n in _GROUP_A:
 print("\n=== group-b-resolution-coverage ===")
 _GROUP_B_CHECKS = [
     "no-manufactured-insight",
+    "no-performed-candour",
+    "no-formulaic-social-posts",
     "no-corporate-ai-speak",
     "no-signposted-conclusions",
     "no-nonliteral-land-surface",
@@ -1154,8 +1820,13 @@ expected_checks = {
     "no-nonliteral-land-surface",
     "overall-signal-stacking",
     "no-manufactured-insight",
+    "no-performed-candour",
+    "no-formulaic-social-posts",
     "no-staccato-sequences",
     "no-anaphora",
+    "no-paragraph-anaphora",
+    "no-heading-one-liners",
+    "no-modal-stacks",
     "no-collaborative-artifacts",
     "no-curly-quotes",
     "sentence-length-variance",
@@ -1170,16 +1841,25 @@ expected_checks = {
     "no-soft-scaffolding",
     "no-orphaned-demonstratives",
     "no-forced-triads",
+    "no-nominalisation-rate",
+    "no-that-relative-rate",
+    "no-participial-clause-rate",
+    "no-passive-voice-rate",
+    "no-it-pronoun-rate",
     "no-superficial-ing",
     "no-ghost-spectral-density",
     "no-quietness-obsession",
     "no-rhetorical-questions",
     "no-excessive-lists",
+    "no-symmetric-list-items",
+    "no-title-case-headings",
+    "no-mixed-spelling-conventions",
+    "no-false-ranges",
     "no-unicode-flair",
     "no-dramatic-transitions",
     "no-formulaic-openers",
     "no-signposted-conclusions",
-    "no-markdown-headings",
+    "no-parenthetical-headings",
     "no-corporate-ai-speak",
     "no-this-chains",
     "no-excessive-hedging",
@@ -1190,7 +1870,6 @@ expected_checks = {
     "no-bland-critical-template",
     "no-rubric-echoing",
     "vocabulary-diversity",
-    "no-triad-density",
     "no-section-scaffolding",
     # U1 (audit-report redesign): Group A patterns 2, 5, 13, 14, 18, 20.
     "no-notability-claims",
@@ -1199,6 +1878,14 @@ expected_checks = {
     "no-inline-header-lists",
     "no-compound-modifier-density",
     "no-knowledge-cutoff-disclaimers",
+    # DR-21: Latinate verb rate, pattern 70.
+    "no-latinate-verb-rate",
+    # DR-97: word length average, pattern 71.
+    "word-length-average",
+    # DR-78: mixed-script confusables, pattern 72.
+    "no-mixed-script-words",
+    # DR-84: concreteness average, pattern 73.
+    "concreteness-average",
 }
 actual_checks = set(ALL_CHECKS)
 if actual_checks != expected_checks:
@@ -1948,17 +2635,71 @@ else:
 print("\n=== human-opinion-passthrough ===")
 opinion_text = Path(__file__).resolve().parents[1].joinpath("samples/human-sourced/legacy/10-human-opinion.md").read_text()
 for check_name in ALL_CHECKS:
-    if check_name == "no-staccato-sequences":
-        continue  # existing human sample also fails this, known limitation
+    if check_name in {
+        "no-staccato-sequences",
+        "no-negative-parallelisms",
+        # DR-159 rate checks. These flag a calibrated share of human prose by
+        # design (24%, 27%, and 37% of the human corpus respectively). This
+        # 476-word opinion piece runs 39.9 nominalisations and 4.2 subject
+        # relatives per 1000 words, so it sits in that share. Excluded here
+        # rather than raising the thresholds, which would fit the instrument
+        # to two fixtures.
+        "no-nominalisation-rate",
+        "no-that-relative-rate",
+        # DR-66: the same principle. This piece runs 8.4 passive verbs per 1000
+        # words, inside the 29% of human prose B10 flags by design.
+        "no-passive-voice-rate",
+        # DR-79A: the same principle again. This piece's sentence-length spread
+        # is 7.56 across 36 sentences, inside the 11% of human prose G9 flags
+        # at its calibrated threshold of 9.
+        "sentence-length-variance",
+        # DR-175: this piece runs paragraphs of 58, 77, 65, 49, 81, 43, 45 and 58
+        # words, a coefficient of variation of 0.239, inside the 17% of human
+        # prose the check flags at its calibrated 0.26. That band was ruled a
+        # correct catch whoever wrote it.
+        "paragraph-length-uniformity",
+        # DR-175: the roll-up consequence of the line above. Paragraph
+        # uniformity plus the negative parallelism this piece already contains
+        # put it at 5 against a gate of 4. The overall verdict is excluded here
+        # only because a component it sums is; no other human passthrough
+        # fixture excludes it.
+        "overall-signal-stacking",
+    }:
+        continue
     expect_pass(check_name, opinion_text, f"human opinion piece ({check_name})")
+expect_fail(
+    "no-negative-parallelisms",
+    opinion_text,
+    "human opinion contains a negative-positive because/not-because construction",
+)
 
 # --- Human passthrough: instructional piece ---
 print("\n=== human-instructional-passthrough ===")
 instructional_text = Path(__file__).resolve().parents[1].joinpath("samples/human-sourced/legacy/11-human-instructional.md").read_text()
 for check_name in ALL_CHECKS:
-    if check_name == "no-staccato-sequences":
+    if check_name in {
+        "no-staccato-sequences",
+        "no-performed-candour",
+        # DR-159: this instructional fixture runs 6.7 subject relatives per
+        # 1000 words, inside the 27% of human prose the check flags by design.
+        "no-that-relative-rate",
+        # DR-66: this piece runs 25.6 `it` pronouns per 1000 words, inside the
+        # 18% of human prose B11 flags by design.
+        "no-it-pronoun-rate",
+        # DR-84: this piece averages 2.845 concreteness across its content
+        # words, inside the 29% of human prose B14 flags by design.
+        "concreteness-average",
+        "no-negative-parallelisms",
+        "overall-signal-stacking",
+    }:
         continue
     expect_pass(check_name, instructional_text, f"human instructional piece ({check_name})")
+expect_fail(
+    "no-negative-parallelisms",
+    instructional_text,
+    "human instructional prose contains cross-sentence negative parallelism",
+)
+expect_fail("overall-signal-stacking", instructional_text, "human instructional prose reaches the aggregate signal threshold")
 
 
 # --- U7: --judgement-file CLI flag + agent_judgement overlay validation ---
@@ -2225,38 +2966,27 @@ print("\n=== U7 --judgement-file CLI subprocess smoke tests ===")
 _u7_grade_path = ROOT / "human-eyes" / "scripts" / "grade.py"
 _u7_sample_path = ROOT / "dev" / "evals" / "samples" / "synthetic" / "synthetic-hard-fail-only.md"
 
-# Markdown mode with valid overlay: the agent-judgement item appears in stdout.
+# Legacy overlay invocations fail with the migration command.
 _u7_overlay_path = _u7_write_overlay(_u7_valid)
 _u7_md = _u7_subprocess.run(
     ["python3", str(_u7_grade_path), "--format", "markdown", "--depth", "balanced",
      "--judgement-file", _u7_overlay_path, str(_u7_sample_path)],
     capture_output=True, text=True,
 )
-if _u7_md.returncode == 0 and "Tonal uniformity" in _u7_md.stdout:
-    print("  ok: CLI --judgement-file in markdown mode renders the overlay item")
+if _u7_md.returncode == 2 and "Legacy grader invocation" in _u7_md.stderr:
+    print("  ok: legacy markdown --judgement-file invocation returns migration guidance")
 else:
     FAILURES += 1
     print(f"FAIL: CLI markdown mode: rc={_u7_md.returncode}; stderr={_u7_md.stderr[:300]}")
 
-# JSON mode with valid overlay: contract.agent_judgement[] carries the overlay.
+# JSON uses the same fail-closed migration behavior.
 _u7_js = _u7_subprocess.run(
     ["python3", str(_u7_grade_path), "--format", "json",
      "--judgement-file", _u7_overlay_path, str(_u7_sample_path)],
     capture_output=True, text=True,
 )
-if _u7_js.returncode == 0:
-    try:
-        _u7_js_payload = _u7_json.loads(_u7_js.stdout)
-    except _u7_json.JSONDecodeError as exc:
-        FAILURES += 1
-        print(f"FAIL: CLI json mode: stdout not valid JSON: {exc}")
-    else:
-        _u7_aj = _u7_js_payload.get("human_report", {}).get("agent_judgement", [])
-        if len(_u7_aj) == 1 and _u7_aj[0]["id"] == "tonal_uniformity":
-            print("  ok: CLI --judgement-file in json mode injects overlay into contract.agent_judgement[]")
-        else:
-            FAILURES += 1
-            print(f"FAIL: CLI json mode: agent_judgement does not carry overlay; got {_u7_aj}")
+if _u7_js.returncode == 2 and "Legacy grader invocation" in _u7_js.stderr:
+    print("  ok: legacy JSON --judgement-file invocation returns migration guidance")
 else:
     FAILURES += 1
     print(f"FAIL: CLI json mode: rc={_u7_js.returncode}; stderr={_u7_js.stderr[:300]}")
@@ -2267,33 +2997,1815 @@ _u7_missing = _u7_subprocess.run(
      "--judgement-file", "/nonexistent/u7-test.json", str(_u7_sample_path)],
     capture_output=True, text=True,
 )
-if _u7_missing.returncode != 0 and "/nonexistent/u7-test.json" in _u7_missing.stderr:
-    print("  ok: CLI missing --judgement-file path exits non-zero with the path in stderr")
+if _u7_missing.returncode == 2 and "Legacy grader invocation" in _u7_missing.stderr:
+    print("  ok: legacy missing --judgement-file invocation returns migration guidance")
 else:
     FAILURES += 1
     print(f"FAIL: CLI missing path: rc={_u7_missing.returncode}; stderr={_u7_missing.stderr[:300]}")
 
-# Backward compat: omitting --judgement-file behaves exactly as before (empty agent_judgement).
+# Legacy no-subcommand invocation is never reinterpreted as a surface scan.
 _u7_no_overlay = _u7_subprocess.run(
     ["python3", str(_u7_grade_path), "--format", "json", str(_u7_sample_path)],
     capture_output=True, text=True,
 )
-if _u7_no_overlay.returncode == 0:
-    try:
-        _u7_no_overlay_payload = _u7_json.loads(_u7_no_overlay.stdout)
-        _u7_aj_default = _u7_no_overlay_payload.get("human_report", {}).get("agent_judgement", "missing")
-        if _u7_aj_default == []:
-            print("  ok: CLI without --judgement-file still emits empty agent_judgement (backward compat)")
-        else:
-            FAILURES += 1
-            print(f"FAIL: CLI no overlay: agent_judgement should be []; got {_u7_aj_default}")
-    except _u7_json.JSONDecodeError as exc:
-        FAILURES += 1
-        print(f"FAIL: CLI no overlay: stdout not valid JSON: {exc}")
+if _u7_no_overlay.returncode == 2 and "Legacy grader invocation" in _u7_no_overlay.stderr:
+    print("  ok: legacy no-subcommand invocation returns migration guidance")
 else:
     FAILURES += 1
     print(f"FAIL: CLI no overlay: rc={_u7_no_overlay.returncode}; stderr={_u7_no_overlay.stderr[:300]}")
 
+
+# --- 2026-07-17 hygiene-pass checker-finding regressions ---
+# Source-card focused checks exposed counting and eligibility defects.
+# Each assertion below encodes the corrected behaviour.
+
+print("\n=== hygiene-pass regressions ===")
+
+# F1: singular+plural list entries must not double-count one occurrence.
+expect_pass("no-ghost-spectral-density",
+    "The echoes faded across the valley before dawn. The whispers stopped.",
+    "F1: two spectral words must count as 2, not 4")
+
+# B1: a repeated word must count once per occurrence, not once per entry.
+expect_fail("no-ai-vocabulary-clustering",
+    "We delve into the data. We delve into the code. We delve into the tests.",
+    "B1: 'delve' three times in one paragraph is a cluster of 3")
+
+# B1: nested entries (word inside a longer phrase) must count one span once.
+expect_pass("no-ai-vocabulary-clustering",
+    "They offer a valuable insight and provide a valuable insight.",
+    "B1: two phrases containing two nested words must count as 2, not 4")
+
+# G9: documented eligibility skips prose under 100 words or under 6 sentences.
+expect_pass("sentence-length-variance",
+    ("The committee reviewed every submission that arrived before the posted "
+     "deadline and sorted all of them into three separate piles organised by "
+     "their primary topic area. Each reviewer then read through the complete "
+     "pile assigned to them and wrote one short structured report on every "
+     "single entry that the pile contained. The finished reports were then "
+     "collated into a single shared document that the committee chair "
+     "circulated to the whole committee two days before the meeting. All the "
+     "members arrived at the meeting having read the document and voted on "
+     "every entry in one long session that ran for roughly four hours."),
+    "G9: 100+ words but only 4 sentences must be skipped, not scored")
+
+# F2: singular+inflected list entries must not double-count one occurrence.
+expect_pass("no-quietness-obsession",
+    "The quietly confident team settled in for the afternoon meeting.",
+    "F2: two quietness words must count as 2, not 4")
+
+# F2: documented words hum/humming, soft, and settle must be counted.
+expect_fail("no-quietness-obsession",
+    "The hum of the fans went soft. A low hum settled over the room as "
+    "things settle into stillness.",
+    "F2: six documented quietness words including hum and soft")
+
+# F2: 'hum' must not match inside unrelated words like 'human'.
+expect_pass("no-quietness-obsession",
+    "Every human on the humid subcontinent heard the announcement clearly.",
+    "F2: human/humid must not count as hum")
+
+# G4: lightning bolt, rightwards arrow, and recycling glyphs are candidates.
+expect_fail("no-unicode-flair",
+    "Ship fast ⚡ iterate ➡ recycle wins ♻",
+    "G4: three decorative glyphs missed by the prior character class")
+
+# --- 2026-07-17 defect-sweep family-1 regressions ---
+# Documented phrases the runtime never fired on. Approved as additions.
+
+print("\n=== defect-sweep family-1 regressions ===")
+
+# D3 documents the excellent-point family as its own example.
+expect_fail("no-collaborative-artifacts",
+    "Excellent point! That framing works much better.",
+    "family-1: excellent-point praise is a documented D3 artifact")
+expect_fail("no-collaborative-artifacts",
+    "You raise an excellent point about the deadline.",
+    "family-1: raised-excellent-point variant")
+
+# D1/D3 document the ASCII form; curly apostrophes must match too.
+expect_fail("no-collaborative-artifacts",
+    "You’re absolutely right about that.",
+    "family-1: curly-apostrophe you're absolutely right")
+
+# G7 documents 'here's the thing'; curly apostrophe must match too.
+expect_fail("no-manufactured-insight",
+    "But here’s the thing about all of it.",
+    "family-1: curly-apostrophe here's the thing")
+
+# Family 1: documented filler transitions must fire on E1.
+expect_fail("no-filler-phrases",
+    "In today’s fast-paced world, teams move quickly.",
+    "family-1: README's own E1 example, curly apostrophe")
+expect_fail("no-filler-phrases",
+    "That being said, the plan still works as designed.",
+    "family-1: Grammarly transition 'That being said'")
+expect_fail("no-filler-phrases",
+    "From a broader perspective, the results hold.",
+    "family-1: documented transition 'From a broader perspective'")
+expect_fail("no-filler-phrases",
+    "As technology continues to evolve, our tooling adapts.",
+    "family-1: Guo transition 'As technology continues to evolve'")
+
+# Family 1: documented qualifiers count toward E2 density; singles stay clear.
+expect_fail("no-excessive-hedging",
+    "Generally speaking, results vary. Arguably, they typically improve to some extent.",
+    "family-1: four stacked documented qualifiers")
+expect_pass("no-excessive-hedging",
+    "Typically, the build finishes in about ten minutes.",
+    "family-1: one qualifier alone must not flag")
+
+# Family 1: B3 comma-form two-clause contrastive negation (Stockton C01).
+expect_fail("no-negative-parallelisms",
+    "We're not just building a product, we're creating an experience.",
+    "family-1: comma-form not-just contrast with repeated subject")
+expect_fail("no-negative-parallelisms",
+    "They aren't just using AI, they're restructuring the whole team around it.",
+    "family-1: comma-form aren't-just contrast")
+# Controls: single-clause forms are ordinary usage and must stay clear.
+expect_pass("no-negative-parallelisms",
+    "The fee isn't just about administration costs.",
+    "family-1 control: bare isn't-just-about with no contrast clause")
+expect_pass("no-negative-parallelisms",
+    "The grant covers more than just travel.",
+    "family-1 control: more-than-just as ordinary quantification")
+
+# B3 bare-noun subject resuming with a deictic (Stockton example shape).
+expect_fail("no-negative-parallelisms",
+    "AI isn’t just evolving—it’s accelerating!",
+    "B3: bare-noun subject with deictic resumption")
+
+# Single-clause contrast stand-ins feed stacking only (2026-07-17).
+expect_pass("no-negative-parallelisms",
+    "The grant covers more than just travel.",
+    "single-clause form must not fail B3 directly")
+expect_pass("overall-signal-stacking",
+    "At its core, the summary works. I hope this helps!",
+    "three stacked points stay under the threshold")
+expect_fail("overall-signal-stacking",
+    "At its core, the summary works. I hope this helps! The offer goes beyond the price.",
+    "single-clause contrast stand-in tips stacking to four")
+
+# --- B5 flip: windowed lexical diversity, flag high (2026-07-17) ---
+
+print("\n=== B5 windowed diversity regressions ===")
+
+# High-diversity text (every word unique) must flag.
+_unique_words = " ".join(f"w{chr(97+i%26)}{chr(97+(i//26)%26)}{chr(97+(i//676)%26)}q" for i in range(200))
+expect_fail("vocabulary-diversity", _unique_words,
+    "B5: maximal windowed diversity is the AI direction")
+
+# Repetitive long text must stay clear (old rule would have flagged it).
+_repetitive = ("The strategy emphasises customer outcomes and the strategy "
+               "emphasises operational efficiency for the team. ") * 20
+expect_pass("vocabulary-diversity", _repetitive,
+    "B5: heavy repetition is no longer the flagged direction")
+
+# Under 150 words stays skipped.
+expect_pass("vocabulary-diversity", "Short note. " * 30,
+    "B5: sub-window text skipped")
+
+# Two-tier evidence: >=0.74 states the human-range tier.
+_r = ALL_CHECKS["vocabulary-diversity"](_unique_words)
+if "above the observed human range" not in _r["evidence"]:
+    FAILURES += 1
+    print(f"FAIL: B5 upper tier missing from evidence: {_r['evidence']}")
+else:
+    print("  ok: B5 upper-tier evidence present at extreme diversity")
+
+# --- D1 pasted-chat residue families (2026-07-17) ---
+print("\n=== DR-113 D1 residue families ===")
+expect_fail("no-collaborative-artifacts",
+    "I'm sorry, but I can't help with that request.",
+    "DR-113: apology-led refusal")
+expect_fail("no-collaborative-artifacts",
+    "As an AI language model, I don't have personal opinions.",
+    "DR-113: AI-identity disclaimer")
+expect_fail("no-collaborative-artifacts",
+    "Certainly, here are the main considerations for the rollout.",
+    "DR-113: sentence-opening Certainly without exclamation")
+expect_fail("no-collaborative-artifacts",
+    "Want me to expand on any of these sections?",
+    "DR-113: offer-to-continue question")
+expect_fail("no-collaborative-artifacts",
+    "Here's a detailed breakdown of the quarterly results.",
+    "DR-113: here's-a-detailed-breakdown residue")
+expect_pass("no-collaborative-artifacts",
+    "The certainty of the schedule was never in doubt.",
+    "DR-113 control: 'certainty' must not match Certainly")
+
+# --- DR-114 components 1-2: platform residue and possessive bracket labels ---
+print("\n=== DR-114 H8 additions ===")
+expect_fail("no-placeholder-residue",
+    "The market outlook remains positive citeturn0search2 according to analysts.",
+    "DR-114: ChatGPT citeturn token")
+expect_fail("no-placeholder-residue",
+    "See the full report contentReference[oaicite:3] for the methodology.",
+    "DR-114: contentReference oaicite token")
+expect_fail("no-placeholder-residue",
+    "Read more at https://example.com/guide?utm_source=chatgpt.com today.",
+    "DR-114: chatgpt.com URL tracker")
+expect_fail("no-placeholder-residue",
+    "Dear [Subject's Name], thank you for reaching out to our team.",
+    "DR-114: possessive bracket label")
+expect_pass("no-placeholder-residue",
+    "The results [sic] were later replicated [1] in two labs.",
+    "DR-114 control: editorial brackets and citation numbers stay clear")
+
+# --- DR-115 components 4 and 6: paragraph anaphora and heading one-liners ---
+print("\n=== DR-115 #51a/#38a additions ===")
+expect_fail("no-paragraph-anaphora",
+    "Customers want faster onboarding and clearer pricing pages.\n\n"
+    "Customers also expect the invoice history to export cleanly.\n\n"
+    "Customers who churn cite the same three support gaps every quarter.",
+    "DR-115: three consecutive paragraphs opening with the same word")
+expect_pass("no-paragraph-anaphora",
+    "Customers want faster onboarding and clearer pricing pages.\n\n"
+    "Billing exports were the second theme in the interviews.\n\n"
+    "Customers who churn cite the same three support gaps every quarter.",
+    "DR-115 control: no three-paragraph run")
+expect_pass("no-paragraph-anaphora",
+    "The onboarding flow is slow on the first login.\n\n"
+    "The invoices export cleanly once the account is verified.\n\n"
+    "The support queue clears within a day.",
+    "DR-115 control: trivial opener 'The' is excluded")
+expect_fail("no-paragraph-anaphora",
+    "Customers want faster onboarding and clearer pricing pages.\n\n"
+    "## Billing\n\n"
+    "Customers also expect the invoice history to export cleanly.\n\n"
+    "Customers who churn cite the same three support gaps every quarter.",
+    "DR-115: a heading between paragraphs does not break the run")
+expect_pass("no-paragraph-anaphora",
+    "- Customers want speed\n- Customers want clarity\n- Customers want exports",
+    "DR-115 control: list blocks are not paragraphs")
+expect_fail("no-heading-one-liners",
+    "## Performance\n\nSpeed matters.\n\n"
+    "The benchmark suite covers cold starts, warm paths, and the worst-case joins we see in production telemetry.\n\n"
+    "## Security\n\nWe take security seriously.\n\n"
+    "Access tokens rotate hourly and the audit log is append-only.",
+    "DR-115: two headings each followed by a one-sentence paragraph")
+expect_pass("no-heading-one-liners",
+    "## Performance\n\nSpeed matters.\n\n"
+    "The benchmark suite covers cold starts and warm paths.",
+    "DR-115 control: a single occurrence stays clear (Blader fixture)")
+expect_pass("no-heading-one-liners",
+    "## Performance\n\nThe suite covers cold starts. It also covers warm paths.\n\n"
+    "## Security\n\nTokens rotate hourly. The audit log is append-only.",
+    "DR-115 control: multi-sentence paragraphs under headings stay clear")
+expect_pass("no-heading-one-liners",
+    "## Performance\n\n- cold starts\n- warm paths\n\n"
+    "## Security\n\n- token rotation\n- audit logging",
+    "DR-115 control: a list under a heading is not a one-line paragraph")
+
+# --- DR-150: E2 hedging watch-list expansion ---
+print("\n=== DR-150 E2 additions ===")
+expect_fail("no-excessive-hedging",
+    "Results may vary depending on the configuration you start from. "
+    "In most cases the defaults are fine for small teams. "
+    "More often than not, the cache hides the real cost until launch.",
+    "DR-150: three new hedge cues reach the density threshold")
+expect_fail("no-excessive-hedging",
+    "Generally speaking, the migration is safe. It depends on the size of the tenant. "
+    "In general, the older exports are the risky ones.",
+    "DR-150: new cues stack with an existing cue")
+expect_pass("no-excessive-hedging",
+    "Results may vary between regions. The benchmark covers the four largest tenants "
+    "and the deploy finished inside the window.",
+    "DR-150 control: a single hedge stays under the threshold")
+expect_fail("no-excessive-hedging",
+    "As a rule the exports finish overnight. In general, the queue clears by morning. "
+    "The alerting has paged twice this quarter.",
+    "DR-150 control: two hedges now reach the DR-175 cut-off")
+
+# --- DR-118: modal stacks (E9), can-potentially (E2), intensifiers (B1) ---
+print("\n=== DR-118 additions ===")
+expect_fail("no-modal-stacks",
+    "The new cache can potentially often reduce latency for most tenants.",
+    "DR-118: three qualifiers stacked in one sentence")
+expect_pass("no-modal-stacks",
+    "The cache can often help. Results might improve. Costs may fall.",
+    "DR-118 control: qualifiers spread across sentences stay clear")
+expect_pass("no-modal-stacks",
+    "In May the team can meet to review the typical rollout.",
+    "DR-118 control: capitalised May and non-adverb typical do not count")
+expect_fail("no-excessive-hedging",
+    "This can potentially improve results. It tends to help. Generally speaking, it works.",
+    "DR-118: can potentially joins the E2 density list")
+expect_fail("no-ai-vocabulary-clustering",
+    "The change profoundly reshaped the team. It significantly altered planning and fundamentally moved the roadmap.",
+    "DR-118: three AI-leaning intensifiers cluster in one paragraph")
+expect_pass("no-ai-vocabulary-clustering",
+    "The change profoundly reshaped the team.\n\nPlanning shifted the next quarter.\n\nThe roadmap moved a month later.",
+    "DR-118 control: one intensifier per paragraph stays clear")
+
+# --- DR-119: E1 generalisations and E4 peppy-ending shape ---
+print("\n=== DR-119 E1/E4 additions ===")
+expect_fail("no-filler-phrases",
+    "It's important to remember that the queue drains overnight. "
+    "As AI continues to evolve, the key takeaway is that at the heart of this debate "
+    "we all have the ability to adapt. It must also be noted the exports run late.",
+    "DR-119: generalised filler variants are counted")
+expect_pass("no-filler-phrases",
+    "The queue drains overnight. The exports run late on Fridays.",
+    "DR-119 control: plain prose stays clear")
+expect_fail("no-generic-conclusions",
+    "The migration took three weeks and two rollbacks.\n\nGive it a try today!",
+    "DR-119: short imperative exclamation ending")
+expect_pass("no-generic-conclusions",
+    "The migration took three weeks and two rollbacks.\n\nThe project shipped on time!",
+    "DR-119 control: non-imperative exclamation ending stays clear")
+expect_pass("no-generic-conclusions",
+    "Give it a try today! The trial takes three minutes and needs no card details.",
+    "DR-119 control: exclamation mid-document stays clear")
+
+# --- DR-125: B1 vocabulary watch-list expansions ---
+print("\n=== DR-125 B1 vocabulary expansions ===")
+DR125_AI_VOCABULARY = [
+    "versatile", "significant", "effectively", "capabilities",
+    "advancements", "elucidating", "firstly", "reliance",
+    "generalizability", "nuance", "nuances", "nuancing", "delving",
+    "unveil", "unveils", "unveiled", "unveiling",
+    "heighten", "heightens", "heightened", "heightening",
+    "amidst", "camaraderie", "palpable", "fleeting", "solace",
+    "unravel", "cacophony", "unease", "reminder", "commence",
+    "leverage", "elevate", "align", "dive into", "surpass",
+    "notable", "despite",
+]
+for word in DR125_AI_VOCABULARY:
+    matches = _grade._find_ai_words(word)
+    if matches != [word]:
+        FAILURES += 1
+        print(f"FAIL: DR-125 B1 should recognize {word!r} exactly once; got {matches}")
+    else:
+        print(f"  ok: DR-125 B1 recognizes {word!r} exactly once")
+
+for word in ["realign", "despiteful", "capability"]:
+    matches = _grade._find_ai_words(word)
+    if matches:
+        FAILURES += 1
+        print(f"FAIL: DR-125 B1 exact-boundary control {word!r} matched {matches}")
+    else:
+        print(f"  ok: DR-125 B1 exact-boundary control leaves {word!r} clear")
+
+expect_fail("no-ai-vocabulary-clustering",
+    "The response was versatile, significant, and worked effectively.",
+    "DR-125: three newly approved vocabulary signals trip the existing threshold")
+expect_pass("no-ai-vocabulary-clustering",
+    "The response was versatile.\n\nThe result was significant.\n\nThe method worked effectively.",
+    "DR-125 control: approved signals in separate paragraphs stay clear")
+
+# --- DR-126B: B1 document-wide Kousha-Thelwall term pairs ---
+print("\n=== DR-126B B1 document-wide term pairs ===")
+DR126_KOUSHA_TERM_PAIRS = [
+    ("delve", "underscore"),
+    ("delving", "showcases"),
+    ("unveiled", "intricated"),
+    ("meticulously", "pivotal"),
+    ("heightening", "nuanced"),
+    ("bolstered", "fostering"),
+    ("interplaying", "underscore"),
+]
+for first, second in DR126_KOUSHA_TERM_PAIRS:
+    expect_fail("no-ai-vocabulary-clustering",
+        f"The first section uses {first}.\n\nThe final section uses {second}.",
+        f"DR-126B: distinct document-wide families {first!r} and {second!r} fail B1")
+
+dr126_evidence = ALL_CHECKS["no-ai-vocabulary-clustering"](
+    "The report will delve into the method.\n\nThe conclusion underscores the result."
+)["evidence"]
+for expected in ["delve=['delve']", "underscore=['underscores']"]:
+    if expected not in dr126_evidence:
+        FAILURES += 1
+        print(f"FAIL: DR-126B evidence should contain {expected!r}; got {dr126_evidence!r}")
+    else:
+        print(f"  ok: DR-126B evidence reports canonical family and occurrence {expected!r}")
+
+dr126_same_paragraph = ALL_CHECKS["no-ai-vocabulary-clustering"](
+    "We FOSTER careful discussion before we Delve into the evidence."
+)
+dr126_same_paragraph_phrases = _grade._evidence_envelope(
+    dr126_same_paragraph
+)["quoted_phrases"]
+if dr126_same_paragraph["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-126B exactly two distinct families in one paragraph should fail B1")
+elif dr126_same_paragraph_phrases != ["FOSTER", "Delve"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-126B structured evidence should preserve every occurrence in "
+        f"source order and source casing; got {dr126_same_paragraph_phrases!r}"
+    )
+else:
+    print(
+        "  ok: DR-126B exactly two same-paragraph families fail and structured "
+        "evidence preserves source order and casing"
+    )
+
+dr126_combined = ALL_CHECKS["no-ai-vocabulary-clustering"](
+    "We Delve into the evidence, FOSTER discussion, and work effectively."
+)
+dr126_combined_phrases = _grade._evidence_envelope(dr126_combined)["quoted_phrases"]
+if dr126_combined["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-126B combined paragraph and document-family failure should fail B1")
+elif "Worst paragraph has 3 AI words" not in dr126_combined["evidence"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-126B combined failure should retain worst-paragraph evidence; "
+        f"got {dr126_combined['evidence']!r}"
+    )
+elif dr126_combined_phrases != ["Delve", "FOSTER"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-126B combined failure should retain both family occurrences; "
+        f"got {dr126_combined_phrases!r}"
+    )
+else:
+    print(
+        "  ok: DR-126B combined failure retains worst-paragraph evidence and "
+        "both family occurrences"
+    )
+
+dr126_legacy_paragraph = ALL_CHECKS["no-ai-vocabulary-clustering"](
+    "The response was versatile, significant, and worked effectively."
+)
+dr126_legacy_phrases = _grade._evidence_envelope(
+    dr126_legacy_paragraph
+)["quoted_phrases"]
+if "matches" in dr126_legacy_paragraph:
+    FAILURES += 1
+    print("FAIL: DR-126B should not add an empty matches list to legacy failures")
+elif dr126_legacy_phrases != ["versatile", "significant", "effectively"]:
+    FAILURES += 1
+    print(
+        "FAIL: DR-126B should preserve fallback evidence parsing for legacy "
+        f"paragraph-only failures; got {dr126_legacy_phrases!r}"
+    )
+else:
+    print("  ok: DR-126B preserves structured evidence for legacy paragraph-only failures")
+
+expect_pass("no-ai-vocabulary-clustering",
+    "The first section will delve into the method.\n\nThe final section delves into the result.",
+    "DR-126B control: one repeated family across paragraphs stays clear")
+
+# --- DR-126C: GPTZero preserved-payload equality ---
+# The payload is the preserved provenance record for GPTZERO_AI_PHRASES, a
+# hardcoded runtime constant in grade.py. This test is the drift guard between
+# them.
+_DR126_PAYLOAD = (
+    ROOT / "dev" / "references" / "sources" / "snapshots" / "attachments"
+    / "gptzero-ai-vocabulary-2026-07-15-client-data.json"
+)
+dr126_gptzero_payload = _json.loads(_DR126_PAYLOAD.read_text())
+dr126_source_phrases = [
+    row["ngram"].replace("\u2019", "'")
+    for row in dr126_gptzero_payload
+]
+# GPTZERO_AI_PHRASES is a tuple so the frozen payload cannot be appended to or
+# mutated at runtime; compare like for like.
+if dr126_source_phrases != list(_grade.GPTZERO_AI_PHRASES):
+    FAILURES += 1
+    print(
+        "FAIL: DR-126C runtime GPTZero phrases must equal the preserved 100-row "
+        "payload after apostrophe normalization."
+    )
+    print(
+        "      This list is frozen. New B1 clustering candidates go in "
+        "AI_VOCABULARY (grade.py), not here."
+    )
+    print(f"  Source rows: {len(dr126_source_phrases)}")
+    print(f"  Runtime rows: {len(_grade.GPTZERO_AI_PHRASES)}")
+    for index, (source_phrase, runtime_phrase) in enumerate(
+        zip(dr126_source_phrases, _grade.GPTZERO_AI_PHRASES), start=1
+    ):
+        if source_phrase != runtime_phrase:
+            print(
+                f"  First mismatch at row {index}: source={source_phrase!r}, "
+                f"runtime={runtime_phrase!r}"
+            )
+            break
+else:
+    print("  ok: DR-126C runtime list exactly matches all 100 preserved payload rows")
+
+# --- DR-135H: consolidated remaining social-post catalogue ---
+print("\n=== DR-135H consolidated social-post catalogue ===")
+
+DR135_EXISTING_RULE_EXPANSIONS = {
+    "no-manufactured-insight": [
+        "The data speaks for itself.",
+        "The market has spoken.",
+        "The numbers don't lie.",
+        "This technology wants to replace the manager.",
+        "AI is coming for your job.",
+        "The industry is waking up to the problem.",
+        "The results were eye-opening.",
+        "This opens up a world of possibilities.",
+        "The possibilities are endless.",
+        "And here's the kicker: the queue is empty.",
+        "But that's not even the best part.",
+        "Wait, it gets better.",
+        "And that's just the beginning.",
+        "But wait, there's more.",
+        "The plot thickens.",
+        "Enter: the compliance team.",
+        "Prompt engineering is the new programming.",
+        "Your agent is only as good as your context window.",
+    ],
+    "no-filler-phrases": [
+        "That said, the rollout is delayed.",
+        "To be clear, the rollout is delayed.",
+        "With the caveat that the sample is small, the result held.",
+    ],
+    "no-false-concession-hedges": [
+        "To be fair, the first version was faster.",
+        "Now, I'm not saying the plan is impossible, but it is late.",
+        "Don't get me wrong, the team worked hard.",
+        "This isn't to say that the result is useless.",
+        "Granted, the sample is small, but the trend is clear.",
+    ],
+    "no-generic-conclusions": [
+        "The question isn't whether, but when.",
+        "We're still early.",
+        "The best time to start was yesterday. The second best time is now.",
+        "This is just the beginning.",
+        "The genie is out of the bottle.",
+        "The cat is out of the bag.",
+        "Buckle up.",
+        "Welcome to the future.",
+        "And we're just getting started.",
+        "Think about that.",
+        "This is the new normal.",
+        "Act accordingly.",
+        "Plan accordingly.",
+        "Adjust your strategy accordingly.",
+        "Hiring will never be the same.",
+    ],
+    "no-negative-parallelisms": [
+        "The best engineers don't write code. They design systems.",
+        "I stopped scheduling meetings and started writing memos. The results speak for themselves.",
+        "Teams that adapt will thrive. Teams that don't will be left behind.",
+    ],
+    "no-formulaic-openers": [
+        "In 2026, AI literacy won't be optional. It'll be table stakes.",
+        "The engineer of 2026 will look nothing like the engineer of 2024.",
+    ],
+    "no-significance-inflation": [
+        "If you're still writing every report by hand, you're already behind.",
+    ],
+}
+for check_id, phrases in DR135_EXISTING_RULE_EXPANSIONS.items():
+    for phrase in phrases:
+        expect_fail(check_id, phrase,
+            f"DR-135H existing-rule routing ({check_id}): {phrase}")
+
+DR135_SOCIAL_POST_FORMULAS = [
+    "What do you think? Drop your take below 👇",
+    "Agree or disagree? Let me know.",
+    "What would you add to this list?",
+    "Follow for more writing content.",
+    "Repost if this resonated ♻️",
+    "Share this with someone who needs to see it.",
+    "Save this for later 🔖",
+    "Tag someone who needs to hear this.",
+    "If this helped, you'll love my newsletter.",
+    "Link in comments 👇",
+    "This is gold 🔥",
+    "Saving this for later!",
+    "More people need to see this.",
+    "This resonates deeply.",
+    "Couldn't agree more.",
+    "So well articulated.",
+    "You nailed it.",
+    "This is spot on.",
+    "I'd add a #6 to this list:",
+    "Counterpoint:",
+    "Hot take: the launch was rushed.",
+    "This, but also the budget matters.",
+    "Respectfully disagree on point 3.",
+    "As someone who runs these audits, I can confirm.",
+    "As someone who's been doing this for 10 years, I can confirm this is exactly right.",
+    "I literally just had this conversation with my CEO yesterday.",
+    "My team and I were just discussing this.",
+    "Funny, I was just speaking about this at a conference.",
+    "I asked ChatGPT to rewrite the memo and the results shocked me.",
+    "I gave Claude my resume and it rewrote every bullet.",
+    "I fed my business plan to a model and here's what happened.",
+    "I replaced search with AI for a week.",
+    "Day 1 of using AI to plan meals:",
+    "I built this in 2 hours with a code generator.",
+    "From zero to launch in 48 hours.",
+    "Went from idea to launch in a weekend.",
+    "What used to take 3 months now takes 3 minutes.",
+    "Built my first app in a single afternoon. No code.",
+    "I curated the top writing tools:",
+    "The ultimate list of research prompts:",
+    "I spent 100+ hours so you don't have to.",
+    "I read 50 papers on automation. Here's the summary:",
+    "I analyzed 1,000 posts. Here's what I found:",
+    "AI did in two hours what used to take two weeks.",
+]
+for phrase in DR135_SOCIAL_POST_FORMULAS:
+    expect_fail("no-formulaic-social-posts", phrase,
+        f"DR-135H D4 formulaic social-post frame: {phrase}")
+
+dr135_subtype_result = ALL_CHECKS["no-formulaic-social-posts"](
+    "I asked ChatGPT to draft the post and the results shocked me. Save this for later."
+)
+if dr135_subtype_result.get("subtypes") != ["ai_wrapper", "engagement_request"]:
+    FAILURES += 1
+    print(f"FAIL: DR-135H D4 should report matched subtypes; got {dr135_subtype_result.get('subtypes')}")
+else:
+    print("  ok: DR-135H D4 reports matched social-post subtypes")
+
+DR135_VOCABULARY_ADDITIONS = [
+    "literally", "incredibly", "essentially", "arguably", "undeniably",
+    "remarkably", "interestingly", "notably", "particularly", "ultimately",
+    "groundbreaking", "revolutionary", "next-level", "world-class",
+    "double down", "spearhead", "supercharge", "reimagine", "synergize",
+]
+for phrase in DR135_VOCABULARY_ADDITIONS:
+    matches = _grade._find_ai_words(phrase)
+    if matches != [phrase]:
+        FAILURES += 1
+        print(f"FAIL: DR-135H B1 should recognize {phrase!r} exactly once; got {matches}")
+    else:
+        print(f"  ok: DR-135H B1 recognizes {phrase!r} exactly once")
+
+# --- DR-132A: approved marketing-email regex routes ---
+print("\n=== DR-132A marketing-email regex routes ===")
+
+for phrase in (
+    "This is a game-changer.",
+    "Unlock your true potential.",
+    "Make your emails unstoppable.",
+    "This is cutting-edge.",
+    "This is groundbreaking.",
+    "This is unprecedented.",
+):
+    expect_fail("no-promotional-language", phrase,
+        f"DR-132A A4 hype formula: {phrase}")
+
+for phrase in ("thoughtful strategy", "clear messaging", "intentional design"):
+    matches = _grade._find_ai_words(phrase)
+    if matches != [phrase]:
+        FAILURES += 1
+        print(f"FAIL: DR-132A B1 should recognize {phrase!r} exactly once; got {matches}")
+    else:
+        print(f"  ok: DR-132A B1 recognizes {phrase!r} exactly once")
+expect_fail(
+    "no-ai-vocabulary-clustering",
+    "Your thoughtful strategy needs clear messaging and intentional design.",
+    "DR-132A B1 clusters the three approved adjective-noun phrases",
+)
+
+for phrase in (
+    "I hope this email finds you well. The release is ready.",
+    "Are you tired of rewriting reports by hand? Look no further than Acme.",
+):
+    expect_fail("no-formulaic-openers", phrase,
+        f"DR-132A E8 email opener: {phrase}")
+
+# --- DR-133A: approved promotional and conclusion variants ---
+print("\n=== DR-133A promotional and conclusion variants ===")
+
+for check_id, phrase, label in (
+    ("no-significance-inflation", "This underscores its importance.", "A1 significance frame"),
+    ("no-significance-inflation", "The policy left an enduring legacy.", "A1 enduring legacy"),
+    ("no-promotional-language", "The town has a rich cultural heritage.", "A4 promotional phrase"),
+    ("no-filler-phrases", "It's important to note the date.", "E1 contracted editorial phrase"),
+    ("no-filler-phrases", "It’s important to note the date.", "E1 smart-apostrophe editorial phrase"),
+    ("no-filler-phrases", "No discussion would be complete without the archive.", "E1 editorial phrase"),
+    ("no-notability-claims", "She was cited in NYT, BBC, FT, and The Hindu.", "A2 outlet-list shape"),
+    ("no-generic-conclusions", "Despite these challenges, the town continues to thrive.", "E4 challenge-ending formula"),
+    ("no-vague-attributions", "Studies show that the approach works.", "A5 bare attribution"),
+):
+    expect_fail(check_id, phrase, f"DR-133A {label}: {phrase}")
+
+for phrase in ("defining feature", "powerful tools"):
+    matches = _grade._find_ai_words(phrase)
+    if matches != [phrase]:
+        FAILURES += 1
+        print(f"FAIL: DR-133A B1 should recognize {phrase!r} exactly once; got {matches}")
+    else:
+        print(f"  ok: DR-133A B1 recognizes {phrase!r} exactly once")
+expect_fail(
+    "no-ai-vocabulary-clustering",
+    "Its defining feature is a suite of powerful tools and clear messaging.",
+    "DR-133A B1 clusters the two editorial phrases with an existing candidate",
+)
+
+# --- DR-134B: exact transition and candour additions; G8 unchanged ---
+print("\n=== DR-134B exact transition and candour additions ===")
+
+for phrase in (
+    "Furthermore, the deadline moved.",
+    "Moreover, the deadline moved.",
+    "Additionally, the deadline moved.",
+    "In addition, the deadline moved.",
+    "On the other hand, the deadline moved.",
+    "Let's dive in. The first issue is cost.",
+    "Here's what you need to know: the release moved.",
+    "I hope you are well. The release is ready.",
+):
+    expect_fail("no-formulaic-openers", phrase,
+        f"DR-134B E8 exact opener: {phrase}")
+
+for phrase in (
+    "Honestly? The estimate is wrong.",
+    "Real talk. The estimate is wrong.",
+    "I aim to be direct: the estimate is wrong.",
+    "I need to be clear: the estimate is wrong.",
+):
+    expect_fail("no-performed-candour", phrase,
+        f"DR-134B H15 exact candour frame: {phrase}")
+
+straightforward_matches = _grade._find_ai_words("straightforward")
+if straightforward_matches != ["straightforward"]:
+    FAILURES += 1
+    print(f"FAIL: DR-134B B1 should recognize 'straightforward' exactly once; got {straightforward_matches}")
+else:
+    print("  ok: DR-134B B1 recognizes 'straightforward' exactly once")
+expect_fail(
+    "no-ai-vocabulary-clustering",
+    "The straightforward plan is genuinely effective and undeniably clear.",
+    "DR-134B B1 clusters straightforward with two existing candidates",
+)
+
+expect_fail(
+    "no-signposted-conclusions",
+    "In summary, LLMs cannot reliably distinguish assumed knowledge from material that needs explanation, so a writer must fill the gap.",
+    "DR-134B leaves the rejected G8 content-bearing control unchanged",
+)
+
+# --- DR-15A: remaining vague-attribution and research-boilerplate forms ---
+print("\n=== DR-15A vague-attribution and research-boilerplate forms ===")
+
+for phrase in (
+    "Industry reports support the claim.",
+    "Several sources support the claim.",
+    "Several publications support the claim.",
+    "Data proves the method works.",
+    "Studies have shown benefits.",
+):
+    expect_fail("no-vague-attributions", phrase,
+        f"DR-15A A5 exact attribution: {phrase}")
+
+for phrase in (
+    "This is an important area of research.",
+    "More research is needed.",
+):
+    expect_fail("no-filler-phrases", phrase,
+        f"DR-15A E1 exact research formula: {phrase}")
+
+# --- DR-16A: remaining exact phrase variants through existing checks ---
+print("\n=== DR-16A remaining exact phrase variants ===")
+
+dr16_vocab = _grade._find_ai_words(
+    "refine differentiate scalable solution"
+)
+for phrase in ("refine", "differentiate", "scalable solution"):
+    if phrase not in dr16_vocab:
+        FAILURES += 1
+        print(f"FAIL: DR-16A B1 should recognize {phrase!r}; got {dr16_vocab}")
+    else:
+        print(f"  ok: DR-16A B1 recognizes {phrase!r}")
+expect_fail(
+    "no-ai-vocabulary-clustering",
+    "Refine the plan, differentiate the offer, and build a scalable solution.",
+    "DR-16A B1 clusters the three remaining vocabulary forms",
+)
+
+expect_fail(
+    "no-excessive-hedging",
+    "Arguably, it could be said that the result is potentially useful.",
+    "DR-16A E2 counts the two missing hedges with an existing candidate",
+)
+
+for phrase in (
+    "Therefore, we changed the plan.",
+    "Let’s break it down.",
+    "Let’s unpack this.",
+):
+    expect_fail("no-formulaic-openers", phrase,
+        f"DR-16A E8 exact opener: {phrase}")
+
+expect_fail(
+    "no-manufactured-insight",
+    "Sit with that for a moment.",
+    "DR-16A G7 exact performed-knowingness phrase",
+)
+
+for phrase in (
+    "Navigating the complexities of procurement takes time.",
+    "A deeper understanding of the problem would help.",
+    "When it comes to procurement, timing matters.",
+    "In the realm of procurement, timing matters.",
+    "A nuanced take on the problem would help.",
+    "Delve into the intricacies of the proposal.",
+    "Dive deep into the proposal.",
+):
+    expect_fail("no-filler-phrases", phrase,
+        f"DR-16A E1 exact filler frame: {phrase}")
+
+for phrase in (
+    "Ultimately, the choice is yours.",
+    "The journey doesn’t end here.",
+    "His legacy endures.",
+    "He remains an icon of American values and ideals.",
+    "Its legacy will undoubtedly endure for generations to come.",
+    "Achilles’ legacy continues to live on.",
+    "His story will continue to inspire and captivate audiences.",
+    "This is a positive sign for the company’s future prospects.",
+    "It is well-positioned to meet changing needs.",
+    "Don’t miss your chance to experience the show.",
+    "The community remains hopeful that she will be found.",
+    "Aristotle’s legacy is a testament to his influence.",
+):
+    expect_fail("no-generic-conclusions", phrase,
+        f"DR-16A E4 exact ending formula: {phrase}")
+
+# --- DR-19E: symmetric list items (G11) ---
+print("\n=== DR-19E symmetric list items ===")
+
+DR19E_LEAD = (
+    "Our review covered the rollout in some depth and the findings were "
+    "consistent across every region we visited.\n\n"
+)
+DR19E_TAIL = "\n\nWe then interviewed staff about how the rollout changed their week.\n"
+
+
+def _dr19e(items, marker="-"):
+    body = "\n".join(f"{marker} {item}" for item in items)
+    return DR19E_LEAD + body + DR19E_TAIL
+
+
+# Uniform length AND a shared trailing token: the source's own shape.
+expect_fail("no-symmetric-list-items", _dr19e([
+    "Automated reporting for finance teams",
+    "Integrated dashboards for product teams",
+    "Streamlined workflows for support teams",
+]), "DR-19E shared trailing token with uniform length")
+
+# Uniform length AND a shared opening token.
+expect_fail("no-symmetric-list-items", _dr19e([
+    "Improved latency across the checkout path",
+    "Improved caching inside the search index",
+    "Improved logging around the payment queue",
+]), "DR-19E shared opening token with uniform length")
+
+# Numbered markers carry the same structure.
+expect_fail("no-symmetric-list-items", _dr19e([
+    "Faster onboarding for new staff",
+    "Clearer reporting for new staff",
+    "Simpler approvals for new staff",
+], marker="1."), "DR-19E numbered list with shared trailing token")
+
+# Uniform length but no shared opening or trailing token: one condition only.
+expect_pass("no-symmetric-list-items", _dr19e([
+    "The finance team stopped chasing invoices",
+    "Support closed its oldest backlog last month",
+    "Product shipped the migration without incident",
+]), "DR-19E uniform length alone is not enough")
+
+# Shared trailing token but ragged lengths: one condition only.
+expect_pass("no-symmetric-list-items", _dr19e([
+    "Finance now gets its numbers automatically each morning without chasing anyone",
+    "Support was unchanged",
+    "Product asked for one dashboard, then quietly built four more",
+]), "DR-19E shared token alone is not enough")
+
+# Two items never qualify.
+expect_pass("no-symmetric-list-items", _dr19e([
+    "Automated reporting for finance teams",
+    "Integrated dashboards for product teams",
+]), "DR-19E two-item list is below the minimum")
+
+# Prose with no list at all.
+expect_pass("no-symmetric-list-items",
+    "The rollout covered three regions and the team reported no incidents.",
+    "DR-19E prose without a list")
+
+dr19e_result = ALL_CHECKS["no-symmetric-list-items"](_dr19e([
+    "Automated reporting for finance teams",
+    "Integrated dashboards for product teams",
+    "Streamlined workflows for support teams",
+]))
+if len(dr19e_result["matches"]) != 3:
+    FAILURES += 1
+    print(f"FAIL: DR-19E should report the matched items; got {dr19e_result['matches']}")
+else:
+    print("  ok: DR-19E reports the matched list items")
+
+if _patterns_data["no-symmetric-list-items"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-19E G11 should be a context warning")
+else:
+    print("  ok: DR-19E G11 carries context_warning severity")
+
+# --- DR-19G: triad density replaces the one-triad verdict (B4) ---
+print("\n=== DR-19G triad density ===")
+
+DR19G_FILLER = "The team reviewed the plan carefully and at length again today. "
+DR19G_TRIAD = "It was fast, cheap, and reliable. "
+
+# 408 words, 2 triads = 4.90 per 1000: at or above the 4.0 threshold.
+expect_fail("no-forced-triads", DR19G_FILLER * 36 + DR19G_TRIAD * 2,
+    "DR-19G density at 4.90 per 1000 words")
+
+# 402 words, 1 triad = 2.49 per 1000: below the threshold.
+expect_pass("no-forced-triads", DR19G_FILLER * 36 + DR19G_TRIAD,
+    "DR-19G density at 2.49 per 1000 words")
+
+# A single triad no longer carries a verdict on its own.
+expect_pass("no-forced-triads", "The plan was fast, cheap, and reliable.",
+    "DR-19G one triad in a short text")
+
+# Under the 300-word floor the check does not speak, however dense.
+expect_pass("no-forced-triads", DR19G_TRIAD * 4,
+    "DR-19G below the minimum-length floor")
+
+dr19g_result = ALL_CHECKS["no-forced-triads"](DR19G_FILLER * 36 + DR19G_TRIAD * 2)
+if "per 1000" not in dr19g_result["evidence"]:
+    FAILURES += 1
+    print(f"FAIL: DR-19G evidence should report the rate; got {dr19g_result['evidence']!r}")
+else:
+    print("  ok: DR-19G evidence reports the measured rate")
+
+if "no-triad-density" in ALL_CHECKS:
+    FAILURES += 1
+    print("FAIL: DR-19G should retire the redundant #10a density check")
+else:
+    print("  ok: DR-19G retired #10a no-triad-density")
+
+if "no-triad-density" in _patterns_data:
+    FAILURES += 1
+    print("FAIL: DR-19G should remove the #10a catalogue entry")
+else:
+    print("  ok: DR-19G removed the #10a catalogue entry")
+
+if _patterns_data["no-forced-triads"]["severity"] != "strong_warning":
+    FAILURES += 1
+    print("FAIL: B4 should be a strong warning")
+else:
+    print("  ok: DR-19G B4 carries strong_warning severity")
+
+# --- DR-21E: plan-announcement signposting (E6) ---
+print("\n=== DR-21E plan-announcement signposting ===")
+
+# Vollmer's own sequence: two announcements clear the aggregate threshold.
+expect_fail("no-soft-scaffolding",
+    "First, we'll look at the origins of the policy. Second, we'll examine how "
+    "it was implemented across the three states. Finally, we'll conclude by "
+    "weighing what the evidence supports.",
+    "DR-21E ordinal plan announcements in sequence")
+
+expect_fail("no-soft-scaffolding",
+    "Next, let's explore what the submissions actually said. Finally, I'll wrap "
+    "up with the two recommendations the committee accepted.",
+    "DR-21E let's and I'll variants")
+
+# One announcement stays below E6's two-candidate threshold.
+expect_pass("no-soft-scaffolding",
+    "First, we'll look at the origins of the policy. The department drafted it "
+    "in 1998 after two failed attempts at a national scheme.",
+    "DR-21E single announcement is below the threshold")
+
+# Ordinals doing ordinary work are not plan announcements.
+expect_pass("no-soft-scaffolding",
+    "First, the department drafted the policy. Second, the states argued about "
+    "funding. Finally, the scheme lapsed without a vote.",
+    "DR-21E ordinary ordinal narration")
+
+expect_pass("no-soft-scaffolding",
+    "We'll look at the origins of the policy once the archive reopens, and we "
+    "will examine the funding papers after that.",
+    "DR-21E plan verbs without an ordinal opener")
+
+# --- DR-21F: sales endings and reader address in news copy (E4) ---
+print("\n=== DR-21F news sales endings ===")
+
+expect_fail("no-generic-conclusions",
+    "Whether you're a tech enthusiast, a developer, or simply someone "
+    "interested in the future of technology, ARKit 1.5 demos are worth a look.",
+    "DR-21F audience-enumeration reader address")
+
+expect_fail("no-generic-conclusions",
+    "As developers continue to explore the potential of this technology, we "
+    "can expect to see even more innovative applications in the years ahead.",
+    "DR-21F forward-looking expectation closer")
+
+expect_fail("no-generic-conclusions",
+    "The demos are rudimentary for now but they are certainly worth keeping an "
+    "eye on.",
+    "DR-21F certainly-worth-watching closer")
+
+expect_pass("no-generic-conclusions",
+    "Whether the scheme survives the next budget is a question the department "
+    "would not answer.",
+    "DR-21F ordinary whether clause")
+
+expect_pass("no-generic-conclusions",
+    "Two councils said they would keep an eye on the trial before committing "
+    "their own funds.",
+    "DR-21F ordinary keeping-watch wording")
+
+# --- DR-21G: title case headings in surprising places (B6) ---
+print("\n=== DR-21G title case headings ===")
+
+expect_fail("no-title-case-headings",
+    "## The Impact Of The New Policy On Regional Councils\n\nThe committee met "
+    "on Tuesday and approved the budget without amendment.\n",
+    "DR-21G minor words capitalised inside a heading")
+
+expect_fail("no-title-case-headings",
+    "# Title Case Headings In Surprising Places\n\nThe guide lists this as a "
+    "formatting habit worth watching.\n",
+    "DR-21G the source's own example heading")
+
+expect_pass("no-title-case-headings",
+    "## The impact of the new policy on regional councils\n\nThe committee met "
+    "on Tuesday and approved the budget without amendment.\n",
+    "DR-21G sentence case heading")
+
+expect_pass("no-title-case-headings",
+    "## What This Is For\n\nThe scheme pays for road maintenance in three "
+    "shires.\n",
+    "DR-21G title case with the minor word last")
+
+expect_pass("no-title-case-headings",
+    "## Rollout: The First Year\n\nCouncils reported no incidents in the first "
+    "twelve months.\n",
+    "DR-21G capital after a colon")
+
+expect_pass("no-title-case-headings",
+    "## Regional Council Budgets\n\nThe committee met on Tuesday and approved "
+    "the budget.\n",
+    "DR-21G title case with no minor words")
+
+expect_pass("no-title-case-headings",
+    "The impact of the new policy on regional councils was small.",
+    "DR-21G prose without headings")
+
+if _patterns_data["no-title-case-headings"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-21G C3 should be a context warning")
+else:
+    print("  ok: DR-21G C3 is a context warning")
+
+# --- DR-136B: mixed British and American spelling (B6) ---
+print("\n=== DR-136B mixed spelling conventions ===")
+
+expect_fail("no-mixed-spelling-conventions",
+    "The council organised the review in March. By June the department had "
+    "recognized that the timetable would not hold.",
+    "DR-136B organised alongside recognized")
+
+expect_fail("no-mixed-spelling-conventions",
+    "Standardisation of the forms began in 2019. The agency later criticized "
+    "the rollout in its annual report.",
+    "DR-136B -isation noun alongside an -ized verb")
+
+expect_fail("no-mixed-spelling-conventions",
+    "Researchers analysed the first cohort, then paralyzed the second by "
+    "changing the protocol midway.",
+    "DR-136B -yse alongside -yze")
+
+expect_pass("no-mixed-spelling-conventions",
+    "The council organised the review in March and recognised by June that "
+    "the timetable would not hold. Standardisation followed.",
+    "DR-136B consistent British spelling")
+
+expect_pass("no-mixed-spelling-conventions",
+    "The council organized the review in March and recognized by June that "
+    "the timetable would not hold. Standardization followed.",
+    "DR-136B consistent American spelling")
+
+# Words with no American variant must never count as British.
+expect_pass("no-mixed-spelling-conventions",
+    "The surprise announcement compromised the schedule, so the agency "
+    "advertised a revised timetable and organized a briefing.",
+    "DR-136B surprise, compromised, advertised, revised are not markers")
+
+expect_pass("no-mixed-spelling-conventions",
+    "The enterprise promised to supervise the exercise and televise the "
+    "final round, which criticized nobody.",
+    "DR-136B franchise-class words alongside an American form")
+
+# The noun 'analyses' is spelled the same in both conventions.
+expect_pass("no-mixed-spelling-conventions",
+    "The report's analyses were thorough. The team recognized every gap and "
+    "organized a follow-up.",
+    "DR-136B the noun analyses is not a British marker")
+
+expect_pass("no-mixed-spelling-conventions",
+    "The committee met on Tuesday and approved the budget without amendment.",
+    "DR-136B prose with no alternating words")
+
+# Every alternating family the check claims to read.
+for label, text in (
+    ("-our/-or", "The colour of the harbour changed after the labor dispute."),
+    ("-re/-er", "The centre reopened; the theater across the road did not."),
+    ("-ogue/-og", "The catalogue was reprinted while the dialog box still failed."),
+    ("doubled l", "She travelled north and he canceled the meeting."),
+    ("-lous/-lous", "A marvellous result, though the modeling was marvelous too."),
+    ("ae/oe", "The paediatric ward closed and the pediatric unit reopened."),
+    ("one-offs", "The grey walls needed defence; the gray annexe needed defense."),
+):
+    expect_fail("no-mixed-spelling-conventions", text, f"DR-136B {label} mixture")
+
+for label, text in (
+    ("-ogue British only", "The catalogue and the dialogue were reprinted together."),
+    ("-ogue American only", "The catalog and the dialog were reprinted together."),
+    ("-our American only",
+     "The color of the harbor changed after the labor dispute. The center reopened."),
+):
+    expect_pass("no-mixed-spelling-conventions", text, f"DR-136B {label}")
+
+# Words deliberately left out: their American spelling is ordinary British too.
+for label, text in (
+    ("tyre", "He changed the tyre and organised the tools."),
+    ("cheque", "She wrote a cheque and organised the files."),
+    ("practice", "Daily practice organised the week."),
+    ("judgement", "The judgment was organised into three parts."),
+    ("learnt", "They learned the process and organised a handover."),
+    ("programme", "The program was organised around three themes."),
+):
+    expect_pass("no-mixed-spelling-conventions", text,
+                f"DR-136B {label} is not a convention marker")
+
+# British words that keep their spelling across conventions must not count.
+for label, text in (
+    ("vigorous", "A vigorous defence of the colour scheme."),
+    ("laboratory", "The laboratory analysed the colour samples."),
+    ("literature", "The literature on behaviour is thin."),
+    ("glamorous", "A glamorous parlour with a harbour view."),
+):
+    expect_pass("no-mixed-spelling-conventions", text,
+                f"DR-136B {label} does not create a false mixture")
+
+dr136b = ALL_CHECKS["no-mixed-spelling-conventions"](
+    "The council organised the review, then recognized the delay.")
+if not ("organised" in dr136b["evidence"] and "recognized" in dr136b["evidence"]):
+    FAILURES += 1
+    print(f"FAIL: DR-136B evidence should name both spellings; got {dr136b['evidence']!r}")
+else:
+    print("  ok: DR-136B evidence names both spellings")
+
+if _patterns_data["no-mixed-spelling-conventions"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-136B B6 should be a context warning")
+else:
+    print("  ok: DR-136B B6 is a context warning")
+
+# --- DR-157: false ranges (A6) ---
+print("\n=== DR-157 false ranges ===")
+
+# The catalogue's own example, and the shape it describes.
+expect_fail("no-false-ranges",
+    "Our journey through the universe has taken us from the singularity of the "
+    "Big Bang to the grand cosmic web, from the birth and death of stars to the "
+    "enigmatic dance of dark matter.",
+    "DR-157 the catalogue's Big Bang example")
+
+expect_fail("no-false-ranges",
+    "This guide covers everything from onboarding new staff to scaling your "
+    "infrastructure, from managing budgets to building culture.",
+    "DR-157 stacked breadth claim")
+
+expect_fail("no-false-ranges",
+    "The story moves from fear to mastery, from Sputnik to the Sea of "
+    "Tranquillity, and it ends with a kind of secular apotheosis.",
+    "DR-157 three stacked pairs")
+
+# A single pair is ordinary English and is slightly more common in human prose.
+expect_pass("no-false-ranges",
+    "The scheme ran from 1990 to 2005 without amendment.",
+    "DR-157 a single date range")
+
+expect_pass("no-false-ranges",
+    "She walked from the station to the office in twelve minutes.",
+    "DR-157 a single ordinary range")
+
+expect_pass("no-false-ranges",
+    "The scheme ran from 1990 to 2005. Funding later moved from the states to "
+    "the Commonwealth.",
+    "DR-157 one pair each in two sentences")
+
+expect_pass("no-false-ranges",
+    "The committee met on Tuesday and approved the budget without amendment.",
+    "DR-157 prose with no range at all")
+
+dr157 = ALL_CHECKS["no-false-ranges"](
+    "It covers everything from onboarding to scaling, from budgets to culture.")
+if "2" not in dr157["evidence"]:
+    FAILURES += 1
+    print(f"FAIL: DR-157 evidence should report the pair count; got {dr157['evidence']!r}")
+else:
+    print("  ok: DR-157 evidence reports the pair count")
+
+if _patterns_data["no-false-ranges"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-157 A6 should be a context warning")
+else:
+    print("  ok: DR-157 A6 is a context warning")
+
+print("\n=== DR-71 FAID academic Gemini trigrams ===")
+
+# Figure 5's novelty and impact openers fire A1 on one match.
+expect_fail("no-significance-inflation",
+    "This work presents a scheduling layer that sits between the client and the "
+    "shard map.",
+    "DR-71 this work presents")
+
+expect_fail("no-significance-inflation",
+    "The paper presents a novel treatment of write amplification.",
+    "DR-71 presents a novel")
+
+expect_fail("no-significance-inflation",
+    "The paper introduces a novel eviction policy derived from queue depth.",
+    "DR-71 introduces a novel")
+
+expect_fail("no-significance-inflation",
+    "The results represent a significant advancement over prior schedulers.",
+    "DR-71 a significant advancement")
+
+# The three that could stand alone in honest academic prose only count toward
+# B1's existing clustering threshold; one of them on its own stays clear.
+expect_pass("no-ai-vocabulary-clustering",
+    "The efficacy of the method was measured against three production workloads "
+    "over six weeks, and the raw traces are published alongside the paper.",
+    "DR-71 one clustering candidate alone does not fail B1")
+
+expect_fail("no-ai-vocabulary-clustering",
+    "The efficacy of the proposed method was measured over six weeks. Empirical "
+    "evaluations demonstrate consistent gains, and the proposed method holds "
+    "under load.",
+    "DR-71 three clustering candidates in one paragraph")
+
+for _phrase, _label in [
+    ("the efficacy of", "DR-71 the efficacy of"),
+    ("the proposed method", "DR-71 the proposed method"),
+    ("empirical evaluations demonstrate", "DR-71 empirical evaluations demonstrate"),
+]:
+    if _grade._find_ai_words(_phrase) != [_phrase]:
+        FAILURES += 1
+        print(f"FAIL: {_label} should be an B1 clustering candidate")
+    else:
+        print(f"  ok: {_label} is an B1 clustering candidate")
+
+# The four openers keep A1's existing severity; nothing about the check changes.
+if _patterns_data["no-significance-inflation"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-71 A1 should still be a context warning")
+else:
+    print("  ok: DR-71 A1 keeps its context-warning severity")
+
+print("\n=== DR-159 Biber rate checks (Reinhart) ===")
+
+# Nominalisation rate: nouns formed from verbs or adjectives (development,
+# robustness). Fails at 29.0 per 1000 words in prose of 300+ words.
+_dr159_nom_fail = (
+    "The implementation of the transformation required the development of a new "
+    "specification. The assessment of the requirements involved consideration of "
+    "the limitations and the identification of dependencies. The establishment of "
+    "governance improved the effectiveness of the organisation and the "
+    "responsiveness of its administration. The evaluation of performance depends "
+    "on the availability of information and the reliability of measurement. "
+) * 7
+expect_fail("no-nominalisation-rate", _dr159_nom_fail, "DR-159 dense nominalisation")
+
+_dr159_nom_pass = (
+    "She walked to the shop and bought bread. The baker had sold out of rye so she "
+    "took a white loaf instead. On the way home it began to rain, and by the time "
+    "she reached the door her coat was wet through. She put the kettle on and sat "
+    "down by the window to watch the street fill with water. "
+) * 5
+expect_pass("no-nominalisation-rate", _dr159_nom_pass, "DR-159 plain narrative prose")
+
+# That-relatives in subject position ("the dog that bit me"), not object
+# position ("the dog that I saw"). Fails at 3.5 per 1000 words.
+_dr159_that_fail = (
+    "The report that describes the failure was withdrawn. The team that builds the "
+    "pipeline has moved on. The tool that generates the summary is slow. The system "
+    "that handles payments went down. The process that creates the index runs "
+    "nightly. The rule that governs access changed. "
+) * 8
+expect_fail("no-that-relative-rate", _dr159_that_fail, "DR-159 dense subject relatives")
+
+_dr159_that_pass = (
+    "The dog that I saw belonged to the neighbour. The book that she recommended "
+    "arrived today. The house that they bought needs work. The film that he "
+    "mentioned is showing at the cinema on the corner near the station. "
+) * 6
+expect_pass("no-that-relative-rate", _dr159_that_pass, "DR-159 object relatives stay clear")
+
+# Present participial clauses: adverbial, per Biber's example "Stuffing his mouth
+# with cookies, Joe ran out the door". Fails at 4.4 per 1000 words.
+_dr159_part_fail = (
+    "Stuffing his mouth with cookies, Joe ran out the door. Leaning on the rail, she "
+    "watched the boats, counting them as they passed. Turning the corner, he saw the "
+    "lights, wondering what had happened. Holding the letter, she sat down, reading "
+    "it twice. "
+) * 9
+expect_fail("no-participial-clause-rate", _dr159_part_fail, "DR-159 dense participial clauses")
+
+_dr159_part_pass = (
+    "She is walking to the shop and he was running late. The building has a ceiling "
+    "of glass. During the morning meeting we reviewed the training plan. Something "
+    "was wrong with the recording. Nothing in the findings changed the outcome. "
+) * 6
+expect_pass("no-participial-clause-rate", _dr159_part_pass, "DR-159 progressives and -ing nouns stay clear")
+
+# All three are rate checks: short prose is out of scope whatever the rate.
+_dr159_severities = {
+    "no-nominalisation-rate": "strong_warning",
+    "no-that-relative-rate": "context_warning",
+    "no-participial-clause-rate": "context_warning",
+}
+for _cid, _expected_severity in _dr159_severities.items():
+    _short = ALL_CHECKS[_cid]("The implementation of the transformation requires consideration.")
+    if not _short["passed"]:
+        FAILURES += 1
+        print(f"FAIL: DR-159 {_cid} should skip prose under 300 words")
+    else:
+        print(f"  ok: DR-159 {_cid} skips prose under 300 words")
+    if _patterns_data[_cid]["severity"] != _expected_severity:
+        FAILURES += 1
+        print(f"FAIL: {_cid} should be a {_expected_severity}")
+    else:
+        print(f"  ok: {_cid} is a {_expected_severity}")
+
+print("\n=== DR-87A exited ===")
+
+# Suvanto et al.: `exited` occurs 61 times across GPT-4.1 rewrites of twelve
+# 1920s-30s British detective novels and zero times in the source passages.
+# Added as an B1 clustering candidate, so it never fails on its own.
+if _grade._find_ai_words("exited") != ["exited"]:
+    FAILURES += 1
+    print("FAIL: DR-87A `exited` should be an B1 clustering candidate")
+else:
+    print("  ok: DR-87A `exited` is an B1 clustering candidate")
+
+expect_pass("no-ai-vocabulary-clustering",
+    "He exited the drawing room without another word, and the inspector followed "
+    "him into the hall a moment later.",
+    "DR-87A `exited` alone does not fail B1")
+
+print("\n=== DR-66 passive voice, 'it' rate, and the E5 short-sentence rate ===")
+
+# Passive voice: be-form plus past participle, per the paper's definition
+# ("the frequency of verbs in passive voice"). Fails at 5.0 per 1000 words in
+# prose of 300 words or more.
+_dr66_passive_fail = (
+    "The proposal was rejected by the committee and the minutes were circulated "
+    "the following week. The figures had been checked twice before they were "
+    "released, and the discrepancy was noticed only after the report was filed. "
+    "Staff were told that the decision is being reviewed and that a revised "
+    "schedule will be published once the funding is confirmed. "
+) * 8
+expect_fail("no-passive-voice-rate", _dr66_passive_fail, "DR-66 dense passive voice")
+
+_dr66_passive_pass = (
+    "She walked to the shop and bought bread. The baker had sold out of rye so she "
+    "took a white loaf instead. On the way home it began to rain, and by the time "
+    "she reached the door her coat clung to her shoulders. She put the kettle on "
+    "and sat by the window to watch the street fill with water. "
+) * 6
+expect_pass("no-passive-voice-rate", _dr66_passive_pass, "DR-66 active prose stays clear")
+
+_dr66_passive_controls = (
+    "She is writing the letter and he was running late. The room is quiet and the "
+    "children are tired. The model is based on the data we collected last spring, "
+    "and the team is going to revisit it. She has written three drafts already. "
+) * 7
+expect_pass(
+    "no-passive-voice-rate",
+    _dr66_passive_controls,
+    "DR-66 progressives, copula adjectives, and active perfects are not passives",
+)
+
+# "It" pronoun frequency, StyloMetrix's per-pronoun measure. Fails at 18.0 per
+# 1000 words. Possessive "its" is a determiner and is not counted.
+_dr66_it_fail = (
+    "It works well enough, and it shows in the numbers. It is worth noting that it "
+    "took three attempts. It seemed obvious afterwards, though it was not obvious "
+    "at the time. It matters because it changes what the team does next. "
+) * 9
+expect_fail("no-it-pronoun-rate", _dr66_it_fail, "DR-66 dense 'it' pronouns")
+
+_dr66_it_pass = (
+    "The committee met on Thursday and reviewed the budget line by line. Members "
+    "argued about the depot lease for most of the afternoon. The chair adjourned "
+    "the meeting before a vote, and the papers went back to the officers for "
+    "redrafting. Its final form will reach the council in March. "
+) * 6
+expect_pass("no-it-pronoun-rate", _dr66_it_pass, "DR-66 sparse 'it' and possessive 'its' stay clear")
+
+# E5 gains a rate branch: short sentences of ten words or fewer at 30.0 or more
+# per 1000 words. Short sentences are interleaved with long ones here, so
+# neither the three-in-a-row run nor the repeated-opener pair can fire.
+_dr66_staccato_rate = (
+    "The tender closed on Friday. Officers spent the weekend reading submissions "
+    "that had arrived in the final hour, most of them incomplete. Nobody expected "
+    "that many. A second panel was convened on Monday morning to work through the "
+    "backlog before the council meeting. Costs had already blown out. Procurement "
+    "asked for an extension that the chair was unwilling to grant without a written "
+    "case. Everyone knew how that would end. "
+) * 7
+expect_fail("no-staccato-sequences", _dr66_staccato_rate, "DR-66 E5 short-sentence rate branch")
+
+_dr66_staccato_rate_pass = (
+    "The tender closed on Friday afternoon and officers spent the weekend reading "
+    "submissions that had arrived in the final hour, most of them incomplete and "
+    "several of them addressed to the wrong department entirely. A second panel was "
+    "convened on Monday morning to work through the backlog before the council "
+    "meeting, by which point the costs had already blown well past the estimate. "
+) * 6
+expect_pass(
+    "no-staccato-sequences",
+    _dr66_staccato_rate_pass,
+    "DR-66 long-sentence prose does not trip the E5 rate branch",
+)
+
+# The same interleaving as the failing fixture, but under 300 words, so the
+# rate branch is out of scope. The run and repeated-opener branches cannot fire
+# on it either, which is what makes it a clean length-gate test.
+_dr66_staccato_short_doc = (
+    "The tender closed on Friday. Officers spent the weekend reading submissions "
+    "that had arrived in the final hour, most of them incomplete. Nobody expected "
+    "that many. A second panel was convened on Monday morning to work through the "
+    "backlog before the council meeting. Costs had already blown out. "
+)
+expect_pass(
+    "no-staccato-sequences",
+    _dr66_staccato_short_doc,
+    "DR-66 the E5 rate branch skips prose under 300 words",
+)
+
+# Both new checks are rate checks with the same 300-word gate and severity as
+# the B4 and DR-159 family.
+for _cid in ("no-passive-voice-rate", "no-it-pronoun-rate"):
+    _short = ALL_CHECKS[_cid]("It was rejected by the committee and it was filed.")
+    if not _short["passed"]:
+        FAILURES += 1
+        print(f"FAIL: DR-66 {_cid} should skip prose under 300 words")
+    else:
+        print(f"  ok: DR-66 {_cid} skips prose under 300 words")
+    if _patterns_data[_cid]["severity"] != "context_warning":
+        FAILURES += 1
+        print(f"FAIL: DR-66 {_cid} should be a context warning")
+    else:
+        print(f"  ok: DR-66 {_cid} is a context warning")
+
+# Past tense got no check: measured 0.97x aggregate and 0.73x by document
+# median, so human prose here carries at least as much of it as generated prose.
+if any("past-tense" in _cid or "past_tense" in _cid for _cid in ALL_CHECKS):
+    FAILURES += 1
+    print("FAIL: DR-66 ruled no past-tense check; one exists")
+else:
+    print("  ok: DR-66 added no past-tense check")
+
+# DR-21: Latinate verb rate, pattern 70. Fails at 2.5 per 1000 words in prose
+# of 300 words or more. The list is 44 curated verbs; there is no suffix that
+# marks them, so unlike B7 it cannot grow on its own.
+_dr21_latinate_fail = (
+    "The department will initiate a review and obtain the records it requires. "
+    "Officers must ascertain whether the contractor can facilitate the transfer "
+    "and provide the documents. The board will determine the outcome, identify "
+    "the gaps, and demonstrate that the process has commenced. "
+) * 8
+expect_fail("no-latinate-verb-rate", _dr21_latinate_fail, "DR-21 dense Latinate verbs")
+
+_dr21_latinate_pass = (
+    "The council met on Thursday and went through the budget line by line. "
+    "Members argued about the depot lease for most of the afternoon before the "
+    "chair called a halt. The papers went back to the officers, who will rewrite "
+    "them and bring them again in March. Nobody was happy about the delay. "
+) * 7
+expect_pass(
+    "no-latinate-verb-rate",
+    _dr21_latinate_pass,
+    "DR-21 plain verbs stay clear",
+)
+
+# Nouns and adjectives built on the same stems are not verbs and must not count.
+_dr21_latinate_lookalikes = (
+    "The information in the department's assistant report covers construction, "
+    "generation, and identity. Alternative arrangements were informal. The "
+    "residents of the district read the requirement notice and the departure "
+    "board. Executive transmission and facilitation costs sit elsewhere in an "
+    "alternative appendix. " * 8
+)
+_dr21_lookalike_hits = ALL_CHECKS["no-latinate-verb-rate"](_dr21_latinate_lookalikes)
+if _dr21_lookalike_hits["candidate_count"] != 0:
+    FAILURES += 1
+    print(
+        "FAIL: DR-21 Latinate verb check matched non-verb look-alikes: "
+        f"{_dr21_lookalike_hits['matches']}"
+    )
+else:
+    print("  ok: DR-21 Latinate verb check ignores nouns built on the same stems")
+
+_dr21_short = ALL_CHECKS["no-latinate-verb-rate"](
+    "The board will initiate a review, obtain the records, and determine the outcome."
+)
+if not _dr21_short["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-21 no-latinate-verb-rate should skip prose under 300 words")
+else:
+    print("  ok: DR-21 no-latinate-verb-rate skips prose under 300 words")
+
+if _patterns_data["no-latinate-verb-rate"]["severity"] != "strong_warning":
+    FAILURES += 1
+    print("FAIL: no-latinate-verb-rate should be a strong warning")
+else:
+    print("  ok: no-latinate-verb-rate is a strong warning")
+
+# DR-97: word length average, pattern 71. Fails when the mean word runs 4.80
+# characters or longer, in prose of 300 words or more. A draft-wide measure with
+# no offending span, so it reports a metric string rather than quoting phrases.
+_dr97_long_words = (
+    "The review found that delivery has slipped behind the original programme in "
+    "several areas. Officers reported that procurement delays affected the eastern "
+    "corridor, and that revised timelines require further consultation with local "
+    "residents. The committee agreed to receive an update in September, alongside "
+    "financial modelling for the remaining capital works and a summary of the "
+    "responses received during the earlier engagement period. "
+) * 7
+expect_fail("word-length-average", _dr97_long_words, "DR-97 long average word length")
+
+_dr97_short_words = (
+    "The dog got up and went to the door. It had been a long day and the light "
+    "was going. She put down her cup, took the lead off the hook, and let him "
+    "out. The street was wet. A car went past. Down at the end of the road a man "
+    "was pulling in his bins for the night, and the sky was going dark fast. " * 7
+)
+expect_pass("word-length-average", _dr97_short_words, "DR-97 short average word length stays clear")
+
+# The prose fixtures above sit well either side of the line, so the threshold
+# itself is pinned with words of controlled length: 400 five-letter words average
+# 5.00 and must fail, 400 four-letter words average 4.00 and must pass.
+_dr97_over = ALL_CHECKS["word-length-average"](" ".join(["abcde"] * 400))
+_dr97_under = ALL_CHECKS["word-length-average"](" ".join(["abcd"] * 400))
+if _dr97_over["passed"] or not _dr97_under["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-97 word-length-average threshold is not at 4.80")
+else:
+    print("  ok: DR-97 word-length-average threshold sits at 4.80")
+
+# The floor is 100 words, not the 300 the rate checks use. A per-word average
+# needs no volume to be meaningful, and the corpora's short documents are read
+# correctly below 300: a 208-word cover letter at 5.92 and a 214-word hotel
+# description at 5.86 both flag, a 249-word human passthrough at 3.72 stays
+# clear. Under 100 one long word swings the average, so a 39-word email is
+# still skipped.
+_dr97_short_doc = ALL_CHECKS["word-length-average"](
+    "The organisation's implementation methodology necessitated reconfiguration."
+)
+if not _dr97_short_doc["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-97 word-length-average should skip prose under 100 words")
+else:
+    print("  ok: DR-97 word-length-average skips prose under 100 words")
+
+_dr97_midlength = ALL_CHECKS["word-length-average"](
+    "The organisation's implementation methodology necessitated considerable "
+    "administrative reconfiguration throughout successive operational quarters. " * 12
+)
+if _dr97_midlength["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-97 word-length-average should read prose between 100 and 300 words")
+else:
+    print("  ok: DR-97 word-length-average reads prose between 100 and 300 words")
+
+_dr97_metric = ALL_CHECKS["word-length-average"](_dr97_long_words).get("metric")
+if not _dr97_metric:
+    FAILURES += 1
+    print("FAIL: DR-97 word-length-average must surface a metric string when it flags")
+else:
+    print(f"  ok: DR-97 word-length-average surfaces a metric: {_dr97_metric}")
+
+if _patterns_data["word-length-average"]["severity"] != "strong_warning":
+    FAILURES += 1
+    print("FAIL: word-length-average should be a strong warning")
+else:
+    print("  ok: word-length-average is a strong warning")
+
+# DR-78: mixed-script confusables, pattern 72. A Latin word carrying a Cyrillic
+# or Greek character that looks identical to a Latin one. One occurrence is a
+# hard fail. Only visually confusable characters count, so scientific notation
+# such as "\u0394H1" and "\u03b7j" stays clear.
+_dr78_homoglyph = "The report covers the two main find\u0456ngs and the r\u0435maining work."
+expect_fail("no-mixed-script-words", _dr78_homoglyph, "DR-78 Cyrillic confusables inside Latin words")
+
+_dr78_controls = (
+    "The enthalpy change \u0394H1 and the coefficient \u03b7j were reported in the appendix. "
+    "\u041e\u043d \u043f\u0438\u0441\u0430\u043b \u043f\u043e-\u0440\u0443\u0441\u0441\u043a\u0438. She replied in English. "
+    "\u03a4\u03bf \u03ba\u03b5\u03af\u03bc\u03b5\u03bd\u03bf \u03ae\u03c4\u03b1\u03bd \u03c3\u03b1\u03c6\u03ad\u03c2. "
+    "The caf\u00e9 was na\u00efve about \u0160koda and \u00c6r\u00f8."
+)
+expect_pass(
+    "no-mixed-script-words",
+    _dr78_controls,
+    "DR-78 scientific notation, whole-script passages, and accented Latin stay clear",
+)
+
+_dr78_result = ALL_CHECKS["no-mixed-script-words"](_dr78_homoglyph)
+if _dr78_result.get("matches") != ["find\u0456ngs", "r\u0435maining"]:
+    FAILURES += 1
+    print(f"FAIL: DR-78 should quote both offending words, got {_dr78_result.get('matches')}")
+else:
+    print("  ok: DR-78 quotes each offending word")
+
+if _patterns_data["no-mixed-script-words"]["severity"] != "hard_fail":
+    FAILURES += 1
+    print("FAIL: DR-78 no-mixed-script-words should be a hard fail")
+else:
+    print("  ok: DR-78 no-mixed-script-words is a hard fail")
+
+# DR-165: Yakura et al. GPT-preferred vocabulary. Twenty-six words added as B1
+# clustering candidates, so none fires alone. `swift` was excluded because
+# `_find_ai_words` lowercases before matching and cannot tell the adjective from
+# `Taylor Swift`, `Apple Swift`, or the SWIFT acronym.
+_dr165_added = [
+    "comprehend", "boasts", "inquiry", "pinpoint", "surpassed", "swiftly",
+    "lessen", "scrutinized", "discerning", "necessitated", "alongside",
+    "hinges", "groundwork", "escalating", "inaugural", "affirmed", "portrayed",
+    "catering", "reliant", "spotlight", "craft", "creation", "notice",
+    "impressive", "thorough", "akin",
+]
+_dr165_found = _grade._find_ai_words(" ".join(_dr165_added))
+_dr165_missing = [_w for _w in _dr165_added if _w not in _dr165_found]
+if _dr165_missing:
+    FAILURES += 1
+    print(f"FAIL: DR-165 not recognised as AI vocabulary candidates: {_dr165_missing}")
+else:
+    print(f"  ok: DR-165 all {len(_dr165_added)} Yakura candidates are recognised")
+
+if "swift" in _grade.AI_VOCABULARY:
+    FAILURES += 1
+    print("FAIL: DR-165 `swift` was excluded and must not be in AI_VOCABULARY")
+else:
+    print("  ok: DR-165 `swift` stays out of the vocabulary list")
+
+# Six of the twenty-six are substrings of ordinary words. `akin` alone appears
+# inside making, taking, speaking and breaking 164 times across the corpora, so
+# these must match on word boundaries and not as bare substrings.
+_dr165_hosts = (
+    "The aircraft crew showed craftsmanship. Recreational noticeably unimpressive "
+    "thoroughly making taking speaking breaking undertaking spacecraft."
+)
+_dr165_leaks = [w for w in _grade._find_ai_words(_dr165_hosts.lower())
+                if w in {"craft", "creation", "notice", "impressive", "thorough", "akin"}]
+if _dr165_leaks:
+    FAILURES += 1
+    print(f"FAIL: DR-165 boundary-sensitive candidates leaked into host words: {_dr165_leaks}")
+else:
+    print("  ok: DR-165 boundary-sensitive candidates do not match inside host words")
+
+_dr165_bounded = _grade._find_ai_words(
+    "a craft of creation, notice the impressive and thorough work, akin to it"
+)
+_dr165_unbounded = [_w for _w in ("craft", "creation", "notice", "impressive", "thorough", "akin")
+                    if _w not in _dr165_bounded]
+if _dr165_unbounded:
+    FAILURES += 1
+    print(f"FAIL: DR-165 should still match as whole words: {_dr165_unbounded}")
+else:
+    print("  ok: DR-165 boundary-sensitive candidates still match as whole words")
+
+# DR-165A: DR-165 approved each word on a corpus count taken over its inflection
+# family, but added most of them as a single surface form. Substring entries
+# caught some inflections by accident and the word-bounded entries caught none,
+# so six families matched less than the measurement they were approved on. Every
+# family is now explicit and word-bounded.
+_dr165a_families = {
+    "comprehend": ["comprehend", "comprehends", "comprehended", "comprehending"],
+    "boast": ["boast", "boasts", "boasted", "boasting"],
+    "inquiry": ["inquiry", "inquiries"],
+    "pinpoint": ["pinpoint", "pinpoints", "pinpointed", "pinpointing"],
+    "surpass": ["surpass", "surpasses", "surpassed", "surpassing"],
+    "swiftly": ["swiftly"],
+    "lessen": ["lessen", "lessens", "lessened", "lessening"],
+    "scrutinize": ["scrutinize", "scrutinizes", "scrutinized", "scrutinizing"],
+    "discern": ["discern", "discerns", "discerned", "discerning"],
+    "necessitate": ["necessitate", "necessitates", "necessitated", "necessitating"],
+    "alongside": ["alongside"],
+    "hinge": ["hinge", "hinges", "hinged", "hinging"],
+    "groundwork": ["groundwork"],
+    "escalate": ["escalate", "escalates", "escalated", "escalating"],
+    "inaugural": ["inaugural"],
+    "affirm": ["affirm", "affirms", "affirmed", "affirming"],
+    "portray": ["portray", "portrays", "portrayed", "portraying"],
+    "cater": ["cater", "caters", "catered", "catering"],
+    "reliant": ["reliant"],
+    "spotlight": ["spotlight", "spotlights", "spotlighted", "spotlighting"],
+    "craft": ["craft", "crafts", "crafted", "crafting"],
+    "creation": ["creation", "creations"],
+    "notice": ["notice", "notices", "noticed", "noticing"],
+    "impressive": ["impressive"],
+    "thorough": ["thorough"],
+    "akin": ["akin"],
+    # 2026-07-26: added on the project-corpus measurement, which runs
+    # `clarity` 3.7x and `polish` 3.6x more often in generated prose than human.
+    # `readable` runs 3.0x on one occurrence each way.
+    "clarity": ["clarity"],
+    "polish": ["polish", "polishes", "polished", "polishing"],
+    "readable": ["readable"],
+}
+_dr165a_unmatched = []
+for _stem, _forms in _dr165a_families.items():
+    for _form in _forms:
+        if not _grade._find_ai_words(_form):
+            _dr165a_unmatched.append(_form)
+if _dr165a_unmatched:
+    FAILURES += 1
+    print(f"FAIL: DR-165A inflected forms not recognised: {_dr165a_unmatched}")
+else:
+    print(
+        f"  ok: DR-165A all {sum(len(v) for v in _dr165a_families.values())} inflected "
+        f"forms across {len(_dr165a_families)} families are recognised"
+    )
+
+# Widening to families must not widen into host words. Each of these contains a
+# family member as a substring and must stay clear.
+_dr165a_hosts = (
+    "The aircraft crew showed craftsmanship at the spacecraft handicraft fair. "
+    "Recreational procreation noticeably unimpressive thoroughly unreadable. "
+    "Making taking speaking breaking undertaking. Caterpillar cathedral. "
+    "Comprehension discernible affirmation portrayal escalation lessons "
+    "hinged? No: unhinged. Inquiryless spotlighting is fine but polishable "
+    "and clarification are not entries."
+)
+_dr165a_expected_clear = {
+    "craft", "crafts", "creation", "notice", "impressive", "thorough", "akin",
+    "cater", "caters", "comprehend", "discern", "affirm", "portray", "escalate",
+    "lessen", "inquiry", "readable", "polish", "clarity",
+}
+_dr165a_leaks = sorted(
+    set(_grade._find_ai_words(_dr165a_hosts.lower())) & _dr165a_expected_clear
+)
+if _dr165a_leaks:
+    FAILURES += 1
+    print(f"FAIL: DR-165A families leaked into host words: {_dr165a_leaks}")
+else:
+    print("  ok: DR-165A families do not match inside host words")
+
+# `swift` stays excluded, and widening `swiftly` must not reintroduce it.
+if _grade._find_ai_words("taylor swift wrote about the swift banking network"):
+    FAILURES += 1
+    print("FAIL: DR-165A `swift` must stay unmatched; the matcher lowercases first")
+else:
+    print("  ok: DR-165A `swift` stays unmatched in brand and acronym contexts")
+
+# DR-84: concreteness rate, pattern 73. Mean concreteness of a draft's words on
+# Brysbaert's 1-to-5 scale, where 1 is fully abstract and 5 fully concrete.
+# Fails at 2.458 or below in prose of 100 words or more. Draft-wide metric, so it
+# reports a metric string rather than quoting phrases.
+_dr84_abstract = (
+    "The framework provides a basis for the approach, and the concept informs the "
+    "strategy that underpins the process. The principle behind the method reflects "
+    "a broader theory of value, meaning, and purpose within the wider context. "
+    "Significance emerges from the relationship between intention and outcome. "
+) * 8
+expect_fail("concreteness-average", _dr84_abstract, "DR-84 abstract vocabulary")
+
+_dr84_concrete = (
+    "The dog knocked the mug off the table and the tea ran under the fridge. "
+    "She found the mop behind the door, wiped the tiles, and put the broken "
+    "handle in the bin by the back step. Rain hit the window. The cat sat on the "
+    "warm bricks by the stove and watched the water dry off the floor. "
+) * 7
+expect_pass("concreteness-average", _dr84_concrete, "DR-84 concrete vocabulary stays clear")
+
+_dr84_short = ALL_CHECKS["concreteness-average"]("The framework informs the approach and the concept.")
+if not _dr84_short["passed"]:
+    FAILURES += 1
+    print("FAIL: DR-84 concreteness-average should skip prose under 100 words")
+else:
+    print("  ok: DR-84 concreteness-average skips prose under 100 words")
+
+_dr84_metric = ALL_CHECKS["concreteness-average"](_dr84_abstract).get("metric")
+if not _dr84_metric:
+    FAILURES += 1
+    print("FAIL: DR-84 concreteness-average must surface a metric string when it flags")
+else:
+    print(f"  ok: DR-84 concreteness-average surfaces a metric: {_dr84_metric}")
+
+if not _grade.CONCRETENESS_NORMS:
+    FAILURES += 1
+    print("FAIL: DR-84 concreteness norms file did not load")
+elif len(_grade.CONCRETENESS_NORMS) < 39000:
+    FAILURES += 1
+    print(f"FAIL: DR-84 concreteness norms truncated: {len(_grade.CONCRETENESS_NORMS)} rows")
+else:
+    print(f"  ok: DR-84 concreteness norms loaded, {len(_grade.CONCRETENESS_NORMS)} words")
+
+if _patterns_data["concreteness-average"]["severity"] != "context_warning":
+    FAILURES += 1
+    print("FAIL: DR-84 concreteness-average should be a context warning")
+else:
+    print("  ok: DR-84 concreteness-average is a context warning")
 
 # --- Summary ---
 

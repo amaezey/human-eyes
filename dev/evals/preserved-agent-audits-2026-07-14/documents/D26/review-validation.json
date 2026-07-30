@@ -1,0 +1,10 @@
+{
+  "valid_registry_coverage": true,
+  "citation_issues": [
+    {
+      "id": "semantic_redundancy",
+      "issue": "evidence_not_exact_source_substring",
+      "phrase": "This work will determine whether there are any overlaps, duplications or gaps in the system"
+    }
+  ]
+}

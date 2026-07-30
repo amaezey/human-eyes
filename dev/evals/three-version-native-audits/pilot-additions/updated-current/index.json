@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "manifest": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/manifest.json",
+  "documents": [
+    {
+      "document_id": "01-personal-reflective-essay::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/01.md",
+      "content_sha256": "081c94fa9da1ec3e74f9e0fbf807d4a5ba66cf5db670e570358728bf40bad2a6",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R03.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/01-personal-reflective-essay--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/01-personal-reflective-essay--human.json"
+    },
+    {
+      "document_id": "01-personal-reflective-essay::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/01.md",
+      "content_sha256": "2ec89f405f95799df68984d45deaf38fb0e3fa39280b89a9ec68e9281f0c3a84",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R10.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/01-personal-reflective-essay--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/01-personal-reflective-essay--ai.json"
+    },
+    {
+      "document_id": "02-lived-experience-memoir::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/02.md",
+      "content_sha256": "5ee0235d358170eadde7365f323f5bc68f75bcf059e90b8f3336de9aae3086e8",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R13.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/02-lived-experience-memoir--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/02-lived-experience-memoir--human.json"
+    },
+    {
+      "document_id": "02-lived-experience-memoir::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/02.md",
+      "content_sha256": "39937b8c02437b4027a32fc913b04339bcb873bf1e488931fa84d5e6a3bd78c3",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R02.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/02-lived-experience-memoir--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/02-lived-experience-memoir--ai.json"
+    },
+    {
+      "document_id": "03-personal-newsletter::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/03.md",
+      "content_sha256": "efe9a9abcbd39d91fa464adc9db6a8f1620600c66ed9f5bf4f852c326f19fea6",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R19.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/03-personal-newsletter--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/03-personal-newsletter--human.json"
+    },
+    {
+      "document_id": "03-personal-newsletter::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/03.md",
+      "content_sha256": "d43258bfdc1320bac8444d0bdf8f7a001642bf331edb88e265d88aa8513a6181",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R08.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/03-personal-newsletter--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/03-personal-newsletter--ai.json"
+    },
+    {
+      "document_id": "04-professional-email::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/04.md",
+      "content_sha256": "abdebdf252877c74710b685437a502cb8b7e995bbffebb58ddc914d6824b6227",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R11.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/04-professional-email--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/04-professional-email--human.json"
+    },
+    {
+      "document_id": "04-professional-email::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/04.md",
+      "content_sha256": "118f8014d0935b4818336aef67d8e25ab07c69c6dfcd3904da5e5e8e532f4f36",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R20.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/04-professional-email--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/04-professional-email--ai.json"
+    },
+    {
+      "document_id": "05-workplace-project-update::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/05.md",
+      "content_sha256": "67118531cca905a077e1eecd23a59145f2fba69145455374a838a8d22fa8536d",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R05.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/05-workplace-project-update--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/05-workplace-project-update--human.json"
+    },
+    {
+      "document_id": "05-workplace-project-update::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/05.md",
+      "content_sha256": "06d66b4cd0c9cc3ce22a75a4db0416b12bfbcc1b59076ac9dc861a214662afb9",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R16.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/05-workplace-project-update--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/05-workplace-project-update--ai.json"
+    },
+    {
+      "document_id": "06-business-strategy-report::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/06.md",
+      "content_sha256": "dd5d9ed82d400f70c818983d0c3f80641440ed2d0e6aaf268a88681bcd94dc15",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R17.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/06-business-strategy-report--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/06-business-strategy-report--human.json"
+    },
+    {
+      "document_id": "06-business-strategy-report::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/06.md",
+      "content_sha256": "28c1410fe0feb2fb9b47fb47ea728556b95582ecca06da32b5bb6a324ca4bf72",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R06.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/06-business-strategy-report--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/06-business-strategy-report--ai.json"
+    },
+    {
+      "document_id": "07-marketing-customer-communication::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/07.md",
+      "content_sha256": "266c9883c7277305eb77934b8906f2a71308dcfcf42614f4b4f9f8b7657640c4",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R01.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/07-marketing-customer-communication--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/07-marketing-customer-communication--human.json"
+    },
+    {
+      "document_id": "07-marketing-customer-communication::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/07.md",
+      "content_sha256": "aae64f4f67b8522d60fed2f83a714af384e520c5b86f4ba3db517a7af424c02a",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R14.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/07-marketing-customer-communication--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/07-marketing-customer-communication--ai.json"
+    },
+    {
+      "document_id": "08-student-academic-essay::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/08.md",
+      "content_sha256": "ffec235c5d455d4ded353d7e2e5aacd4db4be96956a54e6b3a599c641609372e",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R09.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/08-student-academic-essay--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/08-student-academic-essay--human.json"
+    },
+    {
+      "document_id": "08-student-academic-essay::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/08.md",
+      "content_sha256": "19bbbb1a0b81f9065fcf81069448ba5e477ad55809bd8ff3f5c01ffc933f250d",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R18.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/08-student-academic-essay--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/08-student-academic-essay--ai.json"
+    },
+    {
+      "document_id": "09-cultural-criticism::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/09.md",
+      "content_sha256": "f82449ceb38d9017d28962e9eae106f85cc9f20e8c0429a47fe1bbffa2c3efe2",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R15.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/09-cultural-criticism--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/09-cultural-criticism--human.json"
+    },
+    {
+      "document_id": "09-cultural-criticism::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/09.md",
+      "content_sha256": "f584ee970c04539264b45e2b473c1787896a1d4a9b130bf704f11f7b3a965a10",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R04.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/09-cultural-criticism--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/09-cultural-criticism--ai.json"
+    },
+    {
+      "document_id": "10-government-report::human",
+      "cohort": "human",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/human-sourced/10.md",
+      "content_sha256": "e6bccfcbc63bf1b00a034741e473e62f531e1eca442fec76acb2285db9686a2c",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R07.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/10-government-report--human.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/10-government-report--human.json"
+    },
+    {
+      "document_id": "10-government-report::ai",
+      "cohort": "ai",
+      "path": "/Users/mae/Documents/human-eyes/dev/evals/samples/pilot-additions-01/generated-ai/10.md",
+      "content_sha256": "3027aa4987555945507f58fb1dc9a0ac13238656fb3a29a2a85918c1ca1591a3",
+      "retained_answers_from": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/current/annotator-a/R12.json",
+      "work_bundle": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/work-bundles/10-government-report--ai.json",
+      "audit": "/Users/mae/Documents/human-eyes/dev/evals/three-version-native-audits/pilot-additions/updated-current/audits/10-government-report--ai.json"
+    }
+  ]
+}

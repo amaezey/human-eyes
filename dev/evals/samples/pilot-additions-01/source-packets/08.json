@@ -1,0 +1,31 @@
+{
+  "slot_id": "08-student-academic-essay",
+  "source": "Somebody Has to Pay Rent: The Critical Autoethnography of a Low Income Student",
+  "author": "Shelbi M. Schadendorf",
+  "published": "2018",
+  "url": "https://cornerstone.lib.mnsu.edu/jur/vol18/iss1/6/",
+  "license": "CC BY-NC 4.0",
+  "acquired_at": "2026-07-12",
+  "exact_boundary": {
+    "start": "From 2014–2018 I attended a public state university",
+    "end": "He would be the first to do this, but not the last."
+  },
+  "packaging_removed": [
+    "repository cover sheet",
+    "title page, abstract, keywords and author bio",
+    "running title and page numbers",
+    "form feeds and line-wrap artifacts"
+  ],
+  "word_count": 488,
+  "sha256": "ffec235c5d455d4ded353d7e2e5aacd4db4be96956a54e6b3a599c641609372e",
+  "contamination_check": {
+    "current_tree_command": "grep -R -n -F --exclude-dir=.git --exclude=fresh-pilot-sampling-frame.json QUERY .",
+    "full_history_command": "for c in $(git rev-list --all); do git grep -n -F QUERY $c -- .; done",
+    "queries": [
+      "Somebody Has to Pay Rent: The Critical Autoethnography of a Low Income Student",
+      "From 2014–2018 I attended a public state university"
+    ],
+    "result": "No matches outside frozen sampling-frame metadata in current tree; no matches in all 60 commits."
+  },
+  "notes": "Source wording retained; typography and PDF furniture normalized."
+}

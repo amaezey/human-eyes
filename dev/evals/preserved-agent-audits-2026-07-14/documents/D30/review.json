@@ -1,0 +1,143 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The conclusion may be right, but the annotator gave no evidence for a whole-document shape judgment. The document contains materially different parts that would need to be compared explicitly.",
+      "evidence": [
+        "From 2014–2018 I attended a public state university where I graduated with a B.S. in both Marketing and Communication Studies.",
+        "When writing this autoethnography, I relied solely on memory and reflection.",
+        "I was chatting with a friend’s boyfriend when I mentioned how I worked a job in high school because I had to have one."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "undercall",
+      "rationale": "The prose largely maintains one reflective academic-personal register; the annotator cleared the item by claiming deliberate register shifts that are not established by the document itself.",
+      "evidence": [
+        "When writing this autoethnography, I relied solely on memory and reflection.",
+        "When I began university, I quickly found that my experiences growing up were not exactly typical.",
+        "Later that year I found out he lived in a half million dollar house, and his parents paid his rent and gave him a monthly allowance for staying in school."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The non-finding is plausible because the piece uses concrete autobiographical particulars, but the annotator supplied no evidence to establish that judgment.",
+      "evidence": [
+        "From 2014–2018 I attended a public state university",
+        "averaging 30–40 hours a week",
+        "Later that year I found out he lived in a half million dollar house"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document does take a position on class privilege and misunderstanding, but the annotator offered no evidence for that conclusion.",
+      "evidence": [
+        "During my time, I experienced how class affects relationships, opportunity, and my place within higher education.",
+        "This did not fit my definition of “had to”.",
+        "He would be the first to do this, but not the last."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The answer may be plausible, but the annotator did not show how the document's limited technical vocabulary is distributed across the piece.",
+      "evidence": [
+        "When writing this autoethnography, I relied solely on memory and reflection.",
+        "Pell Grant recipient",
+        "class privilege ignorance"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "insufficient_evidence",
+      "rationale": "There appears to be no forced cross-modal imagery, but the annotator gave no evidence for the clear judgment.",
+      "evidence": [
+        "I was confused and a bit stunned.",
+        "This did not fit my definition of “had to”."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The annotator correctly identifies a stock metaphor that supplies only generic exposure rather than a concrete image or property.",
+      "evidence": [
+        "got a taste of how sensitive the topic of class could be"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The text mostly keeps antecedents recoverable, but the annotator supplied no evidence for clearing the item.",
+      "evidence": [
+        "This did not fit my definition of “had to”.",
+        "He would be the first to do this, but not the last."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "insufficient_evidence",
+      "rationale": "The non-finding is plausible, but the annotator provided no evidence showing that the document's parallel structures are informative rather than formulaic.",
+      "evidence": [
+        "During my time, I experienced how class affects relationships, opportunity, and my place within higher education.",
+        "From this timeline, I chose only those which had been the most pivotal in my development, and which I remembered the details of most reliably."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "insufficient_evidence",
+      "rationale": "The conclusion may be right, but the annotator gave no evidence that nearby claims are not merely repeated for padding.",
+      "evidence": [
+        "When I asked him why he had to have one, he proudly informed me that his parents required all their children to have a part time job in high school to teach them responsibility, and had to work, “at least 10 hours a week.”",
+        "“Had to is had to,” he kept repeating."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The annotator correctly flags an evaluative phrase whose standard for importance is not named.",
+      "evidence": [
+        "the most pivotal in my development"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "insufficient_evidence",
+      "rationale": "There is no obvious reply-shaped residue, but the annotator supplied no evidence for the clear judgment.",
+      "evidence": [
+        "When writing this autoethnography, I relied solely on memory and reflection.",
+        "Later that year I found out he lived in a half million dollar house, and his parents paid his rent and gave him a monthly allowance for staying in school."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "insufficient_evidence",
+      "rationale": "The text does not appear to rely on sincerity boosters, but the annotator gave no evidence for clearing the item.",
+      "evidence": [
+        "When writing this autoethnography, I relied solely on memory and reflection.",
+        "I explained"
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "insufficient_evidence",
+      "rationale": "The prose generally states its relationships clearly enough, but the annotator supplied no evidence for the non-finding.",
+      "evidence": [
+        "When I asked him why he had to have one, he proudly informed me that his parents required all their children to have a part time job in high school to teach them responsibility",
+        "That’s not really what I meant when I said I had to have a job"
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "insufficient_evidence",
+      "rationale": "`student_essay` is a plausible genre classification and no watchlist issue is obvious, but the annotator gave no evidence supporting the genre choice or the clean watchlist result.",
+      "evidence": [
+        "# The Autoethnography",
+        "When writing this autoethnography, I relied solely on memory and reflection.",
+        "## Freshman Year, Fall Semester"
+      ]
+    }
+  ]
+}

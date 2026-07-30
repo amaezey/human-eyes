@@ -1,0 +1,31 @@
+{
+  "slot_id": "10-government-report",
+  "source": "Coordination of health care: experiences of information sharing between providers for patients aged 45 and over 2016",
+  "author": "Australian Institute of Health and Welfare",
+  "published": "2019",
+  "url": "https://www.aihw.gov.au/getmedia/3357eb3b-db28-4b51-9bba-cc025b63679a/aihw-chc-3.pdf?inline=true",
+  "license": "CC BY 3.0",
+  "acquired_at": "2026-07-12",
+  "exact_boundary": {
+    "start": "2 What do patients say about their health-care needs, preferences, and history?",
+    "end": "The following sections explore some of these results in more detail."
+  },
+  "packaging_removed": [
+    "PDF control glyphs",
+    "running title, footer and page number",
+    "line-wrap artifacts",
+    "subsequent Age subsection and figure"
+  ],
+  "word_count": 378,
+  "sha256": "e6bccfcbc63bf1b00a034741e473e62f531e1eca442fec76acb2285db9686a2c",
+  "contamination_check": {
+    "current_tree_command": "grep -R -n -F --exclude-dir=.git --exclude=fresh-pilot-sampling-frame.json QUERY .",
+    "full_history_command": "for c in $(git rev-list --all); do git grep -n -F QUERY $c -- .; done",
+    "queries": [
+      "Coordination of health care: experiences of information sharing between providers for patients aged 45 and over 2016",
+      "2 What do patients say about their health-care needs, preferences, and history?"
+    ],
+    "result": "No matches outside frozen sampling-frame metadata in current tree; no matches in all 60 commits."
+  },
+  "notes": "Substantive headings and bullet structure retained."
+}

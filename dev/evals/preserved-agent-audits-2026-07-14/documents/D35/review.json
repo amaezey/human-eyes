@@ -1,0 +1,147 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The document does have recurring expository paragraph shapes, but the annotator gave no section-level evidence showing the repeated arc across multiple parts of the piece.",
+      "evidence": [
+        "Most respondents reported that their usual health professional was aware of important aspects of their medical history.",
+        "However, gaps were more apparent when patients moved between services.",
+        "Continuity was associated with better reported experiences.",
+        "The findings support continued work to improve secure information exchange, discharge communication and accountability for follow-up."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The register appears consistently formal and policy-analytic, but the annotator did not supply textual evidence demonstrating that the register holds throughout the document.",
+      "evidence": [
+        "The national survey provides new information about how Australian patients experience coordination between different parts of the health system.",
+        "These differences warrant further investigation because poor coordination can compound existing barriers to care.",
+        "They complement administrative and clinical data by showing how arrangements are experienced by the people using them."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "The document stays general and institutional; it does not use decorative pseudo-specific detail of the kind this registry item targets.",
+      "evidence": [
+        "Respondents were asked about communication among health professionals, follow-up after hospital care, access to information and the support they received in managing ongoing conditions.",
+        "Some respondents said they had to repeat their medical history because information had not reached a new provider."
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "supported",
+      "rationale": "The text takes a clear position that coordination problems exist and that improvement work should continue, rather than flattening into both-sides balance.",
+      "evidence": [
+        "These differences warrant further investigation because poor coordination can compound existing barriers to care.",
+        "The findings support continued work to improve secure information exchange, discharge communication and accountability for follow-up."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "overcall",
+      "rationale": "The vocabulary is consistently appropriate to a health-policy summary, but it is not suspiciously uniform jargon for its own sake; it mixes technical and plain phrasing naturally.",
+      "evidence": [
+        "coordination between different parts of the health system",
+        "timely advice about medicines, warning signs or the next stage of care",
+        "They complement administrative and clinical data by showing how arrangements are experienced by the people using them."
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "supported",
+      "rationale": "There are no cross-modal metaphors mapping senses onto abstractions or emotions.",
+      "evidence": [
+        "These experiences can cause inconvenience and anxiety and may increase the risk of duplicated tests or avoidable treatment.",
+        "They also underline the value of regular primary-care relationships."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The prose is largely literal and report-like; it does not rely on generic metaphorical framing as a substitute for concrete meaning.",
+      "evidence": [
+        "The survey measures patients’ perceptions rather than clinical outcomes and does not establish why particular failures occurred.",
+        "patient reports identify practical points at which coordination succeeds or breaks down"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "Pronouns and definite descriptions have recoverable antecedents in context, and the prose does not show excessive vague-reference drift.",
+      "evidence": [
+        "These findings indicate that information sharing works effectively for many people",
+        "These differences warrant further investigation because poor coordination can compound existing barriers to care.",
+        "They complement administrative and clinical data by showing how arrangements are experienced by the people using them."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The document uses ordinary enumeration, but not slogan-like symmetry or repeated corrective scripts standing in for content.",
+      "evidence": [
+        "communication among health professionals, follow-up after hospital care, access to information and the support they received in managing ongoing conditions",
+        "medicines, warning signs or the next stage of care"
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "The paragraphs develop related points, but no sentence merely restates nearby information without adding a new distinction or implication.",
+      "evidence": [
+        "However, gaps were more apparent when patients moved between services.",
+        "Patients with complex needs had more contact with the health system and therefore more opportunities to encounter coordination problems.",
+        "Continuity was associated with better reported experiences."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The annotator correctly identified vague evaluative phrases whose criteria are not defined in the passage.",
+      "evidence": [
+        "well-connected care",
+        "mixed experiences",
+        "timely advice",
+        "more consistent experiences across patient groups"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "supported",
+      "rationale": "The document does not answer an absent interlocutor or defend itself against missing chat context; it reads as standalone prose.",
+      "evidence": [
+        "The results show that many patients experienced well-connected care, but coordination was not consistent across the population.",
+        "Nevertheless, patient reports identify practical points at which coordination succeeds or breaks down."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "There are no candour-performance markers such as \"frankly,\" \"honestly,\" or similar authenticity boosters.",
+      "evidence": [
+        "The survey measures patients’ perceptions rather than clinical outcomes and does not establish why particular failures occurred.",
+        "Future survey cycles will allow changes to be monitored"
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "supported",
+      "rationale": "Connectors such as \"However\" and \"Nevertheless\" mark clear contrasts, and the coordinated clauses generally state their relationships explicitly.",
+      "evidence": [
+        "However, gaps were more apparent when patients moved between services.",
+        "Nevertheless, patient reports identify practical points at which coordination succeeds or breaks down."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "This text fits the registry's default bucket better than the named genres, and no genre-specific watchlist issue is triggered within that classification.",
+      "evidence": [
+        "The national survey provides new information about how Australian patients experience coordination between different parts of the health system.",
+        "The findings support continued work to improve secure information exchange, discharge communication and accountability for follow-up."
+      ]
+    }
+  ]
+}

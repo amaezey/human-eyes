@@ -1,0 +1,600 @@
+You are an independent prose-audit reviewer. Re-read the document and verify every judgment yourself.
+
+Independently review a preserved agent-assessed Audit.
+
+Rules:
+1. Re-read the whole document and apply every registry record yourself before deciding whether the annotator was right.
+2. Do not guess who wrote the document and do not classify authorship.
+3. Review all 15 judgments, including clear judgments that may hide false negatives.
+4. A whole-document or distribution judgment needs evidence from multiple parts of the document when enough material exists.
+5. Treat genre-appropriate consistency, repetition, terminology, formatting, and rhetoric in context.
+6. Use verdict `supported` only when the annotator's answer and evidence are adequate; `overcall` when it flags a defect that is not present; `undercall` when it clears a defect that is present; `misclassified` when the status may be right but the selected category, genre, scope, or answer is materially wrong; and `insufficient_evidence` when the conclusion may be plausible but the supplied evidence does not establish it.
+7. Evidence strings in your review must be literal exact substrings from the document. Return exactly one review per registry record in registry order. Do not add commentary outside the JSON object.
+
+REGISTRY:
+{
+  "schema_version": "1",
+  "records": [
+    {
+      "id": "structural_monotony",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Do sections repeat the same rhetorical arc, such as problem → evidence → anecdote → advice or hook → claim → evidence → close? Name repeated arcs even when the headings and subject matter differ.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "sections vary",
+          "some sections share a shape",
+          "every section follows the same arc"
+        ]
+      },
+      "flagged_when": [
+        "some sections share a shape",
+        "every section follows the same arc"
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "Does the whole text sit in one register (formal, academic-accessible, warm-but-authoritative), or does the writer drift between registers — formal to colloquial, careful to loose, sincere to wry? Tonal uniformity is the consistency itself, not any particular register.",
+      "answer_schema": {
+        "type": "state",
+        "values": [
+          "register holds without breaks",
+          "register breaks at least once",
+          "register shifts deliberately"
+        ]
+      },
+      "flagged_when": [
+        "register holds without breaks"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "pattern_ref": 36,
+      "severity": "strong_warning",
+      "prompt": "Are the \"specific\" examples actually specific (someone's lived detail with names, dates, places, sensory grounding), or genre-convention filler that anyone could have written (\"the smell of coffee on a Sunday morning\", \"the way light hits the kitchen table\")? List specific phrases that perform specificity without achieving it.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_unspecific"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "neutrality_collapse",
+      "pattern_ref": 37,
+      "severity": "strong_warning",
+      "prompt": "Does the text commit to a position, or default to \"balanced\" treatment of everything? Look for \"there are compelling arguments on both sides\" framing where the original had a clear stance. Surface false-balance phrasing is partly covered by `no-false-concession-hedges` (#23a); this item flags the broader stance erasure.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "takes a position",
+          "hedges its position",
+          "flattens to balanced framing"
+        ]
+      },
+      "flagged_when": [
+        "hedges its position",
+        "flattens to balanced framing"
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Is technical vocabulary clumped (the writer is in the weeds where they actually know things, plain prose elsewhere) or spread evenly across the piece (suspicious — humans don't distribute jargon uniformly)?",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "jargon clumps where the writer knows things",
+          "jargon spreads naturally",
+          "jargon spreads uniformly across the text"
+        ]
+      },
+      "flagged_when": [
+        "jargon spreads uniformly across the text"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "pattern_ref": 28,
+      "severity": "context_warning",
+      "prompt": "Are there forced cross-modal metaphors — emotions get tastes, sounds get colours, abstract concepts get textures — that don't earn their grounding? Real synesthetic writing is specific and grounded (\"a great plateful of blue water\" — Woolf had stood before a view and sat down to a meal). AI synesthesia is unanchored. List specific phrases that map senses unjustifiably.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_forced"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "generic_metaphors",
+      "pattern_ref": 30,
+      "severity": "strong_warning",
+      "prompt": "Are the metaphors plausible-but-anyone's, or detached from a concrete referent, property, or experience? List the exact metaphor and explain what concrete meaning it fails to supply.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_generic"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "referential_clarity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "List vague this, that, it, these, those, and vague nouns such as moves when the antecedent is not identifiable. Also list unsupported first-use definite descriptions such as the gap, and separately identify passages whose repeated the + noun cadence is excessive even though each referent can be recovered. Quote the phrase and name the missing or over-repeated referent.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unclear"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "pattern_ref": 10,
+      "severity": "context_warning",
+      "prompt": "List counted slogans, balanced bicolons, repeated syntactic skeletons, or cross-sentence correction scripts whose symmetry substitutes for information. Quote the complete construction and explain what the parallel form fails to say.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_formulaic"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "semantic_redundancy",
+      "pattern_ref": 34,
+      "severity": "strong_warning",
+      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "what_it_repeats"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "underspecified_language",
+      "pattern_ref": 43,
+      "severity": "strong_warning",
+      "prompt": "List evaluative adjectives, comparisons, superlatives, modifier stacks, nominalisations, and metaphors that do not name the relevant property or comparison basis. Common examples include steady, rougher, cold, sharp, and load-bearing. Quote the phrase and state the missing criterion, property, actor, or action.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_criterion"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "context_leakage",
+      "pattern_ref": 19,
+      "severity": "strong_warning",
+      "prompt": "List prose that answers, concedes to, corrects, or defends against a chat comment or critique absent from the document. Quote the answer-shaped language and name the missing conversational context required to understand it.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_context"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "performed_candour",
+      "pattern_ref": 42,
+      "severity": "strong_warning",
+      "prompt": "List sincerity announcements and authenticity boosters such as honest, real, actual, genuine, frankly, candidly, and truthfully when they perform candour instead of adding literal meaning. Quote the complete frame and explain why the claim can be stated directly. Preserve literal uses and quotations.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unnecessary"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "vacuous_connection",
+      "pattern_ref": 22,
+      "severity": "context_warning",
+      "prompt": "List connectors and coordinated clauses that imply a logical relationship without stating one. Quote the connection and name the missing causal, temporal, contrastive, or evidential relationship.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_relationship"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "genre_specific",
+      "pattern_ref": 41,
+      "severity": "context_warning",
+      "prompt": "First detect the genre of the text (academic, student_essay, poetry, fiction, journalism, marketing_email, or default if none of these fit). Then run the genre's watchlist below. Report `Genre detected: <genre>.` plus either watchlist findings or \"No genre-specific findings.\"",
+      "answer_schema": {
+        "type": "composite",
+        "fields": {
+          "genre_detected": {
+            "type": "state",
+            "values": [
+              "academic",
+              "student_essay",
+              "poetry",
+              "fiction",
+              "journalism",
+              "marketing_email",
+              "default"
+            ]
+          },
+          "watchlist_findings": {
+            "type": "list",
+            "items": [
+              "phrase",
+              "why_flagged"
+            ]
+          }
+        }
+      },
+      "flagged_when": "non_empty_findings",
+      "sub_records": {
+        "academic": {
+          "description": "Verify citations, DOIs, dates, journals, reference order, figure/data consistency, and whether cited works actually support the claim. Plausible citation format is not evidence. In argumentative academic prose, also watch for depleted engagement markers such as missing questions, reader address, personal asides, or stance-bearing commentary.",
+          "watchlist": [
+            "fake, broken, or irrelevant citations",
+            "wrong DOI, journal, date, figure, or data reference",
+            "citation exists but does not support the claim",
+            "argumentative essay with depleted questions, reader engagement, or stance markers",
+            "polished academic surface masking weak evidence or generic argument"
+          ]
+        },
+        "student_essay": {
+          "description": "Watch for rubric language echoing back, banal thesis claims, weak or missing evidence, student-level mismatch, abrupt tone or complexity shifts, surface polish masking weak argument, draft-history gaps, and loss of the student's own interpretive agency.",
+          "watchlist": [
+            "rubric language echoed as analysis",
+            "banal thesis or derivative argument",
+            "claim unsupported by quoted evidence or draft history",
+            "abrupt tone, complexity, or vocabulary shift from known student baseline",
+            "surface polish masking weak reasoning"
+          ]
+        },
+        "poetry": {
+          "description": "Watch for default quatrains, unrequested rhyme, first-person plural overuse, mood-word accumulation, form compliance without pressure, process traces that look too neat, and revisions that do not deepen the poem.",
+          "watchlist": [
+            "default quatrains or regular stanzas without a reason",
+            "unrequested rhyme or high rhyme density",
+            "first-person plural clustering",
+            "mood-word accumulation without concrete perception",
+            "form compliance without surprise, breakage, or revision depth"
+          ]
+        },
+        "fiction": {
+          "description": "Watch for flattened dialogue, \"as-you-know\" exposition, weak voice differentiation, parenthetical stage directions, locked POV with no pressure, scene pacing that never surprises, over-resolved endings, and generic fidelity to a target style without the source author's stranger choices.",
+          "watchlist": [
+            "dialogue voices not differentiated by rhythm, diction, or speech act",
+            "\"as-you-know\" exposition or role-explaining dialogue",
+            "scene pacing with no pressure, interruption, or surprise",
+            "over-resolved ending",
+            "style imitation that preserves surface but misses the source's oddities"
+          ]
+        },
+        "journalism": {
+          "description": "Watch for unsupported claims, vague sourcing, fake or disappearing bylines, synthetic headshots, broken links, wrong dates, unverifiable quotes, undisclosed vendor or affiliate provenance, and article facts that cannot be traced to named sources.",
+          "watchlist": [
+            "claim lacks a named source or verifiable link",
+            "byline, author bio, or headshot cannot be verified",
+            "broken link, wrong date, wrong organisation, or unverifiable quote",
+            "affiliate/product-review claim with unclear provenance",
+            "generated or third-party content not disclosed"
+          ]
+        },
+        "marketing_email": {
+          "description": "Watch for placeholders, generic subject lines, fake personalisation, weak domain understanding, exaggerated transformation claims, empty hype verbs, over-warm openings, unsupported business jargon, and action lists dressed up with symbols.",
+          "watchlist": [
+            "generic subject line or fake personalisation",
+            "placeholder residue or undeleted template slot",
+            "weak domain understanding hidden behind jargon",
+            "exaggerated transformation claim or empty hype verb",
+            "action list dressed up with symbols instead of useful specifics"
+          ]
+        },
+        "default": {
+          "description": "No genre-specific watchlist applies. The agent reports \"Genre detected: default. No genre-specific findings.\" and moves on.",
+          "watchlist": []
+        }
+      }
+    }
+  ]
+}
+
+
+DOCUMENT:
+<document>
+---
+{
+  "id": "21c-ai-rewrite-mdma-therapy",
+  "title": "What MDMA Therapy Did For Me (AI version)",
+  "author": "AI (model unspecified)",
+  "year": 2026,
+  "period": "21st",
+  "format": "Confessional essay on MDMA-assisted therapy; matched-pair AI version of Tucker Max's 2018 essay",
+  "source_url": "rewrite",
+  "fetch_status": 200,
+  "extract_method": "manual_paste",
+  "human_pair": "21c-tuckermax-mdma-therapy",
+  "expected_use": [
+    "genre_paired_corpus",
+    "human_vs_ai_baseline"
+  ],
+  "voice_targets": [
+    "Confessional essay on MDMA-assisted therapy",
+    "matched-pair AI version of Tucker Max's 2018 essay"
+  ]
+}
+---
+
+How MDMA therapy changed my life
+
+I underwent MDMA-assisted therapy, and it profoundly transformed my life.
+
+I had two sessions, one at the start of September and another at the beginning of October.
+
+In terms of personal growth, it’s easily among the three most significant experiences I’ve ever had.
+
+I’m sharing this because I genuinely believe it has the potential to help many people, yet awareness remains limited.
+
+In this article, I’ll discuss my reasons for choosing MDMA therapy, what the experience entailed, its impact on me, and where to find further information.
+
+This isn’t intended to persuade you to try MDMA therapy. However, I’m not neutral—I genuinely think MDMA therapy has profound therapeutic potential and will likely become central to mental health treatment in the future.
+
+Disclaimer
+
+It’s crucial to acknowledge:
+
+MDMA is currently illegal in the United States.
+
+By engaging in therapeutic MDMA use under professional supervision, I knowingly broke the law.
+
+To protect those involved, all names related to my MDMA therapy are pseudonyms—except my own.
+
+Yes, there’s a risk in openly writing about this under my real identity, but I’ve accepted this risk for two primary reasons:
+
+1. MDMA therapy is nearing completion of Stage Three clinical trials and is projected to become legally available for prescribed therapeutic use within approximately four years. Authorities typically aren’t pursuing therapeutic users.
+2. More importantly, I’ve always openly shared my experiences, especially when I believe the message could profoundly impact or even save lives. If there’s a legal risk involved, I’m willing to accept it.
+
+1. Why I chose MDMA therapy
+
+Simply put, I chose MDMA therapy because traditional methods had failed to adequately address lingering trauma.
+
+To provide context, my therapeutic history includes:
+
+* Four years of intensive psychoanalysis (four sessions weekly), which initially greatly benefited me, helping me understand and manage my emotions. But after four years, its effectiveness waned.
+* Meditation followed, which initially aided me significantly. However, after two years, progress stalled—likely due to my lack of sustained discipline.
+* Numerous other methods (yoga, CBT, EMDR) proved ineffective despite empirical support.
+
+I then encountered a shaman—not advocating for ayahuasca—but offering to help directly. Skeptical at first, I experienced noticeable benefits from her unconventional approach. After a year, however, this method also ceased to progress my healing.
+
+Despite extensive therapeutic exploration, a deep emotional blockage remained untouched. Recognising my unresolved trauma and emotional barriers, I sought advice from a network of trusted individuals knowledgeable about therapeutic psychedelics.
+
+MDMA emerged consistently as the recommended choice due to its targeted effectiveness for trauma treatment. Unlike hallucinogens such as LSD or ayahuasca, MDMA’s primary therapeutic function is precisely to facilitate trauma processing. Early research indicates MDMA achieves remission in 70–85% of individuals with treatment-resistant PTSD.
+
+Given this compelling evidence, personal testimonies, and my stalled therapeutic progress, I decided MDMA was the next logical step.
+
+2. Finding my MDMA therapist
+
+I was fortunate.
+
+My publishing company, Scribe, produced a book titled Trust, Surrender, Receive by “Anne Other,” detailing MDMA therapy cases. A trusted employee profoundly benefited from Anne’s MDMA sessions, inspiring me to book my own.
+
+3. Preparing for my first MDMA session
+
+Anne conducted an initial call, confirming medication safety (no SSRIs allowed), understanding my motives, and providing simple session instructions:
+
+* Minimal breakfast, arriving by 10 am.
+* Initial 125mg dose, potentially followed by a 75mg dose after an hour.
+* Wearing an eyeshade, listening to calming music, and embracing whatever emotional responses surfaced.
+* No active therapeutic dialogue unless requested, favouring introspective processing.
+
+4. Experiencing the first session
+
+After ingesting the initial dose, I initially slept briefly. After waking and taking the second dose, the experience began profoundly:
+
+Describing MDMA to someone inexperienced with it is challenging, but fundamentally, it felt like experiencing pure, unconditional love—not directed toward an external object or person, but an overwhelming internal state.
+
+I repeatedly distracted myself with intellectual discussions rather than fully surrendering initially. Recognising this, I later allowed the medicine to trigger powerful emotional and physical (somatic) releases, especially in my legs, manifesting as involuntary shaking and deep breaths.
+
+While MDMA intensely stimulates emotional processing, it’s uniquely manageable, allowing controlled modulation of intensity.
+
+5. The aftermath of my first session
+
+Post-session, I continued releasing stored trauma physically. Observations included significantly reduced aggression, less emotional reactivity, and notable improvements in relationships, as colleagues and loved ones noticed my positive emotional shifts.
+
+This release created unexpected feelings of emptiness—like mourning the loss of familiar emotional burdens. It revealed deep unconscious reliance on anger as a coping mechanism, providing power, motivation, and control, even with its negative aspects.
+
+6. The second session
+
+I chose a home setting for my second session, supervised by my wife, roughly one month later. Anxiety emerged beforehand, manifesting as irritability.
+
+This session involved deeper somatic releases—full-body movements—and emotional introspection about relationships, purpose, and past confrontations, highlighting past emotional isolation.
+
+7. Aftermath of the second session
+
+Post-session insights included recognising how suppressed pain had diminished my capacity for joy, playfulness, and openness. MDMA helped me understand the necessity of transitioning from a defensive warrior mentality toward becoming a constructive leader, building positively rather than defensively reacting to past hurt.
+
+These realisations led to enhanced emotional detachment from reactive identities, fostering greater inner peace and resilience.
+
+8. What’s next
+
+Given my experiences, I anticipate regular future sessions, possibly annually, and considering exploration with other psychedelics. The increasing interest and private discussion within influential circles underscores a widespread therapeutic demand.
+
+MDMA and similar treatments represent an emerging wave in mental health care, likely expanding significantly in coming years.
+
+9. Resources on MDMA therapy
+
+For further exploration into MDMA’s therapeutic use:
+
+* Major MDMA studies
+* MAPS MDMA therapy protocol
+* Safe MDMA use information
+* Trust, Surrender, Receive, detailing MDMA-assisted trauma recovery.
+
+</document>
+
+ANNOTATOR ANSWERS:
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "involuntary shaking and deep breaths",
+          "why_unspecific": "A generic description of a bodily reaction during an emotional release; it could describe almost any person's somatic experience and carries no unique sensory or situational detail."
+        },
+        {
+          "phrase": "full-body movements",
+          "why_unspecific": "Vague catch-all descriptor for a somatic release with no concrete detail (what movement, how it felt, what it looked like) that would ground it as this particular person's experience."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "transitioning from a defensive warrior mentality toward becoming a constructive leader",
+          "why_generic": "A familiar warrior/leader binary that supplies no concrete referent for what the 'warrior' behaviour or 'leader' behaviour actually consisted of in this person's life."
+        },
+        {
+          "phrase": "an emerging wave in mental health care",
+          "why_generic": "Stock 'wave' metaphor for a trend that names no concrete mechanism, institution, or data point behind the claimed expansion."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "within influential circles",
+          "why_unclear": "The 'influential circles' are never identified — no names, institutions, or professions are given, so the reader cannot recover who is meant."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "providing power, motivation, and control, even with its negative aspects",
+          "why_formulaic": "A tricolon that substitutes a neat three-item list for an actual account of how anger specifically functioned for the writer."
+        },
+        {
+          "phrase": "capacity for joy, playfulness, and openness",
+          "why_formulaic": "Balanced three-noun list that names abstract qualities without specifying what regaining joy, playfulness, or openness looked like in practice."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I underwent MDMA-assisted therapy, and it profoundly transformed my life.",
+          "what_it_repeats": "Restates the heading 'How MDMA therapy changed my life' with no added information."
+        },
+        {
+          "phrase": "MDMA and similar treatments represent an emerging wave in mental health care, likely expanding significantly in coming years.",
+          "what_it_repeats": "Repeats the earlier claim that MDMA therapy 'will likely become central to mental health treatment in the future' without adding new support."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "profoundly transformed my life",
+          "missing_criterion": "No criterion given for what changed, by what measure, or compared to what prior state."
+        },
+        {
+          "phrase": "notable improvements in relationships",
+          "missing_criterion": "No specification of which relationships, what changed in them, or how the improvement was assessed beyond others 'noticing.'"
+        },
+        {
+          "phrase": "significantly reduced aggression",
+          "missing_criterion": "No baseline level of aggression or measurable comparison is provided to support 'significantly.'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I genuinely believe it has the potential to help many people",
+          "why_unnecessary": "The sincerity marker 'genuinely' performs conviction rather than adding to the literal claim, which could be stated as 'I believe it has the potential to help many people.'"
+        },
+        {
+          "phrase": "I genuinely think MDMA therapy has profound therapeutic potential",
+          "why_unnecessary": "'Genuinely' functions as an authenticity booster rather than literal content; the stance is already clear from 'I'm not neutral.'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

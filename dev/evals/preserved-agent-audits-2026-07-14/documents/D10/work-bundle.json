@@ -1,0 +1,5932 @@
+{
+  "schema_version": "1",
+  "bindings": {
+    "content_sha256": "1d02950e2dcb65468b824b4934144fbafbf2bc3c6df3c5cc69d68c9f1744f4d9",
+    "registry_sha256": "80daf05124dcd204d161cf8415c519ae0c67b34e3ba8b5ac7f2a5ff777b8f654",
+    "structure_sha256": "cd5d32aa3d5fb599b4a804622f17c9ebebaa99bb6de9ad16b248764edea484ef"
+  },
+  "segments": [
+    {
+      "id": "paragraph:0:683",
+      "type": "paragraph",
+      "start_byte": 0,
+      "end_byte": 683
+    },
+    {
+      "id": "heading:683:689",
+      "type": "heading",
+      "start_byte": 683,
+      "end_byte": 689
+    },
+    {
+      "id": "paragraph:690:715",
+      "type": "paragraph",
+      "start_byte": 690,
+      "end_byte": 715
+    },
+    {
+      "id": "paragraph:716:783",
+      "type": "paragraph",
+      "start_byte": 716,
+      "end_byte": 783
+    },
+    {
+      "id": "paragraph:784:1263",
+      "type": "paragraph",
+      "start_byte": 784,
+      "end_byte": 1263
+    },
+    {
+      "id": "paragraph:1264:2083",
+      "type": "paragraph",
+      "start_byte": 1264,
+      "end_byte": 2083
+    },
+    {
+      "id": "paragraph:2084:2338",
+      "type": "paragraph",
+      "start_byte": 2084,
+      "end_byte": 2338
+    },
+    {
+      "id": "paragraph:2339:2343",
+      "type": "paragraph",
+      "start_byte": 2339,
+      "end_byte": 2343
+    },
+    {
+      "id": "paragraph:2344:2371",
+      "type": "paragraph",
+      "start_byte": 2344,
+      "end_byte": 2371
+    },
+    {
+      "id": "paragraph:2372:2845",
+      "type": "paragraph",
+      "start_byte": 2372,
+      "end_byte": 2845
+    },
+    {
+      "id": "paragraph:2846:3395",
+      "type": "paragraph",
+      "start_byte": 2846,
+      "end_byte": 3395
+    },
+    {
+      "id": "paragraph:3396:3945",
+      "type": "paragraph",
+      "start_byte": 3396,
+      "end_byte": 3945
+    },
+    {
+      "id": "paragraph:3946:4297",
+      "type": "paragraph",
+      "start_byte": 3946,
+      "end_byte": 4297
+    },
+    {
+      "id": "paragraph:4298:4662",
+      "type": "paragraph",
+      "start_byte": 4298,
+      "end_byte": 4662
+    },
+    {
+      "id": "paragraph:4663:4667",
+      "type": "paragraph",
+      "start_byte": 4663,
+      "end_byte": 4667
+    },
+    {
+      "id": "paragraph:4668:4696",
+      "type": "paragraph",
+      "start_byte": 4668,
+      "end_byte": 4696
+    },
+    {
+      "id": "paragraph:4697:5000",
+      "type": "paragraph",
+      "start_byte": 4697,
+      "end_byte": 5000
+    },
+    {
+      "id": "paragraph:5001:5556",
+      "type": "paragraph",
+      "start_byte": 5001,
+      "end_byte": 5556
+    },
+    {
+      "id": "paragraph:5557:5970",
+      "type": "paragraph",
+      "start_byte": 5557,
+      "end_byte": 5970
+    },
+    {
+      "id": "paragraph:5971:6497",
+      "type": "paragraph",
+      "start_byte": 5971,
+      "end_byte": 6497
+    },
+    {
+      "id": "paragraph:6498:6873",
+      "type": "paragraph",
+      "start_byte": 6498,
+      "end_byte": 6873
+    },
+    {
+      "id": "paragraph:6874:7093",
+      "type": "paragraph",
+      "start_byte": 6874,
+      "end_byte": 7093
+    },
+    {
+      "id": "paragraph:7094:7098",
+      "type": "paragraph",
+      "start_byte": 7094,
+      "end_byte": 7098
+    },
+    {
+      "id": "paragraph:7099:7147",
+      "type": "paragraph",
+      "start_byte": 7099,
+      "end_byte": 7147
+    },
+    {
+      "id": "paragraph:7148:7574",
+      "type": "paragraph",
+      "start_byte": 7148,
+      "end_byte": 7574
+    },
+    {
+      "id": "paragraph:7575:8057",
+      "type": "paragraph",
+      "start_byte": 7575,
+      "end_byte": 8057
+    },
+    {
+      "id": "paragraph:8058:8409",
+      "type": "paragraph",
+      "start_byte": 8058,
+      "end_byte": 8409
+    },
+    {
+      "id": "paragraph:8410:8867",
+      "type": "paragraph",
+      "start_byte": 8410,
+      "end_byte": 8867
+    },
+    {
+      "id": "paragraph:8868:9237",
+      "type": "paragraph",
+      "start_byte": 8868,
+      "end_byte": 9237
+    },
+    {
+      "id": "paragraph:9238:9242",
+      "type": "paragraph",
+      "start_byte": 9238,
+      "end_byte": 9242
+    },
+    {
+      "id": "paragraph:9243:9274",
+      "type": "paragraph",
+      "start_byte": 9243,
+      "end_byte": 9274
+    },
+    {
+      "id": "paragraph:9275:9652",
+      "type": "paragraph",
+      "start_byte": 9275,
+      "end_byte": 9652
+    },
+    {
+      "id": "paragraph:9653:9976",
+      "type": "paragraph",
+      "start_byte": 9653,
+      "end_byte": 9976
+    },
+    {
+      "id": "paragraph:9977:10360",
+      "type": "paragraph",
+      "start_byte": 9977,
+      "end_byte": 10360
+    },
+    {
+      "id": "paragraph:10361:10812",
+      "type": "paragraph",
+      "start_byte": 10361,
+      "end_byte": 10812
+    },
+    {
+      "id": "paragraph:10813:11203",
+      "type": "paragraph",
+      "start_byte": 10813,
+      "end_byte": 11203
+    },
+    {
+      "id": "paragraph:11204:11208",
+      "type": "paragraph",
+      "start_byte": 11204,
+      "end_byte": 11208
+    },
+    {
+      "id": "paragraph:11209:11222",
+      "type": "paragraph",
+      "start_byte": 11209,
+      "end_byte": 11222
+    },
+    {
+      "id": "paragraph:11223:11531",
+      "type": "paragraph",
+      "start_byte": 11223,
+      "end_byte": 11531
+    },
+    {
+      "id": "paragraph:11532:11843",
+      "type": "paragraph",
+      "start_byte": 11532,
+      "end_byte": 11843
+    },
+    {
+      "id": "paragraph:11844:12333",
+      "type": "paragraph",
+      "start_byte": 11844,
+      "end_byte": 12333
+    },
+    {
+      "id": "paragraph:12334:12661",
+      "type": "paragraph",
+      "start_byte": 12334,
+      "end_byte": 12661
+    },
+    {
+      "id": "paragraph:12662:12666",
+      "type": "paragraph",
+      "start_byte": 12662,
+      "end_byte": 12666
+    },
+    {
+      "id": "paragraph:12667:12678",
+      "type": "paragraph",
+      "start_byte": 12667,
+      "end_byte": 12678
+    },
+    {
+      "id": "paragraph:12679:13051",
+      "type": "paragraph",
+      "start_byte": 12679,
+      "end_byte": 13051
+    },
+    {
+      "id": "paragraph:13052:13447",
+      "type": "paragraph",
+      "start_byte": 13052,
+      "end_byte": 13447
+    },
+    {
+      "id": "paragraph:13448:13714",
+      "type": "paragraph",
+      "start_byte": 13448,
+      "end_byte": 13714
+    },
+    {
+      "id": "paragraph:13715:14022",
+      "type": "paragraph",
+      "start_byte": 13715,
+      "end_byte": 14022
+    }
+  ],
+  "programmatic_checks": [
+    {
+      "id": "no-em-dashes",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "ends—implicitly",
+          "—with",
+          "works—To",
+          "Chazelle—offer",
+          "character—disciplined,",
+          "Moon—long",
+          "traditions—was",
+          "overreach—the",
+          "motifs—ideas",
+          "renewal—a",
+          "impulse—to",
+          "indefinitely—is",
+          "distance—silent,",
+          "surface—a",
+          "one—to",
+          "extend—these",
+          "works—roughly",
+          "mid-1970s—has",
+          "narrative—sacred",
+          "restraint—are",
+          "religion—of",
+          "redemption—provides",
+          "spaceflight—the",
+          "imagination—and,"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "ends—implicitly",
+            "—with",
+            "works—To",
+            "Chazelle—offer",
+            "character—disciplined,",
+            "Moon—long",
+            "traditions—was",
+            "overreach—the",
+            "motifs—ideas",
+            "renewal—a",
+            "impulse—to",
+            "indefinitely—is",
+            "distance—silent,",
+            "surface—a",
+            "one—to",
+            "extend—these",
+            "works—roughly",
+            "mid-1970s—has",
+            "narrative—sacred",
+            "restraint—are",
+            "religion—of",
+            "redemption—provides",
+            "spaceflight—the",
+            "imagination—and,"
+          ],
+          "evidence": "Found 24 em dash(es)",
+          "candidates": [
+            {
+              "text": "ends—implicitly",
+              "start": 1077,
+              "end": 1092,
+              "quoted": false
+            },
+            {
+              "text": "—with",
+              "start": 1092,
+              "end": 1097,
+              "quoted": false
+            },
+            {
+              "text": "works—To",
+              "start": 1613,
+              "end": 1621,
+              "quoted": false
+            },
+            {
+              "text": "Chazelle—offer",
+              "start": 1744,
+              "end": 1758,
+              "quoted": false
+            },
+            {
+              "text": "character—disciplined,",
+              "start": 2996,
+              "end": 3018,
+              "quoted": false
+            },
+            {
+              "text": "Moon—long",
+              "start": 3777,
+              "end": 3786,
+              "quoted": false
+            },
+            {
+              "text": "traditions—was",
+              "start": 3820,
+              "end": 3834,
+              "quoted": false
+            },
+            {
+              "text": "overreach—the",
+              "start": 4443,
+              "end": 4456,
+              "quoted": false
+            },
+            {
+              "text": "motifs—ideas",
+              "start": 5044,
+              "end": 5056,
+              "quoted": false
+            },
+            {
+              "text": "renewal—a",
+              "start": 5632,
+              "end": 5641,
+              "quoted": false
+            },
+            {
+              "text": "impulse—to",
+              "start": 6383,
+              "end": 6393,
+              "quoted": false
+            },
+            {
+              "text": "indefinitely—is",
+              "start": 6409,
+              "end": 6424,
+              "quoted": false
+            },
+            {
+              "text": "distance—silent,",
+              "start": 7946,
+              "end": 7962,
+              "quoted": false
+            },
+            {
+              "text": "surface—a",
+              "start": 8934,
+              "end": 8943,
+              "quoted": false
+            },
+            {
+              "text": "one—to",
+              "start": 9736,
+              "end": 9742,
+              "quoted": false
+            },
+            {
+              "text": "extend—these",
+              "start": 10500,
+              "end": 10512,
+              "quoted": false
+            },
+            {
+              "text": "works—roughly",
+              "start": 11179,
+              "end": 11192,
+              "quoted": false
+            },
+            {
+              "text": "mid-1970s—has",
+              "start": 11220,
+              "end": 11233,
+              "quoted": false
+            },
+            {
+              "text": "narrative—sacred",
+              "start": 12105,
+              "end": 12121,
+              "quoted": false
+            },
+            {
+              "text": "restraint—are",
+              "start": 12147,
+              "end": 12160,
+              "quoted": false
+            },
+            {
+              "text": "religion—of",
+              "start": 12986,
+              "end": 12997,
+              "quoted": false
+            },
+            {
+              "text": "redemption—provides",
+              "start": 13029,
+              "end": 13048,
+              "quoted": false
+            },
+            {
+              "text": "spaceflight—the",
+              "start": 13446,
+              "end": 13461,
+              "quoted": false
+            },
+            {
+              "text": "imagination—and,",
+              "start": 13851,
+              "end": 13867,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 24,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "ends—implicitly",
+              "start": 1077,
+              "end": 1092,
+              "quoted": false
+            },
+            {
+              "text": "—with",
+              "start": 1092,
+              "end": 1097,
+              "quoted": false
+            },
+            {
+              "text": "works—To",
+              "start": 1613,
+              "end": 1621,
+              "quoted": false
+            },
+            {
+              "text": "Chazelle—offer",
+              "start": 1744,
+              "end": 1758,
+              "quoted": false
+            },
+            {
+              "text": "character—disciplined,",
+              "start": 2996,
+              "end": 3018,
+              "quoted": false
+            },
+            {
+              "text": "Moon—long",
+              "start": 3777,
+              "end": 3786,
+              "quoted": false
+            },
+            {
+              "text": "traditions—was",
+              "start": 3820,
+              "end": 3834,
+              "quoted": false
+            },
+            {
+              "text": "overreach—the",
+              "start": 4443,
+              "end": 4456,
+              "quoted": false
+            },
+            {
+              "text": "motifs—ideas",
+              "start": 5044,
+              "end": 5056,
+              "quoted": false
+            },
+            {
+              "text": "renewal—a",
+              "start": 5632,
+              "end": 5641,
+              "quoted": false
+            },
+            {
+              "text": "impulse—to",
+              "start": 6383,
+              "end": 6393,
+              "quoted": false
+            },
+            {
+              "text": "indefinitely—is",
+              "start": 6409,
+              "end": 6424,
+              "quoted": false
+            },
+            {
+              "text": "distance—silent,",
+              "start": 7946,
+              "end": 7962,
+              "quoted": false
+            },
+            {
+              "text": "surface—a",
+              "start": 8934,
+              "end": 8943,
+              "quoted": false
+            },
+            {
+              "text": "one—to",
+              "start": 9736,
+              "end": 9742,
+              "quoted": false
+            },
+            {
+              "text": "extend—these",
+              "start": 10500,
+              "end": 10512,
+              "quoted": false
+            },
+            {
+              "text": "works—roughly",
+              "start": 11179,
+              "end": 11192,
+              "quoted": false
+            },
+            {
+              "text": "mid-1970s—has",
+              "start": 11220,
+              "end": 11233,
+              "quoted": false
+            },
+            {
+              "text": "narrative—sacred",
+              "start": 12105,
+              "end": 12121,
+              "quoted": false
+            },
+            {
+              "text": "restraint—are",
+              "start": 12147,
+              "end": 12160,
+              "quoted": false
+            },
+            {
+              "text": "religion—of",
+              "start": 12986,
+              "end": 12997,
+              "quoted": false
+            },
+            {
+              "text": "redemption—provides",
+              "start": 13029,
+              "end": 13048,
+              "quoted": false
+            },
+            {
+              "text": "spaceflight—the",
+              "start": 13446,
+              "end": 13461,
+              "quoted": false
+            },
+            {
+              "text": "imagination—and,",
+              "start": 13851,
+              "end": 13867,
+              "quoted": false
+            }
+          ],
+          "match_count": 24,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 24 em dash(es)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "punctuation_signal",
+          "guidance": "Treat as a strong 2026 AI-style signal. May be preserved only at Balanced depth with explicit disclosure; All requires removal."
+        }
+      }
+    },
+    {
+      "id": "no-ai-vocabulary-clustering",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max AI words per paragraph: 2 (5 total in text)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max AI words per paragraph: 2 (5 total in text)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "vocabulary_cluster",
+          "guidance": "Fix clustered generic AI vocabulary; individual words may be fine in context."
+        }
+      }
+    },
+    {
+      "id": "no-nonliteral-land-surface",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No nonliteral land/surface constructions found",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No nonliteral land/surface constructions found",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "metaphor_residue",
+          "guidance": "Fix nonliteral land/surface phrasing; replace with the concrete action or claim."
+        }
+      }
+    },
+    {
+      "id": "overall-signal-stacking",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Signal stacking",
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {
+          "score": 5,
+          "threshold": 4
+        },
+        "raw": {
+          "score": 5,
+          "threshold": 4,
+          "components": [
+            "contrived contrast framing",
+            "section scaffolding"
+          ],
+          "vocabulary_signal_stacking": {
+            "points": 2,
+            "reasons": [
+              "generic_cluster=2",
+              "kobak_style=33 distinct/20.3"
+            ],
+            "worst_generic": 2,
+            "gptzero_matches": [],
+            "kobak_style_distinct": 33,
+            "kobak_style_density": 20.292590844738083,
+            "kobak_style_sample": [
+              "exploration",
+              "remains",
+              "within",
+              "analysis",
+              "broader",
+              "offers",
+              "presents",
+              "attributed",
+              "challenge",
+              "compelling"
+            ]
+          },
+          "evidence": "Overall signal stacking 5/4 from [contrived contrast framing, section scaffolding]; vocab=2 point(s), worst_generic=2, gptzero=[], kobak=33 distinct/20.3/1000, sample=['exploration', 'remains', 'within', 'analysis', 'broader', 'offers', 'presents', 'attributed', 'challenge', 'compelling']",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": true,
+          "threshold_met": true,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "aggregate",
+          "component_signals": [
+            "contrived contrast framing",
+            "section scaffolding"
+          ],
+          "component_count": 2,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Overall signal stacking 5/4 from [contrived contrast framing, section scaffolding]; vocab=2 point(s), worst_generic=2, gptzero=[], kobak=33 distinct/20.3/1000, sample=['exploration', 'remains', 'within', 'analysis', 'broader', 'offers', 'presents', 'attributed', 'challenge', 'compelling']",
+            "suppression_reason": null,
+            "effective_threshold": 4
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "evidence_role": "signal_stacking",
+          "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict."
+        }
+      }
+    },
+    {
+      "id": "no-manufactured-insight",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No manufactured insight phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No manufactured insight phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice."
+        }
+      }
+    },
+    {
+      "id": "no-performed-candour",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No performed-candour frames",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No performed-candour frames",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "candour_frame",
+          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text."
+        }
+      }
+    },
+    {
+      "id": "no-staccato-sequences",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Max consecutive short sentences: 1",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_run": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max consecutive short sentences: 1",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_run": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm."
+        }
+      }
+    },
+    {
+      "id": "no-anaphora",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "In Oliver’s account, religious language provides a framework for interpreting spaceflight.",
+          "In Newell’s, it shapes expectations about its future.",
+          "In First Man, that framework begins to dissolve."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "In Oliver’s account, religious language provides a framework for interpreting spaceflight.",
+            "In Newell’s, it shapes expectations about its future.",
+            "In First Man, that framework begins to dissolve."
+          ],
+          "evidence": "Found 3 consecutive sentences starting with 'in'",
+          "candidates": [
+            {
+              "text": "In Oliver’s account, religious language provides a framework for interpreting spaceflight.",
+              "start": 8402,
+              "end": 8492,
+              "quoted": false
+            },
+            {
+              "text": "In Newell’s, it shapes expectations about its future.",
+              "start": 8493,
+              "end": 8546,
+              "quoted": false
+            },
+            {
+              "text": "In First Man, that framework begins to dissolve.",
+              "start": 8547,
+              "end": 8595,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 3,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "In Oliver’s account, religious language provides a framework for interpreting spaceflight.",
+              "start": 8402,
+              "end": 8492,
+              "quoted": false
+            },
+            {
+              "text": "In Newell’s, it shapes expectations about its future.",
+              "start": 8493,
+              "end": 8546,
+              "quoted": false
+            },
+            {
+              "text": "In First Man, that framework begins to dissolve.",
+              "start": 8547,
+              "end": 8595,
+              "quoted": false
+            }
+          ],
+          "match_count": 3,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 3 consecutive sentences starting with 'in'",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix mechanical repetition; recommend preserving deliberate rhetoric or literary patterning."
+        }
+      }
+    },
+    {
+      "id": "no-collaborative-artifacts",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No collaborative artifacts",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No collaborative artifacts",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "assistant_residue",
+          "guidance": "Fix at every depth; this is assistant residue, not authorial style."
+        }
+      }
+    },
+    {
+      "id": "no-curly-quotes",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "⸻ The sacred and the profane Oliver’s central claim is deceptively simple: that religion was not peripheral to the American space program but constitutive of its meaning.",
+          "Oliver tracks how religious language permeated NASA’s culture and public representation.",
+          "Yet Oliver resists any simple reading of this as evidence of a unified “space religion”.",
+          "⸻ Destiny and its discontents If Oliver’s account is attentive to the ambiguity of religious language, Newell’s is more explicitly concerned with its forward projection.",
+          "The “final frontier” is not simply the last in a series of geographic expansions; it is a reactivation of a familiar narrative in a new context.",
+          "Chazelle’s film, centred on Neil Armstrong, is notable for what it withholds.",
+          "Armstrong’s journey in the film is structured around the death of his daughter.",
+          "In Oliver’s account, religious language provides a framework for interpreting spaceflight.",
+          "In Newell’s, it shapes expectations about its future.",
+          "The film’s final sequence, often read as symbolic, underscores this point.",
+          "Oliver’s attention to the coexistence of sacred and profane language highlights this tension.",
+          "Newell’s analysis of destiny narratives shows how it is projected into the future."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "⸻ The sacred and the profane Oliver’s central claim is deceptively simple: that religion was not peripheral to the American space program but constitutive of its meaning.",
+            "Oliver tracks how religious language permeated NASA’s culture and public representation.",
+            "Yet Oliver resists any simple reading of this as evidence of a unified “space religion”.",
+            "⸻ Destiny and its discontents If Oliver’s account is attentive to the ambiguity of religious language, Newell’s is more explicitly concerned with its forward projection.",
+            "The “final frontier” is not simply the last in a series of geographic expansions; it is a reactivation of a familiar narrative in a new context.",
+            "Chazelle’s film, centred on Neil Armstrong, is notable for what it withholds.",
+            "Armstrong’s journey in the film is structured around the death of his daughter.",
+            "In Oliver’s account, religious language provides a framework for interpreting spaceflight.",
+            "In Newell’s, it shapes expectations about its future.",
+            "The film’s final sequence, often read as symbolic, underscores this point.",
+            "Oliver’s attention to the coexistence of sacred and profane language highlights this tension.",
+            "Newell’s analysis of destiny narratives shows how it is projected into the future."
+          ],
+          "evidence": "Found 15 curly quote(s)",
+          "candidates": [
+            {
+              "text": "⸻ The sacred and the profane Oliver’s central claim is deceptively simple: that religion was not peripheral to the American space program but constitutive of its meaning.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Oliver tracks how religious language permeated NASA’s culture and public representation.",
+              "start": 2834,
+              "end": 2922,
+              "quoted": false
+            },
+            {
+              "text": "Yet Oliver resists any simple reading of this as evidence of a unified “space religion”.",
+              "start": 3926,
+              "end": 4014,
+              "quoted": false
+            },
+            {
+              "text": "⸻ Destiny and its discontents If Oliver’s account is attentive to the ambiguity of religious language, Newell’s is more explicitly concerned with its forward projection.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "The “final frontier” is not simply the last in a series of geographic expansions; it is a reactivation of a familiar narrative in a new context.",
+              "start": 5785,
+              "end": 5929,
+              "quoted": false
+            },
+            {
+              "text": "Chazelle’s film, centred on Neil Armstrong, is notable for what it withholds.",
+              "start": 7224,
+              "end": 7301,
+              "quoted": false
+            },
+            {
+              "text": "Armstrong’s journey in the film is structured around the death of his daughter.",
+              "start": 7527,
+              "end": 7606,
+              "quoted": false
+            },
+            {
+              "text": "In Oliver’s account, religious language provides a framework for interpreting spaceflight.",
+              "start": 8402,
+              "end": 8492,
+              "quoted": false
+            },
+            {
+              "text": "In Newell’s, it shapes expectations about its future.",
+              "start": 8493,
+              "end": 8546,
+              "quoted": false
+            },
+            {
+              "text": "The film’s final sequence, often read as symbolic, underscores this point.",
+              "start": 8812,
+              "end": 8886,
+              "quoted": false
+            },
+            {
+              "text": "Oliver’s attention to the coexistence of sacred and profane language highlights this tension.",
+              "start": 10747,
+              "end": 10840,
+              "quoted": false
+            },
+            {
+              "text": "Newell’s analysis of destiny narratives shows how it is projected into the future.",
+              "start": 10841,
+              "end": 10923,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 12,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "⸻ The sacred and the profane Oliver’s central claim is deceptively simple: that religion was not peripheral to the American space program but constitutive of its meaning.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "Oliver tracks how religious language permeated NASA’s culture and public representation.",
+              "start": 2834,
+              "end": 2922,
+              "quoted": false
+            },
+            {
+              "text": "Yet Oliver resists any simple reading of this as evidence of a unified “space religion”.",
+              "start": 3926,
+              "end": 4014,
+              "quoted": false
+            },
+            {
+              "text": "⸻ Destiny and its discontents If Oliver’s account is attentive to the ambiguity of religious language, Newell’s is more explicitly concerned with its forward projection.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "The “final frontier” is not simply the last in a series of geographic expansions; it is a reactivation of a familiar narrative in a new context.",
+              "start": 5785,
+              "end": 5929,
+              "quoted": false
+            },
+            {
+              "text": "Chazelle’s film, centred on Neil Armstrong, is notable for what it withholds.",
+              "start": 7224,
+              "end": 7301,
+              "quoted": false
+            },
+            {
+              "text": "Armstrong’s journey in the film is structured around the death of his daughter.",
+              "start": 7527,
+              "end": 7606,
+              "quoted": false
+            },
+            {
+              "text": "In Oliver’s account, religious language provides a framework for interpreting spaceflight.",
+              "start": 8402,
+              "end": 8492,
+              "quoted": false
+            },
+            {
+              "text": "In Newell’s, it shapes expectations about its future.",
+              "start": 8493,
+              "end": 8546,
+              "quoted": false
+            },
+            {
+              "text": "The film’s final sequence, often read as symbolic, underscores this point.",
+              "start": 8812,
+              "end": 8886,
+              "quoted": false
+            },
+            {
+              "text": "Oliver’s attention to the coexistence of sacred and profane language highlights this tension.",
+              "start": 10747,
+              "end": 10840,
+              "quoted": false
+            },
+            {
+              "text": "Newell’s analysis of destiny narratives shows how it is projected into the future.",
+              "start": 10841,
+              "end": 10923,
+              "quoted": false
+            }
+          ],
+          "match_count": 12,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 15 curly quote(s)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "typographic_signal",
+          "guidance": "Normalise in All/plain output; recommend preserving in sourced literary or typographic text."
+        }
+      }
+    },
+    {
+      "id": "sentence-length-variance",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Sentence length stdev: 12.5 (target: >4)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 2157,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Sentence length stdev: 12.5 (target: >4)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms."
+        }
+      }
+    },
+    {
+      "id": "no-promotional-language",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "profound"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "profound"
+          ],
+          "evidence": "Found: ['profound']",
+          "candidates": [
+            {
+              "text": "profound",
+              "start": 3763,
+              "end": 3771,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "profound",
+              "start": 3763,
+              "end": 3771,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found: ['profound']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "hype_language",
+          "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm."
+        }
+      }
+    },
+    {
+      "id": "no-significance-inflation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No significance inflation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No significance inflation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "importance_inflation",
+          "guidance": "Fix inflated importance unless the source genuinely argues significance."
+        }
+      }
+    },
+    {
+      "id": "no-negative-parallelisms",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "not merely to extend human capability but",
+          "not only as test pilots but",
+          "not only the interpretation of early spaceflight but",
+          "was not merely to extend human capability but"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "not merely to extend human capability but",
+            "not only as test pilots but",
+            "not only the interpretation of early spaceflight but",
+            "was not merely to extend human capability but"
+          ],
+          "evidence": "Found 4 contrived contrast/reframe pattern(s)",
+          "candidates": [
+            {
+              "text": "not merely to extend human capability but",
+              "start": 1509,
+              "end": 1550,
+              "quoted": false
+            },
+            {
+              "text": "not only as test pilots but",
+              "start": 2946,
+              "end": 2973,
+              "quoted": false
+            },
+            {
+              "text": "not only the interpretation of early spaceflight but",
+              "start": 4874,
+              "end": 4926,
+              "quoted": false
+            },
+            {
+              "text": "was not merely to extend human capability but",
+              "start": 1505,
+              "end": 1550,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 4,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "not merely to extend human capability but",
+              "start": 1509,
+              "end": 1550,
+              "quoted": false
+            },
+            {
+              "text": "not only as test pilots but",
+              "start": 2946,
+              "end": 2973,
+              "quoted": false
+            },
+            {
+              "text": "not only the interpretation of early spaceflight but",
+              "start": 4874,
+              "end": 4926,
+              "quoted": false
+            },
+            {
+              "text": "was not merely to extend human capability but",
+              "start": 1505,
+              "end": 1550,
+              "quoted": false
+            }
+          ],
+          "match_count": 4,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 4 contrived contrast/reframe pattern(s)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced."
+        }
+      }
+    },
+    {
+      "id": "no-copula-avoidance",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "represents a"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "represents a"
+          ],
+          "evidence": "Found 1: ['represents a']",
+          "candidates": [
+            {
+              "text": "represents a",
+              "start": 11989,
+              "end": 12001,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "represents a",
+              "start": 11989,
+              "end": 12001,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 1: ['represents a']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "grammar_substitution",
+          "guidance": "Usually simplify at Balanced and All; recommend preserving if the construction is idiomatic or technical."
+        }
+      }
+    },
+    {
+      "id": "no-filler-phrases",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No filler phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No filler phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "filler_phrase",
+          "guidance": "Fix stock filler at Balanced and All; at Balanced, disclose and remove unless it belongs to quoted or intentionally casual voice."
+        }
+      }
+    },
+    {
+      "id": "no-generic-conclusions",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "provenance_residue",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No generic conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No generic conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue",
+            "synthetic_significance"
+          ],
+          "evidence_role": "generic_closure",
+          "guidance": "Fix at every depth unless quoted from source text."
+        }
+      }
+    },
+    {
+      "id": "no-false-concession-hedges",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No false concession hedges",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No false concession hedges",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix fake both-sides framing at Balanced and All; preserve only if the piece actually argues both positions with evidence."
+        }
+      }
+    },
+    {
+      "id": "no-placeholder-residue",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No placeholder residue",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No placeholder residue",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "template_residue",
+          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue."
+        }
+      }
+    },
+    {
+      "id": "no-soft-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Soft scaffold phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Soft scaffold phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "explainer_scaffold",
+          "guidance": "Fix at Balanced and All; these phrases usually mark generated explainer structure rather than content."
+        }
+      }
+    },
+    {
+      "id": "no-orphaned-demonstratives",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Vague demonstrative subjects: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Vague demonstrative subjects: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Review repeated 'This/That highlights...' starts; replace vague subjects with concrete nouns when the antecedent is unclear."
+        }
+      }
+    },
+    {
+      "id": "no-forced-triads",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          " original sins\n\nFaith, frontier, and the moral imagination",
+          "leaves the earth, plants a flag, and returns",
+          "control, calculation, and efficiency",
+          "destiny, fulfilment, and transformation",
+          "to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature",
+          "to bring progress, order, and ultimately moral improvement",
+          "Silence, grief, and the limits",
+          "silent, indifferent, and resistant",
+          "mourning, closure, or offering",
+          "which technological capability, political urgency, and religious imagination aligned"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            " original sins\n\nFaith, frontier, and the moral imagination",
+            "leaves the earth, plants a flag, and returns",
+            "control, calculation, and efficiency",
+            "destiny, fulfilment, and transformation",
+            "to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature",
+            "to bring progress, order, and ultimately moral improvement",
+            "Silence, grief, and the limits",
+            "silent, indifferent, and resistant",
+            "mourning, closure, or offering",
+            "which technological capability, political urgency, and religious imagination aligned"
+          ],
+          "evidence": "Found 10 triad(s): [' original sins\\n\\nFaith, frontier, and the moral imagination', 'leaves the earth, plants a flag, and returns', 'control, calculation, and efficiency', 'destiny, fulfilment, and transformation', 'to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature', 'to bring progress, order, and ultimately moral improvement', 'Silence, grief, and the limits', 'silent, indifferent, and resistant', 'mourning, closure, or offering', 'which technological capability, political urgency, and religious imagination aligned']",
+          "candidates": [
+            {
+              "text": " original sins\n\nFaith, frontier, and the moral imagination",
+              "start": 700,
+              "end": 758,
+              "quoted": false
+            },
+            {
+              "text": "leaves the earth, plants a flag, and returns",
+              "start": 1137,
+              "end": 1181,
+              "quoted": false
+            },
+            {
+              "text": "control, calculation, and efficiency",
+              "start": 4162,
+              "end": 4198,
+              "quoted": false
+            },
+            {
+              "text": "destiny, fulfilment, and transformation",
+              "start": 5072,
+              "end": 5111,
+              "quoted": false
+            },
+            {
+              "text": "to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature",
+              "start": 5373,
+              "end": 5520,
+              "quoted": false
+            },
+            {
+              "text": "to bring progress, order, and ultimately moral improvement",
+              "start": 6098,
+              "end": 6156,
+              "quoted": false
+            },
+            {
+              "text": "Silence, grief, and the limits",
+              "start": 7053,
+              "end": 7083,
+              "quoted": false
+            },
+            {
+              "text": "silent, indifferent, and resistant",
+              "start": 7955,
+              "end": 7989,
+              "quoted": false
+            },
+            {
+              "text": "mourning, closure, or offering",
+              "start": 8991,
+              "end": 9021,
+              "quoted": false
+            },
+            {
+              "text": "which technological capability, political urgency, and religious imagination aligned",
+              "start": 12345,
+              "end": 12429,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 10,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": " original sins\n\nFaith, frontier, and the moral imagination",
+              "start": 700,
+              "end": 758,
+              "quoted": false
+            },
+            {
+              "text": "leaves the earth, plants a flag, and returns",
+              "start": 1137,
+              "end": 1181,
+              "quoted": false
+            },
+            {
+              "text": "control, calculation, and efficiency",
+              "start": 4162,
+              "end": 4198,
+              "quoted": false
+            },
+            {
+              "text": "destiny, fulfilment, and transformation",
+              "start": 5072,
+              "end": 5111,
+              "quoted": false
+            },
+            {
+              "text": "to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature",
+              "start": 5373,
+              "end": 5520,
+              "quoted": false
+            },
+            {
+              "text": "to bring progress, order, and ultimately moral improvement",
+              "start": 6098,
+              "end": 6156,
+              "quoted": false
+            },
+            {
+              "text": "Silence, grief, and the limits",
+              "start": 7053,
+              "end": 7083,
+              "quoted": false
+            },
+            {
+              "text": "silent, indifferent, and resistant",
+              "start": 7955,
+              "end": 7989,
+              "quoted": false
+            },
+            {
+              "text": "mourning, closure, or offering",
+              "start": 8991,
+              "end": 9021,
+              "quoted": false
+            },
+            {
+              "text": "which technological capability, political urgency, and religious imagination aligned",
+              "start": 12345,
+              "end": 12429,
+              "quoted": false
+            }
+          ],
+          "match_count": 10,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 10 triad(s): [' original sins\\n\\nFaith, frontier, and the moral imagination', 'leaves the earth, plants a flag, and returns', 'control, calculation, and efficiency', 'destiny, fulfilment, and transformation', 'to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature', 'to bring progress, order, and ultimately moral improvement', 'Silence, grief, and the limits', 'silent, indifferent, and resistant', 'mourning, closure, or offering', 'which technological capability, political urgency, and religious imagination aligned']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads."
+        }
+      }
+    },
+    {
+      "id": "no-superficial-ing",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No superficial -ing phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No superficial -ing phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "analysis_substitution",
+          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning."
+        }
+      }
+    },
+    {
+      "id": "no-ghost-spectral-density",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "shadow",
+          "haunted",
+          "hidden"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Found 3 ghost/spectral words: ['shadow', 'haunted', 'hidden']",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": true,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 3 ghost/spectral words: ['shadow', 'haunted', 'hidden']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose."
+        }
+      }
+    },
+    {
+      "id": "no-quietness-obsession",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Quietness words: 2",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Quietness words: 2",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix generic quietness mood; recommend preserving if quietness is the actual subject or voice."
+        }
+      }
+    },
+    {
+      "id": "no-rhetorical-questions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Rhetorical questions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rhetorical questions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_template",
+          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-lists",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/114)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_items": 8,
+            "minimum_blocks": 2,
+            "minimum_line_ratio": 0.3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 2157,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/114)",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_items": 8,
+              "minimum_blocks": 2,
+              "minimum_line_ratio": 0.3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "listification",
+          "guidance": "Fix unnecessary listification; recommend preserving reference, instructional, or interview structure."
+        }
+      }
+    },
+    {
+      "id": "no-unicode-flair",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "provenance_residue",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Decorative symbols/shortcodes: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Decorative symbols/shortcodes: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "genre_misfit"
+          ],
+          "evidence_role": "formatting_residue",
+          "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source."
+        }
+      }
+    },
+    {
+      "id": "no-dramatic-transitions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dramatic transitions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dramatic transitions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "narrative_template",
+          "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned."
+        }
+      }
+    },
+    {
+      "id": "no-formulaic-openers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No formulaic openers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No formulaic openers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "formulaic_structure",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it matches the source genre."
+        }
+      }
+    },
+    {
+      "id": "no-signposted-conclusions",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "Conclusion"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "Conclusion"
+          ],
+          "evidence": "Found 1: ['Conclusion']",
+          "candidates": [
+            {
+              "text": "Conclusion",
+              "start": 12585,
+              "end": 12595,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "Conclusion",
+              "start": 12585,
+              "end": 12595,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 1: ['Conclusion']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "structural_signpost",
+          "guidance": "Fix generic signposts in prose; recommend preserving academic/instructional structure when useful."
+        }
+      }
+    },
+    {
+      "id": "no-parenthetical-headings",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No parenthetical headings",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No parenthetical headings",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "heading_structure",
+          "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body."
+        }
+      }
+    },
+    {
+      "id": "no-corporate-ai-speak",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No corporate AI speak",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No corporate AI speak",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "domain_cliche",
+          "guidance": "Fix at every depth; recommend preserving only when quoting corporate source language."
+        }
+      }
+    },
+    {
+      "id": "no-this-chains",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max 'This [verb]' run: 1",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 2157,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max 'This [verb]' run: 1",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-hedging",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Hedging constructions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Hedging constructions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty."
+        }
+      }
+    },
+    {
+      "id": "no-countdown-negation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "synthetic_significance",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No countdown negation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 2157,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No countdown negation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix generic reveal structures; recommend preserving deliberate rhetoric only with strong reason."
+        }
+      }
+    },
+    {
+      "id": "no-negation-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Negation markers: 21 (9.7 per 1000 words)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 2157,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Negation markers: 21 (9.7 per 1000 words)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_density",
+          "guidance": "Review dense negation as a style signal; preserve polemic or technical qualification when purposeful."
+        }
+      }
+    },
+    {
+      "id": "paragraph-length-uniformity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Paragraph length CV: 0.29 across 32 paragraphs",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_paragraphs": 7,
+            "maximum_cv": 0.18
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 2157,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Paragraph length CV: 0.29 across 32 paragraphs",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_paragraphs": 7,
+              "maximum_cv": 0.18
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "layout_rhythm",
+          "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template."
+        }
+      }
+    },
+    {
+      "id": "no-tidy-paragraph-endings",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Tidy paragraph endings: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Tidy paragraph endings: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "paragraph_closure",
+          "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn."
+        }
+      }
+    },
+    {
+      "id": "no-bland-critical-template",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Bland critical template phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bland critical template phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "evidence_role": "genre_cliche",
+          "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work."
+        }
+      }
+    },
+    {
+      "id": "no-rubric-echoing",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Rubric echo phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rubric echo phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "voice_erasure"
+          ],
+          "evidence_role": "assignment_residue",
+          "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric."
+        }
+      }
+    },
+    {
+      "id": "vocabulary-diversity",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": "type-token ratio 0.37 (773 unique of 2091 words, target above 0.40)",
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": "type-token ratio 0.37 (773 unique of 2091 words, target above 0.40)",
+          "evidence": "Type-token ratio: 0.370 (773 unique / 2091 total, target: >0.40)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": true,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": "type-token ratio 0.37 (773 unique of 2091 words, target above 0.40)",
+          "sample_size": 2157,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Type-token ratio: 0.370 (773 unique / 2091 total, target: >0.40)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "lexical_distribution",
+          "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately."
+        }
+      }
+    },
+    {
+      "id": "no-triad-density",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          " original sins\n\nFaith, frontier, and the moral imagination",
+          "leaves the earth, plants a flag, and returns",
+          "control, calculation, and efficiency",
+          "destiny, fulfilment, and transformation",
+          "to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature",
+          "to bring progress, order, and ultimately moral improvement",
+          "Silence, grief, and the limits",
+          "silent, indifferent, and resistant",
+          "mourning, closure, or offering",
+          "which technological capability, political urgency, and religious imagination aligned"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "candidate_count": 10,
+          "matches": [
+            " original sins\n\nFaith, frontier, and the moral imagination",
+            "leaves the earth, plants a flag, and returns",
+            "control, calculation, and efficiency",
+            "destiny, fulfilment, and transformation",
+            "to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature",
+            "to bring progress, order, and ultimately moral improvement",
+            "Silence, grief, and the limits",
+            "silent, indifferent, and resistant",
+            "mourning, closure, or offering",
+            "which technological capability, political urgency, and religious imagination aligned"
+          ],
+          "evidence": "Found 10 triad(s): [' original sins\\n\\nFaith, frontier, and the moral imagination', 'leaves the earth, plants a flag, and returns', 'control, calculation, and efficiency', 'destiny, fulfilment, and transformation', 'to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature', 'to bring progress, order, and ultimately moral improvement', 'Silence, grief, and the limits', 'silent, indifferent, and resistant', 'mourning, closure, or offering', 'which technological capability, political urgency, and religious imagination aligned']",
+          "candidates": [
+            {
+              "text": " original sins\n\nFaith, frontier, and the moral imagination",
+              "start": 700,
+              "end": 758,
+              "quoted": false
+            },
+            {
+              "text": "leaves the earth, plants a flag, and returns",
+              "start": 1137,
+              "end": 1181,
+              "quoted": false
+            },
+            {
+              "text": "control, calculation, and efficiency",
+              "start": 4162,
+              "end": 4198,
+              "quoted": false
+            },
+            {
+              "text": "destiny, fulfilment, and transformation",
+              "start": 5072,
+              "end": 5111,
+              "quoted": false
+            },
+            {
+              "text": "to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature",
+              "start": 5373,
+              "end": 5520,
+              "quoted": false
+            },
+            {
+              "text": "to bring progress, order, and ultimately moral improvement",
+              "start": 6098,
+              "end": 6156,
+              "quoted": false
+            },
+            {
+              "text": "Silence, grief, and the limits",
+              "start": 7053,
+              "end": 7083,
+              "quoted": false
+            },
+            {
+              "text": "silent, indifferent, and resistant",
+              "start": 7955,
+              "end": 7989,
+              "quoted": false
+            },
+            {
+              "text": "mourning, closure, or offering",
+              "start": 8991,
+              "end": 9021,
+              "quoted": false
+            },
+            {
+              "text": "which technological capability, political urgency, and religious imagination aligned",
+              "start": 12345,
+              "end": 12429,
+              "quoted": false
+            }
+          ],
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_words": 300,
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": " original sins\n\nFaith, frontier, and the moral imagination",
+              "start": 700,
+              "end": 758,
+              "quoted": false
+            },
+            {
+              "text": "leaves the earth, plants a flag, and returns",
+              "start": 1137,
+              "end": 1181,
+              "quoted": false
+            },
+            {
+              "text": "control, calculation, and efficiency",
+              "start": 4162,
+              "end": 4198,
+              "quoted": false
+            },
+            {
+              "text": "destiny, fulfilment, and transformation",
+              "start": 5072,
+              "end": 5111,
+              "quoted": false
+            },
+            {
+              "text": "to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature",
+              "start": 5373,
+              "end": 5520,
+              "quoted": false
+            },
+            {
+              "text": "to bring progress, order, and ultimately moral improvement",
+              "start": 6098,
+              "end": 6156,
+              "quoted": false
+            },
+            {
+              "text": "Silence, grief, and the limits",
+              "start": 7053,
+              "end": 7083,
+              "quoted": false
+            },
+            {
+              "text": "silent, indifferent, and resistant",
+              "start": 7955,
+              "end": 7989,
+              "quoted": false
+            },
+            {
+              "text": "mourning, closure, or offering",
+              "start": 8991,
+              "end": 9021,
+              "quoted": false
+            },
+            {
+              "text": "which technological capability, political urgency, and religious imagination aligned",
+              "start": 12345,
+              "end": 12429,
+              "quoted": false
+            }
+          ],
+          "match_count": 10,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 10 triad(s): [' original sins\\n\\nFaith, frontier, and the moral imagination', 'leaves the earth, plants a flag, and returns', 'control, calculation, and efficiency', 'destiny, fulfilment, and transformation', 'to transcend the limitations of earth, to escape ecological or geopolitical catastrophe, and to realise a latent potential embedded in human nature', 'to bring progress, order, and ultimately moral improvement', 'Silence, grief, and the limits', 'silent, indifferent, and resistant', 'mourning, closure, or offering', 'which technological capability, political urgency, and religious imagination aligned']",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_words": 300,
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical."
+        }
+      }
+    },
+    {
+      "id": "no-section-scaffolding",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "⸻"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "⸻"
+          ],
+          "evidence": "'⸻' repeated 6 times",
+          "candidates": [
+            {
+              "text": "⸻",
+              "start": 2331,
+              "end": 2332,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 1,
+          "sample_size": 2157,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "'⸻' repeated 6 times",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "repeated_template",
+          "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material."
+        }
+      }
+    },
+    {
+      "id": "no-notability-claims",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No notability claims",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No notability claims",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "notability_inflation",
+          "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing."
+        }
+      }
+    },
+    {
+      "id": "no-vague-attributions",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No vague attributions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No vague attributions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "attribution_vagueness",
+          "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote."
+        }
+      }
+    },
+    {
+      "id": "no-boldface-overuse",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Bold spans in prose: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bold spans in prose: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "emphasis_pattern",
+          "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers."
+        }
+      }
+    },
+    {
+      "id": "no-inline-header-lists",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items with bolded headers: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items with bolded headers: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "list_template",
+          "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list."
+        }
+      }
+    },
+    {
+      "id": "no-compound-modifier-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dense compound-modifier sentences",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_per_sentence": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 2071,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dense compound-modifier sentences",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_per_sentence": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "modifier_density",
+          "guidance": "Restructure sentences with three or more stock hyphenated compounds; preserve only when the compounds are domain-specific terms of art."
+        }
+      }
+    },
+    {
+      "id": "no-knowledge-cutoff-disclaimers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No knowledge-cutoff disclaimers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No knowledge-cutoff disclaimers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "model_meta_residue",
+          "guidance": "Fix at every depth; training-update and limited-information hedges are model meta-residue, not authorial uncertainty."
+        }
+      }
+    }
+  ],
+  "semantic_candidates": [
+    {
+      "kind": "cross_sentence_correction",
+      "text": "This loss is not resolved through the mission; it is carried into it. The Moon landing, in this context, is not a moment of transcendence in the usual sense.",
+      "start_byte": 7657,
+      "end_byte": 7814,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "formulaic_parallelism"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 1074,
+      "end_byte": 1076,
+      "line": 28,
+      "segment_id": "paragraph:784:1263",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 1210,
+      "end_byte": 1214,
+      "line": 28,
+      "segment_id": "paragraph:784:1263",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 1268,
+      "end_byte": 1272,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 1296,
+      "end_byte": 1298,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 1332,
+      "end_byte": 1336,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "these",
+      "start_byte": 1348,
+      "end_byte": 1353,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 1485,
+      "end_byte": 1489,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 1822,
+      "end_byte": 1826,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 1880,
+      "end_byte": 1882,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 2024,
+      "end_byte": 2028,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 2420,
+      "end_byte": 2424,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 2750,
+      "end_byte": 2752,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 2798,
+      "end_byte": 2800,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 3084,
+      "end_byte": 3088,
+      "line": 40,
+      "segment_id": "paragraph:2846:3395",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 3119,
+      "end_byte": 3123,
+      "line": 40,
+      "segment_id": "paragraph:2846:3395",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 3422,
+      "end_byte": 3426,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 3655,
+      "end_byte": 3659,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 3668,
+      "end_byte": 3670,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 3987,
+      "end_byte": 3991,
+      "line": 44,
+      "segment_id": "paragraph:3946:4297",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 4090,
+      "end_byte": 4094,
+      "line": 44,
+      "segment_id": "paragraph:3946:4297",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 4169,
+      "end_byte": 4173,
+      "line": 44,
+      "segment_id": "paragraph:3946:4297",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 4298,
+      "end_byte": 4302,
+      "line": 46,
+      "segment_id": "paragraph:4298:4662",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 4420,
+      "end_byte": 4422,
+      "line": 46,
+      "segment_id": "paragraph:4298:4662",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 4541,
+      "end_byte": 4545,
+      "line": 46,
+      "segment_id": "paragraph:4298:4662",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 4570,
+      "end_byte": 4572,
+      "line": 46,
+      "segment_id": "paragraph:4298:4662",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 5015,
+      "end_byte": 5019,
+      "line": 54,
+      "segment_id": "paragraph:5001:5556",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 5193,
+      "end_byte": 5195,
+      "line": 54,
+      "segment_id": "paragraph:5001:5556",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 5272,
+      "end_byte": 5276,
+      "line": 54,
+      "segment_id": "paragraph:5001:5556",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 5557,
+      "end_byte": 5561,
+      "line": 56,
+      "segment_id": "paragraph:5557:5970",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 5767,
+      "end_byte": 5771,
+      "line": 56,
+      "segment_id": "paragraph:5557:5970",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 5907,
+      "end_byte": 5909,
+      "line": 56,
+      "segment_id": "paragraph:5557:5970",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 6016,
+      "end_byte": 6020,
+      "line": 58,
+      "segment_id": "paragraph:5971:6497",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 6124,
+      "end_byte": 6126,
+      "line": 58,
+      "segment_id": "paragraph:5971:6497",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 6221,
+      "end_byte": 6225,
+      "line": 58,
+      "segment_id": "paragraph:5971:6497",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 6521,
+      "end_byte": 6525,
+      "line": 60,
+      "segment_id": "paragraph:6498:6873",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 6545,
+      "end_byte": 6549,
+      "line": 60,
+      "segment_id": "paragraph:6498:6873",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 6624,
+      "end_byte": 6628,
+      "line": 60,
+      "segment_id": "paragraph:6498:6873",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 6804,
+      "end_byte": 6808,
+      "line": 60,
+      "segment_id": "paragraph:6498:6873",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 6877,
+      "end_byte": 6881,
+      "line": 62,
+      "segment_id": "paragraph:6874:7093",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 7018,
+      "end_byte": 7022,
+      "line": 62,
+      "segment_id": "paragraph:6874:7093",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 7336,
+      "end_byte": 7338,
+      "line": 68,
+      "segment_id": "paragraph:7148:7574",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 7350,
+      "end_byte": 7352,
+      "line": 68,
+      "segment_id": "paragraph:7148:7574",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 7473,
+      "end_byte": 7475,
+      "line": 68,
+      "segment_id": "paragraph:7148:7574",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 7657,
+      "end_byte": 7661,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 7704,
+      "end_byte": 7706,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 7723,
+      "end_byte": 7725,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 7748,
+      "end_byte": 7752,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 7815,
+      "end_byte": 7817,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 8058,
+      "end_byte": 8062,
+      "line": 72,
+      "segment_id": "paragraph:8058:8409",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 8194,
+      "end_byte": 8196,
+      "line": 72,
+      "segment_id": "paragraph:8058:8409",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 8562,
+      "end_byte": 8564,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 8617,
+      "end_byte": 8621,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 8670,
+      "end_byte": 8674,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 8742,
+      "end_byte": 8744,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 8810,
+      "end_byte": 8812,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 8838,
+      "end_byte": 8840,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 8933,
+      "end_byte": 8937,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 9012,
+      "end_byte": 9016,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 9147,
+      "end_byte": 9149,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 9217,
+      "end_byte": 9219,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 9233,
+      "end_byte": 9235,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "these",
+      "start_byte": 9282,
+      "end_byte": 9287,
+      "line": 82,
+      "segment_id": "paragraph:9275:9652",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 9354,
+      "end_byte": 9356,
+      "line": 82,
+      "segment_id": "paragraph:9275:9652",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 9525,
+      "end_byte": 9529,
+      "line": 82,
+      "segment_id": "paragraph:9275:9652",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 9589,
+      "end_byte": 9591,
+      "line": 82,
+      "segment_id": "paragraph:9275:9652",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 9686,
+      "end_byte": 9688,
+      "line": 84,
+      "segment_id": "paragraph:9653:9976",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 10000,
+      "end_byte": 10004,
+      "line": 86,
+      "segment_id": "paragraph:9977:10360",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 10268,
+      "end_byte": 10270,
+      "line": 86,
+      "segment_id": "paragraph:9977:10360",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 10311,
+      "end_byte": 10315,
+      "line": 86,
+      "segment_id": "paragraph:9977:10360",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 10361,
+      "end_byte": 10365,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "these",
+      "start_byte": 10573,
+      "end_byte": 10578,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 10660,
+      "end_byte": 10662,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "these",
+      "start_byte": 10706,
+      "end_byte": 10711,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 10895,
+      "end_byte": 10899,
+      "line": 90,
+      "segment_id": "paragraph:10813:11203",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 10961,
+      "end_byte": 10963,
+      "line": 90,
+      "segment_id": "paragraph:10813:11203",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 11012,
+      "end_byte": 11014,
+      "line": 90,
+      "segment_id": "paragraph:10813:11203",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 11077,
+      "end_byte": 11081,
+      "line": 90,
+      "segment_id": "paragraph:10813:11203",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "these",
+      "start_byte": 11245,
+      "end_byte": 11250,
+      "line": 96,
+      "segment_id": "paragraph:11223:11531",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 11334,
+      "end_byte": 11336,
+      "line": 96,
+      "segment_id": "paragraph:11223:11531",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 11520,
+      "end_byte": 11522,
+      "line": 96,
+      "segment_id": "paragraph:11223:11531",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 11672,
+      "end_byte": 11674,
+      "line": 98,
+      "segment_id": "paragraph:11532:11843",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 11722,
+      "end_byte": 11726,
+      "line": 98,
+      "segment_id": "paragraph:11532:11843",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "This",
+      "start_byte": 11844,
+      "end_byte": 11848,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 11873,
+      "end_byte": 11877,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "these",
+      "start_byte": 11878,
+      "end_byte": 11883,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 12156,
+      "end_byte": 12160,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 12337,
+      "end_byte": 12341,
+      "line": 102,
+      "segment_id": "paragraph:12334:12661",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 12590,
+      "end_byte": 12594,
+      "line": 102,
+      "segment_id": "paragraph:12334:12661",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "these",
+      "start_byte": 12695,
+      "end_byte": 12700,
+      "line": 108,
+      "segment_id": "paragraph:12679:13051",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 12804,
+      "end_byte": 12808,
+      "line": 108,
+      "segment_id": "paragraph:12679:13051",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 12876,
+      "end_byte": 12878,
+      "line": 108,
+      "segment_id": "paragraph:12679:13051",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 12896,
+      "end_byte": 12900,
+      "line": 108,
+      "segment_id": "paragraph:12679:13051",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "those",
+      "start_byte": 12929,
+      "end_byte": 12934,
+      "line": 108,
+      "segment_id": "paragraph:12679:13051",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 12935,
+      "end_byte": 12939,
+      "line": 108,
+      "segment_id": "paragraph:12679:13051",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 12963,
+      "end_byte": 12965,
+      "line": 108,
+      "segment_id": "paragraph:12679:13051",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "this",
+      "start_byte": 13157,
+      "end_byte": 13161,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 13171,
+      "end_byte": 13173,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 13204,
+      "end_byte": 13206,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 13218,
+      "end_byte": 13220,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 13300,
+      "end_byte": 13304,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 13336,
+      "end_byte": 13338,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "it",
+      "start_byte": 13380,
+      "end_byte": 13382,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 13416,
+      "end_byte": 13420,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "It",
+      "start_byte": 13600,
+      "end_byte": 13602,
+      "line": 112,
+      "segment_id": "paragraph:13448:13714",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "possible_vague_reference",
+      "text": "that",
+      "start_byte": 13612,
+      "end_byte": 13616,
+      "line": 112,
+      "segment_id": "paragraph:13448:13714",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the American",
+      "start_byte": 225,
+      "end_byte": 237,
+      "line": 8,
+      "segment_id": "paragraph:0:683",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the American",
+      "start_byte": 591,
+      "end_byte": 603,
+      "line": 18,
+      "segment_id": "paragraph:0:683",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the moral",
+      "start_byte": 737,
+      "end_byte": 746,
+      "line": 26,
+      "segment_id": "paragraph:716:783",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the story",
+      "start_byte": 816,
+      "end_byte": 825,
+      "line": 28,
+      "segment_id": "paragraph:784:1263",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the American",
+      "start_byte": 829,
+      "end_byte": 841,
+      "line": 28,
+      "segment_id": "paragraph:784:1263",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the controlled",
+      "start_byte": 941,
+      "end_byte": 955,
+      "line": 28,
+      "segment_id": "paragraph:784:1263",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The story",
+      "start_byte": 991,
+      "end_byte": 1000,
+      "line": 28,
+      "segment_id": "paragraph:784:1263",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the Sea",
+      "start_byte": 1045,
+      "end_byte": 1052,
+      "line": 28,
+      "segment_id": "paragraph:784:1263",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the earth",
+      "start_byte": 1148,
+      "end_byte": 1157,
+      "line": 28,
+      "segment_id": "paragraph:784:1263",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the gap",
+      "start_byte": 1229,
+      "end_byte": 1236,
+      "line": 28,
+      "segment_id": "paragraph:784:1263",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the dense",
+      "start_byte": 1305,
+      "end_byte": 1314,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the language",
+      "start_byte": 1379,
+      "end_byte": 1391,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the moral",
+      "start_byte": 1416,
+      "end_byte": 1425,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the persistent",
+      "start_byte": 1460,
+      "end_byte": 1474,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the earth",
+      "start_byte": 1499,
+      "end_byte": 1508,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the divine",
+      "start_byte": 1599,
+      "end_byte": 1609,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the Face",
+      "start_byte": 1634,
+      "end_byte": 1642,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the Stars",
+      "start_byte": 1683,
+      "end_byte": 1692,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the outset",
+      "start_byte": 1893,
+      "end_byte": 1903,
+      "line": 30,
+      "segment_id": "paragraph:1264:2083",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the moral",
+      "start_byte": 2289,
+      "end_byte": 2298,
+      "line": 32,
+      "segment_id": "paragraph:2084:2338",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The sacred",
+      "start_byte": 2344,
+      "end_byte": 2354,
+      "line": 36,
+      "segment_id": "paragraph:2344:2371",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the profane",
+      "start_byte": 2359,
+      "end_byte": 2370,
+      "line": 36,
+      "segment_id": "paragraph:2344:2371",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the American",
+      "start_byte": 2456,
+      "end_byte": 2468,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the Face",
+      "start_byte": 2536,
+      "end_byte": 2544,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the ambiguity",
+      "start_byte": 2650,
+      "end_byte": 2663,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the heart",
+      "start_byte": 2667,
+      "end_byte": 2676,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the enterprise",
+      "start_byte": 2680,
+      "end_byte": 2694,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the divine",
+      "start_byte": 2778,
+      "end_byte": 2788,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the distinction",
+      "start_byte": 2817,
+      "end_byte": 2832,
+      "line": 38,
+      "segment_id": "paragraph:2372:2845",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the figure",
+      "start_byte": 3185,
+      "end_byte": 3195,
+      "line": 40,
+      "segment_id": "paragraph:2846:3395",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the astronaut",
+      "start_byte": 3199,
+      "end_byte": 3212,
+      "line": 40,
+      "segment_id": "paragraph:2846:3395",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the anonymous",
+      "start_byte": 3243,
+      "end_byte": 3256,
+      "line": 40,
+      "segment_id": "paragraph:2846:3395",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the visible",
+      "start_byte": 3295,
+      "end_byte": 3306,
+      "line": 40,
+      "segment_id": "paragraph:2846:3395",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the explorer",
+      "start_byte": 3336,
+      "end_byte": 3348,
+      "line": 40,
+      "segment_id": "paragraph:2846:3395",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the pursuit",
+      "start_byte": 3369,
+      "end_byte": 3380,
+      "line": 40,
+      "segment_id": "paragraph:2846:3395",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The reading",
+      "start_byte": 3436,
+      "end_byte": 3447,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the spacecraft",
+      "start_byte": 3504,
+      "end_byte": 3518,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the Moon",
+      "start_byte": 3527,
+      "end_byte": 3535,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the astronauts",
+      "start_byte": 3537,
+      "end_byte": 3551,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the opening",
+      "start_byte": 3562,
+      "end_byte": 3573,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the careful",
+      "start_byte": 3628,
+      "end_byte": 3639,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The effect",
+      "start_byte": 3752,
+      "end_byte": 3762,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The Moon",
+      "start_byte": 3789,
+      "end_byte": 3797,
+      "line": 42,
+      "segment_id": "paragraph:3396:3945",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The same",
+      "start_byte": 4071,
+      "end_byte": 4079,
+      "line": 44,
+      "segment_id": "paragraph:3946:4297",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The sacred",
+      "start_byte": 4224,
+      "end_byte": 4234,
+      "line": 44,
+      "segment_id": "paragraph:3946:4297",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the profane",
+      "start_byte": 4239,
+      "end_byte": 4250,
+      "line": 44,
+      "segment_id": "paragraph:3946:4297",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the divine",
+      "start_byte": 4408,
+      "end_byte": 4418,
+      "line": 46,
+      "segment_id": "paragraph:4298:4662",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the archetypal",
+      "start_byte": 4439,
+      "end_byte": 4453,
+      "line": 46,
+      "segment_id": "paragraph:4298:4662",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the desire",
+      "start_byte": 4479,
+      "end_byte": 4489,
+      "line": 46,
+      "segment_id": "paragraph:4298:4662",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The language",
+      "start_byte": 4574,
+      "end_byte": 4586,
+      "line": 46,
+      "segment_id": "paragraph:4298:4662",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the shadow",
+      "start_byte": 4633,
+      "end_byte": 4643,
+      "line": 46,
+      "segment_id": "paragraph:4298:4662",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the ambiguity",
+      "start_byte": 4735,
+      "end_byte": 4748,
+      "line": 52,
+      "segment_id": "paragraph:4697:5000",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the Stars",
+      "start_byte": 4854,
+      "end_byte": 4863,
+      "line": 52,
+      "segment_id": "paragraph:4697:5000",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the interpretation",
+      "start_byte": 4915,
+      "end_byte": 4933,
+      "line": 52,
+      "segment_id": "paragraph:4697:5000",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the expectations",
+      "start_byte": 4959,
+      "end_byte": 4975,
+      "line": 52,
+      "segment_id": "paragraph:4697:5000",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the next",
+      "start_byte": 5212,
+      "end_byte": 5220,
+      "line": 54,
+      "segment_id": "paragraph:5001:5556",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the limitations",
+      "start_byte": 5420,
+      "end_byte": 5435,
+      "line": 54,
+      "segment_id": "paragraph:5001:5556",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The American",
+      "start_byte": 5607,
+      "end_byte": 5619,
+      "line": 56,
+      "segment_id": "paragraph:5557:5970",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the last",
+      "start_byte": 5860,
+      "end_byte": 5868,
+      "line": 56,
+      "segment_id": "paragraph:5557:5970",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The frontier",
+      "start_byte": 6036,
+      "end_byte": 6048,
+      "line": 58,
+      "segment_id": "paragraph:5971:6497",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the Moon",
+      "start_byte": 6303,
+      "end_byte": 6311,
+      "line": 58,
+      "segment_id": "paragraph:5971:6497",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the logic",
+      "start_byte": 6329,
+      "end_byte": 6338,
+      "line": 58,
+      "segment_id": "paragraph:5971:6497",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The question",
+      "start_byte": 6361,
+      "end_byte": 6373,
+      "line": 58,
+      "segment_id": "paragraph:5971:6497",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the underlying",
+      "start_byte": 6408,
+      "end_byte": 6422,
+      "line": 58,
+      "segment_id": "paragraph:5971:6497",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the risk",
+      "start_byte": 6727,
+      "end_byte": 6735,
+      "line": 60,
+      "segment_id": "paragraph:6498:6873",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the elevation",
+      "start_byte": 6749,
+      "end_byte": 6762,
+      "line": 60,
+      "segment_id": "paragraph:6498:6873",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the divine",
+      "start_byte": 6861,
+      "end_byte": 6871,
+      "line": 60,
+      "segment_id": "paragraph:6498:6873",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the other",
+      "start_byte": 7002,
+      "end_byte": 7011,
+      "line": 62,
+      "segment_id": "paragraph:6874:7093",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the desire",
+      "start_byte": 7023,
+      "end_byte": 7033,
+      "line": 62,
+      "segment_id": "paragraph:6874:7093",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the limits",
+      "start_byte": 7119,
+      "end_byte": 7129,
+      "line": 66,
+      "segment_id": "paragraph:7099:7147",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the triumphant",
+      "start_byte": 7408,
+      "end_byte": 7422,
+      "line": 68,
+      "segment_id": "paragraph:7148:7574",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the space",
+      "start_byte": 7448,
+      "end_byte": 7457,
+      "line": 68,
+      "segment_id": "paragraph:7148:7574",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the attempt",
+      "start_byte": 7543,
+      "end_byte": 7554,
+      "line": 68,
+      "segment_id": "paragraph:7148:7574",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the film",
+      "start_byte": 7600,
+      "end_byte": 7608,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the death",
+      "start_byte": 7630,
+      "end_byte": 7639,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the mission",
+      "start_byte": 7691,
+      "end_byte": 7702,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The Moon",
+      "start_byte": 7727,
+      "end_byte": 7735,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the usual",
+      "start_byte": 7798,
+      "end_byte": 7807,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The famous",
+      "start_byte": 7846,
+      "end_byte": 7856,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The lunar",
+      "start_byte": 7906,
+      "end_byte": 7915,
+      "line": 70,
+      "segment_id": "paragraph:7575:8057",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the film",
+      "start_byte": 8098,
+      "end_byte": 8106,
+      "line": 72,
+      "segment_id": "paragraph:8058:8409",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the viewer",
+      "start_byte": 8204,
+      "end_byte": 8214,
+      "line": 72,
+      "segment_id": "paragraph:8058:8409",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the limits",
+      "start_byte": 8227,
+      "end_byte": 8237,
+      "line": 72,
+      "segment_id": "paragraph:8058:8409",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The question",
+      "start_byte": 8250,
+      "end_byte": 8262,
+      "line": 72,
+      "segment_id": "paragraph:8058:8409",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the divine",
+      "start_byte": 8310,
+      "end_byte": 8320,
+      "line": 72,
+      "segment_id": "paragraph:8058:8409",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The film",
+      "start_byte": 8652,
+      "end_byte": 8660,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the experience",
+      "start_byte": 8675,
+      "end_byte": 8689,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the categories",
+      "start_byte": 8710,
+      "end_byte": 8724,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The sacred",
+      "start_byte": 8746,
+      "end_byte": 8756,
+      "line": 74,
+      "segment_id": "paragraph:8410:8867",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The film",
+      "start_byte": 8868,
+      "end_byte": 8876,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the lunar",
+      "start_byte": 8982,
+      "end_byte": 8991,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The act",
+      "start_byte": 9083,
+      "end_byte": 9090,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the broader",
+      "start_byte": 9124,
+      "end_byte": 9135,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the tension",
+      "start_byte": 9167,
+      "end_byte": 9178,
+      "line": 76,
+      "segment_id": "paragraph:8868:9237",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the concept",
+      "start_byte": 9295,
+      "end_byte": 9306,
+      "line": 82,
+      "segment_id": "paragraph:9275:9652",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the frontier",
+      "start_byte": 9310,
+      "end_byte": 9322,
+      "line": 82,
+      "segment_id": "paragraph:9275:9652",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The frontier",
+      "start_byte": 9653,
+      "end_byte": 9665,
+      "line": 84,
+      "segment_id": "paragraph:9653:9976",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the failures",
+      "start_byte": 9769,
+      "end_byte": 9781,
+      "line": 84,
+      "segment_id": "paragraph:9653:9976",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the previous",
+      "start_byte": 9785,
+      "end_byte": 9797,
+      "line": 84,
+      "segment_id": "paragraph:9653:9976",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the same",
+      "start_byte": 9871,
+      "end_byte": 9879,
+      "line": 84,
+      "segment_id": "paragraph:9653:9976",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the mechanisms",
+      "start_byte": 9886,
+      "end_byte": 9900,
+      "line": 84,
+      "segment_id": "paragraph:9653:9976",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the very",
+      "start_byte": 9930,
+      "end_byte": 9938,
+      "line": 84,
+      "segment_id": "paragraph:9653:9976",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The absence",
+      "start_byte": 10055,
+      "end_byte": 10066,
+      "line": 86,
+      "segment_id": "paragraph:9977:10360",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the underlying",
+      "start_byte": 10116,
+      "end_byte": 10130,
+      "line": 86,
+      "segment_id": "paragraph:9977:10360",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the moral",
+      "start_byte": 10149,
+      "end_byte": 10158,
+      "line": 86,
+      "segment_id": "paragraph:9977:10360",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the drive",
+      "start_byte": 10190,
+      "end_byte": 10199,
+      "line": 86,
+      "segment_id": "paragraph:9977:10360",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the language",
+      "start_byte": 10375,
+      "end_byte": 10387,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the tension",
+      "start_byte": 10482,
+      "end_byte": 10493,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The desire",
+      "start_byte": 10529,
+      "end_byte": 10539,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The problem",
+      "start_byte": 10682,
+      "end_byte": 10693,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the possibility",
+      "start_byte": 10750,
+      "end_byte": 10765,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the narrative",
+      "start_byte": 10797,
+      "end_byte": 10810,
+      "line": 88,
+      "segment_id": "paragraph:10361:10812",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the coexistence",
+      "start_byte": 10837,
+      "end_byte": 10852,
+      "line": 90,
+      "segment_id": "paragraph:10813:11203",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the future",
+      "start_byte": 10982,
+      "end_byte": 10992,
+      "line": 90,
+      "segment_id": "paragraph:10813:11203",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the level",
+      "start_byte": 11018,
+      "end_byte": 11027,
+      "line": 90,
+      "segment_id": "paragraph:10813:11203",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the space",
+      "start_byte": 11082,
+      "end_byte": 11091,
+      "line": 90,
+      "segment_id": "paragraph:10813:11203",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the moral",
+      "start_byte": 11128,
+      "end_byte": 11137,
+      "line": 90,
+      "segment_id": "paragraph:10813:11203",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The period",
+      "start_byte": 11223,
+      "end_byte": 11233,
+      "line": 96,
+      "segment_id": "paragraph:11223:11531",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the late",
+      "start_byte": 11272,
+      "end_byte": 11280,
+      "line": 96,
+      "segment_id": "paragraph:11223:11531",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the mid-1970s",
+      "start_byte": 11290,
+      "end_byte": 11303,
+      "line": 96,
+      "segment_id": "paragraph:11223:11531",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The Moon",
+      "start_byte": 11395,
+      "end_byte": 11403,
+      "line": 96,
+      "segment_id": "paragraph:11223:11531",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The narrative",
+      "start_byte": 11458,
+      "end_byte": 11471,
+      "line": 96,
+      "segment_id": "paragraph:11223:11531",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The language",
+      "start_byte": 11586,
+      "end_byte": 11598,
+      "line": 98,
+      "segment_id": "paragraph:11532:11843",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The sense",
+      "start_byte": 11690,
+      "end_byte": 11699,
+      "line": 98,
+      "segment_id": "paragraph:11532:11843",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the early",
+      "start_byte": 11741,
+      "end_byte": 11750,
+      "line": 98,
+      "segment_id": "paragraph:11532:11843",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The frontier",
+      "start_byte": 11784,
+      "end_byte": 11796,
+      "line": 98,
+      "segment_id": "paragraph:11532:11843",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the religious",
+      "start_byte": 11951,
+      "end_byte": 11964,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the initial",
+      "start_byte": 11997,
+      "end_byte": 12008,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the Moon",
+      "start_byte": 12048,
+      "end_byte": 12056,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The categories",
+      "start_byte": 12141,
+      "end_byte": 12155,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the narrative",
+      "start_byte": 12177,
+      "end_byte": 12190,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the experience",
+      "start_byte": 12296,
+      "end_byte": 12310,
+      "line": 100,
+      "segment_id": "paragraph:11844:12333",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the early",
+      "start_byte": 12349,
+      "end_byte": 12358,
+      "line": 102,
+      "segment_id": "paragraph:12334:12661",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The challenge",
+      "start_byte": 12531,
+      "end_byte": 12544,
+      "line": 102,
+      "segment_id": "paragraph:12334:12661",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the reduction",
+      "start_byte": 12714,
+      "end_byte": 12727,
+      "line": 108,
+      "segment_id": "paragraph:12679:13051",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the American",
+      "start_byte": 12731,
+      "end_byte": 12743,
+      "line": 108,
+      "segment_id": "paragraph:12679:13051",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The language",
+      "start_byte": 13052,
+      "end_byte": 13064,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the tensions",
+      "start_byte": 13191,
+      "end_byte": 13203,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The frontier",
+      "start_byte": 13241,
+      "end_byte": 13253,
+      "line": 110,
+      "segment_id": "paragraph:13052:13447",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the experiential",
+      "start_byte": 13502,
+      "end_byte": 13518,
+      "line": 112,
+      "segment_id": "paragraph:13448:13714",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the silence",
+      "start_byte": 13546,
+      "end_byte": 13557,
+      "line": 112,
+      "segment_id": "paragraph:13448:13714",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the isolation",
+      "start_byte": 13559,
+      "end_byte": 13572,
+      "line": 112,
+      "segment_id": "paragraph:13448:13714",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the persistence",
+      "start_byte": 13574,
+      "end_byte": 13589,
+      "line": 112,
+      "segment_id": "paragraph:13448:13714",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the limits",
+      "start_byte": 13682,
+      "end_byte": 13692,
+      "line": 112,
+      "segment_id": "paragraph:13448:13714",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "The result",
+      "start_byte": 13715,
+      "end_byte": 13725,
+      "line": 114,
+      "segment_id": "paragraph:13715:14022",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the space",
+      "start_byte": 13787,
+      "end_byte": 13796,
+      "line": 114,
+      "segment_id": "paragraph:13715:14022",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "definite_description",
+      "text": "the boundaries",
+      "start_byte": 13913,
+      "end_byte": 13927,
+      "line": 114,
+      "segment_id": "paragraph:13715:14022",
+      "semantic_owner": "referential_clarity"
+    },
+    {
+      "kind": "short_form_triad",
+      "text": "Silence, grief, and the limits of transcendence",
+      "start_byte": 7099,
+      "end_byte": 7146,
+      "line": 66,
+      "segment_id": "paragraph:7099:7147",
+      "semantic_owner": "semantic_redundancy"
+    }
+  ],
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon spreads naturally",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "close the gap between myth and machine",
+          "why_generic": "Presents a conventional myth/technology binary as if it were a precise interpretive claim, without specifying what 'myth' and 'machine' concretely denote or how they are 'closed'."
+        },
+        {
+          "phrase": "the shadow of transgression",
+          "why_generic": "A stock figurative pairing of light/shadow with moral risk that supplies mood rather than naming what the transgression consists of or against what standard."
+        },
+        {
+          "phrase": "offers a narrative structure that both illuminates and obscures",
+          "why_generic": "The illuminate/obscure pairing is a common critical-essay cliché that asserts a dual effect without specifying what is illuminated or what is obscured."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "close the gap between myth and machine",
+          "why_unclear": "\"the gap\" is introduced as a first-use definite description with no prior text establishing what specific gap between myth and machine is meant."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "not the anonymous bureaucrat of nuclear deterrence, but the visible, almost liturgical figure of the explorer who risked death in the pursuit of knowledge",
+          "why_formulaic": "One instance of a repeated 'not X but Y' correction script used across the essay; the symmetry asserts contrast without grounding either side in a specific historical detail."
+        },
+        {
+          "phrase": "it was not a declaration of doctrine but an invocation of shared cultural language",
+          "why_formulaic": "Another repetition of the same 'not X but Y' correction pattern, substituting balanced phrasing for an account of what the doctrine/invocation distinction actually changes."
+        },
+        {
+          "phrase": "The lunar surface is not presented as a site of conquest but as an environment of radical distance—silent, indifferent, and resistant to projection.",
+          "why_formulaic": "A third recurrence of the same corrective bicolon skeleton, reinforcing a rhetorical tic rather than adding new information beyond the prior two instances."
+        },
+        {
+          "phrase": "space as sacred frontier, as profane extension of earthly ambition, and as a site where the moral limits of human aspiration are tested",
+          "why_formulaic": "A counted tricolon whose three balanced clauses restate the essay's thesis in list form without adding distinct evidence for each term."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Oliver’s attention to the coexistence of sacred and profane language highlights this tension. Newell’s analysis of destiny narratives shows how it is projected into the future. First Man renders it at the level of individual experience.",
+          "what_it_repeats": "Restates, in compressed form, the individual arguments already developed at length in the 'sacred and the profane', 'Destiny and its discontents', and 'Silence, grief, and the limits of transcendence' sections."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "is deceptively simple",
+          "missing_criterion": "Does not specify what makes the claim deceptive or simple, or relative to what more complex alternative."
+        },
+        {
+          "phrase": "The effect was nonetheless profound.",
+          "missing_criterion": "Does not state the measurable or observable nature of the effect, or profound compared to what baseline."
+        },
+        {
+          "phrase": "a more restrained, but also more precise, account",
+          "missing_criterion": "Does not identify the prior account(s) being compared against, or the specific dimension along which restraint and precision are measured."
+        },
+        {
+          "phrase": "this assumption becomes harder to sustain",
+          "missing_criterion": "Does not specify the standard or evidence by which difficulty of sustaining the assumption is judged."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "In this sense, spaceflight becomes a site where competing theologies of progress collide.",
+          "missing_relationship": "Does not specify which preceding 'sense' (destiny narrative vs. idolatry critique) licenses the inference that they 'collide', nor the mechanism of collision."
+        },
+        {
+          "phrase": "In this sense, the early space program can be understood as a bounded episode",
+          "missing_relationship": "Does not identify which specific prior claim establishes the boundedness, leaving the causal/evidential link to the preceding paragraph unstated."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "academic",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ],
+  "limitations": [
+    "slide_title structure unavailable without a structure manifest",
+    "caption structure unavailable without a structure manifest"
+  ]
+}

@@ -1,0 +1,3 @@
+{
+  "error": "Command '['/Library/Developer/CommandLineTools/usr/bin/python3', '/Users/mae/Documents/human-eyes/human-eyes/scripts/grade.py', 'audit', '/Users/mae/Documents/human-eyes/dev/evals/samples/human-sourced/21c-opencoop-belonging-superpower.md', '--work-bundle', '/Users/mae/Documents/human-eyes/dev/evals/preserved-agent-audits-2026-07-14/documents/D02/work-bundle.json', '--format', 'json']' returned non-zero exit status 1."
+}

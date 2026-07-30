@@ -4,6 +4,8 @@ Hypotheses to test in future iterations of the human-eyes project. Each entry st
 
 Each hypothesis includes status, source, statement, test, and impact.
 
+**These are proposals, never permission.** Several predate standing rulings that now forbid them, and a hypothesis marked `open` here has not been agreed. Nothing in this file authorises a product change; that happens only through a decided row in `dev/decision-register.md`. Two entries are contradicted outright and are marked in place: **H9** proposes a "looks like, but isn't" block on every pattern, which rule 1 of `dev/decision-walkthrough-approach.md` forbids (no look-alike disclaimers, no machinery designed to spare legitimate human uses), and **H3** proposes dropping the detection framing, which was rejected on 2026-07-25, keeping the README's positioning.
+
 ## 1. Continuous calibrated register-distance score per pattern
 
 **Status:** open
@@ -34,11 +36,11 @@ Each hypothesis includes status, source, statement, test, and impact.
 - Run on matched human / AI pairs from the corpus.
 - Check whether the divergence output is more useful than the current single-document audit for the kinds of decisions the skill is invoked for.
 
-**Impact:** The skill's framing shifts from "does this read like AI" to "how does this differ from this other thing". Absolute claims become structurally impossible. Aligns with Turnitin's converged design (similarity is always between texts).
+**Impact:** The skill's framing shifts from "does this read like AI" to "how does this differ from this other thing". Absolute claims become structurally impossible.
 
 ## 3. Drop detection framing entirely
 
-**Status:** open
+**Status:** rejected 2026-07-25. The README's framing was kept. Kept as a record of the question, not as live work.
 
 **Source:** Internal: meta-question raised during this session's ideation and review of the README. Current positioning kept for now.
 
@@ -119,7 +121,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** open
 
-**Source:** Internal ideation, survivor #6. External: Turnitin precedent (Draft Coach for writers, Feedback Studio for instructors).
+**Source:** Internal ideation, survivor #6. External Turnitin product precedent requires a separately reviewed direct source; the AI Writing Report guide does not compare writer and instructor surfaces or validate a two-voice design.
 
 **Statement:** One engine, one registry, one corpus, one set of patterns. Voice changes by invocation surface. `/human-eyes audit` (reviewer voice) uses calibrated audit framing: review priority, register-X density, look-alike disambiguator. `/human-eyes rewrite` (writer voice) uses prescriptive framing: consider replacing with X. The registry holds twin fields and renders the right one for each surface.
 
@@ -132,7 +134,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 ## 9. Field-guide voice with similar-species disambiguation per pattern
 
-**Status:** open
+**Status:** contradicted by rule 1; do not build. Look-alike disambiguation blocks are exactly the machinery that rule forbids. Kept for its record of the register-bias finding only.
 
 **Source:** Internal ideation, worth-revisiting #1. External: Stanford HAI / TOEFL bias finding on register features misread as authorship.
 
@@ -220,7 +222,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 - Return to the project after a 2-week gap and check whether STATUS.md absorbs the catch-up load.
 - Run ce-learnings-researcher on a future ideation and check whether docs/solutions has retrievable corpus.
 
-**Impact:** Future-Mae returning after a gap reads STATUS.md instead of reverse-engineering 11 plan / research / brainstorm docs. Future PR reviews catch convention violations automatically. Future ideations have a learnings corpus. The "which plan is canonical" question becomes a filesystem answer.
+**Impact:** Anyone returning after a gap reads STATUS.md instead of reverse-engineering 11 plan / research / brainstorm docs. Future PR reviews catch convention violations automatically. Future ideations have a learnings corpus. The "which plan is canonical" question becomes a filesystem answer.
 
 ## 15. Decoupled corpus repo with SHA-pinned consumption
 
@@ -306,7 +308,7 @@ Each hypothesis includes status, source, statement, test, and impact.
 
 **Status:** open
 
-**Source:** Internal: U1 of the audit-output redesign plan assigned severity per item by reasoning about each item's prompt and `flagged_when` rule against patterns.json severity precedent. Assignments were a Mae-review checkpoint, not a corpus-validated calibration.
+**Source:** Internal: U1 of the audit-output redesign plan assigned severity per item by reasoning about each item's prompt and `flagged_when` rule against patterns.json severity precedent. Assignments were a review checkpoint, not a corpus-validated calibration.
 
 **Statement:** The U1 severity assignments — `strong_warning` for tonal_uniformity, faux_specificity, neutrality_collapse, generic_metaphors; `context_warning` for structural_monotony, even_jargon_distribution, forced_synesthesia, genre_specific — should reflect the human vs AI separation each item actually achieves on the corpus. Items at `strong_warning` should fire more on AI prose than on register-matched human prose; items at `context_warning` should show legitimate human flags often enough that the lower severity is justified.
 
@@ -336,7 +338,7 @@ The two assignments most plausibly wrong:
 **Test:**
 - Collect examples where reviewers call out wrong subject, low information density, or fluency without understanding.
 - Compare human and AI samples in the matched corpus for sentence-level information density and subject choice.
-- Decide whether the useful output is a new agent-judgement item, a #41 student-writing watchlist item, or rewrite-only guidance.
+- Decide whether the useful output is a new agent-judgement item, a H10 student-writing watchlist item, or rewrite-only guidance.
 
 **Impact:** Adds a higher-level quality check that catches polished emptiness without relying on surface vocabulary.
 
@@ -350,7 +352,7 @@ The two assignments most plausibly wrong:
 
 **Test:**
 - Add measurements for clause shape, phrase-length tails, and sentence-pattern diversity on the matched corpus.
-- Compare those metrics against current #52 sentence-rhythm variance.
+- Compare those metrics against current G9 sentence-rhythm variance.
 - Check whether long-tail measures separate AI from human prose within register better than the current variance check.
 
 **Impact:** Refines the structural-metric family and may reduce overreliance on crude sentence-length signals.
@@ -361,20 +363,20 @@ The two assignments most plausibly wrong:
 
 **Source:** External source card: Reinhart et al.
 
-**Statement:** Present-participial clauses are only one part of a broader rhetorical-style shift. Nominalization density, noun-heavy phrasing, subject "that" clauses, and phrasal coordination may be more precise future features.
+**Statement:** Live A3's closed comma-led trailing-lexeme matcher is only adjacent to Reinhart's parser-derived present-participial-clause measure. Reinhart's paired aggregate results instead make nominalizations, source-named "that" clauses as subject, phrasal coordination, model-specific reversals, and register controls candidates for evaluation, with no safe document-level threshold.
 
 **Test:**
-- Extract candidate features named by Reinhart et al.
+- Reproduce selected Reinhart features on the released matched data, preserving model/register controls, the Table S4/S5-S6 inventory mismatch, and parser dependence.
 - Measure them on current human and AI samples.
 - Decide whether any feature is strong enough for a programmatic advisory check, or whether the evidence should stay in academic-register notes.
 
-**Impact:** Prevents #3 from carrying more evidence than it actually supports and opens a better grammar-feature path.
+**Impact:** Prevents A3 from carrying more evidence than it actually supports and opens a better grammar-feature path.
 
 ## 24. Register-specific vocabulary density
 
 **Status:** open
 
-**Source:** External source cards: Kobak et al.; Kousha and Thelwall; Juzek and Ward; Geng and Trotta; Nature; Grammarly.
+**Source:** External source cards: Kobak et al.; Kousha and Thelwall; Juzek and Ward; Geng and Trotta; Reinhart et al.; Nature; Grammarly.
 
 **Statement:** AI vocabulary evidence should be repeated, co-occurring, time-sensitive, and register-specific. Flat one-word blacklists should give way to register-aware density, increases and decreases, and source-specific date metadata.
 
@@ -383,13 +385,13 @@ The two assignments most plausibly wrong:
 - Compute vocabulary density by register and by source list.
 - Check whether any word list remains useful once public-tell drift and register are accounted for.
 
-**Impact:** Makes #7 less brittle and reduces stale-blacklist behaviour.
+**Impact:** Makes B1 less brittle and reduces stale-blacklist behaviour.
 
 ## 25. Model-family versus generic-AI residue
 
 **Status:** open
 
-**Source:** External source cards: Sun et al.; Rudnicka; Merrill/WaPo; Sean Trott.
+**Source:** External source cards: Sun et al.; Rudnicka; Merrill/WaPo; Sean Trott; Reinhart et al.
 
 **Statement:** Some writing signals point to model family, model version, prompt style, or public-tell drift rather than generic AI authorship. The source metadata and future scoring should separate these claims.
 
@@ -404,14 +406,14 @@ The two assignments most plausibly wrong:
 
 **Status:** open
 
-**Source:** External source cards: Blake Stockton and Matthew Vollmer.
+**Source:** No current direct-source support; the Stockton mapping came from an uncaptured later post, and the reviewed Vollmer record contains no vague-change-intro example. Reopen after separate full-text evidence is ingested.
 
-**Statement:** B2B/corporate openers like "something changed" may be a separate rhetorical pattern from contrastive negation and manufactured insight. They deserve separate tracking before being folded into #9 or #50.
+**Statement:** B2B/corporate openers like "something changed" may be a separate rhetorical pattern from contrastive negation and manufactured insight. They deserve separate tracking before being folded into B3 or E8.
 
 **Test:**
 - Collect examples of vague-change openers from source cards and corpus samples.
-- Compare overlap with #9 contrived contrast and #50 formulaic openers.
-- Decide whether this is a new advisory pattern, a #50 phrase expansion, or a register-specific look-alike note.
+- Compare overlap with B3 contrived contrast and E8 formulaic openers.
+- Decide whether this is a new advisory pattern, a E8 phrase expansion, or a register-specific look-alike note.
 
 **Impact:** Keeps corporate-register pattern expansion precise instead of hiding distinct cues inside broad existing rules.
 
@@ -419,13 +421,13 @@ The two assignments most plausibly wrong:
 
 **Status:** open
 
-**Source:** External source cards: Matthew Vollmer, Sam Kriss, and SEO Engine.
+**Source:** External source cards: Matthew Vollmer and Sam Kriss. SEO Engine / VRID supplies only adjacent motivational-poster and generic-conclusion assertions, not direct aphoristic-closure or false-profundity evidence.
 
 **Statement:** Generic profundity, false profundity, aphoristic closure, and universal-generic statements may be a recurring AI-shaped ending pattern. It should start advisory because sources are practitioner/editorial rather than strong empirical evidence.
 
 **Test:**
 - Collect ending sentences flagged as false profundity or aphoristic closure.
-- Compare with current #24 generic positive conclusions, #44 signposted conclusions, and #47 soft scaffolding.
+- Compare with current E4 generic positive conclusions, G8 signposted conclusions, and E6 soft scaffolding.
 - Decide whether there is a distinct user-facing pattern or only look-alike guidance for existing conclusion checks.
 
 **Impact:** Improves endings guidance without overclaiming practitioner sources as hard evidence.

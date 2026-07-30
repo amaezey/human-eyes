@@ -1,0 +1,5435 @@
+{
+  "benchmark_status": "incomplete",
+  "manifest": "dev/evals/corpus.json",
+  "house_style_checks_excluded_from_separation": [
+    "no-curly-quotes"
+  ],
+  "provenance_issues": [
+    "belonging-superpower:ai_fresh: model unspecified",
+    "belonging-superpower:ai_rewrite: model unspecified",
+    "workshops-as-portals:ai_fresh: model unspecified",
+    "workshops-as-portals:ai_rewrite: model unspecified",
+    "mdma-therapy:ai_fresh: model unspecified",
+    "mdma-therapy:ai_rewrite: model unspecified",
+    "servant-hedonism:ai_fresh: model unspecified",
+    "servant-hedonism:ai_rewrite: model unspecified",
+    "first-men-original-sins:ai_fresh: model unspecified",
+    "first-men-original-sins:ai_rewrite: model unspecified"
+  ],
+  "semantic_issues": [
+    "belonging-superpower:human: missing semantic audit",
+    "belonging-superpower:ai_fresh: missing semantic audit",
+    "belonging-superpower:ai_rewrite: missing semantic audit",
+    "workshops-as-portals:human: missing semantic audit",
+    "workshops-as-portals:ai_fresh: missing semantic audit",
+    "workshops-as-portals:ai_rewrite: missing semantic audit",
+    "mdma-therapy:human: missing semantic audit",
+    "mdma-therapy:ai_fresh: missing semantic audit",
+    "mdma-therapy:ai_rewrite: missing semantic audit",
+    "servant-hedonism:human: missing semantic audit",
+    "servant-hedonism:ai_fresh: missing semantic audit",
+    "servant-hedonism:ai_rewrite: missing semantic audit",
+    "first-men-original-sins:human: missing semantic audit",
+    "first-men-original-sins:ai_fresh: missing semantic audit",
+    "first-men-original-sins:ai_rewrite: missing semantic audit"
+  ],
+  "surface": {
+    "ai_fresh": {
+      "n_pairs": 5,
+      "mean_surface_gap": 1.0,
+      "ai_higher": 3,
+      "ties": 1,
+      "human_higher": 1,
+      "pair_deltas": [
+        3,
+        0,
+        -5,
+        3,
+        4
+      ],
+      "per_check": {
+        "no-em-dashes": {
+          "human_flags": 2,
+          "ai_flags": 4,
+          "candidate_delta": 7.59,
+          "flag_gap": 2
+        },
+        "no-ai-vocabulary-clustering": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-nonliteral-land-surface": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-manufactured-insight": {
+          "human_flags": 1,
+          "ai_flags": 1,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-performed-candour": {
+          "human_flags": 1,
+          "ai_flags": 0,
+          "candidate_delta": -0.147,
+          "flag_gap": -1
+        },
+        "no-staccato-sequences": {
+          "human_flags": 2,
+          "ai_flags": 2,
+          "candidate_delta": 0.502,
+          "flag_gap": 0
+        },
+        "no-anaphora": {
+          "human_flags": 2,
+          "ai_flags": 4,
+          "candidate_delta": 1.029,
+          "flag_gap": 2
+        },
+        "no-collaborative-artifacts": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "sentence-length-variance": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-promotional-language": {
+          "human_flags": 2,
+          "ai_flags": 2,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-significance-inflation": {
+          "human_flags": 1,
+          "ai_flags": 1,
+          "candidate_delta": 0.151,
+          "flag_gap": 0
+        },
+        "no-negative-parallelisms": {
+          "human_flags": 1,
+          "ai_flags": 2,
+          "candidate_delta": 0.505,
+          "flag_gap": 1
+        },
+        "no-copula-avoidance": {
+          "human_flags": 1,
+          "ai_flags": 1,
+          "candidate_delta": 0.044,
+          "flag_gap": 0
+        },
+        "no-filler-phrases": {
+          "human_flags": 1,
+          "ai_flags": 0,
+          "candidate_delta": -0.179,
+          "flag_gap": -1
+        },
+        "no-generic-conclusions": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-false-concession-hedges": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-placeholder-residue": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-soft-scaffolding": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.054,
+          "flag_gap": 0
+        },
+        "no-orphaned-demonstratives": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-forced-triads": {
+          "human_flags": 1,
+          "ai_flags": 0,
+          "candidate_delta": -0.025,
+          "flag_gap": -1
+        },
+        "no-superficial-ing": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-ghost-spectral-density": {
+          "human_flags": 0,
+          "ai_flags": 2,
+          "candidate_delta": 0.0,
+          "flag_gap": 2
+        },
+        "no-quietness-obsession": {
+          "human_flags": 0,
+          "ai_flags": 1,
+          "candidate_delta": 0.673,
+          "flag_gap": 1
+        },
+        "no-rhetorical-questions": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": -0.051,
+          "flag_gap": 0
+        },
+        "no-excessive-lists": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-unicode-flair": {
+          "human_flags": 0,
+          "ai_flags": 2,
+          "candidate_delta": 2.321,
+          "flag_gap": 2
+        },
+        "no-dramatic-transitions": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-formulaic-openers": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-signposted-conclusions": {
+          "human_flags": 0,
+          "ai_flags": 1,
+          "candidate_delta": 0.022,
+          "flag_gap": 1
+        },
+        "no-markdown-headings": {
+          "human_flags": 0,
+          "ai_flags": 1,
+          "candidate_delta": -1.773,
+          "flag_gap": 1
+        },
+        "no-parenthetical-headings": {
+          "human_flags": 2,
+          "ai_flags": 0,
+          "candidate_delta": -0.097,
+          "flag_gap": -2
+        },
+        "no-corporate-ai-speak": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-this-chains": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-excessive-hedging": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-countdown-negation": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-negation-density": {
+          "human_flags": 0,
+          "ai_flags": 2,
+          "candidate_delta": 2.43,
+          "flag_gap": 2
+        },
+        "paragraph-length-uniformity": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-tidy-paragraph-endings": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.442,
+          "flag_gap": 0
+        },
+        "no-bland-critical-template": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-rubric-echoing": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "vocabulary-diversity": {
+          "human_flags": 3,
+          "ai_flags": 2,
+          "candidate_delta": 0.0,
+          "flag_gap": -1
+        },
+        "no-triad-density": {
+          "human_flags": 3,
+          "ai_flags": 3,
+          "candidate_delta": 1.237,
+          "flag_gap": 0
+        },
+        "no-section-scaffolding": {
+          "human_flags": 1,
+          "ai_flags": 2,
+          "candidate_delta": 0.229,
+          "flag_gap": 1
+        },
+        "no-notability-claims": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-vague-attributions": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-boldface-overuse": {
+          "human_flags": 4,
+          "ai_flags": 0,
+          "candidate_delta": -2.398,
+          "flag_gap": -4
+        },
+        "no-inline-header-lists": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-compound-modifier-density": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-knowledge-cutoff-disclaimers": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        }
+      }
+    },
+    "ai_rewrite": {
+      "n_pairs": 5,
+      "mean_surface_gap": -0.8,
+      "ai_higher": 1,
+      "ties": 1,
+      "human_higher": 3,
+      "pair_deltas": [
+        -1,
+        -1,
+        -5,
+        3,
+        0
+      ],
+      "per_check": {
+        "no-em-dashes": {
+          "human_flags": 2,
+          "ai_flags": 4,
+          "candidate_delta": 5.432,
+          "flag_gap": 2
+        },
+        "no-ai-vocabulary-clustering": {
+          "human_flags": 0,
+          "ai_flags": 1,
+          "candidate_delta": 0.0,
+          "flag_gap": 1
+        },
+        "no-nonliteral-land-surface": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-manufactured-insight": {
+          "human_flags": 1,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": -1
+        },
+        "no-performed-candour": {
+          "human_flags": 1,
+          "ai_flags": 0,
+          "candidate_delta": -0.147,
+          "flag_gap": -1
+        },
+        "no-staccato-sequences": {
+          "human_flags": 2,
+          "ai_flags": 2,
+          "candidate_delta": 0.647,
+          "flag_gap": 0
+        },
+        "no-anaphora": {
+          "human_flags": 2,
+          "ai_flags": 3,
+          "candidate_delta": 1.217,
+          "flag_gap": 1
+        },
+        "no-collaborative-artifacts": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "sentence-length-variance": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-promotional-language": {
+          "human_flags": 2,
+          "ai_flags": 1,
+          "candidate_delta": 0.0,
+          "flag_gap": -1
+        },
+        "no-significance-inflation": {
+          "human_flags": 1,
+          "ai_flags": 1,
+          "candidate_delta": 0.122,
+          "flag_gap": 0
+        },
+        "no-negative-parallelisms": {
+          "human_flags": 1,
+          "ai_flags": 1,
+          "candidate_delta": 0.184,
+          "flag_gap": 0
+        },
+        "no-copula-avoidance": {
+          "human_flags": 1,
+          "ai_flags": 2,
+          "candidate_delta": 0.302,
+          "flag_gap": 1
+        },
+        "no-filler-phrases": {
+          "human_flags": 1,
+          "ai_flags": 0,
+          "candidate_delta": -0.179,
+          "flag_gap": -1
+        },
+        "no-generic-conclusions": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-false-concession-hedges": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-placeholder-residue": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-soft-scaffolding": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-orphaned-demonstratives": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-forced-triads": {
+          "human_flags": 1,
+          "ai_flags": 1,
+          "candidate_delta": 0.117,
+          "flag_gap": 0
+        },
+        "no-superficial-ing": {
+          "human_flags": 0,
+          "ai_flags": 1,
+          "candidate_delta": 0.389,
+          "flag_gap": 1
+        },
+        "no-ghost-spectral-density": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-quietness-obsession": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-rhetorical-questions": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.098,
+          "flag_gap": 0
+        },
+        "no-excessive-lists": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-unicode-flair": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-dramatic-transitions": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-formulaic-openers": {
+          "human_flags": 0,
+          "ai_flags": 1,
+          "candidate_delta": 0.211,
+          "flag_gap": 1
+        },
+        "no-signposted-conclusions": {
+          "human_flags": 0,
+          "ai_flags": 1,
+          "candidate_delta": 0.076,
+          "flag_gap": 1
+        },
+        "no-markdown-headings": {
+          "human_flags": 0,
+          "ai_flags": 3,
+          "candidate_delta": -1.496,
+          "flag_gap": 3
+        },
+        "no-parenthetical-headings": {
+          "human_flags": 2,
+          "ai_flags": 0,
+          "candidate_delta": -0.097,
+          "flag_gap": -2
+        },
+        "no-corporate-ai-speak": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-this-chains": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-excessive-hedging": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.177,
+          "flag_gap": 0
+        },
+        "no-countdown-negation": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-negation-density": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "paragraph-length-uniformity": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-tidy-paragraph-endings": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.092,
+          "flag_gap": 0
+        },
+        "no-bland-critical-template": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-rubric-echoing": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "vocabulary-diversity": {
+          "human_flags": 3,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": -3
+        },
+        "no-triad-density": {
+          "human_flags": 3,
+          "ai_flags": 1,
+          "candidate_delta": 0.494,
+          "flag_gap": -2
+        },
+        "no-section-scaffolding": {
+          "human_flags": 1,
+          "ai_flags": 1,
+          "candidate_delta": 0.117,
+          "flag_gap": 0
+        },
+        "no-notability-claims": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-vague-attributions": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-boldface-overuse": {
+          "human_flags": 4,
+          "ai_flags": 0,
+          "candidate_delta": -2.398,
+          "flag_gap": -4
+        },
+        "no-inline-header-lists": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-compound-modifier-density": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        },
+        "no-knowledge-cutoff-disclaimers": {
+          "human_flags": 0,
+          "ai_flags": 0,
+          "candidate_delta": 0.0,
+          "flag_gap": 0
+        }
+      }
+    }
+  },
+  "semantic": null,
+  "performance": {
+    "documents": 15,
+    "total_runtime_ms": 1046.551
+  },
+  "pairs": [
+    {
+      "topic": "belonging-superpower",
+      "human": {
+        "path": "dev/evals/samples/human-sourced/21c-opencoop-belonging-superpower.md",
+        "word_count": 1120,
+        "surface_findings": 2,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 18,
+            "candidates_per_1000_words": 16.071,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.893,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.893,
+            "threshold_met": false,
+            "context_suppressed": true
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 2,
+            "candidates_per_1000_words": 1.786,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 9,
+            "candidates_per_1000_words": 8.036,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 57.451,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_fresh": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-belonging-superpower.md",
+        "word_count": 1263,
+        "surface_findings": 5,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 13,
+            "candidates_per_1000_words": 10.293,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 2.375,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 38,
+            "candidates_per_1000_words": 30.087,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 11,
+            "candidates_per_1000_words": 8.709,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.792,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.792,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 2.375,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.792,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 45.946,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_rewrite": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-rewrite-belonging-superpower.md",
+        "word_count": 1127,
+        "surface_findings": 1,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.887,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 33,
+            "candidates_per_1000_words": 29.281,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.887,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 2.662,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 37.027,
+        "semantic": null,
+        "semantic_findings": null
+      }
+    },
+    {
+      "topic": "workshops-as-portals",
+      "human": {
+        "path": "dev/evals/samples/human-sourced/21c-critchlow-workshops.md",
+        "word_count": 2747,
+        "surface_findings": 6,
+        "house_style_findings": 0,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 4,
+            "candidates_per_1000_words": 1.456,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.364,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.364,
+            "threshold_met": false,
+            "context_suppressed": true
+          },
+          "no-markdown-headings": {
+            "candidate_count": 14,
+            "candidates_per_1000_words": 5.096,
+            "threshold_met": false,
+            "context_suppressed": true
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.364,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 1.092,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 5,
+            "candidates_per_1000_words": 1.82,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 79.527,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_fresh": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-workshops-as-portals.md",
+        "word_count": 3698,
+        "surface_findings": 6,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 8,
+            "candidates_per_1000_words": 2.163,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 8,
+            "candidates_per_1000_words": 2.163,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 23,
+            "candidates_per_1000_words": 6.22,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.27,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 42,
+            "candidates_per_1000_words": 11.357,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 2,
+            "candidates_per_1000_words": 0.541,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 12,
+            "candidates_per_1000_words": 3.245,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 114.029,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_rewrite": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-rewrite-workshops-as-portals.md",
+        "word_count": 1341,
+        "surface_findings": 5,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 12,
+            "candidates_per_1000_words": 8.949,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 2.237,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 4,
+            "candidates_per_1000_words": 2.983,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 13,
+            "candidates_per_1000_words": 9.694,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.746,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.746,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.746,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 2,
+            "candidates_per_1000_words": 1.491,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 47.242,
+        "semantic": null,
+        "semantic_findings": null
+      }
+    },
+    {
+      "topic": "mdma-therapy",
+      "human": {
+        "path": "dev/evals/samples/human-sourced/21c-tuckermax-mdma-therapy.md",
+        "word_count": 8145,
+        "surface_findings": 12,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.123,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 6,
+            "candidates_per_1000_words": 0.737,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 0.368,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 5,
+            "candidates_per_1000_words": 0.614,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 165,
+            "candidates_per_1000_words": 20.258,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 4,
+            "candidates_per_1000_words": 0.491,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.123,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 22,
+            "candidates_per_1000_words": 2.701,
+            "threshold_met": false,
+            "context_suppressed": true
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.123,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 2,
+            "candidates_per_1000_words": 0.246,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 10,
+            "candidates_per_1000_words": 1.228,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.123,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 5,
+            "candidates_per_1000_words": 0.614,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 252.89,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_fresh": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-mdma-therapy.md",
+        "word_count": 892,
+        "surface_findings": 7,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 14,
+            "candidates_per_1000_words": 15.695,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 22,
+            "candidates_per_1000_words": 24.664,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 1.121,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 1.121,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 3.363,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 1.121,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 1.121,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 5,
+            "candidates_per_1000_words": 5.605,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 30.883,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_rewrite": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-rewrite-mdma-therapy.md",
+        "word_count": 1027,
+        "surface_findings": 7,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 9,
+            "candidates_per_1000_words": 8.763,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 2.921,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 16,
+            "candidates_per_1000_words": 15.579,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.974,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 2,
+            "candidates_per_1000_words": 1.947,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 4,
+            "candidates_per_1000_words": 3.895,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 36.266,
+        "semantic": null,
+        "semantic_findings": null
+      }
+    },
+    {
+      "topic": "servant-hedonism",
+      "human": {
+        "path": "dev/evals/samples/human-sourced/21c-fortelabs-servant-hedonism.md",
+        "word_count": 1265,
+        "surface_findings": 2,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 2.372,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 24,
+            "candidates_per_1000_words": 18.972,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.791,
+            "threshold_met": false,
+            "context_suppressed": true
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 4,
+            "candidates_per_1000_words": 3.162,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 40.295,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_fresh": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-servant-hedonism.md",
+        "word_count": 1382,
+        "surface_findings": 5,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 8,
+            "candidates_per_1000_words": 5.789,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 2.171,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 2.171,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 49,
+            "candidates_per_1000_words": 35.456,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 4,
+            "candidates_per_1000_words": 2.894,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 2,
+            "candidates_per_1000_words": 1.447,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 44.875,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_rewrite": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-rewrite-servant-hedonism.md",
+        "word_count": 947,
+        "surface_findings": 5,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 1.056,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 3.168,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 12,
+            "candidates_per_1000_words": 12.672,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 1.056,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 1.056,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 1.056,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 2,
+            "candidates_per_1000_words": 2.112,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 30.312,
+        "semantic": null,
+        "semantic_findings": null
+      }
+    },
+    {
+      "topic": "first-men-original-sins",
+      "human": {
+        "path": "dev/evals/samples/human-sourced/21c-image-first-men-original-sins.md",
+        "word_count": 3941,
+        "surface_findings": 6,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 20,
+            "candidates_per_1000_words": 5.075,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 66,
+            "candidates_per_1000_words": 16.747,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.254,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.254,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 2,
+            "candidates_per_1000_words": 0.507,
+            "threshold_met": false,
+            "context_suppressed": true
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 10,
+            "candidates_per_1000_words": 2.537,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 6,
+            "candidates_per_1000_words": 1.522,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 116.231,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_fresh": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-first-men-original-sins.md",
+        "word_count": 2111,
+        "surface_findings": 10,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 24,
+            "candidates_per_1000_words": 11.369,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 1.421,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 12,
+            "candidates_per_1000_words": 5.685,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 4,
+            "candidates_per_1000_words": 1.895,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.474,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.474,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 7,
+            "candidates_per_1000_words": 3.316,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.474,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 64.361,
+        "semantic": null,
+        "semantic_findings": null
+      },
+      "ai_rewrite": {
+        "path": "dev/evals/samples/generated-ai/21c-ai-rewrite-first-men-original-sins.md",
+        "word_count": 1417,
+        "surface_findings": 6,
+        "house_style_findings": 1,
+        "checks": {
+          "no-em-dashes": {
+            "candidate_count": 18,
+            "candidates_per_1000_words": 12.703,
+            "threshold_met": false,
+            "context_suppressed": true
+          },
+          "no-ai-vocabulary-clustering": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-nonliteral-land-surface": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "overall-signal-stacking": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-manufactured-insight": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-performed-candour": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-staccato-sequences": {
+            "candidate_count": 4,
+            "candidates_per_1000_words": 2.823,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-anaphora": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-collaborative-artifacts": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-curly-quotes": {
+            "candidate_count": 16,
+            "candidates_per_1000_words": 11.291,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "sentence-length-variance": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-promotional-language": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-significance-inflation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negative-parallelisms": {
+            "candidate_count": 2,
+            "candidates_per_1000_words": 1.411,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-copula-avoidance": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.706,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-filler-phrases": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-generic-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-false-concession-hedges": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-placeholder-residue": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-soft-scaffolding": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-orphaned-demonstratives": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-forced-triads": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.706,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-superficial-ing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-ghost-spectral-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-quietness-obsession": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rhetorical-questions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-unicode-flair": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-dramatic-transitions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-formulaic-openers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-signposted-conclusions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-markdown-headings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.706,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-parenthetical-headings": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-corporate-ai-speak": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-this-chains": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-excessive-hedging": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-countdown-negation": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-negation-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "paragraph-length-uniformity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-tidy-paragraph-endings": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.706,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-bland-critical-template": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-rubric-echoing": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "vocabulary-diversity": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-triad-density": {
+            "candidate_count": 3,
+            "candidates_per_1000_words": 2.117,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-section-scaffolding": {
+            "candidate_count": 1,
+            "candidates_per_1000_words": 0.706,
+            "threshold_met": true,
+            "context_suppressed": false
+          },
+          "no-notability-claims": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-vague-attributions": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-boldface-overuse": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-inline-header-lists": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-compound-modifier-density": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          },
+          "no-knowledge-cutoff-disclaimers": {
+            "candidate_count": 0,
+            "candidates_per_1000_words": 0.0,
+            "threshold_met": false,
+            "context_suppressed": false
+          }
+        },
+        "runtime_ms": 45.051,
+        "semantic": null,
+        "semantic_findings": null
+      }
+    }
+  ]
+}

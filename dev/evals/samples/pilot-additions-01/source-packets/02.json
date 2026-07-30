@@ -1,0 +1,47 @@
+{
+  "slot": "02",
+  "status": "pass",
+  "title": "My Linux story: Learning Linux in the 90s",
+  "url": "https://opensource.com/article/19/11/learning-linux-90s",
+  "author": "Mike Harris",
+  "published": "2019-11-08",
+  "genre": "memoir or lived-experience writing",
+  "subtype": "first-person technology memoir",
+  "retrieved_at": "2026-07-12",
+  "selection": {
+    "start": "Most people probably don't remember where they, the computing industry, or the everyday world were in 1996.",
+    "end": "I ended up choosing Slackware 3.1 as my preferred distribution, probably more because of the terminal's appearance than the other, more important reasons one should consider before deciding on a distribution.",
+    "coherent_consecutive_passage": true,
+    "intrinsic_structure_preserved": [
+      "chronological first-person paragraphs",
+      "parenthetical asides",
+      "period-specific product and service names"
+    ]
+  },
+  "removals": [
+    "site navigation and account controls",
+    "article title, deck, byline, date, comments count, and reader count",
+    "hero image and image credit before the selected passage",
+    "More Linux resources promotional insertion between body paragraphs",
+    "embedded tri-Linux CD image and caption between selected body paragraphs",
+    "material after the approved endpoint",
+    "related stories, tags, author biography, comments, legal text, cookie controls, and site footer"
+  ],
+  "word_count": 491,
+  "sha256": "5ee0235d358170eadde7365f323f5bc68f75bcf059e90b8f3336de9aae3086e8",
+  "contamination": {
+    "checked": true,
+    "known_overlap": false,
+    "scope": "working tree plus every commit reachable from every git ref/history, excluding prohibited AI-output directories from content inspection",
+    "commands": [
+      "git grep -F -n opening and ending distinctive phrases with this acquired file and AI-output directories excluded",
+      "git log --all --oneline -S for the same opening and ending distinctive phrases",
+      "git grep and git-history searches for title, URL fragment, and author before acquisition"
+    ],
+    "results": [
+      "distinctive-phrase working-tree searches returned no other match",
+      "distinctive-phrase all-history searches returned no commit",
+      "title, URL-fragment, and author searches returned no prior corpus occurrence"
+    ]
+  }
+}

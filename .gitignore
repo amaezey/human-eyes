@@ -13,8 +13,12 @@ dev/evals/grade-sweep-report.json
 # Local ce-work skill config
 .compound-engineering/
 
-# Agent / Claude project memory — local only, not shared via the repo
-AGENTS.md
+# Local agent/runtime artefacts and exploratory eval drafts. Fresh benchmark
+# material stays untracked until provenance and licensing are reviewed.
+.codex-pet-runs/
+dev/evals/tmp-*/
+
+# Claude project memory — local only, not shared via the repo
 CLAUDE.md
 
 # Local-only artefacts at repo root
@@ -28,5 +32,23 @@ requirements.txt
 # tools, TESTING.md) and stays tracked.
 docs/
 
-# Claude Code project config — local-only
+
+# Internal working docs under dev/ — decision records, todos, migration notes,
+# and source-evaluation working files. Local-only; the repo is public.
+# dev/TESTING.md and dev/hypotheses.md stay tracked (README links them).
+dev/EVALUATION_REBUILD_CLOSEOUT.md
+dev/decision-register.md
+dev/decision-walkthrough-approach.md
+dev/pattern-renumbering-migration.md
+dev/regex-catalogue-review.md
+dev/source-ingest-hygiene-ledger-*.md
+dev/todo.md
+dev/source-evaluation-*.csv
+dev/source-ingest-hygiene-*.csv
+
+# Internal dev tooling: the source-ingest skill and the checks that only exist
+# to serve it. Not part of the human-eyes product.
+.agents/
 .claude/
+dev/evals/tests/test_source_ingestion.py
+dev/tools/reconcile_register.py

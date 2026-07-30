@@ -1,0 +1,26 @@
+{
+  "purpose": "Development examples for requested writing constraints. These cases may guide implementation and do not count toward release thresholds.",
+  "cases": [
+    {
+      "id": "performed-candour",
+      "check_id": "no-performed-candour",
+      "rejected": "To be honest, the review is late.",
+      "acceptable": "The review is late.",
+      "near_match": "The policy requires an honest account of expenses."
+    },
+    {
+      "id": "parenthetical-heading",
+      "check_id": "no-parenthetical-headings",
+      "rejected": "## Document skills (the steady ones)\n",
+      "acceptable": "## Document skills\n",
+      "near_match": "The document skills (the steady ones) need revision."
+    },
+    {
+      "id": "relevance-padding",
+      "check_id": "no-filler-phrases",
+      "rejected": "It is worth knowing about the exception.",
+      "acceptable": "The exception applies to imported records.",
+      "near_match": "The record is worth twelve dollars."
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The judgment is plausible, but the annotator supplied no document-based evidence for a repeated section arc. A whole-document shape claim needs support from multiple parts of the piece.",
+      "evidence": [
+        "Let’s start with “servant.”",
+        "This leads us to the second part, to “hedonism.”",
+        "Servant Hedonism is ultimately about self-love."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "overcall",
+      "rationale": "The main essay keeps a reflective self-help register, but the closing promotional block breaks that register. The annotator incorrectly says the register holds without breaks.",
+      "evidence": [
+        "I call it Servant Hedonism – *serving yourself by serving others*.",
+        "**Follow us for the latest updates and insights around productivity and Building a Second Brain on [X](https://twitter.com/fortelabs/), [Facebook](https://www.facebook.com/fortelabs/), [Instagram](https://www.instagram.com/fortelabsco/), [LinkedIn](https://www.linkedin.com/in/tiagoforte/), and [YouTube](https://www.youtube.com/@TiagoForte). And if you're ready to start building your Second Brain, [get the book](https://www.buildingasecondbrain.com/book) and learn the proven method to organize your digital life and unlock your creative potential.**"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "Both cited phrases perform personal vividness without supplying materially individuating detail beyond stock scene-setting or motivational imagery.",
+      "evidence": [
+        "while reading on the couch",
+        "seeing their eyes light up at the sight of a new possibility for their life"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay does take a clear position, but the annotator gave no textual support. A stance judgment should point to explicit commitment language.",
+      "evidence": [
+        "I call it Servant Hedonism – *serving yourself by serving others*.",
+        "But I don’t believe that to be the case.",
+        "I believe service and pleasure can be one and the same, like two sides of the same coin."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The conclusion is plausible, but the annotator provided no evidence showing where specialized vocabulary clusters rather than spreading uniformly.",
+      "evidence": [
+        "“Servant” is meant in the same sense as “Servant Leadership.”",
+        "It leads to positive sum interactions.",
+        "[Pleasure can be an organizing principle](https://fortelabs.com/pleasure-as-an-organizing-principle/)"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "insufficient_evidence",
+      "rationale": "I did not find a clear forced synesthesia problem, but the annotator offered no support for the all-clear judgment.",
+      "evidence": [
+        "draining your own of its color",
+        "their eyes light up",
+        "Pleasure is the gravity well of the human condition"
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The listed metaphors are recognizable stock or loosely imported figurative frames that do not add much concrete meaning beyond asserting attraction, unity, or spread.",
+      "evidence": [
+        "like two sides of the same coin",
+        "Pleasure is the gravity well of the human condition",
+        "There is a viral quality to Servant Hedonism."
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The text is mostly referentially clear, but the annotator supplied no evidence for the all-clear judgment.",
+      "evidence": [
+        "this principle",
+        "all these practical benefits",
+        "whose needs those are"
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The cited passages rely on repeated syntactic symmetry and counted cadence to carry persuasion, which matches the registry definition.",
+      "evidence": [
+        "It leads to positive sum interactions. It gives you a great reputation. It unites the people around you in common causes as you seek to be of service together.",
+        "You love yourself enough to include yourself in the sphere of your love. You love your life too much to allow pain to be the defining experience of your days.",
+        "You cannot create freedom for others through your own bondage. You cannot empower others through your own demoralization. You cannot create a fulfilling life for others by draining your own of its color."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "The flagged sentence largely restates the immediately previous claim that attraction will draw people in, adding list variation more than new substance.",
+      "evidence": [
+        "Servant Hedonism creates a magnetic attraction that draws others in.",
+        "There’s no need to recruit them, or incentivize them, or convince them to join you."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The listed phrases depend on evaluative or intensified wording without naming the operative standard, basis of comparison, or concrete property.",
+      "evidence": [
+        "the most fulfilling and satisfying places",
+        "a transcendent, out-of-body experience",
+        "a great reputation",
+        "The cold mandate to “be of value”",
+        "The ultimate privilege in a relentlessly self-centered world"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "insufficient_evidence",
+      "rationale": "I do not see a strong context-leakage problem, but the annotator gave no support for clearing the category.",
+      "evidence": [
+        "Some might object to the word “hedonism.”",
+        "But I think it’s essential.",
+        "*Thank you to Ben Ford, Javier Rodriguez, and Michael Ashcroft for their feedback and suggestions.*"
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay does not appear to lean on obvious candour-performers, but the annotator provided no evidence for the clear judgment.",
+      "evidence": [
+        "I don’t think it matters that much whose needs those are.",
+        "But I think it’s essential.",
+        "I think we fear that we’ll lose control, that we’ll go off the deep end of self-gratification."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "insufficient_evidence",
+      "rationale": "The prose generally states its links explicitly, but the annotator supplied no evidence for the all-clear judgment.",
+      "evidence": [
+        "But even with all these practical benefits, there is one reason to serve others that stands well above the rest: it feels good.",
+        "Because if your life is only a means to something else, then human life can’t be your highest value.",
+        "Yet our needs are endless."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "insufficient_evidence",
+      "rationale": "`default` is the right genre bucket for this first-person philosophy blog post, and I do not see watchlist findings from the listed genres, but the annotator gave no evidence for the classification.",
+      "evidence": [
+        "# Servant Hedonism: My Life Philosophy",
+        "On a recent Sunday afternoon, while reading on the couch, I was startled to realize that I had a life philosophy.",
+        "I call it Servant Hedonism – *serving yourself by serving others*."
+      ]
+    }
+  ]
+}

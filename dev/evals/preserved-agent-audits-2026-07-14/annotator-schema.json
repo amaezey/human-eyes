@@ -1,0 +1,1284 @@
+{
+  "type": "object",
+  "properties": {
+    "semantic_answers": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "structural_monotony"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "const": "sections vary"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "structural_monotony"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "const": "some sections share a shape"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "structural_monotony"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "const": "every section follows the same arc"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "tonal_uniformity"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "const": "register holds without breaks"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "tonal_uniformity"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "const": "register breaks at least once"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "tonal_uniformity"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "const": "register shifts deliberately"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "faux_specificity"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_unspecific": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_unspecific"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "faux_specificity"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_unspecific": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_unspecific"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "neutrality_collapse"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "const": "takes a position"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "neutrality_collapse"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "const": "hedges its position"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "neutrality_collapse"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "const": "flattens to balanced framing"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "even_jargon_distribution"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "const": "jargon clumps where the writer knows things"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "even_jargon_distribution"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "const": "jargon spreads naturally"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "even_jargon_distribution"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "const": "jargon spreads uniformly across the text"
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "forced_synesthesia"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_forced": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_forced"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "forced_synesthesia"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_forced": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_forced"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "generic_metaphors"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_generic": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_generic"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "generic_metaphors"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_generic": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_generic"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "referential_clarity"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_unclear": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_unclear"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "referential_clarity"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_unclear": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_unclear"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "formulaic_parallelism"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_formulaic": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_formulaic"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "formulaic_parallelism"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_formulaic": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_formulaic"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "semantic_redundancy"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "what_it_repeats": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "what_it_repeats"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "semantic_redundancy"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "what_it_repeats": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "what_it_repeats"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "underspecified_language"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "missing_criterion": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "missing_criterion"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "underspecified_language"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "missing_criterion": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "missing_criterion"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "context_leakage"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "missing_context": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "missing_context"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "context_leakage"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "missing_context": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "missing_context"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "performed_candour"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_unnecessary": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_unnecessary"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "performed_candour"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "why_unnecessary": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "why_unnecessary"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "vacuous_connection"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "missing_relationship": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "missing_relationship"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "vacuous_connection"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phrase": {
+                      "type": "string"
+                    },
+                    "missing_relationship": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "phrase",
+                    "missing_relationship"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "genre_specific"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "clear"
+              },
+              "answer": {
+                "type": "object",
+                "properties": {
+                  "genre_detected": {
+                    "enum": [
+                      "academic",
+                      "student_essay",
+                      "poetry",
+                      "fiction",
+                      "journalism",
+                      "marketing_email",
+                      "default"
+                    ]
+                  },
+                  "watchlist_findings": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "phrase": {
+                          "type": "string"
+                        },
+                        "why_flagged": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "phrase",
+                        "why_flagged"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 0
+                  }
+                },
+                "required": [
+                  "genre_detected",
+                  "watchlist_findings"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "genre_specific"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "status": {
+                "const": "flagged"
+              },
+              "answer": {
+                "type": "object",
+                "properties": {
+                  "genre_detected": {
+                    "enum": [
+                      "academic",
+                      "student_essay",
+                      "poetry",
+                      "fiction",
+                      "journalism",
+                      "marketing_email",
+                      "default"
+                    ]
+                  },
+                  "watchlist_findings": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "phrase": {
+                          "type": "string"
+                        },
+                        "why_flagged": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "phrase",
+                        "why_flagged"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "genre_detected",
+                  "watchlist_findings"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "id",
+              "status",
+              "answer",
+              "evidence"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "semantic_answers"
+  ],
+  "additionalProperties": false
+}

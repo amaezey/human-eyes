@@ -1,0 +1,172 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "every section follows the same arc",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "rounds where everyone spoke early, norms that prioritised listening over performance",
+          "why_unspecific": "Sounds like concrete workshop detail but names no people, place, or moment — it's generic facilitation-technique vocabulary anyone describing any workshop could use."
+        },
+        {
+          "phrase": "weekly check-ins, monthly retros, quarterly planning",
+          "why_unspecific": "A stock list of generic organisational cadences with no grounding in an actual schedule, group, or outcome."
+        },
+        {
+          "phrase": "We tested this by sketching a basic cadence for our group.",
+          "why_unspecific": "Claims a concrete test but supplies no actual cadence, dates, or details of what was sketched."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It gave us a set of levers.",
+          "why_generic": "Stock metaphor for tools/actionable means; doesn't specify which levers or what they actually do."
+        },
+        {
+          "phrase": "hierarchy loosens",
+          "why_generic": "Vague physical metaphor for a social/organisational change with no concrete mechanism specified."
+        },
+        {
+          "phrase": "fills the gap",
+          "why_generic": "Generic space-filling metaphor for how default culture asserts itself, with no concrete referent for what the 'gap' consists of."
+        },
+        {
+          "phrase": "It created “edges” around work",
+          "why_generic": "Borrowed spatial metaphor for attention-boundaries that isn't cashed out into any concrete mechanism."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "If people feel they belong, they act. If they act, work distributes. If work distributes, hierarchy loosens.",
+          "why_formulaic": "A chained if-then syllogism whose symmetrical repetition substitutes for an actual causal explanation of how belonging produces action, how action produces distribution, or how distribution loosens hierarchy."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "the framing of decentralisation as a design problem, not a personality trait",
+          "what_it_repeats": "Restates the opening claim that 'decentralisation doesn’t happen by default. It’s designed, practised, and maintained' without adding new content."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a more considered outcome",
+          "missing_criterion": "No stated basis for what makes an outcome 'more considered' or what it's being measured against beyond the vague contrast with 'any objections?'"
+        },
+        {
+          "phrase": "a lightweight mechanism",
+          "missing_criterion": "No criterion given for what makes the steward/stewardee pairing 'lightweight' as opposed to any other structural change."
+        },
+        {
+          "phrase": "a rough rhythm",
+          "missing_criterion": "No property specified for what makes the tested cadence 'rough' — no comparison to a 'smooth' or complete rhythm."
+        },
+        {
+          "phrase": "less hesitation",
+          "missing_criterion": "No baseline given for what the earlier level of hesitation was, so the comparison can't be evaluated."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "None of this is dramatic. That’s the point.",
+          "missing_context": "Reads as a rebuttal to an unstated objection that the changes described are too modest or unimpressive."
+        },
+        {
+          "phrase": "Not perfectly, but more often, and with less hesitation.",
+          "missing_context": "Defends against an implied critique that the group's power-naming practice is inconsistent or incomplete."
+        },
+        {
+          "phrase": "The facilitators didn’t present these as problems to solve once. They’re conditions to manage continuously.",
+          "missing_context": "Responds to an unstated assumption or question about whether the named frictions are one-time fixable problems."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It also legitimises care as work, which matters if you want it to be sustained.",
+          "missing_relationship": "Doesn't explain the mechanism by which 'legitimising' care work causally leads to its sustainability."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

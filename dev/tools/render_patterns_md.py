@@ -34,6 +34,7 @@ CATEGORY_ORDER = [
     "Sensory and atmospheric",
     "Structural tells",
     "Voice and register",
+    "Signal stacking",
 ]
 
 # Page-level content that lives in the generator (rarely changes; kept here
@@ -65,7 +66,6 @@ def parse_patterns_md(text):
         toc_body: str (just the body of ## Contents, no heading)
         evidence_body: str
         categories: dict[category_name, list[(heading_number, heading_text, body)]]
-        meta_check_body: str
     """
     # Identify section boundaries by H2.
     h2_split = re.split(r"(?m)^## (.+)$", text)
@@ -76,7 +76,6 @@ def parse_patterns_md(text):
 
     toc_body = None
     evidence_body = None
-    meta_check_body = None
     categories = {}
 
     for i in range(1, len(h2_split), 2):
@@ -88,8 +87,6 @@ def parse_patterns_md(text):
             toc_body = body
         elif title.startswith("Evidence hierarchy"):
             evidence_body = body
-        elif title.startswith("Signal stacking"):
-            meta_check_body = body
         elif title in CATEGORY_ORDER:
             categories[title] = parse_category_body(body)
         else:
@@ -100,7 +97,6 @@ def parse_patterns_md(text):
         "toc_body": toc_body,
         "evidence_body": evidence_body,
         "categories": categories,
-        "meta_check_body": meta_check_body,
     }
 
 
@@ -113,7 +109,7 @@ def parse_category_body(body):
     (preserves source idiosyncrasies — sub-letter entries are inconsistently
     spaced in the source).
     """
-    h3_split = re.split(r"(?m)^### (\d+[a-z]?)\. (.+)$", body)
+    h3_split = re.split(r"(?m)^### ([A-Z]\d+)\. (.+)$", body)
     # h3_split = [pre_h3_content, num1, title1, body1, num2, title2, body2, ...]
     preamble = h3_split[0].strip()
     entries = []
@@ -154,13 +150,21 @@ def parse_category_body(body):
 def find_check_id_in_body(body):
     """Extract the check_id from the body's **Severity:** line, if present.
 
-    Returns (check_id, kind) where kind is 'check', 'folded', or 'manual'.
+    Returns (check_id, kind) where kind is 'check', 'agent', 'folded', or 'manual'.
+
+    The product has two detector types, programmatic and agent-judgement.
+    'manual' is neither, so it marks a catalogue entry nothing checks.  Both
+    agent-judgement and manual entries carry `Severity: N/A`, so read past it
+    rather than treating every N/A as manual.
     """
     # **Severity:** <tier> · `check-id`
     m = re.search(r"\*\*Severity:\*\*\s+(\w+)\s*·\s*`([\w-]+)`", body)
     if m:
         return (m.group(2), "check")
-    # **Severity:** N/A · ...  → manual
+    # **Severity:** N/A · agent-judgement ...
+    if re.search(r"\*\*Severity:\*\*\s+N/A\s*·\s*agent-judgement", body):
+        return (None, "agent")
+    # **Severity:** N/A · manual self-audit only
     if re.search(r"\*\*Severity:\*\*\s+N/A", body):
         return (None, "manual")
     # **Severity:** inherits <tier> from `parent`
@@ -190,9 +194,7 @@ def enrich():
     enriched = {}
     enriched["_meta"] = {
         "preamble": parsed["preamble"],
-        "toc_body": parsed["toc_body"],
         "evidence_body": parsed["evidence_body"],
-        "meta_check_body": parsed["meta_check_body"],
     }
 
     extra_entries = []
@@ -245,7 +247,57 @@ def enrich():
     print(f"enriched {PATTERNS_JSON.relative_to(REPO_ROOT)}:")
     print(f"  {n_check} check records (added pattern_number, patterns_md_heading, patterns_md_body)")
     print(f"  {len(extra_entries)} extra entries (folded/manual)")
-    print(f"  _meta: preamble + toc_body + evidence_body + meta_check_body")
+    print(f"  _meta: preamble + toc_body + evidence_body")
+
+
+# Patterns whose behaviour lives inside another pattern's programmatic check.
+FOLDED_INTO = {"C4": "no-unicode-flair", "D3": "no-collaborative-artifacts"}
+def _load_detection_registries():
+    """Return (programmatic slugs, pattern_number -> [judgement record ids])."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "grade", REPO_ROOT / "human-eyes" / "scripts" / "grade.py")
+    grade = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(grade)
+    judgement = json.loads(
+        (REPO_ROOT / "human-eyes" / "scripts" / "judgement.json").read_text())
+    by_number = {}
+    for rec in judgement["records"]:
+        ref = rec["pattern_ref"]
+        if ref is not None:
+            by_number.setdefault(str(ref), []).append(rec["id"])
+    return set(grade.ALL_CHECKS), by_number
+
+
+def derive_detection(number, slug, programmatic, judgement_by_number):
+    """Derive the Detection stem for one catalogue entry."""
+    if slug and slug in programmatic:
+        return f"Programmatic check `{slug}`"
+    if number in judgement_by_number:
+        ids = ", ".join(f"`{i}`" for i in judgement_by_number[number])
+        return f"Agent judgement {ids} (scripts/judgement.json)"
+    if number in FOLDED_INTO:
+        return f"Folded into the programmatic check `{FOLDED_INTO[number]}`"
+    return "Manual self-audit only — no programmatic check or agent-judgement record"
+
+
+DETECTION_PARA_RE = re.compile(r"\n*\*\*Detection:\*\* ([^\n]*(?:\n(?!\n)[^\n]*)*)")
+
+
+def apply_detection(body, stem):
+    """Replace or append the body's Detection paragraph with the derived stem.
+
+    Explanatory prose after the first sentence of an existing marker is kept.
+    """
+    tail = ""
+    m = DETECTION_PARA_RE.search(body)
+    if m:
+        existing = m.group(1).strip()
+        parts = re.split(r"(?<=[.!?]) ", existing, maxsplit=1)
+        if len(parts) == 2:
+            tail = " " + parts[1]
+        body = body[:m.start()] + body[m.end():]
+    return body.rstrip() + f"\n\n**Detection:** {stem}.{tail}"
 
 
 def render():
@@ -254,6 +306,8 @@ def render():
     meta = data.get("_meta", {})
     extras = data.get("_extra_entries", [])
 
+    programmatic, judgement_by_number = _load_detection_registries()
+
     # Group all entries (checks + extras) by category, preserving original order via pattern_number.
     by_category = {cat: [] for cat in CATEGORY_ORDER}
     for cid, rec in data.items():
@@ -261,31 +315,57 @@ def render():
             continue
         if "pattern_number" not in rec:
             continue
+        stem = derive_detection(rec["pattern_number"], cid, programmatic, judgement_by_number)
         by_category[rec["category"]].append({
             "number": rec["pattern_number"],
             "heading": rec["patterns_md_heading"],
-            "body": rec["patterns_md_body"],
+            "body": apply_detection(rec["patterns_md_body"], stem),
             "leading_blanks": rec.get("patterns_md_leading_blanks", 1),
         })
     for entry in extras:
+        stem = derive_detection(entry["pattern_number"], None, programmatic, judgement_by_number)
         by_category[entry["category"]].append({
             "number": entry["pattern_number"],
             "heading": entry["patterns_md_heading"],
-            "body": entry["patterns_md_body"],
+            "body": apply_detection(entry["patterns_md_body"], stem),
             "leading_blanks": entry.get("patterns_md_leading_blanks", 1),
         })
 
     # Sort each category by pattern_number — the original patterns.md order
     # uses numeric+letter suffix; sort by (numeric_prefix, letter_suffix).
     def sort_key(entry):
-        m = re.match(r"(\d+)([a-z]?)", entry["number"])
-        return (int(m.group(1)), m.group(2))
+        m = re.match(r"([A-Z])(\d+)$", entry["number"])
+        return (m.group(1), int(m.group(2)))
     for cat in by_category:
         by_category[cat].sort(key=sort_key)
 
     # Build sections. Preamble → Contents has NO `---` separator. All other
     # transitions get `---`.
-    preamble_and_toc = meta["preamble"] + f"\n\n## Contents\n\n{meta['toc_body']}"
+    # The count sentence and the category ranges are computed here, never stored.
+    # Storing them is what let them go stale twice before DR-158, and again the
+    # moment H18 moved category: a value written once is hand-maintained however
+    # it was first derived.
+    # Endpoints come from the ids actually present, never from the count. A
+    # category is not guaranteed gapless: retiring an entry from the middle
+    # leaves the highest id above the entry count, and using the count would
+    # silently drop the top entry from its own declared range.
+    counts = []
+    total = 0
+    for cat in CATEGORY_ORDER:
+        entries = by_category[cat]
+        if not entries:
+            continue
+        positions = sorted(int(e["number"][1:]) for e in entries)
+        letter = entries[0]["number"][0]
+        counts.append((cat, letter, positions[0], positions[-1]))
+        total += len(entries)
+    preamble = re.sub(r"^\d+ patterns\b", f"{total} patterns",
+                      meta["preamble"], count=1, flags=re.M)
+    toc_body = "\n".join(
+        f"- [{cat} ({letter}{lo}-{letter}{hi})](#{cat.lower().replace(' ', '-')})"
+        if hi != lo else f"- [{cat} ({letter}{lo})](#{cat.lower().replace(' ', '-')})"
+        for cat, letter, lo, hi in counts)
+    preamble_and_toc = preamble + f"\n\n## Contents\n\n{toc_body}"
     sections = [preamble_and_toc]
     sections.append(f"## Evidence hierarchy from the reference audit\n\n{meta['evidence_body']}")
 
@@ -309,8 +389,6 @@ def render():
                 separator = "\n" * (entry["leading_blanks"] + 1)
             cat_block += f"{separator}### {entry['number']}. {entry['heading']}\n\n{entry['body']}"
         sections.append(cat_block)
-
-    sections.append(f"## Signal stacking (meta-check)\n\n{meta['meta_check_body']}")
 
     return "\n\n---\n\n".join(sections).rstrip() + "\n"
 

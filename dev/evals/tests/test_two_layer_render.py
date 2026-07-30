@@ -404,21 +404,21 @@ print("\n=== phrase cap: default 3+overflow, full-report all ===")
 
 phrases = [f"phrase{i}" for i in range(LAYER_1_PHRASE_CAP + 4)]
 many_phrase_results = [
-    flag("no-triad-density", evidence_phrases=phrases),
+    flag("no-forced-triads", evidence_phrases=phrases),
 ] + [
     annotate_result({"text": cid, "passed": True, "evidence": "clean"})
     for cid in ALL_CHECKS
-    if cid != "no-triad-density"
+    if cid != "no-forced-triads"
 ]
 many_render_default = format_two_layer(many_phrase_results, depth="balanced")
 many_audit_body = many_render_default.split("**Next steps**", 1)[0]
 
 triad_block = next(
-    (line for line in many_audit_body.splitlines() if "Triad density" in line and not line.startswith("**")),
+    (line for line in many_audit_body.splitlines() if "Three-part constructions" in line and not line.startswith("**")),
     None,
 )
 if triad_block is None:
-    fail(f"default render missing Triad density block; got:\n{many_audit_body}")
+    fail(f"default render missing Three-part constructions block; got:\n{many_audit_body}")
 else:
     quote_count = triad_block.count('"phrase')
     if quote_count != LAYER_1_PHRASE_CAP:
@@ -432,11 +432,11 @@ else:
 many_render_full = format_two_layer(many_phrase_results, depth="balanced", mode="full_report")
 many_full_body = many_render_full.split("**Auto-detected**", 1)[1]
 triad_block_full = next(
-    (line for line in many_full_body.splitlines() if "Triad density" in line and not line.startswith("**") and "|" not in line),
+    (line for line in many_full_body.splitlines() if "Three-part constructions" in line and not line.startswith("**") and "|" not in line),
     None,
 )
 if triad_block_full is None:
-    fail(f"full-report missing Triad density block; got:\n{many_full_body[:1000]}")
+    fail(f"full-report missing Three-part constructions block; got:\n{many_full_body[:1000]}")
 else:
     quote_count = triad_block_full.count('"phrase')
     if quote_count != len(phrases):

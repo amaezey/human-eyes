@@ -1,0 +1,558 @@
+{
+  "pilot": "pilot-additions-01",
+  "status": "awaiting_native_semantic_audit",
+  "sampling_frame": "subject-format-genre-length-only; literal first outputs; no rerolls or edits",
+  "ai_generation_records": "records/01.json through records/10.json",
+  "pairs": [
+    {
+      "id": "01-personal-reflective-essay",
+      "genre": "personal",
+      "subgenre": "open letter",
+      "register": "informal reflective",
+      "publication_year": 2019,
+      "source_type": "individual-authored",
+      "intended_audience": "general public",
+      "formatting_profile": "web essay",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "CC BY 3.0",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "globalvoices.org",
+      "prose_class": "personal prose",
+      "human": {
+        "path": "human-sourced/01.md",
+        "sha256": "081c94fa9da1ec3e74f9e0fbf807d4a5ba66cf5db670e570358728bf40bad2a6",
+        "provenance": {
+          "source_url": "https://globalvoices.org/2019/03/22/violence-tiptoes-in-on-jokes-stereotypes-and-lies-and-catches-us-by-surprise/",
+          "title": "Violence tiptoes in on jokes, stereotypes, and lies — and catches us by surprise",
+          "author": "Tori Egherman",
+          "author_type": "individual"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/01.json",
+          "sha256": "a286aa7d7dc27399c7bbb6718548fc5c7efef9d0d93dad617e8e3ca7aab895d6"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/01.md",
+        "sha256": "2ec89f405f95799df68984d45deaf38fb0e3fa39280b89a9ec68e9281f0c3a84",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/01.md",
+          "first_output_sha256": "2ec89f405f95799df68984d45deaf38fb0e3fa39280b89a9ec68e9281f0c3a84",
+          "prompt_path": "../../pilot-additions-prompts/01.txt",
+          "prompt_sha256": "8133be0f4c4aef27dedc08b70e8cab8a4c7b44a30cc0b85a2b60507ef6a6d051",
+          "record_path": "records/01.json",
+          "record_sha256": "97111a3728d8e48c8fc6f5ed8ac1edc79e3d39179a78a1724b7d1dcc7ec46fd6"
+        },
+        "semantic_audit": null
+      }
+    },
+    {
+      "id": "02-lived-experience-memoir",
+      "genre": "memoir",
+      "subgenre": "technology memoir",
+      "register": "informal retrospective",
+      "publication_year": 2019,
+      "source_type": "individual-authored",
+      "intended_audience": "general/technical readers",
+      "formatting_profile": "web article",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "source metadata recorded",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "opensource.com",
+      "prose_class": "personal prose",
+      "human": {
+        "path": "human-sourced/02.md",
+        "sha256": "5ee0235d358170eadde7365f323f5bc68f75bcf059e90b8f3336de9aae3086e8",
+        "provenance": {
+          "source_url": "https://opensource.com/article/19/11/learning-linux-90s",
+          "title": "My Linux story: Learning Linux in the 90s",
+          "author": "Mike Harris",
+          "author_type": "individual"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/02.json",
+          "sha256": "9b6dfdf62086418602dc20c807185ac01e9846eb006260109ed5e3b1456f3ce8"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/02.md",
+        "sha256": "39937b8c02437b4027a32fc913b04339bcb873bf1e488931fa84d5e6a3bd78c3",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/02.md",
+          "first_output_sha256": "39937b8c02437b4027a32fc913b04339bcb873bf1e488931fa84d5e6a3bd78c3",
+          "prompt_path": "../../pilot-additions-prompts/02.txt",
+          "prompt_sha256": "c94f7b2cceda2a2e3afa80786f80445bbfd359711b5def387e3e4c077bca3a9f",
+          "record_path": "records/02.json",
+          "record_sha256": "206c8469d2208b2f1e50e6f1efa5059287f27ad02f286166af6c7f5dea1f9232"
+        },
+        "semantic_audit": null
+      }
+    },
+    {
+      "id": "03-personal-newsletter",
+      "genre": "personal blog",
+      "subgenre": "travel/personal update",
+      "register": "conversational",
+      "publication_year": 2019,
+      "source_type": "individual-authored",
+      "intended_audience": "blog readers",
+      "formatting_profile": "blog post",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "source metadata recorded",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "www.tbray.org",
+      "prose_class": "personal prose",
+      "human": {
+        "path": "human-sourced/03.md",
+        "sha256": "efe9a9abcbd39d91fa464adc9db6a8f1620600c66ed9f5bf4f852c326f19fea6",
+        "provenance": {
+          "source_url": "https://www.tbray.org/ongoing/When/201x/2019/12/31/Horopito",
+          "title": "Horopito",
+          "author": "Tim Bray",
+          "author_type": "individual"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/03.json",
+          "sha256": "e3fb769b982d4fc88070d7ecf9267a7f52ab856d11041dd76a51b42080c8229c"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/03.md",
+        "sha256": "d43258bfdc1320bac8444d0bdf8f7a001642bf331edb88e265d88aa8513a6181",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/03.md",
+          "first_output_sha256": "d43258bfdc1320bac8444d0bdf8f7a001642bf331edb88e265d88aa8513a6181",
+          "prompt_path": "../../pilot-additions-prompts/03.txt",
+          "prompt_sha256": "f5f6c1a2423466b80d0ed95d74da5d4b016948211b4ddec7b193722dbedb0885",
+          "record_path": "records/03.json",
+          "record_sha256": "c83e1489ca8463daf34540e7dad0b2a885171ed2a05368a183daf5f10e142f29"
+        },
+        "semantic_audit": null
+      }
+    },
+    {
+      "id": "04-professional-email",
+      "genre": "professional communication",
+      "subgenre": "programme email",
+      "register": "formal collegial",
+      "publication_year": 2019,
+      "source_type": "mailing-list archive",
+      "intended_audience": "professional community",
+      "formatting_profile": "email",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "W3C document licence",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "lists.w3.org",
+      "prose_class": "workplace prose",
+      "human": {
+        "path": "human-sourced/04.md",
+        "sha256": "abdebdf252877c74710b685437a502cb8b7e995bbffebb58ddc914d6824b6227",
+        "provenance": {
+          "source_url": "https://lists.w3.org/Archives/Public/public-invited-experts/2019Jan/0000.html",
+          "title": "Soft Launch of a W3C Invited Expert identity program",
+          "author": "Coralie Mercier",
+          "author_type": "individual"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/04.json",
+          "sha256": "ca4e021f583fda103e3dfaa28c4b4de983ca15420b1d37eb640ab5d4492a2adc"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/04.md",
+        "sha256": "118f8014d0935b4818336aef67d8e25ab07c69c6dfcd3904da5e5e8e532f4f36",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/04.md",
+          "first_output_sha256": "118f8014d0935b4818336aef67d8e25ab07c69c6dfcd3904da5e5e8e532f4f36",
+          "prompt_path": "../../pilot-additions-prompts/04.txt",
+          "prompt_sha256": "6d15f5fbcb350c8ab7d21b98a033ea86577bfbb83d9553b1c076314ed83a551d",
+          "record_path": "records/04.json",
+          "record_sha256": "5ba29f30597a01c19076e43b2ed22cba8dfd0807340b12a239a57d4f20801e9d"
+        },
+        "semantic_audit": null
+      }
+    },
+    {
+      "id": "05-workplace-project-update",
+      "genre": "workplace update",
+      "subgenre": "standards project update",
+      "register": "formal collegial",
+      "publication_year": 2019,
+      "source_type": "mailing-list archive",
+      "intended_audience": "working group",
+      "formatting_profile": "email/update",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "W3C archive source metadata recorded",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "lists.w3.org",
+      "prose_class": "workplace prose",
+      "human": {
+        "path": "human-sourced/05.md",
+        "sha256": "67118531cca905a077e1eecd23a59145f2fba69145455374a838a8d22fa8536d",
+        "provenance": {
+          "source_url": "https://lists.w3.org/Archives/Public/w3c-wai-gl/2019OctDec/0118.html",
+          "title": "WCAG 2.2 status update",
+          "author": "Alastair Campbell",
+          "author_type": "individual"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/05.json",
+          "sha256": "312fe763950a63576f9a8fff9b47647cca9eb614ee079650142f75a03659202d"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/05.md",
+        "sha256": "06d66b4cd0c9cc3ce22a75a4db0416b12bfbcc1b59076ac9dc861a214662afb9",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/05.md",
+          "first_output_sha256": "06d66b4cd0c9cc3ce22a75a4db0416b12bfbcc1b59076ac9dc861a214662afb9",
+          "prompt_path": "../../pilot-additions-prompts/05.txt",
+          "prompt_sha256": "f0bf394fac96a1229ebbf2f08bf4bf743230fcb9ad60f04ff72b4452c18de867",
+          "record_path": "records/05.json",
+          "record_sha256": "b43fde98c4f7a76ecf3fe34646933aace15a50122fd8c59f7879239a98f9955e"
+        },
+        "semantic_audit": null
+      }
+    },
+    {
+      "id": "06-business-strategy-report",
+      "genre": "business report",
+      "subgenre": "annual strategy/reporting",
+      "register": "institutional formal",
+      "publication_year": 2019,
+      "source_type": "government publication",
+      "intended_audience": "government/business stakeholders",
+      "formatting_profile": "report section",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "Australian Government publication; see source metadata",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "www.industry.gov.au",
+      "prose_class": "professional prose",
+      "human": {
+        "path": "human-sourced/06.md",
+        "sha256": "dd5d9ed82d400f70c818983d0c3f80641440ed2d0e6aaf268a88681bcd94dc15",
+        "provenance": {
+          "source_url": "https://www.industry.gov.au/sites/default/files/2019-11/innovation-and-science-australia-annual-report-2018-19.pdf",
+          "title": "Innovation and Science Australia Annual Report 2018–19",
+          "author": "Innovation and Science Australia",
+          "author_type": "organisation"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/06.json",
+          "sha256": "295d704d42f2744c73da9943b25bf294c0cd22c81ca798b5fb84b49ff77b380e"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/06.md",
+        "sha256": "28c1410fe0feb2fb9b47fb47ea728556b95582ecca06da32b5bb6a324ca4bf72",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/06.md",
+          "first_output_sha256": "28c1410fe0feb2fb9b47fb47ea728556b95582ecca06da32b5bb6a324ca4bf72",
+          "prompt_path": "../../pilot-additions-prompts/06.txt",
+          "prompt_sha256": "07728b3e903549e250b9a2f8616321624d38d88d58e8da463067c32fd8a5704a",
+          "record_path": "records/06.json",
+          "record_sha256": "7a6d1eb9270322ac1097516b9c2c825a1eddb1b9fd8ba77a945cbcee9151ceb2"
+        },
+        "semantic_audit": null
+      }
+    },
+    {
+      "id": "07-marketing-customer-communication",
+      "genre": "customer communication",
+      "subgenre": "product release announcement",
+      "register": "promotional professional",
+      "publication_year": 2019,
+      "source_type": "organisation-authored",
+      "intended_audience": "customers/general public",
+      "formatting_profile": "press blog post",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "Mozilla page Creative Commons licence; exact footer captured at acquisition",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "blog.mozilla.org",
+      "prose_class": "marketing prose",
+      "human": {
+        "path": "human-sourced/07.md",
+        "sha256": "266c9883c7277305eb77934b8906f2a71308dcfcf42614f4b4f9f8b7657640c4",
+        "provenance": {
+          "source_url": "https://blog.mozilla.org/press/2019/05/latest-firefox-release-is-faster-than-ever/",
+          "title": "Latest Firefox Release is Faster than Ever",
+          "author": "Mozilla",
+          "author_type": "organisation"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/07.json",
+          "sha256": "87058ee65a6fd4ab0bd1a00f546b6e489cf2a3c34e9e727c3c29f52952fdea9c"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/07.md",
+        "sha256": "aae64f4f67b8522d60fed2f83a714af384e520c5b86f4ba3db517a7af424c02a",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/07.md",
+          "first_output_sha256": "aae64f4f67b8522d60fed2f83a714af384e520c5b86f4ba3db517a7af424c02a",
+          "prompt_path": "../../pilot-additions-prompts/07.txt",
+          "prompt_sha256": "b5293005cb1ba6c9ae1b462d5107136fc396bdd7af61f21302218090bd2301b4",
+          "record_path": "records/07.json",
+          "record_sha256": "9541d253061ee2188542c32861c392265d846892dc6b92c7a7c7b06f663238f6"
+        },
+        "semantic_audit": null
+      }
+    },
+    {
+      "id": "08-student-academic-essay",
+      "genre": "academic essay",
+      "subgenre": "student autoethnography",
+      "register": "academic reflective",
+      "publication_year": 2018,
+      "source_type": "student research publication",
+      "intended_audience": "academic readers",
+      "formatting_profile": "journal article excerpt",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "CC BY-NC 4.0",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "cornerstone.lib.mnsu.edu",
+      "prose_class": "academic prose",
+      "human": {
+        "path": "human-sourced/08.md",
+        "sha256": "ffec235c5d455d4ded353d7e2e5aacd4db4be96956a54e6b3a599c641609372e",
+        "provenance": {
+          "source_url": "https://cornerstone.lib.mnsu.edu/jur/vol18/iss1/6/",
+          "title": "Somebody Has to Pay Rent: The Critical Autoethnography of a Low Income Student",
+          "author": "Shelbi M. Schadendorf",
+          "author_type": "individual"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/08.json",
+          "sha256": "d1a08973d163027f8a0a40223683b2bad02b2fcf87910091bbdc56dc80a1cf65"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/08.md",
+        "sha256": "19bbbb1a0b81f9065fcf81069448ba5e477ad55809bd8ff3f5c01ffc933f250d",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/08.md",
+          "first_output_sha256": "19bbbb1a0b81f9065fcf81069448ba5e477ad55809bd8ff3f5c01ffc933f250d",
+          "prompt_path": "../../pilot-additions-prompts/08.txt",
+          "prompt_sha256": "ad6ebd364b34fc611e7317fa093949f673f63f865532cf6ccd3f5f997fa618d8",
+          "record_path": "records/08.json",
+          "record_sha256": "5f0958621d58b27f5ddd4231da369aef858bb9de6b290fcf199b7ade7c53f4a5"
+        },
+        "semantic_audit": null
+      }
+    },
+    {
+      "id": "09-cultural-criticism",
+      "genre": "cultural criticism",
+      "subgenre": "literary history essay",
+      "register": "edited literary",
+      "publication_year": 2019,
+      "source_type": "edited publication",
+      "intended_audience": "general/literary readers",
+      "formatting_profile": "web essay",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "CC BY-SA",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "publicdomainreview.org",
+      "prose_class": "critical prose",
+      "human": {
+        "path": "human-sourced/09.md",
+        "sha256": "f82449ceb38d9017d28962e9eae106f85cc9f20e8c0429a47fe1bbffa2c3efe2",
+        "provenance": {
+          "source_url": "https://publicdomainreview.org/essay/walt-whitman-in-russia-three-love-affairs/",
+          "title": "Walt Whitman in Russia: Three Love Affairs",
+          "author": "Nina Murray",
+          "author_type": "individual"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/09.json",
+          "sha256": "c1541715dd93f76091f68c801c3d86e1d1f8eaf25f016d20a76077d751e30618"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/09.md",
+        "sha256": "f584ee970c04539264b45e2b473c1787896a1d4a9b130bf704f11f7b3a965a10",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/09.md",
+          "first_output_sha256": "f584ee970c04539264b45e2b473c1787896a1d4a9b130bf704f11f7b3a965a10",
+          "prompt_path": "../../pilot-additions-prompts/09.txt",
+          "prompt_sha256": "341fecd94746b688a3c340f3e605727d65d3ee41d63f4ca822730b8d1217bb29",
+          "record_path": "records/09.json",
+          "record_sha256": "1f72eaea001117938b80a58154bf8920738e6213887790463fd2976b1208d7b7"
+        },
+        "semantic_audit": null
+      }
+    },
+    {
+      "id": "10-government-report",
+      "genre": "government report",
+      "subgenre": "health-system findings",
+      "register": "institutional technical",
+      "publication_year": 2019,
+      "source_type": "government publication",
+      "intended_audience": "policy/health stakeholders",
+      "formatting_profile": "report excerpt",
+      "selection_rationale": "fixed preregistered genre slot; accepted source packet and frozen excerpt",
+      "excerpt_coherence_review": true,
+      "boilerplate_review": true,
+      "confounds": [],
+      "license": "CC BY 3.0",
+      "contamination": {
+        "checked": true,
+        "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+        "known_overlap": false
+      },
+      "source_domain": "www.aihw.gov.au",
+      "prose_class": "government prose",
+      "human": {
+        "path": "human-sourced/10.md",
+        "sha256": "e6bccfcbc63bf1b00a034741e473e62f531e1eca442fec76acb2285db9686a2c",
+        "provenance": {
+          "source_url": "https://www.aihw.gov.au/getmedia/3357eb3b-db28-4b51-9bba-cc025b63679a/aihw-chc-3.pdf?inline=true",
+          "title": "Coordination of health care: experiences of information sharing between providers for patients aged 45 and over 2016",
+          "author": "Australian Institute of Health and Welfare",
+          "author_type": "organisation"
+        },
+        "contamination": {
+          "checked": true,
+          "method": "bound per-document SHA256 and fixed-string searches across scoped working tree and all reachable git history",
+          "known_overlap": false
+        },
+        "source_packet": {
+          "path": "source-packets/10.json",
+          "sha256": "74d9d89ab0e0e9c165fb8f4770fb47a2e7a84889a914eae27af5e041257b1dac"
+        }
+      },
+      "ai": {
+        "path": "generated-ai/10.md",
+        "sha256": "3027aa4987555945507f58fb1dc9a0ac13238656fb3a29a2a85918c1ca1591a3",
+        "provenance": {
+          "generation_attempt": 1,
+          "first_output_path": "raw-ai/10.md",
+          "first_output_sha256": "3027aa4987555945507f58fb1dc9a0ac13238656fb3a29a2a85918c1ca1591a3",
+          "prompt_path": "../../pilot-additions-prompts/10.txt",
+          "prompt_sha256": "9ca9acb5c7efbba4ada66f9547d0762d07300a136f175d27f709a7a43d7f3976",
+          "record_path": "records/10.json",
+          "record_sha256": "b2806d113c7d67cc6fc4edc8922b533e177590c12567a1d1cc6c76b878afc18d"
+        },
+        "semantic_audit": null
+      }
+    }
+  ]
+}

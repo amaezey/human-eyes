@@ -16,7 +16,7 @@ Covers:
 - _judgement_label mechanical transform (unchanged)
 - agent-flagged state / list / composite shapes inline in default mode (R7)
 - severity glyph mirroring auto-detected (x / ! / ?) on agent-flagged items
-- 8 items in registry order in the full-report agent-assessed coverage table
+- 7 items in registry order in the full-report agent-assessed coverage table
 - composite-clear with no findings renders detected genre without old
   "watchlist coverage pending" wording
 - default mode emits no `**Agent-judgement reading**` parallel block
@@ -57,15 +57,21 @@ def ok(msg):
 
 
 def all_clear_judgement():
-    """Build a clear-status judgement list covering all 8 records."""
+    """Build a clear-status judgement list covering the full registry."""
     return [
         {"id": "structural_monotony", "status": "clear", "answer": "sections vary", "evidence": {}},
         {"id": "tonal_uniformity", "status": "clear", "answer": "register breaks at least once", "evidence": {}},
         {"id": "faux_specificity", "status": "clear", "answer": [], "evidence": {}},
         {"id": "neutrality_collapse", "status": "clear", "answer": "takes a position", "evidence": {}},
-        {"id": "even_jargon_distribution", "status": "clear", "answer": "jargon clumps where the writer knows things", "evidence": {}},
         {"id": "forced_synesthesia", "status": "clear", "answer": [], "evidence": {}},
         {"id": "generic_metaphors", "status": "clear", "answer": [], "evidence": {}},
+        {"id": "referential_clarity", "status": "clear", "answer": [], "evidence": {}},
+        {"id": "formulaic_parallelism", "status": "clear", "answer": [], "evidence": {}},
+        {"id": "semantic_redundancy", "status": "clear", "answer": [], "evidence": {}},
+        {"id": "underspecified_language", "status": "clear", "answer": [], "evidence": {}},
+        {"id": "context_leakage", "status": "clear", "answer": [], "evidence": {}},
+        {"id": "performed_candour", "status": "clear", "answer": [], "evidence": {}},
+        {"id": "vacuous_connection", "status": "clear", "answer": [], "evidence": {}},
         {"id": "genre_specific", "status": "clear",
          "answer": {"genre_detected": "default", "watchlist_findings": []}, "evidence": {}},
     ]
@@ -107,7 +113,6 @@ for item_id, expected in [
     ("tonal_uniformity", "Tonal uniformity"),
     ("faux_specificity", "Faux specificity"),
     ("neutrality_collapse", "Neutrality collapse"),
-    ("even_jargon_distribution", "Even jargon distribution"),
     ("forced_synesthesia", "Forced synesthesia"),
     ("generic_metaphors", "Generic metaphors"),
     ("genre_specific", "Genre specific"),
@@ -255,8 +260,8 @@ agg_render = with_patched_judgement(
 )
 if "Auto-detected: 0 of " not in agg_render:
     fail(f"counts line should show 'Auto-detected: 0 of N flagged'; got:\n{agg_render}")
-elif "Agent-assessed: 3 of 8 flagged" not in agg_render:
-    fail(f"counts line should show 'Agent-assessed: 3 of 8 flagged'; got:\n{agg_render}")
+elif "Agent-assessed: 3 of 14 flagged" not in agg_render:
+    fail(f"counts line should show 'Agent-assessed: 3 of 14 flagged'; got:\n{agg_render}")
 elif "Severity: 0 hard fail · 3 strong warning · 0 context warning" not in agg_render:
     fail(f"severity line should aggregate the 3 agent strong_warning items; got:\n{agg_render}")
 else:
@@ -275,8 +280,8 @@ if not both_clear_render.startswith("**Audit summary**\n"):
     fail(f"both-clear default render should still emit the **Audit summary** heading (R9, no collapse); got:\n{both_clear_render}")
 elif "Auto-detected: 0 of " not in both_clear_render:
     fail(f"both-clear counts line should show 'Auto-detected: 0 of N flagged'; got:\n{both_clear_render}")
-elif "Agent-assessed: 0 of 8 flagged" not in both_clear_render:
-    fail(f"both-clear counts line should show 'Agent-assessed: 0 of 8 flagged'; got:\n{both_clear_render}")
+elif "Agent-assessed: 0 of 14 flagged" not in both_clear_render:
+    fail(f"both-clear counts line should show 'Agent-assessed: 0 of 14 flagged'; got:\n{both_clear_render}")
 elif "Severity: 0 hard fail · 0 strong warning · 0 context warning" not in both_clear_render:
     fail(f"both-clear severity line should be all-zero; got:\n{both_clear_render}")
 elif "**Agent-judgement reading" in both_clear_render:
@@ -298,7 +303,7 @@ else:
     ok("pre-U6 '- <Label> — Flagged' shape no longer appears anywhere")
 
 
-# --- Full-report mode: agent-assessed coverage table renders 8 rows in registry order ---
+# --- Full-report mode: agent-assessed coverage table renders registry rows in order ---
 
 print("\n=== full-report mode: agent-assessed coverage table (R14) ===")
 
@@ -318,15 +323,21 @@ elif "Checks that are judged by an LLM based on reading the whole draft." not in
 else:
     ok("full-report renders **Agent-assessed** mini-header + brief note")
 
-# 8 items in judgement.json registry order
+# Items in judgement.json registry order
 EXPECTED_ROW_ORDER = [
     "Structural monotony",
     "Tonal uniformity",
     "Faux specificity",
     "Neutrality collapse",
-    "Even jargon distribution",
     "Forced synesthesia",
     "Generic metaphors",
+    "Referential clarity",
+    "Formulaic parallelism",
+    "Semantic redundancy",
+    "Underspecified language",
+    "Context leakage",
+    "Performed candour",
+    "Vacuous connection",
     "Genre specific",
 ]
 agent_section_start = full_report_render.find("**Agent-assessed**")
@@ -338,7 +349,7 @@ if any(p < 0 for p in positions):
 elif positions != sorted(positions):
     fail(f"full-report agent table rows out of registry order: positions={positions}")
 else:
-    ok("full-report agent-assessed table has 8 rows in judgement.json registry order")
+    ok("full-report agent-assessed table follows judgement.json registry order")
 
 # Flagged-row Detail column points back to inline bullets
 flagged_row = next(

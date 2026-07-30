@@ -1,0 +1,116 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "clear",
+      "answer": "sections vary",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "This varied by sociodemographic characteristics such as age, self-assessed health status, geographic area, and primary care setting.",
+          "why_unclear": "The antecedent of 'This' is ambiguous — it could refer to the 8% gap figures just mentioned, to the overall positive-experience finding, or to both stats combined, and the sentence does not specify which."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "almost all (98%) patients reported that their usual GP or others in their usual place of care seemed aware of their health-care history.",
+          "what_it_repeats": "Restates, almost verbatim, the Key findings bullet: 'nearly all (98%) patients reported that their usual GP or others in their usual place of care seemed aware of their health-care history'"
+        },
+        {
+          "phrase": "a very high proportion (92%) felt that they had a health professional who understood those well.",
+          "what_it_repeats": "Restates the Key findings bullet: 'a high proportion (92%) of patients felt that they had a health professional with a good understanding of their health-care needs and preferences'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "positive experience overall",
+          "missing_criterion": "Does not specify what dimensions or thresholds define a 'positive experience' beyond the two percentages already cited, leaving the evaluative label unanchored to a stated criterion."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

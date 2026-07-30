@@ -1,0 +1,132 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "every section follows the same arc",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It frames the moon not as an object of conquest but as a site of release.",
+          "why_formulaic": "This 'not X but Y' correction script substitutes rhetorical symmetry for a concrete account of what 'release' means in the film's imagery."
+        },
+        {
+          "phrase": "the significance of the space race lies not only in technological achievement but in its capacity to hold human vulnerability",
+          "why_formulaic": "A second 'not only... but' bicolon in the same closing stretch, echoing the prior construction rather than adding new evidence about what 'holding vulnerability' entails."
+        },
+        {
+          "phrase": "Space exploration, in this reading, is neither purely sacred nor purely profane, but a convergence of both.",
+          "why_formulaic": "The closing 'neither...nor...but' triad repeats the same balancing pattern as the two preceding sentences, closing the essay on a symmetrical formula rather than a specific claim."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Space exploration, in this reading, is neither purely sacred nor purely profane, but a convergence of both.",
+          "what_it_repeats": "Restates the sacred/profane framing question posed in the opening paragraph and the von Braun 'duality' argument made in the Newell section, without adding new content."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a detailed social history",
+          "missing_criterion": "What specifically makes the history 'detailed' (scope, sources, depth of archival work) is not stated."
+        },
+        {
+          "phrase": "significant ethical issues",
+          "missing_criterion": "The scale or nature of the ethical issues (beyond the later-mentioned SS/V-2 facts) is not specified at the point the phrase is used."
+        },
+        {
+          "phrase": "aesthetic clarity",
+          "missing_criterion": "No property of Bonestell's imagery is named that would define 'clarity' as opposed to any other aesthetic quality."
+        },
+        {
+          "phrase": "A more balanced interpretation",
+          "missing_criterion": "The baseline or standard for 'balance' is not given beyond a vague contrast with Newell's account."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "academic",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

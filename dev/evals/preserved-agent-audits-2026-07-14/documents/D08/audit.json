@@ -1,0 +1,3254 @@
+{
+  "schema_version": "2",
+  "coverage_mode": "full",
+  "audit_status": "complete",
+  "programmatic_checks": [
+    {
+      "id": "no-em-dashes",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "therapy—battling",
+          "inadequacy—but",
+          "resonated—a",
+          "therapists—compassionate,",
+          "care—sat",
+          "weeping—not",
+          "compassion—true,",
+          "compassion—for",
+          "Integration—the",
+          "insights—wasn’t",
+          "right—I’d",
+          "therapy—not",
+          "compassionate—both",
+          "me—it"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "therapy—battling",
+            "inadequacy—but",
+            "resonated—a",
+            "therapists—compassionate,",
+            "care—sat",
+            "weeping—not",
+            "compassion—true,",
+            "compassion—for",
+            "Integration—the",
+            "insights—wasn’t",
+            "right—I’d",
+            "therapy—not",
+            "compassionate—both",
+            "me—it"
+          ],
+          "evidence": "Found 14 em dash(es)",
+          "candidates": [
+            {
+              "text": "therapy—battling",
+              "start": 1167,
+              "end": 1183,
+              "quoted": false
+            },
+            {
+              "text": "inadequacy—but",
+              "start": 1259,
+              "end": 1273,
+              "quoted": false
+            },
+            {
+              "text": "resonated—a",
+              "start": 1716,
+              "end": 1727,
+              "quoted": false
+            },
+            {
+              "text": "therapists—compassionate,",
+              "start": 2314,
+              "end": 2339,
+              "quoted": false
+            },
+            {
+              "text": "care—sat",
+              "start": 2386,
+              "end": 2394,
+              "quoted": false
+            },
+            {
+              "text": "weeping—not",
+              "start": 3224,
+              "end": 3235,
+              "quoted": false
+            },
+            {
+              "text": "compassion—true,",
+              "start": 3902,
+              "end": 3918,
+              "quoted": false
+            },
+            {
+              "text": "compassion—for",
+              "start": 3928,
+              "end": 3942,
+              "quoted": false
+            },
+            {
+              "text": "Integration—the",
+              "start": 4159,
+              "end": 4174,
+              "quoted": false
+            },
+            {
+              "text": "insights—wasn’t",
+              "start": 4227,
+              "end": 4242,
+              "quoted": false
+            },
+            {
+              "text": "right—I’d",
+              "start": 4953,
+              "end": 4962,
+              "quoted": false
+            },
+            {
+              "text": "therapy—not",
+              "start": 5491,
+              "end": 5502,
+              "quoted": false
+            },
+            {
+              "text": "compassionate—both",
+              "start": 5842,
+              "end": 5860,
+              "quoted": false
+            },
+            {
+              "text": "me—it",
+              "start": 6166,
+              "end": 6171,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 14,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "therapy—battling",
+              "start": 1167,
+              "end": 1183,
+              "quoted": false
+            },
+            {
+              "text": "inadequacy—but",
+              "start": 1259,
+              "end": 1273,
+              "quoted": false
+            },
+            {
+              "text": "resonated—a",
+              "start": 1716,
+              "end": 1727,
+              "quoted": false
+            },
+            {
+              "text": "therapists—compassionate,",
+              "start": 2314,
+              "end": 2339,
+              "quoted": false
+            },
+            {
+              "text": "care—sat",
+              "start": 2386,
+              "end": 2394,
+              "quoted": false
+            },
+            {
+              "text": "weeping—not",
+              "start": 3224,
+              "end": 3235,
+              "quoted": false
+            },
+            {
+              "text": "compassion—true,",
+              "start": 3902,
+              "end": 3918,
+              "quoted": false
+            },
+            {
+              "text": "compassion—for",
+              "start": 3928,
+              "end": 3942,
+              "quoted": false
+            },
+            {
+              "text": "Integration—the",
+              "start": 4159,
+              "end": 4174,
+              "quoted": false
+            },
+            {
+              "text": "insights—wasn’t",
+              "start": 4227,
+              "end": 4242,
+              "quoted": false
+            },
+            {
+              "text": "right—I’d",
+              "start": 4953,
+              "end": 4962,
+              "quoted": false
+            },
+            {
+              "text": "therapy—not",
+              "start": 5491,
+              "end": 5502,
+              "quoted": false
+            },
+            {
+              "text": "compassionate—both",
+              "start": 5842,
+              "end": 5860,
+              "quoted": false
+            },
+            {
+              "text": "me—it",
+              "start": 6166,
+              "end": 6171,
+              "quoted": false
+            }
+          ],
+          "match_count": 14,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 14 em dash(es)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "punctuation_signal",
+          "guidance": "Treat as a strong 2026 AI-style signal. May be preserved only at Balanced depth with explicit disclosure; All requires removal."
+        }
+      }
+    },
+    {
+      "id": "no-ai-vocabulary-clustering",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max AI words per paragraph: 1 (3 total in text)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max AI words per paragraph: 1 (3 total in text)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "vocabulary_cluster",
+          "guidance": "Fix clustered generic AI vocabulary; individual words may be fine in context."
+        }
+      }
+    },
+    {
+      "id": "no-nonliteral-land-surface",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No nonliteral land/surface constructions found",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No nonliteral land/surface constructions found",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "metaphor_residue",
+          "guidance": "Fix nonliteral land/surface phrasing; replace with the concrete action or claim."
+        }
+      }
+    },
+    {
+      "id": "overall-signal-stacking",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Signal stacking",
+      "failure_modes": [
+        "generic_abstraction",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {
+          "score": 3,
+          "threshold": 4
+        },
+        "raw": {
+          "score": 3,
+          "threshold": 4,
+          "components": [
+            "contrived contrast framing"
+          ],
+          "vocabulary_signal_stacking": {
+            "points": 1,
+            "reasons": [
+              "kobak_style=18 distinct/20.8"
+            ],
+            "worst_generic": 1,
+            "gptzero_matches": [],
+            "kobak_style_distinct": 18,
+            "kobak_style_density": 20.810514786418402,
+            "kobak_style_sample": [
+              "understanding",
+              "address",
+              "approach",
+              "crucial",
+              "deeper",
+              "emerged",
+              "equipping",
+              "groundwork",
+              "influencing",
+              "insights"
+            ]
+          },
+          "evidence": "Overall signal stacking 3/4 from [contrived contrast framing]; vocab=1 point(s), worst_generic=1, gptzero=[], kobak=18 distinct/20.8/1000",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "aggregate",
+          "component_signals": [
+            "contrived contrast framing"
+          ],
+          "component_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Overall signal stacking 3/4 from [contrived contrast framing]; vocab=1 point(s), worst_generic=1, gptzero=[], kobak=18 distinct/20.8/1000",
+            "suppression_reason": null,
+            "effective_threshold": 4
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "frictionless_structure"
+          ],
+          "evidence_role": "signal_stacking",
+          "guidance": "Review aggregate signal stacking; this combines weak signals and Kobak excess-vocabulary evidence but is not an authorship verdict."
+        }
+      }
+    },
+    {
+      "id": "no-manufactured-insight",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No manufactured insight phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No manufactured insight phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it clearly belongs to the writer's voice."
+        }
+      }
+    },
+    {
+      "id": "no-performed-candour",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No performed-candour frames",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No performed-candour frames",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "candour_frame",
+          "guidance": "Remove the candour announcement and state the claim directly. Preserve literal uses and quoted source text."
+        }
+      }
+    },
+    {
+      "id": "no-staccato-sequences",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Max consecutive short sentences: 1",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_run": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max consecutive short sentences: 1",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_run": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix generic emphasis; recommend preserving character voice, humour, panic, dialogue, or literary rhythm."
+        }
+      }
+    },
+    {
+      "id": "no-anaphora",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "genre_misfit",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Max anaphora run: 2",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max anaphora run: 2",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Fix mechanical repetition; recommend preserving deliberate rhetoric or literary patterning."
+        }
+      }
+    },
+    {
+      "id": "no-collaborative-artifacts",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No collaborative artifacts",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No collaborative artifacts",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "assistant_residue",
+          "guidance": "Fix at every depth; this is assistant residue, not authorial style."
+        }
+      }
+    },
+    {
+      "id": "no-curly-quotes",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "--- {   \"id\": \"21c-ai-mdma-therapy\",   \"title\": \"What MDMA Therapy Did For Me (AI version)\",   \"author\": \"AI (model unspecified)\",   \"year\": 2026,   \"period\": \"21st\",   \"format\": \"Confessional essay on MDMA-assisted therapy; matched-pair AI version of Tucker Max's 2018 essay\",   \"source_url\": \"fresh-write\",   \"fetch_status\": 200,   \"extract_method\": \"manual_paste\",   \"human_pair\": \"21c-tuckermax-mdma-therapy\",   \"expected_use\": [     \"genre_paired_corpus\",     \"human_vs_ai_baseline\"   ],   \"voice_targets\": [     \"Confessional essay on MDMA-assisted therapy\",     \"matched-pair AI version of Tucker Max's 2018 essay\"   ] } --- What MDMA Therapy Did For Me I never thought I’d be lying on a sofa, blindfolded, clutching the hand of a therapist I’d met barely a week before, as warm waves of chemically induced empathy peeled away decades of self-defence.",
+          "But there I was, tears soaking through my mask, muttering softly, “Holy shit, I’m actually okay.” Let’s rewind.",
+          "I’d spent years navigating traditional talk therapy—battling childhood trauma, fucked-up attachment patterns, and a persistent sense of inadequacy—but those sessions, despite their usefulness, felt incomplete.",
+          "They were missing something visceral, something I couldn’t access through mere words.",
+          "“You’re going to take ecstasy with a therapist?” they asked, half-amused, half-horrified.",
+          "It felt as though a heavy curtain had lifted, revealing a room in my heart I’d always avoided.",
+          "The little kid who’d felt forgotten and unworthy was no longer someone I rejected or pitied; she was simply a part of me deserving of love and understanding.",
+          "Shifting Patterns Integration—the period after the session where you actively process insights—wasn’t easy.",
+          "My life didn’t magically fall into place; I still had difficult conversations, still faced painful triggers.",
+          "I spoke to my parents with openness I’d never thought possible, finally expressing how certain childhood moments had lingered.",
+          "Their responses weren’t perfect, but for once, that didn’t shake me.",
+          "My husband remarked one night, “You’re here now.",
+          "Like really here.” He was right—I’d stopped hiding behind protective layers.",
+          "Yet, MDMA wasn’t a panacea.",
+          "The treatment wasn’t about eradicating problems but equipping me to address them from a place of emotional clarity rather than defensive panic.",
+          "The Real Talk I won’t sugarcoat it: this isn’t something everyone should rush into.",
+          "And even so, the drug itself didn’t heal me; it merely removed barriers that traditional therapy alone hadn’t breached.",
+          "The anxiety and trauma responses haven’t disappeared entirely, but my relationship with them has.",
+          "I’m less reactive, more compassionate—both to myself and those around me.",
+          "MDMA therapy didn’t solve every issue, but it made the path to healing clearer.",
+          "This treatment taught me a crucial truth: trauma isn’t something you erase, it’s something you understand, accept, and learn to carry differently.",
+          "And today, I’m finally walking upright."
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "--- {   \"id\": \"21c-ai-mdma-therapy\",   \"title\": \"What MDMA Therapy Did For Me (AI version)\",   \"author\": \"AI (model unspecified)\",   \"year\": 2026,   \"period\": \"21st\",   \"format\": \"Confessional essay on MDMA-assisted therapy; matched-pair AI version of Tucker Max's 2018 essay\",   \"source_url\": \"fresh-write\",   \"fetch_status\": 200,   \"extract_method\": \"manual_paste\",   \"human_pair\": \"21c-tuckermax-mdma-therapy\",   \"expected_use\": [     \"genre_paired_corpus\",     \"human_vs_ai_baseline\"   ],   \"voice_targets\": [     \"Confessional essay on MDMA-assisted therapy\",     \"matched-pair AI version of Tucker Max's 2018 essay\"   ] } --- What MDMA Therapy Did For Me I never thought I’d be lying on a sofa, blindfolded, clutching the hand of a therapist I’d met barely a week before, as warm waves of chemically induced empathy peeled away decades of self-defence.",
+            "But there I was, tears soaking through my mask, muttering softly, “Holy shit, I’m actually okay.” Let’s rewind.",
+            "I’d spent years navigating traditional talk therapy—battling childhood trauma, fucked-up attachment patterns, and a persistent sense of inadequacy—but those sessions, despite their usefulness, felt incomplete.",
+            "They were missing something visceral, something I couldn’t access through mere words.",
+            "“You’re going to take ecstasy with a therapist?” they asked, half-amused, half-horrified.",
+            "It felt as though a heavy curtain had lifted, revealing a room in my heart I’d always avoided.",
+            "The little kid who’d felt forgotten and unworthy was no longer someone I rejected or pitied; she was simply a part of me deserving of love and understanding.",
+            "Shifting Patterns Integration—the period after the session where you actively process insights—wasn’t easy.",
+            "My life didn’t magically fall into place; I still had difficult conversations, still faced painful triggers.",
+            "I spoke to my parents with openness I’d never thought possible, finally expressing how certain childhood moments had lingered.",
+            "Their responses weren’t perfect, but for once, that didn’t shake me.",
+            "My husband remarked one night, “You’re here now.",
+            "Like really here.” He was right—I’d stopped hiding behind protective layers.",
+            "Yet, MDMA wasn’t a panacea.",
+            "The treatment wasn’t about eradicating problems but equipping me to address them from a place of emotional clarity rather than defensive panic.",
+            "The Real Talk I won’t sugarcoat it: this isn’t something everyone should rush into.",
+            "And even so, the drug itself didn’t heal me; it merely removed barriers that traditional therapy alone hadn’t breached.",
+            "The anxiety and trauma responses haven’t disappeared entirely, but my relationship with them has.",
+            "I’m less reactive, more compassionate—both to myself and those around me.",
+            "MDMA therapy didn’t solve every issue, but it made the path to healing clearer.",
+            "This treatment taught me a crucial truth: trauma isn’t something you erase, it’s something you understand, accept, and learn to carry differently.",
+            "And today, I’m finally walking upright."
+          ],
+          "evidence": "Found 34 curly quote(s)",
+          "candidates": [
+            {
+              "text": "--- {   \"id\": \"21c-ai-mdma-therapy\",   \"title\": \"What MDMA Therapy Did For Me (AI version)\",   \"author\": \"AI (model unspecified)\",   \"year\": 2026,   \"period\": \"21st\",   \"format\": \"Confessional essay on MDMA-assisted therapy; matched-pair AI version of Tucker Max's 2018 essay\",   \"source_url\": \"fresh-write\",   \"fetch_status\": 200,   \"extract_method\": \"manual_paste\",   \"human_pair\": \"21c-tuckermax-mdma-therapy\",   \"expected_use\": [     \"genre_paired_corpus\",     \"human_vs_ai_baseline\"   ],   \"voice_targets\": [     \"Confessional essay on MDMA-assisted therapy\",     \"matched-pair AI version of Tucker Max's 2018 essay\"   ] } --- What MDMA Therapy Did For Me I never thought I’d be lying on a sofa, blindfolded, clutching the hand of a therapist I’d met barely a week before, as warm waves of chemically induced empathy peeled away decades of self-defence.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "But there I was, tears soaking through my mask, muttering softly, “Holy shit, I’m actually okay.” Let’s rewind.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "I’d spent years navigating traditional talk therapy—battling childhood trauma, fucked-up attachment patterns, and a persistent sense of inadequacy—but those sessions, despite their usefulness, felt incomplete.",
+              "start": 1123,
+              "end": 1332,
+              "quoted": false
+            },
+            {
+              "text": "They were missing something visceral, something I couldn’t access through mere words.",
+              "start": 1333,
+              "end": 1418,
+              "quoted": false
+            },
+            {
+              "text": "“You’re going to take ecstasy with a therapist?” they asked, half-amused, half-horrified.",
+              "start": 1531,
+              "end": 1620,
+              "quoted": false
+            },
+            {
+              "text": "It felt as though a heavy curtain had lifted, revealing a room in my heart I’d always avoided.",
+              "start": 3114,
+              "end": 3208,
+              "quoted": false
+            },
+            {
+              "text": "The little kid who’d felt forgotten and unworthy was no longer someone I rejected or pitied; she was simply a part of me deserving of love and understanding.",
+              "start": 3981,
+              "end": 4138,
+              "quoted": false
+            },
+            {
+              "text": "Shifting Patterns Integration—the period after the session where you actively process insights—wasn’t easy.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "My life didn’t magically fall into place; I still had difficult conversations, still faced painful triggers.",
+              "start": 4249,
+              "end": 4357,
+              "quoted": false
+            },
+            {
+              "text": "I spoke to my parents with openness I’d never thought possible, finally expressing how certain childhood moments had lingered.",
+              "start": 4396,
+              "end": 4522,
+              "quoted": false
+            },
+            {
+              "text": "Their responses weren’t perfect, but for once, that didn’t shake me.",
+              "start": 4523,
+              "end": 4591,
+              "quoted": false
+            },
+            {
+              "text": "My husband remarked one night, “You’re here now.",
+              "start": 4878,
+              "end": 4926,
+              "quoted": false
+            },
+            {
+              "text": "Like really here.” He was right—I’d stopped hiding behind protective layers.",
+              "start": 4927,
+              "end": 5003,
+              "quoted": false
+            },
+            {
+              "text": "Yet, MDMA wasn’t a panacea.",
+              "start": 5005,
+              "end": 5032,
+              "quoted": false
+            },
+            {
+              "text": "The treatment wasn’t about eradicating problems but equipping me to address them from a place of emotional clarity rather than defensive panic.",
+              "start": 5106,
+              "end": 5249,
+              "quoted": false
+            },
+            {
+              "text": "The Real Talk I won’t sugarcoat it: this isn’t something everyone should rush into.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "And even so, the drug itself didn’t heal me; it merely removed barriers that traditional therapy alone hadn’t breached.",
+              "start": 5534,
+              "end": 5653,
+              "quoted": false
+            },
+            {
+              "text": "The anxiety and trauma responses haven’t disappeared entirely, but my relationship with them has.",
+              "start": 5720,
+              "end": 5817,
+              "quoted": false
+            },
+            {
+              "text": "I’m less reactive, more compassionate—both to myself and those around me.",
+              "start": 5818,
+              "end": 5891,
+              "quoted": false
+            },
+            {
+              "text": "MDMA therapy didn’t solve every issue, but it made the path to healing clearer.",
+              "start": 5892,
+              "end": 5971,
+              "quoted": false
+            },
+            {
+              "text": "This treatment taught me a crucial truth: trauma isn’t something you erase, it’s something you understand, accept, and learn to carry differently.",
+              "start": 5973,
+              "end": 6119,
+              "quoted": false
+            },
+            {
+              "text": "And today, I’m finally walking upright.",
+              "start": 6233,
+              "end": 6272,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 22,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "--- {   \"id\": \"21c-ai-mdma-therapy\",   \"title\": \"What MDMA Therapy Did For Me (AI version)\",   \"author\": \"AI (model unspecified)\",   \"year\": 2026,   \"period\": \"21st\",   \"format\": \"Confessional essay on MDMA-assisted therapy; matched-pair AI version of Tucker Max's 2018 essay\",   \"source_url\": \"fresh-write\",   \"fetch_status\": 200,   \"extract_method\": \"manual_paste\",   \"human_pair\": \"21c-tuckermax-mdma-therapy\",   \"expected_use\": [     \"genre_paired_corpus\",     \"human_vs_ai_baseline\"   ],   \"voice_targets\": [     \"Confessional essay on MDMA-assisted therapy\",     \"matched-pair AI version of Tucker Max's 2018 essay\"   ] } --- What MDMA Therapy Did For Me I never thought I’d be lying on a sofa, blindfolded, clutching the hand of a therapist I’d met barely a week before, as warm waves of chemically induced empathy peeled away decades of self-defence.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "But there I was, tears soaking through my mask, muttering softly, “Holy shit, I’m actually okay.” Let’s rewind.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "I’d spent years navigating traditional talk therapy—battling childhood trauma, fucked-up attachment patterns, and a persistent sense of inadequacy—but those sessions, despite their usefulness, felt incomplete.",
+              "start": 1123,
+              "end": 1332,
+              "quoted": false
+            },
+            {
+              "text": "They were missing something visceral, something I couldn’t access through mere words.",
+              "start": 1333,
+              "end": 1418,
+              "quoted": false
+            },
+            {
+              "text": "“You’re going to take ecstasy with a therapist?” they asked, half-amused, half-horrified.",
+              "start": 1531,
+              "end": 1620,
+              "quoted": false
+            },
+            {
+              "text": "It felt as though a heavy curtain had lifted, revealing a room in my heart I’d always avoided.",
+              "start": 3114,
+              "end": 3208,
+              "quoted": false
+            },
+            {
+              "text": "The little kid who’d felt forgotten and unworthy was no longer someone I rejected or pitied; she was simply a part of me deserving of love and understanding.",
+              "start": 3981,
+              "end": 4138,
+              "quoted": false
+            },
+            {
+              "text": "Shifting Patterns Integration—the period after the session where you actively process insights—wasn’t easy.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "My life didn’t magically fall into place; I still had difficult conversations, still faced painful triggers.",
+              "start": 4249,
+              "end": 4357,
+              "quoted": false
+            },
+            {
+              "text": "I spoke to my parents with openness I’d never thought possible, finally expressing how certain childhood moments had lingered.",
+              "start": 4396,
+              "end": 4522,
+              "quoted": false
+            },
+            {
+              "text": "Their responses weren’t perfect, but for once, that didn’t shake me.",
+              "start": 4523,
+              "end": 4591,
+              "quoted": false
+            },
+            {
+              "text": "My husband remarked one night, “You’re here now.",
+              "start": 4878,
+              "end": 4926,
+              "quoted": false
+            },
+            {
+              "text": "Like really here.” He was right—I’d stopped hiding behind protective layers.",
+              "start": 4927,
+              "end": 5003,
+              "quoted": false
+            },
+            {
+              "text": "Yet, MDMA wasn’t a panacea.",
+              "start": 5005,
+              "end": 5032,
+              "quoted": false
+            },
+            {
+              "text": "The treatment wasn’t about eradicating problems but equipping me to address them from a place of emotional clarity rather than defensive panic.",
+              "start": 5106,
+              "end": 5249,
+              "quoted": false
+            },
+            {
+              "text": "The Real Talk I won’t sugarcoat it: this isn’t something everyone should rush into.",
+              "start": null,
+              "end": null,
+              "quoted": false
+            },
+            {
+              "text": "And even so, the drug itself didn’t heal me; it merely removed barriers that traditional therapy alone hadn’t breached.",
+              "start": 5534,
+              "end": 5653,
+              "quoted": false
+            },
+            {
+              "text": "The anxiety and trauma responses haven’t disappeared entirely, but my relationship with them has.",
+              "start": 5720,
+              "end": 5817,
+              "quoted": false
+            },
+            {
+              "text": "I’m less reactive, more compassionate—both to myself and those around me.",
+              "start": 5818,
+              "end": 5891,
+              "quoted": false
+            },
+            {
+              "text": "MDMA therapy didn’t solve every issue, but it made the path to healing clearer.",
+              "start": 5892,
+              "end": 5971,
+              "quoted": false
+            },
+            {
+              "text": "This treatment taught me a crucial truth: trauma isn’t something you erase, it’s something you understand, accept, and learn to carry differently.",
+              "start": 5973,
+              "end": 6119,
+              "quoted": false
+            },
+            {
+              "text": "And today, I’m finally walking upright.",
+              "start": 6233,
+              "end": 6272,
+              "quoted": false
+            }
+          ],
+          "match_count": 22,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 34 curly quote(s)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "genre_misfit"
+          ],
+          "evidence_role": "typographic_signal",
+          "guidance": "Normalise in All/plain output; recommend preserving in sourced literary or typographic text."
+        }
+      }
+    },
+    {
+      "id": "sentence-length-variance",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Sentence length stdev: 13.4 (target: >4)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 950,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Sentence length stdev: 13.4 (target: >4)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhythm_signal",
+          "guidance": "Use as a rhythm signal, not a hard failure for short or intentionally uniform forms."
+        }
+      }
+    },
+    {
+      "id": "no-promotional-language",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "profound"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "profound"
+          ],
+          "evidence": "Found: ['profound']",
+          "candidates": [
+            {
+              "text": "profound",
+              "start": 3258,
+              "end": 3266,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "profound",
+              "start": 3258,
+              "end": 3266,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found: ['profound']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "synthetic_significance"
+          ],
+          "evidence_role": "hype_language",
+          "guidance": "Fix generic hype; recommend preserving quoted marketing copy or voiced enthusiasm."
+        }
+      }
+    },
+    {
+      "id": "no-significance-inflation",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "crucial"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "crucial"
+          ],
+          "evidence": "Found: ['crucial']",
+          "candidates": [
+            {
+              "text": "crucial",
+              "start": 6000,
+              "end": 6007,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "crucial",
+              "start": 6000,
+              "end": 6007,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found: ['crucial']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "importance_inflation",
+          "guidance": "Fix inflated importance unless the source genuinely argues significance."
+        }
+      }
+    },
+    {
+      "id": "no-negative-parallelisms",
+      "status": "flagged",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "wasn’t about eradicating problems but"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "wasn’t about eradicating problems but"
+          ],
+          "evidence": "Found 1 contrived contrast/reframe pattern(s)",
+          "candidates": [
+            {
+              "text": "wasn’t about eradicating problems but",
+              "start": 5120,
+              "end": 5157,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "wasn’t about eradicating problems but",
+              "start": 5120,
+              "end": 5157,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 1 contrived contrast/reframe pattern(s)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix contrived reframes at Balanced and All; recommend preserving only purposeful contrast at Balanced."
+        }
+      }
+    },
+    {
+      "id": "no-copula-avoidance",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No copula avoidance",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No copula avoidance",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "grammar_substitution",
+          "guidance": "Usually simplify at Balanced and All; recommend preserving if the construction is idiomatic or technical."
+        }
+      }
+    },
+    {
+      "id": "no-filler-phrases",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No filler phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No filler phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "filler_phrase",
+          "guidance": "Fix stock filler at Balanced and All; at Balanced, disclose and remove unless it belongs to quoted or intentionally casual voice."
+        }
+      }
+    },
+    {
+      "id": "no-generic-conclusions",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "provenance_residue",
+        "synthetic_significance"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No generic conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No generic conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue",
+            "synthetic_significance"
+          ],
+          "evidence_role": "generic_closure",
+          "guidance": "Fix at every depth unless quoted from source text."
+        }
+      }
+    },
+    {
+      "id": "no-false-concession-hedges",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No false concession hedges",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No false concession hedges",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix fake both-sides framing at Balanced and All; preserve only if the piece actually argues both positions with evidence."
+        }
+      }
+    },
+    {
+      "id": "no-placeholder-residue",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No placeholder residue",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No placeholder residue",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "template_residue",
+          "guidance": "Fix at every depth; unfilled placeholders are generated/template residue."
+        }
+      }
+    },
+    {
+      "id": "no-soft-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Soft scaffold phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Soft scaffold phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "explainer_scaffold",
+          "guidance": "Fix at Balanced and All; these phrases usually mark generated explainer structure rather than content."
+        }
+      }
+    },
+    {
+      "id": "no-orphaned-demonstratives",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "voice_erasure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Vague demonstrative subjects: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Vague demonstrative subjects: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Review repeated 'This/That highlights...' starts; replace vague subjects with concrete nouns when the antecedent is unclear."
+        }
+      }
+    },
+    {
+      "id": "no-forced-triads",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "battling childhood trauma, fucked-up attachment patterns, and a persistent sense",
+          "compassionate, steady, and deeply trained",
+          "safe, private, and comforting",
+          "distorted my perceptions, influencing my marriage and friendships",
+          "was clinical, supervised, and meticulously prepared",
+          "understand, accept, and learn"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "battling childhood trauma, fucked-up attachment patterns, and a persistent sense",
+            "compassionate, steady, and deeply trained",
+            "safe, private, and comforting",
+            "distorted my perceptions, influencing my marriage and friendships",
+            "was clinical, supervised, and meticulously prepared",
+            "understand, accept, and learn"
+          ],
+          "evidence": "Found 6 triad(s): ['battling childhood trauma, fucked-up attachment patterns, and a persistent sense', 'compassionate, steady, and deeply trained', 'safe, private, and comforting', 'distorted my perceptions, influencing my marriage and friendships', 'was clinical, supervised, and meticulously prepared', 'understand, accept, and learn']",
+          "candidates": [
+            {
+              "text": "battling childhood trauma, fucked-up attachment patterns, and a persistent sense",
+              "start": 1175,
+              "end": 1255,
+              "quoted": false
+            },
+            {
+              "text": "compassionate, steady, and deeply trained",
+              "start": 2325,
+              "end": 2366,
+              "quoted": false
+            },
+            {
+              "text": "safe, private, and comforting",
+              "start": 2552,
+              "end": 2581,
+              "quoted": false
+            },
+            {
+              "text": "distorted my perceptions, influencing my marriage and friendships",
+              "start": 3701,
+              "end": 3766,
+              "quoted": false
+            },
+            {
+              "text": "was clinical, supervised, and meticulously prepared",
+              "start": 5431,
+              "end": 5482,
+              "quoted": false
+            },
+            {
+              "text": "understand, accept, and learn",
+              "start": 6068,
+              "end": 6097,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 6,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "battling childhood trauma, fucked-up attachment patterns, and a persistent sense",
+              "start": 1175,
+              "end": 1255,
+              "quoted": false
+            },
+            {
+              "text": "compassionate, steady, and deeply trained",
+              "start": 2325,
+              "end": 2366,
+              "quoted": false
+            },
+            {
+              "text": "safe, private, and comforting",
+              "start": 2552,
+              "end": 2581,
+              "quoted": false
+            },
+            {
+              "text": "distorted my perceptions, influencing my marriage and friendships",
+              "start": 3701,
+              "end": 3766,
+              "quoted": false
+            },
+            {
+              "text": "was clinical, supervised, and meticulously prepared",
+              "start": 5431,
+              "end": 5482,
+              "quoted": false
+            },
+            {
+              "text": "understand, accept, and learn",
+              "start": 6068,
+              "end": 6097,
+              "quoted": false
+            }
+          ],
+          "match_count": 6,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 6 triad(s): ['battling childhood trauma, fucked-up attachment patterns, and a persistent sense', 'compassionate, steady, and deeply trained', 'safe, private, and comforting', 'distorted my perceptions, influencing my marriage and friendships', 'was clinical, supervised, and meticulously prepared', 'understand, accept, and learn']",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Review every detected triad in context. Preserve meaningful lists, quotations, and deliberate rhetoric; revise decorative or repetitive triads."
+        }
+      }
+    },
+    {
+      "id": "no-superficial-ing",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No superficial -ing phrases",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No superficial -ing phrases",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "analysis_substitution",
+          "guidance": "Fix tacked-on analysis clauses unless they carry precise causal meaning."
+        }
+      }
+    },
+    {
+      "id": "no-ghost-spectral-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Ghost/spectral words: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Ghost/spectral words: 0",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix atmospheric filler; recommend preserving gothic, literary, or quoted prose."
+        }
+      }
+    },
+    {
+      "id": "no-quietness-obsession",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Sensory and atmospheric",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "softly",
+          "quiet",
+          "gentle"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "softly",
+            "quiet",
+            "gentle"
+          ],
+          "evidence": "Found 5 quietness words (6.2 per 1000 words)",
+          "candidates": [
+            {
+              "text": "softly",
+              "start": 919,
+              "end": 925,
+              "quoted": false
+            },
+            {
+              "text": "quiet",
+              "start": 1728,
+              "end": 1733,
+              "quoted": false
+            },
+            {
+              "text": "gentle",
+              "start": 3809,
+              "end": 3815,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 3,
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "softly",
+              "start": 919,
+              "end": 925,
+              "quoted": false
+            },
+            {
+              "text": "quiet",
+              "start": 1728,
+              "end": 1733,
+              "quoted": false
+            },
+            {
+              "text": "gentle",
+              "start": 3809,
+              "end": 3815,
+              "quoted": false
+            }
+          ],
+          "match_count": 3,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 5 quietness words (6.2 per 1000 words)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "atmospheric_cliche",
+          "guidance": "Fix generic quietness mood; recommend preserving if quietness is the actual subject or voice."
+        }
+      }
+    },
+    {
+      "id": "no-rhetorical-questions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Rhetorical questions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rhetorical questions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_template",
+          "guidance": "Fix article-template questions; recommend preserving interviews, teaching prose, or deliberate argument."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-lists",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/74)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_items": 8,
+            "minimum_blocks": 2,
+            "minimum_line_ratio": 0.3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 950,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items: 0 across 0 block(s); line ratio: 0% (0/74)",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_items": 8,
+              "minimum_blocks": 2,
+              "minimum_line_ratio": 0.3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "listification",
+          "guidance": "Fix unnecessary listification; recommend preserving reference, instructional, or interview structure."
+        }
+      }
+    },
+    {
+      "id": "no-unicode-flair",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "provenance_residue",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Decorative symbols/shortcodes: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Decorative symbols/shortcodes: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "genre_misfit"
+          ],
+          "evidence_role": "formatting_residue",
+          "guidance": "Remove decorative symbols in prose; preserve only where symbols are part of a real UI, checklist, or quoted source."
+        }
+      }
+    },
+    {
+      "id": "no-dramatic-transitions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "synthetic_significance",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dramatic transitions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dramatic transitions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "genre_misfit"
+          ],
+          "evidence_role": "narrative_template",
+          "guidance": "Fix generic turning-point beats; recommend preserving memoir or scene structure when earned."
+        }
+      }
+    },
+    {
+      "id": "no-formulaic-openers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No formulaic openers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No formulaic openers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "formulaic_structure",
+          "guidance": "Fix at Balanced and All; at Balanced, recommend preserving only if it matches the source genre."
+        }
+      }
+    },
+    {
+      "id": "no-signposted-conclusions",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No signposted conclusions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No signposted conclusions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "structural_signpost",
+          "guidance": "Fix generic signposts in prose; recommend preserving academic/instructional structure when useful."
+        }
+      }
+    },
+    {
+      "id": "no-parenthetical-headings",
+      "status": "clear",
+      "severity": "hard_fail",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No parenthetical headings",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No parenthetical headings",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "hard_fail",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "heading_structure",
+          "guidance": "Rewrite the heading as a direct label. Move necessary qualification into the body."
+        }
+      }
+    },
+    {
+      "id": "no-corporate-ai-speak",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No corporate AI speak",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No corporate AI speak",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction"
+          ],
+          "evidence_role": "domain_cliche",
+          "guidance": "Fix at every depth; recommend preserving only when quoting corporate source language."
+        }
+      }
+    },
+    {
+      "id": "no-this-chains",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Max 'This [verb]' run: 1",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 950,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Max 'This [verb]' run: 1",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "sentence_subject",
+          "guidance": "Fix mechanical sentence starts; recommend preserving only if rhythmically deliberate."
+        }
+      }
+    },
+    {
+      "id": "no-excessive-hedging",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Hedging constructions: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Hedging constructions: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "voice_erasure"
+          ],
+          "evidence_role": "stance_erasure",
+          "guidance": "Fix evasive hedging; recommend preserving scientific qualification and honest uncertainty."
+        }
+      }
+    },
+    {
+      "id": "no-countdown-negation",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "synthetic_significance",
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No countdown negation",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 950,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No countdown negation",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "frictionless_structure"
+          ],
+          "evidence_role": "rhetorical_pattern",
+          "guidance": "Fix generic reveal structures; recommend preserving deliberate rhetoric only with strong reason."
+        }
+      }
+    },
+    {
+      "id": "no-negation-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Filler and hedging",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Negation markers: 10 (10.5 per 1000 words)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 950,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Negation markers: 10 (10.5 per 1000 words)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "rhetorical_density",
+          "guidance": "Review dense negation as a style signal; preserve polemic or technical qualification when purposeful."
+        }
+      }
+    },
+    {
+      "id": "paragraph-length-uniformity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Paragraph length CV: 0.20 across 17 paragraphs",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_paragraphs": 7,
+            "maximum_cv": 0.18
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 950,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Paragraph length CV: 0.20 across 17 paragraphs",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_paragraphs": 7,
+              "maximum_cv": 0.18
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "layout_rhythm",
+          "guidance": "Review as a structural signal; vary paragraph lengths when the piece reads like a generated article template."
+        }
+      }
+    },
+    {
+      "id": "no-tidy-paragraph-endings",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "frictionless_structure",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "In the end, MDMA therapy did exactly that for me—it showed me how to carry my pain without"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [
+            "In the end, MDMA therapy did exactly that for me—it showed me how to carry my pain without"
+          ],
+          "evidence": "Tidy paragraph endings: 1",
+          "candidates": [
+            {
+              "text": "In the end, MDMA therapy did exactly that for me—it showed me how to carry my pain without",
+              "start": 6120,
+              "end": 6210,
+              "quoted": false
+            }
+          ],
+          "candidate_count": 1,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "In the end, MDMA therapy did exactly that for me—it showed me how to carry my pain without",
+              "start": 6120,
+              "end": 6210,
+              "quoted": false
+            }
+          ],
+          "match_count": 1,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Tidy paragraph endings: 1",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "voice_erasure"
+          ],
+          "evidence_role": "paragraph_closure",
+          "guidance": "Cut generic paragraph-final summaries unless they carry a necessary argument turn."
+        }
+      }
+    },
+    {
+      "id": "no-bland-critical-template",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "generic_abstraction",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Bland critical template phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bland critical template phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "voice_erasure"
+          ],
+          "evidence_role": "genre_cliche",
+          "guidance": "Fix at Balanced and All for reviews and criticism; replace generic balance with concrete claims from the work."
+        }
+      }
+    },
+    {
+      "id": "no-rubric-echoing",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Voice and register",
+      "failure_modes": [
+        "provenance_residue",
+        "voice_erasure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "Rubric echo phrases: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Rubric echo phrases: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "provenance_residue",
+            "voice_erasure"
+          ],
+          "evidence_role": "assignment_residue",
+          "guidance": "Review student/assignment prose for mirrored rubric language; preserve only where explicitly analysing a rubric."
+        }
+      }
+    },
+    {
+      "id": "vocabulary-diversity",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "generic_abstraction",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "metric": null,
+          "evidence": "Type-token ratio: 0.579 (509 unique / 879 total, target: >0.40)",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 950,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Type-token ratio: 0.579 (509 unique / 879 total, target: >0.40)",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "generic_abstraction",
+            "genre_misfit"
+          ],
+          "evidence_role": "lexical_distribution",
+          "guidance": "Use as a coarse signal; old prose, dialogue, and technical writing may fail legitimately."
+        }
+      }
+    },
+    {
+      "id": "no-triad-density",
+      "status": "flagged",
+      "severity": "context_warning",
+      "category": "Language and grammar",
+      "failure_modes": [
+        "frictionless_structure",
+        "genre_misfit"
+      ],
+      "evidence": {
+        "quoted_phrases": [
+          "battling childhood trauma, fucked-up attachment patterns, and a persistent sense",
+          "compassionate, steady, and deeply trained",
+          "safe, private, and comforting",
+          "distorted my perceptions, influencing my marriage and friendships",
+          "was clinical, supervised, and meticulously prepared",
+          "understand, accept, and learn"
+        ],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "candidate_count": 6,
+          "matches": [
+            "battling childhood trauma, fucked-up attachment patterns, and a persistent sense",
+            "compassionate, steady, and deeply trained",
+            "safe, private, and comforting",
+            "distorted my perceptions, influencing my marriage and friendships",
+            "was clinical, supervised, and meticulously prepared",
+            "understand, accept, and learn"
+          ],
+          "evidence": "Found 6 triad(s): ['battling childhood trauma, fucked-up attachment patterns, and a persistent sense', 'compassionate, steady, and deeply trained', 'safe, private, and comforting', 'distorted my perceptions, influencing my marriage and friendships', 'was clinical, supervised, and meticulously prepared', 'understand, accept, and learn']",
+          "candidates": [
+            {
+              "text": "battling childhood trauma, fucked-up attachment patterns, and a persistent sense",
+              "start": 1175,
+              "end": 1255,
+              "quoted": false
+            },
+            {
+              "text": "compassionate, steady, and deeply trained",
+              "start": 2325,
+              "end": 2366,
+              "quoted": false
+            },
+            {
+              "text": "safe, private, and comforting",
+              "start": 2552,
+              "end": 2581,
+              "quoted": false
+            },
+            {
+              "text": "distorted my perceptions, influencing my marriage and friendships",
+              "start": 3701,
+              "end": 3766,
+              "quoted": false
+            },
+            {
+              "text": "was clinical, supervised, and meticulously prepared",
+              "start": 5431,
+              "end": 5482,
+              "quoted": false
+            },
+            {
+              "text": "understand, accept, and learn",
+              "start": 6068,
+              "end": 6097,
+              "quoted": false
+            }
+          ],
+          "aggregate_finding": false,
+          "threshold_met": true,
+          "threshold": {
+            "minimum_words": 300,
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [
+            {
+              "text": "battling childhood trauma, fucked-up attachment patterns, and a persistent sense",
+              "start": 1175,
+              "end": 1255,
+              "quoted": false
+            },
+            {
+              "text": "compassionate, steady, and deeply trained",
+              "start": 2325,
+              "end": 2366,
+              "quoted": false
+            },
+            {
+              "text": "safe, private, and comforting",
+              "start": 2552,
+              "end": 2581,
+              "quoted": false
+            },
+            {
+              "text": "distorted my perceptions, influencing my marriage and friendships",
+              "start": 3701,
+              "end": 3766,
+              "quoted": false
+            },
+            {
+              "text": "was clinical, supervised, and meticulously prepared",
+              "start": 5431,
+              "end": 5482,
+              "quoted": false
+            },
+            {
+              "text": "understand, accept, and learn",
+              "start": 6068,
+              "end": 6097,
+              "quoted": false
+            }
+          ],
+          "match_count": 6,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Found 6 triad(s): ['battling childhood trauma, fucked-up attachment patterns, and a persistent sense', 'compassionate, steady, and deeply trained', 'safe, private, and comforting', 'distorted my perceptions, influencing my marriage and friendships', 'was clinical, supervised, and meticulously prepared', 'understand, accept, and learn']",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_words": 300,
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "genre_misfit"
+          ],
+          "evidence_role": "list_rhythm",
+          "guidance": "Fix density-driven triads; recommend preserving if lists are structural or rhetorical."
+        }
+      }
+    },
+    {
+      "id": "no-section-scaffolding",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Structural tells",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No repeated section labels",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 950,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No repeated section labels",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "repeated_template",
+          "guidance": "Fix repeated templates at Balanced and All; recommend preserving only for genuinely structured reference material."
+        }
+      }
+    },
+    {
+      "id": "no-notability-claims",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No notability claims",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No notability claims",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "notability_inflation",
+          "guidance": "Fix at Balanced and All; replace abstract notability claims with named sources or remove the framing."
+        }
+      }
+    },
+    {
+      "id": "no-vague-attributions",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Content patterns",
+      "failure_modes": [
+        "synthetic_significance",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No vague attributions",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No vague attributions",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "synthetic_significance",
+            "generic_abstraction"
+          ],
+          "evidence_role": "attribution_vagueness",
+          "guidance": "Fix at Balanced and All; replace unnamed authorities with a named source, study, or quote."
+        }
+      }
+    },
+    {
+      "id": "no-boldface-overuse",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "Bold spans in prose: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 4
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "Bold spans in prose: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 4
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure"
+          ],
+          "evidence_role": "emphasis_pattern",
+          "guidance": "Fix mechanical bold stacking; preserve only when bolded terms are genuine definition headers."
+        }
+      }
+    },
+    {
+      "id": "no-inline-header-lists",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "List items with bolded headers: 0",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_candidates": 2
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "List items with bolded headers: 0",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_candidates": 2
+            }
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "list_template",
+          "guidance": "Fix at Balanced and All; fold bolded-header bullets back into prose unless the format is a real spec or reference list."
+        }
+      }
+    },
+    {
+      "id": "no-compound-modifier-density",
+      "status": "clear",
+      "severity": "context_warning",
+      "category": "Style",
+      "failure_modes": [
+        "frictionless_structure",
+        "generic_abstraction"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "evidence": "No dense compound-modifier sentences",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": {
+            "minimum_per_sentence": 3
+          },
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "statistical",
+          "metric_value": 0,
+          "sample_size": 857,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No dense compound-modifier sentences",
+            "suppression_reason": null,
+            "effective_threshold": {
+              "minimum_per_sentence": 3
+            }
+          },
+          "severity": "context_warning",
+          "failure_modes": [
+            "frictionless_structure",
+            "generic_abstraction"
+          ],
+          "evidence_role": "modifier_density",
+          "guidance": "Restructure sentences with three or more stock hyphenated compounds; preserve only when the compounds are domain-specific terms of art."
+        }
+      }
+    },
+    {
+      "id": "no-knowledge-cutoff-disclaimers",
+      "status": "clear",
+      "severity": "strong_warning",
+      "category": "Communication",
+      "failure_modes": [
+        "provenance_residue"
+      ],
+      "evidence": {
+        "quoted_phrases": [],
+        "metric": null,
+        "locations": [],
+        "counts": {},
+        "raw": {
+          "matches": [],
+          "evidence": "No knowledge-cutoff disclaimers",
+          "candidates": [],
+          "candidate_count": 0,
+          "aggregate_finding": false,
+          "threshold_met": false,
+          "threshold": null,
+          "context_suppressed": false,
+          "context_reason": null,
+          "evidence_type": "lexical",
+          "spans": [],
+          "match_count": 0,
+          "context_gate": {
+            "applied": false,
+            "raw_evidence": "No knowledge-cutoff disclaimers",
+            "suppression_reason": null,
+            "effective_threshold": null
+          },
+          "severity": "strong_warning",
+          "failure_modes": [
+            "provenance_residue"
+          ],
+          "evidence_role": "model_meta_residue",
+          "guidance": "Fix at every depth; training-update and limited-information hedges are model meta-residue, not authorial uncertainty."
+        }
+      }
+    }
+  ],
+  "semantic_findings": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "clear",
+      "answer": "register breaks at least once",
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a quiet room bathed in warm lamplight",
+          "why_unspecific": "Generic wellness-aesthetic description with no concrete identifying detail (no location, no distinguishing object) that any therapy-setting account could use."
+        },
+        {
+          "phrase": "Soft blankets, ambient music, and fresh flowers created a cocoon-like atmosphere",
+          "why_unspecific": "Stock spa/wellness imagery performing sensory specificity without any personally grounded detail (no particular flower, song, or texture named)."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "warm waves of chemically induced empathy peeled away decades of self-defence",
+          "why_forced": "Maps tactile warmth and a peeling/unwrapping sensation onto the abstract psychological concept of 'self-defence' without any concrete grounding for why that particular sensory combination applies."
+        },
+        {
+          "phrase": "warmth blossomed through my chest",
+          "why_forced": "Maps a visual/botanical growth process (blossoming) onto an internal bodily temperature sensation to signify emotional change, an unanchored cross-modal substitution rather than an observed physical event."
+        }
+      ],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a heavy curtain had lifted, revealing a room in my heart I’d always avoided",
+          "why_generic": "Stock 'curtain lifting' revelation image paired with a vague spatial metaphor for emotion; fails to specify what was concretely realized or seen."
+        },
+        {
+          "phrase": "carrying shame like a fucking birthmark",
+          "why_generic": "Permanent-mark-of-shame comparison is a familiar rhetorical move that doesn't identify what about the writer's specific shame make the birthmark comparison apt."
+        },
+        {
+          "phrase": "the groundwork had changed",
+          "why_generic": "Construction metaphor for internal change that doesn't specify which underlying belief, habit, or structure actually shifted."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "referential_clarity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "the groundwork had changed",
+          "why_unclear": "‘The groundwork’ has no prior antecedent naming what foundation or structure is meant, leaving the claim of change unspecified."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "not because the past changed, but because my relationship to it had shifted profoundly",
+          "why_formulaic": "Correction-script bicolon that asserts a distinction (past vs. relationship-to-past) without specifying what the shifted relationship actually consists of."
+        },
+        {
+          "phrase": "It was therapy—not recreational experimentation.",
+          "why_formulaic": "Balanced contrast that labels the experience against its negation without detailing what concretely made it clinical (beyond assertion)."
+        },
+        {
+          "phrase": "The treatment wasn’t about eradicating problems but equipping me to address them from a place of emotional clarity rather than defensive panic.",
+          "why_formulaic": "Double 'not X but Y' parallel structure characteristic of therapy-language templates; the symmetry substitutes for describing what the equipping actually involved."
+        },
+        {
+          "phrase": "trauma isn’t something you erase, it’s something you understand, accept, and learn to carry differently",
+          "why_formulaic": "Formulaic contrast-plus-tricolon ('understand, accept, and learn to carry') that reads as a generalized therapeutic maxim rather than a claim specific to this writer's experience."
+        }
+      ],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "it showed me how to carry my pain without collapsing under it",
+          "what_it_repeats": "Restates the claim made one sentence earlier that trauma is 'something you understand, accept, and learn to carry differently.'"
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "reached critical levels",
+          "missing_criterion": "No criterion given for what counts as 'critical' (no symptom, frequency, or measurable threshold specified)."
+        },
+        {
+          "phrase": "deeply trained in trauma-informed care",
+          "missing_criterion": "No comparison basis for 'deeply' — no credentials, years, or training specifics given."
+        },
+        {
+          "phrase": "transformed subtly but significantly",
+          "missing_criterion": "Provides an evaluative pairing of degree ('subtly' vs. 'significantly') without stating what specifically changed or by what measure."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "context_leakage",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I won’t sugarcoat it: this isn’t something everyone should rush into.",
+          "missing_context": "Reads as a rebuttal to an unstated objection or question about recklessness/endorsement of drug use, but no such critique appears earlier in the document."
+        },
+        {
+          "phrase": "MDMA is illegal in most contexts, and self-medicating carries significant risks.",
+          "missing_context": "Functions as a defensive clarification against an implied accusation of promoting illegal or unsupervised drug use, though no such accusation is present in the text."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "performed_candour",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I won’t sugarcoat it",
+          "why_unnecessary": "Announces honesty before a claim ('this isn't something everyone should rush into') that could be stated directly without the sincerity preface."
+        },
+        {
+          "phrase": "true, visceral compassion",
+          "why_unnecessary": "Uses 'true' as an authenticity booster in front of 'visceral compassion,' which already conveys intensity without the added qualifier."
+        }
+      ],
+      "evidence": [],
+      "severity": "strong_warning"
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": [],
+      "severity": "context_warning"
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": [],
+      "severity": "context_warning"
+    }
+  ],
+  "aggregates": {
+    "programmatic": {
+      "by_severity": {
+        "hard_fail": 0,
+        "strong_warning": 2,
+        "context_warning": 6
+      },
+      "by_category": {
+        "Style": 2,
+        "Content patterns": 2,
+        "Language and grammar": 3,
+        "Sensory and atmospheric": 1
+      },
+      "signal_stacking": {
+        "score": 3,
+        "threshold": 4,
+        "triggered": false,
+        "components": [
+          "contrived contrast framing"
+        ],
+        "vocabulary_points": 1
+      }
+    },
+    "semantic": {
+      "total": 15,
+      "flagged": 10,
+      "clear": 5
+    },
+    "combined": {
+      "flagged": 18
+    }
+  },
+  "limitations": [
+    "slide_title structure unavailable without a structure manifest",
+    "caption structure unavailable without a structure manifest"
+  ],
+  "metadata": {
+    "schema_version": "2",
+    "grader_version": "phase-2-u8",
+    "timestamp": "2026-07-13T16:02:11.597613Z",
+    "run_id": "66cd31ba-48bd-47cb-8620-71dc69c7029d"
+  }
+}

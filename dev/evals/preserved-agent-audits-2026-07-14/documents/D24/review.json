@@ -1,0 +1,157 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "undercall",
+      "rationale": "The document is largely a series of similarly shaped status bullets: item name, current state, and next review/action. Calling the sections variable misses that repeated arc.",
+      "evidence": [
+        "A quick update on the status of the various SCs we have going:",
+        "- Information in steps: Reviewed on Tuesday, up again next week:",
+        "- Fixed Reference Points: Reviewed on Tuesday, up again next week:",
+        "- Find help: Up for 1st review Dec 10th.",
+        "- Confirmation before submission: Up for 1st review Dec 10th."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The conclusion is plausible because the note maintains one administrative update register, but the annotator supplied no evidence to establish that whole-document judgment.",
+      "evidence": [
+        "Hi everyone,",
+        "A quick update on the status of the various SCs we have going:",
+        "There are a couple more that you can find here:",
+        "Kind regards,"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "The document is a plain project-status update and does not rely on pseudo-concrete sensory filler or generic lived-detail placeholders.",
+      "evidence": [
+        "A quick update on the status of the various SCs we have going:",
+        "- Touch target spacing: Worry that it could in some (key) scenarios encourage people to shrink targets and add spacing, rather than increase the spacing per-se.",
+        "- Dragging: Up for 1st review Jan 7th."
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "supported",
+      "rationale": "The text makes concrete status assessments and recommendations rather than flattening everything into both-sides framing.",
+      "evidence": [
+        "Updates needed prior to re-review.",
+        "needs to be re-scheduled,",
+        "Visible labels & Orientation were thought to be possible to cover with understanding/technique updates."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "misclassified",
+      "rationale": "Specialized terms appear throughout the message as part of the subject matter rather than clumping in one expert-only section. The better judgment is that jargon spreads naturally, not that it clumps.",
+      "evidence": [
+        "Initial approval of the SC text & documents, these have been made into a Pull Request (PR) on github",
+        "That will go out for CFC soon.",
+        "There is also a somewhat separate option to add techniques for personalisation once that spec reaches recommendation."
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "supported",
+      "rationale": "There are no cross-modal metaphors or sensory mappings of the kind this check targets.",
+      "evidence": [
+        "Some concerns about how to define the visual aspects",
+        "Worry that it could in some (key) scenarios encourage people to shrink targets",
+        "those are the main ones in progress right now."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The document is literal and procedural; it does not use metaphorical language that would need scrutiny for genericness.",
+      "evidence": [
+        "A quick update on the status of the various SCs we have going:",
+        "Updates needed prior to re-review.",
+        "Kind regards,"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "Pronouns and definite descriptions are recoverable from local context, and there is no notable cadence of vague referents.",
+      "evidence": [
+        "if they are happy with that we can re-review.",
+        "but those are the main ones in progress right now.",
+        "summary under the 'discussion' heading:"
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "Although several bullets share a status-update format, they are not empty balanced slogans or correction scripts where symmetry substitutes for content.",
+      "evidence": [
+        "- Find help: Up for 1st review Dec 10th.",
+        "- Confirmation before submission: Up for 1st review Dec 10th.",
+        "- Visual indicators: Up for 1st review Dec 17th."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "The bullets are concise and mostly additive; repeated scheduling phrasing reflects distinct items rather than redundant restatement of the same information.",
+      "evidence": [
+        "- Information in steps: Reviewed on Tuesday, up again next week:",
+        "- Fixed Reference Points: Reviewed on Tuesday, up again next week:",
+        "There are a couple more that you can find here:"
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The cited phrases are genuinely underspecified: they gesture at concerns, scenarios, and options without naming the relevant details or criteria.",
+      "evidence": [
+        "Some concerns about how to define the visual aspects,",
+        "in some (key) scenarios",
+        "There is also a somewhat separate option to add techniques for personalisation once that spec reaches recommendation."
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "supported",
+      "rationale": "The note refers to prior process, but it does not contain answer-shaped defenses or corrections that require a missing chat exchange to make sense.",
+      "evidence": [
+        "Updates made since previous survey,",
+        "Has been updated after previous reviews,",
+        "Reviewed on Tuesday, up again next week:"
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "There are no sincerity announcements or authenticity boosters such as 'frankly' or 'honestly'.",
+      "evidence": [
+        "Hi everyone,",
+        "A quick update on the status of the various SCs we have going:",
+        "Kind regards,"
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "supported",
+      "rationale": "The connectors used are ordinary and their relationships are recoverable from context; they do not pretend to supply logic while withholding it.",
+      "evidence": [
+        "if they are happy with that we can re-review.",
+        "but those are the main ones in progress right now.",
+        "rather than increase the spacing per-se."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "This is best treated as default rather than one of the named genres, and no genre-specific watchlist applies.",
+      "evidence": [
+        "Hi everyone,",
+        "A quick update on the status of the various SCs we have going:",
+        "Kind regards,"
+      ]
+    }
+  ]
+}

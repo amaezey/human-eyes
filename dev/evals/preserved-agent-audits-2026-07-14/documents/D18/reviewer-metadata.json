@@ -1,0 +1,12 @@
+{
+  "anonymous_id": "D18",
+  "content_sha256": "5ee0235d358170eadde7365f323f5bc68f75bcf059e90b8f3336de9aae3086e8",
+  "prompt_sha256": "e220a015a6618c3654bbbfe634cea23f832a91501fe0672b9816747e140e8449",
+  "registry_sha256": "57d352e50b98929d8f751a732f2f746d80e363a629d16fecc59bb680fc9e8d24",
+  "attempt": 1,
+  "model_requested": "gpt-5.4",
+  "reasoning_effort": "medium",
+  "sandbox": "read-only",
+  "working_directory": "/tmp",
+  "path": "/usr/bin:/bin:/usr/sbin:/sbin"
+}

@@ -9,7 +9,9 @@ must not inflate the hit count.
 """
 
 import importlib.util
+import json
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -71,6 +73,63 @@ if iteration.catalogue_hits("No audit rendered here.") == set():
     ok("returns empty set when no Audit section exists")
 else:
     fail("expected empty hit set without an Audit section")
+
+with tempfile.TemporaryDirectory() as tmp:
+    run_dir = Path(tmp)
+    outputs = run_dir / "outputs"
+    outputs.mkdir()
+    (outputs / "response.md").write_text("ERROR: codex run failed\n")
+    (outputs / "metrics.json").write_text(json.dumps({"errors_encountered": 1}))
+    grading = iteration.grade_run({
+        "files": [],
+        "assertions": [{
+            "name": "manual-check",
+            "type": "qualitative",
+            "description": "A qualitative expectation",
+        }],
+    }, run_dir)
+    if grading["summary"]["pass_rate"] == 0 and grading["execution_metrics"]["errors_encountered"] == 1:
+        ok("executor failures cannot receive deferred qualitative passes")
+    else:
+        fail("executor failure was not reflected in grading")
+
+    (outputs / "response.md").write_text("A plausible but unreviewed response.\n")
+    (outputs / "metrics.json").write_text(json.dumps({"errors_encountered": 0}))
+    qualitative_item = {
+        "files": [],
+        "assertions": [{
+            "name": "manual-check",
+            "type": "qualitative",
+            "description": "A qualitative expectation",
+        }],
+    }
+    try:
+        iteration.grade_run(qualitative_item, run_dir)
+    except RuntimeError as exc:
+        if "was not graded" in str(exc):
+            ok("missing qualitative grading is a grader error, not a product failure")
+        else:
+            fail(f"unexpected qualitative grader error: {exc}")
+    else:
+        fail("ungraded qualitative assertion was silently converted into a result")
+
+    grading = iteration.grade_run(qualitative_item, run_dir, {
+        "A qualitative expectation": {
+            "text": "A qualitative expectation",
+            "passed": True,
+            "evidence": "Independent grader found direct evidence.",
+        }
+    })
+    if grading["summary"]["pass_rate"] == 1:
+        ok("independent qualitative grade is included in the benchmark result")
+    else:
+        fail("independent qualitative grade was not included")
+
+    parsed = iteration._json_object_from_text('```json\n{"expectations": []}\n```')
+    if parsed == {"expectations": []}:
+        ok("fenced grader JSON is parsed")
+    else:
+        fail("fenced grader JSON was not parsed")
 
 
 # Mixed auto-detected + agent-assessed audit body. Agent-assessed labels

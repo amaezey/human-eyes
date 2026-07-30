@@ -1,0 +1,153 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "undercall",
+      "rationale": "The essay’s three main review sections repeatedly follow the same arc: introduce a book or film, summarize its treatment of the space race, then pivot to the reviewer’s moral-theological interpretation. Calling the sections fully varied misses that repeated shape.",
+      "evidence": [
+        "This matter is addressed by *To Touch the Face of God*",
+        "The cultural dimension of the space race also interests Catherine Newell",
+        "Which brings me to *First Man* (2018), directed by Damien Chazelle"
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The annotator’s answer may be right, since the piece mixes high literary criticism with deliberate colloquial asides, but no evidence was supplied to establish where the register shifts.",
+      "evidence": [
+        "But then again, he would, wouldn’t he?",
+        "that’s three 9/11s, right there.",
+        "Don’t misunderstand me. I love science fiction."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clearance is plausible, because the essay’s details are usually concrete and historically anchored rather than generic filler, but the annotator gave no evidence for that judgment.",
+      "evidence": [
+        "As Apollo 8 orbited the moon in December of 1968",
+        "The last Apollo flight (an Apollo-Soyuz mission) took place in 1975.",
+        "the death of his two-year-old daughter Karen of a brain tumor in 1962"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay clearly argues positions rather than flattening issues into balance, but the annotator provided no evidence showing those commitments.",
+      "evidence": [
+        "*Star Wars* killed the space race",
+        "It seems to me an abdication of moral responsibility to try to pretend otherwise.",
+        "Maybe Apollo was always more about our fallenness, and therefore our need for grace."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The answer is plausible because technical and theological vocabulary clusters in relevant passages instead of being spread with suspicious uniformity, but the annotator offered no supporting evidence.",
+      "evidence": [
+        "providencealist, Protestant ethos",
+        "Apollo-Soyuz mission",
+        "IMAX seventy-millimeter camera"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "insufficient_evidence",
+      "rationale": "The no-finding judgment is plausible, but the annotator supplied no evidence showing that the essay’s sensory language stays grounded rather than forcing cross-modal mappings.",
+      "evidence": [
+        "the clean lines and sharp sunlight of Bonestell’s images",
+        "layering the soundtrack with an astonishing series of clangs, growls, roars, and bangs",
+        "The moon’s hypnotic barrenness, astonishingly recreated"
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "insufficient_evidence",
+      "rationale": "The clearance may be correct, since the essay’s metaphors are usually tied to its argument, but the annotator gave no evidence to justify that conclusion.",
+      "evidence": [
+        "a more palatable, empty-calorie version of “space exploration and adventure”",
+        "the moral swamp that was the provenance of this marvelous machinery",
+        "contained morbid Nazi DNA in its every cell"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay largely keeps its referents recoverable, but the annotator did not supply evidence demonstrating that the pronouns and definite descriptions remain clear across the piece.",
+      "evidence": [
+        "This touches on a curious absence in Oliver’s account",
+        "This is where the Apollo program started.",
+        "What makes this scene so moving"
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "insufficient_evidence",
+      "rationale": "The no-finding answer is plausible, but it is unsupported; the annotator did not show why the essay’s parallel constructions remain meaning-bearing rather than merely formulaic.",
+      "evidence": [
+        "We are not clean. Whether we profess faith or not, we are profane.",
+        "The movie cost 70 million dollars to make, which it has barely earned back.",
+        "There’s no villain and little traditional dramatic tension"
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay may avoid true nearby repetition, but the annotator gave no evidence to establish that the reiterated themes are developmental rather than redundant.",
+      "evidence": [
+        "the spiritual dimension of the space race",
+        "Perhaps it’s filling a gap.",
+        "Maybe Apollo was always more about our fallenness, and therefore our need for grace."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "undercall",
+      "rationale": "The document does contain underspecified evaluative language. Several adjectives and appraisals do not state the relevant criterion, so clearing this category misses real instances.",
+      "evidence": [
+        "P ROFANE IS AN INTERESTING WORD.",
+        "Oliver has sensible things to say",
+        "a convincing picture",
+        "an important aspect of the public animus against Apollo"
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "undercall",
+      "rationale": "The essay includes answer-shaped and defensive sentences that respond to an implied objection not otherwise present in the document. Those are context-leakage instances.",
+      "evidence": [
+        "Don’t misunderstand me. I love science fiction.",
+        "I am not, I hope, sniping merely for the sake of it."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "insufficient_evidence",
+      "rationale": "The no-finding judgment may be right, but the annotator supplied no evidence to distinguish genuine argument from sincerity-signalling frames.",
+      "evidence": [
+        "I am not, I hope, sniping merely for the sake of it.",
+        "Don’t misunderstand me. I love science fiction."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay may avoid empty connective logic, but the annotator did not support that conclusion with any evidence from the text.",
+      "evidence": [
+        "But still we come.",
+        "This works artistically—which is to say, it is more than just dour or strangulated—because *First Man* is also about a strange suspension in the usual rules of normality",
+        "According to Oliver, this was the opportunity NASA missed."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "insufficient_evidence",
+      "rationale": "`default` is a plausible genre call for a literary-cultural essay that does not fit the listed buckets, but the annotator gave no evidence for the genre detection or the absence of watchlist findings.",
+      "evidence": [
+        "\"format\": \"literary essay / cultural criticism\"",
+        "Newell’s enthusiasm can’t help but be infectious, here and throughout the book",
+        "*Image* depends on its subscribers and supporters. Join the conversation and make a contribution today."
+      ]
+    }
+  ]
+}

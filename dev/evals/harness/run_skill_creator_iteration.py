@@ -111,7 +111,8 @@ Use the skill at:
 {skill_path / "SKILL.md"}
 
 Read that skill and any referenced files you need from the same skill directory.
-Do not edit repository files. Do not save files. Return only the final user-facing output for the task.
+Do not edit repository files. Temporary input and work-bundle files required by the skill are allowed.
+Do not save a user-facing report. Return only the final user-facing output for the task.
 Do not mention this evaluation harness.
 
 Task prompt:
@@ -122,13 +123,13 @@ Inputs:
 """
 
 
-def run_claude(prompt: str, model: str | None) -> tuple[str, str, int]:
+def run_claude(prompt: str, model: str | None, working_dir: Path = ROOT) -> tuple[str, str, int]:
     cmd = [
         "claude",
         "-p",
         prompt,
         "--output-format",
-        "json",
+        "stream-json",
         "--verbose",
         "--allowedTools",
         "Read,Bash",
@@ -144,7 +145,7 @@ def run_claude(prompt: str, model: str | None) -> tuple[str, str, int]:
     }
     proc = subprocess.run(
         cmd,
-        cwd=ROOT,
+        cwd=working_dir,
         env=env,
         text=True,
         capture_output=True,
@@ -156,8 +157,11 @@ def run_claude(prompt: str, model: str | None) -> tuple[str, str, int]:
     total_tokens = 0
     if raw:
         try:
-            parsed = json.loads(raw)
-            result_event = parsed[-1] if isinstance(parsed, list) and parsed else parsed
+            parsed = [json.loads(line) for line in raw.splitlines() if line.strip()]
+            result_event = next(
+                (event for event in reversed(parsed) if isinstance(event, dict) and event.get("type") == "result"),
+                parsed[-1] if parsed else {},
+            )
             if not isinstance(result_event, dict):
                 result_event = {}
             response = result_event.get("result") or result_event.get("message") or raw
@@ -187,19 +191,23 @@ def run_claude(prompt: str, model: str | None) -> tuple[str, str, int]:
             f"Return code: {proc.returncode}\n\n"
             f"STDERR:\n{proc.stderr}\n\nSTDOUT:\n{proc.stdout}"
         )
-    return response, proc.stderr, total_tokens
+    transcript = proc.stderr
+    if raw:
+        transcript += ("\n\n" if transcript else "") + "CLAUDE STREAM TRANSCRIPT:\n" + raw
+    return response, transcript, total_tokens
 
 
-def run_codex(prompt: str, model: str | None) -> tuple[str, str, int]:
+def run_codex(prompt: str, model: str | None, working_dir: Path = ROOT) -> tuple[str, str, int]:
     with tempfile.NamedTemporaryFile(prefix="human-eyes-codex-output-", suffix=".md", delete=False) as f:
         output_path = Path(f.name)
     cmd = [
         "codex",
         "exec",
+        "--skip-git-repo-check",
         "-C",
-        str(ROOT),
+        str(working_dir),
         "-s",
-        "read-only",
+        "workspace-write",
         "--ephemeral",
         "--output-last-message",
         str(output_path),
@@ -210,7 +218,7 @@ def run_codex(prompt: str, model: str | None) -> tuple[str, str, int]:
 
     proc = subprocess.run(
         cmd,
-        cwd=ROOT,
+        cwd=working_dir,
         text=True,
         capture_output=True,
         timeout=1800,
@@ -231,6 +239,8 @@ def run_codex(prompt: str, model: str | None) -> tuple[str, str, int]:
             f"Return code: {proc.returncode}\n\n"
             f"STDERR:\n{proc.stderr}\n\nSTDOUT:\n{proc.stdout}"
         )
+    elif not response.strip():
+        response = "ERROR: codex returned an empty response\n"
     return response, proc.stderr, 0
 
 
@@ -242,12 +252,18 @@ def run_model(item: dict, config: str, skill_path: Path, run_dir: Path, model: s
 
     start = time.time()
     error_count = 0
-    if executor_name == "claude":
-        response, stderr, total_tokens = run_claude(prompt, model)
-    elif executor_name == "codex":
-        response, stderr, total_tokens = run_codex(prompt, model)
-    else:
+    def execute(working_dir):
+        if executor_name == "claude":
+            return run_claude(prompt, model, working_dir)
+        if executor_name == "codex":
+            return run_codex(prompt, model, working_dir)
         raise ValueError(f"Unknown executor: {executor_name}")
+
+    if item.get("external_cwd"):
+        with tempfile.TemporaryDirectory(prefix="human-eyes-eval-cwd-") as tmp:
+            response, stderr, total_tokens = execute(Path(tmp))
+    else:
+        response, stderr, total_tokens = execute(ROOT)
     duration = time.time() - start
     if response.startswith("ERROR:"):
         error_count = 1
@@ -432,8 +448,82 @@ def grade_one_assertion(name: str, output: str, input_text: str, generated: str)
     raise KeyError(name)
 
 
-def grade_run(item: dict, run_dir: Path) -> dict:
+def _json_object_from_text(raw: str) -> dict:
+    """Parse a grader's JSON response, allowing one fenced JSON block."""
+    text = raw.strip()
+    fenced = re.search(r"```(?:json)?\s*(\{.*\})\s*```", text, re.DOTALL)
+    if fenced:
+        text = fenced.group(1)
+    value = json.loads(text)
+    if not isinstance(value, dict):
+        raise ValueError("grader response must be a JSON object")
+    return value
+
+
+def grade_qualitative_assertions(
+    item: dict,
+    run_dir: Path,
+    skill_creator_path: Path,
+    model: str | None,
+    executor_name: str,
+) -> dict[str, dict]:
+    """Run the Skill Creator grader for assertions that require judgment."""
+    qualitative = [
+        assertion for assertion in item.get("assertions", [])
+        if assertion.get("type") != "programmatic"
+    ]
+    if not qualitative:
+        return {}
+    grader_guide = skill_creator_path / "agents" / "grader.md"
+    transcript_path = run_dir / "outputs" / "stderr.txt"
+    outputs_dir = run_dir / "outputs"
+    prompt = f"""You are grading one evaluation run. Follow the grader instructions at:
+{grader_guide}
+
+Evaluate only these expectations:
+{json.dumps([a['description'] for a in qualitative], indent=2)}
+
+Execution transcript: {transcript_path}
+Outputs directory: {outputs_dir}
+
+Read the complete transcript and relevant outputs. Return the grading JSON object only.
+Do not modify repository files or the run outputs.
+"""
+    if executor_name == "codex":
+        response, stderr, _ = run_codex(prompt, model)
+    else:
+        response, stderr, _ = run_claude(prompt, model)
+    if response.startswith("ERROR:"):
+        raise RuntimeError(response)
+    grading = _json_object_from_text(response)
+    rows = grading.get("expectations")
+    if not isinstance(rows, list):
+        raise ValueError("grader response is missing expectations[]")
+    by_text = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        text = row.get("text")
+        passed = row.get("passed")
+        evidence = row.get("evidence")
+        if isinstance(text, str) and isinstance(passed, bool) and isinstance(evidence, str):
+            by_text[text] = {"text": text, "passed": passed, "evidence": evidence}
+    expected = {a["description"] for a in qualitative}
+    missing = expected - set(by_text)
+    if missing:
+        raise ValueError(f"grader omitted expectations: {sorted(missing)}; stderr={stderr[-500:]}")
+    return by_text
+
+
+def grade_run(
+    item: dict,
+    run_dir: Path,
+    qualitative_grades: dict[str, dict] | None = None,
+) -> dict:
     output = (run_dir / "outputs" / "response.md").read_text(encoding="utf-8")
+    metrics_path = run_dir / "outputs" / "metrics.json"
+    run_metrics = read_json(metrics_path) if metrics_path.exists() else {}
+    executor_failed = output.startswith("ERROR:") or run_metrics.get("errors_encountered", 0) > 0
     input_parts = []
     for raw_path in item.get("files", []):
         input_parts.append(resolve_eval_file(raw_path).read_text(encoding="utf-8"))
@@ -443,12 +533,17 @@ def grade_run(item: dict, run_dir: Path) -> dict:
     expectations = []
     for assertion in item.get("assertions", []):
         text = assertion["description"]
-        if assertion.get("type") != "programmatic":
+        if executor_failed:
             expectations.append({
                 "text": text,
-                "passed": True,
-                "evidence": "Qualitative assertion deferred to Mae in the review viewer.",
+                "passed": False,
+                "evidence": "Executor failed before the response could be evaluated.",
             })
+            continue
+        if assertion.get("type") != "programmatic":
+            if qualitative_grades is None or text not in qualitative_grades:
+                raise RuntimeError(f"qualitative assertion was not graded: {text}")
+            expectations.append(qualitative_grades[text])
             continue
         try:
             passed, evidence = grade_one_assertion(assertion["name"], output, input_text, generated)
@@ -468,19 +563,23 @@ def grade_run(item: dict, run_dir: Path) -> dict:
             "pass_rate": round(passed_count / total, 4) if total else 0.0,
         },
         "execution_metrics": {
-            "total_tool_calls": 0,
-            "errors_encountered": 0,
+            "total_tool_calls": run_metrics.get("total_tool_calls", 0),
+            "errors_encountered": run_metrics.get("errors_encountered", int(executor_failed)),
             "output_chars": len(output),
         },
         "timing": timing,
         "claims": [],
         "user_notes_summary": {
             "uncertainties": [],
-            "needs_review": ["Qualitative assertions are intentionally left for human review."],
+            "needs_review": (
+                ["Executor failure must be resolved before review."]
+                if executor_failed
+                else []
+            ),
             "workarounds": [],
         },
         "eval_feedback": {
-            "overall": "Programmatic checks were graded by adapter code; qualitative assertions should be reviewed in the viewer.",
+            "overall": "Programmatic assertions were graded by code and qualitative assertions by the Skill Creator grader.",
             "suggestions": [],
         },
     }
@@ -493,7 +592,8 @@ def grade_completed_runs(evals: list[dict]) -> None:
         for config in ("with_skill", "old_skill"):
             run_dir = ITERATION / eval_dir_name(item) / config / "run-1"
             if (run_dir / "outputs" / "response.md").exists():
-                grade_run(item, run_dir)
+                if all(a.get("type") == "programmatic" for a in item.get("assertions", [])):
+                    grade_run(item, run_dir)
 
 
 def normalize_benchmark_config_order(path: Path) -> None:
@@ -840,7 +940,7 @@ def build_performance_report(evals: list[dict], iteration_dir: Path) -> tuple[st
         lines.append(
             "Grader output on the genre-paired corpus (see `dev/evals/corpus.json`). "
             "Three groups: human originals, AI fresh-writes from matched-topic prompts, "
-            "and AI-rewrites of the human originals. Deterministic — independent of how the skill renders its audit."
+            "and AI-rewrites of the human originals. Deterministic and independent of how the skill renders its audit."
         )
     else:
         lines.append(
@@ -866,22 +966,22 @@ def build_performance_report(evals: list[dict], iteration_dir: Path) -> tuple[st
         lines.append("|---|---|---|---|---|")
         for name, s in group_summary.items():
             lines.append(f"| {name} | {s['n']} | {s['total']:.1f} | {s['strong']:.1f} | {s['context']:.1f} |")
-        # Pairwise gaps if 'human' is present
-        if 'human' in group_summary:
-            human = group_summary['human']
-            for other in [n for n in group_summary if n != 'human']:
-                o = group_summary[other]
+        if "human" in group_summary:
+            human = group_summary["human"]
+            for other in [name for name in group_summary if name != "human"]:
+                comparison = group_summary[other]
                 lines.append(
-                    f"| Gap ({other} vs human) | | {_gap_pct(o['total'], human['total'])} "
-                    f"| {_gap_pct(o['strong'], human['strong'])} | {_gap_pct(o['context'], human['context'])} |"
+                    f"| Gap ({other} vs human) | | {_gap_pct(comparison['total'], human['total'])} "
+                    f"| {_gap_pct(comparison['strong'], human['strong'])} "
+                    f"| {_gap_pct(comparison['context'], human['context'])} |"
                 )
     lines.append("")
     lines.append("## Body-level statistics")
     lines.append("")
     lines.append(
-        "Sentence/paragraph length variance is the strongest non-pattern signal separating humans from AI in long-form essay register "
+        "Sentence and paragraph length variance is the strongest non-pattern signal separating humans from AI in long-form essay register "
         "(humans cluster around longer, more variable sentences; AI clusters around shorter, more uniform ones). "
-        "Tracked across iterations to surface drift even when pattern flags don't move."
+        "Tracked across iterations to surface drift even when pattern flags do not move."
     )
     lines.append("")
     if group_summary:
@@ -1058,6 +1158,8 @@ def run_iteration(
         if include_old_skill or item["name"].startswith("audit-human-"):
             jobs.append((item, "old_skill", OLD_SKILL, base / "old_skill" / "run-1"))
 
+    executor_failures = 0
+    completed_jobs = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
         future_map = {
             executor.submit(run_model, item, config, skill_path, run_dir, model, executor_name): (item, config, run_dir)
@@ -1068,7 +1170,9 @@ def run_iteration(
             try:
                 timing = future.result()
                 print(f"completed {item['name']} / {config} in {timing.get('total_duration_seconds')}s", flush=True)
-                grade_run(item, run_dir)
+                metrics = read_json(run_dir / "outputs" / "metrics.json")
+                executor_failures += int(metrics.get("errors_encountered", 0))
+                completed_jobs.append((item, config, run_dir))
             except Exception as exc:
                 outputs = run_dir / "outputs"
                 outputs.mkdir(parents=True, exist_ok=True)
@@ -1078,8 +1182,42 @@ def run_iteration(
                     "duration_ms": 0,
                     "total_duration_seconds": 0,
                 })
-                grade_run(item, run_dir)
+                grading = grade_run(item, run_dir)
+                executor_failures += grading["execution_metrics"]["errors_encountered"]
                 print(f"failed {item['name']} / {config}: {exc}", flush=True)
+
+    grader_failures = 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+        grader_futures = {
+            executor.submit(
+                grade_qualitative_assertions,
+                item,
+                run_dir,
+                skill_creator_path,
+                model,
+                executor_name,
+            ): (item, config, run_dir)
+            for item, config, run_dir in completed_jobs
+        }
+        for future in concurrent.futures.as_completed(grader_futures):
+            item, config, run_dir = grader_futures[future]
+            try:
+                qualitative = future.result()
+                grading = grade_run(item, run_dir, qualitative)
+                print(
+                    f"graded {item['name']} / {config}: "
+                    f"{grading['summary']['passed']}/{grading['summary']['total']}",
+                    flush=True,
+                )
+            except Exception as exc:
+                grader_failures += 1
+                write_json(run_dir / "grading.json", {
+                    "expectations": [],
+                    "summary": {"passed": 0, "failed": 0, "total": 0, "pass_rate": 0.0},
+                    "execution_metrics": read_json(run_dir / "outputs" / "metrics.json"),
+                    "grader_error": str(exc),
+                })
+                print(f"grader failed {item['name']} / {config}: {exc}", flush=True)
 
     aggregate = skill_creator_path / "scripts" / "aggregate_benchmark.py"
     py = python_for_skill_creator()
@@ -1097,9 +1235,16 @@ def run_iteration(
     report_md, report_data = build_performance_report(evals, ITERATION)
     (ITERATION / "performance-report.md").write_text(report_md, encoding="utf-8")
     write_json(ITERATION / "performance-report.json", report_data)
-    write_workspace_report_archive(report_md, report_data)
-    if only is None:
-        update_readme_performance_block(report_data, ROOT / "README.md")
+    if executor_failures or grader_failures:
+        print(
+            "stable performance report not updated: "
+            f"{executor_failures} executor failure(s), {grader_failures} grader failure(s)",
+            file=sys.stderr,
+        )
+    else:
+        write_workspace_report_archive(report_md, report_data)
+        if only is None:
+            update_readme_performance_block(report_data, ROOT / "README.md")
     print(f"performance report written to {ITERATION / 'performance-report.md'}", flush=True)
 
     viewer = skill_creator_path / "eval-viewer" / "generate_review.py"
@@ -1135,6 +1280,8 @@ def run_iteration(
         cwd=ROOT,
         check=True,
     )
+    if executor_failures or grader_failures:
+        raise SystemExit(1)
 
 
 def main() -> int:

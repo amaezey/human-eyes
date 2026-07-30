@@ -1,0 +1,146 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "I know which bus is usually late and which bakery sells out before noon.",
+          "why_unspecific": "Sounds like lived detail but names no actual bus route, bakery, or time — a placeholder any long-term resident of any town could claim."
+        },
+        {
+          "phrase": "My children learned to ride their bikes on this street.",
+          "why_unspecific": "Generic domestic-belonging image with no names, ages, or concrete incident attached to it."
+        },
+        {
+          "phrase": "planted trees beside the oval",
+          "why_unspecific": "A stock civic-virtue image (tree planting, community oval) without which trees, when, or with whom."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a raised eyebrow",
+          "why_generic": "Stock idiom for suspicion; supplies no concrete referent for who raised what eyebrow at whom or when."
+        },
+        {
+          "phrase": "feel its weight every day",
+          "why_generic": "Generic burden-metaphor for prejudice; doesn't specify what the weight actually consists of in daily terms."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Learn how local decisions are made. Write to a representative. Attend one council session. Support someone who is nervous about speaking.",
+          "why_formulaic": "A staccato imperative checklist that substitutes rhythmic parallel commands for any concrete guidance on how to do each of these things."
+        },
+        {
+          "phrase": "Fair treatment requires transparent processes, consistent enforcement, accessible information, and serious attention to patterns in complaints.",
+          "why_formulaic": "A four-item abstract-noun list with matching adjective-noun pairs that names institutional virtues without specifying what any of them would look like in practice."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "This country became mine through ordinary acts: work, friendship, mourning, celebration, voting, helping, and being helped.",
+          "what_it_repeats": "Restates the opening paragraph's list of civic activities (voting, planting trees, volunteering at the school hall) and the earlier 'work, friendship, and safety' line as a closing tricolon-like summary."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "transparent processes",
+          "missing_criterion": "No criterion given for what makes a process transparent or how transparency would be measured or verified."
+        },
+        {
+          "phrase": "consistent enforcement",
+          "missing_criterion": "No standard specified for what counts as consistent, or who would judge consistency across cases."
+        },
+        {
+          "phrase": "the atmosphere less hostile",
+          "missing_criterion": "No description of what currently makes the atmosphere hostile or what change would count as less so."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,567 @@
+You are an independent prose-audit reviewer. Re-read the document and verify every judgment yourself.
+
+Independently review a preserved agent-assessed Audit.
+
+Rules:
+1. Re-read the whole document and apply every registry record yourself before deciding whether the annotator was right.
+2. Do not guess who wrote the document and do not classify authorship.
+3. Review all 15 judgments, including clear judgments that may hide false negatives.
+4. A whole-document or distribution judgment needs evidence from multiple parts of the document when enough material exists.
+5. Treat genre-appropriate consistency, repetition, terminology, formatting, and rhetoric in context.
+6. Use verdict `supported` only when the annotator's answer and evidence are adequate; `overcall` when it flags a defect that is not present; `undercall` when it clears a defect that is present; `misclassified` when the status may be right but the selected category, genre, scope, or answer is materially wrong; and `insufficient_evidence` when the conclusion may be plausible but the supplied evidence does not establish it.
+7. Evidence strings in your review must be literal exact substrings from the document. Return exactly one review per registry record in registry order. Do not add commentary outside the JSON object.
+
+REGISTRY:
+{
+  "schema_version": "1",
+  "records": [
+    {
+      "id": "structural_monotony",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Do sections repeat the same rhetorical arc, such as problem → evidence → anecdote → advice or hook → claim → evidence → close? Name repeated arcs even when the headings and subject matter differ.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "sections vary",
+          "some sections share a shape",
+          "every section follows the same arc"
+        ]
+      },
+      "flagged_when": [
+        "some sections share a shape",
+        "every section follows the same arc"
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "Does the whole text sit in one register (formal, academic-accessible, warm-but-authoritative), or does the writer drift between registers — formal to colloquial, careful to loose, sincere to wry? Tonal uniformity is the consistency itself, not any particular register.",
+      "answer_schema": {
+        "type": "state",
+        "values": [
+          "register holds without breaks",
+          "register breaks at least once",
+          "register shifts deliberately"
+        ]
+      },
+      "flagged_when": [
+        "register holds without breaks"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "pattern_ref": 36,
+      "severity": "strong_warning",
+      "prompt": "Are the \"specific\" examples actually specific (someone's lived detail with names, dates, places, sensory grounding), or genre-convention filler that anyone could have written (\"the smell of coffee on a Sunday morning\", \"the way light hits the kitchen table\")? List specific phrases that perform specificity without achieving it.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_unspecific"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "neutrality_collapse",
+      "pattern_ref": 37,
+      "severity": "strong_warning",
+      "prompt": "Does the text commit to a position, or default to \"balanced\" treatment of everything? Look for \"there are compelling arguments on both sides\" framing where the original had a clear stance. Surface false-balance phrasing is partly covered by `no-false-concession-hedges` (#23a); this item flags the broader stance erasure.",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "takes a position",
+          "hedges its position",
+          "flattens to balanced framing"
+        ]
+      },
+      "flagged_when": [
+        "hedges its position",
+        "flattens to balanced framing"
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "pattern_ref": null,
+      "severity": "context_warning",
+      "prompt": "Is technical vocabulary clumped (the writer is in the weeds where they actually know things, plain prose elsewhere) or spread evenly across the piece (suspicious — humans don't distribute jargon uniformly)?",
+      "answer_schema": {
+        "type": "trichotomy",
+        "values": [
+          "jargon clumps where the writer knows things",
+          "jargon spreads naturally",
+          "jargon spreads uniformly across the text"
+        ]
+      },
+      "flagged_when": [
+        "jargon spreads uniformly across the text"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "pattern_ref": 28,
+      "severity": "context_warning",
+      "prompt": "Are there forced cross-modal metaphors — emotions get tastes, sounds get colours, abstract concepts get textures — that don't earn their grounding? Real synesthetic writing is specific and grounded (\"a great plateful of blue water\" — Woolf had stood before a view and sat down to a meal). AI synesthesia is unanchored. List specific phrases that map senses unjustifiably.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_forced"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "generic_metaphors",
+      "pattern_ref": 30,
+      "severity": "strong_warning",
+      "prompt": "Are the metaphors plausible-but-anyone's, or detached from a concrete referent, property, or experience? List the exact metaphor and explain what concrete meaning it fails to supply.",
+      "answer_schema": {
+        "type": "list",
+        "items": [
+          "phrase",
+          "why_generic"
+        ]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "referential_clarity",
+      "pattern_ref": 35,
+      "severity": "strong_warning",
+      "prompt": "List vague this, that, it, these, those, and vague nouns such as moves when the antecedent is not identifiable. Also list unsupported first-use definite descriptions such as the gap, and separately identify passages whose repeated the + noun cadence is excessive even though each referent can be recovered. Quote the phrase and name the missing or over-repeated referent.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unclear"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "formulaic_parallelism",
+      "pattern_ref": 10,
+      "severity": "context_warning",
+      "prompt": "List counted slogans, balanced bicolons, repeated syntactic skeletons, or cross-sentence correction scripts whose symmetry substitutes for information. Quote the complete construction and explain what the parallel form fails to say.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_formulaic"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "semantic_redundancy",
+      "pattern_ref": 34,
+      "severity": "strong_warning",
+      "prompt": "List captions, tricolons, paragraph endings, and summaries that repeat information already present nearby. Quote the redundant sentence and name the earlier list, claim, or passage it repeats.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "what_it_repeats"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "underspecified_language",
+      "pattern_ref": 43,
+      "severity": "strong_warning",
+      "prompt": "List evaluative adjectives, comparisons, superlatives, modifier stacks, nominalisations, and metaphors that do not name the relevant property or comparison basis. Common examples include steady, rougher, cold, sharp, and load-bearing. Quote the phrase and state the missing criterion, property, actor, or action.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_criterion"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "context_leakage",
+      "pattern_ref": 19,
+      "severity": "strong_warning",
+      "prompt": "List prose that answers, concedes to, corrects, or defends against a chat comment or critique absent from the document. Quote the answer-shaped language and name the missing conversational context required to understand it.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_context"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "performed_candour",
+      "pattern_ref": 42,
+      "severity": "strong_warning",
+      "prompt": "List sincerity announcements and authenticity boosters such as honest, real, actual, genuine, frankly, candidly, and truthfully when they perform candour instead of adding literal meaning. Quote the complete frame and explain why the claim can be stated directly. Preserve literal uses and quotations.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "why_unnecessary"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "vacuous_connection",
+      "pattern_ref": 22,
+      "severity": "context_warning",
+      "prompt": "List connectors and coordinated clauses that imply a logical relationship without stating one. Quote the connection and name the missing causal, temporal, contrastive, or evidential relationship.",
+      "answer_schema": {
+        "type": "list",
+        "items": ["phrase", "missing_relationship"]
+      },
+      "flagged_when": "non_empty"
+    },
+    {
+      "id": "genre_specific",
+      "pattern_ref": 41,
+      "severity": "context_warning",
+      "prompt": "First detect the genre of the text (academic, student_essay, poetry, fiction, journalism, marketing_email, or default if none of these fit). Then run the genre's watchlist below. Report `Genre detected: <genre>.` plus either watchlist findings or \"No genre-specific findings.\"",
+      "answer_schema": {
+        "type": "composite",
+        "fields": {
+          "genre_detected": {
+            "type": "state",
+            "values": [
+              "academic",
+              "student_essay",
+              "poetry",
+              "fiction",
+              "journalism",
+              "marketing_email",
+              "default"
+            ]
+          },
+          "watchlist_findings": {
+            "type": "list",
+            "items": [
+              "phrase",
+              "why_flagged"
+            ]
+          }
+        }
+      },
+      "flagged_when": "non_empty_findings",
+      "sub_records": {
+        "academic": {
+          "description": "Verify citations, DOIs, dates, journals, reference order, figure/data consistency, and whether cited works actually support the claim. Plausible citation format is not evidence. In argumentative academic prose, also watch for depleted engagement markers such as missing questions, reader address, personal asides, or stance-bearing commentary.",
+          "watchlist": [
+            "fake, broken, or irrelevant citations",
+            "wrong DOI, journal, date, figure, or data reference",
+            "citation exists but does not support the claim",
+            "argumentative essay with depleted questions, reader engagement, or stance markers",
+            "polished academic surface masking weak evidence or generic argument"
+          ]
+        },
+        "student_essay": {
+          "description": "Watch for rubric language echoing back, banal thesis claims, weak or missing evidence, student-level mismatch, abrupt tone or complexity shifts, surface polish masking weak argument, draft-history gaps, and loss of the student's own interpretive agency.",
+          "watchlist": [
+            "rubric language echoed as analysis",
+            "banal thesis or derivative argument",
+            "claim unsupported by quoted evidence or draft history",
+            "abrupt tone, complexity, or vocabulary shift from known student baseline",
+            "surface polish masking weak reasoning"
+          ]
+        },
+        "poetry": {
+          "description": "Watch for default quatrains, unrequested rhyme, first-person plural overuse, mood-word accumulation, form compliance without pressure, process traces that look too neat, and revisions that do not deepen the poem.",
+          "watchlist": [
+            "default quatrains or regular stanzas without a reason",
+            "unrequested rhyme or high rhyme density",
+            "first-person plural clustering",
+            "mood-word accumulation without concrete perception",
+            "form compliance without surprise, breakage, or revision depth"
+          ]
+        },
+        "fiction": {
+          "description": "Watch for flattened dialogue, \"as-you-know\" exposition, weak voice differentiation, parenthetical stage directions, locked POV with no pressure, scene pacing that never surprises, over-resolved endings, and generic fidelity to a target style without the source author's stranger choices.",
+          "watchlist": [
+            "dialogue voices not differentiated by rhythm, diction, or speech act",
+            "\"as-you-know\" exposition or role-explaining dialogue",
+            "scene pacing with no pressure, interruption, or surprise",
+            "over-resolved ending",
+            "style imitation that preserves surface but misses the source's oddities"
+          ]
+        },
+        "journalism": {
+          "description": "Watch for unsupported claims, vague sourcing, fake or disappearing bylines, synthetic headshots, broken links, wrong dates, unverifiable quotes, undisclosed vendor or affiliate provenance, and article facts that cannot be traced to named sources.",
+          "watchlist": [
+            "claim lacks a named source or verifiable link",
+            "byline, author bio, or headshot cannot be verified",
+            "broken link, wrong date, wrong organisation, or unverifiable quote",
+            "affiliate/product-review claim with unclear provenance",
+            "generated or third-party content not disclosed"
+          ]
+        },
+        "marketing_email": {
+          "description": "Watch for placeholders, generic subject lines, fake personalisation, weak domain understanding, exaggerated transformation claims, empty hype verbs, over-warm openings, unsupported business jargon, and action lists dressed up with symbols.",
+          "watchlist": [
+            "generic subject line or fake personalisation",
+            "placeholder residue or undeleted template slot",
+            "weak domain understanding hidden behind jargon",
+            "exaggerated transformation claim or empty hype verb",
+            "action list dressed up with symbols instead of useful specifics"
+          ]
+        },
+        "default": {
+          "description": "No genre-specific watchlist applies. The agent reports \"Genre detected: default. No genre-specific findings.\" and moves on.",
+          "watchlist": []
+        }
+      }
+    }
+  ]
+}
+
+
+DOCUMENT:
+<document>
+---
+{
+  "id": "21c-fortelabs-servant-hedonism",
+  "title": "Servant Hedonism: My Life Philosophy",
+  "author": "Tiago Forte",
+  "year": 2019,
+  "period": "21st",
+  "format": "first-person philosophy blog post",
+  "source_url": "https://fortelabs.com/blog/servant-hedonism-my-life-philosophy/",
+  "fetch_status": 200,
+  "extract_method": "defuddle",
+  "expected_use": [
+    "style_reference",
+    "false_positive_audit"
+  ],
+  "voice_targets": [
+    "personal-philosophy blog voice",
+    "list-driven exposition",
+    "self-help-adjacent register"
+  ]
+}
+---
+
+# Servant Hedonism: My Life Philosophy
+
+On a recent Sunday afternoon, while reading on the couch, I was startled to realize that I had a life philosophy.
+
+It’s not a very deep or sophisticated one. It’s not rooted in a grand narrative. It doesn’t specify precisely which rules to follow or which decisions to make.
+
+But it has served me well. It’s been a guide during dark times, when the world seemed hopelessly uncertain and complex.
+
+I call it Servant Hedonism – *serving yourself by serving others*.
+
+It combines two ideas that are often seen as opposites – service and pleasure – into one unified whole.
+
+Let’s start with “servant.”
+
+“Servant” is meant in the same sense as “Servant Leadership.” It proposes that the essence of life is a kind of unattached generosity – the willingness and determination to be of service, in any way possible, as much of the time as possible.
+
+I have found time and again that whenever I wasn’t sure which decision to make, this principle has led me to the most fulfilling and satisfying places. It’s a good rule because it’s simple – we are very good at telling how we can help. And it’s an easy one to satisfy – there are so many people in need all around us.
+
+Being of service is a fundamentally humble orientation toward life. It recognizes that you emerged from an ecosystem, and to an ecosystem you will ultimately return. It acknowledges that you have to pay your own way in this world. But you can do so by contributing to others, not taking from them.
+
+In other words, you are not yours. You belong to a community that existed long before you and will continue long after you. In this brief moment of participation, you have the choice to make a contribution to the human project.
+
+Being of service also has many practical benefits. It leads to positive sum interactions. It gives you a great reputation. It unites the people around you in common causes as you seek to be of service together.
+
+But even with all these practical benefits, there is one reason to serve others that stands well above the rest: it feels good.
+
+This leads us to the second part, to “hedonism.” And it is the even more important part.
+
+Serving others is the absolute most blissful state I know. Nothing else even comes close. Sharing your knowledge and gifts with someone and seeing their eyes light up at the sight of a new possibility for their life is a transcendent, out-of-body experience. The ultimate privilege in a relentlessly self-centered world.
+
+But service by itself so easily leads to unnecessary sacrifice, martyrdom, and even self-destruction. The cold mandate to “be of value” to others can paradoxically lead to devaluing our own intrinsic worth.
+
+As activist adrienne maree brown writes, “You cannot create freedom for others through your own bondage. You cannot empower others through your own demoralization. You cannot create a fulfilling life for others by draining your own of its color. You are a seed, and that is not how seeds work.”
+
+Service needs pleasure to avoid becoming yet another form of struggle and control.
+
+These two principles, service and pleasure, are often pitted against each other. As if you can only do one at a time, or only pick one at all. As if any investment in one is automatically a disservice to the other.
+
+But I don’t believe that to be the case.
+
+I believe service and pleasure can be one and the same, like two sides of the same coin. By asking yourself how you can be of service, you evolve into a more generous person who you enjoy seeing in the mirror. By enjoying yourself – including your mistakes and your defects – you become a more self-accepting and generative person who has more capacity to give.
+
+Servant Hedonism is ultimately about self-love.
+
+You love yourself enough to include yourself in the sphere of your love. You love your life too much to allow pain to be the defining experience of your days. You have the courage to ask yourself, as brown suggests, “What is happening and why did I decide to endure it?”
+
+As Charles Eisenstein [writes](https://charleseisenstein.org/books/the-more-beautiful-world-our-hearts-know-is-possible/eng/pleasure/), “Pleasure is the feeling we get from satisfying a need. The more powerful the need, the greater the pleasure. To follow this principle requires, first, accepting that our needs are valid and even beautiful. And not just our needs, but our desires as well, coming as they do from unmet needs.”
+
+I don’t think it matters that much whose needs those are. There’s a kind of blurring that happens when you intentionally collapse service and pleasure. It becomes hard to distinguish whose needs you are satisfying. It becomes meaningless to decide who is serving, and who is receiving.
+
+There is a viral quality to Servant Hedonism. Once a person’s needs for safety, belonging, intimacy, and connection have been met, they find within themselves their own desire to serve. And thus the virus spreads.
+
+Some might object to the word “hedonism.” It conjures images of drunken debauchery, dangerous excess, and even taking advantage of others. But I think it’s essential.
+
+You and your good have to be centered at all times. Because if your life is only a means to something else, then human life can’t be your highest value. And if you don’t value human life above all, you will soon find yourself in turn using the lives of others as a means to an end.
+
+Servant Hedonism creates a magnetic attraction that draws others in. Instead of guilt trips and calls for personal sacrifice, people see that you are having great fun and reveling in your transformation.
+
+There’s no need to recruit them, or incentivize them, or convince them to join you. Pleasure is the gravity well of the human condition – it pulls and it pulls always and forever, the only form of perpetual motion yet discovered.
+
+[Pleasure can be an organizing principle](https://fortelabs.com/pleasure-as-an-organizing-principle/) for a generative, flourishing life. It can be the organizing principle for our social movements, for our activism, for our economy. It might be the only organizing principle that is truly sustainable.
+
+Embracing Servant Hedonism is, paradoxically, a little painful at first.
+
+I think we fear that we’ll lose control, that we’ll go off the deep end of self-gratification. It feels almost impossible to escape the moralistic framing of pain as somehow intrinsically good, and pleasure bad. It feels like we have to completely meet all our needs before we can afford to give to others. Yet our needs are endless.
+
+I find the courage to go on by reminding myself: you get to be part of the future you are creating. You don’t have to be a casualty of the transformation you are seeking. Your freedom and pleasure are essential ingredients of the freedom and pleasure of the world.
+
+*Thank you to Ben Ford, Javier Rodriguez, and Michael Ashcroft for their feedback and suggestions.*
+
+---
+
+**Follow us for the latest updates and insights around productivity and Building a Second Brain on [X](https://twitter.com/fortelabs/), [Facebook](https://www.facebook.com/fortelabs/), [Instagram](https://www.instagram.com/fortelabsco/), [LinkedIn](https://www.linkedin.com/in/tiagoforte/), and [YouTube](https://www.youtube.com/@TiagoForte). And if you're ready to start building your Second Brain, [get the book](https://www.buildingasecondbrain.com/book) and learn the proven method to organize your digital life and unlock your creative potential.**
+
+</document>
+
+ANNOTATOR ANSWERS:
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "while reading on the couch",
+          "why_unspecific": "A generic scene-setting detail (Sunday, couch, reading) that performs the appearance of a personal anecdote without any name, date, place, or sensory detail that couldn't apply to any reader."
+        },
+        {
+          "phrase": "seeing their eyes light up at the sight of a new possibility for their life",
+          "why_unspecific": "A stock inspirational image with no particular person, moment, or context attached; it reads as genre convention rather than a lived memory."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "like two sides of the same coin",
+          "why_generic": "A worn stock comparison that asserts unity between service and pleasure without specifying the concrete mechanism by which they are actually linked."
+        },
+        {
+          "phrase": "Pleasure is the gravity well of the human condition",
+          "why_generic": "Borrows the language of physics for rhetorical weight but never grounds it in a concrete referent; it asserts inevitability without explaining what actually pulls people or how."
+        },
+        {
+          "phrase": "There is a viral quality to Servant Hedonism.",
+          "why_generic": "Uses the biological/internet 'viral' metaphor to imply spontaneous spread without specifying any actual mechanism of transmission beyond restating that people 'find within themselves their own desire to serve.'"
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "It leads to positive sum interactions. It gives you a great reputation. It unites the people around you in common causes as you seek to be of service together.",
+          "why_formulaic": "A counted tricolon of benefit-claims, each stated in the same 'It [verb]s...' skeleton, that substitutes rhythmic symmetry for any elaboration of how each benefit actually arises."
+        },
+        {
+          "phrase": "You love yourself enough to include yourself in the sphere of your love. You love your life too much to allow pain to be the defining experience of your days.",
+          "why_formulaic": "Repeats the 'You love ___ enough/too much to ___' skeleton back to back, producing balanced cadence rather than distinct, separately-supported claims."
+        },
+        {
+          "phrase": "You cannot create freedom for others through your own bondage. You cannot empower others through your own demoralization. You cannot create a fulfilling life for others by draining your own of its color.",
+          "why_formulaic": "A counted 'You cannot X for others through your own Y' tricolon whose symmetry carries the persuasive weight rather than distinct supporting reasoning for each clause."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "There’s no need to recruit them, or incentivize them, or convince them to join you.",
+          "what_it_repeats": "Restates the immediately preceding claim that 'Servant Hedonism creates a magnetic attraction that draws others in' without adding new information."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "the most fulfilling and satisfying places",
+          "missing_criterion": "Does not specify what makes a place or decision 'fulfilling' or 'satisfying' — no criterion or comparison basis is given."
+        },
+        {
+          "phrase": "a transcendent, out-of-body experience",
+          "missing_criterion": "Evaluative superlative with no named property, sensation, or observable effect that would let a reader judge what 'transcendent' means here."
+        },
+        {
+          "phrase": "a great reputation",
+          "missing_criterion": "'Great' is unsupported by any criterion — no comparison group, metric, or example of what the reputation consists of."
+        },
+        {
+          "phrase": "The cold mandate to “be of value”",
+          "missing_criterion": "'Cold' is an evaluative label with no named actor, source, or mechanism that makes the mandate cold rather than, say, neutral or demanding."
+        },
+        {
+          "phrase": "The ultimate privilege in a relentlessly self-centered world",
+          "missing_criterion": "Both 'ultimate' and 'relentlessly self-centered' are superlative/intensified claims without a stated comparison basis or evidence for the world's self-centeredness."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

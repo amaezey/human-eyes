@@ -1,0 +1,153 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "A repeated memoir arc is plausible, but the annotator did not name the recurring section shape or support it across multiple sections as the prompt requires for a whole-document judgment.",
+      "evidence": [
+        "Before I stepped into MDMA-assisted therapy,",
+        "The Setup",
+        "Into the Heart of Trauma",
+        "Shifting Patterns",
+        "The Real Talk",
+        "Today"
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "The conclusion may be right, but the annotator gave no examples of where the register breaks or shifts. This needs concrete tonal contrasts from the document.",
+      "evidence": [
+        "“Holy shit, I’m actually okay.”",
+        "fucked-up attachment patterns",
+        "trauma-informed care",
+        "pharmaceutical-grade MDMA"
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "The cited details imitate specificity through generic wellness imagery rather than distinctive, personally grounded particulars.",
+      "evidence": [
+        "a quiet room bathed in warm lamplight",
+        "Soft blankets, ambient music, and fresh flowers created a cocoon-like atmosphere"
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay does appear to take a position, but the annotator did not support that whole-document judgment with evidence from multiple parts of the text.",
+      "evidence": [
+        "I needed a catalyst for change.",
+        "MDMA wasn’t a panacea.",
+        "MDMA therapy didn’t solve every issue, but it made the path to healing clearer."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "insufficient_evidence",
+      "rationale": "The answer is plausible, but a distribution judgment needs comparative evidence showing technical language concentrated in certain parts rather than spread evenly.",
+      "evidence": [
+        "MDMA-assisted therapy",
+        "trauma-informed care",
+        "120 milligrams of pharmaceutical-grade MDMA",
+        "The set and setting"
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "misclassified",
+      "rationale": "These phrases are better read as conventional metaphor and embodied description than as unjustified cross-modal sense mapping. The category is materially wrong even if the annotator sensed figurative excess.",
+      "evidence": [
+        "warm waves of chemically induced empathy peeled away decades of self-defence",
+        "warmth blossomed through my chest"
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "supported",
+      "rationale": "The listed metaphors are familiar and abstracted; they gesture toward feeling-states without adding much concrete meaning specific to this narrator's experience.",
+      "evidence": [
+        "a heavy curtain had lifted, revealing a room in my heart I’d always avoided",
+        "carrying shame like a fucking birthmark",
+        "the groundwork had changed"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "misclassified",
+      "rationale": "\"the groundwork\" is vague and metaphorical, but its role in context is still recoverable from the surrounding discussion of post-session change. The problem is underspecification, not failed antecedent recovery.",
+      "evidence": [
+        "Integration—the period after the session where you actively process insights—wasn’t easy.",
+        "But now, the groundwork had changed."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The annotator identified several symmetrical contrast constructions whose balanced form does some of the work that fuller explanation could have done.",
+      "evidence": [
+        "not because the past changed, but because my relationship to it had shifted profoundly",
+        "It was therapy—not recreational experimentation.",
+        "The treatment wasn’t about eradicating problems but equipping me to address them from a place of emotional clarity rather than defensive panic.",
+        "trauma isn’t something you erase, it’s something you understand, accept, and learn to carry differently"
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "The closing sentence restates the immediately preceding claim in slightly altered imagery rather than advancing the thought.",
+      "evidence": [
+        "trauma isn’t something you erase, it’s something you understand, accept, and learn to carry differently.",
+        "it showed me how to carry my pain without collapsing under it."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The flagged phrases rely on evaluative modifiers without naming the criterion, threshold, or concrete basis for the evaluation.",
+      "evidence": [
+        "My anxiety had reached critical levels;",
+        "deeply trained in trauma-informed care",
+        "My marriage transformed subtly but significantly."
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "overcall",
+      "rationale": "These lines function as an internal cautionary turn within the essay, not as answers to an absent chat objection. The needed context is supplied by the essay's own shift into caveat and risk.",
+      "evidence": [
+        "The Real Talk",
+        "I won’t sugarcoat it: this isn’t something everyone should rush into.",
+        "MDMA is illegal in most contexts, and self-medicating carries significant risks."
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "At least one cited frame performs sincerity rather than adding content. \"I won’t sugarcoat it\" can be replaced by the direct claim that follows.",
+      "evidence": [
+        "I won’t sugarcoat it: this isn’t something everyone should rush into.",
+        "For the first time, compassion—true, visceral compassion—for my younger self emerged effortlessly."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "supported",
+      "rationale": "I do not find a clear connector in the document that implies a missing causal or contrastive relation strongly enough to require flagging.",
+      "evidence": [
+        "Yet beneath my own scepticism, something resonated—a quiet, insistent voice telling me I needed a different approach.",
+        "And even so, the drug itself didn’t heal me; it merely removed barriers that traditional therapy alone hadn’t breached."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "The piece fits none of the listed genres better than the fallback category, so \"default\" with no watchlist findings is appropriate.",
+      "evidence": [
+        "\"format\": \"Confessional essay on MDMA-assisted therapy; matched-pair AI version of Tucker Max's 2018 essay\"",
+        "What MDMA Therapy Did For Me"
+      ]
+    }
+  ]
+}

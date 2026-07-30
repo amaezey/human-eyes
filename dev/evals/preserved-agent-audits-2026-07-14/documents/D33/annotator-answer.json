@@ -1,0 +1,143 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "images of night, solitude and ruined landscapes",
+          "why_unspecific": "Reads as concrete imagery but is a stock inventory of romantic/melancholic tropes that could describe almost any lyric poet; no actual poem, line, or image is named."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "crossed the border",
+          "why_generic": "Stock metaphor for translation as border-crossing; doesn't specify which linguistic or cultural boundary or how the crossing actually happened."
+        },
+        {
+          "phrase": "a transparent vehicle between fixed works",
+          "why_generic": "A conventional translation-studies cliché (transparency/vehicle) that names no concrete textual feature the essay's own argument doesn't itself already supply."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Difficulty became refinement; irony could sound sincere.",
+          "why_formulaic": "A tight balanced bicolon that compresses the paragraph's argument into a slogan-like antithesis rather than explaining the mechanism by which difficulty was smoothed or irony misread."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "The selection was already an interpretation.",
+          "what_it_repeats": "Restates the paragraph's demonstrated claim that omission and emphasis of certain poems (shorter lyrics vs. longer/political ones) shaped the poet's foreign image."
+        },
+        {
+          "phrase": "Reception created a second career, with real artistic consequences.",
+          "what_it_repeats": "Restates the paragraph's preceding claims that the translated work spoke to new readers and influenced younger poets."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "These versions were elegant",
+          "missing_criterion": "No stylistic property (meter, diction, rhyme pattern) is named that would let a reader judge what makes the versions elegant."
+        },
+        {
+          "phrase": "valued polish as evidence of poetic seriousness",
+          "missing_criterion": "\"Polish\" is left undefined; no specific formal features (regularity, fluency, rhyme) are tied to the term."
+        },
+        {
+          "phrase": "with real artistic consequences",
+          "missing_criterion": "\"Real\" lacks a stated criterion distinguishing these consequences from unreal or lesser ones."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "flagged",
+      "answer": {
+        "genre_detected": "academic",
+        "watchlist_findings": [
+          {
+            "phrase": "Critics compared the poet with a celebrated national tradition",
+            "why_flagged": "An unnamed set of critics and an unnamed 'celebrated national tradition' are invoked to carry the argument's key causal claim, giving the essay an academic surface without any verifiable source or case to check it against."
+          }
+        ]
+      },
+      "evidence": []
+    }
+  ]
+}

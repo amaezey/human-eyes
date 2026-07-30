@@ -1,0 +1,153 @@
+{
+  "reviews": [
+    {
+      "id": "structural_monotony",
+      "verdict": "insufficient_evidence",
+      "rationale": "The judgment is plausible, but this whole-document claim needed cross-section evidence and the annotator supplied none.",
+      "evidence": [
+        "The task, in practice, is to find a way to move from the outside in.",
+        "One practical approach is to respond to initial conversations with a defined workshop—a “portal” into the organisation.",
+        "The aim is not a positive experience. It is a productive one."
+      ]
+    },
+    {
+      "id": "tonal_uniformity",
+      "verdict": "insufficient_evidence",
+      "rationale": "A steady practitioner-authoritative register is a plausible reading, but the annotator did not support this whole-text judgment with evidence from multiple parts of the piece.",
+      "evidence": [
+        "Selling consulting work is structurally awkward.",
+        "Unstructured does not mean unprepared.",
+        "And price accordingly. Clarity is not incidental; it is the basis of all subsequent work."
+      ]
+    },
+    {
+      "id": "faux_specificity",
+      "verdict": "supported",
+      "rationale": "The clear judgment is right. The piece stays abstract and operational rather than padding itself with fake lived-detail specificity.",
+      "evidence": [
+        "A two-day workshop was agreed following a single call and a one-page outline.",
+        "In one session, asking participants to describe the project independently revealed significant misalignment."
+      ]
+    },
+    {
+      "id": "neutrality_collapse",
+      "verdict": "insufficient_evidence",
+      "rationale": "The essay clearly argues for workshops as clarity-producing entry points, so the answer is plausible, but the annotator gave no evidence for this document-level stance judgment.",
+      "evidence": [
+        "A workshop does that.",
+        "This is counterproductive.",
+        "Workshops are one reliable mechanism."
+      ]
+    },
+    {
+      "id": "even_jargon_distribution",
+      "verdict": "misclassified",
+      "rationale": "The text does not show jargon clumping in isolated expert-only pockets; consulting terms are spread lightly across the essay. \"jargon spreads naturally\" fits better than \"jargon clumps where the writer knows things.\"",
+      "evidence": [
+        "Selling consulting work is structurally awkward.",
+        "Detailed statements of work become easier to agree.",
+        "The workshop sets the pricing anchor."
+      ]
+    },
+    {
+      "id": "forced_synesthesia",
+      "verdict": "supported",
+      "rationale": "No forced cross-modal mappings appear. The figurative language is spatial or procedural, not sensory cross-wiring.",
+      "evidence": [
+        "adaptive, conversational, and responsive",
+        "It is producing clarity."
+      ]
+    },
+    {
+      "id": "generic_metaphors",
+      "verdict": "undercall",
+      "rationale": "The annotator missed several generic metaphors that supply broad atmosphere rather than concrete mechanism.",
+      "evidence": [
+        "inside–outside tension",
+        "move from the outside in",
+        "a “portal” into the organisation",
+        "more like a jam session",
+        "reduce the inside–outside gap"
+      ]
+    },
+    {
+      "id": "referential_clarity",
+      "verdict": "supported",
+      "rationale": "The clear judgment holds. Pronouns and definite descriptions are generally recoverable from nearby context, and there is no excessive unclear \"the + noun\" cadence.",
+      "evidence": [
+        "This is the core tension.",
+        "This remains a relatively small commitment for the client while signalling value.",
+        "This created minor confusion but also reinforced a collaborative stance."
+      ]
+    },
+    {
+      "id": "formulaic_parallelism",
+      "verdict": "supported",
+      "rationale": "The flagged examples are real correction-script parallelisms, and the quoted evidence is adequate.",
+      "evidence": [
+        "The aim is not a positive experience. It is a productive one.",
+        "The key point: the session is not solving the problem.\n\nIt is producing clarity."
+      ]
+    },
+    {
+      "id": "semantic_redundancy",
+      "verdict": "supported",
+      "rationale": "The flagged conclusion sentence does repeat a claim already made nearby about clarity enabling later work.",
+      "evidence": [
+        "The underlying principle is consistent: clarity enables effective work.",
+        "Clarity is not incidental; it is the basis of all subsequent work."
+      ]
+    },
+    {
+      "id": "underspecified_language",
+      "verdict": "supported",
+      "rationale": "The flagged phrases rely on evaluative or comparative terms without naming the criterion or basis, so the judgment is well supported.",
+      "evidence": [
+        "stronger engagements and longer retention",
+        "significant misalignment",
+        "The reduction in specification overhead is significant.",
+        "the outcome was still correct",
+        "Effective sessions often feel demanding.",
+        "The trade-off was acceptable."
+      ]
+    },
+    {
+      "id": "context_leakage",
+      "verdict": "supported",
+      "rationale": "The essay reads as self-contained prose rather than as replies to missing chat comments or critiques.",
+      "evidence": [
+        "This piece covers:",
+        "Useful prompts and techniques include:",
+        "Four examples from practice"
+      ]
+    },
+    {
+      "id": "performed_candour",
+      "verdict": "supported",
+      "rationale": "The clear judgment is right. The piece states claims directly without sincerity-booster frames such as \"honestly\" or \"frankly.\"",
+      "evidence": [
+        "This is counterproductive.",
+        "The key point: the session is not solving the problem."
+      ]
+    },
+    {
+      "id": "vacuous_connection",
+      "verdict": "supported",
+      "rationale": "The connectors in the essay usually name an actual causal or contrastive relation rather than implying one vaguely.",
+      "evidence": [
+        "It works because people tolerate exposition once they have a sense of momentum.",
+        "Without context, both parties attempt to specify future work precisely, which leads to friction.",
+        "This created minor confusion but also reinforced a collaborative stance."
+      ]
+    },
+    {
+      "id": "genre_specific",
+      "verdict": "supported",
+      "rationale": "Default is the right genre call: this is a practitioner essay, not one of the listed special genres, so no genre-specific watchlist findings are required.",
+      "evidence": [
+        "\"format\": \"Practitioner essay on workshops in consulting; matched-pair AI version of Tom Critchlow's 2019 essay\"",
+        "Workshops as Portals"
+      ]
+    }
+  ]
+}

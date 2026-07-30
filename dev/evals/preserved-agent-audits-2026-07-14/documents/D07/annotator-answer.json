@@ -1,0 +1,159 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "flagged",
+      "answer": "register holds without breaks",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "In one project, I was asked to run a session that was initially described as a content planning workshop.",
+          "why_unspecific": "No name, date, place, or other identifying detail is given for the client or project; the anecdote reads as an interchangeable case-study template rather than a lived, verifiable event."
+        },
+        {
+          "phrase": "In another piece of work, a client came in wanting help designing a program for a new audience.",
+          "why_unspecific": "The client, program, and audience are left generic ('a client', 'a new audience'); nothing grounds the example in a specific time, place, or named context."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "the room drowns in detail",
+          "why_generic": "The drowning image supplies a generic sense of being overwhelmed without specifying what kind of detail accumulates or why it derails the workshop; it could describe any overloaded meeting."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Not because they are fun. Not because they produce sticky notes. Not because everyone gets to feel included, though that can matter.",
+          "why_formulaic": "The triple negative-clause structure builds rhetorical rhythm but substitutes repetition for an actual account of why workshops matter, which only arrives after the parallel run ends."
+        },
+        {
+          "phrase": "That is chargeable. That is useful. That is a legitimate consulting outcome.",
+          "why_formulaic": "Three short 'That is X' clauses assert value through cadence rather than by specifying what makes the outcome chargeable, useful, or legitimate."
+        },
+        {
+          "phrase": "Not a transcript. Not photographs of sticky notes dumped into a slide deck. Not a decorative summary that says everyone had a productive discussion.",
+          "why_formulaic": "The anaphoric 'Not a...' list rules out possibilities by rhythm rather than defining what the artefact positively needs to contain."
+        },
+        {
+          "phrase": "Not as a warm-up. Not as a free diagnostic. Not as a cheerful day of sticky notes.",
+          "why_formulaic": "Repeats the same three-part negative-parallel skeleton used earlier in the essay, echoing the opening's rhetorical shape rather than adding new argument."
+        },
+        {
+          "phrase": "Who speaks first? Who keeps returning to risk? Who reframes everything as a technology issue? Who has authority but stays silent? Who is treated as difficult, but is actually naming the constraint? Who asks practical questions? Who performs certainty? Who is absent, and what does their absence tell you?",
+          "why_formulaic": "An eight-item run of identically structured 'Who...?' questions creates the appearance of exhaustive behavioural analysis through counted symmetry rather than through worked examples of what the answers reveal."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "a consultant with meaningful expertise",
+          "missing_criterion": "No criterion is given for what counts as 'meaningful' expertise (years, track record, credentials), so the pricing claim that follows has no defined threshold."
+        },
+        {
+          "phrase": "A well-run workshop",
+          "missing_criterion": "The phrase asserts quality without naming what makes a workshop well-run (facilitation skill, preparation, outcome achieved), leaving the standard undefined."
+        },
+        {
+          "phrase": "The more honest position is stronger",
+          "missing_criterion": "Comparative 'stronger' is left without a stated basis for comparison (stronger than what, measured how), and 'honest' is asserted rather than justified against the alternative framing."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "This is a harsh truth, but it saves a lot of trouble.",
+          "why_unnecessary": "Labels the preceding claim as a 'harsh truth' to signal candour rather than simply stating the claim and letting its content carry the weight."
+        },
+        {
+          "phrase": "The more honest position is stronger",
+          "why_unnecessary": "Frames the recommended sales pitch as 'honest' to borrow credibility, when the pitch could simply be stated and left to demonstrate its own accuracy."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "This does not need to be cynical. It is responsible.",
+          "missing_relationship": "Asserts that mutual auditioning being 'not cynical' entails it being 'responsible' without stating the reasoning that connects the two claims."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

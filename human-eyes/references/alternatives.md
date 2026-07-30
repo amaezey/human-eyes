@@ -25,6 +25,7 @@ Each alternative has been reviewed for AI flavour. The right replacement is rare
 - [Generic positive conclusions](#generic-positive-conclusions)
 - [Soft scaffold phrases](#soft-scaffold-phrases)
 - [Manufactured-insight phrasings](#manufactured-insight-phrasings)
+- [Performed candour](#performed-candour)
 - [Sycophantic / collaborative artifacts](#sycophantic--collaborative-artifacts)
 - [Knowledge-cutoff disclaimers](#knowledge-cutoff-disclaimers)
 - [Contrived contrast / negative parallelism](#contrived-contrast--negative-parallelism)
@@ -51,7 +52,7 @@ Most em dashes are doing the job of a different punctuation mark. The right repl
 
 ## AI vocabulary words
 
-Words that appear far more frequently in post-2023 LLM output than in human writing. No single word is proof. The tell is density: three or more in one paragraph reads as AI even when each word is individually defensible.
+Words that appear far more frequently in post-2023 LLM output than in human writing. No single word is proof. The tell is density: three or more in one paragraph reads as AI even when each word is individually defensible. The check also flags two distinct Kousha-Thelwall term families anywhere in a document: underscore, delve, showcase, unveil, intricate, meticulous, pivotal, heighten, nuance, bolster, foster, and interplay.
 
 The vocabulary clusters by semantic function: verbs of intellectual work, inflation verbs, action-flavoured corporate verbs, and abstract scenery nouns. The middle column names what the AI word usually stands in for. The writer picks the meaning that fits and uses that word, or cuts the verb if none of the meanings apply.
 
@@ -102,7 +103,7 @@ These words promise analytical work the sentence does not do. The plain alternat
 
 ### Cluster-level fix
 
-When a paragraph trips the AI-vocabulary density check (three or more in one paragraph), single-word substitution rarely fixes it. Rewrite the paragraph around its concrete claim, with concrete verbs in place of the abstract ones and no scenery nouns.
+When a paragraph has three or more vocabulary signals, or a document has two distinct Kousha-Thelwall families, single-word substitution rarely fixes it. Rewrite the affected passages around their concrete claims, with concrete verbs in place of abstract ones and no scenery nouns.
 
 ---
 
@@ -254,6 +255,24 @@ Phrases that promise revelation without doing the evidentiary work. They include
 | When no one was watching | (cut; the writer probably was not there) | Privileged-perception cliché. |
 | Without anyone noticing | (cut) | Same. |
 | The shift nobody noticed | (cut, or name the shift and source the silence) | Same. |
+
+---
+
+## Performed candour
+
+Sincerity announcements usually disappear without changing the claim. Delete the frame, then check whether the remaining sentence needs evidence or a named basis.
+
+| AI tell | What it usually means | Notes |
+|---|---|---|
+| Honestly, X | X | State X directly. |
+| To be honest, X | X | Delete the preamble. |
+| The honest answer is X | X | The claim needs evidence, not an authenticity label. |
+| Frankly, X | X | Keep only when a quoted speaker used the word. |
+| Candidly, X | X | Delete the self-description. |
+| Truthfully, X | X | Delete the self-description. |
+| The real or actual truth is X | X | State the supported claim. |
+
+Literal meaning remains valid. An honest account, a genuine signature, an actual measurement, and a real object are not candour frames.
 
 ---
 

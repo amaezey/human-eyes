@@ -1,0 +1,146 @@
+{
+  "semantic_answers": [
+    {
+      "id": "structural_monotony",
+      "status": "flagged",
+      "answer": "some sections share a shape",
+      "evidence": []
+    },
+    {
+      "id": "tonal_uniformity",
+      "status": "clear",
+      "answer": "register shifts deliberately",
+      "evidence": []
+    },
+    {
+      "id": "faux_specificity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "neutrality_collapse",
+      "status": "clear",
+      "answer": "takes a position",
+      "evidence": []
+    },
+    {
+      "id": "even_jargon_distribution",
+      "status": "clear",
+      "answer": "jargon clumps where the writer knows things",
+      "evidence": []
+    },
+    {
+      "id": "forced_synesthesia",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "generic_metaphors",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "create a bridge to long-term retained work",
+          "why_generic": "The bridge metaphor is invoked repeatedly across the piece to describe connecting a workshop to a retainer, but it never specifies the actual mechanism (what makes the retainer conversation easier) beyond the label 'bridge' itself."
+        },
+        {
+          "phrase": "bridge the gap to the client's reality",
+          "why_generic": "A stock consulting metaphor for 'understanding the client' that recurs without adding a concrete property of what is being bridged or how."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "referential_clarity",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "formulaic_parallelism",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Free jazz not pop. Experience not performance. Collaborative not guided.",
+          "why_formulaic": "A three-part antithesis that restates the jam-session-vs-programmed-workshop distinction already made in the surrounding paragraph, using parallel negation rather than adding new information."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "semantic_redundancy",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "Clarity. And clarity is valuable!",
+          "what_it_repeats": "Restates the earlier claim 'And clarity is valuable - so you can charge well for these workshops if you set them up right.'"
+        },
+        {
+          "phrase": "And don't be afraid to charge well for this work - clarity is valuable!",
+          "what_it_repeats": "Repeats the same 'clarity is valuable, therefore charge well' claim made twice earlier in the pricing section."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "underspecified_language",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "A richer understanding and awareness of the client's context",
+          "missing_criterion": "Richer than what baseline, and by what measure, is not specified."
+        },
+        {
+          "phrase": "much lighter SOW (statement of work)",
+          "missing_criterion": "Lighter compared to which typical SOW length or content is not defined."
+        },
+        {
+          "phrase": "a real point of pain",
+          "missing_criterion": "What specifically makes it painful (time, disagreement, ambiguity) is not named."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "context_leakage",
+      "status": "flagged",
+      "answer": [
+        {
+          "phrase": "That said - clearly in this case it didn't land right, but I'd probably do the same again given the chance!",
+          "missing_context": "The content of the email referenced just above ('Here's an email I got after running a two-day workshop last year:') is not shown, so the reader can't see what 'didn't land right.'"
+        },
+        {
+          "phrase": "Following this workshop we settled on a monthly retainer and I ended up working with them for over two years.",
+          "missing_context": "The 'sample' agenda promised just before ('Here's a sample to show you how bare bones the agenda was:') is absent from the text."
+        },
+        {
+          "phrase": "The eagle-eyed among you might notice that the \"scope\" for this workshop is incredibly loose.",
+          "missing_context": "The 'real example' promised immediately above ('Here's a real example:') is not present in the extracted text."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "id": "performed_candour",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "vacuous_connection",
+      "status": "clear",
+      "answer": [],
+      "evidence": []
+    },
+    {
+      "id": "genre_specific",
+      "status": "clear",
+      "answer": {
+        "genre_detected": "default",
+        "watchlist_findings": []
+      },
+      "evidence": []
+    }
+  ]
+}

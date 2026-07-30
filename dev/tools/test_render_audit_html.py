@@ -179,7 +179,7 @@ def build_fixture_iteration(tmp: Path) -> Path:
                 "result": {"passed": 9, "failed": 0, "total": 9},
                 "expectations": [
                     {"text": "Output references at least 5 distinct AI patterns", "passed": True, "evidence": "9 patterns"},
-                    {"text": "Each pattern's explanation teaches the writer", "passed": True, "evidence": "Qualitative assertion deferred to Mae in the review viewer."},
+                    {"text": "Each pattern's explanation teaches the writer", "passed": True, "evidence": "Qualitative assertion deferred to the reviewer in the review viewer."},
                 ],
             },
             {
