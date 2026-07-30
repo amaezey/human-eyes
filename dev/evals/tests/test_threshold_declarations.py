@@ -187,9 +187,19 @@ def check_route_a(texts, baseline):
 # A declared key paired with the result field that should govern it. Where both
 # are present the exact boundary can be asserted, not merely its consumption.
 GOVERNING_METRIC = {
-    "minimum_candidates": "candidate_count",
-    None: "score",
+    "minimum_candidates": ("candidate_count", lambda m, v: m >= v),
+    None: ("score", lambda m, v: m >= v),
+    # Flags when variation FALLS, not rises, so the comparison runs the other way.
+    # No witness pair is required here: the metric is continuous and 111 documents
+    # spread either side of 9.0, so there is no gap for an off-by-one to hide in.
+    # That is why no tolerance or margin is defined — inventing one would be
+    # choosing a number in order to test a number.
+    "minimum_stdev": ("metric_number", lambda m, v: m <= v),
 }
+
+# Keys whose metric is continuous. The witness pair below (a document at the
+# cut-off and one at cut-off minus one) is a whole-number idea and does not apply.
+CONTINUOUS_KEYS = {"minimum_stdev"}
 
 # Boundaries no corpus document sits either side of. The exact-predicate
 # assertion still runs for these, but with no document at the cut-off itself an
@@ -199,14 +209,8 @@ GOVERNING_METRIC = {
 BOUNDARY_UNWITNESSED = {
     ("no-bland-critical-template", "minimum_candidates"):
         "no document holds 2 or 3 of these phrases; the one that flags holds 11",
-    ("no-boldface-overuse", "minimum_candidates"):
-        "documents cluster at 3 and below or 5 and above, never at 4",
     ("no-heading-one-liners", "minimum_candidates"):
         "no document holds exactly 1, so the clear side of the cut-off is empty",
-    ("no-inline-header-lists", "minimum_candidates"):
-        "no corpus document holds one of these at all",
-    ("no-rubric-echoing", "minimum_candidates"):
-        "no corpus document holds one of these at all",
     ("no-soft-scaffolding", "minimum_candidates"):
         "documents hold 1 or fewer, or 6 or more, never 2 to 5",
 }
@@ -228,9 +232,15 @@ def check_boundary_correspondence(baseline, texts):
     unchecked = []
     for cid, key, value in declared_keys():
         field = GOVERNING_METRIC.get(key)
-        if field is None:
+        # An exact boundary can only be asserted where the key is the check's sole
+        # gate. Where a check declares several, the flag turns on their conjunction
+        # and no single one of them is the boundary: asserting otherwise reports a
+        # false divergence the moment a second gate is added.
+        multi_gate = isinstance(BASELINE[cid], dict) and len(BASELINE[cid]) > 1
+        if field is None or multi_gate:
             unchecked.append((cid, key))
             continue
+        field, predicate = field
         wrong, seen, metrics = [], 0, []
         for (path, _text), result in zip(texts, baseline[cid]):
             if result is None or result.get("context_suppressed"):
@@ -240,9 +250,15 @@ def check_boundary_correspondence(baseline, texts):
                 continue
             seen += 1
             metrics.append(metric)
-            if bool(result.get("threshold_met")) != (metric >= value):
+            if bool(result.get("threshold_met")) != predicate(metric, value):
                 wrong.append((path.name, metric, bool(result.get("threshold_met"))))
-        witnessed = any(m == value for m in metrics) and any(m == value - 1 for m in metrics)
+        if key in CONTINUOUS_KEYS:
+            # Straddled rather than witnessed: with a continuous metric the
+            # question is whether documents fall on both sides, not whether one
+            # lands exactly on the cut-off.
+            witnessed = any(m < value for m in metrics) and any(m > value for m in metrics)
+        else:
+            witnessed = any(m == value for m in metrics) and any(m == value - 1 for m in metrics)
         pin = BOUNDARY_UNWITNESSED.get((cid, key))
         if witnessed and pin:
             fail(f"{cid}.{key or '(value)'} is pinned as unwitnessed, but the corpus "

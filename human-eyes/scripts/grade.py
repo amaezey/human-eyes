@@ -1819,6 +1819,9 @@ def check_sentence_variance(text):
     return {
         "text": "sentence-length-variance",
         "passed": not flagged,
+        # The number the decision turns on, exposed so it can be measured against
+        # the declared cut-off. `metric` below is the reader-facing string.
+        "metric_number": sd,
         "metric": (
             f"sentence length variation {sd:.1f} across {len(sentences)} "
             f"sentences (target above {minimum_sd:g})"
@@ -3351,6 +3354,9 @@ def check_paragraph_uniformity(text):
     return {
         "text": "paragraph-length-uniformity",
         "passed": not flagged,
+        # The number the decision turns on, exposed so it can be measured against
+        # the declared cut-off. `metric` is the reader-facing string.
+        "metric_number": cv,
         "metric": metric,
         "evidence": (
             f"Paragraph length CV: {cv:.2f} across {len(lengths)} paragraphs "
@@ -3423,14 +3429,24 @@ def check_tidy_paragraph_endings(text):
             endings.extend(structural_matches)
         elif matched_stock_pattern:
             endings.append(last_sentence[:90])
+    # Counted raw, this flagged 2% of human documents and 0% of generated ones only
+    # because human documents here average 2.2 times the length. As a rate the
+    # direction corrects: 9% generated against 6% human at 1.0 per 1000.
+    words = len(re.findall(r"\b\w+\b", text))
+    minimum_candidates = threshold_value("no-tidy-paragraph-endings", "minimum_candidates", 3)
+    maximum_rate = threshold_value("no-tidy-paragraph-endings", "maximum_rate_per_1000", 1.0)
+    rate = len(endings) / words * 1000 if words else 0.0
+    flagged = len(endings) >= minimum_candidates and rate >= maximum_rate
     return {
         "text": "no-tidy-paragraph-endings",
-        "passed": len(endings) < threshold_value("no-tidy-paragraph-endings", "minimum_candidates", 3),
+        "passed": not flagged,
         "matches": endings,
+        "metric_number": rate,
         "evidence": (
-            f"Found {len(endings)} tidy paragraph ending(s): {endings[:5]}"
-            if len(endings) >= 3
-            else f"Tidy paragraph endings: {len(endings)}"
+            f"Found {len(endings)} tidy paragraph ending(s), {rate:.1f} per 1000 words "
+            f"(target: <{maximum_rate:g}): {endings[:5]}"
+            if flagged
+            else f"Tidy paragraph endings: {len(endings)} ({rate:.1f} per 1000 words)"
         ),
     }
 
@@ -3935,14 +3951,26 @@ def check_boldface_overuse(text):
         for m in bold_pattern.findall(line):
             total += 1
             matches.append(m)
+    # A raw count is length-biased: a 4,000-word document reaches four bold spans
+    # more readily than a 1,000-word one whatever wrote it, which is how this check
+    # came to flag 8% of human documents against 2% of generated ones. Measured as a
+    # rate the direction corrects. 2.0 per 1000 is four spans at the corpus median
+    # length, so the cut-off is unchanged for a typical document.
+    words = len(re.findall(r"\b\w+\b", text))
+    minimum_candidates = threshold_value("no-boldface-overuse", "minimum_candidates", 4)
+    maximum_rate = threshold_value("no-boldface-overuse", "maximum_rate_per_1000", 2.0)
+    rate = total / words * 1000 if words else 0.0
+    flagged = total >= minimum_candidates and rate >= maximum_rate
     return {
         "text": "no-boldface-overuse",
-        "passed": total < threshold_value("no-boldface-overuse", "minimum_candidates", 4),
+        "passed": not flagged,
         "matches": matches,
+        "metric_number": rate,
         "evidence": (
-            f"Found {total} bold span(s) in prose: {matches[:5]}"
-            if total >= 4
-            else f"Bold spans in prose: {total}"
+            f"Found {total} bold span(s) in prose, {rate:.1f} per 1000 words "
+            f"(target: <{maximum_rate:g}): {matches[:5]}"
+            if flagged
+            else f"Bold spans in prose: {total} ({rate:.1f} per 1000 words)"
         ),
     }
 
@@ -4172,11 +4200,11 @@ CHECK_THRESHOLDS = {
     "no-unicode-flair": {"minimum_candidates": 2},
     "no-excessive-hedging": {"minimum_candidates": 3},
     "paragraph-length-uniformity": {"minimum_paragraphs": 7, "maximum_cv": 0.18},
-    "no-tidy-paragraph-endings": {"minimum_candidates": 3},
+    "no-tidy-paragraph-endings": {"minimum_candidates": 3, "maximum_rate_per_1000": 1.0},
     "no-bland-critical-template": {"minimum_candidates": 3},
     "no-rubric-echoing": {"minimum_candidates": 3},
     "no-forced-triads": {"minimum_words": 300, "maximum_rate_per_1000": 4.0},
-    "no-boldface-overuse": {"minimum_candidates": 4},
+    "no-boldface-overuse": {"minimum_candidates": 4, "maximum_rate_per_1000": 2.0},
     "no-inline-header-lists": {"minimum_candidates": 2},
     "no-heading-one-liners": {"minimum_candidates": 2},
     "no-compound-modifier-density": {"minimum_per_sentence": 3},
