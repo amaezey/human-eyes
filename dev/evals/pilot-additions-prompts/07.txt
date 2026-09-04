@@ -1,3 +1,0 @@
-Subject: performance improvements in a May 2019 web-browser release.
-Format and genre: customer release announcement.
-Length: about 325 words.
