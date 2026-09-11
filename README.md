@@ -8,21 +8,13 @@ Inspired by [blader/humanizer](https://github.com/blader/humanizer), built aroun
 
 ## Install
 
-### Clone (preferred)
-
-Get updates with `git pull`.
-
-```bash
-git clone https://github.com/amaezey/human-eyes.git ~/.claude/skills/human-eyes
-```
-
-### Claude Code CLI
-
 ```bash
 npx skills@latest add amaezey/human-eyes
 ```
 
-### Codex and Claude Code desktop
+The installer finds the agents on your machine, Claude Code and Codex included, and installs to each. Update later with `npx skills@latest update human-eyes`.
+
+### claude.ai and the Claude app
 
 Download the latest release zip from <https://github.com/amaezey/human-eyes/releases/latest>.
 
